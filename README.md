@@ -27,6 +27,14 @@ https://claude.ai/artifact/WPcfzHzh5jPqxYq3PVVvqD
 Read `docs/REPORT.md` for the evidence, `docs/DECISION.md` for the recommendation and what would overturn it, and
 `docs/OWNER_REQUEST.md` for what needs you.
 
+## Jev assessment (added 21 September 2026, later the same day)
+
+`docs/jev_assessment/JEV_IMPACT_ASSESSMENT.md` asks whether TypeSafe's Jev, a System One model that returns typed
+decisions with probabilities instead of text, changes the conclusion above. Short answer: it does not. It touches one of
+the four technical problems, fact extraction, and touches it as a cheaper proposer of facts the system may not trust.
+The appendices beside it hold the evidence base: the Sophon ground truth used, the Jev evidence with vendor and
+independent claims tagged separately, the verified fact sheet from a 17-agent research sweep, and the owner's brief.
+
 ## Reproduce
 
 Python 3.10+, standard library only. Run from this folder. Nothing writes inside `evidence/`.
