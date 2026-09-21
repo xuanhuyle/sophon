@@ -21,6 +21,9 @@ their autonomy as people resolve uncertainty, has a viable architecture. Done on
 4. **Several of the packet's headline results do not show what they appear to.** The 1,000-claim replay returns
    `REQUEST_FACT` for every possible input; three of six authority-probe tests cannot fail; K1–K6 come without code.
 
+A condensed web version of the report is published as a private artifact (open only to people the owner shares it with):
+https://claude.ai/artifact/WPcfzHzh5jPqxYq3PVVvqD
+
 Read `docs/REPORT.md` for the evidence, `docs/DECISION.md` for the recommendation and what would overturn it, and
 `docs/OWNER_REQUEST.md` for what needs you.
 
