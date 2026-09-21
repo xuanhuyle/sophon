@@ -74,6 +74,6 @@ output. Shape of the file (placeholders, not suggestions):
 
 ## 4. Housekeeping
 
-I have not committed or pushed anything. Say if you want this committed to `main` and pushed to
+Everything is committed to `main` and pushed to
 `github.com/xuanhuyle/sophon` (private). The follow-up zip is extracted to `evidence_followup/`; the zip itself is
 still in the repository root.

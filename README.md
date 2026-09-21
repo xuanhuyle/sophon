@@ -55,5 +55,5 @@ URLs and the SHA-256 each matched.
 
 ## Status
 
-Nothing is committed or pushed. No policy has been adopted and no settlement recorded; every authority used in the
+Committed and pushed to `main`. No policy has been adopted and no settlement recorded; every authority used in the
 lab is fixture authority held in memory by fictitious principals.
