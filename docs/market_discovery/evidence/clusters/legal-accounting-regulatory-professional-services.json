@@ -1,0 +1,588 @@
+{
+ "key": "legal-accounting-regulatory-professional-services",
+ "found": {
+  "domain": "legal-accounting-regulatory-professional-services",
+  "domain_assessment": "NETWORK CAVEAT FIRST: the session's WebSearch budget was already exhausted (200/200) before this finder's first query, so zero searches could be run, and the egress proxy blocked every non-GitHub domain tried (justice.gov, foia.gov, gov.uk, cada.fr, ifrs.org, fasb.org, iso.org, ironcladapp.com, ico.org.uk, sec.gov, pcaobus.org, fca.org.uk, cnil.fr, worldcc.com, iasplus.com, wikipedia.org, gao.gov, muckrock.com, edpb.europa.eu, harvey.ai, crsreports.congress.gov, archives.gov, eba.europa.eu, esma.europa.eu, icaew.com, dart.deloitte.com, auditanalytics.com, acc.com, legislation.gov.uk, legifrance.gouv.fr, aicpa-cima.com, viewpoint.pwc.com, oecd.org, whatdotheyknow.com, commonslibrary.parliament.uk, dataprotection.ie, frc.org.uk, kpmg.com, ey.com, foiaproject.org, ifac.org, edps.europa.eu, gdprhub.eu, enforcementtracker.com, wiki.agiloft.com, developer.ironcladapp.com, huggingface.co, data.gouv.fr, web.archive.org, duckduckgo, bing, semanticscholar, openalex, arxiv, courtlistener). Only github.com / raw.githubusercontent.com / api.github.com worked. Everything below therefore comes from GitHub-hosted mirrors and datasets of primary sources (EBA Q&A portal mirror, ICO decision-notice scrape, CADA open-data derivative, EDGAR comment-letter corpus, a compiled contract playbook), which I cloned and analysed locally; all counts are my computations on those files and every number carries its repo URL. Treat these as 'derived from primary' rather than primary, and treat the many blocked official statistics as unknown, not as support.\n\nWHAT THE EVIDENCE SHOWS. (1) The settlement loop the brief describes exists in this domain in a textbook form, but it is run by REGULATORS and STANDARD-SETTERS as a public service, not inside the firms that would buy software: the EBA Single Rulebook Q&A (2,166 final answers mirrored; 70% of Q&As sit in article/paragraph classes asked >=2 times and 46% in classes asked >=10 times; 28% carry a dated 'updated/reviewed' note after rule changes; 7.4% of answers cite an earlier Q&A as precedent; median 248 days question-to-answer, 163 days for questions submitted since 2022) is exactly 'ambiguous case -> owner -> recorded interpretation -> prospective application -> versioned when rules change'. SEC staff comment letters and (by structure, unverifiable here) IFRS IC agenda decisions, FASB technical inquiries and Big 4 national-office consultations are the same shape. The prospective, versioned register already exists at the sector level, so the private residual (what each bank/company still has to settle internally) is the only Sophon-addressable part, and its volume is unknown. (2) Where a firm-level loop is visible (contract playbooks), the one open, evidence-compiled playbook I could inspect shows 22 of 24 clause topics with a 'mixed' historical stance, 24% of 2,303 observed positions substantively deviating from standard and 20% 'proposed then reversed'; and the format's authors explicitly abandoned frozen executable clause positions ('rigid ... hides the negotiation intent') in favour of descriptive evidence plus a small hard floor. That is category F (commercial negotiation) dominating, with only the floor being category H. (3) FOI exemption decisions are high-volume and recurrent (ICO: 12,493 notices 2019-2025, ~1,750-2,400 per year; 71% of authority-by-section pair instances recur), but the overturn data say interpretation is NOT the pain: on substantive exemptions authorities are upheld 60-90% of the time (s.40 personal data 80% not upheld, s.12 cost limit 88%, s.14 vexatious 67%), while the categories where complaints are almost always upheld are timeliness/procedure failures (s.10 98%, s.17 96%, EIR 5(2) 98%) \u2014 a capacity problem, and the public-interest balancing tests are case-by-case by design. CADA's avis are advisory and 23% of the time the administration did not even reply to CADA. (4) Professional-services firms already SELL this loop (national-office consultation, comment-letter trend reports, FOI/DP advisory); their internal consultation databases are the one place a firm-level typed precedent ledger demonstrably exists, and they are unlikely software buyers for it (H5/H8).\n\nVERDICT FOR THE CLUSTER: weak evidence for a standalone product. The strongest Sophon-shaped signal is the in-firm residual of regulatory interpretation in EU bank regulatory reporting (54% of EBA Q&As are COREP/FINREP/liquidity template interpretation, the same classes recur across thousands of institutions, answers get versioned when the ITS change), but public research cannot see whether banks' internal interpretation registers are large enough or whether reporting vendors (Regnology, Wolters Kluwer, AxiomSL) already encode them. Everything else in the cluster is either regulator-run, negotiation-dominated, capacity-dominated, or unobservable behind blocked domains.",
+  "workflows": [
+   {
+    "name": "Regulatory interpretive inquiries: EBA Single Rulebook Q&A and Joint ESAs (DORA) Q&A (proxy for SEC/FCA/ACPR interpretive letters)",
+    "geography": "EU (banking; CRR/CRD/DORA). US/UK/FR equivalents (SEC no-action and C&DIs, FCA waivers, ACPR positions) were blocked.",
+    "decision_volume": "2,166 final Q&As mirrored (CRR 2,003; CRD 96; DORA 67), cumulative 2013-2026. New questions submitted per year that reached a final answer: 412 (2013), 360 (2014), 221 (2015), 153 (2016), 178 (2017), 164 (2018), 112 (2019), 115 (2020), 101 (2021), 97 (2022), 64 (2023), 83 (2024), 54 (2025). Rejected/withdrawn questions are not mirrored, so total submissions are unknown. Source: my count over https://github.com/gnosifex/esa-qa-mirror (markdown mirror of eba.europa.eu/single-rule-book-qa and the ESMA Joint Q&A register; each record carries its eba.europa.eu source_url). Sourced (derived from regulator portal).",
+    "human_review_rate": "100% of submitted questions are answered by humans (EBA staff 1,900; European Commission 168 because they concern the level-1 text; Joint ESAs 15; unattributed 83). Median submission-to-publication 248 days (p25 151, p75 505; 163 days median for submissions since 2022; DORA 136 days; CRR 254 days, p90 952). Source: computed from https://github.com/gnosifex/esa-qa-mirror frontmatter dates. Sourced.",
+    "why_humans_review": "Basis: reading a sample of records plus topic/article counts. C (interpretation of an existing rule) ~55-65%: 54% of all Q&As are supervisory-reporting template/instruction interpretation (FINREP 413, COREP 353, liquidity 185, asset encumbrance 56, leverage 49, large exposures 43) and most credit-risk/own-funds Q&As ask how a paragraph applies to a described structure. D (conflict between authorities/rules) ~10%: e.g. benchmarking ITS vs COREP instructions (Q&A 2018_4091). H (repeatable ambiguity settled prospectively) is high as a share of what reaches the EBA \u2014 by construction only questions of general application are answered and 70% fall in article/paragraph classes asked >=2 times, 46% in classes asked >=10 times (842 distinct act/article/paragraph classes) \u2014 roughly 60-70% of answered questions are H-type from the regulator's viewpoint. A/B (missing evidence, factual classification) ~5-10% (answers that turn on the submitter's specific facts). E/F/G ~5%. Caveat: this is the regulator-level loop; the share of a bank's internal interpretation workload that is H is unobserved.",
+    "settlement_loop_evidence": [
+     {
+      "description": "Formal loop: institution submits question -> EBA/Commission answer -> published as 'Final Q&A' with legal act, article, paragraph, topic, submission and publication dates -> expected to be applied by all institutions and competent authorities going forward. 2,166 finals mirrored; 607 (28%) carry an 'Update dd.mm.yyyy: this Q&A has been updated/reviewed in the light of amendments to ...' note, i.e. the settlement is explicitly versioned against rule changes (596 'updated', 1 'revised', 10 other).",
+      "source_url": "https://github.com/gnosifex/esa-qa-mirror",
+      "source_type": "regulator (mirrored; per-record source_url on eba.europa.eu)",
+      "prospective": "yes",
+      "reusable_how": "Each Q&A is indexed by act/article/paragraph; later Q&As cite earlier ones (161 answers, 7.4%, contain another Q&A id; 50 answers say the point is 'already addressed/clarified in Q&A ...'); 38 answers defer to a coming amendment of the ITS/RTS/CRR (settlement converted into a rule change)."
+     },
+     {
+      "description": "Recurrence of the same class: CRR Art. 99 (supervisory reporting) alone accounts for 606 Q&As; Art. 430 139; Art. 415 129; Art. 449a 49; 181 of 553 act+article classes have >=2 Q&As and 68% of Q&As sit on articles with >=5 Q&As.",
+      "source_url": "https://github.com/gnosifex/esa-qa-mirror",
+      "source_type": "regulator (mirrored)",
+      "prospective": "yes",
+      "reusable_how": "Same-article recurrence is what makes a published answer reusable across the ~3,000+ EU institutions; the mirror's stated purpose is to make the corpus 'searchable, diffable and citable' and 'directly usable as an LLM-ready knowledge base' \u2014 i.e. practitioners want the settled corpus as data."
+     }
+    ],
+    "economic_pain": "Not quantifiable from reachable sources. Observable: median 248 days to get an answer (163 days recently), so firms must adopt an interim interpretation and later reconcile; 28% of settled answers had to be re-verified after rule changes (versioning burden). Cost per question, bank-side headcount and regulatory-reporting error costs: blocked (eba.europa.eu, ecb.europa.eu, fca.org.uk). Source: https://github.com/gnosifex/esa-qa-mirror. Sourced for turnaround; no cost data.",
+    "existing_solutions": "Regulator-run public Q&A portals (EBA Single Rulebook Q&A tool, ESMA Joint Q&A register, ESMA/EIOPA Q&As) \u2014 these ARE the versioned prospective precedent store at sector level. Bank-side: regulatory reporting platforms (Regnology/BearingPoint Abacus, Wolters Kluwer OneSumX, Adenza/AxiomSL) embed ITS validation rules; internal interpretation logs are typically SharePoint/Excel (my inference, unverified). The open-source mirror (gnosifex/esa-qa-mirror) exists precisely because no vendor product exposed the corpus as data. No evidence found of a product capturing a bank's own internal interpretations as versioned executable positions.",
+    "buyer_and_budget": "Bank regulatory reporting / regulatory affairs / prudential policy teams (Head of Regulatory Reporting, Head of Regulatory Interpretation); budget sits with finance/risk change programmes and reporting-vendor contracts. Regulators themselves would not buy. Willingness to pay unknown.",
+    "regulatory_constraints": "Q&As are non-binding but competent authorities are expected to apply them; institutions may not rely on an internal interpretation contrary to a final Q&A. Automation of the firm's own interpretation register is not restricted; automation of the regulator's answer is not in scope.",
+    "evidence_quality": "moderate",
+    "verdict": "uncertain",
+    "notes": "Best-documented settlement loop in the cluster, but it is already operated as a public service by the regulator; the Sophon-addressable part is the firm-internal residual (interpretations the firm adopts while waiting 5-8 months, or that never get submitted). Its size is unobservable from public data. Strong analogue for SEC C&DIs/no-action letters, FCA waivers by consent, IFRS IC agenda decisions, all blocked."
+   },
+   {
+    "name": "FOI / access-to-information exemption decisions and appeals (UK ICO decision notices; France CADA avis; US FOIA)",
+    "geography": "UK (ICO), France (CADA), US (federal FOIA, qualitative only)",
+    "decision_volume": "UK ICO: 12,493 decision notices dated 2019-2025 in the scraped set (2019 1,400; 2020 1,062; 2021 1,334; 2022 2,241; 2023 2,395; 2024 2,316; 2025 1,745 partial), 26,454 notices on the ICO site since 2005 per the second dataset. Sources: https://github.com/ChikumbutsoGerson/ico-decision-notices (my aggregation of 12,493 metadata.txt files, each with an ico.org.uk PDF URL) and https://github.com/Ed-BW/ico-decision-notices (25,683 indexed / 26,454 on site, 20,404 substantive). France CADA: 5,602 avis Jan 2016-Mar 2019 across the 160 structures with >=10 avis (DGFiP 576, Minist\u00e8re de la Justice 356, Int\u00e9rieur 217) \u2014 a lower bound on total avis; source https://github.com/AntoineAugusti/reponses-cada (derived from data.gouv.fr 'Avis et conseils de la CADA'). US: DOJ annual-report totals blocked (justice.gov, foia.gov); the DOJ annual-report XML schema confirms agencies report appeal dispositions as Affirmed/Partial/Reversed/Other plus non-exemption denial reasons (https://raw.githubusercontent.com/usdoj/foia-api/develop/docs/FoiaAnnualReportExtensions.xsd). UK request volumes (central government only): 28,000-36,000 per year 2012-2016 (https://raw.githubusercontent.com/jfilter/foia-statistics-uk/master/total_number_of_foi_reqeusts_uk.csv, derived from Cabinet Office statistics). Sourced.",
+    "human_review_rate": "Every request receives a human exemption decision; ICO complaints are the escalation tier. In the 12,493 ICO notices, 19,096 per-section outcomes: Not upheld 10,073 (53%), Upheld 8,305 (43%), Partly upheld 718 (4%). Per section (share where the complaint was upheld, i.e. authority wrong): s.10 timeliness 98%, s.17 refusal notice 96%, EIR 5(2) 98%, s.16 advice/assistance 39%, s.1 information held 20%, s.14 vexatious 32%, s.43 commercial 33%, s.36 prejudice to conduct of affairs 25%, s.31 law enforcement 21%, s.41 confidence 21%, s.40 personal data 11%, s.12 cost limit 11%. Source: my aggregation of https://github.com/ChikumbutsoGerson/ico-decision-notices. Sourced.",
+    "why_humans_review": "Basis: ICO section/outcome distribution and abstract keywords (1,915 abstracts mention 'tribunal', 1,551 'public interest', 1,304 'personal data', 823 'late', 757 'vexatious', 502 'not held', 363 'cost limit'; only 122 'guidance' and 7 'previous decision'). Timeliness/procedure (s.10, s.17, EIR 5(2), s.16) = capacity failure, not interpretation: ~25% of section-outcomes. A (missing evidence: whether information is held, adequacy of searches, s.1) ~15%. B (factual classification: cost estimate under s.12, whether data is personal) ~15%. C (interpretation of an exemption's meaning) ~15%. E (true discretion: public-interest balance under s.36/s.43/s.35/EIR 12, vexatiousness) ~25% \u2014 the statute requires a case-by-case balance. G (one-off) ~5%. H (repeatable ambiguity settleable prospectively) ~5-10%: recurrence is high (71% of authority-by-section pair instances recur, 42% in pairs seen >=5 times, e.g. Cabinet Office s.36 45 times) but the authority's reading is usually upheld already (60-90% on substantive exemptions), so the recurring cases are not unsettled.",
+    "settlement_loop_evidence": [
+     {
+      "description": "ICO decision notices are the escalation tier; each notice states the Commissioner's reading of the section for that request. Recurrence is high (same authority and same section: 8,167 distinct pairs across 12,493 notices; NHS England s.10 89 times; Cabinet Office s.1 69, s.10 64, s.17 52, s.36 45; BBC s.1 61, s.3 47). But notices bind only the parties; general readings propagate via ICO guidance and (non-binding) tribunal decisions, and only 7 of 12,493 abstracts mention a 'previous decision'.",
+      "source_url": "https://github.com/ChikumbutsoGerson/ico-decision-notices",
+      "source_type": "regulator (scraped ICO notices, OGL)",
+      "prospective": "no",
+      "reusable_how": "Reusable as persuasive precedent and via periodic ICO guidance updates, not as an executable rule; the public-interest test must be re-run per request."
+     },
+     {
+      "description": "CADA (France) issues advisory avis; administrations replied to CADA in 77% of avis (weighted, 160 structures with >=10 avis, Jan 2016-Mar 2019; median structure 77%; AP-HP 38%, Minist\u00e8re de la Justice 62%, DGFiP 93%). An advisory body whose interlocutor ignores it 23% of the time is a weak settlement owner.",
+      "source_url": "https://github.com/AntoineAugusti/reponses-cada",
+      "source_type": "government statistics (derived from data.gouv.fr open data)",
+      "prospective": "unclear",
+      "reusable_how": "CADA avis are searchable on cada.data.gouv.fr (https://github.com/datagouv/cada.data.gouv.fr) and CADA publishes doctrine, but avis are non-binding."
+     },
+     {
+      "description": "US federal FOIA (18F research with agency FOIA offices, 2016-17): offices are under-resourced; 5-10% of requests (broad/current-events) consume the majority of time; <5% of requests are for already-public information; agencies use varied case-management tools; no mention of precedent or exemption-consistency tooling.",
+      "source_url": "https://github.com/18F/foia-recommendations",
+      "source_type": "government (18F/GSA research synthesis)",
+      "prospective": "no",
+      "reusable_how": "Not reusable; the pain described is search/redaction capacity, not interpretation."
+     }
+    ],
+    "economic_pain": "Timeliness dominates: s.10/s.17/EIR 5(2) breaches are ~4,000 of 19,096 section outcomes and almost always upheld (source: https://github.com/ChikumbutsoGerson/ico-decision-notices). Cost per request, FTE and appeal costs: DOJ annual reports carry ProcessingCostAmount, LitigationCostAmount, FullTimeEmployeeQuantity fields (https://raw.githubusercontent.com/usdoj/foia-api/develop/docs/FoiaAnnualReportExtensions.xsd) but the values were unreachable. Cost of a wrong decision is low per case (disclosure ordered; rare enforcement). No leakage figure found.",
+    "existing_solutions": "FOI case-management systems (my knowledge, unverified: iCasework, Civica, AXLR8; US: FOIAXpress, FOIAonline retired), ICO published guidance per exemption, tribunal decisions, CADA doctrine and cada.data.gouv.fr search, DOJ OIP guidance. None found that captures an authority's own exemption settlements as versioned executable positions; the two open ICO datasets exist because notices 'live in 26,000 separate PDFs with no bulk download' (https://github.com/Ed-BW/ico-decision-notices).",
+    "buyer_and_budget": "FOI/information-governance officers in ~2,221 UK public authorities appearing in the notices (4,472 local government, 3,351 central government, 1,183 health, 1,129 police); small, budget-constrained teams; procurement via public-sector frameworks. US: agency FOIA officers (230+ components).",
+    "regulatory_constraints": "Public-interest tests and personal-data balancing are statutory case-by-case judgements; a public authority cannot delegate the decision, though it can apply a settled reading of what a section means. Decision notices bind only the parties (FOIA s.50).",
+    "evidence_quality": "moderate",
+    "verdict": "weak",
+    "notes": "High volume and high recurrence but the wrong kind: the recurring, settleable exemptions are already applied correctly most of the time; what is overturned is lateness. Supports H1 (capacity/missing evidence) and H4 (discretion remains) for this workflow."
+   },
+   {
+    "name": "Contract review playbooks and precedent clauses in legal operations (CLM: Ironclad, Icertis, Agiloft, LinkSquares, Harvey)",
+    "geography": "US-centric evidence; global product category",
+    "decision_volume": "Vendor and industry statistics (ACC, CLOC, WorldCC) were blocked. Observable corpus: one published Open Playbook Format playbook compiled from 44 negotiated educational-affiliation agreements with 161 versions, 24 clause topics, 2,303 observed clause positions (https://github.com/contract-opf/playbooks, https://github.com/contract-opf/opf). Sourced (single organisation, illustrative). Volume per organisation: unknown.",
+    "human_review_rate": "In the OPF corpus, 1,598 of 2,303 observed positions (69%) had deviation 'none', 150 (7%) 'reworded_equivalent', 555 (24%) 'substantive'; 1,840 (80%) outcome 'signed', 463 (20%) 'proposed_then_reversed'. 13 of 24 topics have a defined 'our_standard'. Source: my computation over playbook.opf.json in https://github.com/contract-opf/playbooks. Sourced (one corpus). Share of contracts reviewed by a lawyer vs self-serve: not found (acc.com, worldcc.com blocked).",
+    "why_humans_review": "Basis: OPF corpus stance table and the spec's rationale. F (commercial negotiation) ~50%: 22 of 24 clause topics have historical_stance 'mixed' (1 'usually_held', 1 'no_signal'), i.e. the organisation sometimes holds and sometimes concedes the same clause depending on counterparty. B (factual classification: which clause is this, does it match standard) ~20%, the part LLM review already handles. H (settleable red lines) ~15%: the spec's 'Floor' (e.g. never accept uncapped liability) is the only executable, prospective layer, and in the published playbook the floor object is empty ({}). C ~10%, E/G ~5%.",
+    "settlement_loop_evidence": [
+     {
+      "description": "Playbook governance in the reference consumer: playbooks are content-hashed, the General Counsel approves a specific hash, activation requires hash match, versions move draft -> active (exactly one) -> retired with rollback lineage; deviations feed back through a 'governed overrides' path (posture edits, floor additions) activated through the same approval path. This is a designed versioned-settlement loop.",
+      "source_url": "https://raw.githubusercontent.com/contract-opf/contract-toaster/main/docs/playbook-governance.md",
+      "source_type": "vendor / open-source project documentation",
+      "prospective": "yes",
+      "reusable_how": "Approved playbook version applies to all subsequent reviews of that agreement type; attorney 'curation pins' survive recompile and conflicts with recomputed evidence are flagged."
+     },
+     {
+      "description": "Evidence AGAINST executable positions: OPF v0.1 'modeled a playbook as a set of clause positions with a frozen, operative posture per clause' and the authors replaced it because it was 'rigid where the model is flexible, and it hides the negotiation intent that actually drives a decision'; v0.2 makes historical_stance 'descriptive, not an instruction' and moves determinism 'out of the knowledge and into the guardrails' (a small hard Floor).",
+      "source_url": "https://raw.githubusercontent.com/contract-opf/opf/main/OPF-SPEC.md",
+      "source_type": "open-source specification",
+      "prospective": "unclear",
+      "reusable_how": "Only the Floor invariants are treated as reusable deterministic settlements; everything else is advisory evidence for a model or lawyer."
+     },
+     {
+      "description": "Mining past redlines/comments into a playbook 'evidenced by how many deals each position appears in' \u2014 the settlement corpus is reconstructed from tracked changes rather than captured at decision time.",
+      "source_url": "https://github.com/marcoderoni/contract-playbook-miner",
+      "source_type": "open-source tool",
+      "prospective": "unclear",
+      "reusable_how": "Positions become playbook text; no approval/version mechanism described."
+     }
+    ],
+    "economic_pain": "Not quantifiable from reachable sources (WorldCC value-leakage and ACC benchmarking blocked). The OPF corpus shows 463 of 2,303 positions were proposed then reversed and 555 substantively deviated, i.e. repeated negotiation labour on the same 24 topics across 44 deals (https://github.com/contract-opf/playbooks). Cost per review and error cost: not found.",
+    "existing_solutions": "Ironclad Playbooks/AI Assist, Icertis, Agiloft clause library, LinkSquares, Harvey, Spellbook (all vendor sites blocked; product existence known from the task text). Open source: 16+ GitHub projects reviewing contracts against playbooks (https://api.github.com/search/repositories?q=contract+review+playbook), Open Playbook Format (https://github.com/contract-opf/opf). Playbooks are versioned documents in CLM tools; whether deviations approved in a deal are captured back as governed positions is, in the one inspectable implementation, a designed feature (overrides) rather than demonstrated operational practice.",
+    "buyer_and_budget": "General Counsel / Head of Legal Operations; CLM budgets exist and are already committed to incumbent platforms; a standalone settlement ledger would compete with a feature CLM/AI-review vendors ship (H6).",
+    "regulatory_constraints": "None specific; attorney review of outputs is a professional-responsibility expectation ('Attorney review is mandatory', https://github.com/contract-opf/playbooks PLAYBOOK-POLICY.md).",
+    "evidence_quality": "weak",
+    "verdict": "weak",
+    "notes": "The clearest firm-level versioned-settlement design found, but the corpus shows negotiation (F) dominates and the designers deliberately de-executed positions. Strong H6 risk: any value here is a CLM/AI-review feature."
+   },
+   {
+    "name": "SEC comment letters and Corporation Finance interpretive positions (proxy for regulator-to-registrant accounting/disclosure interpretation loop)",
+    "geography": "US",
+    "decision_volume": "In a random sample of 100 S&P 500 constituents (93 with at least one thread), 283 comment-letter threads from 2016 to mid-2025 (41, 41, 32, 22, 25, 26, 29, 24, 33, 10 per year), i.e. roughly 0.3 threads per company-year; 1,185 filings in threads (666 UPLOAD staff letters, 504 CORRESP responses). Source: my computation over https://github.com/yal923/Lehigh-FIN377-SEC-Comment-Letter-Radar data/processed/thread_level.csv (built from sec.gov EDGAR). Sourced (sample). Economy-wide totals (Audit Analytics, Deloitte, EY, PwC, KPMG trend reports) blocked.",
+    "human_review_rate": "100%: each thread is staff review plus registrant/counsel/auditor response; median 2 staff letters per thread (mean 2.39), median thread duration 33 days (p75 74). Source: same repository. Sourced (sample).",
+    "why_humans_review": "Basis: reading sampled letters (e.g. Agilent 2016 state-sponsor-of-terrorism contacts). C (interpretation of disclosure/accounting rule as applied to the registrant) ~50%; A/B (staff asking for facts to 'better understand your disclosure', materiality quantification) ~35%; D ~5%; H ~10%: recurring topics (non-GAAP measures, segment reporting, MD&A) are settled prospectively by the Division through C&DIs and Staff Legal Bulletins (sec.gov blocked, counts unverified), not through the letters themselves.",
+    "settlement_loop_evidence": [
+     {
+      "description": "Staff letters are explicitly non-precedential: registrants must acknowledge that 'staff comments or changes to disclosure in response to staff comments do not foreclose the Commission from taking any action' and that 'the company may not assert staff comments as a defense'. Settlements are case-specific; the prospective layer is the separately published C&DIs (blocked).",
+      "source_url": "https://github.com/yal923/Lehigh-FIN377-SEC-Comment-Letter-Radar",
+      "source_type": "regulator correspondence (EDGAR UPLOAD/CORRESP, mirrored)",
+      "prospective": "no",
+      "reusable_how": "Reused informally by Big 4 comment-letter trend publications and by counsel searching EDGAR; not executable."
+     }
+    ],
+    "economic_pain": "Thread duration median 33 days; response labour borne by CFO office, counsel and auditors; cost per thread not found. Source: https://github.com/yal923/Lehigh-FIN377-SEC-Comment-Letter-Radar. Sourced for duration only.",
+    "existing_solutions": "EDGAR full-text search, Audit Analytics / Intelligize comment-letter databases, Big 4 trend reports (all blocked), Corp Fin C&DIs and Financial Reporting Manual (blocked). The loop is sold as a professional service and a database subscription.",
+    "buyer_and_budget": "SEC reporting managers and securities counsel; budget already goes to Big 4 and legal-research databases.",
+    "regulatory_constraints": "Staff positions are non-binding and non-precedential by rule; automation of a registrant's response is not restricted but low volume per registrant.",
+    "evidence_quality": "weak",
+    "verdict": "negative",
+    "notes": "Low per-organisation volume (~0.3 threads/year), explicitly non-precedential outcomes, and the prospective layer is regulator-published. Not a software wedge."
+   },
+   {
+    "name": "Technical accounting and audit methodology consultations (Big 4 national office consultation databases, FASB Technical Inquiry Service, IFRS Interpretations Committee agenda decisions, PCAOB QC 1000 consultation requirements)",
+    "geography": "US and IFRS jurisdictions",
+    "decision_volume": "Not found: fasb.org, ifrs.org, iasplus.com, pcaobus.org, frc.org.uk, icaew.com, aicpa-cima.com all blocked; no GitHub-hosted data located (searches for 'agenda decision' IFRS/IFRIC and 'technical inquiry' returned only unrelated repositories: https://github.com/search?q=%22agenda+decision%22+IFRS+OR+IFRIC&type=repositories). Unknown.",
+    "human_review_rate": "Unknown. Structurally 100% (consultations are human by definition).",
+    "why_humans_review": "Estimate only, no data: C ~50%, D ~15%, B ~15%, H ~15% (IFRS IC agenda decisions and FASB TIS exist precisely to settle recurring questions prospectively; Big 4 national-office consultation databases are firm-internal precedent stores), E/G ~5%. Basis: domain structure, unverified.",
+    "settlement_loop_evidence": [
+     {
+      "description": "No reachable source. The loop is known to exist structurally (IFRS IC agenda decisions published as explanatory material with an expectation that entities implement within 'sufficient time'; FASB TIS nonauthoritative responses; audit firms' mandatory consultation and documentation policies under quality-control standards) but no volume, turnaround or reuse figures could be fetched.",
+      "source_url": "https://github.com/search?q=%22agenda+decision%22+IFRS+OR+IFRIC&type=repositories",
+      "source_type": "search result (negative)",
+      "prospective": "yes",
+      "reusable_how": "Agenda decisions and national-office positions are applied prospectively to all similar fact patterns within the firm/jurisdiction; unverified here."
+     }
+    ],
+    "economic_pain": "Unknown; no data reachable.",
+    "existing_solutions": "Firm-internal consultation databases and accounting research tools (PwC Viewpoint, Deloitte DART, KPMG FRV, EY AccountingLink, all blocked) \u2014 the professional-services firms already sell the settled corpus as subscription content and the consultation as service.",
+    "buyer_and_budget": "Audit firms' national offices (internal build/buy) and corporate technical-accounting groups (who buy Big 4 research subscriptions). Likely not software buyers for a settlement ledger: the ledger is the firm's product.",
+    "regulatory_constraints": "Consultation and documentation are mandated by quality-control standards; the conclusion must be reached and documented by qualified professionals.",
+    "evidence_quality": "unknown",
+    "verdict": "uncertain",
+    "notes": "Structurally the most Sophon-shaped workflow in the cluster (typed, dated, prospective, versioned when standards change) but entirely unobservable through the current network and owned by firms that sell it as a service (H5/H8)."
+   },
+   {
+    "name": "Data protection decisions (DSAR exemptions, DPIAs, DPO rulings; ICO and CNIL guidance loops; GDPR enforcement)",
+    "geography": "EU/UK; France (CNIL) blocked",
+    "decision_volume": "GDPR fines dataset: 842 published fines/sanctions July 2018-January 2022 (Spain 313, Italy 104, Romania 66, Norway 38, Hungary 37); median fine EUR 12,000 (n=825 with amounts). Source: my computation over https://github.com/martinhengge/GDPR (academic-compiled dataset, CSV). Sourced. DSAR volumes, DSAR cost per request, DPIA prior-consultation counts, ICO/CNIL complaint counts: blocked (ico.org.uk, cnil.fr, edpb.europa.eu, edps.europa.eu, dataprotection.ie). Not found on GitHub (fides README has no statistics: https://raw.githubusercontent.com/ethyca/fides/main/README.md).",
+    "human_review_rate": "Unknown. DSAR tooling on GitHub (18 repos, e.g. https://github.com/ethyca/fidesops) automates data collection, not exemption decisions.",
+    "why_humans_review": "Estimate only: A (locating data, identity verification) ~40%, B (is it personal data of the requester, third-party data) ~20%, C (exemption interpretation: legal privilege, management forecasts, third-party balancing) ~20%, E ~10%, H ~10%. Basis: GDPR fine categories show most enforcement is about legal basis (290), security measures (184) and general principles (154), with data-subject-rights failures at 72 of 842 \u2014 i.e. rights-handling errors are a minority of what regulators punish.",
+    "settlement_loop_evidence": [
+     {
+      "description": "Published fines are the enforcement-tier outcomes; they are organisation-specific decisions, reused only as persuasive precedent via GDPRhub/enforcement trackers (both blocked).",
+      "source_url": "https://github.com/martinhengge/GDPR",
+      "source_type": "academic dataset (compiled from DPA decisions)",
+      "prospective": "no",
+      "reusable_how": "Persuasive only; EDPB guidelines and DPA guidance are the prospective layer (unreachable)."
+     }
+    ],
+    "economic_pain": "Median published fine EUR 12,000 (https://github.com/martinhengge/GDPR); DSAR handling cost figures (vendor/analyst) not reachable. Weak.",
+    "existing_solutions": "OneTrust, TrustArc, Transcend, Ethyca Fides (DSAR orchestration), ICO/CNIL/EDPB guidance, GDPRhub. No evidence of a product capturing an organisation's own exemption settlements as versioned rules.",
+    "buyer_and_budget": "DPO / privacy operations; budgets already committed to privacy-management platforms (H6).",
+    "regulatory_constraints": "GDPR requires case-by-case balancing for third-party data and exemptions; DPO independence; statutory one-month DSAR deadline.",
+    "evidence_quality": "weak",
+    "verdict": "weak",
+    "notes": "Almost nothing about the internal loop was reachable; enforcement data suggest rights-handling interpretation is not the main regulatory pain."
+   },
+   {
+    "name": "Standards interpretation panels (ISO/TC 176 requests for interpretation of ISO 9001 and similar)",
+    "geography": "International",
+    "decision_volume": "Not found: committee.iso.org blocked; no GitHub dataset. Unknown.",
+    "human_review_rate": "Unknown.",
+    "why_humans_review": "Unknown; structurally C/H (interpretation of standard text, settled by committee ballot and published), but volumes are believed low and no figure could be sourced.",
+    "settlement_loop_evidence": [
+     {
+      "description": "No reachable evidence.",
+      "source_url": "https://committee.iso.org/sites/tc176/home/interpretations.html",
+      "source_type": "standards body (blocked)",
+      "prospective": "yes",
+      "reusable_how": "Published interpretations apply to all users of the standard; unverified."
+     }
+    ],
+    "economic_pain": "Unknown.",
+    "existing_solutions": "ISO committee process; certification bodies' own technical committees.",
+    "buyer_and_budget": "Unclear; standards bodies and certification bodies are not obvious software buyers for this.",
+    "regulatory_constraints": "None.",
+    "evidence_quality": "unknown",
+    "verdict": "negative",
+    "notes": "Low volume by design; not a market."
+   },
+   {
+    "name": "Legal knowledge management and precedent banks in law firms (PSL teams, know-how systems)",
+    "geography": "UK/US",
+    "decision_volume": "Not found: no reachable primary or industry source; GitHub search for legal KM/precedent repositories returned nothing relevant (https://api.github.com/search/repositories?q=legal+knowledge+management+precedent returned 0). Unknown.",
+    "human_review_rate": "Unknown.",
+    "why_humans_review": "Unknown; PSL/know-how work is largely drafting precedents (category outside A-H) rather than settling operational ambiguity.",
+    "settlement_loop_evidence": [
+     {
+      "description": "No reachable evidence.",
+      "source_url": "https://api.github.com/search/repositories?q=legal+knowledge+management+precedent&per_page=20",
+      "source_type": "search result (negative)",
+      "prospective": "unclear",
+      "reusable_how": "n/a"
+     }
+    ],
+    "economic_pain": "Unknown.",
+    "existing_solutions": "iManage, NetDocuments, Thomson Reuters Practical Law, Lexis PSL, in-house know-how databases (my knowledge; unverified).",
+    "buyer_and_budget": "Law-firm KM directors; professional-services firms build/buy KM as core, unlikely to buy a settlement ledger from a startup.",
+    "regulatory_constraints": "None specific.",
+    "evidence_quality": "unknown",
+    "verdict": "uncertain",
+    "notes": "Could not be investigated with the available network."
+   }
+  ],
+  "evidence_against_thesis": [
+   "ICO FOI decision notices (12,493, 2019-2025): on substantive exemptions the authority's reading is upheld most of the time (s.40 personal data 80% not upheld, s.12 cost limit 88%, s.14 vexatious 67%, s.31 74%, s.41 72%); the categories overturned 96-98% of the time are timeliness/procedure (s.10, s.17, EIR 5(2)). The recurring, high-volume review is a capacity problem, not unsettled interpretation. Supports H1. Source: https://github.com/ChikumbutsoGerson/ico-decision-notices (my aggregation).",
+   "Only 7 of 12,493 ICO abstracts mention a 'previous decision' and 122 mention 'guidance', while 1,551 mention 'public interest' and 1,915 'tribunal': the escalation tier reasons case-by-case, and the statutory public-interest balance is re-run per request. Supports H4. Source: same repository.",
+   "Open Playbook Format authors abandoned executable clause positions: v0.1's frozen 'operative posture per clause' was 'rigid where the model is flexible' and 'hides the negotiation intent that actually drives a decision'; v0.2 makes historical stance 'descriptive, not an instruction'. In the published 44-agreement playbook 22 of 24 topics are 'mixed', 20% of positions were proposed then reversed, and the hard 'floor' is empty. Contract review is category F, not H. Source: https://raw.githubusercontent.com/contract-opf/opf/main/OPF-SPEC.md and https://github.com/contract-opf/playbooks.",
+   "Where a clean prospective, versioned settlement loop exists (EBA Single Rulebook Q&A: 2,166 finals, 28% carrying dated revision notes, 7.4% citing prior Q&As), it is operated by the regulator as a free public service for the whole sector, so the firm-level residual is what a product would address and it is unobservable from public data. Supports H3/H6 at sector level. Source: https://github.com/gnosifex/esa-qa-mirror.",
+   "EBA question volumes are falling (412 finals from 2013 submissions vs 54 from 2025) as the rulebook matures \u2014 settlement corpora saturate; the recurrence that remains is concentrated in reporting-template mechanics (54% of Q&As), a rules-engine/validation-rule problem that reporting vendors already encode. Supports H2/H3. Source: same repository.",
+   "SEC staff comment letters are explicitly non-precedential (registrant must acknowledge 'staff comments ... do not foreclose the Commission from taking any action' and 'may not assert staff comments as a defense'); per-company volume is ~0.3 threads per year. Supports H4 and H8. Source: https://github.com/yal923/Lehigh-FIN377-SEC-Comment-Letter-Radar.",
+   "CADA avis (France) are advisory and administrations did not even reply to CADA in 23% of avis (weighted, Jan 2016-Mar 2019; AP-HP 38% reply rate): the settlement owner lacks authority, so 'settlements' do not become rules. Supports H4. Source: https://github.com/AntoineAugusti/reponses-cada.",
+   "GDPR enforcement outcomes (842 fines to Jan 2022, median EUR 12,000) concentrate on legal basis (290) and security (184); data-subject-rights handling is 72 of 842, and the median penalty is small \u2014 low cost-of-wrong-decision for the DSAR exemption loop. Source: https://github.com/martinhengge/GDPR.",
+   "18F's agency research: FOIA pain is under-resourcing, broad requests (5-10% of requests consuming most effort) and tooling, with no mention of exemption-consistency or precedent needs. Source: https://github.com/18F/foia-recommendations research-synthesis-agencies.md.",
+   "Professional-services firms (Big 4 national offices, comment-letter trend publishers, FOI/DP advisers) already sell the settlement loop as consultation and subscription content; their consultation databases are the product, so they are an unlikely software buyer (H5/H8). This is structural inference; the firms' sites were blocked."
+  ],
+  "not_found": [
+   "US DOJ Summary of Annual FOIA Reports (FY2023/FY2024): requests received/processed, backlog, administrative appeals received/processed and dispositions, exemption counts, processing cost, FTE \u2014 justice.gov and foia.gov blocked; no GitHub mirror of the report data.",
+   "UK Cabinet Office FOI annual statistics 2024 (granted/withheld, internal reviews, ICO appeals) \u2014 gov.uk and assets.publishing.service.gov.uk blocked; only 2005-2016 quarterly request totals available via jfilter/foia-statistics-uk.",
+   "ICO annual report 2024/25 FOI and data-protection complaint volumes and DSAR complaint counts \u2014 ico.org.uk blocked.",
+   "CADA rapport d'activit\u00e9 (saisines per year, d\u00e9lai moyen, taux de suivi des avis) \u2014 cada.fr and data.gouv.fr blocked; only a 2016-2019 derivative dataset used.",
+   "IFRS Interpretations Committee: submissions per year, agenda decisions per year, authority/'sufficient time' policy \u2014 ifrs.org and iasplus.com blocked; nothing on GitHub.",
+   "FASB Technical Inquiry Service volumes and policy \u2014 fasb.org blocked.",
+   "Big 4 national-office consultation volumes, PCAOB QC 1000 consultation text, PCAOB/FRC inspection findings on consultation \u2014 pcaobus.org, frc.org.uk blocked.",
+   "SEC no-action / interpretive letter counts, C&DI counts and update cadence, economy-wide comment-letter counts (Audit Analytics, Deloitte DART, EY, PwC, KPMG) \u2014 all blocked.",
+   "FCA waivers/modifications register and 'waivers by consent' volumes; ACPR/AMF interpretive positions \u2014 fca.org.uk blocked; ACPR not attempted after pattern of blocks.",
+   "ISO/TC 176 interpretations list and counts \u2014 committee.iso.org blocked.",
+   "CLM vendor playbook documentation (Ironclad Playbooks, Agiloft clause library, Icertis, LinkSquares, Harvey) and any customer statistics on % contracts handled without lawyer review \u2014 vendor domains blocked.",
+   "ACC / CLOC / WorldCC benchmarking (contracts per lawyer, value leakage, negotiation time) \u2014 acc.com and worldcc.com blocked.",
+   "DSAR volumes, cost per DSAR, DPIA prior-consultation counts (ICO, CNIL, EDPB, EDPS, Irish DPC) \u2014 all blocked; GDPRhub and enforcementtracker.com blocked.",
+   "Law-firm knowledge-management / precedent-bank headcount and usage statistics \u2014 no reachable source.",
+   "Any academic literature (arXiv, Semantic Scholar, OpenAlex, SSRN) on consistency of FOIA exemption decisions, SEC comment-letter resolution, or contract playbook adherence \u2014 all blocked."
+  ],
+  "blocked_urls": [
+   "https://www.justice.gov/oip/reports-1",
+   "https://www.foia.gov/data.html",
+   "https://www.gov.uk/government/statistics/freedom-of-information-statistics-annual-2024",
+   "https://www.cada.fr/lacada/rapports-dactivite",
+   "https://www.ifrs.org/supporting-implementation/how-the-ifrs-interpretations-committee-helps-support-consistent-application/",
+   "https://www.fasb.org/page/PageContent?pageId=/technical-inquiry-service.html",
+   "https://committee.iso.org/sites/tc176/home/interpretations.html",
+   "https://ironcladapp.com/product/playbooks/",
+   "https://ico.org.uk/about-the-ico/our-information/annual-reports/",
+   "https://www.sec.gov/rules-regulations/staff-guidance/compliance-disclosure-interpretations",
+   "https://pcaobus.org/oversight/standards/qc-standards/qc1000",
+   "https://www.fca.org.uk/firms/waivers-modifications",
+   "https://www.cnil.fr/fr/rapport-annuel-2024",
+   "https://www.worldcc.com/Resources/Content-Hub/View/ArticleId/9893/Contracting-Principles-and-Value-Leakage",
+   "https://www.iasplus.com/en/resources/ifrsf/ifrs-ic",
+   "https://en.wikipedia.org/wiki/Freedom_of_Information_Act_(United_States)",
+   "https://web.archive.org/web/2025/https://www.justice.gov/oip/reports-1",
+   "https://www.gao.gov/products/gao-24-106279",
+   "https://www.muckrock.com/foia/list/",
+   "https://www.edpb.europa.eu/our-work-tools/our-documents/guidelines_en",
+   "https://support.ironcladapp.com/hc/en-us/articles/17569990016151-Playbooks-Overview",
+   "https://www.harvey.ai/products",
+   "https://crsreports.congress.gov/product/pdf/R/R46238",
+   "https://www.oversight.gov/",
+   "https://huggingface.co/datasets?search=foia",
+   "https://www.data.gouv.fr/fr/datasets/avis-et-conseils-de-la-cada/",
+   "https://html.duckduckgo.com/html/",
+   "https://www.bing.com/search",
+   "https://api.semanticscholar.org/graph/v1/paper/search",
+   "https://api.openalex.org/works",
+   "https://efts.sec.gov/LATEST/search-index",
+   "https://www.courtlistener.com/api/rest/v4/search/",
+   "https://export.arxiv.org/api/query",
+   "https://gdprhub.eu/index.php?title=Welcome_to_GDPRhub",
+   "https://www.enforcementtracker.com/?insights",
+   "https://wiki.agiloft.com/display/HELP/Clause+Library",
+   "https://developer.ironcladapp.com/docs",
+   "https://www.eba.europa.eu/single-rule-book-qa",
+   "https://www.esma.europa.eu/publications-and-data/questions-and-answers",
+   "https://www.icaew.com/technical/tas-helpsheets",
+   "https://dart.deloitte.com/USDART/home/publications/roadmap/sec-comment-letters",
+   "https://www.auditanalytics.com/blog/",
+   "https://www.acc.com/resource-library/2024-law-department-management-benchmarking-report",
+   "https://www.legislation.gov.uk/ukpga/2000/36/section/50",
+   "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000031366350/LEGISCTA000031367696/",
+   "https://www.aicpa-cima.com/resources/landing/technical-hotline",
+   "https://viewpoint.pwc.com/dt/us/en/pwc/sec_comment_letter/sec_comment_letter_US/seccommentlettertrends.html",
+   "https://www.oecd.org/en/publications/government-at-a-glance-2023_3d5c5d31-en.html",
+   "https://www.archives.gov/ogis/about-ogis/annual-reports",
+   "https://www.whatdotheyknow.com/body/statistics",
+   "https://commonslibrary.parliament.uk/research-briefings/sn02950/",
+   "https://assets.publishing.service.gov.uk/",
+   "https://www.dataprotection.ie/en/news-media/press-releases",
+   "https://www.frc.org.uk/library/supervision/audit-quality-review/",
+   "https://kpmg.com/us/en/frv/reference-library/2024/sec-comment-letter-trends.html",
+   "https://www.ey.com/en_us/technical/sec-reporting-update/sec-comment-letter-trends",
+   "https://foiaproject.org/",
+   "https://www.ifac.org/knowledge-gateway",
+   "https://edps.europa.eu/data-protection/our-work/publications/annual-reports_en"
+  ],
+  "sources": [
+   {
+    "url": "https://github.com/gnosifex/esa-qa-mirror",
+    "type": "regulator (mirror of EBA Single Rulebook Q&A and ESMA Joint Q&A register; each record links its eba.europa.eu source page); cloned and analysed locally",
+    "used_for": "EBA/Joint ESAs Q&A volumes by year, turnaround (median 248 days; 163 since 2022; DORA 136), recurrence by article/paragraph (70% in classes >=2, 46% >=10), 607 revision notes (28%), 161 answers citing prior Q&As, topic split (54% supervisory reporting), answer authorship (EBA 1,900 / Commission 168)"
+   },
+   {
+    "url": "https://github.com/ChikumbutsoGerson/ico-decision-notices",
+    "type": "regulator (scraped ICO FOI decision notices with ico.org.uk PDF URLs, OGL); cloned and aggregated 12,493 metadata files",
+    "used_for": "ICO notice counts per year 2019-2025, sector split, per-section outcomes (Not upheld 10,073 / Upheld 8,305 / Partly 718), overturn rates by exemption, authority-by-section recurrence (71% of pair instances recur), abstract keyword frequencies"
+   },
+   {
+    "url": "https://github.com/Ed-BW/ico-decision-notices",
+    "type": "regulator-derived dataset (ICO JSON endpoint index; README and CLAUDE.md fetched)",
+    "used_for": "Total ICO notices since 2005 (25,683 indexed / 26,454 on site), 20,404 substantive, 38,846 per-section labels, 9,349 local-government notices; statement that notices 'live in 26,000 separate PDFs with no bulk download'"
+   },
+   {
+    "url": "https://github.com/AntoineAugusti/reponses-cada",
+    "type": "government statistics derivative (data.gouv.fr 'Avis et conseils de la CADA' open data, MIT code); cloned, data.csv aggregated",
+    "used_for": "5,602 CADA avis Jan 2016-Mar 2019 across 160 structures with >=10 avis; weighted administration reply rate 77% (median 77%); per-administration figures (DGFiP 576 avis/93%, Justice 356/62%, AP-HP 186/38%)"
+   },
+   {
+    "url": "https://github.com/datagouv/cada.data.gouv.fr",
+    "type": "government (Etalab/data.gouv.fr search interface for CADA avis)",
+    "used_for": "Existence of a public searchable CADA avis corpus (export CSV at cada.data.gouv.fr/export)"
+   },
+   {
+    "url": "https://github.com/contract-opf/playbooks",
+    "type": "vendor/open-source compiled contract playbook (one organisation, 44 agreements, 161 versions); cloned and analysed playbook.opf.json and playbook.digest.json",
+    "used_for": "24 clause topics, 2,303 observed positions, deviation split (69% none / 7% reworded / 24% substantive), outcome split (80% signed / 20% proposed_then_reversed), historical stance (22 mixed, 1 usually_held, 1 no_signal), held/of ratios, empty floor and posture, attorney-review policy"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/contract-opf/opf/main/OPF-SPEC.md",
+    "type": "open-source specification (Open Playbook Format 0.3)",
+    "used_for": "Rationale for abandoning frozen executable clause positions; descriptive historical_stance enumeration; content-hash identity; curation pins; Floor/Posture/Evidence determinism model"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/contract-opf/contract-toaster/main/docs/playbook-governance.md",
+    "type": "open-source project documentation",
+    "used_for": "Versioned settlement governance: GC approval at content hash, draft/active/retired lifecycle, governed overrides feeding deviations back"
+   },
+   {
+    "url": "https://github.com/marcoderoni/contract-playbook-miner",
+    "type": "open-source tool",
+    "used_for": "Practice of reconstructing playbooks from tracked changes and comments, evidenced by deal counts"
+   },
+   {
+    "url": "https://api.github.com/search/repositories?q=contract+review+playbook&per_page=20",
+    "type": "search result (GitHub API)",
+    "used_for": "Count and nature of open-source playbook-based contract review projects (16 listed)"
+   },
+   {
+    "url": "https://github.com/yal923/Lehigh-FIN377-SEC-Comment-Letter-Radar",
+    "type": "academic student project built from sec.gov EDGAR UPLOAD/CORRESP filings; cloned, thread_level.csv and manifest analysed",
+    "used_for": "283 comment-letter threads for 93 of 100 sampled S&P 500 companies 2016-2025 (~0.3 per company-year), 1,185 filings (666 UPLOAD, 504 CORRESP), median 2 staff letters and 33 days per thread, non-precedential acknowledgement language"
+   },
+   {
+    "url": "https://github.com/martinhengge/GDPR",
+    "type": "academic dataset of GDPR fines (CSV); cloned and aggregated",
+    "used_for": "842 fines Jul 2018-Jan 2022, violation-type split (legal basis 290, security 184, principles 154, data-subject rights 72), article and country split, median fine EUR 12,000"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/usdoj/foia-api/develop/docs/FoiaAnnualReportExtensions.xsd",
+    "type": "government (DOJ National FOIA Portal annual-report XML schema)",
+    "used_for": "Structure of US FOIA annual reporting: appeal dispositions Affirmed/Partial/Reversed/Other, non-exemption denial reasons, exemption codes, processing/litigation cost and FTE fields (values unreachable)"
+   },
+   {
+    "url": "https://github.com/18F/foia-recommendations",
+    "type": "government (18F/GSA research synthesis with agency FOIA offices, 2016-17); cloned",
+    "used_for": "Qualitative FOIA pain points: under-resourcing, 5-10% broad requests consume most effort, <5% requests for already-public information, tooling dissatisfaction; absence of precedent/consistency concerns"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/jfilter/foia-statistics-uk/master/total_number_of_foi_reqeusts_uk.csv",
+    "type": "government statistics derivative (UK Cabinet Office FOI quarterly statistics 2005-2016)",
+    "used_for": "UK central-government FOI request volumes (~28,000-36,000 per year 2012-2016)"
+   },
+   {
+    "url": "https://github.com/usdoj/foia.gov",
+    "type": "government (DOJ FOIA portal front-end repository)",
+    "used_for": "Confirmation that annual-report statistics are served dynamically (not available as static files); samples contain only agency submission configuration"
+   },
+   {
+    "url": "https://github.com/CatalaLang/catala",
+    "type": "academic (Inria) open-source project",
+    "used_for": "Prior art: literate legislative programming with default logic; no statement on ambiguity-resolution workflow"
+   },
+   {
+    "url": "https://github.com/search?q=%22agenda+decision%22+IFRS+OR+IFRIC&type=repositories",
+    "type": "search result (negative)",
+    "used_for": "Absence of IFRS IC agenda-decision data on GitHub"
+   },
+   {
+    "url": "https://api.github.com/search/repositories?q=legal+knowledge+management+precedent&per_page=20",
+    "type": "search result (negative)",
+    "used_for": "Absence of legal KM/precedent-bank data on GitHub"
+   },
+   {
+    "url": "/tmp/claude-0/-home-user-sophon/03144a04-0e98-54e7-9d2c-78cb7b16e172/scratchpad/market/brief.md",
+    "type": "owner brief (local)",
+    "used_for": "Definition of the mechanism, A-H categories, falsification criteria"
+   },
+   {
+    "url": "/tmp/claude-0/-home-user-sophon/03144a04-0e98-54e7-9d2c-78cb7b16e172/scratchpad/market/prior_evidence.md",
+    "type": "prior investigation findings (local)",
+    "used_for": "IPSA expenses base rates and incumbents list, used as hypotheses to test, not anchors"
+   }
+  ]
+ },
+ "verification": {
+  "domain": "legal-accounting-regulatory-professional-services",
+  "refuted": [
+   {
+    "claim": "EBA Single Rulebook Q&A: 607 (28%) of finals carry an 'Update dd.mm.yyyy: this Q&A has been updated/reviewed' note, i.e. the settlement is explicitly versioned against rule changes (596 'updated', 1 'revised', 10 other).",
+    "why": "The 607 notes exist (x_note_to_q_a field, 28.0% of 2,166 records; recomputed on the local clone of https://github.com/gnosifex/esa-qa-mirror), but their content contradicts the 'versioned' characterisation: 475 say 'reviewed' (typically '...and continues to be relevant'), only ~119 (5.5% of the corpus) say the answer was actually updated/amended, and ~156 (106+29+21 template variants, 7.2% of the corpus) say 'This Q&A has NOT YET been reviewed by the European Commission/EBA in the light of the changes introduced to ...' i.e. flagged as possibly stale and unreviewed. The mirror's own README states: 'the authorities do not systematically revisit published Q&As after subsequent changes to the underlying legislation' (https://raw.githubusercontent.com/gnosifex/esa-qa-mirror/main/README.md). The '596 updated' breakdown is wrong: 116 notes contain 'updated', 475 'reviewed', 1 'revised'. The register is a partly-stale sector-level store with staleness flags, not a maintained versioned ledger."
+   },
+   {
+    "claim": "Contract playbook governance (contract-toaster): 'This is a designed versioned-settlement loop', settlement_loop_evidence prospective = 'yes'.",
+    "why": "The fetched governance document (https://raw.githubusercontent.com/contract-opf/contract-toaster/main/docs/playbook-governance.md) describes CI schema checks and a draft/active/retired lifecycle for a seed playbook that is explicitly 'synthetic-nda-sample-v1.0.0.json'. It is a design document for an open-source project with a synthetic sample, not evidence that any organisation operates a prospective settlement loop. 'prospective: yes' should be 'designed only, undemonstrated'. Source type is open-source project documentation, not vendor or customer evidence."
+   },
+   {
+    "claim": "Regulatory constraint stated for the EBA workflow: 'institutions may not rely on an internal interpretation contrary to a final Q&A'.",
+    "why": "Unsourced. The mirror README says the opposite emphasis: 'Q&A answers are generally not legally binding (for Level-1/2 questions answered by the European Commission they carry particular weight) \u2014 assess bindingness per record' (https://raw.githubusercontent.com/gnosifex/esa-qa-mirror/main/README.md). Only 168 of 2,166 answers (7.8%) are Commission-prepared. No primary EBA text on the legal status was reachable (eba.europa.eu blocked)."
+   }
+  ],
+  "weakened": [
+   {
+    "claim": "EBA: '50 answers say the point is already addressed/clarified in Q&A ...'; '38 answers defer to a coming amendment'; '161 (7.4%) cite another Q&A id'.",
+    "why": "These are regex-sensitive counts. On the same files I get 2 answers with 'already (been) addressed/clarified/answered', 34 with 'already' plus 'Q&A', 172 citing a Q&A id (7.9%), and 24-139 deferring to a future amendment depending on the pattern (139 = 6.4% with a broad 'will be amended/updated/reflected/corrected' pattern; 119 = 5.5% specifically say a validation rule or template will be corrected/amended). The direction holds (a minority of answers chain to precedent) but the exact figures should be read as ranges: precedent-citing 7-8%, amendment-deferring 1-6%."
+   },
+   {
+    "claim": "EBA: 'H (repeatable ambiguity settled prospectively) is high ... roughly 60-70% of answered questions are H-type from the regulator's viewpoint' and 'by construction only questions of general application are answered'.",
+    "why": "Only final Q&As are mirrored (README: 'Only final Q&As are mirrored'); rejected questions and their rejection reasons are unobservable (eba.europa.eu blocked), so the high H share is a selection artefact of the published set, not a measurement of the incoming question stream. A random read of 14 records (seed 7) finds 12 are supervisory-reporting template-placement mechanics ('where shall X be reported in C 07.00', validation-rule consistency, maturity buckets in C 66.01) and 2 are substantive rule readings (Art. 132c, Art. 135). Moreover 119 answers (5.5%) resolve by saying the validation rule/template will be corrected and 139 (6.4%) defer to an amendment: those settlements are converted into the ITS/DPM artefact that reporting vendors ship, which is H3 (already encoded), not a reusable interpretation a firm needs to hold. Discretion markers ('case-by-case', 'competent authority to assess') appear in only 31 answers, which supports 'general' answers but at the regulator level only."
+   },
+   {
+    "claim": "EBA: 'Same-article recurrence is what makes a published answer reusable across the ~3,000+ EU institutions' and the mirror shows 'practitioners want the settled corpus as data'.",
+    "why": "Recurrence figures reproduce (article level: 553 classes, 181 with >=2, 82.8% of records in classes >=2, 68.1% in classes >=5, 58.5% in classes >=10; paragraph level via x_paragraph: 842 classes, 69.7% in classes >=2, 46.1% in classes >=10; using x_article_paragraph instead gives 1,744 classes and only 27.9%/6.1%, so the paragraph-level recurrence is field-definition dependent). The '3,000+ institutions' figure is unsourced. The mirror is a single hobbyist/consultancy spin-off ('one of three public spin-offs of a non-public regulatory corpus') under a noncommercial licence; it evidences one practitioner's demand, not a market. The regulator's own portal is the existing free system of record (H3)."
+   },
+   {
+    "claim": "EBA question volumes: '412 (2013) ... 54 (2025)' new questions per year that reached a final answer.",
+    "why": "Reproduced exactly (plus 10 for 2026 partial and 42 with no submission date), but the decline compounds: from 2022 onward only 308 finals have been published (median 164 days), i.e. roughly 60-100 sector-wide settlements per year across all EU banks under CRR/CRD/DORA. That is the entire visible sector-level settlement volume; the finder's 'uncertain' understated how small the observable flow is."
+   },
+   {
+    "claim": "ICO FOI: 'H ~5-10%' and '71% of authority-by-section pair instances recur, 42% in pairs seen >=5 times'.",
+    "why": "Recurrence reproduces when sections are normalised to base section (8,170 pairs; 72.7% of 19,098 instances in pairs >=2; 43.3% in pairs >=5) but drops to 59.5%/30.1% if subsections are kept, so the recurrence is partly a normalisation choice. More importantly recurrence of a section being argued is not recurrence of an unsettled reading: 21.8% of the 12,493 notices are purely s.10/s.17/EIR 5(2) procedural; of the 8,178 notices (65.5%) with a substantive exemption section, only 29.7% find the authority wrong on that substantive section; in a random sample of 10 such overturns (seed 3) the reasons are vexatiousness judgement (s.14), public-interest balance (s.36), 'failed to demonstrate sufficiently' (s.43, evidence), whether information is held (EIR 5(1)) and objective reading of the request (EIR 9) \u2014 categories E, A and B, not H. Only 7 abstracts mention 'previous decision', 0 'precedent', 3 'earlier decision', 1 'Commissioner has previously'. H should be <=5%."
+   },
+   {
+    "claim": "ICO: 'Only 122 abstracts mention guidance'; year counts '2025 1,745 partial'.",
+    "why": "I count 114 'guidance' (finder 122; trivial). 2025 is essentially complete (records dated to 2025-12-05), so 1,745 is a real year-on-year fall from 2,316 in 2024, not a partial year; notices published per year are ~1,000-2,400, i.e. small in absolute terms for a product."
+   },
+   {
+    "claim": "Contract playbooks: 'H (settleable red lines) ~15%: the spec's Floor is the only executable, prospective layer'.",
+    "why": "In the only inspectable corpus the floor and posture objects are both empty ({}), historical_stance is 'mixed' for 22 of 24 clauses (recomputed from summary/digest), 13 of 24 clauses have an our_standard, and of 2,303 observed positions 555 (24%) are substantive deviations and 463 (20%) proposed_then_reversed (all reproduced). Nothing in the corpus is an executable settlement, so the observable H share is ~0%, not 15%; 15% is a structural guess. The corpus is 44 educational-affiliation/internship agreements (159 versions, 43 in scope) from one organisation, a low-stakes agreement type, published 2026-07-24; it cannot be extrapolated (brief section 11)."
+   },
+   {
+    "claim": "SEC comment letters: 'H ~10%: recurring topics ... are settled prospectively by the Division through C&DIs and Staff Legal Bulletins'.",
+    "why": "That is a regulator-published guidance layer, not an organisation-internal settlement loop. From the registrant's side H is ~0: the sample shows ~0.3 threads per company-year (283 threads / 93 of 100 S&P 500 companies / 2016-2025, reproduced), and the non-precedential acknowledgement appears in 233 of 1,185 thread files. The finder's own 'negative' verdict is right; the 10% H is unsupported."
+   },
+   {
+    "claim": "Technical accounting consultations: 'H ~15%' and data-protection 'H ~10%'.",
+    "why": "Both are explicitly unsourced estimates with no reachable data; under brief section 11 they should be recorded as unknown, not as a percentage. The GDPR dataset (842 fines, reproduced: legal basis 290, security 184, principles 154, information obligations 73, data-subject rights 72; median EUR 12,000 over 825 with amounts; dates through early 2022) says nothing about the internal DSAR exemption loop."
+   },
+   {
+    "claim": "CADA: 'administrations did not even reply to CADA in 23% of avis'.",
+    "why": "Reproduced (5,602 avis, 160 structures with >=10 avis, weighted reply 76.7%, median 77%; DGFiP 93%/576, Justice 62%/356, Int\u00e9rieur 74%/217, AP-HP 38%/186). But the dataset's non-reply detector is a phrase match on 'En l'absence de r\u00e9ponse' in the avis text (https://raw.githubusercontent.com/AntoineAugusti/reponses-cada/master/README.md), covers Jan 2016-Mar 2019 only, and 'X, d\u00e9put\u00e9' (420 avis) is a single requester's campaign, so the figures are indicative, not a measured 'settlement owner authority' rate."
+   }
+  ],
+  "confirmed": [
+   {
+    "claim": "EBA mirror: 2,166 final Q&As (CRR 2,003; CRD 96; DORA 67); authors EBA 1,900 / European Commission 168 / Joint ESAs 15 / none 83; median submission-to-publication 248 days (p25 151, p75 505, p90 932; n=2,107), 164 days for submissions since 2022 (n=308); 54% (1,162) supervisory-reporting topics (FINREP 413, COREP 353, liquidity 185, asset encumbrance 56, leverage 49, large exposures 43); CRR Art. 99 606, Art. 430 139, Art. 415 129, Art. 449a 49; submissions reaching a final answer per year 412/360/221/153/178/164/112/115/101/97/64/83/54 for 2013-2025.",
+    "evidence": "Recomputed from the local clone of https://github.com/gnosifex/esa-qa-mirror (data/**/*.md frontmatter); runs.jsonl confirms 2,122-2,123 EBA + 29 EIOPA + 11 ESMA records enumerated daily in July 2026 (https://raw.githubusercontent.com/gnosifex/esa-qa-mirror/main/runs.jsonl). Source type: regulator content, mirrored (derived from primary)."
+   },
+   {
+    "claim": "ICO decision notices: 12,493 notices 2019-2025 (1,400 / 1,062 / 1,334 / 2,241 / 2,395 / 2,316 / 1,745); sectors local government 4,472, central government 3,351, health 1,183, police 1,129; 19,108 per-section outcomes: Not upheld 10,075 (52.7%), Upheld 8,312 (43.5%), Partly upheld 719 (3.8%); complaint upheld rates s.10 98%, s.17 96%, s.16 39%, s.1 20%, s.14 32%, s.43 33%, s.36 25%, s.31 21%, s.41 21%, s.40 11%, s.12 11%; 2,221 distinct authorities; abstracts: 'tribunal' 1,805, 'public interest' 1,488, 'personal data' 1,262, 'late' 807, 'vexatious' 749, 'not held' 480, 'cost limit' 355, 'previous decision' 7.",
+    "evidence": "Recomputed from 12,493 data/*/metadata.txt files in the local clone of https://github.com/ChikumbutsoGerson/ico-decision-notices (each carries an ico.org.uk PDF URL; repo itself now returns 404 on raw README, so the clone is the only copy). Source type: regulator (scraped), derived from primary."
+   },
+   {
+    "claim": "Second ICO dataset: 25,683 notices indexed / 26,454 on site since 2005; 9,349 local government; 20,404 substantive; 38,846 per-section labels; notices 'live in 26,000 separate PDFs with no bulk download'; a 2025 FOI request for the raw decision-notice data was answered 'information not held'.",
+    "evidence": "https://raw.githubusercontent.com/Ed-BW/ico-decision-notices/main/README.md (fetched; index pulled 21 September 2026). Source type: regulator-derived dataset."
+   },
+   {
+    "claim": "OPF playbook corpus: 24 clause topics; 2,303 observed positions: deviation none 1,598 (69%), reworded_equivalent 150 (7%), substantive 555 (24%); outcome signed 1,840 (80%), proposed_then_reversed 463 (20%); historical_stance mixed 22 / usually_held 1 / no_signal 1; 13 of 24 with our_standard; floor {} and posture {}; corpus 44 documents. OPF spec quotes ('rigid where the model is flexible, and it hides the negotiation intent that actually drives a decision'; 'determinism migrates out of the knowledge and into the guardrails'; 'Historical stance is descriptive, not an instruction') and PLAYBOOK-POLICY 'Attorney review is mandatory'.",
+    "evidence": "Recomputed from playbooks/playbook.opf.json and playbook.digest.json and grep of opf/OPF-SPEC.md and playbooks/PLAYBOOK-POLICY.md in the local clones of https://github.com/contract-opf/playbooks and https://github.com/contract-opf/opf (corpus versions total 159, finder said 161; immaterial). Source type: open-source project artefacts (single organisation)."
+   },
+   {
+    "claim": "SEC comment letters: 283 threads for 93 of 100 sampled S&P 500 companies, 2016-2025 (41/41/32/22/25/26/29/24/33/10); median thread duration 33 days (mean 75.5); median 2 staff letters (mean 2.39); 1,185 thread files; registrant acknowledgement that 'staff comments or changes to disclosure in response to staff comments do not foreclose the Commission from taking any action ... and the company may not assert staff comments as a defense'.",
+    "evidence": "Recomputed from data/processed/thread_level.csv and grep over data/raw (phrase present in 233 of 1,185 extracted text files) in the local clone of https://github.com/yal923/Lehigh-FIN377-SEC-Comment-Letter-Radar. Source type: academic student project built from EDGAR (derived from primary)."
+   },
+   {
+    "claim": "CADA: 5,602 avis across 160 structures with >=10 avis, Jan 2016-Mar 2019; weighted administration reply rate 76.7%, median 77%.",
+    "evidence": "Recomputed from data.csv in the local clone of https://github.com/AntoineAugusti/reponses-cada; method described at https://raw.githubusercontent.com/AntoineAugusti/reponses-cada/master/README.md. Source type: government open-data derivative."
+   },
+   {
+    "claim": "GDPR fines dataset: 842 rows; Spain 313, Italy 104, Romania 66, Norway 38, Hungary 37; violation types legal basis 290, security 184, principles 154, information obligations 73, data-subject rights 72; median fine EUR 12,000 (n=825).",
+    "evidence": "Recomputed (semicolon-delimited CSV) from the local clone of https://github.com/martinhengge/GDPR. Source type: academic-compiled dataset."
+   },
+   {
+    "claim": "18F FOIA agency research: current-events requests 'usually constitute only about 5-10% of all requests, but they take up a majority of time and resources'; 'usually less than 5% of requests were for information that was already publicly available'; agencies 'unhappy with the software tools'; no mention of exemption consistency or precedent.",
+    "evidence": "https://raw.githubusercontent.com/18F/foia-recommendations/master/research-synthesis-agencies.md (fetched; the document self-describes as 'NOT ... Quantitative, statistically significant, or generalizable'). Source type: government (GSA/18F) qualitative research."
+   }
+  ],
+  "manual_review_conflated_with_repeatable_ambiguity": [
+   "EBA regulatory Q&A: the finder's 60-70% H is the share of PUBLISHED FINAL answers that are general, which is a selection artefact (rejected/non-general questions are not mirrored) and is measured at the regulator level, not inside any buying organisation. Additionally 5.5% of answers say the validation rule/template will be corrected and up to 6.4% defer to an amendment, i.e. settled by changing the rule artefact (H3), and a 14-record random read shows 12 template-placement questions. Honest re-estimate: at the sector level roughly half of published finals are general reporting-instruction clarifications already encoded in the next ITS/DPM/vendor validation-rule release; the firm-internal H share is unknown (no data); the observable sector-wide flow is ~60-100 settlements per year since 2022.",
+   "ICO FOI: 72.7% authority-by-section recurrence was presented alongside an H of 5-10%, but recurrence of a section being argued is not recurrence of unsettled interpretation. 21.8% of notices are purely procedural (s.10/s.17/EIR 5(2)); of notices with a substantive exemption, only 29.7% find the authority wrong, and a sample of those overturns is vexatiousness judgement, public-interest balance, insufficient demonstration of prejudice, and 'information held' searches (E, A, B). Only 7 of 12,493 abstracts mention a previous decision. Re-estimate: H <= 5% of ICO section outcomes, and the settleable part (meaning of s.40/s.12/s.14 tests) is already captured in ICO guidance and free search tools over the notices.",
+   "Contract playbooks: the finder scored 'Floor' red lines as H ~15% although the only inspectable floor is empty and every clause's stance is 'mixed' or 'usually_held'; the 24% substantive deviations and 20% reversals are commercial negotiation (F). Observable H ~0%; any H figure is a structural guess.",
+   "SEC comment letters: 'H ~10% settled through C&DIs' conflates regulator-published guidance with an in-firm settlement loop; per registrant the loop is ~0.3 threads/year and explicitly non-precedential, so firm-level H ~0%.",
+   "Technical accounting consultations and data-protection: the H percentages (15%, 10%) have no data behind them and should be reported as unknown; the GDPR fines dataset measures enforcement themes, not review categories.",
+   "General: 'human_review_rate 100%' was stated for regulator-answered processes (EBA, SEC, ICO) where 100% human handling is definitional and says nothing about addressable ambiguity; it should not be read as a review-rate finding."
+  ],
+  "corrected_workflow_verdicts": [
+   {
+    "name": "Regulatory interpretive inquiries: EBA Single Rulebook Q&A and Joint ESAs (DORA) Q&A",
+    "evidence_quality": "moderate",
+    "verdict": "weak",
+    "why": "The sector-level settlement loop is real and well-documented (2,166 finals, indexed by act/article/paragraph, 7.9% citing earlier Q&As) but it is (a) run free by the regulator, (b) only partly versioned: 7.2% of finals are explicitly flagged 'not yet reviewed' after rule changes and the mirror's author notes authorities do not systematically revisit answers, (c) shrinking: 54 finals from 2025 submissions vs 412 from 2013, ~60-100 per year sector-wide since 2022, (d) dominated by reporting-template mechanics (54%) of which a further 5.5% are resolved by correcting the validation rule/template that reporting vendors already ship (H3), and (e) generally non-binding per the mirror README. The firm-internal residual that a product would address is unobserved; absence of data is not support. Downgraded from 'uncertain' to 'weak'."
+   },
+   {
+    "name": "FOI / access-to-information exemption decisions and appeals (UK ICO; France CADA; US FOIA)",
+    "evidence_quality": "moderate",
+    "verdict": "negative",
+    "why": "Volume is high but the data point away from repeatable settleable ambiguity: 21.8% of ICO notices are purely timeliness/procedure, substantive exemptions are upheld for the authority 60-90% of the time, only 29.7% of substantive-exemption notices find the authority wrong, overturns sampled are discretion/evidence, and 7 of 12,493 abstracts reference a previous decision. Public-interest and vexatiousness tests are statutorily case-by-case (H4). The settled corpus is already free and searchable (ICO guidance; Ed-BW dataset; Accountability Index indexing 26,238 notices; openlaw-mcp), and ICO publishes monthly s.50 casework datasets (H3/H6). CADA is advisory with ~23% non-reply; 18F found FOIA pain is capacity and broad requests. Buyers are 2,221 small public-authority FOI teams (H8). Downgraded from 'weak' to 'negative' for a standalone product."
+   },
+   {
+    "name": "Contract review playbooks and precedent clauses in legal operations (CLM: Ironclad, Icertis, Agiloft, LinkSquares, Harvey)",
+    "evidence_quality": "weak",
+    "verdict": "weak",
+    "why": "Only one inspectable corpus (44 low-stakes internship/affiliation agreements from one organisation) with empty floor and posture objects, 22 of 24 clauses 'mixed', 24% substantive deviations and 20% reversals: negotiation (F) dominates and the format's authors deliberately de-executed positions. The governance 'loop' cited is a design document around a synthetic NDA sample, not operational evidence. Vendor and industry data (ACC, WorldCC, CLM vendors) unreachable. Any value is a CLM/AI-review feature (H6). Verdict unchanged at 'weak'; evidence quality is single-corpus and cannot be extrapolated."
+   },
+   {
+    "name": "SEC comment letters and Corporation Finance interpretive positions",
+    "evidence_quality": "moderate",
+    "verdict": "negative",
+    "why": "Reproduced: ~0.3 threads per company-year, median 33 days, explicitly non-precedential (acknowledgement present in 233 of 1,185 files). The prospective layer (C&DIs, FRM) is regulator-published and already sold as Big 4 trend reports and databases. No in-firm settlement loop of meaningful volume. Verdict unchanged; evidence quality raised to moderate because the sample and the non-precedential language are directly verified."
+   },
+   {
+    "name": "Technical accounting and audit methodology consultations (Big 4 national office, FASB TIS, IFRS IC agenda decisions, PCAOB QC 1000)",
+    "evidence_quality": "unknown",
+    "verdict": "uncertain",
+    "why": "No data reachable (ifrs.org, fasb.org, pcaobus.org, frc.org.uk, icaew.com blocked; no GitHub-hosted dataset). Structurally Sophon-shaped but owned by firms that sell the consultation and the settled corpus (H5/H8); the H share should be recorded as unknown, not 15%. Verdict stays 'uncertain' with the explicit caveat that this is uncertainty, not support."
+   },
+   {
+    "name": "Data protection decisions (DSAR exemptions, DPIAs, DPO rulings; ICO/CNIL/EDPB)",
+    "evidence_quality": "weak",
+    "verdict": "weak",
+    "why": "The only reachable data (842 GDPR fines to early 2022, data-subject-rights failures 72, median EUR 12,000) measures enforcement themes, not the internal exemption loop; the 10% H estimate is unsupported. GDPR requires case-by-case balancing for third-party data (H4) and privacy platforms already own the DSAR workflow (H6). Verdict unchanged at 'weak'; H recorded as unknown."
+   },
+   {
+    "name": "Standards interpretation panels (ISO/TC 176 requests for interpretation)",
+    "evidence_quality": "unknown",
+    "verdict": "negative",
+    "why": "No data reachable; volumes are low by design and the owner is a standards committee, not a software buyer. Verdict unchanged."
+   },
+   {
+    "name": "Legal knowledge management and precedent banks in law firms (PSL teams, know-how systems)",
+    "evidence_quality": "unknown",
+    "verdict": "uncertain",
+    "why": "No reachable evidence; PSL work is precedent drafting rather than settling operational ambiguity and law-firm KM is core to firms that build/buy it (H5/H8). Verdict unchanged at 'uncertain' as pure uncertainty."
+   }
+  ],
+  "missing": [
+   "WebSearch: zero queries possible (session budget 200/200 already consumed before this verifier started), so the brief's minimum of 10 searches could not be met; all verification is on the finder's local clones plus raw.githubusercontent.com fetches.",
+   "Blocked on fetch (egress proxy, tried once each): https://www.eba.europa.eu/single-rule-book-qa, https://ico.org.uk/about-the-ico/our-information/annual-reports/, https://www.justice.gov/oip/reports-1, https://www.ifrs.org/projects/ifrs-interpretations-committee/, https://www.cada.fr/lacada/rapports-dactivite, https://www.gov.uk/government/statistics/freedom-of-information-statistics-annual-2024, https://www.fasb.org/page/PageContent?pageId=/technical-inquiry-service.html, https://www.worldcc.com/Resources/Content-Hub/View/ArticleId/9893/Contracting-Principles-and-Value-Leakage, https://www.esma.europa.eu/publications-and-data/questions-and-answers, https://www.sec.gov/rules-regulations/staff-guidance/compliance-disclosure-interpretations, https://www.accountabilityindex.uk/sources/ico-decision-notices/, https://gnosifex.github.io/esa-qa-mirror/, plus ec.europa.eu, eur-lex.europa.eu, ecb.europa.eu, bankofengland.co.uk, bis.org, iso.org, govinfo.gov, federalregister.gov, gao.gov, oversight.gov, nao.org.uk, parliament.uk, legislation.gov.uk, conseil-etat.fr, vie-publique.fr, legifrance.gouv.fr, data.gouv.fr, cada.data.gouv.fr, dpc.ie, ssrn.com, jstor.org, sciencedirect.com, nber.org, law.cornell.edu, judiciary.uk, caselaw.nationalarchives.gov.uk, bailii.org, thomsonreuters.com, lexisnexis.com, gartner.com, clocglobal.org, icaew.com, frc.org.uk, pcaobus.org, iosco.org, eiopa.europa.eu, europarl.europa.eu, ipsa.org.uk, whatdotheyknow.com, mysociety.org; github.com (HTML) and api.github.com also blocked, only raw.githubusercontent.com worked.",
+   "EBA: number and reasons of REJECTED questions per year (needed to know whether the published H share is a selection artefact) and the EBA's stated Q&A legal status and review policy after rule changes.",
+   "Bank-internal regulatory-interpretation registers: existence, volume, headcount, and whether reporting vendors (Regnology, Wolters Kluwer OneSumX, AxiomSL) encode Q&A outcomes \u2014 the only Sophon-addressable part of the EBA workflow.",
+   "ICO monthly s.50 complaint casework datasets (complaints received vs notices issued; informal resolution share) and ICO annual report FOI volumes; UK Cabinet Office FOI statistics 2024 (internal review outcomes); DOJ FY2024 FOIA annual report (appeals received/processed, Affirmed/Reversed shares, processing cost, FTE).",
+   "IFRS IC submissions and agenda decisions per year; FASB TIS volumes; Big 4 national-office consultation volumes; PCAOB QC 1000 consultation text; FRC/PCAOB inspection findings on consultation.",
+   "CLM vendor playbook capabilities and any customer statistics on contracts handled without lawyer review; ACC/CLOC/WorldCC benchmarks; a second, higher-stakes contract corpus to test whether floors are ever non-empty in practice.",
+   "DSAR volumes and cost per request; DPIA prior-consultation counts; CNIL/ICO/EDPB complaint statistics.",
+   "Any academic literature on consistency of FOI exemption decisions, SEC comment-letter resolution, or playbook adherence (arXiv, SSRN, OpenAlex all blocked)."
+  ],
+  "overall": "The finder's arithmetic is sound: every load-bearing count I could recompute on its local clones reproduces (ICO 12,493 notices and per-section upheld rates; EBA 2,166 finals, 248-day median, 54% reporting, paragraph-level 842 classes with 69.7%/46.1% recurrence; OPF 2,303 positions with 22 of 24 'mixed' and empty floor; SEC 283 threads at ~0.3 per company-year with the non-precedential clause in 233 files; CADA 76.7%; GDPR 842 / EUR 12,000; 18F quotes). Its interpretation, however, leaned toward the thesis in three places. First, the EBA '28% versioned' claim is wrong in substance: of 607 notes, ~156 (7.2% of the corpus) say the answer has NOT yet been reviewed after the rule change and only ~119 record an actual update, and the mirror's author states the authorities do not systematically revisit answers; the sector register is a partly stale store, generally non-binding, shrinking to ~60-100 settlements per year, and 5.5% of answers are resolved by correcting the validation rule/template that vendors already ship (H3). Second, the H shares are inflated by conflation: the EBA 60-70% is a selection artefact of published finals at the regulator level; the ICO 5-10% ignores that only 29.7% of substantive-exemption notices find the authority wrong, that the overturns sampled are discretion and evidence, and that free search tools already productise the notices; the contract-playbook 15% rests on an empty floor and a synthetic-sample design document; the SEC, accounting and data-protection percentages are guesses. Third, no organisation-internal settlement loop was observed anywhere in the cluster; every documented loop is regulator- or standard-setter-run, case-specific (SEC), advisory (CADA), or a design (OPF). Corrected verdicts: EBA Q&A weak (from uncertain), FOI negative (from weak), contract playbooks weak, SEC negative, accounting consultations uncertain/unknown, data protection weak, ISO negative, legal KM uncertain. Network limits (no WebSearch, all primary domains blocked) mean the firm-internal residuals remain unknown; that is uncertainty, not support. For this cluster the evidence supports H3, H4, H6 and H8, and I would not pursue a standalone product here on the current record."
+ }
+}

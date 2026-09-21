@@ -1,0 +1,724 @@
+{
+ "key": "insurance-claims",
+ "found": {
+  "domain": "insurance-claims (P&C coverage adjudication, US health claims/prior authorisation, life & disability, complaints/ombudsman loop; US, UK, France, Australia)",
+  "workflows": [
+   {
+    "name": "P&C claims coverage determination (does the loss fall within the wording): home/property, motor, commercial property/BI, liability",
+    "geography": "US, UK, France (Australia used as comparator)",
+    "decision_volume": "Absolute claim counts NOT found in reachable sources. Proxies: US employs 365,300 claims adjusters/examiners/investigators (2024, median pay $76,790) https://www.bls.gov/ooh/business-and-financial/claims-adjusters-appraisers-examiners-and-investigators.htm (government statistics, via search snippet). NAIC Q1 2024: P&C loss adjustment expense incurred $19.8bn on $216.8bn net premium earned (~9.1% LAE ratio) https://content.naic.org/sites/default/files/industry-snapshot-2024-q1.pdf (regulator; ratio computed from snippet). France: M\u00e9diation de l'Assurance 36,537 referrals in 2024, 63% property & liability, of which motor 33% and home (MRH) 31% https://www.mediation-assurance.org/wp-content/uploads/2025/08/Rapport-annuel-2024-LMA_Communique-de-presse.pdf (ombudsman, snippet). UK: FOS Q1 2025/26 car/motorcycle 2,800 complaints, travel 1,300 https://www.financial-ombudsman.org.uk/businesses/resolving-complaint/our-insight/quarterly-complaints-data-q1-2026-27 (ombudsman, snippet). Own estimate: annualising NAIC LAE gives ~$80bn/yr US claims-handling expense (estimate, not sourced).",
+    "human_review_rate": "Straight-through processing in P&C claims sits below 10% industry-wide, ~60% of insurers report no STP, leaders ~35% on eligible claim types (vendor blogs: https://www.assured.com/blog/straight-through-processing-insurance ; https://www.neudesic.com/blog/ai-driven-stp-auto-insurance-claims/ \u2014 weak, vendor). So >90% of claims are human-touched, but the share escalated specifically for a COVERAGE question was not found anywhere. FCA GI value measures 2024: claims acceptance motor ~99%, travel 83-86%, home 62-71% with firm-level home range 50-55% to 95-100% (FCA warns home data reported inconsistently); claims complaints as % of claims: home 7-13%, travel 5-6%, other products 0-6% https://www.fca.org.uk/data/general-insurance-value-measures-data-2024 and https://www.insurancebusinessmag.com/uk/news/property-insurance/some-home-insurers-accept-45-of-claims--others-accept-85-585323.aspx (regulator / press).",
+    "why_humans_review": "ESTIMATE (no P&C source gives a reason breakdown; inferred from ombudsman issue categories and regulator findings): A missing evidence 20-30% (FNOL documentation gaps are the most cited leakage cause in vendor material); B factual classification 30-40% (causation: sudden vs gradual, wear-and-tear vs insured peril; damage valuation; liability apportionment \u2014 FOS top motor issues are claim value, cancellation, delay; AFCA top issues are claim delay and claim amount); C interpretation of an existing rule 10-20% (exclusion wording: CGC found over half of IDR overturns in its six-insurer sample were denials based on wear-and-tear/maintenance exclusions https://insurancecode.org.au/app/uploads/2023/07/CGC-Thematic-Inquiry-into-Making-Better-Claims-Decisions.pdf ; LMA recommends clarifying 'accident' and 'invalidit\u00e9' definitions and 'exclusions floues'); D conflict of authorities <5% (court decisions vs wording, e.g. Nargizyan v State Farm burden shift, FCA v Arch); E true discretion ~5% (ex gratia, goodwill); F commercial negotiation 10-15% (settlement value, total-loss valuation \u2014 FCA multi-firm review on vehicle valuation https://www.fca.org.uk/publication/multi-firm-reviews/motor-insurance-claims-analysis-multi-firm-review-2025.pdf); G one-off 5%; H repeatable ambiguity settled prospectively 5-10% \u2014 the wear-and-tear class, BI 'disease/prevention of access' wordings, definition of accident, are repeatable and have in fact been settled prospectively (test case, ABI standards, ombudsman approaches), which supports H but also shows settlement is often done EXTERNALLY (regulator/ombudsman/court), not by the insurer.",
+    "settlement_loop_evidence": [
+     {
+      "description": "FCA v Arch (COVID business interruption test case): ambiguous non-damage BI wordings escalated by the regulator to the courts; 21 lead wordings decided; FCA estimated ~700 policy types, >60 insurers and ~370,000 policyholders affected; insurers then had to revisit previously rejected claims and apply the ruling prospectively. Paradigm of a settlement applied across many later similar cases \u2014 but settled by court/regulator, not the insurer's own claims owner.",
+      "source_url": "https://www.fca.org.uk/news/press-releases/result-fca-business-interruption-test-case",
+      "source_type": "regulator",
+      "prospective": "yes",
+      "reusable_how": "Judgment became the basis for adjudicating all similar claims; insurers re-ran claims against the settled reading of each wording class."
+     },
+     {
+      "description": "ABI Guide to Minimum Standards for Critical Illness Cover (successor to the Statement of Best Practice): model condition definitions agreed industry-wide, insurers required to adopt by set dates (e.g. 1 Feb 2019); FOS states it checks whether the insurer followed the guide applicable at the time of sale when deciding complaints. Industry-level codification of recurring definitional ambiguity.",
+      "source_url": "https://www.abi.org.uk/globalassets/files/publications/public/protection/abi-guide-to-minimum-standards-for-critical-illness-cover-2023.pdf",
+      "source_type": "industry association",
+      "prospective": "yes",
+      "reusable_how": "Definitions become policy wording; ombudsman applies them as the standard; periodic revision."
+     },
+     {
+      "description": "FCA DISP 1.3.3R obliges firms to analyse root causes of complaints, identify recurring or systemic problems, decide whether to correct them, report to senior management and keep records; FCA good-practice review notes firms create action plans with owners, and that actions such as staff training or process change follow. A mandated settlement loop, but its output is training/process/wording change, not executable rules.",
+      "source_url": "https://handbook.fca.org.uk/handbook/disp1/disp1s3",
+      "source_type": "regulator",
+      "prospective": "yes",
+      "reusable_how": "Root-cause decisions recorded; remediation via guidance, training, product change; no evidence of machine-executable capture."
+     },
+     {
+      "description": "FCA\u2013FOS Wider Implications Framework: FOS receives many cases on the same or similar issues; where a decision may affect a significant proportion of firms, the issue is escalated under the framework so that the answer applies sector-wide.",
+      "source_url": "https://www.fca.org.uk/publication/mou/fca-financial-ombudsman-service.pdf",
+      "source_type": "regulator",
+      "prospective": "yes",
+      "reusable_how": "Sector-level settlement of recurring complaint classes; insurers expected to align claims handling."
+     },
+     {
+      "description": "Australian General Insurance Code Governance Committee thematic inquiry (July 2023) on claims initially denied and later accepted at internal dispute resolution across six insurers: over half of sampled overturns were denials based on wear-and-tear or maintenance exclusions. A follow-on CGC inquiry is titled 'Actioning insights from disputes about claim denials to improve Code compliance'. Evidence that the SAME exclusion class is repeatedly misapplied and only corrected case-by-case on appeal, i.e. the loop is NOT closed prospectively inside insurers.",
+      "source_url": "https://insurancecode.org.au/app/uploads/2023/07/CGC-Thematic-Inquiry-into-Making-Better-Claims-Decisions.pdf",
+      "source_type": "industry code monitor (audit/inspector-type)",
+      "prospective": "no",
+      "reusable_how": "Overturns were case-specific; the inquiry's purpose was to get insurers to feed dispute insights back into claims decisions, implying they largely did not."
+     },
+     {
+      "description": "M\u00e9diation de l'Assurance 2024: 36,537 referrals (+19%); mediator issues recommendations to clarify contractual definitions ('accident', 'invalidit\u00e9') and has for years pushed insurers to integrate Cour de cassation decisions on unclear exclusion clauses into contracts; insurers follow the mediator's opinions in >99% of cases (consumer/press sources), and one press source says ~70% of its general recommendations were followed in 2024; average processing time 7 months.",
+      "source_url": "https://www.mediation-assurance.org/wp-content/uploads/2025/08/Rapport-annuel-2024-LMA_Communique-de-presse.pdf",
+      "source_type": "ombudsman (with press: https://www.planetecsca.fr/actualites/environnement-courtage-assurances/la-mediation-de-lassurance-en-2024-une-annee-record-et-des-avancees-majeures/ ; https://selectra.info/assurance/comprehend/mediateur ; https://covelia.fr/reglementation/mediateur-assurance-recours/)",
+      "prospective": "unclear",
+      "reusable_how": "Case opinions are followed per case; general recommendations become contract wording changes over years; no evidence of insurer-side executable capture."
+     },
+     {
+      "description": "FC&S Expert Coverage Interpretation (ALM/National Underwriter): subscription database of thousands of coverage Q&As, ISO forms and analyses, with 'Ask the Experts' submission of specific coverage-interpretation questions and searchable prior answers by line of business. Evidence that coverage questions recur across the industry often enough to sustain a commercial precedent corpus \u2014 but it is advisory, cross-insurer, and not executable.",
+      "source_url": "https://www.nationalunderwriter.com/fcin",
+      "source_type": "vendor",
+      "prospective": "yes",
+      "reusable_how": "Prior answers searched by adjusters; not binding on any insurer; not linked to claims systems."
+     },
+     {
+      "description": "Claims-handling manuals with authority matrices (field adjuster, desk adjuster, supervisor, director); anything beyond authority limits escalates to supervisor, manager or committee; in Florida manuals are required by law and reviewable by the regulator. Shows an institutional owner and escalation path exist; no evidence found that escalated coverage decisions are written back as reusable positions.",
+      "source_url": "https://www.propertyinsurancecoveragelaw.com/blog/adjuster-authority-in-insurance-claims/",
+      "source_type": "press/legal blog (plus https://www.faia.com/resources-(1)/legislative-summaries/legislative-summaries/2023-legislative-summary/general-insurance/insurer-accountability-claims-handling-manuals industry association)",
+      "prospective": "unclear",
+      "reusable_how": "Escalation is by dollar authority, not by ambiguity class; manuals are updated periodically."
+     },
+     {
+      "description": "Lloyd's Claims Lead Arrangements: one (85%+ of claims) or two lead syndicates decide claims including coverage and bind all followers; SCAP delegates claims \u2264\u00a3250k to a single slip lead. An authoritative owner structure for coverage decisions across many carriers; no precedent-recording mechanism described.",
+      "source_url": "https://assets.lloyds.com/media/722c1caa-960f-43c9-a210-3635038f25d7/Guidance-on-the-Lloyds-Claims-Lead-Arrangements-0523.pdf",
+      "source_type": "market/industry association",
+      "prospective": "no",
+      "reusable_how": "Binding per claim; not per class."
+     },
+     {
+      "description": "UK 'Technical Claims Lead' job advert: acts as the technical referral point for coverage, policy interpretation, disputes and complex claim strategy across domestic and commercial property claims \u2014 direct evidence of a human role whose job is settling coverage ambiguity by referral.",
+      "source_url": "https://findajob.dwp.gov.uk/details/17788656",
+      "source_type": "government job board (primary artefact)",
+      "prospective": "unclear",
+      "reusable_how": "Not stated whether referrals are recorded for reuse."
+     },
+     {
+      "description": "Guidewire Rules Service: centralised low-code authoring/execution of business rules for Autopilot workflows in ClaimCenter/PolicyCenter, 'decouple decision logic from core applications ... consistent outcomes'; ClaimCenter exposure validation rules; Duck Creek Claims: configurable authorization/approval rules, routing, low-code Studio with rule approvals. Existing codification path for settled rules; none of the reachable material describes capturing an escalated claim's coverage decision as a versioned precedent.",
+      "source_url": "https://www.guidewire.com/resources/blog/developers/introducing-guidewire-rules-service-in-olos",
+      "source_type": "vendor (plus https://www.duckcreek.com/product/claims-management-software/)",
+      "prospective": "yes",
+      "reusable_how": "Rules are authored by analysts after the fact; provenance from an individual escalated case not evidenced."
+     }
+    ],
+    "economic_pain": "Claims leakage commonly cited at 5-10% of claim payments (industry/vendor benchmark, weak: https://www.insurancethoughtleadership.com/claims/claims-leakage-costs-insurers-billions-annually ; https://vcasoftware.com/claims-leakage/); causes listed include coverage misinterpretation, missed exclusions, documentation gaps, missed subrogation, stale reserves \u2014 no independent study apportioning leakage between interpretation and missing documents was found. Leakage audits sample 200-500 closed claims per line (vendor: https://www.perceptive-analytics.com/reducing-claims-leakage-where-to-start-and-what-to-measure/). Regulatory cost of inconsistent handling: Florida OIR fined Heritage P&C $1m over Hurricane Ian handling; 42.9% of reviewed claims lacked required adjuster identification (https://www.insurancejournal.com/news/southeast/2024/05/13/773866.htm press; exam report https://floir.gov/docs-sf/property-casualty-libraries/market-regulation/2024/heritage-insurance-company-3-11-2024.pdf regulator). NC DOI Members Insurance exam: 4.0% error ratio on deductible reimbursement timing (https://www.ncdoi.gov/documents/market-regulations/members-and-universal-insurance-company-2024/open regulator). Coverage counsel: opinions most frequently requested in casualty/liability; 'unnecessarily obtaining coverage opinions can be a drain on resources' (https://www.butlersnow.com/news-and-events/my-opinion-about-insurance-coverage-opinions law firm) \u2014 cost per opinion not found. Inconsistent coverage positions expose insurers to estoppel and 'prior interpretations' arguments (https://www.policyholderpulse.com/estopping-insurers-inconsistent-coverage-positions/ law firm).",
+    "existing_solutions": "Guidewire ClaimCenter (+ Rules Service, exposure validation rules), Duck Creek Claims (authorization rules, routing, low-code Studio), claims-handling manuals with authority matrices (legally required in Florida), coverage counsel opinions, FC&S Expert Coverage Interpretation subscription Q&A corpus, QA/closed-file leakage audits (vendors: Athenium, Allied Recovery), complaints root-cause analysis under DISP 1.3.3, ombudsman published 'approach' documents (AFCA) and decision database (FOS ~8,500 decisions analysed in one press piece https://www.insurancebusinessmag.com/uk/news/claims/consumer-advocacy-group-urges-insurer-crackdown-on-claims-failures-498282.aspx ; scraper exists https://apify.com/spookyweb/uk-fos-decisions/examples/insurance-complaint-decisions), industry-level standards (ABI CI guide, Lloyd's Claims Scheme). NONE of the reachable material shows claim-level coverage decisions being captured as versioned, executable precedents inside the insurer; codification happens through manual/rule updates, training and wording changes, typically after regulator/ombudsman pressure. Caveat: Guidewire/Duck Creek documentation could not be fetched (blocked), so absence is unverified.",
+    "buyer_and_budget": "Head of Claims / Chief Claims Officer, Technical Claims Lead, Claims Quality & Assurance, Complaints/Conduct Risk (UK Consumer Duty). Budget exists (LAE ~9% of premium; 365k US adjusters) but claims-platform spend is captured by Guidewire/Duck Creek and their marketplaces; a coverage-precedent tool would most plausibly be sold as a ClaimCenter/Duck Creek add-on or to technical claims teams at mid-size carriers and MGAs/Lloyd's syndicates.",
+    "regulatory_constraints": "Unfair claims settlement practices statutes; market conduct exams review manuals and consistency; Florida requires manuals be filed/reviewable; UK Consumer Duty and DISP root-cause obligations; FOS decides on 'fair and reasonable' grounds so an insurer's internal precedent is not final (H4); recorded positions are discoverable and can estop later inconsistent positions (both an incentive for consistency and a legal-risk deterrent to recording).",
+    "evidence_quality": "moderate",
+    "verdict": "uncertain",
+    "notes": "Recurring interpretive classes demonstrably exist (wear-and-tear vs sudden damage; BI trigger wordings; definitions of accident/invalidity; total-loss valuation) and are settled prospectively \u2014 but predominantly by external authorities (courts, regulators, ombudsmen, industry bodies), with insurers then updating manuals/rules/training. Internal escalation exists (authority matrices, technical claims leads, coverage counsel) but no evidence that its outputs are captured as reusable executable positions. Missing: share of claims escalated for coverage questions; recurrence within one insurer; cost per referral. The CGC finding is double-edged: it shows repeated misapplication of a settled class, which could be a capture gap (supports thesis) or an incentive problem (insurers benefit from denials; H4/commercial). Search budget exhausted at 27 queries; almost all fetches blocked, so evidence is from search snippets."
+   },
+   {
+    "name": "US health insurance claims adjudication and prior authorisation (medical necessity / coverage criteria), ACA marketplace and Medicare Advantage",
+    "geography": "US",
+    "decision_volume": "Medicare Advantage: nearly 53 million prior authorisation determinations in 2024 https://www.kff.org/medicare/medicare-advantage-insurers-made-nearly-53-million-prior-authorization-determinations-in-2024/ (academic/policy institute, sourced). ACA marketplace: insurers denied 19% of in-network claims and 37% of out-of-network claims in 2024 (combined ~20%); in-network denial rate ranged 3%-36% by insurer https://www.kff.org/patient-consumer-protections/claims-denials-and-appeals-in-aca-marketplace-plans-in-2024/ (sourced; absolute claim count not in snippet).",
+    "human_review_rate": "Auto-adjudication is the norm; vendors claim leading plans approach ~90% auto-adjudication (vendor, weak: https://opsdog.com/products/claims-auto-adjudication-rate ; https://www.sdata.us/resources/where-to-start-with-improving-auto-adjudication-rates-in-healthcare-claims-processing). MA: ~8% of PA requests fully/partially denied, 11.5% of denials appealed, 80.7% of appeals overturned (KFF 2024, sourced). ACA: <1% of denials appealed, insurers upheld 66% of appeals (i.e. ~34% overturned) (KFF 2024, sourced). OIG 2022: 13% of sampled MA PA denials met Medicare coverage rules; 18% of payment denials improper https://oig.hhs.gov/reports/all/2022/some-medicare-advantage-organization-denials-of-prior-authorization-requests-raise-concerns-about-beneficiary-access-to-medically-necessary-care/ (inspector-general, sourced). OIG 2018: 75% of appealed PA denials overturned 2014-16, only 1% appealed (via https://natlawreview.com/article/medicare-advantage-oig-report-finds-improper-denials).",
+    "why_humans_review": "SOURCED breakdown of ACA in-network denial reasons 2024: 'other' 34-36%, administrative 18-25%, excluded service 16%, lack of prior authorisation/referral 9%, medical necessity 5-6% (KFF via https://www.hfma.org/fast-finance/aca-marketplace-plans-payment-denial/ and https://www.beckerspayer.com/research-analysis/10-aca-insurers-with-the-highest-claim-denial-rates-kff/). Mapping: A missing evidence/administrative ~25-40%; B factual/coding classification large share of 'other' (own estimate 20-30%); C rule interpretation (medical-necessity criteria application) ~5-10%; D conflict of authorities present \u2014 OIG found MAOs applied internal clinical criteria beyond Medicare rules and requested unnecessary documentation (share not quantified); E clinical discretion: medical directors 'expected to exercise clinical judgment' (Cigna medical director job listing https://bebee.com/us/jobs/medical-director-390-cigna-evernorth-services-inc-arizona-work-at-home--techmap_us_26010306); F negligible; G small; H: the medical-necessity class is repeatable but is ALREADY settled prospectively through medical/clinical policies (see loop evidence), so residual H is small (own estimate <5%).",
+    "settlement_loop_evidence": [
+     {
+      "description": "Aetna Clinical Policy Bulletins and Cigna Medical Coverage Policies: published, numbered, versioned coverage-criteria documents (e.g. Cigna policy 0604 lab testing) that medical directors apply; Cigna requires monthly focused updates of coverage policies and mandatory inter-rater reliability testing of medical directors. Institutional settlement of recurring medical-necessity ambiguity already exists in structured, versioned, governed form.",
+      "source_url": "https://www.aetna.com/health-care-professionals/clinical-policy-bulletins.html",
+      "source_type": "vendor/insurer documentation (plus https://static.cigna.com/assets/chcp/pdf/coveragePolicies/medical/mm_0604_coveragepositioncriteria_labtesting.pdf)",
+      "prospective": "yes",
+      "reusable_how": "Policies are applied to all subsequent cases; individual determinations remain 'case by case' with appeal rights."
+     },
+     {
+      "description": "CMS CY2024 MA final rule (CMS-4201-F): MA plans may use internal coverage criteria only where Medicare criteria are not fully established; criteria must be evidence-based, publicly accessible, with cited sources; every plan must have a utilisation management committee performing an annual review of consistency with coverage requirements. Regulation now mandates the governed, versioned, public capture of interpretive criteria.",
+      "source_url": "https://www.cms.gov/newsroom/fact-sheets/2024-medicare-advantage-and-part-d-final-rule-cms-4201-f",
+      "source_type": "regulator (plus https://www.mcg.com/blog/cms-final-rule-2024-medicare-advantage-4201-f/ vendor)",
+      "prospective": "yes",
+      "reusable_how": "Public criteria documents; annual committee review; applies to all determinations."
+     },
+     {
+      "description": "OIG 2022: 13% of PA denials met Medicare rules; causes included MAOs using clinical criteria not contained in Medicare coverage rules and requesting unnecessary documentation. Shows the settlement loop failing at the boundary between plan-internal criteria and the superior authority (Medicare rules) \u2014 a category D problem, later addressed by the 2024 rule.",
+      "source_url": "https://oig.hhs.gov/reports/all/2022/some-medicare-advantage-organization-denials-of-prior-authorization-requests-raise-concerns-about-beneficiary-access-to-medically-necessary-care/",
+      "source_type": "audit / inspector-general",
+      "prospective": "yes",
+      "reusable_how": "Regulatory rule change in 2024 rather than insurer-level precedent capture."
+     }
+    ],
+    "economic_pain": "Each manual intervention adds ~$15-25 to processing cost; plans spend ~$7-12 per claim in admin (vendor blog, weak: https://mirrahealthcare.com/insights/maximizing-efficiency-and-savings-the-strategic-guide-to-claims-adjudication-software-for-health-plans). CAQH Index: $20bn+ annual savings available from shifting remaining manual administrative transactions to electronic (https://www.ajmc.com/view/caqh-index-finds-20-billion-in-cost-savings-opportunities industry association via press) \u2014 this is transaction automation, not interpretation. Error cost: wrongful denials (13% of MA PA denials per OIG) create access harm and regulatory exposure; 80.7% overturn on appeal implies large volumes of reversible initial decisions.",
+    "existing_solutions": "Core adjudication platforms with claims-edit engines; commercial clinical criteria sets (MCG, InterQual) plus insurer medical policies (Aetna CPB, Cigna coverage policies, UnitedHealthcare policies); medical director peer-to-peer; UM committees; statutory internal/external appeal regimes (DOL/CMS). These already capture interpretations as versioned, published documents and rules \u2014 H3 strongly supported here.",
+    "buyer_and_budget": "Chief Medical Officer / VP Utilization Management / Claims operations; large budgets, but incumbent criteria vendors and platform vendors own the codification layer.",
+    "regulatory_constraints": "Medical-necessity denials must be made by qualified clinicians; CMS 2024 rule restricts internal criteria and (per 2024 FAQs) constrains algorithm/AI-driven denials; ERISA/ACA appeal rights; state DMHC/DOI oversight. Regulation pushes humans to remain in the loop for denials even when criteria are settled (H4).",
+    "evidence_quality": "strong",
+    "verdict": "negative",
+    "notes": "Best-quantified workflow in the cluster, and the numbers argue AGAINST a standalone Sophon: interpretive (medical necessity) denials are only 5-6% of denials (H1: admin/other dominate); the interpretive layer is already codified, versioned, public and regulator-mandated (H3); clinicians must remain decision-makers (H4)."
+   },
+   {
+    "name": "Life, critical illness and long-term disability claims assessment (definition interpretation: own/any occupation, CI condition definitions, accident/invalidity)",
+    "geography": "US (ERISA group LTD), UK (CI/IP), France (pr\u00e9voyance)",
+    "decision_volume": "France: pr\u00e9voyance is 29% of 36,537 mediator referrals in 2024 (~10,600, computed from snippet) https://www.mediation-assurance.org/wp-content/uploads/2025/08/Rapport-annuel-2024-LMA_Communique-de-presse.pdf (ombudsman). US: group LTD denial rate reported 15.3% (2022) and approval 84.7% (2023) from aggregator sites of uncertain provenance (weak: https://gitnux.org/disability-insurance-industry-statistics/ ; https://www.sokolovelaw.com/disability-insurance-denial/statistics/). Absolute claim counts not found.",
+    "human_review_rate": "Essentially 100% human-assessed (own inference from nature of medical/occupational evidence; no source). Unum regulatory settlement reassessment (2004-05 agreements): 41.7% of reassessed previously denied/closed claims reversed in whole or part, ~$676.2m additional benefits (Unum 10-K FY2009 https://www.sec.gov/Archives/edgar/data/0000005513/000119312510042716/d10k.htm , company filing; alternative 45.1% for group LTD per https://www.erisa-claims.com/blog/unums-reveral-rate-in-reassessment.cfm claimant law firm).",
+    "why_humans_review": "ESTIMATE: A missing medical/occupational evidence 20-30%; B factual/medical classification 35-45% (is the claimant unable to perform occupation; does condition meet severity); C interpretation of definitions 10-20% (own vs any occupation, CI condition wording, 'accident' in pr\u00e9voyance \u2014 LMA explicitly flags 'accident' and 'invalidit\u00e9' definitions as recurring dispute sources); D <5%; E discretion 5-10% (medical director judgement, subjective symptoms); F ~5% (lump-sum settlements); G 5%; H 5-10% \u2014 CI definitions were settled prospectively industry-wide via ABI standards, and Unum's settlement imposed new claims procedures/standards, so this class is codifiable, but the residual per-claim work is dominated by B.",
+    "settlement_loop_evidence": [
+     {
+      "description": "Unum multi-state regulatory settlement agreement (2004-05): required changes in claims handling procedures/standards, new claims procedures, enhanced internal quality controls, regulator-approved directors, and a reassessment unit that reversed 41.7% of reassessed claims. Regulator-forced codification of how definitions and medical evidence are to be interpreted, applied prospectively to all subsequent claims.",
+      "source_url": "https://www.maine.gov/pfr/insurance/sites/maine.gov.pfr.insurance/files/inline-files/unum_exhibit-1_a1.pdf",
+      "source_type": "regulator (plus SEC 10-K)",
+      "prospective": "yes",
+      "reusable_how": "New claims manual standards; reassessment findings applied to procedures."
+     },
+     {
+      "description": "ABI critical illness model definitions (Statement of Best Practice 2004/2005, Guide to Minimum Standards 2019/2023): recurring disputes over what counts as e.g. heart attack or cancer settled by industry-wide model wording; FOS applies the version in force at sale.",
+      "source_url": "https://www.abi.org.uk/globalassets/files/publications/public/migrated/life/abi-statement-of-best-practice-for-critical-illness-cover-2005.pdf",
+      "source_type": "industry association (plus FOS https://www.financial-ombudsman.org.uk/businesses/complaints-deal/insurance/medical-insurance/critical-illness-cover)",
+      "prospective": "yes",
+      "reusable_how": "Wording-level codification; revised every few years."
+     }
+    ],
+    "economic_pain": "High value per decision (multi-year benefit streams); Unum reassessment alone released ~$676m. Litigation cost under ERISA substantial but not quantified in reachable sources. Volume per insurer is low relative to P&C/health.",
+    "existing_solutions": "Claims management systems (FINEOS, Guidewire for disability at some carriers), medical director review, vocational experts, ABI/industry definitions, regulatory settlement-mandated manuals; no precedent-capture product found.",
+    "buyer_and_budget": "Head of Claims (Life/Protection), Chief Medical Officer; budgets moderate; strong legal-risk motivation.",
+    "regulatory_constraints": "ERISA full-and-fair review, state UCSPA, regulatory settlement agreements; FOS 'fair and reasonable' overrides; medical judgement legally required \u2014 humans stay in loop after precedent (H4).",
+    "evidence_quality": "weak",
+    "verdict": "weak",
+    "notes": "Interpretive definitional ambiguity is real and recurring, but volumes are low, factual/medical classification dominates, and codification already happens through industry definitions and regulator-imposed manuals. Unum reversal rate (41.7%) is the strongest quantified 'inconsistent interpretation' datum in the whole cluster but it is 20 years old and reflected incentive-driven practice as much as knowledge gaps."
+   },
+   {
+    "name": "Insurer complaints / internal dispute resolution and ombudsman root-cause loop (UK FOS, France LMA, Australia AFCA)",
+    "geography": "UK, France, Australia",
+    "decision_volume": "UK FOS: 305,726 new complaints 2024/25 (34% upheld); 214,600 in 2025/26 (30% upheld) \u2014 all financial products https://www.financial-ombudsman.org.uk/businesses/resolving-complaint/our-insight/annual-complaints-data-and-insight-2025-26 (ombudsman). Buildings insurance uphold 38%, travel 36% (Q1 2025/26) https://www.financial-ombudsman.org.uk/businesses/resolving-complaint/our-insight/quarterly-complaints-data-q1-2025-26 ; buildings claim-delay complaints upheld 57% (Q1 2024/25) https://www.financial-ombudsman.org.uk/data-insight/our-insight/quarterly-complaints-data-q1-2024-25. France LMA: 36,537 referrals 2024, insured obtained full/partial satisfaction in 55% (press/consumer sites). Australia AFCA: 34,231 general insurance complaints 2024/25 (+17%), 31,432 closed, A$390.9m compensation; 44% resolved by insurers at referral stage; in one tracked cohort 2,236 case-managed, 377 to decision, 30% decided for complainant https://www.afca.org.au/annual-review-general-insurance-complaints (ombudsman). Firm-level IDR volumes (much larger) not found.",
+    "human_review_rate": "100% human at ombudsman stage by design. Insurer-side: 44% of AFCA complaints resolved by the insurer once referred (i.e. reversed or settled without adjudication).",
+    "why_humans_review": "ESTIMATE from issue categories: FOS motor top issues are claim value, policy cancellation, claim delay; AFCA top issue is claim delay, then claim amount, then denial-exclusion/condition (342 = 11% in a 2023-24 subset). So A/B/process ~50%, F (valuation/settlement) ~20%, C interpretation of exclusions/definitions ~15-20%, E (fair-and-reasonable discretion exercised by the ombudsman itself) ~10%, H (recurring classes the ombudsman then publishes 'approach' documents for) ~5-10%.",
+    "settlement_loop_evidence": [
+     {
+      "description": "AFCA publishes 'The AFCA Approach to general insurance claims handling' (July 2025) and a searchable published-decisions database; FOS publishes ~all decisions and product-specific guidance pages. Ombudsmen codify their settled reading of recurring disputes so insurers can apply it prospectively.",
+      "source_url": "https://www.afca.org.au/media/2140/download",
+      "source_type": "ombudsman",
+      "prospective": "yes",
+      "reusable_how": "Published approach documents and decision database used by insurers' technical/complaints teams (press: 8,500 FOS decisions analysed https://www.insurancebusinessmag.com/uk/news/claims/consumer-advocacy-group-urges-insurer-crackdown-on-claims-failures-498282.aspx)."
+     },
+     {
+      "description": "DISP 1.3.3R root-cause obligation and FCA good-practice review: firms must identify recurring/systemic problems from complaints, decide on correction, and record senior decisions; remediation observed as training and process change.",
+      "source_url": "https://www.fca.org.uk/publications/good-and-poor-practice/complaints-and-root-cause-analysis-good-practice-and-areas-improvement",
+      "source_type": "regulator",
+      "prospective": "yes",
+      "reusable_how": "Recorded management decisions; process/training change; not executable."
+     },
+     {
+      "description": "LMA: insurers follow mediator opinions in >99% of cases; mediator's general recommendations (definitions of accident/invalidity; unclear exclusions; integrating Cour de cassation rulings into contracts) reported ~70% followed in 2024; harmonisation of cancellation conditions credited to LMA.",
+      "source_url": "https://www.planetecsca.fr/actualites/environnement-courtage-assurances/la-mediation-de-lassurance-en-2024-une-annee-record-et-des-avancees-majeures/",
+      "source_type": "press (industry broker association site) summarising ombudsman report",
+      "prospective": "yes",
+      "reusable_how": "Contract wording and practice changes over multi-year horizon."
+     }
+    ],
+    "economic_pain": "AFCA compensation A$390.9m (2024/25); LMA average 7 months to resolve (down from 13 in 2019); FOS case fees and Consumer Duty enforcement exposure; UK home insurance claims complaints 7-13% of claims (FCA value measures). Insurer complaints-team headcount not found.",
+    "existing_solutions": "Complaints/case management (Salesforce, Pega, Aptean Respond, Workpro), RCA processes mandated by DISP, ombudsman decision databases and approach documents, external scrapers of FOS decisions.",
+    "buyer_and_budget": "Head of Complaints / Conduct Risk / Customer Outcomes; budget tied to regulatory compliance rather than claims efficiency.",
+    "regulatory_constraints": "Ombudsman decides on fair-and-reasonable basis and is not bound by insurer precedent; firm-level settlements therefore never fully determinative (H4). Mandatory RCA is a tailwind for capturing settlements.",
+    "evidence_quality": "moderate",
+    "verdict": "uncertain",
+    "notes": "This is where the settlement loop is most visibly institutionalised (mandated RCA, published approaches, >99% compliance with mediator opinions) and where historical cases are cheaply accessible (FOS decision database is public and machine-scrapable), making it the best site for the brief's base-rate experiment. But the authoritative settler is external, the output is wording/process change rather than executable decisions, and volumes at the ombudsman are tens of thousands per year, not millions."
+   }
+  ],
+  "evidence_against_thesis": [
+   "H1 supported in health: only 5-6% of ACA in-network denials are for medical necessity; administrative (18-25%), 'other' (34-36%), excluded service (16%) and missing prior auth (9%) dominate (KFF 2024 via HFMA/Becker's).",
+   "H1/F in motor: UK motor claims acceptance is ~99% (FCA value measures 2024); motor disputes are about claim value, cancellation and delay (FOS), i.e. valuation/negotiation and process, not coverage interpretation.",
+   "H3 strongly supported in health: interpretations are already captured as versioned, published medical policies (Aetna CPBs, Cigna coverage policies with monthly updates and inter-rater reliability testing) and CMS-4201-F now mandates public, evidence-based internal criteria and annual UM-committee review.",
+   "H3 partially supported in P&C: claims manuals with authority matrices (legally required in Florida), Guidewire Rules Service / Duck Creek authorization rules, ABI model definitions, and the FC&S subscription precedent corpus already exist; no reachable evidence that insurers lack a place to write settled positions \u2014 the gap, if any, is discipline, not tooling.",
+   "H4: ombudsmen (FOS, AFCA, LMA) decide on fair-and-reasonable grounds and can override insurer precedent; medical-necessity denials must be made by clinicians; recorded coverage positions are discoverable and can estop insurers (policyholderpulse) \u2014 so an insurer-internal settlement is never fully authoritative and may create legal exposure.",
+   "Prospective settlements in this domain are mostly made by EXTERNAL authorities (FCA v Arch court test case for ~370,000 policyholders/700 wordings; ABI standards; CMS rule; Unum regulatory settlement), not by an internal policy owner \u2014 the 'clear institutional owner' the brief requires is often the regulator.",
+   "The CGC finding (over half of IDR overturns concern wear-and-tear exclusions) can be read as an incentive problem \u2014 insurers benefit from initial denials that are only reversed when challenged \u2014 rather than a knowledge-capture problem; a precedent ledger does not change incentives.",
+   "STP below 10% with ~60% of insurers reporting none (vendor) indicates the binding constraint in P&C is evidence gathering, valuation and vendor management, not interpretation.",
+   "No source found quantifying the share of claims escalated for a coverage question, recurrence of such questions within one insurer, or cost per coverage referral \u2014 the core parameters of the hypothesis remain unmeasured."
+  ],
+  "not_found": [
+   "Absolute annual P&C claim counts for US/UK/France (only proxies: BLS headcount, NAIC LAE, FCA value-measure ratios).",
+   "Share of claims referred to technical/coverage teams or coverage counsel, and cost per coverage opinion/referral.",
+   "Any insurer-internal 'coverage position library' or claims bulletin documented publicly; any Guidewire/Duck Creek feature that records an escalated claim decision as a reusable versioned precedent (docs blocked).",
+   "Independent (non-vendor) claims leakage study apportioning leakage between interpretation, missing documentation and fraud.",
+   "State market-conduct exam findings explicitly citing inconsistent COVERAGE interpretation between adjusters (found: adjuster-identification, delay and deductible-timing findings only).",
+   "FOS annual product-level uphold table for 2024/25 and 2025/26 (only quarterly product uphold rates surfaced).",
+   "Full text of M\u00e9diation de l'Assurance 2024 report: number of avis rendus, breakdown by motif (refus de garantie vs indemnisation), and formal follow-up rate on general recommendations (fetch blocked; conflicting press figures 99% vs 70%).",
+   "France Assureurs claims volumes and ACPR claims-handling findings (search budget exhausted before these queries).",
+   "Guidewire ClaimCenter 'best practices'/claim-guideline configuration details; AI coverage-analysis startups landscape (search budget exhausted).",
+   "Insurer complaints-team headcount and IDR volumes at firm level."
+  ],
+  "sources": [
+   {
+    "url": "https://www.financial-ombudsman.org.uk/businesses/resolving-complaint/our-insight/annual-complaints-data-and-insight-2025-26",
+    "type": "ombudsman (search snippet; fetch blocked)",
+    "used_for": "214,600 complaints 2025/26; 30% uphold; 305,700 in 2024/25"
+   },
+   {
+    "url": "https://www.financial-ombudsman.org.uk/data-insight/our-insight/annual-complaints-data-insight-2024-25",
+    "type": "ombudsman (snippet)",
+    "used_for": "305,726 complaints 2024/25; 34% uphold"
+   },
+   {
+    "url": "https://www.financial-ombudsman.org.uk/businesses/resolving-complaint/our-insight/quarterly-complaints-data-q1-2025-26",
+    "type": "ombudsman (snippet)",
+    "used_for": "buildings 38%, travel 36% uphold; motor 2,800, travel 1,300 complaints"
+   },
+   {
+    "url": "https://www.financial-ombudsman.org.uk/data-insight/our-insight/quarterly-complaints-data-q1-2024-25",
+    "type": "ombudsman (snippet)",
+    "used_for": "motor 3,940 complaints Q1 2024/25; buildings claim-delay uphold 57%"
+   },
+   {
+    "url": "https://www.fca.org.uk/publication/mou/fca-financial-ombudsman-service.pdf",
+    "type": "regulator (snippet)",
+    "used_for": "Wider Implications Framework"
+   },
+   {
+    "url": "https://handbook.fca.org.uk/handbook/disp1/disp1s3",
+    "type": "regulator (snippet)",
+    "used_for": "DISP 1.3.3R root-cause obligation"
+   },
+   {
+    "url": "https://www.fca.org.uk/publications/good-and-poor-practice/complaints-and-root-cause-analysis-good-practice-and-areas-improvement",
+    "type": "regulator (snippet)",
+    "used_for": "RCA good practice: action plans, training, process change"
+   },
+   {
+    "url": "https://www.fca.org.uk/data/general-insurance-value-measures-data-2024",
+    "type": "regulator (snippet)",
+    "used_for": "claims acceptance and complaints-per-claims ratios"
+   },
+   {
+    "url": "https://www.insurancebusinessmag.com/uk/news/property-insurance/some-home-insurers-accept-45-of-claims--others-accept-85-585323.aspx",
+    "type": "press (snippet)",
+    "used_for": "home acceptance 50-55% to 95-100% by firm; home 62-71%, travel 83-86%, motor 99%"
+   },
+   {
+    "url": "https://www.fca.org.uk/news/press-releases/result-fca-business-interruption-test-case",
+    "type": "regulator (snippet)",
+    "used_for": "FCA v Arch: 700 policy types, 60 insurers, 370,000 policyholders, 21 lead wordings"
+   },
+   {
+    "url": "https://www.fca.org.uk/publication/multi-firm-reviews/motor-insurance-claims-analysis-multi-firm-review-2025.pdf",
+    "type": "regulator (snippet; fetch blocked)",
+    "used_for": "multi-firm review of total-loss valuation practices"
+   },
+   {
+    "url": "https://www.abi.org.uk/globalassets/files/publications/public/protection/abi-guide-to-minimum-standards-for-critical-illness-cover-2023.pdf",
+    "type": "industry association (snippet; fetch blocked)",
+    "used_for": "industry model CI definitions, adoption deadlines"
+   },
+   {
+    "url": "https://www.financial-ombudsman.org.uk/businesses/complaints-deal/insurance/medical-insurance/critical-illness-cover",
+    "type": "ombudsman (snippet)",
+    "used_for": "FOS applies ABI guide in force at sale"
+   },
+   {
+    "url": "https://www.mediation-assurance.org/wp-content/uploads/2025/08/Rapport-annuel-2024-LMA_Communique-de-presse.pdf",
+    "type": "ombudsman (snippet; fetch blocked)",
+    "used_for": "36,537 referrals 2024; branch split; recommendations on definitions and exclusions"
+   },
+   {
+    "url": "https://www.planetecsca.fr/actualites/environnement-courtage-assurances/la-mediation-de-lassurance-en-2024-une-annee-record-et-des-avancees-majeures/",
+    "type": "press / broker association (snippet)",
+    "used_for": "LMA recommendations followed; harmonisation of cancellation"
+   },
+   {
+    "url": "https://selectra.info/assurance/comprendre/mediateur",
+    "type": "consumer site (snippet, weak)",
+    "used_for": "mediator opinions followed >99%; 55% satisfaction; 7-month processing"
+   },
+   {
+    "url": "https://covelia.fr/reglementation/mediateur-assurance-recours/",
+    "type": "consumer/broker site (snippet, weak)",
+    "used_for": "~70% of recommendations followed 2024"
+   },
+   {
+    "url": "https://www.kff.org/patient-consumer-protections/claims-denials-and-appeals-in-aca-marketplace-plans-in-2024/",
+    "type": "academic/policy institute (snippet; fetch blocked)",
+    "used_for": "19% in-network, 37% OON denials; <1% appealed; 66% upheld"
+   },
+   {
+    "url": "https://www.hfma.org/fast-finance/aca-marketplace-plans-payment-denial/",
+    "type": "industry association press (snippet)",
+    "used_for": "denial reason shares: other 36%, administrative 25%, PA 9%, medical necessity 5%"
+   },
+   {
+    "url": "https://www.beckerspayer.com/research-analysis/10-aca-insurers-with-the-highest-claim-denial-rates-kff/",
+    "type": "press (snippet)",
+    "used_for": "denial reason shares: other 34%, administrative 18%, excluded 16%, PA 9%, med necessity 6%"
+   },
+   {
+    "url": "https://www.kff.org/medicare/medicare-advantage-insurers-made-nearly-53-million-prior-authorization-determinations-in-2024/",
+    "type": "academic/policy institute (snippet)",
+    "used_for": "53M PA determinations; ~8% denied; 11.5% appealed; 80.7% overturned"
+   },
+   {
+    "url": "https://oig.hhs.gov/reports/all/2022/some-medicare-advantage-organization-denials-of-prior-authorization-requests-raise-concerns-about-beneficiary-access-to-medically-necessary-care/",
+    "type": "inspector-general (snippet; fetch blocked)",
+    "used_for": "13% of PA denials met Medicare rules; 18% payment denials improper"
+   },
+   {
+    "url": "https://natlawreview.com/article/medicare-advantage-oig-report-finds-improper-denials",
+    "type": "legal press (snippet)",
+    "used_for": "2018 OIG: 75% overturned on appeal, 1% appealed"
+   },
+   {
+    "url": "https://www.cms.gov/newsroom/fact-sheets/2024-medicare-advantage-and-part-d-final-rule-cms-4201-f",
+    "type": "regulator (snippet)",
+    "used_for": "internal coverage criteria public/evidence-based; UM committee annual review"
+   },
+   {
+    "url": "https://www.mcg.com/blog/cms-final-rule-2024-medicare-advantage-4201-f/",
+    "type": "vendor (snippet)",
+    "used_for": "interpretation of CMS-4201-F requirements"
+   },
+   {
+    "url": "https://www.aetna.com/health-care-professionals/clinical-policy-bulletins.html",
+    "type": "insurer documentation (snippet; fetch blocked)",
+    "used_for": "CPBs define policy; determinations case by case; appeals"
+   },
+   {
+    "url": "https://static.cigna.com/assets/chcp/pdf/coveragePolicies/medical/mm_0604_coveragepositioncriteria_labtesting.pdf",
+    "type": "insurer documentation (snippet)",
+    "used_for": "example numbered, versioned coverage policy"
+   },
+   {
+    "url": "https://bebee.com/us/jobs/medical-director-390-cigna-evernorth-services-inc-arizona-work-at-home--techmap_us_26010306",
+    "type": "job listing (snippet, weak)",
+    "used_for": "medical director discretion; monthly policy updates; inter-rater reliability testing"
+   },
+   {
+    "url": "https://www.ajmc.com/view/caqh-index-finds-20-billion-in-cost-savings-opportunities",
+    "type": "press on industry association index (snippet)",
+    "used_for": "$20bn savings from electronic transactions"
+   },
+   {
+    "url": "https://mirrahealthcare.com/insights/maximizing-efficiency-and-savings-the-strategic-guide-to-claims-adjudication-software-for-health-plans",
+    "type": "vendor (snippet, weak)",
+    "used_for": "$15-25 per manual intervention; $7-12 admin per claim"
+   },
+   {
+    "url": "https://opsdog.com/products/claims-auto-adjudication-rate",
+    "type": "vendor (snippet, weak)",
+    "used_for": "auto-adjudication definition/benchmark"
+   },
+   {
+    "url": "https://www.bls.gov/ooh/business-and-financial/claims-adjusters-appraisers-examiners-and-investigators.htm",
+    "type": "government statistics (snippet; fetch blocked)",
+    "used_for": "365,300 jobs 2024; median $76,790"
+   },
+   {
+    "url": "https://content.naic.org/sites/default/files/industry-snapshot-2024-q1.pdf",
+    "type": "regulator (snippet)",
+    "used_for": "Q1 2024 LAE $19.8bn vs NPE $216.8bn"
+   },
+   {
+    "url": "https://www.insurancethoughtleadership.com/claims/claims-leakage-costs-insurers-billions-annually",
+    "type": "industry press/vendor (snippet, weak)",
+    "used_for": "leakage 5-10% benchmark"
+   },
+   {
+    "url": "https://vcasoftware.com/claims-leakage/",
+    "type": "vendor (snippet, weak)",
+    "used_for": "hard vs soft leakage causes incl. misinterpreted exclusions"
+   },
+   {
+    "url": "https://www.perceptive-analytics.com/reducing-claims-leakage-where-to-start-and-what-to-measure/",
+    "type": "vendor (snippet, weak)",
+    "used_for": "leakage audit method 200-500 closed claims"
+   },
+   {
+    "url": "https://www.assured.com/blog/straight-through-processing-insurance",
+    "type": "vendor (snippet, weak)",
+    "used_for": "STP <10%; 60% no STP"
+   },
+   {
+    "url": "https://www.neudesic.com/blog/ai-driven-stp-auto-insurance-claims/",
+    "type": "vendor (snippet, weak)",
+    "used_for": "leaders ~35% STP on eligible types"
+   },
+   {
+    "url": "https://www.insurancejournal.com/news/southeast/2024/05/13/773866.htm",
+    "type": "press (snippet)",
+    "used_for": "Heritage $1m fine"
+   },
+   {
+    "url": "https://floir.gov/docs-sf/property-casualty-libraries/market-regulation/2024/heritage-insurance-company-3-11-2024.pdf",
+    "type": "regulator (snippet; fetch blocked)",
+    "used_for": "42.9% of reviewed claims lacked adjuster identification"
+   },
+   {
+    "url": "https://www.ncdoi.gov/documents/market-regulations/members-and-universal-insurance-company-2024/open",
+    "type": "regulator (snippet)",
+    "used_for": "4.0% error ratio deductible reimbursement"
+   },
+   {
+    "url": "https://www.faia.com/resources-(1)/legislative-summaries/legislative-summaries/2023-legislative-summary/general-insurance/insurer-accountability-claims-handling-manuals",
+    "type": "industry association (snippet)",
+    "used_for": "Florida claims manuals required and reviewable"
+   },
+   {
+    "url": "https://www.propertyinsurancecoveragelaw.com/blog/adjuster-authority-in-insurance-claims/",
+    "type": "legal blog (snippet; fetch blocked)",
+    "used_for": "authority matrices; escalation to supervisor/committee"
+   },
+   {
+    "url": "https://findajob.dwp.gov.uk/details/17788656",
+    "type": "government job board (snippet)",
+    "used_for": "Technical Claims Lead as referral point for coverage/policy interpretation"
+   },
+   {
+    "url": "https://www.butlersnow.com/news-and-events/my-opinion-about-insurance-coverage-opinions",
+    "type": "law firm (snippet)",
+    "used_for": "coverage opinions mostly casualty/liability; resource drain"
+   },
+   {
+    "url": "https://www.policyholderpulse.com/estopping-insurers-inconsistent-coverage-positions/",
+    "type": "law firm (snippet)",
+    "used_for": "prior interpretations/estoppel risk of inconsistent positions"
+   },
+   {
+    "url": "https://www.nationalunderwriter.com/fcin",
+    "type": "vendor (snippet; fetch blocked)",
+    "used_for": "FC&S coverage Q&A database and Ask the Experts"
+   },
+   {
+    "url": "https://assets.lloyds.com/media/722c1caa-960f-43c9-a210-3635038f25d7/Guidance-on-the-Lloyds-Claims-Lead-Arrangements-0523.pdf",
+    "type": "market body (snippet; fetch blocked)",
+    "used_for": "leads bind followers; >85% single lead; SCAP \u2264\u00a3250k"
+   },
+   {
+    "url": "https://www.guidewire.com/resources/blog/developers/introducing-guidewire-rules-service-in-olos",
+    "type": "vendor (snippet; fetch blocked)",
+    "used_for": "Rules Service centralised low-code rules"
+   },
+   {
+    "url": "https://www.duckcreek.com/product/claims-management-software/",
+    "type": "vendor (snippet)",
+    "used_for": "configurable authorization rules, routing, low-code"
+   },
+   {
+    "url": "https://www.afca.org.au/annual-review-general-insurance-complaints",
+    "type": "ombudsman (snippet; fetch blocked)",
+    "used_for": "34,231 complaints; 31,432 closed; A$390.9m; 44% resolved at referral; 30% decisions for complainant"
+   },
+   {
+    "url": "https://www.afca.org.au/media/2140/download",
+    "type": "ombudsman (snippet)",
+    "used_for": "AFCA Approach to GI claims handling July 2025"
+   },
+   {
+    "url": "https://insurancecode.org.au/app/uploads/2023/07/CGC-Thematic-Inquiry-into-Making-Better-Claims-Decisions.pdf",
+    "type": "industry code monitor (snippet; fetch blocked)",
+    "used_for": "over half of IDR overturns were wear-and-tear/maintenance exclusion denials"
+   },
+   {
+    "url": "https://insurancecode.org.au/resources/cgc-thematic-inquiry-actioning-insights-from-disputes-about-claim-denials-to-improve-code-compliance/",
+    "type": "industry code monitor (title only)",
+    "used_for": "existence of follow-on inquiry on feeding dispute insights back"
+   },
+   {
+    "url": "https://www.sec.gov/Archives/edgar/data/0000005513/000119312510042716/d10k.htm",
+    "type": "company filing (snippet; fetch blocked)",
+    "used_for": "Unum reassessment 41.7% reversed, $676.2m"
+   },
+   {
+    "url": "https://www.maine.gov/pfr/insurance/sites/maine.gov.pfr.insurance/files/inline-files/unum_exhibit-1_a1.pdf",
+    "type": "regulator (snippet; fetch blocked)",
+    "used_for": "RSA required claims procedure changes and governance"
+   },
+   {
+    "url": "https://www.erisa-claims.com/blog/unums-reveral-rate-in-reassessment.cfm",
+    "type": "claimant law firm (snippet, weak)",
+    "used_for": "45.1% group LTD reversal figure"
+   },
+   {
+    "url": "https://gitnux.org/disability-insurance-industry-statistics/",
+    "type": "aggregator (snippet, weak)",
+    "used_for": "LTD denial 15.3% 2022; approval 84.7% 2023"
+   },
+   {
+    "url": "https://www.insurancebusinessmag.com/uk/news/claims/consumer-advocacy-group-urges-insurer-crackdown-on-claims-failures-498282.aspx",
+    "type": "press (snippet)",
+    "used_for": "8,500 FOS decisions analysed"
+   },
+   {
+    "url": "https://apify.com/spookyweb/uk-fos-decisions/examples/insurance-complaint-decisions",
+    "type": "vendor/tool (snippet)",
+    "used_for": "FOS decisions are scrapable \u2014 cheap access to historical cases"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/CatalaLang/catala/master/README.md",
+    "type": "open-source project (fetched)",
+    "used_for": "prior art: lawyer-programmer pairing to codify law; not insurance-specific"
+   }
+  ],
+  "blocked_urls": [
+   "https://www.financial-ombudsman.org.uk/businesses/resolving-complaint/our-insight/annual-complaints-data-and-insight-2025-26",
+   "https://www.mediation-assurance.org/wp-content/uploads/2025/08/Rapport-annuel-2024-LMA_Communique-de-presse.pdf",
+   "https://www.kff.org/patient-consumer-protections/claims-denials-and-appeals-in-aca-marketplace-plans-in-2024/",
+   "https://www.guidewire.com/resources/blog/developers/introducing-guidewire-rules-service-in-olos",
+   "https://www.bls.gov/ooh/business-and-financial/claims-adjusters-appraisers-examiners-and-investigators.htm",
+   "https://www.regulationtomorrow.com/2025/07/fos-annual-complaints-data-and-insight-2024-25/",
+   "https://www.planetecsca.fr/actualites/environnement-courtage-assurances/la-mediation-de-lassurance-en-2024-une-annee-record-et-des-avancees-majeures/",
+   "https://www.fca.org.uk/publication/multi-firm-reviews/motor-insurance-claims-analysis-multi-firm-review-2025.pdf",
+   "https://oig.hhs.gov/reports/all/2022/some-medicare-advantage-organization-denials-of-prior-authorization-requests-raise-concerns-about-beneficiary-access-to-medically-necessary-care/",
+   "https://www.ey.com/en_us/insights/insurance/claims-litigation",
+   "https://www.lafinancepourtous.com/2025/09/04/mediation-de-lassurance-forte-hausse-des-dossiers-deposes-en-2024/",
+   "https://www.afca.org.au/annual-review-general-insurance-complaints",
+   "https://assets.lloyds.com/media/722c1caa-960f-43c9-a210-3635038f25d7/Guidance-on-the-Lloyds-Claims-Lead-Arrangements-0523.pdf",
+   "https://www.erisa-claims.com/blog/unums-reveral-rate-in-reassessment.cfm",
+   "https://www.athenium.com/2019/02/01/insurance-claims-leakage-studies/",
+   "https://www.alm.com/press_release/alm-launches-fcs-expert-coverage-interpretation/",
+   "https://www.propertyinsurancecoveragelaw.com/blog/adjuster-authority-in-insurance-claims/",
+   "https://www.claimspages.com/news/claims-audit-programs-fail-without-systems-that-preserve-expertise-20260323/",
+   "https://www.aetna.com/health-care-professionals/clinical-policy-bulletins.html",
+   "https://floir.gov/docs-sf/property-casualty-libraries/market-regulation/2024/heritage-insurance-company-3-11-2024.pdf",
+   "https://www.maine.gov/pfr/insurance/sites/maine.gov.pfr.insurance/files/inline-files/unum_exhibit-1_a1.pdf",
+   "https://www.sec.gov/Archives/edgar/data/0000005513/000119312510042716/d10k.htm",
+   "https://docs.guidewire.com/cloud/cc/202507/cloudapibf/cloudAPI/topics/111-CCFNOL/05-exposures/c_overview-of-exposures-in-ClaimCenter.html",
+   "https://www.abi.org.uk/globalassets/files/publications/public/protection/abi-guide-to-minimum-standards-for-critical-illness-cover-2023.pdf",
+   "https://lmalloyds.com/wp-content/uploads/2025/08/CoLead-Binder-Claims-Market-Guidance-Version-2-Published-August-2025.pdf",
+   "https://www.insurancejournal.com/news/southeast/2024/05/13/773866.htm",
+   "https://www.cms.gov/cciio/resources/fact-sheets-and-faqs/appealing-health-plan-decisions",
+   "https://en.wikipedia.org/wiki/Financial_Ombudsman_Service",
+   "https://www.ncdoi.gov/documents/market-regulations/members-and-universal-insurance-company-2024/open",
+   "https://www.govinfo.gov/content/pkg/GAOREPORTS-GAO-03-433/html/GAOREPORTS-GAO-03-433.htm",
+   "https://www.inc-conso.fr/content/assurance/mediation-de-lassurance-publication-du-rapport-dactivite-2023",
+   "https://www.lloyds.com/market-resources/claims-for-market-participants/single-claims-agreement-party",
+   "https://www.nationalunderwriter.com/fcin",
+   "https://www.caqh.org/hubfs/43908627/drupal/2024-01/2023_CAQH_Index_Report.pdf",
+   "https://insurancecode.org.au/app/uploads/2023/07/CGC-Thematic-Inquiry-into-Making-Better-Claims-Decisions.pdf",
+   "https://handbook.fca.org.uk/handbook/disp1/disp1s3",
+   "https://www.fca.org.uk/data/general-insurance-value-measures-data-2024",
+   "https://www.cms.gov/newsroom/fact-sheets/2024-medicare-advantage-and-part-d-final-rule-cms-4201-f",
+   "https://www.kff.org/medicare/medicare-advantage-insurers-made-nearly-53-million-prior-authorization-determinations-in-2024/",
+   "https://github.com/search (403) and api.github.com (403/502/503 via MCP) \u2014 GitHub search unusable; only raw.githubusercontent.com reachable"
+  ],
+  "domain_assessment": "Evidence quality for the cluster is moderate overall, and the direction is mixed-to-negative for a standalone product. Method caveat: 27 WebSearch queries were run before the session budget was exhausted; ~40 fetch attempts across regulator, ombudsman, court, industry-association, government and vendor domains were all blocked by the egress proxy except raw.githubusercontent.com, so every number is from search snippets (URL and source type recorded) and could not be verified against the primary document.\n\nWhat the evidence supports: (1) Recurring classes of coverage ambiguity genuinely exist and are named by authorities \u2014 wear-and-tear/maintenance exclusions (CGC: over half of IDR overturns), non-damage BI trigger wordings (FCA v Arch: ~700 wordings, 370,000 policyholders), 'accident'/'invalidit\u00e9' definitions and 'exclusions floues' (M\u00e9diation de l'Assurance), CI condition definitions (ABI). (2) A settlement loop exists and is even regulator-mandated: DISP 1.3.3 root-cause analysis, FCA/FOS Wider Implications Framework, LMA recommendations followed >99% per case, CMS-4201-F public coverage criteria with annual UM-committee review, Unum's regulator-imposed claims standards. (3) Institutional owners exist inside insurers (authority matrices, Technical Claims Leads, Lloyd's claims leads, medical directors) and a commercial precedent corpus already sells (FC&S 'Ask the Experts').\n\nWhat the evidence says against: In the best-quantified workflow (US health), interpretive denials are 5-6% of denials versus ~60% administrative/other/excluded (H1), and interpretations are already captured as versioned, published, regulator-governed medical policies (H3), with clinicians legally required in the loop (H4). In P&C, motor coverage is ~99% accepted so disputes are valuation/negotiation (F/B); STP <10% points to evidence and valuation bottlenecks; and the prospective settlements that matter were made by courts, regulators, ombudsmen and industry bodies, then encoded into manuals, wordings and training \u2014 the insurer is a rule-taker more than a rule-settler. The CGC's repeated wear-and-tear overturns are the single best sign that insurers fail to apply a settled class prospectively, but that failure is at least as plausibly incentive-driven as knowledge-driven, and an internal precedent ledger does not fix incentives. No source quantified the share of claims escalated for a coverage question, its recurrence within one insurer, or the cost per referral \u2014 the parameters that decide the hypothesis remain unmeasured.\n\nRecommendation for this cluster: health claims \u2014 negative. Life/disability \u2014 weak (low volume, medical classification dominates, discretion retained). P&C coverage determination and the complaints/RCA loop \u2014 uncertain, and the only places worth a base-rate experiment. The cheapest experiment is not inside an insurer: classify 300-500 published FOS (or AFCA/LMA) insurance decisions and, ideally, one insurer's technical-referral log, into the brief's eight categories to measure how often the referred ambiguity is (7) previously settled or (8) settleable prospectively; the CGC wear-and-tear result predicts a non-trivial share of (7), which would be the first real support for the thesis in this domain. Interviews should target Technical Claims Leads / Heads of Technical Claims at UK home insurers and Lloyd's syndicates, and ask for the referral log, the QA closed-file review categories, and how a referral outcome is written back into guidelines or ClaimCenter rules. Killing answers: referrals are <2% of claims; outcomes are already written into the claims manual/rules within a release cycle; or referrals are dominated by valuation and evidence rather than wording."
+ },
+ "verification": {
+  "domain": "insurance-claims (P&C coverage adjudication; US health claims and prior authorisation; life/CI/disability; complaints and ombudsman loop) \u2014 ADVERSARIAL VERIFICATION. Method caveat: this verifier had 0 WebSearch calls available (session budget 200/200 already consumed) and every attempted fetch of the finder's sources (kff.org, oig.hhs.gov, cms.gov, fca.org.uk, financial-ombudsman.org.uk, afca.org.au, insurancecode.org.au, mediation-assurance.org, abi.org.uk, sec.gov, bls.gov, naic.org, hfma.org, beckerspayer.com, natlawreview.com, docs.guidewire.com, duckcreek.com, insurancejournal.com, web.archive.org, and 30+ others) was refused at the proxy CONNECT stage (403 policy denial); the GitHub MCP search returned 502/503. The only reachable stores were raw.githubusercontent.com and one AHIP S3 bucket (listing denied). Re-checks therefore rest on (a) one locally cached primary document, the AHIP survey 'Prior Authorization: A Critical Safeguard in Patient Care / Improving Prior Authorization for Patients & Providers', June 2025 (industry association; local copy /tmp/claude-0/-home-user-sophon/03144a04-0e98-54e7-9d2c-78cb7b16e172/scratchpad/ahip_pa.pdf, text at ahip_pa.txt; origin host ahip.org blocked), (b) internal consistency between the finder's own numbers, and (c) this verifier's recall of the primaries, which is labelled 'recall, unverified' wherever used. No number below was newly fetched from the web.",
+  "refuted": [
+   {
+    "claim": "P&C: 'H repeatable ambiguity settled prospectively 5-10%' of human review, and category C 'interpretation of an existing rule 10-20%'.",
+    "why": "The shares are derived from ombudsman/IDR issue categories (FOS, AFCA, CGC), i.e. from the disputed tail, then applied to the whole human-review pool. The finder's own data shows the tail is tiny: FCA value measures put claims complaints at 7-13% of home claims and 0-6% for other products (https://www.fca.org.uk/data/general-insurance-value-measures-data-2024, regulator, snippet), FOS receives ~2,800 motor complaints a quarter against a UK motor claims population in the millions (https://www.financial-ombudsman.org.uk/businesses/resolving-complaint/our-insight/quarterly-complaints-data-q1-2025-26, ombudsman, snippet), and UK motor claims are ~99% accepted (same FCA source). Meanwhile the finder's evidence that >90% of P&C claims are human-touched comes from vendor STP blogs (assured.com, neudesic.com) that describe process/valuation/repair-management touches, not coverage questions. Interpretation-driven touches as a share of ALL human touches are therefore low single digits at most, and H (the subset that is both recurrent and settleable inside the insurer) cannot be supported at 5-10%. No source quantifies coverage referrals; the finder's 'not_found' list admits this. Corrected H estimate: at most 1-2% of human touches in P&C, with no direct measurement (verifier estimate)."
+   },
+   {
+    "claim": "CGC thematic inquiry finding (over half of IDR overturns were wear-and-tear/maintenance exclusion denials) is 'evidence that the SAME exclusion class is repeatedly misapplied and only corrected case-by-case on appeal, i.e. the loop is NOT closed prospectively inside insurers'.",
+    "why": "Category error. Whether damage is gradual deterioration or a sudden insured event is a per-property causation question decided on builder/engineer/hydrology evidence (category B), and IDR overturns in Australian home claims typically follow a second expert report obtained at dispute stage (category A: missing/inadequate evidence at first decision). The meaning of the exclusion class itself is already prospectively settled externally: standard policy wording, AFCA's published approach documents (https://www.afca.org.au/media/2140/download, ombudsman, snippet) and, in the UK, FOS's long-published 'storm damage' approach (three questions: were there storm conditions, is the damage consistent with storm, was storm the main cause; FOS business guidance, recall, unverified). The underlying 'over half' figure itself could not be verified (https://insurancecode.org.au/app/uploads/2023/07/CGC-Thematic-Inquiry-into-Making-Better-Claims-Decisions.pdf blocked; finder also had snippet only). What recurs is evidence quality and incentive, not unsettled meaning, so this item supports H1/B and the incentive reading, not H."
+   },
+   {
+    "claim": "FCA v Arch is the 'paradigm of a settlement applied across many later similar cases' supporting the settlement-loop thesis in P&C.",
+    "why": "The numbers (700 policy types, >60 insurers, ~370,000 policyholders, 21 lead wordings; https://www.fca.org.uk/news/press-releases/result-fca-business-interruption-test-case, regulator) are consistent with this verifier's recall of the Jan 2021 FCA press release, but the episode is a one-off pandemic-scale event (category G at market level), settled by the Supreme Court on the FCA's application, and the industry's response was to change the rule (communicable-disease exclusions added to BI wordings from 2020-21; recall, unverified) rather than to capture an interpretation for reuse. It shows that when a class is large enough to matter, the settler is a court and the fix is a wording change: evidence for external settlement and H3 (rules updated), not for an internal precedent ledger."
+   },
+   {
+    "claim": "Classifying published FOS/AFCA/LMA decisions would measure 'how often the referred ambiguity is (7) previously settled or (8) settleable prospectively' and is the best site for the brief's base-rate experiment.",
+    "why": "Published ombudsman decisions are a self-selected sample of escalated disputes, roughly 0.1% of claims (e.g. FOS motor complaints of a few thousand per quarter versus millions of motor claims; the finder's own FCA and FOS figures). Classifying them yields category shares WITHIN disputes, which the brief explicitly warns against treating as the addressable pool (section 5, 11). It cannot produce the base rate the brief asks for (share of all decisions that are 7 or 8) and will overstate interpretive share by construction. The experiment is cheap but answers a different question; the only data that answers the brief's question is an insurer's technical-referral log, which the finder also says was not found."
+   }
+  ],
+  "weakened": [
+   {
+    "claim": "ACA marketplace 2024 in-network denial reasons: 'other' 34-36%, administrative 18-25%, excluded service 16%, lack of PA/referral 9%, medical necessity 5-6% (KFF via HFMA and Becker's).",
+    "why": "The two press snippets disagree (36/25/9/5 vs 34/18/16/9/6). The second set exactly matches, by this verifier's recall, KFF's report on 2023 data published January 2025 ('Claims Denials and Appeals in ACA Marketplace Plans in 2023': other 34%, administrative 18%, excluded service 16%, lack of prior authorisation or referral 9%, medical necessity 6%, in-network denial 19%, <1% appealed, 56% of appealed denials upheld). The finder appears to have blended the 2023 and 2024 vintages; note also '66% upheld' (finder) vs 56% (2023 recall) is unreconciled. Two further caveats the finder omitted: KFF states denial reasons are reported by only a subset of insurers and 'other' is a catch-all, and the split is of DENIALS (most generated automatically by claim edits), not of human reviews. Direction survives (medical necessity is a small share) but the numbers should be cited as approximate and vintage-uncertain. Primary blocked: https://www.kff.org/patient-consumer-protections/claims-denials-and-appeals-in-aca-marketplace-plans-in-2024/."
+   },
+   {
+    "claim": "MA 2024: ~53M PA determinations, ~8% denied, 11.5% appealed, 80.7% overturned; '80.7% overturn on appeal implies large volumes of reversible initial decisions'.",
+    "why": "Figures are plausible and consistent with the prior year of the same KFF series as recalled (2023 data, published Jan 2025: ~50M determinations, 6.4% denied, 11.7% of denials appealed, 81.7% overturned) but could not be fetched. The inference is the weak part: OIG's 2018 report (OEI-09-16-00410, recall) and KFF both note that appeals frequently succeed because providers submit additional documentation, i.e. category A, and the appealed population is self-selected (~11-12% of denials). Overturn rates are not evidence of interpretive inconsistency. Cross-check from the locally cached AHIP June 2025 survey (industry association, 21 MA plans = 42% of MA enrolment): 'approximately 98% of medical services are approved' after final review in MA and initial denials 'are often a result of incomplete information from providers' \u2014 self-serving, but it points the same way (A dominance)."
+   },
+   {
+    "claim": "FCA value measures 2024: home claims acceptance 62-71% with firm range 50-55% to 95-100%; used as a signal of coverage-dispute intensity.",
+    "why": "Unverified (fca.org.uk and insurancebusinessmag.com blocked). More importantly the FCA itself (as the finder notes) warns that firms record 'claims' inconsistently; non-acceptance includes withdrawn, below-excess and not-pursued claims. Acceptance rate is not a coverage-interpretation measure and cannot be mapped to category C or H."
+   },
+   {
+    "claim": "LMA: insurers follow mediator opinions in >99% of cases; ~70% of general recommendations followed in 2024; 36,537 referrals; 7-month processing.",
+    "why": "36,537 and the branch split are plausible against the LMA's reported growth trajectory (recall) but the primary was blocked. The >99% and 70% figures come from selectra.info and covelia.fr (consumer/broker marketing sites) and conflict with each other because they measure different things (per-case avis vs non-binding general recommendations). Neither is binding: the LMA's avis are followed voluntarily and its recommendations are advocacy. Downgrade both percentages to weak/unknown; the settlement-loop item should read 'prospective: no at case level; recommendations advisory'."
+   },
+   {
+    "claim": "AFCA 2024/25: 34,231 GI complaints, 31,432 closed, A$390.9m compensation, 44% resolved at referral.",
+    "why": "Unverifiable (afca.org.au blocked). By this verifier's recall AFCA's total compensation across ALL product lines in recent years has been in the low-to-mid A$300m range, so a general-insurance-only A$390.9m looks high and may be an all-products figure or a different metric. Treat as unknown until fetched. '44% resolved by insurers at referral' includes goodwill and commercial settlements, not reversals of interpretation."
+   },
+   {
+    "claim": "Unum reassessment: 41.7% of reassessed claims reversed in whole or part, ~$676.2m additional benefits (Unum FY2009 10-K).",
+    "why": "Consistent with recall of Unum's 10-K disclosure but unfetched (sec.gov blocked). The finder already flags it as 20 years old and incentive-driven; add that the reassessment applied new procedures retroactively to closed claims, which is remediation, not a prospective settlement loop, and that the multi-state RSA was a one-off regulator-forced event. It cannot be generalised to the industry (brief section 11)."
+   },
+   {
+    "claim": "US claims-handling expense ~$80bn/yr (annualised NAIC Q1 2024 LAE $19.8bn) as evidence of budget.",
+    "why": "NAIC figures unverified (content.naic.org blocked) but plausible. Loss adjustment expense includes defence and cost-containment (litigation) as well as adjusting; adjuster labour is a fraction. Budget for claims platforms is real but, as the finder itself says, captured by Guidewire/Duck Creek; the number does not size an interpretation-capture market."
+   },
+   {
+    "claim": "Straight-through processing <10% industry-wide, ~60% of insurers report no STP, leaders ~35% (assured.com, neudesic.com).",
+    "why": "Vendor blogs with no stated methodology, presented next to regulator numbers. Even taken at face value, non-STP describes inspections, valuation, repair networks, fraud screening and documentation, not coverage interpretation. Should not be used to size the human-review pool for this thesis."
+   },
+   {
+    "claim": "FCA-FOS Wider Implications Framework as a prospective, reusable sector-level settlement loop.",
+    "why": "The framework exists (MoU, snippet) but by design handles a handful of issues per year (e.g. motor finance commission, BI test case; recall). It is a policy-escalation mechanism at industry scale, not an operational loop that an insurer's claims team could feed or consume at claim volume. 'Prospective: yes' is technically true; relevance to the product is near zero."
+   },
+   {
+    "claim": "DISP 1.3.3R root-cause analysis obligation as a mandated settlement loop.",
+    "why": "It is a compliance obligation whose output is management information, training and process/product change; the finder concedes 'no evidence of machine-executable capture'. FCA's own good-practice review (finder's source) found firms varied in doing it well. It evidences that the regulator wants a loop, not that one operates at decision level. Keep as context, not as loop evidence."
+   },
+   {
+    "claim": "Guidewire Rules Service and Duck Creek authorization rules as an 'existing codification path' with no precedent capture.",
+    "why": "Vendor pages, both blocked. These are generic rule-authoring layers; they neither prove nor disprove precedent capture. By recall (unverified), ClaimCenter carries a 'coverage in question' flag on claims/exposures and activity patterns for referral, which is a workflow marker rather than a ledger. The honest statement is 'unknown either way', not 'existing solution'."
+   },
+   {
+    "claim": "Health: 'each manual intervention adds ~$15-25; plans spend ~$7-12 per claim in admin' and CAQH $20bn savings.",
+    "why": "The per-intervention figures are from a vendor blog (mirrahealthcare.com) and the CAQH figure concerns electronic-transaction adoption. Both describe transaction cost, not interpretation cost; they should not appear under 'economic pain' for this hypothesis."
+   }
+  ],
+  "confirmed": [
+   {
+    "claim": "US health: prior authorisation and medical-necessity review is a small, already-codified, clinician-gated slice of claims volume (H1, H3, H4 all supported).",
+    "evidence": "Locally cached primary (industry association, self-reported, 32 commercial plans = 51% of commercial enrolment, 21 Medicaid, 21 MA plans): 'approximately 96% of prescription medication claims and 93% of medical service claims are not subject to prior authorization review' (commercial; MA 92%/93%); 'approximately 97% of medical services are approved' (commercial), 98% (MA); 'Approximately 20% of prior authorizations for medical services are approved in real-time'; 'Cases in which prior authorization requests are initially denied ... are often a result of incomplete information from providers ... average final denial rates for Commercial plans of only 3% for medical services'; 'All responding health plans (100%) reported that AI or algorithms without clinician or practitioner review are not used to deny prior authorization requests that involve medical necessity or clinical considerations.' AHIP, 'Improving Prior Authorization for Patients & Providers', June 2025, /tmp/claude-0/-home-user-sophon/03144a04-0e98-54e7-9d2c-78cb7b16e172/scratchpad/ahip_pa.txt lines 52-54, 96-100, 150-171 (ahip.org blocked, so origin URL not confirmed). Consistent in direction with the finder's KFF and OIG figures."
+   },
+   {
+    "claim": "OIG 2022: 13% of sampled MA prior-authorisation denials met Medicare coverage rules; 18% of payment denials met Medicare coverage and MAO billing rules; causes included MAO clinical criteria beyond Medicare rules and requests for unnecessary documentation.",
+    "evidence": "Consistent with this verifier's recall of OEI-09-18-00260 (sample of 250 PA denials and 250 payment denials from 1-7 June 2019 across the 15 largest MAOs). Primary blocked (https://oig.hhs.gov/reports/all/2022/...). The finder's classification of this as category D (conflict of authorities) later resolved by regulation (CMS-4201-F) is sound and cuts against an insurer-internal loop."
+   },
+   {
+    "claim": "OIG 2018: MAOs overturned 75% of their own PA and payment denials on appeal in 2014-16; only ~1% of denials were appealed.",
+    "evidence": "Consistent with recall of OEI-09-16-00410; cited by the finder via natlawreview.com (blocked). Note OIG attributed overturns partly to additional documentation, which weakens the 'inconsistent interpretation' reading (see weakened list)."
+   },
+   {
+    "claim": "FOS received 305,726 new complaints in 2024/25 across all financial products.",
+    "evidence": "Consistent with recall of the FOS annual complaints data 2024/25 (https://www.financial-ombudsman.org.uk/data-insight/our-insight/annual-complaints-data-insight-2024-25, ombudsman, blocked). The 2025/26 figure (214,600, 30% upheld) post-dates what this verifier can check and is left as finder-sourced."
+   },
+   {
+    "claim": "Interpretive settlements in this cluster are made predominantly by external authorities (courts, regulators, ombudsmen, industry bodies) and then encoded as wording, manuals, criteria documents and training; no reachable evidence of insurer-internal executable precedent capture.",
+    "evidence": "Every settlement-loop item the finder lists with 'prospective: yes' has an external settler: FCA v Arch (Supreme Court), ABI CI guide (industry association), DISP 1.3.3R and Wider Implications (regulator), CMS-4201-F (regulator), Unum RSA (regulators), Aetna/Cigna policies (insurer, but published clinical-policy documents, i.e. rules not case precedents). This verifier adds from recall (unverified): Australia's standard definition of 'flood' inserted into the Insurance Contracts Regulations in 2012 after the 2011 Queensland floods, settling the largest recurring causation class by regulation; and FOS's published storm-damage approach. The pattern is 'rule change after external settlement', i.e. H3 in its external form."
+   },
+   {
+    "claim": "Health verdict 'negative' and the reasoning (interpretive denials are a small share; interpretations already codified; clinicians legally required).",
+    "evidence": "Confirmed and strengthened by the AHIP document above and by regulation the finder missed (recall, unverified): California SB 1120 (2024, effective 1 Jan 2025) requires a licensed physician to make medical-necessity denials and limits AI use in utilisation review; CMS's February 2024 FAQ on the use of algorithms in MA coverage decisions; CMS-0057-F (Jan 2024) imposes 72-hour/7-day PA decision deadlines and public PA metrics from 2026. All keep humans in the loop after precedent (H4)."
+   }
+  ],
+  "manual_review_conflated_with_repeatable_ambiguity": [
+   "P&C: '>90% of claims are human-touched' (vendor STP blogs) used as the pool from which C and H shares are estimated; the touches are inspection, valuation, repair management, fraud screening and documentation, not coverage interpretation.",
+   "P&C: ombudsman and IDR issue categories (FOS motor: claim value, cancellation, delay; AFCA: delay, amount, denial-exclusion 11% of a subset) used to estimate category shares for the whole claims population, when disputes are ~0.1-1% of claims and FCA value measures show complaints per claim of 0-13%.",
+   "P&C: CGC wear-and-tear overturns treated as a settled class being misapplied (H); the class is externally settled and the recurring work is per-property causation evidence (B) and second expert reports (A).",
+   "P&C: FCA home acceptance rates (62-71%, firm range 50-100%) read as coverage-dispute intensity; the FCA flags inconsistent claim recording and declines include withdrawn/below-excess claims.",
+   "Health: KFF denial-reason split treated as a review-reason split; most denials are automated edits (administrative, excluded service, missing PA) with no human review at all, and 'other' (34-36%) is an opaque catch-all reported by a subset of insurers.",
+   "Health: 80.7% appeal overturn rate treated as evidence of reversible interpretive decisions; OIG/KFF attribute overturns substantially to additional documentation (A) and the appealed set is self-selected (11-12% of denials).",
+   "Health: AHIP (cached primary) shows only ~7% of medical claims are subject to PA and ~97-98% of those are approved, so the medical-necessity review pool is a few percent of claims, and the residual denials are dominated by 'incomplete information' (A) by the industry's own account.",
+   "Life/LTD: 'essentially 100% human-assessed' presented as the review pool; the finder's own breakdown puts 55-75% in A+B (medical/occupational evidence and classification); Unum's 41.7% reversal reflects incentive-driven denials under a regulator-forced reassessment, not unsettled meaning.",
+   "Complaints loop: AFCA '44% resolved by insurers at referral' and FOS uphold rates (30-38%) treated as reversal of interpretation; they include goodwill, commercial settlement, delay and service failures, which are E/F/process, not C/H.",
+   "Cluster-wide: the finder's H shares (P&C 5-10%, life 5-10%, complaints 5-10%) carry no measurement basis; each is the residual after subjective allocation. Corrected verifier estimates: P&C H <=1-2% of human touches (unmeasured), health H <1%, life/LTD H 2-5% (unmeasured, low volume), complaints loop H 2-5% of disputes (which are themselves ~0.1-1% of claims)."
+  ],
+  "corrected_workflow_verdicts": [
+   {
+    "name": "P&C claims coverage determination (home/property, motor, commercial property/BI, liability)",
+    "evidence_quality": "weak",
+    "verdict": "weak",
+    "why": "Downgraded from 'uncertain/moderate'. Every load-bearing number is a search snippet from a blocked primary or a vendor blog; the only sourced P&C quantities (BLS headcount, NAIC LAE, FCA acceptance/complaint ratios, FOS/AFCA/LMA volumes) describe the size of claims handling or of the disputed tail, never the share of claims escalated for a coverage question, its recurrence within an insurer, or cost per referral (the finder's own not_found list). The recurring classes named (wear-and-tear vs sudden damage, BI triggers, accident/invalidity definitions, flood) are settled externally by courts, regulators, ombudsman approach documents, industry standard definitions and wording changes, i.e. H3 in its external form, and the per-claim residual is causation evidence and valuation (A/B/F). Motor is ~99% accepted. Legal discoverability of recorded positions (estoppel) is a deterrent to internal precedent capture. What remains untested, and the only thing worth one cheap check, is the technical-referral log of a large UK home insurer or a Lloyd's lead syndicate; killing answers are referrals <2% of claims or outcomes already written into the manual within a release cycle. Nothing in the reachable evidence suggests those answers will be favourable."
+   },
+   {
+    "name": "US health insurance claims adjudication and prior authorisation (medical necessity / coverage criteria)",
+    "evidence_quality": "strong",
+    "verdict": "negative",
+    "why": "Confirmed and strengthened. Consistent picture across an inspector-general (OIG 2022, 2018), an academic/policy institute (KFF ACA and MA series, direction confirmed against the 2023 vintage by recall), a regulator (CMS-4201-F) and an industry association primary verified locally (AHIP June 2025: ~93% of medical claims not subject to PA; ~97-98% of medical PAs approved; initial denials 'often a result of incomplete information'; 100% of respondents report no AI-only denials for medical necessity). Interpretive criteria are already versioned, published and committee-governed (Aetna CPBs, Cigna coverage policies, MCG/InterQual, CMS-mandated UM committees), and federal plus state law (CMS-4201-F, CMS Feb 2024 FAQ, California SB 1120) keep clinicians as the decision-maker after precedent. H1, H3, H4 all hold. Caveat: the KFF denial-reason percentages the finder quotes are vintage-blended (2023 vs 2024) and should be cited as approximate."
+   },
+   {
+    "name": "Life, critical illness and long-term disability claims assessment (definition interpretation)",
+    "evidence_quality": "weak",
+    "verdict": "weak",
+    "why": "Unchanged verdict, with the evidence base noted as weaker than presented: the only quantified items are a 20-year-old regulator-forced reassessment (Unum 41.7%, recall-consistent, unfetched) and aggregator denial rates of unknown provenance (gitnux, sokolovelaw). Definitions that recur (ABI CI model definitions; 'accident'/'invalidit\u00e9' in French pr\u00e9voyance) are settled at industry-wording level, every few years, not at claim level; per-claim work is medical/occupational evidence and classification (A/B) with clinical discretion retained by law (ERISA full-and-fair review, medical director sign-off). Volumes per insurer are low (LMA pr\u00e9voyance ~10,600 referrals a year nationwide is the disputed tail only). Nothing supports compounding value from an internal ledger."
+   },
+   {
+    "name": "Insurer complaints / IDR and ombudsman root-cause loop (UK FOS, France LMA, Australia AFCA)",
+    "evidence_quality": "moderate",
+    "verdict": "weak",
+    "why": "Downgraded from 'uncertain'. The loop is real but the settler is external and non-binding on the insurer's future cases in the way the brief requires: FOS and AFCA decide on 'fair and reasonable' grounds and are not bound by insurer precedent (H4); the LMA's avis are followed voluntarily and its general recommendations are advocacy (the 99%/70% figures come from consumer-marketing sites and conflict). Ombudsman outputs are already public, searchable and encoded as approach documents (H3, external). DISP 1.3.3R produces management information and training, not executable decisions. Volumes at the ombudsman are tens of thousands a year across all firms; firm-level IDR volumes (UK FCA half-yearly firm complaints data; ASIC RG 271 IDR data, Australia, from 2023; both missed by the finder, recall, unverified) are 20-30x larger but are dominated by delay, service and valuation issues. The FOS decision corpus is cheap to classify but samples only disputes, so it cannot deliver the brief's base rate; it would at best show whether interpretive disputes recur across firms, which is a question about industry standards, not about an insurer-internal product."
+   }
+  ],
+  "missing": [
+   "The single decisive parameter is still unmeasured: share of claims referred to a technical/coverage authority, recurrence of the referred class within one insurer, and cost per referral. No public source found by finder or verifier; only an insurer's referral log or QA closed-file categories can supply it.",
+   "KFF 2023-vintage ACA figures (published Jan 2025; other 34%, administrative 18%, excluded service 16%, lack of PA 9%, medical necessity 6%; 56% of appealed denials upheld) need to be reconciled with the 2024-vintage numbers the finder cites; the finder appears to have mixed them (recall, unverified).",
+   "AHIP June 2025 prior-authorisation survey (industry association, cached locally): 93% of medical claims not subject to PA; ~97-98% approval; 20% real-time approval; 45-47% of PA requests still submitted by phone/fax/mail; 100% of respondents no AI-only medical-necessity denials. Cuts against the workflow (H1 and H4) and shows the bottleneck is data exchange, not interpretation.",
+   "Regulation keeping humans in the loop that the finder did not cite: California SB 1120 (2024) requiring physician review of medical-necessity denials and restricting AI in UM; CMS February 2024 FAQ on algorithms in MA coverage decisions; CMS-0057-F (Jan 2024) PA deadlines and public PA metrics from 2026. All recall, unverified (leginfo.legislature.ca.gov, cms.gov blocked).",
+   "External prospective settlement of the biggest P&C recurring classes that the finder did not cite: Australian standard definition of 'flood' in the Insurance Contracts Regulations (2012) after the 2011 floods; FOS's published storm-damage approach; Australian House of Representatives Standing Committee inquiry into insurers' responses to the 2022 floods (report Oct 2024) finding delays, poor expert reports and mis-categorised damage, i.e. A/B failures, not unsettled meaning. Recall, unverified.",
+   "Firm-level complaint and IDR volumes: FCA half-yearly firm complaints data (insurance & pure protection is the largest product group, hundreds of thousands per half-year) and ASIC RG 271 IDR data reporting (from 2023). These would size the internal complaints pool far above ombudsman volumes but are dominated by delay/service/valuation. Recall, unverified; fca.org.uk and asic.gov.au not fetched.",
+   "Guidewire ClaimCenter 'coverage in question' flag and referral activity patterns (recall, unverified): a workflow marker that a coverage question exists, which any referral-log experiment could use as the sampling frame; not a precedent ledger.",
+   "Verification limits: every re-check of the finder's URLs failed at the egress proxy (403 CONNECT), WebSearch had zero remaining budget, GitHub MCP search returned 502/503. Blocked URLs attempted this pass: all finder URLs listed under 'sources' plus web.archive.org, archive.org, files.kff.org, oig.hhs.gov PDF, data.cms.gov, federalregister.gov, ecfr.gov, legislation.gov.uk, bailii.org, legifrance.gouv.fr, insurancecouncil.com.au, assets.publishing.service.gov.uk, gov.uk, catalog.data.gov, api.openalex.org, api.semanticscholar.org, europepmc, pubmed, courtlistener, ssrn, zenodo, huggingface, r.jina.ai, duckduckgo/bing/google/mojeek/marginalia/brave search endpoints, naic.org, iii.org, lloyds.com, insurance.wa.gov, tdi.texas.gov, insurance.ca.gov, ahip.org, cdn.jsdelivr.net, cdnjs.cloudflare.com."
+  ],
+  "overall": "The finder's cluster picture is directionally right but overstated in two places. Its 'uncertain' verdicts for P&C coverage determination and for the complaints/RCA loop should both be 'weak': the numbers behind them are snippets from blocked primaries or vendor blogs, the H shares (5-10%) have no measurement basis and were built by applying disputed-tail issue categories to a human-review pool that is overwhelmingly process, evidence and valuation work, and every prospective settlement the finder found was made by a court, regulator, ombudsman or industry body and then encoded as wording, criteria documents, manuals or training (H3 in external form), with 'fair and reasonable' ombudsman review and legal estoppel risk keeping insurer-internal precedent non-authoritative (H4). The flagship P&C example (CGC wear-and-tear overturns) is a category error: the recurring work is per-property causation evidence and second expert reports (A/B), and the class meaning is already externally settled. The health 'negative' is confirmed and strengthened by the one primary this verifier could actually read, the AHIP June 2025 survey (industry association): only ~7% of medical claims face prior authorisation, ~97-98% of those are approved, initial denials are attributed to incomplete information, and 100% of responding plans keep clinicians on medical-necessity denials; regulation (CMS-4201-F, CMS 2024 FAQ, California SB 1120) locks that in. The finder's proposed FOS-decision experiment cannot deliver the brief's base rate because it samples only disputes; the only cheap test that answers the actual question is one insurer's technical-referral log, and nothing found by finder or verifier predicts a favourable answer. Corrected cluster assessment: negative for health, weak for P&C, life/disability and the complaints loop; no sourced number in the cluster supports the core hypothesis that insurers repeatedly pay humans to settle the same class of ambiguity for lack of a capture mechanism. Verification caveat: zero web-search budget and total proxy denial meant re-checks were limited to one cached primary, internal consistency and labelled recall; no finder number was newly verified against its primary, and none was newly refuted on its face, only on how it was used."
+ }
+}

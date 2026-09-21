@@ -1,0 +1,578 @@
+{
+ "key": "payments-fraud-aml-kyc",
+ "found": {
+  "domain": "payments-fraud-aml-kyc",
+  "domain_assessment": "NETWORK CAVEAT: this finder could not reach any regulator, statistics, court, academic, industry-association or commercial-vendor site (all 403 at the egress proxy) and the session's WebSearch budget was already exhausted (200/200) before the first query. Verified evidence is therefore limited to primary files on raw.githubusercontent.com and pypi.org: the source code and docs of two open-source transaction-monitoring/case-management engines (Marble, Tazama), the OpenSanctions matching stack (yente, nomenklatura), and the Stripe and Adyen OpenAPI specifications for disputes. Volume and rate statistics from FinCEN, BPI, NCA, Tracfin, LexisNexis, FCA, Mastercard are cited from memory with explicit UNVERIFIED flags; treat them as leads to re-verify, not evidence.\n\nASSESSMENT: weak-to-negative for the Sophon mechanism in this cluster. (1) The three highest-volume workflows (AML TM alerts, sanctions hits, fraud alerts) are dominated by factual classification (B) and missing evidence (A): is this the same person as the listed person, is this activity consistent with the customer's known profile, did the cardholder authorise this. The only prospective settlement that recurs at volume is per-entity (\"this customer's payroll pattern is benign\", \"this John Smith is not the OFAC John Smith\") and incumbents already ship it as a typed, provenance-bearing, expiring object: Marble RuleSnooze {CreatedByUser, CreatedFromDecisionId, CreatedFromRuleId, PivotValue, StartsAt, ExpiresAt, Comment}; Tazama EFRuP conditions {condTp non-overridable-block/overridable-block/override, condRsn reason code, usr, incptnDtTm, xprtnDtTm, PUT to change expiry}; Stripe Radar value_list {created_by, item_type}; nomenklatura Resolver graph of same/not-same judgements applied transitively. Generalised settlements (\"MSB cash deposits under X are expected for MCC Y\") are made as versioned rule changes: Marble ScenarioIteration.Version, Tazama cfg \"1.0.0\" versioning of rules/typologies, Stripe rules referencing lists. That is exactly H3 (already encoded adequately) and H6 (a feature of the case-management/rules layer). (2) The SAR-filing decision itself is, per the FFIEC manual (memory), an \"inherently subjective judgment\" that examiners assess as a process, documented case by case: category E, and H4 applies. (3) In chargebacks the settlement loop is real and prospective but owned by the card networks and PSPs, not the merchant: Visa CE3.0 turned \"did the cardholder participate\" into a deterministic evidence rule (exactly two prior undisputed transactions with matching device/IP/login/address fields, now a typed object in Stripe's API), and Adyen exposes per-dispute defense reasons with Required/OneOrMore/Optional document requirements. The merchant's residual decision is commercial (fight or accept, F) plus evidence gathering (A). (4) The two sub-workflows where repeatable interpretive ambiguity (C/H) plausibly dominates, KYC/CDD policy exceptions (what our policy requires for this entity type/document/PEP definition) and merchant-onboarding acceptability classification (is this business model inside our restricted list), have an identifiable owner who does settle prospectively (FinCEN CDD FAQs at regulator level; PSP restricted-business lists and MCC rules; bank CDD procedures), but no public data on volume, review rate or cost was reachable, per-institution volumes are probably low (hundreds to low thousands a year), and the settlements are already written into procedures and onboarding rules by in-house tooling. Buyer would be the MLRO/BSA officer or PSP head of underwriting, who already budgets for Actimize/Unit21/Hummingbird/Marble-class tools that hold the case, the snooze and the rule version. I would not pick this cluster as the wedge; if anything is tested here it should be merchant-onboarding restricted-business classification at one PSP, because historical review queues and a versioned public policy list give cheap access to real settlements, with the expectation that the result is a feature of the onboarding tool rather than a standalone product.",
+  "workflows": [
+   {
+    "name": "AML transaction monitoring alert adjudication (L1/L2 investigation to SAR/no-SAR)",
+    "geography": "US primarily; UK and France for volume context; EU AMLR from 2027",
+    "decision_volume": "UNVERIFIED (memory, fetch blocked): FinCEN received about 4.6 million SARs in FY2023 (regulator, https://www.fincen.gov/sites/default/files/shared/FinCEN-Year-in-Review-FY2023.pdf); UK NCA received about 860,000 SARs in 2022-23 (government statistics, https://www.nationalcrimeagency.gov.uk/what-we-do/crime-threats/money-laundering-and-illicit-finance/suspicious-activity-reports); Tracfin received about 190,000 declarations/informations in 2023 (regulator, https://www.economie.gouv.fr/tracfin). Alerts upstream of SARs: BPI 2018 'Getting to Effectiveness' survey of 19 US banks reported on the order of 16 million alerts reviewed and about 640,000 SARs filed in a year (industry association, https://bpi.com/getting-to-effectiveness-report-on-u-s-financial-institution-resources-devoted-to-bsa-aml-compliance/). All figures approximate and unverified this session.",
+    "human_review_rate": "Essentially 100% of alerts above threshold are human-dispositioned by design: Marble's decision model has outcomes review / block_and_review / decline with ReviewStatus pending/approve/decline and case review levels 'probable_false_positive', 'investigate', 'escalate' (vendor source code, https://raw.githubusercontent.com/checkmarble/marble-backend/main/models/case.go and .../decision.go); Tazama routes any typology over alertThreshold to 'review = true' and an external case manager (vendor docs, https://raw.githubusercontent.com/tazama-lf/docs/main/Product/event-flow-rule-processor.md). Share of alerts that end as SARs: about 4% in the BPI sample (UNVERIFIED memory, URL above); the widely repeated '95%+ false positive' claim is vendor/press and was not verifiable.",
+    "why_humans_review": "Own estimate from the alert-to-SAR funnel and the disposition taxonomies in Marble/Tazama, not measured: B factual classification 55-70% (is the activity consistent with the customer's expected profile; case outcomes in Marble are literally confirmed_risk / valuable_alert / false_positive); A missing evidence 15-25% (KYC refresh, RFI to customer, counterparty lookup); E true discretion 5-10% at the SAR-decision stage (FFIEC manual, memory: 'the decision to file a SAR is an inherently subjective judgment', https://bsaaml.ffiec.gov/manual/AssessingComplianceWithBSARegulatoryRequirements/04); H repeatable ambiguity settled prospectively 5-10%, almost all per-entity (snooze/whitelist) or rule-parameter (threshold/segment) settlements; C rule interpretation about 5% (e.g. what counts as structuring for an MSB customer); D 1%; G 3%; F 0.",
+    "settlement_loop_evidence": [
+     {
+      "description": "Marble (open-source TM/screening used by '100+ fintechs, banks and crypto exchanges') stores a RuleSnooze created from a specific decision by a named user, scoped to a PivotValue (the customer/entity), with StartsAt/ExpiresAt and a Comment; later rule executions on that pivot return outcome 'snoozed' instead of 'hit'. This is a per-entity prospective settlement with provenance and expiry, made executable.",
+      "source_url": "https://raw.githubusercontent.com/checkmarble/marble-backend/main/models/rule_snoozes.go",
+      "source_type": "vendor (open-source code)",
+      "prospective": "yes",
+      "reusable_how": "Automatically suppresses the same rule for the same entity until expiry; not generalised beyond the entity; rationale is free text."
+     },
+     {
+      "description": "Marble versions the whole detection program: ScenarioIteration carries Version, TriggerConditionAstExpression, Rules, ScoreReviewThreshold / ScoreBlockAndReviewThreshold / ScoreDeclineThreshold; every Decision records ScenarioIterationId and ScenarioVersion. Generalised settlements ('this pattern is expected for segment X') are therefore encoded as a new versioned rule iteration, with decisions attributable to the version that produced them.",
+      "source_url": "https://raw.githubusercontent.com/checkmarble/marble-backend/main/models/scenario_iterations.go",
+      "source_type": "vendor (open-source code)",
+      "prospective": "yes",
+      "reusable_how": "Rule/threshold change applies to all future evaluations; audit trail per version; this is the 'rule tuning' loop, executable but not a typed interpretation record."
+     },
+     {
+      "description": "Tazama (Linux Foundation open-source real-time TM) Event Flow Rule Processor: conditions on an entity or account of type non-overridable-block, overridable-block or override, each with reason code (condRsn), user (usr), inception and expiration datetimes, perspective debtor/creditor/both; an override suppresses a typology interdiction on future transactions; PUT endpoint updates expiry. Hierarchy: red always applies, green trumps amber.",
+      "source_url": "https://raw.githubusercontent.com/tazama-lf/admin-service/main/README.md",
+      "source_type": "vendor (open-source docs)",
+      "prospective": "yes",
+      "reusable_how": "Executable per-entity exception with provenance and expiry applied to every later transaction; no generalisation across entities."
+     },
+     {
+      "description": "Rule tuning as governed statistical loop rather than settlement: Tazama rules are parameterised via versioned external configuration ('cfg': '1.0.0') with banded/cased outcome classes and typology weights/thresholds; changing behaviour is a configuration version change. US model-risk guidance (OCC 2011-12, memory, https://www.occ.gov/news-issuances/bulletins/2011/bulletin-2011-12.html) treats TM tuning (above/below-the-line testing) as model validation.",
+      "source_url": "https://raw.githubusercontent.com/tazama-lf/docs/main/Product/rule-processor-overview.md",
+      "source_type": "vendor (open-source docs)",
+      "prospective": "yes",
+      "reusable_how": "Analyst dispositions feed threshold/segment recalibration; that is retraining/validation, not recording an authoritative interpretation."
+     }
+    ],
+    "economic_pain": "UNVERIFIED (memory): BPI 2018 sample of 19 banks spent about $2.4bn/yr with about 14,000 FTE on BSA/AML, and law-enforcement follow-up occurred on a median of about 4% of SARs and 0.44% of CTRs (industry association, https://bpi.com/getting-to-effectiveness-report-on-u-s-financial-institution-resources-devoted-to-bsa-aml-compliance/); LexisNexis 'True Cost of Financial Crime Compliance' put US/Canada cost at about $61bn/yr (vendor survey, https://risk.lexisnexis.com/insights-resources/research/true-cost-of-financial-crime-compliance-study-global-report). No cost-per-alert figure verifiable; vendor claims of $20-50/alert not reachable. Error cost: SAR late-filing/program-failure enforcement, not reachable this session.",
+    "existing_solutions": "NICE Actimize (ActOne), Verafin, Unit21, Hummingbird, ComplyAdvantage, Feedzai, Marble (open source), Tazama (open source). Verified from source: Marble and Tazama capture per-entity settlements (snooze / condition) with user, source decision, reason and expiry, and version rules; rationale is a free-text comment, not an executable interpretation. Actimize/Unit21/Hummingbird docs were unreachable; from memory they offer alert suppression lists, rule shadow/backtest modes and case narratives (unverified).",
+    "buyer_and_budget": "BSA/AML officer or MLRO and head of financial-crime operations; budget already committed to TM + case management platforms; a separate 'interpretation ledger' would have to displace features those platforms already have.",
+    "regulatory_constraints": "31 CFR 1020.320 (memory): SAR within 30 days of initial detection (60 if no subject identified); FFIEC manual (memory) expects documented SAR decisions and an effective decision process; 2018 interagency Joint Statement on innovation (memory, https://www.fincen.gov/sites/default/files/2018-12/Joint%20Statement%20on%20Innovation%20Statement%20%28Final%2011-30-18%29_508.pdf) permits automated approaches. No rule requires a human per alert, but the SAR/no-SAR decision is treated as judgment and must be defensible per case, which limits full automation of the final step (H4).",
+    "evidence_quality": "moderate",
+    "verdict": "weak",
+    "notes": "Strongest verified finding in the cluster: the settlement primitives Sophon would offer (typed, dated, attributable, expiring exception applied prospectively) already exist in open-source incumbents at the per-entity level, and generalisation happens through versioned rules. Supports H3 and H6."
+   },
+   {
+    "name": "Sanctions and PEP screening hit review (name-match adjudication)",
+    "geography": "US (OFAC), UK (OFSI/FCA), EU; identical mechanics",
+    "decision_volume": "Not sourced. Every customer onboarding, periodic rescreen and cross-border payment is screened; hit rates depend on threshold. yente (OpenSanctions API core) defaults: SCORE_THRESHOLD = 0.70 for a match and SCORE_CUTOFF = 0.50 below which candidates are not returned (vendor code, https://raw.githubusercontent.com/opensanctions/yente/main/yente/settings.py). Marble screening statuses: confirmed_hit / no_hit / in_review / error, with match-level pending/skipped (vendor code, https://raw.githubusercontent.com/checkmarble/marble-backend/main/models/screening.go).",
+    "human_review_rate": "All 'in_review' matches between cutoff and threshold are human-reviewed by design (yente/Marble code above). Share of hits that are true matches is very low industry-wide (commonly stated as well under 1-5%), but no verifiable number reached; FCA's 2023 multi-firm sanctions review (memory, https://www.fca.org.uk/publications/multi-firm-reviews/sanctions-systems-and-controls-firms-response-increased-sanctions-due-russias-invasion-ukraine) reported alert backlogs and poor calibration at some firms, qualitatively.",
+    "why_humans_review": "Own estimate: B factual classification 80-90% (is this the listed person: compare DOB, nationality, identifiers); A missing evidence 5-10% (need DOB/ID to discount); H 3-5% (per-entity 'good-guy' whitelist after a discounted hit, applied to future rescreens); C 1-3% (genuinely interpretive: OFAC 50% ownership rule, general-licence applicability, which is escalated to sanctions counsel and does recur); D 1% (conflicting US/EU/UK list scope); E/F/G negligible.",
+    "settlement_loop_evidence": [
+     {
+      "description": "nomenklatura (OpenSanctions matching library) persists analyst judgements as a 'Resolver' graph whose edges are Judgements that two entity IDs are the same, not the same, or undecided; it computes connected components and 'transitive judgements, e.g. if A <> B, and B = C, then we don't need to ask if A = C'. A factual settlement is stored once and reused for later matches.",
+      "source_url": "https://pypi.org/pypi/nomenklatura/json",
+      "source_type": "vendor (open-source README on PyPI)",
+      "prospective": "yes",
+      "reusable_how": "Future screening of the same pair (and transitively related pairs) is auto-resolved; it is a category-B settlement store, not an interpretation store."
+     },
+     {
+      "description": "Marble screening config includes a Preprocessing.IgnoreListId (ignore list applied before matching), a per-config Threshold and a ForcedOutcome, all versioned inside the ScenarioIteration; screening matches have status 'skipped'.",
+      "source_url": "https://raw.githubusercontent.com/checkmarble/marble-backend/main/models/scenario_iterations.go",
+      "source_type": "vendor (open-source code)",
+      "prospective": "yes",
+      "reusable_how": "Ignore lists and thresholds are executable, versioned settlements applied to every later screen."
+     },
+     {
+      "description": "OFAC's 2019 Framework for Compliance Commitments (memory, unverified) lists root causes of violations including screening-filter faults and 'misinterpreting, or failing to understand the applicability of, OFAC's regulations', i.e. the interpretive residue (C) is acknowledged by the regulator but is a small share relative to matching work.",
+      "source_url": "https://ofac.treasury.gov/media/16331/download?inline",
+      "source_type": "regulator (unverified this session)",
+      "prospective": "unclear",
+      "reusable_how": "Interpretive settlements (ownership/licence applicability) are recorded as internal policy memos; no volume data."
+     }
+    ],
+    "economic_pain": "Not sourced. Backlogs and missed true hits carry enforcement risk (OFAC penalties, FCA findings, memory only). Labour cost per hit review not reachable.",
+    "existing_solutions": "Sanctions screening filters (Fircosoft/LexisNexis Bridger, ComplyAdvantage, OpenSanctions/yente self-hosted, Marble screening) with whitelists / good-guy lists and threshold tuning; nomenklatura-style resolver stores. They already capture the reusable factual settlement with provenance.",
+    "buyer_and_budget": "Head of sanctions / financial-crime compliance; budget goes to screening vendors and list data licences (OpenSanctions notes commercial use requires a data licence).",
+    "regulatory_constraints": "Strict-liability sanctions regimes push firms to over-alert; nothing forbids automation of discounting, but a false negative is a breach, so discount rules must be evidenced (identifier mismatch), which is exactly what current whitelists/ignore lists do.",
+    "evidence_quality": "moderate",
+    "verdict": "negative",
+    "notes": "Almost purely category B; the reusable settlement is 'same person or not', already stored transitively by open-source matching tools. Supports H1 and H3."
+   },
+   {
+    "name": "Payment fraud alert review (card / account-opening / ATO manual review queues)",
+    "geography": "Global; US/EU merchants and issuers",
+    "decision_volume": "Not sourced this session. Base rates from dataset docs: Feedzai's Bank Account Fraud suite is derived from a real bank account-opening fraud dataset with 'significant class imbalance' (academic/vendor, https://raw.githubusercontent.com/feedzai/bank-account-fraud/main/README.md); the datasheet PDF could not be text-extracted in this sandbox. Stripe exposes a 'review' object opened by 'rule' or 'manual' and closed as approved / refunded / refunded_as_fraud / disputed / canceled / payment_never_settled (vendor API spec, https://raw.githubusercontent.com/stripe/openapi/master/openapi/spec3.json).",
+    "human_review_rate": "Configured by each merchant/issuer through score thresholds (Marble ScoreReviewThreshold / ScoreBlockAndReviewThreshold / ScoreDeclineThreshold; Tazama alertThreshold vs interdictionThreshold). No industry rate reachable.",
+    "why_humans_review": "Own estimate: B 60-70% (is this transaction/account genuine: velocity, device, behaviour); A 20-30% (contact customer, OTP/step-up: Stripe's Radar review and Sift's verification/OTP endpoints exist for exactly this); H 5% (trusted-customer allow lists, e.g. Stripe Radar value_list with created_by); E 3% (accept risk on a VIP); C/D negligible; F/G small.",
+    "settlement_loop_evidence": [
+     {
+      "description": "Stripe Radar 'value lists' group card fingerprints, emails, IPs, customer IDs etc. 'which can then be referenced in rules', each list recording created_by; combined with the review object this is the allow/block-list settlement applied prospectively by rules.",
+      "source_url": "https://raw.githubusercontent.com/stripe/openapi/master/openapi/spec3.json",
+      "source_type": "vendor (API specification)",
+      "prospective": "yes",
+      "reusable_how": "Per-entity lists executed by rules; no interpretation captured."
+     },
+     {
+      "description": "Sift Labels API: an analyst labels a user $is_bad with $abuse_type, $description ('Chargeback issued'), $source 'Manual Review' and $analyst; Decisions API returns latest decisions per user/order/session; Workflows automate decisions. Manual dispositions are stored as labels that retrain the model and as decisions that gate future events.",
+      "source_url": "https://pypi.org/pypi/sift/json",
+      "source_type": "vendor (SDK README on PyPI)",
+      "prospective": "yes",
+      "reusable_how": "Statistical retraining loop plus per-entity decision; not an interpretive settlement."
+     }
+    ],
+    "economic_pain": "Not sourced this session (fraud loss and false-decline figures from Nilson/Fed unreachable).",
+    "existing_solutions": "Sift, Feedzai, Stripe Radar, Forter, Signifyd, Marble, Tazama, issuer FRM systems; all have review queues, allow/block lists and model feedback loops.",
+    "buyer_and_budget": "Head of fraud/risk operations; budget to fraud-platform vendors.",
+    "regulatory_constraints": "Issuer side: Reg E (12 CFR 1005.11, memory) error-resolution timelines (10 business days or provisional credit, up to 45 days); PSD2 SCA in EU. None require human review per alert.",
+    "evidence_quality": "weak",
+    "verdict": "negative",
+    "notes": "Dominated by B/A with a statistical retraining loop; the settlement objects that exist are per-entity lists already in every vendor. Supports H1/H3."
+   },
+   {
+    "name": "Chargeback and dispute handling under card-network rules (merchant representment and issuer dispute intake)",
+    "geography": "Global card networks; US Reg E/Z for issuers; EU/UK same network rules",
+    "decision_volume": "UNVERIFIED (memory): Mastercard/Datos Insights estimated about 238 million global chargebacks in 2023 rising to about 337 million by 2026 (press/vendor report; canonical page not reachable, e.g. https://www.mastercard.com/news/). No verified count this session.",
+    "human_review_rate": "Merchant side: every dispute is a fight/accept decision; Adyen's API exists 'to automate the dispute handling process' with acceptDispute / defendDispute / retrieveApplicableDefenseReasons / supplyDefenseDocument endpoints (vendor API spec, https://raw.githubusercontent.com/Adyen/adyen-openapi/main/json/DisputeService-v30.json). Win rates not verifiable (Chargebacks911 stats page blocked).",
+    "why_humans_review": "Own estimate, merchant side: F commercial negotiation 35-45% (fight vs accept given amount, fee, evidence cost, ratio thresholds); A missing evidence 30-40% (collect tracking, logs, prior transactions); B 10-15% (is this friendly fraud); H 5-10% (merchant-level playbooks: 'digital goods under X: accept', 'subscription with login in 30 days: fight under CE3.0'); C/D 5% (which reason code / which scheme rule applies); E/G small. Issuer side (Reg E): A/B dominate.",
+    "settlement_loop_evidence": [
+     {
+      "description": "Visa Compelling Evidence 3.0 converts the ambiguous question 'did the cardholder participate' into a deterministic evidence rule: Stripe's API models it as dispute_enhanced_evidence_visa_compelling_evidence3 requiring 'exactly two prior undisputed transaction objects' plus disputed-transaction fields customer_account_id, customer_device_fingerprint (at least 20 chars), customer_device_id (at least 15 chars), customer_email_address, customer_purchase_ip, shipping_address ('all fields are required'), with an eligibility object listing 'actions required to qualify'. Network-level settlement, prospective, executable at PSP level.",
+      "source_url": "https://raw.githubusercontent.com/stripe/openapi/master/openapi/spec3.json",
+      "source_type": "vendor (API specification encoding a card-network rule)",
+      "prospective": "yes",
+      "reusable_how": "Applied automatically to every qualifying 10.4 dispute; the settlement owner is Visa, not the merchant; merchants and PSPs consume it as a typed rule."
+     },
+     {
+      "description": "Adyen DefenseReason / DefenseDocumentType: for each dispute the API returns applicable defense reason codes, each with document types and a requirementLevel of Required, OneOrMore, Optional or AlternativeRequired, and a 'satisfied' flag once sufficient material is supplied. The scheme rules on what evidence suffices are pre-codified per reason code.",
+      "source_url": "https://raw.githubusercontent.com/Adyen/adyen-openapi/main/json/DisputeService-v30.json",
+      "source_type": "vendor (API specification)",
+      "prospective": "yes",
+      "reusable_how": "Evidence sufficiency is deterministic per reason code; residual merchant decision is commercial."
+     },
+     {
+      "description": "Stripe's dispute object standardises 15 cardholder reasons and maps each network_reason_code 'to one of Stripe's primary dispute categories to simplify response guidance'; evidence fields are typed (refund_policy_disclosure, shipping_documentation, access_activity_log, etc.).",
+      "source_url": "https://raw.githubusercontent.com/stripe/openapi/master/openapi/spec3.json",
+      "source_type": "vendor (API specification)",
+      "prospective": "yes",
+      "reusable_how": "PSP-level codification of scheme interpretation; merchants inherit it."
+     }
+    ],
+    "economic_pain": "Not verified. Per-dispute fees and lost goods plus network monitoring-program thresholds (Visa VAMP, Mastercard ECM, memory) make ratio management the binding constraint.",
+    "existing_solutions": "PSP dispute APIs (Stripe, Adyen, Checkout), automated representment vendors (Chargeflow, Justt, Chargebacks911, Verifi/Ethoca pre-dispute), issuer dispute systems; these already encode network rules as executable evidence requirements.",
+    "buyer_and_budget": "Merchant payments/finance ops or PSP risk; issuer dispute operations. Budget exists but flows to representment automation priced per dispute or per recovery.",
+    "regulatory_constraints": "Issuer side: Reg E 1005.11 and Reg Z 1026.13 investigation duties and timelines (memory); network rules govern merchant side; no rule requires human review of representment.",
+    "evidence_quality": "moderate",
+    "verdict": "weak",
+    "notes": "The clearest settlement loop in the cluster, but it is owned by Visa/Mastercard and encoded by PSPs (H6); the merchant-level residual is commercial (F) and evidence collection (A)."
+   },
+   {
+    "name": "KYC / CDD exceptions and waivers (document exceptions, EDD waivers, PEP/UBO interpretation, risk-acceptance)",
+    "geography": "US (FinCEN CDD rule), UK (MLR 2017), France/EU (AMLD/AMLR)",
+    "decision_volume": "Not sourced. No public data on per-institution exception volumes reached; own guess is hundreds to low thousands per year at a mid-size bank, far below alert volumes.",
+    "human_review_rate": "By definition 100% (exceptions are escalations to compliance policy owners or a risk-acceptance committee); no measured rate.",
+    "why_humans_review": "Own estimate, no measurement: C rule interpretation 25-35% (does our policy require UBO of the trustee; is this document acceptable; is this role a PEP under our definition); H 20-30% (the same entity-type/document/jurisdiction questions recur and the answer is written into procedures/FAQs); A 20% (customer has not supplied documents); E 10-15% (risk appetite acceptance for a specific high-risk client); D 5% (conflicting group vs local rules); B 5%; G 5%.",
+    "settlement_loop_evidence": [
+     {
+      "description": "Regulator-level settlement loop (memory, unverified): FinCEN's CDD FAQs (2018, 2020) answered recurring interpretive questions from banks (e.g. beneficial ownership for CD rollovers, existing customers) and those answers became binding practice; banks mirror this with internal policy FAQs and exception logs.",
+      "source_url": "https://www.fincen.gov/sites/default/files/2018-04/FinCEN_Guidance_CDD_FAQ_FINAL_508_2.pdf",
+      "source_type": "regulator (unverified this session)",
+      "prospective": "yes",
+      "reusable_how": "Written guidance applied prospectively; captured as text in procedures, not executable rules; volume per bank unknown."
+     }
+    ],
+    "economic_pain": "Not sourced. Cost is onboarding delay and inconsistent treatment found in audits; no figures reachable.",
+    "existing_solutions": "KYC/CLM platforms (Fenergo, Encompass, Alloy, Persona, Onfido) with configurable policy rules and exception workflows; GRC policy management; spreadsheets/email for exception committees (memory). Whether any stores exceptions as versioned executable precedents: unknown, docs unreachable.",
+    "buyer_and_budget": "MLRO / head of KYC operations; budget concentrated in CLM/KYC vendors.",
+    "regulatory_constraints": "Risk-based approach expects documented rationale for exceptions; EU AMLR (2027) tightens CDD standardisation, which may reduce interpretive ambiguity over time.",
+    "evidence_quality": "unknown",
+    "verdict": "uncertain",
+    "notes": "Highest plausible C/H share in the cluster but lowest volume and no data reached; would need customer discovery with KYC policy owners to size exception logs."
+   },
+   {
+    "name": "Merchant onboarding exceptions (PSP/acquirer underwriting: restricted-business classification, MCC assignment, prohibited-list edge cases)",
+    "geography": "US/EU PSPs and acquirers",
+    "decision_volume": "Not sourced. Large PSPs onboard millions of merchants a year (unverified); share routed to manual underwriting unknown.",
+    "human_review_rate": "Unknown; automated KYB plus rules route edge cases (high-risk verticals, ambiguous business models) to underwriters.",
+    "why_humans_review": "Own estimate, unmeasured: C/H combined 30-40% (is a CBD-adjacent, nutraceutical, firearms-accessory, crypto-adjacent or marketplace model inside the restricted list; which MCC applies); A 25% (missing website, licences, processing history); B 20% (is the business real, is the applicant who they say); E 10% (risk appetite for a large but risky merchant); F 5% (pricing/reserve negotiation); G 5%.",
+    "settlement_loop_evidence": [
+     {
+      "description": "PSPs publish versioned restricted/prohibited business lists (e.g. Stripe 'Prohibited and Restricted Businesses', memory, https://stripe.com/legal/restricted-businesses) that are updated as edge cases are settled, and encode them in onboarding rules; underwriting decisions on new business models become list entries. Not verified this session (page blocked).",
+      "source_url": "https://stripe.com/legal/restricted-businesses",
+      "source_type": "vendor policy document (unverified this session)",
+      "prospective": "yes",
+      "reusable_how": "Policy list plus rules in in-house onboarding tooling; no public evidence that the rationale is stored as an executable typed interpretation."
+     }
+    ],
+    "economic_pain": "Not sourced. Errors cost network fines (Visa GBPP / Mastercard BRAM, memory), MATCH-listing and fraud losses; delays cost merchant conversion.",
+    "existing_solutions": "In-house underwriting tools at PSPs; KYB vendors (Middesk, Alloy, Persona); rules engines; restricted-list policies. Incumbent strength unknown from public sources.",
+    "buyer_and_budget": "Head of merchant risk / underwriting at a PSP or acquirer; unclear whether they buy an external interpretation ledger versus building into their onboarding tool.",
+    "regulatory_constraints": "Card-network brand-protection programs and AML KYB obligations; no human-review mandate.",
+    "evidence_quality": "unknown",
+    "verdict": "uncertain",
+    "notes": "Best candidate in the cluster for a cheap base-rate experiment (historical underwriting queue at one PSP), but likely to end as a feature of the onboarding tool (H6)."
+   }
+  ],
+  "evidence_against_thesis": [
+   "H3 confirmed in open-source incumbents: Marble RuleSnooze already stores who (CreatedByUser), from which decision (CreatedFromDecisionId), which rule, which entity (PivotValue), start and expiry and a comment, and later executions return 'snoozed' automatically (https://raw.githubusercontent.com/checkmarble/marble-backend/main/models/rule_snoozes.go); Tazama conditions store type, reason code, user, inception and expiry per entity/account (https://raw.githubusercontent.com/tazama-lf/admin-service/main/README.md). The 'thin ledger of typed dated grants' the prior investigation described as unshipped is shipped at the per-entity level in this domain.",
+   "H3/H6: generalised settlements are made as versioned rule changes (Marble ScenarioIteration.Version recorded on every Decision; Tazama cfg-versioned rules and typologies), i.e. the rule engine and case manager already own the settlement corpus.",
+   "H1: alert adjudication in AML, sanctions and fraud is factual classification and evidence gathering; the case outcome taxonomy in Marble is confirmed_risk / valuable_alert / false_positive and screening outcomes are confirmed_hit / no_hit, with no 'interpretation' object at all.",
+   "H4: the SAR/no-SAR decision is treated by US examiners as an inherently subjective judgment assessed as a process (FFIEC manual, memory, unverified), so the last step stays human even after precedent exists.",
+   "H6 in chargebacks: the ambiguity 'did the cardholder participate' was settled prospectively by Visa (CE3.0) and is encoded by PSPs as typed API objects (Stripe) and requirement-level defense taxonomies (Adyen); merchants do not own a settlement loop, they consume one.",
+   "H3 in sanctions matching: nomenklatura's Resolver graph stores same/not-same judgements and applies them transitively, so the reusable settlement is already a database feature of the matching layer.",
+   "Statistical retraining, not settlement: Sift labels dispositions with $source 'Manual Review' and $analyst to feed models and decisions; rule tuning in TM is governed as model validation (OCC 2011-12, memory)."
+  ],
+  "not_found": [
+   "Verified annual SAR counts (FinCEN FY2024, NCA 2024, Tracfin 2024): all sites blocked; memory figures flagged UNVERIFIED.",
+   "Verified alert-to-SAR funnel and headcount (BPI 2018 'Getting to Effectiveness'): blocked; memory figures flagged UNVERIFIED.",
+   "Cost per alert or per investigation from any independent source.",
+   "Sanctions screening true-match rates and FCA 2023 review backlog numbers.",
+   "Chargeback volumes, merchant win/representment rates, CE3.0 uptake or pre-dispute deflection rates.",
+   "KYC/CDD exception and waiver volumes, committee throughput, or audit findings on inconsistent interpretation at any institution.",
+   "Merchant onboarding manual-review rates and exception volumes at any PSP.",
+   "Whether NICE Actimize, Verafin, Unit21, Hummingbird, ComplyAdvantage, Feedzai or Chargeflow store analyst rationale as reusable executable policy (all docs blocked; only Marble, Tazama, Stripe, Adyen, Sift, OpenSanctions verified).",
+   "Text of 31 CFR 1020.320, the FFIEC SAR section, 12 CFR 1005.11, OFAC compliance framework, FinCEN 2024 AML/CFT program NPRM: all blocked; cited from memory only.",
+   "Feedzai BAF datasheet fraud prevalence: PDF fetched but text extraction failed in the sandbox (cryptography module broken)."
+  ],
+  "blocked_urls": [
+   "https://bpi.com/getting-to-effectiveness-report-on-u-s-financial-institution-resources-devoted-to-bsa-aml-compliance/",
+   "https://www.fincen.gov/sites/default/files/shared/FinCEN-Year-in-Review-FY2024.pdf",
+   "https://www.fca.org.uk/publications/multi-firm-reviews/sanctions-systems-and-controls-firms-response-increased-sanctions-due-russias-invasion-ukraine",
+   "https://www.nationalcrimeagency.gov.uk/what-we-do/crime-threats/money-laundering-and-illicit-finance/suspicious-activity-reports",
+   "https://risk.lexisnexis.com/insights-resources/research/true-cost-of-financial-crime-compliance-study-global-report",
+   "https://bsaaml.ffiec.gov/manual/AssessingComplianceWithBSARegulatoryRequirements/04",
+   "https://chargebacks911.com/chargeback-stats/",
+   "https://ofac.treasury.gov/media/16331/download?inline",
+   "https://www.federalregister.gov/documents/2024/07/03/2024-14414/anti-money-laundering-and-countering-the-financing-of-terrorism-programs",
+   "https://docs.unit21.ai/",
+   "https://www.economie.gouv.fr/tracfin/rapports-annuels-danalyse-et-dactivite",
+   "https://www.fatf-gafi.org/en/publications/Digitaltransformation/Opportunities-challenges-new-technologies-aml-cft.html",
+   "https://www.govinfo.gov/",
+   "https://www.gao.gov/",
+   "https://www.occ.gov/",
+   "https://www.ecfr.gov/",
+   "https://www.sec.gov/",
+   "https://home.treasury.gov/",
+   "https://usa.visa.com/",
+   "https://developer.visa.com/",
+   "https://www.mastercard.us/",
+   "https://www.federalreserve.gov/",
+   "https://www.acams.org/",
+   "https://www.wolfsberg-group.org/",
+   "https://www.eba.europa.eu/",
+   "https://acpr.banque-france.fr/",
+   "https://www.legifrance.gouv.fr/",
+   "https://www.nilsonreport.com/",
+   "https://www.pymnts.com/",
+   "https://www.merchantriskcouncil.org/",
+   "https://www.consumerfinance.gov/",
+   "https://www.fdic.gov/",
+   "https://www.ffiec.gov/",
+   "https://eur-lex.europa.eu/",
+   "https://www.gov.uk/",
+   "https://www.legislation.gov.uk/",
+   "https://www.bankofengland.co.uk/",
+   "https://arxiv.org/",
+   "https://papers.ssrn.com/",
+   "https://www.semanticscholar.org/",
+   "https://api.openalex.org/",
+   "https://web.archive.org/",
+   "https://en.wikipedia.org/",
+   "https://github.com/ (HTML and search API; only raw.githubusercontent.com allowed)",
+   "https://cdn.jsdelivr.net/",
+   "https://huggingface.co/",
+   "https://www.bing.com/",
+   "https://duckduckgo.com/",
+   "https://www.google.com/",
+   "https://www.bai.org/",
+   "https://www.mckinsey.com/",
+   "https://www2.deloitte.com/",
+   "https://www.pwc.com/",
+   "https://www.ey.com/",
+   "https://www.kpmg.com/",
+   "https://www.accenture.com/",
+   "https://www.gartner.com/",
+   "https://www.celent.com/",
+   "https://www.crowe.com/"
+  ],
+  "sources": [
+   {
+    "url": "https://raw.githubusercontent.com/checkmarble/marble-backend/main/models/rule_snoozes.go",
+    "type": "vendor (open-source code, fetched)",
+    "used_for": "Per-entity prospective settlement object: RuleSnooze with CreatedByUser, CreatedFromDecisionId, CreatedFromRuleId, PivotValue, StartsAt, ExpiresAt, Comment"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/checkmarble/marble-backend/main/models/scenario_iterations.go",
+    "type": "vendor (open-source code, fetched)",
+    "used_for": "Versioned detection program (ScenarioIteration.Version, review/block/decline thresholds), screening config Threshold, ForcedOutcome, IgnoreListId"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/checkmarble/marble-backend/main/models/decision.go",
+    "type": "vendor (open-source code, fetched)",
+    "used_for": "Decision records ScenarioVersion; ReviewStatus pending/approve/decline; RuleExecution outcome hit/no_hit/snoozed/error"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/checkmarble/marble-backend/main/models/case.go",
+    "type": "vendor (open-source code, fetched)",
+    "used_for": "Case statuses, outcomes confirmed_risk/valuable_alert/false_positive, review levels probable_false_positive/investigate/escalate"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/checkmarble/marble-backend/main/models/screening.go",
+    "type": "vendor (open-source code, fetched)",
+    "used_for": "Screening statuses confirmed_hit/no_hit/in_review; match statuses pending/skipped"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/checkmarble/marble/main/README.md",
+    "type": "vendor (open-source README, fetched)",
+    "used_for": "Marble positioning vs ComplyAdvantage/Actimize/Fiserv; '100+ fintechs, banks and crypto exchanges in 15+ countries'; audit trail and case manager features"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/tazama-lf/docs/main/Product/event-flow-rule-processor.md",
+    "type": "vendor (open-source docs, Linux Foundation project, fetched)",
+    "used_for": "EFRuP conditions: non-overridable-block / overridable-block / override per entity or account; override suppresses interdiction; hierarchy of conditions"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/tazama-lf/admin-service/main/README.md",
+    "type": "vendor (open-source docs, fetched)",
+    "used_for": "Condition schema: condTp, prsptv, incptnDtTm, xprtnDtTm, condRsn, usr; PUT to update expiry"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/tazama-lf/docs/main/README.md",
+    "type": "vendor (open-source docs, fetched)",
+    "used_for": "Alert vs interdiction thresholds, typology scoring, external case management, false-positive example"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/tazama-lf/docs/main/Product/rule-processor-overview.md",
+    "type": "vendor (open-source docs, fetched)",
+    "used_for": "Versioned external rule configuration; banded/cased outcomes"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/stripe/openapi/master/openapi/spec3.json",
+    "type": "vendor (API specification, fetched)",
+    "used_for": "Visa CE3.0 typed evidence (exactly two prior undisputed transactions, required fields), dispute reasons/status, review object, radar.value_list with created_by, early fraud warnings"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/Adyen/adyen-openapi/main/json/DisputeService-v30.json",
+    "type": "vendor (API specification, fetched)",
+    "used_for": "Defense reasons per dispute with document requirementLevel Required/OneOrMore/Optional/AlternativeRequired and 'satisfied' flag; accept/defend automation"
+   },
+   {
+    "url": "https://pypi.org/pypi/nomenklatura/json",
+    "type": "vendor (open-source README, fetched)",
+    "used_for": "Resolver graph of same/not-same/undecided judgements applied transitively"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/opensanctions/yente/main/yente/settings.py",
+    "type": "vendor (open-source code, fetched)",
+    "used_for": "Default SCORE_THRESHOLD 0.70 and SCORE_CUTOFF 0.50 for matches"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/opensanctions/yente/main/README.md",
+    "type": "vendor (open-source README, fetched)",
+    "used_for": "yente as self-hosted KYC screening appliance; data licence for commercial use"
+   },
+   {
+    "url": "https://pypi.org/pypi/sift/json",
+    "type": "vendor (SDK README, fetched)",
+    "used_for": "Labels with $source 'Manual Review' and $analyst; Decisions and Workflows APIs; OTP verification endpoints"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/feedzai/bank-account-fraud/main/README.md",
+    "type": "academic/vendor (NeurIPS 2022 dataset README, fetched)",
+    "used_for": "Real-world account-opening fraud dataset with significant class imbalance"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/IBM/AMLSim/master/README.md",
+    "type": "vendor/academic (fetched)",
+    "used_for": "Synthetic AML alert/SAR simulation; no real rates"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/cfpb/regulations-xml/master/README.md",
+    "type": "government (CFPB eRegulations repo, fetched)",
+    "used_for": "Confirmed Reg E text not retrievable via this mirror"
+   },
+   {
+    "url": "https://www.fincen.gov/sites/default/files/shared/FinCEN-Year-in-Review-FY2023.pdf",
+    "type": "regulator (UNVERIFIED, from memory, blocked)",
+    "used_for": "About 4.6 million SARs FY2023"
+   },
+   {
+    "url": "https://bpi.com/getting-to-effectiveness-report-on-u-s-financial-institution-resources-devoted-to-bsa-aml-compliance/",
+    "type": "industry association (UNVERIFIED, from memory, blocked)",
+    "used_for": "19 banks, about $2.4bn/yr, about 14,000 FTE, about 16m alerts, about 640k SARs, median 4% SAR follow-up"
+   },
+   {
+    "url": "https://www.nationalcrimeagency.gov.uk/what-we-do/crime-threats/money-laundering-and-illicit-finance/suspicious-activity-reports",
+    "type": "government statistics (UNVERIFIED, from memory, blocked)",
+    "used_for": "About 860,000 UK SARs 2022-23"
+   },
+   {
+    "url": "https://www.economie.gouv.fr/tracfin",
+    "type": "regulator (UNVERIFIED, from memory, blocked)",
+    "used_for": "About 190,000 Tracfin declarations/informations 2023"
+   },
+   {
+    "url": "https://risk.lexisnexis.com/insights-resources/research/true-cost-of-financial-crime-compliance-study-global-report",
+    "type": "vendor survey (UNVERIFIED, from memory, blocked)",
+    "used_for": "About $61bn US/Canada financial-crime compliance cost"
+   },
+   {
+    "url": "https://bsaaml.ffiec.gov/manual/AssessingComplianceWithBSARegulatoryRequirements/04",
+    "type": "regulator (UNVERIFIED, from memory, blocked)",
+    "used_for": "SAR decision as inherently subjective judgment; documented decision process"
+   },
+   {
+    "url": "https://www.fincen.gov/sites/default/files/2018-04/FinCEN_Guidance_CDD_FAQ_FINAL_508_2.pdf",
+    "type": "regulator (UNVERIFIED, from memory, blocked)",
+    "used_for": "Regulator-level settlement of recurring CDD interpretive questions"
+   },
+   {
+    "url": "https://www.occ.gov/news-issuances/bulletins/2011/bulletin-2011-12.html",
+    "type": "regulator (UNVERIFIED, from memory, blocked)",
+    "used_for": "Model risk management governing TM tuning"
+   },
+   {
+    "url": "https://ofac.treasury.gov/media/16331/download?inline",
+    "type": "regulator (UNVERIFIED, from memory, blocked)",
+    "used_for": "Root causes of sanctions violations incl. misinterpretation of applicability"
+   },
+   {
+    "url": "https://stripe.com/legal/restricted-businesses",
+    "type": "vendor policy (UNVERIFIED, from memory, blocked)",
+    "used_for": "Versioned public restricted-business list as merchant-onboarding settlement record"
+   }
+  ]
+ },
+ "verification": {
+  "domain": "payments-fraud-aml-kyc",
+  "refuted": [
+   {
+    "claim": "Marble RuleSnooze stores a Comment on the snooze object ({CreatedByUser, CreatedFromDecisionId, CreatedFromRuleId, PivotValue, StartsAt, ExpiresAt, Comment}).",
+    "why": "Fetched https://raw.githubusercontent.com/checkmarble/marble-backend/main/models/rule_snoozes.go (vendor open-source code). The RuleSnooze struct has Id, OrganizationId, CreatedByUser, CreatedFromDecisionId, CreatedFromRuleId, PivotValue, SnoozeGroupId, StartsAt, ExpiresAt and no Comment. Comment appears only on SnoozeDecisionInput and RuleSnoozeCaseEventInput, i.e. it is written as a case event (models/case_event.go has resource type \"rule_snooze\"; models/webhook.go emits \"case.rule_snooze_created\"). The rationale is therefore a free-text case-timeline entry detached from the executable object, which strengthens rather than weakens the finder's conclusion that no interpretation is captured, but the object description was wrong. Also scope is SnoozeGroupId x PivotValue (a snooze group can span several rules), not strictly per rule."
+   },
+   {
+    "claim": "Feedzai's Bank Account Fraud suite is 'derived from a real bank account-opening fraud dataset' and can serve as a base-rate source for fraud alert volume.",
+    "why": "Extracted the datasheet PDF (https://raw.githubusercontent.com/feedzai/bank-account-fraud/main/documents/datasheet.pdf, academic/vendor, NeurIPS 2022). Q4-Q6 state every instance is synthetic, generated by a CTGAN trained on an anonymised real dataset, then resampled 'with different probability rates ... to obtain the desired group size and prevalence per month'. Prevalence is a design parameter of the synthetic sampling, not an observed operational rate, and the datasheet gives no absolute fraud rate. It cannot support any decision-volume or review-rate claim and should be dropped from the fraud workflow's decision_volume field."
+   }
+  ],
+  "weakened": [
+   {
+    "claim": "AML transaction monitoring workflow evidence_quality = 'moderate'.",
+    "why": "Every operational number in that entry (FinCEN ~4.6m SARs FY2023, NCA ~860k, Tracfin ~190k, BPI 19 banks / ~16m alerts / ~640k SARs / ~14,000 FTE / ~$2.4bn / 4% follow-up, LexisNexis ~$61bn, FFIEC 'inherently subjective judgment', OCC 2011-12, 31 CFR 1020.320 timelines) is from memory and was unreachable in both sessions (fincen.gov, bpi.com, nationalcrimeagency.gov.uk, bsaaml.ffiec.gov, occ.gov, ecfr.gov, risk.lexisnexis.com all EGRESS_BLOCKED; WebSearch budget 200/200 exhausted; unauthenticated GitHub global code search returns 503 'authorization not ready'). The only verified evidence is vendor source code describing data structures. Evidence for the mechanism-level conclusion (incumbents already store per-entity settlements) is moderate; evidence for volume, cost and review rates is none. The entry should carry 'weak' overall, with the numbers marked unknown rather than approximate."
+   },
+   {
+    "claim": "H (repeatable ambiguity settled prospectively) = 5-10% of AML alert review, 3-5% of sanctions hit review, 5% of fraud review, 5-10% of chargebacks, 20-30% of KYC/CDD exceptions, part of 30-40% C/H in merchant onboarding.",
+    "why": "In each of the first four the finder's own H examples are per-entity settlements (snooze this customer, whitelist this John Smith, allow-list this card fingerprint, merchant accept/fight thresholds). Under the brief's section 5 those are category B (factual classification of one entity) or F (commercial policy), recorded once and reused for that entity only; they are not a class-level interpretation that decides materially similar cases involving other entities. Verified code shows they are already auto-captured: Marble creates a ScreeningWhitelist row (counterparty_id, entity_id, whitelisted_by, created_at) every time a reviewer marks a screening match no_hit (https://raw.githubusercontent.com/checkmarble/marble-backend/main/usecases/continuous_screening/screening.go, comment 'If no_hit (always): adds the match to the whitelist'; https://raw.githubusercontent.com/checkmarble/marble-backend/main/repositories/dbmodels/db_screening_whitelist.go) and passes those ids to OpenSanctions as exclude_entity_ids (repositories/screening/provider_opensanctions.go). Re-estimated class-level H: AML TM 2-5%, sanctions about 1% (OFAC 50% rule / licence applicability, escalated to counsel), fraud 1-2%, chargebacks 2-5% (merchant-side), KYC/CDD 10-20% (own estimate, no data), merchant onboarding 10-20% (own estimate, no data). These are estimates, not measurements."
+   },
+   {
+    "claim": "'Essentially 100% of alerts above threshold are human-dispositioned by design.'",
+    "why": "Marble ships an ai_agent package (https://raw.githubusercontent.com/checkmarble/marble-backend/main/usecases/ai_agent/ai_case_review.go and ai_screening_suggestion.go, vendor open-source code) that generates a case review with a sanity-checked review_level enum {probable_false_positive, investigate, escalate} and a screening-hit suggestion enum {probable_false_positive, inconclusive, investigate} plus a 1-3 sentence reason, and its case-review prompt loads up to 10 previous cases per pivot object and 50 decisions per previous case with their case events (constants MAX_PREVIOUS_CASES_REVIEW_PER_PIVOT_OBJECT=10, MAX_DECISIONS_FROM_PREVIOUS_CASES_REVIEW=50). Human disposition remains the default, but the design already includes machine-proposed dispositions grounded in prior cases for the same entity. The 100% figure describes a policy choice, not a system constraint, and cannot be sourced."
+   },
+   {
+    "claim": "Stripe review closed_reason set is 'approved / refunded / refunded_as_fraud / disputed / canceled / payment_never_settled'.",
+    "why": "Fetched https://raw.githubusercontent.com/stripe/openapi/master/openapi/spec3.json (vendor API spec): the enum is acknowledged, approved, canceled, disputed, payment_never_settled, redacted, refunded, refunded_as_fraud. Minor omission; opened_reason {rule, manual} confirmed."
+   },
+   {
+    "claim": "Chargeback workflow evidence_quality = 'moderate'.",
+    "why": "The mechanism evidence (Stripe CE3.0 typed objects, Adyen defense-reason requirement levels) is verified and moderate, but decision volume (238m/337m chargebacks, attributed to Mastercard/Datos), win rates, per-dispute cost and network-program thresholds are all unreached memory (mastercard.com, chargebacks911.com, nilsonreport.com blocked). Economic-pain and volume fields should be 'unknown'."
+   },
+   {
+    "claim": "Sanctions hit review has H 3-5% via per-entity 'good-guy' whitelists applied to future rescreens.",
+    "why": "The whitelist is not a human settlement of ambiguity; in Marble it is a side effect of the no_hit disposition (verified above) and in OpenSanctions/nomenklatura a Resolver graph edge (https://pypi.org/pypi/nomenklatura/json: 'Edges are Judgements of whether two entity IDs are the same, not the same, or undecided ... computing connected components'). It is category B captured automatically. Class-level interpretive residue (ownership rule, licence scope) is real but rare and settled by counsel memos, not by an operational system."
+   },
+   {
+    "claim": "KYC/CDD exceptions: C 25-35% and H 20-30%; FinCEN CDD FAQs are a regulator-level settlement loop.",
+    "why": "No source at all was reached for exception volumes, committee throughput or audit findings; the FinCEN FAQ PDF (fincen.gov) is blocked in both sessions. Even taking the FAQ as real, it is a published ruling by a regulator that banks transcribe into procedure text; it does not feed any operational decision system and nothing shows how many per-bank exceptions it resolves. Per the brief, absence of data is uncertainty; the shares should be labelled 'own guess, no measurement' and H reduced (10-20%) because a material part of exception volume is A (documents not supplied) and E (risk-acceptance for a named client)."
+   }
+  ],
+  "confirmed": [
+   {
+    "claim": "Marble stores per-entity, expiring, attributable rule snoozes created from a specific decision, and rule executions return outcome 'snoozed'.",
+    "evidence": "https://raw.githubusercontent.com/checkmarble/marble-backend/main/models/rule_snoozes.go (fields CreatedByUser, CreatedFromDecisionId, CreatedFromRuleId, PivotValue, SnoozeGroupId, StartsAt, ExpiresAt); https://raw.githubusercontent.com/checkmarble/marble-backend/main/models/decision.go line 112: RuleExecution Outcome 'enum: hit, no_hit, snoozed, error'; Decision carries ScenarioVersion (lines 32, 81, 141) and ReviewStatus pending/decline/approve (lines 39-44). Vendor open-source code, fetched."
+   },
+   {
+    "claim": "Marble case outcomes are confirmed_risk / valuable_alert / false_positive and review levels probable_false_positive / investigate / escalate; no interpretation object exists.",
+    "evidence": "https://raw.githubusercontent.com/checkmarble/marble-backend/main/models/case.go lines 133-143 (ValidCaseOutcomes) and 209 (ValidCaseReviewLevels). Vendor open-source code, fetched. Also confirms SAR filing lives inside the case manager: models/case_event.go has CaseEventResourceType 'sar'."
+   },
+   {
+    "claim": "Marble screening statuses confirmed_hit / no_hit / in_review with match statuses confirmed_hit / no_hit / pending / skipped.",
+    "evidence": "https://raw.githubusercontent.com/checkmarble/marble-backend/main/models/screening.go lines 31-113. Vendor open-source code, fetched."
+   },
+   {
+    "claim": "Marble is positioned as an alternative to ComplyAdvantage/Actimize/Fiserv and claims '100+' fintechs, banks and crypto exchanges in 15+ countries.",
+    "evidence": "https://raw.githubusercontent.com/checkmarble/marble/main/README.md lines 7 and 10. Vendor README, fetched; customer count is a vendor claim, unverified."
+   },
+   {
+    "claim": "Tazama EFRuP conditions carry condTp (non-overridable-block / overridable-block / override), condRsn reason code, usr, incptnDtTm, xprtnDtTm; expiry is updatable by PUT; hierarchy red always applies, green trumps amber, override suppresses a typology interdiction.",
+    "evidence": "https://raw.githubusercontent.com/tazama-lf/admin-service/main/README.md lines 220-277 and 259/270 ('New timedate of the condition'); https://raw.githubusercontent.com/tazama-lf/docs/main/Product/event-flow-rule-processor.md lines 160-164 and 207. Vendor open-source docs (Linux Foundation project), fetched."
+   },
+   {
+    "claim": "Tazama routes typology breaches to an external case-management system and does not itself include one.",
+    "evidence": "https://raw.githubusercontent.com/tazama-lf/docs/main/README.md lines 28, 117-131 ('The Tazama system does not currently integrate with an existing Case Management System'). Vendor docs, fetched."
+   },
+   {
+    "claim": "Stripe models Visa CE3.0 as a typed rule: 'List of exactly two prior undisputed transaction objects', device fingerprint 'at least 20 characters', device id 'at least 15 characters', shipping address 'All fields are required', plus an eligibility object with required_actions.",
+    "evidence": "https://raw.githubusercontent.com/stripe/openapi/master/openapi/spec3.json schemas dispute_enhanced_evidence_visa_compelling_evidence3, dispute_visa_compelling_evidence3_disputed_transaction, dispute_visa_compelling_evidence3_prior_undisputed_transaction, dispute_enhanced_eligibility_visa_compelling_evidence3. Vendor API spec, fetched. Stripe dispute reasons (15 values) and radar.value_list with created_by also confirmed."
+   },
+   {
+    "claim": "Adyen's Disputes API exists 'to automate the dispute handling process' with acceptDispute / defendDispute / retrieveApplicableDefenseReasons / supplyDefenseDocument, and DefenseDocumentType.requirementLevel is Required / OneOrMore / Optional / AlternativeRequired with a DefenseReason.satisfied flag.",
+    "evidence": "https://raw.githubusercontent.com/Adyen/adyen-openapi/main/json/DisputeService-v30.json info.description, paths and components DefenseDocumentType / DefenseReason. Vendor API spec, fetched."
+   },
+   {
+    "claim": "nomenklatura persists analyst identity judgements as a Resolver graph of same / not-same / undecided edges with connected-component computation.",
+    "evidence": "https://pypi.org/pypi/nomenklatura/json README ('Resolver graph ... Edges are Judgements of whether two entity IDs are the same, not the same, or undecided. The resolver implements an algorithm for computing connected components'). Vendor open-source README, fetched."
+   },
+   {
+    "claim": "yente defaults SCORE_THRESHOLD = 0.70 and SCORE_CUTOFF = 0.50.",
+    "evidence": "https://raw.githubusercontent.com/opensanctions/yente/main/yente/settings.py lines 183 and 186. Vendor open-source code, fetched."
+   },
+   {
+    "claim": "Sift labels record $source 'Manual Review' and $analyst on analyst dispositions.",
+    "evidence": "https://pypi.org/pypi/sift/json README example ('\"$source\": \"Manual Review\", \"$analyst\": \"analyst.name@your_domain.com\"'). Vendor SDK README, fetched."
+   }
+  ],
+  "manual_review_conflated_with_repeatable_ambiguity": [
+   "AML TM: per-customer rule snoozes ('this customer's payroll pattern is benign') were counted toward H; they are entity-specific factual settlements (B) already stored as executable objects, not class-level interpretations that decide other customers' cases.",
+   "AML TM: threshold/segment recalibration was partly counted as H; it is model tuning of parameters (rule change), not a settlement of what a rule means, and is governed as versioned configuration in both Marble (ScenarioIteration.Version) and Tazama (cfg versions).",
+   "Sanctions: per-entity 'good-guy' whitelists were counted as H; verified code shows Marble writes the whitelist automatically on every no_hit disposition, so this is a B settlement captured as a side effect of the review, with no human interpretation step.",
+   "Fraud: Radar value lists / Sift decisions per user were counted as H; they are per-entity allow/block facts feeding rules and model retraining.",
+   "Chargebacks: 'merchant-level playbooks' (accept under X, fight subscriptions under CE3.0) were counted as H; the CE3.0 eligibility is already deterministic in the PSP API and the accept/fight threshold is a commercial policy (F), not an ambiguity of rule meaning.",
+   "KYC/CDD: 'the same entity-type/document/jurisdiction questions recur' was assigned 20-30% H with no data; a share of exception volume is documents not supplied (A) and named-client risk acceptance (E), and the regulator FAQ loop cited is a published ruling that is transcribed into procedure text, not an operational settlement store.",
+   "Merchant onboarding: 'is this business model inside our restricted list' was pooled as C/H 30-40%; once the list is settled, most applications are B (classify what the business actually does) and A (missing website/licences); only genuinely new business models are H, and their volume is unknown."
+  ],
+  "corrected_workflow_verdicts": [
+   {
+    "name": "AML transaction monitoring alert adjudication (L1/L2 investigation to SAR/no-SAR)",
+    "evidence_quality": "weak",
+    "verdict": "negative",
+    "why": "Verified vendor code shows the two open-source incumbents already hold the per-entity settlement (Marble RuleSnooze with creator, source decision, pivot, start/expiry; Tazama conditions with reason code, user, inception/expiry) and version the generalised settlement (ScenarioIteration.Version on every decision), and Marble additionally feeds prior cases for the same pivot into an LLM case reviewer that proposes the review level. Class-level H is at most 2-5% (own estimate). All volume, cost and review-rate figures are unverified memory (fincen.gov, bpi.com, nationalcrimeagency.gov.uk, bsaaml.ffiec.gov blocked). Supports H1, H3, H4 (SAR judgment per case, unverified), H6. Downgraded from weak to negative because the only verified evidence is evidence against."
+   },
+   {
+    "name": "Sanctions and PEP screening hit review (name-match adjudication)",
+    "evidence_quality": "moderate",
+    "verdict": "negative",
+    "why": "Stronger against than the finder stated: Marble auto-creates a ScreeningWhitelist (counterparty_id, entity_id, whitelisted_by, created_at) on every no_hit disposition and excludes those ids on later screens; nomenklatura stores same/not-same judgements transitively; yente thresholds are configuration. Almost entirely category B with automatic capture; class-level C (ownership/licence scope) is rare and settled by counsel memos. H about 1%. Supports H1 and H3."
+   },
+   {
+    "name": "Payment fraud alert review (card / account-opening / ATO manual review queues)",
+    "evidence_quality": "weak",
+    "verdict": "negative",
+    "why": "Only vendor API surfaces verified (Stripe review object, radar value lists with created_by; Sift labels with $source 'Manual Review' and $analyst). The Feedzai BAF dataset is synthetic and gives no base rate. Dispositions feed model retraining and per-entity lists; no interpretation object exists anywhere. H 1-2% (own estimate). Supports H1 and H3."
+   },
+   {
+    "name": "Chargeback and dispute handling under card-network rules (merchant representment and issuer dispute intake)",
+    "evidence_quality": "moderate",
+    "verdict": "negative",
+    "why": "The settlement loop is verified and prospective but its owner is Visa/Mastercard: Stripe encodes CE3.0 as typed evidence with hard field constraints and an eligibility object, and Adyen returns per-dispute defense reasons with Required/OneOrMore/Optional/AlternativeRequired document levels and a satisfied flag. The buyer (merchant or PSP) consumes the settlement; residual merchant decisions are commercial (F) and evidence collection (A). Volumes and win rates unverified. Supports H6; downgraded from weak to negative because no buyer-side settlement loop exists to capture."
+   },
+   {
+    "name": "KYC / CDD exceptions and waivers (document exceptions, EDD waivers, PEP/UBO interpretation, risk-acceptance)",
+    "evidence_quality": "unknown",
+    "verdict": "uncertain",
+    "why": "Highest plausible class-level H in the cluster, but nothing was reachable: no exception volumes, committee throughput, audit findings or vendor documentation (Fenergo, Encompass, Alloy) in either session, and the FinCEN CDD FAQ is a regulator-published ruling that does not feed an operational system. Per-institution volume is probably hundreds to low thousands per year (own guess), which the brief penalises, and the risk-based approach expects a documented rationale per exception (H4 risk). Re-estimated H 10-20% (own estimate). Only a base-rate experiment on one bank's exception log can move this."
+   },
+   {
+    "name": "Merchant onboarding exceptions (PSP/acquirer underwriting: restricted-business classification, MCC assignment, prohibited-list edge cases)",
+    "evidence_quality": "unknown",
+    "verdict": "uncertain",
+    "why": "No source reached (stripe.com restricted-business page blocked; no PSP publishes manual-underwriting rates). Once the restricted list is settled most cases are B/A; genuinely new business models are H but their volume and recurrence are unknown, and the settlement is written into the PSP's own onboarding rules (H6). Re-estimated H 10-20% (own estimate). Remains the cheapest experiment in the cluster only because one PSP's historical underwriting queue plus a dated policy list would give real settlements; expectation is a feature of the onboarding tool, not a product."
+   }
+  ],
+  "missing": [
+   "Marble's screening_whitelists table and its automatic creation on no_hit (https://raw.githubusercontent.com/checkmarble/marble-backend/main/usecases/continuous_screening/screening.go; repositories/dbmodels/db_screening_whitelist.go; provider_opensanctions.go passes exclude_entity_ids): the incumbent captures the sanctions 'settlement' without any explicit settlement step, and with no expiry or reason field.",
+   "Marble's ai_agent package (usecases/ai_agent/ai_case_review.go, ai_screening_suggestion.go): LLM case review that loads up to 10 previous cases per pivot object and 50 decisions each with case events, outputs a sanity-checked review_level enum and a free-text justification; screening-hit suggestion enum probable_false_positive/inconclusive/investigate with a reason. Incumbent case managers are already consuming prior dispositions as unstructured precedent inside the review step, which is the layer Sophon would sit in (H6).",
+   "Marble models/case_event.go resource types include 'sar' and 'rule_snooze', and webhooks emit case.rule_snooze_created and case.decision_reviewed: the settlement events are already first-class, auditable and exportable from the case manager.",
+   "The snooze rationale is stored as a case event comment, not on the executable object (rule_snoozes.go has no Comment field), which is direct evidence that incumbents do not type the interpretation, but also that customers have not demanded it.",
+   "Feedzai BAF datasheet: instances are CTGAN-synthetic with designed prevalence; it is not a source for real fraud review or prevalence rates.",
+   "Regulatory human-in-the-loop evidence (FFIEC SAR-decision language, FinCEN 2024 AML/CFT program rule, Reg E 1005.11 investigation duties, EU AMLR 2027 CDD standardisation) remains unverified: fincen.gov, bsaaml.ffiec.gov, ecfr.gov, federalregister.gov, consumerfinance.gov, eur-lex.europa.eu all blocked; WebSearch budget exhausted; unauthenticated GitHub global code search returns 503. The finder's H4 claim for SAR decisions therefore rests on memory only.",
+   "No independent volume, review-rate, cost-per-review or exception-committee data was reachable for any of the six workflows; every operational number in the cluster is unverified memory and should be treated as unknown."
+  ],
+  "overall": "The finder's domain assessment (weak-to-negative, do not pick this cluster as the wedge) survives adversarial review and should be stated more firmly as negative for the four high-volume workflows. Everything verifiable was verified: Marble, Tazama, Stripe, Adyen, nomenklatura, yente and Sift primary files match the finder's descriptions, with two corrections (RuleSnooze has no Comment field; the Feedzai dataset is synthetic and cannot give a base rate) and one omission in an enum. Evidence I found in the same repositories cuts further against the thesis: Marble auto-creates a screening whitelist on every no_hit disposition, versions every rule change on every decision, records snooze and SAR events in the case timeline, and already runs an LLM case reviewer that ingests up to 10 prior cases for the same entity to propose the review level. That is H3 (settlements already encoded) and H6 (the precedent-consumption layer is being built inside the case manager) demonstrated in shipped open-source code. The finder's H shares were inflated by counting per-entity snoozes, whitelists, allow-lists and commercial accept/fight thresholds as repeatable ambiguity; re-estimated class-level H is about 1-5% in AML, sanctions, fraud and chargebacks (own estimates), and the settlement loops found there are owned by the rules layer, the matching layer or the card networks, not by the buyer. No regulator, statistics, court, association or press source was reachable in either session (egress proxy blocks all of them, WebSearch is at 200/200, GitHub global code search refuses unauthenticated queries), so every volume, headcount and cost figure in the finder's result is unverified memory and must be treated as unknown, which lowers the AML entry's evidence quality from moderate to weak. The two sub-workflows with plausible class-level H (KYC/CDD policy exceptions; merchant-onboarding restricted-business classification) remain uncertain with zero data, probable low volume, a documented-rationale-per-exception expectation (H4 risk) and a strong prior that any result becomes a feature of the CLM or onboarding tool. If anything is tested here it should be a base-rate experiment on one PSP's historical underwriting queue or one bank's CDD exception log, with the explicit kill criterion that class-level H (categories 7 and 8 in brief section 10H) must exceed roughly 15-20% of escalations at a volume of thousands per year to matter; the prior from this review is that it will not."
+ }
+}

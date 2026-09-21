@@ -1,0 +1,752 @@
+{
+ "key": "government-benefits-and-casework",
+ "found": {
+  "domain": "government-benefits-and-casework (US SSA disability, US unemployment insurance, SNAP/Medicaid, VA claims, USCIS, UK DWP PIP/ESA, France CAF/MDPH/URSSAF)",
+  "workflows": [
+   {
+    "name": "SSA disability determinations (DDS initial/reconsideration, ALJ hearings, Appeals Council) with SSRs/ARs/POMS as precedent mechanism",
+    "geography": "US (federal programme, 50+ state DDS agencies, ~1,300 ALJs)",
+    "decision_volume": "2,246,542 initial disability applications decided FY2025, 36% allowed (39% FY2023, 38% FY2024) \u2014 https://www.nickortizlaw.com/what-ssa-fy-2025-disability-data-tells-you-about-your-chances/ (press/law-firm summary of SSA FY2025 data; primary at https://www.ssa.gov/foia/resources/proactivedisclosure/2025/FY24%20Workload%20Data-Total-cdr%20added.pdf blocked). 2.3M initial claims cleared FY2025, +10% YoY; pending initial claims peaked 1.26M May 2024 \u2014 https://www.urban.org/urban-wire/ssa-says-its-reduced-disability-claims-backlog-fewer-new-claims-and-higher-denial-rate (think tank). 277,740 ALJ hearings held FY2025: 50% allowed, 33% denied, 16% dismissed \u2014 https://www.chroniclelegal.com/blog/alj-approval-rates (vendor/press citing SSA FY2025 waterfall chart). All sourced.",
+    "human_review_rate": "100% of initial determinations are made by a disability examiner + medical consultant team (SSA POMS DI 52715.020, https://secure.ssa.gov/poms.nsf/lnx/0452715020, regulator). Only Quick Disability Determination / Compassionate Allowance cases are fast-tracked (general knowledge, not fetched). Appeal path: reconsideration mandatory in most states, then ALJ de novo hearing; ~13% of Appeals Council requests remanded (2023) \u2014 https://www.laportelawfirm.com/blog/what-percentage-of-remanded-disability-cases-are-approved/ (press).",
+    "why_humans_review": "Rough estimate (basis: GAO-04-656 and CRFB/Dubin finding that DDS relies on lab/medical evidence while ALJs rely on symptoms and on a much more developed de novo record \u2014 https://www.gao.gov/assets/a243277.html, https://www.crfb.org/sites/default/files/pdfs/dubin.pdf; ALJ allowance range 9% to 93% across judges \u2014 https://www.chroniclelegal.com/blog/alj-approval-rates; GAO-18-37 on inconsistency of hearing decisions \u2014 https://www.gao.gov/products/gao-18-37): A missing/undeveloped medical evidence ~25%; B factual classification (RFC, symptom credibility, vocational profile) ~40%; C interpretation of listings/grids/SSRs ~10%; D circuit-vs-national-policy conflicts ~5%; E true discretion (judge effects) ~15%; G ~2%; H repeatable prospectively-settled ambiguity ~3\u20135%. H exists (ARs, SSRs, POMS/HALLEX updates) but is issued at a rate of a handful per year by the national policy office, not by frontline escalation.",
+    "settlement_loop_evidence": [
+     {
+      "description": "Acquiescence Rulings: when a circuit court holding conflicts with SSA national policy and government does not seek review, SSA must publish an AR in the Federal Register within 120 days; ARs bind adjudicators in that circuit and include a readjudication procedure for interim cases (20 CFR 404.985, 416.1485; SSR 96-1p; POMS GN 03501.015).",
+      "source_url": "https://www.ssa.gov/OP_Home/cfr20/404/404-0985.htm",
+      "source_type": "regulator",
+      "prospective": "yes",
+      "reusable_how": "Published, versioned ruling applied to all later claims in circuit; POMS DI 52705.010 and HALLEX I-5-4-13 carry implementation instructions. Owner is SSA Office of General Counsel / policy, trigger is a court, not an internal escalation."
+     },
+     {
+      "description": "Social Security Rulings are binding on all SSA components; SSA's rulings page catalogues SSRs by court case and policy interpretation.",
+      "source_url": "https://www.ssa.gov/OP_Home/rulings/rulings-pref.html",
+      "source_type": "regulator",
+      "prospective": "yes",
+      "reusable_how": "National policy interpretation rulings (e.g., SSR 96-1p on applying circuit decisions) that decide future cases; frequency low (single digits to low tens per year \u2014 count not sourced, blocked)."
+     },
+     {
+      "description": "Despite this formal precedent apparatus, GAO (2004, 2017) and ACUS (2013) repeatedly find large unexplained variation between DDS and ALJ outcomes and among ALJs, i.e., the precedent loop does not collapse discretion.",
+      "source_url": "https://www.acus.gov/sites/default/files/documents/Achieving_Greater_Consistency_Final_Report_4-3-2013_clean.pdf",
+      "source_type": "government statistics",
+      "prospective": "unclear",
+      "reusable_how": "Negative evidence: settled interpretations exist, yet outcome variance persists because most variance is evidentiary/discretionary (E and B), not unsettled rule meaning."
+     }
+    ],
+    "economic_pain": "Massachusetts DDS cost per case $571.63 FY2016\u201317 \u2014 https://www.mass.gov/files/documents/2017/11/15/DDS-fact-sheet-2017.pdf (government). Hearing-level cost per case not found (blocked). Backlog pain: pending initial claims 1.26M (May 2024), hearings pending large; House Oversight report claims 'rubber stamping judges waste billions' \u2014 https://oversight.house.gov/release/oversight-report-finds-disability-programs-rubber-stamping-judges-waste-billions (political/press). Error cost is lifetime benefit awards (order $300k per erroneous allowance is a common estimate; not sourced here).",
+    "existing_solutions": "Disability Case Processing System (DCPS) for DDSs (OIG audit of cost/schedule \u2014 https://www.oversight.gov/reports/audit/social-security-administrations-cost-and-schedule-estimates-disability-case, audit); POMS/HALLEX/SSR/AR corpus is itself a versioned precedent database maintained by SSA; quality review by Disability Quality Branches; ALJ decision-writing 'Insight' tool (not verified, search budget exhausted). Settlements ARE captured as versioned executable-ish precedents (POMS instructions), but by the agency itself, not by a product.",
+    "buyer_and_budget": "SSA (federal) and 50+ state DDS agencies funded 100% by SSA reimbursement; procurement via federal/state channels; no commercial buyer with discretionary budget for a precedent ledger. Negative.",
+    "regulatory_constraints": "Statutory right to de novo ALJ hearing (APA) means ALJ judgement cannot be replaced; ARs are legally required to be issued by SSA itself; automation of initial determinations limited to QDD/CAL fast-tracks. Federal procurement.",
+    "evidence_quality": "moderate",
+    "verdict": "weak",
+    "notes": "The strongest formal precedent loop in this cluster (AR/SSR/POMS) already exists and is owned and versioned by SSA. Frontline ambiguity is dominated by evidence and RFC judgement. H1, H3, H4 all supported here."
+   },
+   {
+    "name": "Unemployment insurance nonmonetary determinations and appeals (state workforce agencies; CUIAB precedent decisions)",
+    "geography": "US (53 state/territory agencies)",
+    "decision_volume": "National count NOT FOUND (ETA 207 dataset at https://oui.doleta.gov/unemploy/nonmon_determinations.asp and https://catalog.data.gov/dataset/unemployment-insurance-nonmonetary-determination-activity-data-eta-207 \u2014 both blocked). ETA 207 collects volume of nonmonetary determinations and denials quarterly (government statistics). Order of magnitude several million per year pre-pandemic is my estimate, unsourced.",
+    "human_review_rate": "Every nonmonetary issue (separation: quit/discharge; nonseparation: able/available/refusal) requires an adjudicator fact-finding determination; DOL standard is 80% within 21 days of issue detection \u2014 https://oui.doleta.gov/unemploy/pdf/Core_Measures.pdf (regulator). Appeal reversal rates published from ETA 5130 \u2014 https://oui.doleta.gov/unemploy/ui_appeal_reversal.asp (blocked; numbers not obtained).",
+    "why_humans_review": "Estimate (basis: DOL BTQ quality review structure focusing on fact-finding adequacy \u2014 https://oui.doleta.gov/unemploy/ui_benefit_operations/self_assessment_tool/adjudications_btq_review.pdf; CUIAB precedent statute wording 'significant legal or policy determination of general application that is likely to recur'): A missing evidence / obtaining both parties' statements ~30%; B factual classification (misconduct vs poor performance, good cause) ~35%; C rule interpretation ~15%; E ~5%; G ~5%; H repeatable ambiguity settled prospectively ~10%. H is real: precedent decisions exist precisely because interpretive questions recur.",
+    "settlement_loop_evidence": [
+     {
+      "description": "California UI Code authorises CUIAB Board Members to designate as precedent decisions those cases containing 'a significant legal or policy determination of general application that is likely to recur'; precedent benefit (P-B) and tax (P-T) decisions bind EDD and CUIAB ALJs except as modified by judicial review; all published online.",
+      "source_url": "https://cuiab.ca.gov/precedent-decisions/",
+      "source_type": "court or tribunal",
+      "prospective": "yes",
+      "reusable_how": "Explicit, catalogued, binding on the first-line agency: the closest institutional analogue to the Sophon loop found in this cluster. Count of P-B decisions not obtained (site blocked)."
+     },
+     {
+      "description": "CUIAB appeals procedure manual describes ALJs bound by precedent decisions.",
+      "source_url": "https://cuiab.ca.gov/wp-content/uploads/sites/13/documents/cuiabAppealsProcedureManual.pdf",
+      "source_type": "court or tribunal",
+      "prospective": "yes",
+      "reusable_how": "Applied by ALJs and EDD in later similar cases; EDD publishes benefit determination guide reflecting precedents (https://edd.ca.gov/siteassets/files/pdf_pub_ctr/de8714f.pdf, regulator)."
+     }
+    ],
+    "economic_pain": "Cost per determination not found. Pain is timeliness (21-day standard, 80% target) and reversal on appeal; reversal rates exist in DOL report but were not retrievable. Improper-payment cost driven mainly by benefit-year-earnings and work-search failures (known from DOL BAM programme, not fetched here).",
+    "existing_solutions": "State UI benefit systems (vendor and legacy in-house; e.g., Geographic Solutions, FAST Enterprises \u2014 general knowledge, unsourced); EDD 'Benefit Determination Guide' and CUIAB precedent index capture settlements as published text, not executable rules; DOL BTQ quality reviews. Settlements are captured as versioned precedents by the appeals board, not as executable rules.",
+    "buyer_and_budget": "State workforce agencies; DOL modernisation grants. Long public procurement; 53 separate buyers.",
+    "regulatory_constraints": "Due process fact-finding requirements (Java v. California; DOL standards) require adjudicator determination on each issue; automation of adverse determinations legally sensitive.",
+    "evidence_quality": "moderate",
+    "verdict": "uncertain",
+    "notes": "Best structural evidence of a working, binding, prospective settlement loop, but it already exists (appeals boards) and volumes/reversal data could not be retrieved. Open question: do frontline adjudicators fail to apply published precedents consistently (which would be a Sophon-shaped gap) \u2014 not established."
+   },
+   {
+    "name": "SNAP and Medicaid eligibility determinations and payment error rates",
+    "geography": "US (state-administered)",
+    "decision_volume": "~40M+ SNAP participants (not sourced here). SNAP FY2025 QC error tolerance threshold $57/month \u2014 https://www.congress.gov/crs_external_products/IF/HTML/IF10860.html (CRS, government). Medicaid FY2025 improper payments $37.39B \u2014 https://www.prnewswire.com/news-releases/audit-pressure-grows-over-medicaid-improper-payments-tied-to-intake-gaps-302748187.html (press citing CMS; primary https://www.cms.gov/files/document/2025-perm-medicaid-improper-payment-rates.pdf blocked).",
+    "human_review_rate": "All applications processed by eligibility workers with system support; QC samples reviewed federally. SNAP national payment error rate 10.93% FY2024 with 44 states filing corrective action plans \u2014 https://www.elastic.co/blog/snap-error-fy2028-penalty (vendor citing FNS; primary https://www.fns.usda.gov/snap/qc/annual-reports blocked).",
+    "why_humans_review": "Sourced basis: SNAP errors 'often due to failure to properly act on information or incorrectly calculating household income and deductions' (CRS IF10860); USDR found majority of errors stem from system-wide challenges rather than individual caseworker mistakes (https://www.nga.org/updates/snap-payment-accuracy-strategies-for-reducing-payment-error-rate/, industry association). Medicaid FY2025: 77.17% of improper payments tied to insufficient documentation; 68.1% of eligibility-related errors attributed to insufficient documentation (press citing CMS PERM). Estimate: A missing evidence/verification ~55%; B factual classification (income, household composition) ~30%; C ~8%; H ~2\u20135%; E ~0 (little discretion).",
+    "settlement_loop_evidence": [
+     {
+      "description": "No evidence found of a frontline escalation-to-precedent loop; policy ambiguity is settled by FNS/CMS policy memos and state manual updates (general knowledge), and fair-hearing decisions are not precedential. Error causes are documentation and calculation.",
+      "source_url": "https://www.congress.gov/crs_external_products/IF/HTML/IF10860.html",
+      "source_type": "government statistics",
+      "prospective": "no",
+      "reusable_how": "Not reusable: errors are per-case verification failures."
+     }
+    ],
+    "economic_pain": "SNAP NPER 10.93% FY2024; H.R.1 imposes state cost-sharing penalties from FY2028 tied to error rates (Elastic vendor blog; Commonwealth Fund https://www.commonwealthfund.org/publications/issue-briefs/2026/jul/what-hr1-changes-medicaid-payment-error-rules-mean-states on Medicaid). Medicaid improper payments $37.39B FY2025 (6.1% rate). Large dollars but not interpretation-driven.",
+    "existing_solutions": "State integrated eligibility systems with rules engines (Deloitte, Accenture, Gainwell, IBM/Merative C\u00faram \u2014 general knowledge, unsourced); vendors now pitching error detection (Elastic). Rules engines already encode policy; missing piece is verification data, not interpretation.",
+    "buyer_and_budget": "State human services agencies; large IT budgets but procurement via RFP; new federal penalty creates budget urgency for error reduction, not for interpretation capture.",
+    "regulatory_constraints": "Federal QC methodology; due process notices; state plans.",
+    "evidence_quality": "strong",
+    "verdict": "negative",
+    "notes": "Strong evidence for H1: manual review and error are overwhelmingly missing documentation and calculation, not recurring interpretive ambiguity."
+   },
+   {
+    "name": "VA disability compensation claims and appeals (VBA rating, Board of Veterans' Appeals, CAVC) with General Counsel precedent opinions and M21-1",
+    "geography": "US (federal)",
+    "decision_volume": "VA processed a record 3M+ claims FY2025 \u2014 https://www.va.gov/new-mexico-health-care/news-releases/claims-and-benefits/ (government press). Board decisions FY2023: 103,245 (68% legacy, 32% AMA) \u2014 https://en.wikipedia.org/wiki/Board_of_Veterans%27_Appeals (secondary). CAVC FY2025 annual report: Board issued 123,962 decisions FY2025 vs 116,192 FY2024; in 76% of conferenced cases VA agreed Board decision contained error necessitating remand \u2014 https://www.uscourts.cavc.gov/documents/FY2025AnnualReport.pdf (court; via snippet). FY2024: Court remanded 83% of appeals for legal error \u2014 https://www.congress.gov/crs-product/IF11365 (CRS).",
+    "human_review_rate": "100% of rating decisions made by Veterans Service Representatives/Rating specialists; issue-based accuracy 93.95%, claim-based 94.02% (highest 12-month rate in two years) \u2014 https://www.benefits.va.gov/reports/mmwr_va_accuracy_measures.asp and https://www.benefits.va.gov/reports/mmwr_va_claimsbased_accuracy.asp (government statistics, via snippet). Average days to complete 81 (April 2026), down 42% since Jan 2025 \u2014 https://veterandisabilityadviser.com/va-claim-processing-time-2026-77-7-days-average/ (press).",
+    "why_humans_review": "Estimate (basis: CAVC remand grounds are predominantly inadequate 'reasons and bases' and duty-to-assist errors \u2014 CRS IF11365; GAO-02-806 quality assurance findings https://www.gao.gov/assets/a235266.html): A missing evidence (exams, service records, duty to assist) ~30%; B factual classification against the rating schedule ~40%; C interpretation of 38 CFR / rating schedule ~12%; D conflicts (M21-1 vs Board vs court) ~5%; E ~5%; H settled prospectively via GC precedent opinions and M21-1 changes ~5%.",
+    "settlement_loop_evidence": [
+     {
+      "description": "VA General Counsel precedent opinions are binding on VA officials and employees in subsequent matters involving the legal issue decided, absent a change in statute/regulation, a superseding GC opinion or judicial decision; summaries published in the Federal Register.",
+      "source_url": "https://www.federalregister.gov/documents/2019/04/08/2019-06855/summary-of-precedent-opinions-of-the-general-counsel",
+      "source_type": "regulator",
+      "prospective": "yes",
+      "reusable_how": "Explicit prospective, versioned (superseding) interpretations from a single authoritative owner (GC), applied by all adjudicators; frequency low (a few per year \u2014 count not sourced)."
+     },
+     {
+      "description": "Federal Circuit litigation over the binding status of M21-1 manual provisions (2024 opinion) shows the manual is the vehicle by which settlements reach adjudicators but the Board is not bound by it, creating a two-tier authority structure.",
+      "source_url": "https://www.cafc.uscourts.gov/opinions-orders/23-1423.OPINION.12-19-2024_2438825.pdf",
+      "source_type": "court or tribunal",
+      "prospective": "unclear",
+      "reusable_how": "Manual provisions bind regional offices but not the Board \u2014 a documented D-type conflict-of-authorities problem, not H."
+     }
+    ],
+    "economic_pain": "Remand churn: 76\u201383% of CAVC-reviewed Board decisions remanded (CAVC FY2025 report, CRS). Cost per claim not found. Backlog historically hundreds of thousands (not sourced here).",
+    "existing_solutions": "VBMS case management, automated decision support and mail automation (https://veteranbenefitdesk.com/research/ai-va-claims, press); M21-1 Adjudication Procedures Manual is a versioned precedent/instruction corpus; STAR quality review. Settlements are captured as versioned manual text and GC opinions by VA itself.",
+    "buyer_and_budget": "VA (single federal buyer); no external market.",
+    "regulatory_constraints": "Duty to assist, benefit-of-the-doubt rule, statutory appeal rights; AMA 2017 structure.",
+    "evidence_quality": "moderate",
+    "verdict": "weak",
+    "notes": "Loop exists (GC precedent opinions, M21-1) and is institutionally owned; adjudication errors are evidentiary/reasoning, not unsettled meaning. Single federal buyer."
+   },
+   {
+    "name": "USCIS benefit adjudication (RFEs, Policy Manual updates, AAO adopted/precedent decisions)",
+    "geography": "US (federal)",
+    "decision_volume": "FY2025 H-1B petitions annual report exists \u2014 https://www.uscis.gov/sites/default/files/document/legal-docs/fy25_h1b_petitions_021126_v1.0.pdf (regulator; blocked, numbers not extracted). Overall millions of benefit requests per year (not sourced here).",
+    "human_review_rate": "100% officer adjudication; RFE issuance increased across I-129/I-140 in 2025, especially H-1B, NIW, EB-1A \u2014 https://www.joorney.com/news/us-employment-visa-trends-under-new-administration/ (press/vendor). Specific RFE rates not found (search budget exhausted).",
+    "why_humans_review": "Estimate (basis: 2025-08-19 Policy Manual update on discretionary factors and 2026-08-05 update on evidentiary standards, https://www.uscis.gov/sites/default/files/document/policy-manual-updates/20250819-DiscretionaryFactors.pdf and https://www.uscis.gov/sites/default/files/document/policy-manual-updates/20260805-EvidentiaryStandards.pdf, regulator): A missing evidence (RFEs) ~40%; B factual classification (specialty occupation, extraordinary ability) ~25%; C ~10%; E discretion explicitly large ~20%; H ~5% (Policy Manual updates, AAO adopted decisions).",
+    "settlement_loop_evidence": [
+     {
+      "description": "USCIS Policy Manual is the centralised, versioned policy corpus replacing the Adjudicator's Field Manual; policy alerts change adjudication standards prospectively (e.g., discretionary factors 2025, evidentiary standards 2026).",
+      "source_url": "https://www.uscis.gov/policy-manual/volume-1-part-e-chapter-6",
+      "source_type": "regulator",
+      "prospective": "yes",
+      "reusable_how": "Owner (USCIS Office of Policy and Strategy) publishes versioned guidance binding on officers; AAO adopted decisions (not verified this session) serve the same role."
+     }
+    ],
+    "economic_pain": "Not quantified; applicant-side costs and delays (PERM/I-140 timelines 9\u201310 months, press). Agency is fee-funded.",
+    "existing_solutions": "ELIS/CLAIMS systems, Policy Manual, AAO. Settlements captured as versioned text by the agency.",
+    "buyer_and_budget": "USCIS only.",
+    "regulatory_constraints": "Discretion is a statutory component of many benefits (E category), APA; automation of denials politically and legally constrained.",
+    "evidence_quality": "weak",
+    "verdict": "weak",
+    "notes": "Discretion is by design; single federal buyer; the policy-manual loop already exists."
+   },
+   {
+    "name": "UK DWP benefit decision making (PIP/ESA/UC): Decision Makers' Guide/ADM, mandatory reconsideration, First-tier and Upper Tribunal",
+    "geography": "UK (Great Britain; NI mirrors)",
+    "decision_volume": "PIP: 65,000 MRs registered and 67,000 cleared in the quarter to October 2025 \u2014 https://www.benefitsandwork.co.uk/news/pip-planned-review-numbers-double,-success-rates-fall (press citing DWP official statistics). SSCS tribunal: >200,000 appeals received 2015/16 \u2014 https://www.gov.uk/government/publications/hmcts-reform-tribunal-fact-sheets/fact-sheet-social-security-and-child-support-tribunal (government); 222,000 appeals in 2 years to Dec 2023 via online service \u2014 https://www.gov.uk/service-standard-reports/social-security-and-child-support-tribunal (government).",
+    "human_review_rate": "100% decision-maker decisions after assessment-provider report. MR outcomes: 20% higher award April 2025, 25% July 2025; 33% of MRs cleared (excl. withdrawn) changed award July 2019\u2013June 2024 \u2014 DWP PIP official statistics via https://pipappeal.org.uk/pip-appeal-success-rates/ and https://www.gov.uk/government/statistics/personal-independence-payment-statistics-to-october-2024/personal-independence-payment-official-statistics-to-october-2024 (government). Tribunal: 66% in claimant's favour (3 months to March 2025); 64% Oct\u2013Dec 2025 (HMCTS) \u2014 same sources.",
+    "why_humans_review": "Sourced basis for overturn reasons (DWP analysis reported to Parliament, https://questions-statements.parliament.uk/written-questions/detail/2022-07-21/42121 and Work and Pensions Committee https://publications.parliament.uk/pa/cm201719/cmselect/cmworpen/829/82908.htm): oral evidence from claimant under questioning was the reason in 63% of overturns with a reason attached; in 23% the tribunal reached a different decision on the same facts; only ~1% won on new written claimant evidence (https://www.benefitsandwork.co.uk/news/only-on-in-a-hundred-pip-appeals-won-on-new-claimant-evidence, press citing DWP). Mapping: A/B evidence and credibility ~63%; C/E evaluative judgement on descriptors on same facts ~23% (mostly E, some C); D/H via Upper Tribunal points of law ~5\u201310%; G remainder.",
+    "settlement_loop_evidence": [
+     {
+      "description": "Upper Tribunal decisions are binding on DWP and the First-tier Tribunal; DWP issues ADM memos (e.g., ADM memo 16/18 on PIP mobility activity) instructing decision makers on the effect of UT decisions; ADM A1 sets precedence rules (reported over unreported, three-judge panels over single judge).",
+      "source_url": "https://assets.publishing.service.gov.uk/media/6707dc46366f494ab2e7b69c/adma1.pdf",
+      "source_type": "regulator",
+      "prospective": "yes",
+      "reusable_how": "Formal versioned loop: UT point-of-law decision \u2192 DMG/ADM memo \u2192 all subsequent decisions. Memos are catalogued at https://www.gov.uk/government/publications/decision-makers-guide-memos-staff-guide (government)."
+     },
+     {
+      "description": "Reported UT decisions on PIP (e.g., UA-2022-001000-PIP, UA-2021-000155-PIP) published on gov.uk and caselaw.nationalarchives.gov.uk, indexed by welfare-rights bodies (Disability Rights UK selected decisions).",
+      "source_url": "https://caselaw.nationalarchives.gov.uk/tna.htmbqyr2",
+      "source_type": "court or tribunal",
+      "prospective": "yes",
+      "reusable_how": "Binding precedents; First-tier decisions themselves do not bind DWP in other cases (CPAG guidance, https://cpag.org.uk/welfare-rights/key-topics/pip-appeals/what-do-when-you-get-tribunals-decision, industry association)."
+     }
+    ],
+    "economic_pain": "Cost per MR/appeal not found (blocked). Volume pain: ~65k MRs per quarter for PIP alone; ~two-thirds of appeals overturned. MoJ figure of \u00a3500m potential appeal cost over ten years cited in HMCTS fact sheet context (government; weakly specified).",
+    "existing_solutions": "PIP Computer System, assessment providers (Capita, Atos/IAS, Maximus; Functional Assessment Service contracts from 2024 \u2014 general knowledge, unsourced); Decision Makers' Guide / Advice for Decision Making as versioned precedent corpus; DMA Leeds advice function (not verified). Settlements are captured as versioned guidance text by DWP.",
+    "buyer_and_budget": "DWP (single national buyer) via Crown Commercial procurement; no departmental discretionary buyer for a third-party precedent ledger.",
+    "regulatory_constraints": "UK GDPR Art 22 / DPA 2018 ss.49\u201350 on solely automated decisions; statutory MR and tribunal rights; decisions must be made by a decision maker on behalf of the Secretary of State.",
+    "evidence_quality": "strong",
+    "verdict": "weak",
+    "notes": "Best-quantified overturn reasons in the cluster and they point away from H: 63% oral evidence, 23% same-facts evaluative disagreement, ~1% new written evidence. The point-of-law loop (UT \u2192 ADM memo) already exists and is low-frequency."
+   },
+   {
+    "name": "France: CAF prestations (RSA, prime d'activit\u00e9, aides au logement), MDPH/CDAPH disability rights, URSSAF rescrit social",
+    "geography": "France",
+    "decision_volume": "MDPH: 4.99M demandes deposited and 4.97M CDAPH decisions/avis in 2023 (up from 1.58M in 2006 to 4.7M in 2021) \u2014 https://www.cnsa.fr/actualites/activite-des-mdph-en-2023-des-delais-de-traitement-contenus-malgre-la-hausse-des (government agency statistics). CAF: benefits paid ~\u20ac79bn implied (6.3bn = 8%) \u2014 https://www.franceinfo.fr/sante/la-cour-des-comptes-pointe-6-3-milliards-d-euros-d-erreurs-dans-la-branche-famille-de-la-securite-sociale_7252950.html (press citing Cour des comptes).",
+    "human_review_rate": "CAF: liquidation largely automated on declarative data; controls fell 9% vs 2024 and 46% between 2019 and 2024 \u2014 https://www.ifrap.org/emploi-et-politiques-sociales/fraudes-la-caf-509-meu-detectes-en-2025 (think tank citing Cour des comptes). MDPH: 100% of decisions by CDAPH after \u00e9quipe pluridisciplinaire evaluation; average delay 4.7 months Q2 2024 vs 4-month legal limit; PCH 5.9 months; 60% of MDPHs meet the legal deadline \u2014 https://www.monparcourshandicap.gouv.fr/actualite/mdph-nouvelle-diminution-de-la-duree-de-traitement-des-dossiers and https://www.assemblee-nationale.fr/dyn/17/questions/QANR5L17QE4255 (government).",
+    "why_humans_review": "CAF errors: uncorrected errors \u20ac6.3bn end-2024 = 8% of benefits, concentrated in RSA, prime d'activit\u00e9, housing aid, driven by allocataire declarations (DRM effect) \u2014 Cour des comptes certification 2024 via https://www.ccomptes.fr/fr/publications/certification-des-comptes-du-regime-general-de-securite-sociale-et-du-cpsti-exercice (audit; blocked, via snippets) \u2192 A/B ~85%, H ~0. MDPH: territorial disparities in AAH beneficiary rate up to 6.5x and PCH amounts 1 to 3.85 (IGAS-IGF May 2025, via https://departements.fr/handicap-pourquoi-des-inegalites-territoriales-perdurent-concernant-les-droits-les-aides-et-les-delais/, industry association) and Igas Dec 2024 noting few studies on disparities \u2014 https://www.igas.gouv.fr/sites/igas/files/2024-12/Rapport%20Igas%20MDPH.pdf (inspector-general). Estimate for MDPH: A ~25%; B (functional evaluation) ~40%; C/H (local doctrine on eligibility thresholds, unharmonised across ~100 departments) ~20%; E ~10%; G ~5%.",
+    "settlement_loop_evidence": [
+     {
+      "description": "URSSAF rescrit social: employer asks URSSAF for a binding ruling on application of social-contribution law; since April 2025 'rescrits de port\u00e9e g\u00e9n\u00e9rale' are published in the BOSS covering avantages en nature, frais professionnels, impatri\u00e9s, effectifs \u2014 a published, prospective settlement mechanism.",
+      "source_url": "https://www.agn-avocats.fr/blog/droit-des-affaires/controle-urssaf/rescrits-sociaux-publication-de-nouveaux-rescrits-de-portee-generale/",
+      "source_type": "press",
+      "prospective": "yes",
+      "reusable_how": "Individual rescrit binds URSSAF for the requester; general-scope rescrits are published for all employers. Volumes not found (urssaf.fr blocked)."
+     },
+     {
+      "description": "MDPH: CNSA runs harmonisation (barom\u00e8tre, r\u00e9f\u00e9rentiels, SI commun) precisely because each departmental CDAPH settles eligibility interpretation locally, producing 1:6.5 disparities in AAH and 1:3.85 in PCH.",
+      "source_url": "https://www.igas.gouv.fr/sites/igas/files/2024-12/Rapport%20Igas%20MDPH.pdf",
+      "source_type": "audit or inspector-general",
+      "prospective": "unclear",
+      "reusable_how": "Evidence that settlements exist but are fragmented across 100+ owners and not captured nationally; Cour des comptes PCH report Dec 2025 https://www.ccomptes.fr/sites/default/files/2025-12/20251203-Prestation-de-compensation-du-handicap-PCH.pdf (audit; blocked)."
+     },
+     {
+      "description": "Rules-as-code already exists for French benefits: OpenFisca-France (open-source model of the French tax-benefit system with public API used by state simulators) and Catala (formalising allocations familiales and aides au logement from the Code de la s\u00e9curit\u00e9 sociale).",
+      "source_url": "https://raw.githubusercontent.com/openfisca/openfisca-france/master/README.md",
+      "source_type": "vendor",
+      "prospective": "yes",
+      "reusable_how": "Formula-level codification is solved; neither captures interpretive settlements from casework escalation. Catala examples: https://raw.githubusercontent.com/CatalaLang/catala-examples/master/README.md."
+     }
+    ],
+    "economic_pain": "CAF: residual financial risk 11.7% of benefits at 9 months in 2024 (10.9% in 2023) = \u20ac9.3bn; 8% at 24 months (6.9%) = \u20ac6.3bn; third consecutive refusal to certify \u2014 https://www.ifrap.org/emploi-et-politiques-sociales/branche-famille-les-erreurs-coutent-63-mdeu-en-2024 (think tank citing Cour des comptes). Fraud detected \u20ac509m in 2025 (+13%), <10% of estimated fraudulent overpayments (same). MDPH: 40% of MDPHs miss the 4-month legal deadline; July 2025 ministerial plan of 18 measures targeting 2-month delays (Assembl\u00e9e nationale QE 4255).",
+    "existing_solutions": "CAF: Cristal legacy system, DRM (dispositif de ressources mensuelles) pre-filled income, risk-scoring algorithm; MDPH: SI commun MDPH (CNSA), GEVA evaluation guide; OpenFisca/Catala for rules; rescrit mechanism at URSSAF. Settlements are captured as doctrine circulars and rescrits, not executable versioned precedents.",
+    "buyer_and_budget": "CNAF (single), 100+ d\u00e9partements/MDPH (small budgets, CNSA co-funding), URSSAF Caisse nationale. Public procurement (code de la commande publique).",
+    "regulatory_constraints": "CRPA art. L311-3-1 / L312-1-3 on decisions based on algorithmic processing (not fetched; general knowledge), GDPR Art 22, loi Informatique et Libert\u00e9s; CDAPH decisions must follow individual pluridisciplinary evaluation.",
+    "evidence_quality": "moderate",
+    "verdict": "weak",
+    "notes": "CAF error is declarative-data driven (negative). MDPH disparity is the one place in this cluster where the same ambiguity is demonstrably settled differently by 100+ owners, but the owner is fragmented, budgets are small, and CNSA already owns harmonisation. URSSAF rescrit is a genuine prospective settlement loop but volumes are unknown and the mechanism already exists."
+   }
+  ],
+  "evidence_against_thesis": [
+   "H1 supported in SNAP/Medicaid: 77.17% of Medicaid FY2025 improper payments and 68.1% of eligibility errors are insufficient documentation (press citing CMS PERM, https://www.prnewswire.com/news-releases/audit-pressure-grows-over-medicaid-improper-payments-tied-to-intake-gaps-302748187.html); SNAP errors are failure to act on information and income/deduction calculation (CRS IF10860).",
+   "H1/H4 supported in UK PIP: of tribunal overturns with a stated reason, 63% were due to oral evidence obtained at hearing, 23% were a different decision on the same facts, ~1% new written evidence (DWP analysis via parliamentary answer and Work and Pensions Committee) \u2014 evidence and evaluative judgement, not unsettled rule meaning.",
+   "H4 supported in SSA: ALJ allowance rates range from 9% to 93% across judges (FY2025, chroniclelegal citing SSA) despite decades of SSRs, ARs, POMS and HALLEX; GAO-04-656, GAO-18-37 and ACUS 2013 document persistent DDS/ALJ inconsistency rooted in evidentiary standards and discretion.",
+   "H3 supported everywhere: every workflow already has an institutional, versioned, prospective precedent mechanism owned by the authority itself \u2014 SSA Acquiescence Rulings/SSRs/POMS, VA General Counsel precedent opinions and M21-1, CUIAB precedent decisions binding on EDD, DWP ADM/DMG memos implementing Upper Tribunal decisions, USCIS Policy Manual alerts, URSSAF rescrits de port\u00e9e g\u00e9n\u00e9rale published in BOSS. These loops are low-frequency (single digits to tens per year) and court/legal-office driven, not frontline escalation driven.",
+   "H8/buyer: every buyer is a public body (SSA, DOL/53 state agencies, VA, USCIS, DWP, CNAF, 100+ MDPH) with slow procurement and legal constraints on automated adverse decisions (GDPR Art 22, DPA 2018, CRPA L311-3-1, APA de novo hearing rights, UI due process).",
+   "France CAF: \u20ac6.3bn uncorrected errors (8% of benefits) stem from allocataire declarative data (Cour des comptes 2024 certification), not interpretation; controls declined 46% 2019\u20132024.",
+   "Rules-as-code (OpenFisca-France, Catala) already codifies statutory formulas for French benefits, so formula-level determinism is not the gap."
+  ],
+  "not_found": [
+   "National annual count of UI nonmonetary determinations and lower/higher-authority reversal rates (oui.doleta.gov and catalog.data.gov blocked)",
+   "Count of Social Security Acquiescence Rulings and SSRs issued per year; SSA cost per ALJ hearing; DDS current cost per case (only Massachusetts FY2016\u201317 $571.63 found)",
+   "Count of CUIAB precedent benefit decisions and their designation rate",
+   "USCIS FY2025 RFE rates by form type and AAO adopted-decision counts (search budget exhausted)",
+   "BVA FY2025 annual report detail (allow/deny/remand split by docket)",
+   "Upper Tribunal (AAC) SSCS appeal volumes and number of reported decisions per year; DWP cost per MR and per tribunal appeal; DWP decision-maker headcount",
+   "URSSAF rescrit social request volumes per year",
+   "Cour des comptes split of CAF errors between allocataire declarations and CAF liquidation errors (only aggregate and DRM-effect figures found)",
+   "MDPH RAPO and contentieux rates; cost per MDPH decision",
+   "Any independent evidence that frontline adjudicators fail to apply already-published precedents (the specific gap a Sophon-like product would fill)",
+   "Evidence on SSA 'Insight' decision-drafting tool and DWP DMA Leeds advice function (not searched, budget exhausted)"
+  ],
+  "blocked_urls": [
+   "https://www.ssa.gov/appeals/DataSets/archive/archive_data_reports.html",
+   "https://oui.doleta.gov/unemploy/ui_appeal_reversal.asp",
+   "https://www.congress.gov/crs_external_products/IF/HTML/IF10860.html",
+   "https://questions-statements.parliament.uk/written-questions/detail/2022-07-21/42121",
+   "https://www.benefitsandwork.co.uk/news/only-on-in-a-hundred-pip-appeals-won-on-new-claimant-evidence",
+   "https://www.gao.gov/products/gao-18-37",
+   "https://oig-files.ssa.gov/audits/full/A-12-18-50290.pdf",
+   "https://cuiab.ca.gov/precedent-decisions/",
+   "https://www.cnsa.fr/actualites/activite-des-mdph-en-2023-des-delais-de-traitement-contenus-malgre-la-hausse-des",
+   "https://www.igas.gouv.fr/sites/igas/files/2024-12/Rapport%20Igas%20MDPH.pdf",
+   "https://cpag.org.uk/welfare-rights/key-topics/pip-appeals/what-do-when-you-get-tribunals-decision",
+   "https://www.nickortizlaw.com/what-ssa-fy-2025-disability-data-tells-you-about-your-chances/",
+   "https://www.uscis.gov/sites/default/files/document/legal-docs/fy25_h1b_petitions_021126_v1.0.pdf",
+   "https://www.ccomptes.fr/fr/publications/certification-des-comptes-du-regime-general-de-securite-sociale-et-du-cpsti-exercice",
+   "https://www.kff.org/medicaid/a-look-at-the-medicaid-payment-error-rate-measurement-perm-program-and-upcoming-changes-and-impacts/",
+   "https://www.chroniclelegal.com/hearings",
+   "https://www.federalregister.gov/documents/2019/04/08/2019-06855/summary-of-precedent-opinions-of-the-general-counsel",
+   "https://assets.publishing.service.gov.uk/media/6707dc46366f494ab2e7b69c/adma1.pdf",
+   "https://www.gov.uk/government/statistics/personal-independence-payment-statistics-to-october-2024/personal-independence-payment-official-statistics-to-october-2024",
+   "https://www.benefits.va.gov/reports/mmwr_va_claimsbased_accuracy.asp",
+   "https://www.ifrap.org/emploi-et-politiques-sociales/branche-famille-les-erreurs-coutent-63-mdeu-en-2024",
+   "https://www.acus.gov/sites/default/files/documents/Achieving_Greater_Consistency_Final_Report_4-3-2013_clean.pdf",
+   "https://www.ssa.gov/foia/resources/proactivedisclosure/2025/FY24%20Workload%20Data-Total-cdr%20added.pdf",
+   "https://www.uscourts.cavc.gov/documents/FY2025AnnualReport.pdf",
+   "https://www.ccomptes.fr/sites/default/files/2025-12/20251203-Prestation-de-compensation-du-handicap-PCH.pdf",
+   "https://www.cms.gov/files/document/2025-perm-medicaid-improper-payment-rates.pdf",
+   "https://www.urban.org/urban-wire/ssa-says-its-reduced-disability-claims-backlog-fewer-new-claims-and-higher-denial-rate",
+   "https://usafacts.org/data-projects/disability-benefit-wait-time/",
+   "https://www.cbpp.org/blog/understanding-the-medicaid-payment-error-rate-measure",
+   "https://www.nga.org/updates/snap-payment-accuracy-strategies-for-reducing-payment-error-rate/",
+   "https://www.elastic.co/blog/snap-error-fy2028-penalty",
+   "https://www.village-justice.com/articles/rescrit-social-une-procedure-aux-interets-sous-estimes,33976.html",
+   "https://www.judiciary.uk/courts-and-tribunals/tribunals/first-tier-tribunal/social-entitlement-chamber/social-security-and-child-support-tribunal/work-of-the-social-security-and-child-support-sscs-tribunal/",
+   "https://www.dol.gov/node/165619",
+   "https://catalog.data.gov/dataset/unemployment-insurance-nonmonetary-determination-activity-data-eta-207",
+   "https://cck-law.com/blog/board-of-veterans-appeals-decisions-grants-remands-and-denials/",
+   "https://department.va.gov/board-of-veterans-appeals/annual-reports-to-congress/",
+   "https://www.crfb.org/sites/default/files/pdfs/dubin.pdf",
+   "https://evaluation.securite-sociale.fr/home/autonomie/1-4-prestation-de-compensation-d.html",
+   "https://www.senat.fr/questions/base/2025/qSEQ25030421S.html",
+   "https://questions.assemblee-nationale.fr/q17/17-5806QE.htm",
+   "https://www.monparcourshandicap.gouv.fr/actualite/mdph-nouvelle-diminution-de-la-duree-de-traitement-des-dossiers",
+   "https://www.urssaf.fr/accueil/services/rescrit-social.html",
+   "https://www.commonwealthfund.org/publications/issue-briefs/2026/jul/what-hr1-changes-medicaid-payment-error-rules-mean-states",
+   "https://www.franceinfo.fr/sante/la-cour-des-comptes-pointe-6-3-milliards-d-euros-d-erreurs-dans-la-branche-famille-de-la-securite-sociale_7252950.html",
+   "https://www.davidsonmorris.com/h1b-data/",
+   "https://www.disabilityrightsuk.org/selected-upper-tribunal-decisions-april-2018-march-2019",
+   "https://caselaw.nationalarchives.gov.uk/tna.htmbqyr2",
+   "https://datavis.nisra.gov.uk/communities/personal-independence-payment-statistics-august-2025.html",
+   "https://www.ecfr.gov/current/title-38/chapter-I/part-20",
+   "https://www.oversight.gov/reports/audit/social-security-administrations-cost-and-schedule-estimates-disability-case",
+   "https://www.ncbi.nlm.nih.gov/books/NBK305232/",
+   "https://en.wikipedia.org/wiki/Board_of_Veterans%27_Appeals"
+  ],
+  "sources": [
+   {
+    "url": "https://www.nickortizlaw.com/what-ssa-fy-2025-disability-data-tells-you-about-your-chances/",
+    "type": "press",
+    "used_for": "FY2025 initial disability decisions 2,246,542; 36% allowed; trend 39/38/36%"
+   },
+   {
+    "url": "https://www.chroniclelegal.com/blog/alj-approval-rates",
+    "type": "vendor",
+    "used_for": "FY2025 277,740 hearings; 50% allowed/33% denied/16% dismissed; ALJ range 9\u201393% (citing SSA waterfall chart)"
+   },
+   {
+    "url": "https://www.urban.org/urban-wire/ssa-says-its-reduced-disability-claims-backlog-fewer-new-claims-and-higher-denial-rate",
+    "type": "academic",
+    "used_for": "2.3M initial claims cleared FY2025; pending peak 1.26M May 2024"
+   },
+   {
+    "url": "https://www.ssa.gov/OP_Home/cfr20/404/404-0985.htm",
+    "type": "regulator",
+    "used_for": "Acquiescence Ruling mechanism, 120-day rule, readjudication"
+   },
+   {
+    "url": "https://secure.ssa.gov/POMS.NSF/lnx/0203501015",
+    "type": "regulator",
+    "used_for": "POMS readjudication using ARs"
+   },
+   {
+    "url": "https://www.ssa.gov/OP_Home/rulings/rulings-pref.html",
+    "type": "regulator",
+    "used_for": "SSRs binding on all SSA components"
+   },
+   {
+    "url": "https://www.gao.gov/assets/a243277.html",
+    "type": "audit or inspector-general",
+    "used_for": "GAO-04-656 DDS vs ALJ inconsistency and differing evidentiary reliance"
+   },
+   {
+    "url": "https://www.gao.gov/products/gao-18-37",
+    "type": "audit or inspector-general",
+    "used_for": "GAO-18-37 accuracy and consistency of hearings decisions"
+   },
+   {
+    "url": "https://www.acus.gov/sites/default/files/documents/Achieving_Greater_Consistency_Final_Report_4-3-2013_clean.pdf",
+    "type": "government statistics",
+    "used_for": "ACUS consistency report"
+   },
+   {
+    "url": "https://www.crfb.org/sites/default/files/pdfs/dubin.pdf",
+    "type": "academic",
+    "used_for": "ALJ 45% approval explained by more developed de novo record"
+   },
+   {
+    "url": "https://www.mass.gov/files/documents/2017/11/15/DDS-fact-sheet-2017.pdf",
+    "type": "government statistics",
+    "used_for": "Massachusetts DDS cost per case $571.63 FY2016\u201317"
+   },
+   {
+    "url": "https://www.laportelawfirm.com/blog/what-percentage-of-remanded-disability-cases-are-approved/",
+    "type": "press",
+    "used_for": "Appeals Council 13% remand rate 2023"
+   },
+   {
+    "url": "https://oui.doleta.gov/unemploy/nonmon_determinations.asp",
+    "type": "government statistics",
+    "used_for": "ETA 207 nonmonetary determinations dataset description"
+   },
+   {
+    "url": "https://oui.doleta.gov/unemploy/pdf/Core_Measures.pdf",
+    "type": "regulator",
+    "used_for": "21-day nonmonetary timeliness standard, 80% acceptable"
+   },
+   {
+    "url": "https://oui.doleta.gov/unemploy/ui_appeal_reversal.asp",
+    "type": "government statistics",
+    "used_for": "Existence of appeal reversal rate report from ETA 5130 (numbers blocked)"
+   },
+   {
+    "url": "https://cuiab.ca.gov/precedent-decisions/",
+    "type": "court or tribunal",
+    "used_for": "CUIAB precedent decisions: designation criteria, binding on EDD and ALJs"
+   },
+   {
+    "url": "https://cuiab.ca.gov/wp-content/uploads/sites/13/documents/cuiabAppealsProcedureManual.pdf",
+    "type": "court or tribunal",
+    "used_for": "ALJs bound by precedent decisions"
+   },
+   {
+    "url": "https://www.congress.gov/crs_external_products/IF/HTML/IF10860.html",
+    "type": "government statistics",
+    "used_for": "SNAP error causes; FY2025 $57 tolerance threshold"
+   },
+   {
+    "url": "https://www.elastic.co/blog/snap-error-fy2028-penalty",
+    "type": "vendor",
+    "used_for": "SNAP NPER 10.93% FY2024; 44 states corrective action plans; FY2028 penalty"
+   },
+   {
+    "url": "https://www.nga.org/updates/snap-payment-accuracy-strategies-for-reducing-payment-error-rate/",
+    "type": "industry association",
+    "used_for": "USDR finding that errors are system-wide not individual caseworker mistakes"
+   },
+   {
+    "url": "https://www.prnewswire.com/news-releases/audit-pressure-grows-over-medicaid-improper-payments-tied-to-intake-gaps-302748187.html",
+    "type": "press",
+    "used_for": "Medicaid FY2025 $37.39B improper; 77.17% insufficient documentation; 68.1% of eligibility errors"
+   },
+   {
+    "url": "https://www.cms.gov/files/document/2025-perm-medicaid-improper-payment-rates.pdf",
+    "type": "regulator",
+    "used_for": "Primary PERM FY2025 rates (blocked; 6.1% via snippets)"
+   },
+   {
+    "url": "https://www.federalregister.gov/documents/2019/04/08/2019-06855/summary-of-precedent-opinions-of-the-general-counsel",
+    "type": "regulator",
+    "used_for": "VA GC precedent opinions binding effect"
+   },
+   {
+    "url": "https://www.uscourts.cavc.gov/documents/FY2025AnnualReport.pdf",
+    "type": "court or tribunal",
+    "used_for": "Board decisions 123,962 FY2025 vs 116,192 FY2024; 76% conferenced cases remanded by agreement"
+   },
+   {
+    "url": "https://www.congress.gov/crs-product/IF11365",
+    "type": "government statistics",
+    "used_for": "FY2024 CAVC remanded 83% of appeals for legal error"
+   },
+   {
+    "url": "https://www.va.gov/new-mexico-health-care/news-releases/claims-and-benefits/",
+    "type": "government statistics",
+    "used_for": "VA processed 3M+ claims FY2025"
+   },
+   {
+    "url": "https://www.benefits.va.gov/reports/mmwr_va_accuracy_measures.asp",
+    "type": "government statistics",
+    "used_for": "Issue-based accuracy 93.95%"
+   },
+   {
+    "url": "https://www.cafc.uscourts.gov/opinions-orders/23-1423.OPINION.12-19-2024_2438825.pdf",
+    "type": "court or tribunal",
+    "used_for": "Federal Circuit 2024 opinion on M21-1 manual authority"
+   },
+   {
+    "url": "https://www.uscis.gov/sites/default/files/document/policy-manual-updates/20250819-DiscretionaryFactors.pdf",
+    "type": "regulator",
+    "used_for": "USCIS 2025 discretionary factors policy alert"
+   },
+   {
+    "url": "https://www.uscis.gov/sites/default/files/document/policy-manual-updates/20260805-EvidentiaryStandards.pdf",
+    "type": "regulator",
+    "used_for": "USCIS 2026 evidentiary standards policy alert"
+   },
+   {
+    "url": "https://www.joorney.com/news/us-employment-visa-trends-under-new-administration/",
+    "type": "vendor",
+    "used_for": "RFE increases 2025 for I-129/I-140"
+   },
+   {
+    "url": "https://pipappeal.org.uk/pip-appeal-success-rates/",
+    "type": "press",
+    "used_for": "PIP MR 20\u201325% success 2025; 33% July 2019\u2013June 2024; tribunal 64\u201366%"
+   },
+   {
+    "url": "https://www.benefitsandwork.co.uk/news/pip-planned-review-numbers-double,-success-rates-fall",
+    "type": "press",
+    "used_for": "65,000 MRs registered, 67,000 cleared quarter to Oct 2025"
+   },
+   {
+    "url": "https://www.gov.uk/government/statistics/personal-independence-payment-statistics-to-october-2024/personal-independence-payment-official-statistics-to-october-2024",
+    "type": "government statistics",
+    "used_for": "Primary DWP PIP statistics (blocked)"
+   },
+   {
+    "url": "https://questions-statements.parliament.uk/written-questions/detail/2022-07-21/42121",
+    "type": "government statistics",
+    "used_for": "Reasons for tribunal overturns: 63% oral evidence, 23% same facts different decision"
+   },
+   {
+    "url": "https://publications.parliament.uk/pa/cm201719/cmselect/cmworpen/829/82908.htm",
+    "type": "government statistics",
+    "used_for": "Work and Pensions Committee on PIP/ESA overturn reasons"
+   },
+   {
+    "url": "https://www.benefitsandwork.co.uk/news/only-on-in-a-hundred-pip-appeals-won-on-new-claimant-evidence",
+    "type": "press",
+    "used_for": "~1% of overturns on new written claimant evidence"
+   },
+   {
+    "url": "https://assets.publishing.service.gov.uk/media/6707dc46366f494ab2e7b69c/adma1.pdf",
+    "type": "regulator",
+    "used_for": "ADM A1: UT decisions binding, reported vs unreported precedence"
+   },
+   {
+    "url": "https://www.gov.uk/government/publications/decision-makers-guide-memos-staff-guide",
+    "type": "regulator",
+    "used_for": "DMG memos catalogue implementing legal changes"
+   },
+   {
+    "url": "https://www.benefitsandwork.co.uk/news/new-guidance-for-decision-makers-on-pip-mobility",
+    "type": "press",
+    "used_for": "ADM memo 16/18 implementing UT decision on PIP mobility"
+   },
+   {
+    "url": "https://www.gov.uk/government/publications/hmcts-reform-tribunal-fact-sheets/fact-sheet-social-security-and-child-support-tribunal",
+    "type": "government statistics",
+    "used_for": "SSCS >200,000 appeals 2015/16"
+   },
+   {
+    "url": "https://www.gov.uk/service-standard-reports/social-security-and-child-support-tribunal",
+    "type": "government statistics",
+    "used_for": "222,000 online appeals in 2 years to Dec 2023"
+   },
+   {
+    "url": "https://cpag.org.uk/welfare-rights/key-topics/pip-appeals/what-do-when-you-get-tribunals-decision",
+    "type": "industry association",
+    "used_for": "FtT decisions not binding in other cases; UT binding"
+   },
+   {
+    "url": "https://www.franceinfo.fr/sante/la-cour-des-comptes-pointe-6-3-milliards-d-euros-d-erreurs-dans-la-branche-famille-de-la-securite-sociale_7252950.html",
+    "type": "press",
+    "used_for": "Cour des comptes: \u20ac6.3bn uncorrected errors = 8% of benefits, 2024"
+   },
+   {
+    "url": "https://www.ifrap.org/emploi-et-politiques-sociales/branche-famille-les-erreurs-coutent-63-mdeu-en-2024",
+    "type": "press",
+    "used_for": "Residual risk indicators 11.7%/9.3bn at 9 months and 8%/6.3bn at 24 months"
+   },
+   {
+    "url": "https://www.ifrap.org/emploi-et-politiques-sociales/fraudes-la-caf-509-meu-detectes-en-2025",
+    "type": "press",
+    "used_for": "Fraud detected \u20ac509m 2025; controls down 9% and 46% 2019\u20132024"
+   },
+   {
+    "url": "https://www.ccomptes.fr/fr/publications/certification-des-comptes-du-regime-general-de-securite-sociale-et-du-cpsti-exercice",
+    "type": "audit or inspector-general",
+    "used_for": "Primary certification report (blocked)"
+   },
+   {
+    "url": "https://www.cnsa.fr/actualites/activite-des-mdph-en-2023-des-delais-de-traitement-contenus-malgre-la-hausse-des",
+    "type": "government statistics",
+    "used_for": "4.99M demandes, 4.97M CDAPH decisions 2023; delays by prestation"
+   },
+   {
+    "url": "https://www.monparcourshandicap.gouv.fr/actualite/mdph-nouvelle-diminution-de-la-duree-de-traitement-des-dossiers",
+    "type": "government statistics",
+    "used_for": "4.7-month average delay Q2 2024"
+   },
+   {
+    "url": "https://www.assemblee-nationale.fr/dyn/17/questions/QANR5L17QE4255",
+    "type": "government statistics",
+    "used_for": "60% of MDPH meet 4-month deadline; July 2025 18-measure plan"
+   },
+   {
+    "url": "https://www.igas.gouv.fr/sites/igas/files/2024-12/Rapport%20Igas%20MDPH.pdf",
+    "type": "audit or inspector-general",
+    "used_for": "Igas MDPH report on disparities"
+   },
+   {
+    "url": "https://departements.fr/handicap-pourquoi-des-inegalites-territoriales-perdurent-concernant-les-droits-les-aides-et-les-delais/",
+    "type": "industry association",
+    "used_for": "AAH rate 6.5x and PCH 1:3.85 disparities (IGAS-IGF May 2025)"
+   },
+   {
+    "url": "https://www.agn-avocats.fr/blog/droit-des-affaires/controle-urssaf/rescrits-sociaux-publication-de-nouveaux-rescrits-de-portee-generale/",
+    "type": "press",
+    "used_for": "URSSAF rescrits de port\u00e9e g\u00e9n\u00e9rale published in BOSS since April 2025"
+   },
+   {
+    "url": "https://www.urssaf.fr/accueil/services/rescrit-social.html",
+    "type": "regulator",
+    "used_for": "Rescrit social mechanism (blocked)"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/openfisca/openfisca-france/master/README.md",
+    "type": "vendor",
+    "used_for": "OpenFisca-France rules-as-code with public API (fetched)"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/CatalaLang/catala-examples/master/README.md",
+    "type": "vendor",
+    "used_for": "Catala formalisation of allocations familiales and aides au logement (fetched)"
+   }
+  ],
+  "domain_assessment": "Negative-to-weak for a standalone Sophon product in government benefits and casework, with one uncertain sub-case (US unemployment insurance) and one interesting-but-unbuyable pattern (French MDPH disparities). The settlement loop the brief asks for demonstrably exists in every jurisdiction examined, and that is precisely the problem: it is already institutionalised in law and owned by the authority's legal/policy unit \u2014 SSA Acquiescence Rulings and SSRs written into POMS/HALLEX within 120 days of a circuit decision; VA General Counsel precedent opinions binding on all VA employees until superseded; California CUIAB precedent decisions designated for issues 'of general application likely to recur' and binding on EDD; DWP ADM/DMG memos implementing binding Upper Tribunal decisions; USCIS Policy Manual alerts; URSSAF rescrits de port\u00e9e g\u00e9n\u00e9rale published in the BOSS. These are versioned, prospective, provenance-carrying interpretations produced at low frequency (single digits to tens per year), triggered mostly by courts rather than frontline escalation, and consumed through manuals that the agencies already maintain. Meanwhile the mass of human review sits in categories A, B and E: Medicaid FY2025 improper payments are 77% insufficient documentation; SNAP's 10.93% error rate is calculation and failure to act on information; UK PIP overturns are 63% oral evidence and 23% same-facts evaluative disagreement with ~1% new written evidence; SSA ALJ allowance rates span 9% to 93% despite the precedent apparatus; CAF's \u20ac6.3bn of uncorrected error is declarative-data driven. Buyers are single national agencies or dozens of state/departmental bodies with slow procurement and legal limits on automated adverse decisions (GDPR Art 22, DPA 2018, CRPA L311-3-1, APA de novo hearing rights), and formula-level codification is already covered by rules-as-code (OpenFisca, Catala). The only Sophon-shaped gap not closed by evidence is whether frontline adjudicators fail to apply already-published precedents consistently (UI nonmonetary determinations, MDPH local doctrine across 100+ commissions) \u2014 that was not established because volume and reversal data were blocked, and even if true the owner is fragmented or is the government itself. I would not pursue this cluster as an initial wedge; if the owner wants one test here, it is a base-rate classification of CUIAB precedent-decision citations in EDD determinations or of UT-decision citations in DWP MR outcomes, which requires agency access rather than public data."
+ },
+ "verification": {
+  "domain": "government-benefits-and-casework (US SSA disability, US unemployment insurance, SNAP/Medicaid, VA claims, USCIS, UK DWP PIP/ESA, France CAF/MDPH/URSSAF) \u2014 adversarial verification",
+  "refuted": [
+   {
+    "claim": "\"277,740 ALJ hearings held FY2025: 50% allowed, 33% denied, 16% dismissed\" (chroniclelegal, labelled vendor/press citing SSA waterfall chart)",
+    "why": "SSA's own FY2025 ALJ Disposition Data (period 28 Sep 2024 to 26 Sep 2025, source https://www.ssa.gov/appeals/DataSets/03_ALJ_Disposition_Data.html, mirrored with provenance card at https://github.com/OnSolidGround/509dds-data/blob/main/data/ssa/oho/alj-disposition-by-judge-LATEST.csv; my computation) shows 394,479 total dispositions across 1,439 judge-office rows (1,150 unique ALJs): 192,119 awards (48.7% of dispositions; 58.3% of the 329,700 decisions excluding dismissals), 137,579 denials (34.9%), 64,779 dismissals (16.4%). The 50/33/16 split is approximately right but is a share of dispositions, not of hearings held; \"277,740 hearings\" is a different measure (hearings held excludes on-the-record decisions and dismissals without hearing) and cannot be reconciled with the disposition base the percentages are computed on. The law-firm blog is a vendor source and should be replaced by the primary figures above."
+   },
+   {
+    "claim": "Massachusetts DDS cost per case $571.63 (FY2016-17) presented as the only cost-per-case data point",
+    "why": "Same MRC/MassAbility annual-report series, compiled at https://github.com/OnSolidGround/509dds-data/blob/main/data/dds-statistics-master-table.json (SEIU Local 509 open-data project, secondary/advocacy compilation of state annual reports): 2017 $571.63 (confirms the finder's figure) but 2019 $613.50, 2020 $695.47, 2021 $817.36, 2022 $741.39, 2023 $826.31, 2024 $1,071.00. The figure the finder used is seven years stale and understates current cost per case by roughly 47%. Massachusetts alone: no national cost per case exists in the compiled SSA data (per-state DDS budget allocations are described there as structurally unpublished)."
+   },
+   {
+    "claim": "Medicaid FY2025 improper payments $37.39B, 77.17% insufficient documentation, 68.1% of eligibility errors, sourced as \"press citing CMS PERM\"",
+    "why": "The cited URL is a PR Newswire distribution (https://www.prnewswire.com/news-releases/audit-pressure-grows-over-medicaid-improper-payments-tied-to-intake-gaps-302748187.html), i.e. a paid company press release, not independent press; the primary CMS PERM file was blocked for both finder and verifier. Source type must be downgraded to vendor; the numbers are plausible in pattern (CMS has attributed the large majority of Medicaid improper payments to insufficient documentation in prior years) but are unverified at the stated precision."
+   },
+   {
+    "claim": "UI workflow classified as \"uncertain\" partly because \"H is real: precedent decisions exist precisely because interpretive questions recur\" with H ~10%",
+    "why": "This treats the existence of a precedent mechanism as evidence of a large H share. No count of CUIAB precedent designations, no ETA 207 volumes and no reversal rates were obtained (cuiab.ca.gov and oui.doleta.gov blocked for verifier too; DOL/CUIAB data absent from GitHub mirrors: repository searches for ETA 207/5159/ar207 and CUIAB returned nothing relevant). The one sourced basis the finder gives for why humans review, the DOL BTQ quality review, scores fact-finding adequacy (categories A/B). Absence of data is uncertainty, not support; the 10% H figure has no evidentiary basis and the \"uncertain\" verdict rests on it."
+   }
+  ],
+  "weakened": [
+   {
+    "claim": "ALJ allowance rates range from 9% to 93% across judges (chroniclelegal)",
+    "why": "Confirmed in the extremes but materially over-dramatised as a picture of variance. From the same SSA FY2025 by-judge file (computed): among 1,043 ALJs with at least 100 decisions the award share runs from 8.7% to 92.8%, but the 5th/25th/median/75th/95th percentiles are 33.6% / 49.5% / 58.4% / 68.2% / 82.3%; only 1.7% of judges are below 25% and 12.7% above 75%. Judge effects (category E) are real but the bulk of judges sit within a 19-point interquartile band."
+   },
+   {
+    "claim": "FY2025 initial disability decisions 2,246,542, 36% allowed; trend 39% FY2023, 38% FY2024 (nickortizlaw, law-firm blog)",
+    "why": "Primary-consistent but the source is vendor marketing. SSA's published allowance-rate table (https://www.ssa.gov/disability/data/, mirrored at https://github.com/OnSolidGround/509dds-data/blob/main/data/ssa/allowance-rates/allowance-rates-by-state-2018-2024.json) gives national initial allowance 38.6% FY2023 and 38.3% FY2024 (reconsideration 15.3% and 15.9%); FY2025 is not in that file. SSA state-agency workload data (SSA-SA-FYWL.csv mirrored at .../data/ssa/ssa-sa-fywl-all-states-2001-LATEST.csv, 52 jurisdictions) gives 2,057,302 determinations in FY2024 with 38.4% favourable, so the 2.2M FY2025 scale is plausible. Replace the vendor citation with these."
+   },
+   {
+    "claim": "VA: Board decisions FY2023 103,245 (Wikipedia), FY2024 116,192 and FY2025 123,962 (CAVC report via snippet); BVA remand/grant shares not obtained",
+    "why": "Could not verify the Board's official counts (bva.va.gov, department.va.gov, cavc blocked). The public VA decision-search corpus (295,756 decisions 2021-2025, https://github.com/gohokies2005/bva-reversal-census, deterministic parser by an author who discloses a commercial interest in veterans' medical opinions) contains only 41,453 decisions dated 2022, 50,236 dated 2023, 71,801 dated 2024 and 37,552 dated 2025, i.e. roughly half or less of the Board-reported output, so any corpus-derived rate covers a partial population. Within that corpus (my computation): 32.8% of decisions contain at least one merits grant, 48.2% at least one remand, 29.8% have every issue remanded; per issue, 19.9% granted, 42.5% remanded, 28.2% denied, 8.6% dismissed."
+   },
+   {
+    "claim": "Urban Institute cited as \"academic\"; ACUS 2013 report cited as \"government statistics\"; chroniclelegal, nickortizlaw, laportelawfirm cited as \"press\"",
+    "why": "Source-type labels are inflated. Urban is a think tank; ACUS is a federal advisory agency's commissioned study (government/academic, not statistics); the three law-firm blogs are vendor marketing under the brief's taxonomy. Several URLs appear both in the finder's sources list and in its blocked list (congress.gov IF10860, gao-18-37, acus.gov, parliament written question 42121), meaning those numbers came from search snippets, not from the documents."
+   },
+   {
+    "claim": "UK PIP overturn reasons: 63% oral evidence, 23% different decision on same facts, ~1% new written claimant evidence",
+    "why": "Unverifiable here (parliament.uk, gov.uk, benefitsandwork, pipappeal all blocked). The three shares sum to 87% and are stated \"of overturns with a reason attached\", so the denominator and the residual category are unclear, and the ~1% figure comes via a campaigning site's reading of a written answer. The direction (oral evidence and re-evaluation dominate, new written evidence is minor) is consistent with DWP's regularly published overturn-reason breakdown and with the finder's conclusion, but the precise split should be graded moderate, not strong, until the written answer itself is read."
+   },
+   {
+    "claim": "SNAP NPER 10.93% FY2024 (Elastic vendor blog citing FNS)",
+    "why": "Number confirmed but should be re-sourced: PolicyEngine's fact catalogue built from the FNS payment-error-rate tables and the FY2024 QC public-use file (https://github.com/PolicyEngine/snap-qc-sim/blob/main/paper/FACTS.md, citing https://www.fns.usda.gov/snap/qc/per and https://snapqcdata.net/datafiles) records the FY2024 official rate as 10.93% and adds that FNS published the FY2025 national rate of 10.62% on 24 June 2026; the FY2024 QC universe was 44,800 cases across 53 jurisdictions."
+   },
+   {
+    "claim": "UI due-process constraint (\"Java v. California\") and vendors (Geographic Solutions, FAST Enterprises) cited as general knowledge",
+    "why": "Unsourced in the finder and unverifiable here; treat as unknown rather than evidence."
+   },
+   {
+    "claim": "\"~1,300 ALJs\" and \"100% of initial determinations by examiner + medical consultant\"",
+    "why": "SSA's FY2025 disposition file lists 1,150 unique ALJs with dispositions (1,439 judge-office rows). The 100% human-review statement is right in substance but understates the labour pool the finder never quantified: SSA OIG audit 072309 (July 2025, https://oig.ssa.gov/audits-and-investigations/audit-reports/072309/, mirrored at https://github.com/OnSolidGround/509dds-data/blob/main/data/ssa/oig-audit-staffing-productivity-072309.md) reports 5,594 experienced disability examiners, 2,071 medical consultants and 293 DDS hearing officers in FY2023 (down 11%, 13% and 29% since FY2019), production per work-year 245.7 in FY2024 (302.8 in FY2019), and average examiner attrition 19% per year (13-25%)."
+   }
+  ],
+  "confirmed": [
+   {
+    "claim": "ALJ award rate extremes of roughly 9% to 93% across judges (H4: discretion persists despite the SSR/AR/POMS apparatus)",
+    "evidence": "Computed from SSA FY2025 ALJ Disposition Data mirrored at https://github.com/OnSolidGround/509dds-data/blob/main/data/ssa/oho/alj-disposition-by-judge-LATEST.csv (source card: https://www.ssa.gov/appeals/DataSets/03_ALJ_Disposition_Data.html, retrieved 2026-05-05): 8.7% to 92.8% among 1,043 judges with 100+ decisions; overall award share 58.3% of decisions."
+   },
+   {
+    "claim": "National initial allowance rate high-30s percent (finder: 39% FY2023, 38% FY2024)",
+    "evidence": "SSA allowance-rate table (https://www.ssa.gov/disability/data/, mirrored JSON above): initial 35.0 (FY2018), 37.1, 39.2, 36.3, 38.5, 38.6 (FY2023), 38.3% (FY2024); reconsideration 12.6% rising to 15.9%."
+   },
+   {
+    "claim": "Initial-level decision volume of order 2 million per year",
+    "evidence": "SSA-SA-FYWL.csv (mirrored) sums to 2,057,302 determinations and 789,032 favourable (38.4%) in FY2024 across 52 jurisdictions; 1,828,861 in FY2023; 2,358,464 in FY2017."
+   },
+   {
+    "claim": "SNAP FY2024 national payment error rate 10.93%",
+    "evidence": "https://github.com/PolicyEngine/snap-qc-sim/blob/main/paper/FACTS.md citing FNS PER tables (https://www.fns.usda.gov/snap/qc/per); FY2025 rate 10.62% published 24 June 2026; FY2028 state cost-share tiers 0/5/10/15% at <6/6-8/8-10/>=10% confirmed in the same file."
+   },
+   {
+    "claim": "SNAP/Medicaid errors are dominated by verification/declaration failures, not interpretation (H1)",
+    "evidence": "PolicyEngine's partition of FY2024 SNAP QC error dollars (FACTS.md, derived from the FNS QC public-use file, 44,800 cases): nationally 77.7% 'other input' (household-side information), 11.1% input-with-system cause, 6.5% mixed, 4.6% pure computation. At most ~16% of error dollars is system/computation, which is rules-engine territory; none of the categories is unsettled rule meaning."
+   },
+   {
+    "claim": "Rules-as-code already covers formula-level determinism for French and UK benefits, and stops exactly where human judgement begins",
+    "evidence": "OpenFisca-France AAH module (https://raw.githubusercontent.com/openfisca/openfisca-france/master/openfisca_france/model/prestations/minima_sociaux/aah.py): taux_incapacite is an input variable with no formula; eligibility thresholds (80% / 50-79% with RSDAE, age) are computed from it. PolicyEngine-UK (https://raw.githubusercontent.com/PolicyEngine/policyengine-uk/main/policyengine_uk/variables/gov/dwp/pip/pip_dl.py): pip_dl_category is an input, amounts are computed from it. Catala examples README (https://raw.githubusercontent.com/CatalaLang/catala-examples/master/README.md) formalises allocations familiales and aides au logement. The CDAPH incapacity rating and the PIP descriptor scoring, i.e. the B/E judgement, are the unmodelled inputs."
+   },
+   {
+    "claim": "VA appeals are dominated by evidence development, not rule ambiguity (A dominance)",
+    "evidence": "BVA public decision corpus 2021-2025 (https://github.com/gohokies2005/bva-reversal-census/blob/master/data/bva_decision_labels_2021_2025.csv, 295,756 decisions, my computation): 42.5% of all issues are remanded for further development, 48.2% of decisions contain at least one remand and 29.8% remand every issue; the corpus author's own caveat is that grants 'reflect new evidence, legal changes, or benefit-of-the-doubt application', and that appealed cases are roughly 2% of VA claims (author's estimate, unsourced)."
+   },
+   {
+    "claim": "SSA already runs a federal quality loop that rates initial determinations as policy-compliant, so hearing-level reversals are not evidence of unsettled rules",
+    "evidence": "SSA DDS Net Accuracy file (https://www.ssa.gov/data/DDS-Net-Accuracy.csv, mirrored at https://github.com/OnSolidGround/509dds-data/blob/main/data/ssa/dds-net-accuracy-by-state-2007-LATEST.csv): national net accuracy 96.4% FY2020, 96.7% FY2021, 97.1% FY2022; state range 94.5% (MS) to 98.7% (MD) in FY2022; Massachusetts reports 97% accuracy against a 95% federal standard in FY2024 (MassAbility annual report mirrored at .../data/ma-annual-reports/massability-fy24.md). Ninety-seven percent policy-compliant at initial level versus 58% ALJ award rate on appeal is the signature of de novo records, new evidence and judge effects (A/B/E), not of rule ambiguity."
+   },
+   {
+    "claim": "USCIS settlement loop is mostly not prospective",
+    "evidence": "AAO non-precedent decisions are published by the thousand: the USCIS listing for EB-2 alone reports about 8,934 decisions (https://raw.githubusercontent.com/greencardnav/greencardnav/main/aao-indexer/README.md, indexer of the public USCIS listing); a hobbyist tabulation of Jan 2024 to Apr 2026 AAO decisions (https://github.com/kelavok/uscis_appeals_analysis, weak evidence) finds about 0.7% sustained, about 23% remanded, the rest dismissed. Each is explicitly non-precedential; only adopted/precedent decisions and Policy Manual alerts are prospective, and those are a handful per year (count not obtained)."
+   },
+   {
+    "claim": "Hearing backlog pain at SSA is throughput, not interpretation",
+    "evidence": "SSA hearing-office wait-time data FY2025 (https://www.ssa.gov/appeals/DataSets/01_NetStat_Report.html, mirrored at .../data/ssa/oho/hearing-office-wait-time-LATEST.csv, my computation): mean and median wait 8.0 months across 165 hearing offices, range 6 to 21 months. OIG 072309 reports national DDS processing time roughly doubled from 110 days (FY2016) to 231 days (FY2024) per SSA processing-time data (https://www.ssa.gov/data/fy16-onwards-CDP-Time-Monthly.csv)."
+   }
+  ],
+  "manual_review_conflated_with_repeatable_ambiguity": [
+   "UI nonmonetary determinations: the finder assigns H ~10% on the ground that CUIAB precedent decisions exist. Designation of a precedent decision is a rare appellate act (criteria: significant legal or policy determination of general application likely to recur), and its output is already consumed as text through EDD's Benefit Determination Guide. Every first-line determination still requires party fact-finding (A/B) regardless of how settled the doctrine is; the DOL BTQ review the finder cites scores fact-finding adequacy. Honest H share: 2-5%, and the settled part is already codified.",
+   "UK DWP: the finder maps 'D/H via Upper Tribunal points of law ~5-10%'. Upper Tribunal social-security decisions number in the hundreds per year (count not obtained) against ~65,000 PIP MRs per quarter cited by the finder, so the point-of-law channel cannot be more than about 1-2% of reviewed cases; the 23% 'different decision on the same facts' is evaluative disagreement on descriptor scoring (E with some B), not settleable ambiguity. Honest H share: <=2%.",
+   "France MDPH: the finder treats 1:6.5 AAH and 1:3.85 PCH territorial disparities as 'C/H local doctrine ~20%'. Disparity between 100+ commissions is evidence of unharmonised discretion (E/C), not of ambiguity that has been settled prospectively by anyone; no CDAPH-level precedent mechanism was found, and the incapacity rate is an input to the codified rules (OpenFisca). Honest H share: unknown, plausibly 5-10%, with no owner who could ratify settlements other than CNSA.",
+   "VA: the finder's A 30% / B 40% understates evidence gaps: 42.5% of appealed issues are remanded for development in the public 2021-2025 corpus, so A is closer to 40-45% and H at most 2-3%; GC precedent opinions are a few per year.",
+   "USCIS: H 5% is credited to Policy Manual updates, but the operational escalation product is thousands of explicitly non-precedential AAO decisions per year (~0.7% sustained in a 2024-2026 sample); H is at most 1-2% and E is the largest category by design.",
+   "SSA: the finder correctly says the AR/SSR loop is court-triggered, but still books 3-5% H. With national DDS net accuracy at 97% and ALJ variance concentrated in judge effects and new evidence, H at the frontline is <=2%; the DDS 'policy question' escalation channel exists (regional office / central policy) but no volume evidence was found by finder or verifier."
+  ],
+  "corrected_workflow_verdicts": [
+   {
+    "name": "SSA disability determinations (DDS initial/reconsideration, ALJ hearings, Appeals Council) with SSRs/ARs/POMS",
+    "evidence_quality": "strong",
+    "verdict": "weak",
+    "why": "Primary SSA data now verified: ~2.06M determinations FY2024 at 38.3% initial allowance; 394,479 ALJ dispositions FY2025 with 58.3% of decisions awarded and a per-judge IQR of 49.5-68.2%; national DDS net accuracy 97.1% by SSA's own federal quality review; ~8,000 DDS adjudicative staff plus 1,150 ALJs with 19% examiner attrition. Volume and labour pool are large, but the variance is evidentiary and discretionary (A/B/E), the prospective loop (AR/SSR/POMS/HALLEX) is legally owned by SSA and court-triggered, the initial level is already rated 97% policy-compliant, and there is a single federal buyer with de novo hearing rights. H at frontline <=2%. Not a Sophon market; the labour-pool size is the only thing that keeps it from 'negative'."
+   },
+   {
+    "name": "Unemployment insurance nonmonetary determinations and appeals (state agencies; CUIAB precedent decisions)",
+    "evidence_quality": "weak",
+    "verdict": "weak",
+    "why": "No decision volumes, reversal rates or precedent-designation counts were obtainable by finder or verifier, so the finder's 'uncertain' rests on an unsupported H ~10%. Structurally: every determination requires party fact-finding (A/B); the precedent mechanism is a rare appellate act consumed through the EDD Benefit Determination Guide (already versioned text); 53 separate public buyers; adverse-determination automation is legally sensitive. Downgraded from uncertain to weak because the one thing that could rescue it (evidence that frontline adjudicators fail to apply published precedents) was not found and is agency-internal data."
+   },
+   {
+    "name": "SNAP and Medicaid eligibility determinations and payment error rates",
+    "evidence_quality": "strong",
+    "verdict": "negative",
+    "why": "Confirmed and strengthened: FNS-derived partition of FY2024 SNAP QC error dollars is 77.7% household-side input, 4.6% pure computation, 11.1% input+system, 6.5% mixed (44,800 QC cases); FY2025 rate 10.62%. Errors are verification and calculation, rules engines already encode policy, the Medicaid documentation-share figure is vendor-press but directionally consistent. H1 supported; no settlement loop exists at the frontline."
+   },
+   {
+    "name": "VA disability compensation claims and appeals (VBA, BVA, CAVC) with GC precedent opinions and M21-1",
+    "evidence_quality": "moderate",
+    "verdict": "negative",
+    "why": "42.5% of appealed issues remanded for evidence development and 29.8% of decisions remanded in full (2021-2025 public corpus, partial coverage); grants reflect new evidence and benefit-of-the-doubt per the corpus author; GC precedent opinions and M21-1 already form a versioned prospective loop owned by VA; single federal buyer with no external market. Moved from weak to negative because A dominance is now quantified and the buyer test fails outright."
+   },
+   {
+    "name": "USCIS benefit adjudication (RFEs, Policy Manual, AAO decisions)",
+    "evidence_quality": "weak",
+    "verdict": "negative",
+    "why": "Discretion is statutory (E by design); the escalation product is thousands of explicitly non-precedential AAO decisions (~8,934 in one EB-2 listing; ~0.7% sustained in a 2024-2026 sample, weak source), so settlements are case-specific; Policy Manual alerts are few and agency-owned; single fee-funded federal buyer. Finder's 'weak' is generous."
+   },
+   {
+    "name": "UK DWP benefit decision making (PIP/ESA/UC): ADM/DMG, mandatory reconsideration, tribunals",
+    "evidence_quality": "moderate",
+    "verdict": "negative",
+    "why": "Overturn-reason split (63% oral evidence, 23% same-facts re-evaluation, ~1% new written evidence) could not be re-read and is downgraded to moderate, but its direction is consistent with DWP's published breakdowns and points at B/E; PolicyEngine-UK confirms the PIP category is an un-modelled human input; the UT-to-ADM-memo loop is real, low-frequency (hundreds of UT decisions per year at most versus ~65k PIP MRs per quarter) and DWP-owned; single national buyer under UK GDPR Art 22. Volume is real but the mechanism does not fit."
+   },
+   {
+    "name": "France CAF prestations (RSA, prime d'activite, aides au logement)",
+    "evidence_quality": "moderate",
+    "verdict": "negative",
+    "why": "Error is declarative-data driven (EUR 6.3bn uncorrected at 24 months per Cour des comptes via press/think-tank, unverified here); liquidation already automated; OpenFisca/Catala cover the formulas; single buyer (CNAF)."
+   },
+   {
+    "name": "France MDPH/CDAPH disability rights",
+    "evidence_quality": "weak",
+    "verdict": "weak",
+    "why": "Territorial disparities are real per IGAS/IGF (via secondary reports, unverified here) but are unharmonised discretion across 100+ commissions, not prospectively settled ambiguity; the incapacity rating is an input to codified rules; CNSA owns harmonisation; departmental budgets are small; 4-month legal deadlines missed by 40% of MDPHs show the pain is throughput. Interesting pattern, no buyer."
+   },
+   {
+    "name": "France URSSAF rescrit social",
+    "evidence_quality": "weak",
+    "verdict": "uncertain",
+    "why": "Individual rescrits bind only for the requester (case-specific); 'rescrits de portee generale' published in the BOSS since April 2025 are genuinely prospective but are a legal-office ruling product with unknown volume (urssaf.fr and boss.gouv.fr blocked). Closest formal analogue to the mechanism in this cluster, but it already exists inside the authority and no operational casework loop was evidenced."
+   }
+  ],
+  "missing": [
+   "Count of SSA Acquiescence Rulings and SSRs issued per year (ssa.gov blocked); frequency of POMS transmittals and Emergency Messages; volume of DDS 'policy question' escalations to regional/central office; documentation of SSA eCAT (DDS decision-support) and OHO 'Insight' decision-writing tool, both of which embed policy compliance checks and are direct H3/H6 evidence (not fetched by finder or verifier).",
+   "Any SSA quality-review breakdown of DDS deficiencies by cause (evidence development vs policy application) \u2014 the DDS net-accuracy file gives the rate (97.1%) but not the reasons.",
+   "National ETA 207 nonmonetary determination totals and ETA 5130 lower/higher-authority reversal rates; number of CUIAB precedent benefit decisions designated per year and the share of EDD determinations that cite a P-B decision.",
+   "Board of Veterans' Appeals official annual counts (FY2023-FY2025) and the allow/remand/deny split by docket, to reconcile with the public corpus which carries roughly half the decisions.",
+   "Primary CMS PERM FY2025 report (rate, dollar amount, insufficient-documentation share) \u2014 only a company press release was available.",
+   "DWP written answer 42121 and PIP official statistics overturn-reason table; Upper Tribunal AAC social-security decision counts per year; cost per MR and per appeal; DWP decision-maker headcount.",
+   "URSSAF rescrit request volumes and the number of general-scope rescrits published in the BOSS since April 2025.",
+   "MDPH RAPO and contentieux rates; any CDAPH-level doctrine repository; CNSA harmonisation outputs.",
+   "Any independent evidence that frontline adjudicators in any of these systems fail to apply already-published precedents \u2014 the only gap a Sophon-shaped product could fill \u2014 remains unfound; it is agency-internal data.",
+   "USCIS AAO adopted/precedent decision counts per year versus non-precedent decisions (only the ~8,934 EB-2 listing size and a hobbyist outcome sample were obtainable)."
+  ],
+  "overall": "The finder's negative-to-weak domain assessment survives adversarial re-checking and is, if anything, too kind in two places (VA and USCIS). Verification was constrained: the session's web-search budget was already exhausted and the egress proxy blocked every government, court, regulator and press host, so I re-derived the load-bearing SSA, VA and SNAP numbers from primary government data files mirrored on GitHub and computed the statistics myself. Those computations confirm the finder's picture from primary data: about 2.06M SSA initial determinations in FY2024 at 38.3% allowance; 394,479 ALJ dispositions in FY2025 with 58.3% of decisions awarded, a per-judge range of 8.7-92.8% but an interquartile band of 49.5-68.2%; SSA's own federal quality review rates DDS determinations 97.1% accurate (FY2022), which is the decisive datum: the initial level is already policy-compliant by the owner's measure, so hearing-level reversals are new evidence, de novo records and judge effects, not unsettled rules. The SSA OIG's July 2025 audit quantifies the labour pool the finder omitted (5,594 examiners, 2,071 medical consultants, 19% annual attrition), which is the only fact in the cluster that argues for capturing institutional knowledge, but the owner of that knowledge is SSA itself with POMS, eCAT and quality review already in place. The BVA public corpus shows 42.5% of appealed issues remanded for evidence development, and the FNS QC error-dollar partition (77.7% household-side input, 4.6% pure computation) makes H1 the best-supported hypothesis in the cluster. Every 'settlement loop' item is real but already institutionalised, low-frequency and owned by the authority (ARs/SSRs, VA GC opinions, CUIAB precedents consumed via the EDD guide, UT-to-ADM memos, USCIS Policy Manual, BOSS rescrits); the operational escalation products that do exist at volume (AAO non-precedent decisions, First-tier Tribunal decisions, individual rescrits) are explicitly non-precedential, so they fail the brief's 'prospective and reusable' test. Rules-as-code projects for France and the UK confirm from the code that the human judgement (incapacity rate, PIP category) is an input, i.e. category B/E, not H. Corrected verdicts: SSA weak (strong evidence), UI weak (weak evidence; downgraded from uncertain because its H share was unsupported), SNAP/Medicaid negative, VA negative, USCIS negative, UK DWP negative on mechanism fit despite large volume, CAF negative, MDPH weak, URSSAF rescrit uncertain. Honest H share across the cluster is 0-3% of reviewed cases, and where it exists it is already captured in versioned agency text. I would not pursue government benefits and casework as a Sophon wedge; the single cheap test left is agency-internal (do frontline adjudicators fail to apply published precedents), which public data cannot answer and which, even if positive, has no buyer outside the agency itself."
+ }
+}

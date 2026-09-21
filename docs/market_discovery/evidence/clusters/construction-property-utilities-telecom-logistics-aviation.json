@@ -1,0 +1,687 @@
+{
+ "key": "construction-property-utilities-telecom-logistics-aviation",
+ "found": {
+  "domain": "construction-property-utilities-telecom-logistics-aviation",
+  "domain_assessment": "EVIDENCE ACCESS FAILURE MUST BE READ FIRST. The session WebSearch budget was already exhausted (200 of 200) before this finder issued its first query, so zero searches ran. The egress proxy then blocked every regulator, court, ombudsman, standards-body, academic, press and vendor host attempted (gov.uk, ofgem.gov.uk, energyombudsman.org, energie-mediateur.fr, ofcom.org.uk, arcep.fr, mediation-telecom.org, faa.gov, easa.europa.eu, fmc.gov, regulations.gov, federalregister.gov, ecfr.gov, arcadis.com, procore.com, support.procore.com, autodesk.com, cassinfo.com and roughly 130 more; archives and reader proxies also blocked). Only GitHub (raw files and git clone; code search disabled for this session), npm and PyPI were reachable. Consequently no decision volume, review rate or cost figure in this cluster could be verified this session. Where I quote a number from recollection it is explicitly labelled 'recollection, unverified' with the URL that should hold it, and the verifier should treat it as a claim to check, not evidence. What WAS established from fetched primary material: (1) Procore's public API documentation describes the RFI tool as a per-project 'central storage and management point for information requests and responses' whose value is accountability and archiving; there is no cross-project 'reusable interpretation' or precedent object in its object model, and its 2026 agentic/MCP layer exposes RFIs as read/write records plus a natural-language 'converse' tool, i.e. retrieval over past RFIs rather than governed prospective settlements (github.com/procore/api-docs). (2) The DCSA container-shipping API standards model demurrage and detention only as amount and free-time fields whose meaning is 'reference to carrier website or individual charge as per service contract', confirming D&D applicability is contract-specific and negotiated, not standardised (github.com/dcsaorg/DCSA-OpenAPI). (3) Catala exists as prior art for turning legal text into executable code with lawyer ratification (github.com/CatalaLang/catala). STRUCTURAL ASSESSMENT (reasoning, not sourced numbers): The cluster contains the clearest publicly documented settlement loops of any domain (aviation: FAA exemption grants that become rule changes, EASA AltMoC notification and publication, FAA MMEL policy letters, FAA Chief Counsel legal interpretations; energy: French Mediateur national de l'energie generic recommendations that became law; maritime: FMC 2020 interpretive rule on D&D reasonableness), but in every one of these the settlement owner is a regulator or ombudsman, the settlement is already published as a versioned document, and the operating organisations consume it rather than build it. That supports H3 (already encoded) and H6 (feature of the regulator's own process), not a standalone product. At operating-company level the residual human review in this cluster is dominated by missing or conflicting information (RFIs, freight audit), factual classification (MEL applicability, container availability, meter and billing errors) and commercial negotiation (change orders, D&D, CAM), with repeatable ambiguity (H) a minority that is mostly project- or lease-local (H5). The one structurally interesting candidate is RFI resolution for repeat-programme owners (retail, data-centre, healthcare, DOT and public-housing programmes reusing standard specifications), where the same specification ambiguity plausibly recurs across projects and an owner or design firm could ratify a prospective reading; this is UNVERIFIED and sits directly in the path of Procore and Autodesk AI features and master-specification vendors. Verdict for the cluster: negative for aviation, telecom, utilities, property and logistics as standalone Sophon markets on structural grounds; uncertain for construction RFIs pending volumes and a base-rate study on real RFI logs. Absence of fetched data is uncertainty, not support; nothing here should be promoted above 'uncertain' without the blocked sources being read.",
+  "workflows": [
+   {
+    "name": "Construction RFIs resolved into architect's supplemental instructions and change orders",
+    "geography": "US primarily (AIA A201 contract structure); UK/EU analogues under JCT/NEC/FIDIC",
+    "decision_volume": "NOT VERIFIED THIS SESSION. Recollection, unverified: Navigant Construction Forum 'Impact and Control of RFIs on Construction Projects' (2013) analysed roughly 1,362 projects and about 1.08 million RFIs, reporting about 9.9 RFIs per USD 1 million of construction, an average of about 796 RFIs per project, average response time about 9.7 days, and about 22 percent of RFIs never answered. URL where this should be verified: https://www.navigant.com (now guidehouse.com) construction forum publications; blocked. Source type if verified: industry consultancy study. Treat as claim to check.",
+    "human_review_rate": "100 percent by construction: every RFI is answered by a human design professional (architect or engineer of record) because the contract assigns interpretation of the contract documents to the architect (AIA A201 section 4.2.11, recollection of the clause structure, not fetched). No published share of RFIs that are answered by reference to a prior RFI was found.",
+    "why_humans_review": "ESTIMATE, basis: the standard RFI taxonomies used in the industry (design clarification, conflict between drawings and specifications, missing information, substitution or alternate request, field condition, coordination clash) and the finder's reasoning; no RFI corpus was accessible. A missing evidence (information absent from drawings or specs): ~30 percent. B factual classification (does this field condition match the detail): ~10 percent. C interpretation of an existing spec or drawing where the document is ambiguous: ~20 percent. D conflict between documents (plan vs spec vs code): ~15 percent. E true discretion (aesthetic or design choice): ~5 percent. F commercial negotiation (substitutions, cost or schedule impact leading to change orders): ~10 percent. G one-off field circumstances: ~5 percent. H repeatable ambiguity settled prospectively (same spec clause questioned again on the same or a sister project): ~5 to 10 percent within a single project, potentially higher across a repeat-programme owner's portfolio. Only H is addressable and it is unverified.",
+    "settlement_loop_evidence": [
+     {
+      "description": "Procore's public API documentation defines the RFI tool as 'a project's central storage and management point for information requests and responses' whose purpose is 'project-wide accountability' and to 'create, capture, and archive critical information exchanges'; the object model has RFIs, Specifications (with revisions) and Drawings as separate per-project objects with no precedent or reusable-interpretation entity, and the 2026 Procore AI / MCP layer exposes RFIs as records to list, search, create and update plus a free-text 'converse' tool. This is evidence that the incumbent captures RFI answers as archived per-project records, not as versioned executable settlements.",
+      "source_url": "https://github.com/procore/api-docs/blob/HEAD/platform_concepts/object_model_project.md",
+      "source_type": "vendor (public developer documentation repository, fetched)",
+      "prospective": "no",
+      "reusable_how": "Answers are searchable text within one project; reuse across projects depends on humans remembering or searching prior projects."
+     },
+     {
+      "description": "Procore's agentic documentation states customers 'ask questions across their project data, drawings, RFIs, submittals' via a side-panel chat and can install AI agents that read and (with approval gate) write RFIs. Retrieval over past RFIs is therefore being shipped by the incumbent as a feature, which is the H6 threat for any RFI-precedent product.",
+      "source_url": "https://github.com/procore/api-docs/blob/HEAD/mcp/procore_ai_edge_mcp_setup.md",
+      "source_type": "vendor (public developer documentation, fetched)",
+      "prospective": "unclear",
+      "reusable_how": "Free-text retrieval, no ratified prospective reading."
+     },
+     {
+      "description": "Contractual loop (structure known, not fetched): under AIA A201 the architect's written interpretations and Architect's Supplemental Instructions apply to the project going forward and, if cost or time changes, become change orders or construction change directives; the settlement is therefore authoritative and prospective WITHIN the project but expires with the project. Repeat-programme owners and state DOTs revise standard specifications and special provisions in response to recurring RFIs and change orders, which is a cross-project loop, but no volume or frequency evidence could be fetched.",
+      "source_url": "https://www.aia.org/resource-center/a201-2017-general-conditions-contract-construction",
+      "source_type": "industry association contract form (blocked, not fetched)",
+      "prospective": "yes",
+      "reusable_how": "Within project by ASI; across projects only via periodic spec revisions, which is slow and unstructured."
+     }
+    ],
+    "economic_pain": "NOT VERIFIED. Recollection, unverified: the same Navigant study estimated an average cost of about USD 1,080 per RFI to review and respond (about 8 hours of professional time), which at about 796 RFIs per project would imply roughly USD 0.86 million per project of RFI handling cost; verify at guidehouse.com or via secondary summaries (long-intl.com, blocked). Arcadis Global Construction Disputes Report figures on dispute value and duration were not fetched (arcadis.com blocked).",
+    "existing_solutions": "Procore RFIs tool, Autodesk Construction Cloud (Build) RFIs, Bluebeam, Newforma, Oracle Aconex; specification systems Deltek MasterSpec/Specpoint and BSD SpecLink hold versioned spec text and are the natural home for cross-project interpretations. None captures RFI settlements as versioned executable precedents based on the Procore public docs fetched; Autodesk APS SDK on npm currently exposes only Issues and Account Admin construction packages, no RFI package (registry.npmjs.org, fetched).",
+    "buyer_and_budget": "Design firm principal or owner's programme manager for repeat programmes; general contractor VDC/project controls for RFI logging. Budget is project-based and already committed to Procore or ACC seats; a standalone precedent ledger would need to be bought by the design professional who holds interpretive authority, an unusual software buyer.",
+    "regulatory_constraints": "None prohibiting automation; professional liability means the licensed design professional must remain the ratifier of any interpretation, which fits the mechanism (human ratification) but caps autonomy.",
+    "evidence_quality": "weak",
+    "verdict": "uncertain",
+    "notes": "Best structural fit in the cluster, but locality (H5) is severe: a typical detail interpretation on one building rarely transfers to another design. The addressable pocket is repeat-programme owners with standard specs. Needs a base-rate study on one owner's RFI logs across 5 to 10 sister projects. Incumbent AI retrieval over RFIs already shipping is the main threat."
+   },
+   {
+    "name": "Construction and engineering disputes, change order and claim resolution",
+    "geography": "Global; US, UK, EU",
+    "decision_volume": "NOT VERIFIED. Arcadis Global Construction Disputes Report (annual) would give average dispute value and duration by region; arcadis.com blocked. No number is asserted.",
+    "human_review_rate": "100 percent; disputes are negotiated or adjudicated by definition.",
+    "why_humans_review": "ESTIMATE by structure: F commercial negotiation ~50 percent, A missing evidence (records of delay, productivity) ~15 percent, B factual classification (was the work extra) ~10 percent, C contract interpretation ~15 percent, D conflict between contract and design documents ~5 percent, G one-off ~5 percent, H ~0 to 5 percent. Interpretive rulings by adjudicators or courts are precedential only at the legal-system level.",
+    "settlement_loop_evidence": [
+     {
+      "description": "Loop exists only as case law and standard-form revisions (JCT, NEC, FIDIC editions), i.e. industry-level, decade-scale, not organisation-level.",
+      "source_url": "https://www.arcadis.com/en/knowledge-hub/perspectives/global/global-construction-disputes-report",
+      "source_type": "industry consultancy report (blocked, not fetched)",
+      "prospective": "no",
+      "reusable_how": "Not reusable at organisation level."
+     }
+    ],
+    "economic_pain": "Large per dispute (multi-million USD per Arcadis, unverified) but each is bespoke; the cost is negotiation and expert time, not repeated interpretation.",
+    "existing_solutions": "Claims consultants (HKA, Ankura, Guidehouse), contract management (Aconex, SAP), dispute boards.",
+    "buyer_and_budget": "General counsel or commercial director; budget goes to consultants and lawyers.",
+    "regulatory_constraints": "Adjudication statutes (UK Construction Act) require human adjudicators.",
+    "evidence_quality": "weak",
+    "verdict": "negative",
+    "notes": "Penalised under brief section 2: commercial negotiation, one-off circumstances, humans must remain involved."
+   },
+   {
+    "name": "Residential leasehold service charge disputes (UK First-tier Tribunal Property Chamber, section 27A LTA 1985)",
+    "geography": "England and Wales",
+    "decision_volume": "NOT VERIFIED. HMCTS Tribunal Statistics Quarterly publishes Property Chamber (Residential Property) receipts and disposals; gov.uk blocked. No number asserted.",
+    "human_review_rate": "100 percent at tribunal; at managing-agent level, service charge queries are handled by property managers with no published review rate found.",
+    "why_humans_review": "ESTIMATE by structure of s.27A cases: B factual classification and E discretion (whether costs were 'reasonably incurred' and works 'of a reasonable standard') ~50 percent combined, C lease interpretation (what the lease permits recovery of) ~25 percent, A missing evidence (invoices, consultation notices) ~15 percent, F negotiation ~5 percent, H ~5 percent (a lease reading that binds future years of the same lease). Reasonableness is a discretionary evaluative standard, so H4 applies.",
+    "settlement_loop_evidence": [
+     {
+      "description": "Tribunal decisions bind the parties for the years decided and Upper Tribunal decisions are precedents; a managing agent may treat an FTT reading of a specific lease clause as settled for later years of that building. This is real but block-specific (each lease differs) and legally contestable. No agent-level precedent system found.",
+      "source_url": "https://www.gov.uk/government/collections/tribunals-statistics",
+      "source_type": "government statistics (blocked, not fetched)",
+      "prospective": "unclear",
+      "reusable_how": "Per lease or per estate only; not generalisable across portfolios (H5)."
+     }
+    ],
+    "economic_pain": "Unknown; disputes are numerous but individually small; the Leasehold and Freehold Reform Act 2024 changes cost recovery rules (not fetched).",
+    "existing_solutions": "Yardi, MRI, Qube, Propertyware for service charge accounting; LEASE (Leasehold Advisory Service) guidance; case management in agents' CRM.",
+    "buyer_and_budget": "Managing agent head of property management; low software budget per block.",
+    "regulatory_constraints": "Statutory reasonableness test and tribunal jurisdiction keep humans in the loop.",
+    "evidence_quality": "weak",
+    "verdict": "negative",
+    "notes": "Discretionary reasonableness standard and lease locality defeat the mechanism."
+   },
+   {
+    "name": "Commercial lease interpretation and CAM (common area maintenance) reconciliation disputes",
+    "geography": "US and UK commercial real estate",
+    "decision_volume": "NOT VERIFIED; no public statistics exist for CAM disputes; lease audit firms publish marketing claims only.",
+    "human_review_rate": "Unknown; CAM reconciliations are reviewed by tenant lease auditors on a sample basis.",
+    "why_humans_review": "ESTIMATE: C lease interpretation (what is includable in operating expenses, caps, gross-ups) ~40 percent, B factual classification of expense line items ~25 percent, F negotiation ~20 percent, A missing evidence ~10 percent, H ~5 percent. Interpretations are lease-specific; a landlord's 'house position' on an ambiguous clause across its standard lease form is the one recurring class.",
+    "settlement_loop_evidence": [
+     {
+      "description": "Landlords with a standard lease form do maintain house positions on expense includability that apply across tenants and years; lease abstraction in Yardi and MRI stores clause terms as structured fields but not contested readings with provenance. No fetched source; yardi.com and mrisoftware.com blocked.",
+      "source_url": "https://www.mrisoftware.com/",
+      "source_type": "vendor (blocked, not fetched)",
+      "prospective": "unclear",
+      "reusable_how": "House positions live in accounting policy memos and abstractor notes."
+     }
+    ],
+    "economic_pain": "Unknown; lease audit recoveries are cited by audit firms without independent verification.",
+    "existing_solutions": "Yardi Voyager, MRI, VTS, lease abstraction services and LLM abstraction tools (Leverton/MRI, Prophia).",
+    "buyer_and_budget": "Landlord VP asset management or property accounting; tenant lease administration.",
+    "regulatory_constraints": "None material.",
+    "evidence_quality": "unknown",
+    "verdict": "weak",
+    "notes": "Small user pool per landlord; readings are lease-form specific; commercial negotiation dominates outcomes."
+   },
+   {
+    "name": "French coproprietes: syndic decisions and copropriete disputes",
+    "geography": "France",
+    "decision_volume": "NOT VERIFIED; the Registre national des coproprietes (ANAH) counts coproprietes, and ANIL publishes dispute guidance; anil.org and data.gouv.fr blocked.",
+    "human_review_rate": "Unknown.",
+    "why_humans_review": "ESTIMATE: E discretion via assemblee generale votes ~40 percent, C interpretation of reglement de copropriete and loi 1965 ~25 percent, F ~15 percent, A ~10 percent, H ~5 percent.",
+    "settlement_loop_evidence": [
+     {
+      "description": "Decisions are taken by co-owner vote and contested at the tribunal judiciaire; no organisation-level settlement loop beyond syndic house practice and case law. Not fetched.",
+      "source_url": "https://www.anil.org/",
+      "source_type": "government-backed housing agency (blocked, not fetched)",
+      "prospective": "no",
+      "reusable_how": "Not reusable across buildings."
+     }
+    ],
+    "economic_pain": "Unknown.",
+    "existing_solutions": "Syndic software (ICS, Septeo, Vilogi), Matera for self-managed coproprietes.",
+    "buyer_and_budget": "Syndic firms; low willingness to pay.",
+    "regulatory_constraints": "Loi du 10 juillet 1965 mandates general assembly decisions.",
+    "evidence_quality": "unknown",
+    "verdict": "negative",
+    "notes": "Discretionary, vote-based decisions; not a fit."
+   },
+   {
+    "name": "Energy supplier billing and tariff disputes and ombudsman complaints (UK Energy Ombudsman, Ofgem; French Mediateur national de l'energie)",
+    "geography": "UK and France (EU analogues)",
+    "decision_volume": "NOT VERIFIED. The Energy Ombudsman annual report (energyombudsman.org) and the Mediateur national de l'energie rapport d'activite (energie-mediateur.fr) publish annual litige counts and category shares; both hosts blocked. No number asserted.",
+    "human_review_rate": "At ombudsman stage 100 percent; at supplier stage complaint handling is fully human. Ofgem's Complaints Handling Standards regulations (2008) require suppliers to record complaints and analyse root causes (structure recalled, not fetched).",
+    "why_humans_review": "ESTIMATE, basis: published ombudsman category structures (billing, transfers, customer service, metering) and the fact that most billing complaints concern wrong readings, estimated bills, back-billing and switching errors. A missing or wrong data ~40 percent, B factual classification ~20 percent, C rule interpretation (tariff terms, back-billing limits, standing charge applicability) ~15 percent, D conflict between licence conditions and supplier terms ~5 percent, E and G ~10 percent, F ~5 percent, H ~5 percent.",
+    "settlement_loop_evidence": [
+     {
+      "description": "The French Mediateur national de l'energie issues 'recommandations generiques' addressed to all operators when the same problem recurs across individual disputes; the best-known example is limitation of retroactive billing to 14 months, which was subsequently written into the Code de la consommation (article L224-11, recollection). This is a genuine prospective settlement loop: individual disputes, mediator finding, generic recommendation, operator practice change, then law. The owner is the mediator, not the supplier, and the settlement is legislation, not software. Not fetched.",
+      "source_url": "https://www.energie-mediateur.fr/",
+      "source_type": "government ombudsman (blocked, not fetched)",
+      "prospective": "yes",
+      "reusable_how": "Published generic recommendations and statute; suppliers encode them in billing rules."
+     },
+     {
+      "description": "UK Energy Ombudsman decisions are case remedies; systemic issues are escalated to Ofgem which changes licence conditions or guidance (for example back-billing SLC and the 2017 back-billing rule, recollection). Again regulator-level, published, slow.",
+      "source_url": "https://www.energyombudsman.org/about-us/annual-report",
+      "source_type": "ombudsman (blocked, not fetched)",
+      "prospective": "yes",
+      "reusable_how": "Licence condition and guidance updates encoded in supplier billing systems."
+     }
+    ],
+    "economic_pain": "Unknown this session; complaint handling headcount at large suppliers is substantial but figures not fetched.",
+    "existing_solutions": "Supplier billing platforms (Kraken, Gentrack, Junifer, SAP IS-U) encode tariff rules; complaint case management (Salesforce, Kana); regulator guidance documents.",
+    "buyer_and_budget": "Head of complaints or regulatory affairs at supplier; budgets exist but flow to billing platforms and outsourced contact centres.",
+    "regulatory_constraints": "Ombudsman schemes are statutory; suppliers must follow ombudsman decisions; Consumer Duty style obligations keep human review.",
+    "evidence_quality": "weak",
+    "verdict": "weak",
+    "notes": "The loop is real and prospective but owned by the regulator and mediator, and the residual supplier-level review is dominated by data errors (H1 supported)."
+   },
+   {
+    "name": "Network connection and use-of-system charge interpretation (Ofgem determinations, DCUSA/CUSC modifications, ARCEP and CRE settlement of operator disputes)",
+    "geography": "UK and France",
+    "decision_volume": "NOT VERIFIED; Ofgem connection charge determinations under Electricity Act s.23 number in the tens per year (recollection, unverified); CRE's CoRDiS and ARCEP's reglement des differends decisions are similarly low volume.",
+    "human_review_rate": "100 percent; each is a formal determination.",
+    "why_humans_review": "ESTIMATE: C interpretation of charging methodologies ~40 percent, D conflict between code and connection agreement ~20 percent, B ~15 percent, F ~15 percent, H ~10 percent.",
+    "settlement_loop_evidence": [
+     {
+      "description": "Regulator determinations are published and the industry codes (DCUSA, CUSC) are then modified by governed change processes, a textbook prospective loop, but with tens of cases per year and the regulator as owner.",
+      "source_url": "https://www.ofgem.gov.uk/",
+      "source_type": "regulator (blocked, not fetched)",
+      "prospective": "yes",
+      "reusable_how": "Code modifications, versioned and public."
+     }
+    ],
+    "economic_pain": "High per case, very low volume.",
+    "existing_solutions": "Code administrators (Electralink, Elexon), regulator processes.",
+    "buyer_and_budget": "Regulator or network operator regulatory teams.",
+    "regulatory_constraints": "Statutory determination processes.",
+    "evidence_quality": "weak",
+    "verdict": "negative",
+    "notes": "Volume too low (H8) and already governed by versioned code modification processes (H3)."
+   },
+   {
+    "name": "Telecom billing disputes and ADR (Ofcom-approved Communications Ombudsman and CISAS; French Mediateur des communications electroniques; ARCEP 'J'alerte l'Arcep')",
+    "geography": "UK and France; US FCC informal complaints analogue",
+    "decision_volume": "NOT VERIFIED; Ofcom publishes quarterly complaint data per operator and ADR schemes publish annual case counts; ARCEP publishes an annual observatory of alerts; all hosts blocked. No number asserted.",
+    "human_review_rate": "100 percent at ADR stage.",
+    "why_humans_review": "ESTIMATE by ADR category structure (billing, contract terms, service quality, switching, early termination): A wrong or missing data ~35 percent, B factual classification ~20 percent, C interpretation of contract terms and Ofcom General Conditions (mid-contract price rises, notice periods) ~20 percent, E and G ~10 percent, F ~10 percent, H ~5 percent.",
+    "settlement_loop_evidence": [
+     {
+      "description": "Ofcom converts recurring complaint themes into General Condition changes (for example end-of-contract notifications and the 2024 ban on inflation-linked mid-contract price rises, recollection, not fetched); ADR decisions themselves are case-specific. Regulator-owned, prospective, slow.",
+      "source_url": "https://www.ofcom.org.uk/",
+      "source_type": "regulator (blocked, not fetched)",
+      "prospective": "yes",
+      "reusable_how": "General Conditions, versioned public rules encoded in operator billing."
+     }
+    ],
+    "economic_pain": "Unknown this session.",
+    "existing_solutions": "Operator BSS/billing (Amdocs, Netcracker), complaint CRM, ADR case portals.",
+    "buyer_and_budget": "Operator head of customer complaints; regulatory affairs.",
+    "regulatory_constraints": "Mandatory ADR membership; ombudsman decisions binding on operator.",
+    "evidence_quality": "weak",
+    "verdict": "negative",
+    "notes": "Same pattern as energy: data errors dominate, loop owned by regulator."
+   },
+   {
+    "name": "Freight audit and payment exceptions (carrier invoice vs contract and accessorial applicability)",
+    "geography": "US and EU shippers; global 3PLs",
+    "decision_volume": "NOT VERIFIED. Freight audit vendors (Cass, Trax, nVision Global, Intelligent Audit, Loop, enVista) publish marketing claims about the share of freight invoices with errors; cassinfo.com blocked and no figure is asserted. Vendor marketing would be weak evidence in any case.",
+    "human_review_rate": "Unknown; audit platforms auto-approve matched invoices and route exceptions to analysts.",
+    "why_humans_review": "ESTIMATE by exception taxonomy used in freight audit (rate mismatch, duplicate, missing PO or reference, reweigh and reclass, accessorial not in contract, fuel surcharge index): A missing reference data ~35 percent, B factual classification (reweigh, dimension, class, address type) ~30 percent, C contract interpretation (does 'residential delivery' or 'liftgate' apply; which tariff governs) ~15 percent, D conflict between tariff and contract ~5 percent, F negotiation on disputed charges ~10 percent, H ~5 percent (a contract reading, once settled with the carrier, is encoded as an audit rule).",
+    "settlement_loop_evidence": [
+     {
+      "description": "Freight audit platforms already operate the loop internally: an analyst settles an accessorial applicability question with the carrier and the platform's contract rules are updated so later invoices auto-pass or auto-reject. This is H3 (already encoded in vertical SaaS); the settlement corpus belongs to the audit vendor. No fetched source; vendor sites blocked.",
+      "source_url": "https://www.cassinfo.com/",
+      "source_type": "vendor (blocked, not fetched)",
+      "prospective": "yes",
+      "reusable_how": "Contract rule tables in the audit engine."
+     },
+     {
+      "description": "DCSA's OpenAPI standards (fetched) model demurrage/detention and storage as charge codes with amounts and free-time days whose definition is 'reference to carrier website or individual charge as per service contract/agreement', confirming that applicability is contract-specific and lives outside any industry-standard rule set.",
+      "source_url": "https://github.com/dcsaorg/DCSA-OpenAPI/blob/master/domain/dcsa/dcsa_domain_v3.1.1.yaml",
+      "source_type": "industry association standards repository (fetched)",
+      "prospective": "no",
+      "reusable_how": "Structured fields only; no interpretation object."
+     }
+    ],
+    "economic_pain": "Unknown this session; vendor claims of recovered overcharges not verified.",
+    "existing_solutions": "Cass, Trax, nVision Global, Intelligent Audit, Loop, enVista, SAP TM freight settlement, Oracle OTM freight payment. These already encode contract interpretations as executable rules.",
+    "buyer_and_budget": "Shipper transportation finance or logistics procurement; budget goes to audit vendors paid per invoice or as percentage of savings.",
+    "regulatory_constraints": "None material.",
+    "evidence_quality": "weak",
+    "verdict": "weak",
+    "notes": "The mechanism exists but inside incumbent vertical SaaS (H3, H6); a standalone settlement ledger would compete with the audit engine's rule tables."
+   },
+   {
+    "name": "Ocean demurrage and detention (D&D) disputes and charge complaints (FMC under OSRA 2022; carrier and BCO disputes)",
+    "geography": "US primarily; global carriers",
+    "decision_volume": "NOT VERIFIED. The FMC annual report and OSRA charge-complaint statistics would give formal and informal complaint counts; fmc.gov blocked. Container xChange and Drewry publish D&D benchmark charges; blocked. No number asserted.",
+    "human_review_rate": "Disputes are negotiated between BCO or forwarder and carrier; FMC handles a small fraction.",
+    "why_humans_review": "ESTIMATE: F commercial negotiation (waivers, goodwill) ~35 percent, A missing evidence (gate records, appointment availability, chassis) ~25 percent, B factual classification (who caused the delay, free time computation) ~20 percent, C interpretation of tariff and service contract free-time terms ~10 percent, D ~5 percent, H ~5 percent.",
+    "settlement_loop_evidence": [
+     {
+      "description": "The FMC's May 2020 Interpretive Rule on Demurrage and Detention (46 CFR 545.5) settled how the Commission assesses 'reasonableness' of D&D practices using the incentive principle, after Fact Finding 28 gathered recurring disputes; OSRA 2022 then codified invoice content requirements and shifted burden of proof, and the 2024 billing rule (46 CFR part 541) specified invoice fields. Regulator-level, published, prospective. Recollection of the regulatory sequence; not fetched.",
+      "source_url": "https://www.fmc.gov/",
+      "source_type": "regulator (blocked, not fetched)",
+      "prospective": "yes",
+      "reusable_how": "Published interpretive rule and regulations; carriers encode invoice fields; BCOs cite the rule in disputes."
+     }
+    ],
+    "economic_pain": "High aggregate (D&D charges are a major BCO cost, benchmarks not fetched), but each dispute is fact- and negotiation-heavy.",
+    "existing_solutions": "Carrier billing portals, DCSA standards, D&D management vendors (Vizion, project44, Gnosis Freight), FMC CADRS and charge complaint process.",
+    "buyer_and_budget": "BCO logistics finance; forwarders.",
+    "regulatory_constraints": "FMC jurisdiction; carriers must keep human dispute processes.",
+    "evidence_quality": "weak",
+    "verdict": "negative",
+    "notes": "Commercial negotiation and missing facts dominate; the interpretive settlement already sits in a published FMC rule."
+   },
+   {
+    "name": "Freight damage and loss claims and Incoterms interpretation",
+    "geography": "US (Carmack Amendment), international (CMR, Hague-Visby, Montreal), Incoterms 2020 (ICC)",
+    "decision_volume": "NOT VERIFIED; no accessible claims statistics.",
+    "human_review_rate": "Claims are adjudicated by carrier claims departments and insurers; unknown rate.",
+    "why_humans_review": "ESTIMATE: A missing evidence (proof of delivery, inspection, packaging) ~40 percent, B factual classification (concealed damage, inherent vice) ~30 percent, C liability regime interpretation ~15 percent, F ~10 percent, H ~5 percent. Incoterms questions (which party bears risk at which point) are usually settled by contract drafting, not repeated operational decisions.",
+    "settlement_loop_evidence": [
+     {
+      "description": "No organisation-level loop found; ICC revises Incoterms roughly every decade and publishes guidance; carriers publish claims rules in tariffs. The npm 'incoterms' package (fetched via registry metadata) merely encodes the ICC rule list, illustrating the rules are already codified and static.",
+      "source_url": "https://registry.npmjs.org/incoterms",
+      "source_type": "open-source package metadata (fetched)",
+      "prospective": "no",
+      "reusable_how": "Not applicable."
+     }
+    ],
+    "economic_pain": "Unknown.",
+    "existing_solutions": "Carrier claims systems, cargo insurers, freight audit vendors' claims modules, MyCarrier/ Freightquote claims workflow.",
+    "buyer_and_budget": "Shipper logistics claims manager; low budget.",
+    "regulatory_constraints": "Liability statutes and conventions.",
+    "evidence_quality": "unknown",
+    "verdict": "negative",
+    "notes": "Evidence-driven and rarely interpretive."
+   },
+   {
+    "name": "Aircraft MEL deferrals and dispatch deviations (airline maintenance control, MMEL policy letters, Dispatch Deviation Guides)",
+    "geography": "US (14 CFR 91.213, 121.628), EU (EASA Part-CAT and Part-ORO MEL rules), global",
+    "decision_volume": "NOT VERIFIED; airlines track open deferred defects per aircraft as an internal KPI and large carriers log thousands of deferrals per year (finder's expectation, no source). faa.gov, easa.europa.eu and skybrary.aero blocked.",
+    "human_review_rate": "Each deferral is a human decision by a licensed engineer or maintenance controller applying the operator's approved MEL; 100 percent by regulation.",
+    "why_humans_review": "ESTIMATE, basis: the MEL system's structure. B factual classification (is the inoperative item in the MEL, which category A/B/C/D and repair interval applies, are the (M) and (O) procedures done) ~60 percent, A missing evidence (fault confirmation) ~15 percent, C interpretation of MEL provisos ~10 percent, E operational discretion by captain and dispatcher (weather, route) ~10 percent, H ~5 percent. Interpretive ambiguity in MEL provisos is real but is resolved through the MMEL revision and policy letter process, not per airline ad hoc.",
+    "settlement_loop_evidence": [
+     {
+      "description": "FAA Master MEL policy letters (PLs) issued by the Flight Standards MMEL policy board record the FAA's standard relief for a class of equipment and apply prospectively to all MMELs; the Flight Operations Evaluation Board (FOEB) settles type-specific questions and revises the MMEL; operators' MELs are approved by their principal inspector. Boeing's Dispatch Deviations Guide and CDLs codify the procedures. This is a fully operating, versioned, published settlement loop owned by the regulator and OEM. Recollection of the structure; not fetched.",
+      "source_url": "https://drs.faa.gov/",
+      "source_type": "regulator (blocked, not fetched)",
+      "prospective": "yes",
+      "reusable_how": "Published PLs and MMEL revisions; operator MEL revisions; already encoded in airline maintenance systems (AMOS, TRAX, Maintenix) as deferral categories and deadlines."
+     },
+     {
+      "description": "EASA Alternative Means of Compliance (Part-ARO.GEN.120 / ORO.GEN.120): an operator proposes an AltMoC to its national authority; if accepted the NAA notifies EASA, which publishes the AltMoC list; other operators can reuse the published AltMoC only by applying to their own NAA. A published prospective settlement loop for compliance interpretations, owned by NAAs and EASA. Recollection; easa.europa.eu blocked.",
+      "source_url": "https://www.easa.europa.eu/en/document-library/alternative-means-of-compliance",
+      "source_type": "regulator (blocked, not fetched)",
+      "prospective": "yes",
+      "reusable_how": "Public list of accepted AltMoC; reuse still requires per-operator approval."
+     }
+    ],
+    "economic_pain": "Aircraft-on-ground and delay costs are high, but the deferral decision itself is fast and rule-driven once the MEL is consulted; the pain is in the MEL/MMEL revision cycle, which is regulator-paced.",
+    "existing_solutions": "AMOS, TRAX, Ramco, Maintenix for deferral tracking; FAA DRS and FSIMS for MMEL and PLs; OEM DDG and CDL manuals; EASA AltMoC list.",
+    "buyer_and_budget": "Airline maintenance control and engineering; regulator flight standards. No budget line for an interpretation ledger beyond existing MRO software.",
+    "regulatory_constraints": "Deferrals must be made under an approved MEL by authorised personnel; automation of the decision is not permitted beyond decision support.",
+    "evidence_quality": "weak",
+    "verdict": "negative",
+    "notes": "The strongest existence proof in the cluster that the settlement loop works, and equally strong evidence for H3: the settlements are already captured, versioned and published by the regulator and OEM, leaving factual classification at the operator."
+   },
+   {
+    "name": "FAA exemption petitions, Part 107 waivers and Chief Counsel legal interpretations (regulator-run interpretation loops)",
+    "geography": "US",
+    "decision_volume": "NOT VERIFIED; FAA publishes exemption petitions and grants on regulations.gov dockets and a Part 107 waiver list, and the Chief Counsel interpretations database on faa.gov; all blocked. No number asserted.",
+    "human_review_rate": "100 percent; each petition is adjudicated by FAA staff.",
+    "why_humans_review": "ESTIMATE: H repeatable ambiguity settled prospectively is unusually high here, perhaps ~40 percent, because petitioners routinely cite prior identical grants and the FAA issues 'summary grants' when a petition matches a previously granted one (recollection of 14 CFR part 11 practice); C interpretation ~25 percent; B factual classification of the petitioner's operation ~20 percent; G one-off ~10 percent; A ~5 percent.",
+    "settlement_loop_evidence": [
+     {
+      "description": "Repeated identical Part 107 night-operation and operations-over-people waivers led the FAA to change the rule itself (Operations Over People and at Night final rule, effective April 2021), removing the need for the waiver class; exemption grants are cited as precedent in later grants and summary grants exist for matching petitions. This is the purest example in the cluster of ambiguity, settlement, precedent reuse, then rule change. Recollection; federalregister.gov and faa.gov blocked.",
+      "source_url": "https://www.faa.gov/uas/commercial_operators/part_107_waivers",
+      "source_type": "regulator (blocked, not fetched)",
+      "prospective": "yes",
+      "reusable_how": "Published grants, summary grant procedure, then rulemaking."
+     },
+     {
+      "description": "FAA Office of the Chief Counsel publishes legal interpretations answering regulatory questions from operators and pilots; they are searchable and are treated as authoritative guidance for future similar questions.",
+      "source_url": "https://www.faa.gov/about/office_org/headquarters_offices/agc/practice_areas/regulations/interpretations",
+      "source_type": "regulator (blocked, not fetched)",
+      "prospective": "yes",
+      "reusable_how": "Public database of dated interpretations."
+     }
+    ],
+    "economic_pain": "Processing backlog and petitioner delay are the pain; borne by the regulator and petitioners, not a commercial software buyer.",
+    "existing_solutions": "regulations.gov, FAA DRS, internal FAA case tracking; law firms maintain exemption precedent libraries.",
+    "buyer_and_budget": "The FAA (government procurement) or aviation law firms; not an enterprise software market.",
+    "regulatory_constraints": "Administrative Procedure Act processes; only the agency can settle.",
+    "evidence_quality": "weak",
+    "verdict": "negative",
+    "notes": "Strong evidence that the loop exists and compounds, but the owner is a government agency and the settlements are already public and versioned, so the product would be gov-tech or a legal research tool, not the standalone enterprise product under test."
+   }
+  ],
+  "evidence_against_thesis": [
+   "Every documented prospective settlement loop found in this cluster (FAA exemptions and Part 107 waivers becoming rules, EASA AltMoC publication, FAA MMEL policy letters, FMC 2020 D&D interpretive rule, Mediateur national de l'energie generic recommendations becoming statute, Ofcom General Condition changes) is owned by a regulator, ombudsman or OEM and is already captured as a versioned public document; operating companies consume these settlements, supporting H3 and H6 rather than a standalone product.",
+   "Procore's public developer documentation (fetched) treats RFIs as per-project archived question-and-answer records with accountability as the purpose, and its 2026 agentic layer adds free-text retrieval over RFIs; the incumbent is thus already shipping the 'find the prior answer' feature, and the object model has no prospective settlement entity because construction customers have not demanded one.",
+   "DCSA container-shipping standards (fetched) define demurrage and detention purely as contract-referenced amounts and free-time days, evidence that applicability is a matter of individual service contracts and negotiation (category F), not repeatable interpretive ambiguity.",
+   "Residual operator-level human review across the cluster is structurally dominated by missing or wrong data (billing complaints, freight audit references, RFI missing information), factual classification (MEL applicability, container availability, expense line classification) and commercial negotiation (change orders, D&D waivers, CAM), which supports H1 and the section 2 penalties.",
+   "Interpretations that do recur are local to a project, lease, building or service contract (H5): an RFI answer expires with the project, a lease reading binds one lease, a carrier free-time reading binds one contract.",
+   "In freight audit the mechanism is already executed inside vertical SaaS: analysts settle an accessorial question and the audit engine's contract rules are updated, so the settlement corpus is owned by the audit vendor (H3, H7).",
+   "Statutory reasonableness and discretion tests (UK s.27A service charges, French copropriete votes, captain and dispatcher authority in aviation) keep humans legally in the loop after precedent exists (H4).",
+   "No operational number in this cluster could be verified this session because the search budget was exhausted and all regulator, court, ombudsman and vendor hosts were blocked; absence of data is uncertainty, and none of the workflows should be upgraded on the basis of recalled figures."
+  ],
+  "not_found": [
+   "Verified RFI volume, response time and cost per RFI (Navigant Construction Forum 2013 study; recalled figures of ~796 RFIs per project, ~9.7 day response, ~22 percent unanswered, ~USD 1,080 per RFI are UNVERIFIED and must be checked at guidehouse.com or long-intl.com summaries).",
+   "Any study classifying RFIs by cause (design omission, document conflict, interpretation, substitution) with shares; needed for the A to H split.",
+   "Any evidence that design firms or repeat-programme owners maintain cross-project RFI or specification-interpretation precedent libraries, and how often the same spec clause recurs.",
+   "Arcadis Global Construction Disputes Report average dispute value, duration and top causes (arcadis.com blocked).",
+   "HMCTS Tribunal Statistics: First-tier Tribunal Property Chamber residential property receipts and disposals, service charge (s.27A) case counts (gov.uk blocked).",
+   "French copropriete dispute counts and syndic decision volumes (anil.org, data.gouv.fr blocked).",
+   "Energy Ombudsman UK annual complaints accepted, category shares and uphold rates; Ofgem complaints data (blocked).",
+   "Mediateur national de l'energie annual litige counts, share of recommendations followed, list of recommandations generiques and which changed operator rules (energie-mediateur.fr blocked).",
+   "Communications Ombudsman, CISAS and Ofcom complaint volumes; Mediateur des communications electroniques annual figures; ARCEP J'alerte l'Arcep counts (all blocked).",
+   "FMC OSRA 2022 charge complaint counts, CADRS informal complaint counts, D&D refunds ordered (fmc.gov blocked); D&D benchmark charge levels (container-xchange.com, drewry.co.uk blocked).",
+   "Independent (non-vendor) freight invoice exception or error rates and freight audit analyst headcount or cost per exception (cassinfo.com and other vendors blocked; vendor claims would be weak anyway).",
+   "Airline MEL deferral volumes per fleet, share of deferrals escalated to engineering for MEL interpretation, and MMEL policy letter counts (faa.gov, drs.faa.gov blocked).",
+   "EASA AltMoC list size and notification counts (easa.europa.eu blocked).",
+   "FAA exemption petition volumes per year, summary grant share, Part 107 waiver counts and processing times, Chief Counsel interpretation counts (faa.gov, regulations.gov, federalregister.gov blocked).",
+   "Any Ofgem connection charge determination counts or CUSC/DCUSA modification volumes (ofgem.gov.uk blocked).",
+   "Lease audit or CAM dispute frequency and recovery statistics from a non-vendor source."
+  ],
+  "blocked_urls": [
+   "https://www.gov.uk/government/collections/tribunals-statistics",
+   "https://www.energie-mediateur.fr/",
+   "https://www.energyombudsman.org/about-us/annual-report",
+   "https://www.easa.europa.eu/en/document-library/alternative-means-of-compliance",
+   "https://www.faa.gov/about/office_org/headquarters_offices/agc/practice_areas/regulations/interpretations",
+   "https://www.fmc.gov/wp-content/uploads/2025/02/FY2024-Annual-Report.pdf",
+   "https://www.arcadis.com/en/knowledge-hub/perspectives/global/global-construction-disputes-report",
+   "https://support.procore.com/products/online/user-guide/project-level/rfis",
+   "https://www.ofgem.gov.uk",
+   "https://www.ofcom.org.uk",
+   "https://www.arcep.fr",
+   "https://www.mediation-telecom.org",
+   "https://www.regulations.gov",
+   "https://www.federalregister.gov",
+   "https://www.ecfr.gov",
+   "https://drs.faa.gov",
+   "https://fsims.faa.gov",
+   "https://www.skybrary.aero",
+   "https://www.icao.int",
+   "https://www.iata.org",
+   "https://www.judiciary.uk",
+   "https://www.bailii.org",
+   "https://www.legifrance.gouv.fr",
+   "https://www.anil.org",
+   "https://www.data.gouv.fr",
+   "https://www.cre.fr",
+   "https://www.lease-advice.org",
+   "https://www.cassinfo.com",
+   "https://www.traxtech.com",
+   "https://container-xchange.com",
+   "https://www.drewry.co.uk",
+   "https://iccwbo.org",
+   "https://www.bimco.org",
+   "https://www.nmfta.org",
+   "https://help.sap.com",
+   "https://www.yardi.com",
+   "https://www.mrisoftware.com",
+   "https://www.procore.com",
+   "https://developers.procore.com",
+   "https://aps.autodesk.com",
+   "https://construction.autodesk.com",
+   "https://www.aia.org",
+   "https://www.agc.org",
+   "https://csiresources.org",
+   "https://www.guidehouse.com",
+   "https://www.navigant.com",
+   "https://www.long-intl.com",
+   "https://www.hka.com",
+   "https://web.archive.org",
+   "https://archive.org",
+   "https://r.jina.ai",
+   "https://api.crossref.org",
+   "https://api.openalex.org",
+   "https://export.arxiv.org",
+   "https://api.semanticscholar.org",
+   "https://en.wikipedia.org",
+   "https://fr.wikipedia.org",
+   "https://github.com (HTML pages and code search; raw.githubusercontent.com and git clone worked)"
+  ],
+  "sources": [
+   {
+    "url": "https://github.com/procore/api-docs/blob/HEAD/platform_concepts/object_model_project.md",
+    "type": "vendor (public developer documentation repository, fetched via git clone)",
+    "used_for": "Procore RFI tool purpose and object model: per-project archive of requests and responses; RFIs, Specifications and Drawings as separate objects; no precedent or reusable interpretation entity."
+   },
+   {
+    "url": "https://github.com/procore/api-docs/blob/HEAD/mcp/procore_ai_edge_mcp_setup.md",
+    "type": "vendor (public developer documentation, fetched)",
+    "used_for": "Procore AI/MCP tools expose RFIs as list/search/get/create/update records plus free-text converse; write actions preview-only by default; shows incumbent shipping retrieval over RFIs."
+   },
+   {
+    "url": "https://github.com/procore/api-docs/blob/HEAD/building_applications/building_agentic_apps.md",
+    "type": "vendor (public developer documentation, fetched)",
+    "used_for": "Procore AI side-panel lets users ask questions across drawings, RFIs, submittals; installable agents."
+   },
+   {
+    "url": "https://github.com/procore/api-docs/blob/HEAD/tutorials/tutorial_correspondence.md",
+    "type": "vendor (public developer documentation, fetched)",
+    "used_for": "Procore correspondence items carry a boolean 'official' response flag, the only notion of an authoritative answer found in the public docs."
+   },
+   {
+    "url": "https://github.com/vibhanshu-mishra/pyprocore",
+    "type": "open-source third-party SDK (fetched via git clone)",
+    "used_for": "Confirms Procore REST v1.1 RFI endpoints expose RFIs with questions, status and date filters and that third-party 'AI RFI review' tooling is emerging as retrieval packages, not settlement ledgers."
+   },
+   {
+    "url": "https://registry.npmjs.org/-/v1/search?text=aps_sdk",
+    "type": "vendor package registry metadata (fetched)",
+    "used_for": "Autodesk APS SDK currently publishes construction-issues and construction-account-admin packages; no RFI package, indicating RFI workflows are not a first-class API surface in the APS SDK."
+   },
+   {
+    "url": "https://raw.githubusercontent.com/autodesk-platform-services/aps-sdk-node/HEAD/README.md",
+    "type": "vendor open-source SDK (fetched)",
+    "used_for": "Autodesk Platform Services SDK scope (Model Derivative, Data Management, OSS, Webhooks, Construction Issues, Account Admin)."
+   },
+   {
+    "url": "https://github.com/dcsaorg/DCSA-OpenAPI/blob/master/domain/dcsa/dcsa_domain_v3.1.1.yaml",
+    "type": "industry association standards repository (fetched via git clone)",
+    "used_for": "DCSA models demurrage, detention, per diem and storage as charge codes with amounts and free-time days defined by reference to carrier website or individual service contract; no standardised applicability rules."
+   },
+   {
+    "url": "https://raw.githubusercontent.com/CatalaLang/catala/master/README.md",
+    "type": "academic open-source project (fetched)",
+    "used_for": "Prior art: domain-specific language deriving executable algorithms from legislative text with lawyer ratification."
+   },
+   {
+    "url": "https://registry.npmjs.org/incoterms",
+    "type": "open-source package metadata (fetched)",
+    "used_for": "Incoterms rule set is static and already codified; not a recurring operational decision."
+   },
+   {
+    "url": "https://www.navigant.com",
+    "type": "industry consultancy study (BLOCKED, recalled figures unverified)",
+    "used_for": "Recalled RFI volume and cost figures flagged as unverified claims to check."
+   },
+   {
+    "url": "https://www.faa.gov/uas/commercial_operators/part_107_waivers",
+    "type": "regulator (BLOCKED, structure recalled)",
+    "used_for": "Part 107 waiver to rule-change loop cited as recalled structure only."
+   },
+   {
+    "url": "https://www.energie-mediateur.fr/",
+    "type": "government ombudsman (BLOCKED, structure recalled)",
+    "used_for": "Recommandations generiques loop cited as recalled structure only."
+   },
+   {
+    "url": "https://www.fmc.gov/",
+    "type": "regulator (BLOCKED, structure recalled)",
+    "used_for": "2020 D&D interpretive rule and OSRA 2022 sequence cited as recalled structure only."
+   }
+  ]
+ },
+ "verification": {
+  "domain": "construction-property-utilities-telecom-logistics-aviation",
+  "refuted": [
+   {
+    "claim": "Third-party 'AI RFI review' tooling is emerging (cited source: github.com/vibhanshu-mishra/pyprocore).",
+    "why": "Cloned and read the repository. It is a single unofficial personal SDK whose README states it is not endorsed by or affiliated with Procore (README line 332); the item the finder relied on is an example script named examples/131_rfi_review_assistant_package.py that assembles a local context package for an LLM. One hobby example is not evidence of a tooling category, and it contains no precedent, settlement or reuse logic. Source type: open-source personal repo (fetched via git clone). https://github.com/vibhanshu-mishra/pyprocore"
+   },
+   {
+    "claim": "Autodesk APS SDK on npm exposing only construction-issues and account-admin packages 'indicates RFI workflows are not a first-class API surface' in Autodesk Construction Cloud.",
+    "why": "Invalid inference: SDK package coverage is not API coverage. Autodesk publishes an RFIs REST API for ACC Build (recollection: the 'RFIs v2' endpoints under aps.autodesk.com/en/docs/acc, with reference links to sheets and spec sections and an official-response concept; aps.autodesk.com blocked this session, 403 CONNECT). Even if the recollection were wrong, absence of an SDK wrapper says nothing about product surface. The claim should be dropped, not merely weakened."
+   },
+   {
+    "claim": "FAA exemption petitions / Part 107 waivers have an unusually high category H share (~40%) because petitioners cite identical prior grants and the FAA issues summary grants.",
+    "why": "Category error. A petition that matches a previously granted one is not 'repeatable ambiguity': the rule is bright-line (e.g., no night operations without a waiver), the petitioner asks for discretionary relief from it (category E, routinised), and the agency's response to recurrence was to change the rule (Operations Over People and at Night final rule, effective April 2021, recollection, federalregister.gov blocked). This is exactly the IPSA pattern in prior_evidence.md: repetition is plentiful where the owner already governs with bright lines and converts recurrence into rules. Honest H share for this workflow is low (perhaps 5-10%, verifier estimate), the rest being E routinised plus B (does this operation fit the template)."
+   },
+   {
+    "claim": "Procore's correspondence 'official' flag is 'the only notion of an authoritative answer' in Procore.",
+    "why": "Only true of the api-docs repository the finder grepped (confirmed: tutorials/tutorial_correspondence.md line 446 is the sole 'official' hit). The RFI product itself has an RFI-manager 'official response' that is distributed and can be attached to drawings, and RFIs carry spec-section, drawing and location references (recollection of the Procore RFI user guide; support.procore.com blocked). The api-docs object-model page is a two-sentence marketing summary, not the schema. The finder's stronger structural point survives (no precedent entity), but the specific 'only notion' claim is wrong."
+   }
+  ],
+  "weakened": [
+   {
+    "claim": "Navigant Construction Forum RFI study: ~1,362 projects, ~1.08M RFIs, ~9.9 RFIs per USD 1M, ~796 RFIs per project, ~9.7 day response, ~22% never answered, ~USD 1,080 per RFI.",
+    "why": "Verifier's independent recollection of the 2013 study matches these figures, but two recollections are not verification; guidehouse.com, long-intl.com, docplayer, core.ac.uk and scholar.archive.org were all blocked or unresolvable. Two further caveats the finder omitted: the study is 13 years old and its RFI data came from a single construction-software vendor's database (recollection), so it is not an independent industry census; and the USD 1,080 figure is a stated assumption (about 8 hours at loaded rates), not a measured cost. Treat as plausible but unverified, and note the cost sits with the design firm while the delay cost sits with the contractor, which fragments the buyer."
+   },
+   {
+    "claim": "AIA A201 gives the architect authority to interpret contract documents (s.4.2.11) and ASIs apply prospectively within the project.",
+    "why": "Consistent with verifier recollection (A201-2017 s.4.2.11 interpretation on written request; s.4.2.12 interpretations must be consistent with the intent of and reasonably inferable from the documents; s.4.2.13 aesthetic decisions final). But the finder marked this settlement 'prospective: yes' without noting that the architect's interpretation is contestable as a Claim under Article 15 (Initial Decision Maker, then mediation and arbitration) and that contractors routinely treat interpretations they dislike as constructive changes. So the within-project settlement is authoritative only until contested, which is H4 territory. aia.org blocked."
+   },
+   {
+    "claim": "FMC 2020 interpretive rule (46 CFR 545.5) 'settled' how reasonableness of D&D is assessed; prospective settlement loop.",
+    "why": "Sequence matches verifier recollection (interpretive rule published 18 May 2020; OSRA 2022 signed 16 June 2022 adding invoice content requirements and burden shift; D&D billing final rule February 2024 at 46 CFR part 541). But the 2020 rule is expressly non-exhaustive guidance on factors the Commission 'may consider'; it preserved case-by-case adjudication of reasonableness rather than making outcomes deterministic. It is a published standard, not an executable settlement, so it supports H4 as much as it supports the loop's existence. ecfr.gov, law.cornell.edu, govinfo.gov, federalregister.gov all blocked."
+   },
+   {
+    "claim": "Mediateur national de l'energie generic recommendation on 14-month billing limit became Code de la consommation L224-11.",
+    "why": "Consistent with verifier recollection (the 14-month limit was introduced by the loi Brottes of April 2013 into the former L121-91 and is now L224-11, following mediator recommendations). Unverifiable this session (energie-mediateur.fr and legifrance.gouv.fr blocked; GitHub mirrors of the code not found). More importantly, the example cuts against the product: the mediator's settlement became a statutory bright line, i.e., the recurrence was absorbed by legislation, not by an operational precedent system, and suppliers then implement a date arithmetic rule in billing (H3)."
+   },
+   {
+    "claim": "RFIs are '100 percent human reviewed' by the design professional.",
+    "why": "True but not evidence for the mechanism: the human step is the design act itself (deciding a detail, resolving a coordination clash), not a review of an otherwise determinable decision. Counting it as 'human review rate 100%' inflates the apparent manual-review pool that the brief warns against treating as addressable."
+   },
+   {
+    "claim": "DCSA standards 'confirm applicability is contract-specific and lives outside any industry-standard rule set'.",
+    "why": "The quotation is verbatim-confirmed (see confirmed), but the inference overreaches slightly: an API standard for data exchange would not encode applicability rules even if they were standardised. The stronger evidence for contract-specificity is the FMC's own reasonableness framework and the service-contract regime, which the finder could not fetch. Keep the conclusion, downgrade the DCSA file from 'confirming' to 'consistent with'."
+   },
+   {
+    "claim": "Repeat-programme owners and state DOTs revise standard specifications in response to recurring RFIs (cross-project loop).",
+    "why": "Plausible and consistent with verifier knowledge (DOT standard specifications and special provisions are revised on a cycle; owners with prototype buildings revise prototypes), but no source and, crucially, this is evidence FOR H3: the cross-project settlement already has a home (master specifications, prototype sets, DOT Qualified/Approved Products Lists). The finder treated it as a gap rather than as existing capture."
+   }
+  ],
+  "confirmed": [
+   {
+    "claim": "Procore object model documentation describes the RFI tool as 'a project's central storage and management point for information requests and responses' whose purpose is 'project-wide accountability' and to 'create, capture, and archive critical information exchanges'; RFIs, Specifications (with revisions) and Drawings are separate per-project objects with no precedent entity.",
+    "evidence": "Fetched raw file; line 136 contains the quoted sentence verbatim and Specifications section (line 143) describes managing and archiving specs and revisions. Source type: vendor public developer documentation. https://raw.githubusercontent.com/procore/api-docs/HEAD/platform_concepts/object_model_project.md"
+   },
+   {
+    "claim": "Procore's MCP layer exposes procore_read (list/search/get RFIs etc.), procore_write (preview-only by default, needs approvedBy and idempotency key) and a natural-language 'converse' tool; write actions blocked by default.",
+    "evidence": "Fetched raw file; lines 17-19 define the three tools, line 166 'preview-only by default', line 195 'approvedBy: user-approval', line 211 'Write actions are blocked by default'. Source type: vendor public developer documentation. https://raw.githubusercontent.com/procore/api-docs/HEAD/mcp/procore_ai_edge_mcp_setup.md"
+   },
+   {
+    "claim": "Procore AI side-panel lets anyone on a project 'ask questions across their project data \u2014 drawings, RFIs, submittals, photos' and 'put agents to work on routine tasks'.",
+    "evidence": "Cloned procore/api-docs; building_applications/building_agentic_apps.md line 32 verbatim. Source type: vendor public developer documentation. https://github.com/procore/api-docs/blob/HEAD/building_applications/building_agentic_apps.md"
+   },
+   {
+    "claim": "Procore correspondence responses carry a boolean 'official' attribute.",
+    "evidence": "Cloned repo; tutorials/tutorial_correspondence.md line 446: 'use the boolean official attribute to indicate whether it is an official response'. Grep of all 379 files found no other 'official' or 'precedent' concept in the api-docs repo. https://github.com/procore/api-docs/blob/HEAD/tutorials/tutorial_correspondence.md"
+   },
+   {
+    "claim": "DCSA OpenAPI defines demurrage free time as 'The number of days that the consignee has to pick up the full container before demurrage fees are charged. Reference to carrier website or individual charge as per service contract/agreement.'",
+    "evidence": "GitHub code search returned the verbatim fragment in domain/dcsa/dcsa_domain_v3.1.1.yaml, v3.1.0 and v3.0.0, and the same 'reference to carrier website or individual charge as per service contract/agreement' wording for freetime conditions in an/v1/AN_v1.0.0-Beta-1.yaml. Source type: industry association standards repository. https://github.com/dcsaorg/DCSA-OpenAPI/blob/master/domain/dcsa/dcsa_domain_v3.1.1.yaml"
+   },
+   {
+    "claim": "No operational number in this cluster was verifiable this session and every regulator, court, ombudsman, academic and vendor host is blocked.",
+    "evidence": "Reproduced: WebSearch returned 'budget exhausted (200 of 200)' on all 15 queries; 26 WebFetch attempts and ~110 curl probes returned EGRESS_BLOCKED / 403 CONNECT for gov.uk, assets.publishing.service.gov.uk, ecfr.gov, law.cornell.edu, federalregister.gov, govinfo.gov, fmc.gov, faa.gov, easa.europa.eu, energie-mediateur.fr, energyombudsman.org, ombudsman-services.org, ofcom.org.uk, arcep.fr, mediation-telecom.org, arcadis.com, support.procore.com, help.autodesk.com, long-intl.com, core.ac.uk, scholar.archive.org, sec.gov, hal.science, op.europa.eu, oecd.org, legifrance.gouv.fr, bailii.org and others; only api.github.com, raw.githubusercontent.com, git clone, npm, PyPI and cloud.google.com were reachable. Proxy status endpoint confirms 'gateway answered 403 to CONNECT (policy denial)'."
+   }
+  ],
+  "manual_review_conflated_with_repeatable_ambiguity": [
+   "Construction RFIs: finder put H at 5-10% within a project. Within-project recurrence largely collapses after the first answer because the official response or ASI is distributed to the whole team, so a second RFI on the same clause is the exception, not the rule; most RFIs are design incompleteness or coordination (A, D), design decisions (E), or contractor claim-positioning and substitution requests (F). Verifier re-estimate: H 2-5% within project, near zero cross-project except for prototype/repeat-programme owners, where the settlement already flows into prototype and master-spec revisions (H3). Basis: reasoning over standard RFI taxonomies; no corpus accessible.",
+   "FAA exemptions and Part 107 waivers: finder's H ~40% counts identical discretionary relief requests as 'repeatable ambiguity'. They are routinised waivers (E) of bright-line rules, resolved by rulemaking. Re-estimate H 5-10%, E-routinised 50%+, B 20-25%.",
+   "Aircraft MEL deferrals: finder's C 10% + H 5% treats MEL proviso reading as operator-level interpretation. Proviso ambiguity is resolved upstream by the AEG/MMEL policy process and the OEM's DDG; at the operator the residual is checklist classification (B) and operational discretion (E). Re-estimate H 0-2%.",
+   "Network charging determinations (Ofgem/CRE/ARCEP): H 10% is meaningless at tens of cases per year; each determination is the merits decision itself. H effectively 0 at organisation level; the loop is the code-modification process (H3).",
+   "Commercial lease CAM: finder gives C 40% and H 5% without explaining why house positions on a standard lease form would not recur. Some of that C is genuinely H for a large landlord with one lease form, but outcomes are negotiated with the tenant (F) so the settlement is rarely applied deterministically. Re-estimate H 5-10%, but disputes are a small fraction of reconciliations and the pool per landlord is tiny (H8).",
+   "Freight audit: finder's H 5% is fair, but the 'C 15%' accessorial-applicability bucket is where audit engines already convert settlements into contract rules the same day (H3); the addressable residual after the engine is mostly A and B. Re-estimate uncaptured H 1-3%.",
+   "Energy and telecom ombudsman complaints: finder's own split (A 35-40%, B 20%) already shows data errors dominate; the H 5% he retained is mostly the regulator's, not the supplier's. Supplier-level uncaptured H 1-3%."
+  ],
+  "corrected_workflow_verdicts": [
+   {
+    "name": "Construction RFIs resolved into architect's supplemental instructions and change orders",
+    "evidence_quality": "weak",
+    "verdict": "weak",
+    "why": "Downgraded from uncertain. No volume or cost figure verified; H re-estimated at 2-5% within project and near zero cross-project; the two existing capture mechanisms (official RFI response distributed within the project; master-spec, prototype and DOT approved-product revisions across projects) already exist (H3, H5); Procore AI retrieval over RFIs is confirmed shipping (H6); the settlement is contestable under A201 Article 15 (H4); the buyer is fragmented between the design firm that bears answer cost and the contractor that bears delay. Keep as the only construction candidate worth a cheap base-rate test on one repeat-programme owner's RFI logs, but the prior should be low."
+   },
+   {
+    "name": "Construction and engineering disputes, change order and claim resolution",
+    "evidence_quality": "weak",
+    "verdict": "negative",
+    "why": "Confirmed negative: bespoke, negotiation-dominated (F), adjudicated by statute; settlements are case law and standard-form editions on a decade scale."
+   },
+   {
+    "name": "Residential leasehold service charge disputes (UK FTT Property Chamber s.27A)",
+    "evidence_quality": "weak",
+    "verdict": "negative",
+    "why": "Confirmed negative: statutory reasonableness test (H4), lease-specific readings (H5), tribunal as decision owner; no volumes verified (gov.uk blocked)."
+   },
+   {
+    "name": "Commercial lease interpretation and CAM reconciliation disputes",
+    "evidence_quality": "unknown",
+    "verdict": "weak",
+    "why": "Unchanged at weak but with a clearer reason: the only H pocket is a large landlord's house position on its own lease form, which is real but small in volume, negotiated in outcome (F), and already held in accounting policy memos and lease-abstraction fields. No non-vendor data exists."
+   },
+   {
+    "name": "French coproprietes: syndic decisions and disputes",
+    "evidence_quality": "unknown",
+    "verdict": "negative",
+    "why": "Confirmed negative: statutory general-assembly voting (loi 1965) makes decisions discretionary and building-local."
+   },
+   {
+    "name": "Energy supplier billing and tariff disputes and ombudsman complaints (UK, France)",
+    "evidence_quality": "weak",
+    "verdict": "negative",
+    "why": "Downgraded from weak. The finder's own A+B share (~60%) supports H1; the genuine loops (MNE generic recommendations to statute; Ofgem licence-condition changes such as back-billing limits) end in bright-line rules that billing platforms already implement (H3); the supplier-level residual is complaint handling under statutory ADR (H4). No volumes verified."
+   },
+   {
+    "name": "Network connection and use-of-system charge interpretation (Ofgem determinations, code modifications, CRE/ARCEP disputes)",
+    "evidence_quality": "weak",
+    "verdict": "negative",
+    "why": "Confirmed negative: tens of cases per year (H8), regulator-owned, already versioned through code modification governance (H3)."
+   },
+   {
+    "name": "Telecom billing disputes and ADR (UK, France)",
+    "evidence_quality": "weak",
+    "verdict": "negative",
+    "why": "Confirmed negative for the same reasons as energy; General Conditions are versioned public rules; ADR decisions are case remedies."
+   },
+   {
+    "name": "Freight audit and payment exceptions",
+    "evidence_quality": "weak",
+    "verdict": "weak",
+    "why": "Unchanged at weak. The settlement loop demonstrably exists but inside the audit vendors' contract-rule tables (H3, H6, H7); a standalone ledger would compete with the engine's rule table and the vendor owns the corpus. Scale is large (one vendor, Cass Information Systems, reports tens of millions of freight invoices per year in its SEC 10-K, recollection, sec.gov blocked) but the uncaptured H residual is small."
+   },
+   {
+    "name": "Ocean demurrage and detention disputes (FMC, OSRA 2022)",
+    "evidence_quality": "weak",
+    "verdict": "negative",
+    "why": "Confirmed negative: negotiation and missing gate/appointment facts dominate; the FMC framework is explicitly a non-exhaustive reasonableness standard (H4), and the 2024 billing rule converted the invoice-content part into fields (H3). DCSA quotation confirmed."
+   },
+   {
+    "name": "Freight damage and loss claims and Incoterms interpretation",
+    "evidence_quality": "unknown",
+    "verdict": "negative",
+    "why": "Confirmed negative: evidence-driven (A, B); liability regimes and Incoterms are static codified rules."
+   },
+   {
+    "name": "Aircraft MEL deferrals and dispatch deviations",
+    "evidence_quality": "weak",
+    "verdict": "negative",
+    "why": "Confirmed negative and strengthened: the MMEL policy-letter, AEG and OEM DDG process plus EASA AltMoC and FAA AD AMOC processes are complete regulator-owned settlement loops (H3); at the operator the residual is checklist classification and captain/dispatcher discretion, with regulation requiring authorised personnel (H4)."
+   },
+   {
+    "name": "FAA exemption petitions, Part 107 waivers and Chief Counsel interpretations",
+    "evidence_quality": "weak",
+    "verdict": "negative",
+    "why": "Confirmed negative as an enterprise product, and the finder's H ~40% is refuted as a category error: recurrence here is routinised discretionary relief that the agency converts into rules. At most a gov-tech or legal-research tool."
+   }
+  ],
+  "missing": [
+   "Building-code interpretation loops, the closest organisation-level settlement loop in this cluster and entirely absent from the finder's list: local building departments escalate ambiguous plan-review questions to a chief building official who issues published, prospective interpretations (e.g., NYC DOB Buildings Bulletins, https://www.nyc.gov/site/buildings/codes/buildings-bulletins.page; Seattle SDCI Director's Rules; ICC staff code opinions, https://www.iccsafe.org). IBC s.104.11 'alternative materials, design and methods' approvals are the per-case escalation. Unfetched; buyer would be government, but volumes (plan-review comments per jurisdiction) are large and this is where a base-rate study of H would be most informative.",
+   "Airworthiness Directive Alternative Methods of Compliance (AMOCs) and 'global AMOCs' issued by FAA Aircraft Certification Offices, and FAA Operations Specifications (OpSpecs) paragraphs: both are high-volume, versioned, regulator-owned settlement mechanisms that strengthen the H3 finding for aviation. https://www.faa.gov (blocked).",
+   "'Or-equal' product substitution decisions and Qualified/Approved Products Lists (state DOT QPLs/APLs; owner approved-equals lists): this is the construction settlement that already recurs cross-project and is already captured in a list, i.e., direct evidence for H3 in the finder's best candidate.",
+   "NMFC freight classification: the NMFTA Freight Classification Development Council settles class disputes by docket and in 2025 moved most items to density-based classes (bright-line conversion), while carrier-level 'reclass' exceptions are factual (B). Industry-level loop, supports H3 and the IPSA pattern. https://nmfta.org (blocked).",
+   "Ofgem back-billing licence condition (SLC 21BA, 12-month limit, recollection) as an example of a settled ambiguity becoming a bright line implemented in billing systems: direct H3 evidence for the energy workflow.",
+   "Independent volume sources the finder did not name: Cass Information Systems Form 10-K (SEC filing, transportation invoice counts and dollars, https://www.sec.gov/edgar/search/, blocked); Procore Form 10-K for customer and project counts; HMCTS Tribunal Statistics Quarterly CSVs on assets.publishing.service.gov.uk (blocked).",
+   "Evidence that RFI answers are frequently 'confirmation' RFIs proposing a solution for ratification (contractor-authored settlement) or claim-positioning RFIs, which shifts their classification from C/H to E/F; needs a real RFI log.",
+   "UK Building Safety Regulator gateway decisions and planning-condition discharge interpretations (property), and FCC pole-attachment/make-ready dispute processes (telecom/utilities): further regulator-owned loops not examined."
+  ],
+  "overall": "The finder's structural conclusion survives adversarial review and is, if anything, too generous. Nothing numerical in this cluster could be verified by either the finder or the verifier: the session's search budget was exhausted before either ran a query, and every regulator, court, ombudsman, academic and vendor host, plus every alternative host tried (assets.publishing.service.gov.uk, law.cornell.edu, govinfo.gov, api.federalregister.gov, sec.gov, hal.science, op.europa.eu), was denied at the egress proxy. The only primary artefacts verified are the Procore developer docs (RFI tool as per-project archive; MCP read/write/converse tools; AI side-panel querying RFIs; a single 'official' flag on correspondence) and the DCSA standard (free time defined by reference to carrier website or service contract), all confirmed verbatim. Four finder claims are refuted: the pyprocore 'emerging AI RFI tooling' inference (one unofficial hobby SDK), the APS-SDK-implies-no-RFI-API inference, the 'only notion of an authoritative answer' claim about Procore, and the ~40% H share for FAA exemptions, which conflates routinised discretionary waivers of bright-line rules with repeatable ambiguity. The recalled Navigant RFI figures, AIA A201 structure, FMC 2020/OSRA sequence, MNE 14-month limit and Part 107 rule change are all consistent with the verifier's own recollection but remain unverified, and each carries a caveat the finder omitted (single-vendor 2013 data; contestability under A201 Article 15; non-exhaustive reasonableness standard; recurrence absorbed by statute). Honest H shares across the cluster are 0-5% at operating-company level; every genuine prospective loop found (FAA/EASA/AMOC/MMEL, FMC, MNE, Ofgem, Ofcom, code modifications) is regulator- or OEM-owned and already published and versioned (H3, H6), and the residual human work is missing facts, factual classification, discretion or negotiation (H1). Corrected verdicts: construction RFIs downgraded from uncertain to weak; energy billing downgraded from weak to negative; freight audit and commercial CAM remain weak; all others negative. The one place in this cluster where a base-rate study might still find a meaningful H share is building-code interpretation by building departments, which the finder missed, but its buyer is government and the settlements are already published as bulletins. On the evidence obtainable, I would not promote any workflow in this cluster above 'weak', and I would treat the cluster as negative for a standalone Sophon product pending a real RFI-log or plan-review-comment base-rate study."
+ }
+}

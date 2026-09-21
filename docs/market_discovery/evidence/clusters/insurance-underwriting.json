@@ -1,0 +1,571 @@
+{
+ "key": "insurance-underwriting",
+ "found": {
+  "domain": "insurance-underwriting (life, health, P&C personal lines, small/mid commercial, delegated authority / MGA)",
+  "workflows": [
+   {
+    "name": "Individual life insurance: accelerated/automated underwriting kick-outs and referrals to human underwriters",
+    "geography": "US primarily (Gen Re, Munich Re, SOA, LIMRA surveys); global figures from Swiss Re",
+    "decision_volume": "No absolute application count captured in this run (all reinsurer/LIMRA pages blocked). Shares only: across 38 US individual-life carriers in 2024, ~12% of applications were eligible for a fully automated path, 47% for accelerated (not fully automated) underwriting, 41% traditional full underwriting (Gen Re 2024 AUW survey via search snippet, https://www.businesswire.com/news/home/20241112347407/en/Gen-Re-Releases-2024-U.S.-Individual-Life-Accelerated-Underwriting-Survey-Results, press release of reinsurer survey; sourced). Swiss Re Magnum: 'up to 90% straight-through in some markets, global average closer to 75%' (https://www.swissre.com/risk-knowledge/advancing-societal-benefits-digitalisation/reimagining-life-insurance-underwriting.html, vendor/reinsurer; sourced snippet). RGA case study: one carrier reached 50% STP (https://www.rgare.com/enabling-solutions/underwriting/automated-underwriting/aura-next-case-study-accelerated-underwriting, vendor; sourced snippet).",
+    "human_review_rate": "High and mostly still human: Munich Re AUW survey states 'a large majority of accelerated decisions are still being made with human underwriter involvement' (https://www.munichre.com/us-life/en/insights/industry-surveys-and-reports/accelerated-underwriting-trends-eligibility-limits-digital-data-automation.html, reinsurer survey; sourced snippet, no percentage). Gen Re: only ~12% of applications on a fully automated path (URL above). LIMRA 2016: 1 in 3 companies had a fully electronic no-human-touch process (https://www.limra.com/en/newsroom/news-releases/2016/life-insurers-leverage-technology-and-greater-access-to-data-to-streamline-underwriting-limra-report/, industry association; sourced snippet). So human involvement on the order of 50\u201390% of applications depending on carrier and market (my synthesis of the above, estimate).",
+    "why_humans_review": "Rough shares (estimate, basis = SOA/Gen Re kick-out taxonomy plus reinsurer descriptions): A missing evidence ~25\u201335% (requirements not met, APS/exam ordered, non-disclosure checks); B factual classification ~35\u201345% (medical hits in Rx/MIB/MVR/EHR data, build, lab values that need classification against impairment manual; SOA 2022 survey taxonomy of kickouts = 'age/amount ineligible, AUW offers, AUW declines/postpones, referred for not meeting other AUW requirements', https://www.soa.org/globalassets/assets/files/resources/research-report/2023/acc-underwriting-practices-survey.pdf, actuarial association; sourced snippet); C rule interpretation ~5\u201310% (applying impairment manual to combinations); D conflict ~<5%; E true discretion ~10\u201315% ('insurers reserve the right to apply individual consideration to any case' \u2013 carrier field guides, https://www.bannerlife.com/docs/default-source/advisor/underwriting/underwriting-field-guide.pdf, carrier doc; sourced snippet); F commercial ~<5% (facultative/reinsurer capacity, large cases); G one-off ~5%; H repeatable ambiguity settled prospectively ~5\u201310% (the impairment manual and AUW rule tables are that settlement, but they are owned and versioned by reinsurers/carrier medical directors, and 41% traditional path is age/amount eligibility \u2013 a bright-line rule, not ambiguity). Basis: taxonomies in SOA and Gen Re surveys, no direct measurement found.",
+    "settlement_loop_evidence": [
+     {
+      "description": "Reinsurer-provided underwriting/impairment manuals are the codified, versioned settlement of medical-risk interpretation; carriers use 'build charts, impairment manuals, reinsurer guidelines' and 'underwriting guides will be refreshed as necessary'. Loop exists but is owned by reinsurers (RGA, Munich Re, Swiss Re, Gen Re), not by carrier ops.",
+      "source_url": "https://www.pfnins.com/blog/navigating-impaired-risk-underwriting",
+      "source_type": "industry/broker explainer",
+      "prospective": "yes",
+      "reusable_how": "Manual ratings (table ratings, flat extras) applied to all later cases with same impairment; updated on reinsurer release cycle"
+     },
+     {
+      "description": "Automated underwriting engines return 'refer with a reason code and a routing target'; vendors describe replaying last quarter's submissions through a rule branch, tracking 'referral volume by trigger' and tuning rule tables weekly. The referral outcome feeds rule tuning, but as vendor rule configuration, not as a governed precedent record.",
+      "source_url": "https://www.higson.io/blog/insurance-underwriting-automation-complete-2026-guide",
+      "source_type": "vendor",
+      "prospective": "yes",
+      "reusable_how": "Threshold/table edits in the rules engine after analysing referral mix and override patterns"
+     },
+     {
+      "description": "'Override patterns should inform where thresholds need adjustment, and the business reason for each override should be recorded alongside the system's recommendation' \u2013 best-practice, vendor-stated; no evidence of carriers doing it at scale.",
+      "source_url": "https://sapiens.com/resources/blog/automated-underwriting-system-software/",
+      "source_type": "vendor",
+      "prospective": "unclear",
+      "reusable_how": "Override reason capture \u2192 threshold adjustment (aspirational)"
+     },
+     {
+      "description": "RGA argues carriers should 'reconsider manuals' to streamline accelerated underwriting, i.e., the manual (settlement corpus) is the object being re-engineered by reinsurers themselves.",
+      "source_url": "https://www.rgare.com/knowledge-center/article/streamlining-accelerated-underwriting-means-reconsidering-manuals",
+      "source_type": "vendor/reinsurer",
+      "prospective": "yes",
+      "reusable_how": "Manual rule simplification owned by reinsurer"
+     }
+    ],
+    "economic_pain": "Underwriter labour: US insurance underwriters median wage $81,370 (May 2025), ~6,800 openings/yr, employment projected to decline 4% 2025\u20132035 (https://www.bls.gov/ooh/business-and-financial/insurance-underwriters.htm, government statistics; sourced snippet; headcount total not captured \u2013 page blocked). Placement rate penalty of slow paths: 86% placed on automated workflow vs 78% accelerated vs 63% fully underwritten (Gen Re 2024, businesswire URL above; sourced). Swiss Re: 'referrals still jam the pipeline' (swissre URL above; vendor). No cost-per-referral figure found.",
+    "existing_solutions": "RGA AURA Next, Swiss Re Magnum/MagnumXP and Underwriting Ease, Munich Re engines, Sapiens, Bestow, GoRules/DecisionRules/Higson rules engines. All expose configurable rule tables, reason codes, version control ('configurable, version-controlled systems that execute the same way every time' \u2013 Sapiens, vendor claim). None found to record individual underwriter settlements as typed, provenance-bearing precedents; the reinsurer manual release is the versioned precedent. Evidence that incumbents already adequately own the loop: strong on the vendor side, unverified operationally.",
+    "buyer_and_budget": "Chief Underwriter / Head of Underwriting Innovation at a life carrier; reinsurer relationship often bundles the engine at low or zero licence cost (reinsurer-subsidised), which makes an independent settlement-ledger vendor hard to fund. Budget exists (82% of surveyed carriers have implemented or partly implemented an AUW workflow, Gen Re 2024) but is spent with reinsurers.",
+    "regulatory_constraints": "Colorado SB21-169 regulation (effective 14 Nov 2023) requires life insurers to have governance frameworks and annual testing of algorithms using external consumer data (https://www.bakertilly.com/insights/navigating-colorados-sb21-169-new-and-revised-regulation, professional services; sourced snippet). NY DFS Insurance Circular Letter No. 7 (11 July 2024) on AI/ECDIS in underwriting and pricing requires documented testing and monitoring (https://www.dfs.ny.gov/industry-guidance/circular-letters/cl2024-07, regulator; URL from snippet, page blocked). NAIC AI Model Bulletin adopted by 48+ states; FCRA adverse-action duties. Vendor pages claim these 'require human review' (https://www.higson.io/blog/insurance-underwriting-automation-complete-2026-guide, vendor \u2013 weak). Regulators push explainability and governance rather than prohibiting automation; automation of clear-cut cases is permitted, but every rule change becomes a governed model change.",
+    "evidence_quality": "moderate",
+    "verdict": "weak",
+    "notes": "The settlement loop exists and is mature, but it is the reinsurer-owned impairment manual plus AUW rule tables. Residual human review is dominated by evidence gathering and medical classification (A/B), and the 41% 'traditional path' is bright-line age/amount eligibility. Supports H1 and H3. Primary survey PDFs (SOA 2022, Munich Re 2024, Gen Re 2024) were blocked so kick-out breakdown percentages remain unverified."
+   },
+   {
+    "name": "Small and mid-market commercial P&C: appetite/referral rules, out-of-authority referrals to senior underwriters, and guideline (appetite) updates",
+    "geography": "US and UK/London market (vendor case studies are US MGAs/carriers)",
+    "decision_volume": "No industry-wide submission count captured. Vendor benchmarks: mid-market commercial carriers reach 50\u201365% STP, leaving 35\u201350% of submissions referred (https://www.higson.io/blog/using-business-rules-engines-to-automate-underwriting-in-commercial-insurance, vendor; sourced snippet, no survey basis given). 'PAS workbench for the 25\u201340% of risks that need senior underwriter judgment' (same vendor). Personal lines contrast: McKinsey found up to 95% of personal-lines policies at leading carriers go straight through (cited in https://www.perceptive-analytics.com/what-is-automated-underwriting-and-how-accurate-is-it/, vendor citing consultancy; sourced snippet).",
+    "human_review_rate": "35\u201350% of commercial submissions referred to an underwriter per vendor benchmark (Higson URL above, vendor). Underwriters spend 30\u201360 min per submission on clerical extraction (https://www.perceptive-analytics.com/how-to-reduce-manual-underwriting-work-and-fix-fewer-submissions/, vendor); Accenture: up to 40% of underwriter time on admin; McKinsey: 30\u201340% of time retyping data or manual analysis in large commercial (https://www.mckinsey.com/industries/financial-services/our-insights/from-art-to-science-the-future-of-underwriting-in-commercial-p-and-c-insurance, consultancy; sourced snippet).",
+    "why_humans_review": "Rough shares (estimate; basis = referral trigger lists in vendor/MGA guideline docs and the McKinsey/Accenture time studies): A missing evidence ~30\u201340% (incomplete submissions, loss runs, SOVs; the largest measured time sink is data extraction, not judgment); B factual classification ~15\u201320% (class code, occupancy, ineligible operations); C rule interpretation ~5\u201310% (does this operation fall under a prohibited class?); D conflict ~<5%; E true discretion ~15\u201325% (pricing/terms on referred risks; 'complex 35\u201350% tail where judgment moves loss ratio'); F commercial negotiation ~10\u201315% (broker negotiation, capacity, large limits); G one-off ~5%; H repeatable ambiguity settled prospectively ~5\u201310% (appetite clarifications that become new rules; HDVI programmed >30 rules automating 95% of referrals \u2013 evidence the recurring part is rule-shaped and gets codified quickly by incumbents). Basis: referral triggers named in delegated-authority guideline templates ('large limits, unusual exposures, poor loss history', https://www.insuedot.com/insurance-glossary/insurance-glossary-underwriting-authority/, industry glossary) and vendor case studies; no carrier-level breakdown found.",
+    "settlement_loop_evidence": [
+     {
+      "description": "Federato case study (HDVI, trucking MGA): 'programmed more than 30 rules that automate 95% of its referrals'; instead of handing a 50-page guideline stack to an underwriter, each rule 'saves an underwriter 10\u201315 minutes'. Shows repeatable referral classes exist and are codified into rules \u2013 by an incumbent workbench.",
+      "source_url": "https://www.federato.ai/articles/hdvi-powers-complex-data-workflows-and-builds-a-foundation-for-growth-agility-and-flexibility-with-federato-riskops",
+      "source_type": "vendor case study",
+      "prospective": "yes",
+      "reusable_how": "Referral triggers converted into executable appetite rules in the workbench"
+     },
+     {
+      "description": "Federato: guardrails use live portfolio data; 'when a segment approaches an exposure limit, leadership can update the rule and have it take effect immediately' \u2013 appetite owner changes rule prospectively; decisions 'traceable back to the insurer's own guidelines'.",
+      "source_url": "https://www.federato.ai/platform/submission-to-quote",
+      "source_type": "vendor",
+      "prospective": "yes",
+      "reusable_how": "Rule edit by leadership applied to all subsequent submissions"
+     },
+     {
+      "description": "Send workbench: 'automates referral steps with workflows tailored to your rules' and 'captures underwriter rationale' on referred cases; no claim that rationale becomes a rule.",
+      "source_url": "https://send.technology/platform/activity-management/",
+      "source_type": "vendor",
+      "prospective": "unclear",
+      "reusable_how": "Rationale stored as case documentation, not as executable precedent (as far as public material shows)"
+     },
+     {
+      "description": "Operations best-practice: when quality reviews identify 'recurring confusion or inconsistent application of a guideline, that signal can be routed into knowledge updates, calibration, coaching' \u2013 closes the loop 'instead of leaving each underwriter to solve the same issue independently'. Describes exactly the hypothesised problem, but as QA/coaching, not software.",
+      "source_url": "https://www.c2perform.com/blog/insurance-underwriting-operations",
+      "source_type": "vendor (ops/QA software)",
+      "prospective": "yes",
+      "reusable_how": "Guideline/knowledge-base update after QA sampling"
+     },
+     {
+      "description": "Rules-engine vendors: referral 'carries the conditions that triggered it and the values behind them'; per-submission decision record forms the audit trail; rules adapted 'from months to days'. First Response Finance (lending) logs every decision for champion-challenger refinement.",
+      "source_url": "https://www.decisionrules.io/en/articles/improved-underwriting-and-leveling-up-lending-with-decisionrules/",
+      "source_type": "vendor case study",
+      "prospective": "yes",
+      "reusable_how": "Decision logs feed rule versioning inside the rules engine"
+     }
+    ],
+    "economic_pain": "Time-to-quote is the pain vendors sell against: Velocity Risk cut modelling-complete-to-quote from 21 days 11 h to 2 days 8 h (89%) (https://www.federato.ai/articles/velocity-risk-drives-dramatic-efficiency-and-growth-through-winnability-and-appetite-with-riskops, vendor). Cytora claims 4\u20136x throughput per underwriter on routine risks (https://cytora.com/customers, vendor). McKinsey: productivity gains up to 50%, operating cost cuts 30% from analytics; Deloitte: 3\u20135 pts loss ratio and 40% more quote capacity (via https://www.perceptive-analytics.com/..., vendor citing consultancies). None isolates the cost of re-deciding recurring ambiguity; the measured waste is data handling.",
+    "existing_solutions": "Guidewire PolicyCenter (underwriting issues/authority profiles), Duck Creek, Sapiens, Insurity workbenches; Federato RiskOps (appetite rules, live portfolio guardrails), Send, Convr (routes flagged submissions to senior underwriters), Cytora (human-in-the-loop corrections captured as model training data \u2013 fetched: https://cloud.google.com/blog/topics/financial-services/cytora-uses-generative-ai-to-assess-underwriting-risk), Insillion, Decerto, rules engines (Higson, GoRules, DecisionRules, ruleengine.ai). All provide referral reason codes, routing, override capture and rule versioning; Federato explicitly markets rule updates by leadership. No vendor found that types the settlement (who settled, what authority, applies-to-what, expiry) as a precedent object, but the functional gap versus 'add a rule' is thin.",
+    "buyer_and_budget": "Chief Underwriting Officer / Head of Underwriting Operations at carrier or MGA; budget is going to workbench/RiskOps platforms (Federato, Send, Convr, Cytora funded rounds) \u2013 a settlement ledger would compete for the same line item and be judged a feature.",
+    "regulatory_constraints": "Lighter than life: commercial lines underwriting guidelines generally not filed; NAIC AI bulletin governance applies; state market-conduct exams check adherence to authority levels and that 'exceptions require appropriate approvals' (https://www.oipinsurtech.com/everything-you-need-to-know-about-insurance-underwriting-audits/, vendor). Texas requires underwriting guidelines be available to regulator (https://www.tdi.texas.gov/company/underwriting-guidelines.html, regulator; page blocked).",
+    "evidence_quality": "moderate",
+    "verdict": "uncertain",
+    "notes": "Strongest structural fit in the cluster: recurring referral classes demonstrably become rules (HDVI: 30 rules \u2192 95% of referrals). But that same evidence shows incumbents capture the loop in days, supporting H3/H6. The majority of human time is data extraction (A), not interpretation. No number found on exception/override rates or on how often senior-underwriter referral outcomes change guidelines."
+   },
+   {
+    "name": "Delegated authority: coverholder/MGA referrals outside binding-authority terms to the managing agent (special acceptances), audits and binder amendments",
+    "geography": "UK / Lloyd's (also EU via Lloyd's Europe; US MGA programme business)",
+    "decision_volume": "Over 4,000 approved coverholders at 31 Dec 2024 (Lloyd's surveillance report, https://assets.lloyds.com/media-651c0e64-c1d0-4f97-90f7-883c69fe2ef2/32e04f0b-bcf7-4f5a-852e-b3138f491114/Lloyd's%20of%20London%20Surveillance%20Report%20062325%20V1.pdf, market/regulator report; sourced snippet). Delegated authority is 'just under 40%' / ~39% of Lloyd's GWP excluding service companies (Rachel Turk, Lloyd's CUO, May 2025, https://www.insurancejournal.com/news/international/2025/05/16/824065.htm, press; sourced snippet). Number of binding authorities and number of out-of-binder referrals: not found.",
+    "human_review_rate": "Structural, not measured: 'the Coverholder must refer each and every risk to the lead underwriter for agreement before binding' when outside binder parameters (https://assets.lloyds.com/assets/pdf-code-of-practice-delegated-underwriting-v2/1/pdf-code-of-practice-delegated-underwriting-v2.pdf, Lloyd's code of practice; sourced snippet). Share of risks referred: unknown.",
+    "why_humans_review": "Rough shares (estimate; basis = Lloyd's code of practice referral rule and audit scope descriptions): A missing evidence ~10%; B factual classification ~10% (is this risk within the class/territory definition?); C rule interpretation ~15% (binder wording scope ambiguities \u2013 e.g., is an activity within the permitted class?); D conflict ~5% (binder vs syndicate guidelines vs Lloyd's minimum standards); E true discretion ~25% (capacity, line size, pricing on out-of-scope risks); F commercial ~15% (coverholder-carrier relationship, profit commission); G one-off ~10%; H repeatable ambiguity settled prospectively ~10\u201315% (a special acceptance that recurs is typically folded into the binder by endorsement or at annual renewal; 'any deviations\u2026 must have been approved by the managing agent' \u2013 https://www.getregure.com/blog/lloyds-delegated-authority-audit-requirements/, vendor). No numeric basis; this is the least-measured but structurally most Sophon-shaped workflow in the cluster.",
+    "settlement_loop_evidence": [
+     {
+      "description": "Binding authority defines classes, territories, line size, aggregate capacity; risks outside must be referred to the lead underwriter before binding \u2013 an explicit escalation-to-owner rule, with the binder itself as the versioned, prospectively applicable settlement (renewed/endorsed annually).",
+      "source_url": "https://assets.lloyds.com/assets/pdf-code-of-practice-delegated-underwriting-v2/1/pdf-code-of-practice-delegated-underwriting-v2.pdf",
+      "source_type": "market code of practice (Lloyd's)",
+      "prospective": "yes",
+      "reusable_how": "Referral agreed \u2192 risk bound; recurring referrals \u2192 binder endorsement or renewal terms change (structural inference; no documented frequency)"
+     },
+     {
+      "description": "Audit scope checks whether the coverholder is operating within agreed parameters (size, geography, prohibited classes) and whether wording deviations were approved by the managing agent; LMA publishes a common coverholder audit scope to improve consistency.",
+      "source_url": "https://lmalloyds.com/coverholder-audit-scope-and-associated-guidance/",
+      "source_type": "industry association (LMA)",
+      "prospective": "unclear",
+      "reusable_how": "Audit findings can trigger restriction or amendment of authority; no evidence they are captured as executable precedent"
+     },
+     {
+      "description": "FCA TR15/7 reviewed 12 insurers and 19 intermediaries/TPAs: 'insufficient oversight of the performance of products and delivery of services'; only a minority treated delegated underwriting as outsourcing. Shows the pain is oversight/control, not interpretive re-decision.",
+      "source_url": "https://www.fca.org.uk/publications/thematic-reviews/tr15-7-delegated-authority-outsourcing-general-insurance-market",
+      "source_type": "regulator thematic review",
+      "prospective": "no",
+      "reusable_how": "n/a \u2013 governance findings"
+     },
+     {
+      "description": "Citizens (Florida) internal audit Nov 2025: an internal 'authority referral process' exists; a standardized Authority Referral workflow in PolicyCenter now requires formal Citizens approval before a BPO underwriter takes any action 'that does not directly align with Citizens' requirements'; unreferred deviations are a 'Major Quality Violation'. QA standard 95% accuracy. Shows the referral gate is a compliance control, and that policy-admin systems already host it.",
+      "source_url": "https://www.citizensfla.com/documents/20702/39142591/20251210+02J+Personal+Lines+Underwriting.pdf/6dfafdfc-71b4-bd09-6a74-6d7a08d7b63b?t=1763577596587",
+      "source_type": "audit / internal auditor report of a public insurer",
+      "prospective": "unclear",
+      "reusable_how": "Referral decision governs that policy; no evidence it becomes a reusable rule"
+     }
+    ],
+    "economic_pain": "Audit findings are dominated by operational items: late/inaccurate remittances, loss-fund/minimum-balance breaches, unapproved wording deviations (https://www.getregure.com/blog/lloyds-delegated-authority-audit-requirements/ and https://www.vitesse.io/insights/delegated-authority-insurance-fund-management, vendors). Lloyd's says it has a 'laser focus' on coverholder oversight to avoid market risk (Insurance Journal URL above, press). Cost of referral delay to MGAs: not quantified in any source found.",
+    "existing_solutions": "Lloyd's Delegated Audit Manager, Delegated Data Manager, ACORD DA standards (https://www.acord.org/standards-architecture/acord-data-standards/multi-functional-standards/delegated-authority-standards), Send and Insillion MGA workbenches, Vitesse (funds), Regure (compliance). Referral/special-acceptance handling is email plus workbench workflow; no evidence any records special acceptances as versioned executable precedents \u2013 unknown rather than negative.",
+    "buyer_and_budget": "Managing agent Delegated Authority / third-party oversight team; MGA COO/Head of Underwriting. Budget exists for DA compliance tooling driven by Lloyd's oversight framework; ACV likely modest per MGA.",
+    "regulatory_constraints": "Lloyd's Delegated Authority minimum standards and Code of Practice; FCA SYSC outsourcing rules (TR15/7, TR19/2); annual coverholder audits. None prohibits automation of in-binder decisions; out-of-binder decisions must be agreed by the managing agent, so a captured precedent can only automate once the binder is formally endorsed \u2013 i.e., the settlement mechanism already exists (binder endorsement) and is legally required to be used.",
+    "evidence_quality": "weak",
+    "verdict": "uncertain",
+    "notes": "Structurally the closest match to the brief (explicit owner, explicit referral rule, annual versioned instrument), but zero operational numbers on referral volumes, turnaround or recurrence were found; all Lloyd's, LMA and FCA pages were blocked so this rests on snippets."
+   },
+   {
+    "name": "P&C personal lines (auto/home) underwriting referrals and authority exceptions",
+    "geography": "US",
+    "decision_volume": "Citizens (FL) policies in force fell from 1.2m (June 2024) to ~570k (Oct 2025) with 919,100 still serviced (Citizens internal audit URL above, audit; sourced snippet). Industry referral counts: not found.",
+    "human_review_rate": "Up to 95% STP at leading carriers per McKinsey (via perceptive-analytics URL, vendor citing consultancy) \u2013 i.e., ~5% or less human touch on new business (estimate).",
+    "why_humans_review": "Estimate: A ~30% (inspection/photos, prior loss info), B ~30% (roof age/condition, occupancy classification), E ~20% (non-renewal/decline discretion), C+H ~10%, F/G ~10%. Basis: personal lines is the most commoditised, rules-dense line; residual review is data-driven; Citizens audit frames referrals as compliance controls rather than interpretation.",
+    "settlement_loop_evidence": [
+     {
+      "description": "Citizens internal audit: authority referral workflow codified in PolicyCenter; deviation without referral is a Major Quality Violation; QA standard \u22645% total error rate.",
+      "source_url": "https://www.citizensfla.com/documents/20702/39142591/20251210+02J+Personal+Lines+Underwriting.pdf/6dfafdfc-71b4-bd09-6a74-6d7a08d7b63b?t=1763577596587",
+      "source_type": "audit",
+      "prospective": "no",
+      "reusable_how": "Per-policy approval; guideline changes issued via Personal Lines Bulletins (https://www.citizensfla.com/plb)"
+     }
+    ],
+    "economic_pain": "Low per-decision value; error standard \u22645% of files (Citizens audit). No cost-per-referral figure.",
+    "existing_solutions": "Guidewire PolicyCenter underwriting issues/authority, Duck Creek, in-house rules; guideline bulletins.",
+    "buyer_and_budget": "Personal lines underwriting director; little separate budget.",
+    "regulatory_constraints": "Rate/rule filings; underwriting guidelines filed or available in many states; NAIC AI bulletin; FCRA.",
+    "evidence_quality": "weak",
+    "verdict": "negative",
+    "notes": "Already 95% STP; residual is data and compliance, not recurring ambiguity."
+   },
+   {
+    "name": "Health / private medical insurance medical underwriting referrals",
+    "geography": "UK PMI; US individual health largely guaranteed-issue post-ACA (knowledge, not sourced in this run)",
+    "decision_volume": "Not found",
+    "human_review_rate": "Not found; UK PMI sources describe underwriting types (full medical underwriting vs moratorium) but no referral rates (https://clarityhealthinsurance.co.uk/private-medical-insurance/what-is-underwriting/, broker; sourced snippet).",
+    "why_humans_review": "Unknown; moratorium underwriting shifts assessment to claim time, which reduces point-of-sale underwriting decisions (inference from broker explainer).",
+    "settlement_loop_evidence": [],
+    "economic_pain": "Unknown",
+    "existing_solutions": "Unknown; insurer in-house engines",
+    "buyer_and_budget": "Unknown",
+    "regulatory_constraints": "US ACA guaranteed issue removes individual medical underwriting (knowledge, unsourced); UK FCA Consumer Duty; EU AI Act treats life/health insurance risk assessment and pricing as high-risk (knowledge, unsourced \u2013 Annex III page blocked).",
+    "evidence_quality": "unknown",
+    "verdict": "negative",
+    "notes": "No operational data surfaced in 3 searches; not worth further effort in this cluster."
+   }
+  ],
+  "evidence_against_thesis": [
+   "H1 supported in life: the largest non-automated bucket is bright-line age/amount ineligibility (41% traditional path, Gen Re 2024) and kick-outs are driven by evidence hits (Rx/MIB/MVR/EHR, non-disclosure, requirements) per the SOA 2022 survey taxonomy, not interpretive ambiguity.",
+   "H1 supported in commercial: measured underwriter waste is data extraction (30\u201360 min per submission; 30\u201340% of time retyping data per McKinsey; up to 40% admin per Accenture), not re-deciding ambiguity.",
+   "H3 supported: the loop 'referral class recurs \u2192 rule added' is already executed inside incumbent tooling in days (HDVI: >30 Federato rules automate 95% of referrals; rules-engine vendors replay submissions and tune tables from referral-by-trigger reports; Federato lets leadership update appetite rules with immediate effect). In life, the reinsurer impairment manual is the versioned settlement corpus and reinsurers subsidise the engine.",
+   "H4 supported: carriers explicitly 'reserve the right to apply individual consideration to any case'; delegated authority requires managing-agent agreement for every out-of-binder risk regardless of precedent; Colorado SB21-169 regulation, NY DFS CL7 (2024) and the NAIC AI bulletin make any rule that changes outcomes a governed, tested model change; vendor material (weak) claims regulators require human review of automated adverse decisions.",
+   "Referrals are mostly authority gates on capacity and price (E/F), i.e., permission to bind above a limit, not a question of what a rule means; Lloyd's audit findings are about remittances, loss funds and unapproved wordings, not inconsistent interpretation.",
+   "Personal lines are already ~95% STP at leading carriers, leaving too little human volume to matter.",
+   "No source in ~33 searches reported an exception rate, override rate or referral-reason breakdown for any insurer, and no documented instance of 'senior underwriter decides referral \u2192 guideline amended' with numbers was found; absence is uncertainty, but it also means no vendor or regulator has felt the need to measure the precise pain the product targets."
+  ],
+  "not_found": [
+   "Kick-out / referral breakdown percentages from SOA 2022 AUW survey, Munich Re 2024 AUW survey and Gen Re 2024 (PDFs and pages blocked)",
+   "Any carrier-level exception rate, override rate or referral-reason distribution (life or P&C)",
+   "Cost per referral or per exception review; underwriter headcount total from BLS OES (page blocked)",
+   "Lloyd's number of binding authorities, volume or turnaround of out-of-binder referrals / special acceptances, or how often they are folded into binder endorsements",
+   "Whether Guidewire PolicyCenter, Duck Creek, Sapiens, Send or Federato store exception decisions as versioned, provenance-bearing reusable rules (no product documentation reachable)",
+   "Any documented case of a referral decision by a senior underwriter leading to a guideline amendment, with frequency",
+   "Health/PMI underwriting referral rates (UK/US/FR)",
+   "French market data on d\u00e9l\u00e9gation de souscription / d\u00e9rogations (ACPR sources not specific; pages blocked)",
+   "Facultative reinsurance referral share of life cases",
+   "Inter-underwriter consistency / inter-rater studies on the same referred cases"
+  ],
+  "sources": [
+   {
+    "url": "https://www.businesswire.com/news/home/20241112347407/en/Gen-Re-Releases-2024-U.S.-Individual-Life-Accelerated-Underwriting-Survey-Results",
+    "type": "press release of reinsurer survey (snippet)",
+    "used_for": "12% fully automated / 47% accelerated / 41% traditional; placement rates 86/78/63%; 38 carriers; 82% implemented"
+   },
+   {
+    "url": "https://www.munichre.com/us-life/en/insights/industry-surveys-and-reports/accelerated-underwriting-trends-eligibility-limits-digital-data-automation.html",
+    "type": "reinsurer survey (snippet; fetch blocked)",
+    "used_for": "'large majority of accelerated decisions still made with human underwriter involvement'"
+   },
+   {
+    "url": "https://www.soa.org/globalassets/assets/files/resources/research-report/2023/acc-underwriting-practices-survey.pdf",
+    "type": "actuarial association research report (snippet; fetch blocked)",
+    "used_for": "kick-out taxonomy: age/amount ineligible, AUW offers, declines/postpones, referred for not meeting other AUW requirements; reinsurer AUW share 6%\u219215% 2019\u20132022"
+   },
+   {
+    "url": "https://www.swissre.com/risk-knowledge/advancing-societal-benefits-digitalisation/reimagining-life-insurance-underwriting.html",
+    "type": "reinsurer/vendor (snippet)",
+    "used_for": "up to 90% STP in some markets, ~75% global average; referrals jam pipeline"
+   },
+   {
+    "url": "https://www.rgare.com/enabling-solutions/underwriting/automated-underwriting/aura-next-case-study-accelerated-underwriting",
+    "type": "vendor case study (snippet)",
+    "used_for": "50% STP case"
+   },
+   {
+    "url": "https://www.limra.com/en/newsroom/news-releases/2016/life-insurers-leverage-technology-and-greater-access-to-data-to-streamline-underwriting-limra-report/",
+    "type": "industry association (snippet)",
+    "used_for": "1 in 3 companies fully electronic no-human-touch process (2016)"
+   },
+   {
+    "url": "https://www.bls.gov/ooh/business-and-financial/insurance-underwriters.htm",
+    "type": "government statistics (snippet)",
+    "used_for": "median wage $81,370 (May 2025); -4% employment 2025\u201335; 6,800 openings/yr"
+   },
+   {
+    "url": "https://www.higson.io/blog/using-business-rules-engines-to-automate-underwriting-in-commercial-insurance",
+    "type": "vendor (snippet)",
+    "used_for": "50\u201365% STP mid-market commercial; 35\u201350% referred; 25\u201340% need senior judgment"
+   },
+   {
+    "url": "https://www.federato.ai/articles/hdvi-powers-complex-data-workflows-and-builds-a-foundation-for-growth-agility-and-flexibility-with-federato-riskops",
+    "type": "vendor case study (snippet)",
+    "used_for": ">30 rules automate 95% of referrals; 10\u201315 min saved per rule fire"
+   },
+   {
+    "url": "https://www.federato.ai/platform/submission-to-quote",
+    "type": "vendor (snippet)",
+    "used_for": "leadership updates appetite rule with immediate effect; decisions traceable to guidelines"
+   },
+   {
+    "url": "https://www.federato.ai/articles/velocity-risk-drives-dramatic-efficiency-and-growth-through-winnability-and-appetite-with-riskops",
+    "type": "vendor case study (snippet)",
+    "used_for": "time to quote 21d11h \u2192 2d8h (89%)"
+   },
+   {
+    "url": "https://cloud.google.com/blog/topics/financial-services/cytora-uses-generative-ai-to-assess-underwriting-risk",
+    "type": "vendor/press (fetched)",
+    "used_for": "human-in-the-loop corrections captured as training data; no referral numbers"
+   },
+   {
+    "url": "https://cytora.com/customers",
+    "type": "vendor (snippet)",
+    "used_for": "4\u20136x throughput claim"
+   },
+   {
+    "url": "https://www.mckinsey.com/industries/financial-services/our-insights/from-art-to-science-the-future-of-underwriting-in-commercial-p-and-c-insurance",
+    "type": "consultancy (snippet)",
+    "used_for": "30\u201340% of underwriter time retyping/manual analysis; up to 50% productivity"
+   },
+   {
+    "url": "https://www.perceptive-analytics.com/what-is-automated-underwriting-and-how-accurate-is-it/",
+    "type": "vendor citing McKinsey (snippet)",
+    "used_for": "up to 95% personal lines STP"
+   },
+   {
+    "url": "https://sapiens.com/resources/blog/automated-underwriting-system-software/",
+    "type": "vendor (snippet)",
+    "used_for": "override reason capture best practice; version-controlled rules"
+   },
+   {
+    "url": "https://www.decisionrules.io/en/articles/improved-underwriting-and-leveling-up-lending-with-decisionrules/",
+    "type": "vendor case study (snippet)",
+    "used_for": "decision logging for champion-challenger rule refinement"
+   },
+   {
+    "url": "https://www.c2perform.com/blog/insurance-underwriting-operations",
+    "type": "vendor (snippet)",
+    "used_for": "QA routes recurring guideline confusion into knowledge updates"
+   },
+   {
+    "url": "https://send.technology/platform/activity-management/",
+    "type": "vendor (snippet)",
+    "used_for": "referral workflows; captures underwriter rationale"
+   },
+   {
+    "url": "https://assets.lloyds.com/assets/pdf-code-of-practice-delegated-underwriting-v2/1/pdf-code-of-practice-delegated-underwriting-v2.pdf",
+    "type": "market code of practice (snippet; fetch blocked)",
+    "used_for": "must refer every out-of-binder risk to lead underwriter before binding"
+   },
+   {
+    "url": "https://assets.lloyds.com/media-651c0e64-c1d0-4f97-90f7-883c69fe2ef2/32e04f0b-bcf7-4f5a-852e-b3138f491114/Lloyd's%20of%20London%20Surveillance%20Report%20062325%20V1.pdf",
+    "type": "market report (snippet)",
+    "used_for": ">4,000 approved coverholders at 31 Dec 2024"
+   },
+   {
+    "url": "https://www.insurancejournal.com/news/international/2025/05/16/824065.htm",
+    "type": "press (snippet)",
+    "used_for": "~39\u201340% of Lloyd's GWP via delegated authority; 'laser focus' on oversight"
+   },
+   {
+    "url": "https://lmalloyds.com/coverholder-audit-scope-and-associated-guidance/",
+    "type": "industry association (snippet)",
+    "used_for": "common coverholder audit scope"
+   },
+   {
+    "url": "https://www.fca.org.uk/publications/thematic-reviews/tr15-7-delegated-authority-outsourcing-general-insurance-market",
+    "type": "regulator thematic review (snippet; fetch blocked)",
+    "used_for": "12 insurers, 19 intermediaries; insufficient oversight findings"
+   },
+   {
+    "url": "https://www.getregure.com/blog/lloyds-delegated-authority-audit-requirements/",
+    "type": "vendor (snippet)",
+    "used_for": "audit checks operating within parameters; wording deviations need MA approval; remittance findings"
+   },
+   {
+    "url": "https://www.citizensfla.com/documents/20702/39142591/20251210+02J+Personal+Lines+Underwriting.pdf/6dfafdfc-71b4-bd09-6a74-6d7a08d7b63b?t=1763577596587",
+    "type": "internal audit report (snippet; fetch blocked)",
+    "used_for": "authority referral workflow in PolicyCenter; Major Quality Violation; 95% accuracy standard; PIF 1.2m\u2192570k"
+   },
+   {
+    "url": "https://www.bannerlife.com/docs/default-source/advisor/underwriting/underwriting-field-guide.pdf",
+    "type": "carrier guide (snippet)",
+    "used_for": "'individual consideration' reserved; guides refreshed as necessary"
+   },
+   {
+    "url": "https://www.pfnins.com/blog/navigating-impaired-risk-underwriting",
+    "type": "broker explainer (snippet)",
+    "used_for": "impairment manuals and reinsurer guidelines as tools"
+   },
+   {
+    "url": "https://www.rgare.com/knowledge-center/article/streamlining-accelerated-underwriting-means-reconsidering-manuals",
+    "type": "reinsurer (snippet)",
+    "used_for": "manuals being re-engineered by reinsurer"
+   },
+   {
+    "url": "https://www.bakertilly.com/insights/navigating-colorados-sb21-169-new-and-revised-regulation",
+    "type": "professional services (snippet)",
+    "used_for": "Colorado SB21-169 regulation effective 14 Nov 2023; annual testing"
+   },
+   {
+    "url": "https://www.dfs.ny.gov/industry-guidance/circular-letters/cl2024-07",
+    "type": "regulator (snippet; fetch blocked)",
+    "used_for": "NY DFS Circular Letter 7 (2024) on AI/ECDIS in underwriting"
+   },
+   {
+    "url": "https://www.higson.io/blog/insurance-underwriting-automation-complete-2026-guide",
+    "type": "vendor (snippet)",
+    "used_for": "referral reason codes; rule replay; claim that NAIC/FCA require human review (weak)"
+   },
+   {
+    "url": "https://www.rd.usda.gov/files/3550-1chapter06.pdf",
+    "type": "government lending handbook (snippet; fetch blocked)",
+    "used_for": "analogue: exceptions discussed with Underwriting Manager/Sr Loan Committee; all approved/denied exceptions tracked in LOS and exception report"
+   },
+   {
+    "url": "https://www.insuedot.com/insurance-glossary/insurance-glossary-underwriting-authority/",
+    "type": "industry glossary (snippet)",
+    "used_for": "tiered authority; referral triggers (large limits, unusual exposures, poor loss history)"
+   },
+   {
+    "url": "https://www.oipinsurtech.com/everything-you-need-to-know-about-insurance-underwriting-audits/",
+    "type": "vendor (snippet)",
+    "used_for": "audit checks authority adherence and exception approvals; inconsistency across underwriters common"
+   }
+  ],
+  "blocked_urls": [
+   "https://www.munichre.com/us-life/en/insights/industry-surveys-and-reports/accelerated-underwriting-trends-eligibility-limits-digital-data-automation.html",
+   "https://www.rgare.com/knowledge-center/article/rga-global-life-and-health-underwriting-survey-entering-the-new-normal",
+   "https://datos-insights.com/reports/straight-through-processing-underwriting-and-claims-2023-update/",
+   "https://www.rd.usda.gov/files/3550-1chapter06.pdf",
+   "https://www.lloyds.com/market-resources/delegated-authorities/delegated-authority-guidance",
+   "https://www.swissre.com/risk-knowledge/advancing-societal-benefits-digitalisation/reimagining-life-insurance-underwriting.html",
+   "https://www.limra.com/en/trending-topics/publications/marketfacts/2022/chasing-amazon-accelerated-underwriting-focuses-on-cx/",
+   "https://www.higson.io/blog/using-business-rules-engines-to-automate-underwriting-in-commercial-insurance",
+   "https://www.ruleengine.ai/solutions/underwriting-referral/",
+   "https://send.technology/wp-content/uploads/2021/06/Send-Underwriting-Workbench_Global-Insurer-Case-Study.pdf",
+   "https://www.mercor.com/blog/ai-underwriting-evals/",
+   "https://www.americanbar.org/groups/dispute_resolution/resources/just-resolutions/2026-may/dispute-resolution-professionals-ai-insurance-underwriting/",
+   "https://www.soa.org/globalassets/assets/files/resources/research-report/2023/acc-underwriting-practices-survey.pdf",
+   "https://www.bls.gov/oes/current/oes132053.htm",
+   "https://www.businesswire.com/news/home/20241112347407/en/Gen-Re-Releases-2024-U.S.-Individual-Life-Accelerated-Underwriting-Survey-Results",
+   "https://content.naic.org/insurance-topics/accelerated-underwriting",
+   "https://insurance.ks.gov/documents/other-services/marketconduct-exams/LMFinalFinalRevisedExamReport.pdf",
+   "https://www.genre.com/us/knowledge/publications/2024/november/surveylhau24-en",
+   "https://assets.lloyds.com/assets/pdf-code-of-practice-delegated-underwriting-v2/1/pdf-code-of-practice-delegated-underwriting-v2.pdf",
+   "https://www.prismrisk.gov/governance/underwriting/standard-operating-procedures/?v=7.4",
+   "https://www.mckinsey.com/industries/financial-services/our-insights/from-art-to-science-the-future-of-underwriting-in-commercial-p-and-c-insurance",
+   "https://www.tdi.texas.gov/company/underwriting-guidelines.html",
+   "https://www.insurancebusinessmag.com/reinsurance/news/breaking-news/life-insurers-widen-accelerated-underwriting--gen-re-560575.aspx",
+   "https://www.decerto.com/us/post/top-features-to-look-for-in-an-underwriting-workbench-solution",
+   "https://www.c2perform.com/blog/insurance-underwriting-operations",
+   "https://arxiv.org/pdf/2602.13213",
+   "https://www.citizensfla.com/documents/20702/39142591/20251210+02J+Personal+Lines+Underwriting.pdf",
+   "https://www.fca.org.uk/publications/thematic-reviews/tr15-7-delegated-authority-outsourcing-general-insurance-market",
+   "https://lmalloyds.com/coverholder-audit-scope-and-associated-guidance/",
+   "https://www.dfs.ny.gov/industry-guidance/circular-letters/cl2024-07",
+   "https://www.federato.ai",
+   "https://cytora.com",
+   "https://convr.com",
+   "https://www.guidewire.com",
+   "https://sapiens.com",
+   "https://eur-lex.europa.eu",
+   "https://flauditor.gov/pages/pdf_files/2025-011.pdf",
+   "https://floir.gov",
+   "https://www.iii.org",
+   "https://www.milliman.com/en/insight/2022-accelerated-underwriting-practices-survey",
+   "https://en.wikipedia.org (all)",
+   "https://www.gov.uk (all)",
+   "https://api.github.com/search/* (repo-scoped only; MCP code search returned 503)"
+  ],
+  "domain_assessment": "Insurance underwriting is WEAK evidence for a standalone Sophon-shaped product, with one structurally interesting but unmeasured pocket. The settlement loop the brief describes demonstrably exists in this domain: reinsurer impairment manuals and AUW rule tables (life), appetite guides and referral rules (commercial), and binding-authority terms with mandatory referral of out-of-binder risks (delegated authority) are all versioned instruments through which an owner's decision is applied prospectively. But three things cut against the product. First, the residual human work is mostly not category H: in life, 41% of applications are on a traditional path because of bright-line age/amount limits (Gen Re 2024) and kick-outs are evidence-driven (SOA taxonomy); in commercial, the measured waste is data extraction (30\u201360 min/submission; 30\u201340% of underwriter time per McKinsey); referrals are predominantly authority gates on capacity and price (E/F). Second, where recurring referral classes exist they are already codified quickly inside incumbent tooling: one MGA wrote >30 Federato rules that automate 95% of referrals; rules-engine vendors replay submissions, report referrals by trigger and tune tables; reinsurers own and version the life manual and subsidise the engine. This supports H3 and H6 \u2014 a settlement ledger would be a feature of the workbench or rules engine that already holds the rule. Third, judgment is explicitly protected and governed: carriers reserve 'individual consideration', out-of-binder risks legally require managing-agent agreement every time, and Colorado SB21-169, NY DFS CL7 and the NAIC AI bulletin make every outcome-changing rule a tested, documented model change (H4). Personal lines and health are negative (95% STP; no data). The one pocket worth a customer-discovery probe is delegated authority special acceptances at Lloyd's/MGA scale (>4,000 coverholders, ~39% of Lloyd's GWP, explicit referral rule, annual binder as the settlement instrument), because there the owner, the escalation rule and the prospective instrument all exist and nobody has published referral volumes or recurrence \u2014 but that is an absence of data, not evidence for the product. Confidence is limited: the egress proxy blocked every primary reinsurer, regulator, association and vendor page, so all figures rest on search snippets and one fetched vendor/press page; no exception rate, override rate or cost per referral was found anywhere."
+ },
+ "verification": {
+  "domain": "insurance-underwriting (life AUW, SMB/mid-market commercial P&C, Lloyd's delegated authority / MGA, P&C personal lines, health/PMI)",
+  "refuted": [
+   {
+    "claim": "Life: 'only ~12% of applications on a fully automated path' used as the human-review denominator, combined with Swiss Re's '~75% global STP' to produce a '50\u201390% human involvement' range.",
+    "why": "Internal contradiction in the finder's own text: the Gen Re figure is quoted in decision_volume as the share of applications ELIGIBLE for a fully automated programme path across 38 carriers (https://www.businesswire.com/news/home/20241112347407/en/..., press release of reinsurer survey, snippet only, fetch blocked), then reused in human_review_rate as the share actually decided without human touch. Swiss Re Magnum's STP figure (https://www.swissre.com/risk-knowledge/.../reimagining-life-insurance-underwriting.html, vendor, blocked) counts point-of-sale rules-engine decisions on reflexive-questionnaire products, a different denominator and product mix. Averaging 12% and 75% under one label is not a measurement; the resulting '50\u201390%' range should be discarded. What survives: programme-eligibility shares (12/47/41) from one reinsurer survey, unverified because the page could not be fetched."
+   },
+   {
+    "claim": "Commercial P&C human review rate of 35\u201350% of submissions and '25\u201340% need senior underwriter judgment'.",
+    "why": "Both numbers come from a single rules-engine vendor blog (https://www.higson.io/blog/using-business-rules-engines-to-automate-underwriting-in-commercial-insurance, vendor, snippet only, fetch blocked) that the finder itself notes gives 'no survey basis'. A vendor selling automation asserting that 35\u201350% of submissions are referred is marketing, not an operational rate, and the finder promoted it to the workflow's headline human_review_rate. No regulator, association, audit or academic source in the finder's list gives a commercial referral rate. Status: unsupported; treat the commercial human-review rate as unknown."
+   },
+   {
+    "claim": "'NAIC AI Model Bulletin adopted by 48+ states'.",
+    "why": "No URL is given for this figure and it does not match my recall of NAIC adoption tracking (on the order of two dozen jurisdictions had adopted the December 2023 Model Bulletin by 2025; recall, not fetched - https://content.naic.org was blocked). Without a source this number must be struck; the regulatory point (governance and testing expectations spreading state by state) can stand only qualitatively."
+   },
+   {
+    "claim": "Settlement-loop items 2, 3 and 5 for commercial and item 2/3 for life (Higson rule replay, Sapiens override-capture best practice, DecisionRules champion-challenger, c2perform QA-to-knowledge-update) are presented as evidence that organisations perform the loop.",
+    "why": "Every one of these is a vendor's description of what its product could do or what customers 'should' do (Sapiens explicitly labelled 'aspirational' by the finder; DecisionRules' example is a UK motor-finance lender, not an insurer; c2perform is a contact-centre QA vendor). None documents an insurer escalating an ambiguous case to an owner and recording a prospective settlement. They are evidence of incumbent FEATURE coverage (H3/H6), not of the loop. The only organisational example in the commercial workflow is the Federato/HDVI case study, which is also vendor-authored and could not be fetched (https://www.federato.ai/articles/hdvi-..., blocked)."
+   }
+  ],
+  "weakened": [
+   {
+    "claim": "Gen Re 2024 survey figures (12/47/41 path shares; 86/78/63 placement; 38 carriers; 82% implemented).",
+    "why": "Plausible and consistent with my recall of the November 2024 release, but the press release, the Gen Re page (https://www.genre.com/us/knowledge/publications/2024/november/surveylhau24-en) and Insurance Business coverage were all blocked, so none of the numbers were re-verified against the source. They also describe programme design shares among surveyed carriers, not the share of application volume; the finder treats them as volume shares. Keep as 'reinsurer survey via snippet, unverified'."
+   },
+   {
+    "claim": "Munich Re: 'a large majority of accelerated decisions are still being made with human underwriter involvement'.",
+    "why": "Quoted phrase only, page blocked, no percentage. It is a reinsurer's survey summary and could refer to programme design (underwriter sign-off step) rather than substantive review. It cannot be used to size human labour. Also note reinsurers have a commercial interest in describing AUW as needing their manuals and engines."
+   },
+   {
+    "claim": "LIMRA 2016: '1 in 3 companies had a fully electronic no-human-touch process'.",
+    "why": "Company-level adoption count from 2016, not an application share, and the 'no-human-touch' wording could not be checked (https://www.limra.com/... blocked; my recall is 'fully automated underwriting process for at least some products'). A decade-old company count says nothing about current human review volume."
+   },
+   {
+    "claim": "SOA 2022 AUW practices survey taxonomy used as the basis for life A\u2013H shares.",
+    "why": "The PDF (https://www.soa.org/globalassets/.../acc-underwriting-practices-survey.pdf) was blocked for both finder and verifier. The finder cites only a category list from a snippet, then assigns percentage bands to categories the survey does not measure. The A\u2013H shares for life are therefore pure estimate with a borrowed taxonomy, and should be labelled as such rather than 'basis: SOA'."
+   },
+   {
+    "claim": "Lloyd's DA figures: >4,000 approved coverholders (31 Dec 2024) and ~39\u201340% of GWP via delegated authority.",
+    "why": "Both consistent with my recall of Lloyd's public statements and both from credible source types (Lloyd's report; press quoting Lloyd's CUO), but both are snippets from blocked pages. More importantly they are population numbers, not decision numbers: the workflow the finder proposes is out-of-binder referrals, and the finder found zero data on referral counts, turnaround or recurrence. Coverholder count and GWP share do not bound the number of special acceptances."
+   },
+   {
+    "claim": "Citizens (FL) internal audit: PIF 1.2m to ~570k with 919,100 'still serviced'; authority-referral workflow in PolicyCenter; 95% QA standard.",
+    "why": "Audit-type source (good) but blocked; the PIF figures are internally odd (570k in force vs 919k serviced) and my recall of Citizens' 2025 depopulation trajectory does not clearly match ~570k by Oct 2025. Unverifiable; flag as uncertain. Its substantive point (referral gate is a compliance control hosted in the PAS) is qualitative and supports H3, not the product."
+   },
+   {
+    "claim": "BLS underwriter statistics (median $81,370 May 2025; -4% 2025\u201335; 6,800 openings) and the note that total headcount was 'not captured'.",
+    "why": "Page blocked; numbers plausible for the 2026 OOH edition. The finder missed that the same OOH page lists total employment (my recall: roughly 105\u2013106k US insurance underwriters in 2024, all lines; unverified). That is the entire addressable labour pool across life, health and P&C; life-only underwriters are a small fraction. Relevant to H8 and should be in the economic-pain section rather than absent."
+   },
+   {
+    "claim": "McKinsey 30\u201340% of underwriter time re-keying data / manual analysis; Accenture up to 40% admin; 'up to 95% personal lines STP'.",
+    "why": "The McKinsey and Accenture figures match my recall of those consultancy pieces (unfetched). The 95% personal-lines STP figure reaches the finder as double hearsay (a vendor blog quoting McKinsey, blocked) and is 'at leading carriers', i.e., a best-in-class anecdote, not an industry rate. The consultancy time-share figures cut AGAINST the product (waste is data handling) and the finder used them correctly."
+   },
+   {
+    "claim": "Life impairment manuals are 'the codified, versioned settlement of medical-risk interpretation' and thus evidence the loop exists.",
+    "why": "Manuals are built from mortality/morbidity studies and medical-director judgement at the reinsurer, not from escalated ambiguous cases fed back by carrier operations. That is rule authoring by an external actuarial owner, not the brief's case-to-settlement loop. The item should be reclassified from 'settlement loop exists' to 'rule corpus exists, owned externally' (supports H3 and undermines the buyer story). Source for the item was a broker explainer (https://www.pfnins.com/blog/navigating-impaired-risk-underwriting, industry blog, snippet), weak."
+   },
+   {
+    "claim": "Regulators 'require human review' of automated adverse decisions.",
+    "why": "Finder already marked this as weak (vendor source). Adding: Colorado Regulation 10-1-1 (governance, effective 14 Nov 2023) and NY DFS Circular Letter 7 (11 July 2024) match my recall of dates and scope, but they impose governance, documentation and testing on ECDIS/AI use, not a human-review mandate. The stronger human-in-the-loop constraint the finder mentioned only as unsourced knowledge is the EU AI Act Annex III 5(c) (life and health risk assessment and pricing as high-risk, Article 14 human oversight), which was not fetched by either of us (eur-lex blocked)."
+   }
+  ],
+  "confirmed": [
+   {
+    "claim": "Incumbent workbenches and core systems already ship referral routing, rules, exception handling and version control (H3/H6).",
+    "evidence": "Fetched: https://raw.githubusercontent.com/ishandutta2007/Awesome-Underwriting-Workbench/main/README.md (curated list, weak source type) lists Guidewire (PolicyCenter, cloud underwriting rules orchestration), Duck Creek + Send, Sapiens Decision (DMN), EIS, Insurity, Majesco Intelligent Underwriting, INSTANDA, Cytora, and summarises that the platforms 'emphasize referral workflows, rules engines, and exception handling'. Fetched: https://cloud.google.com/blog/topics/financial-services/cytora-uses-generative-ai-to-assess-underwriting-risk (vendor/press) confirms Cytora captures human corrections of low-confidence extractions as training data but gives no referral numbers and describes extraction, not interpretation. Consistent with the finder's reading."
+   },
+   {
+    "claim": "Commercial referral logic as commonly modelled is authority/tier-based (class tier, revenue/premium thresholds, claims count, business age, limits), i.e., categories B/E/F, not rule-meaning ambiguity.",
+    "evidence": "Fetched: https://github.com/bpshinnick1/Underwriting-Rules-Engine (portfolio project, weak source, synthetic data) implements a decline/refer/accept cascade whose six rules are industry tier, revenue threshold, claims count, geography, limit proportionality and business maturity, citing CFC/Corvus/Coalition style binding platforms as the pattern. On synthetic data 45.4% referred, 53% of referrals driven by 'Tier 2 industry complexity'. Not evidence of real rates, but it corroborates that referral triggers are bright-line authority gates, matching the finder's E/F characterisation."
+   },
+   {
+    "claim": "Lloyd's DA oversight pain is operational (territory breaches, loss-ratio deterioration, late bordereaux) rather than interpretive re-decision.",
+    "evidence": "Fetched: https://github.com/bpshinnick1/DA-Monitoring (portfolio model, weak source) models coverholder oversight as authority-limit, territory, loss-ratio and bordereaux-timeliness checks under the Delegated Underwriting Byelaw and Coverholder Reporting Standards, with no referral or special-acceptance component. Consistent with the finder's FCA TR15/7 and Regure-sourced characterisation (both blocked)."
+   },
+   {
+    "claim": "No public dataset carries referral reasons or settlement outcomes; the cheapest life corpus is the Prudential Kaggle set.",
+    "evidence": "Fetched: https://github.com/AgentP2003/life-insurance-risk-classification (academic/hobby, weak) - Prudential Life Insurance Assessment dataset, 59,381 applicants, 127 features, 8-level ordinal risk class; no referral or reason fields. Supports the finder's 'not found' list on referral-reason distributions and shows the base-rate experiment cannot be run from public data."
+   },
+   {
+    "claim": "The commercial 'settlement' is an appetite/referral rule edit by leadership inside the workbench (Federato), so the loop is already an incumbent feature.",
+    "evidence": "Could not fetch Federato pages (blocked) but the finder's reading is internally consistent with the Awesome-Underwriting-Workbench summary above and the AWS demo (https://github.com/aws-samples/sample-genai-underwriting-workbench-demo, vendor sample, fetched) which frames AI as helping underwriters 'focus on decision-making rather than information gathering' - i.e., vendors themselves locate the pain in evidence gathering (category A)."
+   },
+   {
+    "claim": "Life kick-outs are evidence-driven (Rx/MIB/MVR/EHR hits, requirements not met, non-disclosure) and 41% traditional path is bright-line age/amount eligibility.",
+    "evidence": "Not re-fetched, but the categories match my recall of the SOA/Milliman AUW survey structure and of Gen Re's survey framing (age/amount bands define AUW eligibility). Confirmed as a reasonable reading, with the caveat that the percentages attached to those categories are the finder's estimates."
+   }
+  ],
+  "manual_review_conflated_with_repeatable_ambiguity": [
+   "Life (finder H = 5\u201310%): the finder counted the reinsurer impairment manual and AUW rule tables as 'the settlement' and then gave H a share proportional to their importance. But the manual is authored from actuarial/medical studies, not from escalated cases; carrier-level 'exceptions' in life are mainly commercial concessions (table-shave programmes, agent-requested reconsiderations, competitive credits) = category F, and 'individual consideration' = E. Genuinely recurring interpretive gaps (a new drug, an unlisted condition combination) are settled by the reinsurer's medical director in a bulletin, at low frequency and outside the carrier. Corrected H: roughly 1\u20133% of human-reviewed cases and well under 1% of applications (estimate, no measurement; the SOA and Gen Re PDFs that could have bounded it were blocked).",
+   "Commercial P&C (finder H = 5\u201310%): the finder rolled 'appetite clarifications that become new rules' into H. Most such clarifications are bright-line appetite edits (add a class code, cap a limit, exclude a state) made by the CUO in the workbench - they are settlement of a rule GAP, not ambiguity of rule MEANING, and the HDVI story (30 rules covering 95% of referrals, vendor claim) implies the recurring set is small and exhausted quickly, which is exactly the prior-evidence pattern (few classes cover most volume, then flat). Corrected H: 3\u20135% of referrals at most, with the reusable part already captured by the appetite rule editor (estimate).",
+   "Delegated authority (finder H = 10\u201315%): the finder scored H highest here on structural grounds with 'no numeric basis'. Two conflations: (1) referrals are a small minority of DA risks by design (the binder exists so that in-scope risks bind without referral), so an H share of referrals is a tiny share of decisions; (2) a special acceptance is per-risk by construction and, on my recall of Lloyd's/LMA guidance (unfetched), a coverholder may not treat an earlier special acceptance as precedent - prospective application happens only via binder endorsement or renewal, which in a subscription market needs following-market agreement. The recurring part therefore already flows into the versioned instrument (the binder), and the 'ambiguity' that recurs (scope of class/territory wording) is category C settled by contract amendment. Corrected H: 5\u201310% of referrals, <1% of DA decisions (estimate).",
+   "Personal lines (finder C+H ~10%): residual review after ~95% STP is inspection/photos, roof/occupancy classification and compliance gates (A/B); Citizens' audit frames referrals as approval controls. H effectively ~0\u20132% (estimate); finder's verdict of negative is right.",
+   "Cross-cutting: the finder repeatedly equates 'referral exists and the outcome could be turned into a rule' with H. The brief's H requires (i) rule meaning under-determined, (ii) an owner settles it, (iii) the settlement is authoritative for later cases, (iv) the class recurs. In every underwriting workflow examined, either (ii) sits with an external party (reinsurer, lead underwriter/following market), (iii) is achieved by an existing versioned instrument (manual, appetite guide, binder endorsement), or (iv) is unmeasured."
+  ],
+  "corrected_workflow_verdicts": [
+   {
+    "name": "Individual life insurance: accelerated/automated underwriting kick-outs and referrals to human underwriters",
+    "evidence_quality": "moderate",
+    "verdict": "negative",
+    "why": "The finder's own evidence, even taken at face value, shows the loop is owned and versioned by reinsurers (manuals, engines, often subsidised), kick-outs are evidence and eligibility driven (A/B plus bright-line age/amount), carrier exceptions are commercial (F) or discretionary (E), and life/health risk assessment is treated as high-risk under the EU AI Act (recall) with governance/testing regimes in CO and NY. The '50\u201390% human involvement' figure is an invalid synthesis of incompatible denominators. H is on the order of 1\u20133% of reviewed cases. Buyer would be a carrier whose rule owner is a reinsurer. Moving from 'weak' to 'negative' for a standalone product."
+   },
+   {
+    "name": "Small and mid-market commercial P&C: appetite/referral rules, out-of-authority referrals, appetite updates",
+    "evidence_quality": "weak",
+    "verdict": "weak",
+    "why": "Headline referral rate (35\u201350%) is a single vendor blog with no basis; all five settlement-loop items are vendor-authored; the one organisational example (HDVI) is a vendor case study that itself demonstrates incumbents close the loop with ~30 rules in a workbench (H3/H6, and the small-class-count pattern from prior evidence, H7). Independent consultancy figures locate the waste in data extraction (A). Referrals are predominantly authority gates on limits, class tier and price (E/F). Downgraded from 'uncertain' to 'weak'; what remains unknown is only whether any carrier measures referral-reason mix, and no source suggests anyone does."
+   },
+   {
+    "name": "Delegated authority: coverholder/MGA out-of-binder referrals (special acceptances), audits and binder amendments",
+    "evidence_quality": "weak",
+    "verdict": "weak",
+    "why": "Only population figures exist (>4,000 coverholders, ~40% of Lloyd's GWP), zero decision-level numbers. Structurally, the special acceptance is per-risk by design and prospective reuse requires a binder endorsement agreed by the lead (and typically following markets), which is the existing, legally required, versioned settlement instrument (H3/H4). Oversight pain documented by FCA TR15/7 and audit vendors is remittances, loss funds, territory breaches and wordings, not inconsistent interpretation. Lloyd's already runs Delegated Contract/Audit/Data Manager tooling. Downgraded from 'uncertain' to 'weak'. It is still the single cheapest interview probe in the cluster (one DA oversight team at a managing agent can state its annual special-acceptance count and how many became endorsements), but absence of data is not support."
+   },
+   {
+    "name": "P&C personal lines (auto/home) underwriting referrals and authority exceptions",
+    "evidence_quality": "weak",
+    "verdict": "negative",
+    "why": "Confirmed. ~95% STP is a best-in-class anecdote via double hearsay, but even a conservative reading leaves residual review that is inspection data, classification and compliance approval; the Citizens audit (unverified) frames referral as a control, and guideline changes flow through bulletins and PAS configuration."
+   },
+   {
+    "name": "Health / private medical insurance medical underwriting referrals",
+    "evidence_quality": "unknown",
+    "verdict": "negative",
+    "why": "Confirmed. No operational data; US individual major medical is guaranteed-issue under the ACA (knowledge); UK PMI moratorium underwriting moves assessment to claim time; EU AI Act high-risk classification (recall). Not worth further effort."
+   }
+  ],
+  "missing": [
+   "Total US underwriter headcount (BLS OOH lists total employment, roughly 105\u2013106k in 2024 on my recall, unverified; page blocked) - needed for H8; life-only underwriters are a small fraction of that.",
+   "Reinsurance treaty mechanics: carriers agree to underwrite per reinsurer-approved guidelines and deviations go facultative; guideline changes typically require reinsurer notification/approval (industry practice, recall, unfetched). This makes the settlement owner external to the carrier and is the strongest structural argument against a carrier-side buyer in life; the finder hinted at it but did not state it.",
+   "Lloyd's/LMA treatment of special acceptances: on my recall (unfetched), guidance states a special acceptance applies only to the specific risk and may not be treated as precedent, and the LMA3113 binding authority wording plus the Coverholder Reporting Standards include special-acceptance documentation/flags in risk bordereaux. If confirmed, this both keeps humans in the loop by rule (H4) and shows the flag is already captured operationally (H3). Needs a fetch of the Lloyd's Code of Practice and CRS.",
+   "EU AI Act Annex III 5(c) (life and health insurance risk assessment and pricing as high-risk) with Article 14 human-oversight duties - relevant to any EU/French life or health workflow; both finder and verifier were blocked from eur-lex.",
+   "NAIC Model Bulletin adoption count - the '48+ states' figure needs a source; my recall is far lower.",
+   "State market-conduct exam reports (e.g., the Kansas exam the finder listed as blocked) are the only independent source type that documents 'underwriting guidelines applied inconsistently' findings; none were read. They would show whether inconsistency is a cited compliance problem and whether the remedy is guideline updates (which would be evidence of the loop being handled by document revision).",
+   "Any inter-underwriter consistency study (same case, different underwriters) - none found by finder; none reachable here. Without it the claim that ambiguity is being re-decided cannot be tested.",
+   "Any carrier or MGA referral log with reason codes and 'became a rule' outcomes - the only way to run the brief's base-rate experiment; the Prudential Kaggle dataset (59,381 rows) lacks reason fields.",
+   "Vendor product documentation for Guidewire PolicyCenter underwriting issues/approval authority, Duck Creek, Federato appetite rule versioning, Send rationale capture - all blocked; the claim that no vendor types the settlement with who/authority/expiry remains unverified in both directions.",
+   "French market: d\u00e9l\u00e9gation de souscription / d\u00e9rogations practice and ACPR expectations - nothing found by finder or verifier.",
+   "Blocked URLs in this verification (all 403 from egress proxy): businesswire.com, soa.org, genre.com, munichre.com, assets.lloyds.com, lloyds.com, lmalloyds.com, fca.org.uk, citizensfla.com, higson.io, content.naic.org, naic.org, insurancejournal.com, federato.ai, bls.gov, dfs.ny.gov, rgare.com, swissre.com, limra.com, milliman.com, actuaries.org.uk, perceptive-analytics.com, getregure.com, web.archive.org, api.openalex.org, api.crossref.org, api.semanticscholar.org, eiopa.europa.eu, bis.org, iaisweb.org, acpr.banque-france.fr, bafin.de, learn.microsoft.com, papers.ssrn.com, core.ac.uk, oecd.org, insurance.ca.gov, sec.gov, aws.amazon.com, legislation.gov.uk, courtlistener.com, lmg.london, abi.org.uk, iii.org, federalregister.gov, govinfo.gov, archive.org, wikidata.org, wikipedia.org, duckduckgo.com, bing.com; GitHub code search API 503/403."
+  ],
+  "overall": "Verification was severely constrained: the session's WebSearch budget was exhausted before this verifier ran, and every primary source the finder cited was egress-blocked for both WebFetch and curl, so no load-bearing number could be re-fetched. Within those limits the finder's work is directionally honest but systematically over-generous on two axes. First, it presents vendor blog assertions as operational rates (the 35\u201350% commercial referral rate rests on one rules-engine vendor's unsupported blog; the '50\u201390% human involvement' in life is a synthesis of two incompatible denominators, programme eligibility from Gen Re versus point-of-sale STP from Swiss Re) and cites an unsourced '48+ states' NAIC adoption figure that looks wrong. Second, its settlement-loop evidence is almost entirely vendor-authored descriptions of rule-tuning features, which is evidence for H3/H6 (incumbents already own the loop), not for the loop being an unmet need; the life 'settlement' (reinsurer impairment manual) is rule authoring by an external actuarial owner, not case-to-precedent settlement; the DA 'settlement' (special acceptance) is per-risk by construction and becomes prospective only via a binder endorsement that already exists as a versioned, legally required instrument. Re-estimated H shares are 1\u20133% of reviewed life cases, 3\u20135% of commercial referrals and 5\u201310% of DA referrals (each a small minority of decisions), all estimates with no measurement available. What I could fetch (an underwriting-workbench vendor list, a Cytora/Google Cloud piece, two portfolio models of commercial referral logic and Lloyd's DA oversight, an AWS life-underwriting demo, the Prudential dataset) consistently shows referral triggers are authority gates and classification (B/E/F), oversight pain is operational, vendors locate the waste in evidence gathering (A), and no public corpus carries referral reasons or settlement outcomes. Corrected verdicts: life negative (was weak), SMB commercial weak (was uncertain), delegated authority weak (was uncertain, remains the one cheap interview probe), personal lines negative, health negative. The cluster as a whole is negative-to-weak evidence for a standalone Sophon-shaped product: the loop the brief describes exists in underwriting but is executed through instruments that are already versioned and owned (manuals, appetite rules, binders), humans stay in the loop by treaty, market practice or regulation, and the addressable labour pool (on the order of 100k US underwriters across all lines, most of whose time is data handling) is too small at the 1\u20135% H share to support standalone economics."
+ }
+}

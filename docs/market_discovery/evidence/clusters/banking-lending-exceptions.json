@@ -1,0 +1,408 @@
+{
+ "key": "banking-lending-exceptions",
+ "found": {
+  "domain": "banking-lending-exceptions",
+  "domain_assessment": "NETWORK CAVEAT FIRST: this finder could not verify a single primary source. WebSearch returned \"budget exhausted (200/200)\" on the very first query; WebFetch and curl were refused by the egress proxy for occ.gov, fdic.gov, federalreserve.gov, ffiec.gov, consumerfinance.gov, fanniemae.com (all subdomains), freddiemac.com, fhfaoig.gov, hud.gov, eba.europa.eu, eur-lex.europa.eu, acpr.banque-france.fr, legifrance.gouv.fr, bis.org, ecfr.gov, govinfo.gov, federalregister.gov, sec.gov, ncino.com, moodys.com, fico.com, icemortgagetechnology.com, acesquality.com, mba.org, urban.org, wikipedia, web.archive.org and ~30 other domains; the GitHub search API is repo-scoped in this session and returned 503. Only raw.githubusercontent.com, PyPI and npm were reachable, which yielded three marginal READMEs (Catala, CFPB HMDA platform, an agency loan-level data loader). Everything below that is not from those three files is MODEL RECALL, flagged as such, and must be re-verified before anyone acts on it. Evidence quality is therefore \"unknown\" or \"weak\" across the board by construction, not because the domain was shown to be empty.\n\nSubstantive picture from recall, to be tested: (1) US bank supervisors (OCC Loan Portfolio Management handbook, FDIC RMS Manual s.3.2, 2020 Interagency Guidance on Credit Risk Review Systems) require that exceptions to loan policy be approved at a designated authority level, documented, aggregated and reported to the board, and they treat a rising exception rate as a signal that either underwriting is loosening or the policy needs revision. That is a real, regulator-mandated loop from repeated exceptions to policy change, but the exceptions themselves are overwhelmingly (a) missing-document exceptions (category A) or (b) per-loan discretionary deviations from bright-line limits such as LTV, DSCR, amortisation, guarantor support (categories E/F/G). The settlement is \"this loan, this time\", not a prospective reading. Vendors (nCino policy-exception object, Abrigo/Sageworks exception tracking, Baker Hill, Moody's CreditLens, spreadsheets) capture the per-loan exception and its approver for reporting, and none, to my knowledge, turn a decision into a versioned reusable rule; but the reason is that the bank does not want them reused: an exception that becomes a rule is by definition a policy amendment, which the Chief Credit Officer / credit policy committee already handles at policy-review cadence. This looks like the IPSA pattern again: plentiful repetition where the owner already governs with bright lines, discretion where disputes arise. (2) The one genuinely prospective, high-volume settlement loop in the cluster is the GSE interpretation loop: lender question (Ask Poli / account team / Freddie Mac Seller support) -> GSE clarification -> Selling Guide / Guide Bulletin update that binds all sellers. That loop exists, recurs, is versioned and is executable in DU/LPA. But the owner is two institutions (Fannie Mae, Freddie Mac) plus FHA/VA/USDA, and the downstream lender-side artefact (\"overlays\", \"scenario desk\" answers) is already encoded in LOS business rules (Encompass), investor eligibility engines and product/pricing engines. This is H3 (already encoded adequately) and H8 (owner pool too small) territory unless the lender-side scenario-desk knowledge proves to be badly captured, which I could not verify. (3) In the EU/France, EBA GL/2020/06 on loan origination requires documented, escalated and monitored deviations from credit policy and permits automated decisioning with governance; EU AI Act Annex III 5(b) makes creditworthiness assessment / credit scoring of natural persons high-risk (human oversight, logging, right to explanation), and CJEU SCHUFA (C-634/21) treats credit scoring as an Art. 22 GDPR automated decision. France additionally runs the clearest quota-governed exception regime I know of: the HCSF binding decision lets banks exceed the 35% DSTI / 25-year maturity limits for up to 20% of quarterly mortgage production, with sub-quotas, and ACPR/HCSF publish the utilisation rate. That is a regulator-designed exception budget, and it argues AGAINST the thesis: the ambiguity is not interpretive, it is a rationed discretion pool. Net: the cluster contains real, audited exception-tracking work and a real GSE-owned settlement loop, but the per-decision interpretive (category H) share on the lender side is probably small, incumbents already hold the per-loan record, and the prospective loop is owned by a handful of guide publishers. I would rate the cluster \"uncertain leaning weak\" pending the verification this session could not perform; the single thing worth testing empirically is a mortgage lender's scenario-desk / underwriting-help-desk log, to measure how many questions are repeats of a previously answered guideline interpretation versus missing-document or discretionary questions.",
+  "workflows": [
+   {
+    "name": "Commercial and consumer credit policy exceptions (bank loan policy exceptions and exception tracking)",
+    "geography": "US (OCC/FDIC/FRB-supervised banks); analogous in EU under EBA GL/2020/06",
+    "decision_volume": "NOT SOURCED. No fetchable number this session. Model recall (unverified): US supervisors do not publish aggregate exception counts; community-bank exception reports typically run to hundreds or low thousands of open exceptions per bank, dominated by document exceptions. Estimate only; verify at https://www.occ.gov/publications-and-resources/publications/comptrollers-handbook/files/loan-portfolio-management/pub-ch-loan-portfolio-management.pdf (regulator, BLOCKED) and https://www.fdic.gov/regulations/safety/manual/section3-2.pdf (regulator, BLOCKED).",
+    "human_review_rate": "By construction 100% of policy exceptions are human-approved at a designated authority level (the exception IS the human decision). Basis: model recall of OCC LPM handbook and 2020 Interagency Guidance on Credit Risk Review Systems (https://www.occ.gov/news-issuances/bulletins/2020/bulletin-2020-50.html, regulator, BLOCKED, unverified).",
+    "why_humans_review": "Rough shares (ESTIMATE, basis = recall of examiner practice and vendor exception-tracking taxonomies, unverified): A missing evidence ~45-60% of tracked exceptions by count (document exceptions: missing/expired financial statements, insurance, UCC continuations, appraisals); E true discretion ~20-30% (underwriting exceptions to LTV/DSCR/term/guarantee limits approved on the merits of one borrower); F commercial negotiation ~5-10% (structure and pricing concessions to win a relationship); G one-off ~5%; C rule interpretation ~5-10% (what counts as 'global cash flow', how to treat rent-roll vacancies); H repeatable, prospectively settleable ambiguity ~<5%. Basis: supervisors classify exceptions as documentation vs underwriting; underwriting exceptions are deliberately case-specific and the mechanism for making them prospective is a policy amendment by the credit policy committee, which already exists.",
+    "settlement_loop_evidence": [
+     {
+      "description": "Regulator loop (recall, unverified): OCC Loan Portfolio Management handbook and FDIC RMS Manual s.3.2 say exceptions to loan policy must be approved by designated authority, documented, aggregated and reported to the board, and that a high or rising number of exceptions indicates the policy may need revision. This is a loop from repeated exceptions to prospective policy change, run at policy-review cadence, not per case.",
+      "source_url": "https://www.occ.gov/publications-and-resources/publications/comptrollers-handbook/files/loan-portfolio-management/pub-ch-loan-portfolio-management.pdf",
+      "source_type": "regulator (fetch BLOCKED; model recall, unverified)",
+      "prospective": "yes",
+      "reusable_how": "Only via formal policy amendment approved by the credit policy committee / board; the individual exception approval is not itself reusable."
+     },
+     {
+      "description": "2020 Interagency Guidance on Credit Risk Review Systems (OCC 2020-50 / FRB SR 20-13 / FDIC FIL) asks loan review to identify and report loan policy and underwriting exceptions and documentation exceptions and their trends to the board (recall, unverified).",
+      "source_url": "https://www.occ.gov/news-issuances/bulletins/2020/bulletin-2020-50.html",
+      "source_type": "regulator (fetch BLOCKED; model recall, unverified)",
+      "prospective": "unclear",
+      "reusable_how": "Trend reporting drives policy changes; no per-case precedent mechanism."
+     },
+     {
+      "description": "EBA Guidelines on loan origination and monitoring (EBA/GL/2020/06, applying from 30 June 2021) require institutions to define credit decision-making frameworks, document and escalate deviations/exceptions from credit policy and monitor them; automated models permitted with governance and human oversight (recall, unverified).",
+      "source_url": "https://www.eba.europa.eu/regulation-and-policy/credit-risk/guidelines-on-loan-origination-and-monitoring",
+      "source_type": "regulator (fetch BLOCKED; model recall, unverified)",
+      "prospective": "unclear",
+      "reusable_how": "Exceptions are monitored in aggregate; guidelines do not describe precedent reuse."
+     }
+    ],
+    "economic_pain": "NOT SOURCED this session. Recall (unverified): pain is regulatory (MRAs / examiner criticism for untracked exceptions, board reporting burden) and credit-loss correlation of exception loans, not review labour per se. No cost-per-review figure could be fetched. Community Banking Connections article on managing loan policy exceptions (https://www.communitybankingconnections.org/, Federal Reserve outreach, BLOCKED) would be the first place to verify.",
+    "existing_solutions": "Recall (unverified): nCino (policy exception object on the loan record with approver and reason; reporting), Abrigo/Sageworks exception tracking, Baker Hill NextGen, Moody's CreditLens (policy rules and approval workflow), Jack Henry / Fiserv core add-ons, and very commonly spreadsheets. These capture each exception as a per-loan, approver-stamped record for board reporting. None, to my knowledge, promotes an exception decision into a versioned executable rule, and the bank's governance model deliberately keeps it that way: reusable = policy amendment.",
+    "buyer_and_budget": "Chief Credit Officer / credit administration; budget sits inside LOS/credit-risk platforms (nCino, Abrigo). Standalone exception-ledger budget unlikely; buyer sees it as an LOS report.",
+    "regulatory_constraints": "US: exceptions must be approved by humans at designated authority; automation of the exception grant is not prohibited for commercial credit but examiners expect individual approval. EU: EBA GL/2020/06 governance; consumer credit additionally hits AI Act Annex III 5(b) and GDPR Art. 22 (SCHUFA, C-634/21).",
+    "evidence_quality": "unknown",
+    "verdict": "weak",
+    "notes": "Unverified. Falsifiers likely to hold: H1 (document exceptions dominate by count), H3 (repeated exceptions already become policy amendments), H4 (underwriting exceptions are intended to stay discretionary). Mirrors the IPSA finding: repetition lives where bright lines already exist, disputes are discretionary."
+   },
+   {
+    "name": "Mortgage underwriting guideline interpretation, overlays and scenario-desk questions (lender side)",
+    "geography": "US primarily (agency/GSE, FHA/VA/USDA lending)",
+    "decision_volume": "NOT SOURCED this session. HMDA annual application/origination totals could not be fetched (https://www.consumerfinance.gov/data-research/hmda/, government statistics, BLOCKED; https://www.ffiec.gov/, BLOCKED). Recall only, unverified: several million originations and roughly twice as many applications per year in the US; every file carries multiple underwriting conditions. Scenario-desk question volumes are not public.",
+    "human_review_rate": "NOT SOURCED. Recall (unverified): essentially 100% of agency files are underwritten by a human underwriter working from a DU/LPA finding; DU 'Refer' and FHA TOTAL 'Refer' files require full manual underwriting; FHA manual-underwrite share has at times been in the double digits of percent. Verify at https://www.hud.gov/sites/dfiles/OCHCO/documents/4000.1hsgh-112024.pdf (regulator, BLOCKED).",
+    "why_humans_review": "Rough shares (ESTIMATE, basis = recall of QC defect taxonomies such as ACES Mortgage QC Industry Trends, where income/employment calculation is the persistently largest defect category, plus loan documentation and eligibility; unverified): A missing evidence ~40-50% (conditions for pay stubs, bank statements, LOEs, VOEs); B factual classification ~15-20% (is this income stable, is this deposit a large deposit, occupancy); C interpretation of existing guideline ~15-20% (how to calculate self-employed / variable / declining income, gaps in employment, gift funds, condo eligibility, non-arm's-length transactions); D conflict of authorities ~5% (GSE vs investor vs MI vs state law); E discretion ~5% (compensating factors on manual underwrites); G one-off ~5%; H repeatable prospectively settleable ~10% (the recurring guideline questions that lenders answer via overlays, FAQs and scenario-desk precedents). Category C/H is the most credible in the cluster, but its owner is the GSE/agency and the lender-side settlement is an overlay already coded into the LOS.",
+    "settlement_loop_evidence": [
+     {
+      "description": "Lender-internal 'scenario desk' / underwriting help desk: loan officers submit a scenario, a senior underwriter or credit policy manager answers; answers are frequently emailed and some lenders maintain FAQ/overlay matrices. Recall of industry practice only; no volume or repeat-rate data could be fetched.",
+      "source_url": "https://www.mba.org/",
+      "source_type": "industry association (BLOCKED; model recall, unverified)",
+      "prospective": "unclear",
+      "reusable_how": "Only if the lender codifies it as an overlay in its LOS rules or product guidelines; often stays in email."
+     },
+     {
+      "description": "Overlays: lender- or investor-imposed requirements stricter than the agency guide (e.g. minimum FICO, max DTI, extra reserves) are prospective, versioned settlements of the lender's risk appetite over GSE ambiguity, and are encoded in Encompass business rules and product/pricing engines. Recall, unverified.",
+      "source_url": "https://www.icemortgagetechnology.com/products/encompass",
+      "source_type": "vendor (BLOCKED; model recall, unverified)",
+      "prospective": "yes",
+      "reusable_how": "LOS business rules, eligibility/pricing engine rules; versioned by the lender's product team."
+     },
+     {
+      "description": "Mortgage QC vendors (ACES Quality Management quarterly Mortgage QC Industry Trends) report a critical defect rate in the low single-digit percent range with income/employment as the largest category; this measures error, not interpretive ambiguity, and could not be fetched.",
+      "source_url": "https://www.acesquality.com/resources/reports",
+      "source_type": "vendor (BLOCKED; model recall, unverified)",
+      "prospective": "no",
+      "reusable_how": "Not a settlement; QC findings feed training and overlay changes."
+     }
+    ],
+    "economic_pain": "NOT SOURCED this session. Recall (unverified): MBA IMB performance data put fully loaded cost to originate in the low five figures of dollars per loan in 2023-2024 with personnel the largest component; repurchase and defect costs are the loss lever. Verify at https://www.mba.org/ (industry association, BLOCKED).",
+    "existing_solutions": "Recall (unverified): Fannie Mae DU and Freddie Mac LPA (agency AUS, executable guide), FHA TOTAL Scorecard, Encompass (ICE) business rules and conditions, Blend, product & pricing engines (Optimal Blue, Polly), investor eligibility engines, QC platforms (ACES), and a wave of LLM 'guideline assistant' products for underwriters. Overlays and conditions are already versioned rules in the LOS; scenario-desk answers are the unstructured residue.",
+    "buyer_and_budget": "Chief Credit Officer / SVP Underwriting / credit policy at IMBs and bank mortgage divisions; budget in LOS and underwriting technology lines. Willingness to pay for a standalone precedent ledger unknown.",
+    "regulatory_constraints": "ECOA/Reg B adverse action reasons, fair lending scrutiny of manual overrides and exceptions (CFPB/DOJ), GSE reps and warrants (lender bears repurchase risk if its interpretation is wrong), state licensing. Automation of interpretation is not prohibited, but the lender, not the tool, owns the rep and warrant.",
+    "evidence_quality": "unknown",
+    "verdict": "uncertain",
+    "notes": "The most Sophon-shaped workflow in the cluster on paper (recurring guideline questions, an authoritative internal owner, structured facts, rules that change monthly). Unverified whether scenario-desk repeats are frequent enough or whether lenders already capture them adequately as overlays. This is the workflow whose historical question log should be sampled for the base-rate experiment."
+   },
+   {
+    "name": "GSE interpretation loop (Fannie Mae Ask Poli / Selling Guide updates, Freddie Mac Guide Bulletins, lender inquiries becoming guide clarifications)",
+    "geography": "US",
+    "decision_volume": "NOT SOURCED this session (https://askpoli.fanniemae.com/ and https://selling-guide.fanniemae.com/ BLOCKED; https://guide.freddiemac.com/app/guide/bulletins BLOCKED). Recall (unverified): Fannie Mae issues roughly monthly Selling Guide announcements and Freddie Mac issues Guide Bulletins multiple times per month; each contains several clarifications, some explicitly described as responding to lender/seller questions. Ask Poli question volumes are not public.",
+    "human_review_rate": "Not applicable in the usual sense: each guide clarification is a human policy decision at the GSE; downstream execution is automated in DU/LPA and lender LOS rules.",
+    "why_humans_review": "ESTIMATE (basis: recall of the character of guide announcements, unverified): C interpretation of existing guide ~40%; H repeatable ambiguity settled prospectively ~40% (that is what a clarification is); D conflicts (guide vs law vs investor programs) ~10%; E policy discretion / risk appetite changes ~10%. This is the purest category-H loop in the cluster, but it is run by the two GSEs and FHA/VA/USDA as guide publishers.",
+    "settlement_loop_evidence": [
+     {
+      "description": "Fannie Mae Ask Poli: a searchable Q&A layer over the Selling and Servicing Guides where lenders submit questions and Fannie Mae publishes answers; recalled disclaimer that Ask Poli content is informational and the Guide governs. Recurrent lender questions surface as Selling Guide announcement clarifications. Recall, unverified.",
+      "source_url": "https://askpoli.fanniemae.com/",
+      "source_type": "GSE / quasi-government (BLOCKED; model recall, unverified)",
+      "prospective": "yes",
+      "reusable_how": "Published FAQ answers apply to all lenders; guide clarifications are versioned and implemented in DU."
+     },
+     {
+      "description": "Freddie Mac Guide Bulletins periodically state that a change 'clarifies' requirements or responds to Seller inquiries; bulletins are dated, versioned and effective prospectively. Recall, unverified.",
+      "source_url": "https://guide.freddiemac.com/app/guide/bulletins",
+      "source_type": "GSE / quasi-government (BLOCKED; model recall, unverified)",
+      "prospective": "yes",
+      "reusable_how": "Guide text plus Loan Product Advisor implementation."
+     },
+     {
+      "description": "Lender-specific negotiated variances to the Selling Guide (documented in master agreements) are prospective settlements for one lender; FHFA-OIG has reviewed GSE variance governance. Report identifier not verifiable this session.",
+      "source_url": "https://www.fhfaoig.gov/",
+      "source_type": "audit / inspector-general (BLOCKED; model recall, unverified)",
+      "prospective": "yes",
+      "reusable_how": "Contractual variance applied to that lender's deliveries; tracked by the GSE."
+     }
+    ],
+    "economic_pain": "NOT SOURCED. The loop already works at the GSE; lender-side pain is the lag between an unclear guide passage and the clarification, and the repurchase exposure in between. No figure fetched.",
+    "existing_solutions": "The GSEs' own guide-publishing, Ask Poli, DU/LPA rule releases; lenders consume via LOS updates. Already versioned, provenance-bearing and executable at the owner.",
+    "buyer_and_budget": "Owner pool is Fannie Mae, Freddie Mac, FHA, VA, USDA and a few large private-label investors; not a standalone software market.",
+    "regulatory_constraints": "FHFA conservatorship oversight; guide changes are public and prospective.",
+    "evidence_quality": "unknown",
+    "verdict": "negative",
+    "notes": "Strong existence proof that the settlement loop pattern is real and valuable, but it supports H3/H8: the owner already encodes settlements adequately and the owner pool is tiny."
+   },
+   {
+    "name": "Loan operations exception queues (payment posting, document/collateral exceptions, servicing exceptions)",
+    "geography": "US and EU",
+    "decision_volume": "NOT SOURCED. No fetchable data this session. Servicing exception volumes are not published by regulators; vendor claims could not be fetched.",
+    "human_review_rate": "Unknown; exception queues are by definition the human-handled residue of straight-through processing.",
+    "why_humans_review": "ESTIMATE (basis: nature of the work, unverified): A missing evidence ~50% (missing payoff figures, unmatched remittances, missing recorded documents); B factual classification ~35% (which loan/borrower does this payment belong to, is this document acceptable); C ~10% (how to apply a partial payment under the note and servicing rules); H <5%. Mostly deterministic once facts arrive.",
+    "settlement_loop_evidence": [
+     {
+      "description": "No settlement-loop evidence found or recalled; these queues are operated as work items in servicing systems (Black Knight/ICE MSP, Sagent, Fiserv) and BPM tools, with resolution rules already in procedures manuals.",
+      "source_url": "https://www.icemortgagetechnology.com/",
+      "source_type": "vendor (BLOCKED; model recall, unverified)",
+      "prospective": "no",
+      "reusable_how": "Procedure manual updates."
+     }
+    ],
+    "economic_pain": "Unknown; labour-intensive but low value per item.",
+    "existing_solutions": "Servicing platforms, BPM/case management (Pega, Appian), RPA. Adequate for a missing-data problem.",
+    "buyer_and_budget": "Head of loan operations / servicing; budget in servicing platform and RPA lines.",
+    "regulatory_constraints": "Reg Z / RESPA servicing rules (US), consumer protection (EU); payment application rules are prescribed, not ambiguous.",
+    "evidence_quality": "unknown",
+    "verdict": "negative",
+    "notes": "H1 applies: the bottleneck is missing or mismatched data, not interpretation."
+   },
+   {
+    "name": "France: HCSF mortgage-criteria flexibility margin and EU consumer credit decisioning (ACPR/EBA/AI Act)",
+    "geography": "France and EU",
+    "decision_volume": "NOT SOURCED this session (https://acpr.banque-france.fr/ and https://www.economie.gouv.fr/hcsf BLOCKED). Recall (unverified): French banks originate on the order of a million-plus new housing loans per year; the HCSF binding decision (D-HCSF-2021-7, applicable 1 Jan 2022) allows deviation from the 35% DSTI / 25-year maturity criteria for up to 20% of quarterly production, with at least 80% of that margin reserved for primary residences and 30% for first-time buyers; ACPR/HCSF have reported actual use of the margin below the 20% ceiling.",
+    "human_review_rate": "Recall (unverified): each deviation is a bank credit decision counted against the margin; ~15% or less of production uses it. Basis: HCSF/ACPR public monitoring, could not be fetched.",
+    "why_humans_review": "ESTIMATE (basis: design of the HCSF regime, unverified): E true discretion ~70% (the margin is a rationed discretion budget, explicitly not an interpretation), F commercial negotiation ~15%, B factual classification ~10% (whether the loan qualifies as primary residence / first-time buyer), C/H ~5%.",
+    "settlement_loop_evidence": [
+     {
+      "description": "HCSF decision creates a regulator-designed exception quota rather than a precedent mechanism: banks may deviate for a fixed share of production and must report usage to ACPR; HCSF has adjusted the rule (e.g. treatment of bridge loans, energy-renovation works) via subsequent decisions, which is a prospective settlement at the regulator level, not the bank level. Recall, unverified.",
+      "source_url": "https://www.economie.gouv.fr/hcsf",
+      "source_type": "regulator (BLOCKED; model recall, unverified)",
+      "prospective": "yes",
+      "reusable_how": "Regulator amends the binding decision; banks encode the quota in origination controls."
+     },
+     {
+      "description": "ACPR discussion papers on governance of AI algorithms in finance (2020) and explainability (2022) set expectations for human oversight of credit models; EU AI Act Annex III 5(b) classifies AI for creditworthiness assessment / credit scoring of natural persons as high-risk (excluding fraud detection), bringing Art. 14 human oversight, logging and Art. 86 explanation duties; CJEU SCHUFA C-634/21 (Dec 2023) held that producing a credit score relied on by lenders is an Art. 22 GDPR automated decision. Recall, unverified; whether the Annex III application date was postponed by the 2025 digital-omnibus proposal could not be checked.",
+      "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1689",
+      "source_type": "regulation (BLOCKED; model recall, unverified)",
+      "prospective": "yes",
+      "reusable_how": "Constrains automation of consumer credit decisions; does not itself create a precedent loop."
+     }
+    ],
+    "economic_pain": "Unknown; not fetched.",
+    "existing_solutions": "Bank credit-scoring and origination systems with HCSF quota controls; ACPR reporting.",
+    "buyer_and_budget": "Directeur des risques de cr\u00e9dit / conformit\u00e9; budget inside origination platforms.",
+    "regulatory_constraints": "HCSF binding criteria; EBA GL/2020/06; AI Act high-risk regime for natural-person creditworthiness (human oversight required, so deterministic auto-decision of consumer credit from 'settled' interpretations would still need a human-in-the-loop design); GDPR Art. 22; French consumer credit code (Code de la consommation) creditworthiness-check duties.",
+    "evidence_quality": "unknown",
+    "verdict": "negative",
+    "notes": "France is a counter-example: exceptions are rationed discretion, and consumer-credit automation is the most constrained lending segment in the EU."
+   }
+  ],
+  "evidence_against_thesis": [
+   "Bank policy exceptions are, by regulatory design, per-loan discretionary decisions approved at an authority level; the mechanism for making them prospective already exists (policy amendment by the credit policy committee at policy-review cadence), which supports H3 and H4. (Model recall of OCC/FDIC guidance; not verified this session.)",
+   "Exception-tracking reports at banks are dominated by documentation exceptions (missing or expired documents), i.e. category A, supporting H1. (Recall of examiner and vendor taxonomies; unverified.)",
+   "The one clean, high-volume, prospective settlement loop in the cluster (GSE Ask Poli / Guide Bulletins / DU-LPA rule releases) is owned by a handful of guide publishers who already version, publish and execute their settlements, supporting H3 and H8.",
+   "Lender-side prospective settlements of GSE ambiguity (overlays) are already encoded as LOS business rules and eligibility/pricing-engine rules (Encompass, PPEs), supporting H3 and H6.",
+   "France's HCSF regime shows mortgage exceptions can be a rationed discretion budget (20% of production) rather than interpretive ambiguity; EU AI Act Annex III 5(b), GDPR Art. 22 and the SCHUFA judgment keep humans in consumer credit decisions even after precedent exists, supporting H4 for EU consumer lending.",
+   "Loan operations exception queues are missing-data and matching problems handled by servicing platforms and BPM, supporting H1 and H6.",
+   "Prior IPSA finding replicates in structure: repetition is plentiful where owners already govern with bright lines (LTV, DTI, DSCR caps), and disputes arise where decisions are discretionary."
+  ],
+  "not_found": [
+   "Any verified primary-source text: the session's WebSearch budget was already exhausted (200/200) and the egress proxy blocked every regulator, GSE, EU, vendor and press domain attempted; only raw.githubusercontent.com, PyPI and npm were reachable.",
+   "Aggregate policy-exception rates for commercial loan portfolios (OCC underwriting survey, FDIC, FRB) - not fetched, and to my recollection not published as industry aggregates.",
+   "Ask Poli question volumes, share of Selling Guide announcements attributed to lender inquiries, count of Freddie Mac Guide Bulletins per year - not fetched.",
+   "Mortgage scenario-desk / underwriting help-desk question volumes and repeat rates - not public to my knowledge; would need customer discovery.",
+   "DU/LPA Approve vs Refer rates and manual-underwriting share by channel - not fetched (HUD 4000.1, FHA annual report, Urban Institute blocked).",
+   "Cost per underwriting review / cost to originate (MBA) and QC critical defect rates by category (ACES) - not fetched.",
+   "Whether nCino, Abrigo, CreditLens, Encompass or Blend expose exception decisions as versioned reusable rules - vendor documentation blocked; recalled position (per-loan records, not rules) unverified.",
+   "ACPR / HCSF published utilisation of the 20% flexibility margin and any ACPR guidance on automated credit decisioning - blocked.",
+   "Current status of EU AI Act Annex III application date for creditworthiness systems (original 2 Aug 2026 vs proposed omnibus delay) - blocked."
+  ],
+  "blocked_urls": [
+   "https://www.occ.gov/publications-and-resources/publications/comptrollers-handbook/files/loan-portfolio-management/pub-ch-loan-portfolio-management.pdf",
+   "https://www.occ.gov/news-issuances/bulletins/2020/bulletin-2020-50.html",
+   "https://www.fdic.gov/regulations/safety/manual/section3-2.pdf",
+   "https://www.communitybankingconnections.org/articles/2013/q4/managing-loan-policy-exceptions",
+   "https://www.federalreserve.gov/supervisionreg/srletters/SR2013.htm",
+   "https://www.federalreserve.gov/publications/files/2024-november-supervision-and-regulation-report.pdf",
+   "https://www.federalregister.gov/documents/2020/05/08/2020-09904/interagency-guidance-on-credit-risk-review-systems",
+   "https://www.ecfr.gov/current/title-12/chapter-I/part-30/appendix-Appendix%20A%20to%20Part%2030",
+   "https://www.govinfo.gov/content/pkg/CFR-2024-title12-vol1/pdf/CFR-2024-title12-vol1-part30-appA.pdf",
+   "https://askpoli.fanniemae.com/",
+   "https://selling-guide.fanniemae.com/sel/a2-2-01/representations-and-warranties-overview",
+   "https://singlefamily.fanniemae.com/media/document/pdf/selling-guide",
+   "https://www.fanniemae.com/research-and-insights/perspectives/underwriting-and-eligibility",
+   "https://guide.freddiemac.com/app/guide/bulletins",
+   "https://www.freddiemac.com/",
+   "https://www.fhfaoig.gov/sites/default/files/EVL-2016-005.pdf",
+   "https://www.hud.gov/sites/dfiles/OCHCO/documents/4000.1hsgh-112024.pdf",
+   "https://www.consumerfinance.gov/data-research/hmda/summary-of-2024-data-on-mortgage-lending/",
+   "https://www.ffiec.gov/press/pr062024.htm",
+   "https://ffiec.cfpb.gov/",
+   "https://www.urban.org/research/publication/manual-underwriting-share-mortgage-market",
+   "https://www.mba.org/news-and-research/newsroom/news/2025/03/13/imb-production-profits-decline-in-fourth-quarter-of-2024",
+   "https://www.acesquality.com/resources/reports",
+   "https://www.eba.europa.eu/regulation-and-policy/credit-risk/guidelines-on-loan-origination-and-monitoring",
+   "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1689",
+   "https://artificialintelligenceact.eu/annex/3/",
+   "https://acpr.banque-france.fr/en",
+   "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072026/LEGISCTA000006170491/",
+   "https://www.bis.org/bcbs/publ/d551.htm",
+   "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001411342&type=10-K",
+   "https://www.ncino.com/solutions/commercial-banking",
+   "https://www.moodys.com/web/en/us/capabilities/lending/creditlens.html",
+   "https://www.fico.com/en/products/fico-blaze-advisor-decision-rules-management-system",
+   "https://www.icemortgagetechnology.com/products/encompass",
+   "https://en.wikipedia.org/wiki/Desktop_Underwriter",
+   "https://web.archive.org/",
+   "https://www.abrigo.com/",
+   "https://www.rmahq.org/",
+   "https://www.aba.com/",
+   "https://www.icba.org/",
+   "https://www.americanbanker.com/",
+   "https://www.housingwire.com/",
+   "https://www.nationalmortgagenews.com/",
+   "https://api.github.com/search/code (repo-scoped in this session; 503 authorization not ready)"
+  ],
+  "sources": [
+   {
+    "url": "https://raw.githubusercontent.com/CatalaLang/catala/master/README.md",
+    "type": "open-source project documentation (FETCHED)",
+    "used_for": "Prior art: rules-as-code from legislative text with lawyer review; confirms the existing-solutions pattern of encoding settled law clause by clause, not runtime settlement capture."
+   },
+   {
+    "url": "https://raw.githubusercontent.com/cfpb/hmda-platform/master/README.md",
+    "type": "government open-source documentation (FETCHED)",
+    "used_for": "Shows HMDA filings are validated against Syntactical, Validity, Quality and Macro edits per the Filing Instruction Guide; mortgage reporting exceptions are deterministic edit checks, i.e. category A/B not H."
+   },
+   {
+    "url": "https://raw.githubusercontent.com/toddwschneider/agency-loan-level/master/README.md",
+    "type": "open-source data tooling (FETCHED)",
+    "used_for": "Confirms Fannie Mae and Freddie Mac publish loan-level performance datasets (useful for any later base-rate work), no exception data."
+   },
+   {
+    "url": "https://www.occ.gov/publications-and-resources/publications/comptrollers-handbook/files/loan-portfolio-management/pub-ch-loan-portfolio-management.pdf",
+    "type": "regulator (BLOCKED; model recall, unverified)",
+    "used_for": "Recalled examiner expectations that policy exceptions be approved, documented, aggregated, reported to the board and that rising exceptions signal a need to revise policy."
+   },
+   {
+    "url": "https://www.occ.gov/news-issuances/bulletins/2020/bulletin-2020-50.html",
+    "type": "regulator (BLOCKED; model recall, unverified)",
+    "used_for": "Recalled 2020 Interagency Guidance on Credit Risk Review Systems: loan review should identify and report policy/underwriting and documentation exceptions and trends."
+   },
+   {
+    "url": "https://www.eba.europa.eu/regulation-and-policy/credit-risk/guidelines-on-loan-origination-and-monitoring",
+    "type": "regulator (BLOCKED; model recall, unverified)",
+    "used_for": "Recalled EBA GL/2020/06 requirements on credit decision frameworks, documented deviations from credit policy, and governance of automated models."
+   },
+   {
+    "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1689",
+    "type": "regulation (BLOCKED; model recall, unverified)",
+    "used_for": "Recalled AI Act Annex III 5(b): creditworthiness assessment / credit scoring of natural persons is high-risk except fraud detection; human oversight and explanation obligations."
+   },
+   {
+    "url": "https://www.economie.gouv.fr/hcsf",
+    "type": "regulator (BLOCKED; model recall, unverified)",
+    "used_for": "Recalled HCSF binding mortgage criteria (35% DSTI, 25 years) with a 20% flexibility margin and sub-quotas; exceptions as a rationed discretion budget."
+   },
+   {
+    "url": "https://askpoli.fanniemae.com/",
+    "type": "GSE (BLOCKED; model recall, unverified)",
+    "used_for": "Recalled description of Ask Poli as a lender Q&A layer over the Selling Guide whose recurring questions feed Guide clarifications."
+   },
+   {
+    "url": "https://guide.freddiemac.com/app/guide/bulletins",
+    "type": "GSE (BLOCKED; model recall, unverified)",
+    "used_for": "Recalled Guide Bulletins as dated, prospective clarifications, some in response to Seller inquiries."
+   },
+   {
+    "url": "https://www.ncino.com/solutions/commercial-banking",
+    "type": "vendor (BLOCKED; model recall, unverified)",
+    "used_for": "Recalled per-loan policy-exception objects with approver and reporting; no promotion of exceptions into reusable rules."
+   }
+  ]
+ },
+ "verification": {
+  "domain": "banking-lending-exceptions",
+  "refuted": [
+   {
+    "claim": "Workflow 3 (GSE interpretation loop): 'why humans review' = C ~40% / H ~40% / D ~10% / E ~10%, described as 'the purest category-H loop in the cluster'.",
+    "why": "Category error. The brief's A-H categories classify why an OPERATIONAL decision needs a human. The finder applied them to Selling Guide announcements and Guide Bulletins, which are policy-publishing events, not case reviews; at that level every item is by definition a prospective settlement, so the 40% H figure measures nothing about per-loan review. The same error would make any regulator's rulebook '40-80% H'. The finder's own negative verdict on this workflow stands, but the H share should be reported as 'not applicable' (no per-case human review exists at this level) rather than 40%."
+   },
+   {
+    "claim": "Workflow 1: the OCC/FDIC loop 'exceptions rise -> policy revised' is a settlement loop (prospective: yes).",
+    "why": "A loan policy exception is not an ambiguous case; it is a knowing, approved breach of a bright-line limit (LTV, DSCR, term, guarantor). The supervisory loop the finder recalls treats the exception rate as a key risk indicator that triggers a policy REVIEW at policy cadence; nothing about the meaning of a rule is settled. That is category E (true discretion) feeding ordinary policy governance, not the brief's step 3-4 ('a qualified person settles the ambiguity; that settlement is authoritative'). Independent corroboration that incumbents model exceptions this way: ServiceNow's Policy and Compliance Management defines a policy exception as 'temporary relief for non-compliant controls' scoped to a listed set of entities with a mandatory duration and an extension workflow (vendor documentation, fetched: https://www.servicenow.com/docs/r/governance-risk-compliance/policy-and-compliance-management/manage-policy-exceptions.html and .../request-policy-exception.html via raw.githubusercontent.com/ServiceNow/ServiceNowDocs). An exception object that expires is the opposite of a reusable prospective interpretation. The item should be marked prospective: no (case-specific) with a separate, low-frequency policy-amendment loop."
+   }
+  ],
+  "weakened": [
+   {
+    "claim": "France HCSF sub-quotas: '20% of quarterly production, with at least 80% of that margin reserved for primary residences and 30% for first-time buyers', ACPR/HCSF 'reported actual use below the 20% ceiling'.",
+    "why": "Could not fetch economie.gouv.fr/hcsf or acpr.banque-france.fr (blocked). From my own recall, flagged unverified: the 80% primary-residence share is the January 2022 value; HCSF amended it in June 2023 so that only 70% of the margin is reserved for primary residences (30% freely allocable), and in December 2023 it excluded bridge loans from the DSTI calculation, allowed 27-year terms for loans with significant renovation works and moved margin measurement to a three-quarter rolling average. Utilisation has been reported by HCSF/ACPR in the low-to-mid teens of percent. So the finder's figure is probably stale, and the regulator-level 'settlement' loop it describes runs at roughly one or two amendments per year, which is negligible volume. Direction of the finder's conclusion (rationed discretion, category E) is unaffected."
+   },
+   {
+    "claim": "Workflow 2 (lender-side mortgage guideline interpretation): H ~10%, verdict 'uncertain', 'the most Sophon-shaped workflow in the cluster'.",
+    "why": "Two structural problems the finder under-weighted. (1) The lender is not the authoritative owner of Selling Guide ambiguity: whatever a lender's senior underwriter 'settles', the rep-and-warrant and repurchase exposure remain with the lender and the binding reading belongs to Fannie Mae/Freddie Mac/FHA. A settlement that a third party can overturn on QC review is a risk position, not an authoritative interpretation (brief step 4 fails). Only interpretations of the lender's OWN overlays and internal policy qualify, and overlays are risk-appetite choices (E), not ambiguity. (2) The largest recurring 'interpretation' area the finder cites, income calculation for self-employed/variable income, is being encoded by the owner itself: from my recall (unverified, blocked), Fannie Mae released a free Income Calculator for self-employment income in 2024 with rep-and-warrant relief on the calculated amount when used through DU, and Freddie Mac's LPA AIM performs asset/income assessment with similar relief. That is H3 (owner already encodes the settlement) and H6 in one move. Net: H share on the lender side is more plausibly ~3-7% of underwriting conditions/questions than 10%, and the workflow should be rated weak rather than uncertain, while remaining the only one in the cluster worth sampling."
+   },
+   {
+    "claim": "EU AI Act Annex III 5(b) makes natural-person creditworthiness assessment high-risk; 'whether the Annex III application date was postponed by the 2025 digital-omnibus proposal could not be checked'.",
+    "why": "Text of 5(b) as recalled by the finder matches my recall (creditworthiness / credit score of natural persons, except fraud detection). But the status is more uncertain than the finder implies: the original Annex III application date was 2 August 2026, the Commission's Digital Omnibus (November 2025) proposed tying Annex III application to standards availability with a backstop in December 2027, and I could not confirm whether that was adopted before 2 August 2026 (eur-lex and artificialintelligenceact.eu blocked). Treat the 'human oversight required now' constraint as probable but not established."
+   },
+   {
+    "claim": "2020 Interagency Guidance on Credit Risk Review Systems cited as OCC Bulletin 2020-50 / FRB SR 20-13, asking loan review to report policy/underwriting and documentation exceptions and trends.",
+    "why": "Bulletin and SR numbers are consistent with my recall (both issued May 2020) but nothing was fetched by the finder or by me (occ.gov, federalreserve.gov, federalregister.gov all blocked). Even if accurate, the guidance describes trend REPORTING to the board, i.e. a KRI, and says nothing about per-case precedent reuse; the finder correctly marked prospective 'unclear', but it should not appear in the settlement-loop list at all."
+   },
+   {
+    "claim": "Workflow 2 'why humans review' shares are based on 'recall of QC defect taxonomies such as ACES Mortgage QC Industry Trends, where income/employment calculation is the persistently largest defect category'.",
+    "why": "acesquality.com is blocked; ACES is a QC-software vendor and its trend report is vendor-published (weak evidence class per the brief). More importantly, QC critical-defect taxonomies measure ERRORS found in post-close audit (miscalculated income, missing documents), which cannot be used to infer the share of pre-close decisions that involve rule ambiguity; the finder acknowledges this ('measures error, not interpretive ambiguity') yet still uses it as the basis for the A/B/C split. The shares are unsupported estimates and should be labelled as such with no cited basis."
+   },
+   {
+    "claim": "Fannie Mae Ask Poli recurring questions surface as Selling Guide clarifications; Freddie Mac bulletins 'multiple times per month'.",
+    "why": "askpoli.fanniemae.com, selling-guide.fanniemae.com and guide.freddiemac.com are blocked; existence of Ask Poli and of numbered Guide Bulletins matches my recall, but 'multiple times per month' is likely an overstatement (my recall: on the order of 15-25 Freddie Mac bulletins and roughly monthly Fannie Mae announcements per year). A comparable regulator-run loop that I could measure, the EBA Single Rulebook Q&A (regulator, via mirror citing eba.europa.eu source URLs), shows how small such loops are in the lending domain: 2,166 final Q&As since 2013 across CRR/CRD/DORA, of which only 5 reference the EBA loan origination and monitoring guidelines (GL/2020/06) in roughly five years, and the median time from submission to final answer is 248 days (n=2,107; p25 151, p75 505). See https://github.com/gnosifex/esa-qa-mirror and e.g. https://www.eba.europa.eu/single-rule-book-qa/qna/view/publicId/2021_6130."
+   }
+  ],
+  "confirmed": [
+   {
+    "claim": "Loan operations exception queues are case/task workflows with no precedent mechanism; incumbents (BPM/case platforms) handle them as work items and the core banking system remains the system of record.",
+    "evidence": "ServiceNow Financial Services Loan Operations documentation (vendor documentation, fetched via raw.githubusercontent.com/ServiceNow/ServiceNowDocs; canonical https://www.servicenow.com/docs/r/financial-services-operations/financial-services-loan-operations/loan-ops-landing-page.html, .../covenant-breach-workflow.html, .../work-credit-task.html): the product resolves 'customer-initiated requests and system-generated exceptions around loan servicing'; a covenant breach becomes a credit service case, document agents verify documents, a 'credit authorizer' works a credit task and clicks Approve or Reject after finishing 'the work that is required ... in your core banking system'. Per-case approval, document verification (category A/B) and no capture of a reusable reading. Supports the finder's negative verdict on Workflow 4 and H1/H6."
+   },
+   {
+    "claim": "Regulator-level interpretation loops exist, are already captured and versioned by the owner, and are low-volume for lending rules (supports H3 and H8 for the GSE/EBA-style loop).",
+    "evidence": "EBA Single Rulebook Q&A corpus (regulator; local clone of https://github.com/gnosifex/esa-qa-mirror, each record carrying its eba.europa.eu source URL, status 'Final Q&A', submission and publication dates): 2,166 final Q&As (CRR 2,003; CRD 96; DORA 67); topic 'Credit risk' 248; only 5 records reference EBA/GL/2020/06 (e.g. 2021_6130 on scope of the guidelines, submitted 2021-08-02, answered 2022-01-07; 2022_6606 on ESG factors, 2022-10-11 to 2023-04-21; 2021_6325 on who counts as a 'valuer'). The bulk of the corpus is supervisory reporting (FINREP 413, COREP 353, liquidity 185), i.e. the settlement loop is densest in reporting interpretation, not in lending decisions. Note: only final answers are mirrored, so submitted volume is higher but unknown."
+   },
+   {
+    "claim": "Policy exceptions as implemented in incumbent GRC tooling are per-entity, time-bound grants with multi-level approval, not reusable interpretations.",
+    "evidence": "ServiceNow Policy and Compliance Management docs (vendor documentation, fetched): 'Policy exceptions and extensions provide temporary relief for non-compliant controls'; requesters specify 'the duration for which the exception is required'; GRC Approval Configurator routes New -> Analyze -> Review (SME) -> Awaiting Approval -> Approved -> Closed with multi-level rules keyed on exception type, requestor role and policy domain (https://www.servicenow.com/docs/r/governance-risk-compliance/policy-and-compliance-management/grc-approval-configurator-for-policy-extension-and-exception.html). Confirms the prior-evidence note that no incumbent ships typed, versioned, prospective interpretations, but also shows the organisational model wants exceptions to expire (supports H4 in the sense that exceptions are deliberately kept non-standing)."
+   },
+   {
+    "claim": "HMDA reporting exceptions are deterministic edit checks (category A/B), not interpretation.",
+    "evidence": "CFPB HMDA Platform docs README (government open-source documentation, fetched: https://raw.githubusercontent.com/cfpb/hmda-platform/master/docs/README.md): a Data Validation module 'executing validation rules as per the Edit Checks documentation' and Parser enforcing the file specification; HMDA frontend README (https://raw.githubusercontent.com/cfpb/hmda-frontend/master/README.md) describes 'millions of HMDA records per year' and a filing UI to 'resolve errors, verify edits'. Consistent with the finder's use of this source; it is a volume hint only, not the application/origination counts the finder needed."
+   },
+   {
+    "claim": "The finder's network caveat is accurate: no regulator, GSE, EU, vendor or press primary source was reachable.",
+    "evidence": "This verifier probed roughly 150 hosts with curl through the session proxy (occ.gov, fdic.gov, federalreserve.gov, consumerfinance.gov, ffiec.gov, hud.gov, fhfa.gov, fanniemae.com and subdomains, freddiemac.com, eba.europa.eu, eur-lex.europa.eu, curia.europa.eu, economie.gouv.fr, banque-france.fr, legifrance.gouv.fr, mba.org, ncino.com, acesquality.com, law firm alert sites, arxiv, ssrn, huggingface, wikipedia, all major search engines): every one returned a proxy CONNECT denial. WebSearch budget was already 200/200 before my first query. Only raw.githubusercontent.com and repository-scoped GitHub endpoints for pre-attached repos worked."
+   }
+  ],
+  "manual_review_conflated_with_repeatable_ambiguity": [
+   "Workflow 1: 'policy exceptions' counted as candidate settlements. An exception is an approved breach of a bright line (E), and the majority by count are documentation exceptions (A, per the finder's own recall). Neither is an ambiguity; the only H-shaped residue is disputes over definitions inside the policy (what counts as global cash flow, how to treat vacancy in a rent roll), which the finder put at C 5-10% and H <5%. My re-estimate: H 2-5%, C 5%, with the caveat that fair-lending review of discretionary exceptions (ECOA/Reg B; CFPB/DOJ scrutiny, my recall, unverified) pushes banks to convert repeated exceptions into bright-line policy or to stop granting them, so the residue shrinks toward zero over time rather than compounding.",
+   "Workflow 2: scenario-desk questions treated as candidate settlements. Most scenario-desk traffic (my recall of industry practice, unverified) is eligibility lookup against product matrices (deterministic once facts are known), missing-document questions (A), or exception requests that the investor prices and approves per loan (E/F). Lender-side 'settlements' of GSE guide ambiguity are not authoritative (the GSE can repurchase), so they fail brief step 4. Re-estimate: H 3-7% of underwriting questions, and only over the lender's own overlays/internal policy.",
+   "Workflow 2: overlays treated as prospective settlements of GSE ambiguity. Overlays are risk-appetite policy choices (minimum FICO, max DTI, reserves), i.e. category E policy-making that is already versioned in LOS rules and pricing engines; they do not resolve any ambiguity in the guide.",
+   "Workflow 3: guide clarifications classified with per-decision categories, producing a 40% H figure. There is no per-case human review at this level to classify; 'why humans review' is not applicable. The 'H 40%' should be discarded.",
+   "Workflow 5: the HCSF flexibility margin described alongside settlement evidence. It is a rationed discretion budget (E); the finder classified it correctly (E ~70%) but still listed the regulator's amendments as a 'prospective settlement'. Regulator rulemaking at one or two amendments per year is not a settlement loop with operational volume.",
+   "Cluster-wide: the finder's cluster narrative leans on 'regulator-mandated exception tracking' as evidence of a settlement loop. Exception tracking is a key-risk-indicator and audit-trail requirement (per-loan record, approver, trend to the board); it produces policy reviews, not reusable interpretations. Sourced analogue: ServiceNow's exception objects expire and are entity-scoped."
+  ],
+  "corrected_workflow_verdicts": [
+   {
+    "name": "Commercial and consumer credit policy exceptions (bank loan policy exceptions and exception tracking)",
+    "evidence_quality": "weak",
+    "verdict": "negative",
+    "why": "The exception grant is category E by construction (an approved bright-line breach), documentation exceptions dominate by count (A), and the only prospective mechanism is policy amendment at governance cadence (H3). Fair-lending pressure (recall, unverified) drives banks to reduce discretionary exceptions rather than codify them. Incumbents already hold the per-loan exception record; ServiceNow's GRC model (fetched vendor docs) shows the organisational design intent is temporary, entity-scoped relief with expiry. Interpretive residue (definitions inside the policy) exists but is unmeasured and small; nothing fetched supports a standalone product. Downgraded from 'weak' to 'negative' because the core object of the workflow is discretion, not ambiguity."
+   },
+   {
+    "name": "Mortgage underwriting guideline interpretation, overlays and scenario-desk questions (lender side)",
+    "evidence_quality": "unknown",
+    "verdict": "weak",
+    "why": "Only workflow in the cluster with recurring interpretation questions and structured facts, but: the lender is not the authoritative owner of guide ambiguity (repurchase risk sits with the lender, binding reading with the GSE/FHA), so lender settlements are risk positions rather than authoritative interpretations; the owner is encoding the largest interpretive area itself (Fannie Mae Income Calculator with R&W relief, Freddie Mac AIM; recall, unverified); overlays are policy (E) already in LOS/PPE rules; FHA 'Refer' files require manual underwriting by rule (H4). No volume, repeat-rate or cost data could be fetched. Downgraded from 'uncertain' to 'weak'. It remains the only workflow worth a base-rate sample (a lender's underwriting help-desk log), with a kill threshold that should require a clear majority of repeat questions to concern the lender's OWN policy rather than the GSE guide."
+   },
+   {
+    "name": "GSE interpretation loop (Fannie Mae Ask Poli / Selling Guide updates, Freddie Mac Guide Bulletins)",
+    "evidence_quality": "weak",
+    "verdict": "negative",
+    "why": "Agree with the finder: a real prospective loop that the owner already versions, publishes and executes (DU/LPA), with an owner pool of a handful of institutions (H3, H8). The 'H 40%' classification is a category error and should be dropped. The sourced EBA Q&A analogue (2,166 final Q&As since 2013, 5 touching the loan origination guidelines, median 248-day answer latency) shows regulator-run loops are already captured as data and are tiny in lending, so the lag pain is real but the market is the regulator, not software buyers."
+   },
+   {
+    "name": "Loan operations exception queues (payment posting, document/collateral exceptions, servicing exceptions)",
+    "evidence_quality": "moderate",
+    "verdict": "negative",
+    "why": "Upgraded evidence quality from 'unknown' to 'moderate' on the basis of fetched vendor documentation (ServiceNow Loan Operations: system-generated servicing exceptions handled as cases and tasks, document verification tasks, per-case approve/reject in the core banking system). Missing-data and matching work (A/B), no precedent mechanism, incumbents adequate (H1, H6). Verdict unchanged."
+   },
+   {
+    "name": "France: HCSF mortgage-criteria flexibility margin and EU consumer credit decisioning (ACPR/EBA/AI Act)",
+    "evidence_quality": "weak",
+    "verdict": "negative",
+    "why": "Agree it is a counter-example: the margin is a rationed discretion budget (E), and EU consumer credit is the most human-in-the-loop-constrained lending segment (AI Act Annex III 5(b), GDPR Art. 22 / SCHUFA C-634/21). Finder's sub-quota figure (80% primary residence) is probably stale after the June 2023 and December 2023 HCSF amendments (recall, unverified), and the AI Act application date is uncertain pending the Digital Omnibus. Neither correction changes the verdict."
+   }
+  ],
+  "missing": [
+   "GSE self-encoding of the biggest interpretive area: Fannie Mae's Income Calculator (self-employment income, launched 2024, rep-and-warrant relief when used via DU) and Freddie Mac LPA AIM. If confirmed, this is the strongest H3/H6 fact in the cluster and the finder did not mention it. Verify at singlefamily.fanniemae.com and sf.freddiemac.com (both blocked here).",
+   "Fair-lending treatment of exceptions: ECOA/Reg B and CFPB/DOJ examination practice require documenting and monitoring discretionary exceptions for disparate impact, which pushes lenders to eliminate or bright-line them rather than accumulate reusable exception precedent. Cuts against Workflow 1. Verify in the CFPB ECOA examination procedures (consumerfinance.gov, blocked).",
+   "FHA manual-underwriting mandate: HUD Handbook 4000.1 requires manual underwriting for TOTAL 'Refer' files and for specified conditions (e.g. certain credit histories), with compensating-factor tables; humans are required by rule regardless of precedent (H4). Verify at hud.gov (blocked).",
+   "Non-QM/portfolio investor exception desks: exceptions are requested per loan, priced by the investor and owned by the investor, so lender-side settlement is impossible. Cuts against Workflow 2. No source reachable.",
+   "EBA Single Rulebook Q&A as an existing, machine-readable settlement corpus for EU banking regulation (sourced: 2,166 final Q&As, source URLs on eba.europa.eu; 5 on GL/2020/06; median 248 days submission-to-answer). Shows (a) the regulator-level loop already exists as data and (b) its lending-decision volume is negligible; the densest interpretation activity is supervisory reporting (FINREP/COREP/liquidity = 951 of 2,166), which is a pointer to a different domain (regulatory reporting), not to lending exceptions.",
+   "ServiceNow GRC policy exceptions are temporary, entity-scoped, duration-bound grants with multi-level approval and extension flows (sourced vendor docs). This is the incumbent model of an 'exception' and it is designed to expire, which is the opposite of a prospective settlement.",
+   "Volumes remain unsourced: HMDA application/origination counts, Ask Poli question volume, Freddie Mac bulletin count per year, FHA manual-underwrite share, MBA cost to originate, ACES defect rates, HCSF margin utilisation, bank exception counts. None could be fetched by finder or verifier; treat all volume statements in the finder result as unsupported.",
+   "Status of the EU AI Act Annex III application date (2 August 2026 vs Digital Omnibus backstop) is unresolved; it determines whether the human-oversight constraint on consumer credit decisioning is in force today."
+  ],
+  "overall": "The finder's honesty about its evidence base is warranted and my verification could add only three sourced items (ServiceNow GRC and Loan Operations documentation, the EBA Single Rulebook Q&A corpus, CFPB HMDA platform docs); every regulator, GSE, EU, vendor and press host is egress-blocked and the search budget was exhausted, so all volume and rate figures in the finder result remain unsupported recall. On substance the finder's cluster picture is directionally right but too generous in two places: it counted loan policy exceptions (approved bright-line breaches, category E, dominated by documentation exceptions) and lender overlays (risk-appetite policy) as candidate settlements, and it assigned a 40% H share to GSE guide-publishing events where no per-case review exists. Corrected, the cluster has one genuinely prospective, versioned settlement loop, which is owned by the GSEs/FHA/EBA-style regulators who already publish and execute it (the EBA analogue shows 5 loan-origination Q&As in five years and a 248-day median answer lag, so the loop is real, captured and tiny), while lender-side interpretation of that guide cannot be made authoritative by the lender and is being encoded by the owner (income calculators with rep-and-warrant relief). The lender-side underwriting help-desk log is still the only thing worth sampling, but the prior should be that most repeats are eligibility lookups, missing documents or priced exceptions rather than settleable ambiguity. Corrected cluster verdict: weak, leaning negative; evidence quality weak to unknown throughout. Nothing found in this cluster contradicts the IPSA finding that repetition lives where owners already govern with bright lines and disputes arise where decisions are discretionary."
+ }
+}

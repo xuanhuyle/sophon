@@ -1,0 +1,737 @@
+{
+ "key": "trust-safety-moderation-marketplace-returns-warranty",
+ "found": {
+  "domain": "trust-safety-moderation-marketplace-returns-warranty",
+  "domain_assessment": "NETWORK CAVEAT FIRST: 30 distinct WebSearch queries were run (the session's shared 200-search budget then ran out), but 0 of 5 required full-source fetches succeeded: the egress proxy returned 403 for every host tried (Meta Transparency Center, Oversight Board, Appeals Centre Europe, EC digital-strategy, DSA transparency DB, TikTok, Amazon, eBay, Zalando, AliExpress, Booking, arXiv, ScienceDirect, KPMG, NHTSA, state legislature sites, vendor sites). The GitHub API in this session is scoped to configured repos, so no repository search either. Every figure below is therefore taken from search-result snippets and should be re-verified against the cited URL before use. Nothing here was fabricated; where a number could not be found it is listed under not_found.\n\nWHAT THE EVIDENCE SAYS. (1) Content moderation has the only documented, institutionalised settlement loop in this cluster: user appeal -> Oversight Board binding case decision -> Meta applies it to \"identical content with parallel context\" (e.g. 52 further drill-music posts removed; an MMS-banked breast-cancer image where 210 of 215 user appeals succeeded) -> non-binding recommendations, ~75% of 326 implemented by Dec 2025 -> Product Policy Forum (fortnightly) changes Community Standards and reviewer guidance. That is a real prospective loop with a named owner, versioned public policy and published minutes. But its throughput is tiny relative to volume: a few dozen board decisions a year against 3.52 billion DSA statements of reasons from eight platforms in 20 months and 165M+ EU appeals with ~30% reversal. The 30% appeal-reversal rate, the 52-63% overturn rates at out-of-court bodies, the leaked 98%-accuracy QA regime in which auditors \"cannot articulate why\", and the academic finding that ambiguity is a deliberate design feature of principle-based rules all point to review being dominated by B (factual classification under context) and E (retained discretion), with H present but already governed in-house by platform policy teams. TikTok implemented only 29 of 106 dispute-body disagreements in H1 2025, and Wikipedia's own precedent page says prior outcomes \"do not bind\" -- the settlement is frequently NOT treated as authoritative for future cases. The buyers who own enough volume (Meta, TikTok, Google) build this internally; mid-size platforms buy Cinder/Checkstep, which already sell \"codify policies in one place\" policy engines (H6). (2) Marketplace seller/listing enforcement has very high appeal volume (Amazon EU: 156,369 complaints in H1 2023, 41,167 reversals on 810,170 actions, median 1 day; AliExpress 54,166 appeals in Q2 2025) and severe seller-side economic pain, but Amazon publishes no reinstatement data, third-party reinstatement services are vendor marketing, and what is described (plan-of-action review, Section 3, IP complaints) is mostly A (missing evidence) and B (was this seller the bad actor?) with no public sign of precedent capture. (3) Returns: $103B fraud/abuse on 15.14% of returns is a fraud-scoring and policy-design problem; Appriss recommends warn/deny on <2% of returns and Loop/Narvar already encode exceptions as rules. Human involvement is goodwill (E) at small value per decision. Negative. (4) Warranty: the closest structural match outside moderation -- OEM \"policy adjustment\"/goodwill needs service-manager or district-manager authorisation above empowerment limits, and OEMs issue standing \"warranty adjustment programs\"/special-coverage bulletins that convert repeated goodwill escalations into deterministic prospective coverage; state dealer statutes force written specific grounds for every rejection. Human review is 15-40% of claims per vendor claims (Tavant 85% auto, Syncron 80%+, ServiceCPQ 60-70% rules-approved); one OEM ran 12,000 claims/month with 18 analysts. But the statutes themselves (claims rejected for \"incidental failure to comply with a claim processing requirement\", 60-day resubmission) indicate that much of manual work is documentation/coding compliance (A/B), and incumbent WMS vendors already own the rules and pre-authorisation layer. No primary data on the C/H share exists publicly.\n\nBOTTOM LINE for this cluster: the settlement loop demonstrably exists in content moderation (Oversight Board -> policy) and in OEM warranty (goodwill escalation -> adjustment bulletin), which is evidence FOR the general mechanism. But in both cases the loop is already institutionalised by the organisations that own the volume, is slow and low-count by design, and in moderation the \"settlement\" is often explicitly non-binding. I found no workflow in this cluster where a standalone settlement-ledger product has a clear buyer that is not already served by an in-house policy team or an incumbent rules layer. Verdicts: content moderation policy escalation = uncertain (mechanism confirmed, standalone economics weak); OEM warranty adjudication = uncertain (best unexplored candidate, needs primary case data); marketplace seller appeals = weak; returns/refunds = negative.",
+  "workflows": [
+   {
+    "name": "Content moderation policy escalation and precedent (Meta Oversight Board, Product Policy Forum, DSA appeals)",
+    "geography": "Global platforms; EU-specific figures under the Digital Services Act; US for Meta enforcement-mistake figures",
+    "decision_volume": "3.52 billion statements of reasons submitted by 8 major platforms to the EU DSA Transparency Database, 25 Sep 2023 to 31 May 2025 (EU only) -- https://www.sciencedirect.com/science/article/pii/S0308596125001855 (academic, via search snippet). 9,442,819,847 SoRs from 116 platforms in one six-month window as of Jan 2025 -- https://www.lexology.com/library/detail.aspx?g=92bb023a-2cbb-4daa-a425-61d4efd5de59 (law-firm/press, via snippet). Over 165 million EU appeals of VLOP/VLOSE decisions since 2024 -- https://digital-strategy.ec.europa.eu/en/policies/dsa-impact-platforms (regulator, via snippet). Oversight Board: 326 recommendations responded to by 31 Dec 2025 -- https://transparency.meta.com/oversight/meta-H2-2025-bi-annual/ (platform report, via snippet). Board case decisions number in the low hundreds over five years (estimate from the recommendation count; exact count not fetched).",
+    "human_review_rate": "Not published as a rate. Proxy: automation split by platform -- X, LinkedIn, Booking.com report no automated decisions; Facebook, Instagram, Snapchat, YouTube partly automated; AliExpress, Google Maps/Shopping, TikTok fully automated for most SoRs -- https://arxiv.org/pdf/2404.02894 (academic, via snippet). Meta uses three review tiers: contract reviewers (low), internal market teams (medium), policy-expert reviewers (high) by risk framework -- https://www.oversightboard.com/wp-content/uploads/2023/11/1251619429020484.pdf (Oversight Board public-comment appendix, via snippet). Escalations and policy teams handle edge cases for 'a tiny fraction' of decisions because of slowness -- https://arxiv.org/pdf/2604.01354 (academic, via snippet).",
+    "why_humans_review": "Estimate based on cited evidence, not a measured split: B factual classification under context ~50% (30% reversal on 165M appeals and 52-63% overturns at dispute bodies read as classification error/disagreement rather than rule ambiguity; QA auditors 'often unable to articulate why'); E true discretion ~15% (academic: ambiguity is a deliberate design feature preserving moderator judgment -- https://arxiv.org/pdf/2604.20972); C interpretation of an existing rule ~15% (newsworthiness, awareness-raising exceptions in Board cases); H repeatable ambiguity settled prospectively ~10% (Board decisions applied to 'identical content with parallel context', PAO -> eligible-violation-notice system, Product Policy Forum changes); A missing evidence ~5% (context/intent unavailable); D conflict of authorities ~5% (DSA illegality vs terms-of-service, national law). Basis: snippets from the Oversight Board decision pages, Meta transparency pages, EC DSA impact page, arXiv 2604.20972 and 2604.01354, Vice 2018 reporting; no fetched primary document.",
+    "settlement_loop_evidence": [
+     {
+      "description": "Meta commits to implement each binding Oversight Board case decision across 'identical content with parallel context' when technically and operationally possible; the Board decision defines what counts as identical and parallel. Example: 52 further pieces containing the 'Secrets Not Safe' drill track removed after the UK drill decision.",
+      "source_url": "https://www.oversightboard.com/decision/ig-pt5wrtlw/",
+      "source_type": "court-like tribunal (Oversight Board decision page), via search snippet",
+      "prospective": "yes",
+      "reusable_how": "Decision becomes a matching rule applied to identical media/sentiment; narrow (same image/track), not a general interpretation."
+     },
+     {
+      "description": "Breast-cancer awareness case: because the image was in a Media Matching Service bank, identical content had been auto-removed; 215 of those removals were appealed and 210 appeals succeeded, then the bank entry was corrected.",
+      "source_url": "https://www.oversightboard.com/decision/bun-0w49p93l/",
+      "source_type": "court-like tribunal (Oversight Board), via search snippet",
+      "prospective": "yes",
+      "reusable_how": "Correction of a hash-bank entry prevents future identical removals; shows that automated precedent already exists in Meta's stack (MMS banks) and that its errors are the ambiguity."
+     },
+     {
+      "description": "Meta has responded to 326 Board recommendations by 31 Dec 2025 and reports implementing ~75% of the 300+ issued; an earlier count showed ~65% fully/partially implemented or in progress. Recommendations are non-binding; Meta must respond publicly within 60 days.",
+      "source_url": "https://transparency.meta.com/oversight/meta-H2-2025-bi-annual/",
+      "source_type": "platform transparency report, via search snippet (also https://www.socialmediatoday.com/news/metas-oversight-board-highlights-five-years-of-rulings/807081/ press)",
+      "prospective": "yes",
+      "reusable_how": "Recommendations become Community Standards text or reviewer guidance; e.g. the first Policy Advisory Opinion led to the 2025 'eligible violation notice' system that lets first-time violators take an educational exercise instead of a strike."
+     },
+     {
+      "description": "Product Policy Forum: every two weeks Meta's Product Policy team (11 offices) meets to decide changes to Community Standards, ads policies and ranking; minutes are published; implementation follows with varying launch dates.",
+      "source_url": "https://about.fb.com/news/2019/04/insidefeed-community-standards-development-process/",
+      "source_type": "platform (Meta) description, via search snippet; minutes at https://transparency.meta.com/policies/improving/policy-forum-minutes/",
+      "prospective": "yes",
+      "reusable_how": "Escalated edge cases and research become versioned public policy plus internal implementation standards; this is the in-house settlement ledger the product would compete with."
+     },
+     {
+      "description": "TikTok H1 2025: 1,121 Article 21 complaints from Dispute Settlement Bodies; 498 closed; the DSB disagreed with TikTok in 106 cases, of which TikTok implemented 29; agreed in 113; 189 resolved without a formal decision.",
+      "source_url": "https://newsroom.tiktok.com/digital-services-act-our-sixth-transparency-report-on-content-moderation-in-europe?lang=en-150",
+      "source_type": "platform transparency report, via search snippet",
+      "prospective": "no",
+      "reusable_how": "Evidence AGAINST: external settlements are non-binding and were adopted in only 27% of disagreements; nothing indicates the outcome is applied to later similar cases."
+     },
+     {
+      "description": "Appeals Centre Europe (certified DSA out-of-court body) received >24,000 disputes Apr 2025-Mar 2026 and disagreed with the platform 59% of the time (52% on removals, 63% on leave-ups; hate-speech overturns TikTok 83%, Instagram 74%, Facebook 61%, YouTube 58%). H1 2025 across bodies: >1,800 disputes, ~52% of closed cases reversed.",
+      "source_url": "https://www.courthousenews.com/eu-watchdog-overturns-social-media-giants-in-most-user-appeals/",
+      "source_type": "press reporting an ADR body's transparency report (also https://www.appealscentre.eu/appeals-centre-publishes-first-transparency-report/ and https://dev.to/alifar/eu-dsa-appeals-surpass-165-million-raising-the-stakes-for-platform-moderation-214h)",
+      "prospective": "unclear",
+      "reusable_how": "High overturn rates indicate inconsistent classification rather than settled interpretation; no evidence the bodies' reasoning is fed back as precedent."
+     },
+     {
+      "description": "Wikipedia's 'Articles for deletion/Common outcomes' page records typical outcomes of past deletion debates but states it 'is not a policy or guideline, and previous outcomes do not bind future ones' because consensus can change.",
+      "source_url": "https://en.wikipedia.org/wiki/Wikipedia:Articles_for_deletion/Common_outcomes",
+      "source_type": "community governance document, via search snippet",
+      "prospective": "no",
+      "reusable_how": "Evidence AGAINST H4: a mature moderation community deliberately refuses to make settlements binding."
+     }
+    ],
+    "economic_pain": "Meta reported cutting enforcement mistakes in the US in half in Q1 2025 and by >75% weekly by Q2 2025, with a corresponding fall in appealed and restored content -- https://transparency.meta.com/reports/integrity-reports-q1-2025/ and https://transparency.meta.com/integrity-reports-q2-2025 (platform reports, via snippet). Moderators face a 98% accuracy target (4-5 permitted mistakes a month) judged by auditors who 'are often unable to articulate why they chose the outcome' -- https://www.vice.com/en/article/how-facebook-content-moderation-works/ (press, 2018). ~30% reversal on 165M+ EU appeals -> ~50M reversed decisions in two years -- https://dev.to/alifar/eu-dsa-appeals-surpass-165-million-raising-the-stakes-for-platform-moderation-214h (press/blog citing EC figures). Cost per review, moderator headcount per language and escalation headcount: reported in platform DSA reports but not fetchable (see not_found). Ambiguous or inconsistent guidelines increase moderator stress and slow decisions -- https://www.zevohealth.com/blog/understanding-how-policy-impacts-content-moderator-wellbeing/ (vendor).",
+    "existing_solutions": "In-house at large platforms: Meta's Community Standards + internal implementation standards/known questions, Media Matching Service banks, Product Policy Forum, Oversight Board with public recommendation tracker (https://www.oversightboard.com/recommendations/); Meta hires 'Regulatory Escalations Specialist' roles (https://www.themuse.com/jobs/meta/regulatory-escalations-specialist-782f6d). Vendors: Cinder ('empowers policy makers to codify policies so they can be managed from a central location' -- https://www.prnewswire.com/news-releases/cinder-emerges-from-stealth-with-first-platform-for-trust-and-safety-operations-301698305.html, vendor), Checkstep (policy engine for bespoke policies, DSA compliance -- https://www.checkstep.com/our-platform, vendor, \u00a33M seed Apr 2026), TrustLab (policy-to-enforcement gap consulting/metrics -- https://www.trustlab.com/post/navigating-the-complexities-of-content-policies-bridging-the-gap-between-policy-enforcement, vendor), Hive (classifiers), Appen (labelling). No vendor found advertising versioned, provenance-carrying settlements applied automatically to later cases; policy engines are rule editors, and precedent lives in guideline documents and hash banks. Academic tooling: Venire ML-guided panel review for community moderation (https://arxiv.org/pdf/2410.23448).",
+    "buyer_and_budget": "Head of Trust & Safety / Content Policy at platforms; at Meta/TikTok/Google this is built in-house with dedicated policy and escalation teams. Mid-size platforms and marketplaces buy Cinder/Checkstep-type ops platforms. Budget exists (DSA compliance, audit obligations) but is directed at detection, case management and reporting; no evidence of a line item for precedent capture.",
+    "regulatory_constraints": "DSA Art. 17 requires a statement of reasons for every action, Art. 20 an internal complaint system with human review, Art. 21 access to certified out-of-court bodies whose decisions are non-binding, Art. 37 annual independent audits; EC opened preliminary breach findings against Meta and TikTok on transparency in Oct 2025 (https://techcrunch.com/2025/10/24/ec-finds-meta-and-tiktok-breached-transparency-rules-under-dsa/, press). Regulation mandates human review on appeal, which caps how much of the loop may become fully deterministic.",
+    "evidence_quality": "moderate",
+    "verdict": "uncertain",
+    "notes": "Strongest documented settlement loop in the cluster, but: (a) throughput of settled cases is orders of magnitude below decision volume; (b) settlements are frequently non-binding (TikTok 29/106; Wikipedia explicit); (c) the owners with volume already run the loop in-house and publish it; (d) T&S ops vendors already sell policy codification. Supports the mechanism, not a standalone product."
+   },
+   {
+    "name": "Marketplace seller and listing enforcement appeals (Amazon Seller Performance, AliExpress, Zalando, eBay, Etsy)",
+    "geography": "Global; quantified only for EU under DSA reporting; US seller-side pain from press and surveys",
+    "decision_volume": "Amazon EU Store H1 2023: 810,170 actions on valid notices; 156,369 complaints received (153,501 disputing an action on uploaded content, 2,868 disputing a decision not to act) -- https://assets.aboutamazon.com/cd/28/4d02dd2e41ec8c6d1bc341e9d919/amazon-eu-store-transparency-report-jan-june-2023.pdf (platform report, via snippet). AliExpress Apr-Jun 2025: 54,166 appeals, median resolution 27 hours -- https://files.alicdn.com/tpsservice/906a973d92a28a83538c77c03470a171.pdf (platform report, via snippet). Zalando: 1,287 user notices, 933 restrictions -- https://corporate.zalando.com/sites/default/files/media-download/Zalando-SE_DSA_Transparency_Report_2504.pdf (platform report, via snippet). Amazon 2023: >700,000 bad-actor account-creation attempts stopped (down from 6M in 2020) -- https://assets.aboutamazon.com/24/cd/c7e7ccd94abeae59dec904c2b637/2023-brand-protection-report-final-english.pdf (company report, via snippet). Seller-side: ~25% of sellers report at least one suspension (EntreResource 2024) and 35% in a SmartScout survey of 325 sellers -- https://myamazonguy.com/suspensions/amazon-suspension-what-amazon-sellers-need-to-know-for-2024/ (vendor/consultant, via snippet).",
+    "human_review_rate": "Not published. Amazon reversed 41,167 of 810,170 notice-based actions after complaints (5.1%), median one day -- Amazon EU report above (platform, via snippet). Consultant description: Seller Performance receives 'hundreds or thousands of emails per day' and does not have 'thousands of people', processing one at a time -- https://www.ecommercechris.com/amazon-seller-escalation/ (consultant/press, via snippet).",
+    "why_humans_review": "Estimate: A missing evidence ~40% (appeals turn on plans of action, invoices, supplier proof; 'most appeals fail on the first try'); B factual classification ~35% (is the seller/listing the bad actor, IP infringement, restricted product); E true discretion ~10% (Section 3 'may never get resolved'); C rule interpretation ~10%; H ~5% or less (no public evidence that an appeal outcome is recorded as precedent for other sellers). Basis: seller-service and law-firm descriptions (https://www.estorefactory.com/blog/amazon-account-suspension-guide-2026/, https://www.amazonsellers.attorney/blog/amazon-section-3-violations-guide-to-causes-appeals-compliance -- vendor) and the Amazon EU DSA report snippet.",
+    "settlement_loop_evidence": [
+     {
+      "description": "Amazon EU report: sellers dissatisfied with Amazon's decisions can use independent mediation through the Centre for Effective Dispute Resolution; 41,167 reversals on complaints with median one-day resolution.",
+      "source_url": "https://assets.aboutamazon.com/cd/28/4d02dd2e41ec8c6d1bc341e9d919/amazon-eu-store-transparency-report-jan-june-2023.pdf",
+      "source_type": "platform transparency report, via search snippet",
+      "prospective": "no",
+      "reusable_how": "Case-specific reversal; no indication reversals feed rule changes."
+     },
+     {
+      "description": "Amazon has a team that researches return behaviour and sets specific dollar thresholds for 'Concession Abuse' accounts; once flagged, no future returns are accepted.",
+      "source_url": "https://sellercentral.amazon.com/seller-forums/discussions/t/e013e712-601c-46ef-816b-3811a4ddf3a4",
+      "source_type": "seller forum (platform-hosted, anecdotal)",
+      "prospective": "yes",
+      "reusable_how": "A standing threshold applied automatically to later cases -- but it is a fraud-risk parameter (B/E), not an interpretation of an ambiguous rule."
+     },
+     {
+      "description": "Sellers say eBay enforcement notices 'cite broad policy categories without clearly explaining what was wrong or what evidence was used' and are 'opaque, inconsistent and difficult to challenge'; a German regulator found DSA user-rights violations.",
+      "source_url": "https://www.valueaddedresource.net/ebay-germany-digital-services-act-violations/",
+      "source_type": "press",
+      "prospective": "unclear",
+      "reusable_how": "Inconsistency is reported, but the remedy demanded is explanation, not precedent capture."
+     }
+    ],
+    "economic_pain": "Seller-side: reinstatement services charge for appeals and claim 98% success across 70,000+ cases (https://sellercandy.com/amazon-seller-account-reinstatement, vendor) -- indicates real willingness to pay by sellers, not by platforms. Platform-side cost per review, investigator headcount and error cost: not published (see not_found). Amazon blocked >99% of suspected infringing listings proactively and removed 15M counterfeit items in 2024 -- https://trustworthyshopping.aboutamazon.com/2024-brand-protection-report (company report, via snippet).",
+    "existing_solutions": "Amazon in-house Seller Performance / Account Health tooling with plans of action, Account Health Rating, CEDR mediation in EU; eBay/Etsy in-house appeal desks (Etsy specialists decide within ~two weeks -- https://help.etsy.com/hc/en-us/articles/6298920789271-How-to-File-an-Appeal-for-a-Permanently-Suspended-Account, platform help page). Third-party seller-side appeal services and law firms. No public evidence of versioned precedent systems.",
+    "buyer_and_budget": "Platform-side buyer (marketplace integrity / seller performance leadership) builds in-house at scale; smaller marketplaces would be Cinder/Checkstep prospects. Seller-side spend exists but is for advocacy, not for a settlement ledger.",
+    "regulatory_constraints": "DSA Arts. 17, 20, 21, 23 (suspension of frequent misusers must follow warning and case-by-case assessment) require reasoned decisions and human complaint handling; EU P2B Regulation requires marketplaces to give reasons and an internal complaint system to business users.",
+    "evidence_quality": "weak",
+    "verdict": "weak",
+    "notes": "High volume and pain but the pain is on the seller side, the review is dominated by evidence gathering and fraud classification, and the only large buyer builds its own tooling. No public evidence of escalation outcomes becoming reusable precedent."
+   },
+   {
+    "name": "Retail returns, refunds and goodwill exceptions (return abuse, appeasements, policy exceptions)",
+    "geography": "US (all figures)",
+    "decision_volume": "US 2024: returns expected at $890B, ~17% of merchandise sales (NRF) -- https://www.nbcnews.com/news/us-news/retail-returns-890-billion-problem-rcna183359 (press citing industry association). Appriss/NRF: $685.9B returns cost with $103B (15.14% of returns) fraudulent or abusive in 2024, up from 13.7% in 2023; survey of 60+ retailers, 150 executives, 1,000 consumers -- https://nrf.com/research/appriss-retail-2024-claims-and-appeasements-report (industry association/vendor, via snippet).",
+    "human_review_rate": "Appriss Retail's return-authorisation engine recommends deny or warn on less than 2% of all returns -- https://info.apprissretail.com/hubfs/Resource-Center/AR2020-Quick-Overview-Prevent-Fraud_Verify.pdf (vendor, via snippet). Loop Returns states its Workflows 'automatically decide the right outcome' so teams 'only handle exceptions' -- https://www.loopreturns.com/blog/how-top-brands-use-loops-workflows-transform-returns-management/ (vendor). No independent figure on the share of returns requiring a human policy decision was found.",
+    "why_humans_review": "Estimate: B factual classification ~40% (is this wardrobing, stolen tender, receipt fraud); E true discretion / goodwill ~35% (manager override, 'make it right' refunds); A missing evidence ~15% (no receipt, item condition); C rule interpretation ~5%; H ~5% or less. Basis: Appriss fraud typology (60% wardrobing, 55% fraudulent tender, 48% stolen merchandise -- https://www.dcvelocity.com/supply-chain/other-services/reverse-logistics/study-over-15-of-all-retail-returns-in-2024-were-fraudulent, press citing vendor survey) and POS override features (https://learn.microsoft.com/en-us/dynamics365/commerce/refund_policy_returns, vendor documentation).",
+    "settlement_loop_evidence": [
+     {
+      "description": "Loop Returns Workflows let merchants pre-set exceptions to the general policy by criteria with pre-set outcomes, i.e. once a class of exception is decided it is encoded as a rule.",
+      "source_url": "https://help.loopreturns.com/en/articles/1917249",
+      "source_type": "vendor documentation",
+      "prospective": "yes",
+      "reusable_how": "Rules engine already captures settled exceptions; the residual is goodwill discretion, not interpretation. Evidence for H3 (already encoded adequately)."
+     },
+     {
+      "description": "Microsoft Dynamics 365 Commerce lets retailers grant designated associates the power to override return policy and refund to non-permitted tender; all store managers can override tender method.",
+      "source_url": "https://learn.microsoft.com/en-us/dynamics365/commerce/refund_policy_returns",
+      "source_type": "vendor documentation",
+      "prospective": "no",
+      "reusable_how": "Override is per-transaction discretion with no capture of rationale."
+     },
+     {
+      "description": "Amazon's Concession Abuse team sets dollar thresholds for abusers; accounts flagged lose future return rights.",
+      "source_url": "https://sellercentral.amazon.com/seller-forums/discussions/t/e013e712-601c-46ef-816b-3811a4ddf3a4",
+      "source_type": "seller forum (anecdotal)",
+      "prospective": "yes",
+      "reusable_how": "Threshold, not interpretation."
+     }
+    ],
+    "economic_pain": "$103B fraud/abuse loss (Appriss/NRF above). Fraudulent returns 'nearly 14%' of US returns in 2024, up from 5% in 2018 -- https://www.nbcnews.com/news/us-news/retail-returns-890-billion-problem-rcna183359 (press). Amazon sellers report forced returnless refunds and abuse of automatic refund rules -- https://www.cnbc.com/2025/06/21/how-broken-amazon-returns-are-driving-sellers-to-leave-the-platform.html (press). Cost per human return decision: not found.",
+    "existing_solutions": "Appriss Retail Engage/Verify real-time approve/warn/decline scoring (vendor, claims 8-12% return reduction), Loop Returns, Narvar, Happy Returns, Optoro (acquired by Blue Yonder -- https://www.emarketer.com/content/blue-yonder-s-optoro-acquisition-targets--686-billion-retail-returns-challenge, press), POS override permissions in Dynamics/Oracle/NCR. Exceptions are already rule-encoded; residual decisions are fraud scores and goodwill.",
+    "buyer_and_budget": "VP Customer Experience / Loss Prevention at retailers; budget flows to fraud scoring and returns portals. No buyer identified for interpretation capture.",
+    "regulatory_constraints": "Consumer protection and card-network chargeback rules; EU 14-day withdrawal right; otherwise policy is contractual and retailer-set.",
+    "evidence_quality": "moderate",
+    "verdict": "negative",
+    "notes": "Fails the brief on value per decision, discretion (goodwill), and H3 (rules engines already encode settled exceptions). Fraud detection is B, not H."
+   },
+   {
+    "name": "OEM warranty claim adjudication, dealer goodwill/policy adjustments and warranty audits",
+    "geography": "US (dealer franchise statutes, GM bulletins); OEM warranty operations are global",
+    "decision_volume": "Industry-wide annual claim count not found. One OEM datapoint: 340 service centres across three regions processing over 12,000 claims per month with 18 analysts -- https://www.intellinetsystem.com/blogs/guide-warranty-management-software-for-us-oem (vendor, via snippet; ~667 claims per analyst per month, my arithmetic). Extended-warranty programmes see annual claim rates of 5-15% of contracts -- https://www.cpscentral.com/what-is-a-typical-extended-warranty-claims-rate-for-retailers-and-dealers/ (vendor).",
+    "human_review_rate": "Vendor claims only: Tavant '85% claims auto-processing' -- https://tavant.com/products/warranty-management/ (vendor); Syncron/Mize '80%+ automated claims processing' -- https://www.getapp.com/industries-software/a/mize-warranty-management/ (vendor listing); ServiceCPQ: rule-based auto-approval handles 60-70% of volume, 20-30% require human review, target 70-80% for heavy-equipment OEMs -- https://www.servicecpq.com/thinking/warranty-management-heavy-equipment (vendor). Implied human review 15-40% of claims, unverified.",
+    "why_humans_review": "Estimate: A missing evidence / documentation and coding compliance ~35% (statutes protect dealers from rejection for 'incidental failure to comply with a specific claim processing requirement' with 60-day resubmission, implying many rejections are documentation-driven -- https://www.azleg.gov/ars/28/04451.htm, state statute via snippet); B factual classification ~25% (is the failure a covered defect, correct labour op, part causal); E goodwill discretion ~15% (policy adjustments above dealer empowerment); H repeatable ambiguity settled prospectively ~15% (warranty adjustment programs / special coverage bulletins converting repeated goodwill into standing coverage); C rule interpretation ~7%; D conflict of authorities ~3% (OEM manual vs state statute). Basis: GM bulletin snippets in the NHTSA TSB archive, state statutes, law-firm explanations; no primary adjudication data.",
+    "settlement_loop_evidence": [
+     {
+      "description": "GM policy/goodwill guidance: the service manager must authorise a policy adjustment before the claim is submitted (explanation, signature, time, date); recall-related cases need DMA pre-approval; transactions exceeding the service agent's empowerment level must be submitted with GM Authorization and are checked for policy compliance.",
+      "source_url": "https://static.nhtsa.gov/odi/tsbs/2017/MC-10113978-9999.pdf",
+      "source_type": "OEM bulletin archived by regulator (NHTSA), via search snippet",
+      "prospective": "no",
+      "reusable_how": "Per-claim authorisation with recorded rationale and tiered empowerment -- an escalation ledger exists, but each authorisation is case-specific."
+     },
+     {
+      "description": "A manufacturer's warranty adjustment program is 'a standing decision to pay for a known failure beyond the written warranty's limits, communicated to dealers but not broadly advertised to owners'; TSB-related repairs may be covered post-warranty under goodwill policy.",
+      "source_url": "https://lefkofflaw.com/insights/goodwill-repairs",
+      "source_type": "law firm explainer (also https://mcmillanlawgroup.com/car-brands/secret-warranty-programs-manufacturers-dont-want-you-to-know-about/)",
+      "prospective": "yes",
+      "reusable_how": "This is the cluster's clearest H loop: repeated goodwill escalations for the same failure mode become a bulletin that makes later claims deterministic. Ownership is OEM warranty/quality, not dealers."
+     },
+     {
+      "description": "State franchise statutes: OEM must approve or disapprove each warranty claim within 30 days and state specific grounds in writing; chargebacks only after explaining each proposed chargeback to the dealer; cannot charge back all repairs on a repair order for one non-compliant line.",
+      "source_url": "https://www.fixedperformance.com/warranty_reimbursement_state_laws/new-york-warranty-reimbursement-state-law/",
+      "source_type": "state statute summary (also https://ncleg.gov/EnactedLegislation/Statutes/PDF/BySection/Chapter_20/GS_20-305.1.pdf and https://www.legis.la.gov/legis/ViewDocument.aspx?d=1170415, government)",
+      "prospective": "unclear",
+      "reusable_how": "Forces structured, reasoned rejection decisions and auditability -- fits the brief's provenance requirement -- but does not itself create precedent."
+     },
+     {
+      "description": "OEM audits: Ford may audit six months of claims, find e.g. $10,000 to debit, and offer extrapolation to two years instead of a full audit; 'warranty leakage' is the industry term for unrecovered warranty cost.",
+      "source_url": "https://www.jlwarranty.com/blog/WTD-Audit.php",
+      "source_type": "dealer warranty-services vendor blog",
+      "prospective": "no",
+      "reusable_how": "Audit findings are financial, applied retrospectively."
+     }
+    ],
+    "economic_pain": "Chargebacks via audit extrapolation (jlwarranty above, vendor). OEMs 'update their warranty policies or procedures annually' and manuals are large -- https://fladco.com/blog/auto-warranty-claims/ (vendor). Claims backlogs and leakage are the vendor pitch (ServiceCPQ, vendor). Cost per manual adjudication, analyst headcount industry-wide and goodwill share of warranty spend: not found.",
+    "existing_solutions": "Warranty management systems with rules-based adjudication and pre-authorisation workflows: Tavant, Syncron (Mize), ServiceCPQ, PTC/iWarranty, SAP Warranty, Intellinet, Claimlane; dealer-side warranty administrators and outsourced processors (jlwarranty, WarrCloud, Jupiter Warranty). OEM policy & procedure manuals plus bulletins are the versioned rule corpus; incumbents already own the rules and pre-auth layer, so a settlement ledger would be a feature of those systems (H6).",
+    "buyer_and_budget": "OEM Director of Warranty Operations / Aftersales Quality; secondary: dealer group fixed-ops directors and outsourced warranty administrators. Budget exists (WMS licences, audit exposure) but is captured by incumbent WMS vendors.",
+    "regulatory_constraints": "US state dealer franchise laws (NC 20-305.1, AZ 28-4451, NY, LA) mandate deadlines, written grounds, chargeback limits and audit look-backs; Magnuson-Moss; EU consumer guarantee directives. These favour structured reasoned decisions and do not prohibit automation.",
+    "evidence_quality": "weak",
+    "verdict": "uncertain",
+    "notes": "Best unexplored candidate in the cluster because the prospective-settlement artefact (adjustment bulletin, special coverage) demonstrably exists and rejection reasons are legally required to be explicit. But all review-rate numbers are vendor claims, the A/B share may dominate, and the loop is engineering-driven and OEM-owned. Would need historical claim adjudication data from one OEM or dealer group to test."
+   }
+  ],
+  "evidence_against_thesis": [
+   "Settlements are often explicitly non-binding: Wikipedia's precedent record of past deletion outcomes states 'previous outcomes do not bind future ones' (https://en.wikipedia.org/wiki/Wikipedia:Articles_for_deletion/Common_outcomes, community governance page); TikTok implemented only 29 of 106 dispute-body disagreements in H1 2025 (https://newsroom.tiktok.com/digital-services-act-our-sixth-transparency-report-on-content-moderation-in-europe?lang=en-150, platform report); Oversight Board recommendations are non-binding with ~75% implemented (https://transparency.meta.com/oversight/meta-H2-2025-bi-annual/). Supports H4.",
+   "Ambiguity in moderation is a deliberate design choice, not a capture failure: 'policy ambiguity is not a deficiency but a deliberate design feature of principle-based rules' preserving moderator judgment without constant rewrites (https://arxiv.org/pdf/2604.20972, academic). Supports H4/H5.",
+   "Throughput mismatch: a few dozen Oversight Board decisions and fortnightly Policy Forum changes per year against 3.52 billion statements of reasons in 20 months (https://www.sciencedirect.com/science/article/pii/S0308596125001855) and 165M+ appeals (https://digital-strategy.ec.europa.eu/en/policies/dsa-impact-platforms); escalation and policy teams can only handle 'a tiny fraction' (https://arxiv.org/pdf/2604.01354). Supports H2 in the sense that settled classes are few relative to volume.",
+   "Appeal reversals look like classification error, not rule ambiguity: ~30% reversal on 165M EU appeals; ADR bodies overturning 52-63% (https://www.courthousenews.com/eu-watchdog-overturns-social-media-giants-in-most-user-appeals/); auditors 'unable to articulate why' (https://www.vice.com/en/article/how-facebook-content-moderation-works/). Supports H1 (facts/classification dominate).",
+   "Owners of the volume already run the loop in-house: Meta's 'identical content with parallel context' implementation, MMS hash banks, Product Policy Forum minutes, recommendation tracker; Cinder and Checkstep sell centralised policy codification (https://www.prnewswire.com/news-releases/cinder-emerges-from-stealth-with-first-platform-for-trust-and-safety-operations-301698305.html, https://www.checkstep.com/our-platform). Supports H3 and H6.",
+   "Returns: exceptions are already encoded as rules (Loop Workflows, https://help.loopreturns.com/en/articles/1917249) and the fraud engine flags <2% of returns (https://info.apprissretail.com/hubfs/Resource-Center/AR2020-Quick-Overview-Prevent-Fraud_Verify.pdf); residual human decisions are goodwill discretion at low value per decision. Supports H3 and H8.",
+   "Warranty: state statutes shield dealers from rejections for 'incidental failure to comply with a specific claim processing requirement' with 60-day resubmission (https://www.azleg.gov/ars/28/04451.htm), implying a large share of manual friction is documentation/coding compliance (A/B), and incumbent WMS vendors already claim 80-85% auto-adjudication (https://tavant.com/products/warranty-management/, https://www.getapp.com/industries-software/a/mize-warranty-management/). Supports H1 and H6.",
+   "Marketplace appeals: no platform publishes reinstatement rates; the described process turns on plans of action and evidence (https://www.estorefactory.com/blog/amazon-account-suspension-guide-2026/, vendor), and Amazon reversed only 5.1% of notice-based actions on complaint (https://assets.aboutamazon.com/cd/28/4d02dd2e41ec8c6d1bc341e9d919/amazon-eu-store-transparency-report-jan-june-2023.pdf). Supports H1."
+  ],
+  "not_found": [
+   "Any published cost per human moderation/appeal review, or escalation-tier headcount, at Meta, TikTok, YouTube or X (moderators-per-EU-language tables exist in their DSA reports but were unfetchable).",
+   "Number of Oversight Board case decisions to date and the count of content pieces affected via 'identical content with parallel context' across all decisions (Meta's tracking-impact page was blocked).",
+   "Meta H1/H2 2025 DSA Article 20 complaint counts and reversal counts for Facebook and Instagram (report at https://transparency.meta.com/sr/dsa-transparency-report-aug2025-facebook blocked).",
+   "Any moderator inter-rater agreement study with numeric kappa/agreement figures on production policy (only conceptual papers found).",
+   "Any evidence that a T&S vendor (Cinder, Checkstep, TrustLab, Hive) stores escalation outcomes as versioned executable precedents rather than as policy text/rules.",
+   "Amazon, eBay, Etsy, Airbnb or Uber official seller/host/driver suspension appeal volumes and reinstatement rates.",
+   "Amazon Seller Performance investigator headcount or appeals-per-day figures (only consultant characterisations).",
+   "Independent (non-vendor) data on the share of retail returns requiring a human policy decision, manager-override rates, or goodwill exception rates.",
+   "Industry-wide annual OEM warranty claim counts, warranty analyst headcount, cost per manual adjudication, dealer claim rejection/chargeback rates, and goodwill/policy adjustments as a share of warranty spend (NADA or OEM primary data).",
+   "Any OEM document quantifying how many goodwill escalations precede issuance of a special-coverage or adjustment bulletin.",
+   "DSA Article 21 total disputes across all certified bodies for a full year from the Commission (only Appeals Centre Europe and H1 2025 aggregate via press)."
+  ],
+  "blocked_urls": [
+   "https://transparency.meta.com/oversight/meta-H2-2025-bi-annual/",
+   "https://transparency.meta.com/governance/tracking-impact/",
+   "https://transparency.meta.com/policies/improving/appealed-content-metric/",
+   "https://apprissretail.com/news/appriss-retail-annual-research-fraudulent-returns-and-claims-cost-retailers-103b-in-2024/",
+   "https://www.oversightboard.com/news/from-bold-experiment-to-essential-institution/",
+   "https://www.oversightboard.com/transparency-reports/",
+   "https://www.appealscentre.eu/appeals-centre-publishes-first-transparency-report/",
+   "https://www.techpolicy.press/what-we-can-learn-from-the-first-digital-services-act-outofcourt-dispute-settlements/",
+   "https://www.hiig.de/en/analysis-of-the-dsas-transparency-reports/",
+   "https://www.courthousenews.com/eu-watchdog-overturns-social-media-giants-in-most-user-appeals/",
+   "https://newsroom.tiktok.com/digital-services-act-our-sixth-transparency-report-on-content-moderation-in-europe?lang=en-150",
+   "https://assets.aboutamazon.com/cd/28/4d02dd2e41ec8c6d1bc341e9d919/amazon-eu-store-transparency-report-jan-june-2023.pdf",
+   "https://static.ebayinc.com/static/assets/Uploads/Documents/eBay-2024-DSA-Transparency-Report-qualitative.pdf",
+   "https://about.fb.com/news/2019/04/insidefeed-community-standards-development-process/",
+   "https://www.vice.com/en/article/how-facebook-content-moderation-works/",
+   "https://4771362.fs1.hubspotusercontent-na1.net/hubfs/4771362/The%20State%20of%20Returns%20Report%202024%20%E2%80%94%20Optoro.pdf",
+   "https://static.nhtsa.gov/odi/tsbs/2017/MC-10113978-9999.pdf",
+   "https://transparency.x.com/dsa-transparency-report.html",
+   "https://dsa-observatory.eu/2026/01/08/the-metrics-were-missing-in-dsa-content-moderation-transparency/",
+   "https://digital-strategy.ec.europa.eu/en/policies/dsa-impact-platforms",
+   "https://www.socialmediatransparency.org/platform/meta",
+   "https://arxiv.org/html/2507.01787v1",
+   "https://www.sciencedirect.com/science/article/pii/S0308596125001855",
+   "https://assets.kpmg.com/content/dam/kpmg/nl/pdf/2025/services/kpmg-2024-dsa-audit-reports-benchmark.pdf",
+   "https://www.servicecpq.com/thinking/warranty-management-heavy-equipment",
+   "https://lefkofflaw.com/insights/goodwill-repairs",
+   "https://www.cinder.co/use-cases/moderation",
+   "https://www.trustlab.com/post/navigating-the-complexities-of-content-policies-bridging-the-gap-between-policy-enforcement",
+   "https://globalfreedomofexpression.columbia.edu/cases/oversight-board-case-of-bengali-debate-about-religion/",
+   "https://en.wikipedia.org/wiki/Wikipedia:Articles_for_deletion/Common_outcomes",
+   "https://ncleg.gov/EnactedLegislation/Statutes/PDF/BySection/Chapter_20/GS_20-305.1.pdf",
+   "https://corporate.zalando.com/sites/default/files/media-download/Zalando-SE_DSA_Transparency_Report_2504.pdf",
+   "https://files.alicdn.com/tpsservice/906a973d92a28a83538c77c03470a171.pdf",
+   "https://r-xx.bstatic.com/data/mobile/dsa_transparency_report_bf3fdc24.pdf",
+   "https://www.ecommercechris.com/amazon-seller-escalation/",
+   "https://www.jlwarranty.com/blog/WTD-Audit.php",
+   "https://www.intellinetsystem.com/blogs/guide-warranty-management-software-for-us-oem",
+   "https://www.cpscentral.com/what-is-a-typical-extended-warranty-claims-rate-for-retailers-and-dealers/",
+   "https://publicknowledge.org/safeguarding-users/",
+   "https://transparency.dsa.ec.europa.eu/page/announcements",
+   "https://www.ebayinc.com/company/digital-services-act/",
+   "https://trustworthyshopping.aboutamazon.com/digital-services-act-dsa-amazon-eu-store-transparency-report",
+   "https://www.nrf.com/research/appriss-retail-2024-claims-and-appeasements-report",
+   "https://www.checkstep.com/our-platform",
+   "https://sellercentral.amazon.com/help/hub/reference/external/G200370560",
+   "https://www.azleg.gov/ars/28/04451.htm"
+  ],
+  "sources": [
+   {
+    "url": "https://transparency.meta.com/oversight/meta-H2-2025-bi-annual/",
+    "type": "platform transparency report (via search snippet)",
+    "used_for": "326 recommendations responded to by 31 Dec 2025; ~75% implemented; eligible violation notice from first PAO"
+   },
+   {
+    "url": "https://www.socialmediatoday.com/news/metas-oversight-board-highlights-five-years-of-rulings/807081/",
+    "type": "press",
+    "used_for": "75% of 300+ recommendations implemented; Board to pilot account-level reviews in 2026"
+   },
+   {
+    "url": "https://transparency.meta.com/oversight/oversight-board-recommendations/",
+    "type": "platform tracker (via snippet)",
+    "used_for": "~65% recommendations fully/partially implemented or in progress (earlier count); 60-day response obligation; recommendations non-binding"
+   },
+   {
+    "url": "https://www.oversightboard.com/decision/ig-pt5wrtlw/",
+    "type": "tribunal decision page (via snippet)",
+    "used_for": "Identical content with parallel context; 52 pieces of drill content removed"
+   },
+   {
+    "url": "https://www.oversightboard.com/decision/bun-0w49p93l/",
+    "type": "tribunal decision page (via snippet)",
+    "used_for": "MMS bank removals; 215 appealed, 210 successful"
+   },
+   {
+    "url": "https://transparency.meta.com/oversight/further-asked-questions/",
+    "type": "platform FAQ (via snippet)",
+    "used_for": "Meta's definition of identical content and parallel context"
+   },
+   {
+    "url": "https://about.fb.com/news/2019/04/insidefeed-community-standards-development-process/",
+    "type": "platform description (via snippet)",
+    "used_for": "Product Policy Forum every two weeks across 11 offices; minutes published"
+   },
+   {
+    "url": "https://www.oversightboard.com/wp-content/uploads/2023/11/1251619429020484.pdf",
+    "type": "Oversight Board public-comment appendix (via snippet)",
+    "used_for": "Three-tier review (contract reviewers, market teams, policy experts)"
+   },
+   {
+    "url": "https://transparency.meta.com/governance/tracking-impact/measuring-performance/",
+    "type": "platform page (via snippet)",
+    "used_for": "Share of trusted-partner escalations resolved within 5 days increasing"
+   },
+   {
+    "url": "https://transparency.meta.com/reports/integrity-reports-q1-2025/",
+    "type": "platform report (via snippet)",
+    "used_for": "US enforcement mistakes cut in half; fewer appeals/restores"
+   },
+   {
+    "url": "https://transparency.meta.com/integrity-reports-q2-2025",
+    "type": "platform report (via snippet)",
+    "used_for": "Enforcement mistakes cut >75% weekly"
+   },
+   {
+    "url": "https://www.sciencedirect.com/science/article/pii/S0308596125001855",
+    "type": "academic (via snippet)",
+    "used_for": "3.52 billion SoRs from 8 platforms Sep 2023-May 2025"
+   },
+   {
+    "url": "https://www.lexology.com/library/detail.aspx?g=92bb023a-2cbb-4daa-a425-61d4efd5de59",
+    "type": "law-firm article (via snippet)",
+    "used_for": "9.44 billion SoRs from 116 platforms in six months as of Jan 2025"
+   },
+   {
+    "url": "https://arxiv.org/pdf/2404.02894",
+    "type": "academic (via snippet)",
+    "used_for": "Automation of decisions by platform (X/LinkedIn/Booking none; TikTok/AliExpress/Google mostly automated)"
+   },
+   {
+    "url": "https://digital-strategy.ec.europa.eu/en/policies/dsa-impact-platforms",
+    "type": "regulator (via snippet)",
+    "used_for": "165M+ EU appeals since 2024, ~30% reversed"
+   },
+   {
+    "url": "https://dev.to/alifar/eu-dsa-appeals-surpass-165-million-raising-the-stakes-for-platform-moderation-214h",
+    "type": "press/blog",
+    "used_for": "~50M reversals; H1 2025 >1,800 ADR disputes, ~52% reversed"
+   },
+   {
+    "url": "https://www.courthousenews.com/eu-watchdog-overturns-social-media-giants-in-most-user-appeals/",
+    "type": "press",
+    "used_for": "Appeals Centre Europe: 24,000+ disputes, 59% overturn; 52%/63%; hate-speech per-platform overturn rates"
+   },
+   {
+    "url": "https://www.appealscentre.eu/appeals-centre-publishes-first-transparency-report/",
+    "type": "ADR body report (via snippet)",
+    "used_for": "Existence of first ACE transparency report"
+   },
+   {
+    "url": "https://newsroom.tiktok.com/digital-services-act-our-sixth-transparency-report-on-content-moderation-in-europe?lang=en-150",
+    "type": "platform report (via snippet)",
+    "used_for": "1,121 Art. 21 complaints; 498 closed; 106 disagreements, 29 implemented"
+   },
+   {
+    "url": "https://www.vice.com/en/article/how-facebook-content-moderation-works/",
+    "type": "press",
+    "used_for": "98% accuracy target; auditors unable to articulate reasons"
+   },
+   {
+    "url": "https://arxiv.org/pdf/2604.20972",
+    "type": "academic (via snippet)",
+    "used_for": "Agreement Trap; ambiguity as deliberate design feature; moderators use context, precedent, interpretive norms"
+   },
+   {
+    "url": "https://arxiv.org/pdf/2604.01354",
+    "type": "academic (via snippet)",
+    "used_for": "Escalation/policy teams cover only a tiny fraction of decisions"
+   },
+   {
+    "url": "https://www.zevohealth.com/blog/understanding-how-policy-impacts-content-moderator-wellbeing/",
+    "type": "vendor",
+    "used_for": "Ambiguity slows decisions and raises stress"
+   },
+   {
+    "url": "https://en.wikipedia.org/wiki/Wikipedia:Articles_for_deletion/Common_outcomes",
+    "type": "community governance page (via snippet)",
+    "used_for": "Precedent record explicitly non-binding"
+   },
+   {
+    "url": "http://eegilbert.org/papers/cscw18-chand-norms.pdf",
+    "type": "academic",
+    "used_for": "2.8M removed Reddit comments study; macro/meso/micro norms"
+   },
+   {
+    "url": "https://arxiv.org/pdf/2206.05629",
+    "type": "academic (via snippet)",
+    "used_for": "Reddit moderator admits inconsistent enforcement"
+   },
+   {
+    "url": "https://www.prnewswire.com/news-releases/cinder-emerges-from-stealth-with-first-platform-for-trust-and-safety-operations-301698305.html",
+    "type": "vendor press release",
+    "used_for": "Cinder codifies policies centrally"
+   },
+   {
+    "url": "https://www.checkstep.com/our-platform",
+    "type": "vendor",
+    "used_for": "Checkstep policy engine and DSA compliance"
+   },
+   {
+    "url": "https://www.uktechnews.info/2026/04/28/checkstep-secures-3-million-seed-investment-led-by-alea-capital-partners/",
+    "type": "press",
+    "used_for": "Checkstep \u00a33M seed"
+   },
+   {
+    "url": "https://www.trustlab.com/post/navigating-the-complexities-of-content-policies-bridging-the-gap-between-policy-enforcement",
+    "type": "vendor",
+    "used_for": "Policy-enforcement gap framing"
+   },
+   {
+    "url": "https://www.themuse.com/jobs/meta/regulatory-escalations-specialist-782f6d",
+    "type": "job listing",
+    "used_for": "Meta escalations roles exist in-house"
+   },
+   {
+    "url": "https://techcrunch.com/2025/10/24/ec-finds-meta-and-tiktok-breached-transparency-rules-under-dsa/",
+    "type": "press",
+    "used_for": "EC preliminary DSA transparency breach findings Oct 2025"
+   },
+   {
+    "url": "https://assets.aboutamazon.com/cd/28/4d02dd2e41ec8c6d1bc341e9d919/amazon-eu-store-transparency-report-jan-june-2023.pdf",
+    "type": "platform report (via snippet)",
+    "used_for": "156,369 complaints; 41,167 reversals of 810,170 actions; median 1 day; CEDR mediation"
+   },
+   {
+    "url": "https://files.alicdn.com/tpsservice/906a973d92a28a83538c77c03470a171.pdf",
+    "type": "platform report (via snippet)",
+    "used_for": "AliExpress 54,166 appeals, median 27 hours"
+   },
+   {
+    "url": "https://corporate.zalando.com/sites/default/files/media-download/Zalando-SE_DSA_Transparency_Report_2504.pdf",
+    "type": "platform report (via snippet)",
+    "used_for": "Zalando 1,287 notices, 933 restrictions"
+   },
+   {
+    "url": "https://assets.aboutamazon.com/24/cd/c7e7ccd94abeae59dec904c2b637/2023-brand-protection-report-final-english.pdf",
+    "type": "company report (via snippet)",
+    "used_for": "700,000 bad-actor account attempts stopped in 2023 vs 6M in 2020"
+   },
+   {
+    "url": "https://trustworthyshopping.aboutamazon.com/2024-brand-protection-report",
+    "type": "company report (via snippet)",
+    "used_for": "15M counterfeits seized; >99% infringing listings blocked proactively"
+   },
+   {
+    "url": "https://myamazonguy.com/suspensions/amazon-suspension-what-amazon-sellers-need-to-know-for-2024/",
+    "type": "vendor/consultant",
+    "used_for": "25% (EntreResource) and 35% (SmartScout, n=325) of sellers suspended at least once"
+   },
+   {
+    "url": "https://sellercandy.com/amazon-seller-account-reinstatement",
+    "type": "vendor",
+    "used_for": "Claimed 98% resolution across 70,000+ cases (weak evidence)"
+   },
+   {
+    "url": "https://www.estorefactory.com/blog/amazon-account-suspension-guide-2026/",
+    "type": "vendor",
+    "used_for": "Most first appeals fail; Section 3 and IP hardest"
+   },
+   {
+    "url": "https://www.ecommercechris.com/amazon-seller-escalation/",
+    "type": "consultant/press (via snippet)",
+    "used_for": "Seller Performance volume and staffing characterisation"
+   },
+   {
+    "url": "https://help.etsy.com/hc/en-us/articles/6298920789271-How-to-File-an-Appeal-for-a-Permanently-Suspended-Account",
+    "type": "platform help page",
+    "used_for": "Etsy appeal decided by specialists within ~2 weeks"
+   },
+   {
+    "url": "https://www.valueaddedresource.net/ebay-germany-digital-services-act-violations/",
+    "type": "press",
+    "used_for": "eBay enforcement opacity; German regulator finding"
+   },
+   {
+    "url": "https://sellercentral.amazon.com/seller-forums/discussions/t/e013e712-601c-46ef-816b-3811a4ddf3a4",
+    "type": "seller forum (anecdotal)",
+    "used_for": "Concession Abuse thresholds"
+   },
+   {
+    "url": "https://nrf.com/research/appriss-retail-2024-claims-and-appeasements-report",
+    "type": "industry association/vendor",
+    "used_for": "$103B fraud/abuse; 15.14% of returns; survey scope"
+   },
+   {
+    "url": "https://www.dcvelocity.com/supply-chain/other-services/reverse-logistics/study-over-15-of-all-retail-returns-in-2024-were-fraudulent",
+    "type": "press citing vendor survey",
+    "used_for": "Fraud typology shares (60% wardrobing etc.)"
+   },
+   {
+    "url": "https://www.nbcnews.com/news/us-news/retail-returns-890-billion-problem-rcna183359",
+    "type": "press citing NRF",
+    "used_for": "$890B returns, 17% of sales, ~14% fraudulent vs 5% in 2018"
+   },
+   {
+    "url": "https://info.apprissretail.com/hubfs/Resource-Center/AR2020-Quick-Overview-Prevent-Fraud_Verify.pdf",
+    "type": "vendor",
+    "used_for": "Deny/warn recommended on <2% of returns"
+   },
+   {
+    "url": "https://apprissretail.com/resources/engage-in-store-return-authorization/",
+    "type": "vendor",
+    "used_for": "Real-time approve/warn/decline at POS; 8-12% return reduction claim"
+   },
+   {
+    "url": "https://help.loopreturns.com/en/articles/1917249",
+    "type": "vendor documentation",
+    "used_for": "Workflows encode policy exceptions as rules"
+   },
+   {
+    "url": "https://learn.microsoft.com/en-us/dynamics365/commerce/refund_policy_returns",
+    "type": "vendor documentation",
+    "used_for": "Manager override permissions"
+   },
+   {
+    "url": "https://www.cnbc.com/2025/06/21/how-broken-amazon-returns-are-driving-sellers-to-leave-the-platform.html",
+    "type": "press",
+    "used_for": "Seller pain from returnless refunds"
+   },
+   {
+    "url": "https://www.emarketer.com/content/blue-yonder-s-optoro-acquisition-targets--686-billion-retail-returns-challenge",
+    "type": "press",
+    "used_for": "Optoro acquisition; $686B returns cost"
+   },
+   {
+    "url": "https://www.intellinetsystem.com/blogs/guide-warranty-management-software-for-us-oem",
+    "type": "vendor (via snippet)",
+    "used_for": "OEM with 340 service centres, 12,000 claims/month, 18 analysts"
+   },
+   {
+    "url": "https://tavant.com/products/warranty-management/",
+    "type": "vendor",
+    "used_for": "85% claims auto-processing claim"
+   },
+   {
+    "url": "https://www.getapp.com/industries-software/a/mize-warranty-management/",
+    "type": "vendor listing",
+    "used_for": "Syncron 80%+ automated claims processing claim"
+   },
+   {
+    "url": "https://www.servicecpq.com/thinking/warranty-management-heavy-equipment",
+    "type": "vendor (via snippet)",
+    "used_for": "60-70% rules auto-approval, 20-30% human review, 70-80% target"
+   },
+   {
+    "url": "https://www.cpscentral.com/what-is-a-typical-extended-warranty-claims-rate-for-retailers-and-dealers/",
+    "type": "vendor",
+    "used_for": "5-15% annual claim rate on service contracts"
+   },
+   {
+    "url": "https://static.nhtsa.gov/odi/tsbs/2017/MC-10113978-9999.pdf",
+    "type": "OEM bulletin in regulator archive (via snippet)",
+    "used_for": "GM policy adjustment authorisation, empowerment levels, GM Authorization"
+   },
+   {
+    "url": "https://lefkofflaw.com/insights/goodwill-repairs",
+    "type": "law firm",
+    "used_for": "Warranty adjustment program as standing decision"
+   },
+   {
+    "url": "https://mcmillanlawgroup.com/car-brands/secret-warranty-programs-manufacturers-dont-want-you-to-know-about/",
+    "type": "law firm",
+    "used_for": "Secret warranty / adjustment programs"
+   },
+   {
+    "url": "https://www.fixedperformance.com/warranty_reimbursement_state_laws/new-york-warranty-reimbursement-state-law/",
+    "type": "statute summary (vendor site)",
+    "used_for": "30-day approval, written grounds, chargeback explanation"
+   },
+   {
+    "url": "https://ncleg.gov/EnactedLegislation/Statutes/PDF/BySection/Chapter_20/GS_20-305.1.pdf",
+    "type": "government statute (via snippet)",
+    "used_for": "NC dealer warranty obligations"
+   },
+   {
+    "url": "https://www.azleg.gov/ars/28/04451.htm",
+    "type": "government statute (via snippet)",
+    "used_for": "No denial for incidental processing failures; 60-day resubmission"
+   },
+   {
+    "url": "https://www.legis.la.gov/legis/ViewDocument.aspx?d=1170415",
+    "type": "government statute (via snippet)",
+    "used_for": "Chargeback limited to specific non-compliant repair line"
+   },
+   {
+    "url": "https://www.jlwarranty.com/blog/WTD-Audit.php",
+    "type": "vendor blog",
+    "used_for": "Ford audit extrapolation practice; warranty leakage"
+   },
+   {
+    "url": "https://fladco.com/blog/auto-warranty-claims/",
+    "type": "vendor",
+    "used_for": "OEM manuals updated annually"
+   },
+   {
+    "url": "https://arxiv.org/pdf/2410.23448",
+    "type": "academic",
+    "used_for": "Venire ML-guided panel review for community moderation"
+   }
+  ]
+ },
+ "verification": {
+  "domain": "trust-safety-moderation-marketplace-returns-warranty",
+  "refuted": [
+   {
+    "claim": "Amazon EU reversed only 5.1% of notice-based actions on complaint (41,167 of 810,170), presented as a low appeal-reversal rate (marketplace workflow, human_review_rate and evidence_against_thesis item 8)",
+    "why": "Mixed denominators. The 810,170 figure is 'actions on valid notices'; the 41,167 reversals arose from 156,369 complaints. Reversals per complaint are 41,167/156,369 = 26.3 percent, i.e. roughly one in four complainants wins, which is the meaningful appeal-success figure and is comparable to the ~30 percent EU-wide appeal reversal the finder cites for content moderation. The underlying numbers come from a search snippet of https://assets.aboutamazon.com/cd/28/4d02dd2e41ec8c6d1bc341e9d919/amazon-eu-store-transparency-report-jan-june-2023.pdf (platform report; blocked for fetch this session) and remain unverified, but the 5.1 percent framing is arithmetically wrong for the claim it supports. A 26 percent reversal rate on complaints points to classification error and missing evidence (B/A), not to a low error rate."
+   },
+   {
+    "claim": "OEM warranty: 'warranty adjustment programs / special coverage bulletins converting repeated goodwill escalations into standing coverage' is the cluster's clearest H loop, worth ~15% of warranty human review",
+    "why": "The causal chain (goodwill escalations aggregate into a bulletin) is asserted with no source; the finder's own not_found list admits no document quantifies goodwill escalations preceding a bulletin. The legal definition cuts against it: California Civil Code 1795.90 (the 'secret warranty' law, https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1795.90., state statute; blocked for fetch, quoted from prior knowledge of the text) defines an 'adjustment program' as a program under which a manufacturer pays for 'any condition that may substantially affect vehicle durability, reliability, or performance' beyond the written warranty and states that it 'does not include ad hoc adjustments made by a manufacturer on a case-by-case basis'. Adjustment programs and special-coverage bulletins are quality/engineering decisions triggered by field failure-rate data on a known defect (they are the same instrument TSBs and Special Coverage Adjustments describe on the NHTSA TSB archive the finder cites), not settlements of an ambiguous claim-adjudication question. That is a coverage extension (the rule itself changes), which the brief's mechanism explicitly does not cover ('does not primarily generate policy text'). Per-case goodwill above dealer empowerment remains E; documentation rejections remain A. H at 15 percent is unsupported; see corrected estimate."
+   },
+   {
+    "claim": "Warranty human review rate is 15-40% of claims (Tavant 85% auto, Syncron 80%+, ServiceCPQ 60-70% rules-approved) and one OEM runs 12,000 claims/month with 18 analysts",
+    "why": "All four figures are vendor marketing pages (https://tavant.com/products/warranty-management/, https://www.getapp.com/industries-software/a/mize-warranty-management/, https://www.servicecpq.com/thinking/warranty-management-heavy-equipment, https://www.intellinetsystem.com/blogs/guide-warranty-management-software-for-us-oem), none fetched by the finder or by me (all blocked), all reproduced from snippets, and the '18 analysts' example is an unattributed anecdote in a vendor buying guide. The brief classes vendor marketing as weak evidence; presenting the spread as a 'human review rate' converts four sales claims into an industry statistic. Correct status: unknown. Nothing independent (NADA, OEM 10-K warranty notes, dealer-association surveys) was found by the finder and I could not search."
+   },
+   {
+    "claim": "Content moderation: H (repeatable ambiguity settled prospectively) is ~10% of why humans review",
+    "why": "The finder's own evidence contradicts the share. Settlements with prospective effect come from the Oversight Board (dozens of decisions per year; even counting summary and expedited decisions, low hundreds over five years) and the fortnightly Product Policy Forum (tens of changes per year), against 165 million-plus Article 20 appeals since 2024 (https://digital-strategy.ec.europa.eu/en/policies/dsa-impact-platforms, regulator, via finder's snippet) each of which must be supervised by a human under DSA Article 20(6). The finder also cites that escalation and policy teams cover 'a tiny fraction' of decisions (https://arxiv.org/pdf/2604.01354, academic, via snippet). On those numbers, H events are well under 1 percent of human review events. The finder appears to have weighted H by leverage (each settlement touches many items) rather than by share of human review, which is what the brief's category split asks for; the leverage is real but is already captured in Meta's internal Implementation Standards, Known Questions and MMS hash banks (H3)."
+   }
+  ],
+  "weakened": [
+   {
+    "claim": "3.52 billion statements of reasons from 8 platforms (Sep 2023 to May 2025) and 9.44 billion from 116 platforms in six months, used as decision volume for the moderation workflow",
+    "why": "Order of magnitude independently confirmed: the README of transparency-in-content-moderation/eu-dsa-transparency-db-sor-data-downloader (fetched, https://raw.githubusercontent.com/transparency-in-content-moderation/eu-dsa-transparency-db-sor-data-downloader/main/README.md, academic/civil-society tooling) reports the DSA Transparency Database holding 30,840,943,675 rows (1,404,823,766 in 2023; 22,240,518,416 in 2024; 7,195,601,493 in 2025 to date of that README). So the finder's numbers are plausible subsets. But SoRs are overwhelmingly automated decisions (the finder's own arXiv 2404.02894 snippet says TikTok, AliExpress and Google Shopping/Maps are fully automated for most SoRs), so this is not a measure of human decision volume and should not be read as such; the human-touched volume is the appeals figure, not the SoR figure."
+   },
+   {
+    "claim": "Oversight Board: 52 further drill-music pieces removed; breast-cancer MMS bank case with 215 appeals of which 210 succeeded",
+    "why": "Both figures come from Oversight Board decision pages via snippet (https://www.oversightboard.com/decision/ig-pt5wrtlw/, https://www.oversightboard.com/decision/bun-0w49p93l/; blocked for fetch). They are plausible and I have no reason to doubt them, but note what they show: propagation of a decision to hash-matched identical media via Media Matching Service banks. That is a matching rule on a specific artefact, not a reusable interpretation of an ambiguous rule; it is evidence that Meta already has a precedent-propagation mechanism for the narrow case (H3), and that the interpretive part (why the image is allowed) was settled by a policy change, not by the ledger."
+   },
+   {
+    "claim": "~75% of 326 Oversight Board recommendations implemented",
+    "why": "Meta self-reported metric via snippet (https://transparency.meta.com/oversight/meta-H2-2025-bi-annual/, platform report, blocked). Meta's counting conventions group 'implemented in full', 'implemented in part' and 'in progress'; earlier snapshots the finder cites showed ~65 percent. Treat as Meta's own compliance narrative, not an independent implementation rate. Recommendations are non-binding by charter, so this is evidence of a voluntary loop, not of an authoritative settlement."
+   },
+   {
+    "claim": "Appeals Centre Europe: >24,000 disputes, platform overturned 59% (52% removals, 63% leave-ups), per-platform hate-speech overturn rates",
+    "why": "Press report of one ADR body's transparency report, via snippet only (https://www.courthousenews.com/eu-watchdog-overturns-social-media-giants-in-most-user-appeals/, press; ACE's own page https://www.appealscentre.eu/appeals-centre-publishes-first-transparency-report/ blocked). Two caveats the finder omitted: (a) heavy selection bias, since users reach ADR only after losing an internal appeal, so the overturn rate says nothing about the base population; (b) under DSA Article 21(2) these bodies 'shall not have the power to impose a binding settlement' (Regulation (EU) 2022/2065, https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32022R2065, regulation text quoted from prior knowledge; EUR-Lex blocked this session), which is why TikTok adopting 29 of 106 disagreements is unremarkable rather than a finding."
+   },
+   {
+    "claim": "Appriss/NRF: $103B (15.14% of returns) fraudulent or abusive in 2024; <2% of returns flagged deny/warn",
+    "why": "Both are vendor figures: the $103B number is an extrapolation from a survey of about 60 retailers co-branded with NRF (https://nrf.com/research/appriss-retail-2024-claims-and-appeasements-report, industry association hosting a vendor study; blocked), and the <2 percent flag rate is Appriss product collateral (https://info.apprissretail.com/hubfs/Resource-Center/AR2020-Quick-Overview-Prevent-Fraud_Verify.pdf, vendor; blocked). They are adequate to show that returns fraud is a scoring problem, which is the finder's point, but neither number bears on H, and both should be labelled vendor, not 'industry association/vendor'."
+   },
+   {
+    "claim": "Moderators face a 98% accuracy target judged by auditors who 'are often unable to articulate why'",
+    "why": "Single 2018 press piece (https://www.vice.com/en/article/how-facebook-content-moderation-works/, press; blocked) describing one contractor site eight years ago. Still directionally useful (QA disagreement is classification, not rule ambiguity) but too old and narrow to carry weight for 2026 operations that Meta says have changed materially (its own Q1/Q2 2025 integrity-report claims of halving enforcement mistakes are equally self-reported)."
+   },
+   {
+    "claim": "Arizona ARS 28-4451 'incidental failure to comply' and 60-day resubmission imply most warranty rejections are documentation-driven (A/B)",
+    "why": "Statute via snippet (https://www.azleg.gov/ars/28/04451.htm, state statute; blocked). The existence of a dealer protection against technicality-based rejection shows such rejections were common enough to legislate against, but it does not measure their share today; the A/B dominance is inference. Direction is probably right (dealer warranty administrators' trade literature is about coding, labour ops and technician narratives) but it is unquantified."
+   },
+   {
+    "claim": "Board case decisions 'number in the low hundreds over five years' and 'a few dozen board decisions a year'",
+    "why": "Estimate, not sourced. The Board also issues summary decisions and expedited decisions in addition to standard decisions, so total decisions are higher than standard decisions alone; but even a generous count (low hundreds cumulatively) leaves the throughput mismatch the finder describes intact. Flagging only because the finder gave a count without a source."
+   }
+  ],
+  "confirmed": [
+   {
+    "claim": "EU DSA statement-of-reasons volume is in the billions per year",
+    "evidence": "Fetched: README of transparency-in-content-moderation/eu-dsa-transparency-db-sor-data-downloader reports 30,840,943,675 rows in the DSA Transparency Database (2023: 1,404,823,766; 2024: 22,240,518,416; 2025 partial: 7,195,601,493), 38 columns including automated-decision indicators and decision grounds. https://raw.githubusercontent.com/transparency-in-content-moderation/eu-dsa-transparency-db-sor-data-downloader/main/README.md (academic/civil-society data tooling). Consistent with the finder's 9.44B-per-six-months snippet."
+   },
+   {
+    "claim": "Out-of-court dispute settlements under the DSA are non-binding, and internal complaint handling must have human supervision",
+    "evidence": "Regulation (EU) 2022/2065, Article 21(2): certified bodies 'shall not have the power to impose a binding settlement of the dispute on the parties'; Article 20(6): decisions on complaints must be 'taken under the supervision of appropriately qualified staff, and not solely on the basis of automated means'. https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32022R2065 (regulation; EUR-Lex blocked this session, text quoted from prior knowledge). Confirms the finder's regulatory_constraints and strengthens the human-in-loop penalty in brief section 2."
+   },
+   {
+    "claim": "Wikipedia's AfD 'Common outcomes' page explicitly disclaims binding precedent",
+    "evidence": "The page header states it is not a policy or guideline and that previous outcomes do not bind future ones because consensus can change. https://en.wikipedia.org/wiki/Wikipedia:Articles_for_deletion/Common_outcomes (community governance page; blocked this session, quoted from prior knowledge). Confirms the finder's H4 evidence."
+   },
+   {
+    "claim": "Meta already operates an in-house settlement ledger for moderation: internal Implementation Standards and Known Questions supplementing the public Community Standards, plus Media Matching Service banks and the Product Policy Forum",
+    "evidence": "Oversight Board decisions routinely cite Meta's 'internal Implementation Standards' and 'Known Questions' as the reviewer-facing guidance that operationalises Community Standards (see any standard Board decision under https://www.oversightboard.com/decision/, tribunal; blocked this session, from prior knowledge of the decisions), and the finder's own Product Policy Forum citation (https://about.fb.com/news/2019/04/insidefeed-community-standards-development-process/, platform). This confirms H3/H6 for the largest buyer: the loop exists and the settlements are already encoded in an owned system."
+   },
+   {
+    "claim": "A 'secret warranty' / adjustment-program artefact demonstrably exists and is regulated in several US states",
+    "evidence": "California Civil Code 1795.90-1795.93 requires manufacturers to notify owners within 90 days of adopting an adjustment program and to notify dealers; similar disclosure statutes exist in Connecticut, Virginia and Wisconsin. https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1795.90. (state statute; blocked this session, from prior knowledge). Confirms the artefact the finder describes, but the same statute excludes case-by-case adjustments from the definition, which is why it is refuted as an H loop above."
+   },
+   {
+    "claim": "No established open tooling exists for warranty-claim adjudication; the space is served by commercial WMS vendors",
+    "evidence": "Fetched: GitHub repository search for 'warranty claims adjudication' returns only zero-star hackathon or demo projects (e.g. KyawKoKoSan/warranty-adjudicator 'staged warranty claim adjudication with rules, HITL, and fixture eval', several GenLayer 'warranty oracle' demos). https://api.github.com/search/repositories?q=warranty+claims+adjudication (GitHub API). Weak but independent support for the finder's statement that incumbents (Tavant, Syncron, SAP, PTC) own the rules and pre-authorisation layer."
+   },
+   {
+    "claim": "Returns/refunds is negative for the mechanism",
+    "evidence": "Agree with the finder on its own evidence: fraud scoring (Appriss) and rule-encoded exceptions (Loop Workflows, https://help.loopreturns.com/en/articles/1917249, vendor documentation; blocked) leave a residual of low-value goodwill discretion (E). No number in this workflow was verifiable this session, but none is load-bearing for the negative verdict."
+   }
+  ],
+  "manual_review_conflated_with_repeatable_ambiguity": [
+   "Content moderation: the 165M+ Article 20 appeals and ~30% reversal rate are treated as evidence of 'ambiguity'. They are legally mandated human re-reviews of classification decisions (DSA Art. 20(6)); a reversal means the first classifier or reviewer was wrong on facts/context (category B), or that the item was borderline under a rule Meta has deliberately left open (E, per the finder's own arXiv 2604.20972 snippet). Nothing in those numbers shows that the same interpretive question recurs and could be settled prospectively. Corrected H share of human review events: under 1 percent (the Board/PPF/policy-team throughput divided by appeal volume), with those settlements already encoded in Implementation Standards, Known Questions and MMS banks. The finder's 10 percent conflates leverage with share.",
+   "Content moderation: Oversight Board recommendations and Product Policy Forum changes are counted as settlement-loop evidence. They are policy-text changes (generating or amending the rule), which the brief's section 1 excludes from the mechanism. Only the narrow 'identical content with parallel context' propagation is a true reuse of a settled case, and it is a hash-match rule, not an interpretation.",
+   "Marketplace seller appeals: the finder assigns H ~5% with no evidence of any appeal outcome being recorded for reuse; its own description (plans of action, invoices, supplier proof, 'most first appeals fail') is A, and the 26 percent complaint-success rate at Amazon EU is consistent with A/B error correction. Corrected H: 0-2 percent, unknown quality. The settlement that does exist (restricted-product lists, category gating, Concession Abuse thresholds) is parameter-setting by in-house program teams, not ambiguity settlement.",
+   "Warranty: three distinct things are merged into 'H ~15%': (1) adjustment programs / special coverage, which are engineering coverage extensions triggered by defect data and legally distinguished from case-by-case adjustments (California Civ. Code 1795.90); (2) per-claim goodwill above dealer empowerment authorised by service or district managers, which is case-specific discretion (E) already logged in the OEM pre-authorisation system (the GM bulletin the finder cites describes exactly this ledger); (3) rejections for documentation or coding, which are A. The genuinely H-shaped residual is dealer questions on how the OEM Policies & Procedures manual applies to a repair pattern (e.g. what counts as a covered consequential damage, labour-op eligibility), which OEMs answer through warranty administration bulletins and policy clarifications. That residual is real but unquantified; corrected H: roughly 3-8 percent of manually reviewed claims, my estimate, with unknown evidence quality. Nothing in the record supports 15.",
+   "Returns: 'manager override' and 'make it right' refunds are E; Appriss warn/deny flags are B (fraud scoring). The finder's own H ~5% is already generous; corrected to 0-2 percent."
+  ],
+  "corrected_workflow_verdicts": [
+   {
+    "name": "Content moderation policy escalation and precedent (Meta Oversight Board, Product Policy Forum, DSA appeals)",
+    "evidence_quality": "moderate",
+    "verdict": "weak",
+    "why": "The mechanism is demonstrably real but every element the brief penalises is present: settlements are policy-text changes or hash-match propagation; the external tier (ADR bodies, Board recommendations) is non-binding by regulation and charter; DSA Art. 20(6) keeps humans in the loop on every appeal regardless of precedent; H is under 1 percent of human review events; the owners of volume (Meta, TikTok, Google) already run an in-house ledger (Implementation Standards, Known Questions, MMS banks, PPF minutes) and mid-size platforms buy policy engines from Cinder/Checkstep (H3, H6). Downgraded from 'uncertain' because the finder's 'uncertain' rested on a 10 percent H share that its own citations refute. Independent order-of-magnitude confirmation of SoR volume only."
+   },
+   {
+    "name": "Marketplace seller and listing enforcement appeals (Amazon Seller Performance, AliExpress, Zalando, eBay, Etsy)",
+    "evidence_quality": "weak",
+    "verdict": "weak",
+    "why": "Verdict stands but the supporting arithmetic is corrected: Amazon EU upholds about 26 percent of complaints (41,167 of 156,369), not 5.1 percent, which is consistent with A/B error correction at scale, not with settled ambiguity. No platform publishes reinstatement or precedent data; the only large buyers build in-house; seller-side willingness to pay is for advocacy. All numbers are snippet-level and unverified; nothing found that would move this to 'uncertain'."
+   },
+   {
+    "name": "Retail returns, refunds and goodwill exceptions (return abuse, appeasements, policy exceptions)",
+    "evidence_quality": "moderate",
+    "verdict": "negative",
+    "why": "Agree. Fraud is a scoring problem (B), exceptions are rule-encoded in returns platforms (H3), the residual is goodwill discretion (E) at low value per decision. Both headline numbers are vendor-sourced (Appriss) and should be labelled as such, but nothing in the verdict depends on them."
+   },
+   {
+    "name": "OEM warranty claim adjudication, dealer goodwill/policy adjustments and warranty audits",
+    "evidence_quality": "weak",
+    "verdict": "weak",
+    "why": "Downgraded from 'uncertain'. The finder's flagship H artefact (adjustment program / special coverage) is a defect-driven coverage extension that California's own statute defines as excluding case-by-case adjustments, so it is not the settlement loop the brief describes. All review-rate numbers are vendor marketing; the per-claim escalation ledger (service-manager and district-manager pre-authorisation) already exists inside OEM warranty systems; state franchise statutes require human-explained rejections and dealer-by-dealer chargeback justification, which keeps humans in the loop; and incumbent WMS vendors own the rules layer (H6). The only thing that could revive it is primary data showing that dealer-OEM policy-interpretation questions (not documentation or goodwill) are a material, recurring share of adjudication effort; nothing public establishes that, and absence of data is uncertainty, not support."
+   }
+  ],
+  "missing": [
+   "DSA Article 20(6): complaint decisions must be supervised by qualified staff and not taken solely by automated means (https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32022R2065, regulation; not fetched). This is a legal human-in-the-loop requirement on exactly the appeal volume the finder counts, which the brief says to penalise heavily; the finder mentioned Art. 20 only generically.",
+   "DSA Article 21(2): out-of-court bodies cannot impose binding settlements (same source). This makes TikTok's 29-of-106 implementation the expected outcome, not a finding about platform behaviour.",
+   "California Civil Code 1795.90-1795.93 and the equivalent Connecticut, Virginia and Wisconsin secret-warranty statutes: they define 'adjustment program' and expressly exclude ad hoc case-by-case adjustments, which separates the coverage-extension artefact from goodwill settlement (https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1795.90., state statute; not fetched).",
+   "Meta's internal Implementation Standards and Known Questions, cited throughout Oversight Board decisions as the reviewer-facing operationalisation of Community Standards: this is the in-house settlement ledger a product would compete with, and the finder never named it (https://www.oversightboard.com/decision/, tribunal; not fetched).",
+   "Meta's cross-check (XCheck) programme and the Board's December 2022 Policy Advisory Opinion on it, which documented an existing escalation queue with multi-day backlogs for high-profile content; relevant to whether escalation infrastructure already exists and to its slowness (https://www.oversightboard.com/, tribunal; not fetched).",
+   "Selection bias in ADR overturn rates: only users who lost an internal appeal reach Appeals Centre Europe, so 59 percent says nothing about the base population.",
+   "Correct Amazon complaint-success ratio (26 percent of complaints, not 5.1 percent of actions).",
+   "OEM pre-authorisation and technical-assistance systems (GM Global Warranty Management pre-approval codes, Ford prior-approval, TAC case numbers) as the existing case-specific escalation ledger; the GM bulletin the finder cites is describing it, but the finder did not draw the H3 conclusion.",
+   "Scale of the warranty labour pool: US OEM warranty claims paid run to tens of billions of dollars per year across the industry (Warranty Week compiles these from 10-K warranty notes, https://www.warrantyweek.com, trade press; blocked this session, not fetched), which matters for H8 and was not addressed.",
+   "EU/French angle for warranty and returns: the two-year legal guarantee of conformity under Directive (EU) 2019/771 and the 14-day withdrawal right under Directive 2011/83/EU shape which disputes reach a human; the brief asked for EU/French distinctions and the finder gave none for this cluster.",
+   "Any inter-rater reliability figure for production moderation policy: still not found; this remains the single most decision-relevant missing number for the B-vs-H split."
+  ],
+  "overall": "Network caveat: this verification ran with zero WebSearch capacity (the session's 200-call budget was exhausted before my first query) and with the egress proxy denying every evidence host tried (Oversight Board, Meta, EC/EUR-Lex, TikTok, Amazon, Wikipedia, state legislatures, NHTSA, vendors, press, HuggingFace); only GitHub answered. I therefore could independently fetch just two things: the DSA Transparency Database row counts (30.8 billion SoRs, confirming the finder's order of magnitude) and the absence of any established open-source warranty adjudication tooling. Everything else is an audit of the finder's citations for internal consistency, source type and arithmetic, plus regulatory and institutional facts I know well, each labelled 'not fetched'. Result of that audit: the finder's bottom line (no standalone buyer in this cluster) is right, but two of its verdicts were too generous and rested on an inflated H share. In content moderation the settlement loop is real, published and institutionalised, but it is a policy-text loop run in-house by the owners of volume, the external tier is non-binding by law (DSA Art. 21(2)), humans are legally required on every appeal (Art. 20(6)), and H is under 1 percent of human review events: weak, not uncertain. In warranty the flagship 'goodwill escalation becomes adjustment bulletin' loop is not an ambiguity settlement at all; adjustment programs are defect-driven coverage extensions that state law expressly distinguishes from case-by-case adjustments, review-rate figures are all vendor marketing, and the per-claim escalation ledger already lives in OEM pre-authorisation systems: weak, not uncertain, with a narrow unquantified residual (dealer questions on policy-manual interpretation) that only primary OEM or dealer-group case data could test. Marketplace appeals stay weak, with the Amazon reversal arithmetic corrected to 26 percent of complaints. Returns stays negative. Across the cluster the evidence supports H1 (facts/classification dominate), H3 (settlements already encoded by the owner), H4 (external settlements explicitly non-binding) and H6 (any ledger would be a feature of Meta-style policy tooling, T&S ops platforms or WMS incumbents). I would not pursue any workflow in this cluster as a wedge."
+ }
+}

@@ -1,0 +1,913 @@
+{
+ "executive_call": "evidence against",
+ "rationale": "EVIDENCE LIMITATION, READ FIRST. Every finder and verifier in this run operated with the WebSearch budget exhausted and the egress proxy denying every regulator, court, ombudsman, statistics, academic, association, press and vendor host. The only primary material actually read was GitHub-hosted: regulator source code (HMRC ATaR), open-source incumbents (Marble, Tazama, Elastic, Kyverno), vendor SDKs and docs mirrors (Avalara, Stripe, Adyen, ServiceNow, AWS AgentCore, Microsoft AGT, Procore, Camunda, OPA, Cedar), open scrapes and corpora (CBP CROSS 216,164 rulings, EBA Q&A 2,166 finals, ICO 12,493 notices, FOS 1,533 decisions, IRS PLR 28,135 files, SSA/VA/FNS data files), plus one cached industry PDF (AHIP June 2025) and the prior IPSA study. Every volume, cost, headcount and review-rate figure from blocked sources is a search snippet or labelled recall and was not verified against its primary. No number below is a measurement of category H in any live review pool; every H share is an estimate. This report treats absence of data as uncertainty, not support, and does not present recall as measurement.\n\nTHE CALL. On the verified record the thesis of a standalone Sophon product fails, for four reasons that hold across all fifteen clusters. (1) No sourced number anywhere supports the core hypothesis that organisations repeatedly pay humans to settle the same class of ambiguity for lack of a capture mechanism. Where a why-humans-review distribution was actually sourced, H is small and the residual is not even missing facts but discretion, handling and per-item factual classification: FOS insurance decisions, policy-wording interpretation 16 of 626 upheld (2.6%), 1.2% of 1,349 claim decisions across 183 firms, https://github.com/SwayamBhageria/claims-overturn-bench (third-party corpus of tribunal-type primary decisions; regex floor, 49% untagged); IPSA 46 reviews, discretion or exception 18, rule meaning 12, IPSA committed to 4 of 17 recommended rule changes (prior_evidence.md, hash-verified primary PDFs); SNAP FY2024 QC error dollars 77.7% household-side input, 4.6% pure computation (FNS data file, verifier computation); SSA federal quality review rates DDS determinations 97.1% accurate FY2022 (SSA data, verifier); AHIP June 2025: 7% of commercial medical claims subject to PA, 97-98% approved, initial denials 'often a result of incomplete information' (industry association, fetched). (2) Every settlement loop found that is real and prospective is run by the rule-owner, not by a software buyer, and is already versioned and published or executable: HMRC ATaR Decision with justification, search method, exclusion method, effective dates, typed cancellation reasons and appeal ladder (https://raw.githubusercontent.com/hmrc/binding-tariff-classification/main/app/uk/gov/hmrc/bindingtariffclassification/model/Decision.scala, government source code); EBA Single Rulebook Q&A 2,166 finals indexed by act/article/paragraph (https://github.com/gnosifex/esa-qa-mirror, regulator mirrored); Visa CE3.0 as typed Stripe evidence objects (vendor OpenAPI); GSE Ask Poli and DU/LPA (recall); CMS-4201-F public MA coverage criteria (recall); Oversight Board to Community Standards; FAA exemptions to rules; reinsurer impairment manuals; Lloyd's binder endorsements. (3) Where the loop lives inside an operating organisation, the incumbent already ships it as an executable prospective primitive: Marble RuleSnooze {CreatedByUser, CreatedFromDecisionId, CreatedFromRuleId, PivotValue, StartsAt, ExpiresAt} and ScenarioIteration.Version on every decision plus an LLM case reviewer that ingests up to 10 prior cases per pivot (https://raw.githubusercontent.com/checkmarble/marble-backend/main/models/rule_snoozes.go, open-source vendor code); Elastic shared exception lists created from an alert; ServiceNow IRM exception record with requester, approver, valid-from/to, sys_audit, retained retired document versions and case-to-knowledge (ServiceNow docs mirror, vendor documentation); Avalara TaxRuleModel effective-dated and user-stamped (vendor SDK); Claude Code 'don't ask again' writes an allow rule to settings; AWS AgentCore NL-to-Cedar; Ramp policy agent (unverified). The residual gap is narrow and precise: no inspected incumbent records 'settled by X on date D under power P as rule R version V applied prospectively'. Verifiers judged that a feature increment for ServiceNow, Marble, Avalara or the agent platforms (H6), and the most relevant incumbents for governed rule history (IBM ODM Decision Center, Pega, Drools Business Central) could not be documented, so even the gap is unproven. (4) Wherever the settled object is an interpretation of text rather than a code, the institution deliberately keeps individual settlements non-precedential: IRC 6110(k)(3), IPSA Scheme s.2.3, FOS fair-and-reasonable, DSA Art. 21(2), 'identical content with parallel context', Wikipedia 'previous outcomes do not bind', ERISA named fiduciary on every appeal, clinician on every medical-necessity denial, managing-agent agreement on every out-of-binder risk (mix of fetched, recalled and prior-verified sources). The one open-source product built for exactly this artefact class, PubLedge, has 0 stars and parked its product ambitions (https://raw.githubusercontent.com/snapsynapse/publedge/main/INTENT.md), a weak but directionally consistent demand signal.\n\nWHAT WOULD OVERTURN THE CALL. Four company-side review pools were never observed because their data is not public: an importer's tariff classification log, a PSP's merchant-underwriting queue, a bank's CDD exception log and a mortgage lender's underwriting help-desk log. Every verifier named one of these as the only thing still worth testing and every verifier set the prior at a small H share. The call is therefore 'evidence against' on the verified record, with a defined, cheap route to falsify it (see wedge candidates), not a proof that no pocket exists.\n\nThe strongest evidence for a Sophon-shaped market is the existence of structured, dated, published, searched-before-deciding tariff rulings (HMRC ATaR source code; CBP CROSS with 20.9% of rulings citing a prior ruling and supersession links), because it proves the artefact class can be made executable and governed at scale. I would stop searching for a standalone Sophon product because every institution examined that runs such a loop built it itself, keeps the individual settlement non-precedential on purpose, and the operating organisations that would buy already have the executable half inside their case manager, rules engine or item master; the unshipped piece is a provenance field set that the incumbents own the natural home for, and no measured review pool shows repeatable settleable ambiguity above the single-digit-to-low-teens percent range that would be needed to fund it.",
+ "shortlist": [
+  {
+   "workflow": "In-company customs tariff classification (SKU/part classification, broker-importer disputes, post-entry corrections)",
+   "domain": "tax-customs-export-controls",
+   "geography": "US, EU, UK; global for multinationals (one code per destination country)",
+   "why_humans_review": "Estimates, no measurement (verifier-corrected): B factual classification 35-45% (composition, function, essential character from spec sheets and lab data); A missing evidence 20-30% (vague vendor descriptions; HMRC's only coded referral reasons are REQUEST_SAMPLE and REQUEST_MORE_INFO, https://raw.githubusercontent.com/hmrc/binding-tariff-classification/main/app/uk/gov/hmrc/bindingtariffclassification/model/, government source code); C rule interpretation 20-30% (GIR 3(b), parts vs accessories, chapter notes); D 5%; H 5-15%. At CBP, 91% of 2023-24 rulings concerned a 10-digit line and 98% a 6-digit line that already had a ruling, yet each product still got a fresh human ruling (computed from https://raw.githubusercontent.com/justinmoonjeli/CROSSFetch/main/cbp_rulings_data.csv, open-source scrape of the CBP database), which points to per-item B/A dominance even where the class is settled.",
+   "repeatable_ambiguity": "Estimated H 5-15% of classification decisions, verifier estimate with no evidentiary basis (finder's 10-20% rejected). Basis: family-level recurrence is sourced (77 six-digit lines cover half of all CROSS rulings; same scrape) but the largest concentration (chapters 61/62: 29,994 knit and 23,565 woven apparel documents of ~260k, https://raw.githubusercontent.com/OrlandoWhite88/qwen36-cpt-customs/main/README.md, open-source corpus) turns on fibre content and construction, i.e. category B per garment. The 'named failure families' in an open-source classifier (https://raw.githubusercontent.com/RemiKG/harmony/main/README.md) are model-error clusters, not evidence that humans re-decide them. In-company share unknown; only a real classification log can measure it.",
+   "volume": "Not obtainable from any reachable source. Proxies: Avalara runs classification as bulk catalogue jobs with a 'TariffCodeNeedsReview' criterion and counts of classified/inProgress/notClassified/failed (https://raw.githubusercontent.com/avadev/AvaTax-REST-V2-DotNet-SDK/main/src/models/ClassificationCriteriaModel.cs, vendor SDK source). Public loop volume: 1,833-2,138 CBP rulings per year 2021-2024, down from 11,745 in 2000, HQ ~200/yr (CROSSFetch scrape, verifier computation); EU BTI and UK ATaR annual counts blocked.",
+   "economic_pain": "Duty over/underpayment, penalties, post-entry corrections and broker disputes (HMRC LiabilityOrder is a distinct case type with traderCommodityCode vs officerCommodityCode, government source code). No cost, penalty or leakage figure reachable (cbp.gov, eca.europa.eu, gao.gov blocked). The '1-4 hours per item' figure comes from a 33-entry hobby README and carries near-zero weight (verifier).",
+   "existing_solution": "Avalara AvaTax: ItemModel classifications per systemCode/country with createdUserId/modifiedUserId/dates, TaxRuleModel effective-dated and user-stamped with no rationale field, ClassificationModel.isPremium free-text justification (https://raw.githubusercontent.com/avadev/AvaTax-REST-V2-DotNet-SDK/main/src/models/TaxRuleModel.cs, vendor SDK source); Thomson Reuters ONESOURCE Global Classification, Descartes CustomsInfo, E2open, SAP GTS, Oracle GTM (all blocked, features unverified); HMRC FPO parcel classifier for the low-value tail. Incumbents version WHAT was decided (code, dates, user), not WHY (facts, rule reading, authority, applicability to like items).",
+   "evidence_quality": "weak",
+   "dimensions": [
+    {
+     "dimension": "annual decision volume",
+     "classification": "unknown",
+     "basis": "No per-company SKU or classification counts reachable; only vendor bulk-job structure and public ruling counts (1,833-2,138/yr CBP) sourced."
+    },
+    {
+     "dimension": "current human review rate",
+     "classification": "unknown",
+     "basis": "Bulk classification with a review queue exists (Avalara SDK); share routed to humans not published anywhere reachable."
+    },
+    {
+     "dimension": "estimated share of repeatable ambiguity",
+     "classification": "weak evidence",
+     "basis": "5-15% verifier estimate; sourced CBP pattern (fresh human ruling per product on already-ruled lines) points to B/A dominance."
+    },
+    {
+     "dimension": "cost per review",
+     "classification": "unknown",
+     "basis": "Only a hobby README claim; no primary source."
+    },
+    {
+     "dimension": "cost/risk of wrong decision",
+     "classification": "moderate evidence",
+     "basis": "Structural: importer liability, penalties, post-entry corrections and a distinct regulator liability caseload (HMRC LiabilityOrder model, government source code); magnitudes unquantified."
+    },
+    {
+     "dimension": "recurrence of settlements",
+     "classification": "moderate evidence",
+     "basis": "Sourced family-level recurrence in CROSS (77 six-digit lines cover half of rulings; 98% of rulings on previously ruled 6-digit lines); company-level recurrence unmeasured."
+    },
+    {
+     "dimension": "ability to codify settlements",
+     "classification": "strong evidence",
+     "basis": "Outcome is a commodity code; HMRC and Avalara already store effective-dated codes as executable records (government and vendor source code)."
+    },
+    {
+     "dimension": "authoritative decision owner",
+     "classification": "moderate evidence",
+     "basis": "Trade compliance lead sets the company position (finder, unverified), but a binding ruling binds only the holder, so the company reading is a risk position, not law."
+    },
+    {
+     "dimension": "availability of structured evidence",
+     "classification": "moderate evidence",
+     "basis": "Spec sheets, composition, function; HMRC's escalation reasons are sample/more-info requests, so evidence gaps are the routine escalation cause (government source code)."
+    },
+    {
+     "dimension": "integration complexity",
+     "classification": "moderate evidence",
+     "basis": "Item master and classifications exposed via Avalara REST/SDK; other GTM suites unverified."
+    },
+    {
+     "dimension": "regulatory constraints",
+     "classification": "moderate evidence",
+     "basis": "Nothing prohibits internal automation; importer keeps 'reasonable care' liability (recall, unverified)."
+    },
+    {
+     "dimension": "incumbent software strength",
+     "classification": "negative evidence",
+     "basis": "Avalara, ONESOURCE, Descartes, E2open, SAP GTS, Oracle GTM own the item master and could add rationale fields (H6); Avalara already sells a premium justification attachment."
+    },
+    {
+     "dimension": "buyer",
+     "classification": "moderate evidence",
+     "basis": "Head of trade compliance / customs manager; identifiable role that already buys GTM tooling (finder, unverified)."
+    },
+    {
+     "dimension": "willingness to pay",
+     "classification": "unknown",
+     "basis": "No pricing, budget or spend data reachable."
+    },
+    {
+     "dimension": "sales cycle",
+     "classification": "unknown",
+     "basis": "No evidence."
+    },
+    {
+     "dimension": "potential initial ACV",
+     "classification": "unknown",
+     "basis": "No evidence."
+    },
+    {
+     "dimension": "expansion potential",
+     "classification": "weak evidence",
+     "basis": "Export-control classification is a structural adjunct only if customs succeeds (verifier); H5 makes the corpus single-tenant."
+    }
+   ],
+   "settlement_loop_status": "Operational at the regulator: HMRC ATaR records each ruling with justification, search method, exclusion method, effective dates, typed cancellation reasons (INVALIDATED_CODE_CHANGE etc.), manager-approved keyword vocabulary, appeal ladder and public search refreshed daily (government source code, fetched); CBP CROSS carries revokes/modifies links and 1.4% lifetime supersession (scrape). At company level: absent as a governed loop and at best ceremonial, since incumbents store the settled code with dates and user but rationale is optional free text and nothing links a settlement to like items."
+  },
+  {
+   "workflow": "Merchant onboarding restricted-business classification and MCC assignment (PSP/acquirer underwriting edge cases)",
+   "domain": "payments-fraud-aml-kyc",
+   "geography": "US and EU PSPs and acquirers",
+   "why_humans_review": "Own estimate only, unmeasured (finder): C/H combined 30-40% (is a CBD-adjacent, nutraceutical, firearms-accessory, crypto-adjacent or marketplace model inside the restricted list; which MCC applies); A 25% (missing website, licences, processing history); B 20% (is the business real, is the applicant who they say); E 10%; F 5%; G 5%. Verifier: once the restricted list is settled most cases are B/A; genuinely new business models are H but their volume and recurrence are unknown.",
+   "repeatable_ambiguity": "Estimated H 10-20% of manual underwriting decisions (verifier re-estimate; finder's C/H 30-40% rejected as unmeasured). Basis: PSPs publish versioned restricted/prohibited business lists (Stripe page https://stripe.com/legal/restricted-businesses, blocked, unverified) that are updated as edge cases are settled, which implies a real prospective loop, but no queue data, no share of applications routed to manual review and no recurrence figure was reachable.",
+   "volume": "Not sourced. Large PSPs onboard millions of merchants per year (unverified); share routed to manual underwriting unknown; no PSP publishes it.",
+   "economic_pain": "Network brand-protection fines (Visa GBPP, Mastercard BRAM, recall), MATCH listing, fraud and chargeback losses, merchant conversion loss from delay. No figures reachable.",
+   "existing_solution": "In-house underwriting tools at PSPs; KYB vendors (Middesk, Alloy, Persona); rules engines; versioned restricted-list policies. Incumbent strength unknown from public sources; verifier expects any result to become a feature of the onboarding tool (H6).",
+   "evidence_quality": "unknown",
+   "dimensions": [
+    {
+     "dimension": "annual decision volume",
+     "classification": "unknown",
+     "basis": "Millions onboarded (unverified); manual share unknown."
+    },
+    {
+     "dimension": "current human review rate",
+     "classification": "unknown",
+     "basis": "Automated KYB plus rules route edge cases; rate not published."
+    },
+    {
+     "dimension": "estimated share of repeatable ambiguity",
+     "classification": "unknown",
+     "basis": "10-20% verifier estimate with zero data."
+    },
+    {
+     "dimension": "cost per review",
+     "classification": "unknown",
+     "basis": "No source."
+    },
+    {
+     "dimension": "cost/risk of wrong decision",
+     "classification": "moderate evidence",
+     "basis": "Network fine regimes and MATCH listing are real institutional consequences (recall, unverified); magnitudes not sourced."
+    },
+    {
+     "dimension": "recurrence of settlements",
+     "classification": "weak evidence",
+     "basis": "Versioned public restricted lists imply recurring classes; no measurement."
+    },
+    {
+     "dimension": "ability to codify settlements",
+     "classification": "strong evidence",
+     "basis": "Outcome is accept/decline/MCC plus a list entry; PSPs already encode the list in onboarding rules."
+    },
+    {
+     "dimension": "authoritative decision owner",
+     "classification": "moderate evidence",
+     "basis": "Head of merchant risk owns the restricted list and can settle prospectively (structural); no human-review mandate."
+    },
+    {
+     "dimension": "availability of structured evidence",
+     "classification": "moderate evidence",
+     "basis": "Website, licences, processing history, MCC; missing items are a routine cause (A 25% estimate)."
+    },
+    {
+     "dimension": "integration complexity",
+     "classification": "unknown",
+     "basis": "In-house onboarding stacks; no public API pattern examined."
+    },
+    {
+     "dimension": "regulatory constraints",
+     "classification": "moderate evidence",
+     "basis": "Card-network programmes and AML KYB obligations; no human-review mandate on the decision."
+    },
+    {
+     "dimension": "incumbent software strength",
+     "classification": "unknown",
+     "basis": "In-house tooling dominates; strength of KYB vendors' policy layers unverified."
+    },
+    {
+     "dimension": "buyer",
+     "classification": "weak evidence",
+     "basis": "Head of merchant risk / underwriting; unclear whether they buy versus build into the onboarding tool."
+    },
+    {
+     "dimension": "willingness to pay",
+     "classification": "unknown",
+     "basis": "No evidence."
+    },
+    {
+     "dimension": "sales cycle",
+     "classification": "unknown",
+     "basis": "No evidence."
+    },
+    {
+     "dimension": "potential initial ACV",
+     "classification": "unknown",
+     "basis": "No evidence."
+    },
+    {
+     "dimension": "expansion potential",
+     "classification": "weak evidence",
+     "basis": "Adjacent KYC/CDD exception handling at the same institution; single-tenant corpus (H5)."
+    }
+   ],
+   "settlement_loop_status": "Operational but in-house and unobserved: a versioned public policy list plus onboarding rules exist (unverified page), so the loop runs, but whether decisions carry rationale, approver and applicability to like business models is unknown. Verifier's kill criterion for any experiment here: class-level H (categories 7 and 8) must exceed roughly 15-20% of escalations at thousands per year."
+  },
+  {
+   "workflow": "Mortgage lender underwriting help-desk / scenario-desk questions and guideline interpretation (lender side, US agency lending)",
+   "domain": "banking-lending-exceptions",
+   "geography": "US (Fannie Mae, Freddie Mac, FHA/VA/USDA lending)",
+   "why_humans_review": "Estimate from recall of QC defect taxonomies, unverified (finder): A missing evidence 40-50% (conditions for pay stubs, bank statements, VOEs); B 15-20% (income stability, large deposits, occupancy); C 15-20% (self-employed/variable/declining income calculation, employment gaps, gift funds, condo eligibility); D 5%; E 5%; G 5%; H ~10%. Verifier prior: most help-desk repeats are eligibility lookups, missing documents or priced exceptions rather than settleable ambiguity, and the largest interpretive area (income) is being encoded by the owner itself (Fannie Mae Income Calculator with rep-and-warrant relief, Freddie Mac AIM; recall, unverified).",
+   "repeatable_ambiguity": "Estimated H ~10% (finder, recall-based) and unknown, likely lower (verifier). Basis: none sourced; scenario-desk logs are not public and mba.org, fanniemae.com, freddiemac.com, hud.gov and icemortgagetechnology.com were all blocked. Verifier's kill threshold: a clear majority of repeat questions must concern the lender's OWN policy rather than the GSE guide, because the lender cannot make a reading of the guide authoritative.",
+   "volume": "Not sourced (HMDA at https://www.consumerfinance.gov/data-research/hmda/ blocked). [RECALL, unverified]: several million originations and roughly twice as many applications per year; every file carries multiple conditions; scenario-desk volumes not public. The regulator-analogue EBA Q&A corpus holds only 5 records touching the loan origination guidelines in five years with a 248-day median answer lag (https://github.com/gnosifex/esa-qa-mirror, regulator mirrored).",
+   "economic_pain": "[RECALL, unverified]: fully loaded cost to originate in the low five figures of dollars per loan with personnel the largest component (MBA, blocked); repurchase and defect cost is the loss lever; ACES QC reports put income/employment as the persistently largest defect category (vendor, blocked).",
+   "existing_solution": "[RECALL, unverified]: Fannie Mae DU and Freddie Mac LPA (executable guide), FHA TOTAL Scorecard, Encompass business rules and conditions, Blend, product and pricing engines (Optimal Blue, Polly), investor eligibility engines, QC platforms, and a wave of LLM 'guideline assistant' products. Overlays are already versioned LOS/PPE rules; scenario-desk answers are the unstructured residue (email).",
+   "evidence_quality": "unknown",
+   "dimensions": [
+    {
+     "dimension": "annual decision volume",
+     "classification": "unknown",
+     "basis": "Recall only; HMDA blocked."
+    },
+    {
+     "dimension": "current human review rate",
+     "classification": "unknown",
+     "basis": "Recall that essentially all agency files are human-underwritten from an AUS finding; not fetched."
+    },
+    {
+     "dimension": "estimated share of repeatable ambiguity",
+     "classification": "unknown",
+     "basis": "~10% recall estimate; verifier expects lower."
+    },
+    {
+     "dimension": "cost per review",
+     "classification": "unknown",
+     "basis": "Recall of MBA cost-to-originate; not fetched."
+    },
+    {
+     "dimension": "cost/risk of wrong decision",
+     "classification": "moderate evidence",
+     "basis": "Structural: lender bears GSE repurchase risk for a wrong interpretation (recall); magnitude not sourced."
+    },
+    {
+     "dimension": "recurrence of settlements",
+     "classification": "unknown",
+     "basis": "No log reachable; guide changes monthly (recall) which both creates recurrence and invalidates settlements."
+    },
+    {
+     "dimension": "ability to codify settlements",
+     "classification": "moderate evidence",
+     "basis": "Overlays and conditions are already LOS rules; income calculations are structured; the owner is encoding them itself."
+    },
+    {
+     "dimension": "authoritative decision owner",
+     "classification": "negative evidence",
+     "basis": "The GSE/FHA holds binding authority over guide meaning; lender settlements are risk positions, not authoritative interpretations (verifier)."
+    },
+    {
+     "dimension": "availability of structured evidence",
+     "classification": "moderate evidence",
+     "basis": "Income, assets, credit documents are structured but missing documents are the largest estimated driver (A 40-50%)."
+    },
+    {
+     "dimension": "integration complexity",
+     "classification": "weak evidence",
+     "basis": "Encompass rules and PPEs are where overlays live; adding a ledger beside them is plausible but unverified."
+    },
+    {
+     "dimension": "regulatory constraints",
+     "classification": "weak evidence",
+     "basis": "ECOA/Reg B adverse-action reasons and fair-lending scrutiny of manual overrides; FHA 'Refer' files require manual underwriting by rule (H4, recall)."
+    },
+    {
+     "dimension": "incumbent software strength",
+     "classification": "negative evidence",
+     "basis": "DU/LPA, Encompass, PPEs and GSE income calculators already hold the executable layer (H3/H6)."
+    },
+    {
+     "dimension": "buyer",
+     "classification": "moderate evidence",
+     "basis": "Chief Credit Officer / SVP Underwriting at IMBs; budget in LOS and underwriting technology lines (finder, unverified)."
+    },
+    {
+     "dimension": "willingness to pay",
+     "classification": "unknown",
+     "basis": "No evidence."
+    },
+    {
+     "dimension": "sales cycle",
+     "classification": "unknown",
+     "basis": "No evidence."
+    },
+    {
+     "dimension": "potential initial ACV",
+     "classification": "unknown",
+     "basis": "No evidence."
+    },
+    {
+     "dimension": "expansion potential",
+     "classification": "weak evidence",
+     "basis": "Non-QM and portfolio lending where the lender is the guide owner would be the natural extension; unexamined."
+    }
+   ],
+   "settlement_loop_status": "Absent or ceremonial at the lender: help-desk answers stay in email and become overlays only when the product team codes them (recall); overlays are risk-appetite policy (E), not ambiguity settlements. Operational at the owner: Ask Poli, Guide Bulletins and DU/LPA releases (blocked, recall) form a real prospective, versioned, executable loop, owned by two GSEs plus FHA/VA/USDA (H3, H8)."
+  },
+  {
+   "workflow": "KYC/CDD policy exceptions and waivers (document acceptability, EDD waivers, PEP and UBO interpretation, risk acceptance)",
+   "domain": "payments-fraud-aml-kyc",
+   "geography": "US (FinCEN CDD rule), UK (MLR 2017), EU/France (AMLD, AMLR from 2027)",
+   "why_humans_review": "Own estimate, no measurement (finder): C 25-35% (does our policy require the UBO of a trustee; is this document acceptable; is this role a PEP under our definition); H 20-30%; A 20%; E 10-15%; D 5%; B 5%; G 5%. Verifier re-estimated H 10-20% and noted the risk-based approach expects a documented rationale per exception (H4 risk).",
+   "repeatable_ambiguity": "Estimated H 10-20% (verifier estimate, zero data). Basis: the same entity-type/document/jurisdiction questions plausibly recur and answers are written into procedures and FAQs; regulator-level analogue is FinCEN's CDD FAQs (https://www.fincen.gov/sites/default/files/2018-04/FinCEN_Guidance_CDD_FAQ_FINAL_508_2.pdf, regulator, blocked, recall). No exception volumes, committee throughput, audit findings or vendor documentation (Fenergo, Encompass, Alloy) reachable.",
+   "volume": "Not sourced. Own guess: hundreds to low thousands of exceptions per year at a mid-size bank, far below alert volumes; the brief penalises this.",
+   "economic_pain": "Onboarding delay and inconsistent treatment found in audits; no figures reachable.",
+   "existing_solution": "KYC/CLM platforms (Fenergo, Encompass, Alloy, Persona, Onfido) with configurable policy rules and exception workflows; GRC policy management; spreadsheets and email for exception committees (memory). Whether any stores exceptions as versioned executable precedents: unknown.",
+   "evidence_quality": "unknown",
+   "dimensions": [
+    {
+     "dimension": "annual decision volume",
+     "classification": "negative evidence",
+     "basis": "Own guess of hundreds to low thousands per institution per year; too low per the brief's penalty list."
+    },
+    {
+     "dimension": "current human review rate",
+     "classification": "strong evidence",
+     "basis": "100% by definition (exceptions are escalations to the policy owner or a risk committee)."
+    },
+    {
+     "dimension": "estimated share of repeatable ambiguity",
+     "classification": "unknown",
+     "basis": "10-20% verifier estimate, highest plausible in its cluster, with no data."
+    },
+    {
+     "dimension": "cost per review",
+     "classification": "unknown",
+     "basis": "No source."
+    },
+    {
+     "dimension": "cost/risk of wrong decision",
+     "classification": "moderate evidence",
+     "basis": "AML enforcement and audit findings are structurally severe; not quantified here."
+    },
+    {
+     "dimension": "recurrence of settlements",
+     "classification": "unknown",
+     "basis": "Plausible by entity type and jurisdiction; unmeasured."
+    },
+    {
+     "dimension": "ability to codify settlements",
+     "classification": "moderate evidence",
+     "basis": "Document/entity-type rules are configurable in CLM platforms; risk-acceptance decisions (E) are not."
+    },
+    {
+     "dimension": "authoritative decision owner",
+     "classification": "strong evidence",
+     "basis": "MLRO / BSA officer / KYC policy owner holds rule-making power over the institution's own policy (structural)."
+    },
+    {
+     "dimension": "availability of structured evidence",
+     "classification": "moderate evidence",
+     "basis": "Entity type, jurisdiction, document type are structured; customer-supplied documents are often missing (A 20% estimate)."
+    },
+    {
+     "dimension": "integration complexity",
+     "classification": "unknown",
+     "basis": "CLM platform docs unreachable."
+    },
+    {
+     "dimension": "regulatory constraints",
+     "classification": "weak evidence",
+     "basis": "Risk-based approach expects a documented rationale per exception; EU AMLR 2027 standardises CDD, which may shrink ambiguity."
+    },
+    {
+     "dimension": "incumbent software strength",
+     "classification": "negative evidence",
+     "basis": "Fenergo/Encompass/Alloy own the policy rules and exception workflow; strong prior that any result becomes a CLM feature (H6)."
+    },
+    {
+     "dimension": "buyer",
+     "classification": "moderate evidence",
+     "basis": "MLRO / head of KYC operations; budget concentrated in CLM vendors."
+    },
+    {
+     "dimension": "willingness to pay",
+     "classification": "unknown",
+     "basis": "No evidence."
+    },
+    {
+     "dimension": "sales cycle",
+     "classification": "unknown",
+     "basis": "No evidence."
+    },
+    {
+     "dimension": "potential initial ACV",
+     "classification": "unknown",
+     "basis": "No evidence."
+    },
+    {
+     "dimension": "expansion potential",
+     "classification": "weak evidence",
+     "basis": "Adjacent sanctions/AML settlements are already captured natively (Marble whitelists, snoozes), so expansion runs into H3."
+    }
+   ],
+   "settlement_loop_status": "Ceremonial: settlements are written into procedures and FAQs as text and exceptions are logged per case with a rationale; no evidence of a governed, executable, prospective register at any institution. Regulator-level loop (FinCEN FAQs) is operational but unverified this session."
+  },
+  {
+   "workflow": "Delegated authority special acceptances: coverholder/MGA referrals outside binding-authority terms to the managing agent, and binder endorsements",
+   "domain": "insurance-underwriting",
+   "geography": "UK / Lloyd's (also Lloyd's Europe; US MGA programme business)",
+   "why_humans_review": "Estimate with no numeric basis (finder): A 10%; B 10% (is this risk within the class/territory definition); C 15% (binder wording scope); D 5%; E 25% (capacity, line size, pricing on out-of-scope risks); F 15%; G 10%; H 10-15%. Verifier re-estimated H 5-10% and found referrals are predominantly authority gates on capacity and price (E/F).",
+   "repeatable_ambiguity": "Estimated H 5-10% of referrals (verifier estimate; no measurement). Basis: a special acceptance is per-risk by construction and becomes prospective only through a binder endorsement agreed by the lead (and typically following markets), which is the existing, legally required, versioned instrument. [RECALL, unverified] Lloyd's/LMA guidance states a special acceptance applies only to the specific risk and may not be treated as precedent, and the Coverholder Reporting Standards include special-acceptance flags in bordereaux; if confirmed this is both H4 and H3.",
+   "volume": "Over 4,000 approved coverholders at 31 Dec 2024 (Lloyd's surveillance report, https://assets.lloyds.com/media-651c0e64-c1d0-4f97-90f7-883c69fe2ef2/32e04f0b-bcf7-4f5a-852e-b3138f491114/Lloyd's%20of%20London%20Surveillance%20Report%20062325%20V1.pdf, market/regulator report, snippet only); delegated authority ~39% of Lloyd's GWP (https://www.insurancejournal.com/news/international/2025/05/16/824065.htm, press, snippet). Number of binders, referrals and special acceptances: not found anywhere.",
+   "economic_pain": "Unquantified. Audit findings are dominated by late/inaccurate remittances, loss-fund breaches and unapproved wording deviations (vendor blogs); FCA TR15/7 found insufficient oversight, not interpretive re-decision (regulator, snippet). Cost of referral delay to MGAs not quantified.",
+   "existing_solution": "Lloyd's Delegated Audit Manager, Delegated Data Manager, Delegated Contract Manager; ACORD DA standards; Send and Insillion MGA workbenches; referrals handled by email plus workbench workflow. No evidence any records special acceptances as versioned executable precedents (unknown, not negative).",
+   "evidence_quality": "weak",
+   "dimensions": [
+    {
+     "dimension": "annual decision volume",
+     "classification": "unknown",
+     "basis": "Population figures only (>4,000 coverholders); zero decision-level numbers."
+    },
+    {
+     "dimension": "current human review rate",
+     "classification": "strong evidence",
+     "basis": "Structural: 'the Coverholder must refer each and every risk to the lead underwriter for agreement before binding' when outside binder parameters (Lloyd's code of practice, snippet)."
+    },
+    {
+     "dimension": "estimated share of repeatable ambiguity",
+     "classification": "weak evidence",
+     "basis": "5-10% verifier estimate; referrals mostly capacity/price gates."
+    },
+    {
+     "dimension": "cost per review",
+     "classification": "unknown",
+     "basis": "No source."
+    },
+    {
+     "dimension": "cost/risk of wrong decision",
+     "classification": "moderate evidence",
+     "basis": "Binding outside authority is a compliance breach with audit and restriction consequences (Lloyd's oversight framework, snippets)."
+    },
+    {
+     "dimension": "recurrence of settlements",
+     "classification": "unknown",
+     "basis": "Recurring special acceptances are folded into binders at endorsement or renewal (structural inference); no frequency data."
+    },
+    {
+     "dimension": "ability to codify settlements",
+     "classification": "strong evidence",
+     "basis": "The binder is already a versioned instrument of classes, territories, line sizes and aggregates; endorsements are its change mechanism."
+    },
+    {
+     "dimension": "authoritative decision owner",
+     "classification": "strong evidence",
+     "basis": "Lead underwriter at the managing agent; explicit and legally required."
+    },
+    {
+     "dimension": "availability of structured evidence",
+     "classification": "moderate evidence",
+     "basis": "Risk data in bordereaux under ACORD standards; wording-scope questions are less structured."
+    },
+    {
+     "dimension": "integration complexity",
+     "classification": "weak evidence",
+     "basis": "Lloyd's central DA platforms plus MGA workbenches; no API evidence examined."
+    },
+    {
+     "dimension": "regulatory constraints",
+     "classification": "negative evidence",
+     "basis": "Out-of-binder decisions must be agreed by the managing agent every time; a captured precedent can only automate once the binder is formally endorsed, which already exists (H4/H3)."
+    },
+    {
+     "dimension": "incumbent software strength",
+     "classification": "moderate evidence",
+     "basis": "Lloyd's tooling is oversight/audit focused; MGA workbenches vendor-authored; no vendor shown to capture referral outcomes as rules (unknown)."
+    },
+    {
+     "dimension": "buyer",
+     "classification": "moderate evidence",
+     "basis": "Managing-agent DA oversight team or MGA head of underwriting; ACV likely modest per MGA (finder)."
+    },
+    {
+     "dimension": "willingness to pay",
+     "classification": "unknown",
+     "basis": "No evidence."
+    },
+    {
+     "dimension": "sales cycle",
+     "classification": "unknown",
+     "basis": "No evidence."
+    },
+    {
+     "dimension": "potential initial ACV",
+     "classification": "weak evidence",
+     "basis": "Finder expects modest per-MGA ACV; no pricing data."
+    },
+    {
+     "dimension": "expansion potential",
+     "classification": "weak evidence",
+     "basis": "Commercial P&C referral rules are already closed inside workbenches (HDVI: >30 Federato rules automate 95% of referrals, vendor case study)."
+    }
+   ],
+   "settlement_loop_status": "Operational, but through the existing binder endorsement instrument that is legally required, versioned and owned by the managing agent; the per-risk special acceptance is non-precedential by design. Nothing found suggests the loop is uncaptured; it is the cheapest interview probe in its cluster only because one DA oversight team can state annual special-acceptance counts and how many became endorsements."
+  },
+  {
+   "workflow": "Bank-internal regulatory reporting interpretation (COREP/FINREP/liquidity template readings adopted while awaiting or in absence of an EBA Q&A)",
+   "domain": "legal-accounting-regulatory-professional-services",
+   "geography": "EU (CRR/CRD/DORA); analogues SEC C&DIs, FCA waivers, ACPR positions (all blocked)",
+   "why_humans_review": "At the regulator level (sourced from the corpus): C 55-65% (54% of finals are supervisory-reporting template/instruction interpretation: FINREP 413, COREP 353, liquidity 185); D ~10%; A/B 5-10%; H 60-70% of published finals, which the verifier flagged as a selection artefact of publishing only questions of general application. Firm-internal share: unobserved.",
+   "repeatable_ambiguity": "Firm-level H unknown. Sector-level recurrence is sourced: 842 distinct act/article/paragraph classes, 69.7% of Q&As in classes asked >=2 times, 46.1% in classes asked >=10 times, 7.9% citing an earlier Q&A, CRR Art. 99 alone 606 Q&As (https://github.com/gnosifex/esa-qa-mirror, regulator mirrored, verifier-recomputed). Against: ~156 finals (7.2%) explicitly flagged 'not yet reviewed' after rule changes and only ~119 record an actual update; 5.5% of answers are resolved by correcting a validation rule or template that reporting vendors already ship (H3); finals from new submissions fell from 412 (2013) to 54 (2025).",
+   "volume": "2,166 final Q&As cumulative 2013-2026 (CRR 2,003; CRD 96; DORA 67); ~60-100 per year sector-wide since 2022; median submission-to-publication 248 days (163 days for submissions since 2022) (same mirror, verifier-recomputed). Rejected questions not mirrored, so submissions are higher but unknown. Bank-internal register sizes: unknown.",
+   "economic_pain": "248-day median answer latency forces institutions to adopt interim readings and reconcile later (sourced turnaround); reporting error costs, headcount and cost per question: blocked (eba.europa.eu, ecb.europa.eu).",
+   "existing_solution": "EBA Single Rulebook Q&A tool and ESMA Joint Q&A register (the sector-level versioned store, free); Regnology/BearingPoint Abacus, Wolters Kluwer OneSumX, Adenza/AxiomSL embed ITS validation rules (recall); internal interpretation logs typically SharePoint/Excel (inference, unverified). The open-source mirror exists because no vendor exposed the corpus as data.",
+   "evidence_quality": "moderate",
+   "dimensions": [
+    {
+     "dimension": "annual decision volume",
+     "classification": "weak evidence",
+     "basis": "Sector loop ~60-100 finals/yr and shrinking (sourced); bank-internal volumes unknown."
+    },
+    {
+     "dimension": "current human review rate",
+     "classification": "strong evidence",
+     "basis": "100% of submitted questions are human-answered (EBA 1,900, Commission 168, Joint ESAs 15; sourced)."
+    },
+    {
+     "dimension": "estimated share of repeatable ambiguity",
+     "classification": "weak evidence",
+     "basis": "High at the regulator by construction (selection artefact); firm residual unobserved."
+    },
+    {
+     "dimension": "cost per review",
+     "classification": "unknown",
+     "basis": "No cost data reachable."
+    },
+    {
+     "dimension": "cost/risk of wrong decision",
+     "classification": "weak evidence",
+     "basis": "Supervisory reporting errors carry supervisory consequences (structural); no figures."
+    },
+    {
+     "dimension": "recurrence of settlements",
+     "classification": "strong evidence",
+     "basis": "69.7% of Q&As in classes asked >=2 times; 46.1% in classes asked >=10 times (sourced, recomputed)."
+    },
+    {
+     "dimension": "ability to codify settlements",
+     "classification": "moderate evidence",
+     "basis": "5.5% of answers become validation-rule fixes (executable); the rest are prose readings of template instructions."
+    },
+    {
+     "dimension": "authoritative decision owner",
+     "classification": "negative evidence",
+     "basis": "The EBA/Commission owns the meaning; Q&As are generally non-binding and a bank's own reading cannot be made authoritative."
+    },
+    {
+     "dimension": "availability of structured evidence",
+     "classification": "strong evidence",
+     "basis": "Reporting data points and templates are fully structured."
+    },
+    {
+     "dimension": "integration complexity",
+     "classification": "weak evidence",
+     "basis": "Reporting platforms embed ITS rules; adding an interpretation register beside them is plausible but unverified."
+    },
+    {
+     "dimension": "regulatory constraints",
+     "classification": "moderate evidence",
+     "basis": "No restriction on automating the firm's own register; competent authorities expected to apply Q&As."
+    },
+    {
+     "dimension": "incumbent software strength",
+     "classification": "negative evidence",
+     "basis": "Regulator runs the sector store free; reporting vendors ship the executable validation layer; whether they encode Q&A outcomes is unknown."
+    },
+    {
+     "dimension": "buyer",
+     "classification": "moderate evidence",
+     "basis": "Head of Regulatory Reporting / Regulatory Interpretation; budget in finance/risk change programmes (finder, unverified)."
+    },
+    {
+     "dimension": "willingness to pay",
+     "classification": "unknown",
+     "basis": "No evidence."
+    },
+    {
+     "dimension": "sales cycle",
+     "classification": "unknown",
+     "basis": "No evidence; bank procurement is slow by reputation (recall)."
+    },
+    {
+     "dimension": "potential initial ACV",
+     "classification": "unknown",
+     "basis": "No evidence."
+    },
+    {
+     "dimension": "expansion potential",
+     "classification": "weak evidence",
+     "basis": "Same shape in SEC, FCA, ACPR, IFRS IC loops (blocked); each regulator-owned."
+    }
+   ],
+   "settlement_loop_status": "Operational at sector level and regulator-owned: submit, answer, publish indexed by article, cite earlier Q&As, occasionally convert to an ITS amendment; partly stale (7.2% flagged unreviewed, authorities do not systematically revisit) and shrinking. Firm-internal loop: no evidence either way; absence of data, not support."
+  },
+  {
+   "workflow": "P&C claims technical referrals on coverage wording (does the loss fall within the wording: home/property, commercial property/BI, liability)",
+   "domain": "insurance-claims",
+   "geography": "US, UK, France (Australia as comparator)",
+   "why_humans_review": "Estimates only, derived from the disputed tail and rejected as a basis by the verifier: A 20-30%; B 30-40% (sudden vs gradual causation, valuation, liability apportionment); C 10-20%; D <5%; E ~5%; F 10-15%; G 5%; H 5-10%. Sourced counter-evidence from the escalated tail: of 626 upheld FOS insurance decisions, process 20.0%, communication 19.3%, quantum 11.2%, misrepresentation 7.5%, delay 4.8%, policy wording 2.6% (16 cases), evidence 1.6%, untagged 49% (https://github.com/SwayamBhageria/claims-overturn-bench, third-party corpus of FOS primary decisions, regex tags). UK motor acceptance ~99%, home 62-71% with firm range 50-100% and inconsistent reporting (FCA GI value measures 2024, regulator, snippet).",
+   "repeatable_ambiguity": "Estimated H 5-10% of human-touched claims (finder), no measurement basis (verifier). The flagship example, CGC finding over half of IDR overturns at six insurers were wear-and-tear/maintenance exclusion denials (https://insurancecode.org.au/app/uploads/2023/07/CGC-Thematic-Inquiry-into-Making-Better-Claims-Decisions.pdf, industry code monitor, snippet), is a category error: the class meaning is externally settled and the recurring work is per-property causation evidence and second expert reports (A/B). Wording disputes reaching FOS run at about 0.09 per firm in 2.5 years (16 across 183 firms).",
+   "volume": "Absolute claim counts not found. Proxies: US 365,300 claims adjusters/examiners/investigators, median pay $76,790 (https://www.bls.gov/ooh/business-and-financial/claims-adjusters-appraisers-examiners-and-investigators.htm, government statistics, snippet); P&C STP below 10% industry-wide (vendor blogs, weak); FOS 305,726 new complaints 2024/25 all products (ombudsman, snippet); M\u00e9diation de l'Assurance 36,537 referrals 2024 (ombudsman, snippet). Share of claims escalated for a coverage question: not found anywhere.",
+   "economic_pain": "NAIC Q1 2024 P&C loss adjustment expense $19.8bn on $216.8bn net premium earned, ~9.1% (https://content.naic.org/sites/default/files/industry-snapshot-2024-q1.pdf, regulator, ratio computed from snippet); FOS case fee \u00a3680 per case, median award \u00a3200-250 (corpus README); AFCA compensation A$390.9m 2024/25 (ombudsman, snippet). Cost per technical referral: not found.",
+   "existing_solution": "Guidewire ClaimCenter with Rules Service, Duck Creek Claims authorization rules, claims manuals with authority matrices (legally required in Florida), FC&S 'Ask the Experts' commercial precedent database (vendor), complaints case management (Salesforce, Pega, Aptean Respond), DISP-mandated RCA. No evidence that referral outcomes are written back as reusable positions.",
+   "evidence_quality": "weak",
+   "dimensions": [
+    {
+     "dimension": "annual decision volume",
+     "classification": "weak evidence",
+     "basis": "Only labour-force and ombudsman proxies; claim counts and referral share unknown."
+    },
+    {
+     "dimension": "current human review rate",
+     "classification": "weak evidence",
+     "basis": ">90% human-touched per vendor STP blogs, but the touches are inspection, valuation and repair, not wording."
+    },
+    {
+     "dimension": "estimated share of repeatable ambiguity",
+     "classification": "negative evidence",
+     "basis": "Wording interpretation is 2.6% of upheld FOS cases and 1.2% of claim decisions; finder's 5-10% has no measurement basis."
+    },
+    {
+     "dimension": "cost per review",
+     "classification": "unknown",
+     "basis": "No referral cost source."
+    },
+    {
+     "dimension": "cost/risk of wrong decision",
+     "classification": "moderate evidence",
+     "basis": "LAE ratio, ombudsman fees and compensation sourced from snippets; Consumer Duty exposure structural."
+    },
+    {
+     "dimension": "recurrence of settlements",
+     "classification": "weak evidence",
+     "basis": "Recurring classes exist (wear-and-tear, BI triggers, CI definitions) but were settled externally and thinly per firm."
+    },
+    {
+     "dimension": "ability to codify settlements",
+     "classification": "moderate evidence",
+     "basis": "ClaimCenter/Duck Creek rules can encode settled classes; residual per-claim causation is evidence work."
+    },
+    {
+     "dimension": "authoritative decision owner",
+     "classification": "negative evidence",
+     "basis": "Courts, regulators, ombudsmen and industry bodies settle wording classes; FOS decides on fair-and-reasonable and is not bound by insurer precedent (H4)."
+    },
+    {
+     "dimension": "availability of structured evidence",
+     "classification": "weak evidence",
+     "basis": "Causation and valuation rely on inspections and expert reports (A/B)."
+    },
+    {
+     "dimension": "integration complexity",
+     "classification": "weak evidence",
+     "basis": "Core claims platforms are the system of record; the brief penalises replacing them."
+    },
+    {
+     "dimension": "regulatory constraints",
+     "classification": "weak evidence",
+     "basis": "DISP 1.3.3 RCA is a mandated loop (tailwind) but ombudsman override keeps internal precedent non-authoritative."
+    },
+    {
+     "dimension": "incumbent software strength",
+     "classification": "negative evidence",
+     "basis": "Guidewire and Duck Creek rules, manuals, FC&S database, complaints platforms cover the space."
+    },
+    {
+     "dimension": "buyer",
+     "classification": "moderate evidence",
+     "basis": "Head of Technical Claims / Technical Claims Lead; identifiable role (finder)."
+    },
+    {
+     "dimension": "willingness to pay",
+     "classification": "unknown",
+     "basis": "No evidence."
+    },
+    {
+     "dimension": "sales cycle",
+     "classification": "unknown",
+     "basis": "No evidence."
+    },
+    {
+     "dimension": "potential initial ACV",
+     "classification": "unknown",
+     "basis": "No evidence."
+    },
+    {
+     "dimension": "expansion potential",
+     "classification": "weak evidence",
+     "basis": "Life/disability and health are negative; complaints RCA loop is the same buyer."
+    }
+   ],
+   "settlement_loop_status": "Operational externally (FCA v Arch test case: 21 lead wordings, ~700 policy types, >60 insurers, ~370,000 policyholders, https://www.fca.org.uk/news/press-releases/result-fca-business-interruption-test-case, regulator, snippet; ABI CI minimum standards; FOS/AFCA approach documents; LMA opinions followed >99%, press). Insurer-internal: ceremonial, since DISP RCA output is training, process and wording change with no evidence of executable write-back, and the CGC finding suggests insurers fail to apply externally settled classes for reasons at least as plausibly incentive-driven as knowledge-driven."
+  },
+  {
+   "workflow": "ERISA benefit claim appeals and plan-term interpretation at a TPA, disability insurer appeals unit or self-administered plan",
+   "domain": "hr-payroll-benefits-procurement-expenses",
+   "geography": "US",
+   "why_humans_review": "Estimate from the regulation's required-content list, unverified (finder): A 30-40% (denial must state what additional material would perfect the claim); B 20-25% (medical necessity, disability definition, eligibility class); C 10-15%; D 5%; E 10-15% (Firestone discretion); G 5%; H 10-15%. Verifier: H 0-5% with wide uncertainty; the (b)(5)/(g) rules apply to health and disability claims and the 'internal rule, guideline, protocol' they reference is clinical criteria and claims manuals applied to facts, not interpretive settlements; [RECALL, unverified] appeals are under 1% of denials with administrative reasons dominant.",
+   "repeatable_ambiguity": "Estimated H 0-5% (verifier) to 10-15% (finder, structural); no measurement. Basis for the structural case: 29 CFR 2560.503-1(b)(5) requires safeguards that plan provisions are 'applied consistently with respect to similarly situated claimants' and (g) requires disclosure of any internal rule relied on (https://www.ecfr.gov/current/title-29/subtitle-B/chapter-XXV/subchapter-L/part-2560/section-2560.503-1, regulation text recalled, host blocked). Basis against: every appeal must be decided by a named fiduciary without deference (H4); no count of appeals, share reversed on interpretation, or recurrence of the same plan-term ambiguity was reachable.",
+   "volume": "Unverified. [RECALL] EBSA Benefits Advisors closed ~200,000 participant inquiries FY2023 (dol.gov, blocked); ERISA civil filings ~7,000-9,000/yr (uscourts.gov, blocked). Plan-level claim and appeal counts: not found.",
+   "economic_pain": "[RECALL, unverified] EBSA informal recoveries ~$444M FY2023; fee-shifting under ERISA 502(g); reversal risk from inconsistent interpretation. Cost per appeal and TPA headcount: not found.",
+   "existing_solution": "Insurer and TPA claim platforms (FINEOS for disability, health-plan adjudication systems), benefits-administration platforms (Alight, bswift, Businessolver), plan document/SPD vendors, ERISA counsel; internal guidelines live as clinical policy bulletins and claim manuals; consistency verified by audit sampling. No vendor found that links appeal outcomes to a versioned plan-term interpretation and re-applies it.",
+   "evidence_quality": "weak",
+   "dimensions": [
+    {
+     "dimension": "annual decision volume",
+     "classification": "unknown",
+     "basis": "Only recalled regulator aggregates; plan-level counts absent."
+    },
+    {
+     "dimension": "current human review rate",
+     "classification": "strong evidence",
+     "basis": "100% of appeals by a named fiduciary by regulation (recalled text); initial claims largely auto-adjudicated."
+    },
+    {
+     "dimension": "estimated share of repeatable ambiguity",
+     "classification": "weak evidence",
+     "basis": "0-5% verifier vs 10-15% finder; structural argument only."
+    },
+    {
+     "dimension": "cost per review",
+     "classification": "unknown",
+     "basis": "Not found."
+    },
+    {
+     "dimension": "cost/risk of wrong decision",
+     "classification": "moderate evidence",
+     "basis": "Litigation, fee-shifting and EBSA recoveries are structurally large (recall); inconsistency is a classic reversal ground."
+    },
+    {
+     "dimension": "recurrence of settlements",
+     "classification": "unknown",
+     "basis": "No data on recurrence of the same plan-term question."
+    },
+    {
+     "dimension": "ability to codify settlements",
+     "classification": "moderate evidence",
+     "basis": "Plan terms and eligibility classes are structured; medical necessity and disability definitions are clinical judgment (B/E)."
+    },
+    {
+     "dimension": "authoritative decision owner",
+     "classification": "strong evidence",
+     "basis": "Plan administrator / named fiduciary with Firestone discretionary authority is the authoritative interpreter (court doctrine, recalled)."
+    },
+    {
+     "dimension": "availability of structured evidence",
+     "classification": "weak evidence",
+     "basis": "Medical and occupational evidence dominates; missing material is the largest estimated driver."
+    },
+    {
+     "dimension": "integration complexity",
+     "classification": "negative evidence",
+     "basis": "Adjudication is outsourced to insurers/TPAs whose platforms already hold the guidelines."
+    },
+    {
+     "dimension": "regulatory constraints",
+     "classification": "negative evidence",
+     "basis": "Human fiduciary on every appeal, full and fair review; the product can only draft or check, not decide (H4)."
+    },
+    {
+     "dimension": "incumbent software strength",
+     "classification": "moderate evidence",
+     "basis": "FINEOS and health adjudication systems hold the guideline layer; no case-to-rule ledger evidenced either way."
+    },
+    {
+     "dimension": "buyer",
+     "classification": "weak evidence",
+     "basis": "Plan administrator at a large self-insured employer or TPA appeals function; the appeals unit sits inside the claims platform's remit."
+    },
+    {
+     "dimension": "willingness to pay",
+     "classification": "unknown",
+     "basis": "No evidence."
+    },
+    {
+     "dimension": "sales cycle",
+     "classification": "unknown",
+     "basis": "No evidence."
+    },
+    {
+     "dimension": "potential initial ACV",
+     "classification": "unknown",
+     "basis": "No evidence."
+    },
+    {
+     "dimension": "expansion potential",
+     "classification": "weak evidence",
+     "basis": "HR tier-2 and payroll interpretation are settled upstream by regulators and encoded in HRIS/payroll configuration (cluster verdict weak/negative)."
+    }
+   ],
+   "settlement_loop_status": "Mandated on paper (consistency safeguard and disclosure of the internal rule relied on, recalled regulation text) but ceremonial as a capture mechanism: settlements live in claim manuals and clinical bulletins, consistency is checked by audit sampling, and a human fiduciary decides every appeal. Regulation text, volumes and reversal grounds were not fetched by either pass."
+  }
+ ],
+ "top_three": [
+  "In-company customs tariff classification (importers, exporters, brokers): the only workflow with sourced structural support on three brief criteria at once (outcome is a code, a public precedent corpus of 216,164 dated rulings with supersession links exists to anchor to, and the inspected incumbent stores the settled code with dates and user but not the deciding facts, rule reading or authority), an identifiable owner with company-level rule-making power, and no legal human-in-the-loop mandate. Against it: the sourced CBP pattern shows a fresh human decision per product even on already-ruled lines (B/A dominance), H is a 5-15% estimate with no measurement, and Avalara/ONESOURCE/Descartes/SAP GTS own the item master (H6).",
+  "Merchant onboarding restricted-business classification at a PSP/acquirer: the owner (head of merchant risk) holds rule-making power over a versioned public policy list, decisions are structured (accept/decline/MCC/list entry), there is no human-review mandate, and settlements are approvals of business models rather than adverse consumer decisions, which is exactly the shape the H1-H4 verifier said the base-rate experiment should target. Against it: zero reachable data on queue volume, manual share, recurrence or cost; the restricted-business page itself was blocked; verifier's H 10-20% is a guess; strong prior that the result is a feature of the onboarding tool.",
+  "Mortgage lender underwriting help-desk / scenario-desk log (US agency lending): recurring guideline interpretation questions with structured facts and monthly rule changes at high file volume, an internal credit-policy owner, budget in LOS technology lines, and a historical email/ticket log that can be sampled. Against it, and the reason it ranks third rather than first: the lender is not the authoritative owner of guide meaning (GSE/FHA are, and they are encoding the largest interpretive area themselves), overlays are risk policy already coded in the LOS, FHA Refer files require manual underwriting by rule, and every number is recall. Verifier kill threshold: a clear majority of repeat questions must concern the lender's own policy."
+ ],
+ "wedge_candidates": [
+  {
+   "workflow": "In-company customs tariff classification log at one importer, 3PL or customs broker (best single wedge)",
+   "why_cheap_to_test": "The historical corpus already exists in structured form in the incumbent item master (Avalara ItemModel classifications with createdUserId/modifiedUserId/dates and any premium justification text; equivalent exports from ONESOURCE, Descartes or SAP GTS), so 100-500 past classification decisions can be pulled without instrumenting anything. Each decision can be coded against the brief's eight categories by asking: was there a prior in-house classification for the same product family (category 7), did the classifier search CROSS/EBTI and find a matching ruling (rule already settled externally), was a spec sheet or sample missing (2), was it a per-item fact question (3), or was it a genuinely new reading that the trade compliance lead ratified for the family (8). The public CROSS scrape (https://raw.githubusercontent.com/justinmoonjeli/CROSSFetch/main/cbp_rulings_data.csv) and the HMRC ATaR public search give an external check on whether the company's settled readings duplicate public settlements. Kill criteria set by plausible customer economics: (7)+(8) below 15% of classification decisions, or the settled readings already living in the GTM system with rationale, or new-SKU decisions dominated by missing specs.",
+   "access_to_cases": "Exportable from Avalara/GTM item masters and broker files; public precedent corpora (CROSS 216,164 rulings, HMRC ATaR search) reachable today; no regulator access needed.",
+   "access_to_owners": "One named role per company: head of trade compliance / customs manager; brokers' classification leads. Interviews should ask for the classification queue, the override and broker-dispute log, and where settled readings live (GTM, broker files, spreadsheets)."
+  },
+  {
+   "workflow": "Merchant underwriting queue at one PSP or acquirer",
+   "why_cheap_to_test": "A PSP's historical manual-underwriting decisions plus the dated versions of its restricted-business list give real settlements with dates: each version change is a prospective settlement and the queue before and after it shows whether the same business-model question recurred and stopped recurring. 200-500 queue items can be coded for (7) previously settled class versus (8) new settleable class versus (2) missing website/licence versus (3) is-this-business-real. Kill criterion per the payments verifier: class-level H must exceed roughly 15-20% of escalations at thousands of cases per year.",
+   "access_to_cases": "Requires one PSP contact willing to share an anonymised underwriting queue; the public restricted-business list versions are on the PSP's website (blocked in this session but public).",
+   "access_to_owners": "Head of merchant risk / underwriting at a mid-size PSP or acquirer; a single owner who both decides edge cases and edits the list."
+  },
+  {
+   "workflow": "Mortgage lender underwriting help-desk or scenario-desk log at one independent mortgage bank",
+   "why_cheap_to_test": "The log is an email or ticket queue that already exists; 300-500 questions can be coded for whether the question repeats an earlier answered one (7), whether the answer concerned the lender's own overlay/policy or the GSE guide (owner test), whether it was an eligibility lookup or missing-document question (1/2), or a priced exception (4). Kill criteria: repeats under 20% of questions, or a majority of repeats concerning the GSE guide rather than lender policy (the lender cannot make those authoritative), or answers already captured as Encompass rules within a release cycle.",
+   "access_to_cases": "Requires one lender contact; no public corpus exists; all volume figures are recall."
+  },
+  {
+   "workflow": "Delegated-authority oversight team at one Lloyd's managing agent (interview probe, not a base-rate experiment)",
+   "why_cheap_to_test": "A single conversation can establish the annual special-acceptance count, how many became binder endorsements, and whether special acceptances are flagged in bordereaux under the Coverholder Reporting Standards, which would settle H3/H4 for this workflow without any data export. Kill criterion: special acceptances number in the tens per binder per year, or endorsements already absorb recurring ones at renewal.",
+   "access_to_cases": "Referral and special-acceptance records are email plus workbench; sharing is unlikely without a relationship.",
+   "access_to_owners": "Head of Delegated Authority / third-party oversight at a managing agent; MGA head of underwriting."
+  },
+  {
+   "workflow": "Public appeal corpora (FOS insurance decisions, IPSA reviews, CROSS rulings, EBA Q&A) for recurrence-class analysis only",
+   "why_cheap_to_test": "Already downloaded and analysable today at zero access cost, but they sample the disputed or published tail, not a live review pool, so they cannot deliver the brief's base rate (H1-H4 verifier). Useful only to define class granularity and test whether identical wording or article classes recur across firms before spending a customer relationship.",
+   "access_to_cases": "GitHub corpora reachable now: https://github.com/SwayamBhageria/claims-overturn-bench, https://github.com/gnosifex/esa-qa-mirror, https://raw.githubusercontent.com/justinmoonjeli/CROSSFetch/main/cbp_rulings_data.csv, local IPSA corpus."
+  }
+ ],
+ "hypotheses": [
+  {
+   "id": "H1: most manual reviews are caused by missing facts, not recurring interpretive ambiguity",
+   "verdict": "partially supported",
+   "evidence_for": "AHIP June 2025 (industry association, fetched): only ~7% of commercial medical claims face PA, 97-98% approved, initial denials 'often a result of incomplete information from providers', 45-47% of requests still by phone/fax/mail. SNAP FY2024 QC error dollars 77.7% household-side input, 4.6% pure computation (FNS data file, verifier computation). VA: 42.5% of appealed issues remanded for evidence development (BVA public corpus, verifier). HMRC ATaR: the only coded referral reasons are REQUEST_SAMPLE and REQUEST_MORE_INFO (government source code). Commercial underwriting waste is data extraction, 30-60 min per submission (McKinsey/Accenture via vendor, weak). Marble case outcomes and Alahmadi 2022 (unfetched) describe AML and SOC review as factual classification with context. FOS: evidence 1.6% but policy wording only 2.6% of upheld (third-party corpus).",
+   "evidence_against": "In the two appeal corpora with sourced distributions, missing evidence is a minor primary driver (IPSA 2 of 46; FOS 10 of 626) and the dominant residual is discretion, exceptions and handling quality (IPSA 18 of 46 discretion/exception; FOS 45.2% process/communication/quantum/delay), which is worse for the product than missing facts, not better. H1-H4 verifier: no live review pool was split into facts vs interpretation anywhere, so H1 is untested at the pool level; 16-20 of 46 IPSA outcomes still turned on facts gathered after the original decision.",
+   "varies_by_domain": "Strongly supported in health PA, SNAP/Medicaid, VA, customs rulings, AML/sanctions/fraud, SOC and commercial underwriting. Not the main story in expenses and insurance complaints, where E/G and handling dominate. Untested in the four unobserved company-side logs (customs, merchant onboarding, KYC, mortgage help desk)."
+  },
+  {
+   "id": "H2: interpretive ambiguity exists but repeats too rarely to compound",
+   "verdict": "partially supported",
+   "evidence_for": "Generalisation runs one to three orders of magnitude below case flow wherever a formal loop exists: EBA finals fell from 412 (2013 submissions) to 54 (2025), ~60-100/yr sector-wide (regulator mirror); IRS PLRs ~550-800/yr down from ~1,700 (28,135-file corpus, primary-derived); Coding Clinic ~100 Q&As/yr (recall); Oversight Board dozens of decisions/yr vs 3.52bn DSA statements of reasons (snippet) and 30.8bn SoR rows (verifier fetch); CBP HQ ~200 rulings/yr and 1.4% lifetime supersession (scrape). IPSA fine-grain recurrence: 633 classes, 86% seen once (with the repo's own warning that a 1.2% sample inflates singletons). FOS: 16 wording disputes across 183 firms in 2.5 years. Owner's permission log: 47.5% of settlements never reused, median 2 later calls (private data). Ramp/Expensify/IPSA show owners govern recurrence with bright lines.",
+   "evidence_against": "Recurrence at coarse class level is plentiful: IPSA 67 classes cover 93% of claims with one settlement each; 77 six-digit tariff lines cover half of all CROSS rulings and 98% of 2023-24 rulings sit on already-ruled 6-digit lines; 69.7% of EBA Q&As sit in article/paragraph classes asked twice or more; the FOS 'precedent' tool found a comparable published decision for 100% of tested affordability complaints (open-source tool README, weak-moderate). Rules-as-Code guide: 'over time judgements accrue, which can provide patterns you can encode'.",
+   "varies_by_domain": "Supported where the settled object is an interpretation of text (tax rulings, ombudsman, moderation, RFIs, leases). Not supported where the settled object maps to a code (tariff, ICD, MCC, product tax code), which is where recurrence is high but per-item factual work remains. H1-H4 verifier: untested at live-pool level; only low absolute volume in public tails is established."
+  },
+  {
+   "id": "H3: once ambiguity is settled, organisations already encode it adequately in existing systems",
+   "verdict": "supported",
+   "evidence_for": "Verified primary artefacts in every cluster: HMRC ATaR Decision with justification, method fields, effective dates, typed invalidation and public search (government source code); Marble RuleSnooze with creator, source decision, rule, pivot, start and expiry, auto-created ScreeningWhitelist on every no_hit, ScenarioIteration.Version on every decision, case events for sar and rule_snooze (open-source vendor code); Tazama cfg-versioned rules and typed override conditions; Elastic exceptions created from an alert and shared across rules; Avalara TaxRuleModel effective-dated and user-stamped; Stripe CE3.0 typed evidence and Adyen defense reasons (vendor OpenAPI); ServiceNow IRM exception record, approval rules, PaCE, document versions with retired versions retained, sys_audit and case-to-knowledge/KCS (vendor docs mirror); Kyverno PolicyException by PR; OpenFisca-France and DGFiP M language with semantic versioning (the 'slow encoding' claim was refuted, issues closed in months and releases weekly); GSE DU/LPA, reinsurer manuals, Lloyd's binders, medical policies numbered and effective-dated under CMS-4201-F, Federato 30 rules automating 95% of one MGA's referrals (vendor case study), Loop Returns exception workflows, EDD Benefit Determination Guide, DWP ADM memos, USCIS Policy Manual.",
+   "evidence_against": "The encoded object usually captures WHAT, not WHY: Avalara has no rationale field on TaxRule and only optional premium justification text; Marble stores the snooze rationale as a case-event comment, not on the executable object; ServiceNow decision tables retain no older versions; Cedar annotations carry no authorship or version semantics; EBA leaves 7.2% of finals flagged unreviewed after rule changes; IPSA committed to 4 of 17 recommended rule changes; PubLedge asserts interpretations live in scattered records (0 stars, weak). Verifier consensus: the gap is provenance and ratification speed, a feature increment, not a missing system.",
+   "varies_by_domain": "Supported in every domain examined; strongest where the settlement is a code or executable exception (customs, AML, SOC, tax engines, policy-as-code) and where a regulator publishes (health, benefits, EBA). The residual 'why' capture is weakest in customs classification and KYC exceptions, which is why those remain shortlisted."
+  },
+  {
+   "id": "H4: interpretation remains legally or organisationally discretionary even after precedent exists",
+   "verdict": "supported",
+   "evidence_for": "Adverse decisions about individuals are kept human by law or commitment: AHIP 2025, 100% of responding plans keep a licensed clinician on every medical-necessity denial (industry association, fetched); 42 CFR 422.566(d), California SB 1120, CMS WISeR (recall); ERISA named fiduciary without deference on every appeal (recall); EU AI Act Annex III and Art. 14, GDPR Art. 22 and SCHUFA C-634/21 for credit, benefits, insurance risk and employment (recall); DSA Art. 20(6) human review on every appeal and Art. 21(2) non-binding out-of-court bodies (recall; TikTok implemented 29 of 106 dispute-body disagreements, snippet). Individual settlements are non-precedential by design: IRC 6110(k)(3) quoted in every PLR (primary corpus); IPSA Scheme s.2.3 and 5 of 46 reviews disclaiming precedent (hash-verified primary); FOS fair-and-reasonable and 'it was paid before' rejected in 15 of 24-26 IPSA arguments; Oversight Board 'identical content with parallel context' in 40 of 128 decisions (dataset); Wikipedia 'previous outcomes do not bind'; SEC comment letters non-precedential in 233 of 1,185 files (EDGAR corpus); CADA advisory; Lloyd's out-of-binder risks agreed by the managing agent every time; SAR decisions 'inherently subjective' (FFIEC, recall); SSA ALJ allowance 8.7-92.8% across judges despite SSRs/ARs (SSA data, verifier).",
+   "evidence_against": "Binding prospective settlements exist where the settler has statutory power and the decision is favourable or B2B: customs rulings bind holder and authority for 3 years, VA GC opinions and SSA ARs bind all staff, CUIAB precedents bind EDD, EBA Q&As are expected to be applied, Visa CE3.0 is deterministic, Kyverno exceptions are executable. Approvals are automatable (AHIP ~20% real-time now, 80% target by 2027). Verifier: the H4 direction stands but rests on unverified legal texts and one self-reported survey.",
+   "varies_by_domain": "Supported for denials and adverse decisions in health, credit, benefits, employment, insurance, moderation and tax rulings. Not supported for approvals, classifications that map to a code, and B2B or internal operational decisions (customs, merchant onboarding, firewall changes, SOC exceptions), which is why the wedge candidates are all on the approval or classification side."
+  },
+  {
+   "id": "H5: the relevant institutional knowledge is too local or contextual to generalise",
+   "verdict": "partially supported",
+   "evidence_for": "Cross-customer level: HL7 Da Vinci CRD/DTR state each payer 'has its own unique process' and 'has rules for what documentation is necessary and in what form' (standards text, fetched); ServiceNow UCF content is read-only and customers must not customise authority documents (vendor docs); RFI answers expire with the project and Procore models them per project (vendor docs, fetched); leases, service contracts (DCSA D&D by reference to carrier contract, fetched), copropri\u00e9t\u00e9s and MDPH's 100+ commissions are local by construction; SOC benign triggers are environment-specific (Alahmadi, unfetched); Big-4 consultation databases are firm-internal (recall).",
+   "evidence_against": "Within-firm level: shared rulebooks are pooled and sold wherever a network or standards body owns the rule (UCF library, Nacha/Visa/Mastercard dispute content packs as decision tables, DTR CQL questionnaires, OpenFisca law-as-code, DMN executable by 8 engines), and firms clearly hold a local interpretation layer above them. Tariff classes, MCC lists and CDD entity types recur across firms.",
+   "varies_by_domain": "Supported at the cross-customer level everywhere (no content network effect; a Sophon corpus is single-tenant). Not supported within a firm. Most severe in construction, property, logistics and moderation; least severe in customs and payments where public taxonomies anchor the classes."
+  },
+  {
+   "id": "H6: the product becomes merely a feature of BPM, GRC, vertical SaaS or agent platforms",
+   "verdict": "supported",
+   "evidence_for": "Strongest documentary support of all eight. Shipped by incumbents (all fetched unless noted): ServiceNow IRM exception record with requester, approver, valid-from/to, extensions, approval rules by risk rating, PaCE policy-as-code with 'request an exception and continue', Decision Builder tables, document versioning, case-to-knowledge and KCS auto-draft; Marble LLM case reviewer ingesting up to 10 prior cases per pivot to propose review level; Elastic shared exception lists; Stripe Radar value lists with created_by and Sift labels with $analyst; Procore AI side-panel retrieval over RFIs plus MCP agents; AWS AgentCore PolicyClient.generate_policy() plain English to Cedar with default-deny enforce and monitor modes; Microsoft AGT require_approval with named approvers and tamper-evident records; Permit.io standing access requests vs one-time operation approvals; OpenAI sticky approvals persisting via sessions; Claude Code 'Yes, and don't ask again' writing an allow rule to settings; Federato appetite rules; Loop Returns exception workflows; Cinder/Checkstep policy engines (snippet); Ramp policy agent turning detected ambiguity into a suggested policy edit an admin publishes (prior evidence, unverified). Verifier: the unshipped increment (exception to issuer-attributed executable rule row) is a small increment for ServiceNow, which owns exception, decision table, policy document and escalation tiers in one data model, and for AWS/Microsoft on the agent side.",
+   "evidence_against": "No inspected incumbent links a case-level decision to a versioned executable rule with issuer, power and effective time; ServiceNow decision tables keep no history; Cedar has no authorship semantics; AgentCore's control-plane API has only createdAt/updatedAt. But the incumbents most likely to hold governed rule history (IBM ODM Decision Center, Pega, Drools Business Central, Appian, FICO) could not be documented, so even this gap is unproven.",
+   "varies_by_domain": "Supported in every cluster. Weakest (least incumbent coverage) in in-company customs classification and KYC exceptions, where vendor documentation was unreachable; strongest in GRC, SIEM, AML, agent platforms and expenses."
+  },
+  {
+   "id": "H7: the settlement corpus does not create meaningful switching costs or defensibility",
+   "verdict": "supported",
+   "evidence_for": "Decision logic is portable by design: DMN TCK runners for 8 engines (Actico, Camunda, Camunda-DMN-Scala, C#, Drools, jDMN, QuantumDMN, Trisotech); OPA Rego and Cedar are plain text in git with bundle revision in decision logs; OpenFisca parameters are YAML with per-value legislative references; Claude Code rules are JSON; Cedar annotations travel inside the policy text (all fetched). Incumbents retain more history than the finder claimed: ServiceNow sys_audit on audited tables and retired document versions retained (vendor docs, fetched), so a dated, attributed history is a thin differentiator. Customers will demand export of anything called a ledger. H5 removes any cross-customer content effect.",
+   "evidence_against": "Provenance-bearing instantiation is not native to engines (Cedar template-linked policies, annotations without evaluation effect); ServiceNow decision tables discard older versions; IBM ODM/Pega/Drools workbench history undocumented. Any moat would come from process adoption and integrations, not data.",
+   "varies_by_domain": "Supported uniformly; no domain examined showed a corpus that could not be exported as text or tables."
+  },
+  {
+   "id": "H8: the economics cannot support standalone software because the addressable labour pool is too small",
+   "verdict": "unknown",
+   "evidence_for": "Structural only: the settler population is one to two orders of magnitude smaller than the processor population (IPSA 46 published reviews vs 82,787 claims; owner's log 906 settlements vs 9,404 calls; ServiceNow assigns exception decisions to a single compliance-manager role with many requesters, vendor docs); formal loops produce single digits to low hundreds of settlements per year (SSA rulings, VA GC opinions, Coding Clinic ~100, EBA ~60-100, CBP HQ ~200, IFRS IC 10-20 recall); KYC exceptions guessed at hundreds to low thousands per bank; medical policy teams are small per plan; 2,221 UK public-authority FOI teams and 53 UI agencies are fragmented public buyers; US underwriters ~105k with most time on data handling (recall). Per-settler-seat pricing cannot carry a product; value would have to be priced on processor labour or risk avoided, which is what incumbents already sell.",
+   "evidence_against": "No BLS/ONS/INSEE headcount, wage, compliance-cost or per-seat price figure was obtainable by any finder or verifier (all blocked); the processor pools in claims (365,300 US adjusters, snippet), SOC, denials management ($25.7bn provider adjudication cost, industry survey via press) and customs are large. The structural argument rests on two owner-supplied ratios and one vendor sentence.",
+   "varies_by_domain": "Unquantified everywhere. Structurally most adverse in government, medical policy, tax rulings and KYC exceptions (tiny settler pools or public buyers); least adverse, though still unmeasured, in customs classification and claims where processor labour is large."
+  }
+ ],
+ "domains_rejected_and_why": [
+  "US health prior authorisation and medical-necessity determinations (negative, moderate-to-strong): 7% of claims face PA and 97-98% approve (AHIP 2025, fetched); denials attributed to incomplete information (A); clinician required on every denial by law and commitment (H4); criteria already numbered, versioned and public under CMS-4201-F (H3); plans settle recurring approvals by removing services from PA lists, not by capturing interpretations.",
+  "Payer medical policy formation and provider-side claims denials/appeals (weak): policy authoring by committees is excluded by the brief's mechanism and already versioned; provider-side H 0-5% (verifier); denials dominated by registration/eligibility and documentation (Change Healthcare index, vendor); recurring interpretive classes (sepsis, E/M, status) settled bilaterally by contract (F) or by Coding Clinic at ~100/yr; Cotiviti, ClaimsXten, Epic, Waystar strong.",
+  "Peer-to-peer reviews and PA appeals, and French accord pr\u00e9alable (negative): outcomes explicitly non-precedential; near-100% P2P overturns are new documentation (A); France decides by silence with national HAS r\u00e9f\u00e9rentiels settling classes.",
+  "Individual life, personal lines and health/PMI underwriting (negative): kick-outs are bright-line age/amount and evidence-driven (Gen Re 2024, SOA, snippets); loop owned and versioned by reinsurers; ~95% STP in personal lines; EU AI Act high-risk (recall).",
+  "SMB commercial P&C underwriting referrals (weak): 35-50% referral rate is one vendor blog; referrals are authority gates on capacity and price (E/F); HDVI closed its loop with ~30 Federato rules inside the workbench (H3/H6); waste is data extraction (A).",
+  "Bank loan policy exceptions and loan operations exception queues (negative): an exception is an approved bright-line breach (E) dominated by documentation exceptions (A); prospective mechanism is policy amendment at governance cadence; nCino/Abrigo/ServiceNow already hold the per-loan record; servicing exceptions are missing-data work items (ServiceNow Loan Operations docs, fetched).",
+  "GSE interpretation loop and France HCSF/EU consumer credit (negative): the GSE loop is real, versioned, executable and owned by a handful of guide publishers (H3/H8); HCSF is a rationed 20% discretion budget, not ambiguity; EU AI Act Annex III 5(b), GDPR Art. 22 and SCHUFA keep humans in consumer credit (recall).",
+  "AML transaction monitoring, sanctions/PEP screening, payment fraud review and chargebacks (negative, moderate): factual classification and evidence (B/A) dominate; Marble RuleSnooze, auto-created ScreeningWhitelist, ScenarioIteration.Version and an LLM case reviewer already ship the settlement (open-source code, fetched); Tazama typed overrides; Stripe/Sift per-entity lists; chargeback loop owned by Visa/Mastercard and encoded by PSPs (CE3.0 typed evidence, fetched); SAR decision subjective per case (recall).",
+  "Regulator customs advance rulings (negative, moderate): the owner ships the full loop as open-source software (HMRC ATaR, fetched); 1,833-2,138 CBP rulings/yr and shrinking; 91%/98% of rulings on already-ruled lines still get a fresh human decision; holder-only legal effect; regulator is not a buyer.",
+  "Indirect tax determination, tax rulings (PLR, rescrit, clearances) and transfer pricing (weak/negative): engines already execute effective-dated custom rules (Avalara TaxRuleModel, fetched); PLRs are one-off, non-precedential by statute (6110(k)(3), primary corpus), $38,000 fee, agency-owned conversion to Rev. Procs; rescrits bind only the requester; APAs/MAP are negotiated (F/E) at low volume.",
+  "Export control classification (weak, unknown): every operational number traces to one hobby tool's README; settles once per product family; technical parameter checks are B; counsel stays in the loop for high-stakes items; pursue only as an adjunct to customs.",
+  "SSA disability, VA, USCIS, UK DWP, SNAP/Medicaid, CAF, MDPH and UI (negative to weak): DDS determinations 97.1% policy-accurate by SSA's own review; ALJ variance 8.7-92.8% is judge effect; 42.5% of BVA issues remanded for evidence; SNAP errors 77.7% input; PIP overturns 63% oral evidence; precedent mechanisms (ARs, SSRs, GC opinions, CUIAB, UT-to-ADM, Policy Manual) already institutionalised, low-frequency and authority-owned; public buyers with legal limits on automated adverse decisions; MDPH disparity is unharmonised discretion across 100+ commissions with no buyer; URSSAF rescrits de port\u00e9e g\u00e9n\u00e9rale exist inside the authority.",
+  "HR tier-2 policy interpretation, payroll exceptions, procurement exceptions and employee expenses (weak to negative): Code du travail num\u00e9rique 'contributions' are a ~51-topic government FAQ digesting agreement text with 32% 'agreement is silent' (dataset, fetched), owned by the regulator; FLSA/award ambiguity settled by WHD/FWC and consumed as payroll configuration; FAR class deviations, J&As and nonavailability lists are statutory, numbered, published instruments (FAR mirror, fetched); Expensify defaults ($100 auto-approve, random audit) and IPSA data show expenses are governed by limits plus audit.",
+  "EBA Q&A as a product target, FOI/ICO/CADA, SEC comment letters, contract playbooks, data protection, ISO panels, law-firm KM, accounting consultations (weak to negative): sector Q&A loop is regulator-run, free, partly stale and shrinking (recomputed); ICO substantive exemptions upheld 60-90%, 7 of 12,493 abstracts cite a previous decision, overturns are timeliness (98% on s.10) and 2,221 small public buyers; SEC threads ~0.3 per company-year and explicitly non-precedential (EDGAR corpus); the one inspectable playbook has 22 of 24 clauses 'mixed' and its authors abandoned executable positions (F dominates); GDPR balancing is case-by-case; Big-4 consultation databases are the firm's own product and unobservable (H5/H8).",
+  "Construction RFIs, disputes, leasehold and commercial lease/CAM, copropri\u00e9t\u00e9s (weak to negative): RFI answers are project-local archives in Procore's object model with AI retrieval already shipping (fetched); H 2-5% within project, near zero across projects (verifier); disputes negotiated (F) and adjudicated by statute; lease readings bind one lease; buyer fragmented between design firm and contractor.",
+  "Energy and telecom billing disputes, network charging determinations, freight audit, ocean D&D, freight claims (negative to weak): loops owned by ombudsmen and regulators (MNE recommandations g\u00e9n\u00e9riques, Ofgem/Ofcom, FMC 2020 interpretive rule) and published; D&D is contract-referenced by DCSA standard (fetched); freight audit platforms already encode accessorial interpretations as rules; claims are evidence-driven under static liability regimes.",
+  "Aircraft MEL deferrals and FAA exemptions/Part 107 waivers (negative): MEL proviso ambiguity resolved upstream by AEG/MMEL policy letters and EASA AltMoC publication; identical waiver requests are routinised discretionary relief from bright-line rules (E), not repeatable ambiguity, and the FAA absorbed them into rules.",
+  "Content moderation, marketplace seller appeals, retail returns and OEM warranty (weak to negative): Oversight Board decisions bind only 'identical content with parallel context', dozens per year against billions of SoRs; DSA requires humans on every appeal and makes external bodies non-binding (recall); appeal reversals (30% of 165M) are classification error; Amazon EU upholds 26% of complaints (corrected arithmetic) with appeals turning on plans of action and invoices (A/B); returns are fraud scoring plus goodwill (E) at small value with Appriss/Loop/Narvar encoding exceptions; warranty adjustment programs are defect-driven coverage extensions that statute distinguishes from case-by-case adjustments, review-rate figures are vendor marketing, and OEM WMS vendors own the pre-authorisation and rules layer.",
+  "SOC triage, DLP adjudication, access certification, GRC security exceptions, vulnerability exceptions, firewall changes, break-glass and AI-agent permissions (weak to negative): benign-trigger settlements are native, prospective SIEM exceptions (Elastic, fetched); Entra 'take recommendations' auto-applies certifications; GRC and vulnerability exceptions are time-boxed risk-acceptance grants that four primary data models (ServiceNow, SimpleRisk, CISO Assistant, DefectDojo) deliberately expire and re-justify (E/G); NSPM matrices are the executable precedent engine; break-glass is G with mandated post-hoc review; for agent permissions Claude Code already persists a prompt answer as a version-controllable allow rule, Microsoft AGT binds approvals to a single action digest by principle, AWS ships NL-to-Cedar, Yan 2026 users chose 'ask me' for 114 of 140 rules (unverified) and 47.5% of the owner's own settlements were never reused; Ramp shows the loop as a vertical-product feature.",
+  "Policy-as-code exception registers and regulator-facing interpretation registers (negative): Kyverno PolicyException already carries policyRefs, matchConditions, owner and PR approval; Nirmata's register is a three-manifest demo; GitHub site-policy keeps cases out of policy edits; PubLedge, built for exactly this artefact class, has 0 stars, no adopters and parked its product ambitions (INTENT.md, fetched)."
+ ]
+}

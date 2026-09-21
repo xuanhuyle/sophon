@@ -1,0 +1,919 @@
+{
+ "key": "settlement-loop-hunter",
+ "found": {
+  "domain": "settlement-loop-hunter: cross-domain hunt for named institutional mechanisms that turn a case decision into a prospective rule (IRS PLR->Rev Proc, French rescrit->BOFiP, EU/UK BTI, SSA SSR/AR/POMS, VA GC precedent opinions, USCIS adopted decisions/Policy Manual, bank/securities regulator letters, FASB/IFRS IC/Big-4 consultation, insurer bulletins, construction RFI->ASI, Meta Oversight Board, policy clarification logs, IAM exception registers, UK Upper Tribunal->DWP ADM, ISO/ASME interpretations, legal KM, interpretation registers) and the opposite pattern (explicit non-precedent)",
+  "workflows": [
+   {
+    "name": "IRS private letter rulings (PLRs) -> revenue procedures / automatic-consent procedures / no-rule lists",
+    "geography": "US",
+    "decision_volume": "Scraped IRS written-determination corpus (28,135 files, github.com/surabhitri/PLR_Classification, counted locally by filename year prefix; source type: primary-derived dataset scraped from irs.gov, secondary host): 1999: 1,407; 2000: 1,644; 2001: 1,721; 2002: 1,702; 2005: 1,407; 2008: 1,321; 2010: 1,348; 2012: 850; 2014: ~1,124; 2015: 1,043; 2018: 582; 2020: 547; 2022: 719; 2023: 693 (a separate 2023_PLRs folder holds 785). These are lower bounds for PLRs proper (corpus filtered to 'definite PLR'). An academic text in the same repo (PLR_Context_+.pdf) reports 'approximately 81,000 PLRs' after excluding mandatory/non-discretionary rulings (cumulative universe). SOURCED, secondary host of primary documents.",
+    "human_review_rate": "100% by construction: a PLR is a human legal opinion written by IRS Chief Counsel on request (primary PLR text, github.com/surabhitri/PLR_Classification/blob/main/data/raw/files_definite_plr/202301001.pdf). Share of all tax positions that go to a PLR is tiny (hundreds per year vs ~10^8 returns; the return count is recalled, not fetched).",
+    "why_humans_review": "Estimate (basis: PLR subject matter and the Rev. Proc. no-rule list described in PLR_Context_+.pdf, which states the IRS annually lists issues it will not rule on because they are 'factual questions'): C rule interpretation ~50%, B factual classification ~15% (partly excluded via no-rule list), G one-off transaction structure ~20%, H repeatable ambiguity ~15% (evidenced by the IRS practice, described in the same PDF, of issuing 'guidelines for requests on recurring subjects'). A/D/E/F small. Analytical estimate, not measured.",
+    "settlement_loop_evidence": [
+     {
+      "description": "Each PLR carries the statutory disclaimer: 'This ruling is directed only to the taxpayer requesting it. Section 6110(k)(3) provides that it may not be used or cited as precedent.' (quoted from PLR 202301001, 202301003, 202301004 via crude text extraction). The individual settlement is explicitly non-prospective for anyone else.",
+      "source_url": "https://github.com/surabhitri/PLR_Classification/blob/main/data/raw/files_definite_plr/202301001.pdf",
+      "source_type": "regulator (IRS written determination, mirrored on GitHub)",
+      "prospective": "no",
+      "reusable_how": "Only by the requesting taxpayer for the described transaction; others use PLRs informally as signals of IRS reasoning (publedge PRIOR-ART: 'PLRs cannot be cited by other taxpayers as authority, but they signal the IRS's reasoning')."
+     },
+     {
+      "description": "Conversion path: the IRS issues 'guidelines for requests on recurring subjects' (revenue procedures with checklists/representations) and an annual no-rule list; user fee 'as of February 4, 2021, is generally $38,000' (determination letter $275). The fee and the recurring-subject procedures show that recurring PLR classes are absorbed into standardised procedures rather than repeated as individual rulings.",
+      "source_url": "https://github.com/surabhitri/PLR_Classification/blob/main/data/raw/PLR_Context_+.pdf",
+      "source_type": "academic (paper excerpt stored in a GitHub research repo; underlying Rev. Proc. not fetched)",
+      "prospective": "yes",
+      "reusable_how": "Recurring PLR subjects become revenue procedures (e.g., automatic accounting-method-change consents, automatic 9100 relief) that later taxpayers apply without a ruling. RECALLED mechanism (Rev. Proc. 2015-13 list of automatic changes; Rev. Proc. 2003-16 automatic late-rollover relief) - not verified this session; canonical source irs.gov/irb (blocked)."
+     },
+     {
+      "description": "PLR volume in the corpus fell from ~1,700/yr (2001-2002) to ~550-800/yr (2018-2023) while the user fee rose to $38,000: consistent with recurring classes being absorbed into published procedures and with pricing rationing individual settlements.",
+      "source_url": "https://github.com/surabhitri/PLR_Classification/tree/main/data/raw/files_definite_plr",
+      "source_type": "primary-derived dataset (counted locally)",
+      "prospective": "yes",
+      "reusable_how": "Trend evidence only; the causal split between fee rationing and rule absorption is not established."
+     }
+    ],
+    "economic_pain": "$38,000 user fee per ruling (PLR_Context_+.pdf citing the 2021 Rev. Proc.) plus practitioner fees (not sourced). Processing time not sourced (Rev. Proc. goal recalled as ~180 days for most rulings; irs.gov blocked).",
+    "existing_solutions": "IRS Office of Chief Counsel, Internal Revenue Bulletin (Rev. Ruls/Rev. Procs), Written Determinations reading room (PDF only); commercial tax research (Bloomberg Tax, Checkpoint, Tax Notes) index PLRs by code section. Settlements are captured as numbered, dated, versioned prose documents (identifier stable: PLR-YYYYWWNNN) but are not executable and, by statute, not precedential (publedge PRIOR-ART).",
+    "buyer_and_budget": "No software buyer for the public mechanism (IRS is the owner). Corporate tax departments and Big-4 tax practices maintain internal 'positions' libraries; budget exists but sits in tax research/GRC tooling. Not a Sophon wedge.",
+    "regulatory_constraints": "26 USC 6110(k)(3) forbids precedential use; FOIA-driven redaction; rulings are legal opinions signed by counsel.",
+    "evidence_quality": "moderate",
+    "verdict": "weak",
+    "notes": "The loop is real (recurring subjects -> revenue procedure -> later cases decided by procedure without a ruling) but slow (years), prose-only, ratified by Chief Counsel/Treasury, and volume is ~10^2-10^3 settlements per year nationally. Demonstrates that a mature institution deliberately separates 'settle this case' (non-precedential, priced at $38k) from 'make a rule' (published guidance)."
+   },
+   {
+    "name": "French rescrit fiscal (LPF L80A/L80B) -> BOFiP 'rescrits de portee generale' (BOI-RES series)",
+    "geography": "France",
+    "decision_volume": "NOT SOURCED this session (impots.gouv.fr, ccomptes.fr, economie.gouv.fr, data.economie.gouv.fr all blocked). Recalled order of magnitude: DGFiP handles on the order of 10^4 rescrit requests per year (unverified; verify at https://www.economie.gouv.fr/dgfip/rapport-dactivite). BOFiP open dataset 'bofip-vigueur' contains 9,035 BOI documents with weekly updates and includes a 'Rulings' document type (SOURCED via secondary README: github.com/danielhadjaj-law/bofip-mcp, citing data.economie.gouv.fr).",
+    "human_review_rate": "100% (a rescrit is a written administrative position on a taxpayer's stated facts). Share of taxpayer questions that become rescrits: unknown.",
+    "why_humans_review": "Estimate (basis: legal design of the rescrit, which answers a question of law on stated facts): C ~55%, B ~15%, H ~20% (the existence of a published general-scope series implies recurring questions are generalised), G ~10%. Analytical estimate.",
+    "settlement_loop_evidence": [
+     {
+      "description": "BOFiP content is 'opposable to the administration' under LPF L80A/L80B; the open dataset holds only the currently-in-force version, with historical versions reachable via official BOFiP URLs (versioning exists but is not in the open data). Individual rescrits bind only the requester; those of general interest are published in BOFiP (RES series) and become opposable by all taxpayers.",
+      "source_url": "https://github.com/danielhadjaj-law/bofip-mcp",
+      "source_type": "vendor/open-source README (secondary) describing DGFiP open data; legal texts not fetched (legifrance.gouv.fr, bofip.impots.gouv.fr blocked)",
+      "prospective": "yes",
+      "reusable_how": "Published RES entries are doctrine: later cases are decided by the published position; enforcement officers cannot contradict it (L80A). Ratifier: DGFiP central services. Lag and share of rescrits published: unknown."
+     }
+    ],
+    "economic_pain": "Unknown this session. 3-month response deadline and tacit-acceptance rules for certain rescrits are RECALLED (LPF L80B), not verified.",
+    "existing_solutions": "DGFiP internal case handling; BOFiP as the doctrine store (weekly open-data JSON, prose content); commercial doctrine databases (Lefebvre Dalloz, Lamy). Settlements published are versioned prose with 'in force' dating; not executable.",
+    "buyer_and_budget": "No software buyer for the public mechanism; corporate tax and Big-4 France maintain internal rescrit/position libraries (budget unknown).",
+    "regulatory_constraints": "Only published doctrine is opposable erga omnes; unpublished rescrits are opposable only by the requester; secrecy (secret fiscal) limits sharing.",
+    "evidence_quality": "weak",
+    "verdict": "uncertain",
+    "notes": "Structurally the cleanest public settlement loop (case -> published, opposable, versioned doctrine) but no volumes, lags or publication rates could be verified; French Cour des comptes has reported on rescrits (ccomptes.fr blocked)."
+   },
+   {
+    "name": "EU Binding Tariff Information (BTI) / UK Advance Tariff Rulings (ATaR) -> published rulings, classification regulations",
+    "geography": "EU (UCC Art. 33) and UK (post-Brexit ATaR)",
+    "decision_volume": "EU BTI decisions per year: NOT SOURCED (taxation-customs.ec.europa.eu, ec.europa.eu EBTI database blocked); recalled order of magnitude 'tens of thousands per year EU-wide' (unverified). UK ATaR volumes: not published in the HMRC repos. SOURCED structural facts: HMRC's open-source case system tracks every case with daysElapsed and referredDaysElapsed for SLA reporting (github.com/hmrc/binding-tariff-classification, ReportField.scala, Case.scala).",
+    "human_review_rate": "100% of applications are decided by a classification officer (roles: classification officer, manager, read-only user; github.com/hmrc/tariff-classification-frontend). Referral to other teams occurs for REQUEST_SAMPLE or REQUEST_MORE_INFO only (ReferralReason.scala) and to expert/lab advice (EventType EXPERT_ADVICE_RECEIVED); MiscCaseType includes 'Harmonised systems', 'Nomenclature', 'Appeals', 'Other government dept'.",
+    "why_humans_review": "Estimate (basis: the HMRC data model, where the only coded escalation reasons are missing sample / more information, and the Decision record's method fields): A missing evidence ~30% (the only formal referral reasons are evidence requests), B factual classification ~40% (what the goods are; samples, lab tests), C interpretation of GIR/HS rules ~15%, H repeatable ambiguity ~10% (same product classes recur across traders; EU resolves divergences via classification regulations), D conflict of authorities ~5% (divergent BTIs between member states). Analytical estimate anchored to the sourced code.",
+    "settlement_loop_evidence": [
+     {
+      "description": "Each ruling is a structured settlement record: Decision(bindingCommodityCode, effectiveStartDate, effectiveEndDate, justification, goodsDescription, methodSearch, methodCommercialDenomination, methodExclusion, appeal[], cancellation, explanation, decisionPdf, letterPdf). Cases carry a governed keyword vocabulary (Keyword(name, approved: Boolean), NewKeywordRequest; keywords proposed by officers and approved by managers) and a full event log (CASE_CREATED, CASE_REFERRAL, QUEUE_CHANGE, ASSIGNMENT_CHANGE, EXPERT_ADVICE_RECEIVED, CASE_COMPLETED, APPEAL_ADDED, APPEAL_STATUS_CHANGE, EXTENDED_USE_STATUS_CHANGE). Statuses: DRAFT, NEW, OPEN, SUPPRESSED, REFERRED, REJECTED, CANCELLED, SUSPENDED, COMPLETED, REVOKED, ANNULLED. Appeal ladder: ADR, REVIEW, APPEAL_TIER_1, APPEAL_TIER_2, COURT_OF_APPEALS, SUPREME_COURT.",
+      "source_url": "https://github.com/hmrc/binding-tariff-classification",
+      "source_type": "government (HMRC production source code, Apache-2.0)",
+      "prospective": "yes",
+      "reusable_how": "Completed rulings are pushed to the public 'Search for Advance Tariff Rulings' service (refresh on completion plus two daily jobs for newly granted and cancelled rulings; github.com/hmrc/binding-tariff-ruling-frontend) so importers, exporters, agents and officers can find rulings 'currently in effect' for similar goods. Ruling binds HMRC and the holder for 3 years (UCC Art. 33 recalled; not fetched). The 'methodSearch' field records how the officer searched prior rulings before deciding - reuse of precedent is built into the decision record."
+     },
+     {
+      "description": "HMRC also runs Advance Valuation Rulings (advance-valuation-rulings, -frontend, performance tests) on the same pattern; six 'ruling' repositories are active as of May-Sep 2026.",
+      "source_url": "https://github.com/orgs/hmrc/repositories?q=ruling",
+      "source_type": "government (GitHub org listing)",
+      "prospective": "yes",
+      "reusable_how": "Same structured-ruling pattern extended to customs valuation."
+     },
+     {
+      "description": "EU-level generalisation: divergent BTIs across member states are escalated to the Customs Code Committee, which produces Commission classification regulations and CN Explanatory Notes binding on all authorities and traders. RECALLED mechanism; volumes (recalled: dozens of classification regulations per year) not verified; EBTI database and eur-lex blocked.",
+      "source_url": "https://ec.europa.eu/taxation_customs/dds2/ebti/ebti_home.jsp",
+      "source_type": "regulator (not fetched; blocked)",
+      "prospective": "yes",
+      "reusable_how": "Classification regulations map named goods to CN codes; consumed by TARIC and commercial classification tools (machine-consumed at the code level; rationale remains prose)."
+     }
+    ],
+    "economic_pain": "Not sourced. UCC time limit for BTI decisions is 120 days (recalled). HMRC tracks elapsed and referred days per case for reporting, implying SLA pressure (sourced code).",
+    "existing_solutions": "Government case systems (HMRC's is open source; EU EBTI). On the trader side, Global Trade Management suites (SAP GTS, Oracle GTM, Thomson Reuters ONESOURCE Global Trade, Descartes CustomsInfo, Avalara, 3CE) hold internal classification databases with rationale and approval - RECALLED vendor landscape, not fetched. Settlements are captured as versioned, dated, structured records with justification; the classification itself (commodity code) is machine-consumed, the reasoning is prose.",
+    "buyer_and_budget": "Trade compliance managers at importers/brokers (GTM budgets); customs authorities build in-house. For a Sophon-shaped product the risk is that classification-database features already live in GTM suites (H6).",
+    "regulatory_constraints": "Ruling binds only holder and authorities for the described goods; 3-year validity; revocation when regulations/explanatory notes change; publication is mandatory (EU) with confidentiality carve-outs.",
+    "evidence_quality": "moderate",
+    "verdict": "promising",
+    "notes": "The most operational public settlement loop found: structured, versioned, dated, published, searched before deciding, governed keyword vocabulary, appeal ladder, SLA clocks, and a formal escalation path to EU-wide rules. But the primary escalation reasons coded in the system are evidence requests (A), not interpretation (H), which supports H1 for the front-line workflow."
+   },
+   {
+    "name": "Social Security Administration: SSRs, Acquiescence Rulings, POMS updates",
+    "geography": "US",
+    "decision_volume": "NOT SOURCED (ssa.gov, ecfr.gov, federalregister.gov blocked). Recalled: SSA hearing-level dispositions on the order of 4-5 x10^5 per year; Social Security Rulings issued per year in the low single digits (e.g., three SSRs in 2024: 24-1p, 24-2p, 24-3p); Acquiescence Rulings rare in recent decades. All unverified; verify at https://www.ssa.gov/OP_Home/rulings/rulings.html.",
+    "human_review_rate": "Initial disability claims: 100% decided by DDS examiners with medical consultants; reconsideration and ALJ hearing stages are human. Shares not sourced.",
+    "why_humans_review": "Estimate (basis: disability adjudication structure, recalled): A missing medical evidence ~35%, B factual/functional classification ~35%, C rule interpretation ~10%, E discretion/credibility ~10%, H ~5%, D ~5% (circuit splits). Analytical, unverified.",
+    "settlement_loop_evidence": [
+     {
+      "description": "20 CFR 402.35(b)(1): SSRs and ARs are binding on all components of SSA; ARs (20 CFR 404.985) are issued when a circuit court holding conflicts with SSA's interpretation and apply only within that circuit; POMS is the operational manual updated via transmittals and consumed by adjudicators and DDS systems. RECALLED; not fetched.",
+      "source_url": "https://www.ssa.gov/OP_Home/rulings/rulings.html",
+      "source_type": "regulator (not fetched; blocked)",
+      "prospective": "yes",
+      "reusable_how": "Binding on all adjudicators nationwide (SSR) or per circuit (AR); POMS sections are the day-to-day executable-in-practice rule text; ratifier: Commissioner / Office of General Counsel."
+     },
+     {
+      "description": "Opposite pattern: historical SSA 'nonacquiescence' - refusing to apply adverse circuit precedent beyond the named claimant to preserve national uniformity; ARs were the 1985-1990s compromise. RECALLED.",
+      "source_url": "https://www.ssa.gov/OP_Home/rulings/ar-toc.html",
+      "source_type": "regulator (not fetched; blocked)",
+      "prospective": "no",
+      "reusable_how": "Illustrates an institutional reason to refuse precedential effect: uniform national administration outweighs case-by-case consistency with courts."
+     }
+    ],
+    "economic_pain": "Not sourced (backlogs and wait times are publicly reported by SSA OIG; blocked).",
+    "existing_solutions": "POMS/HALLEX manuals; DDS case processing systems; SSA's own electronic claims analysis tools. Settlements (rulings) are versioned published prose; POMS is structured manual text, not executable rules.",
+    "buyer_and_budget": "Government owner; no third-party software buyer for the loop itself.",
+    "regulatory_constraints": "Rulings are binding by regulation; ALJ decisions are not precedential; APA/Federal Register publication for SSRs/ARs.",
+    "evidence_quality": "unknown",
+    "verdict": "weak",
+    "notes": "Loop is real and binding but the trigger is courts/policy staff, not front-line escalation; volume of rules is 10^0-10^1 per year against 10^5-10^6 decisions. Nothing verified this session."
+   },
+   {
+    "name": "VA Office of General Counsel precedent opinions (VAOPGCPREC) vs non-precedential Board of Veterans' Appeals decisions",
+    "geography": "US",
+    "decision_volume": "NOT SOURCED (va.gov blocked). Recalled: BVA decides roughly 10^5 appeals per year; GC precedent opinions in recent years number in the low single digits per year (numbering e.g. VAOPGCPREC 1-2017). Unverified; verify at https://www.va.gov/ogc/opinions.asp.",
+    "human_review_rate": "100% (adjudication).",
+    "why_humans_review": "Estimate (recalled structure of compensation claims): A missing evidence ~40%, B factual/medical classification ~30%, C ~15%, E ~5%, H ~5%, D ~5%. Analytical.",
+    "settlement_loop_evidence": [
+     {
+      "description": "38 U.S.C. 7104(c) / 38 CFR 14.507: GC precedent opinions bind VA officials including the Board; 38 CFR 20.1303: Board decisions are non-precedential ('binding only with regard to the specific case decided'). The Board Chairman or Under Secretary can request a precedent opinion on a recurring legal question, which then binds prospectively. RECALLED; not fetched.",
+      "source_url": "https://www.va.gov/ogc/opinions.asp",
+      "source_type": "regulator (not fetched; blocked)",
+      "prospective": "yes",
+      "reusable_how": "Prose opinion binding on all adjudicators; incorporated into the M21-1 adjudication manual; ratifier: VA General Counsel."
+     }
+    ],
+    "economic_pain": "Not sourced.",
+    "existing_solutions": "M21-1 manual, VBMS case system, Board's own decision database (non-precedential, searchable).",
+    "buyer_and_budget": "Government owner; no third-party buyer.",
+    "regulatory_constraints": "Statutory non-precedential status of individual decisions; precedent only via GC.",
+    "evidence_quality": "unknown",
+    "verdict": "weak",
+    "notes": "Textbook example of an institution deliberately keeping individual settlements non-precedential and routing generalisation through a separate, low-volume organ."
+   },
+   {
+    "name": "USCIS: AAO non-precedent decisions -> adopted decisions / precedent decisions / Policy Manual updates",
+    "geography": "US",
+    "decision_volume": "SOURCED (secondary): a practitioner guide analysed '3,866+ AAO decisions' for EB-1A/NIW alone and reports NIW approval rates dropping 'from 96% to 54%' in 2025-2026 (github.com/HorizonGreen/EB1A-NIW-Guidance; practitioner source, methodology not stated). Adopted decisions per year and Policy Manual update counts NOT SOURCED (uscis.gov blocked); recalled: adopted decisions ~1-3 per year; Policy Manual alerts dozens per year.",
+    "human_review_rate": "100% adjudicator-decided; AAO appeal is a second human review.",
+    "why_humans_review": "Estimate (basis: AAO decision content as described by the practitioner guide, which emphasises evidence sufficiency and 'final merits' judgement): A missing evidence ~35%, B factual classification ~20%, E discretion (final merits) ~20%, C ~15%, H ~10%. Analytical.",
+    "settlement_loop_evidence": [
+     {
+      "description": "Applicants mine thousands of non-precedent AAO decisions to infer 'what the immigration bureau is really examining' - de facto precedent use of formally non-precedential decisions.",
+      "source_url": "https://github.com/HorizonGreen/EB1A-NIW-Guidance",
+      "source_type": "press/practitioner (community guide)",
+      "prospective": "no",
+      "reusable_how": "Informal pattern-mining by applicants; USCIS itself is not bound."
+     },
+     {
+      "description": "Adopted decisions (designated by the USCIS Director) and BIA/AG precedent decisions bind USCIS adjudicators; Policy Manual updates (policy alerts) codify positions. RECALLED; not fetched.",
+      "source_url": "https://www.uscis.gov/laws-and-policy/adopted-aao-decisions",
+      "source_type": "regulator (not fetched; blocked)",
+      "prospective": "yes",
+      "reusable_how": "Prose guidance binding on adjudicators; ratifier: USCIS Director / Office of Policy & Strategy; lag months to years."
+     }
+    ],
+    "economic_pain": "Not sourced.",
+    "existing_solutions": "USCIS ELIS/CLAIMS case systems; Policy Manual (versioned prose, public); AAO decision reading room.",
+    "buyer_and_budget": "Government owner; immigration law firms buy research tools (not the loop).",
+    "regulatory_constraints": "Non-precedent decisions explicitly not binding; precedent designation reserved to Director/AG.",
+    "evidence_quality": "weak",
+    "verdict": "weak",
+    "notes": "Same design as VA/IRS: individual settlements non-precedential; generalisation via a slow, low-volume organ."
+   },
+   {
+    "name": "Securities/bank regulator staff letters: SEC no-action letters, CFTC/FINRA interpretive letters, OCC interpretive letters, CFPB advisory opinions",
+    "geography": "US",
+    "decision_volume": "NOT SOURCED (sec.gov, occ.gov, cftc.gov, finra.org, fincen.gov blocked). Recalled order of magnitude: SEC Corporation Finance shareholder-proposal no-action requests ~2-3 x10^2 per season; OCC interpretive letters ~10 per year (numbering around 1180-1190 in 2023-2025). Unverified.",
+    "human_review_rate": "100% (staff legal review).",
+    "why_humans_review": "Estimate (basis: the letters' function as described in publedge PRIOR-ART): C rule interpretation ~60%, G novel structures ~20%, H recurring questions ~15% (evidenced by SEC Staff Legal Bulletins codifying recurring no-action positions - recalled), F ~5%. Analytical.",
+    "settlement_loop_evidence": [
+     {
+      "description": "SEC no-action letters: 'Explicit reliance language: third parties similarly situated may rely on the position'; 'Clear scope limitation: the letter binds only on the facts presented'; withdrawals/modifications are 'narrative, not structural'; publication is HTML/PDF 'searchable by humans, opaque to agents'. CFPB advisory opinions are published in the Federal Register with versioned numbering; CFTC/FINRA letters follow the same shape.",
+      "source_url": "https://github.com/snapsynapse/publedge/blob/main/PRIOR-ART.md",
+      "source_type": "vendor/open-source prior-art survey (secondary; sec.gov not fetched)",
+      "prospective": "yes",
+      "reusable_how": "Similarly-situated third parties may rely on SEC staff positions (a rare explicitly prospective individual settlement); recurring positions are periodically consolidated into Staff Legal Bulletins and rule amendments (RECALLED: e.g., SLB 14 series on shareholder proposals)."
+     }
+    ],
+    "economic_pain": "Not sourced (law-firm fees per request are the main cost; unquantified).",
+    "existing_solutions": "Agency web archives; Westlaw/Lexis/Bloomberg indexing; law-firm internal no-action databases. Captured as numbered prose letters with narrative supersession; not executable.",
+    "buyer_and_budget": "Law firms and compliance departments buy research tools; the loop itself is agency-owned.",
+    "regulatory_constraints": "Staff positions do not bind the Commission; fact-specific; can be withdrawn.",
+    "evidence_quality": "weak",
+    "verdict": "weak",
+    "notes": "SEC no-action letters are the one public mechanism where an individual settlement is explicitly reusable by third parties on identical facts - yet the register is still unstructured prose and consolidation into bulletins is slow."
+   },
+   {
+    "name": "Accounting interpretation: FASB Technical Inquiry Service, IFRS Interpretations Committee agenda decisions, Big-4 national-office consultation databases (PCAOB QC 1000 / ISQM 1)",
+    "geography": "US and global",
+    "decision_volume": "NOT SOURCED (fasb.org, ifrs.org, iasplus.com, pcaobus.org, viewpoint.pwc.com blocked). Recalled: IFRS IC publishes on the order of 10-20 agenda decisions per year from a few dozen submissions; FASB TIS volume unpublished; Big-4 consultation volumes are internal and unpublished. Unverified.",
+    "human_review_rate": "100% (technical partners/national office).",
+    "why_humans_review": "Estimate (basis: the nature of accounting consultations - application of principles-based standards to transactions): C ~50%, H ~25% (firms explicitly maintain consultation precedent databases because questions recur), G ~15%, D ~10% (conflicts between standards/regulators). Analytical.",
+    "settlement_loop_evidence": [
+     {
+      "description": "IFRS IC agenda decisions are formally non-authoritative explanatory material, but the IASB Due Process Handbook (2020) states entities are expected to implement changes arising from them with 'sufficient time', and securities regulators enforce them. RECALLED; not fetched.",
+      "source_url": "https://www.ifrs.org/projects/ifrs-interpretations-committee/",
+      "source_type": "standards body (not fetched; blocked)",
+      "prospective": "yes",
+      "reusable_how": "Published prose; consumed by preparers/auditors; ratified by the Committee with IASB oversight."
+     },
+     {
+      "description": "PCAOB QC 1000 (adopted 2024, effective 15 Dec 2025) and IAASB ISQM 1 require firms to consult on difficult or contentious matters, document consultations, and implement the conclusions; Big-4 firms operate national-office consultation databases that function as internal precedent registers. RECALLED; not fetched.",
+      "source_url": "https://pcaobus.org/oversight/standards/qc-standards/details/QC1000",
+      "source_type": "regulator (not fetched; blocked)",
+      "prospective": "yes",
+      "reusable_how": "Internal: documented consultation conclusions are reused by engagement teams and folded into firm methodology manuals (prose); machine-consumption absent."
+     },
+     {
+      "description": "FASB Technical Inquiry Service: staff responses are informal, not authoritative, and not published. RECALLED.",
+      "source_url": "https://www.fasb.org/page/PageContent?pageId=/about-us/technical-inquiry-service.html",
+      "source_type": "standards body (not fetched; blocked)",
+      "prospective": "no",
+      "reusable_how": "Not reusable by others by design."
+     }
+    ],
+    "economic_pain": "Not sourced.",
+    "existing_solutions": "Firm knowledge platforms (Deloitte Technical Library, PwC Viewpoint, KPMG DPP resources - recalled), Workiva/Wdesk for disclosure; consultation logs in audit-methodology tools. Settlements are versioned prose memos, not executable.",
+    "buyer_and_budget": "Big-4/next-10 national offices (build in-house); corporate controllers (technical accounting memos).",
+    "regulatory_constraints": "Consultation documentation is inspected by PCAOB; privilege/liability concerns keep conclusions internal.",
+    "evidence_quality": "unknown",
+    "verdict": "uncertain",
+    "notes": "Structurally the best private analogue of the settlement loop (recurring interpretive questions, an authoritative owner, mandatory documentation, reuse), but entirely unverified this session and already served by in-house firm systems (H3)."
+   },
+   {
+    "name": "Insurer claims bulletins and coverage position papers (LMA claims bulletins, ISO circulars, internal claims manuals)",
+    "geography": "UK (Lloyd's market) and US",
+    "decision_volume": "NOT FOUND (lmalloyds.com, content.naic.org blocked; no GitHub artefacts).",
+    "human_review_rate": "Unknown.",
+    "why_humans_review": "Unknown; no evidence gathered.",
+    "settlement_loop_evidence": [
+     {
+      "description": "No sourced evidence obtained. Mechanism recalled: LMA issues market claims bulletins; insurers hold internal coverage position papers and claims manuals; coverage counsel opinions. Whether these are versioned and applied prospectively could not be established.",
+      "source_url": "https://www.lmalloyds.com/LMA/Claims/Claims_Bulletins.aspx",
+      "source_type": "industry association (not fetched; blocked)",
+      "prospective": "unclear",
+      "reusable_how": "Unknown."
+     }
+    ],
+    "economic_pain": "Unknown.",
+    "existing_solutions": "Guidewire ClaimCenter, Duck Creek Claims, in-house claims manuals (recalled).",
+    "buyer_and_budget": "Claims operations / claims legal (recalled).",
+    "regulatory_constraints": "Discovery/bad-faith litigation exposure discourages written coverage positions (analytical, unsourced).",
+    "evidence_quality": "unknown",
+    "verdict": "uncertain",
+    "notes": "Treated as a research gap, not as evidence either way."
+   },
+   {
+    "name": "Construction RFIs -> Architect's Supplemental Instructions (AIA G710) -> revised drawings",
+    "geography": "US",
+    "decision_volume": "NOT SOURCED (aia.org, procore.com, guidehouse.com blocked). Recalled from the Navigant Construction Forum 2013 study: ~796 RFIs per project on average, ~9.9 RFIs per $1M of contract value, ~$1,080 cost per RFI, ~9.7 days median response. Unverified.",
+    "human_review_rate": "100% (design professional answers each RFI).",
+    "why_humans_review": "Estimate (basis: RFI causes commonly reported - unclear/conflicting documents, site conditions, substitutions): C interpretation of drawings/specs ~35%, D conflicts between drawings/specs ~25%, A missing information ~20%, G site-specific ~15%, H ~5%. Analytical.",
+    "settlement_loop_evidence": [
+     {
+      "description": "An RFI answer that changes the work without cost/time impact is issued as an ASI (AIA G710) and incorporated into the drawing set - prospective for that project only. RECALLED; not fetched.",
+      "source_url": "https://www.aia.org/resource-center/architects-supplemental-instructions-asi",
+      "source_type": "industry association (not fetched; blocked)",
+      "prospective": "yes",
+      "reusable_how": "Project-local: later trades follow the revised documents; no cross-project reuse; ratifier: architect of record."
+     }
+    ],
+    "economic_pain": "Recalled ~$1,080 per RFI and schedule delay (unverified).",
+    "existing_solutions": "Procore, Autodesk Construction Cloud, Oracle Aconex track RFIs/ASIs as versioned documents (recalled). Settlements are versioned drawings/prose, project-scoped.",
+    "buyer_and_budget": "GC/owner project controls; already served by construction management platforms.",
+    "regulatory_constraints": "Contractual (AIA A201) rather than regulatory; design liability keeps answers project-specific.",
+    "evidence_quality": "weak",
+    "verdict": "weak",
+    "notes": "High volume of interpretive questions but settlements do not generalise beyond the project (G-dominant for the product's purposes) and incumbents already version them."
+   },
+   {
+    "name": "Meta Oversight Board decisions and policy recommendations -> Community Standards changes",
+    "geography": "Global",
+    "decision_volume": "SOURCED: 147 Board decisions 2020-2025 (Chala 2026, Journal of Online Trust and Safety 3(3), doi:10.54501/jots.v3i3.333, data at github.com/Endalk-Chala/Oversight-Board-Case-Analysis); the enriched CSV holds 128 decisions (2021: 21, 2022: 12, 2023: 42, 2024: 43, 2025: 10), 101 'Overturned' vs 26 'Upheld', 44 summary decisions; top categories Dangerous Individuals and Organizations 26, Hate Speech 9, Violence and Incitement 8. 'Meta should' appears 434 times (mean 3.39 per decision; 53 decisions with none). 40 decisions mention 'parallel context'. Board appeal intake (recalled: ~10^6 user appeals per year) not verified.",
+    "human_review_rate": "Board decides ~10^1-10^2 cases per year out of ~10^6 appeals (appeal count recalled). Meta's own review rates not sourced.",
+    "why_humans_review": "For Board cases (basis: decision bodies): C policy interpretation ~40%, D conflict between policies/values ~20%, E true discretion (proportionality, newsworthiness) ~25%, H ~15% (recommendations to rewrite policy). Analytical from the corpus sample.",
+    "settlement_loop_evidence": [
+     {
+      "description": "Meta's tracked responses to 87 Board recommendations (2021-2022 snapshot scraped from oversightboard.com): Implementing fully 27, Implementing in part 21, Assessing feasibility 19, Work Meta already does 14, No further action 6. Example recommendation: 'Meta should rewrite Meta's value of safety to reflect that online speech may pose risk to the physical security of persons and the right to life' (2021-014-IG-UA-1, status Implementing).",
+      "source_url": "https://github.com/ryantreves/meta-oversight",
+      "source_type": "academic/independent dataset derived from oversightboard.com (secondary)",
+      "prospective": "yes",
+      "reusable_how": "Recommendations are non-binding; when Meta implements, the Community Standards text and internal implementation guidance change prospectively for all reviewers/classifiers. ~31% (27/87) implemented fully; ratifier: Meta policy leadership."
+     },
+     {
+      "description": "Board case decisions bind Meta only for the specific content and 'identical content with parallel context' (Board charter/bylaws, recalled); 40 of 128 decision texts reference this clause. Case outcomes are therefore deliberately narrow settlements.",
+      "source_url": "https://github.com/Endalk-Chala/Oversight-Board-Case-Analysis",
+      "source_type": "academic (published study, data on GitHub)",
+      "prospective": "no",
+      "reusable_how": "Only for identical content in parallel context; generalisation only via non-binding policy recommendations or policy advisory opinions (PAO count not sourced; oversightboard.com blocked)."
+     }
+    ],
+    "economic_pain": "Not sourced (Board funded by a Meta trust; recalled $130M initial commitment, unverified).",
+    "existing_solutions": "Meta's internal policy team, Community Standards (public versioned prose with changelog - recalled), implementation guidance, classifiers. Settlements at policy level are versioned prose; case decisions are published prose.",
+    "buyer_and_budget": "Not a software market; internal to Meta.",
+    "regulatory_constraints": "Self-regulatory; DSA transparency obligations (recalled).",
+    "evidence_quality": "moderate",
+    "verdict": "weak",
+    "notes": "Case-level loop is ceremonial by design (identical-content-only binding); policy-level loop is real but slow, non-binding and low volume: 87 recommendations over ~1.5 years with 27 fully implemented."
+   },
+   {
+    "name": "Content policy clarification logs (GitHub site-policy repository as a published example)",
+    "geography": "Global",
+    "decision_volume": "GitHub policies are changed by pull request with public comment; routine changes go live after 24 hours, material Terms/Privacy changes after 30 days; the repository's commit history is the changelog. No count of clarifications per year extracted.",
+    "human_review_rate": "Not applicable (policy drafting).",
+    "why_humans_review": "Not applicable to case volume; policy edits are C/H by nature.",
+    "settlement_loop_evidence": [
+     {
+      "description": "GitHub site-policy: changes proposed via PRs, 24-hour or 30-day notice periods, community feedback via issues/PRs, but the repo explicitly says 'Please don't post legal complaints or ask for technical support' - individual cases are excluded from the clarification channel; the framework 'doesn't indicate whether individual user reports directly inform clarifications'.",
+      "source_url": "https://github.com/github/site-policy",
+      "source_type": "vendor (company primary repository)",
+      "prospective": "yes",
+      "reusable_how": "Versioned prose policy with diffable history; no structural link from enforcement cases to policy edits. No GitHub repositories tracking Meta Community Standards history were found (github.com search, 293 unrelated results)."
+     }
+    ],
+    "economic_pain": "Unknown.",
+    "existing_solutions": "Git-based policy versioning (GitHub), Meta Community Standards changelog (recalled), internal T&S policy wikis.",
+    "buyer_and_budget": "Trust & safety policy teams (unquantified).",
+    "regulatory_constraints": "DSA/OSA transparency (recalled).",
+    "evidence_quality": "weak",
+    "verdict": "weak",
+    "notes": "Shows policy versioning is trivially solved with git; the missing piece (case -> clarification) is deliberately not wired."
+   },
+   {
+    "name": "IAM / policy-as-code exception registers (Kyverno PolicyException, Nirmata GitOps exception register) -> policy revision",
+    "geography": "Global (cloud/Kubernetes security)",
+    "decision_volume": "Register size not stated (repo has 32 commits, manifests under requests/). Ecosystem scale: Kyverno 8.2k stars, OPAL 5.5k, Cerbos 4.6k on the policy-as-code topic page.",
+    "human_review_rate": "100% of exceptions are human-approved via pull request by CODEOWNERS/security team.",
+    "why_humans_review": "Estimate (basis: the register's design - each exception is a workload that 'cannot satisfy' a policy with a remediation plan): G one-off technical constraints ~50%, E risk acceptance ~25%, H repeatable ambiguity ~15% (the same policy gets excepted repeatedly, but the register renews rather than generalises), C ~10%. Analytical.",
+    "settlement_loop_evidence": [
+     {
+      "description": "Kyverno PolicyException records carry policyRefs, matchConditions narrowed to one workload (namespace+labels), an absolute expiry (TTL label, e.g. 2026-12-31), a justification annotation with remediation plan, and requester/approver attribution; granted by PR ('reviewed by the security team, attributable to a person, dated, and revocable with git revert'); requests routed via CODEOWNERS; 'no request can ask for anything wider than one workload'.",
+      "source_url": "https://github.com/nirmata/demo-gitops-exceptions",
+      "source_type": "vendor (Nirmata demo register)",
+      "prospective": "yes",
+      "reusable_how": "The exception itself is executable (enforced by the policy engine) and versioned in git - the only mechanism found where the settlement is machine-consumed. But 'the register doesn't convert recurring exemptions into permanent policy changes; instead, expired exceptions trigger renewal pull requests via daily automation' - no generalisation loop."
+     },
+     {
+      "description": "Policy-as-code tooling 'generally focus[es] on preventive policy enforcement rather than exception management workflows'.",
+      "source_url": "https://github.com/topics/policy-as-code",
+      "source_type": "vendor/open-source listing",
+      "prospective": "unclear",
+      "reusable_how": "Exception handling exists (Kyverno PolicyException, OPA exemptions) but the recurring-exception-to-policy-change step is manual."
+     }
+    ],
+    "economic_pain": "Not sourced.",
+    "existing_solutions": "Kyverno/OPA/Cedar exception objects; Permit.io, Auth0 async approvals, AWS Bedrock AgentCore Policy, Ramp policy agent (prior evidence). Settlements captured as versioned executable exceptions with owner/expiry - i.e., the 'typed dated grant ledger' already exists for Kubernetes admission control.",
+    "buyer_and_budget": "Platform/security engineering (budget exists; tooling largely open source).",
+    "regulatory_constraints": "None specific; SOC2/ISO27001 exception documentation norms (recalled).",
+    "evidence_quality": "moderate",
+    "verdict": "uncertain",
+    "notes": "Closest shape to Sophon (typed, dated, attributable, revocable, executable settlements) and it is already shipped as a feature of the policy engine (H6/H3). The absent piece - turning recurring exceptions into policy - is absent by choice: expiry-and-renew is the governance model."
+   },
+   {
+    "name": "UK Upper Tribunal (AAC) reported decisions -> DWP Advice for Decision Making memos; DWP PIP decision tooling",
+    "geography": "UK",
+    "decision_volume": "NOT SOURCED (gov.uk, judiciary.uk, bailii.org, caselaw.nationalarchives.gov.uk blocked). Recalled: PIP decisions ~10^6 per year, SSCS First-tier appeals ~10^5 per year with a majority of PIP appeals decided in the claimant's favour; ADM memos on the order of 10-25 per year. Unverified. SOURCED: DWP publishes GOV.UK-prototype-kit repos for 'PIP pre-decision checks' (task list of CIS data checks, lay conditions, payability checks, awaiting HCP review banners) and a 'pip-agent-decision-prototype' (Jan 2026); i-dot-ai/lex indexes 220K UK Acts/SIs, 892K amendments, 89K explanatory notes and 70K judgments (case law 'temporarily disabled pending TNA licence').",
+    "human_review_rate": "100% decision-maker decided; mandatory reconsideration and tribunal are further human stages.",
+    "why_humans_review": "Estimate (basis: the DWP prototype's check categories - data checks, lay conditions, payability - and the recalled tribunal-overturn pattern driven by new oral/medical evidence): A missing evidence ~40%, B functional classification ~30%, C interpretation of descriptors ~15%, H ~10% (descriptor meanings settled by UT case law and pushed into ADM), E ~5%. Analytical.",
+    "settlement_loop_evidence": [
+     {
+      "description": "Reported UT(AAC) decisions bind First-tier Tribunals and DWP decision makers as precedent; DWP updates the ADM/DMG via numbered memos after UT/court decisions; DWP sometimes stays cases pending appeal or declines to apply a decision generally while appealing. RECALLED; not fetched.",
+      "source_url": "https://www.gov.uk/government/collections/advice-for-decision-making-staff-guide",
+      "source_type": "government (not fetched; blocked)",
+      "prospective": "yes",
+      "reusable_how": "ADM memos are prose guidance consumed by decision makers; not executable; ratifier: DWP Decision Making and Appeals (DMA) Leeds."
+     },
+     {
+      "description": "DWP's own PIP tooling prototypes focus on pre-decision data checks (CIS data, lay conditions, payability) rather than interpretation capture; the 'agent decision' prototype README is the unmodified template.",
+      "source_url": "https://github.com/dwp/pip-pre-decision-checks",
+      "source_type": "government (prototype source)",
+      "prospective": "no",
+      "reusable_how": "Evidence that the department's investment is in evidence/data completeness (category A) rather than in a precedent register."
+     }
+    ],
+    "economic_pain": "Not sourced.",
+    "existing_solutions": "ADM/DMG guidance (versioned prose), PIP computer system, Find Case Law; commercial: Rightsnet, CPAG handbooks (recalled).",
+    "buyer_and_budget": "Government owner.",
+    "regulatory_constraints": "Precedent doctrine; tribunal independence; 'each case on its own facts' for FtT decisions.",
+    "evidence_quality": "weak",
+    "verdict": "weak",
+    "notes": "Loop is real (UT -> ADM memo) but low-volume, prose, and driven by tribunals; front-line escalation is dominated by evidence, per DWP's own tooling priorities."
+   },
+   {
+    "name": "Standards-body interpretation panels (ASME Code interpretations, ISO/IEC TC interpretations, ICC Banking Commission opinions, AHA Coding Clinic, EBA/ESMA Q&A registers)",
+    "geography": "Global / EU / US",
+    "decision_volume": "NOT SOURCED (asme.org, iso.org, iccwbo.org, codingclinicadvisor.com, eba.europa.eu, esma.europa.eu blocked). Recalled: ASME issues hundreds of published interpretations per year across its codes; ISO/TC 176 discontinued its ISO 9001 interpretations service; AHA Coding Clinic publishes quarterly official Q&A that encoder software incorporates (machine-consumed); EBA Single Rulebook Q&A has thousands of published answers with Commission involvement for legal questions. All unverified.",
+    "human_review_rate": "100% (committee/panel answers).",
+    "why_humans_review": "Estimate: C ~50%, H ~30% (these registers exist precisely because questions recur), D ~10%, G ~10%. Analytical.",
+    "settlement_loop_evidence": [
+     {
+      "description": "ASME: interpretations are published Q&A, explicitly 'not part of the Code'; recurring interpretations feed Code Cases and revisions via committee ballot. AHA Coding Clinic advice is official under HIPAA code-set rules and is built into 3M/Solventum-style encoders. EBA Q&A answers are published, dated, with 'final'/'rejected' status and are updated when regulation changes. RECALLED; nothing fetched.",
+      "source_url": "https://www.asme.org/codes-standards/publications-information/interpretations",
+      "source_type": "standards body / industry association (not fetched; blocked)",
+      "prospective": "yes",
+      "reusable_how": "Published, numbered, dated interpretations applied by all users; ratified by committee; Coding Clinic is the one recalled example where the settlement is machine-consumed by downstream software."
+     }
+    ],
+    "economic_pain": "Unknown.",
+    "existing_solutions": "Committee databases (ASME Interpretations database; EBA Q&A tool; Coding Clinic subscription); encoder vendors.",
+    "buyer_and_budget": "Standards users subscribe; owners are committees.",
+    "regulatory_constraints": "Interpretations usually non-binding; Coding Clinic quasi-binding via HIPAA code set.",
+    "evidence_quality": "unknown",
+    "verdict": "uncertain",
+    "notes": "Interpretation registers are common in standards land and are the most explicit 'H' mechanisms; none verified this session. Coding Clinic is the strongest recalled example of a settlement register consumed by software and is a candidate for follow-up."
+   },
+   {
+    "name": "Open 'interpretation register' products: PubLedge (fact-specific written interpretations protocol)",
+    "geography": "US (Utah sandbox, federal agencies)",
+    "decision_volume": "18 demonstration instruments across 8 authorities, 35 obligation records, 16 mappings; 0 stars; no external adopters documented.",
+    "human_review_rate": "Not applicable.",
+    "why_humans_review": "Not applicable (a registry protocol, not a decision workflow).",
+    "settlement_loop_evidence": [
+     {
+      "description": "PubLedge models exactly the Sophon-shaped artefact - 'a written interpretation ... that constrains future behavior between identifiable parties on identified facts' - with a legal-status lifecycle (proposed, enacted, enforcing, phased-enforcement, pending-replacement, expired, superseded, withdrawn, terminated), editorial status, supersession links, reliance_scope (requesting-party-only vs similarly-situated-third-parties vs public), SHA-256 manifests, JSON Schema and gist ontology binding. Decision history: '2026-06-09: Repositioned PubLedge as a convention atop established timestamp infrastructure and parked standalone ambitions'; 'Standalone product expansion is parked pending a concrete legal-graph or adopter demand signal'; lawyer review 'pending; demand-triggered'.",
+      "source_url": "https://github.com/snapsynapse/publedge",
+      "source_type": "vendor/open-source project (primary for its own status)",
+      "prospective": "yes",
+      "reusable_how": "Demonstrates a typed, versioned interpretation register with who/when/what-power fields already exists as open source and found no adopter demand in ~5 months (Apr-Sep 2026). Direct negative demand signal (n=1) for a standalone interpretation-register product aimed at regulators."
+     }
+    ],
+    "economic_pain": "Not applicable.",
+    "existing_solutions": "The project itself; agency archives; no adopters.",
+    "buyer_and_budget": "None found.",
+    "regulatory_constraints": "None.",
+    "evidence_quality": "strong",
+    "verdict": "negative",
+    "notes": "Strong evidence of a specific kind: a built, published, ontology-bound register for regulator-issued settlements attracted no adoption and was parked for lack of demand."
+   }
+  ],
+  "evidence_against_thesis": [
+   "Explicit non-precedent design is the norm for individual settlements across every public mechanism examined: IRS PLRs carry 'Section 6110(k)(3) provides that it may not be used or cited as precedent' (primary, PLR 202301001/003/004 via github.com/surabhitri/PLR_Classification); SEC no-action letters bind 'only on the facts presented' (publedge PRIOR-ART); BVA decisions, AAO non-precedent decisions, FtT decisions and Board case decisions ('identical content with parallel context', 40/128 decision texts) are all deliberately narrow. Generalisation is reserved to a separate, slower organ (Rev. Proc., GC precedent opinion, adopted decision, SSR, ADM memo, classification regulation) at 1-3 orders of magnitude lower volume than case decisions.",
+   "In the one production ruling system whose source code was inspected (HMRC ATaR, github.com/hmrc/binding-tariff-classification), the only coded referral reasons are REQUEST_SAMPLE and REQUEST_MORE_INFO: escalation is about missing evidence (category A), supporting H1. Interpretation is done by the same officer and recorded as prose 'justification'.",
+   "DWP's own PIP decision tooling investment (github.com/dwp/pip-pre-decision-checks) is in data/evidence completeness checks (CIS data, lay conditions, payability), not in an interpretation register.",
+   "Where settlements are already executable and versioned (Kyverno PolicyException registers, github.com/nirmata/demo-gitops-exceptions), the organisation explicitly does not convert recurring exceptions into policy: 'expired exceptions trigger renewal pull requests'; users 'must file fresh requests'. The typed, dated, attributable, revocable grant ledger exists as a feature of the policy engine (supports H3/H6).",
+   "PubLedge, an open-source typed/versioned register for exactly this artefact class, attracted 0 stars and no adopters and parked 'standalone product expansion ... pending a concrete legal-graph or adopter demand signal' (github.com/snapsynapse/publedge, INTENT.md decision history 2026-06-09). Direct negative demand signal for a standalone interpretation-register product, at least when aimed at regulators.",
+   "Meta implemented only 27 of 87 Oversight Board recommendations fully (21 in part, 19 'assessing feasibility', 14 'work Meta already does', 6 'no further action'; github.com/ryantreves/meta-oversight): even a well-funded, purpose-built settlement-to-policy loop converts about a third of settlements into rules, slowly and non-bindingly.",
+   "GitHub's public policy repository explicitly excludes individual cases from the policy-clarification channel ('Please don't post legal complaints') - the case-to-clarification link is not wired even where policy versioning is trivial (github.com/github/site-policy).",
+   "IRS PLR volume in the corpus fell from ~1,700/yr (2001-02) to ~550-800/yr (2018-23) as the user fee reached $38,000: institutions ration individual settlements by price and absorb recurring classes into published procedures, shrinking the pool of paid settlements over time rather than compounding it.",
+   "Organisational reasons interpretations stay unwritten or non-precedential (analytical, drawn from the mechanisms above; not independently sourced this session): avoiding estoppel/liability (6110(k)(3), 'facts as represented' caveats), preserving discretion and flexibility ('each case on its own merits'), national uniformity versus circuit-by-circuit binding (SSA nonacquiescence/ARs), litigation discovery exposure for insurers' coverage positions, and design/professional liability keeping construction RFI answers project-specific.",
+   "No WebSearch was possible (session budget 200/200 already consumed before this task) and every non-GitHub host was blocked, so volumes for rescrit, EBTI, SSR/AR, VA GC, OCC, IFRS IC, ASME, ADM memos and Upper Tribunal could not be verified; absence of these numbers is uncertainty, not support."
+  ],
+  "not_found": [
+   "Annual counts of French rescrit requests, response times and the share published as BOI-RES (impots.gouv.fr, ccomptes.fr, economie.gouv.fr, data.economie.gouv.fr blocked)",
+   "EU BTI decisions issued per year and count of valid BTIs in EBTI; count of Commission classification regulations per year (ec.europa.eu, eur-lex blocked)",
+   "UK ATaR annual volumes, median days to decision, referral rate (not in HMRC repos; gov.uk blocked)",
+   "SSA: SSRs/ARs issued per year, POMS transmittal counts, ALJ dispositions (ssa.gov, ecfr.gov, federalregister.gov blocked)",
+   "VA GC precedent opinions per year; BVA decisions per year (va.gov blocked)",
+   "USCIS adopted decisions and Policy Manual updates per year (uscis.gov blocked)",
+   "OCC/SEC/CFTC/FINRA/FinCEN letter counts per year (all blocked)",
+   "FASB Technical Inquiry volume; IFRS IC submissions and agenda decisions per year; Big-4 consultation volumes (fasb.org, ifrs.org, iasplus.com, pcaobus.org, viewpoint.pwc.com blocked)",
+   "LMA claims bulletin counts and any insurer coverage-position register (lmalloyds.com, naic blocked)",
+   "Navigant/Guidehouse RFI statistics verification (guidehouse.com, procore.com blocked)",
+   "Oversight Board: number of policy advisory opinions, total recommendations to date and Meta's current implementation tallies, annual appeal intake (oversightboard.com, transparency.meta.com blocked)",
+   "Upper Tribunal reported-decision counts and DWP ADM memo counts (judiciary.uk, bailii.org, caselaw.nationalarchives.gov.uk, gov.uk blocked)",
+   "ASME/ISO/IEC interpretation counts; ISO/TC 176 interpretation panel status (asme.org, iso.org blocked)",
+   "AHA Coding Clinic Q&A counts and encoder incorporation (codingclinicadvisor.com blocked)",
+   "EBA Single Rulebook Q&A and ESMA Q&A counts (blocked)",
+   "Law-firm precedent/know-how management data (ILTA surveys; iltanet.org blocked); no relevant GitHub artefacts",
+   "Any public 'policy clarification log' for Meta Community Standards (no GitHub tracker found; transparency.meta.com blocked)",
+   "ACUS study 'Precedential Decision Making in Agency Adjudication' (acus.gov blocked) - would be the single best cross-agency source on why agencies do or do not make decisions precedential"
+  ],
+  "blocked_urls": [
+   "https://www.law.cornell.edu/uscode/text/26/6110",
+   "https://www.irs.gov/irb/2026-01_IRB",
+   "https://www.impots.gouv.fr/professionnel/le-rescrit-fiscal",
+   "https://taxation-customs.ec.europa.eu/customs-4/calculation-customs-duties/customs-tariff/binding-tariff-information-bti_en",
+   "https://www.ssa.gov/OP_Home/rulings/rulings.html",
+   "https://www.va.gov/ogc/opinions.asp",
+   "https://www.uscis.gov/laws-and-policy/adopted-aao-decisions",
+   "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-actions/index-interpretations-and-actions.html",
+   "https://www.fasb.org/page/PageContent?pageId=/about-us/technical-inquiry-service.html",
+   "https://www.ifrs.org/projects/ifrs-interpretations-committee/",
+   "https://www.oversightboard.com/news/",
+   "https://www.gov.uk/government/collections/advice-for-decision-making-staff-guide",
+   "https://www.ecfr.gov/current/title-20/chapter-III/part-402/section-402.35",
+   "https://www.govinfo.gov/content/pkg/USCODE-2023-title26/html/USCODE-2023-title26-subtitleF-chap61-subchapB-sec6110.htm",
+   "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32013R0952",
+   "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000037992716",
+   "https://bofip.impots.gouv.fr/bofip/1616-PGP.html/identifiant=BOI-SJ-RES-10-10-10-20120912",
+   "https://www.ccomptes.fr/fr/publications/les-rescrits-fiscaux",
+   "https://pcaobus.org/oversight/standards/qc-standards/details/QC1000",
+   "https://transparency.meta.com/oversight/oversight-board-recommendations/",
+   "https://en.wikipedia.org/wiki/Private_letter_ruling",
+   "https://www.judiciary.uk/courts-and-tribunals/tribunals/upper-tribunal/administrative-appeals-chamber/",
+   "https://www.osha.gov/laws-regs/standardinterpretations/publicationdate/2025",
+   "https://www.sec.gov/rules-regulations/staff-guidance/corporation-finance/no-action-letters",
+   "https://www.eba.europa.eu/single-rule-book-qa",
+   "https://www.esma.europa.eu/publications-and-data/questions-and-answers",
+   "https://rulings.cbp.gov/home",
+   "https://www.gao.gov/products/gao-24-106431",
+   "https://crsreports.congress.gov/product/pdf/R/R47016",
+   "https://iccwbo.org/business-solutions/banking-finance/icc-banking-commission-opinions/",
+   "https://www.asme.org/codes-standards/publications-information/interpretations",
+   "https://www.iso.org/sites/directives/current/consolidated/index.html",
+   "https://www.cms.gov/medicare/coverage/determinationprocess",
+   "https://www.bailii.org/uk/cases/UKUT/AAC/",
+   "https://www.legislation.gov.uk/ukpga/2007/15/section/13",
+   "https://web.archive.org/web/2025/https://www.va.gov/ogc/opinions.asp",
+   "https://www.aia.org/resource-center/architects-supplemental-instructions-asi",
+   "https://www.fda.gov/regulatory-information/search-fda-guidance-documents",
+   "https://www.justice.gov/eoir/ag-bia-decisions",
+   "https://www.faa.gov/about/office_org/headquarters_offices/agc/practice_areas/regulations/interpretations",
+   "https://www.dol.gov/agencies/whd/opinion-letters",
+   "https://www.fincen.gov/resources/statutes-regulations/administrative-rulings",
+   "https://www.bis.doc.gov/index.php/policy-guidance/advisory-opinions",
+   "https://www.financial-ombudsman.org.uk/decisions-case-studies/ombudsman-decisions",
+   "https://www.theipsa.org.uk/",
+   "https://www.nao.org.uk/reports/",
+   "https://www.eca.europa.eu/en/publications",
+   "https://www.oecd.org/en/publications.html",
+   "https://www.wcoomd.org/en/topics/nomenclature/instrument-and-tools/hs-classification-decisions.aspx",
+   "https://www.bis.org/",
+   "https://content.naic.org/",
+   "https://papers.ssrn.com/",
+   "https://www.semanticscholar.org/",
+   "https://hal.science/",
+   "https://www.courtlistener.com/",
+   "https://www.journalofaccountancy.com/",
+   "https://learn.microsoft.com/",
+   "https://www.vie-publique.fr/",
+   "https://www.senat.fr/",
+   "https://huggingface.co/datasets/pile-of-law/pile-of-law",
+   "https://www.data.gouv.fr/",
+   "https://data.europa.eu/",
+   "https://catalog.data.gov/",
+   "https://zenodo.org/",
+   "https://catala-lang.org/",
+   "https://openfisca.org/",
+   "https://oversightboard.github.io/",
+   "https://www.acus.gov/recommendation/precedential-decision-making-agency-adjudication",
+   "https://www.acus.gov/research-projects/precedential-decision-making-agency-adjudication",
+   "https://caselaw.nationalarchives.gov.uk/",
+   "https://www.kff.org/",
+   "https://www.ama-assn.org/practice-management/prior-authorization/prior-authorization-physician-survey",
+   "https://oig.hhs.gov/",
+   "https://www.codingclinicadvisor.com/",
+   "https://www.nacha.org/rules",
+   "https://www.lmalloyds.com/LMA/Claims/Claims_Bulletins.aspx",
+   "https://www.procore.com/library/rfi-construction",
+   "https://guidehouse.com/insights/construction/2013/impact-and-control-of-rfis-on-construction-projects",
+   "https://www.iltanet.org/",
+   "https://viewpoint.pwc.com/",
+   "https://www.iasplus.com/en/resources/ifrsf/ifrs-ic/agenda-decisions",
+   "https://sgp.fas.org/crs/misc/R47016.pdf",
+   "https://www.federalregister.gov/",
+   "https://www.taxpayeradvocate.irs.gov/",
+   "https://www.urssaf.fr/",
+   "https://www.economie.gouv.fr/dgfip/rapport-dactivite",
+   "https://www.finra.org/rules-guidance/guidance/interpretive-letters",
+   "https://www.phmsa.dot.gov/regulations/title49/interp",
+   "https://www.fec.gov/legal-resources/advisory-opinions-process/",
+   "https://www.cftc.gov/LawRegulation/CFTCStaffLetters/index.htm",
+   "https://www.medpac.gov/",
+   "https://data.economie.gouv.fr/explore/dataset/bofip-vigueur/information/",
+   "https://ec.europa.eu/taxation_customs/dds2/ebti/ebti_home.jsp",
+   "https://assets.publishing.service.gov.uk/",
+   "https://researchbriefings.files.parliament.uk/",
+   "https://commonslibrary.parliament.uk/"
+  ],
+  "sources": [
+   {
+    "url": "https://github.com/surabhitri/PLR_Classification/tree/main/data/raw/files_definite_plr",
+    "type": "primary-derived dataset (28,135 IRS written determinations scraped from irs.gov; counted locally by year)",
+    "used_for": "Annual PLR volume series 1999-2023"
+   },
+   {
+    "url": "https://github.com/surabhitri/PLR_Classification/blob/main/data/raw/files_definite_plr/202301001.pdf",
+    "type": "regulator document (IRS PLR mirrored on GitHub)",
+    "used_for": "Verbatim 6110(k)(3) non-precedent boilerplate (also 202301003, 202301004)"
+   },
+   {
+    "url": "https://github.com/surabhitri/PLR_Classification/blob/main/data/raw/PLR_Context_+.pdf",
+    "type": "academic (paper excerpt in research repo)",
+    "used_for": "$38,000 user fee as of 4 Feb 2021; ~81,000 discretionary PLRs universe; recurring-subject guidelines and no-rule list"
+   },
+   {
+    "url": "https://github.com/hmrc/binding-tariff-classification",
+    "type": "government (HMRC production source code)",
+    "used_for": "ATaR case statuses, referral reasons, Decision fields, keyword approval, event types, appeal ladder, SLA day counters"
+   },
+   {
+    "url": "https://github.com/hmrc/binding-tariff-ruling-frontend",
+    "type": "government (HMRC source code)",
+    "used_for": "Public publication of granted/cancelled rulings on completion plus daily refresh"
+   },
+   {
+    "url": "https://github.com/hmrc/tariff-classification-frontend",
+    "type": "government (HMRC source code)",
+    "used_for": "Caseworker roles (classification officer, manager, read-only)"
+   },
+   {
+    "url": "https://github.com/orgs/hmrc/repositories?q=ruling",
+    "type": "government (GitHub org listing)",
+    "used_for": "Advance Valuation Rulings services exist on the same pattern"
+   },
+   {
+    "url": "https://github.com/ryantreves/meta-oversight",
+    "type": "independent dataset derived from oversightboard.com",
+    "used_for": "Meta's response status to 87 Oversight Board recommendations"
+   },
+   {
+    "url": "https://github.com/Endalk-Chala/Oversight-Board-Case-Analysis",
+    "type": "academic (Chala 2026, J. Online Trust & Safety 3(3), doi:10.54501/jots.v3i3.333)",
+    "used_for": "147/128 Board decisions, outcomes, categories, summary decisions, 'parallel context' mentions, 'Meta should' counts"
+   },
+   {
+    "url": "https://github.com/snapsynapse/publedge",
+    "type": "vendor/open-source project (primary for its own status; secondary prior-art survey)",
+    "used_for": "Interpretation-register protocol design, status vocabulary, SEC/CFPB/IRS/CFTC mechanism descriptions, parked-for-lack-of-demand decision"
+   },
+   {
+    "url": "https://github.com/snapsynapse/publedge/blob/main/PRIOR-ART.md",
+    "type": "secondary survey",
+    "used_for": "Reliance and scope language of SEC no-action letters, CFPB advisory opinions, PLRs"
+   },
+   {
+    "url": "https://github.com/nirmata/demo-gitops-exceptions",
+    "type": "vendor demo (Nirmata/Kyverno)",
+    "used_for": "Executable, versioned policy-exception register design and its refusal to generalise exceptions into policy"
+   },
+   {
+    "url": "https://github.com/topics/policy-as-code",
+    "type": "open-source listing",
+    "used_for": "Kyverno/OPAL/Cerbos scale; tools focus on enforcement not exception workflows"
+   },
+   {
+    "url": "https://github.com/github/site-policy",
+    "type": "company primary repository",
+    "used_for": "PR-based policy change process, notice periods, exclusion of individual cases"
+   },
+   {
+    "url": "https://github.com/danielhadjaj-law/bofip-mcp",
+    "type": "open-source README (secondary) citing DGFiP open data",
+    "used_for": "BOFiP dataset size (9,035 BOI), weekly updates, 'Rulings' document type, L80A/L80B opposability, versioning"
+   },
+   {
+    "url": "https://github.com/HorizonGreen/EB1A-NIW-Guidance",
+    "type": "practitioner/community guide",
+    "used_for": "3,866+ AAO decisions mined as de facto precedent; reported NIW approval-rate drop"
+   },
+   {
+    "url": "https://github.com/dwp/pip-pre-decision-checks",
+    "type": "government prototype source",
+    "used_for": "DWP PIP pre-decision check categories"
+   },
+   {
+    "url": "https://github.com/dwp/pip-agent-decision-prototype",
+    "type": "government prototype source",
+    "used_for": "Existence of a DWP agent-decision prototype (Jan 2026), README unmodified"
+   },
+   {
+    "url": "https://github.com/i-dot-ai/lex",
+    "type": "government-supported open source (Incubator for AI, TNA, MoJ)",
+    "used_for": "UK legal corpus scale; case law index disabled pending licence"
+   },
+   {
+    "url": "https://github.com/topics/regtech",
+    "type": "open-source listing",
+    "used_for": "Absence of ruling/Q&A register products among 477 regtech repos"
+   },
+   {
+    "url": "https://github.com/topics/legal-data",
+    "type": "open-source listing",
+    "used_for": "Locating open-us-law and legalize-uk mirrors"
+   },
+   {
+    "url": "https://github.com/Vaquill-AI/open-us-law",
+    "type": "open dataset",
+    "used_for": "US Code incl. Title 26 available as structured data (not used for text due to rate limits)"
+   },
+   {
+    "url": "/tmp/claude-0/-home-user-sophon/03144a04-0e98-54e7-9d2c-78cb7b16e172/scratchpad/market/prior_evidence.md",
+    "type": "owner's prior investigation (local)",
+    "used_for": "IPSA findings and incumbent list (Bedrock AgentCore Policy, Ramp policy agent, Permit.io, Auth0) for comparison"
+   }
+  ],
+  "domain_assessment": "Method caveat first: the session's WebSearch budget was already exhausted (200/200) before this task began, and the egress proxy blocked every government, regulator, court, standards-body, academic and vendor host I tried (about 95 URLs); only github.com and api.github.com (rate-limited) were reachable. Evidence therefore comes from GitHub-hosted primary artefacts (HMRC's production ruling system source, a 28k-document IRS PLR corpus, Oversight Board datasets, PubLedge, Nirmata's exception register, GitHub's policy repo, DWP prototypes) plus explicitly-labelled recalled knowledge for mechanisms I could not fetch. Numbers marked RECALLED are unverified and should be checked at the listed URLs.\n\nWhere the loop is real and operational: (1) EU/UK customs rulings. HMRC's ATaR system is a genuine settlement register: every ruling is a structured, dated, versioned Decision (commodity code, effective dates, justification, goods description, search method, exclusion method), cases carry a manager-approved keyword vocabulary, an event log, an appeal ladder and SLA clocks, and completed rulings are published to a public search within a day so later applicants and officers decide against them; divergences escalate to EU classification regulations (recalled). (2) Policy-as-code exception registers (Kyverno PolicyException via PR): the settlement is executable, attributable, dated, expiring and revocable - the 'typed dated grant ledger' the prior investigation thought unshipped exists here as a feature of the policy engine. (3) SSA rulings/POMS, IFRS IC agenda decisions, Coding Clinic, EBA Q&A (all recalled): binding or quasi-binding published interpretation registers, some machine-consumed downstream.\n\nWhere the loop is real but slow, prose-only and low-volume: IRS PLR -> revenue procedure (fee $38,000; ~550-800 PLRs/yr in the corpus, down from ~1,700 in 2001; recurring subjects absorbed into checklists/automatic procedures over years), rescrit -> BOFiP RES series, VA GC precedent opinions, USCIS adopted decisions, SEC staff bulletins, UT -> DWP ADM memos. In every one of these the individual settlement is by design non-precedential (6110(k)(3) quoted verbatim; 'facts as represented'; 'identical content with parallel context') and generalisation is a separate governance act by a different organ at 1-3 orders of magnitude lower volume.\n\nWhere it is ceremonial or absent: Meta Oversight Board at case level (binding only for identical content; 27 of 87 recommendations implemented fully); GitHub site-policy (cases explicitly excluded from the clarification channel); construction RFI->ASI (project-local); insurer claims bulletins (not found).\n\nCategory split across the cluster (analytical): front-line escalation in the only inspected production system is coded as missing evidence (REQUEST_SAMPLE/REQUEST_MORE_INFO), and DWP's tooling investment is in evidence checks - supporting H1 for operational workflows. H (repeatable ambiguity settled prospectively) is clearly present but is handled by institutions as a rule-making function, not a case-handling function, and they ration it deliberately (fees, non-precedent clauses, expiry-and-renew).\n\nDemand signals against a standalone product: PubLedge, an open-source typed/versioned interpretation register covering PLRs, no-action letters, advisory opinions and sandbox agreements, found no adopters and parked its product ambitions in June 2026; Nirmata's register explicitly refuses to turn recurring exceptions into policy; GitHub keeps cases out of policy edits. The strongest Sophon-shaped evidence in this cluster is the private analogue - Big-4 national-office consultation databases and importer classification databases inside GTM suites - both unverified this session and both already built in-house or by incumbents (H3/H6).\n\nConclusion for this cluster: the settlement loop is a real, named, operational institution mainly where the settled object is a classification that maps to a code (tariff, ICD, commodity) or an executable policy exception; it is ceremonial or deliberately severed wherever the settled object is an interpretation of text. Candidate follow-ups with cheap access to real cases: HMRC/EU customs classification (open-source system, public rulings), AHA Coding Clinic + encoder vendors, and Kyverno/OPA exception registers in large platform teams. I would not pursue regulator-facing interpretation registers (PubLedge signal) or content-policy loops (Oversight Board data)."
+ },
+ "verification": {
+  "domain": "settlement-loop-hunter (adversarial verification of the cross-domain hunt for named case-to-rule mechanisms: IRS PLR->Rev Proc, French rescrit->BOFiP, EU BTI/UK ATaR, SSA SSR/AR, VA GC opinions, USCIS adopted decisions, SEC/OCC letters, IFRS IC/Big-4 consultation, insurer bulletins, construction RFI->ASI, Meta Oversight Board, GitHub site-policy, Kyverno/Nirmata exception registers, UT->DWP ADM, standards-body interpretations, PubLedge)",
+  "refuted": [
+   {
+    "claim": "Nirmata's demo-gitops-exceptions repository is an operational 'exception register' in which 'no request can ask for anything wider than one workload' and which 'explicitly does not convert recurring exceptions into policy', presented as evidence of how organisations govern policy exceptions (workflow 'IAM / policy-as-code exception registers', evidence_quality 'moderate').",
+    "why": "Cloned https://github.com/nirmata/demo-gitops-exceptions: requests/ holds exactly three manifests (legacy-billing-host-path, node-exporter-host-access, node-exporter-host-ports) and kustomization.yaml lists one in force. It is a vendor demo fleet, not an organisation's register, so nothing about recurrence, renewal frequency or refusal to generalise can be inferred from it. The 'one workload' limit is a property of the demo's GitHub issue-form template ('matchConditions are rendered from a fixed template'), not of Kyverno: Kyverno's native PolicyException spec uses an unrestricted MatchResources clause ('Match defines match clause used to check if a resource applies to the exception', https://raw.githubusercontent.com/kyverno/kyverno/main/api/kyverno/v2/policy_exception_types.go), which can match whole namespaces or kinds. Evidence quality should be 'weak' (vendor demo, n=3), and the 'refuses to generalise' finding is a design choice of a demo author, not observed organisational practice."
+   },
+   {
+    "claim": "'~31% (27/87) implemented fully' - Meta implemented 27 of 87 Oversight Board recommendations fully (used in evidence_against_thesis as 'converts about a third of settlements into rules').",
+    "why": "Parsed data.xlsx from https://github.com/ryantreves/meta-oversight: the 27/21/19/14/6 split is exact, but it is the 'action' column, i.e. Meta's self-reported category in its 30-day response ('Implementing fully' is a stated commitment, with '30_day' response dates from 02.25.21 to 01.13.22), tracked daily only from 6/11/2021 to 2/27/2022. It is not a measure of completed implementation, it is self-reported, and it is a 2021-early-2022 snapshot (the Board has issued several hundred recommendations since; current tallies on transparency.meta.com and oversightboard.com were blocked). The correct statement is 'Meta committed to fully implement 27 of the first 87 recommendations'."
+   },
+   {
+    "claim": "PubLedge provides 'strong' evidence and a 'direct negative demand signal' for a standalone interpretation-register product.",
+    "why": "Verified via https://raw.githubusercontent.com/snapsynapse/publedge/main/INTENT.md and the repo page (0 stars, 0 forks): the quotes are exact, but INTENT.md also lists 'Dedicated promotional campaign' under parked work and describes the project as 'the thin recordkeeping convention of the PAICE legal graph', i.e. one person's unmarketed side project inside a hobby portfolio, with lawyer review 'pending; demand-triggered'. A never-promoted, zero-star protocol finding no adopters in five months carries almost no information about market demand. The verdict 'negative' for that specific product is reasonable; the evidence quality is 'weak', not 'strong'."
+   }
+  ],
+  "weakened": [
+   {
+    "claim": "PLR volume fell from ~1,700/yr (2001-02) to ~550-800/yr (2018-23), 'consistent with recurring classes being absorbed into published procedures and with pricing rationing individual settlements'.",
+    "why": "The year counts are reproduced exactly (recounted 28,135 files with correct handling of the 7-digit YYWWNNN legacy names used through 2014: 1999 1,407; 2001 1,721; 2002 1,702; 2012 850; 2018 582; 2020 547; 2022 719; 2023 693). But the repo README (https://raw.githubusercontent.com/surabhitri/PLR_Classification/main/README.md) says only that PLRs 'have been scraped from the IRS' and gives no selection criteria for 'definite PLR', no completeness check, and IRS written-determination numbering also covers TAMs and CCAs. The trend may partly reflect the scraper/filter rather than IRS output, and no IRS or TIGTA count could be fetched (irs.gov, tigta.gov blocked). Treat the series as a lower-bound corpus count, evidence quality moderate; the causal reading is the finder's inference. Extra datum from the same repo: the author's own classifier labels 177 of 693 2023 PLRs (25.5%) 'Adverse' (data/output/output_plrs/classifications_2023.csv) - a non-IRS label, but it shows PLRs are not rubber stamps."
+   },
+   {
+    "claim": "PLR_Context_+.pdf is an 'academic' source for the $38,000 fee, the no-rule list and the recurring-subject guidelines.",
+    "why": "Extracted the PDF text: the fee passage ('The fee, as of February 4, 2021, is generally $38,000 ... the fee for a determination letter is usually $275') and '3. Guidelines for requests on recurring subjects ... checklists, questionnaires, and percentage and other quantitative benchmarks' sit in a Westlaw-paginated treatise excerpt ('*6', '*7', headed 'Literature on PLRs'), while 'approximately 81,000 PLRs' comes from a separate academic paper's Appendix A on excluding mandatory PLRs. Both are secondary quotations of the annual Rev. Proc.; the primary Rev. Proc. was not fetched. Reclassify as 'practitioner treatise + academic appendix (secondary)'."
+   },
+   {
+    "claim": "SEC no-action letters: 'third parties similarly situated may rely on the position'; CFPB advisory opinions are 'published openly with versioned numbering' (source type given as 'vendor/open-source prior-art survey (secondary; sec.gov not fetched)').",
+    "why": "Fetched https://raw.githubusercontent.com/snapsynapse/publedge/main/PRIOR-ART.md: the quotes are present, but the document cites no sec.gov, cfpb.gov or other primary URLs at all - it is one hobby project's descriptive survey. Evidence quality for this workflow should be 'weak' rather than the mixed 'weak/regulator' framing, and the finder's recalled volume ('~2-3 x10^2 per season') is unverified. Also unverified but relevant (recalled, not fetched): Corporation Finance announced in November 2025 that it would stop responding substantively to most Rule 14a-8 no-action requests for the 2025-26 season, which if correct removes the highest-volume component of this mechanism."
+   },
+   {
+    "claim": "USCIS: 'SOURCED (secondary): a practitioner guide analysed 3,866+ AAO decisions ... NIW approval rates dropping from 96% to 54% in 2025-2026'.",
+    "why": "Fetched https://raw.githubusercontent.com/HorizonGreen/EB1A-NIW-Guidance/main/README.md: both claims are asserted in Chinese with no methodology, no time window, no USCIS data citation and no link to the underlying case set. This should be labelled 'unsupported practitioner marketing', not 'sourced'; the only usable content is that a community mines AAO non-precedent decisions, which is anecdotal."
+   },
+   {
+    "claim": "HMRC ATaR: 'A missing evidence ~30% (the only formal referral reasons are evidence requests)'.",
+    "why": "The enum is exactly as stated (ReferralReason = REQUEST_SAMPLE, REQUEST_MORE_INFO; https://raw.githubusercontent.com/hmrc/binding-tariff-classification/main/app/uk/gov/hmrc/bindingtariffclassification/model/ReferralReason.scala) and EventType also includes EXPERT_ADVICE_RECEIVED, SAMPLE_* and NOTE events. But a code enum shows what the system can record, not how often it happens; no referral rate, case volume or elapsed-days distribution exists in the repos. The A/B/C/H shares are design-anchored guesses, and the honest statement is 'the system's escalation vocabulary is evidence-gathering; the rate is unknown'."
+   },
+   {
+    "claim": "Meta Oversight Board case-level statistics (128 decisions, 101 overturned / 26 upheld, 40 'parallel context', 'Meta should' 434 times, 53 with none).",
+    "why": "Recomputed from https://raw.githubusercontent.com/Endalk-Chala/Oversight-Board-Case-Analysis/main/data/decisions_enriched.csv: 128 rows; year split 2021:21, 2022:12, 2023:42, 2024:43, 2025:10; outcome Overturned 101, Upheld 26, blank 1; 'parallel context' in 40; 'Meta should' 435 occurrences with 53 decisions having none. All confirmed (434 vs 435 is a counting-method rounding). Minor weakening only: the CSV is 128 of the paper's 147 decisions and the README itself warns it is 'a record of institutional attention and procedural filtering, not ... a representative sample'."
+   },
+   {
+    "claim": "French rescrit: BOFiP open data includes a 'Rulings' document type.",
+    "why": "https://raw.githubusercontent.com/danielhadjaj-law/bofip-mcp/main/README.md confirms 9,035 BOI, weekly update, L80A/L80B opposability, and that 'L'open data DGFiP ne contient que la version en vigueur' (no structured historical archive); the document type is named 'Rescrit', and the README is a hobby MCP server's description of DGFiP data, not DGFiP itself. No rescrit volume, response time or publication share was verifiable (economie.gouv.fr, impots.gouv.fr, ccomptes.fr, legifrance blocked)."
+   }
+  ],
+  "confirmed": [
+   {
+    "claim": "HMRC's production ATaR backend models every ruling as a structured Decision(bindingCommodityCode, effectiveStartDate, effectiveEndDate, justification, goodsDescription, methodSearch, methodCommercialDenomination, methodExclusion, appeal, cancellation, explanation, decisionPdf, letterPdf); referral reasons are only REQUEST_SAMPLE and REQUEST_MORE_INFO; keywords are Keyword(name, approved: Boolean); statuses DRAFT..ANNULLED; appeal ladder ADR, REVIEW, APPEAL_TIER_1, APPEAL_TIER_2, COURT_OF_APPEALS, SUPREME_COURT; MiscCaseType includes 'Harmonised systems', 'Nomenclature', 'Appeals', 'Other government dept'; ReportField exposes daysElapsed and referredDaysElapsed; EventType includes CASE_REFERRAL, EXPERT_ADVICE_RECEIVED, APPEAL_ADDED, EXTENDED_USE_STATUS_CHANGE.",
+    "evidence": "Fetched raw source at https://raw.githubusercontent.com/hmrc/binding-tariff-classification/main/app/uk/gov/hmrc/bindingtariffclassification/model/{ReferralReason,Decision,Keyword,CaseStatus,AppealType,Event,MiscCaseType}.scala and model/reporting/ReportField.scala (government source code, Apache-2.0). All enums and fields match the finder's text verbatim."
+   },
+   {
+    "claim": "Completed rulings are published to the public search service on completion plus two daily jobs.",
+    "evidence": "https://raw.githubusercontent.com/hmrc/binding-tariff-ruling-frontend/main/README.md: 'When a case is completed with a decision to grant a ruling or when a ruling is cancelled early, the tariff-classification-frontend notifies this service ... This service also features two scheduled jobs which run daily for refreshing the data for newly granted rulings and cancelled rulings.' (government source code)"
+   },
+   {
+    "claim": "PLR corpus: 28,135 files under files_definite_plr, annual series 1999-2023 as stated; a separate 2023_PLRs folder holds 785 files.",
+    "evidence": "git clone --filter=blob:none of https://github.com/surabhitri/PLR_Classification; recount by year with legacy 7-digit (YYWWNNN) and 9-digit names handled separately reproduces every figure the finder gave (e.g. 2001 1,721; 2005 1,407; 2012 850; 2018 582; 2023 693) and 785 in 2023_PLRs. Primary-derived dataset, secondary host."
+   },
+   {
+    "claim": "The $38,000 user fee 'as of February 4, 2021', the 'Guidelines for requests on recurring subjects' (checklists, questionnaires, quantitative benchmarks), the no-rule list of issues 'most of which involve factual questions', and 'approximately 81,000 PLRs' all appear in PLR_Context_+.pdf.",
+    "evidence": "Text extracted with PyMuPDF from https://raw.githubusercontent.com/surabhitri/PLR_Classification/main/data/raw/PLR_Context_+.pdf; each phrase found verbatim (see weakened item on source type)."
+   },
+   {
+    "claim": "Oversight Board decision dataset statistics (128 decisions; 101 overturned; 26 upheld; year split; 40 mention 'parallel context'; ~434 'Meta should').",
+    "evidence": "Recomputed from https://raw.githubusercontent.com/Endalk-Chala/Oversight-Board-Case-Analysis/main/data/decisions_enriched.csv (academic dataset behind Chala 2026, J. Online Trust & Safety 3(3), doi:10.54501/jots.v3i3.333, published 8 Sep 2026 per README)."
+   },
+   {
+    "claim": "Meta's 30-day responses to the first 87 Board recommendations: Implementing fully 27, Implementing in part 21, Assessing feasibility 19, Work Meta already does 14, No further action 6.",
+    "evidence": "Parsed data.xlsx Sheet1 'action' column from https://github.com/ryantreves/meta-oversight (independent dataset scraped from oversightboard.com; 87 rows; daily tracking columns 6/11/2021-2/27/2022). Counts exact; see weakened item on what they measure."
+   },
+   {
+    "claim": "PubLedge status: 0 stars, 'Standalone product ambitions are parked', decision history '2026-06-09: Repositioned PubLedge as a convention atop established timestamp infrastructure and parked standalone ambitions', lawyer review 'pending; demand-triggered'.",
+    "evidence": "https://raw.githubusercontent.com/snapsynapse/publedge/main/INTENT.md and https://github.com/snapsynapse/publedge (0 stars, 0 forks at fetch time). Quotes exact."
+   },
+   {
+    "claim": "Nirmata README quotes: granting an exemption is a pull request 'reviewed by the security team, attributable to a person, dated, and revocable with git revert'; 'no request can ask for anything wider than one workload'; expiry workflow 'runs daily and turns an elapsed date into a revocation pull request'; 'Renewal is a fresh request, not an edited date'.",
+    "evidence": "https://raw.githubusercontent.com/nirmata/demo-gitops-exceptions/main/README.md, all verbatim (vendor demo)."
+   },
+   {
+    "claim": "Kyverno has ~8.2k GitHub stars.",
+    "evidence": "GitHub API repository object for kyverno/kyverno: stargazers_count 8,172, forks 1,604 (fetched 21 Sep 2026)."
+   },
+   {
+    "claim": "GitHub site-policy: changes via pull request with 24-hour or 30-day notice; 'Please don't post legal complaints or ask for technical support'.",
+    "evidence": "https://raw.githubusercontent.com/github/site-policy/main/README.md lines 22 and 34, verbatim (company primary repository)."
+   },
+   {
+    "claim": "DWP's PIP pre-decision-checks prototype is built around 'CIS data checks', 'Lay conditions' and 'Payability checks'.",
+    "evidence": "Cloned https://github.com/dwp/pip-pre-decision-checks; those strings appear in the prototype views ('CIS data checks', 'LAY CONDITIONS', 'PAYABILITY CHECKS', 'payability-checks-cya'). README is one line ('Conceptual designs & flows for agent UI'), so this is a UI prototype, not a production system."
+   },
+   {
+    "claim": "i-dot-ai/lex indexes 220K Acts/SIs, 892K amendments, 89K explanatory notes, 70K judgments 'temporarily disabled pending TNA licence'.",
+    "evidence": "https://raw.githubusercontent.com/i-dot-ai/lex/main/README.md lines 16-19, verbatim."
+   },
+   {
+    "claim": "Individual PLRs are non-precedential by statute (26 USC 6110(k)(3)) - boilerplate in each PLR.",
+    "evidence": "Not re-extracted this session (PDF text extraction of the individual PLRs was not repeated), but the finder quotes three PLRs from the same corpus and the statutory rule is well established; treated as confirmed at the level of the mechanism, primary text not re-fetched (law.cornell.edu, govinfo.gov blocked)."
+   }
+  ],
+  "manual_review_conflated_with_repeatable_ambiguity": [
+   "IRS PLRs: the finder assigns H ~15% on the basis that the IRS issues 'guidelines for requests on recurring subjects'. But those recurring-subject checklists are precisely the IRS's already-completed generalisation: taxpayers still pay $38,000 for an individual ruling on a settled class because the law or their auditors require the comfort, which is category H4 (humans stay in the loop after precedent exists), not H. The honest H share for PLRs as a Sophon target is well under 10%: anything genuinely repeatable is either no-ruled as factual, moved to an automatic procedure, or still ruled individually for reasons a register would not remove.",
+   "HMRC ATaR / EU BTI: the finder's 'H ~10%' plus 'promising' verdict conflates two things: (a) tariff classification does have a real, structured, prospective settlement loop, and (b) that loop is already implemented by the authority (public ruling search refreshed daily, methodSearch field, keyword governance, classification regulations). Under the brief's section 2 penalties ('existing ... systems already solve the problem adequately', 'implementation requires replacing a core system of record', 'buyer is unclear') the addressable H share for a third-party product is close to zero even if the underlying H share of decisions is 10-20%. This is H3/H6 evidence, not a wedge.",
+   "Oversight Board: case-level H is ~0 by design ('identical content with parallel context' clause in 40 of 128 decisions); the finder's 'H ~15% (recommendations to rewrite policy)' is about policy recommendations, which are a rule-making channel (87 in ~20 months, self-reported implementation), not operational case review. Nothing here is a repeated operational decision resolved faster because of a captured settlement.",
+   "Kyverno/Nirmata: the finder's 'H ~15% (the same policy gets excepted repeatedly, but the register renews rather than generalises)' is an inference from a demo with three exception manifests. No recurrence data exists. The correct H estimate is 'unknown', and the observed design (expiry-and-renew, fresh justification each time) is the organisation choosing G/E treatment deliberately.",
+   "SSA, VA, USCIS, DWP/UT, SEC, IFRS IC, ASME/EBA: every A-H split for these is labelled 'analytical' by the finder and nothing was verified this session either. They should be reported as 'unknown' rather than as percentages; the only defensible structural statement is that each institution routes generalisation through a separate low-volume organ (SSR/AR, GC precedent opinion, adopted decision, ADM memo, Staff Legal Bulletin, agenda decision) at 1-3 orders of magnitude below case volume, which is consistent with H2 (ambiguity that recurs is rare relative to case flow) and H4.",
+   "General: across the cluster the finder treats 'the institution has a published-interpretation register' as evidence that H is present. The registers show that H exists at the rule-making layer and is already captured (H3); they say nothing about how much front-line review is repeatable ambiguity versus missing facts, because none of the fetched artefacts records review reasons at case level except HMRC's referral enum (which is evidence-request only)."
+  ],
+  "corrected_workflow_verdicts": [
+   {
+    "name": "IRS private letter rulings -> revenue procedures / automatic-consent procedures / no-rule lists",
+    "evidence_quality": "moderate",
+    "verdict": "weak",
+    "why": "Corpus counts, fee and recurring-subject mechanism confirmed; but the loop is a slow rule-making function, individual rulings are non-precedential by statute, volume is ~10^2-10^3/yr, the recurring classes are already absorbed into checklists/automatic procedures, and no software buyer exists. Trend interpretation weakened (corpus selection criteria unstated)."
+   },
+   {
+    "name": "French rescrit fiscal -> BOFiP rescrits de portee generale",
+    "evidence_quality": "weak",
+    "verdict": "uncertain",
+    "why": "Only a hobby MCP README describing DGFiP open data was verifiable (9,035 BOI, weekly, in-force version only). No rescrit volumes, lags or publication shares; no buyer. Structurally clean but unmeasured."
+   },
+   {
+    "name": "EU BTI / UK ATaR -> published rulings, classification regulations",
+    "evidence_quality": "moderate",
+    "verdict": "uncertain",
+    "why": "Downgraded from 'promising'. The settlement loop is verified in production code and is genuinely structured, prospective and published, but that is exactly why it is H3/H6 evidence: the authority already built the settlement store (public search refreshed daily, methodSearch, governed keywords, appeal ladder), traders' side is served by GTM classification databases (recalled), the only coded escalation reasons are evidence requests, and no volume, referral rate or SLA data exists in the repos (gov.uk and ec.europa.eu blocked). Its real value to Sophon is as a cheap source of real historical settlement records for the base-rate experiment, not as a market."
+   },
+   {
+    "name": "SSA: SSRs, Acquiescence Rulings, POMS",
+    "evidence_quality": "unknown",
+    "verdict": "weak",
+    "why": "Nothing verified (ssa.gov, oig.ssa.gov, ecfr.gov, federalregister.gov blocked). Mechanism recalled only; rule output is single digits per year against 10^5-10^6 decisions; government owner, no buyer."
+   },
+   {
+    "name": "VA OGC precedent opinions vs non-precedential BVA decisions",
+    "evidence_quality": "unknown",
+    "verdict": "weak",
+    "why": "Nothing verified (va.gov, bva.va.gov, ecfr.gov, law.cornell.edu blocked). Textbook deliberate non-precedent design; no buyer."
+   },
+   {
+    "name": "USCIS: AAO non-precedent -> adopted decisions / Policy Manual",
+    "evidence_quality": "weak",
+    "verdict": "weak",
+    "why": "The one 'sourced' number (3,866 decisions; 96%->54% NIW approval) has no methodology or citation and should be discarded. uscis.gov blocked. Same low-volume generalisation organ pattern."
+   },
+   {
+    "name": "SEC no-action letters, CFTC/FINRA/OCC letters, CFPB advisory opinions",
+    "evidence_quality": "weak",
+    "verdict": "weak",
+    "why": "Sole source is PubLedge's PRIOR-ART.md, which cites no primary URLs. sec.gov and peers blocked. Recalled (unverified) November 2025 Corp Fin change to stop substantive 14a-8 responses would remove the main volume component. No software buyer for the loop."
+   },
+   {
+    "name": "Accounting interpretation: FASB TIS, IFRS IC agenda decisions, Big-4 consultation databases",
+    "evidence_quality": "unknown",
+    "verdict": "uncertain",
+    "why": "Nothing verified (ifrs.org, fasb.org, pcaobus.org, pwc.com, iasplus.com blocked). Remains the best-shaped private analogue on paper (mandatory consultation documentation under QC 1000/ISQM 1, recurring questions, authoritative national office) but is built in-house by the firms (H3) and volumes are unpublished."
+   },
+   {
+    "name": "Insurer claims bulletins and coverage position papers",
+    "evidence_quality": "unknown",
+    "verdict": "uncertain",
+    "why": "No evidence found by finder or verifier (lmalloyds.com, naic blocked). Research gap; do not count as support or against."
+   },
+   {
+    "name": "Construction RFIs -> ASIs -> revised drawings",
+    "evidence_quality": "weak",
+    "verdict": "weak",
+    "why": "Navigant 2013 figures could not be fetched (guidehouse.com, constructiondive.com, enr.com, autodesk.com blocked); settlements are project-local (G) and versioned by Procore/ACC incumbents."
+   },
+   {
+    "name": "Meta Oversight Board decisions and recommendations -> Community Standards",
+    "evidence_quality": "moderate",
+    "verdict": "weak",
+    "why": "Case dataset confirmed exactly; recommendation tallies confirmed but reinterpreted as Meta's self-reported 30-day commitments from a 2021-22 snapshot, not implementation. Case-level binding is 'identical content with parallel context' only; policy loop is non-binding, slow, ~10^1-10^2 items/yr; not a software market."
+   },
+   {
+    "name": "Content policy clarification logs (GitHub site-policy)",
+    "evidence_quality": "weak",
+    "verdict": "weak",
+    "why": "Quotes confirmed. Shows versioning is solved by git and that the case-to-clarification channel is deliberately not wired; n=1 company."
+   },
+   {
+    "name": "IAM / policy-as-code exception registers (Kyverno PolicyException, Nirmata GitOps register)",
+    "evidence_quality": "weak",
+    "verdict": "weak",
+    "why": "Downgraded from 'uncertain/moderate'. The only artefact is a vendor demo with three exception manifests and one in force; its one-workload limit is a form template, while Kyverno's native PolicyException matches arbitrary resources. Executable, dated, attributable exceptions already ship inside the policy engine (H6), and the demo's expiry-and-renew model is a governance choice against generalisation, so no Sophon-shaped gap is evidenced. Recurrence data: none."
+   },
+   {
+    "name": "UK Upper Tribunal reported decisions -> DWP ADM memos; DWP PIP decision tooling",
+    "evidence_quality": "weak",
+    "verdict": "weak",
+    "why": "DWP prototype categories confirmed (CIS data, lay conditions, payability - evidence checks), but it is a UI prototype with a one-line README. UT/ADM mechanism, PIP volumes and appeal outcomes unverified (gov.uk, bailii, judiciary.uk, rightsnet, parliament blocked). Government owner."
+   },
+   {
+    "name": "Standards-body interpretation panels (ASME, ISO/IEC, ICC Banking Commission, AHA Coding Clinic, EBA/ESMA Q&A)",
+    "evidence_quality": "unknown",
+    "verdict": "uncertain",
+    "why": "Nothing verified (asme.org, iso.org, aha.org, ahima.org, codingclinicadvisor.com, cdc.gov, eba/esma blocked). Coding Clinic as a machine-consumed settlement register remains the most interesting recalled example and is untested; but the owner is a committee and the consumers are encoder vendors, which again points to H3/H6 rather than a standalone product."
+   },
+   {
+    "name": "Open 'interpretation register' products: PubLedge",
+    "evidence_quality": "weak",
+    "verdict": "negative",
+    "why": "Status quotes and 0 stars confirmed, but it is an unmarketed side project ('Dedicated promotional campaign' parked), so its lack of adopters is near-zero information about demand. Verdict negative for that product; it should not be cited as strong evidence about the market."
+   }
+  ],
+  "missing": [
+   "Any primary volume for any public mechanism: PLRs per year from IRS/TIGTA, rescrits per year (DGFiP/Cour des comptes), EU BTI decisions per year and EBTI stock (Commission/ECA special report), UK ATaR volumes and referral rates, SSRs/ARs and ALJ dispositions, BVA decisions and GC precedent opinions, USCIS adopted decisions, SEC/OCC/CFTC/FINRA letter counts, IFRS IC submissions and agenda decisions, ASME/EBA interpretation counts, ADM memo counts. All hosts policy-denied on first try (irs.gov, tigta.gov, home.treasury.gov, economie.gouv.fr, taxation-customs.ec.europa.eu, ec.europa.eu, op.europa.eu, europarl.europa.eu, gov.uk, ssa.gov, oig.ssa.gov, va.gov, bva.va.gov, uscis.gov, sec.gov, ifrs.org, ecfr.gov, law.cornell.edu, regulations.gov, congress.gov, acus.gov, oversightboard.com, transparency.meta.com, about.fb.com, lawfaremedia.org, techpolicy.press, kyverno.io, nirmata.com, cbp.gov, aha.org, ahima.org, icd10monitor.com, codingclinicadvisor.com, cdc.gov, guidehouse.com, constructiondive.com, enr.com, autodesk.com, rightsnet.org.uk, committees.parliament.uk, instituteforgovernment.org.uk, brookings.edu, en.wikipedia.org, thetaxadviser.com, taxnotes.com, news.bloombergtax.com, jdsupra.com, natlawreview.com, lexology.com, nosscr.org, scholar.google.com, duckduckgo.com, bing.com, archive.ph; cavc.uscourts.gov DNS failure).",
+   "WebSearch: zero queries possible (session budget already 200/200 before this task), so the mandated 10 distinct searches could not be run; verification rests on 9 successful fetches/clones of GitHub-hosted artefacts.",
+   "ACUS 2022 'Precedential Decision Making in Agency Adjudication' report and recommendation - the single best cross-agency source on why agencies keep decisions non-precedential; blocked (acus.gov, archive.ph).",
+   "Current Oversight Board recommendation implementation tallies (Board's own annual reports report hundreds of recommendations with independent verification of implementation) - blocked.",
+   "GitHub-wide usage counts of Kyverno PolicyException (code search returned 503 'authorization not ready' repeatedly) and any real organisation's exception register with recurrence data.",
+   "Kyverno's PolicyException documentation page (kyverno.io blocked; kyverno/website not in session's allowed repositories) - only the Go type definition was checked.",
+   "Whether the PLR corpus is complete per year and how 'definite PLR' was selected (repo README silent).",
+   "Any evidence at all on insurer coverage-position registers, Big-4 consultation database volumes, or Coding Clinic encoder incorporation."
+  ],
+  "overall": "The finder's GitHub-sourced facts are accurate: every enum, field, count and quotation I re-derived (HMRC ATaR source, the 28,135-file PLR corpus and its year series, the $38,000 fee and '81,000 PLRs' passages, Chala's 128-decision dataset, the 87-recommendation spreadsheet, PubLedge INTENT.md, Nirmata README, GitHub site-policy, DWP prototype views, lex, bofip-mcp) matched verbatim. What does not survive is the weight put on a few of them. The Nirmata 'register' is a three-manifest vendor demo whose one-workload limit is an issue-form template (Kyverno's native PolicyException matches arbitrary resources), so it cannot evidence how organisations govern recurring exceptions. The '27 of 87 implemented fully' figure is Meta's self-reported 30-day commitment from a 2021-22 snapshot. PubLedge's zero adoption is an unmarketed side project, near-zero information about demand. The USCIS '3,866 decisions / 96% to 54%' number has no methodology and should be dropped. The SEC/CFPB reliance language rests on a survey with no primary citations. Beyond that, not one operational volume in the cluster could be verified: WebSearch was exhausted before the task and roughly 50 non-GitHub hosts were policy-denied, so absence of numbers is uncertainty. On the H question: the registers the finder found (Rev. Procs, BOFiP RES, published tariff rulings, SSRs, GC opinions, adopted decisions, ADM memos, IFRS IC agenda decisions) show that repeatable ambiguity is real but is handled as a low-volume rule-making function by a separate organ, and is already captured by the institution (H3), with individual settlements deliberately non-precedential (H4) and generalisation at 1-3 orders of magnitude below case flow (H2). The one production system inspected records escalation as evidence requests, not interpretation, but records a vocabulary, not a rate. Corrected cluster verdict: no workflow here is 'promising' as a standalone Sophon wedge; EU/UK tariff rulings are downgraded to 'uncertain' because the settlement store is already built and public by the authority itself, which makes them the best available source of real historical settlement records for the owner's base-rate experiment while simultaneously being evidence that incumbents (the authority, GTM suites) already own the loop. The strongest evidence in this cluster for a Sophon-shaped market is the existence of structured, dated, published, searched-before-deciding tariff rulings, because it proves the artefact class can be made executable at scale; the strongest evidence against is that every institution examined built that loop itself and kept the individual settlement non-precedential on purpose."
+ }
+}

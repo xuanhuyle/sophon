@@ -1,0 +1,725 @@
+{
+ "key": "cybersecurity-and-access-control",
+ "found": {
+  "domain": "cybersecurity-and-access-control",
+  "workflows": [
+   {
+    "name": "SOC alert triage and detection tuning (benign-trigger exceptions, suppression, allowlists)",
+    "geography": "Global; evidence mostly US/UK enterprise SOCs and MDR vendors",
+    "decision_volume": "Ponemon/Damballa (vendor-sponsored research, 2015, US enterprises): 16,937 alerts per week per organisation on average, 19% deemed reliable, 4% (705) actually investigated \u2014 https://www.securityweek.com/false-positive-alerts-cost-organizations-13-million-year-report/ (press reporting Ponemon) and https://www.ponemon.org/local/upload/file/Damballa%20Malware%20Containment%20FINAL%203.pdf (research firm). Red Canary 2025 methodology (vendor): 419M investigative leads pared to 8.5M potentially malicious events and 110,000 confirmed threats across its customer base \u2014 https://redcanary.com/threat-detection-report/methodology/. Vendor blog aggregating studies: 46\u201383% of SOC alerts are false positives, 10\u201330% need human judgement \u2014 https://www.secure.com/blog/soc/soc-alerts (vendor). All sourced; no independent per-analyst count found.",
+    "human_review_rate": "Ponemon: only 4% of weekly alerts investigated, i.e. capacity-limited triage rather than a review rate \u2014 https://www.securityweek.com/false-positive-alerts-cost-organizations-13-million-year-report/ (press/Ponemon). Vendor aggregation: 10\u201330% of alerts genuinely need a human, escalation from tier 1 should be <20% \u2014 https://www.secure.com/blog/soc/soc-alerts (vendor). SANS Detection & Response 2025: 73% name false positives their top challenge \u2014 https://www.securitytoday.de/en/2026/07/03/false-positives-in-soc-separating-signal-from-noise/ (press citing SANS).",
+    "why_humans_review": "Estimate (basis: Alahmadi, Axon, Martinovic USENIX Security 2022, n=20 survey + n=21 interviews, https://www.usenix.org/system/files/sec22-alahmadi.pdf, academic; snippet-only, PDF fetch blocked): the study's headline finding is that most 'false positives' are BENIGN TRIGGERS \u2014 true alarms explained by legitimate behaviour in that organisation's environment. That is category B (factual classification: is this activity legitimate here?) resolved with local environmental knowledge, roughly B 50\u201360%; A missing evidence (need endpoint/user context) 20\u201330%; H repeatable ambiguity settled prospectively 10\u201320% (the recurring 'this admin tool run by this team is normal' class); C/D/E/F/G each under 5%. The H share is real but is already captured as executable suppression/exception items in the SIEM (see existing_solutions).",
+    "settlement_loop_evidence": [
+     {
+      "description": "Elastic Security rule exceptions: 'Exceptions prevent a rule from generating alerts when specific conditions are met'; created directly from an alert with conditions auto-populated; can be shared exception lists that apply to multiple rules ('Affects X rules'); optional expiry date. No review workflow, versioning or ownership described. This is the settlement loop (analyst decides benign \u2192 exception applies prospectively) already implemented natively in the SIEM.",
+      "source_url": "https://raw.githubusercontent.com/elastic/docs-content/main/solutions/security/detect-and-alert/add-manage-exceptions.md",
+      "source_type": "vendor documentation (fetched)",
+      "prospective": "yes",
+      "reusable_how": "Exception item applied to all future alerts from the rule(s); shared lists reused across rules"
+     },
+     {
+      "description": "Alahmadi et al. 2022: analysts report most FPs are benign triggers explained by legitimate organisational behaviour, requiring manual validation each time when tools are not tuned. Indicates a recurring, environment-specific class of settlements.",
+      "source_url": "https://www.usenix.org/system/files/sec22-alahmadi.pdf",
+      "source_type": "academic (USENIX Security 2022; search snippet, fetch blocked)",
+      "prospective": "unclear",
+      "reusable_how": "Recurrence exists; reuse depends on whether the SOC tunes rules or whitelists, which the paper discusses qualitatively"
+     },
+     {
+      "description": "Prisma Cloud CSPM: alert rules with Auto Dismiss per policy; dismiss/snooze alerts with time ranges; the system prevents a second alert rule on the same policy with a different auto action \u2014 i.e. dismissals are policy-level standing decisions.",
+      "source_url": "https://docs.prismacloud.io/content-collections/alerts/view-respond-to-prisma-cloud-alerts",
+      "source_type": "vendor documentation (search snippet)",
+      "prospective": "yes",
+      "reusable_how": "Auto-dismiss rule applies to all future alerts of that policy in scope"
+     },
+     {
+      "description": "DLP vendor guidance: 'programs that systematically capture analyst decisions and feed them back into policy refinement get more precise over time' and 'run [a tightened rule] against historical incident data to estimate its false positive rate'.",
+      "source_url": "https://www.cyberhaven.com/blog/dlp-false-positives",
+      "source_type": "vendor (search snippet)",
+      "prospective": "yes",
+      "reusable_how": "Analyst adjudications become rule tuning; captured inside the DLP product"
+     }
+    ],
+    "economic_pain": "Ponemon: 395 analyst hours per week wasted on false positives/negatives, ~21,000 hours and $1.3M per year per organisation; 25 minutes per alert investigated \u2014 https://www.securityweek.com/false-positive-alerts-cost-organizations-13-million-year-report/ (press/Ponemon, vendor-sponsored, 2015). Bitdefender (vendor): 15 minutes of every SOC hour on false positives \u2014 https://www.bitdefender.com/en-us/blog/businessinsights/every-hour-socs-run-15-minutes-are-wasted-on-false-positives. SANS 2025 SOC Survey (industry association, via press release): 67% short-staffed, 71% analyst burnout, 79% run 24/7, 69% still rely on manual reporting \u2014 https://www.globenewswire.com/news-release/2025/07/01/3108422/0/en/SANS-2025-SOC-Survey-Exposes-Critical-Gaps-and-What-Top-Teams-Are-Doing-Right.html. Expel (vendor): 24/7 SOC costs $1.5M\u2013$5M per year \u2014 https://expel.com/cyberspeak/cost-to-build-and-operate-a-24x7-soc/.",
+    "existing_solutions": "SIEM/XDR exception and suppression primitives (Elastic shared exception lists, Splunk ES notable suppression, Microsoft Sentinel automation rules, CrowdStrike/SentinelOne exclusions), SOAR playbooks (Tines, Swimlane, Palo Alto XSOAR), MDR providers that tune per customer (Expel, Red Canary), AI-SOC triage products (2025\u201326 wave). These already capture the analyst's 'benign here' settlement as an executable, prospective rule; what they lack is governance (approver, rationale, expiry, review) \u2014 Elastic docs describe no review/versioning/ownership. That governance gap is a feature, not a product: detection-as-code repos in git already version rules and exceptions.",
+    "buyer_and_budget": "CISO / SOC manager / detection engineering lead; budget exists (SIEM, MDR, SOAR) but is already committed to incumbents; SANS reports budget constraints as the primary driver of staffing shortages (https://www.globenewswire.com/news-release/2025/07/01/3108422/0/en/SANS-2025-SOC-Survey-Exposes-Critical-Gaps-and-What-Top-Teams-Are-Doing-Right.html).",
+    "regulatory_constraints": "None prohibiting automation of triage; auditors expect evidence of alert handling (PCI DSS 10.x, SOC 2 CC7) but not human adjudication of each alert.",
+    "evidence_quality": "moderate",
+    "verdict": "weak",
+    "notes": "Volume and pain are the highest in the cluster, and a genuine settlement loop exists (benign trigger \u2192 exception item applied prospectively). But H3 and H6 are strongly supported: the loop is native to every SIEM/EDR, and the residual value (governed, versioned exception registers) is being absorbed by detection-as-code practice and AI-SOC vendors. Most of the review labour is B/A (classifying a specific event with context), not interpretation of a rule."
+   },
+   {
+    "name": "Access requests, SOX/ITGC access certification and recertification, SoD conflict handling",
+    "geography": "US (SOX), EU/France (DORA, NIS2, ISO 27001 A.5.18), global enterprises",
+    "decision_volume": "No independent per-organisation figures found. SailPoint IdentityIQ certification guides describe campaign mechanics (https://community.sailpoint.com/mpomh84452/attachments/mpomh84452/IIQ_docs/611/1/8.3_IdentityIQ_Certifications_and_Access_Reviews.pdf, vendor documentation) but not volumes. Estimate: quarterly certifications at a 10,000-employee company generate tens of thousands of line items per campaign (each user \u00d7 entitlement), basis: SOX guidance that reviews occur at least quarterly for in-scope systems (https://www.zluri.com/blog/sox-itgc, vendor).",
+    "human_review_rate": "100% by construction: certifications require a named human reviewer to attest to each item. Practitioner guidance recommends forcing a minimum 3\u20135% revocation quota because reviewers otherwise rubber-stamp, and says the quota should sit below the 'expected natural revocation rate' \u2014 https://startwithidentity.com/articles/access-review-certification-best-practices/ (practitioner blog, weak). Implies approval rates well above 90% with little decision content.",
+    "why_humans_review": "Estimate, basis: SOX/ITGC audit expectations and OIG findings. The dominant reason is regulatory attestation, not ambiguity: humans must sign off (category H4 in the brief's falsification terms; in the A\u2013H scheme this is closest to a non-addressable 'humans must remain involved'). Rough shares of the actual cognitive work: B factual classification (does this person still need this?) 50\u201360%; A missing evidence (last-use data, job change) 20\u201330%; H repeatable ambiguity settled prospectively (e.g. 'contractors in team X may keep read access to system Y'; SoD conflict Z is acceptable with mitigating control M) 10\u201315%; C 5%; E/G small. The H share is exactly what IGA role models, birthright policies and SAP GRC mitigating controls already encode.",
+    "settlement_loop_evidence": [
+     {
+      "description": "Protiviti SOX surveys: IT access controls and security is the area with the most deficiencies; issues stem from segregation-of-duties conflicts and gaps in user access review and termination procedures. Shows recurring failure but of execution/evidence, not interpretation.",
+      "source_url": "https://www.protiviti.com/sites/default/files/2024-08/empowering-sox-innovation-protiviti_global.pdf",
+      "source_type": "industry consultancy survey (search snippet; fetch blocked)",
+      "prospective": "no",
+      "reusable_how": "Not a settlement; a deficiency pattern"
+     },
+     {
+      "description": "DHS OIG FY2009 integrated audit finding: periodic recertifications of user access and privileges to financial applications, databases, network and remote access were not formally performed per DHS policy. NCUA OIG May 2023: NCUA needs to enhance the account recertification process for privileged users.",
+      "source_url": "https://ncua.gov/files/audit-reports/oig-audit-ncua-cybersecurity-may-2023.pdf",
+      "source_type": "inspector-general audit (search snippet; fetch blocked); also https://www.oig.dhs.gov/sites/default/files/assets/Mgmt/OIGr_10-110_Aug10.pdf",
+      "prospective": "no",
+      "reusable_how": "Audit findings concern reviews not done or not evidenced, i.e. missing process, not unresolved ambiguity"
+     },
+     {
+      "description": "Access review exception management guidance: exceptions must be centrally approved, time-bound, visible in audit records; organisations discover the cost only when an audit finding or incident reveals an 'approved exception' had become permanent access.",
+      "source_url": "https://www.securends.com/blog/access-review-exception-management/",
+      "source_type": "vendor blog (search snippet; fetch blocked)",
+      "prospective": "no",
+      "reusable_how": "Exceptions are per-user grants with expiry, deliberately not reusable"
+     }
+    ],
+    "economic_pain": "Protiviti: SOX compliance internal costs rising for a portion of respondents; IAM the primary deficiency area auditors encounter (https://www.protiviti.com/sites/default/files/2024-08/empowering-sox-innovation-protiviti_global.pdf, consultancy survey snippet). No per-review cost figure found. Estimate: reviewer time per campaign is minutes per item \u00d7 tens of thousands of items, i.e. hundreds to low thousands of manager-hours per quarter at a large firm; unsourced.",
+    "existing_solutions": "IGA platforms (SailPoint, Saviynt, Okta IGA, Microsoft Entra ID Governance, ConductorOne, Veza, Lumos) with campaign engines, risk-based prioritisation, auto-approval policies, role mining and 'rubber-stamping analytics'; SAP GRC Access Control / Pathlock for SoD with mitigating controls assigned to a conflict and reused; SecurEnds/Zluri for SMB. These already persist the prospective rules (roles, birthright, auto-approve policies, mitigating controls). Exceptions are modelled as time-boxed grants, by audit design.",
+    "buyer_and_budget": "CISO / IAM lead / SOX PMO / internal audit; budget is IGA licence, already committed.",
+    "regulatory_constraints": "SOX 404 ITGCs (quarterly reviews expected), NIST SP 800-53 AC-2 periodic account review, PCI DSS 7/8, ISO 27001 A.5.18, DORA Art. 9. Auditors want a named human attester per item \u2014 humans stay in the loop after precedent (H4).",
+    "evidence_quality": "moderate",
+    "verdict": "negative",
+    "notes": "High volume and real labour, but the human review exists for attestation, not ambiguity. The reusable settlements (roles, auto-approval rules, SoD mitigating controls) live inside IGA/SAP GRC. Access-policy exceptions are intentionally non-prospective grants with expiry; making them prospective is what auditors flag as 'exception creep'."
+   },
+   {
+    "name": "Security policy exceptions and risk acceptance (GRC exception registers: ServiceNow IRM, Archer, OneTrust, MetricStream, SimpleRisk, CISO Assistant; university ISO exception processes)",
+    "geography": "Global; US universities and federal (FedRAMP/POA&M deviations) provide the public process documents",
+    "decision_volume": "No published volumes found for any organisation. University processes exist at Berkeley, UCSD, Cal Poly, UMN, RIT, Lehigh, UT System (institutional policy pages, search snippets, fetches blocked) but publish no counts. A NY State job posting exists for a role handling security exceptions (https://statejobs.ny.gov/public/vacancyDetailsView.cfm?id=211263, government job posting, fetch blocked) \u2014 headcount evidence only. Estimate: a large enterprise handles hundreds to low thousands of open exceptions; unsourced.",
+    "human_review_rate": "100% by design: every exception request is individually approved by the ISO/CISO or a risk committee; 'their approval is not automatic' and 'reviewed on a case-by-case basis' (UT System / university policy pages, search snippet: https://policy.tennessee.edu/procedure/gp-001-02-security-exceptions-and-exemptions-to-its-standards-practices-controls/, institutional policy).",
+    "why_humans_review": "Estimate, basis: the fetched data models (SimpleRisk, CISO Assistant), ServiceNow docs and university procedures. Exceptions are risk-acceptance grants, not interpretations of rule meaning: E true discretion (accept residual risk given compensating controls) 40\u201350%; G one-off circumstances (legacy device, vendor constraint) 25\u201330%; A missing evidence (compensating controls undocumented) 10%; H repeatable ambiguity that could be settled prospectively (same control unmet by the same class of asset, e.g. TLS 1.0 on a fleet of medical devices) 10\u201315%; C rule interpretation 5%. The H share is handled by scoping one exception to many assets (CISO Assistant M2M to assets/controls) or by revising the standard, which GRC tools do via policy revisions.",
+    "settlement_loop_evidence": [
+     {
+      "description": "ServiceNow IRM Policy Exception: configurable 'Default duration for which a policy exception can be requested (days)' and 'Number of extensions allowed'; extension records carry Approved extensions, Remaining extensions, Original valid to. Separately, every published policy version is immutable and change requires a new revision (major revisions return linked controls to Draft). No feature links an exception to a policy revision or applies an exception to future similar cases.",
+      "source_url": "https://www.servicenow.com/docs/r/washingtondc/governance-risk-compliance/policy-and-compliance-management/manage-policy-exceptions.html",
+      "source_type": "vendor documentation (search snippet; fetch blocked); policy lifecycle: https://www.servicenow.com/community/grc-articles/policy-lifecycle-management-in-irm-closing-the-gap-on-a-single/ta-p/3566226",
+      "prospective": "no",
+      "reusable_how": "Time-boxed grant with capped extensions; policy revision is a separate governed workflow"
+     },
+     {
+      "description": "SimpleRisk (open source GRC) exception object: linked to a policy, control or framework; owner; approver; approved flag; approval_date; review_frequency (days); next_review_date; associated_risks. No scope-to-class field, no 'applies to future cases' semantics; a job notifies owners when next_review_date arrives.",
+      "source_url": "https://raw.githubusercontent.com/simplerisk/code/master/simplerisk/api/v2/documentation/exceptions.php",
+      "source_type": "open-source vendor code (fetched)",
+      "prospective": "no",
+      "reusable_how": "Per-exception record with periodic re-review"
+     },
+     {
+      "description": "CISO Assistant (open source GRC) SecurityException: severity, status (draft, in review, approved, resolved, expired, deprecated), expiration_date, approver, owners; many-to-many from AppliedControl, Asset, RequirementAssessment, RiskScenario and Vulnerability; scheduled task warns 30 days before expiry. One exception can cover many assets/controls (class scope) but has no rule/condition that would auto-apply to new assets.",
+      "source_url": "https://raw.githubusercontent.com/intuitem/ciso-assistant-community/main/backend/core/migrations/0052_securityexception_appliedcontrol_security_exceptions_and_more.py",
+      "source_type": "open-source vendor code (fetched)",
+      "prospective": "no",
+      "reusable_how": "Manual attachment to multiple objects; expiry mandatory in practice"
+     },
+     {
+      "description": "University exception procedures: 'All exceptions are temporary and must include an expiration date'; granted 'not to exceed two years'; 'Expired exceptions are not automatically renewed' and require a new request; ISO may revoke if compensating controls lapse.",
+      "source_url": "https://policy.tennessee.edu/procedure/gp-001-02-security-exceptions-and-exemptions-to-its-standards-practices-controls/",
+      "source_type": "institutional policy (search snippet; also Berkeley https://security.berkeley.edu/quick-links/information-security-policy-exception-process, Cal Poly https://security.calpoly.edu/content/exception-process, UMN https://it.umn.edu/services-technologies/resources/request-exception-information-security)",
+      "prospective": "no",
+      "reusable_how": "Deliberately non-prospective: each renewal re-justified"
+     },
+     {
+      "description": "Vendor guidance: 'Historical exception requests can be analyzed to identify patterns that suggest recurring control weaknesses, which can guide long-term control improvements' \u2014 the recurrence \u2192 policy-change loop is described as an analytics activity, not a product feature.",
+      "source_url": "https://securityexceptions.com/articles/security-exception-workflow-design-complete-guide-risk-based-approval-processes",
+      "source_type": "vendor/consultancy article (search snippet; fetch blocked)",
+      "prospective": "unclear",
+      "reusable_how": "Recurrence feeds standard revisions, done manually"
+     }
+    ],
+    "economic_pain": "No cost-per-exception or committee-cost figures found. Pain documented qualitatively: 'security exception listings can quickly get out of control ... hasty approvals, missing expiration dates, lack of tracking compensating controls' (https://centricconsulting.com/blog/security-exceptions-the-ultimate-weakness-to-a-secure-environment/, consultancy); audit findings when 'approved exception had become permanent' (https://www.securends.com/blog/access-review-exception-management/, vendor). Error cost is breach/audit exposure, not decision labour.",
+    "existing_solutions": "ServiceNow IRM Policy Exception Management, Archer, OneTrust, MetricStream, LogicGate, Hyperproof, Drata/Vanta (SMB), SimpleRisk, CISO Assistant, Eramba; plus spreadsheets in smaller orgs (no survey figure obtained). All model exceptions as approved, expiring, re-reviewed records tied to a control/policy; none found that turn an exception into a versioned executable interpretation applied to future cases, and the audit norms discourage doing so.",
+    "buyer_and_budget": "CISO / GRC lead / internal audit; GRC platform budgets exist and are consolidated on ServiceNow/Archer/OneTrust; standalone exception tooling is a small niche (e.g. 'Spectra' at securityexceptions.com).",
+    "regulatory_constraints": "ISO 27001, PCI DSS compensating-controls worksheets (annual re-validation), NIST RMF risk acceptance by an Authorizing Official, FedRAMP deviation requests. Norms require time-boxing and re-justification, structurally opposing prospective settlement.",
+    "evidence_quality": "moderate",
+    "verdict": "negative",
+    "notes": "This is the workflow most literally named 'policy exception', and the fetched primary data models show why it does not fit: an exception is a dated grant of risk acceptance (E/G), not a settlement of what a rule means. The mechanism's step 4 ('authoritative for future cases') is exactly what these processes prohibit. Where a class of exceptions recurs, the correct fix is a standard revision, which GRC tools already version."
+   },
+   {
+    "name": "Vulnerability exceptions / risk acceptance in vulnerability management (Rapid7 InsightVM, Sysdig, ArmorCode, Phoenix, Wiz)",
+    "geography": "Global",
+    "decision_volume": "No volumes found. Vendor doc semantics only: Rapid7 exceptions 'prevent a specific vulnerability from counting against your overall risk score' and after an expiration date 'the risk is evaluated again' \u2014 https://docs.rapid7.com/insightvm/working-with-vulnerability-exceptions/ (vendor documentation, snippet). Sysdig: 'Durations cannot be extended; if risk must remain accepted after expiry, create a new exception with refreshed justification and approval' \u2014 https://docs.sysdig.com/en/sysdig-secure/risk-exceptions/ (vendor documentation, snippet).",
+    "human_review_rate": "Exceptions require a submitter and a reviewer/approver (Rapid7 roles); share of findings that get exceptions not found.",
+    "why_humans_review": "Estimate, basis: vendor docs and the Limes-Labs design issue. E true discretion (accept risk with compensating controls) 40%; B factual classification (false positive / not exploitable in this configuration) 30%; G one-off (vendor cannot patch) 15%; H repeatable (same CVE class on the same platform family; the tools handle this via scoped exceptions to asset group/site/global) 10\u201315%.",
+    "settlement_loop_evidence": [
+     {
+      "description": "Open-source vulnerability platform design (Limes-Labs issue #748): risk exceptions are 'scoped and expiring and never change a vulnerability to fixed/not affected'; require requester, owner/approver, rationale, affected scope, compensating controls, expiry/review and maximum extension policy; unresolved exposure automatically resurfaces at expiry; design 'explicitly rejects auto-acceptance of risk'.",
+      "source_url": "https://github.com/Limes-Labs/limes-axis/issues/748",
+      "source_type": "open-source practitioner design (fetched)",
+      "prospective": "no",
+      "reusable_how": "Scoped to deployments/assets; expiry forces re-decision"
+     },
+     {
+      "description": "ArmorCode: goal is not zero exceptions; metrics should track volume, age, severity, business impact and remediation trajectory.",
+      "source_url": "https://www.armorcode.com/blog/vulnerability-exceptions-management-why-the-goal-isnt-zero-exceptions",
+      "source_type": "vendor (search snippet; fetch blocked)",
+      "prospective": "unclear",
+      "reusable_how": "Register analytics"
+     }
+    ],
+    "economic_pain": "Not quantified in sources found. Error cost is exploitation of an accepted vulnerability; labour is the approval chain.",
+    "existing_solutions": "Every scanner/ASPM (Rapid7, Tenable, Qualys, Wiz, Sysdig, ArmorCode, Phoenix, Nucleus) has an exception object with scope, reason, approver and expiry; several support class scope (all instances of a CVE on an asset group). Settlement-as-scoped-rule already exists.",
+    "buyer_and_budget": "Vulnerability management lead / AppSec; budget already in scanner/ASPM.",
+    "regulatory_constraints": "PCI DSS 6/11 and FedRAMP require documented risk acceptance with expiry; auditors want per-instance justification.",
+    "evidence_quality": "weak",
+    "verdict": "negative",
+    "notes": "Same structure as GRC exceptions: time-boxed grants, not interpretations; class scoping is an incumbent feature."
+   },
+   {
+    "name": "Firewall / network security policy change requests (Tufin, AlgoSec, FireMon)",
+    "geography": "Global enterprise; case study is a Big Four firm",
+    "decision_volume": "Tufin case study (vendor): a Big Four professional services organisation received over 11,000 change requests annually \u2014 https://www.tufin.com/resources/case-studies/big-four-professional-services-organization-leverages-tufin-securetrack-and-securechange (vendor, fetch blocked, search snippet). Tufin survey of 200 network security professionals: 93.6% of firewall change requests are application-related \u2014 https://www.tufin.com/pr/tufin-survey-reveals-the-number-one-use-case-for-firewall-management-is-to-ensure-secure-application-connectivity (vendor survey).",
+    "human_review_rate": "Not sourced. Vendors claim 60\u201390% reduction in rule change handling time and SLAs cut from over two months to under a week (Tufin case study; AlgoSec comparison page https://www.algosec.com/resources/algosec-vs-tufin-vs-firemon, vendor), implying most requests were manually reviewed before NSPM.",
+    "why_humans_review": "Estimate, basis: NSPM product design (unified security policy matrices) and the application-related share. Fully deterministic once the zone-to-zone policy is encoded 60\u201370%; B factual classification (which zone/app does this host belong to) 15%; A missing evidence (business justification, ticket details) 10%; H repeatable ambiguity (recurring 'is flow X between zones Y and Z acceptable' settled by adding it to the unified policy) 5\u201310%; E/G residual risk sign-offs 5%.",
+    "settlement_loop_evidence": [
+     {
+      "description": "NSPM engines encode the organisation's segmentation policy as an executable matrix; each change request is checked against it and either auto-approved or flagged as a violation needing risk sign-off; rule bases nevertheless accumulate: one vendor-neutral blog claims 47% unused rules, 23% shadow rules, 12% conflicts, 15\u201320% annual growth (unattributed, weak).",
+      "source_url": "https://www.decryptiondigest.com/blog/firewall-rule-audit-cleanup-guide",
+      "source_type": "blog (search snippet; unattributed statistics; fetch blocked)",
+      "prospective": "yes",
+      "reusable_how": "Settled flows become unified-policy entries applied to all future requests; but the 'settlement' is a technical allow rule, not an interpretation"
+     }
+    ],
+    "economic_pain": "Vendor-claimed: firewall rule review and audit preparation time reduced 50\u201360%; SLA from >2 months to <1 week (https://www.algosec.com/resources/algosec-vs-tufin-vs-firemon and Tufin case study, vendor). Independent cost figures not found.",
+    "existing_solutions": "Tufin SecureChange, AlgoSec FireFlow, FireMon Policy Manager, Skybox, Opinnate; ServiceNow change management integration. The executable-precedent engine already exists and is the product category.",
+    "buyer_and_budget": "Network security manager; NSPM spend already committed.",
+    "regulatory_constraints": "PCI DSS 1.x semi-annual rule review; no prohibition on automation.",
+    "evidence_quality": "weak",
+    "verdict": "negative",
+    "notes": "H3 and H6 fully supported: NSPM is a 30-year-old category whose core is exactly 'policy owner settles which flows are acceptable; the engine applies it to every later request'."
+   },
+   {
+    "name": "DLP incident adjudication (business-justification decisions on blocked/flagged transfers)",
+    "geography": "Global; US/EU large enterprises with Purview, Proofpoint, Symantec, Cyberhaven, Forcepoint",
+    "decision_volume": "Vendor-cited: analysts face 960 security alerts per day on average; enterprises with >20,000 employees see over 3,000 per day; target 20\u201330 alerts per analyst per day \u2014 https://spin.ai/blog/dlp-alert-fatigue-ai-prioritization/ (vendor). Legacy DLP false-positive rate averages 35% and reaches 90% in some deployments \u2014 https://www.cyberhaven.com/blog/dlp-false-positives (vendor).",
+    "human_review_rate": "Not sourced; DLP programs typically triage all high-severity incidents manually. Practitioners treat FP rates above 20\u201330% as a detection accuracy problem (https://www.cyberhaven.com/infosec-essentials/dlp-false-positives, vendor).",
+    "why_humans_review": "Estimate, basis: vendor guidance on tuning and the nature of DLP incidents. B factual classification (is this document actually sensitive; is the recipient a legitimate partner) 40%; A missing evidence (need to ask the user/manager for business purpose) 25%; H repeatable ambiguity settled prospectively (e.g. 'finance may send payroll files to vendor X'; 'this file pattern is a test fixture, not PII') 20\u201325%; E discretion 5\u201310%; C 5%.",
+    "settlement_loop_evidence": [
+     {
+      "description": "Cyberhaven: 'Programs that systematically capture analyst decisions and feed them back into policy refinement get more precise over time'; recommends testing tightened rules against historical incidents to estimate FP rate before deployment. Vendor claims AI triage cut alert workload 61% over six months with 1.36% false-negative rate.",
+      "source_url": "https://www.cyberhaven.com/blog/dlp-false-positives",
+      "source_type": "vendor (search snippet; fetch blocked)",
+      "prospective": "yes",
+      "reusable_how": "Adjudications become policy exceptions/allow rules inside the DLP product"
+     }
+    ],
+    "economic_pain": "Labour of daily triage (hundreds to thousands of alerts/day per vendor figures above); error cost is data leak or blocked legitimate business. No independent cost-per-incident figure found.",
+    "existing_solutions": "DLP suites' own exception/justification mechanisms (user override with justification, sender/recipient allowlists, policy scoping), adaptive/ML classification (Purview, Cyberhaven, Spin.AI), SOAR. The recurring settlement ('this business flow is allowed') is an allow rule in the DLP policy.",
+    "buyer_and_budget": "CISO / data protection officer / insider risk team; DLP budget already committed.",
+    "regulatory_constraints": "GDPR/CCPA require handling of personal data incidents; no prohibition on automated adjudication of low-severity events.",
+    "evidence_quality": "weak",
+    "verdict": "weak",
+    "notes": "The highest H share in the cluster after SOC triage, but the same H3/H6 story: DLP vendors position tuning-from-adjudication as their own feature, and the evidence base is entirely vendor marketing."
+   },
+   {
+    "name": "AI-agent permission policies and tool-call approvals (AWS Bedrock AgentCore Policy, Microsoft Agent Governance Toolkit, Permit.io, Ramp Policy Agent, coding-agent permission prompts)",
+    "geography": "Global; US-based platform vendors",
+    "decision_volume": "Owner's own coding-agent history: 9,404 tool calls; at the finest safe grant level 906 settlements cover 90% of calls, 47.5% never reused, median 2 later calls (prior_evidence.md, private dataset). No public volumes found for enterprise agent approvals.",
+    "human_review_rate": "Yan 2026 (academic, arXiv 2608.27443, n=113 non-technical participants): when writing standing allow/ask/never rules, participants chose 'ask' for 114 of 140 rules, sending the decision back to runtime; the policy condition blocked about 20 percentage points less overreach than per-action HITL approval and about 14.5 points less than automated model review \u2014 https://arxiv.org/abs/2608.27443 (academic; search snippet, fetch blocked).",
+    "why_humans_review": "Estimate, basis: Yan 2026 and the owner's own data. B factual classification (is this specific action's consequence acceptable) 40%; H repeatable ambiguity settled prospectively (standing allow rules) 25\u201335% but with the owner's data showing nearly half of settlements never reused; E true discretion (the user simply wants to be asked) 20\u201330%; A missing context 10%.",
+    "settlement_loop_evidence": [
+     {
+      "description": "Microsoft Agent Governance Toolkit ADR 0030 'action-bound approval protocol': approvals are bound to an action_digest (SHA-256 over canonical action), carry expires_at, must not be 'expired, cancelled, denied, or already consumed', and 'an approval for one binding cannot authorize another'. The ADR does not address converting approvals into standing rules. Policy rules (YAML/Rego/Cedar) use require_approval with named approvers.",
+      "source_url": "https://raw.githubusercontent.com/microsoft/agent-governance-toolkit/main/docs/adr/0030-action-bound-approval-protocol.md",
+      "source_type": "vendor open-source design record (fetched)",
+      "prospective": "no",
+      "reusable_how": "Deliberately non-reusable; standing rules must be authored separately in policy files"
+     },
+     {
+      "description": "AWS AgentCore Policy samples: PolicyClient.generate_policy() converts English ('Allow users to invoke the application tool when coverage < 1000000 and region is US or CA') to Cedar; ENFORCE mode is deny-by-default; MONITOR mode logs only; validation findings can be ignored with IGNORE_ALL_FINDINGS; no approval workflow, versioning discussion, or denied-request-to-policy loop documented.",
+      "source_url": "https://raw.githubusercontent.com/awslabs/amazon-bedrock-agentcore-samples/main/01-features/07-centralize-and-govern-your-ai-infrastructure/02-policy/README.md",
+      "source_type": "vendor sample code and documentation (fetched)",
+      "prospective": "yes",
+      "reusable_how": "Authored Cedar policies apply to all future tool calls; the settlement step (who decided, from which escalation) is absent"
+     },
+     {
+      "description": "Permit.io Access Request MCP: distinguishes access requests (a role on a resource, standing) from operation approvals (one-time approval of an action on a resource instance, e.g. an order above $10); approver assigns an _Approved_ role on the instance.",
+      "source_url": "https://github.com/permitio/docs/blob/main/docs/ai-security/access-request-mcp/implementation-guide.mdx",
+      "source_type": "vendor documentation (GitHub search)",
+      "prospective": "yes",
+      "reusable_how": "Standing vs one-time is a first-class distinction; no promotion of one-time approvals into standing rules"
+     },
+     {
+      "description": "Ramp Policy Agent: marks expenses 'Requires review' when policy language or the submission is ambiguous; 'Policy Suggestions' reviews the policy for ambiguity, contradictions or gaps and presents suggested edits; only admins edit and Publish the agent-facing policy; 'See publish history' shows versions and diffs.",
+      "source_url": "https://support.ramp.com/hc/en-us/articles/49015569046547-Policy-Suggestions-the-Policy-Agent",
+      "source_type": "vendor documentation (search snippet; fetch blocked)",
+      "prospective": "yes",
+      "reusable_how": "Ambiguity detected \u2192 suggested policy edit \u2192 admin publishes \u2192 applies to future expenses; a shipped settlement loop inside a vertical product"
+     }
+    ],
+    "economic_pain": "Unquantified publicly; the cost is approval fatigue (Microsoft AGT spec includes fatigue_threshold soft caps on approvals per agent, https://raw.githubusercontent.com/microsoft/agent-governance-toolkit/main/policy-engine/spec/SPECIFICATION.md, fetched) and overreach risk (Yan 2026).",
+    "existing_solutions": "AWS AgentCore Policy (Cedar, NL authoring, monitor/enforce), Microsoft AGT (require_approval, action-bound approvals), Permit.io, Auth0 async approvals, Ramp Policy Agent, Anthropic/Cursor/Codex permission modes. None found with typed, versioned interpretations carrying who/when/what power that promote an escalation into a standing rule, consistent with prior_evidence (~65% confidence).",
+    "buyer_and_budget": "Platform/AI engineering leads; budget nascent; incumbents give the control plane away (open source or bundled in the cloud platform).",
+    "regulatory_constraints": "EU AI Act human-oversight expectations for high-risk uses; otherwise none. Design norms (action-bound approvals) resist standing grants for safety reasons.",
+    "evidence_quality": "moderate",
+    "verdict": "uncertain",
+    "notes": "The only workflow where the missing piece (escalation \u2192 typed, versioned standing rule) is genuinely unshipped, but the evidence points the wrong way: users prefer 'ask me' (114/140), pre-authored rules blocked less overreach, and half the owner's own settlements were never reused. Ramp shows the loop being built as a feature of a vertical product (H6)."
+   },
+   {
+    "name": "Break-glass / emergency privileged access",
+    "geography": "Global; healthcare (HIPAA), federal IAM",
+    "decision_volume": "Not found. Yale HIPAA and federal IAM guidance describe pre-staged break-glass roles with post-event review of every invocation (https://hipaa.yale.edu/security/break-glass-procedure-granting-emergency-access-critical-ephi-systems, institutional policy, snippet; https://anchor-defense.com/articles/break-glass-access-federal-iam/, consultancy).",
+    "human_review_rate": "100% post-hoc: 'every break-glass invocation must produce a documented review' (https://nhimg.org/faq/why-does-break-glass-access-create-so-much-audit-and-compliance-risk/, vendor community, snippet).",
+    "why_humans_review": "Estimate: G one-off circumstances 70%+; B (was the trigger legitimate) 20%; H under 10%. Emergency access is definitionally non-recurring in its justification.",
+    "settlement_loop_evidence": [
+     {
+      "description": "Guidance stresses the control 'fails when teams rely on manual approvals and post-hoc memory instead of durable, automated evidence' and that the issue is preventing emergency access from 'becoming standing privilege by another name'.",
+      "source_url": "https://nhimg.org/community/nhi-support-guidance-forum/break-glass-for-privileged-accounts-are-your-controls-ready/",
+      "source_type": "vendor community (search snippet)",
+      "prospective": "no",
+      "reusable_how": "Not reusable by design"
+     }
+    ],
+    "economic_pain": "Audit findings when undocumented; low volume.",
+    "existing_solutions": "PAM vaults (CyberArk, Delinea, BeyondTrust), Entra PIM, Epic 'break the glass' with audit; post-hoc review in SIEM/GRC.",
+    "buyer_and_budget": "IAM/PAM lead; already in PAM budget.",
+    "regulatory_constraints": "HIPAA emergency access procedure (45 CFR 164.312(a)(2)(ii)); reviews are mandatory.",
+    "evidence_quality": "weak",
+    "verdict": "negative",
+    "notes": "Fails on volume and on recurrence; each event is G by definition."
+   }
+  ],
+  "evidence_against_thesis": [
+   "Security exceptions are time-boxed risk-acceptance grants, not interpretations: every primary data model fetched (ServiceNow policy exception duration and extension caps; SimpleRisk review_frequency/next_review_date; CISO Assistant expiration_date with statuses expired/deprecated; Limes-Labs 'scoped and expiring, never change to fixed'; Sysdig 'durations cannot be extended') encodes expiry and re-justification. The mechanism's step 4 (settlement authoritative for future cases) is what audit norms call 'exception creep' and actively police (university procedures: not auto-renewed, max two years).",
+   "Where a settlement loop does exist in this cluster it is already executable inside incumbents: Elastic shared exception lists created from an alert and applied to future alerts; Prisma Cloud auto-dismiss alert rules per policy; NSPM unified security policies (Tufin/AlgoSec/FireMon); IGA auto-approval and role policies; SAP GRC mitigating controls; DLP allow rules. H3 and H6 supported.",
+   "Most human review labour is factual classification with local context (Alahmadi 2022: most 'false positives' are benign triggers explained by legitimate organisational behaviour) or regulatory attestation (SOX access certifications require a human attester per item), not interpretation of an ambiguous rule. H1 and H4 supported for the IAM and SOC workflows.",
+   "For AI-agent permissions, the evidence runs against pre-settled standing rules: Yan 2026 found 114 of 140 user-authored rules were 'ask me' and the policy condition blocked ~20 points less overreach than per-action approval; Microsoft's ADR 0030 deliberately binds approvals to a single action digest with expiry and no replay; the owner's own data shows 47.5% of settlements never reused.",
+   "No independent (non-vendor) quantitative data on exception volumes, recurrence share, committee cost or cost-per-exception was found for any workflow in this cluster; GRC and NSPM pain figures are vendor claims (50\u201390% time reductions) and the SOC figures are vendor-sponsored Ponemon research from 2015.",
+   "Ramp's Policy Agent (ambiguity \u2192 'Requires review' \u2192 Policy Suggestions \u2192 admin publishes with versioned diff history) demonstrates the settlement loop being shipped as a feature of a vertical product rather than a standalone layer."
+  ],
+  "not_found": [
+   "Any published count of security policy exceptions per year, share recurring, or average duration at a named organisation (enterprise, university or agency).",
+   "Cost or headcount of security exception review boards / risk acceptance committees.",
+   "Independent (regulator, audit or academic) measurement of access-certification approval vs revocation rates; only a practitioner blog's 3\u20135% revoke-quota heuristic.",
+   "Share of vulnerability findings that receive exceptions, and renewal rates at expiry.",
+   "Firewall change requests: share auto-approved vs manually reviewed, and share that are exceptions to the unified policy (only one vendor case study: >11,000 requests/year).",
+   "Audit or inspector-general reports quantifying stale/expired-but-active exceptions (findings exist qualitatively: DHS OIG FY2009, NCUA OIG 2023, but no percentages retrievable).",
+   "SANS 2025 SOC Survey primary PDF figures on analyst headcount and alerts per analyst (PDF blocked; only press-release percentages).",
+   "FireMon 'State of the Firewall' report numbers on changes per week and misconfiguration rates (search budget exhausted before retrieval).",
+   "SAP GRC SoD conflict and mitigating-control volumes (search budget exhausted).",
+   "Break-the-glass event volumes in hospitals (search budget exhausted).",
+   "Surveys on the share of organisations tracking exceptions in spreadsheets vs GRC tools."
+  ],
+  "sources": [
+   {
+    "url": "https://www.securityweek.com/false-positive-alerts-cost-organizations-13-million-year-report/",
+    "type": "press reporting Ponemon/Damballa vendor-sponsored research",
+    "used_for": "16,937 alerts/week, 19% reliable, 4% investigated, 395 hours/week, $1.3M/yr, 25 min per alert"
+   },
+   {
+    "url": "https://www.ponemon.org/local/upload/file/Damballa%20Malware%20Containment%20FINAL%203.pdf",
+    "type": "research firm (vendor-sponsored)",
+    "used_for": "Primary source of the Ponemon malware containment figures"
+   },
+   {
+    "url": "https://www.secure.com/blog/soc/soc-alerts",
+    "type": "vendor blog",
+    "used_for": "46\u201383% FP range, 10\u201330% need human, escalation <20%, 20\u201330 minutes per alert"
+   },
+   {
+    "url": "https://www.globenewswire.com/news-release/2025/07/01/3108422/0/en/SANS-2025-SOC-Survey-Exposes-Critical-Gaps-and-What-Top-Teams-Are-Doing-Right.html",
+    "type": "industry association survey press release (SANS 2025 SOC Survey)",
+    "used_for": "67% short-staffed, 71% burnout, 79% 24/7, 69% manual reporting, 42% SIEM dumping"
+   },
+   {
+    "url": "https://www.elastic.co/pdf/sans-soc-survey-2025.pdf",
+    "type": "industry association survey (PDF, blocked)",
+    "used_for": "Primary SANS document; not retrievable"
+   },
+   {
+    "url": "https://www.securitytoday.de/en/2026/07/03/false-positives-in-soc-separating-signal-from-noise/",
+    "type": "press citing SANS Detection & Response Survey 2025",
+    "used_for": "73% name false positives top detection challenge"
+   },
+   {
+    "url": "https://www.usenix.org/system/files/sec22-alahmadi.pdf",
+    "type": "academic (USENIX Security 2022)",
+    "used_for": "n=20/n=21; most FPs are benign triggers explained by legitimate behaviour"
+   },
+   {
+    "url": "https://redcanary.com/threat-detection-report/methodology/",
+    "type": "vendor",
+    "used_for": "419M leads \u2192 8.5M events \u2192 110,000 confirmed threats (2025)"
+   },
+   {
+    "url": "https://expel.com/cyberspeak/cost-to-build-and-operate-a-24x7-soc/",
+    "type": "vendor",
+    "used_for": "$1.5M\u2013$5M/yr 24/7 SOC cost"
+   },
+   {
+    "url": "https://www.bitdefender.com/en-us/blog/businessinsights/every-hour-socs-run-15-minutes-are-wasted-on-false-positives",
+    "type": "vendor",
+    "used_for": "15 minutes per SOC hour on false positives"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/elastic/docs-content/main/solutions/security/detect-and-alert/add-manage-exceptions.md",
+    "type": "vendor documentation (fetched)",
+    "used_for": "Rule exceptions apply prospectively, shared lists, created from alerts, expiry; no review/versioning"
+   },
+   {
+    "url": "https://docs.prismacloud.io/content-collections/alerts/view-respond-to-prisma-cloud-alerts",
+    "type": "vendor documentation",
+    "used_for": "Auto-dismiss alert rules per policy, snooze/dismiss"
+   },
+   {
+    "url": "https://www.cyberhaven.com/blog/dlp-false-positives",
+    "type": "vendor",
+    "used_for": "DLP FP 35% avg up to 90%; capture analyst decisions into policy refinement; 61% workload cut claim"
+   },
+   {
+    "url": "https://spin.ai/blog/dlp-alert-fatigue-ai-prioritization/",
+    "type": "vendor",
+    "used_for": "960 alerts/day average; >3,000/day at >20k employees; 20\u201330 per analyst target"
+   },
+   {
+    "url": "https://www.tufin.com/resources/case-studies/big-four-professional-services-organization-leverages-tufin-securetrack-and-securechange",
+    "type": "vendor case study",
+    "used_for": ">11,000 firewall change requests annually; SLA >2 months to <1 week"
+   },
+   {
+    "url": "https://www.tufin.com/pr/tufin-survey-reveals-the-number-one-use-case-for-firewall-management-is-to-ensure-secure-application-connectivity",
+    "type": "vendor survey (n=200)",
+    "used_for": "93.6% of firewall change requests application-related"
+   },
+   {
+    "url": "https://www.algosec.com/resources/algosec-vs-tufin-vs-firemon",
+    "type": "vendor",
+    "used_for": "50\u201360% and 60\u201390% time-reduction claims"
+   },
+   {
+    "url": "https://www.decryptiondigest.com/blog/firewall-rule-audit-cleanup-guide",
+    "type": "blog (unattributed statistics)",
+    "used_for": "47% unused, 23% shadow, 12% conflicting rules; 15\u201320%/yr growth (weak)"
+   },
+   {
+    "url": "https://www.servicenow.com/docs/r/washingtondc/governance-risk-compliance/policy-and-compliance-management/manage-policy-exceptions.html",
+    "type": "vendor documentation",
+    "used_for": "Policy exception default duration and extension caps"
+   },
+   {
+    "url": "https://www.servicenow.com/community/grc-articles/policy-lifecycle-management-in-irm-closing-the-gap-on-a-single/ta-p/3566226",
+    "type": "vendor community article",
+    "used_for": "Immutable policy versions; major/minor revisions"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/simplerisk/code/master/simplerisk/api/v2/documentation/exceptions.php",
+    "type": "open-source vendor code (fetched)",
+    "used_for": "SimpleRisk exception data model"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/intuitem/ciso-assistant-community/main/backend/core/migrations/0052_securityexception_appliedcontrol_security_exceptions_and_more.py",
+    "type": "open-source vendor code (fetched)",
+    "used_for": "CISO Assistant SecurityException model and relations"
+   },
+   {
+    "url": "https://github.com/Limes-Labs/limes-axis/issues/748",
+    "type": "open-source practitioner design issue (fetched)",
+    "used_for": "Scoped expiring exceptions; rejects auto-acceptance"
+   },
+   {
+    "url": "https://docs.rapid7.com/insightvm/working-with-vulnerability-exceptions/",
+    "type": "vendor documentation",
+    "used_for": "Exceptions exclude from risk score; re-evaluated at expiry"
+   },
+   {
+    "url": "https://docs.sysdig.com/en/sysdig-secure/risk-exceptions/",
+    "type": "vendor documentation",
+    "used_for": "Durations cannot be extended; new exception required"
+   },
+   {
+    "url": "https://www.armorcode.com/blog/vulnerability-exceptions-management-why-the-goal-isnt-zero-exceptions",
+    "type": "vendor",
+    "used_for": "Exception metrics guidance"
+   },
+   {
+    "url": "https://policy.tennessee.edu/procedure/gp-001-02-security-exceptions-and-exemptions-to-its-standards-practices-controls/",
+    "type": "institutional policy",
+    "used_for": "Exceptions temporary, max two years, case-by-case, not automatic"
+   },
+   {
+    "url": "https://security.berkeley.edu/quick-links/information-security-policy-exception-process",
+    "type": "institutional policy",
+    "used_for": "University exception process (not auto-renewed)"
+   },
+   {
+    "url": "https://securityexceptions.com/articles/security-exception-workflow-design-complete-guide-risk-based-approval-processes",
+    "type": "vendor/consultancy article",
+    "used_for": "Recurring exceptions analysed to guide control improvements"
+   },
+   {
+    "url": "https://centricconsulting.com/blog/security-exceptions-the-ultimate-weakness-to-a-secure-environment/",
+    "type": "consultancy",
+    "used_for": "Exception registers get out of control; missing expirations"
+   },
+   {
+    "url": "https://www.securends.com/blog/access-review-exception-management/",
+    "type": "vendor",
+    "used_for": "Approved exception became permanent access; audit findings"
+   },
+   {
+    "url": "https://www.protiviti.com/sites/default/files/2024-08/empowering-sox-innovation-protiviti_global.pdf",
+    "type": "consultancy survey",
+    "used_for": "IT access controls most-deficient area; SoD and access review gaps"
+   },
+   {
+    "url": "https://www.zluri.com/blog/sox-itgc",
+    "type": "vendor",
+    "used_for": "Quarterly access review expectation"
+   },
+   {
+    "url": "https://startwithidentity.com/articles/access-review-certification-best-practices/",
+    "type": "practitioner blog",
+    "used_for": "3\u20135% minimum revoke quota against rubber-stamping"
+   },
+   {
+    "url": "https://ncua.gov/files/audit-reports/oig-audit-ncua-cybersecurity-may-2023.pdf",
+    "type": "inspector-general audit",
+    "used_for": "Privileged-user recertification finding"
+   },
+   {
+    "url": "https://www.oig.dhs.gov/sites/default/files/assets/Mgmt/OIGr_10-110_Aug10.pdf",
+    "type": "inspector-general audit",
+    "used_for": "Recertifications not formally performed (FY2009)"
+   },
+   {
+    "url": "https://community.sailpoint.com/mpomh84452/attachments/mpomh84452/IIQ_docs/611/1/8.3_IdentityIQ_Certifications_and_Access_Reviews.pdf",
+    "type": "vendor documentation",
+    "used_for": "Certification campaign mechanics"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/microsoft/agent-governance-toolkit/main/docs/adr/0030-action-bound-approval-protocol.md",
+    "type": "vendor open-source design record (fetched)",
+    "used_for": "Action-digest-bound approvals, expiry, no replay, no standing approvals"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/microsoft/agent-governance-toolkit/main/policy-engine/spec/SPECIFICATION.md",
+    "type": "vendor open-source spec (fetched)",
+    "used_for": "enforced_identity binding; fatigue_threshold; no approval persistence"
+   },
+   {
+    "url": "https://github.com/microsoft/agent-governance-toolkit",
+    "type": "vendor open source",
+    "used_for": "require_approval policy action, approvers"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/awslabs/amazon-bedrock-agentcore-samples/main/01-features/07-centralize-and-govern-your-ai-infrastructure/02-policy/README.md",
+    "type": "vendor sample documentation (fetched)",
+    "used_for": "NL2Cedar, ENFORCE vs MONITOR, no approval or versioning workflow"
+   },
+   {
+    "url": "https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/policy-natural-language.html",
+    "type": "vendor documentation",
+    "used_for": "NL authoring with automated reasoning checks"
+   },
+   {
+    "url": "https://github.com/permitio/docs/blob/main/docs/ai-security/access-request-mcp/implementation-guide.mdx",
+    "type": "vendor documentation",
+    "used_for": "Standing access requests vs one-time operation approvals"
+   },
+   {
+    "url": "https://support.ramp.com/hc/en-us/articles/49015569046547-Policy-Suggestions-the-Policy-Agent",
+    "type": "vendor documentation",
+    "used_for": "Ambiguity \u2192 Requires review \u2192 Policy Suggestions \u2192 admin publish with diff history"
+   },
+   {
+    "url": "https://arxiv.org/abs/2608.27443",
+    "type": "academic preprint",
+    "used_for": "Yan 2026: n=113, 114 of 140 rules 'ask', policy blocked ~20 pts less overreach than HITL, 14.5 less than AUTO"
+   },
+   {
+    "url": "https://hipaa.yale.edu/security/break-glass-procedure-granting-emergency-access-critical-ephi-systems",
+    "type": "institutional policy",
+    "used_for": "Break-glass documentation and review requirement"
+   },
+   {
+    "url": "https://nhimg.org/community/nhi-support-guidance-forum/break-glass-for-privileged-accounts-are-your-controls-ready/",
+    "type": "vendor community",
+    "used_for": "Post-event review of every break-glass invocation"
+   },
+   {
+    "url": "https://statejobs.ny.gov/public/vacancyDetailsView.cfm?id=211263",
+    "type": "government job posting",
+    "used_for": "Existence of a dedicated exception-handling role (headcount evidence only)"
+   }
+  ],
+  "blocked_urls": [
+   "https://www.elastic.co/pdf/sans-soc-survey-2025.pdf",
+   "https://www.tufin.com/resources/case-studies/big-four-professional-services-organization-leverages-tufin-securetrack-and-securechange",
+   "https://www.servicenow.com/docs/r/washingtondc/governance-risk-compliance/policy-and-compliance-management/manage-policy-exceptions.html",
+   "https://ncua.gov/files/audit-reports/oig-audit-ncua-cybersecurity-may-2023.pdf",
+   "https://www.usenix.org/system/files/sec22-alahmadi.pdf",
+   "https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/policy.html",
+   "https://arxiv.org/abs/2608.27443",
+   "https://security.berkeley.edu/quick-links/information-security-policy-exception-process",
+   "https://www.securityweek.com/false-positive-alerts-cost-organizations-13-million-year-report/",
+   "https://www.oversight.gov/reports/audit/gsa-not-monitoring-data-access-card-readers-identify-risks-gsa-personnel-and-federal",
+   "https://expel.com/cyberspeak/cost-to-build-and-operate-a-24x7-soc/",
+   "https://www.cyberhaven.com/blog/dlp-false-positives",
+   "https://www.securends.com/blog/access-review-exception-management/",
+   "https://www.armorcode.com/blog/vulnerability-exceptions-management-why-the-goal-isnt-zero-exceptions",
+   "https://securityexceptions.com/articles/security-exception-workflow-design-complete-guide-risk-based-approval-processes",
+   "https://www.gao.gov/products/gao-17-159",
+   "https://pith.science/paper/2608.27443",
+   "https://support.ramp.com/hc/en-us/articles/49015569046547-Policy-Suggestions-the-Policy-Agent",
+   "https://www.protiviti.com/sites/default/files/2024-08/empowering-sox-innovation-protiviti_global.pdf",
+   "https://www.cs.ox.ac.uk/publications/publication14673-abstract.html",
+   "https://docs.rapid7.com/insightvm/working-with-vulnerability-exceptions/",
+   "https://www.fedramp.gov/legacy/playbook/csp/authorization/poam/",
+   "https://statejobs.ny.gov/public/vacancyDetailsView.cfm?id=211263",
+   "https://www.dhs.gov/sites/default/files/2023-06/4300A%20ITSSP%20SS%20Attachment%20H%20Plan%20of%20Action%20and%20Milestone%20(POAM)%20Guide.pdf",
+   "https://www.decryptiondigest.com/blog/firewall-rule-audit-cleanup-guide",
+   "https://security.cms.gov/learn/cms-plan-action-and-milestones-poam-handbook",
+   "https://csrc.nist.gov/projects/risk-management/sp800-53-controls/release-search",
+   "https://pan.dev/prisma-cloud/api/cspm/dismiss-alerts/",
+   "https://docs.sysdig.com/en/sysdig-secure/risk-exceptions/",
+   "https://ora.ox.ac.uk/objects/uuid:0be05f6b-7470-4210-acb6-2018d5dc6ca0",
+   "https://hipaa.yale.edu/security/break-glass-procedure-granting-emergency-access-critical-ephi-systems",
+   "https://opensource.microsoft.com/blog/2026/04/02/introducing-the-agent-governance-toolkit-open-source-runtime-security-for-ai-agents/",
+   "https://nhimg.org/faq/why-do-user-access-reviews-fail-even-when-a-policy-exists/",
+   "https://blog.pebblous.ai/blog/user-authored-permission-rules-overreach/en/",
+   "https://api.semanticscholar.org/graph/v1/paper/"
+  ],
+  "domain_assessment": "Negative for a standalone Sophon-shaped product in cybersecurity and access control, with one uncertain corner (AI-agent permissions). Method note: 25 WebSearch queries were run before the session-wide search budget was exhausted; 40+ fetch attempts were made, of which only GitHub-hosted sources succeeded (Elastic docs-content, Microsoft Agent Governance Toolkit ADR and spec, AWS AgentCore samples, SimpleRisk and CISO Assistant exception models, Limes-Labs issue, Permit.io docs); everything else relies on search snippets and is flagged as such. Findings. (1) The cluster's literal 'exceptions' \u2014 security policy exceptions, access-policy exceptions, vulnerability exceptions, break-glass \u2014 are time-boxed risk-acceptance grants. Every primary data model retrieved encodes expiry, re-review and re-justification (ServiceNow duration/extension caps; SimpleRisk review_frequency/next_review_date; CISO Assistant expiration_date and expired/deprecated statuses; Sysdig no-extension rule; university 'not auto-renewed, max two years'). They are categories E and G, and audit norms deliberately prevent them from becoming prospective settlements, so the mechanism's step 4 is not merely absent but disallowed. (2) Where the settlement loop genuinely exists \u2014 SOC benign-trigger exceptions, DLP allow rules, NSPM unified policies, IGA auto-approval and SoD mitigating controls, CSPM auto-dismiss rules \u2014 it is already executable and prospective inside the incumbent tool (Elastic: exception created from an alert, applied to future alerts, shareable across rules). What is missing there is governance (approver, rationale, expiry, review), which is a feature that detection-as-code and GRC integrations are absorbing, not a product. (3) Independent evidence that most manual review is interpretation of ambiguous rules is absent; the best academic source (Alahmadi 2022) says most SOC 'false positives' are benign triggers, i.e. contextual factual classification; SOX access certifications are human by regulatory attestation. (4) Volumes and pain are large only in SOC and DLP triage (Ponemon 16,937 alerts/week, 4% investigated; 960 DLP alerts/day) and those figures are vendor-sponsored; no exception-register volume, recurrence share, committee cost or cost-per-exception was found for any organisation. (5) AI-agent permission policy is the one place where the escalation-to-standing-rule ledger is unshipped (AWS AgentCore has NL-to-Cedar and monitor/enforce but no approval or versioning workflow; Microsoft AGT binds approvals to a single action digest with expiry and no replay; Permit.io separates one-time from standing), but the evidence on demand is adverse: Yan 2026's participants chose 'ask me' for 114 of 140 rules and standing rules blocked less overreach, and the owner's own data shows 47.5% of settlements never reused. Ramp's Policy Agent shows the loop shipping as a feature of a vertical product. If anything in this cluster deserves a base-rate experiment, it is a sample of 200\u2013500 SOC or DLP analyst dispositions classified for 'recurring, previously-settled benign trigger' versus 'new context', using an organisation's exception list history \u2014 but the likely outcome is confirmation that the SIEM already holds those settlements."
+ },
+ "verification": {
+  "domain": "cybersecurity-and-access-control",
+  "refuted": [
+   {
+    "claim": "AI-agent permission policies: 'the missing piece (escalation to a typed, versioned standing rule) is genuinely unshipped' / 'none found ... that promote an escalation into a standing rule'.",
+    "why": "Claude Code's permissions documentation (vendor documentation, fetched: https://code.claude.com/docs/en/permissions) states that choosing 'Yes, and don't ask again' at a prompt saves the rule to .claude/settings.local.json 'Permanently per repository and command', that 'the rule applies to future sessions anywhere in that repository', that compound approvals are split into up to 5 separate rules, and that 'You can check permission settings into version control to share them with every developer in your organization'. That is an escalation (prompt) turned into a standing allow rule, persisted, applied prospectively, and versionable via git (who/when from commits). What remains unshipped is only typed semantics (what power, expiry) and an approver field, which is a feature gap in a shipped incumbent flow, i.e. H6, not an open slot for a product."
+   },
+   {
+    "claim": "Access certification is '100% by construction: certifications require a named human reviewer to attest to each item'.",
+    "why": "Microsoft Entra access-review docs (vendor documentation, fetched from GitHub source: https://raw.githubusercontent.com/MicrosoftDocs/entra-docs/main/docs/id-governance/create-access-review.md) offer 'If reviewers don't respond' = 'No change' / 'Remove access' / 'Approve access' / 'Take recommendations', plus 'Auto apply results to resource', and warn that with those settings 'all access to this resource could potentially be revoked if the reviewers fail to respond'. Recommendations are machine-generated (30-day inactivity, ML 'User-to-Group Affiliation' peer-outlier: https://raw.githubusercontent.com/MicrosoftDocs/entra-docs/main/docs/id-governance/review-recommendations-access-reviews.md). So per-item human attestation is an audit norm, not a tooling constraint, and the incumbent already encodes the default decision. This strengthens the finder's negative verdict but the '100% by construction' framing is wrong."
+   }
+  ],
+  "weakened": [
+   {
+    "claim": "SOC volume and pain figures: 16,937 alerts/week, 19% reliable, 4% investigated, 395 hours/week, $1.3M/yr, 25 minutes per alert (Ponemon/Damballa 2015).",
+    "why": "Could not be verified: ponemon.org, securityweek.com and every press mirror tried (helpnetsecurity, darkreading, infosecurity-magazine, web.archive.org) are egress-blocked. Even if accurately quoted, the study is an 11-year-old vendor-sponsored self-report survey; the '4% investigated' figure is a capacity statement, not a review rate, and none of the figures speak to rule ambiguity. Downgrade from 'moderate' to weak, unverified."
+   },
+   {
+    "claim": "Alahmadi et al. USENIX Security 2022: 'most false positives are benign triggers explained by legitimate organisational behaviour' (basis for the B 50\u201360% / H 10\u201320% split).",
+    "why": "Paper text unreachable (usenix.org, ORA, dblp, OpenAlex, Semantic Scholar all blocked); the finder also had snippet only. The n=20 survey / n=21 interview counts and the 'most' quantifier are unverified. The qualitative direction (benign triggers as a distinct class) is plausible, but a qualitative interview study cannot support a percentage split; the A\u2013H shares for SOC triage are therefore the finder's estimate with no quantitative anchor."
+   },
+   {
+    "claim": "Yan 2026 (arXiv 2608.27443, n=113): 114 of 140 rules were 'ask'; policy blocked ~20 points less overreach than HITL and ~14.5 less than automated review.",
+    "why": "arxiv.org, export.arxiv.org, www.arxiv.org, huggingface, alphaxiv, scirate and OpenAlex are all blocked. The only local corroboration is the owner's own repo (/home/user/sophon/docs/REPORT.md line 144; docs/jev_assessment/APPENDIX_A_sophon_ground_truth_used.md line 39), which repeats the same numbers and is not independent. Treat as unverified but consistently reported; do not rest a verdict on the exact percentages."
+   },
+   {
+    "claim": "Firewall change volume '>11,000 change requests annually' (Tufin case study) and 60\u201390% / 50\u201360% time-reduction claims (Tufin, AlgoSec).",
+    "why": "tufin.com and algosec.com are blocked; figures are vendor case-study marketing and unverified here. Also, 11,000 requests is total change volume, not the number needing interpretation; the finder's own estimate is that 60\u201370% are deterministic once the policy matrix is encoded. Evidence quality should be 'weak', and the H 5\u201310% share has no source at all."
+   },
+   {
+    "claim": "DLP: 960 alerts/day, >3,000/day at >20k employees, 35\u201390% FP rate, 61% workload cut, 1.36% FN (spin.ai, Cyberhaven).",
+    "why": "Both vendor blogs are blocked and unverified; the numbers are alert counts, not adjudication counts, and the FP figures are marketing for the vendors' own ML classification. The H 20\u201325% share is unsupported by any source; the cited 'capture analyst decisions into policy refinement' sentence describes detection tuning (B-class classification made into an allow rule), which the finder itself notes is native to the DLP product."
+   },
+   {
+    "claim": "Ramp Policy Agent demonstrates 'a shipped settlement loop' (ambiguity \u2192 Requires review \u2192 Policy Suggestions \u2192 admin publishes with diff history).",
+    "why": "support.ramp.com and ramp.com are blocked; the description is from a search snippet. The mechanism as described is a policy-text suggestion loop (generate edit \u2192 admin publishes), which the brief says the product does NOT primarily do ('generate policy text'); it is evidence for H6 (feature of a vertical product), not evidence that the Sophon-shaped typed-settlement loop exists at Ramp. Keep as H6 support only."
+   },
+   {
+    "claim": "Prisma Cloud auto-dismiss alert rules and Rapid7/Sysdig exception semantics.",
+    "why": "docs.prismacloud.io, docs.rapid7.com and docs.sysdig.com are blocked; all three rest on search snippets. Direction is corroborated by two fetched open-source models (DefectDojo, Limes-Labs) so the conclusion stands, but these three citations should be marked snippet-only."
+   },
+   {
+    "claim": "University exception procedures ('temporary', 'max two years', 'not automatically renewed', 'case-by-case').",
+    "why": "policy.tennessee.edu, security.berkeley.edu, it.umn.edu and security.calpoly.edu are all blocked; snippet-only. The two fetched GRC data models (SimpleRisk, CISO Assistant) independently confirm expiry/re-review semantics, so the conclusion holds, but the university quotes are unverified."
+   }
+  ],
+  "confirmed": [
+   {
+    "claim": "Elastic Security rule exceptions are a native, prospective settlement mechanism with no governance layer.",
+    "evidence": "Fetched vendor documentation https://raw.githubusercontent.com/elastic/docs-content/main/solutions/security/detect-and-alert/add-manage-exceptions.md: 'Exceptions prevent a rule from generating alerts when specific conditions are met'; created from an alert with 'conditions ... auto-populated with relevant alert data'; 'shared exception lists that apply to multiple rules'; '(Optional) Enter a future expiration date'; '(Optional) Enter a comment'; requires only Read Kibana privilege with 'Manage Exceptions'; no approval, review or versioning described."
+   },
+   {
+    "claim": "Microsoft Agent Governance Toolkit binds approvals to a single action digest, with expiry and single consumption, and does not convert approvals into standing rules.",
+    "evidence": "Fetched ADR 0030 https://raw.githubusercontent.com/microsoft/agent-governance-toolkit/main/docs/adr/0030-action-bound-approval-protocol.md: 'An approval for one binding cannot authorize another'; 'expiry ... resolves to deny or expired, never allow'; 'one-time approval cannot be consumed twice under concurrency'; 'changing target, parameters, policy version, or chain version invalidates the old approval'. Fetched spec https://raw.githubusercontent.com/microsoft/agent-governance-toolkit/main/policy-engine/spec/SPECIFICATION.md: 'The runtime is stateless. It MUST NOT retain mutable state that influences a verdict from one evaluation to the next'; fatigue_threshold is a 'Soft cap on approvals per agent'; approval resolvers are host-supplied callbacks."
+   },
+   {
+    "claim": "AWS AgentCore Policy ships NL-to-Cedar authoring with ENFORCE (default-deny) and MONITOR modes and no approval/versioning/denied-request-to-policy loop.",
+    "evidence": "Fetched https://raw.githubusercontent.com/awslabs/amazon-bedrock-agentcore-samples/main/01-features/07-centralize-and-govern-your-ai-infrastructure/02-policy/README.md: 'PolicyClient.generate_policy() converts plain English to Cedar using the gateway's tool schemas as context'; 'In ENFORCE mode the policy Engine is default-deny'; findings can be bypassed with IGNORE_ALL_FINDINGS; nothing on approvals or versioning."
+   },
+   {
+    "claim": "GRC security exceptions are dated risk-acceptance grants with re-review, not prospective rules.",
+    "evidence": "Fetched SimpleRisk API doc https://raw.githubusercontent.com/simplerisk/code/master/simplerisk/api/v2/documentation/exceptions.php: fields name, owner, policy, framework, control, status, review_frequency, next_review_date, approval_date, approver, approved, justification, associated_risks; 'No fields exist for asset class scope or future case applicability'. Fetched CISO Assistant migration https://raw.githubusercontent.com/intuitem/ciso-assistant-community/main/backend/core/migrations/0052_securityexception_appliedcontrol_security_exceptions_and_more.py: statuses draft/in_review/approved/resolved/expired/deprecated, expiration_date, approver, owners, M2M to AppliedControl/Asset/RequirementAssessment/RiskScenario/Vulnerability; 'No automatic application mechanism is present'."
+   },
+   {
+    "claim": "Vulnerability risk exceptions are scoped, expiring and non-auto-accepting.",
+    "evidence": "Fetched https://github.com/Limes-Labs/limes-axis/issues/748: 'Exceptions are scoped and expiring and never change a vulnerability to fixed/not affected'; required 'requester, owner/approver, business rationale, affected scope, compensating controls, expiry/review and maximum extension policy'; 'No auto-acceptance of risk' listed as a non-goal. Additional fetched primary: DefectDojo docs https://raw.githubusercontent.com/DefectDojo/django-DefectDojo/master/docs/content/triage_findings/findings_workflows/OS__risk_acceptance.md: 'Once a Full Risk Acceptance expires, any Findings will be set to Active again'; risk acceptances are engagement-specific so the same vulnerability in another engagement needs a separate acceptance."
+   },
+   {
+    "claim": "Owner's coding-agent data: 9,404 tool calls; 906 settlements at the subcommand level cover 90% of calls; 47.5% never reused.",
+    "evidence": "Local repo /home/user/sophon/results/permission_log_study_ALL.json: L3 '+subcommand(hashed)' actions=9404, distinct_classes=906, covered_overall=0.904, share_of_settlements_never_reused=0.475; docs/REPORT.md line 154\u2013160 ('9,404 tool calls from 56 sessions in 12 projects'; row 906 / 90.4% / 47% / median 2). Private dataset, exactly as stated. Note the coarser L1/L2 levels show 0.28 and 0.189 never-reused, and L4 exact-command 0.961, so the 47.5% depends on the chosen grain."
+   }
+  ],
+  "manual_review_conflated_with_repeatable_ambiguity": [
+   "SOC triage: the '4% of alerts investigated' (Ponemon) and '10\u201330% need human judgement' (secure.com vendor blog) were carried as if they measured interpretive review; the first is a capacity ceiling and the second is unsourced vendor aggregation. Benign-trigger classification ('is host X a legitimate scanner here?') is category B resolved with local knowledge; it becomes H only when the same class recurs and is settled by an exception, and the fetched Elastic doc shows that settlement is a one-click native feature. Honest H share of analyst decisions: 10\u201325% of dispositions by count at most, with essentially all of it already captured as exception/suppression items; the remaining interpretive residue (C/D) is under 5%. No source supports more.",
+   "Access certification: '100% human review' is regulatory attestation (the brief's 'humans must remain involved' penalty), and Entra's 'If reviewers don't respond: Take recommendations' + auto-apply shows the tooling already supplies the default decision. Real H content (standing role/birthright/mitigating-control decisions) is 5\u201310% of cognitive work and lives in IGA role models and SAP GRC; per-item review is neither A\u2013H ambiguity nor addressable.",
+   "Firewall change requests: 11,000 requests/year was presented as decision volume; by the finder's own estimate 60\u201370% are deterministic against the segmentation matrix, and the residual 'is flow X acceptable' is an engineering allow decision, not rule interpretation. H 5\u201310% is unsupported by any source; I would put sourced H at 'unknown', plausibly under 10%.",
+   "DLP adjudication: '960 alerts/day' is alert volume, not adjudicated incidents; the H 20\u201325% share (business-flow allowlists) has no source and describes detection tuning. Vendor claims that ML absorbs 61% of workload are marketing. H is unknown; the settlement, where it exists, is an allow rule already in the DLP product.",
+   "AI-agent permissions: allow-rule reuse in the owner's log is syntactic (command-prefix classes), not settlement of rule ambiguity; counting 906 classes as 'settlements' overstates H. Yan's 'ask me' preference (114/140, unverified) is category E/H4 (user wants to remain in the loop), not H. Honest H: 10\u201320% of prompts are recurring classes worth a standing rule, and Claude Code already promotes those into persistent rules.",
+   "Break-glass: 100% post-hoc review is mandated audit (HIPAA 164.312(a)(2)(ii)), category G by definition; H ~0%. Finder classified this correctly."
+  ],
+  "corrected_workflow_verdicts": [
+   {
+    "name": "SOC alert triage and detection tuning (benign-trigger exceptions, suppression, allowlists)",
+    "evidence_quality": "weak",
+    "verdict": "weak",
+    "why": "The settlement loop is real but native and prospective inside every SIEM (Elastic exceptions fetched: created from an alert, shared across rules, optional expiry, no approval/versioning). Volume/pain figures (Ponemon 2015, Red Canary, SANS, secure.com, Bitdefender) are all vendor or vendor-sponsored and none could be verified through a primary fetch. The best academic source (Alahmadi 2022) is qualitative and unreachable. H3/H6 hold; residual value is exception governance, absorbed by detection-as-code. Downgrade evidence quality from moderate to weak; verdict weak stands (not negative only because the loop genuinely exists and recurs)."
+   },
+   {
+    "name": "Access requests, SOX/ITGC access certification and recertification, SoD conflict handling",
+    "evidence_quality": "moderate",
+    "verdict": "negative",
+    "why": "Confirmed and strengthened: Entra docs (fetched) show 'Take recommendations' defaults, ML inactivity/peer-outlier recommendations, auto-apply and multi-stage reviews, i.e. the incumbent already encodes the standing decision and automates the default. Human review is attestation (H4), H content is 5\u201310% and lives in IGA/SAP GRC. Protiviti and OIG citations unverified but not load-bearing."
+   },
+   {
+    "name": "Security policy exceptions and risk acceptance (GRC exception registers)",
+    "evidence_quality": "moderate",
+    "verdict": "negative",
+    "why": "Two fetched primary data models (SimpleRisk, CISO Assistant) confirm exceptions are approved, expiring, re-reviewed grants with no scope-to-class rule or prospective semantics; ServiceNow and university quotes unverified but consistent. Categories E/G dominate; the mechanism's step 4 is what audit norms police as exception creep. No volume, cost or recurrence data exists for any named organisation."
+   },
+   {
+    "name": "Vulnerability exceptions / risk acceptance in vulnerability management",
+    "evidence_quality": "moderate",
+    "verdict": "negative",
+    "why": "Limes-Labs #748 (fetched) and DefectDojo docs (fetched, new) confirm scoped, expiring, non-auto-accepting, engagement-specific acceptances that re-activate findings on expiry; Rapid7/Sysdig/Tenable semantics unverified (blocked) but where class-scoped rules exist they are incumbent features. Upgrade evidence quality from weak to moderate on the strength of two primary open-source models; verdict negative stands."
+   },
+   {
+    "name": "Firewall / network security policy change requests (Tufin, AlgoSec, FireMon)",
+    "evidence_quality": "weak",
+    "verdict": "negative",
+    "why": "Every number is vendor marketing and none could be fetched (tufin.com, algosec.com, firemon.com blocked); the one non-vendor blog is unattributed. The category (NSPM unified policy) is the executable-precedent engine itself. Nothing supports an H share; verdict negative on H3/H6, with the caveat that it rests on category logic rather than data."
+   },
+   {
+    "name": "DLP incident adjudication",
+    "evidence_quality": "weak",
+    "verdict": "weak",
+    "why": "All sources are vendor blogs (spin.ai, Cyberhaven) and none verified; alert counts were conflated with adjudication counts; the H 20\u201325% share is a guess. The recurring settlement is an allow rule inside the DLP product (H3/H6). Keep 'weak' rather than negative only because the loop exists and volume is plausibly large; evidence quality is weak and the finder's 'highest H share after SOC' claim is unsupported."
+   },
+   {
+    "name": "AI-agent permission policies and tool-call approvals",
+    "evidence_quality": "moderate",
+    "verdict": "weak",
+    "why": "Downgrade from uncertain to weak. Against: Claude Code already promotes a prompt answer into a persistent, version-controllable allow rule (fetched docs), so the 'unshipped' claim is refuted in the coding-agent segment; Microsoft AGT's spec makes the runtime stateless by principle and binds approvals to a single action digest (fetched); AWS AgentCore ships NL-to-Cedar with no approval loop (fetched); the owner's own data (verified locally) shows 47.5% of subcommand-level settlements never reused; Yan 2026 (unverified, circularly cited) reports users prefer 'ask'. What remains unshipped is typed grants with power/expiry/approver, a feature the platform vendors can add in weeks. Ramp shows the loop as a vertical-product feature (H6). Budget is nascent and the control plane is given away."
+   },
+   {
+    "name": "Break-glass / emergency privileged access",
+    "evidence_quality": "weak",
+    "verdict": "negative",
+    "why": "Unchanged. Category G by definition, mandated post-hoc review, low volume. Could not retrieve EHR break-the-glass audit studies (PubMed/EuropePMC/OpenAlex/JAMIA blocked), so volume remains unknown, but higher volume would not change the G classification."
+   }
+  ],
+  "missing": [
+   "Microsoft Entra access-review automation defaults ('If reviewers don't respond' = Approve/Remove/Take recommendations; auto-apply; ML inactivity and peer-outlier recommendations): https://raw.githubusercontent.com/MicrosoftDocs/entra-docs/main/docs/id-governance/create-access-review.md and .../review-recommendations-access-reviews.md (vendor documentation, fetched). Cuts against: the incumbent already captures and auto-applies the standing decision in certification.",
+   "Claude Code permission persistence ('Yes, and don't ask again' \u2192 rule saved to .claude/settings.local.json, 'Permanently per repository and command', shareable via version control): https://code.claude.com/docs/en/permissions (vendor documentation, fetched). Cuts against the AI-agent workflow being an open slot.",
+   "Microsoft AGT policy-engine spec: 'The runtime is stateless. It MUST NOT retain mutable state that influences a verdict from one evaluation to the next': https://raw.githubusercontent.com/microsoft/agent-governance-toolkit/main/policy-engine/spec/SPECIFICATION.md (fetched). A stated design principle against remembering settlements at runtime, i.e. regulation-like norm keeping humans in the loop for agent actions.",
+   "DefectDojo risk acceptance model (engagement-specific; findings re-activate on expiry; 'simple risk acceptance' one-click path): https://raw.githubusercontent.com/DefectDojo/django-DefectDojo/master/docs/content/triage_findings/findings_workflows/OS__risk_acceptance.md (open-source vendor documentation, fetched). Third primary data model confirming non-prospective exceptions.",
+   "Owner's own data at other grains: never-reused share is 0.28 at tool level, 0.189 at tool+program, 0.475 at subcommand, 0.961 at exact command (/home/user/sophon/results/permission_log_study_ALL.json). The 47.5% headline is grain-dependent; the finder cited only one grain.",
+   "Not retrievable but relevant and untested by either of us: Microsoft Sentinel automation-rule expiry and tuning recommendations; Purview DLP user-override with business justification and override reporting; Tenable 'Accept Risk Rules' applying to future findings; NIST SP 800-53 AC-2 periodic review text; PCI DSS 1.x semi-annual rule review; empirical EHR break-the-glass audit studies; SANS 2025 SOC Survey primary PDF; Ponemon primary PDF. All were egress-blocked in this session.",
+   "No finder in this cluster attempted to obtain a real exception register or SIEM exception-list history from any organisation; the proposed base-rate experiment (200\u2013500 SOC/DLP dispositions) remains the only way to get non-vendor recurrence data."
+  ],
+  "overall": "The finder's domain-level conclusion (negative for a standalone product in cybersecurity and access control) survives adversarial review and is, if anything, understated. Of the finder's load-bearing numbers, only the open-source/GitHub-hosted primaries (Elastic exceptions, Microsoft AGT ADR and spec, AWS AgentCore README, SimpleRisk, CISO Assistant, Limes-Labs) and the owner's private permission-log figures could be verified; every volume and pain statistic (Ponemon 2015, Red Canary, SANS, Tufin, AlgoSec, spin.ai, Cyberhaven, secure.com) is vendor or vendor-sponsored and none could be fetched, so the cluster's evidence base for volume is weak, not moderate. The settlement loop exists in this cluster only where it is already a native prospective primitive of the incumbent (SIEM exceptions, DLP allow rules, NSPM policy matrices, IGA recommendations/auto-apply, scanner accept-risk rules), and where the word 'exception' is used literally (GRC, vulnerability, break-glass) three independent primary data models plus a fourth (DefectDojo, added here) confirm the object is a dated, expiring, re-justified grant that norms deliberately prevent from becoming prospective. Two findings move verdicts: Entra's 'Take recommendations' and auto-apply defaults refute the '100% human by construction' framing for access certification (making it more negative, H3), and Claude Code's documented promotion of a prompt answer into a persistent, version-controllable allow rule refutes the claim that the escalation-to-standing-rule piece is unshipped in agent permissions, downgrading that workflow from uncertain to weak; Microsoft's stateless-runtime principle and the owner's own 47.5% never-reused figure (verified locally, but grain-dependent: 19\u201396% across grains) point the same way. Honest H shares are 10\u201325% in SOC/DLP triage (already captured), 5\u201310% in certification and firewall changes, ~10\u201315% in GRC exceptions (handled by standard revisions), and near zero in break-glass. Falsification hypotheses H1, H3, H4 and H6 are supported for this cluster; H8 is unknown because no organisation-level exception volume, committee cost or cost-per-exception was found by either the finder or this review. I would stop searching this cluster for a standalone Sophon product because the only recurring settlements are already executable inside the systems that generate the cases, and the one unshipped piece (typed grants with approver, power and expiry for agent tool calls) is a feature the platform owners are positioned to add and users appear to prefer 'ask me' over."
+ }
+}

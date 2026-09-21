@@ -1,0 +1,778 @@
+{
+ "key": "falsification-H5-to-H8-and-incumbents",
+ "found": {
+  "domain": "falsification-H5-to-H8-and-incumbents",
+  "domain_assessment": "METHOD CAVEAT FIRST. The session's WebSearch budget (200/200) was already consumed before this finder issued its first query, so zero searches were possible; the egress proxy then blocked every non-GitHub domain attempted (bls.gov, api.bls.gov, oig.hhs.gov, cms.gov, irs.gov, federalregister.gov, govinfo.gov, gao.gov, sec.gov, fca.org.uk, fincen.gov, occ.treas.gov, gov.uk, oecd.org, eur-lex, ecfr.gov, census.gov, eurostat, wikipedia, arxiv, semanticscholar, pubmed, hl7.org, omg.org, oasis-open.org, web.archive.org, and all vendor marketing/doc sites: ServiceNow.com, IBM, Pega, Appian, Camunda.io, FICO, Guidewire, Duck Creek, Workday, SAP, Salesforce, Palantir, Archer, MetricStream, OneTrust, NAVEX, Ramp, Zip, Navan, Auth0, Permit.io, OPA site, AWS docs). Everything below rests on ~40 GitHub-hosted primary documents (notably ServiceNow's official docs mirror github.com/ServiceNow/ServiceNowDocs, AWS AgentCore samples, OPA/Cedar/Camunda/Drools/Palantir/HL7/OpenFisca/DMN-TCK repos, OpenAI/LangGraph/Microsoft agent frameworks, Permit.io docs repo) plus code.claude.com and the owner's prior evidence file. No labour-statistics, regulator, court or academic numbers could be obtained; every such number is listed under not_found rather than guessed.\n\nH5 (institutional knowledge too local to generalise). Best evidence AGAINST: shared rulebooks are already sold and pooled as content wherever a network or standards body owns the rule: ServiceNow resells Unified Compliance Framework authority documents/citations/controls as a paid, read-only library; ServiceNow ships Dispute Rules Content Packs for Nacha, Visa and Mastercard (Nacha pack: 10 return reason codes as decision tables plus a KB article); HL7 Da Vinci DTR lets payers 'express their documentation requirements computably' as FHIR Questionnaires with CQL; OpenFisca encodes French tax-benefit law once, with dated formulas and per-value legislative references, for reuse by multiple administrations; DMN is executable by at least 8 independent engines in the TCK. Best evidence FOR: the same standards documents state the firm-specific layer is not pooled: CRD says 'each payer ... has its own unique process to determine whether each service is necessary and appropriate'; DTR says 'each payer has rules for what documentation is necessary and in what form'; ServiceNow warns 'Do not customize the authority documents' (customer interpretations must live outside the shared content); the Nacha pack is explicitly a reference plus agent KB, not the bank's own settlements. VERDICT: H5 is supported at the cross-customer level (a Sophon corpus would not transfer between customers, so no content network effect) and not supported at the within-firm level (firms clearly hold a local interpretation layer above the shared rulebook). Net: H5 removes the 'pooled content' upside, not the single-tenant thesis.\n\nH6 (merely a feature of BPM/GRC/vertical SaaS/agent platforms). Best evidence FOR (strong): ServiceNow IRM Policy Exception Management already records requester, approval group, approver, state, reason, justification, source (policy/control objective/controls/issue), target record, risk rating, valid-from, valid-to, duration, approved/remaining extensions, date approved, evidence and work notes, with multi-level approval rules keyed on risk rating/policy/control objective and a Policy-as-Code Engine that stops non-compliant deployments and lets employees 'request an exception and continue'; the same platform has Decision Builder decision tables with draft/publish authoring, HR case escalation tiers, and policy-document version workflows (Draft \u2192 Awaiting review \u2192 Awaiting approval \u2192 Published \u2192 Retired). Agent platforms all ship the escalation half: AgentCore Policy (NL\u2192Cedar via generate_policy, default-deny ENFORCE, MONITOR audit mode, temporal 'formerly within 24h' conditions), Microsoft Agent Governance Toolkit (YAML rules with action: require_approval, approvers: [...], 'tamper-evident records of every decision'), OpenAI Agents SDK (needs_approval, always_approve stored in run state), LangGraph interrupts (approve/edit persisted per thread_id), Permit.io (standing 'access requests' vs one-time 'operation approvals' that unassign the _Approved_ role after use), Claude Code ('Yes, and don't ask again' writes an allow rule to .claude/settings.local.json; managed settings override; deny-first). Best evidence AGAINST (the gap is real but narrow): none of these links a case-level decision to a versioned executable rule with issuer, power and effective time. ServiceNow: exceptions are 'temporary relief for non-compliant controls' scoped to listed systems with an expiry, i.e. waivers, not interpretations; decision tables 'Older versions ... aren't retained. If you publish a draft, you can't access the previously published version again'; document rollback 'is not supported'. Cedar annotations are 'arbitrary key-value pairs' with 'no impact on policy evaluation' and no authorship/versioning defined; OPA decision logs record bundle revision but nothing about who authored a rule; Drools KieContainer versions by Maven GAV with no audit trail; Camunda binds a task to a decision by latest/deployment/versionTag only; OpenAI/LangGraph approvals live inside one run; Claude Code's saved rule carries no who/when/why. PolicyLayer is an MCP-server risk registry ('32,500+ published servers and 515,000+ classified tools'), not a settlement store. VERDICT: H6 is the most likely outcome. The unshipped piece (exception \u2192 provenance-carrying decision-table row applied prospectively) is a small increment for ServiceNow, which already owns the exception record, the decision table, the policy document and the escalation tiers in one data model, and for AWS/Microsoft on the agent side. Moderate-to-strong support for H6.\n\nH7 (no switching cost from a settlement corpus). Best evidence FOR: decision logic is designed to be portable (DMN TCK has runners for Actico, Camunda, Camunda-DMN-Scala, C#, Drools, jDMN, QuantumDMN, Trisotech; OPA Rego and Cedar are plain text in git; OpenFisca parameters are YAML with legislative 'reference' metadata; Claude Code rules are JSON). Customers will demand export of anything called a 'ledger'. Best evidence AGAINST: incumbents do not keep history at all ('Older versions ... aren't retained'; 'rollback is not supported'), so a dated, attributed history is differentiated; and Cedar template-linked policies show that provenance-bearing instantiation is not something engines provide natively. VERDICT: H7 largely true. Any moat would come from process adoption and integrations, not from data lock-in; the corpus itself is exportable by construction.\n\nH8 (labour pool too small). No sourced headcount could be fetched (BLS OES pages for 13-1041 compliance officers, 13-1031 claims adjusters/examiners, 13-2053 underwriters all blocked; no GRC or case-management per-seat price obtainable). Structural evidence only: in ServiceNow's model many control owners raise exceptions but a single compliance-manager role (optionally a risk manager and business owner) decides them; in the owner's prior IPSA evidence, one review function produced 46 published reviews against 82,787 claims; in the owner's own permission history one person is both settler and processor (906 settlements covering 90% of 9,404 calls, 47.5% never reused). The settler population is one to two orders of magnitude smaller than the processor population, so per-settler-seat pricing cannot carry a standalone product; value would have to be priced on processor labour or risk avoided, which is exactly the ROI incumbents already claim. VERDICT: H8 supported in structure, unquantified in magnitude.\n\nINCUMBENT CATALOGUE (documented this session; 'settled-by/when/power/versioned/executable' scorecard): ServiceNow IRM: who=yes (requester, approver, approval group), when=yes (valid from/to, date approved), power=partial (roles/approval rules), versioned=no for decision tables and no rollback for documents, executable=partial (PaCE and decision tables, but exceptions are not executable rules). Camunda: versioned=yes (bindingType), who=no. OPA: versioned=yes (bundle revision in decision logs), who=no, approvals=no. Cedar/AgentCore: versioned=no in language (annotations only), NL\u2192Cedar=yes, approvals=no, temporal conditions=yes. Microsoft toolkit: approvals=yes (require_approval), audit=yes, reuse of human decisions=not documented. OpenAI Agents SDK: per-run sticky approvals only. LangGraph: per-thread interrupts only. Permit.io: standing vs one-time approvals=yes, reuse as policy=not documented. Claude Code: standing rule persisted to settings file with no provenance; managed policy precedence. Palantir Foundry: edits history per object type and branches=yes; approvals not in SDK docs. Drools: GAV versioning, no audit. PolicyLayer: not relevant (MCP registry). Not documentable this session (blocked): Pega rule history, Appian, IBM ODM Decision Center governance, FICO, Guidewire, Duck Creek, Workday, SAP GRC, Salesforce BRE, Archer, MetricStream, OneTrust, NAVEX, Ramp, Zip, Navan, Auth0.\n\nOVERALL: Of the four hypotheses, H6 (feature, not product) has the strongest documentary support; H7 is largely true; H5 kills cross-customer leverage but not single-tenant value; H8 could not be quantified but is structurally plausible. The one gap that survives all four is narrow and precise: no incumbent found records 'this case was settled by X on date D under authority P, and the settlement is rule R version V applied prospectively'. Whether that gap is worth a company depends entirely on the settlement-loop frequency evidence other finders must supply; nothing found here supplies it.",
+  "workflows": [
+   {
+    "name": "H5 test: shared rulebooks and content libraries as pooled interpretation (UCF, Nacha/Visa/Mastercard packs, HL7 Da Vinci DTR/CRD, OpenFisca, DMN interchange)",
+    "geography": "US (Nacha, HL7 Da Vinci, UCF), France (OpenFisca), global (DMN, UCF)",
+    "decision_volume": "Not sourced. Nacha content pack covers 10 ACH return reason codes (vendor doc, https://raw.githubusercontent.com/ServiceNow/ServiceNowDocs/australia/markdown/financial-services-operations/dispute-management/exploring-dispute-rules-content-pack-for-nacha.md). UCF shared lists limited to 100 authority documents each (vendor doc, https://raw.githubusercontent.com/ServiceNow/ServiceNowDocs/australia/markdown/governance-risk-compliance/policy-and-compliance-management/c_UCF.md). No transaction volumes obtainable (BLS/regulator sites blocked).",
+    "human_review_rate": "Unknown; not sourced. Nacha pack docs describe agents 'manually evaluate whether an ACH transaction is eligible for chargeback' using the KB article, with an optional AI agent recommendation (vendor doc, https://raw.githubusercontent.com/ServiceNow/ServiceNowDocs/australia/markdown/financial-services-operations/dispute-management/dispute-rules-content-pack-nacha-use.md).",
+    "why_humans_review": "Estimate from the standards texts, not data: for shared-rulebook domains the shared layer (network rules, law) is C-type rule interpretation already codified by the rule owner; what remains local is B (factual classification, e.g. which reason code fits) and A (missing evidence, e.g. WSUD documents). HL7 CRD/DTR texts frame the residual as payer-specific rules (each payer 'has its own unique process'), i.e. C/D at the firm level. Rough shares (estimate): A 30%, B 30%, C 25%, D 5%, E 5%, H 5%. Basis: DTR/CRD problem statements and Nacha pack workflow; no case data.",
+    "settlement_loop_evidence": [
+     {
+      "description": "HL7 Da Vinci DTR: 'Each payer has rules for what documentation is necessary and in what form it needs to exist'; DTR 'provides a mechanism for payers to express their documentation requirements computably' as FHIR Questionnaires with embedded CQL. This is a payer settling its own documentation rules and publishing them prospectively to providers, but the settlement is per payer, not pooled.",
+      "source_url": "https://raw.githubusercontent.com/HL7/davinci-dtr/master/input/pagecontent/index.md",
+      "source_type": "standards body (HL7) via GitHub",
+      "prospective": "yes",
+      "reusable_how": "Payer questionnaires are reused by every provider for every order; but each payer's rules are its own, confirming H5 at the cross-firm level."
+     },
+     {
+      "description": "HL7 Da Vinci CRD: 'Each payer offers distinct insurance plans ... and each has its own unique process to determine whether each service is necessary and appropriate.' Claims not meeting payer requirements 'will typically be denied, which may result in service delay, resubmission, or appeal.'",
+      "source_url": "https://raw.githubusercontent.com/HL7/davinci-crd/master/input/pagecontent/index.md",
+      "source_type": "standards body (HL7) via GitHub",
+      "prospective": "yes",
+      "reusable_how": "Coverage rules are published at point of care; heterogeneity across payers is the stated problem, i.e. interpretations do not pool."
+     },
+     {
+      "description": "ServiceNow UCF integration: 'Compliance administrators can download content from Network Frontiers Unified Compliance Framework (UCF) to use as GRC authority documents, citations, controls, and control objectives'; 'All customers must purchase a subscription from Unified Compliance directly'; 'All data imported from UCF Authority Documents is read-only ... Do not customize'.",
+      "source_url": "https://raw.githubusercontent.com/ServiceNow/ServiceNowDocs/australia/markdown/governance-risk-compliance/policy-and-compliance-management/c_UCF.md",
+      "source_type": "vendor documentation (ServiceNow official GitHub mirror)",
+      "prospective": "yes",
+      "reusable_how": "Cross-customer content library succeeds commercially for the shared regulatory layer; the customer's own interpretations must live outside it (read-only), so firm-level settlements are not pooled."
+     },
+     {
+      "description": "ServiceNow Dispute Rules Content Pack for Nacha: 'includes 10 reason codes and the predefined logic to determine if the codes apply'; 'the decision tables, rules, and flows/actions ... help to determine the dispute category and dispute reason based on the Nacha guidelines'; agents 'may use the KB article to manually evaluate' eligibility.",
+      "source_url": "https://raw.githubusercontent.com/ServiceNow/ServiceNowDocs/australia/markdown/financial-services-operations/dispute-management/exploring-dispute-rules-content-pack-for-nacha.md",
+      "source_type": "vendor documentation",
+      "prospective": "yes",
+      "reusable_how": "Network rulebook shipped as executable decision tables plus reference KB across all customer banks; shows the shared layer is already productised by vertical SaaS."
+     },
+     {
+      "description": "OpenFisca-France encodes French tax and benefit law with dated formulas ('formula_2017_01_01 activates on January 1, 2017') and parameter values carrying 'reference (optional) Legislative reference' metadata; positioned so administrations 'collaborate with other administrations' instead of building calculators from scratch.",
+      "source_url": "https://raw.githubusercontent.com/openfisca/openfisca-doc/master/source/coding-the-legislation/40_legislation_evolutions.md",
+      "source_type": "open-source project documentation (Rules-as-Code)",
+      "prospective": "yes",
+      "reusable_how": "Law-level interpretation pooled across institutions with provenance per value; but reforms docs show institution-specific variants are modelled as 'reforms' on a copy, and no mechanism handles legal ambiguity (inferences.md is purely technical)."
+     }
+    ],
+    "economic_pain": "Not sourced this session. CRD states denials 'may result in negative health outcomes or financial costs for patients, as well as financial and productivity losses for providers' (HL7, https://raw.githubusercontent.com/HL7/davinci-crd/master/input/pagecontent/index.md). No dollar or headcount figures obtainable.",
+    "existing_solutions": "UCF Common Controls Hub (paid content), ServiceNow dispute content packs (executable decision tables + KB), HL7 DTR/CRD (payer-published CQL questionnaires), OpenFisca (versioned law code with references), DMN engines (8 TCK runners). All capture the RULE-OWNER's settlement as versioned executable content; none captures the CONSUMING firm's local settlement in that form.",
+    "buyer_and_budget": "Compliance manager / dispute operations / payer UM for the shared layer; budget exists (UCF subscription is a separate purchase per ServiceNow doc). No price points obtainable.",
+    "regulatory_constraints": "Network rules (Nacha, card schemes) and payer rules are externally owned; firm cannot re-settle them, only classify facts against them. Recollection, not fetched: US CMS-4201-F (2023) obliges Medicare Advantage plans to make internal coverage criteria publicly accessible (URL under not_found).",
+    "evidence_quality": "moderate",
+    "verdict": "weak",
+    "notes": "H5 verdict: supported at cross-customer level (no pooled corpus, no content network effect), not supported within a firm. The prior evidence's MCG/InterQual question could not be tested (mcg.com and pubmed blocked)."
+   },
+   {
+    "name": "H6 test (a): GRC / BPM / rules-engine incumbents \u2014 ServiceNow IRM Policy Exception Management, Decision Builder, document versioning, PaCE; Camunda DMN binding; Drools/KIE; OPA; Cedar; Palantir Foundry ontology edits",
+    "geography": "Global (vendor documentation)",
+    "decision_volume": "Not applicable / not sourced. ServiceNow Policy Exception Overview dashboard exists ('number, severity, and source of policy exceptions') but no customer volumes are published (vendor doc index, https://raw.githubusercontent.com/ServiceNow/ServiceNowDocs/australia/markdown/governance-risk-compliance/index.md).",
+    "human_review_rate": "By design 100% of policy exceptions are human-approved: 'a compliance manager can accept or reject the request ... they can request a risk assessment by the risk manager' (vendor doc, https://raw.githubusercontent.com/ServiceNow/ServiceNowDocs/australia/markdown/governance-risk-compliance/policy-and-compliance-management/review-policy-exception-request.md).",
+    "why_humans_review": "ServiceNow's own framing: exceptions are 'temporary relief for users unable to meet compliance requirements due to extraordinary situations' (G one-off) with a fixed validity window, i.e. G plus E (risk acceptance). Estimate: G 50%, E 30%, C 10%, H 10%. Basis: the exception form fields (valid from/to, extensions, risk mitigation plan) are waiver fields, not interpretation fields.",
+    "settlement_loop_evidence": [
+     {
+      "description": "ServiceNow policy exception record fields: Requester ('usually the control owner'), Approval group, Approver, State, Substate, Reason, Justification, Source type (Policy / Control objective / Controls / Issue), Target record, Risk rating, Risk mitigation plan, Valid from, Valid to, Duration, Approved extensions, Remaining extensions, Date approved, Original valid to, Work notes, Confidential flag.",
+      "source_url": "https://raw.githubusercontent.com/ServiceNow/ServiceNowDocs/australia/markdown/governance-risk-compliance/policy-and-compliance-management/request-policy-exception.md",
+      "source_type": "vendor documentation (ServiceNow official GitHub mirror)",
+      "prospective": "no",
+      "reusable_how": "Records who/when/on-what with expiry, but scoped to 'a particular list of the systems, applications, networks, or entities'; it is a time-boxed waiver, not a reusable interpretation and not executable."
+     },
+     {
+      "description": "Multi-level approval rules: 'Approval rules define the criteria (risk rating, policy or control objective) that is used for sending approval requests'; approver levels with 'One approval required' or 'All users must approve'; 'Auto-trigger approvals'.",
+      "source_url": "https://raw.githubusercontent.com/ServiceNow/ServiceNowDocs/australia/markdown/governance-risk-compliance/policy-and-compliance-management/define-approval-rules.md",
+      "source_type": "vendor documentation",
+      "prospective": "no",
+      "reusable_how": "Routing of escalations is configurable; the 'power' of the approver is encoded as role/level, but the decision output is accept/reject on one request."
+     },
+     {
+      "description": "Policy as Code Engine: 'PaCE calls GRC passing the document reference and the PaCE policy for which exceptions need to be determined'; 'If there is non-compliance, the deployment is stopped'; 'employees can request an exception and continue with the digital workflow'.",
+      "source_url": "https://raw.githubusercontent.com/ServiceNow/ServiceNowDocs/australia/markdown/governance-risk-compliance/policy-and-compliance-management/preventive-compliance-pace.md",
+      "source_type": "vendor documentation",
+      "prospective": "no",
+      "reusable_how": "Executable control check with exception escalation; the exception does not become a new rule."
+     },
+     {
+      "description": "Decision tables (Decision Builder) draft authoring: 'Older versions of the decision table aren't retained. If you publish a draft, you can't access the previously published version again.'",
+      "source_url": "https://raw.githubusercontent.com/ServiceNow/ServiceNowDocs/australia/markdown/build-workflows/workflow-studio/edit-decision-tables-using-draft-authoring.md",
+      "source_type": "vendor documentation",
+      "prospective": "yes",
+      "reusable_how": "Executable rules exist on the same platform as the exception record, but without version history; a settlement written into a row loses provenance."
+     },
+     {
+      "description": "Policy document versioning: Draft \u2192 Awaiting review \u2192 Awaiting approval \u2192 Published \u2192 Retired; 'After a version is published, you cannot roll back to a previous version.'",
+      "source_url": "https://raw.githubusercontent.com/ServiceNow/ServiceNowDocs/australia/markdown/governance-risk-compliance/audit-management/document-version-approval-workflow.md",
+      "source_type": "vendor documentation",
+      "prospective": "yes",
+      "reusable_how": "Policy TEXT is versioned with reviewer/approver; it is not executable."
+     },
+     {
+      "description": "Camunda business rule task bindingType: 'latest' ('The latest deployed version at the moment the business rule task is activated'), 'deployment', 'versionTag'.",
+      "source_url": "https://raw.githubusercontent.com/camunda/camunda-docs/main/docs/components/modeler/bpmn/business-rule-tasks/business-rule-tasks.md",
+      "source_type": "vendor documentation (GitHub)",
+      "prospective": "yes",
+      "reusable_how": "Decision versions are addressable and pinnable; nothing records who settled the change or under what power."
+     },
+     {
+      "description": "OPA decision log events include decision_id, bundle revision, path, input, result, timestamp: 'Each event includes the policy that was queried, the input to the query, bundle metadata, and other information that enables auditing'.",
+      "source_url": "https://raw.githubusercontent.com/open-policy-agent/opa/main/docs/docs/management-decision-logs.md",
+      "source_type": "vendor/open-source documentation (GitHub)",
+      "prospective": "yes",
+      "reusable_how": "Every decision is attributable to a policy revision; authorship/approval is outside OPA (git)."
+     },
+     {
+      "description": "Cedar annotations: 'An annotation is an arbitrary key-value pair ... An annotation has no impact on policy evaluation'; '@id is not special in the Cedar language'. Templates: 'When you change a policy statement in the policy template, any policies linked to that template automatically and immediately use the new statement.'",
+      "source_url": "https://github.com/cedar-policy/cedar-docs/blob/main/docs/collections/_policies/syntax-policy.md",
+      "source_type": "vendor/open-source documentation (GitHub)",
+      "prospective": "yes",
+      "reusable_how": "No built-in authorship, version or power metadata; provenance must be layered on."
+     },
+     {
+      "description": "Drools KieContainer versioning via Maven ReleaseId ('org.acme', 'myartifact', '1.0-SNAPSHOT') and KieScanner polling; 'no information about recording who modified rules or when'.",
+      "source_url": "https://raw.githubusercontent.com/apache/incubator-kie-docs/main/drools-docs/src/modules/ROOT/pages/KIE/BuildDeployUtilizeAndRun/_KIEDeploying-section.adoc",
+      "source_type": "open-source documentation (Apache KIE)",
+      "prospective": "yes",
+      "reusable_how": "Artifact-level versioning only."
+     },
+     {
+      "description": "Palantir Foundry SDK: ObjectType.get_edits_history returns 'the history of edits (additions, modifications, deletions) for objects of a specific object type' across 'all actions that have modified objects of this type', by branch; Action.apply with validation result in body.",
+      "source_url": "https://raw.githubusercontent.com/palantir/foundry-platform-python/develop/docs/v2/Ontologies/ObjectType.md",
+      "source_type": "vendor SDK documentation (GitHub)",
+      "prospective": "no",
+      "reusable_how": "Edit provenance per object and branch; no documented concept of a settled interpretation becoming a rule."
+     }
+    ],
+    "economic_pain": "Not sourced. Vendor benefit claims only ('Automated checks ... decreasing the task of manual reviews', PaCE doc above).",
+    "existing_solutions": "ServiceNow IRM (exception record + approval rules + PaCE + decision tables + document versions, all in one platform, none linked into a versioned executable settlement); Camunda (versioned decisions, no provenance); OPA (revision in decision logs); Cedar (no metadata semantics); Drools (GAV); Palantir (edit history). Pega, Appian, IBM ODM Decision Center, FICO, Guidewire, Duck Creek, Workday, SAP GRC, Salesforce BRE, Archer, MetricStream, OneTrust, NAVEX could not be documented (blocked).",
+    "buyer_and_budget": "Compliance manager / risk manager (ServiceNow roles sn_compliance.manager, sn_grc.business_user); GRC is a licensed module plus separately purchased content. No per-seat prices obtainable.",
+    "regulatory_constraints": "None specific; ServiceNow notes generative-AI features unavailable in some regulated/in-country data centres.",
+    "evidence_quality": "strong",
+    "verdict": "negative",
+    "notes": "H6 verdict: supported. The exact missing object (exception \u2192 provenance-bearing, versioned, executable rule applied prospectively) is a small increment for ServiceNow, which already holds every neighbouring object. Note ServiceNow's own docs admit decision tables lose history and documents cannot roll back \u2014 the differentiator is real but thin."
+   },
+   {
+    "name": "H6 test (b): agent platforms and authorization products \u2014 AWS Bedrock AgentCore Policy, Microsoft Agent Governance Toolkit, OpenAI Agents SDK, LangGraph, Permit.io, Claude Code permissions, PolicyLayer, Auth0",
+    "geography": "Global (vendor documentation)",
+    "decision_volume": "Owner's own history (prior evidence, local file /tmp/claude-0/-home-user-sophon/03144a04-0e98-54e7-9d2c-78cb7b16e172/scratchpad/market/prior_evidence.md): 9,404 tool calls; 906 settlements cover 90%; 47.5% never reused; median 2 later calls. PolicyLayer registry: '32,500+ published servers and 515,000+ classified tools' (vendor GitHub, https://github.com/PolicyLayer/mcp) \u2014 a registry size, not a decision volume.",
+    "human_review_rate": "Design-time: AgentCore ENFORCE is 'default-deny \u2014 every tool call is blocked unless an explicit permit policy allows it' (vendor sample README, https://raw.githubusercontent.com/awslabs/amazon-bedrock-agentcore-samples/main/01-features/07-centralize-and-govern-your-ai-infrastructure/02-policy/README.md). Prior evidence: Yan 2026 study, 114 of 140 pre-authored rules chose 'ask me' (arXiv 2608.27443, blocked this session).",
+    "why_humans_review": "From the owner's permission-log study (prior evidence): 47.5% of settlements never reused suggests G (one-off) dominates at fine grain; 906 settlements covering 90% suggests H is present at coarser grain. Estimate: G 45%, H 35%, B 10%, E 10%. Basis: prior_evidence.md figures; no independent data.",
+    "settlement_loop_evidence": [
+     {
+      "description": "AgentCore Policy: 'PolicyClient.generate_policy() converts plain English to Cedar using the gateway's tool schemas as context'; validation findings can be bypassed with findings=[{'resolution': 'IGNORE_ALL_FINDINGS'}]; 'MONITOR mode lets all calls through but logs policy decisions for auditing'; temporal policies match 'events the policy engine has recorded earlier in the same session' ('formerly within 24h'). No statement about human review of generated policies, creator attribution or versioning.",
+      "source_url": "https://raw.githubusercontent.com/awslabs/amazon-bedrock-agentcore-samples/main/01-features/07-centralize-and-govern-your-ai-infrastructure/02-policy/README.md",
+      "source_type": "vendor sample documentation (GitHub)",
+      "prospective": "yes",
+      "reusable_how": "Natural-language rule \u2192 executable Cedar is shipped; the settlement ledger (who/when/power) is not."
+     },
+     {
+      "description": "Microsoft Agent Governance Toolkit policy.yaml: rules with action: deny / require_approval and approvers: ['security-team']; 'tamper-evident records of every decision: what policy was active, what the agent requested, and why it was allowed or denied'; no documented mechanism for a human approval to become a future rule.",
+      "source_url": "https://raw.githubusercontent.com/microsoft/agent-governance-toolkit/main/README.md",
+      "source_type": "vendor open-source (GitHub)",
+      "prospective": "no",
+      "reusable_how": "Escalation and audit shipped; settlement-to-rule not documented."
+     },
+     {
+      "description": "OpenAI Agents SDK: 'Set needs_approval to True to always require approval or provide an async function that decides per call'; 'Sticky decisions created with always_approve=True or always_reject=True are stored in the run state, so they survive serialization' \u2014 persistence is within a run's state, not across runs.",
+      "source_url": "https://github.com/openai/openai-agents-python/blob/main/docs/human_in_the_loop.md",
+      "source_type": "vendor documentation (GitHub)",
+      "prospective": "no",
+      "reusable_how": "Per-run standing approval only."
+     },
+     {
+      "description": "LangGraph interrupts: 'pause graph execution at specific points and wait for external input'; state saved by the persistence layer under a thread_id; no mechanism to convert approvals into policies for future runs.",
+      "source_url": "https://raw.githubusercontent.com/langchain-ai/docs/main/src/oss/langgraph/interrupts.mdx",
+      "source_type": "vendor documentation (GitHub)",
+      "prospective": "no",
+      "reusable_how": "Not reusable beyond the thread."
+     },
+     {
+      "description": "Permit.io Access Request MCP: access requests grant standing role ('Permit assigns the requested role to the user'); operation approvals are one-time ('your tool unassigns the _Approved_ role after the action succeeds'); reviewed by a user with the _Reviewer_ role.",
+      "source_url": "https://raw.githubusercontent.com/permitio/docs/master/docs/ai-security/access-request-mcp/overview.mdx",
+      "source_type": "vendor documentation (GitHub)",
+      "prospective": "yes",
+      "reusable_how": "Explicit one-time vs standing distinction exists; approvals are role grants, not interpretations, and no provenance beyond audit."
+     },
+     {
+      "description": "Claude Code permissions: 'When you choose \"Yes, and don't ask again\" ... Claude Code saves the rule to .claude/settings.local.json ... The rule applies to future sessions anywhere in that repository'; compound commands save 'a separate rule for each subcommand'; managed settings are 'highest: no other level ... can override a managed permission rule'; 'deny rules from any scope are evaluated before allow rules'.",
+      "source_url": "https://code.claude.com/docs/en/permissions",
+      "source_type": "vendor documentation",
+      "prospective": "yes",
+      "reusable_how": "A live case\u2192standing-rule loop shipped in a mass-market agent; the saved rule carries no who/when/why and the authority hierarchy is by file scope, not by named issuer."
+     },
+     {
+      "description": "PolicyLayer: 'The MCP server that vets MCP servers'; registry with risk grades A\u2013F; 'makes no mention of storing organizational policy decisions, precedents, approvals, or versioned policy interpretations'.",
+      "source_url": "https://github.com/PolicyLayer/mcp",
+      "source_type": "vendor open-source (GitHub)",
+      "prospective": "no",
+      "reusable_how": "Not a settlement product; the prior evidence's inclusion of PolicyLayer as a competitor is not borne out."
+     }
+    ],
+    "economic_pain": "Not sourced beyond the owner's own log. No independent numbers on approval-fatigue cost.",
+    "existing_solutions": "All major agent platforms ship escalate/approve and audit; AWS ships NL\u2192executable policy; Claude Code and Permit.io ship standing grants; none ships an issuer-attributed, versioned, prospectively applied settlement object. Auth0 async authorization could not be documented (auth0.com blocked; sample path 404).",
+    "buyer_and_budget": "Platform/security engineering for agent governance; budget flows to the platform vendor (AWS, Microsoft, OpenAI, Anthropic) rather than a third party.",
+    "regulatory_constraints": "None found in docs; EU AI Act Article 14 human-oversight text could not be fetched (eur-lex blocked).",
+    "evidence_quality": "strong",
+    "verdict": "negative",
+    "notes": "H6 verdict for agent platforms: supported. Every platform owns the choke point (gateway) where the ledger would sit; a standalone ledger would be a plug-in to their policy stores at best."
+   },
+   {
+    "name": "H7 test: portability of rules and settlement corpora (DMN TCK, OPA/Cedar as text, OpenFisca YAML, Claude Code JSON, ServiceNow no-history)",
+    "geography": "Global",
+    "decision_volume": "Not applicable. DMN TCK runners: 8 engine directories (Actico, Camunda, Camunda-DMN-Scala, C#, Drools, jDMN, QuantumDMN, Trisotech) (community GitHub, https://github.com/dmn-tck/tck/tree/master/runners).",
+    "human_review_rate": "Not applicable.",
+    "why_humans_review": "Not applicable to this hypothesis.",
+    "settlement_loop_evidence": [
+     {
+      "description": "DMN TCK: 'a community-led proposal for a verifiable and executable method to demonstrate the Conformance level of support provided by a Vendor-supplied DMN implementation'; 8 vendor runners present.",
+      "source_url": "https://github.com/dmn-tck/tck",
+      "source_type": "industry community / standards conformance (GitHub)",
+      "prospective": "yes",
+      "reusable_how": "Decision logic written in DMN is by design executable across vendors, i.e. rules themselves confer no lock-in."
+     },
+     {
+      "description": "OpenFisca parameters are YAML with per-value 'reference (optional) Legislative reference' and node-level metadata references; 'It is recommended to add legislative references for every value'.",
+      "source_url": "https://github.com/openfisca/openfisca-doc/blob/master/source/coding-the-legislation/legislation_parameters.md",
+      "source_type": "open-source project documentation",
+      "prospective": "yes",
+      "reusable_how": "A provenance-bearing rule corpus in plain files is fully portable; provenance does not create lock-in."
+     },
+     {
+      "description": "ServiceNow: 'Older versions of the decision table aren't retained' and policy documents 'cannot roll back'.",
+      "source_url": "https://raw.githubusercontent.com/ServiceNow/ServiceNowDocs/australia/markdown/build-workflows/workflow-studio/edit-decision-tables-using-draft-authoring.md",
+      "source_type": "vendor documentation",
+      "prospective": "yes",
+      "reusable_how": "Incumbents discard history, so a kept history is differentiated; but nothing stops export."
+     },
+     {
+      "description": "Cedar policies portable across Rust, WASM/JS, CLI ('Crate defining the wasm interface for Cedar'); annotations are arbitrary text.",
+      "source_url": "https://github.com/cedar-policy/cedar",
+      "source_type": "vendor/open-source (GitHub)",
+      "prospective": "yes",
+      "reusable_how": "Plain-text policies with arbitrary metadata are trivially migratable."
+     }
+    ],
+    "economic_pain": "Not applicable.",
+    "existing_solutions": "Rules-engine migration case studies (Blaze\u2192Drools, ODM\u2192Red Hat DM) could not be fetched; no evidence either way on migration cost of history.",
+    "buyer_and_budget": "Not applicable.",
+    "regulatory_constraints": "Audit regimes may require retention of decision history, which favours keeping but not locking the corpus.",
+    "evidence_quality": "moderate",
+    "verdict": "negative",
+    "notes": "H7 verdict: largely true. Switching cost would come only from workflow adoption and integrations (as with any system of record), not from the settlement data, which customers will insist be exportable and which is text by nature."
+   },
+   {
+    "name": "H8 test: size of the settler labour pool versus processors, and software spend per seat",
+    "geography": "US/UK (structural evidence only)",
+    "decision_volume": "Prior evidence (local file, government-regulator-derived): IPSA 82,787 claims in the full file vs 46 published reviews; owner's log 9,404 calls vs 906 settlements (/tmp/claude-0/-home-user-sophon/03144a04-0e98-54e7-9d2c-78cb7b16e172/scratchpad/market/prior_evidence.md). No BLS/ONS/INSEE occupational counts obtainable (blocked).",
+    "human_review_rate": "Unknown.",
+    "why_humans_review": "Not applicable; this hypothesis concerns who settles. Structural observation (vendor doc): ServiceNow assigns exception decisions to the compliance manager role, optionally risk manager and business owner, while requesters are 'usually the control owner' \u2014 one deciding role for many requesting roles (https://raw.githubusercontent.com/ServiceNow/ServiceNowDocs/australia/markdown/governance-risk-compliance/policy-and-compliance-management/request-policy-exception.md).",
+    "settlement_loop_evidence": [
+     {
+      "description": "ServiceNow role model: 'The control owner, the compliance manager, and the risk manager may be involved in the policy exception and extension workflow'; review requires 'Role required: compliance manager'.",
+      "source_url": "https://raw.githubusercontent.com/ServiceNow/ServiceNowDocs/australia/markdown/governance-risk-compliance/policy-and-compliance-management/manage-policy-exceptions.md",
+      "source_type": "vendor documentation",
+      "prospective": "no",
+      "reusable_how": "Shows the settler population is a narrow role class; does not give counts."
+     },
+     {
+      "description": "Prior evidence: in 46 IPSA reviews, 22\u201324 stated a general reading that would decide future similar claims, but the reviewer cannot make it binding; IPSA committed to 4 rule/guidance changes.",
+      "source_url": "/tmp/claude-0/-home-user-sophon/03144a04-0e98-54e7-9d2c-78cb7b16e172/scratchpad/market/prior_evidence.md",
+      "source_type": "prior investigation of regulator-published reviews (local file)",
+      "prospective": "unclear",
+      "reusable_how": "One review body; ~4 prospective settlements per year-scale corpus; a very small settler seat count."
+     }
+    ],
+    "economic_pain": "Unknown. No compliance-cost, headcount or per-seat price could be fetched (LexisNexis True Cost of Compliance, BLS OES, G2/Capterra pricing all blocked).",
+    "existing_solutions": "GRC and case-management suites price per platform/module, with content sold separately (UCF subscription per ServiceNow doc); no seat-price evidence.",
+    "buyer_and_budget": "Unknown price points. Structurally, the paying case must be processor labour or risk, not settler seats.",
+    "regulatory_constraints": "None documented.",
+    "evidence_quality": "unknown",
+    "verdict": "uncertain",
+    "notes": "H8 could not be quantified this session. Structural evidence (one deciding role per many requesters; 46 reviews vs 82,787 claims) makes a settler-seat business implausible; a processor-side ROI story is exactly what incumbents already sell."
+   }
+  ],
+  "evidence_against_thesis": [
+   "ServiceNow IRM already records requester, approver, approval group, state, reason, justification, source policy/control, target record, risk rating, valid-from/valid-to, extensions, date approved and evidence on every policy exception, with configurable multi-level approval rules \u2014 the escalation-and-record half of the settlement loop is a shipped GRC feature (https://raw.githubusercontent.com/ServiceNow/ServiceNowDocs/australia/markdown/governance-risk-compliance/policy-and-compliance-management/request-policy-exception.md).",
+   "ServiceNow's own definition of a policy exception is 'temporary relief for non-compliant controls' for 'extraordinary situations' with a mandatory duration \u2014 i.e. the incumbent object is a waiver (category G), not a reusable interpretation (category H), which suggests the market's dominant escalation product is not asking for prospective settlements (https://raw.githubusercontent.com/ServiceNow/ServiceNowDocs/australia/markdown/governance-risk-compliance/policy-and-compliance-management/manage-policy-exceptions.md).",
+   "Natural-language-to-executable-policy is already shipped by AWS: 'PolicyClient.generate_policy() converts plain English to Cedar', default-deny enforcement, MONITOR audit mode, and temporal conditions (https://raw.githubusercontent.com/awslabs/amazon-bedrock-agentcore-samples/main/01-features/07-centralize-and-govern-your-ai-infrastructure/02-policy/README.md).",
+   "Standing approvals from a case are already shipped in a mass-market agent: Claude Code writes 'Yes, and don't ask again' decisions as allow rules to .claude/settings.local.json that apply to future sessions, with managed-settings precedence and deny-first evaluation (https://code.claude.com/docs/en/permissions).",
+   "Permit.io already distinguishes standing 'access requests' (role assigned) from one-time 'operation approvals' (role unassigned after use) with human reviewers (https://raw.githubusercontent.com/permitio/docs/master/docs/ai-security/access-request-mcp/overview.mdx).",
+   "Shared rulebooks are already sold as content: UCF authority documents/controls (paid subscription, read-only in ServiceNow), Nacha/Visa/Mastercard dispute rule packs as decision tables, HL7 DTR payer questionnaires \u2014 the pooled layer is taken, and the standards texts say the remaining layer is firm-specific ('each has its own unique process'), so a Sophon corpus would not transfer between customers (https://raw.githubusercontent.com/HL7/davinci-crd/master/input/pagecontent/index.md).",
+   "Decision logic is portable by design: DMN TCK has 8 vendor runners; OPA, Cedar and OpenFisca rules are plain text with arbitrary metadata \u2014 a settlement corpus is exportable and confers no data lock-in (https://github.com/dmn-tck/tck/tree/master/runners).",
+   "Structural settler-to-processor ratio is very low: one compliance-manager role decides exceptions raised by many control owners; prior evidence shows 46 published reviews vs 82,787 claims and 4 prospective rule changes \u2014 a per-settler-seat product cannot carry standalone economics.",
+   "PolicyLayer, listed in prior evidence as a competitor, is an MCP-server risk registry, not a settlement store \u2014 the prior competitive map was partly wrong in Sophon's favour, but the real competitors (ServiceNow, AWS, Microsoft, Anthropic, Permit.io) own the choke points where a ledger would live (https://github.com/PolicyLayer/mcp).",
+   "Rules-as-Code projects that do carry legal provenance (OpenFisca: per-value legislative 'reference'; Catala: lawyers certify code) handle law, not firm-level ambiguity, and OpenFisca's docs contain no mechanism for resolving legal ambiguity \u2014 the settlement step is done outside the tool by humans and then encoded (https://github.com/openfisca/openfisca-doc/blob/master/source/coding-the-legislation/legislation_parameters.md)."
+  ],
+  "not_found": [
+   "WebSearch: zero queries possible \u2014 session budget (200/200) exhausted before this finder started; the 'at least 10 distinct WebSearch queries' requirement could not be met.",
+   "BLS OES national employment and wages for Compliance Officers 13-1041 (https://www.bls.gov/oes/current/oes131041.htm), Claims Adjusters/Examiners 13-1031 (https://www.bls.gov/oes/current/oes131031.htm), Insurance Underwriters 13-2053 (https://www.bls.gov/oes/current/oes132053.htm) \u2014 blocked; api.bls.gov also blocked; no GitHub mirror found.",
+   "GRC / case-management software price per seat (Archer, MetricStream, OneTrust, LogicGate, ServiceNow IRM) \u2014 vendor sites, G2, SEC EDGAR all blocked.",
+   "MCG Health / InterQual adoption and market share; studies of agreement between MCG and InterQual criteria (mcg.com, pubmed blocked).",
+   "HHS OIG report OEI-09-18-00260 (2022) on Medicare Advantage prior-authorization denials that met Medicare coverage rules \u2014 https://oig.hhs.gov/oei/reports/OEI-09-18-00260.asp blocked; figures deliberately omitted rather than recalled.",
+   "CMS-4201-F (April 2023) text on MA plans' internal coverage criteria being made publicly accessible and reviewed annually by a UM committee \u2014 https://www.federalregister.gov/documents/2023/04/12/2023-07115/... blocked; qualitative recollection only, unverified.",
+   "ISO 20022 / CBPR+ usage-guideline governance (RMG/SEG) \u2014 iso20022.org blocked.",
+   "Fannie Mae Selling Guide versioning and lender variances \u2014 selling-guide.fanniemae.com blocked.",
+   "IBM ODM Decision Center governance (branches, releases, activities, approvals) \u2014 ibm.com blocked; DecisionsDev GitHub repos do not describe it.",
+   "Pega rule versioning/rule history; Appian object versioning; FICO Blaze/Platform rule governance; Guidewire ClaimCenter rules; Duck Creek; Workday business process framework; SAP GRC Process/Access Control; Salesforce Business Rules Engine; Archer; MetricStream; OneTrust; NAVEX PolicyTech; Ramp policy agent; Zip; Navan; Auth0 async authorization \u2014 all vendor documentation blocked or not on GitHub.",
+   "DMN TCK per-vendor results table (dmn-tck.github.io blocked).",
+   "Rules-engine migration case studies (Blaze\u2192Drools, ODM\u2192Red Hat DM) \u2014 not obtainable.",
+   "Regulator settlement-loop volumes: FinCEN administrative rulings count, OCC interpretive letters per year, FCA individual guidance, HMRC non-statutory clearances, IRS private letter rulings, OECD tax-administration advance rulings \u2014 all sites blocked.",
+   "Court/tribunal precedent databases (BAILII, UK caselaw, CourtListener) \u2014 blocked.",
+   "Academic sources: arXiv 2608.27443 (Yan 2026), Semantic Scholar \u2014 blocked.",
+   "EU AI Act Article 14 human-oversight text (eur-lex) \u2014 blocked.",
+   "Eurostat / INSEE / Census occupational counts for EU/France \u2014 blocked."
+  ],
+  "sources": [
+   {
+    "url": "/tmp/claude-0/-home-user-sophon/03144a04-0e98-54e7-9d2c-78cb7b16e172/scratchpad/market/brief.md",
+    "type": "owner brief (local)",
+    "used_for": "Definition of the mechanism, A\u2013H categories, hypotheses H5\u2013H8"
+   },
+   {
+    "url": "/tmp/claude-0/-home-user-sophon/03144a04-0e98-54e7-9d2c-78cb7b16e172/scratchpad/market/prior_evidence.md",
+    "type": "prior investigation (local, derived from regulator publications and owner's logs)",
+    "used_for": "IPSA 46 reviews vs 82,787 claims; 906 settlements cover 90% of 9,404 calls; prior competitor list"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/ServiceNow/ServiceNowDocs/australia/llms.txt",
+    "type": "vendor documentation index (ServiceNow official GitHub mirror)",
+    "used_for": "Locating GRC, HRSD, FSO, Workflow Studio documentation"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/ServiceNow/ServiceNowDocs/australia/markdown/governance-risk-compliance/index.md",
+    "type": "vendor documentation",
+    "used_for": "Catalogue of policy exception, UCF, regulatory change, document version pages"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/ServiceNow/ServiceNowDocs/australia/markdown/governance-risk-compliance/policy-and-compliance-management/manage-policy-exceptions.md",
+    "type": "vendor documentation",
+    "used_for": "Definition of policy exceptions as temporary relief; roles involved"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/ServiceNow/ServiceNowDocs/australia/markdown/governance-risk-compliance/policy-and-compliance-management/request-policy-exception.md",
+    "type": "vendor documentation",
+    "used_for": "Full field list of the policy exception record (who/when/scope/expiry)"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/ServiceNow/ServiceNowDocs/australia/markdown/governance-risk-compliance/policy-and-compliance-management/review-policy-exception-request.md",
+    "type": "vendor documentation",
+    "used_for": "Compliance manager accept/reject, risk assessment, business owner approval"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/ServiceNow/ServiceNowDocs/australia/markdown/governance-risk-compliance/policy-and-compliance-management/define-approval-rules.md",
+    "type": "vendor documentation",
+    "used_for": "Multi-level approval rules keyed on risk rating / policy / control objective"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/ServiceNow/ServiceNowDocs/australia/markdown/governance-risk-compliance/policy-and-compliance-management/preventive-compliance-pace.md",
+    "type": "vendor documentation",
+    "used_for": "Policy as Code Engine: executable controls with exception escalation"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/ServiceNow/ServiceNowDocs/australia/markdown/governance-risk-compliance/policy-and-compliance-management/c_UCF.md",
+    "type": "vendor documentation",
+    "used_for": "UCF paid, read-only cross-customer content library (H5)"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/ServiceNow/ServiceNowDocs/australia/markdown/governance-risk-compliance/regulatory-change-management-service-portal/rcm-exploring-now-assist-for-irm.md",
+    "type": "vendor documentation",
+    "used_for": "GenAI regulatory-alert summarisation and impact recommendations referencing 'similar historical alerts'"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/ServiceNow/ServiceNowDocs/australia/markdown/governance-risk-compliance/regulatory-change-management-service-portal/reg-change-task.md",
+    "type": "vendor documentation",
+    "used_for": "Regulatory change task roles, approver, applicability marking"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/ServiceNow/ServiceNowDocs/australia/markdown/governance-risk-compliance/audit-management/document-version-approval-workflow.md",
+    "type": "vendor documentation",
+    "used_for": "Policy document version states; rollback not supported"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/ServiceNow/ServiceNowDocs/australia/markdown/build-workflows/workflow-studio/edit-decision-tables-using-draft-authoring.md",
+    "type": "vendor documentation",
+    "used_for": "Decision tables: older versions not retained"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/ServiceNow/ServiceNowDocs/australia/markdown/financial-services-operations/dispute-management/exploring-dispute-rules-content-pack-for-nacha.md",
+    "type": "vendor documentation",
+    "used_for": "Nacha dispute rules as 10 reason codes in decision tables (H5 shared rulebook)"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/ServiceNow/ServiceNowDocs/australia/markdown/financial-services-operations/dispute-management/dispute-rules-content-pack-nacha-use.md",
+    "type": "vendor documentation",
+    "used_for": "Agents manually evaluate eligibility from KB article; AI agent recommendation"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/ServiceNow/ServiceNowDocs/australia/markdown/employee-service-management/hr-service-delivery/t_CreateOrModifyEscalationRules.md",
+    "type": "vendor documentation",
+    "used_for": "HR case escalation tiers by skill; no precedent capture"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/ServiceNow/ServiceNowDocs/australia/markdown/employee-service-management/hr-service-delivery/t_EscalateAnHRCase.md",
+    "type": "vendor documentation",
+    "used_for": "HR escalation records reason in case history only"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/camunda/camunda-docs/main/docs/components/modeler/bpmn/business-rule-tasks/business-rule-tasks.md",
+    "type": "vendor documentation (GitHub)",
+    "used_for": "DMN version binding: latest / deployment / versionTag"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/open-policy-agent/opa/main/docs/docs/management-decision-logs.md",
+    "type": "open-source/vendor documentation (GitHub)",
+    "used_for": "Decision log fields incl. bundle revision"
+   },
+   {
+    "url": "https://github.com/cedar-policy/cedar",
+    "type": "open-source/vendor (GitHub)",
+    "used_for": "Cedar portability; no approval/HITL features"
+   },
+   {
+    "url": "https://github.com/cedar-policy/cedar-docs/blob/main/docs/collections/_policies/syntax-policy.md",
+    "type": "open-source/vendor documentation (GitHub)",
+    "used_for": "Annotations are arbitrary; no authorship/versioning semantics"
+   },
+   {
+    "url": "https://github.com/cedar-policy/cedar-docs/blob/main/docs/collections/_policies/templates.md",
+    "type": "open-source/vendor documentation (GitHub)",
+    "used_for": "Template-linked policies instantiated by the application"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/awslabs/amazon-bedrock-agentcore-samples/main/01-features/07-centralize-and-govern-your-ai-infrastructure/02-policy/README.md",
+    "type": "vendor sample documentation (GitHub)",
+    "used_for": "AgentCore Policy: NL\u2192Cedar, ENFORCE default-deny, MONITOR, findings bypass"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/awslabs/amazon-bedrock-agentcore-samples/main/01-features/07-centralize-and-govern-your-ai-infrastructure/02-policy/03-temporal-policies/README.md",
+    "type": "vendor sample documentation (GitHub)",
+    "used_for": "Temporal policies ('formerly within 24h')"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/microsoft/agent-governance-toolkit/main/README.md",
+    "type": "vendor open-source (GitHub)",
+    "used_for": "require_approval / approvers YAML; tamper-evident decision records"
+   },
+   {
+    "url": "https://github.com/openai/openai-agents-python/blob/main/docs/human_in_the_loop.md",
+    "type": "vendor documentation (GitHub)",
+    "used_for": "needs_approval; always_approve sticky within run state"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/langchain-ai/docs/main/src/oss/langgraph/interrupts.mdx",
+    "type": "vendor documentation (GitHub)",
+    "used_for": "Interrupts persisted per thread_id; no standing policy"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/permitio/docs/master/docs/ai-security/access-request-mcp/overview.mdx",
+    "type": "vendor documentation (GitHub)",
+    "used_for": "Standing access requests vs one-time operation approvals"
+   },
+   {
+    "url": "https://code.claude.com/docs/en/permissions",
+    "type": "vendor documentation",
+    "used_for": "'Don't ask again' rules persisted to settings.local.json; managed precedence; deny-first"
+   },
+   {
+    "url": "https://github.com/PolicyLayer/mcp",
+    "type": "vendor open-source (GitHub)",
+    "used_for": "PolicyLayer is an MCP registry, not a settlement store"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/palantir/foundry-platform-python/develop/docs/v2/Ontologies/ObjectType.md",
+    "type": "vendor SDK documentation (GitHub)",
+    "used_for": "Ontology edits history by object type and branch"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/palantir/foundry-platform-python/develop/docs/v2/Ontologies/Action.md",
+    "type": "vendor SDK documentation (GitHub)",
+    "used_for": "Action apply/validation; no approval fields documented"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/apache/incubator-kie-docs/main/drools-docs/src/modules/ROOT/pages/KIE/BuildDeployUtilizeAndRun/_KIEDeploying-section.adoc",
+    "type": "open-source documentation (Apache KIE / Drools)",
+    "used_for": "KieContainer GAV versioning; KieScanner; no audit trail"
+   },
+   {
+    "url": "https://github.com/dmn-tck/tck",
+    "type": "industry community conformance kit (GitHub)",
+    "used_for": "DMN conformance purpose"
+   },
+   {
+    "url": "https://github.com/dmn-tck/tck/tree/master/runners",
+    "type": "industry community conformance kit (GitHub)",
+    "used_for": "8 vendor runners (portability, H7)"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/HL7/davinci-dtr/master/input/pagecontent/index.md",
+    "type": "standards body (HL7 Da Vinci) via GitHub",
+    "used_for": "Payer-specific documentation rules expressed computably (H5)"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/HL7/davinci-crd/master/input/pagecontent/index.md",
+    "type": "standards body (HL7 Da Vinci) via GitHub",
+    "used_for": "Each payer has its own unique process; denial consequences (H5)"
+   },
+   {
+    "url": "https://github.com/openfisca/openfisca-france",
+    "type": "open-source Rules-as-Code project",
+    "used_for": "Dated parameters; frequent releases"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/openfisca/openfisca-doc/master/source/coding-the-legislation/40_legislation_evolutions.md",
+    "type": "open-source project documentation",
+    "used_for": "Dated formulas and parameter start/end semantics"
+   },
+   {
+    "url": "https://github.com/openfisca/openfisca-doc/blob/master/source/coding-the-legislation/legislation_parameters.md",
+    "type": "open-source project documentation",
+    "used_for": "Per-value legislative reference metadata (provenance without lock-in)"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/openfisca/openfisca-doc/master/source/coding-the-legislation/reforms.md",
+    "type": "open-source project documentation",
+    "used_for": "Reforms as variants on a copy of the base system"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/openfisca/openfisca-doc/master/source/coding-the-legislation/inferences.md",
+    "type": "open-source project documentation",
+    "used_for": "No mechanism for legal ambiguity; inferences are technical"
+   },
+   {
+    "url": "https://github.com/openfisca/openfisca-doc/blob/master/source/index.md",
+    "type": "open-source project documentation",
+    "used_for": "Administrations collaborate on one rules code (H5 against)"
+   },
+   {
+    "url": "https://github.com/CatalaLang/catala",
+    "type": "academic/open-source (Inria) via GitHub",
+    "used_for": "Lawyer-certified literate code; default logic; prior art"
+   },
+   {
+    "url": "https://github.com/auth0-samples/auth0-ai-samples",
+    "type": "vendor samples (GitHub)",
+    "used_for": "Async authorization exists ('request approval when needed'); detail not obtainable"
+   }
+  ],
+  "blocked_urls": [
+   "https://www.servicenow.com/docs/bundle/zurich-governance-risk-compliance/page/product/grc-policy-and-compliance/concept/policy-exception-management.html",
+   "https://docs.camunda.io/docs/components/modeler/bpmn/business-rule-tasks/",
+   "https://www.ibm.com/docs/en/odm/9.0.0?topic=decision-center",
+   "https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/policy.html",
+   "https://ramp.com/blog/introducing-ramp-agents",
+   "https://docs.ramp.com/",
+   "https://docs.permit.io/how-to/enforce-permissions/approval-flows",
+   "https://www.openpolicyagent.org/docs/latest/management-bundles/",
+   "https://www.bls.gov/oes/current/oes131041.htm",
+   "https://www.bls.gov/oes/current/oes131031.htm",
+   "https://www.bls.gov/oes/current/oes132053.htm",
+   "https://api.bls.gov/publicAPI/v2/timeseries/data/OEUN0000000000000013104101",
+   "https://oig.hhs.gov/oei/reports/OEI-09-18-00260.asp",
+   "https://www.mcg.com/about/",
+   "https://www.irs.gov/statistics/irs-data-book",
+   "https://docs.pega.com/bundle/platform/page/platform/app-dev/rule-versioning.html",
+   "https://docs.appian.com/suite/help/latest/Process_Model_Versioning.html",
+   "https://www.palantir.com/docs/foundry/ontology/overview",
+   "https://auth0.com/ai/docs/asynchronous-authorization",
+   "https://www.cms.gov/newsroom/fact-sheets/2024-medicare-advantage-and-part-d-final-rule-cms-4201-f",
+   "https://selling-guide.fanniemae.com/",
+   "https://www.iso20022.org/iso-20022-message-definitions",
+   "https://www.fico.com/en/products/fico-blaze-advisor-decision-rules-management-system",
+   "https://docs.guidewire.com/",
+   "https://help.sap.com/docs/SAP_GRC_PROCESS_CONTROL",
+   "https://help.salesforce.com/s/articleView?id=sf.fsc_business_rules_engine.htm",
+   "https://www.archerirm.com/policy-management",
+   "https://www.onetrust.com/products/policy-management/",
+   "https://www.navex.com/en-us/products/navex-one/policy-procedure-management/",
+   "https://www.metricstream.com/products/policy-management.htm",
+   "https://www.duckcreek.com/product/claims/",
+   "https://www.workday.com/en-us/products/human-capital-management/overview.html",
+   "https://ziphq.com/product/intake",
+   "https://navan.com/product/expense-management",
+   "https://docs.oasis-open.org/xacml/xacml-3.0-administration/v1.0/xacml-3.0-administration-v1.0.html",
+   "https://www.federalregister.gov/documents/2023/04/12/2023-07115/medicare-program-contract-year-2024-policy-and-technical-changes-to-the-medicare-advantage-program-medicare",
+   "https://www.govinfo.gov/app/details/FR-2023-04-12",
+   "https://www.gao.gov/products/gao-23-105485",
+   "https://www.onetonline.org/link/summary/13-1041.00",
+   "https://efts.sec.gov/LATEST/search-index?q=%22policy%20exception%22%20%22ServiceNow%22&dateRange=custom&forms=10-K",
+   "https://www.gov.uk/government/statistics/hmrc-annual-report-and-accounts-2024-to-2025",
+   "https://eur-lex.europa.eu/eli/reg/2024/1689/oj",
+   "https://pubmed.ncbi.nlm.nih.gov/?term=InterQual+MCG+criteria+agreement",
+   "https://www.ama-assn.org/system/files/prior-authorization-survey.pdf",
+   "https://www.g2.com/products/logicgate-risk-cloud/pricing",
+   "https://arxiv.org/abs/2608.27443",
+   "https://api.semanticscholar.org/graph/v1/paper/search?query=InterQual+MCG+criteria+agreement+utilization+review",
+   "https://web.archive.org/web/2025/https://www.bls.gov/oes/current/oes131041.htm",
+   "https://datausa.io/api/data?measure=Total%20Population&drilldowns=Nation",
+   "https://dmn-tck.github.io/tck/",
+   "https://www.omg.org/spec/DMN/1.5/About-DMN",
+   "https://en.wikipedia.org/wiki/Program_Operations_Manual_System",
+   "https://secure.ssa.gov/poms.nsf/home!readform",
+   "https://www.fincen.gov/resources/statutes-regulations/administrative-rulings",
+   "https://www.occ.treas.gov/topics/charters-and-licensing/interpretations-and-actions/index-interpretations-and-actions.html",
+   "https://www.fca.org.uk/firms/individual-guidance",
+   "https://www.legifrance.gouv.fr/",
+   "https://www.oecd.org/en/publications/tax-administration-2024_2d5fba9c-en.html",
+   "https://caselaw.nationalarchives.gov.uk/",
+   "https://www.bailii.org/",
+   "https://build.fhir.org/ig/HL7/davinci-dtr/",
+   "https://hl7.org/fhir/us/davinci-dtr/",
+   "https://www.ecfr.gov/api/versioner/v1/titles.json",
+   "https://www.courtlistener.com/api/rest/v4/search/?q=%22InterQual%22+%22MCG%22&type=o",
+   "https://huggingface.co/api/datasets?search=bls%20oes",
+   "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/lfsa_egised?format=JSON&lang=EN&geo=FR&time=2024",
+   "https://api.census.gov/data/2023/acs/acs1?get=NAME,B01001_001E&for=us:1"
+  ]
+ },
+ "verification": {
+  "domain": "falsification-H5-to-H8-and-incumbents",
+  "refuted": [
+   {
+    "claim": "Drools/KIE deployment doc says there is 'no information about recording who modified rules or when' (presented as a quotation from https://raw.githubusercontent.com/apache/incubator-kie-docs/main/drools-docs/src/modules/ROOT/pages/KIE/BuildDeployUtilizeAndRun/_KIEDeploying-section.adoc)",
+    "why": "Re-fetched the file (9,062 bytes): the words 'who modified', 'audit' and 'when' do not appear anywhere in it. The page only documents KieContainer ReleaseId ('org.acme','myartifact','1.0-SNAPSHOT') and KieScanner. The sentence is the finder's inference from silence dressed as a quote; absence from a deployment page says nothing about Business Central/Decision Central (git-backed workbench) which the finder did not fetch. Substance downgraded to 'unknown'."
+   },
+   {
+    "claim": "OpenAI Agents SDK sticky approvals 'live inside one run' / 'persistence is within a run's state, not across runs'",
+    "why": "The same cited page (https://raw.githubusercontent.com/openai/openai-agents-python/main/docs/human_in_the_loop.md, line 184) says: 'Sessions and memory: Pass a session to Runner.run so approvals and conversation history survive multiple turns' (SQLite and OpenAI Conversations session examples). The sessions doc (https://raw.githubusercontent.com/openai/openai-agents-python/main/docs/sessions/index.md line 50) confirms resume with the same session ID. Approvals persist per tool identity across turns of a stored conversation; the finder's 'per-run only' characterisation is wrong, though it remains true that this is not an org-wide, issuer-attributed policy."
+   },
+   {
+    "claim": "In ServiceNow 'a settlement written into a [decision table] row loses provenance' and incumbents 'do not keep history at all'",
+    "why": "ServiceNow platform auditing applies to any table with audit=true: 'Enabling auditing tracks the creation, update, and deletion of all records in the table' with per-field sys_audit rows (table, field name, sys_id, old/new value, user) (https://raw.githubusercontent.com/ServiceNow/ServiceNowDocs/australia/markdown/platform-security/exploring-auditing.md and .../c_UnderstandingTheSysAuditTable.md). Decision-table rows and policy-exception records are ordinary platform records, so who-changed-what-when provenance is available by configuration; the 'older versions aren't retained' note (verified, https://raw.githubusercontent.com/ServiceNow/ServiceNowDocs/australia/markdown/build-workflows/workflow-studio/edit-decision-tables-using-draft-authoring.md line 27) concerns the published snapshot of the whole table, not record-level audit. Also policy documents: 'Retired versions remain available for reference but cannot be edited or republished' (https://raw.githubusercontent.com/ServiceNow/ServiceNowDocs/australia/markdown/governance-risk-compliance/audit-management/document-version-approval-workflow.md line 27) \u2014 history IS kept; only rollback is unsupported (line 37)."
+   }
+  ],
+  "weakened": [
+   {
+    "claim": "Claude Code ships 'a live case\u2192standing-rule loop' where 'Yes, and don't ask again' writes a rule applying to future sessions",
+    "why": "Verified for Bash commands only. The permissions page table (https://code.claude.com/docs/en/permissions) states the 'don't ask again' behaviour is 'Permanently per repository and command' for Bash, whereas 'A file-modification approval isn't saved to the file ... it lasts until' the session ends; read-only tools show N/A. So the persisted-settlement loop covers one tool class, not all agent actions. Rule text, precedence ('managed settings highest') and 'deny, then ask, then allow' ordering are confirmed."
+   },
+   {
+    "claim": "AgentCore Policy has 'no statement about ... creator attribution or versioning' (based on a samples README)",
+    "why": "Now confirmed from the primary API definition rather than a sample: botocore service model for bedrock-agentcore-control (https://raw.githubusercontent.com/boto/botocore/develop/botocore/data/bedrock-agentcore-control/2023-06-05/service-2.json) \u2014 GetPolicy/UpdatePolicy return only createdAt, definition, description, enforcementMode, name, policyArn, policyEngineId, policyId, status, statusReasons, updatedAt; StartPolicyGeneration takes content/name/resource and returns findings and status. No author, version, approver or effective-time field exists. The claim is strengthened in evidence type but weakened in framing: updatedAt/createdAt timestamps are present, and CloudTrail (not checked) normally attributes the API caller, so 'who' is recoverable outside the object."
+   },
+   {
+    "claim": "Cedar annotations are 'arbitrary key-value pairs' with 'no impact on policy evaluation' and therefore provenance 'must be layered on'",
+    "why": "Quote verified (https://raw.githubusercontent.com/cedar-policy/cedar-docs/main/docs/collections/_policies/syntax-policy.md lines 18, 257). But the same passage adds 'they are stored as part of the policy and are available for use by services and applications that read and process Cedar policies' \u2014 i.e. issuer/date/power metadata can travel inside the policy text without any new store. This cuts against a standalone ledger: the provenance carrier already exists in the policy language; what is missing is convention, not infrastructure."
+   },
+   {
+    "claim": "H7: 'incumbents discard history, so a kept history is differentiated'",
+    "why": "Only ServiceNow Decision Builder's published-snapshot behaviour was shown; ServiceNow retains retired document versions, audits records at field level (sys_audit), OPA logs bundle revision per decision (verified https://raw.githubusercontent.com/open-policy-agent/opa/main/docs/docs/management-decision-logs.md line 70), Camunda binds by versionTag (verified). 'Camunda Hub automatically tracks version history' for templates (https://raw.githubusercontent.com/camunda/camunda-docs/main/docs/components/modeler/using-web-and-desktop-modeler-together.md line 76). IBM ODM Decision Center, Pega rule history and Drools Business Central (all git- or DB-backed with authorship in general knowledge) could not be fetched, so the differentiation claim rests on one vendor feature and should be 'thin to nil', not 'real but thin'."
+   },
+   {
+    "claim": "H6(a) exception record is 'not executable' and 'the exception does not become a new rule' \u2014 presented as a gap for Sophon",
+    "why": "True as documented (verified: exceptions require a duration, valid-to 'cannot be a past date', scoped to 'a particular list of the systems, applications, networks, or entities', https://raw.githubusercontent.com/ServiceNow/ServiceNowDocs/australia/markdown/governance-risk-compliance/policy-and-compliance-management/request-policy-exception.md). But the finder missed that ServiceNow already ships case-to-reusable-record loops elsewhere on the same platform: 'Create a knowledge article from a customer service case' ('relevant fields are automatically copied from the case') and 'Create a knowledge article from an incident ... so the next time the issue comes up the resolution is easy to find', with a draft KB auto-created on incident close under KCS (https://raw.githubusercontent.com/ServiceNow/ServiceNowDocs/australia/markdown/servicenow-platform/knowledge-management/create-article-from-case.md; .../it-service-management/incident-management/create-knowledge-incident.md). The capture half exists; only the 'executable' step is absent, which reinforces H6 rather than opening a gap."
+   },
+   {
+    "claim": "H8 structural argument: 'settler population is one to two orders of magnitude smaller than the processor population'",
+    "why": "The ServiceNow role statement is verified ('The control owner, the compliance manager, and the risk manager may be involved', https://raw.githubusercontent.com/ServiceNow/ServiceNowDocs/australia/markdown/governance-risk-compliance/policy-and-compliance-management/manage-policy-exceptions.md line 19) but gives no counts; the 46-vs-82,787 and 906-vs-9,404 ratios are from the owner's local prior_evidence.md, not independent. No BLS/ONS figure could be fetched by either finder or verifier (bls.gov returned 000 through the proxy; WebSearch budget 200/200 exhausted). The order-of-magnitude phrase is an estimate from two owner-supplied datapoints and should be labelled as such."
+   },
+   {
+    "claim": "Yan 2026 (arXiv 2608.27443): 114 of 140 pre-authored rules chose 'ask me'",
+    "why": "Carried from prior_evidence.md; arxiv.org and export.arxiv.org both unreachable (000), GitHub search for the identifier failed (503). Unverified this session; treat as owner-reported."
+   }
+  ],
+  "confirmed": [
+   {
+    "claim": "ServiceNow Decision Builder: 'Older versions of the decision table aren't retained. If you publish a draft, you can't access the previously published version again' and publishing replaces 'the original irretrievably'",
+    "evidence": "Verbatim at lines 27 and 51 of https://raw.githubusercontent.com/ServiceNow/ServiceNowDocs/australia/markdown/build-workflows/workflow-studio/edit-decision-tables-using-draft-authoring.md (vendor documentation, official GitHub mirror)."
+   },
+   {
+    "claim": "ServiceNow policy exceptions are time-boxed waivers ('temporary relief for non-compliant controls'), decided by a compliance manager who may request a risk assessment",
+    "evidence": "Lines 3, 17, 19, 26 of https://raw.githubusercontent.com/ServiceNow/ServiceNowDocs/australia/markdown/governance-risk-compliance/policy-and-compliance-management/manage-policy-exceptions.md; field list incl. Valid from/Valid to/Duration/Approved extensions/Remaining extensions/Date approved/Original valid to/Risk mitigation plan/Source type/Target record at https://raw.githubusercontent.com/ServiceNow/ServiceNowDocs/australia/markdown/governance-risk-compliance/policy-and-compliance-management/request-policy-exception.md (vendor documentation). Exceptions can be raised from any table (Incident, Problem, Vulnerability Response) via the Integration Registry (https://raw.githubusercontent.com/ServiceNow/ServiceNowDocs/australia/markdown/governance-risk-compliance/policy-and-compliance-management/allow-other-app-policy-except.md)."
+   },
+   {
+    "claim": "ServiceNow policy document versions flow Draft \u2192 Awaiting review \u2192 Awaiting approval \u2192 Published \u2192 Retired and 'you cannot roll back to a previous version'",
+    "evidence": "Lines 24-37 of https://raw.githubusercontent.com/ServiceNow/ServiceNowDocs/australia/markdown/governance-risk-compliance/audit-management/document-version-approval-workflow.md (vendor documentation)."
+   },
+   {
+    "claim": "AgentCore Policy: generate_policy converts plain English to Cedar; ENFORCE is default-deny; MONITOR logs only; findings can be bypassed with IGNORE_ALL_FINDINGS",
+    "evidence": "Lines 239-246, 301, 341-354 of https://raw.githubusercontent.com/awslabs/amazon-bedrock-agentcore-samples/main/01-features/07-centralize-and-govern-your-ai-infrastructure/02-policy/README.md (vendor sample); operations StartPolicyGeneration/GetPolicyGeneration/CreatePolicy in the botocore service model (https://raw.githubusercontent.com/boto/botocore/develop/botocore/data/bedrock-agentcore-control/2023-06-05/service-2.json)."
+   },
+   {
+    "claim": "Permit.io distinguishes standing access requests (role assigned) from one-time operation approvals (_Approved_ role unassigned after use), decided by a _Reviewer_",
+    "evidence": "Lines 24, 34, 39-41 of https://raw.githubusercontent.com/permitio/docs/master/docs/ai-security/access-request-mcp/overview.mdx (vendor documentation)."
+   },
+   {
+    "claim": "Camunda business rule task bindingType latest / deployment / versionTag; default latest",
+    "evidence": "Lines 47-56 of https://raw.githubusercontent.com/camunda/camunda-docs/main/docs/components/modeler/bpmn/business-rule-tasks/business-rule-tasks.md (vendor documentation)."
+   },
+   {
+    "claim": "OPA decision logs carry decision_id and bundle revision 'at the time of evaluation'",
+    "evidence": "Lines 9-11, 45, 66, 70 of https://raw.githubusercontent.com/open-policy-agent/opa/main/docs/docs/management-decision-logs.md (open-source documentation)."
+   },
+   {
+    "claim": "Microsoft Agent Governance Toolkit: YAML rules with action: require_approval, approvers: ['security-team']; 'tamper-evident records of every decision'; no documented approval-to-rule promotion",
+    "evidence": "Lines 51, 109-110, 222 of https://raw.githubusercontent.com/microsoft/agent-governance-toolkit/main/README.md; grep for learn/feedback/promote/precedent returns nothing (vendor open-source README)."
+   },
+   {
+    "claim": "UCF content is a separately purchased, read-only library; shared lists capped at 100 authority documents",
+    "evidence": "Lines 19-23, 37 of https://raw.githubusercontent.com/ServiceNow/ServiceNowDocs/australia/markdown/governance-risk-compliance/policy-and-compliance-management/c_UCF.md (vendor documentation)."
+   },
+   {
+    "claim": "Nacha content pack: 10 reason codes with predefined logic; decision tables, rules and flows determine dispute category/reason",
+    "evidence": "Lines 24-26, 42 of https://raw.githubusercontent.com/ServiceNow/ServiceNowDocs/australia/markdown/financial-services-operations/dispute-management/exploring-dispute-rules-content-pack-for-nacha.md (vendor documentation)."
+   },
+   {
+    "claim": "HL7 CRD: 'each has its own unique process to determine whether each service is necessary and appropriate'; claims not meeting payer requirements 'will typically be denied'. HL7 DTR: 'Each payer has rules for what documentation is necessary'; DTR lets payers 'express their documentation requirements computably'",
+    "evidence": "Verbatim in https://raw.githubusercontent.com/HL7/davinci-crd/master/input/pagecontent/index.md and https://raw.githubusercontent.com/HL7/davinci-dtr/master/input/pagecontent/index.md (standards body)."
+   },
+   {
+    "claim": "LangGraph interrupts persist graph state under a thread_id via the checkpointer; no policy-promotion mechanism",
+    "evidence": "Lines 17, 24-30 of https://raw.githubusercontent.com/langchain-ai/docs/main/src/oss/langgraph/interrupts.mdx (vendor documentation)."
+   },
+   {
+    "claim": "OpenFisca parameters carry an optional per-value legislative 'reference'; 'recommended to add legislative references for every value'",
+    "evidence": "Lines 39, 58, 69 of https://raw.githubusercontent.com/openfisca/openfisca-doc/master/source/coding-the-legislation/legislation_parameters.md (open-source project documentation)."
+   },
+   {
+    "claim": "PolicyLayer is an MCP-server registry ('32,500+ published servers', '515,000+ classified tools'), not a settlement store",
+    "evidence": "Line 9 of https://raw.githubusercontent.com/PolicyLayer/mcp/main/README.md (vendor open-source)."
+   },
+   {
+    "claim": "Claude Code managed settings are highest precedence and rules evaluate 'deny, then ask, then allow'; compound-command approvals save 'a separate rule for each subcommand'",
+    "evidence": "https://code.claude.com/docs/en/permissions (vendor documentation), fetched and text-extracted."
+   }
+  ],
+  "manual_review_conflated_with_repeatable_ambiguity": [
+   "H6(a) ServiceNow exceptions: the finder assigned H 10% with no data. Verified text shows the object is a duration-bound waiver on named systems with a risk mitigation plan, raised for 'extraordinary situations'; nothing in the form captures a rule reading. Honest H share for this object is approximately 0-5% (the residual is E risk acceptance and G one-off); the finder's G 50% / E 30% is directionally right but C 10% has no basis in the doc.",
+   "H6(b) agent platforms: the finder's H 35% derives from '906 settlements cover 90% of 9,404 calls' in the owner's own log. That figure measures coverage by grant, not repeatable AMBIGUITY: a 'don't ask again' grant for a Bash command is a permission decision with no rule interpretation involved (category B/E at most). The same log says 47.5% of settlements were never reused and median reuse is 2, which is G-dominant. Re-estimate: H 10-20% at best, and only if one counts 'is this command safe here' as an ambiguity of rule meaning, which the brief's definition does not.",
+   "H5 shared-rulebook workflow: the finder's A30/B30/C25 split is an estimate from standards prose (verified quotes) with no case data; the H 5% is not evidenced at all. The HL7 text shows the residual is payer-specific criteria (settled by the rule owner and published computably), so from the consuming provider's side it is A (missing documentation) and B (does the order match the criteria), not H. Keep H at ~5% but label it unsupported.",
+   "ServiceNow case-to-knowledge (missed by the finder): 'Create Knowledge' from CSM cases and incidents, with KCS auto-drafting on close, is the incumbent's version of capturing a resolved case for reuse. It is text, not executable, but it shows that the 'capture' half of H is already a routine ITSM/CSM feature; any H estimate for ServiceNow-hosted workflows must subtract what KB articles already cover."
+  ],
+  "corrected_workflow_verdicts": [
+   {
+    "name": "H5 test: shared rulebooks and content libraries as pooled interpretation (UCF, Nacha/Visa/Mastercard packs, HL7 Da Vinci DTR/CRD, OpenFisca, DMN interchange)",
+    "evidence_quality": "moderate",
+    "verdict": "weak",
+    "why": "All quotations verified against HL7, ServiceNow and OpenFisca primary text. The conclusion stands: the rule-OWNER's settlements are already sold or published as versioned executable content (UCF paid read-only library; Nacha pack decision tables; DTR CQL questionnaires; OpenFisca dated parameters with legislative references), and the residual layer is firm-specific by the standards' own admission. No volume, cost or H-share data exists; the finder's category shares are estimates. H5 is supported at cross-customer level; a Sophon corpus would be single-tenant. Verdict 'weak' retained, evidence quality kept at moderate because all evidence is documentary, none operational."
+   },
+   {
+    "name": "H6 test (a): GRC / BPM / rules-engine incumbents \u2014 ServiceNow IRM Policy Exception Management, Decision Builder, document versioning, PaCE; Camunda DMN binding; Drools/KIE; OPA; Cedar; Palantir Foundry ontology edits",
+    "evidence_quality": "moderate",
+    "verdict": "negative",
+    "why": "Verdict 'negative' (H6 supported) is confirmed and strengthened, but evidence quality is downgraded from strong to moderate: the Drools 'no audit' quotation is fabricated from silence; ServiceNow record-level sys_audit and retained retired document versions mean the 'incumbents keep no history' differentiator is weaker than stated; ServiceNow case-to-KB and KCS auto-drafting already capture resolved cases for reuse; IBM ODM Decision Center, Pega, Appian, FICO, Sapiens, InRule were not documented by either finder or verifier (all blocked), so the catalogue is incomplete in exactly the vendors most likely to have governed rule history. The unshipped increment (exception \u2192 issuer-attributed executable rule row) remains real but is smaller than the finder implied because provenance (sys_audit), versioning (documents), approval routing and executable tables all exist on one platform."
+   },
+   {
+    "name": "H6 test (b): agent platforms and authorization products \u2014 AWS Bedrock AgentCore Policy, Microsoft Agent Governance Toolkit, OpenAI Agents SDK, LangGraph, Permit.io, Claude Code permissions, PolicyLayer, Auth0",
+    "evidence_quality": "strong",
+    "verdict": "negative",
+    "why": "All quotations verified; the AgentCore claim is now backed by the control-plane API model (no author/version/approver fields, only createdAt/updatedAt). Two corrections cut further against a standalone product: OpenAI sticky approvals persist across turns via sessions (more incumbent coverage than stated), and Cedar annotations are stored with the policy and readable by services (provenance can ride inside the existing policy store). Claude Code's persisted loop is Bash-only, which slightly narrows the 'mass-market loop already shipped' point but does not change the direction. Every platform owns the gateway where a ledger would sit. Verdict negative, evidence strong (multiple primary docs, one API definition)."
+   },
+   {
+    "name": "H7 test: portability of rules and settlement corpora (DMN TCK, OPA/Cedar as text, OpenFisca YAML, Claude Code JSON, ServiceNow no-history)",
+    "evidence_quality": "moderate",
+    "verdict": "negative",
+    "why": "Portability evidence verified (Cedar annotations stored in policy text; OpenFisca YAML references; Camunda versionTag; OPA bundle revision; DMN TCK runners not re-fetched but uncontested). The one 'against' point (incumbents discard history) is refuted for ServiceNow documents (retired versions retained) and for record-level provenance (sys_audit), and unverified for ODM/Pega/Drools workbench. So H7 is more strongly supported than the finder said: no data lock-in and no clear history differentiator. Verdict negative (H7 true)."
+   },
+   {
+    "name": "H8 test: size of the settler labour pool versus processors, and software spend per seat",
+    "evidence_quality": "unknown",
+    "verdict": "uncertain",
+    "why": "No independent headcount, wage or seat-price figure was obtainable by finder or verifier (bls.gov, oig.hhs.gov, cms.gov, G2, SEC all 000 through the proxy; WebSearch budget exhausted). The structural argument rests on one verified ServiceNow role sentence and two owner-supplied ratios from prior_evidence.md (46/82,787; 906/9,404). That is consistent with a small settler pool but is not evidence about any market. Verdict 'uncertain' retained; the finder's 'implausible' language for a settler-seat business should be read as an estimate, and the processor-side ROI framing is an untested hypothesis rather than a finding."
+   }
+  ],
+  "missing": [
+   "IBM ODM Decision Center governance (branches, releases, change activities, approvals, per-rule history with author) \u2014 the single most relevant incumbent for 'issuer-attributed versioned executable rule' and neither finder nor verifier could fetch ibm.com; DecisionsDev GitHub repos contain no governance text; GitHub code search returned 503 on every attempt. Until documented, the 'no incumbent records who/when/power on an executable rule' gap claim is unproven.",
+   "Pega rule check-in/check-out history and Drools/KIE Business Central git-backed authorship \u2014 same status; the finder's Drools 'no audit' line must be treated as unknown.",
+   "ServiceNow sys_audit applicability to Decision Builder tables specifically (auditing is per-table opt-in via the dictionary; whether sys_decision tables are audited by default was not determined).",
+   "Whether AgentCore Policy changes are attributed to an IAM principal via CloudTrail (would supply 'who' outside the policy object) \u2014 not checked.",
+   "Camunda Web Modeler milestones/version history with author (docs path not located; sidebar grep returned nothing) \u2014 would further weaken the H7 'no history' point.",
+   "Ramp policy agent behaviour (prior evidence says detected ambiguity becomes a suggested policy edit an admin publishes \u2014 the closest shipped analogue to the settlement loop) \u2014 ramp.com blocked; unverified by both passes.",
+   "Yan 2026 arXiv 2608.27443 (114/140 'ask me') \u2014 unverifiable this session.",
+   "All H8 magnitudes: BLS OES 13-1041/13-1031/13-2053 counts, GRC per-seat pricing, compliance operating cost surveys.",
+   "HHS OIG OEI-09-18-00260 and CMS-4201-F text on MA internal coverage criteria and UM committee review \u2014 would show a regulator-mandated, published, annually reviewed settlement layer inside payers (evidence that the loop exists but is owned by the payer's UM committee, i.e. H3/H6 territory); not fetchable.",
+   "EU AI Act Article 14 human-oversight obligations \u2014 relevant to H4 (humans must remain in the loop) for any EU deployment; not fetchable.",
+   "Operational evidence from any real deployment (exception volumes, reuse rates) for ServiceNow IRM or any agent platform \u2014 none exists in public docs; both passes are documentary only."
+  ],
+  "overall": "The finder's quotations are almost all accurate (verified 14 of 15 cited documents by re-fetch; the Drools 'no audit' quote is the exception and is refuted as fabricated from silence). The direction of every verdict survives: H6 (feature of incumbents) is the best-supported hypothesis, H7 (no data lock-in) is true, H5 kills cross-customer leverage, H8 is unquantified. But three corrections move the picture further AGAINST a standalone product than the finder stated: (1) incumbents keep more provenance and history than claimed \u2014 ServiceNow field-level sys_audit on any audited table, retired document versions retained, OpenAI approvals persisting across session turns, Cedar annotations stored inside policies and readable by services \u2014 so the 'dated, attributed history' differentiator is thin to nil; (2) ServiceNow already ships case-to-reusable-record capture (Create Knowledge from case/incident, KCS auto-draft) on the same platform as its exception, approval and decision-table objects, so the 'capture' half of the settlement loop is a routine incumbent feature and only the 'executable' step is missing; (3) the finder's H shares (10% for GRC exceptions, 35% for agent permissions) are not supported by the verified texts \u2014 the ServiceNow exception form contains no rule-interpretation field at all (H \u2248 0-5%), and the agent-permission coverage figure measures grant reuse, not ambiguity of rule meaning (H \u2248 10-20% at most, on an owner-supplied log). The incumbents most likely to already hold the exact missing object (IBM ODM Decision Center, Pega, Drools Business Central) remain undocumented because every non-GitHub domain is blocked and the WebSearch budget was exhausted before both passes, so the 'no incumbent records who/when/power on a versioned executable rule' claim is unproven, not established. Net for this cluster: negative on H6 and H7 with moderate-to-strong documentary evidence, weak on H5, uncertain on H8; nothing here supplies the settlement-loop frequency evidence that would be needed to override that."
+ }
+}
