@@ -1,0 +1,130 @@
+{
+  "hashes": {
+    "ipsa_decisions": {
+      "actual": "fff7cb525839c8ffd7d0cba28ebe0ec25feab3716d98ab840801ed3f8b111801",
+      "recorded": "fff7cb525839c8ffd7d0cba28ebe0ec25feab3716d98ab840801ed3f8b111801",
+      "match": true
+    },
+    "ipsa_sample": {
+      "actual": "051a54c96c34da1ea07d88b5e54c420700dfa6042c76204849a37a708a2ec95e",
+      "recorded": "051a54c96c34da1ea07d88b5e54c420700dfa6042c76204849a37a708a2ec95e",
+      "match": true
+    },
+    "ipsa_policy": {
+      "actual": "f5841a1674d07a4406a4ff767fcedaa6cad0d104ee1ad705d1416c43fc8117cf",
+      "recorded": "f5841a1674d07a4406a4ff767fcedaa6cad0d104ee1ad705d1416c43fc8117cf",
+      "match": true
+    },
+    "ipsa_runtime_replay_py": {
+      "actual": "9b0f71c760a102f3adfe25c6a7cdb4c82368caf201927d6f77cb2a929aee82c7",
+      "recorded": "9b0f71c760a102f3adfe25c6a7cdb4c82368caf201927d6f77cb2a929aee82c7",
+      "match": true
+    },
+    "solo_cases": {
+      "actual": "98b671a9e1ab8a7efba3cc077e23daf207f7ce93da9d918afe66ba529b590cfc",
+      "recorded": "98b671a9e1ab8a7efba3cc077e23daf207f7ce93da9d918afe66ba529b590cfc",
+      "match": true
+    },
+    "solo_draft_policy": {
+      "actual": "ebee78addf435659fb7e36afc1e9ea0a6a72d4b747dee599b142ddf10fd0a04b",
+      "recorded": "ebee78addf435659fb7e36afc1e9ea0a6a72d4b747dee599b142ddf10fd0a04b",
+      "match": true
+    }
+  },
+  "bundled_labels": {
+    "rows": 1000,
+    "published_status": {
+      "Paid": 997,
+      "Repaid": 2,
+      "Not Paid": 1
+    },
+    "decisions": {
+      "REQUEST_FACT": 1000
+    },
+    "note": "Recount of the bundled 1,000-row join only. The full-file figures (82,787 rows; 18 Not Paid; 446 Repaid) need the raw CSV, which is not in the packet and was not downloaded."
+  },
+  "replay_decide": {
+    "return_statements": 1,
+    "literal_decision_values": [
+      "REQUEST_FACT"
+    ],
+    "CLEAR_or_BLOCK_string_anywhere_in_decide": false,
+    "feature_fields_read_by_decide": [
+      "Category",
+      "Cost Type"
+    ],
+    "feature_fields_available": 17,
+    "fuzz_100k_decisions": {
+      "REQUEST_FACT": 100000
+    },
+    "distinct_category_costtype_pairs_in_sample": 67,
+    "distinct_outputs_over_1000_rows": 11,
+    "finding": "decide() has one return whose decision is the literal 'REQUEST_FACT'. No input can produce CLEAR or BLOCK, so '1,000 REQUEST_FACT / 0 CLEAR / 0 BLOCK' is true by construction, not an observation. It reads 2 of 17 feature fields; the amount, description, nights, mileage and route never matter."
+  },
+  "probe_guard_mutation": {
+    "mutants": {
+      "M0_original": {
+        "tests_run": 6,
+        "failed": [],
+        "mutant_detected": false
+      },
+      "M1_always_REQUEST_AUTHORITY": {
+        "tests_run": 6,
+        "failed": [
+          "test_in_window_document_does_not_clear_payment"
+        ],
+        "mutant_detected": true
+      },
+      "M2_empty_event_list": {
+        "tests_run": 6,
+        "failed": [
+          "test_in_window_document_does_not_clear_payment"
+        ],
+        "mutant_detected": true
+      },
+      "M3_no_beneficiary_check": {
+        "tests_run": 6,
+        "failed": [
+          "test_named_exception_does_not_transfer_to_another_person"
+        ],
+        "mutant_detected": true
+      },
+      "M4_no_expiry_check": {
+        "tests_run": 6,
+        "failed": [
+          "test_expired_exception_does_not_authorize_new_period"
+        ],
+        "mutant_detected": true
+      },
+      "M5_review_outcomes_and_proposals_treated_as_grants": {
+        "tests_run": 6,
+        "failed": [],
+        "mutant_detected": false
+      },
+      "M6_in_window_match_clears_payment": {
+        "tests_run": 6,
+        "failed": [
+          "test_in_window_document_does_not_clear_payment"
+        ],
+        "mutant_detected": true
+      }
+    },
+    "which_mutants_each_test_detects": {
+      "test_announcement_does_not_create_general_guidance": [],
+      "test_expired_exception_does_not_authorize_new_period": [
+        "M4_no_expiry_check"
+      ],
+      "test_expressly_non_precedential_half_funding_does_not_spread": [],
+      "test_in_window_document_does_not_clear_payment": [
+        "M1_always_REQUEST_AUTHORITY",
+        "M2_empty_event_list",
+        "M6_in_window_match_clears_payment"
+      ],
+      "test_named_exception_does_not_transfer_to_another_person": [
+        "M3_no_beneficiary_check"
+      ],
+      "test_review_decision_does_not_grant_repeat_claim": []
+    },
+    "finding": "A guard that detects no mutant asserts nothing about the behaviour in its name."
+  }
+}

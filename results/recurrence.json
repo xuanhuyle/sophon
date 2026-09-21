@@ -1,0 +1,98 @@
+{
+  "rows": 1000,
+  "first_date": "2023-04-01",
+  "last_date": "2024-03-31",
+  "note": "Upper bound on reuse from recurrence alone. A 1,000-row sample of ~82,787 rows under-states recurrence in the full stream (sampling thins repeats), so treat fine-granularity figures as pessimistic and the ordering across granularities as the result.",
+  "granularities": {
+    "G1 category": {
+      "distinct_classes": 7,
+      "settlements_spent_online": 7,
+      "covered_overall": 0.993,
+      "covered_first_half": 0.992,
+      "covered_second_half": 0.994,
+      "covered_last_100": 0.97,
+      "new_classes_in_last_100": 3,
+      "classes_seen_exactly_once": 0,
+      "share_of_settlements_never_reused": 0.0,
+      "mean_claims_per_settlement": 142.86,
+      "median_claims_per_settlement": 33,
+      "hindsight_settlements_to_cover": {
+        "50%": 1,
+        "80%": 2,
+        "90%": 3
+      }
+    },
+    "G2 category+cost_type": {
+      "distinct_classes": 67,
+      "settlements_spent_online": 67,
+      "covered_overall": 0.933,
+      "covered_first_half": 0.92,
+      "covered_second_half": 0.946,
+      "covered_last_100": 0.78,
+      "new_classes_in_last_100": 22,
+      "classes_seen_exactly_once": 15,
+      "share_of_settlements_never_reused": 0.224,
+      "mean_claims_per_settlement": 14.93,
+      "median_claims_per_settlement": 5,
+      "hindsight_settlements_to_cover": {
+        "50%": 7,
+        "80%": 19,
+        "90%": 29
+      }
+    },
+    "G3 +short_description": {
+      "distinct_classes": 90,
+      "settlements_spent_online": 90,
+      "covered_overall": 0.91,
+      "covered_first_half": 0.882,
+      "covered_second_half": 0.938,
+      "covered_last_100": 0.78,
+      "new_classes_in_last_100": 22,
+      "classes_seen_exactly_once": 23,
+      "share_of_settlements_never_reused": 0.256,
+      "mean_claims_per_settlement": 11.11,
+      "median_claims_per_settlement": 4,
+      "hindsight_settlements_to_cover": {
+        "50%": 9,
+        "80%": 27,
+        "90%": 40
+      }
+    },
+    "G4 +amount_order_of_magnitude": {
+      "distinct_classes": 174,
+      "settlements_spent_online": 174,
+      "covered_overall": 0.826,
+      "covered_first_half": 0.774,
+      "covered_second_half": 0.878,
+      "covered_last_100": 0.6,
+      "new_classes_in_last_100": 40,
+      "classes_seen_exactly_once": 73,
+      "share_of_settlements_never_reused": 0.42,
+      "mean_claims_per_settlement": 5.75,
+      "median_claims_per_settlement": 2,
+      "hindsight_settlements_to_cover": {
+        "50%": 16,
+        "80%": 54,
+        "90%": 88
+      }
+    },
+    "G5 +normalised_details_text": {
+      "distinct_classes": 633,
+      "settlements_spent_online": 633,
+      "covered_overall": 0.367,
+      "covered_first_half": 0.32,
+      "covered_second_half": 0.414,
+      "covered_last_100": 0.59,
+      "new_classes_in_last_100": 41,
+      "classes_seen_exactly_once": 545,
+      "share_of_settlements_never_reused": 0.861,
+      "mean_claims_per_settlement": 1.58,
+      "median_claims_per_settlement": 1,
+      "hindsight_settlements_to_cover": {
+        "50%": 133,
+        "80%": 433,
+        "90%": 533
+      }
+    }
+  }
+}

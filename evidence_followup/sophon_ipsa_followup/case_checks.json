@@ -1,0 +1,93 @@
+[
+  {
+    "document": 1,
+    "question": "Can a partly eligible component authorize the whole submitted claim?",
+    "observation": "The full monitor transaction was refused; accessories would need separate resubmission.",
+    "boundary": "item_specific_resubmission",
+    "anchors": ["if the MP resubmits the claim to cover the keyboard and mouse sets"]
+  },
+  {
+    "document": 2,
+    "question": "Does a partial review remedy establish future joint funding?",
+    "observation": "The officer expressly disclaims future use of the 50 percent allocation.",
+    "boundary": "express_nonprecedent",
+    "anchors": ["My decision is not a precedent"]
+  },
+  {
+    "document": 3,
+    "question": "Is an intention to clarify guidance an effective rule change?",
+    "observation": "The report recounts a proposed clarification; it does not supply a publication date and effective instrument for a new rule.",
+    "boundary": "proposed_guidance_only",
+    "anchors": ["we will be updating it shortly"]
+  },
+  {
+    "document": 4,
+    "question": "Does an approved storage window extend to later months?",
+    "observation": "The documented storage extension stopped in March 2024; the later request was refused.",
+    "boundary": "bounded_case_grant",
+    "anchors": ["The approval for storage was extended until March 2024"]
+  },
+  {
+    "document": 5,
+    "question": "Does a case-level compromise carry forward unused budgets as a rule?",
+    "observation": "The report identifies a revised 16th Scheme and records a narrow accommodation-budget compromise, not an effective general transfer rule.",
+    "boundary": "case_remedy_and_source_version",
+    "anchors": ["16th edition 2023-2024 (revised July 2023)", "reasonable compromise in all of the circumstances"]
+  },
+  {
+    "document": 6,
+    "question": "Does staffing-budget relief authorize future overspends?",
+    "observation": "The officer determined that this MP need not repay the overspend and explicitly described the relief as one-off and not precedent.",
+    "boundary": "one_off_budget_remedy",
+    "anchors": ["specific to the facts and not setting precedent"]
+  },
+  {
+    "document": 11,
+    "question": "Can last year's year-end purchase guidance authorize next year's transfer?",
+    "observation": "The report identifies changed guidance and a CEO-approved adjustment for this particular misunderstanding.",
+    "boundary": "guidance_changed_and_case_adjustment",
+    "anchors": ["The guidance changed with regards to pre-payments", "The CEO and his team agreed to allow the overspend"]
+  },
+  {
+    "document": 18,
+    "question": "Does another MP's paid cleaning claim authorize all later end-of-tenancy cleaning?",
+    "observation": "The officer researched comparable payments but explicitly declined a general precedent.",
+    "boundary": "practice_not_grant",
+    "anchors": ["a fellow MP, who leased a property in the same block of flats", "I do not want to set precedence on this point"]
+  },
+  {
+    "document": 19,
+    "question": "Does the later similar cleaning and making-good review convert the earlier decision into a rule?",
+    "observation": "The officer again ruled for the individual MP; IPSA disputed the lease-approval premise and the officer declined precedent, recommending clearer Scheme text.",
+    "boundary": "repeated_remedy_with_disputed_interpretation",
+    "anchors": ["The Compliance Officer does not want to set precedence on this point", "following your review of Mr Snell’s case"]
+  },
+  {
+    "document": 25,
+    "question": "Do prior volunteer lunch reimbursements bind a later decision?",
+    "observation": "The claimant argued for precedent; the officer upheld refusal and proposed a future clarification rather than applying prior payments as a grant.",
+    "boundary": "claimant_precedent_argument_rejected",
+    "anchors": ["they set a precedent on this issue", "correctly interpreted and implemented the rules under the Scheme"]
+  },
+  {
+    "document": 34,
+    "question": "Can past payments be relevant without automatically binding future claims?",
+    "observation": "The officer considered 19 paid laptop-bag claims and allowed a briefcase, while IPSA's CEO accepted the determination but questioned wider application.",
+    "boundary": "practice_relevant_not_general_permission",
+    "anchors": ["nineteen claims for laptop bags", "feels constrained by precedent", "consider whether, as a result of your ruling"]
+  },
+  {
+    "document": 40,
+    "question": "Can a later prohibition be applied to an earlier incurred expense?",
+    "observation": "The officer applied the sixth rather than the seventh Scheme to a February hospitality expense claimed in June.",
+    "boundary": "historical_source_version",
+    "anchors": ["2 February 2015", "Sixth Edition of the Scheme should be utilised"]
+  },
+  {
+    "document": 45,
+    "question": "Can a later travel amendment justify an earlier claim?",
+    "observation": "The tribunal applied the third Scheme to a 2011 journey and rejected importing the fifth Scheme's later diverted-journey allowance; it split the trip into separate legs.",
+    "boundary": "historical_source_version_and_action_split",
+    "anchors": ["There is no equivalent in the Third edition of the Scheme", "allowed in part"]
+  }
+]

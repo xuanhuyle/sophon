@@ -1,0 +1,5 @@
+Additional IPSA evidence for the Sophon investigation: please read the attached `Sophon_IPSA_Followup_Test_Final_2026-09-21.md` and its small evidence packet. This is a source-based result, not an instruction to adopt an architecture or use IPSA as your preferred test domain.
+
+I completed a corpus-level audit of all 46 indexed public IPSA review documents, including OCR of the scanned tribunal decision, and source-checked 13 consequential cases. The original 1,000-claim public-data replay remains a missing-facts audit with a known Scheme-version mismatch, not a historical policy accuracy test. The follow-up surfaced an important nuance: previous payments can influence consistency reasoning (Pound), while similar favorable review outcomes can expressly decline precedential effect (Snell/Frith). The public materials do not contain the ordinary decision-time dossiers or review-effort measurements needed to validate automation coverage or product economics.
+
+Please use or challenge these findings as you judge appropriate. Continue to make your own architecture and validation decision; the attached report does not settle it.

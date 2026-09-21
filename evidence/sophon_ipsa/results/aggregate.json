@@ -1,0 +1,62 @@
+{
+  "authority_settlements": 0,
+  "by_category": {
+    "Accommodation": {
+      "Paid": 139
+    },
+    "Dependant Travel": {
+      "Paid": 2
+    },
+    "MP Travel": {
+      "Paid": 27
+    },
+    "Miscellaneous": {
+      "Paid": 3
+    },
+    "Office Costs": {
+      "Not Paid": 1,
+      "Paid": 738,
+      "Repaid": 2
+    },
+    "Staff Travel": {
+      "Paid": 33
+    },
+    "Staffing": {
+      "Paid": 55
+    }
+  },
+  "decisions": {
+    "REQUEST_FACT": 1000
+  },
+  "missing_facts": {
+    "actual_traveller_and_commuting_status": 62,
+    "available_budget_and_other_funding": 1000,
+    "available_transport_alternatives_and_necessity": 1,
+    "category_specific_eligibility": 3,
+    "certified_parliamentary_purpose": 1000,
+    "comparable_permitted_fare_at_booking": 20,
+    "contract_and_staffing_eligibility": 55,
+    "dependant_registration": 2,
+    "dependant_registration_if_applicable": 28,
+    "journey_purpose_and_route": 62,
+    "mp_accommodation_eligibility": 139,
+    "nightly_rate_location_and_stay_group": 28,
+    "office_cost_purpose_and_item_eligibility": 741,
+    "overnight_stay_and_location": 7,
+    "registered_property_or_accommodation_mode": 139,
+    "supporting_evidence_and_validation": 1000,
+    "year_to_date_mileage_and_applicable_rate": 16
+  },
+  "note": "Zero autonomous CLEARs is a vacuous safety result; statuses are not normative ground truth and expense dates are not decision dates.",
+  "observed_deterministic_coverage": 0.0,
+  "published_status": {
+    "Not Paid": 1,
+    "Paid": 997,
+    "Repaid": 2
+  },
+  "semantic_residual_classes": {
+    "reasonable_transport_alternative": 1
+  },
+  "total": 1000,
+  "unauthorized_CLEAR_observed": 0
+}

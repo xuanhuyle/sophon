@@ -1,0 +1,69 @@
+{
+  "projects": 1,
+  "sessions": 1,
+  "scope": "C--Claude-sophon",
+  "tools": {
+    "Bash": 46,
+    "Agent": 15,
+    "Write": 12,
+    "Edit": 6,
+    "WebFetch": 5,
+    "Read": 4,
+    "ToolSearch": 2,
+    "mcp__0fd6fa10-a45b-45bc-b4cc-7eb4425e11ad__search_files": 2
+  },
+  "levels": {
+    "L1 tool": {
+      "actions": 92,
+      "distinct_classes(=settlements)": 8,
+      "covered_overall": 0.913,
+      "covered_by_quarter": [
+        0.826,
+        0.87,
+        0.957,
+        1.0
+      ],
+      "share_of_settlements_never_reused": 0.0,
+      "median_actions_per_settlement": 6
+    },
+    "L2 tool+program": {
+      "actions": 92,
+      "distinct_classes(=settlements)": 18,
+      "covered_overall": 0.804,
+      "covered_by_quarter": [
+        0.609,
+        0.783,
+        0.826,
+        1.0
+      ],
+      "share_of_settlements_never_reused": 0.111,
+      "median_actions_per_settlement": 4
+    },
+    "L3 +subcommand(hashed)": {
+      "actions": 92,
+      "distinct_classes(=settlements)": 39,
+      "covered_overall": 0.576,
+      "covered_by_quarter": [
+        0.217,
+        0.652,
+        0.565,
+        0.87
+      ],
+      "share_of_settlements_never_reused": 0.615,
+      "median_actions_per_settlement": 1
+    },
+    "L4 exact command(hashed)": {
+      "actions": 92,
+      "distinct_classes(=settlements)": 92,
+      "covered_overall": 0.0,
+      "covered_by_quarter": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "share_of_settlements_never_reused": 1.0,
+      "median_actions_per_settlement": 1
+    }
+  }
+}

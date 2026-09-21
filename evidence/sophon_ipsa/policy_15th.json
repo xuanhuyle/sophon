@@ -1,0 +1,31 @@
+{
+  "source": "IPSA 15th edition Funding Scheme 2023–24",
+  "effective_from": "2023-04-01",
+  "effective_until": "2024-03-31",
+  "decision_unit": "eligibility of the exact published amount claimed, not a smaller allowable amount",
+  "rules": [
+    {"id":"P1", "section":"Part A.1", "kind":"open_standard", "test":"parliamentary purpose; public row cannot independently verify purpose"},
+    {"id":"P2", "section":"Part A.2", "kind":"open_standard", "test":"value for money"},
+    {"id":"P3", "section":"1.1(a–d)", "kind":"fact_dependent", "test":"submission route, claimant/proxy, deadline, evidence"},
+    {"id":"P4", "section":"1.3", "kind":"payment_mode", "test":"direct supplier/card payments need different submission handling"},
+    {"id":"P5", "section":"2.3", "kind":"authority_guard", "test":"past determinations do not bind future claims"},
+    {"id":"P6", "section":"3.2", "kind":"fact_dependent", "test":"MP certification of parliamentary purpose and scheme compliance"},
+    {"id":"P7", "section":"3.3", "kind":"open_standard", "test":"discretion must be exercised reasonably"},
+    {"id":"P8", "section":"3.4", "kind":"prohibition", "test":"campaign, party and non-parliamentary activity excluded; actual purpose needed"},
+    {"id":"P9", "section":"3.8–3.13", "kind":"stateful", "test":"annual budget, exceptions and remaining balance unavailable"},
+    {"id":"P10", "section":"3.25–3.27", "kind":"prohibition", "test":"penalties, insurable and elsewhere funded expenses; nature of cost needed"},
+    {"id":"P11", "section":"4.2–4.3", "kind":"fact_dependent", "test":"accommodation eligibility and current accommodation mode"},
+    {"id":"P12", "section":"4.5", "kind":"prohibition", "test":"specific associated costs excluded from accommodation budget"},
+    {"id":"P13", "section":"4.10–4.12", "kind":"quantitative", "test":"nightly accommodation hotel cap, location and nights, stay aggregation"},
+    {"id":"P14", "section":"4.13", "kind":"fact_dependent", "test":"property registered with documents"},
+    {"id":"P15", "section":"6", "kind":"mixed", "test":"office-cost purpose, eligibility, budget and substantiation"},
+    {"id":"P16", "section":"7", "kind":"mixed", "test":"staffing contract, job and eligibility facts"},
+    {"id":"P17", "section":"9.1–9.6", "kind":"mixed", "test":"parliamentary travel, route, commuting and diversion"},
+    {"id":"P18", "section":"9.7–9.13", "kind":"mixed", "test":"dependant registration, staff and family travel limitations"},
+    {"id":"P19", "section":"9.14–9.18", "kind":"quantitative", "test":"fare comparator and cumulative mileage rate"},
+    {"id":"P20", "section":"9.20–9.22", "kind":"open_standard", "test":"taxi or hire car necessity and alternatives"},
+    {"id":"P21", "section":"9.23–9.31", "kind":"mixed", "test":"hotel/subsistence eligibility, overnight purpose, late working and cost caps"},
+    {"id":"P22", "section":"10.6–10.8", "kind":"discretion", "test":"contingency funding cannot be inferred from published expense row"},
+    {"id":"P23", "section":"Annex A", "kind":"quantitative", "test":"2023–24 budgets, hotel, subsistence and mileage limits"}
+  ]
+}

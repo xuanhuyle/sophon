@@ -1,0 +1,133 @@
+{
+  "note": "First run of the probe suite against seeded faults, kept unedited. Five of twenty probes detected no seeded fault and one fault survived. The suite and the fault list were then extended (see lab_results.json).",
+  "probes_passed_first_run": {
+    "ledger": "20/20",
+    "baseline (first pass)": "10/20",
+    "baseline + closed_surface": "11/20",
+    "baseline + effective_dating": "13/20",
+    "baseline + exact_one_shot": "11/20",
+    "baseline + typed_ownership": "13/20",
+    "baseline + version_pinning": "12/20",
+    "baseline + all five": "20/20"
+  },
+  "faults_each_probe_detects": {
+    "p01_nothing_clears_before_adoption": [],
+    "p02_proposal_has_no_force": [
+      "proposal_has_force"
+    ],
+    "p03_stranger_cannot_settle": [
+      "skip_power_check"
+    ],
+    "p04_delegation_is_bounded": [
+      "skip_power_check",
+      "ignore_delegation_bounds",
+      "ignore_expiry"
+    ],
+    "p05_no_self_dealing": [
+      "allow_self_dealing"
+    ],
+    "p06_case_remedy_does_not_spread": [
+      "exception_matches_any_case",
+      "ignore_amount_cap"
+    ],
+    "p07_expired_exception_does_not_pay": [
+      "ignore_expiry"
+    ],
+    "p08_revocation_is_prospective": [
+      "ignore_revocation"
+    ],
+    "p09_superseded_settlement_stops_applying": [
+      "ignore_supersession"
+    ],
+    "p10_no_backdating": [
+      "allow_retroactive"
+    ],
+    "p11_future_effective_date_is_respected": [],
+    "p12_missing_fact_is_never_true": [],
+    "p13_bad_amount_never_passes": [
+      "nan_passes"
+    ],
+    "p14_permit_is_exact_and_single_use": [
+      "exception_matches_any_case",
+      "no_consumption"
+    ],
+    "p15_amendment_suspends_what_it_does_not_keep": [
+      "ignore_amendment_suspension"
+    ],
+    "p16_unknown_action_family_goes_to_a_person": [
+      "unknown_category_clears"
+    ],
+    "p17_mislabelled_act_cannot_move_a_bright_line": [],
+    "p18_decision_binds_the_amount_submitted": [],
+    "p19_later_settlement_does_not_reach_an_earlier_expense": [
+      "ignore_version_timing"
+    ],
+    "p20_past_payments_are_not_permission": [
+      "practice_becomes_permission"
+    ]
+  },
+  "probes_detecting_each_fault": {
+    "proposal_has_force": [
+      "p02"
+    ],
+    "skip_power_check": [
+      "p03",
+      "p04"
+    ],
+    "ignore_delegation_bounds": [
+      "p04"
+    ],
+    "allow_self_dealing": [
+      "p05"
+    ],
+    "allow_retroactive": [
+      "p10"
+    ],
+    "ignore_slot_integrity": [],
+    "ignore_expiry": [
+      "p04",
+      "p07"
+    ],
+    "ignore_revocation": [
+      "p08"
+    ],
+    "ignore_supersession": [
+      "p09"
+    ],
+    "ignore_amendment_suspension": [
+      "p15"
+    ],
+    "ignore_version_timing": [
+      "p19"
+    ],
+    "unknown_category_clears": [
+      "p16"
+    ],
+    "nan_passes": [
+      "p13"
+    ],
+    "exception_matches_any_case": [
+      "p06",
+      "p14"
+    ],
+    "ignore_amount_cap": [
+      "p06"
+    ],
+    "no_consumption": [
+      "p14"
+    ],
+    "practice_becomes_permission": [
+      "p20"
+    ]
+  },
+  "surviving_faults": [
+    "ignore_slot_integrity"
+  ],
+  "probes_detecting_nothing": [
+    "p01_nothing_clears_before_adoption",
+    "p11_future_effective_date_is_respected",
+    "p12_missing_fact_is_never_true",
+    "p17_mislabelled_act_cannot_move_a_bright_line",
+    "p18_decision_binds_the_amount_submitted"
+  ]
+}
