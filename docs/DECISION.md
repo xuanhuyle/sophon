@@ -107,5 +107,5 @@ with after-the-fact audit, is the better choice, and no control plane is needed.
 
 ## Next action
 
-`docs/OWNER_REQUEST.md`: one permission (run the recurrence study on your own agent history), and, only if you want
+The recurrence study on your own agent history is done (REPORT section 5). Remaining in `docs/OWNER_REQUEST.md`: only if you want
 to exercise the mechanism end to end, six decisions on the draft lab policy.

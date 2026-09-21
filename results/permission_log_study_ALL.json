@@ -1,0 +1,73 @@
+{
+  "projects": 12,
+  "sessions": 56,
+  "scope": "all",
+  "tools": {
+    "Bash": 3907,
+    "Edit": 1661,
+    "Read": 1471,
+    "Write": 855,
+    "Grep": 333,
+    "TaskUpdate": 218,
+    "TaskCreate": 120,
+    "Agent": 113,
+    "PowerShell": 106,
+    "Workflow": 95,
+    "Glob": 94,
+    "ToolSearch": 64
+  },
+  "levels": {
+    "L1 tool": {
+      "actions": 9404,
+      "distinct_classes(=settlements)": 50,
+      "covered_overall": 0.995,
+      "covered_by_quarter": [
+        0.989,
+        0.994,
+        0.997,
+        0.998
+      ],
+      "share_of_settlements_never_reused": 0.28,
+      "median_actions_per_settlement": 5
+    },
+    "L2 tool+program": {
+      "actions": 9404,
+      "distinct_classes(=settlements)": 106,
+      "covered_overall": 0.989,
+      "covered_by_quarter": [
+        0.975,
+        0.992,
+        0.993,
+        0.995
+      ],
+      "share_of_settlements_never_reused": 0.189,
+      "median_actions_per_settlement": 6
+    },
+    "L3 +subcommand(hashed)": {
+      "actions": 9404,
+      "distinct_classes(=settlements)": 906,
+      "covered_overall": 0.904,
+      "covered_by_quarter": [
+        0.883,
+        0.928,
+        0.918,
+        0.886
+      ],
+      "share_of_settlements_never_reused": 0.475,
+      "median_actions_per_settlement": 2
+    },
+    "L4 exact command(hashed)": {
+      "actions": 9404,
+      "distinct_classes(=settlements)": 8694,
+      "covered_overall": 0.075,
+      "covered_by_quarter": [
+        0.088,
+        0.103,
+        0.045,
+        0.067
+      ],
+      "share_of_settlements_never_reused": 0.961,
+      "median_actions_per_settlement": 1
+    }
+  }
+}

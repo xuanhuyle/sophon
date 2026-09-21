@@ -3,7 +3,7 @@
 Nothing below has been done or assumed. `lab/ledger/owner_acts.json` is empty, and the lab returns
 `REQUEST_AUTHORITY` for all 48 cases until you change that yourself.
 
-## 1. One permission (recommended; about a minute of your time)
+## 1. One permission — GRANTED and run on 2026-09-21 (results in `docs/REPORT.md` section 5)
 
 **May I run the recurrence study across your Claude Code history?**
 

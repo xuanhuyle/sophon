@@ -148,6 +148,28 @@ suggested edit to the natural-language policy, which a permitted admin publishes
 ([Ramp](https://support.ramp.com/hc/en-us/articles/49015569046547-Policy-Suggestions-the-Policy-Agent)).
 A sub-agent claim about a second paper did not match its abstract when I checked, and I dropped it.
 
+**Recurrence in a real agent workload (ran with the owner's permission, `analysis/permission_log_study.py --all`).**
+Claude Code is this loop in miniature: an agent proposes actions, every one passes through a mediating gateway, and
+a person approves each one once or grants a standing rule. I ran the same generous model over the owner's full
+history: 9,404 tool calls from 56 sessions in 12 projects, keeping only counts.
+
+| How broad one settlement is | Settlements | Later calls covered | Settlements never reused | Median calls per settlement |
+|---|---|---|---|---|
+| Tool ("any Bash") | 50 | 99.5% | 28% | 5 |
+| Tool + program ("any `git`") | 106 | 98.9% | 19% | 6 |
+| + subcommand or folder ("`git push`") | 906 | 90.4% | 47% | 2 |
+| Exact action | 8,694 | 7.5% | 96% | 1 |
+
+Coverage at the two coarse levels is near total, but a grant like "any `python`" is not a settlement, it is not
+asking. At the finest level that is still safe to grant, covering 90% takes about 900 decisions, the median decision
+is reused twice, and coverage does not grow over time (88%, 93%, 92%, 89% by quarter): new kinds of action keep
+arriving as fast as old ones repeat. The same shape as the expense claims: plenty of repetition at a coarse level that
+a bright line already covers, little where judgment is needed. Limits: it measures opportunity for reuse, not whether
+a settlement would be right; the logs record tool calls, not which ones the owner actually approved or what standing
+rules were set; 31% of shell calls fall in an "other" program bucket; file tools are grouped by folder. A first run
+mis-grouped the 57% of shell calls that begin with `cd`; the script now skips leading `cd` steps and the table is from
+the corrected run (`results/permission_log_study_ALL.json`).
+
 ## 6. The validation exercise I ran, and what it could have shown
 
 **Question.** Is a purpose-built authority kernel warranted over a competent existing approach? This is the one
@@ -236,10 +258,8 @@ lawyer with a programmer, clause by clause. (From memory; links not fetched.)
 
 Smallest next steps, in the order I would take them (`docs/OWNER_REQUEST.md`):
 
-- **Run the recurrence study on a real agent workload you already have**: your own Claude Code history. It is a
-  live instance of this exact loop, with a real authority holder, complete mediation and real standing grants. The
-  script is ready and prints only counts; I ran it on this session alone as a smoke test (92 tool calls, not
-  evidence). It needs your permission because it reads other projects' session logs.
+- **Done: the recurrence study on your own Claude Code history** (section 5). It leans against easy amortization. The
+  sharper follow-up would pair each tool call with the approval you actually gave, which these logs do not record.
 - **Do not spend your time on the 48-case lab as designed.** Its outcome metrics cannot separate the architectures
   and its reuse ceiling is 8 cases by construction. If you want to exercise the mechanism end to end once, the six
   decisions in the owner request are enough.

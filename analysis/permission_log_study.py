@@ -38,7 +38,10 @@ def h(s: str) -> str:
 def classes(name: str, inp: dict) -> dict[str, tuple]:
     if name in ("Bash", "PowerShell"):
         cmd = str(inp.get("command", "")).strip()
-        first = re.split(r"[;&|\n]", cmd, maxsplit=1)[0].strip()      # the first simple command
+        parts = [s.strip() for s in re.split(r"[;&|\n]+", cmd) if s.strip()]
+        while len(parts) > 1 and re.match(r"(cd|Set-Location|pushd)\b", parts[0]):   # "cd X && real command"
+            parts = parts[1:]
+        first = parts[0] if parts else ""                              # the first simple command that is not a cd
         toks = first.split()
         while toks and re.fullmatch(r"[A-Za-z_][A-Za-z0-9_]*=.*", toks[0]):   # skip VAR=x prefixes
             toks = toks[1:]
