@@ -76,7 +76,7 @@ Jev operates strictly after semantics are specified. It consumes a predicate a p
 | Latency | 70 to 500 ms [V] | About 3 times a properly constrained small LLM; parity with fast open models; slower than a local encoder [I] | Immaterial at Sophon's volumes |
 | Cost | $0.042 per million input tokens [V] | 1.4 to 7 times cheaper than cheap chat models; 12 to 323 times cheaper than frontier list price [I] | Immaterial; human minutes are the cost |
 | Determinism | Implied by "typed decisions" [V] | 50 identical requests gave 15 distinct answer sets; 2.2% label flips between passes; borderline items cross a cutoff [I] | Store the probability as the fact of record; re-runs are checks with tolerance bands, not reconstruction |
-| Auditability | Unproven | None: no rationale, span or citation [V] | Confirmed in every independent run [I] | The record holds model id, question hash, state hash and a number; the why needs a human or a generative model |
+| Auditability | None: no rationale, span or citation [V] | Confirmed in every independent run [I] | The record holds model id, question hash, state hash and a number; the why needs a human or a generative model |
 | Versioning | Pinnable ids; aliases move [V] | `jev-latest` drift is an open issue; a gateway hides the version; no customer fine-tuning [I/V] | A vendor release is an external event that suspends every binding it does not list as surviving |
 | Failure modes | Distracting context, indirection, adversarial state [V] | Drift of 0.42 at about 12,600 tokens; buried conflicts found 1 of 6 and 0 of 6; answers from priors with the state removed; a self-asserting comment skews a compliance judgment [I] | State stripped to the artifact and capped far below 32k; a prior-answer control before any predicate is bound |
 
@@ -247,7 +247,7 @@ Assume Jev-like models are broadly available, semantic classification is cheap, 
 | Historical decisions and corrections | No | Liability as precedent, asset as log | "Paid before" is rejected two times in three; learning from approvals inherits that. As a provenance-bearing decision log it is portable JSON the customer will insist stays portable |
 | Evidence graphs | No | Commodity | Object storage plus hashes plus a schema |
 | Workflow integrations | No | Commodity | Owned by the gateway and system-of-record vendors |
-| Auditability | Table stakes, possible wedge | If a partner's pain is reconstruction after the fact, the product is the log and the settlement loop is secondary |
+| Auditability | Unproven | Table stakes, possible wedge | If a partner's pain is reconstruction after the fact, the product is the log and the settlement loop is secondary |
 | Human approval processes | No | Commodity | Auth0 and Permit.io ship bound approvals [reported]; the act types are Sophon's, the channel is not |
 | Accumulated customer-specific knowledge | No | Weak | Accrues to the customer running an open model on their own labels, not to a vendor |
 
