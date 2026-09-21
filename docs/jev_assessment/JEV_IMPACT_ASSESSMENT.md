@@ -8,7 +8,7 @@ Method: five independent analyses (problems A to D and the moat), each attacked 
 
 ## 1. Executive conclusion
 
-**Jev makes Sophon different in one narrow place and leaves the conclusion where the investigation put it. It does not make Sophon more viable. It removes the last argument that any AI component of Sophon could be differentiating, and it puts a price on the one open technical question without answering it.**
+**Different, not more viable. Jev changes one narrow place and leaves the conclusion where the investigation put it. It removes the last argument that any AI component of Sophon could be differentiating, and it puts a price on the one open technical question without answering it.**
 
 The standing decision stands: do not build the control plane; buy Cedar or OPA behind a gateway; if anything is built, build the thin ledger of typed dated grants and the escalation-to-settlement workflow; and commit to nothing until a real workflow shows escalation classes recur and the policy owner settles them prospectively.
 
@@ -20,6 +20,16 @@ Why Jev cannot move that decision:
 
 One amendment follows. Convention 7, facts carry provenance and grants say what provenance they need, is currently a sentence in `DECISION.md` that the lab does not exercise. Every surviving branch of the recommendation needs it as code: the settlement loop, the decision-log wedge, and any use of a model to read facts. It should be the first deliverable, ahead of the ledger.
 
+The owner's seven questions, answered directly:
+
+1. Solves a problem that looked fundamental: no. It touches problem B and leaves it open.
+2. Invalidates an architectural decision: no. Two additions, not reversals: REQUEST_FACT gains a sub-reason, and three act kinds are added to the ledger (declare predicate, bind evaluator, adopt calibration). Any evaluator in the slot would require them.
+3. Makes components commodity: yes, the predicate evaluator, which was never going to be built anyway.
+4. Enables a simpler architecture: no. The simplest safe architecture was already approach E, and Jev adds a slot that may be empty.
+5. Weakens the opportunity: negligibly. Cheaper typed judgment lowers the cost of the ask-and-audit alternatives that E must beat, by 1.4 to 1.7 times a per-decision cost that was already near zero [I].
+6. Strengthens it with a better primitive: no. Cheaper, yes; more trustworthy where Sophon needs trust, no.
+7. Changes the moat: it removes candidates rather than adding one. See section 5.
+
 ---
 
 ## 2. What Jev actually changes
@@ -28,20 +38,64 @@ One amendment follows. Convention 7, facts carry provenance and grants say what 
 
 | Sophon problem or component | Before Jev | With Jev | Material impact? |
 |---|---|---|---|
-| **A. Authoritative text to executable semantics** | Rejected. Approach A failed the packet's own real-corpus audits at roughly 71 to 77% self-audited recall, with open standards falsely determinized and inherited scope lost. A4 is false: policy text states conditions and prohibitions, not sufficiency, so autonomy comes from explicit grants. An AI interpretation is PROPOSED, never AUTHORITATIVE. | Unchanged. Jev generates no propositions, quotes no span, cannot chain, and answers at chance with mean confidence 0.74 [I] when the deciding rule is absent from its state. At most an additive recall flagger at ingest that may add a candidate clause to a human queue and never remove one. That role is worth little because the recommendation already hand-ratifies grants rather than compiling text. | **No.** Slightly reinforces the rejection. |
+| **A. Authoritative text to executable semantics** | Rejected. Approach A failed the packet's own real-corpus audits: about 77% self-audited recall on one rulebook and about 71% for a forward-construction plus coverage-search pipeline, neither reproduced, with open standards falsely determinized and inherited scope lost. A4 is false: policy text states conditions and prohibitions, not sufficiency, so autonomy comes from explicit grants. An AI interpretation is PROPOSED, never AUTHORITATIVE. | Unchanged. Jev generates no propositions, quotes no span, cannot chain, and answers at chance with mean confidence 0.74 [I] when the deciding rule is absent from its state. At most an additive recall flagger at ingest that may add a candidate clause to a human queue and never remove one. That role is worth little because the recommendation already hand-ratifies grants rather than compiling text. | **No.** Slightly reinforces the rejection. |
 | A sub-items: implicit conditions, exceptions, priority, scope, effective dates, ambiguity, missing rules, organisational interpretation, approval power | Handled by ledger acts and conventions 1 to 3 and 5, or by a person. Davies weighed a later rule on an earlier claim; Pound and McDonagh treated past practice oppositely in one year. | Same. Asking Jev any of these manufactures a determinate number for a question the text does not settle. | **No.** Dangerous if attempted. |
-| **B. Fuzzy factual predicates** (assumption A6, criterion S5, open question 3) | Open, and named the weakest point of every deterministic design. The lab pre-digests the judgment into a clean column: `transport_alternative_available` has no clause (R12) and is blank in 36 of 48 cases. Convention 7 unexercised. | A cheap zero-shot proposer of a fact the system may not trust. Ties Claude Haiku 4.5 after decomposition (95.0% vs 93.2%, McNemar p = 0.063) [I], loses to it holistic (62.6% vs 81.3%) [I], is beaten by a 4B model fine-tuned on 1,000 labels (97.4%, ECE 0.010) [I] and by a small embedding model plus logistic regression on every dataset tested [I]. Cannot raise provenance. Makes A6 measurable for cents. | **Partial.** Confirms the evaluator is a rented slot; does not close A6. |
-| **C. Deterministic policy execution** | Settled. Buy Cedar or OPA behind a gateway; the ledger and a disciplined baseline agree on 138,240 decisions and both pass 20 of 20 probes. | Unchanged and reinforced. TypeSafe's own guidance: code owns composition, thresholds and side effects; do arithmetic and date comparison in code; the model is not a security boundary [V]. A thresholded-questions engine cannot see adoption time, issuer power, single-use consumption or version pinning, because those are ledger facts, not text. | **No.** |
+| **B. Fuzzy factual predicates** (assumption A6, criterion S5, open question 3) | Open, and named the weakest point of every deterministic design. The lab pre-digests the judgment into a clean column: `transport_alternative_available` has no clause (R12) and is blank in 36 of 48 cases. Convention 7 unexercised. | A cheap zero-shot proposer of a fact the system may not trust. Ties Claude Haiku 4.5 after decomposition (95.0% vs 93.2%, McNemar p = 0.063) [I], loses to it holistic (62.6% vs 81.3%) [I], is beaten by a 4B model fine-tuned on 1,000 labels (97.4%, ECE 0.010) [I] and by a small embedding model plus logistic regression on every dataset tested [I]. A probability of 1.00 is wrong routinely: 129 rows at 1.00 were 76.7% accurate [I]. Cannot raise provenance. Makes A6 measurable for cents. | **Partial.** Confirms the evaluator is a rented slot; does not close A6. |
+| **C. Deterministic policy execution** | Settled. Buy Cedar or OPA behind a gateway; the ledger and a disciplined baseline agree on 138,240 decisions and both pass 20 of 20 probes. | Unchanged, and consistent with TypeSafe's own guidance: code owns composition, thresholds and side effects; do arithmetic and date comparison in code; the model is not a security boundary [V]. A thresholded-questions engine cannot see adoption time, issuer power, single-use consumption or version pinning, because those are ledger facts, not text. | **No.** |
 | **D. Missing evidence and uncertainty** | Six-valued outcome vocabulary already exists in the lab: BLOCK, REQUEST_FACT, REQUEST_AUTHORITY, CONFLICT, SEMANTIC_REVIEW, CLEAR. 16 of 46 IPSA outcomes relied on facts gathered after the original decision. S2 met by as-of queries. | Marginal. With an explicit "cannot be determined" option Jev abstains on 95% of genuinely unanswerable items [I]; without one, on 0 of 30 [I]; on missing-link inference, 0 of 6 even with the option [I]. Confidence is distribution concentration, indistinguishable from entropy [I]. Jev cannot detect discretion, which is a property of the rule. It raises the decision-time capture requirement because it returns no rationale and is not deterministic. | **No.** A fail-closed evidence-presence pre-filter is the only candidate role, untested on this domain. |
 | **Grant ledger and settlement loop** (approach E) | The one part not found in a shipping product, about 65% confidence. Conditional on S3. | Untouched. SEMANTIC_REVIEW and REQUEST_FACT are deterministic ledger-state outcomes in `lab/ledger_arm.py`, not classifier outputs, so Jev does not make them cheaper for Ramp or AWS to add. | **No.** |
 | **Economics** (S3, S4, recurrence, owner willingness) | Leans against. L3 settlements 47.5% never reused; G5 86% of classes seen once; Yan 114 of 140 "ask me". Needs a design partner. | Untouched. Cost per decision was never the binding constraint; human minutes and recurrence are. | **No.** |
-| **Moat** | None beyond the settlement loop; otherwise conventions worth publishing. | Model-adjacent candidates visibly commodity: open systems within one point of Jev on JevBench v1.2 six days after launch [I/U]. One small new component appears: a registry of evaluator bindings per predicate. | **Partial.** Weakens further. |
+| **Moat** | None beyond the settlement loop; otherwise conventions worth publishing. | Model-adjacent candidates visibly commodity. Two separate facts: about 28 wire-compatible open implementations of the interface within six days [I/U]; and on JevBench v1.2 open systems within one point of Jev on a composite that weights speed and cost at half, where Jev is fifth on intelligence alone and keeps a hard-tier zero-shot lead of 74.1 versus 69.5 [I/U]. The interface and the price are commodity; hard-tier zero-shot accuracy is not yet. One small new component appears: a registry of evaluator bindings per predicate. | **Partial.** Weakens further. |
 | **Enforcement, gateway, decision log** | Buy. Bedrock AgentCore Policy and Ramp's suggestion loop verified; Microsoft, Auth0 and Permit.io reported. | Buy. | **No.** |
 | **The 48-case lab** | Do not extend; its metrics cannot separate architectures and its reuse ceiling is 8 of 24. | Still do not. Jev cannot be tested on pre-digested columns. | **No.** |
 
-**H1**, "Jev makes the AI part less valuable but makes the governed layer more clearly the product": partially supported. The first limb is true but nearly content-free, since the AI part was priced at zero before Jev. The second limb is not established. "More clearly the product" is not "a product". That still turns on S3, and Jev supplies no evidence on S3.
+### 2a. Problem A, item by item
 
-**H2**, "if Jev works there may not be enough proprietary technology to justify an independent product": partially supported, and the antecedent does almost no work. The consequent was already on the record. `REPORT.md` says that if the settlement workflow does not matter, Sophon is a set of conventions worth publishing. Proprietary technology was never the right test for this product. The right test is whether the settlement loop is used and amortizes.
+Jev operates strictly after semantics are specified. It consumes a predicate a person wrote and never produces one. Per item:
+
+| Sub-item | What settles it in Sophon | Can Jev help? |
+|---|---|---|
+| Implicit versus explicit conditions | The reading table (`lab/READING.md`) written by a person; the FAR audit found hidden residual semantics that compilers missed | No. Jev scores a stated proposition; it cannot surface an unstated one |
+| Exceptions | Ledger acts: CASE_EXCEPTION, RELAX_CONSTRAINT; 18 of 46 disputes were discretionary | No. Applying an exception is an act of a person with power |
+| Priority between conflicting rules | Effective dating in code, or a person; Davies, Pound, McDonagh | Dangerous. Answers from priors with no channel to say the text is silent |
+| Scope | An open term (R4x: does approval extend beyond travel) settled by interpretation | Flag only. It can say a clause is ambiguous about scope; a reader found three such gaps by hand |
+| Effective dates | Convention 1; whether "applies from" reaches expenses incurred or decisions made (R13) is interpretive | No. Date ordering is code; the reach of a date is a ruling |
+| Ambiguous language and open standards | SEMANTIC_REVIEW until a settlement is in force | Flag only, additive, never removing a candidate |
+| Missing rules | Closed surface (convention 5); R0 and R12 | No. Absence is undetectable from text, and Jev does not abstain without an explicit option [I] |
+| Organisational interpretation | The settlement loop; proposal to a ratifier with replay | No. Jev consumes it, never derives it |
+| Who may approve an interpretation | Typed ownership (convention 2), checked at record time | No. No identity channel; not a security boundary [V] |
+
+### 2b. Problem B, dimension by dimension
+
+| Dimension | What Jev offers | Measured | Consequence for Sophon |
+|---|---|---|---|
+| Typed outputs | Noul probability; Choice of up to 255; Score on 2 to 10 levels [V] | Probabilities quantized to 0.01, often exactly 0 or 1 [I]; Noul and two-option Choice framings of one predicate differ by 0.125 mean [I] | Framing is a versioned artefact; type safety is not correctness |
+| Bounded answer space | The model cannot emit an option it was not offered [I] | Schema errors zero across tens of thousands of calls [I] | Removes parsing, not error; a wrong option at high confidence is routine [I] |
+| Probability and confidence | A per-option distribution plus a confidence [V] | Confidence is indistinguishable from normalized entropy [I]; formula unpublished and reportedly drifts across versions [V, second-hand] | Never a proxy for evidence presence |
+| Calibration | "Calibrated" by an undisclosed method [V] | Raw ECE 0.08 to 0.15 on new tasks [I]; per-type sign flips [I]; isotonic reached 0.008 with about 5,000 labels, most of the gain by about 200 [I]; under 100 labels cannot fit a threshold [I] | Per-predicate calibration is a labelling programme, and the labels train a specialist that beats Jev |
+| Latency | 70 to 500 ms [V] | About 3 times a properly constrained small LLM; parity with fast open models; slower than a local encoder [I] | Immaterial at Sophon's volumes |
+| Cost | $0.042 per million input tokens [V] | 1.4 to 7 times cheaper than cheap chat models; 12 to 323 times cheaper than frontier list price [I] | Immaterial; human minutes are the cost |
+| Determinism | Implied by "typed decisions" [V] | 50 identical requests gave 15 distinct answer sets; 2.2% label flips between passes; borderline items cross a cutoff [I] | Store the probability as the fact of record; re-runs are checks with tolerance bands, not reconstruction |
+| Auditability | Unproven | None: no rationale, span or citation [V] | Confirmed in every independent run [I] | The record holds model id, question hash, state hash and a number; the why needs a human or a generative model |
+| Versioning | Pinnable ids; aliases move [V] | `jev-latest` drift is an open issue; a gateway hides the version; no customer fine-tuning [I/V] | A vendor release is an external event that suspends every binding it does not list as surviving |
+| Failure modes | Distracting context, indirection, adversarial state [V] | Drift of 0.42 at about 12,600 tokens; buried conflicts found 1 of 6 and 0 of 6; answers from priors with the state removed; a self-asserting comment skews a compliance judgment [I] | State stripped to the artifact and capped far below 32k; a prior-answer control before any predicate is bound |
+
+### 2c. Problem D, the six states
+
+A predicate that contains a normative term is two things: a fact (was the service running) and a standard ("reasonably"), and only the fact can be read from evidence. The standard is settled by a ratifier or routed to one.
+
+| Owner's state | Sophon outcome | Detected by | Owned by | Jev |
+|---|---|---|---|---|
+| FALSE | BLOCK, or a clause unmet with its evidence recorded | Deterministic evaluation over facts of admissible provenance | The engine | May supply a value that routes; never one that clears alone |
+| UNKNOWN, predicate not evaluable from the record | REQUEST_FACT, sub-reason missing | The predicate declaration lists required evidence; the check is structural | The requester | No. Confidence does not fall when the deciding information is absent [I] |
+| Insufficient evidence, a required item absent | REQUEST_FACT, sub-reason missing or class too low | Evidence-presence gate and provenance check | The requester or an attester | Partially: an explicit evidence-presence question abstains on genuinely absent items [I], not on missing inference [I]; fail-closed only |
+| Conflicting evidence | REQUEST_FACT, sub-reason conflict; CONFLICT already exists for two in-force settlements that disagree | Deterministic comparison of facts of equal class | A person | Weak: buried conflicts found 1 of 6 and 0 of 6 [I] |
+| Low-confidence classification | REQUEST_FACT, sub-reason abstained | Abstention band in the evaluation contract | A person, then the label set | Yes, this is the one state a calibrated band is for |
+| Genuinely discretionary | REQUEST_AUTHORITY or SEMANTIC_REVIEW | A property of the rule, fixed in the reading table at adoption | The role the rule names | No. A number over an open term is false determinization |
+
+**H1**, "Jev makes the AI part less valuable but makes the governed layer more clearly the product": first half trivially true, second half unsupported. The AI part was priced at zero before Jev. "More clearly the product" is not "a product". That still turns on S3, and Jev supplies no evidence on S3.
+
+**H2**, "if Jev works there may not be enough proprietary technology to justify an independent product": the consequent was already true on 21 September, and Jev is not the cause. `REPORT.md` says that if the settlement workflow does not matter, Sophon is a set of conventions worth publishing. Proprietary technology was never the right test for this product. The right test is whether the settlement loop is used and amortizes.
 
 ---
 
@@ -84,11 +138,16 @@ S3  PREDICATE DECLARATION + EVALUATOR BINDING (built, core; both are ledger acts
     requires, outcome on absence; evaluator id pinned by version, question text hash,
     calibration table version, thresholds, abstention band, label source
         |
-S4  FACT ACQUISITION with provenance tiers
-    T0 system-observed (amount, payee, approver identity, running totals)   <- SoR integration
-    T1 attested by an accountable person                                     <- human
-    T2 model-read from a record the agent did not author  [JEV SLOT, optional, swappable]
-    T3 asserted by the agent                                                 <- never clears alone
+S4  FACT ACQUISITION: every fact has a SOURCE CLASS and a READER
+    source class, ordered by who could have authored the content:
+      SYSTEM (amount, payee, approver identity, running totals)   <- SoR integration
+      ATTESTED (an accountable person under a declaration)          <- human
+      THIRD-PARTY DOCUMENT (receipt, ticket, resolution)
+      COUNTERPARTY (a claimant's narrative)
+      AGENT (the agent's own assertion)                              <- never clears alone
+    reader: a system field, a person, or a model binding  [JEV SLOT, optional, swappable]
+    a reader never raises the source class; a grant states the minimum class it accepts
+    and whether a model reader is admissible for that predicate
         |
 S5  EVALUATION CONTRACT (deterministic software)
     counting, sums, dates in code; evidence-presence gate; calibrated probability;
@@ -96,6 +155,7 @@ S5  EVALUATION CONTRACT (deterministic software)
         |
 S6  POLICY ENGINE (bought: Cedar or OPA) compiled from ledger state
     six outcomes: CLEAR · BLOCK · REQUEST_FACT · REQUEST_AUTHORITY · CONFLICT · SEMANTIC_REVIEW
+    REQUEST_FACT carries a sub-reason: missing · class too low · conflict · abstained
         |                                  |
      CLEAR -> S8                    anything else -> S7
         |
@@ -119,9 +179,9 @@ S8  EXECUTION RECEIPT + DECISION LOG (bought store; built schema)
 | Optional drafting assistant | Proposes clause lists and predicate wordings, PROPOSED only | AI-model inference (frontier LLM with spans) | No |
 | Grant ledger of typed dated acts | Power checked at record time; effective dating; version pinning | **Sophon proprietary core** | No |
 | Predicate declaration and evaluator binding | Convention 7 as code; the only thing that makes a model-read fact safe to consume | **Sophon proprietary core** | Referenced |
-| System-of-record adapters | T0 facts: amounts, identities, totals | System-of-record integration | No |
-| Attestation capture | T1 facts from an accountable person | Human governance | No |
-| Model-read evaluator | T2 facts over third-party artifacts; zero-label bootstrap | AI-model inference, optional, swappable (Jev, open reproduction, fine-tuned specialist, frontier LLM with spans) | **Yes, only here** |
+| System-of-record adapters | SYSTEM-class facts: amounts, identities, totals | System-of-record integration | No |
+| Attestation capture | ATTESTED-class facts from an accountable person | Human governance | No |
+| Model reader, bound per predicate | Reads THIRD-PARTY DOCUMENT or COUNTERPARTY sources; zero-label bootstrap | AI-model inference, optional, swappable (Jev, open reproduction, fine-tuned specialist, frontier LLM with spans) | **Yes, only here** |
 | Evaluation contract | Calibration table, thresholds, abstention band, code arithmetic | Deterministic software | No |
 | Six-outcome adapter | Maps engine and contract results to outcomes | Deterministic software | No |
 | Escalation and settlement workflow | Single-use default; proposal to ratifier; replay | **Sophon proprietary core** | No |
@@ -132,7 +192,15 @@ S8  EXECUTION RECEIPT + DECISION LOG (bought store; built schema)
 
 ### Where Jev sits and the rules that bind it
 
-One slot: T2 evaluator at S4, behind a ratified predicate declaration and an evaluator binding recorded as a ledger act. The state is stripped to the third-party artifact. Counting, sums and date comparison are done in code. An evidence-presence question accompanies every value question. The model id is pinned; `jev-latest` and gateways that hide the version are forbidden in a decision path. The calibration table is fitted per predicate on at least about 200 held-out labels [I] and is a release-gated artefact. The abstention band routes to REQUEST_FACT. A T2 value can never clear an action alone unless the ratifier's declaration for that predicate says so, and never when the source text was authored by the agent or the claimant.
+One slot: a model reader at S4, admitted per predicate by an evaluator binding recorded as a ledger act with issuer, effective time and a pinned model id. The rules:
+
+- The state is stripped to the artifact and capped well below the 32k limit, because discrimination degraded at about 12,600 tokens [I] and bouncer caps its state at 4KB [I].
+- Counting, sums and date comparison are done in code. An evidence-presence question accompanies every value question. The question text and its framing are hashed and locked, since Noul and Choice framings of one predicate differ by 0.125 mean [I].
+- Before a predicate is bound, a prior-answer control: score the labelled set with the artifact removed. If accuracy exceeds chance by more than a declared margin, the predicate is being answered from world knowledge, as Jev does at 0.38 to 0.46 against 0.15 chance [I], and it cannot be bound.
+- The model id is pinned; `jev-latest` and gateways that hide the version are forbidden in a decision path. A vendor release is an external event that suspends every binding it does not list as surviving, convention 3 applied to evaluators.
+- The calibration table is fitted per predicate on attested answers to REQUEST_FACT, which are the only legitimate labelled set. Most of the isotonic gain arrives by about 200 labels and fewer than about 100 cannot fit a threshold [I]. The table is a release-gated artefact. The label flywheel is a by-product of the settlement workflow, and it will run mostly on predicates that were never the hard ones.
+- The abstention band routes to REQUEST_FACT with the sub-reason abstained. The stored probability is the fact of record; a re-run is a check with a tolerance band, since 50 identical requests gave 15 answer sets [I].
+- A model-read value never raises the source class. It can never clear an action alone unless the ratifier's declaration for that predicate says so, and never when the source is COUNTERPARTY or AGENT.
 
 Jev has no role at S1, S2, S3, S6, S7 or S8. It is never asked which rule wins, whether an action is sufficiently permitted, whether a person holds a power, or whether an open standard is met.
 
@@ -166,22 +234,22 @@ A customer with AgentCore Policy, Cedar, Ramp-style policy suggestion, Jev and a
 
 Assume Jev-like models are broadly available, semantic classification is cheap, frontier models keep improving, and enterprise systems expose agent interfaces. All four are already true in September 2026.
 
-| Candidate | Verdict | Why a competitor could or could not reproduce it |
-|---|---|---|
-| Model intelligence | Commodity | Open systems within one point of Jev on JevBench v1.2 [I/U]; frontier models ahead on intelligence and calibration [I]; nothing in Jev's surface lacks published precedent [I/U] |
-| Policy extraction | Not solved by anyone | Bedrock converts single plain-English rules to Cedar; document-to-rules over a real rulebook is approach A, self-audited at 71 to 77%. An unsolved problem is not a moat and not a commodity |
-| Semantic compilation | Rejected | Same. Jev cannot compile; it scores |
-| Predicate libraries | Table stakes | A wording plus about 200 labels reproduces any predicate [I]; the customer holds the labels and can run an open model on them |
-| Interpretation graphs | Rejected | No probe of 20 needed one |
-| Provenance | Necessary, not differentiating | Convention 7 is a data-model rule; a platform can adopt it in a release once named. Its value is that someone names it first |
-| Authority and governance | Component, not moat | Typed ownership and bounded delegation exist in XACML's administrative profile, KeyNote and SPKI. The unshipped part is the case-versus-rule fork with issuer provenance, a design lead measured in quarters at most, not a defensible position |
-| Versioned institutional semantics | Conditional | Only compounds if settlements are reused. L3 settlements 47.5% never reused with flat quarterly coverage; G5 86% seen once. Predicates recur across claim classes, claim classes do not, so the asset is smaller than the thesis assumed |
-| Historical decisions and corrections | Liability as precedent, asset as log | "Paid before" is rejected two times in three; learning from approvals inherits that. As a provenance-bearing decision log it is portable JSON the customer will insist stays portable |
-| Evidence graphs | Commodity | Object storage plus hashes plus a schema |
-| Workflow integrations | Commodity | Owned by the gateway and system-of-record vendors |
+| Candidate | Defensible? | Verdict | Why a competitor could or could not reproduce it |
+|---|---|---|---|
+| Model intelligence | No | Commodity | Open systems within one point of Jev on the JevBench v1.2 composite, which weights speed and cost at half [I/U]; Jev keeps a hard-tier zero-shot lead of 74.1 versus 69.5 [I/U], and frontier models are ahead on intelligence and calibration [I]; nothing in Jev's surface lacks published precedent [I/U] |
+| Policy extraction | No | Not solved by anyone | Bedrock converts single plain-English rules to Cedar; document-to-rules over a real rulebook is approach A, self-audited at 71 to 77%. An unsolved problem is not a moat and not a commodity |
+| Semantic compilation | No | Rejected | Same. Jev cannot compile; it scores |
+| Predicate libraries | No | Table stakes | A wording plus about 200 labels reproduces any predicate [I]; the customer holds the labels and can run an open model on them |
+| Interpretation graphs | No | Rejected | No probe of 20 needed one |
+| Provenance | No | Necessary, not differentiating | Convention 7 is a data-model rule; a platform can adopt it in a release once named. Its value is that someone names it first |
+| Authority and governance | Unproven | Component, not moat | Typed ownership and bounded delegation exist in XACML's administrative profile, KeyNote and SPKI. The unshipped part is the case-versus-rule fork with issuer provenance, a design lead measured in quarters at most, not a defensible position |
+| Versioned institutional semantics | Unproven | Conditional | Only compounds if settlements are reused. L3 settlements 47.5% never reused with flat quarterly coverage; G5 86% seen once. Predicates recur across claim classes, claim classes do not, so the asset is smaller than the thesis assumed |
+| Historical decisions and corrections | No | Liability as precedent, asset as log | "Paid before" is rejected two times in three; learning from approvals inherits that. As a provenance-bearing decision log it is portable JSON the customer will insist stays portable |
+| Evidence graphs | No | Commodity | Object storage plus hashes plus a schema |
+| Workflow integrations | No | Commodity | Owned by the gateway and system-of-record vendors |
 | Auditability | Table stakes, possible wedge | If a partner's pain is reconstruction after the fact, the product is the log and the settlement loop is secondary |
-| Human approval processes | Commodity | Auth0 and Permit.io ship bound approvals [reported]; the act types are Sophon's, the channel is not |
-| Accumulated customer-specific knowledge | Weak | Accrues to the customer running an open model on their own labels, not to a vendor |
+| Human approval processes | No | Commodity | Auth0 and Permit.io ship bound approvals [reported]; the act types are Sophon's, the channel is not |
+| Accumulated customer-specific knowledge | No | Weak | Accrues to the customer running an open model on their own labels, not to a vendor |
 
 One new component appears because of Jev: a registry of evaluator bindings per predicate, ratified by the same power as the grant, because changing a threshold changes what a grant means. It is real, small, and a feature.
 
@@ -198,7 +266,7 @@ Building on `DECISION.md`. Numbers are proposals to fix before measuring.
 | # | Finding | How it would be established |
 |---|---|---|
 | K1 | Under 1 in 5 escalations leads to a reusable settlement within a quarter, or a settlement decides a median of fewer than about 10 later actions | Design partner instrumented for S3 to S5 against approach B for one quarter |
-| K2 | The policy owner cannot or will not settle prospectively: fewer than 1 in 10 case answers marked "this should be a rule", fewer than 1 in 4 of those ratified within the quarter | Same instrumentation, counts by person and power |
+| K2 | The policy owner cannot or will not settle prospectively: fewer than 1 in 10 case answers marked "this should be a rule", or fewer than 1 in 5 of those ratified within the quarter. The only field prior, IPSA's 4 of 17 recommendations committed, is 23.5% and sits just above that bar | Same instrumentation, counts by person and power |
 | K3 | Wrong clearances traced to wrong facts are at least as common as an LLM judge's wrong clearances on the same cases | The partner's first 100 escalated cases with a reviewer-built fact sheet, on a corpus that contains both outcomes; the IPSA reviews cannot measure this because 45 of 46 are refusals |
 | K4 | No primitive reaches an abstention-recall lower bound of 0.6 on facts absent at submission, while more than half of the partner's escalated cases need narrative facts | Stage 2 of section 7, plus the Stage 1 fact inventory |
 | K5 | In the partner's workflow the refusal rate is under about 1% and actions are reversible, so checking before acting cannot pay | Base rates from the partner's own decision log over one quarter, computed before any instrumentation |
@@ -222,7 +290,7 @@ What survives is narrower and answers the question Jev actually raised: is the m
 
 **Hypothesis.** In at least one candidate workflow where checking before acting pays, at least 80% of the facts its grants require are system-observed or attested at decision time. If true, the model-read slot is empty by design and the design-partner quarter runs on approach B with no model in the path. If false for every candidate, narrative facts are on the critical path, and the gated test decides whether any evaluator may fill the slot.
 
-**Input data.** Stage 1: for three to five of the candidate workflows named in `REPORT.md` section 8 (refunds and credits above a threshold, access grants, payment release, contract concessions, outbound data sharing), from two or three prospective partners: one quarter of decision-log base rates computed exactly as the 1,000-row IPSA join was; the governing policy and delegated-authority matrix; the schemas of the systems of record the actions touch; and a structured interview with the policy owner on who may write a rule after an escalation and how often that happens. Stage 2, only if triggered: the partner's most recent 100 escalated cases with their submission-time records, a fact sheet built by the partner's own reviewer rather than the experimenter, and a second annotator on 10 cases.
+**Input data.** Stage 1: for two of the candidate workflows named in `REPORT.md` section 8 (refunds and credits above a threshold, access grants, payment release, contract concessions, outbound data sharing), at two prospective partners each, so four decision-log exports, recruited in the week before the experiment starts. A failure to recruit is itself a data point for K10. Per workflow: one quarter of decision-log base rates computed exactly as the 1,000-row IPSA join was; the governing policy and delegated-authority matrix; the schemas of the systems of record the actions touch; and a structured interview with the policy owner on who may write a rule after an escalation and how often that happens. Stage 2, only if triggered: the partner's most recent 100 escalated cases with their submission-time records, a fact sheet built by the partner's own reviewer rather than the experimenter, and a second annotator on 10 cases.
 
 **Implementation.** Stage 1, days 1 to 5, no model calls. Per workflow: refusal rate and reversibility from the log; the grants the policy would need, written as sufficiency statements per convention 6; an inventory of every fact each grant requires, tagged T0 system-observed, T1 attested or T2 narrative by checking whether a system field or an attestation step supplies it; the interview answers for K2. Stage 2, days 6 to 10, only for a workflow that cleared the economics and failed the 80% observability bar. Pre-register and hash before any call: predicates limited to the T2 facts the grants consume; three-level absence coding (never mentioned; mentioned but underdetermined; absent at submission); one primary question form per primitive fixed in advance, with an explicit "cannot be determined from this record" option and an evidence-presence gate; primitives Jev pinned as `jev-1.13.0`, one frontier LLM by exact id with structured outputs, one NLI encoder pinned by commit hash with paragraph chunking; a state-removed control run, because Jev scores 0.38 to 0.46 with the supporting state removed against 0.15 chance [I]; a leakage control that strips any sentence stating the decision; median paraphrase reported, best never used. No calibration arm: 100 cases cannot fit a threshold [I].
 
@@ -239,10 +307,10 @@ What survives is narrower and answers the question Jev actually raised: is the m
 - Stage 1 passes on economics, facts are mostly narrative, and Stage 2 passes: admit model-read facts as a provenance class for the passing predicates only, on the partner's own records, then run the quarter.
 - Stage 2 fails: models manufacture facts when the record is silent. Convention 7 stays as written. Autonomous coverage is bounded by T0 and T1 facts, and the product question becomes whether REQUEST_FACT can be pushed to the requester at submission, where Sophon's delta over a policy agent is small.
 
-**Cost and time.** Two weeks for one engineer, most of it partner conversations and schema reading. Stage 2 model spend under 50 dollars.
+**Cost and time.** One week of recruiting, then two weeks for one engineer, most of it partner conversations and schema reading. Stage 2 model spend under 50 dollars.
 
 **What it cannot decide.** Whether settlements amortize and whether owners settle in practice. Those need the quarter. No branch of this experiment changes the standing recommendation. It decides where the quarter runs and which fact provenance it admits.
 
 ---
 
-**Sophon should now be built as a provenance-first grant ledger and settlement workflow on bought enforcement, with model-read facts as an optional, swappable, ratified input that can route but never clear alone, and only after one real workflow shows its escalations recur, because Jev makes the evaluator a commodity and the fact layer measurable, while leaving untouched the two things that decide whether there is a product: whether settlements amortize and whether owners will settle.**
+**Sophon should now be built as a published convention pack and nothing more until one real workflow passes the base-rate screen and shows escalations that recur and are settled prospectively, because Jev changes neither the technical conclusion nor the economic one.**
