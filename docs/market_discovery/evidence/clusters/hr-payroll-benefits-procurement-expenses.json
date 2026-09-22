@@ -1,0 +1,609 @@
+{
+ "key": "hr-payroll-benefits-procurement-expenses",
+ "found": {
+  "domain": "hr-payroll-benefits-procurement-expenses",
+  "domain_assessment": "METHOD CAVEAT FIRST. This finder ran with zero WebSearch capacity (the session budget of 200 searches was exhausted before it started; every one of my 8 initial queries returned 'budget used') and an egress allowlist that admitted only github.com and raw.githubusercontent.com. Every regulator, court, statistics, academic, archive and vendor host I tried (dol.gov, gao.gov, eeoc.gov, ecfr.gov, uscourts.gov, federalregister.gov, acquisition.gov, sam.gov, madeinamerica.gov, mspb.gov, eur-lex, TED, single-market-scoreboard, legifrance, economie.gouv.fr, fairwork.gov.au, gov.uk, archive.org, hal.science, core.ac.uk, semanticscholar, ssrn, nber, ncbi, servicenow, adp, ramp, navan, expensify.com, shrm, oecd, wikipedia) was blocked. The GitHub REST search API also returned 502/503 for most queries. So the 'at least 10 searches, 5 fetches' requirement was met only on the fetch side (about 20 GitHub-hosted sources fetched). Operational volumes (case counts, appeal rates, cost per review) for the US and EU workflows could NOT be verified this session; where I give them they are recalled figures flagged 'unverified', each with the primary URL where the parent should confirm them. Absence of verified data below is uncertainty, not evidence.\n\nWHAT THE FETCHED EVIDENCE DOES SHOW. (1) The clearest settlement-loop artefact in this cluster is state-owned, not employer-owned: France's Code du travail num\u00e9rique, published by the Direction g\u00e9n\u00e9rale du Travail, maintains 'contributions' = recurring HR/labour-law questions with a generic answer plus per-convention-collective answers, each carrying legi/kali legal references, an answer content-type (ANSWER, NOTHING, CDT, UNFAVOURABLE, UNKNOWN, SP, GENERIC_NO_CDT), a status pipeline REDACTING->REDACTED->VALIDATING->VALIDATED->PUBLISHED with user_id and timestamp, and Publicodes executable models (pr\u00e9avis, indemnit\u00e9 de licenciement) per agreement. That is typed, versioned, provenance-bearing, prospective settlement of repeatable ambiguity (category H) at national scale, but (a) the owner is the regulator, (b) it is informational rather than binding on tribunals, (c) it is free. It is evidence that the mechanism is real and also that where it exists the natural owner is the rule-maker, which undercuts an employer-side standalone product in France. (2) Rules-as-code projects that encode French social law (OpenFisca-France, Urssaf mon-entreprise/modele-social, Catala examples, DGFiP's M language) record interpretive settlements as code comments citing a circulaire, a CAF web page or an undated ministry PDF, with explicit 'Hypoth\u00e8ses/points \u00e0 \u00e9claircir' notes: the interpretations ARE captured, but provenance and versioning are informal. That supports H3 partially (organisations do encode settled interpretations) and shows the residual gap is governance/provenance, which is small and cheap to fill in-house. (3) The FAR mirror shows federal procurement rules are versioned by Federal Acquisition Circular (FAC 2025-06, 1 Oct 2025), and the regime itself mandates written, tiered-approval, publicly posted justifications for sole-source awards and numbered agency class deviations: the settlement loop is already institutionalised in law and in contract-writing systems, and the per-acquisition justification is case-specific (G/E), so procurement scores weak for H. (4) Expensify's own docs confirm the expense control model is limits + auto-approve compliant reports (default $100 threshold on Collect) + random audit + category approvers, i.e. bright lines and sampling, consistent with the prior IPSA finding that expenses fail the economics. (5) DOL's open-source timesheet tool computes overtime arithmetic only and explicitly excludes classification/exemption questions, which is where the payroll ambiguity lives.\n\nWHERE THE STRUCTURE IS MOST SOPHON-SHAPED (unverified volumes). ERISA benefit claims: 29 CFR 2560.503-1(b)(5) requires plan claims procedures to include safeguards ensuring 'plan provisions have been applied consistently with respect to similarly situated claimants', (g) requires disclosure of any internal rule, guideline or protocol relied on, and appeals must be decided by a different fiduciary without deference. That is a regulatory mandate for exactly the recorded, reusable, provenance-bearing settlement the brief describes, with a clear owner (plan administrator / named fiduciary) and an audit trail requirement. But the adjudication is mostly outsourced to insurers/TPAs whose claim platforms already hold the 'internal guidelines', and a human fiduciary must remain on every appeal (H4). Australian modern-award interpretation is the payroll sub-domain with the largest documented error cost (hundreds of millions of AUD in self-reported corporate underpayments; FWO recoveries in the A$400-500m/yr range, unverified) and genuinely repeatable interpretive ambiguity, but the settlements are made by the Fair Work Commission/Ombudsman and courts, not the employer, and are consumed as payroll configuration changes.\n\nOVERALL: weak-to-uncertain for a standalone product in this cluster. Expenses and procurement exceptions are negative/weak. HR tier-2 and payroll are dominated by missing evidence, factual classification and legal-risk discretion, with the H-shaped residue settled upstream by regulators and then encoded in HRIS/payroll configuration or knowledge articles. The one candidate worth an empirical base-rate test is benefit claim appeals at a self-administered plan or TPA (count how many appeal reversals turn on a plan-language interpretation that then recurs), and the one public corpus that could be mined cheaply for recurrence is the CDTN contributions set (SocialGouv/cdtn-admin), which already exists on GitHub.",
+  "workflows": [
+   {
+    "name": "HR policy interpretation: leave eligibility, accommodations, FMLA/ADA determinations, disciplinary consistency, HR tier-2 escalations",
+    "geography": "US (FMLA/ADA, federal-sector discipline) and France (Code du travail, conventions collectives)",
+    "decision_volume": "UNVERIFIED (hosts blocked). US: FMLA leave-taking about 15% of covered employees in a 12-month period per DOL 2018 Employer/Employee survey, https://www.dol.gov/agencies/whd/fmla/2018-survey-results (government statistics; recalled, not fetched). EEOC charges: roughly 81,000 (FY2023) to 88,500 (FY2024) total, of which disability charges are on the order of a third, https://www.eeoc.gov/data/charge-statistics-charges-filed-eeoc-fy-1997-through-fy-2024 (regulator; recalled, unverified). Federal-sector discipline appeals to MSPB on the order of 5,000-6,000 per year, https://www.mspb.gov/publicaffairs/annual_reports.htm (tribunal; recalled, unverified). France: no volume retrieved; CDTN tracks monthly page views per contribution via Matomo but publishes no count in the repo, https://github.com/SocialGouv/cdtn-admin/blob/master/analysis/src/analysis/reports/contrib_monthly_views.py (government repo, fetched). ServiceNow HRSD / Workday Help tier-2 shares: NOT FOUND (docs.servicenow.com blocked).",
+    "human_review_rate": "Not sourced. FMLA and ADA determinations are 100% human-touched by design (interactive process, certification review); tier-2 HR case share unknown. Basis: process structure only; no operational data reachable this session.",
+    "why_humans_review": "Estimate, basis = structure of the processes plus the CDTN answer taxonomy, no case-level data: A missing evidence 25-35% (medical certification, hours-worked eligibility facts); B factual classification 15-20% (serious health condition, essential functions, 'similar offence'); C interpretation of existing rule 10-15%; D conflict of authorities 5-10% (state vs federal leave, convention collective vs Code du travail, the CDTN even has content types NOTHING/CDT/UNFAVOURABLE for exactly this); E true discretion 15-25% (undue hardship, penalty selection, legal-risk judgement); F 0-5%; G 5%; H repeatable ambiguity settled prospectively 10-15%. The H share is real (the DGT publishes per-convention settled answers precisely because employers ask the same questions repeatedly) but in the private employer the H residue is small once the regulator's answer exists.",
+    "settlement_loop_evidence": [
+     {
+      "description": "Code du travail num\u00e9rique (code.travail.gouv.fr), edited by the Direction g\u00e9n\u00e9rale du Travail (director of publication: the Directeur g\u00e9n\u00e9ral du Travail), maintains 'contributions': recurring labour-law questions with a generic answer and per-convention-collective answers, each with legi (Code) and kali (collective agreement) references, an answer type (ANSWER, NOTHING, CDT, UNFAVOURABLE, UNKNOWN, SP, GENERIC_NO_CDT), and a governed status pipeline REDACTING->REDACTED->VALIDATING->VALIDATED->PUBLISHED with user_id and created_at audit rows.",
+      "source_url": "https://github.com/SocialGouv/cdtn-admin/blob/master/targets/hasura/migrations/default/1683815452189_create_table_contribution_answers_status/up.sql",
+      "source_type": "government (Ministry of Labour repo, fetched)",
+      "prospective": "yes",
+      "reusable_how": "Published answers are reused by every employer/employee consulting the same question for the same agreement; Publicodes models (pr\u00e9avis, indemnit\u00e9 de licenciement per convention) make the settled reading executable. Informational, not binding on courts; owner is the regulator, not the employer."
+     },
+     {
+      "description": "Answer editor exposes explicit content types for the conflict-of-authorities case ('La convention collective renvoie au Code du Travail', 'est int\u00e9gralement moins favorable que le CDT', 'ne pr\u00e9voit rien') and a message block for untreated agreements: the ministry is settling D-type conflicts prospectively per agreement.",
+      "source_url": "https://github.com/SocialGouv/cdtn-admin/blob/master/targets/frontend/src/components/contributions/answers/AnswerForm.tsx",
+      "source_type": "government repo (fetched)",
+      "prospective": "yes",
+      "reusable_how": "Answer applies to all later queries for that agreement until re-validated; legal-change alerts (targets/alert-cli) trigger review."
+     },
+     {
+      "description": "Publicodes README lists Code du travail num\u00e9rique (layoff compensation and notice-period simulators) and Urssaf mon-entreprise as production users of executable public-interest rules.",
+      "source_url": "https://github.com/publicodes/publicodes",
+      "source_type": "open-source project README (fetched)",
+      "prospective": "yes",
+      "reusable_how": "Rules are versioned in git and re-executed for every user; settlement is encoded as a rule, which is the H3 pattern (organisations already encode settled interpretations)."
+     },
+     {
+      "description": "US federal-sector discipline: Douglas v. Veterans Administration, 5 M.S.P.R. 280 (1981) makes 'consistency of the penalty with those imposed upon other employees for the same or similar offenses' a mandatory factor and agencies maintain tables of penalties; MSPB reviews penalty consistency on appeal.",
+      "source_url": "https://www.mspb.gov/publicaffairs/annual_reports.htm",
+      "source_type": "tribunal (recalled; host blocked, not fetched)",
+      "prospective": "yes",
+      "reusable_how": "Tables of penalties are prospective, versioned agency documents; prior penalties for similar offences are cited as precedent in later cases. Volume and reversal rates not verified."
+     },
+     {
+      "description": "Legal notices of the CDTN site: 'Le site est \u00e9dit\u00e9 par la Direction g\u00e9n\u00e9rale du Travail, au sein du Minist\u00e8re du Travail...' (publisher named), confirming the settlement owner is the national rule-maker.",
+      "source_url": "https://github.com/SocialGouv/code-du-travail-numerique/blob/master/packages/code-du-travail-frontend/src/modules/mentions-legales/index.tsx",
+      "source_type": "government repo (fetched)",
+      "prospective": "yes",
+      "reusable_how": "As above."
+     }
+    ],
+    "economic_pain": "UNVERIFIED. Cost of inconsistency shows up as discrimination/retaliation charges and FMLA interference suits (EEOC charge counts above; DOL WHD FMLA back-wage recoveries at https://www.dol.gov/agencies/whd/data/charts/overall-enforcement-statistics, blocked). No cost-per-HR-case or tier-2 headcount figure could be retrieved (ServiceNow/Workday/Gartner hosts blocked). SHRM data on policy inconsistency: NOT FOUND (shrm.org blocked).",
+    "existing_solutions": "ServiceNow HRSD and Workday Help (case + knowledge articles; resolved cases become knowledge articles, not typed executable settlements), leave-administration TPAs and vendors (AbsenceSoft, Cocoon, Tilt, Sparrow: eligibility rules configured, not precedent ledgers), accommodation platforms (Disclo, Inclusively), employment counsel. In France the state itself supplies the settlement corpus free (CDTN) and Publicodes/OpenFisca encode it. None found that records employer-level interpretations as versioned executable precedents with who/when/what-power (consistent with prior finding).",
+    "buyer_and_budget": "HR shared-services / HR operations leader, or Leave & Accommodations manager in large employers; legal/employment counsel as veto holder. Budget exists (HRSD licences) but sits with the case-management incumbent; a standalone precedent ledger would be a feature request to ServiceNow/Workday.",
+    "regulatory_constraints": "FMLA/ADA require individualised assessment and an interactive process (ADA), so a human must remain on every accommodation decision (H4); GDPR/health-data handling for medical certification; France: convention collective hierarchy and prud'hommes review; automated decision-making limits (GDPR Art. 22) for adverse HR outcomes in the EU.",
+    "evidence_quality": "moderate",
+    "verdict": "uncertain",
+    "notes": "Strongest artefact: a national regulator already runs a typed, versioned, per-agreement settlement corpus (CDTN). That validates the mechanism's shape but points to the regulator, not the employer, as the natural owner; employer-side H residue after the regulator's answer is small. Volumes and tier-2 shares remain unmeasured."
+   },
+   {
+    "name": "Payroll exceptions: overtime/exemption classification, garnishments, retro pay, error correction",
+    "geography": "US (FLSA), Australia (modern awards) as the high-loss comparator, France (Urssaf cotisations)",
+    "decision_volume": "UNVERIFIED. US WHD back wages on the order of $270-280M per year for ~150-165k workers in FY2023-24, https://www.dol.gov/agencies/whd/data/charts/overall-enforcement-statistics (regulator; recalled, blocked). Garnishment incidence about 7% of US employees (ADP Research Institute 2017), https://www.adp.com/resources/articles-and-insights/articles/t/the-us-wage-garnishment-landscape.aspx (vendor research; recalled, blocked). Australia: Fair Work Ombudsman recovered roughly A$470M for ~160k workers in 2023-24, https://www.fairwork.gov.au/about-us/access-accountability-and-reporting/annual-reports (regulator; recalled, blocked). Payroll error cost: EY 2017 study often cited as ~15 errors per pay period and ~$291 per correction, vendor/consultancy, URL not retrievable, UNVERIFIED. Off-cycle payment shares: NOT FOUND.",
+    "human_review_rate": "Not sourced. Structure: the arithmetic (overtime at 1.5x over 40 hours, garnishment limits) is fully deterministic and automated; DOL's own open-source timesheet calculator does arithmetic only and 'does not handle' tips, bonuses, deductions, shift differentials and does not address exemption status, https://github.com/USDepartmentofLabor/DOL-Timesheet (government repo, fetched). Human review concentrates on classification (exempt/non-exempt, award coverage, regular-rate inclusions) and on garnishment order interpretation.",
+    "why_humans_review": "Estimate, basis = process structure and the Australian remediation pattern: A missing evidence 20-30% (hours records, order documents); B factual classification 30-40% (duties test, award classification level, allowance eligibility); C rule interpretation 10-15% (what enters the regular rate, annualised-salary reconciliation); D conflict of authorities 5-10% (state vs federal, multiple garnishment orders' priority); E discretion 5%; F 0%; G 5%; H repeatable ambiguity settled prospectively 10-20%. The H component is real in Australia (award interpretation errors repeated across thousands of employees for years) but is settled by the Fair Work Commission/Ombudsman/courts and then consumed as payroll configuration.",
+    "settlement_loop_evidence": [
+     {
+      "description": "US WHD opinion letters: an employer asks the Administrator to rule on a fact pattern; the letter is numbered, dated, can be withdrawn, and gives a good-faith reliance defence under the Portal-to-Portal Act (29 U.S.C. 259). Regulator-level prospective settlement of repeatable classification ambiguity.",
+      "source_url": "https://www.dol.gov/agencies/whd/opinion-letters/search",
+      "source_type": "regulator (recalled; blocked, not fetched)",
+      "prospective": "yes",
+      "reusable_how": "Other employers with materially identical facts rely on the letter; settlement is external to the firm and consumed as a payroll rule change."
+     },
+     {
+      "description": "Urssaf's mon-entreprise encodes French cotisations in Publicodes ('r\u00e8gles de calcul des cotisations sociales, des imp\u00f4ts et des droits sociaux' used on mon-entreprise.urssaf.fr); the rule base is versioned in git and reusable by third parties.",
+      "source_url": "https://github.com/betagouv/mon-entreprise/blob/master/modele-social/README.md",
+      "source_type": "government/agency repo (fetched)",
+      "prospective": "yes",
+      "reusable_how": "Settled readings become executable rules published by the collecting agency; supports H3 (already encoded) for the French payroll case."
+     },
+     {
+      "description": "OpenFisca-France housing-benefit module cites 'circulaire interminist\u00e9rielle DSS/2B n\u00b02011-447 du 01/12/2011', a 2011 CAF web page and a 2016 ministry PDF as sources for specific rule readings, with a code comment 'Hypoth\u00e8ses/points \u00e0 \u00e9claircir' listing unresolved ambiguities.",
+      "source_url": "https://github.com/openfisca/openfisca-france/blob/master/openfisca_france/model/prestations/aides_logement.py",
+      "source_type": "open-source rules-as-code (fetched)",
+      "prospective": "yes",
+      "reusable_how": "Interpretations are captured as executable rules, but provenance is a free-text comment: shows the capture happens and the governance gap is modest."
+     },
+     {
+      "description": "Australian large-employer underpayment remediations (e.g., Woolworths, litigated by the FWO over annualised-salary reconciliation under the Retail Award) are the largest documented cost of unsettled award interpretation repeated across a workforce.",
+      "source_url": "https://www.fairwork.gov.au/about-us/access-accountability-and-reporting/annual-reports",
+      "source_type": "regulator (recalled; blocked, not fetched; amounts unverified)",
+      "prospective": "yes",
+      "reusable_how": "Court/FWC findings on award meaning are prospective for all employers under the award; employer-side fix is payroll configuration and back-pay, not a precedent ledger."
+     }
+    ],
+    "economic_pain": "Large but concentrated in wrong classification rather than case-by-case review: US WHD and private FLSA collective actions (US district court FLSA filings in Table C-2, https://www.uscourts.gov/data-news/data-tables, blocked, unverified) and Australian remediation in the hundreds of millions of AUD (unverified). Per-exception review cost not sourced.",
+    "existing_solutions": "Payroll engines (ADP, Workday, SAP SuccessFactors EC Payroll, UKG, Dayforce) with configurable earnings/exemption codes; garnishment services (ADP Wage Garnishment); award-interpretation engines in Australia (Tanda, Deputy, Rippling AU, KeyPay) that encode award readings as configuration; regulator opinion letters and FWO/FWC guidance. None found that keeps employer-level interpretations as versioned typed precedents; configuration change logs partially serve that role.",
+    "buyer_and_budget": "Payroll manager / payroll compliance lead; general counsel for classification. Budget sits with the payroll platform and award-interpretation vendors.",
+    "regulatory_constraints": "Employer remains liable for misclassification regardless of tooling; opinion-letter reliance requires identical facts; Australia's criminal wage-theft provisions (from 2025) raise the cost of wrong settlement and push decisions to counsel (H4).",
+    "evidence_quality": "weak",
+    "verdict": "weak",
+    "notes": "The high-cost ambiguity is settled upstream by regulators/courts and lands as configuration; residual employer-level H volume is unmeasured and likely small per employer. Australian award interpretation is the sub-domain to check if the parent wants a payroll wedge."
+   },
+   {
+    "name": "Benefits administration: ERISA claims and appeals, plan document interpretation, plan administrator discretion",
+    "geography": "US",
+    "decision_volume": "UNVERIFIED. EBSA Benefits Advisors closed on the order of 200,000 participant inquiries in FY2023 and recovered roughly $444M through informal complaint resolution (total EBSA monetary results ~ $1.4B), https://www.dol.gov/agencies/ebsa/about-ebsa/our-activities/resource-center/fact-sheets/ebsa-monetary-results (regulator; recalled, blocked). ERISA civil filings in US district courts on the order of 7,000-9,000 per year (nature-of-suit 791), https://www.uscourts.gov/data-news/data-tables (court statistics; recalled, blocked). Plan-level claim and appeal counts: NOT FOUND; the 2016 disability claims rule RIA at https://www.federalregister.gov/documents/2016/12/19/2016-29353/claims-procedure-for-plans-providing-disability-benefits holds DOL's estimates (blocked).",
+    "human_review_rate": "By regulation every appeal is reviewed by a named fiduciary who did not make the initial decision and gives no deference to it (29 CFR 2560.503-1(h)(3)(ii)); initial claims are largely auto-adjudicated by insurer/TPA systems, appeals are 100% human. Basis: regulation text (recalled; ecfr.gov and law.cornell.edu blocked).",
+    "why_humans_review": "Estimate, basis = the regulation's own required-content list for denials (specific plan provision relied on; internal rule/guideline/protocol relied on; additional material needed) and the appeal structure: A missing evidence 30-40% (the denial notice must state what additional material would perfect the claim); B factual classification 20-25% (medical necessity, disability definition met, eligibility class); C rule interpretation 10-15% (plan-language meaning); D conflict of authorities 5% (plan document vs SPD vs insurer guideline); E discretion 10-15% (Firestone discretionary authority, exercised but reviewable); F 0%; G 5%; H repeatable ambiguity settled prospectively 10-15%. The H share is structurally supported because (b)(5) requires consistency with similarly situated claimants and (g) requires disclosing the internal rule relied on, which forces plans to hold reusable interpretations.",
+    "settlement_loop_evidence": [
+     {
+      "description": "29 CFR 2560.503-1(b)(5): plan claims procedures must 'contain administrative processes and safeguards designed to ensure and to verify that benefit claim determinations are made in accordance with governing plan documents and that, where appropriate, the plan provisions have been applied consistently with respect to similarly situated claimants.' Denials must identify the specific plan provision and any internal rule, guideline, protocol or similar criterion relied on (or state it is available on request).",
+      "source_url": "https://www.ecfr.gov/current/title-29/subtitle-B/chapter-XXV/subchapter-L/part-2560/section-2560.503-1",
+      "source_type": "regulator (regulation text recalled; host blocked, not fetched)",
+      "prospective": "yes",
+      "reusable_how": "The regulation itself mandates a reusable, disclosable interpretation ('internal rule, guideline, protocol') applied consistently to later similar claimants: the settlement loop is a legal requirement, and the artefact (the internal guideline) is exactly what the brief calls a captured settlement."
+     },
+     {
+      "description": "Firestone Tire & Rubber Co. v. Bruch, 489 U.S. 101 (1989): where the plan grants the administrator discretionary authority to determine eligibility or construe terms, courts review interpretations deferentially; the plan administrator is therefore the authoritative interpreter, and its prior interpretations of the same term are evidence of consistent (non-arbitrary) administration.",
+      "source_url": "https://en.wikipedia.org/wiki/Firestone_Tire_%26_Rubber_Co._v._Bruch",
+      "source_type": "court (recalled; wikipedia blocked, not fetched)",
+      "prospective": "yes",
+      "reusable_how": "Clear institutional owner (plan administrator / named fiduciary) whose settlement is authoritative subject to arbitrary-and-capricious review; inconsistency with prior interpretations is a classic ground for reversal, which is the economic reason to keep a precedent ledger."
+     },
+     {
+      "description": "Appeals must be decided by an appropriate named fiduciary who is neither the initial decision-maker nor their subordinate, without deference, within 60 days (45 for disability, 30/15 for health post-/pre-service), with the claimant entitled to all documents relevant to the claim.",
+      "source_url": "https://www.ecfr.gov/current/title-29/subtitle-B/chapter-XXV/subchapter-L/part-2560/section-2560.503-1",
+      "source_type": "regulator (recalled, blocked)",
+      "prospective": "no",
+      "reusable_how": "Case-specific; establishes that a human must remain on every appeal (H4), so the product value is in faster, consistent, better-documented appeals rather than removing the human."
+     }
+    ],
+    "economic_pain": "UNVERIFIED but structurally large: informal EBSA recoveries in the hundreds of millions per year, ERISA litigation in the thousands of cases per year, fee-shifting under ERISA 502(g), and reversal risk from inconsistent interpretation. Cost per appeal review and TPA headcount: NOT FOUND.",
+    "existing_solutions": "Insurer and TPA claim platforms (e.g., FINEOS for disability, health-plan adjudication systems, benefit-administration platforms such as Alight, bswift, Businessolver), plan-document/SPD generation vendors, ERISA counsel; the 'internal rules, guidelines, protocols' the regulation refers to live as clinical policy bulletins and claim manuals (versioned documents, not typed executable precedents linked to decisions). Consistency verification is usually audit sampling. No vendor found that links appeal outcomes to a versioned interpretation of a plan term and re-applies it automatically.",
+    "buyer_and_budget": "Plan administrator at a large self-insured employer, or the appeals/quality function at a TPA or disability insurer; budget exists (compliance, litigation avoidance) but the appeals unit is inside the claims platform's remit.",
+    "regulatory_constraints": "Human named fiduciary must decide every appeal; full and fair review and disclosure duties; deference depends on plan language; state insurance law overlays for insured plans; no rule prohibits using a precedent ledger to draft or check decisions.",
+    "evidence_quality": "moderate",
+    "verdict": "uncertain",
+    "notes": "Best structural fit in this cluster: a regulation that literally requires consistent application to similarly situated claimants and disclosure of the internal rule relied on, plus a clear owner. Missing: any verified count of appeals, share reversed on interpretation grounds, or recurrence of the same plan-term ambiguity. This is the workflow to run the brief's 100-500 case base-rate experiment on, at a self-administered plan or TPA appeals unit."
+   },
+   {
+    "name": "Procurement exceptions: sole-source justifications (FAR 6.302/J&A), individual and class deviations (FAR 1.4), Buy American waivers, EU Art. 32 negotiated procedure without publication, French below-threshold and 'sans publicit\u00e9' purchases, exception logs",
+    "geography": "US federal, EU, France, UK",
+    "decision_volume": "UNVERIFIED. US: roughly one-third of federal contract obligations are not competed (GAO/USAspending competition data; DoD competition rate around half), https://www.gao.gov (blocked), https://www.acq.osd.mil/dpap/cpic/cp/competition_report.html (blocked); GAO bid protests about 1,800 filed in FY2024 with sustain rate ~16% and effectiveness rate ~52%, https://www.gao.gov/legal/bid-protests/bid-protest-annual-reports (audit body; recalled, blocked). DoD class deviations: a few dozen numbered deviations per year, https://www.acq.osd.mil/dpap/dars/class_deviations.html (blocked). Buy American waivers posted individually for public comment at https://www.madeinamerica.gov/waivers/ (blocked). EU: single-bidder and no-call-for-bids shares in the Single Market Scoreboard, https://single-market-scoreboard.ec.europa.eu/policy_areas/public-procurement_en (blocked, not recalled with confidence). France: OECP recensement annual counts at https://www.economie.gouv.fr/daj/recensement-economique-commande-publique (blocked, not recalled with confidence).",
+    "human_review_rate": "100% by construction: every other-than-full-and-open award requires a written justification, certified by the contracting officer and approved at dollar-value tiers (FAR 6.303/6.304), and posted publicly within 14 days of award (30 days for urgency) under FAR 6.305. Basis: FAR text (recalled; acquisition.gov blocked; the GSA GitHub mirror was fetched but subpart files were not resolvable).",
+    "why_humans_review": "Estimate, basis = the FAR exception list and deviation structure: A missing evidence 10% (market research, sources-sought responses); B factual classification 15% (does only one responsible source exist; is this a follow-on); C rule interpretation 10%; D conflict of authorities 5%; E true discretion 25-30% (urgency, public interest, industrial mobilisation); F commercial negotiation 10%; G one-off circumstances 20% (each J&A is by definition tied to one acquisition); H repeatable ambiguity settled prospectively 5-10% (class deviations, class J&As, standing nonavailability determinations). The prospective part already has a formal, published, numbered instrument (class deviation / class J&A), so the H residue is served.",
+    "settlement_loop_evidence": [
+     {
+      "description": "FAR 1.404 lets an agency head authorise class deviations affecting more than one contracting action; DoD publishes them as numbered, dated, superseding instruments (e.g., 2024-Oxxxx series); FAR itself is versioned by Federal Acquisition Circular, the GitHub mirror noting 'FAC 2025-06 October 1, 2025'.",
+      "source_url": "https://github.com/GSA/GSA-Acquisition-FAR",
+      "source_type": "government repo (fetched for versioning; deviation text recalled, acquisition.gov blocked)",
+      "prospective": "yes",
+      "reusable_how": "A class deviation is exactly a recorded, versioned, prospective settlement applied to all later similar actions; volume is low (dozens per year per agency) and the mechanism already exists in law and in contract-writing systems."
+     },
+     {
+      "description": "FAR 6.305 requires each J&A for other-than-full-and-open competition to be posted publicly (SAM.gov) within 14 days after award, so every sole-source decision is already a published, provenance-bearing record.",
+      "source_url": "https://sam.gov/content/opportunities",
+      "source_type": "government (recalled; blocked)",
+      "prospective": "no",
+      "reusable_how": "Case-specific by design; later cases cite earlier J&As informally but the rule requires a fresh justification each time (G, not H)."
+     },
+     {
+      "description": "Buy American waivers (public interest, nonavailability, unreasonable cost) are posted individually for public comment on madeinamerica.gov under EO 14005; nonavailability determinations for listed articles apply prospectively.",
+      "source_url": "https://www.madeinamerica.gov/waivers/",
+      "source_type": "government (recalled; blocked)",
+      "prospective": "unclear",
+      "reusable_how": "Individual waivers are one-off; the FAR 25.104 nonavailable-articles list is the prospective class settlement and already exists as a maintained list."
+     },
+     {
+      "description": "EU Directive 2014/24/EU Art. 32 enumerates closed grounds for negotiated procedure without prior publication (no suitable tenders, technical/artistic/exclusive rights, extreme urgency, additional deliveries, repetition) and Art. 84 requires an individual report; France's Code de la commande publique R2122-8 sets a bright-line below-threshold direct purchase (40,000 EUR HT).",
+      "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32014L0024",
+      "source_type": "regulator (recalled; eur-lex and legifrance blocked)",
+      "prospective": "no",
+      "reusable_how": "Grounds are legal categories interpreted by review bodies and the CJEU; contracting authorities document each case; the prospective settlement layer is case law and DAJ guidance, not an employer ledger."
+     },
+     {
+      "description": "TED open data and eForms SDK (OP-TED) expose procedure-type codes for every EU notice, so recurrence of exception grounds is measurable, but no statistics were retrievable this session.",
+      "source_url": "https://github.com/OP-TED",
+      "source_type": "government data infrastructure (fetched)",
+      "prospective": "no",
+      "reusable_how": "Data only; would support a base-rate study of how often the same exception ground recurs for the same buyer."
+     }
+    ],
+    "economic_pain": "Protest and audit risk rather than review labour: GAO protests ~1,800/yr with ~half effective (unverified), OIG findings on inadequate J&As, EU infringement and single-bidder concerns. Cost per J&A: NOT FOUND; typical J&A drafting is a contracting-officer task measured in hours to days (estimate, no source).",
+    "existing_solutions": "Contract-writing systems (PRISM, CON-IT, ConWrite, Unison), SAM.gov posting, agency deviation registers, EU eForms/TED, French PLACE/DAJ fiches techniques and OECP; GRC/audit tools. The prospective instrument (class deviation, class J&A, nonavailability list) already exists as a formal published document type, so H3 largely holds.",
+    "buyer_and_budget": "Head of contracting activity / procurement policy office; public-sector budget cycles and long sales cycles; incumbents are contract-writing platforms.",
+    "regulatory_constraints": "Statute requires written, approved, published justification per action; approval authority scales with dollar value; automation cannot remove the certifying contracting officer (H4).",
+    "evidence_quality": "weak",
+    "verdict": "weak",
+    "notes": "Procurement exceptions are dominated by one-off (G), discretion (E) and negotiation (F), and the repeatable part already has a formal versioned instrument. No exception-log volumes could be verified."
+   },
+   {
+    "name": "Employee expenses (contrast only): out-of-policy rates, auto-approval, Ramp/Expensify/Navan policy agents",
+    "geography": "US/UK/EU",
+    "decision_volume": "Prior evidence: IPSA 82,787 claims with 18 not paid and 446 repaid (prior_evidence.md, regulator data from the earlier investigation). Vendor out-of-policy rates: NOT FOUND this session (ramp.com, navan.com, use.expensify.com blocked).",
+    "human_review_rate": "Expensify Collect plan default: 'a $100 auto-approval threshold and 0% random audit percentage'; Control plan lets admins set a threshold under which 'Concierge can automatically approve reports that don't exceed a specific threshold and don't contain violations' and route 'a percentage of compliant reports for manual approval' (random audit). Source fetched: https://github.com/Expensify/App/blob/main/docs/articles/new-expensify/workspaces/Add-Approvals.md (vendor documentation, open-source repo).",
+    "why_humans_review": "Basis = Expensify rule catalogue (receipt thresholds, flag above amount, flag older than N days, prohibited line items, category/tag approvers) and prior IPSA coding: A missing evidence 30% (receipt, itemisation); B factual classification 20% (category, merchant type); C 10%; D 2%; E discretionary relief 25% (IPSA: 18 of 46 appeals were discretionary relief/exception); F 0%; G 8%; H 5-10%. Consistent with prior finding that checking before acting prevents almost nothing.",
+    "settlement_loop_evidence": [
+     {
+      "description": "Expensify workspace rules are bright-line controls (require receipts above an amount, flag above amount unless a category rule overrides, flag older than N days, prohibited line items, real-time card blocking); the workflow layer adds 'Auto-approve compliant reports ... and randomly audit a percentage of the rest' and 'Auto-pay approved reports under an amount you set'.",
+      "source_url": "https://github.com/Expensify/App/blob/main/docs/articles/new-expensify/workspaces/Workspace-Rules.md",
+      "source_type": "vendor documentation (fetched)",
+      "prospective": "yes",
+      "reusable_how": "Settlements are expressed as numeric limits and category rules, not interpretations; ambiguity is handled by sampling and after-the-fact audit, matching the IPSA finding."
+     },
+     {
+      "description": "Ramp's policy agent (per prior evidence) turns a detected ambiguity into a suggested policy edit that a permitted admin publishes: the settlement loop as a feature inside the expense platform.",
+      "source_url": "https://www.ramp.com/blog/policy-agent",
+      "source_type": "vendor (blocked this session; from prior_evidence.md)",
+      "prospective": "yes",
+      "reusable_how": "Confirms H6: where the loop is worth automating in expenses, the incumbent ships it as a feature."
+     }
+    ],
+    "economic_pain": "Low per decision (IPSA median published dispute \u00a3584; 0.02% not paid); prior finding stands.",
+    "existing_solutions": "Expensify, Ramp, Navan, SAP Concur, Brex: limits, violations, auto-approve, random audit, policy-edit suggestions.",
+    "buyer_and_budget": "Finance/AP; budget already captured by expense platforms.",
+    "regulatory_constraints": "Tax deductibility rules; minimal.",
+    "evidence_quality": "moderate",
+    "verdict": "negative",
+    "notes": "Retained only as the control case; nothing this session contradicts the prior negative finding, and Expensify's default control model (threshold + 0% audit) confirms it."
+   }
+  ],
+  "evidence_against_thesis": [
+   "H3 (already encoded): French social-law rules-as-code projects (OpenFisca-France, Urssaf mon-entreprise, Code du travail num\u00e9rique Publicodes models) already capture settled interpretations as executable rules, citing circulaires and agency guidance in comments; the remaining gap is provenance hygiene, not a missing product (fetched: openfisca aides_logement.py, modele-social README, publicodes README).",
+   "Owner is the regulator, not the enterprise: the one typed, versioned, per-agreement settlement corpus found in this cluster (Code du travail num\u00e9rique contributions with REDACTING->VALIDATED->PUBLISHED pipeline and answer types) is published free by the Direction g\u00e9n\u00e9rale du Travail; employer-side demand for a separate ledger is correspondingly reduced (fetched: SocialGouv/cdtn-admin).",
+   "H4 (humans must remain): ERISA appeals must be decided by a named fiduciary without deference; ADA accommodations require an individualised interactive process; FMLA certification review; J&As must be certified by a contracting officer and approved at dollar tiers. In every workflow here the law keeps a human on the decision even after precedent exists (regulation texts recalled; hosts blocked).",
+   "H6 (feature not product): Ramp's policy agent (prior evidence) and Expensify's auto-approve/random-audit settings show the loop shipping as a feature of the expense platform; HRSD/Workday knowledge articles and payroll configuration play the same role in HR and payroll.",
+   "Procurement exceptions are structurally G/E/F: each sole-source justification is tied to a single acquisition and must be freshly justified and published (FAR 6.303-6.305); the prospective instrument (class deviation, class J&A, nonavailability list) already exists as a formal numbered document at low volume.",
+   "Payroll ambiguity that matters (exemption status, award interpretation) is settled upstream by WHD opinion letters, the Fair Work Commission/Ombudsman and courts, and lands as payroll configuration; DOL's own calculator is arithmetic-only, confirming the interpretive step sits outside the payroll engine.",
+   "Expenses remain negative: Expensify's default is a $100 auto-approval threshold with 0% random audit on Collect; control is limits plus sampling, consistent with the prior IPSA finding that pre-payment checking prevents almost nothing.",
+   "No verified operational volumes for HR tier-2 escalation shares, benefit appeal counts, or exception-log sizes could be obtained this session; the absence is uncertainty, but it also means no positive quantitative evidence for the thesis was found in this cluster."
+  ],
+  "not_found": [
+   "ServiceNow HRSD / Workday Help tier-2 escalation shares and HR case volumes (docs.servicenow.com and servicenow.com blocked; GitHub search API 502/503).",
+   "SHRM data on policy inconsistency or discipline consistency (shrm.org blocked).",
+   "DOL WHD FY2024/FY2025 enforcement statistics and FMLA 2018 survey figures (dol.gov blocked; figures given are recalled and flagged unverified).",
+   "EBSA FY2024/FY2025 fact sheet: Benefits Advisor inquiry counts and informal-resolution recoveries (dol.gov blocked).",
+   "Plan-level ERISA claim and appeal volumes, denial and overturn rates, and the 2016 disability rule regulatory impact analysis (federalregister.gov blocked).",
+   "ERISA and FLSA civil filing counts from US Courts Table C-2 (uscourts.gov blocked).",
+   "GAO reports on noncompetitive contracts and FY2024/FY2025 bid-protest annual report figures (gao.gov blocked).",
+   "DoD class deviation register and competition report counts (acq.osd.mil blocked); FAR subpart 1.4 and 6.3 text from the GSA GitHub mirror (raw paths returned 404; api.github.com contents call returned 403).",
+   "Buy American waiver counts (madeinamerica.gov blocked).",
+   "EU Single Market Scoreboard single-bidder and no-call-for-bids percentages; TED procedure-type statistics (europa.eu hosts blocked).",
+   "French OECP recensement contract counts by procedure type and Code de la commande publique threshold text (economie.gouv.fr, legifrance blocked).",
+   "Fair Work Ombudsman 2024-25 recoveries and large-employer remediation totals (fairwork.gov.au blocked).",
+   "EEOC FY2024 ADA charge counts (eeoc.gov blocked).",
+   "MSPB appeal volumes and penalty-mitigation rates (mspb.gov blocked).",
+   "Payroll error-rate and cost-per-correction studies (EY/PayrollOrg) and ADP garnishment incidence (hosts blocked).",
+   "Ramp policy agent and Navan policy-automation claims (ramp.com, navan.com blocked).",
+   "Any employer-side HR precedent log, 'HR case law' database, or vendor claiming to capture HR/benefits policy decisions as versioned executable rules: none found on GitHub; web unsearchable this session.",
+   "Code du travail num\u00e9rique usage volumes (number of contributions, page views) and the DGT validation roles: the admin repo shows the pipeline but no counts; code.travail.gouv.fr blocked.",
+   "Catala production adoption statements (README and catala-examples carry none; catala-lang.org blocked)."
+  ],
+  "sources": [
+   {
+    "url": "https://github.com/SocialGouv/cdtn-admin/blob/master/targets/hasura/migrations/default/1683815452189_create_table_contribution_answers_status/up.sql",
+    "type": "government repo (Ministry of Labour), fetched",
+    "used_for": "Status pipeline REDACTING/REDACTED/VALIDATING/VALIDATED/PUBLISHED with user_id and created_at for CDTN contribution answers (HR settlement loop evidence)."
+   },
+   {
+    "url": "https://github.com/SocialGouv/cdtn-admin/blob/master/targets/frontend/src/components/contributions/answers/AnswerForm.tsx",
+    "type": "government repo, fetched",
+    "used_for": "Answer content types (ANSWER, NOTHING, CDT, UNFAVOURABLE, UNKNOWN, SP, GENERIC_NO_CDT) and legi/kali reference fields."
+   },
+   {
+    "url": "https://github.com/SocialGouv/cdtn-admin/blob/master/targets/frontend/src/components/contributions/answers/Answer.tsx",
+    "type": "government repo, fetched",
+    "used_for": "Generic vs per-convention-collective answers, TO_PUBLISH/VALIDATED transitions, reference types."
+   },
+   {
+    "url": "https://github.com/SocialGouv/cdtn-admin/blob/master/analysis/src/analysis/reports/contrib_monthly_views.py",
+    "type": "government repo, fetched",
+    "used_for": "Evidence that per-contribution usage is monitored via Matomo (generic vs personalised pages), no counts published."
+   },
+   {
+    "url": "https://github.com/SocialGouv/code-du-travail-numerique/blob/master/packages/code-du-travail-frontend/src/modules/mentions-legales/index.tsx",
+    "type": "government repo, fetched",
+    "used_for": "Publisher is the Direction g\u00e9n\u00e9rale du Travail (owner of the settlement corpus)."
+   },
+   {
+    "url": "https://github.com/SocialGouv/code-du-travail-numerique",
+    "type": "government repo, fetched",
+    "used_for": "Architecture: Publicodes models of collective agreements, Elasticsearch, contact for contributions."
+   },
+   {
+    "url": "https://github.com/SocialGouv/contributions-data",
+    "type": "government repo (archived Feb 2026), fetched",
+    "used_for": "Contribution tool merged into cdtn-admin."
+   },
+   {
+    "url": "https://github.com/publicodes/publicodes",
+    "type": "open-source project README, fetched",
+    "used_for": "Production users: Urssaf mon-entreprise, Code du travail num\u00e9rique (layoff compensation, notice period simulators)."
+   },
+   {
+    "url": "https://github.com/betagouv/mon-entreprise",
+    "type": "government/agency repo, fetched",
+    "used_for": "Urssaf partnership; cotisations computed in Publicodes."
+   },
+   {
+    "url": "https://raw.githubusercontent.com/betagouv/mon-entreprise/master/modele-social/README.md",
+    "type": "government/agency repo, fetched",
+    "used_for": "Rules for cotisations sociales used on mon-entreprise.urssaf.fr."
+   },
+   {
+    "url": "https://github.com/openfisca/openfisca-france",
+    "type": "open-source rules-as-code, fetched",
+    "used_for": "Continuous deployment of French tax-benefit rules; no statement on doctrine vs statute."
+   },
+   {
+    "url": "https://github.com/openfisca/openfisca-france/blob/master/openfisca_france/model/prestations/aides_logement.py",
+    "type": "open-source rules-as-code, fetched",
+    "used_for": "Rule readings sourced to circulaire DSS/2B 2011-447, a 2011 CAF page and a 2016 ministry PDF; 'points \u00e0 \u00e9claircir' comments (informal provenance of settlements)."
+   },
+   {
+    "url": "https://github.com/CatalaLang/catala",
+    "type": "academic/open-source, fetched",
+    "used_for": "Catala scope; no production adoption stated."
+   },
+   {
+    "url": "https://github.com/CatalaLang/catala-examples",
+    "type": "academic/open-source, fetched",
+    "used_for": "Allocations familiales and aides au logement formalisations; alpha/beta status."
+   },
+   {
+    "url": "https://github.com/CatalaLang",
+    "type": "academic/open-source, fetched",
+    "used_for": "Repo list; no institutional deployment repos."
+   },
+   {
+    "url": "https://github.com/MLanguage/mlang",
+    "type": "academic/open-source, fetched",
+    "used_for": "DGFiP M language reimplementation; passes DGFiP private tests; no legal guarantee."
+   },
+   {
+    "url": "https://github.com/USDepartmentofLabor/DOL-Timesheet",
+    "type": "government repo, fetched",
+    "used_for": "DOL's overtime calculator is arithmetic-only and excludes classification/exemption questions."
+   },
+   {
+    "url": "https://github.com/USDepartmentofLabor",
+    "type": "government org page, fetched",
+    "used_for": "No enforcement datasets published on GitHub."
+   },
+   {
+    "url": "https://github.com/GSA/GSA-Acquisition-FAR",
+    "type": "government repo, fetched",
+    "used_for": "FAR versioning by Federal Acquisition Circular (FAC 2025-06, 1 Oct 2025); subpart files not resolvable."
+   },
+   {
+    "url": "https://github.com/Expensify/App/blob/main/docs/articles/new-expensify/workspaces/Add-Approvals.md",
+    "type": "vendor documentation (open-source repo), fetched",
+    "used_for": "Collect plan $100 auto-approval threshold and 0% random audit; Control plan thresholds and audit sampling."
+   },
+   {
+    "url": "https://github.com/Expensify/App/blob/main/docs/articles/new-expensify/workspaces/Workspace-Rules.md",
+    "type": "vendor documentation, fetched",
+    "used_for": "Rule catalogue: receipt thresholds, flag above amount, age, prohibited items, card controls."
+   },
+   {
+    "url": "https://github.com/Expensify/App/blob/main/docs/articles/new-expensify/workspaces/Workspace-Workflows.md",
+    "type": "vendor documentation, fetched",
+    "used_for": "'Auto-approve compliant reports ... randomly audit a percentage', 'Auto-pay approved reports under an amount'."
+   },
+   {
+    "url": "https://github.com/OP-TED",
+    "type": "government data infrastructure, fetched",
+    "used_for": "TED open data and eForms SDK exist for procedure-type analysis; no stats."
+   },
+   {
+    "url": "https://github.com/digiwhist",
+    "type": "academic/NGO data project, fetched",
+    "used_for": "EU tender data processing pipeline exists; no indicators retrieved."
+   },
+   {
+    "url": "https://www.ecfr.gov/current/title-29/subtitle-B/chapter-XXV/subchapter-L/part-2560/section-2560.503-1",
+    "type": "regulator (regulation text recalled; blocked, not fetched)",
+    "used_for": "(b)(5) consistency with similarly situated claimants; disclosure of internal rules/guidelines; appeal by different fiduciary; time limits."
+   },
+   {
+    "url": "https://en.wikipedia.org/wiki/Firestone_Tire_%26_Rubber_Co._v._Bruch",
+    "type": "court decision summary (recalled; blocked)",
+    "used_for": "Deferential review where plan grants discretion; administrator as authoritative interpreter."
+   },
+   {
+    "url": "https://www.dol.gov/agencies/ebsa/about-ebsa/our-activities/resource-center/fact-sheets/ebsa-monetary-results",
+    "type": "regulator (recalled, unverified; blocked)",
+    "used_for": "Order-of-magnitude EBSA Benefits Advisor inquiries and informal recoveries."
+   },
+   {
+    "url": "https://www.dol.gov/agencies/whd/data/charts/overall-enforcement-statistics",
+    "type": "regulator (recalled, unverified; blocked)",
+    "used_for": "Order-of-magnitude WHD back wages and workers."
+   },
+   {
+    "url": "https://www.dol.gov/agencies/whd/opinion-letters/search",
+    "type": "regulator (recalled; blocked)",
+    "used_for": "Opinion-letter mechanism as regulator-level prospective settlement."
+   },
+   {
+    "url": "https://www.gao.gov/legal/bid-protests/bid-protest-annual-reports",
+    "type": "audit body (recalled, unverified; blocked)",
+    "used_for": "Order-of-magnitude bid protest counts, sustain and effectiveness rates."
+   },
+   {
+    "url": "https://www.fairwork.gov.au/about-us/access-accountability-and-reporting/annual-reports",
+    "type": "regulator (recalled, unverified; blocked)",
+    "used_for": "Order-of-magnitude FWO recoveries and award-interpretation remediation."
+   },
+   {
+    "url": "https://www.mspb.gov/publicaffairs/annual_reports.htm",
+    "type": "tribunal (recalled; blocked)",
+    "used_for": "Douglas factor consistency and tables of penalties as prospective discipline settlements; volumes unverified."
+   },
+   {
+    "url": "https://www.madeinamerica.gov/waivers/",
+    "type": "government (recalled; blocked)",
+    "used_for": "Individual public posting of Buy American waivers."
+   },
+   {
+    "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32014L0024",
+    "type": "regulator (recalled; blocked)",
+    "used_for": "Art. 32 closed grounds for negotiated procedure without publication."
+   },
+   {
+    "url": "/tmp/claude-0/-home-user-sophon/03144a04-0e98-54e7-9d2c-78cb7b16e172/scratchpad/market/prior_evidence.md",
+    "type": "prior investigation (local file, read)",
+    "used_for": "IPSA expense figures, Ramp policy-agent description, incumbent feature list."
+   }
+  ],
+  "blocked_urls": [
+   "https://www.dol.gov/agencies/whd/data/charts/overall-enforcement-statistics",
+   "https://www.dol.gov/agencies/ebsa/about-ebsa/our-activities/enforcement",
+   "https://www.dol.gov/agencies/whd/fmla/2018-survey-results",
+   "https://www.dol.gov/agencies/whd/opinion-letters/search",
+   "https://www.gao.gov/legal/bid-protests/bid-protest-annual-reports",
+   "https://www.acq.osd.mil/dpap/dars/class_deviations.html",
+   "https://www.madeinamerica.gov/waivers/",
+   "https://single-market-scoreboard.ec.europa.eu/policy_areas/public-procurement_en",
+   "https://www.economie.gouv.fr/daj/recensement-economique-commande-publique",
+   "https://www.fairwork.gov.au/about-us/access-accountability-and-reporting/annual-reports",
+   "https://www.eeoc.gov/data/charge-statistics-charges-filed-eeoc-fy-1997-through-fy-2024",
+   "https://www.ramp.com/blog/policy-agent",
+   "https://www.mspb.gov/publicaffairs/annual_reports.htm",
+   "https://askjan.org/topics/costs.cfm",
+   "https://en.wikipedia.org/wiki/Firestone_Tire_%26_Rubber_Co._v._Bruch",
+   "https://www.ecfr.gov/current/title-29/subtitle-B/chapter-XXV/subchapter-L/part-2560/section-2560.503-1",
+   "https://www.law.cornell.edu/cfr/text/29/2560.503-1",
+   "https://www.uscourts.gov/data-news/data-tables/2024/12/31/statistical-tables-federal-judiciary/c-2",
+   "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32014L0024",
+   "https://ted.europa.eu/en/",
+   "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000037703393",
+   "https://sam.gov/content/opportunities",
+   "https://www.servicenow.com/products/hr-service-delivery.html",
+   "https://docs.servicenow.com/bundle/latest/page/product/human-resources/concept/hr-case-management.html",
+   "https://www.shrm.org/topics-tools/news/hr-magazine/consistency-key-discipline",
+   "https://use.expensify.com/expense-management",
+   "https://navan.com/expense-management",
+   "https://www.oecd.org/en/publications/government-at-a-glance-2023_3d5c5d31-en.html",
+   "https://www.gov.uk/guidance/procurement-act-2023-guidance-documents",
+   "https://www.govinfo.gov/app/collection/cfr",
+   "https://www.federalregister.gov/documents/2016/12/19/2016-29353/claims-procedure-for-plans-providing-disability-benefits",
+   "https://www.acquisition.gov/far/subpart-1.4",
+   "https://crsreports.congress.gov/product/pdf/R/R44010",
+   "https://www.bls.gov/news.release/ebs2.nr0.htm",
+   "https://papers.ssrn.com/sol3/results.cfm?txtKey_Words=ERISA+claims+denial",
+   "https://www.nber.org/papers/w28935",
+   "https://web.archive.org/web/2025/https://www.dol.gov/agencies/whd/data/charts/overall-enforcement-statistics",
+   "https://archive.org/wayback/available?url=dol.gov",
+   "https://hal.science/",
+   "https://core.ac.uk/",
+   "https://api.semanticscholar.org/",
+   "https://www.ccomptes.fr/fr/publications/la-commande-publique",
+   "https://www.adp.com/resources/articles-and-insights/articles/t/the-us-wage-garnishment-landscape.aspx",
+   "https://www.jdsupra.com/legalnews/erisa-litigation-statistics/",
+   "https://dmec.org/resources/",
+   "https://www.vie-publique.fr/eclairage/commande-publique",
+   "https://pmc.ncbi.nlm.nih.gov/",
+   "https://publicodes.github.io/publicodes/",
+   "https://openfisca.org/en/",
+   "https://catala-lang.org/en/",
+   "https://api.github.com/repos/GSA/GSA-Acquisition-FAR/contents/html/copypaste-SubParts (403)",
+   "https://raw.githubusercontent.com/GSA/GSA-Acquisition-FAR/master/html/copypaste-SubParts/1.4.html (404)",
+   "https://raw.githubusercontent.com/GSA/GSA-Acquisition-FAR/master/html/copypaste-SubParts/6.3.html (404)",
+   "WebSearch: all queries refused, session budget 200/200 already consumed before this finder started"
+  ]
+ },
+ "verification": {
+  "domain": "hr-payroll-benefits-procurement-expenses",
+  "refuted": [
+   {
+    "claim": "Code du travail num\u00e9rique contributions are 'typed, versioned, provenance-bearing, prospective settlement of repeatable ambiguity (category H) at national scale'.",
+    "why": "The actual corpus is small and is a digest of agreement text, not a settlement of ambiguity. Fetched the published dataset @socialgouv/contributions-data 3.89.0 (Ministry of Labour npm package, May 2022, https://registry.npmjs.org/@socialgouv/contributions-data/-/contributions-data-3.89.0.tgz): 41 questions x 126 IDCC agreements = 4,870 per-agreement answers; 31.9% (1,555) simply state the agreement provides nothing or refers back to the Code; 69.4% carry a legifrance article citation, i.e. they summarise what an article says (e.g. 'Article 11: the employer must give preference to existing staff'). Cloned SocialGouv/cdtn-admin (release 2.77.12, 18 Sep 2026): the tracked generic-contribution list is 51 slugs (analysis/src/analysis/reports/completion_contributions.py, BASE_SLUGS) and the 'lot 2' migration references question order up to 51, so the corpus grew from 41 to about 51 recurring FAQ topics in four years. The REDACTING->PUBLISHED status table with user_id/created_at is an ordinary editorial CMS workflow, and the analytics module measures page views and 'afficher les informations' clicks, not questions escalated or settled. This is a government FAQ/knowledge base of type C at best (reading an existing text), not an H settlement loop, and its scale is ~50 topics, not 'national scale' of decisions."
+   },
+   {
+    "claim": "Benefits administration is the 'best structural fit in this cluster' because 29 CFR 2560.503-1 'literally requires' a reusable settlement (internal rule, guideline, protocol) and a clear owner, warranting an 'uncertain' verdict with moderate evidence.",
+    "why": "Nothing in this workflow was fetched (ecfr.gov, law.cornell.edu, dol.gov, kff.org all blocked for me as for the finder), so 'moderate' evidence quality is not earned. On the substance, from recall of the regulation (unverified, https://www.ecfr.gov/current/title-29/section-2560.503-1): (b)(5) is qualified by 'where appropriate'; the internal-rule disclosure in (g)(1)(v) and the no-deference/different-fiduciary appeal in (h)(3)(ii) apply to group health plan claims (and, via (h)(4), disability claims), not to pension claims under (h)(2). The 'internal rules, guidelines, protocols' in practice are clinical/medical-necessity criteria and claims manuals, which are applied as factual classification (category B), not settlements of interpretive ambiguity. The brief's own penalty criteria (human must remain after precedent; core system of record is the insurer/TPA adjudication platform; buyer unclear because employers outsource adjudication) all apply. Downgraded to weak."
+   },
+   {
+    "claim": "DOL's timesheet tool 'explicitly excludes classification/exemption questions'.",
+    "why": "Fetched https://raw.githubusercontent.com/USDepartmentofLabor/DOL-Timesheet/master/README.md: the README says the app 'handles Salaried and hourly payment Types' and 'does not handle items such as tips, commissions, bonuses, deductions, holiday pay, pay for weekends, shift differentials, or pay for regular days of rest'. Exemption status is not mentioned at all; the finder's 'explicitly excludes' is an inference, and the tool is a worker-facing calculator, so it says nothing about where employer payroll ambiguity sits."
+   }
+  ],
+  "weakened": [
+   {
+    "claim": "Procurement class deviations / class J&As are recorded prospective settlements (H) at 'dozens per year per agency'.",
+    "why": "The FAR text is now verified from the cloned GSA mirror (https://github.com/GSA/GSA-Acquisition-FAR, html/copypaste-AllTopic/1.404.html, 6.303-1.html, 6.304.html, 6.305.html; README confirms 'through 2025-06 October 1, 2025'). It confirms the finder's structural point but pushes the verdict further toward negative: 1.404 says a permanent class deviation 'should propose a FAR revision' (settlement is meant to flow into the rule text itself), 6.303-1(d) already provides class justifications with per-action scope documentation, 6.304 fixes approval tiers at $900k / $20M / $90M ($150M DoD), and 6.305 mandates public posting within 14 days (30 for urgency). The prospective instrument is thus fully institutionalised in statute and in contract-writing systems (the mirror is published precisely for those systems). Volume ('dozens per year') remains unverified (acq.osd.mil blocked)."
+   },
+   {
+    "claim": "US federal-sector discipline consistency (Douglas factors, tables of penalties) is a prospective settlement loop.",
+    "why": "The Douglas v. VA, 5 M.S.P.R. 280 (1981) citation is correct from recall, but a table of penalties is a pre-existing policy instrument (H3), and the Douglas framework requires individualised weighing of twelve factors on every case, so the residue is E with a mandatory human (H4). MSPB volumes (~5-6k appeals/yr) could not be verified by either of us (mspb.gov blocked)."
+   },
+   {
+    "claim": "H share for HR tier-2 of 10-15% is 'real' because the DGT publishes per-convention answers 'precisely because employers ask the same questions repeatedly'.",
+    "why": "The CDTN corpus is ~51 FAQ topics whose answers cite agreement articles; it evidences recurring lookup questions, not recurring interpretive ambiguity requiring an authorised settlement. No case-level data exists in the repo about questions the DGT could not answer or had to escalate. The 10-15% figure has no basis other than the finder's structural reading; I re-estimate H at roughly 0-5% for employer HR tier-2 with wide uncertainty (see conflation list)."
+   },
+   {
+    "claim": "Australian award interpretation supports H 10-20% in payroll because errors 'repeated across thousands of employees for years'.",
+    "why": "Repetition of a misconfiguration is not repeated human settlement. The large remediations (Woolworths/Coles annualised-salary set-off; FWO recoveries ~A$470M in 2023-24) are recalled and unverified (fairwork.gov.au blocked), and their mechanism is a one-time misreading embedded in payroll configuration and discovered in audit, then settled by the Federal Court / Fair Work Commission (e.g., FWC's insertion of annualised-wage-arrangement clauses in awards from 2020). That is regulator-owned prospective settlement consumed as configuration, i.e. H3 plus rule-maker ownership, which the brief penalises."
+   },
+   {
+    "claim": "Operational volumes cited (EBSA ~200k inquiries / $444M informal resolution; WHD ~$270-280M for ~150-165k workers; FWO ~A$470M/160k; GAO ~1,800 protests, 16% sustain, 52% effectiveness; EEOC 81k-88.5k charges; ERISA filings 7-9k/yr; FMLA ~15% leave-taking).",
+    "why": "None could be fetched by the finder or by me (dol.gov, gao.gov, eeoc.gov, uscourts.gov, mspb.gov, fairwork.gov.au all 403 at the egress proxy; WebSearch budget 200/200 exhausted for both sessions; GitHub code search API returned 503/429). My independent recall agrees with each at order-of-magnitude, which is weak corroboration between two unverified recollections, not evidence. They should be treated as unverified placeholders. In any case none of them measures the quantity that matters (share of reviews that are recurring settled ambiguity); they measure enforcement outcomes."
+   },
+   {
+    "claim": "Payroll error cost 'EY 2017: ~15 errors per pay period, ~$291 per correction'.",
+    "why": "Vendor/consultancy figure, URL not retrievable by the finder and unverifiable here; widely re-quoted in payroll-vendor marketing. Should be dropped rather than carried as a placeholder."
+   }
+  ],
+  "confirmed": [
+   {
+    "claim": "Expensify Collect plan default is a $100 auto-approval threshold with 0% random audit; Control plan lets admins auto-approve compliant reports under a threshold and randomly audit a percentage.",
+    "evidence": "Fetched https://raw.githubusercontent.com/Expensify/App/main/docs/articles/new-expensify/workspaces/Add-Approvals.md line 123 verbatim: 'Custom auto-approval settings are only available on the Control plan. Collect plans will have a $100 auto-approval threshold and 0% random audit percentage.' Lines 104-119: 'Concierge can automatically approve reports that don't exceed a specific threshold and don't contain violations' and 'route a percentage of compliant reports for manual approval'. Workspace-Workflows.md lines 124-125 and Workspace-Rules.md line 183 confirm the violation-flag model. Vendor documentation, open-source repo."
+   },
+   {
+    "claim": "FAR is versioned by Federal Acquisition Circular (FAC 2025-06, 1 Oct 2025); class deviations (1.404) and individual deviations (1.403) exist; sole-source J&As must be written, certified and approved at dollar tiers (6.303-1, 6.304) and posted publicly on sam.gov within 14 days (30 for urgency) (6.305); class justifications are permitted (6.303-1(d)).",
+    "evidence": "Cloned https://github.com/GSA/GSA-Acquisition-FAR and extracted html/copypaste-AllTopic/1.403.html, 1.404.html, 6.303-1.html, 6.303-2.html, 6.304.html, 6.305.html; README first line: 'includes all Federal Acquisition Circulars through 2025-06 October 1, 2025'. Government repo."
+   },
+   {
+    "claim": "cdtn-admin has a governed status pipeline REDACTING->REDACTED->VALIDATING->VALIDATED->PUBLISHED with user_id and created_at, and answer content types ANSWER, NOTHING, CDT, UNFAVOURABLE, UNKNOWN, SP, GENERIC_NO_CDT with legi/kali/cdtn/other reference inputs.",
+    "evidence": "Fetched https://raw.githubusercontent.com/SocialGouv/cdtn-admin/master/targets/hasura/migrations/default/1683815452189_create_table_contribution_answers_status/up.sql and .../targets/frontend/src/components/contributions/answers/AnswerForm.tsx; confirmed in the cloned repo. Government repo. (The characterisation of what this pipeline settles is refuted above; the artefact itself is as described.)"
+   },
+   {
+    "claim": "Contributions are answered per convention collective with legifrance article references and a generic Code du travail answer.",
+    "evidence": "Dataset @socialgouv/contributions-data 3.89.0: each question has answers.generic (markdown + description) and answers.conventions[] with idcc, markdown and references[] carrying dila_id / KALI container ids and legifrance URLs. Government npm package."
+   },
+   {
+    "claim": "DOL-Timesheet computes overtime at 1.5x over 40 hours and does not handle tips, commissions, bonuses, deductions, holiday pay, shift differentials.",
+    "evidence": "Fetched README (government repo): quoted list matches. Only the 'exemption' inference is unsupported (see refuted)."
+   },
+   {
+    "claim": "Publisher of code.travail.gouv.fr is the Direction g\u00e9n\u00e9rale du Travail; CDTN admin is hosted at cdtn-admin.fabrique.social.gouv.fr with the login codedutravailnumerique@travail.gouv.fr.",
+    "evidence": "cdtn-admin README (cloned) lists production URL and the travail.gouv.fr admin account; consistent with the finder's mentions-legales source. Government repo."
+   }
+  ],
+  "manual_review_conflated_with_repeatable_ambiguity": [
+   "CDTN 'contributions' (HR, France): 51 FAQ topics answered per agreement by summarising the agreement's article, with 32% of answers being 'the agreement says nothing'. This is document lookup / editorial summarisation of an existing text (category C at most, largely deterministic reading), presented by the finder as H settlement. The editorial status pipeline is CMS workflow, not decision provenance. Re-estimate: of the human work behind CDTN, ~0% is H in the brief's sense; it is a knowledge-base authoring cost borne by the regulator.",
+   "ERISA (b)(5)/(g)(1)(v) 'internal rule, guideline, protocol' (benefits, US): these are clinical criteria and claims manuals applied to facts (medical necessity, disability definition met), i.e. category B with a disclosure duty; a consistency safeguard is not evidence that interpretive ambiguity recurs. Recalled KFF marketplace data (https://www.kff.org/affordable-care-act/issue-brief/claims-denials-and-appeals-in-aca-marketplace-plans-in-2023/, press/think-tank analysis of CMS PUF, unverified): ~19% of in-network claims denied, consumers appealed <1% of denials, insurers upheld ~56% on appeal, and the largest stated reasons are administrative/'other' and excluded service, not interpretation. Missing-facts and administrative categories (A) dominate; H re-estimated at ~0-5% of appeals, unknown share of which recurs.",
+   "Federal-sector discipline (Douglas factors): finder counts penalty consistency as H; it is E (individualised twelve-factor weighing) constrained by a pre-existing table of penalties (H3), with a human required on every case (H4).",
+   "Australian award interpretation: 'repeated across thousands of employees' is one misconfiguration replicated by software, not recurring human settlement; the fix is a court/FWC ruling plus payroll reconfiguration (regulator-owned settlement, H3). Employer-side H re-estimate: ~0-5% of payroll exceptions, likely settled once per award clause per employer.",
+   "Garnishment 'order interpretation' (payroll): priority and limits are statutory (CCPA limits, state priority rules) applied to the order document; the human work is A (obtaining and reading orders) and D resolved by fixed statutory rules, not H.",
+   "Procurement J&A drafting: each justification is statutorily per-action (G) with certification (H4); the recurring part (class J&A, class deviation, nonavailability list) is already a formal numbered instrument (H3). Employer-side H re-estimate: ~0-5%, already served.",
+   "FMLA/ADA determinations: the finder's H 10-15% has no case data; certification review (A), serious-health-condition and essential-function classification (B), undue hardship (E) and the mandatory interactive process (H4) dominate. Recurring employer-level interpretations (e.g., what counts as intermittent leave for a given role) are typically settled into leave-vendor eligibility configuration or HR knowledge articles (H3/H6). Re-estimate H ~0-5%."
+  ],
+  "corrected_workflow_verdicts": [
+   {
+    "name": "HR policy interpretation: leave eligibility, accommodations, FMLA/ADA determinations, disciplinary consistency, HR tier-2 escalations",
+    "evidence_quality": "weak",
+    "verdict": "weak",
+    "why": "The only fetched artefact (CDTN) is a ~51-topic government FAQ that digests agreement text, not an employer settlement loop; no HR case, escalation or tier-2 volumes were verifiable (servicenow.com, shrm.org, dol.gov, eeoc.gov, mspb.gov blocked for both finder and verifier). Structural counter-evidence: mandated individualised assessment (ADA interactive process, Douglas factors, GDPR Art. 22 in the EU) keeps humans on every adverse decision; resolved cases already become knowledge articles in HRSD/Workday Help (the KCS 'solve-and-evolve' pattern, Consortium for Service Innovation, https://www.serviceinnovation.org/kcs/, industry association, unverified) so the loop already ships as a feature (H6); the state supplies the French corpus free. Downgraded from 'uncertain' to 'weak'."
+   },
+   {
+    "name": "Payroll exceptions: overtime/exemption classification, garnishments, retro pay, error correction",
+    "evidence_quality": "weak",
+    "verdict": "weak",
+    "why": "No operational data verified; the DOL tool citation does not bear on exemption status; the high-cost ambiguity (award clauses, FLSA exemption) is settled by regulators, tribunals and opinion letters and consumed as payroll configuration (H3, regulator-owned). Australian award-compliance tooling already exists as a category (Tanda, Deputy, KeyPay award engines; audit services such as Yellow Canary and PaidRight; vendor claims, unverified), which is H6. Verdict stays weak; nothing found that would justify raising it."
+   },
+   {
+    "name": "Benefits administration: ERISA claims and appeals, plan document interpretation, plan administrator discretion",
+    "evidence_quality": "weak",
+    "verdict": "weak",
+    "why": "Downgraded from uncertain/moderate: regulation text was recalled not fetched; the disclosure and no-deference rules apply to health and disability claims rather than all ERISA claims; the 'internal rules' are clinical criteria (B); appeals are a sub-1% tail of denials dominated by administrative reasons (KFF, recalled); adjudication sits in insurer/TPA platforms and clinical-policy libraries (H6, system-of-record penalty); a human named fiduciary must decide every appeal (H4); plan-term ambiguity is normally settled by amending the plan document or claims manual (H3). The base-rate experiment the finder proposes is still the only sensible test in this cluster, but requires access to a TPA appeals unit, which is not cheap access, and the recalled base rates suggest H will be a small tail."
+   },
+   {
+    "name": "Procurement exceptions: sole-source J&As, FAR deviations, Buy American waivers, EU Art. 32, French below-threshold purchases",
+    "evidence_quality": "moderate",
+    "verdict": "negative",
+    "why": "FAR text verified from the GSA mirror: per-action written, certified, tiered-approved and publicly posted justification is statutory (G + H4), while the prospective instruments (class J&A 6.303-1(d), class deviation 1.404 which itself says to propose a FAR revision when permanent, FAR 25.104 nonavailability list) already exist as numbered published documents integrated into contract-writing systems (H3, H6). Volumes unverified but structurally irrelevant: the recurring layer is already captured by the rule-maker. Moved from weak to negative."
+   },
+   {
+    "name": "Employee expenses (control case)",
+    "evidence_quality": "moderate",
+    "verdict": "negative",
+    "why": "Expensify default ($100 auto-approve, 0% audit) verified verbatim from vendor docs; consistent with prior IPSA finding (regulator data) that limits plus after-the-fact audit control >99.9% of claims and that disputes are mostly discretionary relief. Verdict unchanged."
+   }
+  ],
+  "missing": [
+   "Quantified size of the CDTN corpus: 41 questions (May 2022) growing to ~51 tracked topics (Sept 2026), 126 agreements, 4,870 answers, 32% 'agreement says nothing'. The finder described the mechanism without measuring it; the measurement shows it is a small FAQ, which cuts against 'national scale'.",
+   "Knowledge-Centered Service (KCS) as the incumbent settlement loop in HR service delivery: ServiceNow HRSD and Workday Help implement case-to-knowledge-article promotion as standard; the finder listed the products but not the methodology that already captures resolved cases for reuse (industry association source, unverified: https://www.serviceinnovation.org/kcs/).",
+   "Claim-denial and appeal base rates (KFF 2023 marketplace analysis of CMS transparency data, unverified): ~19% denial rate, <1% of denials appealed, ~56% upheld, reasons dominated by administrative/other and excluded services. This is the strongest available counter-evidence for H1 in benefits and was not cited.",
+   "ERISA regulation scope: (g)(1)(v) internal-rule disclosure and (h)(3)/(h)(4) no-deference appeals apply to group health and disability claims, not pension claims under (h)(2); the finder generalised to all ERISA claims (recalled regulation, unverified).",
+   "Plan amendment as the settlement mechanism: plan sponsors settle recurring plan-term ambiguity by amending the plan document/SPD (settlor function) and TPAs by updating claims manuals, i.e. H3 already exists in the document lifecycle; no vendor gap demonstrated.",
+   "ACA external review by independent review organisations and state DOI complaint processes as further human-in-loop layers after the internal appeal (H4), and the fact that self-insured employers delegate claims and appeals to the TPA/ASO, which makes the buyer the TPA's claims platform owner, not the employer.",
+   "Fair Work Commission award variation (e.g., annualised wage arrangements clauses from March 2020 following the 4-yearly modern award review, unverified: https://www.fwc.gov.au/hearings-decisions/major-cases/modern-award-reviews) as the prospective settlement instrument for the Australian payroll ambiguity, showing the rule-maker rather than the employer owns settlement.",
+   "Australian payroll-compliance audit vendors (Yellow Canary, PaidRight) and award engines (Tanda, Deputy, KeyPay/Employment Hero), i.e. the feature/service market already exists (vendor sources, unverified).",
+   "Any employer-side HR policy exception committee, HR precedent register or 'HR case law' database: neither finder nor verifier found evidence for or against; absence is uncertainty.",
+   "Verification status: WebSearch budget was 200/200 exhausted for this verifier as for the finder; egress allowed only github.com, raw.githubusercontent.com, registry.npmjs.org and pypi.org; GitHub search API returned 503/429. Blocked this session: www.law.cornell.edu, www.dol.gov (x2), www.gao.gov, plus probe-confirmed 403 for ecfr.gov, govinfo.gov, federalregister.gov, code.travail.gouv.fr, fairwork.gov.au, mspb.gov, eeoc.gov, uscourts.gov, kff.org, fwc.gov.au, legifrance.gouv.fr, acquisition.gov, sam.gov, servicenow.com, shrm.org, en.wikipedia.org, web.archive.org and ~60 other regulator, court, statistics, academic and vendor hosts."
+  ],
+  "overall": "The finder's structural narrative largely survives but its two positive-leaning items do not. Verified by fetch: the Expensify control model, the FAR deviation/J&A regime, the DOL timesheet scope, and the CDTN admin pipeline. Measured for the first time: the CDTN 'settlement corpus' is a government FAQ of ~41-51 topics answered per agreement by citing the agreement's article, a third of which say the agreement is silent; that is document lookup, not settlement of repeatable ambiguity, and its owner is the regulator. Benefits administration was over-graded on recalled regulation text and mis-scoped (health/disability rules generalised to all ERISA claims; clinical criteria treated as interpretive settlements); recalled base rates put appeals under 1% of denials with administrative reasons dominant, and every appeal keeps a human fiduciary. Procurement moves to negative because the FAR mirror shows the prospective instrument (class J&A, class deviation, nonavailability list) is already a statutory, published, numbered document integrated into contract-writing systems. None of the operational volumes (EBSA, WHD, FWO, GAO, EEOC, MSPB, courts) could be fetched by either session; my recall agrees at order of magnitude but that is not verification, and none of those figures measures the H share anyway. Honest H shares across the cluster are 0-5% with wide uncertainty, concentrated where the rule-maker (DGT, WHD, FWC, FAR Council, plan sponsor) already owns and publishes the settlement. Corrected cluster verdict: weak-to-negative for a standalone product; the only defensible remaining test is a 100-500 case coding of appeal files at a TPA or disability insurer appeals unit, with the expectation, set by the recalled base rates, that recurring settle-able ambiguity will be a small tail."
+ }
+}

@@ -1,0 +1,565 @@
+{
+ "key": "tax-customs-export-controls",
+ "found": {
+  "domain": "tax-customs-export-controls",
+  "workflows": [
+   {
+    "name": "Customs tariff classification: regulator advance rulings (EU BTI / UK ATaR / US CBP CROSS) and their public reuse",
+    "geography": "EU (BTI/EBTI), UK (ATaR, post-Brexit), US (CBP NY and HQ rulings, CROSS). France uses RTC under the EU BTI regime.",
+    "decision_volume": "US: three independent open-source scrapes of CBP's CROSS database report 176,972 classification rulings covering 1989-2026 (https://github.com/ShantanuTaro/HS-Code-Lookup-for-Customs, open-source project README, sourced), 270,791 total documents / 259,288 usable (https://github.com/OrlandoWhite88/qwen36-cpt-customs, open-source README, sourced) and 'approximately 220,000 searchable rulings' (https://github.com/HumbleIgnite/cbp-customs-rulings, open-source README, sourced). The differences reflect scraping scope (the 270k figure includes 'unprocessed' documents and 43,557 with no HTS chapter). Dividing ~177k-220k by 37 years gives roughly 5,000-6,000 rulings per year on average: MY ESTIMATE, not sourced; the current annual rate was not obtainable (CBP and rulings.cbp.gov blocked). EU EBTI and UK ATaR annual volumes: NOT OBTAINED (taxation-customs.ec.europa.eu, ec.europa.eu, gov.uk, tax.service.gov.uk all blocked). The only UK volume proxy found is HMRC's own performance-test configuration modelling the trader application journey at 0.02 requests/second (https://github.com/hmrc/digital-tariffs-trader-performance-tests/blob/main/src/test/resources/journeys.conf, government source code, sourced) which is a load-test parameter, not a volume statistic.",
+    "human_review_rate": "100% by construction: every advance ruling is a human classification officer's decision. HMRC's case manager records for each decision a 'justification', 'goodsDescription', 'methodSearch' (searches performed), 'methodCommercialDenomination' and 'methodExclusion' field (https://raw.githubusercontent.com/hmrc/binding-tariff-classification/main/app/uk/gov/hmrc/bindingtariffclassification/model/Decision.scala, government source code, sourced). The relevant operational question is what share of ruling requests are duplicates of existing rulings: HMRC's system has an explicit rejection reason ATAR_RULING_ALREADY_EXISTS and DUPLICATE_APPLICATION (https://raw.githubusercontent.com/hmrc/binding-tariff-classification/main/app/uk/gov/hmrc/bindingtariffclassification/model/RejectReason.scala, sourced) but the frequency of that reason was not obtainable.",
+    "why_humans_review": "Basis: the structure of HMRC's ATaR case model plus the CROSS corpus composition; shares are my estimates from that structure, not measured. A (missing evidence) ~15-25%: the ONLY two referral reasons in HMRC's system are REQUEST_SAMPLE and REQUEST_MORE_INFO (https://raw.githubusercontent.com/hmrc/binding-tariff-classification/main/app/uk/gov/hmrc/bindingtariffclassification/model/ReferralReason.scala, sourced), and the reject reason NO_INFO_FROM_TRADER exists, so the escalation loop at the regulator is about evidence, not interpretation; a daily 'referred-days-elapsed' scheduler tracks time lost to this (conf/application.conf, sourced). B (factual classification: what the good physically is, composition, function) ~30-40%: lab samples, 'EXPERT_ADVICE_RECEIVED' event type, and hazardous-sample fields exist in the model (Event.scala, Application.scala, sourced). C (interpretation of the nomenclature, GIRs, chapter notes) ~25-35%: this is the core of the decision; the 'methodExclusion' and 'justification' fields exist to record it. D (conflict of authorities: HQ vs NY rulings, EU classification regulations vs national) ~5%: the customs-law skill repo states 'HQ rulings carry more weight than NY rulings' and that rulings are modified/revoked 'via Customs Bulletin' (https://raw.githubusercontent.com/onurkafk/customs-trade-law/main/SKILL.md, secondary, sourced). E/F/G ~<5%: classification is not discretionary or negotiated. H (repeatable ambiguity settled prospectively) is exactly what an advance ruling IS: the cancel reasons INVALIDATED_CODE_CHANGE, INVALIDATED_EU_MEASURE, INVALIDATED_NATIONAL_MEASURE and INVALIDATED_WRONG_CLASSIFICATION (CancelReason.scala, sourced) show settlements are versioned and superseded when rules change. Estimated share of ruling requests that are H-type (a new interpretive question that will recur for other traders) vs B-type (this specific product): unknown; the CROSS corpus being 29,994 knit-apparel and 23,565 woven-apparel documents out of ~260k (OrlandoWhite88 README, sourced) suggests heavy repetition within narrow product families, consistent with the prior IPSA finding that repetition is plentiful at the category level.",
+    "settlement_loop_evidence": [
+     {
+      "description": "HMRC's open-source ATaR case manager implements the full loop: application (with fields for 'relatedBTIReferences', 'reissuedBTIReference', 'envisagedCommodityCode', 'knownLegalProceedings') -> officer decision with justification and method fields -> public 'Search for Advance Tariff Rulings' service that shows ruling reference, description, keywords, images, commodity code, start/expiry dates, justification and attachments, refreshed daily from the case manager -> cancellation/invalidation with typed reasons -> review/ADR/appeal chain (ADR, REVIEW, APPEAL_TIER_1, APPEAL_TIER_2, COURT_OF_APPEALS, SUPREME_COURT) with statuses IN_PROGRESS, ALLOWED, DISMISSED, MEDIATION.",
+      "source_url": "https://github.com/hmrc/binding-tariff-classification",
+      "source_type": "government source code (HMRC, Apache-2.0)",
+      "prospective": "yes",
+      "reusable_how": "The ruling binds HMRC for the holder; third parties can search it and cite it. HMRC's applicant journey explicitly asks 'Are there similar goods that already have a ruling?' and states 'It can help to provide a ruling if there is already a ruling for goods that are similar, even if the ruling was made in another country' (https://raw.githubusercontent.com/hmrc/binding-tariff-trader-frontend/main/conf/messages.en). Decisions are issued 'under section 24 of The Taxation (Cross-border Trade) Act 2018'; 'We try to issue ATaR decisions within 30 working days from the date that the application is accepted. Although it can take up to 120 days, as per UK law.'"
+     },
+     {
+      "description": "HMRC curates a governed keyword vocabulary attached to rulings: Keyword(name, approved: Boolean) with a management tab 'Keywords for approval', i.e. an owner ratifies the taxonomy used to make later rulings findable. Cases can be REFERRED, and events include EXPERT_ADVICE_RECEIVED and EXTENDED_USE_STATUS_CHANGE (a holder may apply to keep using a cancelled ruling for a period).",
+      "source_url": "https://raw.githubusercontent.com/hmrc/binding-tariff-classification/main/app/uk/gov/hmrc/bindingtariffclassification/model/Keyword.scala",
+      "source_type": "government source code",
+      "prospective": "yes",
+      "reusable_how": "Approved keywords index rulings for reuse by officers and the public; the 'methodSearch' decision field records which prior rulings/sources were searched."
+     },
+     {
+      "description": "CBP CROSS records per ruling: ruling number, subject, date, HTS codes, 'ruling numbers cross-referenced in this ruling', 'records showing which rulings modify, revoke, or are modified/revoked by the current ruling', office (HQ or NY) and status (active, revoked, modified).",
+      "source_url": "https://github.com/HumbleIgnite/cbp-customs-rulings",
+      "source_type": "open-source scraper README (secondary description of a government database)",
+      "prospective": "yes",
+      "reusable_how": "Explicit supersession graph; rulings are cited by other importers and brokers as persuasive precedent. Unverified from memory (URL blocked): 19 CFR 177.9 makes a ruling binding for the transaction described and 177.12 requires notice-and-comment in the Customs Bulletin to revoke or modify; HQ may also issue a ruling to resolve inconsistent NY rulings."
+     },
+     {
+      "description": "HMRC's Online Trade Tariff team is building an AI suite whose README describes 'ATaR' workflows for 'ingest, draft generation, fact extraction, review, and approval flows', a knowledge graph with 'provenance/audit review', commodity-code fact sheets and 'Search References for reviewing the source context used by retrieval, prompt generation, classification, and audit panels'.",
+      "source_url": "https://github.com/trade-tariff/ai-search-evaluation-suite",
+      "source_type": "government source code (HMRC / OTT)",
+      "prospective": "yes",
+      "reusable_how": "Shows the regulator itself is building the capture-facts -> draft -> human approve -> provenance loop in-house; a strong H3/H6 signal that the regulator side of this loop will not be bought from a startup."
+     },
+     {
+      "description": "HMRC runs an ML classifier for Fast Parcel Operators mapping free-text goods descriptions to 8-digit commodity codes (PyTorch, quantised, confidence scores), i.e. the low-value high-volume tail is already automated by the regulator without an interpretation layer.",
+      "source_url": "https://github.com/trade-tariff/trade-tariff-lambdas-fpo-search",
+      "source_type": "government source code",
+      "prospective": "no",
+      "reusable_how": "Statistical, not settlement-based; no human-review workflow documented."
+     }
+    ],
+    "economic_pain": "Processing delay is the documented cost at the regulator: up to 120 days by law, 30 working days target (HMRC messages.en, sourced). Cost per ruling, staff headcount, appeal rates and duty error costs were NOT obtainable (gov.uk, ECA, GAO, CBP all blocked). An open-source ECCN tool's author characterises expert classification as '1-4 hours' per item and a legal opinion at '$5,000-20,000' (https://raw.githubusercontent.com/bigdong1991-spec/eccn-classifier/main/README.md, individual developer's claim, weak, not official).",
+    "existing_solutions": "Regulator side: fully tooled (HMRC ATaR case manager above; CBP CROSS with supersession links; EU EBTI database, not reachable). The regulator's system captures the settlement as a versioned, provenance-bearing, prospectively-applicable record with justification and typed invalidation reasons; that is the product mechanism, already built by the institutional owner for its own decisions.",
+    "buyer_and_budget": "Regulators are not a startup buyer for this loop (they build it themselves, in the open). The relevant buyers are importers/brokers (next workflow).",
+    "regulatory_constraints": "Ruling is binding only for the holder and only for goods matching the description; automation of the officer's decision is not prohibited but the decision must be issued by the authority; EU BTI is valid 3 years and binding on all EU customs administrations (recalled, unverified, URL blocked).",
+    "evidence_quality": "moderate",
+    "verdict": "negative",
+    "notes": "Negative as a product target because the institutional owner already runs the loop with structured, versioned, public, prospectively-binding records. Its value here is as a model of what 'settled' looks like and as an external corpus a company-side product could anchor to. Volume statistics for EU/UK were unobtainable."
+   },
+   {
+    "name": "Customs tariff classification inside importers, exporters and brokers (SKU/part classification, broker-importer disputes, post-entry corrections)",
+    "geography": "US, EU, UK; global for multinationals (a part needs a code per destination country).",
+    "decision_volume": "Not obtainable from primary sources in this session. Proxies: Avalara's item model carries a 'classifications' collection (product code per 'systemCode' and 'country') and a bulk 'ClassificationDetailsModel' that counts items 'classified', 'inProgress', 'notClassified', 'failed', 'notFound' (https://raw.githubusercontent.com/avadev/AvaTax-REST-V2-DotNet-SDK/main/src/models/ClassificationDetailsModel.cs, vendor SDK source, sourced), showing classification is run as bulk catalogue jobs with a review queue ('TariffCodeNeedsReview' criterion, https://raw.githubusercontent.com/avadev/AvaTax-REST-V2-DotNet-SDK/main/src/models/ClassificationCriteriaModel.cs, sourced). HMRC's LiabilityOrder case type records 'traderCommodityCode' vs 'officerCommodityCode', 'btiReference', 'entryNumber', 'repaymentClaim' (https://raw.githubusercontent.com/hmrc/binding-tariff-classification/main/app/uk/gov/hmrc/bindingtariffclassification/model/Application.scala, sourced): post-clearance classification disputes are a distinct regulator caseload, volume unknown.",
+    "human_review_rate": "Unknown. Open-source LLM classifiers measured against CROSS rulings give a lower bound on how much cannot be automated by pattern matching: an agent grounded in the HTSUS notes and CROSS precedent scored 73.0% at chapter, 59.6% at heading, 44.9% at 6-digit, 38.2% at 8-digit, 32.6% at 10-digit on 89 held-out CROSS cases with gpt-5-mini, and flags 'needs_human_review' because 'CROSS labels are not ground truth' and 'several close misses represent defensible alternative classifications' (https://raw.githubusercontent.com/vladswork23/us-hts-classifier/main/README.md, open-source project, sourced). Another project claims commercial competitors reach '92-96% accuracy at the 6-digit level' and sets its own kill switch at 'near 80%' on a 500-ruling backtest (https://raw.githubusercontent.com/ShantanuTaro/HS-Code-Lookup-for-Customs/main/README.md, individual developer claim, weak). A third grades nightly against 100 held-out CROSS rulings and clusters errors into 'named failure families (e.g., String lights filed as lamps, not electric garlands)' (https://raw.githubusercontent.com/RemiKG/harmony/main/README.md, open-source, sourced): that failure family is precisely a repeatable interpretive class that a settlement would resolve prospectively.",
+    "why_humans_review": "Basis: structure of the HS/GIR decision plus the open-source accuracy evidence; shares are estimates. B (factual: composition, function, essential character, which requires spec sheets, lab data) ~35-45%. A (missing evidence: no spec, vague vendor description) ~20-30%; HMRC's FPO parcel classifier works only on free-text descriptions, consistent with description quality being the binding constraint at the low-value tail. C (rule interpretation: GIR 3(b) essential character, sets, parts vs accessories, chapter notes) ~20-30%. D (conflict: NY vs HQ, EU vs national practice, broker vs importer) ~5%. H (repeatable ambiguity, e.g. 'our string lights are garlands not lamps', 'this bracket is a part of heading X') plausibly ~10-20% of items but a much larger share of DECISIONS because each settled family covers many SKUs; the 'named failure families' evidence and the concentration of ~54k of ~260k CROSS documents in two apparel chapters support recurrence at the family level. E/F/G ~<5%.",
+    "settlement_loop_evidence": [
+     {
+      "description": "Avalara stores a company's own tariff/tax settlements as records: ItemModel has taxCode, classifications (productCode, systemCode, country), createdUserId/modifiedUserId/createdDate/modifiedDate, source/sourceEntityId, 'hsCodeClassificationStatus' and 'taxCodeRecommendations'; ClassificationModel has 'isPremium: If there is an premium classification justification present for this classification'. TaxRuleModel ('a tax rule that changes the behavior of Avalara's tax engine for certain products and/or entity use codes in certain jurisdictions') has effectiveDate, endDate, description, createdDate, modifiedDate but, per the fetched source, 'lacks explicit fields for rationale documentation or business justification'.",
+      "source_url": "https://raw.githubusercontent.com/avadev/AvaTax-REST-V2-DotNet-SDK/main/src/models/ItemModel.cs",
+      "source_type": "vendor SDK source code",
+      "prospective": "yes",
+      "reusable_how": "Effective-dated, user-stamped overrides are executable prospectively by the tax engine (H3 partly supported). What is NOT captured: the facts that decided the class, the rule interpretation, the deciding authority's role, and applicability to other items with the same facts; justification exists only as a paid 'premium classification' attachment for HS codes."
+     },
+     {
+      "description": "Avalara exposes a 'Classification MCP server' delivering 'Harmonized System (HS) code classification for cross-border transactions' with 'HS code validation and verification, and AI-powered import and export' alongside AvaTax.",
+      "source_url": "https://raw.githubusercontent.com/avadev/mcp/main/README.md",
+      "source_type": "vendor documentation",
+      "prospective": "unclear",
+      "reusable_how": "Vendor classification is a service (statistical/expert), not a company-precedent ledger; no description of how customer decisions are persisted."
+     },
+     {
+      "description": "Open-source classification agents converge on the same architecture: retrieve CROSS precedent, apply GIRs, emit a needs_human_review flag, and (harmony) 'patch its own prompt' from graded failures.",
+      "source_url": "https://github.com/RemiKG/harmony",
+      "source_type": "open-source project",
+      "prospective": "yes",
+      "reusable_how": "'Patches its own prompt' is an ungoverned settlement loop: failure families become new instructions without an authorised owner or versioning; evidence the pattern is being reinvented ad hoc."
+     }
+    ],
+    "economic_pain": "Duty overpayment/underpayment, penalties and post-entry corrections are the known costs; no figures obtainable (CBP 19 USC 1592 penalty data, ECA misclassification findings, HMRC liability caseload all blocked). Labour: classification is a specialist task; the only per-item time figure found is the '1-4 hours' developer claim above (weak).",
+    "existing_solutions": "Avalara (AvaTax items/classifications/tax rules, Classification MCP), Thomson Reuters ONESOURCE Global Classification, Descartes CustomsInfo, E2open Global Knowledge, SAP GTS, Oracle GTM: vendor sites all blocked, could not verify their rationale/versioning features; Avalara's SDK is the only incumbent data model actually inspected. Per Avalara's model, incumbents version WHAT was decided (code, dates, user) but not WHY or under which facts, except as unstructured premium justification text.",
+    "buyer_and_budget": "Head of trade compliance / customs manager at importers and 3PL/broker operations; budget exists (they already pay Avalara/ONESOURCE/Descartes and brokers). Not verified in this session.",
+    "regulatory_constraints": "None prohibiting internal automation; the importer remains liable ('reasonable care' in the US, recalled, unverified); binding rulings bind only the holder, so a company's internal settlement is an interpretation of risk, not law.",
+    "evidence_quality": "weak",
+    "verdict": "uncertain",
+    "notes": "Best structural fit in this domain: high volume per company, recurrence at product-family level, an identifiable owner (trade compliance lead), an external corpus of settled precedents to anchor to, and a documented incumbent gap (no rationale/facts capture in Avalara's model). But no in-company escalation, override or rework rates were obtainable, and the accuracy figures show most of the residual work is factual (B) and evidentiary (A), not H. Requires customer discovery to establish the H share."
+   },
+   {
+    "name": "Indirect tax determination (US sales tax and EU/UK VAT product taxability and rate classification)",
+    "geography": "US (state/local sales tax; product tax codes), EU/UK VAT rate classification (reduced/zero rates for food, books, medical, etc.).",
+    "decision_volume": "Not obtainable. Structural evidence: Avalara items are mapped once to a 'taxCode' and carry 'taxCodeRecommendations' plus a 'taxCodeRecommendationStatus' concept (ItemModel.cs, vendor SDK, sourced); Streamlined Sales Tax publishes state taxability matrices consumed by open-source gateways (https://github.com/Azavar/SST-API, open-source, sourced). Tribunal volumes on VAT liability disputes (UK FTT) not obtainable (bailii.org, gov.uk blocked).",
+    "human_review_rate": "Unknown. In practice the human step is a one-time mapping of each SKU/service to a vendor tax code and the occasional custom rule; the per-transaction decision is fully automated by the engine.",
+    "why_humans_review": "Basis: vendor data model structure; estimates. B (factual classification of the item into a vendor taxonomy) ~50-60%. C (rule interpretation: is a bundled SaaS-plus-service taxable, is a product 'food' or 'confectionery', digital goods) ~20-30%. D (conflicting state/jurisdiction guidance) ~5-10%. H (a settled interpretation applied to all future SKUs of that kind) ~10-15%, and it is already encoded as an effective-dated custom TaxRule or a tax-code assignment, so the residual H is small. A/E/F/G ~<5%.",
+    "settlement_loop_evidence": [
+     {
+      "description": "TaxRuleModel: company-defined rule with taxRuleTypeId, taxCode, effectiveDate ('The first date at which this rule applies'), endDate, description ('A friendly name for this tax rule'), options, createdDate, modifiedDate.",
+      "source_url": "https://raw.githubusercontent.com/avadev/AvaTax-REST-V2-DotNet-SDK/main/src/models/TaxRuleModel.cs",
+      "source_type": "vendor SDK source code",
+      "prospective": "yes",
+      "reusable_how": "Executable prospectively by the engine with effective dating: H3 substantially supported for this workflow. Missing: rationale, deciding authority, cited guidance, facts-of-the-item that triggered the rule."
+     }
+    ],
+    "economic_pain": "Audit assessments and over-collection refunds; no figures obtainable (Avalara, state revenue sites blocked).",
+    "existing_solutions": "Avalara AvaTax, Vertex O Series (only a Magento connector on GitHub, no docs), Thomson Reuters ONESOURCE Indirect Tax, TaxJar, Sovos; all encode taxability by tax code plus effective-dated custom rules.",
+    "buyer_and_budget": "Indirect tax manager / tax technology lead; budget already committed to engines.",
+    "regulatory_constraints": "None; automation is the norm.",
+    "evidence_quality": "weak",
+    "verdict": "weak",
+    "notes": "Existing engines already turn the settled interpretation into an executable, dated rule; the unmet piece (why, who, on what facts) is a provenance feature of the engine's rule object, i.e. H6 (feature, not product)."
+   },
+   {
+    "name": "Tax rulings: IRS private letter rulings, French rescrit fiscal (with BOFiP publication), HMRC non-statutory clearances",
+    "geography": "US, France, UK.",
+    "decision_volume": "NOT OBTAINED: irs.gov (Data Book Chief Counsel workload table), impots.gouv.fr, bofip.impots.gouv.fr, ccomptes.fr, gov.uk and legifrance.gouv.fr all blocked; no GitHub mirror with the tables was found (the one 'IRS-Data-Books' repo contains only a 'Tax Returns and FTEs Realized' folder, https://api.github.com/repos/dylancsaez/IRS-Data-Books/contents/, sourced). Recalled, unverified: PLRs number in the low thousands per year and rescrits in the tens of thousands per year; do not use without confirmation.",
+    "human_review_rate": "100%: each ruling is drafted by counsel/inspectors; the requester pays a user fee (IRS) and waits months.",
+    "why_humans_review": "Basis: legal structure only (recalled, unverified; primary URLs blocked). G (one-off, fact-specific transactions: reorganisations, trusts, late elections) ~40-50%. C (interpretation of a specific code section on unusual facts) ~30-40%. H ~10-15%: the agency converts recurring PLR questions into published guidance (revenue rulings/procedures; France's 'rescrits de port\u00e9e g\u00e9n\u00e9rale' published in BOFiP under BOI-RES, recalled), which is the public settlement loop. E ~5-10% (relief/discretion e.g. 9100 relief). A/B/D/F small.",
+    "settlement_loop_evidence": [
+     {
+      "description": "An open protocol ('PubLedge') exists precisely because 'Fact-specific interpretations (no-action letters, private rulings, JIAs, HOA decisions) live in scattered, unstructured records that can't be compared across authorities'; it defines records for JIAs, RMAs, no-action letters, private letter rulings, advisory opinions and interpretive letters with 'legal_status' and 'editorial_status' tracked separately, an 'authority_response' field, and SHA-256 manifests; intended users are 'Regulators, regulated parties, and civic bodies that issue or rely on fact-specific written interpretations and need them recorded in a portable, queryable form'.",
+      "source_url": "https://raw.githubusercontent.com/snapsynapse/publedge/main/README.md",
+      "source_type": "open-source protocol README",
+      "prospective": "unclear",
+      "reusable_how": "Evidence that someone perceives the capture-and-compare gap for public rulings; zero stars, no adoption evidence. Legally, PLRs bind only the requesting taxpayer and may not be cited as precedent (IRC 6110(k)(3), recalled, unverified), so prospective reuse by others is persuasive at best."
+     }
+    ],
+    "economic_pain": "User fees, adviser fees and months of delay per ruling (no figures obtainable).",
+    "existing_solutions": "Agency case systems; commercial research databases (Tax Notes, Bloomberg, Checkpoint) index PLRs and rescrits for research; the agency, not the taxpayer, owns the loop from ruling to guidance.",
+    "buyer_and_budget": "No company-side buyer: a taxpayer requests a handful of rulings in its lifetime; the volume sits with the agency and Big Four/law firms.",
+    "regulatory_constraints": "PLRs non-precedential by statute; rescrit binding only for the applicant on the facts stated (recalled, unverified).",
+    "evidence_quality": "unknown",
+    "verdict": "negative",
+    "notes": "One-off (G) dominated, low volume per organisation, legally non-precedential, loop owned by the state. Fails the brief's penalties even before volume is known."
+   },
+   {
+    "name": "Export control classification (BIS ECCN self-classification, CCATS requests, advisory opinions; DDTC commodity jurisdiction; EU dual-use Annex I)",
+    "geography": "US (EAR/ITAR), EU (Reg. 2021/821), UK.",
+    "decision_volume": "NOT OBTAINED: bis.gov, pmddtc.state.gov, gao.gov, crsreports.congress.gov, federalregister.gov, ecfr.gov all blocked. GitHub evidence is limited to small tools: an 'eccn-classifier' with '33 common ECCN entries' targeting '200+' (https://raw.githubusercontent.com/bigdong1991-spec/eccn-classifier/main/README.md, individual developer, weak), a FAISS-based ECCN classifier (https://github.com/nishchay13sharma/ECCN_Classification, open-source), an EU Annex I dataset tracker (https://github.com/rikiosso/exports-watch, open-source) and a 'demand validation landing page' for an EU dual-use classification tool (https://github.com/philippseyberth-lgtm/dual-use-export-control-landing, open-source), i.e. someone is currently testing demand for exactly this.",
+    "human_review_rate": "Essentially 100% of new parts are human-classified by export compliance staff or counsel; per-part cost claimed at '1-4 hours' and a formal legal opinion at '$5,000-20,000' (same developer README, weak, unofficial).",
+    "why_humans_review": "Basis: structure of the CCL (technical parameters) plus the ITAR/EAR jurisdiction question; estimates. B (technical parameter classification against control-list thresholds) ~40-50%. A (missing technical specs from engineering) ~15-25%. C (interpretation: 'specially designed', catch-all, software/technology definitions) ~15-25%. H (a settled reading, e.g. 'our product family X is EAR99 / 5A992 because of Y', reused for every variant) ~10-15%. D (EAR vs ITAR jurisdiction, EU vs US lists) ~5%. E/F/G small.",
+    "settlement_loop_evidence": [
+     {
+      "description": "Public loop exists institutionally (CCATS determinations, advisory opinions, CJ determinations published by DDTC; BIS FAQs) but none of it could be fetched. No in-company evidence obtained.",
+      "source_url": "https://github.com/philippseyberth-lgtm/dual-use-export-control-landing",
+      "source_type": "open-source (demand-test landing page)",
+      "prospective": "unclear",
+      "reusable_how": "Only evidence is that a third party is demand-testing an EU dual-use classification tool; not evidence of an in-company settlement loop."
+     }
+    ],
+    "economic_pain": "Civil and criminal penalties for misclassification; licence delays; no figures obtained.",
+    "existing_solutions": "SAP GTS, Oracle GTM, Descartes, E2open/Amber Road, ONESOURCE Global Trade, OCR (Visual Compliance): all vendor sites blocked; unverified whether they capture rationale/versioning of a company's ECCN decisions beyond a code field with dates.",
+    "buyer_and_budget": "Export compliance officer / trade compliance director; budget exists at defence, semiconductor, aerospace, software firms.",
+    "regulatory_constraints": "Self-classification is permitted; company remains liable; formal CCATS is optional.",
+    "evidence_quality": "unknown",
+    "verdict": "uncertain",
+    "notes": "Structurally similar to customs classification (parts, families, a compliance owner, a public precedent set) but lower volume per company, higher stakes, and no data obtainable. Treat as a secondary segment of the trade-classification workflow rather than a separate wedge."
+   },
+   {
+    "name": "Transfer pricing (APAs, MAP, intercompany policy interpretation)",
+    "geography": "OECD countries; US APMA; EU JTPF; France.",
+    "decision_volume": "NOT OBTAINED (oecd.org and irs.gov blocked). Recalled, unverified: MAP inventories are in the low thousands of cases globally per year and APAs in the low hundreds per country per year; per company, a handful per decade.",
+    "human_review_rate": "100%; each is a negotiated, bespoke agreement between tax authorities and the taxpayer.",
+    "why_humans_review": "Basis: nature of the instrument. F (commercial/inter-governmental negotiation) ~40-50%; E (discretion within an arm's-length range) ~20-30%; G (one-off group structures) ~15-20%; C ~10%; H <5% (an APA does fix a method prospectively for the covered transactions, typically 5 years, but only for that taxpayer and those transactions).",
+    "settlement_loop_evidence": [],
+    "economic_pain": "Large adjustments and double taxation; adviser fees; no figures obtained.",
+    "existing_solutions": "Big Four, TP documentation software (ONESOURCE, Longview, Aibidia); no rules-engine analogue.",
+    "buyer_and_budget": "Head of tax; budget goes to advisers.",
+    "regulatory_constraints": "Bilateral/multilateral agreements; nothing to automate for a company.",
+    "evidence_quality": "unknown",
+    "verdict": "negative",
+    "notes": "Volume too low, negotiation-dominated (F/E), not codifiable into deterministic future decisions beyond the agreement itself."
+   }
+  ],
+  "evidence_against_thesis": [
+   "H3 partly confirmed at the regulator: HMRC's ATaR case manager already stores each settlement with justification, search method, exclusions, effective dates, typed invalidation reasons (INVALIDATED_CODE_CHANGE, INVALIDATED_EU_MEASURE, INVALIDATED_NATIONAL_MEASURE, INVALIDATED_WRONG_CLASSIFICATION), approved keywords and a public search, and HMRC is building AI drafting with 'review, and approval flows' and 'provenance/audit review' in-house (https://github.com/hmrc/binding-tariff-classification, https://github.com/trade-tariff/ai-search-evaluation-suite).",
+   "H3 partly confirmed at the vendor: Avalara's TaxRuleModel is an effective-dated, user-stamped, executable company override, and ItemModel/ClassificationModel carry per-country classifications with created/modified user and date and an optional 'premium classification justification' (https://raw.githubusercontent.com/avadev/AvaTax-REST-V2-DotNet-SDK/main/src/models/TaxRuleModel.cs and ItemModel.cs). The unmet piece is rationale/facts/authority provenance, which reads as a feature of the incumbent rule object (H6).",
+   "H1 supported at the regulator escalation step: the only referral reasons in HMRC's ruling workflow are REQUEST_SAMPLE and REQUEST_MORE_INFO, and a rejection reason NO_INFO_FROM_TRADER exists; escalation is about evidence, not interpretation (https://raw.githubusercontent.com/hmrc/binding-tariff-classification/main/app/uk/gov/hmrc/bindingtariffclassification/model/ReferralReason.scala).",
+   "H4 supported for tax rulings: PLRs and rescrits bind only the requesting taxpayer and PLRs may not be cited as precedent (recalled, unverified; primary URLs blocked), and advance tariff rulings bind only the holder; company-side reuse is persuasive, not authoritative.",
+   "Interpretation is genuinely contestable rather than settleable in a meaningful share of cases: an LLM agent grounded in the tariff notes and CROSS precedent reached only 44.9% at 6 digits and 32.6% at 10 digits on 89 held-out rulings, and its author notes 'CROSS labels are not ground truth' with 'defensible alternative classifications' (https://raw.githubusercontent.com/vladswork23/us-hts-classifier/main/README.md); a large share of residual error is factual (B), not repeatable ambiguity (H).",
+   "No operational in-company numbers (escalation, override, rework, duplicate-classification rates, cost per classification) could be obtained for any workflow in this cluster; all claims about company-side pain remain unsourced.",
+   "Transfer pricing and tax rulings fail the brief's penalties on structure alone: one-off (G), negotiated (F), low per-organisation volume, loop owned by the state."
+  ],
+  "not_found": [
+   "Annual counts of EU BTI decisions issued and valid BTIs in EBTI (taxation-customs.ec.europa.eu, ec.europa.eu, data.europa.eu blocked)",
+   "Annual UK ATaR application/decision counts, days-elapsed distribution, referral and rejection reason frequencies, review/appeal rates (gov.uk, tax.service.gov.uk blocked; HMRC repo contains schema only, no data)",
+   "Current annual CBP ruling issuance (NY vs HQ), 30-day standard attainment, Customs Bulletin revocation counts (cbp.gov, rulings.cbp.gov blocked; only cumulative corpus sizes 176,972 / ~220,000 / 270,791 from scrapers)",
+   "IRS private letter ruling volumes, user fees, processing times (irs.gov, tigta.gov blocked; no GitHub mirror of the Chief Counsel workload table)",
+   "French rescrit volumes, delays, share published in BOFiP as rescrits de port\u00e9e g\u00e9n\u00e9rale (impots.gouv.fr, bofip.impots.gouv.fr, ccomptes.fr, legifrance.gouv.fr, data.gouv.fr blocked)",
+   "HMRC non-statutory clearance and Advance Tariff Ruling statistics (gov.uk, assets.publishing.service.gov.uk blocked)",
+   "BIS CCATS request volumes and processing days; advisory opinions; DDTC commodity jurisdiction volumes (bis.gov, pmddtc.state.gov, gao.gov, crsreports.congress.gov, federalregister.gov, ecfr.gov, govinfo.gov blocked)",
+   "EU dual-use licence/classification statistics (ec.europa.eu blocked)",
+   "OECD MAP and APA statistics (oecd.org blocked)",
+   "Vendor feature documentation for ONESOURCE Global Classification, Descartes CustomsInfo, E2open Global Knowledge, Vertex (thomsonreuters.com, descartes.com, e2open.com, avalara.com blocked; only Avalara's open SDK models inspected)",
+   "Academic or audit evidence on tariff misclassification rates, duty leakage, penalty totals (eca.europa.eu, gao.gov, arxiv.org, api.openalex.org, api.semanticscholar.org, papers.ssrn.com, zenodo.org, hal.science, ideas.repec.org blocked)",
+   "Court/tribunal volumes for classification and VAT liability disputes (courtlistener.com, bailii.org, curia.europa.eu blocked)",
+   "Any in-company data on classification escalation rates, override rates, duplicate-classification share, or cost per classification",
+   "The brief required at least 10 WebSearch queries: zero could be run because the session's WebSearch budget (200/200) was already exhausted before this task started; all six initial queries returned the budget error"
+  ],
+  "sources": [
+   {
+    "url": "https://github.com/hmrc/binding-tariff-classification",
+    "type": "government source code (HMRC, Apache-2.0)",
+    "used_for": "Regulator-side settlement loop data model: case statuses, Decision fields (justification, methodSearch, methodCommercialDenomination, methodExclusion, effective dates), Application types incl. LiabilityOrder (traderCommodityCode vs officerCommodityCode), Keyword(approved), report fields (elapsed_days, referred_days, total_days), schedulers"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/hmrc/binding-tariff-classification/main/app/uk/gov/hmrc/bindingtariffclassification/model/ReferralReason.scala",
+    "type": "government source code",
+    "used_for": "Referral reasons limited to REQUEST_SAMPLE, REQUEST_MORE_INFO (category A evidence)"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/hmrc/binding-tariff-classification/main/app/uk/gov/hmrc/bindingtariffclassification/model/RejectReason.scala",
+    "type": "government source code",
+    "used_for": "Reject reasons incl. ATAR_RULING_ALREADY_EXISTS, DUPLICATE_APPLICATION, NO_INFO_FROM_TRADER"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/hmrc/binding-tariff-classification/main/app/uk/gov/hmrc/bindingtariffclassification/model/CancelReason.scala",
+    "type": "government source code",
+    "used_for": "Versioning/supersession reasons for rulings"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/hmrc/binding-tariff-classification/main/app/uk/gov/hmrc/bindingtariffclassification/model/AppealType.scala",
+    "type": "government source code",
+    "used_for": "Review/ADR/appeal chain and statuses"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/hmrc/binding-tariff-trader-frontend/main/conf/messages.en",
+    "type": "government source code (applicant-facing text)",
+    "used_for": "30 working day target / 120 day legal limit; 'similar goods that already have a ruling ... even if made in another country'; section 24 TCTA 2018"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/hmrc/tariff-classification-frontend/main/conf/messages",
+    "type": "government source code (officer-facing text)",
+    "used_for": "Referral options, review/appeal options, extended use, keyword approval tab, decision method labels"
+   },
+   {
+    "url": "https://github.com/hmrc/binding-tariff-ruling-frontend",
+    "type": "government source code",
+    "used_for": "Public 'Search for Advance Tariff Rulings' fields and daily refresh from case manager"
+   },
+   {
+    "url": "https://github.com/trade-tariff/ai-search-evaluation-suite",
+    "type": "government source code (HMRC OTT)",
+    "used_for": "HMRC building ATaR draft generation, fact extraction, review and approval flows with provenance/audit review"
+   },
+   {
+    "url": "https://github.com/trade-tariff/trade-tariff-lambdas-fpo-search",
+    "type": "government source code",
+    "used_for": "HMRC ML classifier for parcel goods descriptions to 8-digit codes"
+   },
+   {
+    "url": "https://github.com/hmrc/digital-tariffs-trader-performance-tests/blob/main/src/test/resources/journeys.conf",
+    "type": "government source code",
+    "used_for": "Trader journey load parameter 0.02 rps (weak proxy)"
+   },
+   {
+    "url": "https://github.com/ShantanuTaro/HS-Code-Lookup-for-Customs",
+    "type": "open-source project (individual)",
+    "used_for": "176,972 CBP rulings 1989-2026; competitor accuracy claim 92-96% at 6 digits; kill-switch at ~80%"
+   },
+   {
+    "url": "https://github.com/OrlandoWhite88/qwen36-cpt-customs",
+    "type": "open-source project (individual)",
+    "used_for": "270,791 CROSS documents, 259,288 usable, chapter distribution (CHAP_61 29,994; CHAP_62 23,565; NO_CHAP 43,557; MULTI_CHAP 25,458)"
+   },
+   {
+    "url": "https://github.com/HumbleIgnite/cbp-customs-rulings",
+    "type": "open-source scraper README",
+    "used_for": "CROSS per-ruling fields incl. modify/revoke links and status; ~220,000 searchable rulings"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/vladswork23/us-hts-classifier/main/README.md",
+    "type": "open-source project (individual)",
+    "used_for": "LLM accuracy vs CROSS: 73.0/59.6/44.9/38.2/32.6% at 2/4/6/8/10 digits on 89 cases; 'CROSS labels are not ground truth'; needs_human_review"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/RemiKG/harmony/main/README.md",
+    "type": "open-source project (individual)",
+    "used_for": "Nightly grading vs 100 held-out CROSS rulings; 'named failure families' e.g. string lights vs electric garlands; self-patching prompt"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/onurkafk/customs-trade-law/main/SKILL.md",
+    "type": "secondary (practitioner skill file)",
+    "used_for": "HQ vs NY ruling weight; modification/revocation via Customs Bulletin"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/avadev/AvaTax-REST-V2-DotNet-SDK/main/src/models/TaxRuleModel.cs",
+    "type": "vendor SDK source code (Avalara)",
+    "used_for": "Company custom tax rules: effectiveDate, endDate, description, created/modified dates; no rationale field"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/avadev/AvaTax-REST-V2-DotNet-SDK/main/src/models/ItemModel.cs",
+    "type": "vendor SDK source code (Avalara)",
+    "used_for": "Item taxCode, classifications, created/modified user and date, source, hsCodeClassificationStatus, taxCodeRecommendations"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/avadev/AvaTax-REST-V2-DotNet-SDK/main/src/models/ClassificationModel.cs",
+    "type": "vendor SDK source code (Avalara)",
+    "used_for": "productCode/systemCode/country; isPremium = premium classification justification present"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/avadev/AvaTax-REST-V2-DotNet-SDK/main/src/models/ClassificationCriteriaModel.cs",
+    "type": "vendor SDK source code (Avalara)",
+    "used_for": "TariffCodeNeedsReview review-queue criterion"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/avadev/AvaTax-REST-V2-DotNet-SDK/main/src/models/ClassificationDetailsModel.cs",
+    "type": "vendor SDK source code (Avalara)",
+    "used_for": "Bulk classification job counters (classified, inProgress, notClassified, failed)"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/avadev/mcp/main/README.md",
+    "type": "vendor documentation (Avalara)",
+    "used_for": "Classification MCP server for HS code classification"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/bigdong1991-spec/eccn-classifier/main/README.md",
+    "type": "open-source project (individual), weak",
+    "used_for": "Claims of 1-4 hours per ECCN classification and $5,000-20,000 per legal opinion; 33 ECCN entries"
+   },
+   {
+    "url": "https://github.com/philippseyberth-lgtm/dual-use-export-control-landing",
+    "type": "open-source (demand test)",
+    "used_for": "Third party demand-testing an EU dual-use classification tool"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/snapsynapse/publedge/main/README.md",
+    "type": "open-source protocol README",
+    "used_for": "Recordkeeping protocol for PLRs/no-action letters/advisory opinions with legal_status, editorial_status, authority_response"
+   },
+   {
+    "url": "https://github.com/Azavar/SST-API",
+    "type": "open-source project",
+    "used_for": "Streamlined Sales Tax taxability data consumed programmatically"
+   },
+   {
+    "url": "https://github.com/JuanJoseVelez26/Clasificode",
+    "type": "open-source project",
+    "used_for": "Colombian DIAN resolution scraper + GIR rule hierarchy + LLM re-ranker with requires_review rate reporting"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/CatalaLang/catala/master/README.md",
+    "type": "open-source (Inria)",
+    "used_for": "Prior art: literate law-to-code with lawyer-readable output"
+   },
+   {
+    "url": "https://api.github.com/repos/dylancsaez/IRS-Data-Books/contents/",
+    "type": "open-source data mirror",
+    "used_for": "Confirmed no Chief Counsel workload tables available on GitHub"
+   }
+  ],
+  "blocked_urls": [
+   "https://www.irs.gov/statistics/chief-counsel-workload-tax-law-advice-and-legal-services",
+   "https://taxation-customs.ec.europa.eu/customs-4/calculation-customs-duties/customs-tariff/binding-tariff-information-bti_en",
+   "https://rulings.cbp.gov/api/search?term=classification&collection=ALL&pageSize=10&page=1&sortBy=DATE_DESC",
+   "https://www.bis.gov/reports",
+   "https://www.impots.gouv.fr/rapport-dactivite-de-la-dgfip",
+   "https://www.gov.uk/guidance/non-statutory-clearance-service-guidance",
+   "https://www.eca.europa.eu/en/publications?did=59031",
+   "https://www.gao.gov/products/gao-24-106523",
+   "https://www.oecd.org/en/publications/mutual-agreement-procedure-statistics.html",
+   "https://bofip.impots.gouv.fr/bofip/13029-PGP.html/identifiant=BOI-SJ-RES-10-20130912",
+   "https://www.ccomptes.fr/fr/publications/les-rescrits-fiscaux",
+   "https://www.avalara.com/us/en/products/calculations/avatax.html",
+   "https://www.thomsonreuters.com/en-us/help/onesource-global-classification.html",
+   "https://www.descartes.com/solutions/global-trade-intelligence/customsinfo-manager",
+   "https://www.e2open.com/global-trade-management/global-knowledge/",
+   "https://www.pmddtc.state.gov/ddtc_public?id=ddtc_kb_article_page&sys_id=24d0b0b0dbb8d300d0a370131f9619d4",
+   "https://www.tigta.gov/reports/audit/private-letter-ruling-process",
+   "https://en.wikipedia.org/wiki/Private_letter_ruling",
+   "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32013R0952",
+   "https://ec.europa.eu/taxation_customs/dds2/ebti/ebti_home.jsp?Lang=en",
+   "https://www.federalregister.gov/documents/search?conditions%5Bterm%5D=%22commodity+classification%22+BIS+annual",
+   "https://www.ecfr.gov/current/title-19/chapter-I/part-177",
+   "https://crsreports.congress.gov/product/pdf/R/R41916",
+   "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000037992716",
+   "https://www.wcoomd.org/en/topics/nomenclature/instrument-and-tools/hs-classification-decisions.aspx",
+   "https://www.cbp.gov/trade/rulings",
+   "https://assets.publishing.service.gov.uk/media/64c24e6d19f5620014c4e0e5/HMRC_annual_report_and_accounts_2022_to_2023.pdf",
+   "https://api.semanticscholar.org/graph/v1/paper/search?query=customs+tariff+classification+error+rate",
+   "https://papers.ssrn.com/sol3/results.cfm?txtKey_Words=private+letter+rulings+precedent",
+   "https://api.openalex.org/works?search=tariff%20classification%20customs%20rulings%20misclassification",
+   "https://arxiv.org/a/search?query=HS+code+classification+customs+LLM",
+   "https://hal.science/search/index?q=rescrit+fiscal",
+   "https://huggingface.co/api/datasets?search=customs%20rulings",
+   "https://web.archive.org/web/2025/https://www.cbp.gov/trade/rulings",
+   "https://zenodo.org/api/records?q=tariff%20classification%20customs",
+   "https://ideas.repec.org/cgi-bin/htsearch?q=tariff+classification+customs+rulings",
+   "https://www.data.gouv.fr/api/1/datasets/?q=rescrit",
+   "https://www.courtlistener.com/api/rest/v4/search/?q=%22tariff+classification%22&type=o&court=cit",
+   "https://www.bailii.org/cgi-bin/lucy_search_1.cgi?query=%22VAT%22+%22zero-rated%22+food",
+   "https://data.europa.eu/api/hub/search/search?q=binding%20tariff%20information",
+   "https://www.tax.service.gov.uk/search-for-advance-tariff-rulings/search",
+   "https://www.govinfo.gov/app/search/%7B%22query%22%3A%22commodity%20classification%20BIS%20annual%20report%22%7D",
+   "https://hts.usitc.gov/",
+   "https://www.douane.gouv.fr/professionnels/dedouanement/classement-tarifaire/le-renseignement-tarifaire-contraignant-rtc",
+   "https://www.ato.gov.au/about-ato/commitments-and-reporting/in-detail/privately-administered-rulings-and-advice",
+   "https://www.cbsa-asfc.gc.ca/import/ar-da/menu-eng.html",
+   "https://curia.europa.eu/juris/liste.jsf?language=en&td=ALL&jur=C&text=%22binding%20tariff%20information%22",
+   "https://op.europa.eu/en/search-results?queryText=binding+tariff+information+statistics"
+  ],
+  "domain_assessment": "Network caveat first: the WebSearch budget was already exhausted before this task (0 of the required 10 queries ran) and the egress proxy blocked every government, regulator, court, audit, academic, vendor and data-portal host (48 URLs listed), so no annual volumes, processing statistics, appeal rates or cost figures could be sourced for any workflow. Everything below rests on GitHub-hosted primary artefacts (HMRC's open-source ruling system, Avalara's SDK models, CROSS scrapes, open-source classifiers) plus flagged recollections. Treat quantitative gaps as uncertainty, not as support or refutation.\n\nWhat the reachable evidence does establish. (1) This domain contains the most explicit, fully institutionalised public settlement loop found anywhere: an ambiguous classification is escalated to the authority, the officer records a decision with justification, search method, exclusions and effective dates, it is published for third parties to find and cite, it is typed-invalidated when the code or measure changes, and it is contestable through ADR/review/tribunal. HMRC ships all of that as open-source software and is now building AI drafting with review, approval and provenance in-house. The regulator side is therefore not a market for the product; it is the reference implementation of the mechanism. (2) At the regulator, escalation ('referral') is defined solely as requesting a sample or more information, i.e. missing evidence (category A), while interpretation is the officer's core job rather than an exception; this matches the prior IPSA finding that escalation loops are dominated by evidence gathering. (3) The incumbents on the company side already version WHAT was settled: Avalara's TaxRule is an effective-dated, user-stamped, executable override and its items carry per-country classifications with provenance stamps and an optional paid justification. They do not capture WHY (facts, rule reading, deciding authority, applicability to like items). That gap is real but reads as a feature of the incumbent rule object (H6) unless the company-side H share is large. (4) Open-source classifiers grounded in CROSS precedent reach only ~45% at 6 digits and ~33% at 10 digits on held-out rulings, their authors say CROSS labels admit 'defensible alternative classifications', and one project clusters its errors into repeatable 'failure families' (string lights as garlands not lamps) and patches its own prompt from them: an ungoverned settlement loop being reinvented ad hoc, which is the best qualitative evidence in this domain that repeatable interpretive classes exist and are not captured with an owner or version.\n\nVerdicts: regulator advance rulings negative (owner already runs the loop); tax rulings negative (one-off, non-precedential, state-owned loop, low per-organisation volume); transfer pricing negative (negotiation, low volume); indirect tax determination weak (engines already execute dated custom rules; residual is a provenance feature); export control classification uncertain (structurally like customs classification, no data); in-company customs tariff classification uncertain, the only candidate worth customer discovery. Its case: high per-company decision volume at SKU/part level, recurrence at product-family level (54k of 260k CROSS documents sit in two apparel chapters), a named institutional owner (trade compliance lead), a public precedent corpus with supersession links to anchor to, and a documented incumbent gap in rationale/fact capture. Its risks: most residual human work is factual (B) and evidentiary (A) rather than repeatable ambiguity (H); vendors (Avalara, ONESOURCE, Descartes, E2open, SAP GTS) already own the classification database and could add rationale fields; and no in-company escalation, override or duplicate-classification rate was obtainable. The decisive unknowns for this domain are the share of a trade-compliance team's classification queue that is 'same family as something we already decided' versus 'new product needing facts', and whether the team's settled readings currently live in the GTM system, a broker's files, or spreadsheets; none of that is publicly available and it must come from a base-rate experiment on a real classification log."
+ },
+ "verification": {
+  "domain": "tax-customs-export-controls",
+  "refuted": [
+   {
+    "claim": "US CBP issues 'roughly 5,000-6,000 rulings per year on average' (finder's estimate from dividing cumulative corpus size by 37 years).",
+    "why": "A full CROSS scrape with ruling dates (justinmoonjeli/CROSSFetch, cbp_rulings_data.csv, 216,164 rulings dated to 2025-03-13; open-source scrape of the CBP database; my computation) shows issuance peaked at 11,745 in 2000 and fell to 3,039 (2019), 2,578 (2020), 1,951 (2021), 1,848 (2022), 1,833 (2023), 2,138 (2024). HQ rulings were 201-215 per year in 2022-2024; NY rulings 1,632-1,923. The current national volume of the public settlement loop is roughly one third of the finder's figure and shrinking. URL: https://raw.githubusercontent.com/justinmoonjeli/CROSSFetch/main/cbp_rulings_data.csv"
+   },
+   {
+    "claim": "The customs-trade-law skill repo states that rulings are modified/revoked 'via Customs Bulletin'.",
+    "why": "I downloaded https://raw.githubusercontent.com/onurkafk/customs-trade-law/main/SKILL.md (16,424 bytes) and https://raw.githubusercontent.com/onurkafk/customs-trade-law/main/references/cross-ruling-research.md and grepped for 'Customs Bulletin': no match in either. The HQ-over-NY weight statement is present (SKILL.md line 149: 'HQ rulings carry more weight than NY rulings, but neither overrides the HTSUS or courts'). The Customs Bulletin claim is the finder's recollection misattributed to a source."
+   },
+   {
+    "claim": "'H (repeatable ambiguity settled prospectively) is exactly what an advance ruling IS.'",
+    "why": "An advance ruling is per-product and per-holder (HMRC messages.en: ruling 'valid from {0} to {1}' for the holder; third parties are only told 'it can help to provide a ruling if there is already a ruling for goods that are similar'). The CROSS data show the loop re-runs per product: in 2023-24, 90-92% of rulings concerned a 10-digit line already ruled on and 97.6-98.5% a 6-digit line already ruled on, and 9505.90.6000 alone received 165 rulings in two years, yet each needed a new officer decision. Prospective-for-everyone settlement happens only through HQ modification/revocation (2,767 of 2,792 superseding rulings are HQ) and affects 3,044 of 216,164 rulings (1.4%) over the corpus life. The advance-ruling instrument is mostly category B (factual classification of this product) applied by a human, not category H."
+   },
+   {
+    "claim": "A third party is 'demand-testing an EU dual-use classification tool' (philippseyberth-lgtm/dual-use-export-control-landing) as evidence of export-control classification demand.",
+    "why": "https://raw.githubusercontent.com/philippseyberth-lgtm/dual-use-export-control-landing/main/README.md returned 404; the repository's contents could not be verified from this session. Even if the landing page exists, a demand-validation page with no reported sign-up numbers is not evidence of demand."
+   }
+  ],
+  "weakened": [
+   {
+    "claim": "LLM agent accuracy of 73.0/59.6/44.9/38.2/32.6% at 2/4/6/8/10 digits gives 'a lower bound on how much cannot be automated by pattern matching' and shows that most residual work is factual.",
+    "why": "Figures confirmed verbatim at https://raw.githubusercontent.com/vladswork23/us-hts-classifier/main/README.md (n=89, gpt-5-mini, 2026-07-31, $0.059 per case). But the same README states one run of n=89 is 'insufficient for trustworthy conclusions', typical variance is '\u00b110-15 point' swings, and n\u2265150 across \u22653 runs is needed. A single small-model prototype run cannot bound what expert-plus-tooling can automate, and it says nothing about the A/B/C/H split of human effort. Downgrade to anecdotal."
+   },
+   {
+    "claim": "'harmony' implements 'an ungoverned settlement loop' by patching its own prompt from 'named failure families'.",
+    "why": "The README (https://raw.githubusercontent.com/RemiKG/harmony/main/README.md) confirms nightly grading against held-out CROSS rulings, an introspection agent that clusters misses into named families ('String lights filed as lamps, not electric garlands'), and a gated prompt promotion (10-digit \u2265 +2.0pt, no backsliding at 4/6 digits). No accuracy numbers are published. This is a model-error clustering and prompt-optimisation gate, not evidence that any organisation pays humans repeatedly to resolve that ambiguity; calling it a 'settlement loop' is the finder's interpretation."
+   },
+   {
+    "claim": "Expert ECCN classification takes '1-4 hours' per item and a legal opinion costs '$5,000-20,000'.",
+    "why": "Confirmed present at https://raw.githubusercontent.com/bigdong1991-spec/eccn-classifier/main/README.md, but in Chinese ('\u6bcf\u6b21\u5206\u7c7b\u9700\u8981 1-4\u5c0f\u65f6', '\u8bf7\u5f8b\u5e08\u51fa\u5177\u610f\u89c1\u4e66\uff1a$5,000-20,000/\u6b21'), in a 33-entry hobby tool whose GitHub description is 'Free alternative to +/session lawyer consultations'. This is marketing framing by an individual with no source; it should carry near-zero weight and must not be used as the human-review cost for the export-control workflow."
+   },
+   {
+    "claim": "Commercial competitors 'publish 92-96% accuracy at the 6-digit level'; the project's kill switch is 'near 80%' on a 500-ruling backtest.",
+    "why": "Confirmed at https://raw.githubusercontent.com/ShantanuTaro/HS-Code-Lookup-for-Customs/main/README.md, but the 92-96% figure is unattributed and the 80% kill switch is a planned gate ('Backtest 500 published rulings - the kill switch'), not a result. Neither is evidence about human review rates."
+   },
+   {
+    "claim": "HMRC's Online Trade Tariff team is building an AI suite with 'ATaR ingest, draft generation, fact extraction, review, and approval flows' and 'provenance/audit review'.",
+    "why": "Quotes confirmed verbatim at https://raw.githubusercontent.com/trade-tariff/ai-search-evaluation-suite/main/README.md, and the trade-tariff GitHub org links to https://www.trade-tariff.service.gov.uk/ (a gov.uk service), but neither the README nor the org page carries an HMRC attribution statement, and the README describes 'a placeholder backend' with evaluation code for local development. It is an experimentation suite, not a deployed approval loop; the H3/H6 inference (regulator builds it in-house) is plausible but weaker than stated."
+   },
+   {
+    "claim": "The CROSS corpus concentration (29,994 knit-apparel and 23,565 woven-apparel documents of ~260k) 'supports recurrence at the family level' consistent with repeatable ambiguity.",
+    "why": "Numbers confirmed at https://raw.githubusercontent.com/OrlandoWhite88/qwen36-cpt-customs/main/README.md. But chapters 61/62 rulings turn on fibre content, knit vs woven construction and garment type, which are factual determinations (category B) made per garment, not recurring interpretive ambiguity; the concentration shows high product churn in apparel, not H. Also 43,557 documents have no chapter and 11,503 were skipped, and 216,164 of the 270,791 rows are actual rulings per the dated scrape."
+   },
+   {
+    "claim": "Avalara's TaxRuleModel 'substantially supports H3' for indirect tax and 'partly' for customs, with justification 'only as a paid premium classification attachment'.",
+    "why": "Confirmed: TaxRuleModel has effectiveDate/endDate/description/createdUserId/modifiedUserId and no rationale field (https://raw.githubusercontent.com/avadev/AvaTax-REST-V2-DotNet-SDK/main/src/models/TaxRuleModel.cs); ClassificationModel.isPremium = 'If there is an premium classification justification present' and ItemPremiumClassificationOutputModel has a 'justification' field ('Justification why this HsCode is attached to this item') plus ItemHSCodeClassificationStatusModel with a 'details' field. So the incumbent does store a per-item justification string (vendor-produced, premium tier). The gap is narrower than 'no rationale capture': it is the absence of structured facts/rule-reading/authority, which is a field-level feature request (H6), not a missing system."
+   },
+   {
+    "claim": "PubLedge is 'evidence that someone perceives the capture-and-compare gap for public rulings'.",
+    "why": "README confirmed (https://raw.githubusercontent.com/snapsynapse/publedge/main/README.md): 18 demonstration instruments across 8 authorities, 35 obligation records, 0 stars. One hobby protocol with demo data is not market evidence."
+   },
+   {
+    "claim": "HMRC's referral loop being limited to REQUEST_SAMPLE and REQUEST_MORE_INFO shows escalation at the regulator 'is about evidence, not interpretation'.",
+    "why": "Enumeration confirmed (two values). But 'referral' in this case manager is a case-status action (waiting on the trader or a lab), not the only path for interpretive escalation: the model also has EXPERT_ADVICE_RECEIVED events, ADR/REVIEW/APPEAL_TIER_1/APPEAL_TIER_2/COURT_OF_APPEALS/SUPREME_COURT appeal types (confirmed at AppealType.scala) and a 'team' assignee field. Interpretive disagreement surfaces as review/appeal, not as 'referral'. The A-dominance inference holds only for the pre-decision wait states."
+   }
+  ],
+  "confirmed": [
+   {
+    "claim": "HMRC's open-source ATaR case manager records per decision: bindingCommodityCode, effectiveStartDate/EndDate, justification, goodsDescription, methodSearch, methodCommercialDenomination, methodExclusion, appeal, cancellation, explanation.",
+    "evidence": "https://raw.githubusercontent.com/hmrc/binding-tariff-classification/main/app/uk/gov/hmrc/bindingtariffclassification/model/Decision.scala (fetched via curl, HTTP 200; government source code, Apache-2.0, copyright HMRC 2026)."
+   },
+   {
+    "claim": "HMRC RejectReason values: APPLICATION_WITHDRAWN, ATAR_RULING_ALREADY_EXISTS, DUPLICATE_APPLICATION, NO_INFO_FROM_TRADER, OTHER. CancelReason values: ANNULLED, INVALIDATED_CODE_CHANGE, INVALIDATED_EU_MEASURE, INVALIDATED_NATIONAL_MEASURE, INVALIDATED_WRONG_CLASSIFICATION, INVALIDATED_OTHER, OTHER. ReferralReason: REQUEST_SAMPLE, REQUEST_MORE_INFO. AppealType: ADR, REVIEW, APPEAL_TIER_1, APPEAL_TIER_2, COURT_OF_APPEALS, SUPREME_COURT.",
+    "evidence": "Fetched the four Scala enumeration files under https://raw.githubusercontent.com/hmrc/binding-tariff-classification/main/app/uk/gov/hmrc/bindingtariffclassification/model/ (government source code)."
+   },
+   {
+    "claim": "LiabilityOrder case type carries entryNumber, traderCommodityCode, officerCommodityCode, btiReference, repaymentClaim; BTIApplication carries reissuedBTIReference, relatedBTIReference(s), knownLegalProceedings, envisagedCommodityCode, sampleToBeProvided; Keyword(name, approved: Boolean).",
+    "evidence": "curl of Application.scala and Keyword.scala in the same repo (HTTP 200)."
+   },
+   {
+    "claim": "Applicant-facing text: 'We try to issue ATaR decisions within 30 working days from the date that the application is accepted. Although it can take up to 120 days, as per UK law.'; 'It can help to provide a ruling if there is already a ruling for goods that are similar, even if the ruling was made in another country.'; decisions made 'under section 24 of The Taxation (Cross-border Trade) Act 2018'.",
+    "evidence": "https://raw.githubusercontent.com/hmrc/binding-tariff-trader-frontend/main/conf/messages.en (government source code)."
+   },
+   {
+    "claim": "Daily schedulers 'active-days-elapsed' (3am) and 'referred-days-elapsed' (2am) exist; the public ruling search refreshes on notification plus two daily jobs; the trader performance test models load at 0.02 requests/second.",
+    "evidence": "conf/application.conf lines 87-97 of binding-tariff-classification; README of https://github.com/hmrc/binding-tariff-ruling-frontend ('two scheduled jobs which run daily'); https://raw.githubusercontent.com/hmrc/digital-tariffs-trader-performance-tests/main/src/test/resources/journeys.conf ('load = 0.02')."
+   },
+   {
+    "claim": "CROSS per-ruling metadata includes status (active/revoked/modified), revokedBy/revokes, modifiedBy/modifies, relatedRulings, collection (HQ/NY); the HumbleIgnite README cites 'approximately 220,000 searchable rulings'.",
+    "evidence": "https://raw.githubusercontent.com/HumbleIgnite/cbp-customs-rulings/main/README.md (open-source scraper README) and the CROSSFetch CSV columns (id, rulingNumber, subject, categories, rulingDate, isUsmca, isNafta, collection, relatedRulings, modifiedBy, modifies, revokedBy, revokes, tariffs). The dated scrape holds 216,164 rulings (179,080 NY, 37,084 HQ), consistent with ~220,000."
+   },
+   {
+    "claim": "OrlandoWhite88 corpus: 270,791 rows, 259,288 usable, NO_CHAP 43,557, MULTI_CHAP 25,458, CHAP_61 29,994, CHAP_62 23,565; ShantanuTaro indexes '176,972 CBP classification rulings, 1989-2026'.",
+    "evidence": "Both READMEs fetched (raw.githubusercontent.com). Note the 176,972 figure is close to the 191,295 rulings whose only category is 'Classification' in the dated scrape, so the three corpus sizes differ mainly by whether non-classification rulings and non-ruling documents are included."
+   },
+   {
+    "claim": "Avalara TaxRuleModel is effective-dated and user-stamped with no rationale field; ClassificationModel.isPremium flags a premium classification justification; Item premium classification output carries a free-text 'justification'.",
+    "evidence": "https://raw.githubusercontent.com/avadev/AvaTax-REST-V2-DotNet-SDK/main/src/models/TaxRuleModel.cs, ClassificationModel.cs, ItemPremiumClassificationOutputModel.cs, ItemHSCodeClassificationStatusModel.cs (vendor SDK source code)."
+   },
+   {
+    "claim": "HMRC FPO parcel classifier exists as a PyTorch model with a quantised variant mapping goods descriptions to commodity codes.",
+    "evidence": "https://raw.githubusercontent.com/trade-tariff/trade-tariff-lambdas-fpo-search/main/README.md ('FPO Parcel Item Categorisation API', 'target/model.pt', 'model_quantized.pt')."
+   }
+  ],
+  "manual_review_conflated_with_repeatable_ambiguity": [
+   "Regulator advance rulings: the finder treats each ruling as an H settlement. The dated CROSS corpus shows the opposite operating pattern: 91% of 2023-24 rulings are on a 10-digit line already ruled on and 98% on a 6-digit line already ruled on, i.e. the class was already 'settled' at the nomenclature level and a human still classified the specific product (category B, sometimes A when samples are requested). Prospective, everyone-binding settlement is the HQ modification/revocation stream: ~200 HQ rulings a year and 1.4% of all rulings ever superseded.",
+   "In-company customs classification: the finder's 'H ~10-20% of items but a much larger share of decisions' rests on (a) 'named failure families' from a model-evaluation pipeline and (b) apparel-chapter concentration. Neither measures human decisions. Apparel concentration is fibre/construction fact-finding (B). The only defensible statement is that classes recur at the 6-digit level (77 six-digit lines cover half of all 2023-24 CBP rulings) while the per-item decision still requires product facts; an honest H share for in-company effort is 5-15% with wide uncertainty, and the part that is H (a company reading of GIR 3(b)/essential character for a product family) is normally frozen into the item master code and family templates already (H3), so the unmet residual is the rationale record, not the decision.",
+   "Export controls: 'essentially 100% human-classified' plus '1-4 hours' per part were used to imply a large addressable pool; the 100% is definitional (self-classification is a human legal act) and the hours figure is an unsourced hobby-tool claim. Parameter checks against control-list thresholds are B; 'specially designed' and catch-all readings are C, and a company's settled reading per product family is H but occurs once per family, so it is low-frequency by construction.",
+   "Indirect tax: the finder counted effective-dated custom TaxRules as H3 settlements. Most custom rules are taxability configuration of items into a vendor taxonomy (B mapping), not the recording of an ambiguity settlement; the true H residual (bundled SaaS-plus-service, food vs confectionery) is small and the finder correctly said so, but the 'H3 substantially supported' framing overstates how much of the rule set is settlement-derived.",
+   "Tax rulings: the finder correctly labels PLRs/rescrits as G/C-dominated; the public conversion of recurring PLR themes into revenue rulings (H) is an agency function with no company-side buyer. No conflation, but note volumes remain unverified."
+  ],
+  "corrected_workflow_verdicts": [
+   {
+    "name": "Customs tariff classification: regulator advance rulings (EU BTI / UK ATaR / US CBP CROSS) and their public reuse",
+    "evidence_quality": "moderate",
+    "verdict": "negative",
+    "why": "Strengthened negative. US public loop volume is now sourced: 1,833-2,138 rulings per year in 2021-2024 (down from 11,745 in 2000), HQ ~200/yr, 1.4% of rulings ever modified/revoked, 20.9% cite a prior ruling; the same 6-digit classes recur (98%) yet each product gets a fresh human ruling, and the regulator already stores the settlement with justification, method, typed invalidation, appeal chain and public search (HMRC source code confirmed). Institutional owner runs the loop; volume small; not a buyer. EU/UK volumes still unobtained (blocked hosts)."
+   },
+   {
+    "name": "Customs tariff classification inside importers, exporters and brokers (SKU/part classification, broker-importer disputes, post-entry corrections)",
+    "evidence_quality": "weak",
+    "verdict": "uncertain",
+    "why": "Remains the only candidate worth a base-rate experiment, but the finder's H estimate is not evidence-backed. What is sourced: classes recur heavily at 6-digit level (CBP data), incumbents version the code with dates/users and (Avalara) a premium free-text justification, and HMRC runs an ML classifier for the low-value tail. What cuts against: the per-item decision at CBP is re-made by a human even when the class is settled, indicating B/A dominance; no in-company escalation, override, rework or duplicate rate exists in any reachable source; vendors (Avalara, ONESOURCE, Descartes, E2open, SAP GTS, Oracle GTM) own the item master and could add rationale fields (H6); the LLM accuracy figures are single-run prototypes. Honest H share 5-15%, unknown. Requires a real classification log to settle."
+   },
+   {
+    "name": "Indirect tax determination (US sales tax and EU/UK VAT product taxability and rate classification)",
+    "evidence_quality": "weak",
+    "verdict": "weak",
+    "why": "Confirmed: engines already execute effective-dated custom rules and tax-code mappings (TaxRuleModel verified, no rationale field). Residual is a provenance feature on the incumbent rule object (H6). No volumes or dispute rates obtainable."
+   },
+   {
+    "name": "Tax rulings: IRS private letter rulings, French rescrit fiscal (with BOFiP publication), HMRC non-statutory clearances",
+    "evidence_quality": "unknown",
+    "verdict": "negative",
+    "why": "Structural negative stands (one-off G/C, holder-only binding, agency-owned loop, no company-side buyer). No volume, fee or delay figure could be sourced from this session (irs.gov, ccomptes.fr, senat.fr, vie-publique.fr, assemblee-nationale.fr, taxnotes.com, uscode.house.gov, law.cornell.edu, justia, bloombergtax all blocked); the finder's recollections must stay flagged as unverified. PubLedge (18 demo records, 0 stars) is not evidence of demand."
+   },
+   {
+    "name": "Export control classification (BIS ECCN self-classification, CCATS requests, advisory opinions; DDTC commodity jurisdiction; EU dual-use Annex I)",
+    "evidence_quality": "unknown",
+    "verdict": "weak",
+    "why": "Downgraded from uncertain. Every operational number the finder offered traces to one hobby tool's marketing README; the 'demand-test landing page' README returned 404; no CCATS, CJ or EU dual-use statistics reachable (bis.gov, congress.gov, regulations.gov blocked). Structurally, a company settles a reading once per product family (low recurrence), technical parameter checks are B, and liability keeps counsel in the loop for high-stakes items (H4). Treat as an adjunct of the customs-classification experiment only if that experiment succeeds; do not pursue independently."
+   },
+   {
+    "name": "Transfer pricing (APAs, MAP, intercompany policy interpretation)",
+    "evidence_quality": "unknown",
+    "verdict": "negative",
+    "why": "Unchanged: negotiated (F/E), bespoke, low per-company volume; nothing to encode beyond the agreement. OECD MAP/APA statistics unobtainable (oecd.org, kpmg.com, pwc.com, taxathand.com, internationaltaxreview.com blocked)."
+   }
+  ],
+  "missing": [
+   "Annual EU BTI decisions and valid BTI stock (taxation-customs.ec.europa.eu, ec.europa.eu, europarl.europa.eu, zoll.de, revenue.ie, douane.nl all blocked).",
+   "Annual UK ATaR applications/decisions, referral and rejection reason frequencies, review/appeal rates (gov.uk, whatdotheyknow.com, nao.org.uk, committees.parliament.uk blocked; HMRC repos hold schema only).",
+   "Explanation of the HQ ruling drop from 911 (2018) to 257 (2019) in CROSS: policy change vs scraping/publication artefact (cbp.gov, rulings.cbp.gov blocked; curl CONNECT 403).",
+   "Legal text of 19 CFR 177.9/177.12 and 19 USC 1625(c) on holder-only reliance and notice-and-comment revocation; IRC 6110(k)(3) non-precedent rule (ecfr.gov, law.cornell.edu, ecfr.io, govregs.com, justia, uscode.house.gov, irc.bloombergtax.com blocked). The finder's statements on these remain recollection.",
+   "IRS PLR volumes, user fees, processing times; French rescrit volumes and BOI-RES publication share; HMRC non-statutory clearance volumes (irs.gov, taxpayeradvocate.irs.gov, taxnotes.com, ccomptes.fr, senat.fr, vie-publique.fr, assemblee-nationale.fr blocked; the two BOFiP scraper repos publish no counts).",
+   "BIS CCATS/advisory opinion volumes and days; DDTC CJ volumes; EU dual-use statistics (bis.gov, congress.gov, regulations.gov blocked).",
+   "OECD MAP and APA statistics (oecd.org and all Big Four / trade-press mirrors blocked).",
+   "Vendor feature documentation for ONESOURCE Global Classification, Descartes CustomsInfo, E2open Global Knowledge, SAP GTS, Oracle GTM, Avalara developer docs on rationale/versioning/approval (thomsonreuters.com, descartes.com, e2open.com, help.sap.com, docs.oracle.com, developer.avalara.com blocked); only Avalara's open SDK inspected.",
+   "Any in-company classification log: share of new SKUs matching a previously settled family, override/rework/broker-dispute rates, cost per classification, headcount. No public source exists; must come from customer discovery.",
+   "Audit or academic evidence on misclassification rates and duty leakage (gao.gov, eca.europa.eu blocked).",
+   "Time-uncensored supersession rate: recent-year 'later superseded' counts (3 of 1,833 for 2023) understate eventual revocation because revocations lag; the corpus-life rate of 1.4% is the safer figure.",
+   "Brief compliance: 0 of the required 10 WebSearch queries could run (session budget 200/200 exhausted before this task); 5+ sources were fetched (GitHub-hosted only). Blocked in this verification: law.cornell.edu, irs.gov, taxation-customs.ec.europa.eu, cbp.gov, oecd.org, bis.gov, gov.uk, ccomptes.fr, eca.europa.eu, gao.gov, thomsonreuters.com, whatdotheyknow.com, uscode.house.gov, strtrade.com, developer.avalara.com, help.sap.com, descartes.com, e2open.com, customsmobile.com, taxnotes.com, europarl.europa.eu, senat.fr, vie-publique.fr, kpmg.com, jdsupra.com, lexology.com, congress.gov, taxpayeradvocate.irs.gov, mondaq.com, pwc.com, regulations.gov, assemblee-nationale.fr, ecfr.io, law.justia.com, zoll.de, revenue.ie, flexport.com, taxathand.com, docs.oracle.com, govregs.com, irc.bloombergtax.com, nao.org.uk, committees.parliament.uk, ncbfaa.org, douane.nl, internationaltaxreview.com; rulings.cbp.gov, ecfr.gov, ec.europa.eu via curl (CONNECT 403); api.github.com/repos/*/contents returned 403 for third-party repos."
+  ],
+  "overall": "The finder's structural conclusions survive but its quantitative support was thin and, on the one number that could be re-derived from primary-derived data, wrong in the direction favourable to the thesis. Using a full dated scrape of CBP's CROSS database (216,164 rulings to March 2025; open-source scrape, my computation), US public tariff settlements now run at roughly 1,800-2,100 per year, not 5,000-6,000, with only ~200 HQ rulings a year; 1.4% of rulings have ever been modified or revoked and 99% of that supersession is done by HQ. The recurrence pattern is the decisive new fact: in 2023-24, 91% of rulings concerned a 10-digit line and 98% a 6-digit line that already had a ruling, and 77 six-digit lines cover half of all rulings, yet the regulator still made a fresh human decision per product. That is the brief's penalty case, not its target: the class is settled, the per-item factual classification (B) and evidence gathering (A) remain, and the holder-only legal effect keeps humans in the loop (H4). The regulator side is therefore confirmed negative and the institutional owner already ships the full loop as open-source software (all HMRC data-model claims verified). On the company side, the incumbents already store the settled outcome with dates and users and (Avalara, premium tier) a free-text justification, so the unmet piece is structured facts/rule-reading/authority provenance, which reads as a feature of the item master (H3/H6). The finder's H share for in-company classification (10-20% of items, more of decisions) has no evidentiary basis; an honest range is 5-15% and unknown, with the observable evidence pointing to B/A dominance. Export controls should be downgraded to weak because every operational number came from one hobby tool's marketing README. Tax rulings and transfer pricing remain negative on structure. Nothing in this domain currently supports a standalone product; the in-company customs classification workflow is the only defensible experiment, and it should be run as a base-rate test on a real classification log rather than argued from public data, which for EU/UK/IRS/French/BIS/OECD volumes remains unobtainable from this session."
+ }
+}

@@ -27,6 +27,27 @@ https://claude.ai/artifact/WPcfzHzh5jPqxYq3PVVvqD
 Read `docs/REPORT.md` for the evidence, `docs/DECISION.md` for the recommendation and what would overturn it, and
 `docs/OWNER_REQUEST.md` for what needs you.
 
+## Jev assessment (added 21 September 2026, later the same day)
+
+`docs/jev_assessment/JEV_IMPACT_ASSESSMENT.md` asks whether TypeSafe's Jev, a System One model that returns typed
+decisions with probabilities instead of text, changes the conclusion above. Short answer: it does not. It touches one of
+the four technical problems, fact extraction, and touches it as a cheaper proposer of facts the system may not trust.
+The appendices beside it hold the evidence base: the Sophon ground truth used, the Jev evidence with vendor and
+independent claims tagged separately, the verified fact sheet from a 17-agent research sweep, and the owner's brief.
+
+## Market discovery (added 21 September 2026, later the same day)
+
+`docs/market_discovery/MARKET_DISCOVERY.md` answers a different question: is there any workflow, in any industry,
+where organisations repeatedly pay people to settle the same ambiguity and would buy a product that records the
+settlement with provenance and versioning and applies it to later cases. The adversarial sweep covered fifteen domain
+clusters and about a hundred workflows. Short answer: evidence against a standalone product. Every institutional
+settlement loop found is run by the rule owner, the operating organisations already hold the executable half inside
+their case manager, rules engine or item master, and no live review pool could be measured for repeatable settleable
+ambiguity. The one test worth running is a base-rate study on an importer's tariff classification log. Read the
+evidence limitation at the top of that report first: the web search quota ran out during the first sweep and only
+GitHub-hosted primary sources could be read. The evidence folder beside it holds every sweep, verification, deep dive,
+refutation, design review, draft and critique, plus a script that recomputes every customs-rulings statistic quoted.
+
 ## Reproduce
 
 Python 3.10+, standard library only. Run from this folder. Nothing writes inside `evidence/`.
