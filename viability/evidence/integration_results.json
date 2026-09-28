@@ -1,0 +1,2207 @@
+{
+  "protocol_sha256": "e8c865e2d66ed702b9e627f1a508c908a66fe4744530560dc81e7725efb462dd",
+  "upstream_commit": "fd7bfacae4f497ff044a6a0275268676bf1b64c3",
+  "integration_passed": 9,
+  "cases": 9,
+  "autonomous_agent_gate": "NOT_RUN_NO_MODEL_CREDENTIAL",
+  "live_platform_gate": "NOT_RUN: DuckDB only; no Snowflake, Databricks, Omni or Hex integration",
+  "overall_claim": "Bounded integration feasibility only; autonomous semantic viability not confirmed",
+  "results": [
+    {
+      "case": "clean",
+      "expected": "NO_ISSUE_DETECTED",
+      "reference_status": "NO_ISSUE_DETECTED",
+      "integration_pass": true,
+      "snapshot_id": "68813bf9299d46a9abe9904f4ef3defa4818a373281b608fe98eadd235b28bdd",
+      "dependency_fingerprint": "1ac9ad75aa80300d8bf12b937c4a4b75c797dc7d615b21c780d549033ec5c5b3",
+      "dependency_nodes": [
+        "model.jaffle_shop.orders",
+        "model.jaffle_shop.stg_orders",
+        "model.jaffle_shop.stg_payments",
+        "seed.jaffle_shop.raw_orders",
+        "seed.jaffle_shop.raw_payments"
+      ],
+      "dbt": {
+        "exit_code": 0,
+        "invocation_id": "deae63c7-7906-4119-9289-b95858135241",
+        "statuses": {
+          "seed.jaffle_shop.raw_customers": "success",
+          "seed.jaffle_shop.raw_orders": "success",
+          "seed.jaffle_shop.raw_payments": "success",
+          "model.jaffle_shop.stg_customers": "success",
+          "model.jaffle_shop.stg_orders": "success",
+          "model.jaffle_shop.stg_payments": "success",
+          "test.jaffle_shop.not_null_stg_customers_customer_id.e2cfb1f9aa": "pass",
+          "test.jaffle_shop.unique_stg_customers_customer_id.c7614daada": "pass",
+          "test.jaffle_shop.accepted_values_stg_orders_status__placed__shipped__completed__return_pending__returned.080fb20aad": "pass",
+          "test.jaffle_shop.not_null_stg_orders_order_id.81cfe2fe64": "pass",
+          "test.jaffle_shop.unique_stg_orders_order_id.e3b841c71a": "pass",
+          "test.jaffle_shop.accepted_values_stg_payments_payment_method__credit_card__coupon__bank_transfer__gift_card.3c3820f278": "pass",
+          "test.jaffle_shop.not_null_stg_payments_payment_id.c19cc50075": "pass",
+          "test.jaffle_shop.unique_stg_payments_payment_id.3744510712": "pass",
+          "model.jaffle_shop.customers": "success",
+          "model.jaffle_shop.orders": "success",
+          "test.jaffle_shop.not_null_customers_customer_id.5c9bf9911d": "pass",
+          "test.jaffle_shop.unique_customers_customer_id.c5af1ff4b1": "pass",
+          "test.jaffle_shop.accepted_values_orders_status__placed__shipped__completed__return_pending__returned.be6b5b5ec3": "pass",
+          "test.jaffle_shop.not_null_orders_amount.106140f9fd": "pass",
+          "test.jaffle_shop.not_null_orders_bank_transfer_amount.7743500c49": "pass",
+          "test.jaffle_shop.not_null_orders_coupon_amount.ab90c90625": "pass",
+          "test.jaffle_shop.not_null_orders_credit_card_amount.d3ca593b59": "pass",
+          "test.jaffle_shop.not_null_orders_customer_id.c5f02694af": "pass",
+          "test.jaffle_shop.not_null_orders_gift_card_amount.413a0d2d7a": "pass",
+          "test.jaffle_shop.not_null_orders_order_id.cf6c17daed": "pass",
+          "test.jaffle_shop.relationships_orders_customer_id__customer_id__ref_customers_.c6ec7f58f2": "pass",
+          "test.jaffle_shop.unique_orders_order_id.fed79b3a6e": "pass"
+        },
+        "manifest_sha256": "7ff6b868b8f9f7f1db17fcd3f751b45e8dbc83b03c357aec2a5342911abdf7fd"
+      },
+      "metric_query": {
+        "sql": "select sum(amount) total_aud from orders where order_date between DATE '2018-01-01' and DATE '2018-04-30'",
+        "columns": [
+          "total_aud"
+        ],
+        "rows": [
+          [
+            1672.0
+          ]
+        ],
+        "has_counterexamples": true,
+        "truncated": false,
+        "result_sha256": "43e6f776e6cc7dd53ad730a96394ae02ae3fe89472bc9b770fecf2424c3bce59"
+      },
+      "reference_observation": {
+        "status": "NO_ISSUE_DETECTED",
+        "issues": [],
+        "receipts": [
+          {
+            "id": "units",
+            "requirement_id": "G1",
+            "source_quote": "At the order grain, amounts are expressed in AUD. Raw payment amounts are integer Australian cents; 100 cents equals AUD 1. Every payment contribution is counted once.",
+            "node_ids": [
+              "model.jaffle_shop.orders",
+              "model.jaffle_shop.stg_orders",
+              "model.jaffle_shop.stg_payments",
+              "seed.jaffle_shop.raw_orders",
+              "seed.jaffle_shop.raw_payments"
+            ],
+            "rationale": "Manually authored reference probe for the frozen integration test.",
+            "failure_kind": "DEFINITION_MISMATCH",
+            "sql": "select s.payment_id, s.amount observed_aud, r.amount / 100.0 expected_aud\nfrom stg_payments s join raw_payments r on s.payment_id = r.id\nwhere r.amount is not null and (s.amount is null or abs(s.amount - r.amount / 100.0) > 0.000001)",
+            "result": {
+              "sql": "select s.payment_id, s.amount observed_aud, r.amount / 100.0 expected_aud\nfrom stg_payments s join raw_payments r on s.payment_id = r.id\nwhere r.amount is not null and (s.amount is null or abs(s.amount - r.amount / 100.0) > 0.000001)",
+              "columns": [
+                "payment_id",
+                "observed_aud",
+                "expected_aud"
+              ],
+              "rows": [],
+              "has_counterexamples": false,
+              "truncated": false,
+              "result_sha256": "989882cc1bcf662a5720e17761499e5cc7ed581f89b1c5b3a01b0de901ff0dfe"
+            }
+          },
+          {
+            "id": "definition",
+            "requirement_id": "G2",
+            "source_quote": "Include credit card, bank transfer, gift card and coupon payments across all order statuses. Aggregate by order date, without inferring settlement or cash collection.",
+            "node_ids": [
+              "model.jaffle_shop.orders",
+              "model.jaffle_shop.stg_orders",
+              "model.jaffle_shop.stg_payments",
+              "seed.jaffle_shop.raw_orders",
+              "seed.jaffle_shop.raw_payments"
+            ],
+            "rationale": "Manually authored reference probe for the frozen integration test.",
+            "failure_kind": "DEFINITION_MISMATCH",
+            "sql": "with expected as (\nselect o.id order_id, sum(p.amount) / 100.0 expected_aud\nfrom raw_orders o left join raw_payments p on p.order_id = o.id\nwhere o.order_date between DATE '2018-01-01' and DATE '2018-04-30' group by o.id)\nselect e.order_id, e.expected_aud, a.amount observed_aud\nfrom expected e left join orders a on e.order_id = a.order_id\nwhere a.order_id is null or (e.expected_aud is not null and (a.amount is null or abs(a.amount-e.expected_aud) > 0.000001))",
+            "result": {
+              "sql": "with expected as (\nselect o.id order_id, sum(p.amount) / 100.0 expected_aud\nfrom raw_orders o left join raw_payments p on p.order_id = o.id\nwhere o.order_date between DATE '2018-01-01' and DATE '2018-04-30' group by o.id)\nselect e.order_id, e.expected_aud, a.amount observed_aud\nfrom expected e left join orders a on e.order_id = a.order_id\nwhere a.order_id is null or (e.expected_aud is not null and (a.amount is null or abs(a.amount-e.expected_aud) > 0.000001))",
+              "columns": [
+                "order_id",
+                "expected_aud",
+                "observed_aud"
+              ],
+              "rows": [],
+              "has_counterexamples": false,
+              "truncated": false,
+              "result_sha256": "7129cafc9d331c2ac6a4eda07803c8023e8bbd18ea97bc57163c3fe8e756786b"
+            }
+          },
+          {
+            "id": "grain",
+            "requirement_id": "G1",
+            "source_quote": "At the order grain, amounts are expressed in AUD. Raw payment amounts are integer Australian cents; 100 cents equals AUD 1. Every payment contribution is counted once.",
+            "node_ids": [
+              "model.jaffle_shop.orders",
+              "model.jaffle_shop.stg_orders",
+              "model.jaffle_shop.stg_payments",
+              "seed.jaffle_shop.raw_orders",
+              "seed.jaffle_shop.raw_payments"
+            ],
+            "rationale": "Manually authored reference probe for the frozen integration test.",
+            "failure_kind": "DEFINITION_MISMATCH",
+            "sql": "select order_id, count(*) rows_per_order from orders group by order_id having count(*) <> 1",
+            "result": {
+              "sql": "select order_id, count(*) rows_per_order from orders group by order_id having count(*) <> 1",
+              "columns": [
+                "order_id",
+                "rows_per_order"
+              ],
+              "rows": [],
+              "has_counterexamples": false,
+              "truncated": false,
+              "result_sha256": "5c9aff541a1339f9c757d565f14e6484fb99f3c843fbef52d371e2db174897fd"
+            }
+          },
+          {
+            "id": "evidence",
+            "requirement_id": "G3",
+            "source_quote": "Every raw payment needs a non-null amount, a unique payment ID and a valid order link. Missing amounts must not be treated as zero.",
+            "node_ids": [
+              "model.jaffle_shop.orders",
+              "model.jaffle_shop.stg_orders",
+              "model.jaffle_shop.stg_payments",
+              "seed.jaffle_shop.raw_orders",
+              "seed.jaffle_shop.raw_payments"
+            ],
+            "rationale": "Manually authored reference probe for the frozen integration test.",
+            "failure_kind": "MISSING_EVIDENCE",
+            "sql": "select p.id payment_id, p.order_id, p.amount,\ncase when p.amount is null then 'missing_amount' when o.id is null then 'missing_order' else 'duplicate_payment_id' end problem\nfrom raw_payments p left join raw_orders o on p.order_id=o.id\nwhere p.amount is null or o.id is null or p.id in (select id from raw_payments group by id having count(*) > 1)",
+            "result": {
+              "sql": "select p.id payment_id, p.order_id, p.amount,\ncase when p.amount is null then 'missing_amount' when o.id is null then 'missing_order' else 'duplicate_payment_id' end problem\nfrom raw_payments p left join raw_orders o on p.order_id=o.id\nwhere p.amount is null or o.id is null or p.id in (select id from raw_payments group by id having count(*) > 1)",
+              "columns": [
+                "payment_id",
+                "order_id",
+                "amount",
+                "problem"
+              ],
+              "rows": [],
+              "has_counterexamples": false,
+              "truncated": false,
+              "result_sha256": "2ef1b667c39ee080ae080cd4b29d08d991ec8709299fba86e399ef3b7a2f6d4e"
+            }
+          },
+          {
+            "id": "ceiling",
+            "requirement_id": "G4",
+            "source_quote": "Order 2 has an agreed gross payment ceiling of AUD 20.00. Actual recorded payments exceeding it violate this limit even when their sum is calculated correctly.",
+            "node_ids": [
+              "model.jaffle_shop.orders",
+              "model.jaffle_shop.stg_orders",
+              "model.jaffle_shop.stg_payments",
+              "seed.jaffle_shop.raw_orders",
+              "seed.jaffle_shop.raw_payments"
+            ],
+            "rationale": "Manually authored reference probe for the frozen integration test.",
+            "failure_kind": "DATA_VIOLATION",
+            "sql": "select order_id, sum(amount)/100.0 observed_aud, 20.0 agreed_ceiling_aud,\nsum(amount)/100.0 - 20.0 excess_aud from raw_payments where order_id=2 group by order_id having sum(amount)>2000",
+            "result": {
+              "sql": "select order_id, sum(amount)/100.0 observed_aud, 20.0 agreed_ceiling_aud,\nsum(amount)/100.0 - 20.0 excess_aud from raw_payments where order_id=2 group by order_id having sum(amount)>2000",
+              "columns": [
+                "order_id",
+                "observed_aud",
+                "agreed_ceiling_aud",
+                "excess_aud"
+              ],
+              "rows": [],
+              "has_counterexamples": false,
+              "truncated": false,
+              "result_sha256": "a0ef8abffb435f218963c9e2af632413ff1358f75dbd78c319f60cf630c1d84f"
+            }
+          }
+        ]
+      },
+      "agent_gate": "NOT_RUN"
+    },
+    {
+      "case": "amendment_unapplied",
+      "expected": "DEFINITION_MISMATCH",
+      "reference_status": "DEFINITION_MISMATCH",
+      "integration_pass": true,
+      "snapshot_id": "c47f66d3bcbfec87899aa216d2628bb2baee12e6a45bc315a7194e00d4e74ca4",
+      "dependency_fingerprint": "1ac9ad75aa80300d8bf12b937c4a4b75c797dc7d615b21c780d549033ec5c5b3",
+      "dependency_nodes": [
+        "model.jaffle_shop.orders",
+        "model.jaffle_shop.stg_orders",
+        "model.jaffle_shop.stg_payments",
+        "seed.jaffle_shop.raw_orders",
+        "seed.jaffle_shop.raw_payments"
+      ],
+      "dbt": {
+        "exit_code": 0,
+        "invocation_id": "3c4c3df9-ecbc-4811-abd9-b52b40962b6d",
+        "statuses": {
+          "seed.jaffle_shop.raw_customers": "success",
+          "seed.jaffle_shop.raw_orders": "success",
+          "seed.jaffle_shop.raw_payments": "success",
+          "model.jaffle_shop.stg_customers": "success",
+          "model.jaffle_shop.stg_orders": "success",
+          "model.jaffle_shop.stg_payments": "success",
+          "test.jaffle_shop.not_null_stg_customers_customer_id.e2cfb1f9aa": "pass",
+          "test.jaffle_shop.unique_stg_customers_customer_id.c7614daada": "pass",
+          "test.jaffle_shop.accepted_values_stg_orders_status__placed__shipped__completed__return_pending__returned.080fb20aad": "pass",
+          "test.jaffle_shop.not_null_stg_orders_order_id.81cfe2fe64": "pass",
+          "test.jaffle_shop.unique_stg_orders_order_id.e3b841c71a": "pass",
+          "test.jaffle_shop.accepted_values_stg_payments_payment_method__credit_card__coupon__bank_transfer__gift_card.3c3820f278": "pass",
+          "test.jaffle_shop.not_null_stg_payments_payment_id.c19cc50075": "pass",
+          "test.jaffle_shop.unique_stg_payments_payment_id.3744510712": "pass",
+          "model.jaffle_shop.customers": "success",
+          "model.jaffle_shop.orders": "success",
+          "test.jaffle_shop.not_null_customers_customer_id.5c9bf9911d": "pass",
+          "test.jaffle_shop.unique_customers_customer_id.c5af1ff4b1": "pass",
+          "test.jaffle_shop.accepted_values_orders_status__placed__shipped__completed__return_pending__returned.be6b5b5ec3": "pass",
+          "test.jaffle_shop.not_null_orders_amount.106140f9fd": "pass",
+          "test.jaffle_shop.not_null_orders_bank_transfer_amount.7743500c49": "pass",
+          "test.jaffle_shop.not_null_orders_coupon_amount.ab90c90625": "pass",
+          "test.jaffle_shop.not_null_orders_credit_card_amount.d3ca593b59": "pass",
+          "test.jaffle_shop.not_null_orders_customer_id.c5f02694af": "pass",
+          "test.jaffle_shop.not_null_orders_gift_card_amount.413a0d2d7a": "pass",
+          "test.jaffle_shop.not_null_orders_order_id.cf6c17daed": "pass",
+          "test.jaffle_shop.relationships_orders_customer_id__customer_id__ref_customers_.c6ec7f58f2": "pass",
+          "test.jaffle_shop.unique_orders_order_id.fed79b3a6e": "pass"
+        },
+        "manifest_sha256": "2714bcf16b2f57908e6d1ab44cdbc445f34eacdb8b16acc58158b285ee71c9cd"
+      },
+      "metric_query": {
+        "sql": "select sum(amount) total_aud from orders where order_date between DATE '2018-01-01' and DATE '2018-04-30'",
+        "columns": [
+          "total_aud"
+        ],
+        "rows": [
+          [
+            1672.0
+          ]
+        ],
+        "has_counterexamples": true,
+        "truncated": false,
+        "result_sha256": "43e6f776e6cc7dd53ad730a96394ae02ae3fe89472bc9b770fecf2424c3bce59"
+      },
+      "reference_observation": {
+        "status": "DEFINITION_MISMATCH",
+        "issues": [
+          "DEFINITION_MISMATCH"
+        ],
+        "receipts": [
+          {
+            "id": "units",
+            "requirement_id": "G1",
+            "source_quote": "At the order grain, amounts are expressed in AUD. Raw payment amounts are integer Australian cents; 100 cents equals AUD 1. Every payment contribution is counted once.",
+            "node_ids": [
+              "model.jaffle_shop.orders",
+              "model.jaffle_shop.stg_orders",
+              "model.jaffle_shop.stg_payments",
+              "seed.jaffle_shop.raw_orders",
+              "seed.jaffle_shop.raw_payments"
+            ],
+            "rationale": "Manually authored reference probe for the frozen integration test.",
+            "failure_kind": "DEFINITION_MISMATCH",
+            "sql": "select s.payment_id, s.amount observed_aud, r.amount / 100.0 expected_aud\nfrom stg_payments s join raw_payments r on s.payment_id = r.id\nwhere r.amount is not null and (s.amount is null or abs(s.amount - r.amount / 100.0) > 0.000001)",
+            "result": {
+              "sql": "select s.payment_id, s.amount observed_aud, r.amount / 100.0 expected_aud\nfrom stg_payments s join raw_payments r on s.payment_id = r.id\nwhere r.amount is not null and (s.amount is null or abs(s.amount - r.amount / 100.0) > 0.000001)",
+              "columns": [
+                "payment_id",
+                "observed_aud",
+                "expected_aud"
+              ],
+              "rows": [],
+              "has_counterexamples": false,
+              "truncated": false,
+              "result_sha256": "989882cc1bcf662a5720e17761499e5cc7ed581f89b1c5b3a01b0de901ff0dfe"
+            }
+          },
+          {
+            "id": "definition",
+            "requirement_id": "G2",
+            "source_quote": "Include credit card, bank transfer, gift card and coupon payments across all order statuses. Aggregate by order date, without inferring settlement or cash collection. Amendment: exclude coupon payments for orders dated on or after 2018-02-01. Earlier orders retain their original treatment. Only this inclusion rule changes.",
+            "node_ids": [
+              "model.jaffle_shop.orders",
+              "model.jaffle_shop.stg_orders",
+              "model.jaffle_shop.stg_payments",
+              "seed.jaffle_shop.raw_orders",
+              "seed.jaffle_shop.raw_payments"
+            ],
+            "rationale": "Manually authored reference probe for the frozen integration test.",
+            "failure_kind": "DEFINITION_MISMATCH",
+            "sql": "with expected as (\nselect o.id order_id, sum(case when o.order_date >= DATE '2018-02-01' and p.payment_method = 'coupon' then 0 else p.amount end) / 100.0 expected_aud\nfrom raw_orders o left join raw_payments p on p.order_id = o.id\nwhere o.order_date between DATE '2018-01-01' and DATE '2018-04-30' group by o.id)\nselect e.order_id, e.expected_aud, a.amount observed_aud\nfrom expected e left join orders a on e.order_id = a.order_id\nwhere a.order_id is null or (e.expected_aud is not null and (a.amount is null or abs(a.amount-e.expected_aud) > 0.000001))",
+            "result": {
+              "sql": "with expected as (\nselect o.id order_id, sum(case when o.order_date >= DATE '2018-02-01' and p.payment_method = 'coupon' then 0 else p.amount end) / 100.0 expected_aud\nfrom raw_orders o left join raw_payments p on p.order_id = o.id\nwhere o.order_date between DATE '2018-01-01' and DATE '2018-04-30' group by o.id)\nselect e.order_id, e.expected_aud, a.amount observed_aud\nfrom expected e left join orders a on e.order_id = a.order_id\nwhere a.order_id is null or (e.expected_aud is not null and (a.amount is null or abs(a.amount-e.expected_aud) > 0.000001))",
+              "columns": [
+                "order_id",
+                "expected_aud",
+                "observed_aud"
+              ],
+              "rows": [
+                [
+                  42,
+                  0.0,
+                  17.0
+                ],
+                [
+                  58,
+                  6.0,
+                  24.0
+                ],
+                [
+                  76,
+                  0.0,
+                  2.0
+                ],
+                [
+                  81,
+                  0.0,
+                  2.0
+                ],
+                [
+                  86,
+                  0.0,
+                  23.0
+                ],
+                [
+                  92,
+                  15.0,
+                  17.0
+                ],
+                [
+                  94,
+                  0.0,
+                  7.0
+                ],
+                [
+                  95,
+                  0.0,
+                  24.0
+                ]
+              ],
+              "has_counterexamples": true,
+              "truncated": false,
+              "result_sha256": "e0de8b313cb587c1ebdb4e28459c174be5627f6859ff7d924e1a0b3579af5eb0"
+            }
+          },
+          {
+            "id": "grain",
+            "requirement_id": "G1",
+            "source_quote": "At the order grain, amounts are expressed in AUD. Raw payment amounts are integer Australian cents; 100 cents equals AUD 1. Every payment contribution is counted once.",
+            "node_ids": [
+              "model.jaffle_shop.orders",
+              "model.jaffle_shop.stg_orders",
+              "model.jaffle_shop.stg_payments",
+              "seed.jaffle_shop.raw_orders",
+              "seed.jaffle_shop.raw_payments"
+            ],
+            "rationale": "Manually authored reference probe for the frozen integration test.",
+            "failure_kind": "DEFINITION_MISMATCH",
+            "sql": "select order_id, count(*) rows_per_order from orders group by order_id having count(*) <> 1",
+            "result": {
+              "sql": "select order_id, count(*) rows_per_order from orders group by order_id having count(*) <> 1",
+              "columns": [
+                "order_id",
+                "rows_per_order"
+              ],
+              "rows": [],
+              "has_counterexamples": false,
+              "truncated": false,
+              "result_sha256": "5c9aff541a1339f9c757d565f14e6484fb99f3c843fbef52d371e2db174897fd"
+            }
+          },
+          {
+            "id": "evidence",
+            "requirement_id": "G3",
+            "source_quote": "Every raw payment needs a non-null amount, a unique payment ID and a valid order link. Missing amounts must not be treated as zero.",
+            "node_ids": [
+              "model.jaffle_shop.orders",
+              "model.jaffle_shop.stg_orders",
+              "model.jaffle_shop.stg_payments",
+              "seed.jaffle_shop.raw_orders",
+              "seed.jaffle_shop.raw_payments"
+            ],
+            "rationale": "Manually authored reference probe for the frozen integration test.",
+            "failure_kind": "MISSING_EVIDENCE",
+            "sql": "select p.id payment_id, p.order_id, p.amount,\ncase when p.amount is null then 'missing_amount' when o.id is null then 'missing_order' else 'duplicate_payment_id' end problem\nfrom raw_payments p left join raw_orders o on p.order_id=o.id\nwhere p.amount is null or o.id is null or p.id in (select id from raw_payments group by id having count(*) > 1)",
+            "result": {
+              "sql": "select p.id payment_id, p.order_id, p.amount,\ncase when p.amount is null then 'missing_amount' when o.id is null then 'missing_order' else 'duplicate_payment_id' end problem\nfrom raw_payments p left join raw_orders o on p.order_id=o.id\nwhere p.amount is null or o.id is null or p.id in (select id from raw_payments group by id having count(*) > 1)",
+              "columns": [
+                "payment_id",
+                "order_id",
+                "amount",
+                "problem"
+              ],
+              "rows": [],
+              "has_counterexamples": false,
+              "truncated": false,
+              "result_sha256": "2ef1b667c39ee080ae080cd4b29d08d991ec8709299fba86e399ef3b7a2f6d4e"
+            }
+          },
+          {
+            "id": "ceiling",
+            "requirement_id": "G4",
+            "source_quote": "Order 2 has an agreed gross payment ceiling of AUD 20.00. Actual recorded payments exceeding it violate this limit even when their sum is calculated correctly.",
+            "node_ids": [
+              "model.jaffle_shop.orders",
+              "model.jaffle_shop.stg_orders",
+              "model.jaffle_shop.stg_payments",
+              "seed.jaffle_shop.raw_orders",
+              "seed.jaffle_shop.raw_payments"
+            ],
+            "rationale": "Manually authored reference probe for the frozen integration test.",
+            "failure_kind": "DATA_VIOLATION",
+            "sql": "select order_id, sum(amount)/100.0 observed_aud, 20.0 agreed_ceiling_aud,\nsum(amount)/100.0 - 20.0 excess_aud from raw_payments where order_id=2 group by order_id having sum(amount)>2000",
+            "result": {
+              "sql": "select order_id, sum(amount)/100.0 observed_aud, 20.0 agreed_ceiling_aud,\nsum(amount)/100.0 - 20.0 excess_aud from raw_payments where order_id=2 group by order_id having sum(amount)>2000",
+              "columns": [
+                "order_id",
+                "observed_aud",
+                "agreed_ceiling_aud",
+                "excess_aud"
+              ],
+              "rows": [],
+              "has_counterexamples": false,
+              "truncated": false,
+              "result_sha256": "a0ef8abffb435f218963c9e2af632413ff1358f75dbd78c319f60cf630c1d84f"
+            }
+          }
+        ]
+      },
+      "agent_gate": "NOT_RUN"
+    },
+    {
+      "case": "wrong_units",
+      "expected": "DEFINITION_MISMATCH",
+      "reference_status": "DEFINITION_MISMATCH",
+      "integration_pass": true,
+      "snapshot_id": "99cb3466b501c6fe2d682ada65c9f62ad9ae213e3cc998f13367591c1194a7c9",
+      "dependency_fingerprint": "947fa6dbb1abe0a4b2fd01df62a90a0427e963e8b85a1ba8a825d09107e35a5c",
+      "dependency_nodes": [
+        "model.jaffle_shop.orders",
+        "model.jaffle_shop.stg_orders",
+        "model.jaffle_shop.stg_payments",
+        "seed.jaffle_shop.raw_orders",
+        "seed.jaffle_shop.raw_payments"
+      ],
+      "dbt": {
+        "exit_code": 0,
+        "invocation_id": "139c9cba-605a-4f24-a00f-11b97a86298c",
+        "statuses": {
+          "seed.jaffle_shop.raw_customers": "success",
+          "seed.jaffle_shop.raw_orders": "success",
+          "seed.jaffle_shop.raw_payments": "success",
+          "model.jaffle_shop.stg_customers": "success",
+          "model.jaffle_shop.stg_orders": "success",
+          "model.jaffle_shop.stg_payments": "success",
+          "test.jaffle_shop.not_null_stg_customers_customer_id.e2cfb1f9aa": "pass",
+          "test.jaffle_shop.unique_stg_customers_customer_id.c7614daada": "pass",
+          "test.jaffle_shop.accepted_values_stg_orders_status__placed__shipped__completed__return_pending__returned.080fb20aad": "pass",
+          "test.jaffle_shop.not_null_stg_orders_order_id.81cfe2fe64": "pass",
+          "test.jaffle_shop.unique_stg_orders_order_id.e3b841c71a": "pass",
+          "test.jaffle_shop.accepted_values_stg_payments_payment_method__credit_card__coupon__bank_transfer__gift_card.3c3820f278": "pass",
+          "test.jaffle_shop.not_null_stg_payments_payment_id.c19cc50075": "pass",
+          "test.jaffle_shop.unique_stg_payments_payment_id.3744510712": "pass",
+          "model.jaffle_shop.customers": "success",
+          "model.jaffle_shop.orders": "success",
+          "test.jaffle_shop.not_null_customers_customer_id.5c9bf9911d": "pass",
+          "test.jaffle_shop.unique_customers_customer_id.c5af1ff4b1": "pass",
+          "test.jaffle_shop.accepted_values_orders_status__placed__shipped__completed__return_pending__returned.be6b5b5ec3": "pass",
+          "test.jaffle_shop.not_null_orders_amount.106140f9fd": "pass",
+          "test.jaffle_shop.not_null_orders_bank_transfer_amount.7743500c49": "pass",
+          "test.jaffle_shop.not_null_orders_coupon_amount.ab90c90625": "pass",
+          "test.jaffle_shop.not_null_orders_credit_card_amount.d3ca593b59": "pass",
+          "test.jaffle_shop.not_null_orders_customer_id.c5f02694af": "pass",
+          "test.jaffle_shop.not_null_orders_gift_card_amount.413a0d2d7a": "pass",
+          "test.jaffle_shop.not_null_orders_order_id.cf6c17daed": "pass",
+          "test.jaffle_shop.relationships_orders_customer_id__customer_id__ref_customers_.c6ec7f58f2": "pass",
+          "test.jaffle_shop.unique_orders_order_id.fed79b3a6e": "pass"
+        },
+        "manifest_sha256": "cdbaf7c912a6b016e5d36d9887f572d403e56b108dae867338bd2c977ce75662"
+      },
+      "metric_query": {
+        "sql": "select sum(amount) total_aud from orders where order_date between DATE '2018-01-01' and DATE '2018-04-30'",
+        "columns": [
+          "total_aud"
+        ],
+        "rows": [
+          [
+            167200.0
+          ]
+        ],
+        "has_counterexamples": true,
+        "truncated": false,
+        "result_sha256": "2eb1892023c98187944ba1efa6a258877a8852b9c8126f695473d574caf54d81"
+      },
+      "reference_observation": {
+        "status": "DEFINITION_MISMATCH",
+        "issues": [
+          "DEFINITION_MISMATCH"
+        ],
+        "receipts": [
+          {
+            "id": "units",
+            "requirement_id": "G1",
+            "source_quote": "At the order grain, amounts are expressed in AUD. Raw payment amounts are integer Australian cents; 100 cents equals AUD 1. Every payment contribution is counted once.",
+            "node_ids": [
+              "model.jaffle_shop.orders",
+              "model.jaffle_shop.stg_orders",
+              "model.jaffle_shop.stg_payments",
+              "seed.jaffle_shop.raw_orders",
+              "seed.jaffle_shop.raw_payments"
+            ],
+            "rationale": "Manually authored reference probe for the frozen integration test.",
+            "failure_kind": "DEFINITION_MISMATCH",
+            "sql": "select s.payment_id, s.amount observed_aud, r.amount / 100.0 expected_aud\nfrom stg_payments s join raw_payments r on s.payment_id = r.id\nwhere r.amount is not null and (s.amount is null or abs(s.amount - r.amount / 100.0) > 0.000001)",
+            "result": {
+              "sql": "select s.payment_id, s.amount observed_aud, r.amount / 100.0 expected_aud\nfrom stg_payments s join raw_payments r on s.payment_id = r.id\nwhere r.amount is not null and (s.amount is null or abs(s.amount - r.amount / 100.0) > 0.000001)",
+              "columns": [
+                "payment_id",
+                "observed_aud",
+                "expected_aud"
+              ],
+              "rows": [
+                [
+                  1,
+                  1000.0,
+                  10.0
+                ],
+                [
+                  2,
+                  2000.0,
+                  20.0
+                ],
+                [
+                  3,
+                  100.0,
+                  1.0
+                ],
+                [
+                  4,
+                  2500.0,
+                  25.0
+                ],
+                [
+                  5,
+                  1700.0,
+                  17.0
+                ],
+                [
+                  6,
+                  600.0,
+                  6.0
+                ],
+                [
+                  7,
+                  1600.0,
+                  16.0
+                ],
+                [
+                  8,
+                  2300.0,
+                  23.0
+                ],
+                [
+                  9,
+                  2300.0,
+                  23.0
+                ],
+                [
+                  11,
+                  2600.0,
+                  26.0
+                ],
+                [
+                  12,
+                  2700.0,
+                  27.0
+                ],
+                [
+                  13,
+                  100.0,
+                  1.0
+                ],
+                [
+                  14,
+                  500.0,
+                  5.0
+                ],
+                [
+                  15,
+                  1400.0,
+                  14.0
+                ],
+                [
+                  16,
+                  300.0,
+                  3.0
+                ],
+                [
+                  17,
+                  2200.0,
+                  22.0
+                ],
+                [
+                  18,
+                  1000.0,
+                  10.0
+                ],
+                [
+                  19,
+                  200.0,
+                  2.0
+                ],
+                [
+                  20,
+                  500.0,
+                  5.0
+                ],
+                [
+                  21,
+                  800.0,
+                  8.0
+                ]
+              ],
+              "has_counterexamples": true,
+              "truncated": true,
+              "result_sha256": "fe8c275b4a13ea0a6f4de4f695ebbff43fa3c5af2760fd7b054beac9ba5d6c68"
+            }
+          },
+          {
+            "id": "definition",
+            "requirement_id": "G2",
+            "source_quote": "Include credit card, bank transfer, gift card and coupon payments across all order statuses. Aggregate by order date, without inferring settlement or cash collection.",
+            "node_ids": [
+              "model.jaffle_shop.orders",
+              "model.jaffle_shop.stg_orders",
+              "model.jaffle_shop.stg_payments",
+              "seed.jaffle_shop.raw_orders",
+              "seed.jaffle_shop.raw_payments"
+            ],
+            "rationale": "Manually authored reference probe for the frozen integration test.",
+            "failure_kind": "DEFINITION_MISMATCH",
+            "sql": "with expected as (\nselect o.id order_id, sum(p.amount) / 100.0 expected_aud\nfrom raw_orders o left join raw_payments p on p.order_id = o.id\nwhere o.order_date between DATE '2018-01-01' and DATE '2018-04-30' group by o.id)\nselect e.order_id, e.expected_aud, a.amount observed_aud\nfrom expected e left join orders a on e.order_id = a.order_id\nwhere a.order_id is null or (e.expected_aud is not null and (a.amount is null or abs(a.amount-e.expected_aud) > 0.000001))",
+            "result": {
+              "sql": "with expected as (\nselect o.id order_id, sum(p.amount) / 100.0 expected_aud\nfrom raw_orders o left join raw_payments p on p.order_id = o.id\nwhere o.order_date between DATE '2018-01-01' and DATE '2018-04-30' group by o.id)\nselect e.order_id, e.expected_aud, a.amount observed_aud\nfrom expected e left join orders a on e.order_id = a.order_id\nwhere a.order_id is null or (e.expected_aud is not null and (a.amount is null or abs(a.amount-e.expected_aud) > 0.000001))",
+              "columns": [
+                "order_id",
+                "expected_aud",
+                "observed_aud"
+              ],
+              "rows": [
+                [
+                  1,
+                  10.0,
+                  1000.0
+                ],
+                [
+                  2,
+                  20.0,
+                  2000.0
+                ],
+                [
+                  3,
+                  1.0,
+                  100.0
+                ],
+                [
+                  4,
+                  25.0,
+                  2500.0
+                ],
+                [
+                  5,
+                  17.0,
+                  1700.0
+                ],
+                [
+                  6,
+                  6.0,
+                  600.0
+                ],
+                [
+                  7,
+                  16.0,
+                  1600.0
+                ],
+                [
+                  8,
+                  23.0,
+                  2300.0
+                ],
+                [
+                  9,
+                  23.0,
+                  2300.0
+                ],
+                [
+                  10,
+                  26.0,
+                  2600.0
+                ],
+                [
+                  11,
+                  27.0,
+                  2700.0
+                ],
+                [
+                  12,
+                  1.0,
+                  100.0
+                ],
+                [
+                  13,
+                  19.0,
+                  1900.0
+                ],
+                [
+                  14,
+                  3.0,
+                  300.0
+                ],
+                [
+                  15,
+                  22.0,
+                  2200.0
+                ],
+                [
+                  16,
+                  10.0,
+                  1000.0
+                ],
+                [
+                  17,
+                  2.0,
+                  200.0
+                ],
+                [
+                  18,
+                  13.0,
+                  1300.0
+                ],
+                [
+                  19,
+                  6.0,
+                  600.0
+                ],
+                [
+                  20,
+                  15.0,
+                  1500.0
+                ]
+              ],
+              "has_counterexamples": true,
+              "truncated": true,
+              "result_sha256": "640807f979909c8ae87f84176ad8a95c3c38e0c258d229d38ff9e4a30ac4688d"
+            }
+          },
+          {
+            "id": "grain",
+            "requirement_id": "G1",
+            "source_quote": "At the order grain, amounts are expressed in AUD. Raw payment amounts are integer Australian cents; 100 cents equals AUD 1. Every payment contribution is counted once.",
+            "node_ids": [
+              "model.jaffle_shop.orders",
+              "model.jaffle_shop.stg_orders",
+              "model.jaffle_shop.stg_payments",
+              "seed.jaffle_shop.raw_orders",
+              "seed.jaffle_shop.raw_payments"
+            ],
+            "rationale": "Manually authored reference probe for the frozen integration test.",
+            "failure_kind": "DEFINITION_MISMATCH",
+            "sql": "select order_id, count(*) rows_per_order from orders group by order_id having count(*) <> 1",
+            "result": {
+              "sql": "select order_id, count(*) rows_per_order from orders group by order_id having count(*) <> 1",
+              "columns": [
+                "order_id",
+                "rows_per_order"
+              ],
+              "rows": [],
+              "has_counterexamples": false,
+              "truncated": false,
+              "result_sha256": "5c9aff541a1339f9c757d565f14e6484fb99f3c843fbef52d371e2db174897fd"
+            }
+          },
+          {
+            "id": "evidence",
+            "requirement_id": "G3",
+            "source_quote": "Every raw payment needs a non-null amount, a unique payment ID and a valid order link. Missing amounts must not be treated as zero.",
+            "node_ids": [
+              "model.jaffle_shop.orders",
+              "model.jaffle_shop.stg_orders",
+              "model.jaffle_shop.stg_payments",
+              "seed.jaffle_shop.raw_orders",
+              "seed.jaffle_shop.raw_payments"
+            ],
+            "rationale": "Manually authored reference probe for the frozen integration test.",
+            "failure_kind": "MISSING_EVIDENCE",
+            "sql": "select p.id payment_id, p.order_id, p.amount,\ncase when p.amount is null then 'missing_amount' when o.id is null then 'missing_order' else 'duplicate_payment_id' end problem\nfrom raw_payments p left join raw_orders o on p.order_id=o.id\nwhere p.amount is null or o.id is null or p.id in (select id from raw_payments group by id having count(*) > 1)",
+            "result": {
+              "sql": "select p.id payment_id, p.order_id, p.amount,\ncase when p.amount is null then 'missing_amount' when o.id is null then 'missing_order' else 'duplicate_payment_id' end problem\nfrom raw_payments p left join raw_orders o on p.order_id=o.id\nwhere p.amount is null or o.id is null or p.id in (select id from raw_payments group by id having count(*) > 1)",
+              "columns": [
+                "payment_id",
+                "order_id",
+                "amount",
+                "problem"
+              ],
+              "rows": [],
+              "has_counterexamples": false,
+              "truncated": false,
+              "result_sha256": "2ef1b667c39ee080ae080cd4b29d08d991ec8709299fba86e399ef3b7a2f6d4e"
+            }
+          },
+          {
+            "id": "ceiling",
+            "requirement_id": "G4",
+            "source_quote": "Order 2 has an agreed gross payment ceiling of AUD 20.00. Actual recorded payments exceeding it violate this limit even when their sum is calculated correctly.",
+            "node_ids": [
+              "model.jaffle_shop.orders",
+              "model.jaffle_shop.stg_orders",
+              "model.jaffle_shop.stg_payments",
+              "seed.jaffle_shop.raw_orders",
+              "seed.jaffle_shop.raw_payments"
+            ],
+            "rationale": "Manually authored reference probe for the frozen integration test.",
+            "failure_kind": "DATA_VIOLATION",
+            "sql": "select order_id, sum(amount)/100.0 observed_aud, 20.0 agreed_ceiling_aud,\nsum(amount)/100.0 - 20.0 excess_aud from raw_payments where order_id=2 group by order_id having sum(amount)>2000",
+            "result": {
+              "sql": "select order_id, sum(amount)/100.0 observed_aud, 20.0 agreed_ceiling_aud,\nsum(amount)/100.0 - 20.0 excess_aud from raw_payments where order_id=2 group by order_id having sum(amount)>2000",
+              "columns": [
+                "order_id",
+                "observed_aud",
+                "agreed_ceiling_aud",
+                "excess_aud"
+              ],
+              "rows": [],
+              "has_counterexamples": false,
+              "truncated": false,
+              "result_sha256": "a0ef8abffb435f218963c9e2af632413ff1358f75dbd78c319f60cf630c1d84f"
+            }
+          }
+        ]
+      },
+      "agent_gate": "NOT_RUN"
+    },
+    {
+      "case": "duplicate_coupon_contribution",
+      "expected": "DEFINITION_MISMATCH",
+      "reference_status": "DEFINITION_MISMATCH",
+      "integration_pass": true,
+      "snapshot_id": "e54e7230589f03253b6bdb9d2300b5454100cd6bcd498bf5726f8e57a1fef17f",
+      "dependency_fingerprint": "d058220020599abf0191d101a715fc253d7199acdd5f1e42788f618f2001af6a",
+      "dependency_nodes": [
+        "model.jaffle_shop.orders",
+        "model.jaffle_shop.stg_orders",
+        "model.jaffle_shop.stg_payments",
+        "seed.jaffle_shop.raw_orders",
+        "seed.jaffle_shop.raw_payments"
+      ],
+      "dbt": {
+        "exit_code": 0,
+        "invocation_id": "c5e1825e-cf11-44b6-8d49-de55ffa8adc2",
+        "statuses": {
+          "seed.jaffle_shop.raw_customers": "success",
+          "seed.jaffle_shop.raw_orders": "success",
+          "seed.jaffle_shop.raw_payments": "success",
+          "model.jaffle_shop.stg_customers": "success",
+          "model.jaffle_shop.stg_orders": "success",
+          "model.jaffle_shop.stg_payments": "success",
+          "test.jaffle_shop.not_null_stg_customers_customer_id.e2cfb1f9aa": "pass",
+          "test.jaffle_shop.unique_stg_customers_customer_id.c7614daada": "pass",
+          "test.jaffle_shop.accepted_values_stg_orders_status__placed__shipped__completed__return_pending__returned.080fb20aad": "pass",
+          "test.jaffle_shop.not_null_stg_orders_order_id.81cfe2fe64": "pass",
+          "test.jaffle_shop.unique_stg_orders_order_id.e3b841c71a": "pass",
+          "test.jaffle_shop.accepted_values_stg_payments_payment_method__credit_card__coupon__bank_transfer__gift_card.3c3820f278": "pass",
+          "test.jaffle_shop.not_null_stg_payments_payment_id.c19cc50075": "pass",
+          "test.jaffle_shop.unique_stg_payments_payment_id.3744510712": "pass",
+          "model.jaffle_shop.customers": "success",
+          "model.jaffle_shop.orders": "success",
+          "test.jaffle_shop.not_null_customers_customer_id.5c9bf9911d": "pass",
+          "test.jaffle_shop.unique_customers_customer_id.c5af1ff4b1": "pass",
+          "test.jaffle_shop.accepted_values_orders_status__placed__shipped__completed__return_pending__returned.be6b5b5ec3": "pass",
+          "test.jaffle_shop.not_null_orders_amount.106140f9fd": "pass",
+          "test.jaffle_shop.not_null_orders_bank_transfer_amount.7743500c49": "pass",
+          "test.jaffle_shop.not_null_orders_coupon_amount.ab90c90625": "pass",
+          "test.jaffle_shop.not_null_orders_credit_card_amount.d3ca593b59": "pass",
+          "test.jaffle_shop.not_null_orders_customer_id.c5f02694af": "pass",
+          "test.jaffle_shop.not_null_orders_gift_card_amount.413a0d2d7a": "pass",
+          "test.jaffle_shop.not_null_orders_order_id.cf6c17daed": "pass",
+          "test.jaffle_shop.relationships_orders_customer_id__customer_id__ref_customers_.c6ec7f58f2": "pass",
+          "test.jaffle_shop.unique_orders_order_id.fed79b3a6e": "pass"
+        },
+        "manifest_sha256": "e0464e37f0647ade494c5438270bacd21fca1c4815363086d899fce9ab1a75cc"
+      },
+      "metric_query": {
+        "sql": "select sum(amount) total_aud from orders where order_date between DATE '2018-01-01' and DATE '2018-04-30'",
+        "columns": [
+          "total_aud"
+        ],
+        "rows": [
+          [
+            1857.0
+          ]
+        ],
+        "has_counterexamples": true,
+        "truncated": false,
+        "result_sha256": "f2d41e45fdcd95c295f88a5af02f9d94f35c471a93ff2b68635dfe4b980b725e"
+      },
+      "reference_observation": {
+        "status": "DEFINITION_MISMATCH",
+        "issues": [
+          "DEFINITION_MISMATCH"
+        ],
+        "receipts": [
+          {
+            "id": "units",
+            "requirement_id": "G1",
+            "source_quote": "At the order grain, amounts are expressed in AUD. Raw payment amounts are integer Australian cents; 100 cents equals AUD 1. Every payment contribution is counted once.",
+            "node_ids": [
+              "model.jaffle_shop.orders",
+              "model.jaffle_shop.stg_orders",
+              "model.jaffle_shop.stg_payments",
+              "seed.jaffle_shop.raw_orders",
+              "seed.jaffle_shop.raw_payments"
+            ],
+            "rationale": "Manually authored reference probe for the frozen integration test.",
+            "failure_kind": "DEFINITION_MISMATCH",
+            "sql": "select s.payment_id, s.amount observed_aud, r.amount / 100.0 expected_aud\nfrom stg_payments s join raw_payments r on s.payment_id = r.id\nwhere r.amount is not null and (s.amount is null or abs(s.amount - r.amount / 100.0) > 0.000001)",
+            "result": {
+              "sql": "select s.payment_id, s.amount observed_aud, r.amount / 100.0 expected_aud\nfrom stg_payments s join raw_payments r on s.payment_id = r.id\nwhere r.amount is not null and (s.amount is null or abs(s.amount - r.amount / 100.0) > 0.000001)",
+              "columns": [
+                "payment_id",
+                "observed_aud",
+                "expected_aud"
+              ],
+              "rows": [],
+              "has_counterexamples": false,
+              "truncated": false,
+              "result_sha256": "989882cc1bcf662a5720e17761499e5cc7ed581f89b1c5b3a01b0de901ff0dfe"
+            }
+          },
+          {
+            "id": "definition",
+            "requirement_id": "G2",
+            "source_quote": "Include credit card, bank transfer, gift card and coupon payments across all order statuses. Aggregate by order date, without inferring settlement or cash collection.",
+            "node_ids": [
+              "model.jaffle_shop.orders",
+              "model.jaffle_shop.stg_orders",
+              "model.jaffle_shop.stg_payments",
+              "seed.jaffle_shop.raw_orders",
+              "seed.jaffle_shop.raw_payments"
+            ],
+            "rationale": "Manually authored reference probe for the frozen integration test.",
+            "failure_kind": "DEFINITION_MISMATCH",
+            "sql": "with expected as (\nselect o.id order_id, sum(p.amount) / 100.0 expected_aud\nfrom raw_orders o left join raw_payments p on p.order_id = o.id\nwhere o.order_date between DATE '2018-01-01' and DATE '2018-04-30' group by o.id)\nselect e.order_id, e.expected_aud, a.amount observed_aud\nfrom expected e left join orders a on e.order_id = a.order_id\nwhere a.order_id is null or (e.expected_aud is not null and (a.amount is null or abs(a.amount-e.expected_aud) > 0.000001))",
+            "result": {
+              "sql": "with expected as (\nselect o.id order_id, sum(p.amount) / 100.0 expected_aud\nfrom raw_orders o left join raw_payments p on p.order_id = o.id\nwhere o.order_date between DATE '2018-01-01' and DATE '2018-04-30' group by o.id)\nselect e.order_id, e.expected_aud, a.amount observed_aud\nfrom expected e left join orders a on e.order_id = a.order_id\nwhere a.order_id is null or (e.expected_aud is not null and (a.amount is null or abs(a.amount-e.expected_aud) > 0.000001))",
+              "columns": [
+                "order_id",
+                "expected_aud",
+                "observed_aud"
+              ],
+              "rows": [
+                [
+                  3,
+                  1.0,
+                  2.0
+                ],
+                [
+                  4,
+                  25.0,
+                  50.0
+                ],
+                [
+                  15,
+                  22.0,
+                  44.0
+                ],
+                [
+                  24,
+                  26.0,
+                  52.0
+                ],
+                [
+                  25,
+                  58.0,
+                  74.0
+                ],
+                [
+                  42,
+                  17.0,
+                  34.0
+                ],
+                [
+                  58,
+                  24.0,
+                  42.0
+                ],
+                [
+                  76,
+                  2.0,
+                  4.0
+                ],
+                [
+                  81,
+                  2.0,
+                  4.0
+                ],
+                [
+                  86,
+                  23.0,
+                  46.0
+                ],
+                [
+                  92,
+                  17.0,
+                  19.0
+                ],
+                [
+                  94,
+                  7.0,
+                  14.0
+                ],
+                [
+                  95,
+                  24.0,
+                  48.0
+                ]
+              ],
+              "has_counterexamples": true,
+              "truncated": false,
+              "result_sha256": "b6e98d311523a94c3d7a3e77b4f38a06ecef9008c8b288374267289c889824eb"
+            }
+          },
+          {
+            "id": "grain",
+            "requirement_id": "G1",
+            "source_quote": "At the order grain, amounts are expressed in AUD. Raw payment amounts are integer Australian cents; 100 cents equals AUD 1. Every payment contribution is counted once.",
+            "node_ids": [
+              "model.jaffle_shop.orders",
+              "model.jaffle_shop.stg_orders",
+              "model.jaffle_shop.stg_payments",
+              "seed.jaffle_shop.raw_orders",
+              "seed.jaffle_shop.raw_payments"
+            ],
+            "rationale": "Manually authored reference probe for the frozen integration test.",
+            "failure_kind": "DEFINITION_MISMATCH",
+            "sql": "select order_id, count(*) rows_per_order from orders group by order_id having count(*) <> 1",
+            "result": {
+              "sql": "select order_id, count(*) rows_per_order from orders group by order_id having count(*) <> 1",
+              "columns": [
+                "order_id",
+                "rows_per_order"
+              ],
+              "rows": [],
+              "has_counterexamples": false,
+              "truncated": false,
+              "result_sha256": "5c9aff541a1339f9c757d565f14e6484fb99f3c843fbef52d371e2db174897fd"
+            }
+          },
+          {
+            "id": "evidence",
+            "requirement_id": "G3",
+            "source_quote": "Every raw payment needs a non-null amount, a unique payment ID and a valid order link. Missing amounts must not be treated as zero.",
+            "node_ids": [
+              "model.jaffle_shop.orders",
+              "model.jaffle_shop.stg_orders",
+              "model.jaffle_shop.stg_payments",
+              "seed.jaffle_shop.raw_orders",
+              "seed.jaffle_shop.raw_payments"
+            ],
+            "rationale": "Manually authored reference probe for the frozen integration test.",
+            "failure_kind": "MISSING_EVIDENCE",
+            "sql": "select p.id payment_id, p.order_id, p.amount,\ncase when p.amount is null then 'missing_amount' when o.id is null then 'missing_order' else 'duplicate_payment_id' end problem\nfrom raw_payments p left join raw_orders o on p.order_id=o.id\nwhere p.amount is null or o.id is null or p.id in (select id from raw_payments group by id having count(*) > 1)",
+            "result": {
+              "sql": "select p.id payment_id, p.order_id, p.amount,\ncase when p.amount is null then 'missing_amount' when o.id is null then 'missing_order' else 'duplicate_payment_id' end problem\nfrom raw_payments p left join raw_orders o on p.order_id=o.id\nwhere p.amount is null or o.id is null or p.id in (select id from raw_payments group by id having count(*) > 1)",
+              "columns": [
+                "payment_id",
+                "order_id",
+                "amount",
+                "problem"
+              ],
+              "rows": [],
+              "has_counterexamples": false,
+              "truncated": false,
+              "result_sha256": "2ef1b667c39ee080ae080cd4b29d08d991ec8709299fba86e399ef3b7a2f6d4e"
+            }
+          },
+          {
+            "id": "ceiling",
+            "requirement_id": "G4",
+            "source_quote": "Order 2 has an agreed gross payment ceiling of AUD 20.00. Actual recorded payments exceeding it violate this limit even when their sum is calculated correctly.",
+            "node_ids": [
+              "model.jaffle_shop.orders",
+              "model.jaffle_shop.stg_orders",
+              "model.jaffle_shop.stg_payments",
+              "seed.jaffle_shop.raw_orders",
+              "seed.jaffle_shop.raw_payments"
+            ],
+            "rationale": "Manually authored reference probe for the frozen integration test.",
+            "failure_kind": "DATA_VIOLATION",
+            "sql": "select order_id, sum(amount)/100.0 observed_aud, 20.0 agreed_ceiling_aud,\nsum(amount)/100.0 - 20.0 excess_aud from raw_payments where order_id=2 group by order_id having sum(amount)>2000",
+            "result": {
+              "sql": "select order_id, sum(amount)/100.0 observed_aud, 20.0 agreed_ceiling_aud,\nsum(amount)/100.0 - 20.0 excess_aud from raw_payments where order_id=2 group by order_id having sum(amount)>2000",
+              "columns": [
+                "order_id",
+                "observed_aud",
+                "agreed_ceiling_aud",
+                "excess_aud"
+              ],
+              "rows": [],
+              "has_counterexamples": false,
+              "truncated": false,
+              "result_sha256": "a0ef8abffb435f218963c9e2af632413ff1358f75dbd78c319f60cf630c1d84f"
+            }
+          }
+        ]
+      },
+      "agent_gate": "NOT_RUN"
+    },
+    {
+      "case": "payment_over_ceiling",
+      "expected": "DATA_VIOLATION",
+      "reference_status": "DATA_VIOLATION",
+      "integration_pass": true,
+      "snapshot_id": "ae316a2b1062123efff8abf1320785210229d86e9d6ec367aa5da3260035935b",
+      "dependency_fingerprint": "d40f88e2f8cf22090f0a43bb683370ec07fda7778feff7d1bab2154cff08b9c1",
+      "dependency_nodes": [
+        "model.jaffle_shop.orders",
+        "model.jaffle_shop.stg_orders",
+        "model.jaffle_shop.stg_payments",
+        "seed.jaffle_shop.raw_orders",
+        "seed.jaffle_shop.raw_payments"
+      ],
+      "dbt": {
+        "exit_code": 0,
+        "invocation_id": "cb3bf67c-7735-42f2-b77e-99356d73ab9c",
+        "statuses": {
+          "seed.jaffle_shop.raw_customers": "success",
+          "seed.jaffle_shop.raw_orders": "success",
+          "seed.jaffle_shop.raw_payments": "success",
+          "model.jaffle_shop.stg_customers": "success",
+          "model.jaffle_shop.stg_orders": "success",
+          "model.jaffle_shop.stg_payments": "success",
+          "test.jaffle_shop.not_null_stg_customers_customer_id.e2cfb1f9aa": "pass",
+          "test.jaffle_shop.unique_stg_customers_customer_id.c7614daada": "pass",
+          "test.jaffle_shop.accepted_values_stg_orders_status__placed__shipped__completed__return_pending__returned.080fb20aad": "pass",
+          "test.jaffle_shop.not_null_stg_orders_order_id.81cfe2fe64": "pass",
+          "test.jaffle_shop.unique_stg_orders_order_id.e3b841c71a": "pass",
+          "test.jaffle_shop.accepted_values_stg_payments_payment_method__credit_card__coupon__bank_transfer__gift_card.3c3820f278": "pass",
+          "test.jaffle_shop.not_null_stg_payments_payment_id.c19cc50075": "pass",
+          "test.jaffle_shop.unique_stg_payments_payment_id.3744510712": "pass",
+          "model.jaffle_shop.customers": "success",
+          "model.jaffle_shop.orders": "success",
+          "test.jaffle_shop.not_null_customers_customer_id.5c9bf9911d": "pass",
+          "test.jaffle_shop.unique_customers_customer_id.c5af1ff4b1": "pass",
+          "test.jaffle_shop.accepted_values_orders_status__placed__shipped__completed__return_pending__returned.be6b5b5ec3": "pass",
+          "test.jaffle_shop.not_null_orders_amount.106140f9fd": "pass",
+          "test.jaffle_shop.not_null_orders_bank_transfer_amount.7743500c49": "pass",
+          "test.jaffle_shop.not_null_orders_coupon_amount.ab90c90625": "pass",
+          "test.jaffle_shop.not_null_orders_credit_card_amount.d3ca593b59": "pass",
+          "test.jaffle_shop.not_null_orders_customer_id.c5f02694af": "pass",
+          "test.jaffle_shop.not_null_orders_gift_card_amount.413a0d2d7a": "pass",
+          "test.jaffle_shop.not_null_orders_order_id.cf6c17daed": "pass",
+          "test.jaffle_shop.relationships_orders_customer_id__customer_id__ref_customers_.c6ec7f58f2": "pass",
+          "test.jaffle_shop.unique_orders_order_id.fed79b3a6e": "pass"
+        },
+        "manifest_sha256": "6f3febb86837c5d8953cd13fa7bba82bdf40f71995ef11d7c6aff2ef2f1ef7be"
+      },
+      "metric_query": {
+        "sql": "select sum(amount) total_aud from orders where order_date between DATE '2018-01-01' and DATE '2018-04-30'",
+        "columns": [
+          "total_aud"
+        ],
+        "rows": [
+          [
+            1677.0
+          ]
+        ],
+        "has_counterexamples": true,
+        "truncated": false,
+        "result_sha256": "8a643e138ee8cda1a7edce96cc54d5def679139d8fa7ed6632992bdd06b32ffd"
+      },
+      "reference_observation": {
+        "status": "DATA_VIOLATION",
+        "issues": [
+          "DATA_VIOLATION"
+        ],
+        "receipts": [
+          {
+            "id": "units",
+            "requirement_id": "G1",
+            "source_quote": "At the order grain, amounts are expressed in AUD. Raw payment amounts are integer Australian cents; 100 cents equals AUD 1. Every payment contribution is counted once.",
+            "node_ids": [
+              "model.jaffle_shop.orders",
+              "model.jaffle_shop.stg_orders",
+              "model.jaffle_shop.stg_payments",
+              "seed.jaffle_shop.raw_orders",
+              "seed.jaffle_shop.raw_payments"
+            ],
+            "rationale": "Manually authored reference probe for the frozen integration test.",
+            "failure_kind": "DEFINITION_MISMATCH",
+            "sql": "select s.payment_id, s.amount observed_aud, r.amount / 100.0 expected_aud\nfrom stg_payments s join raw_payments r on s.payment_id = r.id\nwhere r.amount is not null and (s.amount is null or abs(s.amount - r.amount / 100.0) > 0.000001)",
+            "result": {
+              "sql": "select s.payment_id, s.amount observed_aud, r.amount / 100.0 expected_aud\nfrom stg_payments s join raw_payments r on s.payment_id = r.id\nwhere r.amount is not null and (s.amount is null or abs(s.amount - r.amount / 100.0) > 0.000001)",
+              "columns": [
+                "payment_id",
+                "observed_aud",
+                "expected_aud"
+              ],
+              "rows": [],
+              "has_counterexamples": false,
+              "truncated": false,
+              "result_sha256": "989882cc1bcf662a5720e17761499e5cc7ed581f89b1c5b3a01b0de901ff0dfe"
+            }
+          },
+          {
+            "id": "definition",
+            "requirement_id": "G2",
+            "source_quote": "Include credit card, bank transfer, gift card and coupon payments across all order statuses. Aggregate by order date, without inferring settlement or cash collection.",
+            "node_ids": [
+              "model.jaffle_shop.orders",
+              "model.jaffle_shop.stg_orders",
+              "model.jaffle_shop.stg_payments",
+              "seed.jaffle_shop.raw_orders",
+              "seed.jaffle_shop.raw_payments"
+            ],
+            "rationale": "Manually authored reference probe for the frozen integration test.",
+            "failure_kind": "DEFINITION_MISMATCH",
+            "sql": "with expected as (\nselect o.id order_id, sum(p.amount) / 100.0 expected_aud\nfrom raw_orders o left join raw_payments p on p.order_id = o.id\nwhere o.order_date between DATE '2018-01-01' and DATE '2018-04-30' group by o.id)\nselect e.order_id, e.expected_aud, a.amount observed_aud\nfrom expected e left join orders a on e.order_id = a.order_id\nwhere a.order_id is null or (e.expected_aud is not null and (a.amount is null or abs(a.amount-e.expected_aud) > 0.000001))",
+            "result": {
+              "sql": "with expected as (\nselect o.id order_id, sum(p.amount) / 100.0 expected_aud\nfrom raw_orders o left join raw_payments p on p.order_id = o.id\nwhere o.order_date between DATE '2018-01-01' and DATE '2018-04-30' group by o.id)\nselect e.order_id, e.expected_aud, a.amount observed_aud\nfrom expected e left join orders a on e.order_id = a.order_id\nwhere a.order_id is null or (e.expected_aud is not null and (a.amount is null or abs(a.amount-e.expected_aud) > 0.000001))",
+              "columns": [
+                "order_id",
+                "expected_aud",
+                "observed_aud"
+              ],
+              "rows": [],
+              "has_counterexamples": false,
+              "truncated": false,
+              "result_sha256": "7129cafc9d331c2ac6a4eda07803c8023e8bbd18ea97bc57163c3fe8e756786b"
+            }
+          },
+          {
+            "id": "grain",
+            "requirement_id": "G1",
+            "source_quote": "At the order grain, amounts are expressed in AUD. Raw payment amounts are integer Australian cents; 100 cents equals AUD 1. Every payment contribution is counted once.",
+            "node_ids": [
+              "model.jaffle_shop.orders",
+              "model.jaffle_shop.stg_orders",
+              "model.jaffle_shop.stg_payments",
+              "seed.jaffle_shop.raw_orders",
+              "seed.jaffle_shop.raw_payments"
+            ],
+            "rationale": "Manually authored reference probe for the frozen integration test.",
+            "failure_kind": "DEFINITION_MISMATCH",
+            "sql": "select order_id, count(*) rows_per_order from orders group by order_id having count(*) <> 1",
+            "result": {
+              "sql": "select order_id, count(*) rows_per_order from orders group by order_id having count(*) <> 1",
+              "columns": [
+                "order_id",
+                "rows_per_order"
+              ],
+              "rows": [],
+              "has_counterexamples": false,
+              "truncated": false,
+              "result_sha256": "5c9aff541a1339f9c757d565f14e6484fb99f3c843fbef52d371e2db174897fd"
+            }
+          },
+          {
+            "id": "evidence",
+            "requirement_id": "G3",
+            "source_quote": "Every raw payment needs a non-null amount, a unique payment ID and a valid order link. Missing amounts must not be treated as zero.",
+            "node_ids": [
+              "model.jaffle_shop.orders",
+              "model.jaffle_shop.stg_orders",
+              "model.jaffle_shop.stg_payments",
+              "seed.jaffle_shop.raw_orders",
+              "seed.jaffle_shop.raw_payments"
+            ],
+            "rationale": "Manually authored reference probe for the frozen integration test.",
+            "failure_kind": "MISSING_EVIDENCE",
+            "sql": "select p.id payment_id, p.order_id, p.amount,\ncase when p.amount is null then 'missing_amount' when o.id is null then 'missing_order' else 'duplicate_payment_id' end problem\nfrom raw_payments p left join raw_orders o on p.order_id=o.id\nwhere p.amount is null or o.id is null or p.id in (select id from raw_payments group by id having count(*) > 1)",
+            "result": {
+              "sql": "select p.id payment_id, p.order_id, p.amount,\ncase when p.amount is null then 'missing_amount' when o.id is null then 'missing_order' else 'duplicate_payment_id' end problem\nfrom raw_payments p left join raw_orders o on p.order_id=o.id\nwhere p.amount is null or o.id is null or p.id in (select id from raw_payments group by id having count(*) > 1)",
+              "columns": [
+                "payment_id",
+                "order_id",
+                "amount",
+                "problem"
+              ],
+              "rows": [],
+              "has_counterexamples": false,
+              "truncated": false,
+              "result_sha256": "2ef1b667c39ee080ae080cd4b29d08d991ec8709299fba86e399ef3b7a2f6d4e"
+            }
+          },
+          {
+            "id": "ceiling",
+            "requirement_id": "G4",
+            "source_quote": "Order 2 has an agreed gross payment ceiling of AUD 20.00. Actual recorded payments exceeding it violate this limit even when their sum is calculated correctly.",
+            "node_ids": [
+              "model.jaffle_shop.orders",
+              "model.jaffle_shop.stg_orders",
+              "model.jaffle_shop.stg_payments",
+              "seed.jaffle_shop.raw_orders",
+              "seed.jaffle_shop.raw_payments"
+            ],
+            "rationale": "Manually authored reference probe for the frozen integration test.",
+            "failure_kind": "DATA_VIOLATION",
+            "sql": "select order_id, sum(amount)/100.0 observed_aud, 20.0 agreed_ceiling_aud,\nsum(amount)/100.0 - 20.0 excess_aud from raw_payments where order_id=2 group by order_id having sum(amount)>2000",
+            "result": {
+              "sql": "select order_id, sum(amount)/100.0 observed_aud, 20.0 agreed_ceiling_aud,\nsum(amount)/100.0 - 20.0 excess_aud from raw_payments where order_id=2 group by order_id having sum(amount)>2000",
+              "columns": [
+                "order_id",
+                "observed_aud",
+                "agreed_ceiling_aud",
+                "excess_aud"
+              ],
+              "rows": [
+                [
+                  2,
+                  25.0,
+                  "20.0",
+                  5.0
+                ]
+              ],
+              "has_counterexamples": true,
+              "truncated": false,
+              "result_sha256": "cea12e9fb84321ee5768229c83e80f8c48dbbfea6c2d0334494f52c3fb411219"
+            }
+          }
+        ]
+      },
+      "agent_gate": "NOT_RUN"
+    },
+    {
+      "case": "missing_amount",
+      "expected": "MISSING_EVIDENCE",
+      "reference_status": "MISSING_EVIDENCE",
+      "integration_pass": true,
+      "snapshot_id": "2211b8fd0f45f843e888e6adb38565c3d0b6e6c92569610c160f36e745b2b83e",
+      "dependency_fingerprint": "37afb58b1d15a3f968bc4906810874c9e7741a65cce3ba928010317d2f80c156",
+      "dependency_nodes": [
+        "model.jaffle_shop.orders",
+        "model.jaffle_shop.stg_orders",
+        "model.jaffle_shop.stg_payments",
+        "seed.jaffle_shop.raw_orders",
+        "seed.jaffle_shop.raw_payments"
+      ],
+      "dbt": {
+        "exit_code": 0,
+        "invocation_id": "0f1165fa-a65b-4478-9dfc-550a49ab328a",
+        "statuses": {
+          "seed.jaffle_shop.raw_customers": "success",
+          "seed.jaffle_shop.raw_orders": "success",
+          "seed.jaffle_shop.raw_payments": "success",
+          "model.jaffle_shop.stg_customers": "success",
+          "model.jaffle_shop.stg_orders": "success",
+          "model.jaffle_shop.stg_payments": "success",
+          "test.jaffle_shop.not_null_stg_customers_customer_id.e2cfb1f9aa": "pass",
+          "test.jaffle_shop.unique_stg_customers_customer_id.c7614daada": "pass",
+          "test.jaffle_shop.accepted_values_stg_orders_status__placed__shipped__completed__return_pending__returned.080fb20aad": "pass",
+          "test.jaffle_shop.not_null_stg_orders_order_id.81cfe2fe64": "pass",
+          "test.jaffle_shop.unique_stg_orders_order_id.e3b841c71a": "pass",
+          "test.jaffle_shop.accepted_values_stg_payments_payment_method__credit_card__coupon__bank_transfer__gift_card.3c3820f278": "pass",
+          "test.jaffle_shop.not_null_stg_payments_payment_id.c19cc50075": "pass",
+          "test.jaffle_shop.unique_stg_payments_payment_id.3744510712": "pass",
+          "model.jaffle_shop.customers": "success",
+          "model.jaffle_shop.orders": "success",
+          "test.jaffle_shop.not_null_customers_customer_id.5c9bf9911d": "pass",
+          "test.jaffle_shop.unique_customers_customer_id.c5af1ff4b1": "pass",
+          "test.jaffle_shop.accepted_values_orders_status__placed__shipped__completed__return_pending__returned.be6b5b5ec3": "pass",
+          "test.jaffle_shop.not_null_orders_amount.106140f9fd": "pass",
+          "test.jaffle_shop.not_null_orders_bank_transfer_amount.7743500c49": "pass",
+          "test.jaffle_shop.not_null_orders_coupon_amount.ab90c90625": "pass",
+          "test.jaffle_shop.not_null_orders_credit_card_amount.d3ca593b59": "pass",
+          "test.jaffle_shop.not_null_orders_customer_id.c5f02694af": "pass",
+          "test.jaffle_shop.not_null_orders_gift_card_amount.413a0d2d7a": "pass",
+          "test.jaffle_shop.not_null_orders_order_id.cf6c17daed": "pass",
+          "test.jaffle_shop.relationships_orders_customer_id__customer_id__ref_customers_.c6ec7f58f2": "pass",
+          "test.jaffle_shop.unique_orders_order_id.fed79b3a6e": "pass"
+        },
+        "manifest_sha256": "999554485de6ea13df4abd3dd75661774cb87c172d4c9e2d63be63d5fd5808fd"
+      },
+      "metric_query": {
+        "sql": "select sum(amount) total_aud from orders where order_date between DATE '2018-01-01' and DATE '2018-04-30'",
+        "columns": [
+          "total_aud"
+        ],
+        "rows": [
+          [
+            1649.0
+          ]
+        ],
+        "has_counterexamples": true,
+        "truncated": false,
+        "result_sha256": "2853b31321c53de82a6e9ac2ef83770d6cb93581f76c4036539334cab864e65a"
+      },
+      "reference_observation": {
+        "status": "MISSING_EVIDENCE",
+        "issues": [
+          "MISSING_EVIDENCE"
+        ],
+        "receipts": [
+          {
+            "id": "units",
+            "requirement_id": "G1",
+            "source_quote": "At the order grain, amounts are expressed in AUD. Raw payment amounts are integer Australian cents; 100 cents equals AUD 1. Every payment contribution is counted once.",
+            "node_ids": [
+              "model.jaffle_shop.orders",
+              "model.jaffle_shop.stg_orders",
+              "model.jaffle_shop.stg_payments",
+              "seed.jaffle_shop.raw_orders",
+              "seed.jaffle_shop.raw_payments"
+            ],
+            "rationale": "Manually authored reference probe for the frozen integration test.",
+            "failure_kind": "DEFINITION_MISMATCH",
+            "sql": "select s.payment_id, s.amount observed_aud, r.amount / 100.0 expected_aud\nfrom stg_payments s join raw_payments r on s.payment_id = r.id\nwhere r.amount is not null and (s.amount is null or abs(s.amount - r.amount / 100.0) > 0.000001)",
+            "result": {
+              "sql": "select s.payment_id, s.amount observed_aud, r.amount / 100.0 expected_aud\nfrom stg_payments s join raw_payments r on s.payment_id = r.id\nwhere r.amount is not null and (s.amount is null or abs(s.amount - r.amount / 100.0) > 0.000001)",
+              "columns": [
+                "payment_id",
+                "observed_aud",
+                "expected_aud"
+              ],
+              "rows": [],
+              "has_counterexamples": false,
+              "truncated": false,
+              "result_sha256": "989882cc1bcf662a5720e17761499e5cc7ed581f89b1c5b3a01b0de901ff0dfe"
+            }
+          },
+          {
+            "id": "definition",
+            "requirement_id": "G2",
+            "source_quote": "Include credit card, bank transfer, gift card and coupon payments across all order statuses. Aggregate by order date, without inferring settlement or cash collection.",
+            "node_ids": [
+              "model.jaffle_shop.orders",
+              "model.jaffle_shop.stg_orders",
+              "model.jaffle_shop.stg_payments",
+              "seed.jaffle_shop.raw_orders",
+              "seed.jaffle_shop.raw_payments"
+            ],
+            "rationale": "Manually authored reference probe for the frozen integration test.",
+            "failure_kind": "DEFINITION_MISMATCH",
+            "sql": "with expected as (\nselect o.id order_id, sum(p.amount) / 100.0 expected_aud\nfrom raw_orders o left join raw_payments p on p.order_id = o.id\nwhere o.order_date between DATE '2018-01-01' and DATE '2018-04-30' group by o.id)\nselect e.order_id, e.expected_aud, a.amount observed_aud\nfrom expected e left join orders a on e.order_id = a.order_id\nwhere a.order_id is null or (e.expected_aud is not null and (a.amount is null or abs(a.amount-e.expected_aud) > 0.000001))",
+            "result": {
+              "sql": "with expected as (\nselect o.id order_id, sum(p.amount) / 100.0 expected_aud\nfrom raw_orders o left join raw_payments p on p.order_id = o.id\nwhere o.order_date between DATE '2018-01-01' and DATE '2018-04-30' group by o.id)\nselect e.order_id, e.expected_aud, a.amount observed_aud\nfrom expected e left join orders a on e.order_id = a.order_id\nwhere a.order_id is null or (e.expected_aud is not null and (a.amount is null or abs(a.amount-e.expected_aud) > 0.000001))",
+              "columns": [
+                "order_id",
+                "expected_aud",
+                "observed_aud"
+              ],
+              "rows": [],
+              "has_counterexamples": false,
+              "truncated": false,
+              "result_sha256": "7129cafc9d331c2ac6a4eda07803c8023e8bbd18ea97bc57163c3fe8e756786b"
+            }
+          },
+          {
+            "id": "grain",
+            "requirement_id": "G1",
+            "source_quote": "At the order grain, amounts are expressed in AUD. Raw payment amounts are integer Australian cents; 100 cents equals AUD 1. Every payment contribution is counted once.",
+            "node_ids": [
+              "model.jaffle_shop.orders",
+              "model.jaffle_shop.stg_orders",
+              "model.jaffle_shop.stg_payments",
+              "seed.jaffle_shop.raw_orders",
+              "seed.jaffle_shop.raw_payments"
+            ],
+            "rationale": "Manually authored reference probe for the frozen integration test.",
+            "failure_kind": "DEFINITION_MISMATCH",
+            "sql": "select order_id, count(*) rows_per_order from orders group by order_id having count(*) <> 1",
+            "result": {
+              "sql": "select order_id, count(*) rows_per_order from orders group by order_id having count(*) <> 1",
+              "columns": [
+                "order_id",
+                "rows_per_order"
+              ],
+              "rows": [],
+              "has_counterexamples": false,
+              "truncated": false,
+              "result_sha256": "5c9aff541a1339f9c757d565f14e6484fb99f3c843fbef52d371e2db174897fd"
+            }
+          },
+          {
+            "id": "evidence",
+            "requirement_id": "G3",
+            "source_quote": "Every raw payment needs a non-null amount, a unique payment ID and a valid order link. Missing amounts must not be treated as zero.",
+            "node_ids": [
+              "model.jaffle_shop.orders",
+              "model.jaffle_shop.stg_orders",
+              "model.jaffle_shop.stg_payments",
+              "seed.jaffle_shop.raw_orders",
+              "seed.jaffle_shop.raw_payments"
+            ],
+            "rationale": "Manually authored reference probe for the frozen integration test.",
+            "failure_kind": "MISSING_EVIDENCE",
+            "sql": "select p.id payment_id, p.order_id, p.amount,\ncase when p.amount is null then 'missing_amount' when o.id is null then 'missing_order' else 'duplicate_payment_id' end problem\nfrom raw_payments p left join raw_orders o on p.order_id=o.id\nwhere p.amount is null or o.id is null or p.id in (select id from raw_payments group by id having count(*) > 1)",
+            "result": {
+              "sql": "select p.id payment_id, p.order_id, p.amount,\ncase when p.amount is null then 'missing_amount' when o.id is null then 'missing_order' else 'duplicate_payment_id' end problem\nfrom raw_payments p left join raw_orders o on p.order_id=o.id\nwhere p.amount is null or o.id is null or p.id in (select id from raw_payments group by id having count(*) > 1)",
+              "columns": [
+                "payment_id",
+                "order_id",
+                "amount",
+                "problem"
+              ],
+              "rows": [
+                [
+                  9,
+                  9,
+                  null,
+                  "missing_amount"
+                ]
+              ],
+              "has_counterexamples": true,
+              "truncated": false,
+              "result_sha256": "952be3881f6fad27d287eada2b4c5c2737c1b6e87f9b4d9efdbeccd77661c322"
+            }
+          },
+          {
+            "id": "ceiling",
+            "requirement_id": "G4",
+            "source_quote": "Order 2 has an agreed gross payment ceiling of AUD 20.00. Actual recorded payments exceeding it violate this limit even when their sum is calculated correctly.",
+            "node_ids": [
+              "model.jaffle_shop.orders",
+              "model.jaffle_shop.stg_orders",
+              "model.jaffle_shop.stg_payments",
+              "seed.jaffle_shop.raw_orders",
+              "seed.jaffle_shop.raw_payments"
+            ],
+            "rationale": "Manually authored reference probe for the frozen integration test.",
+            "failure_kind": "DATA_VIOLATION",
+            "sql": "select order_id, sum(amount)/100.0 observed_aud, 20.0 agreed_ceiling_aud,\nsum(amount)/100.0 - 20.0 excess_aud from raw_payments where order_id=2 group by order_id having sum(amount)>2000",
+            "result": {
+              "sql": "select order_id, sum(amount)/100.0 observed_aud, 20.0 agreed_ceiling_aud,\nsum(amount)/100.0 - 20.0 excess_aud from raw_payments where order_id=2 group by order_id having sum(amount)>2000",
+              "columns": [
+                "order_id",
+                "observed_aud",
+                "agreed_ceiling_aud",
+                "excess_aud"
+              ],
+              "rows": [],
+              "has_counterexamples": false,
+              "truncated": false,
+              "result_sha256": "a0ef8abffb435f218963c9e2af632413ff1358f75dbd78c319f60cf630c1d84f"
+            }
+          }
+        ]
+      },
+      "agent_gate": "NOT_RUN"
+    },
+    {
+      "case": "amendment_applied",
+      "expected": "NO_ISSUE_DETECTED",
+      "reference_status": "NO_ISSUE_DETECTED",
+      "integration_pass": true,
+      "snapshot_id": "1ea64d6c92e1aa90b9ef67964d16f719567db53ee90e98d92a7b39481e2ee523",
+      "dependency_fingerprint": "2b87e7102500fbcb5712ea5ba0637b42e6bdc6874c9d389e067f923cff45d724",
+      "dependency_nodes": [
+        "model.jaffle_shop.orders",
+        "model.jaffle_shop.stg_orders",
+        "model.jaffle_shop.stg_payments",
+        "seed.jaffle_shop.raw_orders",
+        "seed.jaffle_shop.raw_payments"
+      ],
+      "dbt": {
+        "exit_code": 0,
+        "invocation_id": "08bf0a91-59c0-46c4-8771-4855aa6d2d02",
+        "statuses": {
+          "seed.jaffle_shop.raw_customers": "success",
+          "seed.jaffle_shop.raw_orders": "success",
+          "seed.jaffle_shop.raw_payments": "success",
+          "model.jaffle_shop.stg_customers": "success",
+          "model.jaffle_shop.stg_orders": "success",
+          "model.jaffle_shop.stg_payments": "success",
+          "test.jaffle_shop.not_null_stg_customers_customer_id.e2cfb1f9aa": "pass",
+          "test.jaffle_shop.unique_stg_customers_customer_id.c7614daada": "pass",
+          "test.jaffle_shop.accepted_values_stg_orders_status__placed__shipped__completed__return_pending__returned.080fb20aad": "pass",
+          "test.jaffle_shop.not_null_stg_orders_order_id.81cfe2fe64": "pass",
+          "test.jaffle_shop.unique_stg_orders_order_id.e3b841c71a": "pass",
+          "test.jaffle_shop.accepted_values_stg_payments_payment_method__credit_card__coupon__bank_transfer__gift_card.3c3820f278": "pass",
+          "test.jaffle_shop.not_null_stg_payments_payment_id.c19cc50075": "pass",
+          "test.jaffle_shop.unique_stg_payments_payment_id.3744510712": "pass",
+          "model.jaffle_shop.customers": "success",
+          "model.jaffle_shop.orders": "success",
+          "test.jaffle_shop.not_null_customers_customer_id.5c9bf9911d": "pass",
+          "test.jaffle_shop.unique_customers_customer_id.c5af1ff4b1": "pass",
+          "test.jaffle_shop.accepted_values_orders_status__placed__shipped__completed__return_pending__returned.be6b5b5ec3": "pass",
+          "test.jaffle_shop.not_null_orders_amount.106140f9fd": "pass",
+          "test.jaffle_shop.not_null_orders_bank_transfer_amount.7743500c49": "pass",
+          "test.jaffle_shop.not_null_orders_coupon_amount.ab90c90625": "pass",
+          "test.jaffle_shop.not_null_orders_credit_card_amount.d3ca593b59": "pass",
+          "test.jaffle_shop.not_null_orders_customer_id.c5f02694af": "pass",
+          "test.jaffle_shop.not_null_orders_gift_card_amount.413a0d2d7a": "pass",
+          "test.jaffle_shop.not_null_orders_order_id.cf6c17daed": "pass",
+          "test.jaffle_shop.relationships_orders_customer_id__customer_id__ref_customers_.c6ec7f58f2": "pass",
+          "test.jaffle_shop.unique_orders_order_id.fed79b3a6e": "pass"
+        },
+        "manifest_sha256": "9bfe0302239a442fcf1d1a5dc3ca771504e1aeb8fb0d410bcd68629bc2c2371f"
+      },
+      "metric_query": {
+        "sql": "select sum(amount) total_aud from orders where order_date between DATE '2018-01-01' and DATE '2018-04-30'",
+        "columns": [
+          "total_aud"
+        ],
+        "rows": [
+          [
+            1577.0
+          ]
+        ],
+        "has_counterexamples": true,
+        "truncated": false,
+        "result_sha256": "514af519974c0ba4fab6ce8af28ee5bdf38838c7da2d6fb9f3106a713fc2e88e"
+      },
+      "reference_observation": {
+        "status": "NO_ISSUE_DETECTED",
+        "issues": [],
+        "receipts": [
+          {
+            "id": "units",
+            "requirement_id": "G1",
+            "source_quote": "At the order grain, amounts are expressed in AUD. Raw payment amounts are integer Australian cents; 100 cents equals AUD 1. Every payment contribution is counted once.",
+            "node_ids": [
+              "model.jaffle_shop.orders",
+              "model.jaffle_shop.stg_orders",
+              "model.jaffle_shop.stg_payments",
+              "seed.jaffle_shop.raw_orders",
+              "seed.jaffle_shop.raw_payments"
+            ],
+            "rationale": "Manually authored reference probe for the frozen integration test.",
+            "failure_kind": "DEFINITION_MISMATCH",
+            "sql": "select s.payment_id, s.amount observed_aud, r.amount / 100.0 expected_aud\nfrom stg_payments s join raw_payments r on s.payment_id = r.id\nwhere r.amount is not null and (s.amount is null or abs(s.amount - r.amount / 100.0) > 0.000001)",
+            "result": {
+              "sql": "select s.payment_id, s.amount observed_aud, r.amount / 100.0 expected_aud\nfrom stg_payments s join raw_payments r on s.payment_id = r.id\nwhere r.amount is not null and (s.amount is null or abs(s.amount - r.amount / 100.0) > 0.000001)",
+              "columns": [
+                "payment_id",
+                "observed_aud",
+                "expected_aud"
+              ],
+              "rows": [],
+              "has_counterexamples": false,
+              "truncated": false,
+              "result_sha256": "989882cc1bcf662a5720e17761499e5cc7ed581f89b1c5b3a01b0de901ff0dfe"
+            }
+          },
+          {
+            "id": "definition",
+            "requirement_id": "G2",
+            "source_quote": "Include credit card, bank transfer, gift card and coupon payments across all order statuses. Aggregate by order date, without inferring settlement or cash collection. Amendment: exclude coupon payments for orders dated on or after 2018-02-01. Earlier orders retain their original treatment. Only this inclusion rule changes.",
+            "node_ids": [
+              "model.jaffle_shop.orders",
+              "model.jaffle_shop.stg_orders",
+              "model.jaffle_shop.stg_payments",
+              "seed.jaffle_shop.raw_orders",
+              "seed.jaffle_shop.raw_payments"
+            ],
+            "rationale": "Manually authored reference probe for the frozen integration test.",
+            "failure_kind": "DEFINITION_MISMATCH",
+            "sql": "with expected as (\nselect o.id order_id, sum(case when o.order_date >= DATE '2018-02-01' and p.payment_method = 'coupon' then 0 else p.amount end) / 100.0 expected_aud\nfrom raw_orders o left join raw_payments p on p.order_id = o.id\nwhere o.order_date between DATE '2018-01-01' and DATE '2018-04-30' group by o.id)\nselect e.order_id, e.expected_aud, a.amount observed_aud\nfrom expected e left join orders a on e.order_id = a.order_id\nwhere a.order_id is null or (e.expected_aud is not null and (a.amount is null or abs(a.amount-e.expected_aud) > 0.000001))",
+            "result": {
+              "sql": "with expected as (\nselect o.id order_id, sum(case when o.order_date >= DATE '2018-02-01' and p.payment_method = 'coupon' then 0 else p.amount end) / 100.0 expected_aud\nfrom raw_orders o left join raw_payments p on p.order_id = o.id\nwhere o.order_date between DATE '2018-01-01' and DATE '2018-04-30' group by o.id)\nselect e.order_id, e.expected_aud, a.amount observed_aud\nfrom expected e left join orders a on e.order_id = a.order_id\nwhere a.order_id is null or (e.expected_aud is not null and (a.amount is null or abs(a.amount-e.expected_aud) > 0.000001))",
+              "columns": [
+                "order_id",
+                "expected_aud",
+                "observed_aud"
+              ],
+              "rows": [],
+              "has_counterexamples": false,
+              "truncated": false,
+              "result_sha256": "7129cafc9d331c2ac6a4eda07803c8023e8bbd18ea97bc57163c3fe8e756786b"
+            }
+          },
+          {
+            "id": "grain",
+            "requirement_id": "G1",
+            "source_quote": "At the order grain, amounts are expressed in AUD. Raw payment amounts are integer Australian cents; 100 cents equals AUD 1. Every payment contribution is counted once.",
+            "node_ids": [
+              "model.jaffle_shop.orders",
+              "model.jaffle_shop.stg_orders",
+              "model.jaffle_shop.stg_payments",
+              "seed.jaffle_shop.raw_orders",
+              "seed.jaffle_shop.raw_payments"
+            ],
+            "rationale": "Manually authored reference probe for the frozen integration test.",
+            "failure_kind": "DEFINITION_MISMATCH",
+            "sql": "select order_id, count(*) rows_per_order from orders group by order_id having count(*) <> 1",
+            "result": {
+              "sql": "select order_id, count(*) rows_per_order from orders group by order_id having count(*) <> 1",
+              "columns": [
+                "order_id",
+                "rows_per_order"
+              ],
+              "rows": [],
+              "has_counterexamples": false,
+              "truncated": false,
+              "result_sha256": "5c9aff541a1339f9c757d565f14e6484fb99f3c843fbef52d371e2db174897fd"
+            }
+          },
+          {
+            "id": "evidence",
+            "requirement_id": "G3",
+            "source_quote": "Every raw payment needs a non-null amount, a unique payment ID and a valid order link. Missing amounts must not be treated as zero.",
+            "node_ids": [
+              "model.jaffle_shop.orders",
+              "model.jaffle_shop.stg_orders",
+              "model.jaffle_shop.stg_payments",
+              "seed.jaffle_shop.raw_orders",
+              "seed.jaffle_shop.raw_payments"
+            ],
+            "rationale": "Manually authored reference probe for the frozen integration test.",
+            "failure_kind": "MISSING_EVIDENCE",
+            "sql": "select p.id payment_id, p.order_id, p.amount,\ncase when p.amount is null then 'missing_amount' when o.id is null then 'missing_order' else 'duplicate_payment_id' end problem\nfrom raw_payments p left join raw_orders o on p.order_id=o.id\nwhere p.amount is null or o.id is null or p.id in (select id from raw_payments group by id having count(*) > 1)",
+            "result": {
+              "sql": "select p.id payment_id, p.order_id, p.amount,\ncase when p.amount is null then 'missing_amount' when o.id is null then 'missing_order' else 'duplicate_payment_id' end problem\nfrom raw_payments p left join raw_orders o on p.order_id=o.id\nwhere p.amount is null or o.id is null or p.id in (select id from raw_payments group by id having count(*) > 1)",
+              "columns": [
+                "payment_id",
+                "order_id",
+                "amount",
+                "problem"
+              ],
+              "rows": [],
+              "has_counterexamples": false,
+              "truncated": false,
+              "result_sha256": "2ef1b667c39ee080ae080cd4b29d08d991ec8709299fba86e399ef3b7a2f6d4e"
+            }
+          },
+          {
+            "id": "ceiling",
+            "requirement_id": "G4",
+            "source_quote": "Order 2 has an agreed gross payment ceiling of AUD 20.00. Actual recorded payments exceeding it violate this limit even when their sum is calculated correctly.",
+            "node_ids": [
+              "model.jaffle_shop.orders",
+              "model.jaffle_shop.stg_orders",
+              "model.jaffle_shop.stg_payments",
+              "seed.jaffle_shop.raw_orders",
+              "seed.jaffle_shop.raw_payments"
+            ],
+            "rationale": "Manually authored reference probe for the frozen integration test.",
+            "failure_kind": "DATA_VIOLATION",
+            "sql": "select order_id, sum(amount)/100.0 observed_aud, 20.0 agreed_ceiling_aud,\nsum(amount)/100.0 - 20.0 excess_aud from raw_payments where order_id=2 group by order_id having sum(amount)>2000",
+            "result": {
+              "sql": "select order_id, sum(amount)/100.0 observed_aud, 20.0 agreed_ceiling_aud,\nsum(amount)/100.0 - 20.0 excess_aud from raw_payments where order_id=2 group by order_id having sum(amount)>2000",
+              "columns": [
+                "order_id",
+                "observed_aud",
+                "agreed_ceiling_aud",
+                "excess_aud"
+              ],
+              "rows": [],
+              "has_counterexamples": false,
+              "truncated": false,
+              "result_sha256": "a0ef8abffb435f218963c9e2af632413ff1358f75dbd78c319f60cf630c1d84f"
+            }
+          }
+        ]
+      },
+      "agent_gate": "NOT_RUN"
+    },
+    {
+      "case": "equivalent_description",
+      "expected": "NO_ISSUE_DETECTED",
+      "reference_status": "NO_ISSUE_DETECTED",
+      "integration_pass": true,
+      "snapshot_id": "1f7d8f16e7bf8e938d8c78f70aa50d261dcffd27511885cf85ce6c3fba19342e",
+      "dependency_fingerprint": "04739ee28c3c18eac06946cc7333b12f1b91e457ed59762de87df550522db2f1",
+      "dependency_nodes": [
+        "model.jaffle_shop.orders",
+        "model.jaffle_shop.stg_orders",
+        "model.jaffle_shop.stg_payments",
+        "seed.jaffle_shop.raw_orders",
+        "seed.jaffle_shop.raw_payments"
+      ],
+      "dbt": {
+        "exit_code": 0,
+        "invocation_id": "564e4df5-eb99-4eb3-9cd7-2c946487d681",
+        "statuses": {
+          "seed.jaffle_shop.raw_customers": "success",
+          "seed.jaffle_shop.raw_orders": "success",
+          "seed.jaffle_shop.raw_payments": "success",
+          "model.jaffle_shop.stg_customers": "success",
+          "model.jaffle_shop.stg_orders": "success",
+          "model.jaffle_shop.stg_payments": "success",
+          "test.jaffle_shop.not_null_stg_customers_customer_id.e2cfb1f9aa": "pass",
+          "test.jaffle_shop.unique_stg_customers_customer_id.c7614daada": "pass",
+          "test.jaffle_shop.accepted_values_stg_orders_status__placed__shipped__completed__return_pending__returned.080fb20aad": "pass",
+          "test.jaffle_shop.not_null_stg_orders_order_id.81cfe2fe64": "pass",
+          "test.jaffle_shop.unique_stg_orders_order_id.e3b841c71a": "pass",
+          "test.jaffle_shop.accepted_values_stg_payments_payment_method__credit_card__coupon__bank_transfer__gift_card.3c3820f278": "pass",
+          "test.jaffle_shop.not_null_stg_payments_payment_id.c19cc50075": "pass",
+          "test.jaffle_shop.unique_stg_payments_payment_id.3744510712": "pass",
+          "model.jaffle_shop.customers": "success",
+          "model.jaffle_shop.orders": "success",
+          "test.jaffle_shop.not_null_customers_customer_id.5c9bf9911d": "pass",
+          "test.jaffle_shop.unique_customers_customer_id.c5af1ff4b1": "pass",
+          "test.jaffle_shop.accepted_values_orders_status__placed__shipped__completed__return_pending__returned.be6b5b5ec3": "pass",
+          "test.jaffle_shop.not_null_orders_amount.106140f9fd": "pass",
+          "test.jaffle_shop.not_null_orders_bank_transfer_amount.7743500c49": "pass",
+          "test.jaffle_shop.not_null_orders_coupon_amount.ab90c90625": "pass",
+          "test.jaffle_shop.not_null_orders_credit_card_amount.d3ca593b59": "pass",
+          "test.jaffle_shop.not_null_orders_customer_id.c5f02694af": "pass",
+          "test.jaffle_shop.not_null_orders_gift_card_amount.413a0d2d7a": "pass",
+          "test.jaffle_shop.not_null_orders_order_id.cf6c17daed": "pass",
+          "test.jaffle_shop.relationships_orders_customer_id__customer_id__ref_customers_.c6ec7f58f2": "pass",
+          "test.jaffle_shop.unique_orders_order_id.fed79b3a6e": "pass"
+        },
+        "manifest_sha256": "7b9fd7d05c9f59a96461e30ae40bcaac8fa093683bef96c6dc6f89971e9e3f44"
+      },
+      "metric_query": {
+        "sql": "select sum(amount) total_aud from orders where order_date between DATE '2018-01-01' and DATE '2018-04-30'",
+        "columns": [
+          "total_aud"
+        ],
+        "rows": [
+          [
+            1672.0
+          ]
+        ],
+        "has_counterexamples": true,
+        "truncated": false,
+        "result_sha256": "43e6f776e6cc7dd53ad730a96394ae02ae3fe89472bc9b770fecf2424c3bce59"
+      },
+      "reference_observation": {
+        "status": "NO_ISSUE_DETECTED",
+        "issues": [],
+        "receipts": [
+          {
+            "id": "units",
+            "requirement_id": "G1",
+            "source_quote": "At the order grain, amounts are expressed in AUD. Raw payment amounts are integer Australian cents; 100 cents equals AUD 1. Every payment contribution is counted once.",
+            "node_ids": [
+              "model.jaffle_shop.orders",
+              "model.jaffle_shop.stg_orders",
+              "model.jaffle_shop.stg_payments",
+              "seed.jaffle_shop.raw_orders",
+              "seed.jaffle_shop.raw_payments"
+            ],
+            "rationale": "Manually authored reference probe for the frozen integration test.",
+            "failure_kind": "DEFINITION_MISMATCH",
+            "sql": "select s.payment_id, s.amount observed_aud, r.amount / 100.0 expected_aud\nfrom stg_payments s join raw_payments r on s.payment_id = r.id\nwhere r.amount is not null and (s.amount is null or abs(s.amount - r.amount / 100.0) > 0.000001)",
+            "result": {
+              "sql": "select s.payment_id, s.amount observed_aud, r.amount / 100.0 expected_aud\nfrom stg_payments s join raw_payments r on s.payment_id = r.id\nwhere r.amount is not null and (s.amount is null or abs(s.amount - r.amount / 100.0) > 0.000001)",
+              "columns": [
+                "payment_id",
+                "observed_aud",
+                "expected_aud"
+              ],
+              "rows": [],
+              "has_counterexamples": false,
+              "truncated": false,
+              "result_sha256": "989882cc1bcf662a5720e17761499e5cc7ed581f89b1c5b3a01b0de901ff0dfe"
+            }
+          },
+          {
+            "id": "definition",
+            "requirement_id": "G2",
+            "source_quote": "Include credit card, bank transfer, gift card and coupon payments across all order statuses. Aggregate by order date, without inferring settlement or cash collection.",
+            "node_ids": [
+              "model.jaffle_shop.orders",
+              "model.jaffle_shop.stg_orders",
+              "model.jaffle_shop.stg_payments",
+              "seed.jaffle_shop.raw_orders",
+              "seed.jaffle_shop.raw_payments"
+            ],
+            "rationale": "Manually authored reference probe for the frozen integration test.",
+            "failure_kind": "DEFINITION_MISMATCH",
+            "sql": "with expected as (\nselect o.id order_id, sum(p.amount) / 100.0 expected_aud\nfrom raw_orders o left join raw_payments p on p.order_id = o.id\nwhere o.order_date between DATE '2018-01-01' and DATE '2018-04-30' group by o.id)\nselect e.order_id, e.expected_aud, a.amount observed_aud\nfrom expected e left join orders a on e.order_id = a.order_id\nwhere a.order_id is null or (e.expected_aud is not null and (a.amount is null or abs(a.amount-e.expected_aud) > 0.000001))",
+            "result": {
+              "sql": "with expected as (\nselect o.id order_id, sum(p.amount) / 100.0 expected_aud\nfrom raw_orders o left join raw_payments p on p.order_id = o.id\nwhere o.order_date between DATE '2018-01-01' and DATE '2018-04-30' group by o.id)\nselect e.order_id, e.expected_aud, a.amount observed_aud\nfrom expected e left join orders a on e.order_id = a.order_id\nwhere a.order_id is null or (e.expected_aud is not null and (a.amount is null or abs(a.amount-e.expected_aud) > 0.000001))",
+              "columns": [
+                "order_id",
+                "expected_aud",
+                "observed_aud"
+              ],
+              "rows": [],
+              "has_counterexamples": false,
+              "truncated": false,
+              "result_sha256": "7129cafc9d331c2ac6a4eda07803c8023e8bbd18ea97bc57163c3fe8e756786b"
+            }
+          },
+          {
+            "id": "grain",
+            "requirement_id": "G1",
+            "source_quote": "At the order grain, amounts are expressed in AUD. Raw payment amounts are integer Australian cents; 100 cents equals AUD 1. Every payment contribution is counted once.",
+            "node_ids": [
+              "model.jaffle_shop.orders",
+              "model.jaffle_shop.stg_orders",
+              "model.jaffle_shop.stg_payments",
+              "seed.jaffle_shop.raw_orders",
+              "seed.jaffle_shop.raw_payments"
+            ],
+            "rationale": "Manually authored reference probe for the frozen integration test.",
+            "failure_kind": "DEFINITION_MISMATCH",
+            "sql": "select order_id, count(*) rows_per_order from orders group by order_id having count(*) <> 1",
+            "result": {
+              "sql": "select order_id, count(*) rows_per_order from orders group by order_id having count(*) <> 1",
+              "columns": [
+                "order_id",
+                "rows_per_order"
+              ],
+              "rows": [],
+              "has_counterexamples": false,
+              "truncated": false,
+              "result_sha256": "5c9aff541a1339f9c757d565f14e6484fb99f3c843fbef52d371e2db174897fd"
+            }
+          },
+          {
+            "id": "evidence",
+            "requirement_id": "G3",
+            "source_quote": "Every raw payment needs a non-null amount, a unique payment ID and a valid order link. Missing amounts must not be treated as zero.",
+            "node_ids": [
+              "model.jaffle_shop.orders",
+              "model.jaffle_shop.stg_orders",
+              "model.jaffle_shop.stg_payments",
+              "seed.jaffle_shop.raw_orders",
+              "seed.jaffle_shop.raw_payments"
+            ],
+            "rationale": "Manually authored reference probe for the frozen integration test.",
+            "failure_kind": "MISSING_EVIDENCE",
+            "sql": "select p.id payment_id, p.order_id, p.amount,\ncase when p.amount is null then 'missing_amount' when o.id is null then 'missing_order' else 'duplicate_payment_id' end problem\nfrom raw_payments p left join raw_orders o on p.order_id=o.id\nwhere p.amount is null or o.id is null or p.id in (select id from raw_payments group by id having count(*) > 1)",
+            "result": {
+              "sql": "select p.id payment_id, p.order_id, p.amount,\ncase when p.amount is null then 'missing_amount' when o.id is null then 'missing_order' else 'duplicate_payment_id' end problem\nfrom raw_payments p left join raw_orders o on p.order_id=o.id\nwhere p.amount is null or o.id is null or p.id in (select id from raw_payments group by id having count(*) > 1)",
+              "columns": [
+                "payment_id",
+                "order_id",
+                "amount",
+                "problem"
+              ],
+              "rows": [],
+              "has_counterexamples": false,
+              "truncated": false,
+              "result_sha256": "2ef1b667c39ee080ae080cd4b29d08d991ec8709299fba86e399ef3b7a2f6d4e"
+            }
+          },
+          {
+            "id": "ceiling",
+            "requirement_id": "G4",
+            "source_quote": "Order 2 has an agreed gross payment ceiling of AUD 20.00. Actual recorded payments exceeding it violate this limit even when their sum is calculated correctly.",
+            "node_ids": [
+              "model.jaffle_shop.orders",
+              "model.jaffle_shop.stg_orders",
+              "model.jaffle_shop.stg_payments",
+              "seed.jaffle_shop.raw_orders",
+              "seed.jaffle_shop.raw_payments"
+            ],
+            "rationale": "Manually authored reference probe for the frozen integration test.",
+            "failure_kind": "DATA_VIOLATION",
+            "sql": "select order_id, sum(amount)/100.0 observed_aud, 20.0 agreed_ceiling_aud,\nsum(amount)/100.0 - 20.0 excess_aud from raw_payments where order_id=2 group by order_id having sum(amount)>2000",
+            "result": {
+              "sql": "select order_id, sum(amount)/100.0 observed_aud, 20.0 agreed_ceiling_aud,\nsum(amount)/100.0 - 20.0 excess_aud from raw_payments where order_id=2 group by order_id having sum(amount)>2000",
+              "columns": [
+                "order_id",
+                "observed_aud",
+                "agreed_ceiling_aud",
+                "excess_aud"
+              ],
+              "rows": [],
+              "has_counterexamples": false,
+              "truncated": false,
+              "result_sha256": "a0ef8abffb435f218963c9e2af632413ff1358f75dbd78c319f60cf630c1d84f"
+            }
+          }
+        ]
+      },
+      "agent_gate": "NOT_RUN"
+    },
+    {
+      "case": "unrelated_downstream_change",
+      "expected": "NO_ISSUE_DETECTED",
+      "reference_status": "NO_ISSUE_DETECTED",
+      "integration_pass": true,
+      "snapshot_id": "68813bf9299d46a9abe9904f4ef3defa4818a373281b608fe98eadd235b28bdd",
+      "dependency_fingerprint": "1ac9ad75aa80300d8bf12b937c4a4b75c797dc7d615b21c780d549033ec5c5b3",
+      "dependency_nodes": [
+        "model.jaffle_shop.orders",
+        "model.jaffle_shop.stg_orders",
+        "model.jaffle_shop.stg_payments",
+        "seed.jaffle_shop.raw_orders",
+        "seed.jaffle_shop.raw_payments"
+      ],
+      "dbt": {
+        "exit_code": 0,
+        "invocation_id": "b92d01a7-d0af-4908-ae51-920867d881a1",
+        "statuses": {
+          "seed.jaffle_shop.raw_customers": "success",
+          "seed.jaffle_shop.raw_orders": "success",
+          "seed.jaffle_shop.raw_payments": "success",
+          "model.jaffle_shop.stg_customers": "success",
+          "model.jaffle_shop.stg_orders": "success",
+          "model.jaffle_shop.stg_payments": "success",
+          "test.jaffle_shop.not_null_stg_customers_customer_id.e2cfb1f9aa": "pass",
+          "test.jaffle_shop.unique_stg_customers_customer_id.c7614daada": "pass",
+          "test.jaffle_shop.accepted_values_stg_orders_status__placed__shipped__completed__return_pending__returned.080fb20aad": "pass",
+          "test.jaffle_shop.not_null_stg_orders_order_id.81cfe2fe64": "pass",
+          "test.jaffle_shop.unique_stg_orders_order_id.e3b841c71a": "pass",
+          "test.jaffle_shop.accepted_values_stg_payments_payment_method__credit_card__coupon__bank_transfer__gift_card.3c3820f278": "pass",
+          "test.jaffle_shop.not_null_stg_payments_payment_id.c19cc50075": "pass",
+          "test.jaffle_shop.unique_stg_payments_payment_id.3744510712": "pass",
+          "model.jaffle_shop.customers": "success",
+          "model.jaffle_shop.orders": "success",
+          "test.jaffle_shop.not_null_customers_customer_id.5c9bf9911d": "pass",
+          "test.jaffle_shop.unique_customers_customer_id.c5af1ff4b1": "pass",
+          "test.jaffle_shop.accepted_values_orders_status__placed__shipped__completed__return_pending__returned.be6b5b5ec3": "pass",
+          "test.jaffle_shop.not_null_orders_amount.106140f9fd": "pass",
+          "test.jaffle_shop.not_null_orders_bank_transfer_amount.7743500c49": "pass",
+          "test.jaffle_shop.not_null_orders_coupon_amount.ab90c90625": "pass",
+          "test.jaffle_shop.not_null_orders_credit_card_amount.d3ca593b59": "pass",
+          "test.jaffle_shop.not_null_orders_customer_id.c5f02694af": "pass",
+          "test.jaffle_shop.not_null_orders_gift_card_amount.413a0d2d7a": "pass",
+          "test.jaffle_shop.not_null_orders_order_id.cf6c17daed": "pass",
+          "test.jaffle_shop.relationships_orders_customer_id__customer_id__ref_customers_.c6ec7f58f2": "pass",
+          "test.jaffle_shop.unique_orders_order_id.fed79b3a6e": "pass"
+        },
+        "manifest_sha256": "235867cac5ca0a2a617f0033c455d649098a2459bb4f08bb8f062eb70f413fb2"
+      },
+      "metric_query": {
+        "sql": "select sum(amount) total_aud from orders where order_date between DATE '2018-01-01' and DATE '2018-04-30'",
+        "columns": [
+          "total_aud"
+        ],
+        "rows": [
+          [
+            1672.0
+          ]
+        ],
+        "has_counterexamples": true,
+        "truncated": false,
+        "result_sha256": "43e6f776e6cc7dd53ad730a96394ae02ae3fe89472bc9b770fecf2424c3bce59"
+      },
+      "reference_observation": {
+        "status": "NO_ISSUE_DETECTED",
+        "issues": [],
+        "receipts": [
+          {
+            "id": "units",
+            "requirement_id": "G1",
+            "source_quote": "At the order grain, amounts are expressed in AUD. Raw payment amounts are integer Australian cents; 100 cents equals AUD 1. Every payment contribution is counted once.",
+            "node_ids": [
+              "model.jaffle_shop.orders",
+              "model.jaffle_shop.stg_orders",
+              "model.jaffle_shop.stg_payments",
+              "seed.jaffle_shop.raw_orders",
+              "seed.jaffle_shop.raw_payments"
+            ],
+            "rationale": "Manually authored reference probe for the frozen integration test.",
+            "failure_kind": "DEFINITION_MISMATCH",
+            "sql": "select s.payment_id, s.amount observed_aud, r.amount / 100.0 expected_aud\nfrom stg_payments s join raw_payments r on s.payment_id = r.id\nwhere r.amount is not null and (s.amount is null or abs(s.amount - r.amount / 100.0) > 0.000001)",
+            "result": {
+              "sql": "select s.payment_id, s.amount observed_aud, r.amount / 100.0 expected_aud\nfrom stg_payments s join raw_payments r on s.payment_id = r.id\nwhere r.amount is not null and (s.amount is null or abs(s.amount - r.amount / 100.0) > 0.000001)",
+              "columns": [
+                "payment_id",
+                "observed_aud",
+                "expected_aud"
+              ],
+              "rows": [],
+              "has_counterexamples": false,
+              "truncated": false,
+              "result_sha256": "989882cc1bcf662a5720e17761499e5cc7ed581f89b1c5b3a01b0de901ff0dfe"
+            }
+          },
+          {
+            "id": "definition",
+            "requirement_id": "G2",
+            "source_quote": "Include credit card, bank transfer, gift card and coupon payments across all order statuses. Aggregate by order date, without inferring settlement or cash collection.",
+            "node_ids": [
+              "model.jaffle_shop.orders",
+              "model.jaffle_shop.stg_orders",
+              "model.jaffle_shop.stg_payments",
+              "seed.jaffle_shop.raw_orders",
+              "seed.jaffle_shop.raw_payments"
+            ],
+            "rationale": "Manually authored reference probe for the frozen integration test.",
+            "failure_kind": "DEFINITION_MISMATCH",
+            "sql": "with expected as (\nselect o.id order_id, sum(p.amount) / 100.0 expected_aud\nfrom raw_orders o left join raw_payments p on p.order_id = o.id\nwhere o.order_date between DATE '2018-01-01' and DATE '2018-04-30' group by o.id)\nselect e.order_id, e.expected_aud, a.amount observed_aud\nfrom expected e left join orders a on e.order_id = a.order_id\nwhere a.order_id is null or (e.expected_aud is not null and (a.amount is null or abs(a.amount-e.expected_aud) > 0.000001))",
+            "result": {
+              "sql": "with expected as (\nselect o.id order_id, sum(p.amount) / 100.0 expected_aud\nfrom raw_orders o left join raw_payments p on p.order_id = o.id\nwhere o.order_date between DATE '2018-01-01' and DATE '2018-04-30' group by o.id)\nselect e.order_id, e.expected_aud, a.amount observed_aud\nfrom expected e left join orders a on e.order_id = a.order_id\nwhere a.order_id is null or (e.expected_aud is not null and (a.amount is null or abs(a.amount-e.expected_aud) > 0.000001))",
+              "columns": [
+                "order_id",
+                "expected_aud",
+                "observed_aud"
+              ],
+              "rows": [],
+              "has_counterexamples": false,
+              "truncated": false,
+              "result_sha256": "7129cafc9d331c2ac6a4eda07803c8023e8bbd18ea97bc57163c3fe8e756786b"
+            }
+          },
+          {
+            "id": "grain",
+            "requirement_id": "G1",
+            "source_quote": "At the order grain, amounts are expressed in AUD. Raw payment amounts are integer Australian cents; 100 cents equals AUD 1. Every payment contribution is counted once.",
+            "node_ids": [
+              "model.jaffle_shop.orders",
+              "model.jaffle_shop.stg_orders",
+              "model.jaffle_shop.stg_payments",
+              "seed.jaffle_shop.raw_orders",
+              "seed.jaffle_shop.raw_payments"
+            ],
+            "rationale": "Manually authored reference probe for the frozen integration test.",
+            "failure_kind": "DEFINITION_MISMATCH",
+            "sql": "select order_id, count(*) rows_per_order from orders group by order_id having count(*) <> 1",
+            "result": {
+              "sql": "select order_id, count(*) rows_per_order from orders group by order_id having count(*) <> 1",
+              "columns": [
+                "order_id",
+                "rows_per_order"
+              ],
+              "rows": [],
+              "has_counterexamples": false,
+              "truncated": false,
+              "result_sha256": "5c9aff541a1339f9c757d565f14e6484fb99f3c843fbef52d371e2db174897fd"
+            }
+          },
+          {
+            "id": "evidence",
+            "requirement_id": "G3",
+            "source_quote": "Every raw payment needs a non-null amount, a unique payment ID and a valid order link. Missing amounts must not be treated as zero.",
+            "node_ids": [
+              "model.jaffle_shop.orders",
+              "model.jaffle_shop.stg_orders",
+              "model.jaffle_shop.stg_payments",
+              "seed.jaffle_shop.raw_orders",
+              "seed.jaffle_shop.raw_payments"
+            ],
+            "rationale": "Manually authored reference probe for the frozen integration test.",
+            "failure_kind": "MISSING_EVIDENCE",
+            "sql": "select p.id payment_id, p.order_id, p.amount,\ncase when p.amount is null then 'missing_amount' when o.id is null then 'missing_order' else 'duplicate_payment_id' end problem\nfrom raw_payments p left join raw_orders o on p.order_id=o.id\nwhere p.amount is null or o.id is null or p.id in (select id from raw_payments group by id having count(*) > 1)",
+            "result": {
+              "sql": "select p.id payment_id, p.order_id, p.amount,\ncase when p.amount is null then 'missing_amount' when o.id is null then 'missing_order' else 'duplicate_payment_id' end problem\nfrom raw_payments p left join raw_orders o on p.order_id=o.id\nwhere p.amount is null or o.id is null or p.id in (select id from raw_payments group by id having count(*) > 1)",
+              "columns": [
+                "payment_id",
+                "order_id",
+                "amount",
+                "problem"
+              ],
+              "rows": [],
+              "has_counterexamples": false,
+              "truncated": false,
+              "result_sha256": "2ef1b667c39ee080ae080cd4b29d08d991ec8709299fba86e399ef3b7a2f6d4e"
+            }
+          },
+          {
+            "id": "ceiling",
+            "requirement_id": "G4",
+            "source_quote": "Order 2 has an agreed gross payment ceiling of AUD 20.00. Actual recorded payments exceeding it violate this limit even when their sum is calculated correctly.",
+            "node_ids": [
+              "model.jaffle_shop.orders",
+              "model.jaffle_shop.stg_orders",
+              "model.jaffle_shop.stg_payments",
+              "seed.jaffle_shop.raw_orders",
+              "seed.jaffle_shop.raw_payments"
+            ],
+            "rationale": "Manually authored reference probe for the frozen integration test.",
+            "failure_kind": "DATA_VIOLATION",
+            "sql": "select order_id, sum(amount)/100.0 observed_aud, 20.0 agreed_ceiling_aud,\nsum(amount)/100.0 - 20.0 excess_aud from raw_payments where order_id=2 group by order_id having sum(amount)>2000",
+            "result": {
+              "sql": "select order_id, sum(amount)/100.0 observed_aud, 20.0 agreed_ceiling_aud,\nsum(amount)/100.0 - 20.0 excess_aud from raw_payments where order_id=2 group by order_id having sum(amount)>2000",
+              "columns": [
+                "order_id",
+                "observed_aud",
+                "agreed_ceiling_aud",
+                "excess_aud"
+              ],
+              "rows": [],
+              "has_counterexamples": false,
+              "truncated": false,
+              "result_sha256": "a0ef8abffb435f218963c9e2af632413ff1358f75dbd78c319f60cf630c1d84f"
+            }
+          }
+        ]
+      },
+      "agent_gate": "NOT_RUN"
+    }
+  ]
+}

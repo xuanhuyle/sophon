@@ -1,0 +1,205 @@
+{
+  "review_mode": "interactive_conversational_review_of_known_fixture",
+  "independent_accuracy_test": false,
+  "scope": "G2 amendment, G1 units/order grain, G3 prerequisites, G5 cohort; G4 ceiling not assessed",
+  "governing_clauses": {
+    "G1": "At the order grain, amounts are expressed in AUD. Raw payment amounts are integer Australian cents; 100 cents equals AUD 1. Every payment contribution is counted once.",
+    "G2": "Include credit card, bank transfer, gift card and coupon payments across all order statuses. Aggregate by order date, without inferring settlement or cash collection. Amendment: exclude coupon payments for orders dated on or after 2018-02-01. Earlier orders retain their original treatment. Only this inclusion rule changes.",
+    "G3": "Every raw payment needs a non-null amount, a unique payment ID and a valid order link. Missing amounts must not be treated as zero.",
+    "G4": "Order 2 has an agreed gross payment ceiling of AUD 20.00. Actual recorded payments exceeding it violate this limit even when their sum is calculated correctly.",
+    "G5": "Reporting scope is orders dated from 2018-01-01 through 2018-04-30 inclusive."
+  },
+  "snapshot_id": "c47f66d3bcbfec87899aa216d2628bb2baee12e6a45bc315a7194e00d4e74ca4",
+  "derivation": "The model sums payments before joining order dates, so it has no date-dependent coupon exclusion. Compare its output to raw cents aggregated under G2.",
+  "prerequisites": {
+    "sql": "\nselect 'missing_payment_amount' as issue, count(*) as affected\nfrom main.raw_payments where amount is null\nunion all\nselect 'missing_payment_id', count(*) from main.raw_payments where id is null\nunion all\nselect 'duplicate_payment_id', count(*) from\n  (select id from main.raw_payments group by id having count(*) > 1)\nunion all\nselect 'invalid_order_link', count(*) from main.raw_payments p\nwhere not exists (select 1 from main.raw_orders o where o.id = p.order_id)\nunion all\nselect 'invalid_raw_order_key', count(*) from\n  (select id from main.raw_orders group by id having id is null or count(*) > 1)\nunion all\nselect 'invalid_model_order_key', count(*) from\n  (select order_id from main.orders group by order_id\n   having order_id is null or count(*) > 1)\nunion all\nselect 'missing_raw_order_date', count(*) from main.raw_orders where order_date is null\nunion all\nselect 'unrecognized_method', count(*) from main.raw_payments\nwhere payment_method is null or payment_method not in\n  ('credit_card', 'bank_transfer', 'gift_card', 'coupon')\n",
+    "columns": [
+      "issue",
+      "affected"
+    ],
+    "rows": [
+      [
+        "missing_payment_amount",
+        0
+      ],
+      [
+        "missing_payment_id",
+        0
+      ],
+      [
+        "duplicate_payment_id",
+        0
+      ],
+      [
+        "invalid_order_link",
+        0
+      ],
+      [
+        "invalid_raw_order_key",
+        0
+      ],
+      [
+        "invalid_model_order_key",
+        0
+      ],
+      [
+        "missing_raw_order_date",
+        0
+      ],
+      [
+        "unrecognized_method",
+        0
+      ]
+    ],
+    "truncated": false,
+    "result_sha256": "ecdfd1ac93c5e98f56db4f3b81fa0d0cad257a3dd2c8eabeff2a3fc91cf7ff6d",
+    "has_rows": true
+  },
+  "discrepancies": {
+    "sql": "select * from (\nwith governed as (\n  select o.id as order_id, o.order_date,\n    count(p.id) as payment_count,\n    sum(case when p.payment_method = 'coupon'\n                  and o.order_date >= date '2018-02-01'\n             then 0 else p.amount end) as governed_cents,\n    sum(p.amount) as original_cents\n  from main.raw_orders o\n  left join main.raw_payments p on p.order_id = o.id\n  where o.order_date between date '2018-01-01' and date '2018-04-30'\n  group by o.id, o.order_date\n), actual as (\n  select order_id, order_date, amount from main.orders\n  where order_date between date '2018-01-01' and date '2018-04-30'\n)\nselect coalesce(g.order_id, a.order_id) as order_id,\n       g.order_date as governing_order_date, a.order_date as model_order_date,\n       g.payment_count,\n       cast(a.amount as decimal(18,2)) as reported_aud,\n       cast(g.original_cents / 100.0 as decimal(18,2)) as original_aud,\n       cast(g.governed_cents / 100.0 as decimal(18,2)) as amended_aud,\n       cast(a.amount - g.governed_cents / 100.0 as decimal(18,2)) as difference_aud,\n       case when g.order_id is null or a.order_id is null then 'missing_order'\n            when g.payment_count = 0 then 'no_payment_evidence'\n            when g.order_date is distinct from a.order_date then 'date_mismatch'\n            when a.amount is null then 'missing_model_amount'\n            when abs(a.amount - g.governed_cents / 100.0) > 0.000001\n                 then 'amount_mismatch' else 'aligned' end as disposition\nfrom governed g full outer join actual a on g.order_id = a.order_id\n) r where disposition <> 'aligned' order by order_id",
+    "columns": [
+      "order_id",
+      "governing_order_date",
+      "model_order_date",
+      "payment_count",
+      "reported_aud",
+      "original_aud",
+      "amended_aud",
+      "difference_aud",
+      "disposition"
+    ],
+    "rows": [
+      [
+        42,
+        "2018-02-16",
+        "2018-02-16",
+        1,
+        "17.00",
+        "17.00",
+        "0.00",
+        "17.00",
+        "amount_mismatch"
+      ],
+      [
+        58,
+        "2018-03-01",
+        "2018-03-01",
+        2,
+        "24.00",
+        "24.00",
+        "6.00",
+        "18.00",
+        "amount_mismatch"
+      ],
+      [
+        76,
+        "2018-03-20",
+        "2018-03-20",
+        1,
+        "2.00",
+        "2.00",
+        "0.00",
+        "2.00",
+        "amount_mismatch"
+      ],
+      [
+        81,
+        "2018-03-23",
+        "2018-03-23",
+        1,
+        "2.00",
+        "2.00",
+        "0.00",
+        "2.00",
+        "amount_mismatch"
+      ],
+      [
+        86,
+        "2018-03-26",
+        "2018-03-26",
+        1,
+        "23.00",
+        "23.00",
+        "0.00",
+        "23.00",
+        "amount_mismatch"
+      ],
+      [
+        92,
+        "2018-04-02",
+        "2018-04-02",
+        2,
+        "17.00",
+        "17.00",
+        "15.00",
+        "2.00",
+        "amount_mismatch"
+      ],
+      [
+        94,
+        "2018-04-03",
+        "2018-04-03",
+        1,
+        "7.00",
+        "7.00",
+        "0.00",
+        "7.00",
+        "amount_mismatch"
+      ],
+      [
+        95,
+        "2018-04-04",
+        "2018-04-04",
+        1,
+        "24.00",
+        "24.00",
+        "0.00",
+        "24.00",
+        "amount_mismatch"
+      ]
+    ],
+    "has_counterexamples": true,
+    "truncated": false,
+    "result_sha256": "7b01aca9c78f1cc603857f25c48b250b7a227680c6450057a9192ff68fb33874"
+  },
+  "period_totals": {
+    "sql": "select\n        case when governing_order_date < date '2018-02-01'\n             then 'before_amendment' else 'on_or_after_amendment' end as period,\n        count(*) as orders,\n        sum(case when disposition <> 'aligned' then 1 else 0 end) as discrepancies,\n        sum(reported_aud) as reported_aud, sum(original_aud) as original_aud,\n        sum(amended_aud) as amended_aud, sum(difference_aud) as difference_aud\n        from (\nwith governed as (\n  select o.id as order_id, o.order_date,\n    count(p.id) as payment_count,\n    sum(case when p.payment_method = 'coupon'\n                  and o.order_date >= date '2018-02-01'\n             then 0 else p.amount end) as governed_cents,\n    sum(p.amount) as original_cents\n  from main.raw_orders o\n  left join main.raw_payments p on p.order_id = o.id\n  where o.order_date between date '2018-01-01' and date '2018-04-30'\n  group by o.id, o.order_date\n), actual as (\n  select order_id, order_date, amount from main.orders\n  where order_date between date '2018-01-01' and date '2018-04-30'\n)\nselect coalesce(g.order_id, a.order_id) as order_id,\n       g.order_date as governing_order_date, a.order_date as model_order_date,\n       g.payment_count,\n       cast(a.amount as decimal(18,2)) as reported_aud,\n       cast(g.original_cents / 100.0 as decimal(18,2)) as original_aud,\n       cast(g.governed_cents / 100.0 as decimal(18,2)) as amended_aud,\n       cast(a.amount - g.governed_cents / 100.0 as decimal(18,2)) as difference_aud,\n       case when g.order_id is null or a.order_id is null then 'missing_order'\n            when g.payment_count = 0 then 'no_payment_evidence'\n            when g.order_date is distinct from a.order_date then 'date_mismatch'\n            when a.amount is null then 'missing_model_amount'\n            when abs(a.amount - g.governed_cents / 100.0) > 0.000001\n                 then 'amount_mismatch' else 'aligned' end as disposition\nfrom governed g full outer join actual a on g.order_id = a.order_id\n) r group by 1 order by 1",
+    "columns": [
+      "period",
+      "orders",
+      "discrepancies",
+      "reported_aud",
+      "original_aud",
+      "amended_aud",
+      "difference_aud"
+    ],
+    "rows": [
+      [
+        "before_amendment",
+        29,
+        0,
+        "496.00",
+        "496.00",
+        "496.00",
+        "0.00"
+      ],
+      [
+        "on_or_after_amendment",
+        70,
+        8,
+        "1176.00",
+        "1176.00",
+        "1081.00",
+        "95.00"
+      ]
+    ],
+    "truncated": false,
+    "result_sha256": "ef95ff19833669a6c3354259cad3b76a023a200fea9b59249ff9edadc64c9947",
+    "has_rows": true
+  },
+  "limitations": [
+    "Known synthetic agreement and fixtures; previous outcomes visible to reviewer.",
+    "This script replays SQL derived in conversation; it does not invoke a model.",
+    "No independent accuracy score, production integration, automatic update, or propagation demonstrated."
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "receipts": [
+    {
+      "consumer": "monthly_bi_consumer",
+      "old_context_rejected_as_stale": true,
+      "replacement_context_current": true,
+      "alignment_status": "REVIEW_REQUIRED"
+    },
+    {
+      "consumer": "trip_review_consumer",
+      "old_context_rejected_as_stale": true,
+      "replacement_context_current": true,
+      "alignment_status": "REVIEW_REQUIRED"
+    },
+    {
+      "consumer": "zone_reference_consumer",
+      "old_context_rejected_as_stale": false,
+      "replacement_context_current": true,
+      "alignment_status": "OUTSIDE_REVIEW_SCOPE"
+    }
+  ],
+  "checks": {
+    "both_dependent_contexts_invalidated": true,
+    "unrelated_context_unchanged": true,
+    "repeat_event_idempotent": true,
+    "fresh_contexts_retain_unresolved_findings": true
+  }
+}
