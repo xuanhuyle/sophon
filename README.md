@@ -48,7 +48,16 @@ evidence limitation at the top of that report first: the web search quota ran ou
 GitHub-hosted primary sources could be read. The evidence folder beside it holds every sweep, verification, deep dive,
 refutation, design review, draft and critique, plus a script that recomputes every customs-rulings statistic quoted.
 
-## Reproduce
+## Alignment reviewer prototype (28 September 2026)
+
+`alignment/README.md` describes a new, read-only prototype for comparing operational
+instructions or selected dbt manifest nodes against supplied governing documents.
+It produces evidence-linked candidate discrepancies and invalidates stale reviews.
+The first review is interactive and uses the unadopted lab policy; unattended model
+operation and detection accuracy are not yet validated. This is distinct from the
+authority-ledger and settlement-loop investigations above.
+
+## Reproduce the original investigations
 
 Python 3.10+, standard library only. Run from this folder. Nothing writes inside `evidence/`.
 
