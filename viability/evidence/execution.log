@@ -1,0 +1,9 @@
+clean: dbt build=0, reference=NO_ISSUE_DETECTED, expected=NO_ISSUE_DETECTED, agent=NOT_RUN
+amendment_unapplied: dbt build=0, reference=DEFINITION_MISMATCH, expected=DEFINITION_MISMATCH, agent=NOT_RUN
+wrong_units: dbt build=0, reference=DEFINITION_MISMATCH, expected=DEFINITION_MISMATCH, agent=NOT_RUN
+duplicate_coupon_contribution: dbt build=0, reference=DEFINITION_MISMATCH, expected=DEFINITION_MISMATCH, agent=NOT_RUN
+payment_over_ceiling: dbt build=0, reference=DATA_VIOLATION, expected=DATA_VIOLATION, agent=NOT_RUN
+missing_amount: dbt build=0, reference=MISSING_EVIDENCE, expected=MISSING_EVIDENCE, agent=NOT_RUN
+amendment_applied: dbt build=0, reference=NO_ISSUE_DETECTED, expected=NO_ISSUE_DETECTED, agent=NOT_RUN
+equivalent_description: dbt build=0, reference=NO_ISSUE_DETECTED, expected=NO_ISSUE_DETECTED, agent=NOT_RUN
+unrelated_downstream_change: dbt build=0, reference=NO_ISSUE_DETECTED, expected=NO_ISSUE_DETECTED, agent=NOT_RUN

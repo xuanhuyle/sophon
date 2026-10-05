@@ -48,7 +48,31 @@ evidence limitation at the top of that report first: the web search quota ran ou
 GitHub-hosted primary sources could be read. The evidence folder beside it holds every sweep, verification, deep dive,
 refutation, design review, draft and critique, plus a script that recomputes every customs-rulings statistic quoted.
 
-## Reproduce
+## Alignment reviewer prototype (28 September 2026)
+
+`alignment/README.md` describes a new, read-only prototype for comparing operational
+instructions or selected dbt manifest nodes against supplied governing documents.
+It produces evidence-linked candidate discrepancies and invalidates stale reviews.
+The first review is interactive and uses the unadopted lab policy; unattended model
+operation and detection accuracy are not yet validated. This is distinct from the
+authority-ledger and settlement-loop investigations above.
+
+## Warehouse alignment experiments (28 September 2026)
+
+The separate `viability/README.md` test uses an existing public dbt project,
+actual local warehouse queries and nine controlled governing-rule challenges.
+It separates executable integration checks from the still-unrun autonomous-model
+and live-platform gates. The frozen protocol is `viability/PROTOCOL.md`.
+
+The stronger follow-up in [`viability/public_nyc/README.md`](viability/public_nyc/README.md)
+reviews an independently authored Databricks/dbt project against official NYC
+definitions and 3.48 million actual yellow-taxi records. It finds unsupported
+deduplication discarding 39.27% of records while all 22 existing dbt tests pass,
+and a target-dialect precision mismatch. It also records aligned behavior,
+uncertain timing cases, and a local context-invalidation simulation. It does not
+establish arbitrary-contract accuracy or live platform integration.
+
+## Reproduce the original investigations
 
 Python 3.10+, standard library only. Run from this folder. Nothing writes inside `evidence/`.
 

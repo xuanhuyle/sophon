@@ -1,0 +1,706 @@
+{
+  "status": "REVIEW_REQUIRED",
+  "authority": "DRAFT_OR_UNVERIFIED_REFERENCE",
+  "provenance": {
+    "mode": "imported_review",
+    "model": "not_attested"
+  },
+  "packet": {
+    "schema_version": 1,
+    "scope": "Draft-consistency review of the lab interpretation table against the fictional expense policy. The table describes proposed implementation choices; it is not adopted agent authority. Report material semantic gaps and unsupported implementation choices, not missing documentation of every runtime capability.",
+    "as_of": "2026-09-28",
+    "source_completeness": "Only the draft policy is designated as reference; no ratified adoption, interpretation or amendment is supplied.",
+    "documents": [
+      {
+        "id": "policy",
+        "role": "governing",
+        "authority_status": "draft",
+        "version": "repository-c02544a",
+        "path": "evidence/sophon_solo/draft_policy.md",
+        "format": "text",
+        "sha256": "ebee78addf435659fb7e36afc1e9ea0a6a72d4b747dee599b142ddf10fd0a04b"
+      },
+      {
+        "id": "reading",
+        "role": "operational",
+        "version": "repository-c02544a",
+        "path": "lab/READING.md",
+        "format": "text",
+        "sha256": "dee53beee0bf891be9bd2e249f43e00868110f4ed403799cfd413b4f9dfe4900"
+      }
+    ],
+    "segments": [
+      {
+        "id": "policy:L1",
+        "document_id": "policy",
+        "location": "line 1",
+        "role": "governing",
+        "text": "# Sophon Lab expense policy — DRAFT, NOT ADOPTED"
+      },
+      {
+        "id": "policy:L3",
+        "document_id": "policy",
+        "location": "line 3",
+        "role": "governing",
+        "text": "This fictional organization is a test sandbox. Its policy has **no authority** until the experiment owner explicitly adopts a version and an effective date. IPSA is used only as inspiration for adversarial case shapes; IPSA rules and past decisions do not govern this organization."
+      },
+      {
+        "id": "policy:L5",
+        "document_id": "policy",
+        "location": "line 5",
+        "role": "governing",
+        "text": "1. Reimbursement requires a documented company purpose and supporting evidence. An employee may not approve their own expense."
+      },
+      {
+        "id": "policy:L6",
+        "document_id": "policy",
+        "location": "line 6",
+        "role": "governing",
+        "text": "2. Hotel costs for necessary business travel should be **reasonable** for the destination and circumstances. A manager must approve travel."
+      },
+      {
+        "id": "policy:L7",
+        "document_id": "policy",
+        "location": "line 7",
+        "role": "governing",
+        "text": "3. Meeting refreshments should be **modest** and serve a legitimate work purpose. Alcohol and tips are not reimbursable. Meals celebrating a team achievement require case-specific approval by the policy owner."
+      },
+      {
+        "id": "policy:L8",
+        "document_id": "policy",
+        "location": "line 8",
+        "role": "governing",
+        "text": "4. Equipment should be obtained through the shared IT catalogue **where practicable**. A different supplier requires documented unavailability or business necessity."
+      },
+      {
+        "id": "policy:L9",
+        "document_id": "policy",
+        "location": "line 9",
+        "role": "governing",
+        "text": "5. Claims exceeding £1,000 require Finance approval; claims exceeding £5,000 require CFO approval. These are strict lower bounds: £1,000 itself does not trigger the first threshold."
+      },
+      {
+        "id": "policy:L10",
+        "document_id": "policy",
+        "location": "line 10",
+        "role": "governing",
+        "text": "6. Only the policy owner can create a bounded exception or change the policy. A case-specific approval identifies the beneficiary, action, amount or cap, purpose and effective period. It does not authorize later similar claims."
+      },
+      {
+        "id": "policy:L11",
+        "document_id": "policy",
+        "location": "line 11",
+        "role": "governing",
+        "text": "7. An interpretation of an open term, a new constraint, a relaxation, a one-off exception and a source amendment are different acts. The system must display their different effects for review; the actor must have power to perform the chosen act."
+      },
+      {
+        "id": "policy:L12",
+        "document_id": "policy",
+        "location": "line 12",
+        "role": "governing",
+        "text": "8. A newly ratified interpretation applies from its declared effective time. An amendment must identify whether earlier interpretations survive; unresolved dependencies suspend automatic clearance until reviewed. An earlier payment decision alone never ratifies a prospective interpretation."
+      },
+      {
+        "id": "policy:L14",
+        "document_id": "policy",
+        "location": "line 14",
+        "role": "governing",
+        "text": "## Open issues requiring a real sandbox-owner settlement"
+      },
+      {
+        "id": "policy:L16",
+        "document_id": "policy",
+        "location": "line 16",
+        "role": "governing",
+        "text": "- What operational bounds, if any, define a reasonable hotel price by location, event and season?"
+      },
+      {
+        "id": "policy:L17",
+        "document_id": "policy",
+        "location": "line 17",
+        "role": "governing",
+        "text": "- What makes refreshments modest? Does a restaurant meal after a work session count?"
+      },
+      {
+        "id": "policy:L18",
+        "document_id": "policy",
+        "location": "line 18",
+        "role": "governing",
+        "text": "- What evidence demonstrates that the IT catalogue is impracticable?"
+      },
+      {
+        "id": "policy:L19",
+        "document_id": "policy",
+        "location": "line 19",
+        "role": "governing",
+        "text": "- Who has delegated authority to approve a specific exception, beyond the owner?"
+      },
+      {
+        "id": "policy:L21",
+        "document_id": "policy",
+        "location": "line 21",
+        "role": "governing",
+        "text": "The owner may choose to retain semantic review rather than impose a threshold. The exercise must not optimize for a target clearance rate by inventing permissions."
+      },
+      {
+        "id": "reading:L1",
+        "document_id": "reading",
+        "location": "line 1",
+        "role": "operational",
+        "text": "# How the lab reads `evidence/sophon_solo/draft_policy.md`"
+      },
+      {
+        "id": "reading:L3",
+        "document_id": "reading",
+        "location": "line 3",
+        "role": "operational",
+        "text": "The draft is **unadopted**. Nothing here has authority. This table is the reading both arms implement so that they"
+      },
+      {
+        "id": "reading:L4",
+        "document_id": "reading",
+        "location": "line 4",
+        "role": "operational",
+        "text": "can be compared; every row is a choice the sandbox owner must confirm or change at adoption"
+      },
+      {
+        "id": "reading:L5",
+        "document_id": "reading",
+        "location": "line 5",
+        "role": "operational",
+        "text": "(see `docs/OWNER_REQUEST.md`). Even \"bright-line\" clauses need a disposition, and choosing it is an interpretive act."
+      },
+      {
+        "id": "reading:L7",
+        "document_id": "reading",
+        "location": "line 7",
+        "role": "operational",
+        "text": "| # | Clause | Reading | If not met |"
+      },
+      {
+        "id": "reading:L8",
+        "document_id": "reading",
+        "location": "line 8",
+        "role": "operational",
+        "text": "|---|---|---|---|"
+      },
+      {
+        "id": "reading:L9",
+        "document_id": "reading",
+        "location": "line 9",
+        "role": "operational",
+        "text": "| R0 | (none) | **The draft never says what *is* reimbursable**, only what is required or excluded. Whether \"meets every clause\" is sufficient for payment is a closure rule the owner must state (`ALL_CLAUSES_SATISFIED`), or else nothing clears without an explicit grant (`SAFE_HARBORS_ONLY`). | `REQUEST_AUTHORITY` |"
+      },
+      {
+        "id": "reading:L10",
+        "document_id": "reading",
+        "location": "line 10",
+        "role": "operational",
+        "text": "| R1 | 1 | Purpose is documented (non-empty). | `REQUEST_FACT` |"
+      },
+      {
+        "id": "reading:L11",
+        "document_id": "reading",
+        "location": "line 11",
+        "role": "operational",
+        "text": "| R2 | 1 | Supporting evidence: `receipt_present == yes`. Blank or anything else is *not* yes. | `REQUEST_FACT` |"
+      },
+      {
+        "id": "reading:L12",
+        "document_id": "reading",
+        "location": "line 12",
+        "role": "operational",
+        "text": "| R3 | 1 | No self-approval: `approver != claimant`. | `BLOCK` (as submitted) |"
+      },
+      {
+        "id": "reading:L13",
+        "document_id": "reading",
+        "location": "line 13",
+        "role": "operational",
+        "text": "| R4 | 2 | Travel (hotel, travel) needs `manager_approved == yes`. | `REQUEST_AUTHORITY` |"
+      },
+      {
+        "id": "reading:L14",
+        "document_id": "reading",
+        "location": "line 14",
+        "role": "operational",
+        "text": "| R4x | 1–2 | **Unlisted ambiguity.** The draft requires manager approval only for *travel*. Whether meals and equipment need it is open term `approval.scope`. It only matters when `manager_approved != yes`. | `SEMANTIC_REVIEW` until settled |"
+      },
+      {
+        "id": "reading:L15",
+        "document_id": "reading",
+        "location": "line 15",
+        "role": "operational",
+        "text": "| R5 | 5 | Amount is a finite positive number; `> 1000` needs Finance approval; `> 5000` needs CFO approval. Thresholds are changeable only by `RELAX_CONSTRAINT` / `ADD_CONSTRAINT`. | `REQUEST_FACT` / `REQUEST_AUTHORITY` |"
+      },
+      {
+        "id": "reading:L16",
+        "document_id": "reading",
+        "location": "line 16",
+        "role": "operational",
+        "text": "| R6 | 3 | Alcohol or tip component `> 0` makes the claim, **at the exact amount submitted**, non-reimbursable. A net resubmission is a different action. | `BLOCK` (as submitted) |"
+      },
+      {
+        "id": "reading:L17",
+        "document_id": "reading",
+        "location": "line 17",
+        "role": "operational",
+        "text": "| R7 | 3 | Purpose \"Team celebration\" needs a case-specific owner approval (`CASE_EXCEPTION`). | `REQUEST_AUTHORITY` |"
+      },
+      {
+        "id": "reading:L18",
+        "document_id": "reading",
+        "location": "line 18",
+        "role": "operational",
+        "text": "| R8 | 2 | Hotel: open term `hotel.reasonable`. | `SEMANTIC_REVIEW` until settled |"
+      },
+      {
+        "id": "reading:L19",
+        "document_id": "reading",
+        "location": "line 19",
+        "role": "operational",
+        "text": "| R9 | 3 | Meal (not a celebration): open term `meal.modest`. | `SEMANTIC_REVIEW` until settled |"
+      },
+      {
+        "id": "reading:L20",
+        "document_id": "reading",
+        "location": "line 20",
+        "role": "operational",
+        "text": "| R10 | 4 | Equipment from a non-catalogue supplier: if the catalogue lacks the item, unavailability must be documented (`REQUEST_FACT` otherwise). If the catalogue *has* the item, \"business necessity\" is open term `equipment.necessity`. A de-minimis exemption is a **relaxation**, not an interpretation. | `SEMANTIC_REVIEW` until settled |"
+      },
+      {
+        "id": "reading:L21",
+        "document_id": "reading",
+        "location": "line 21",
+        "role": "operational",
+        "text": "| R11 | 6 | `requested_exception == yes` needs a matching `CASE_EXCEPTION`. | `REQUEST_AUTHORITY` |"
+      },
+      {
+        "id": "reading:L22",
+        "document_id": "reading",
+        "location": "line 22",
+        "role": "operational",
+        "text": "| R12 | — | Rail/taxi: the draft has **no clause** about transport alternatives or late working, although `cases.csv` carries `transport_alternative_available` and `after_2200_work`. Those columns are therefore unused. | — |"
+      },
+      {
+        "id": "reading:L23",
+        "document_id": "reading",
+        "location": "line 23",
+        "role": "operational",
+        "text": "| R13 | 8 | **Unlisted ambiguity.** \"Applies from its declared effective time\" does not say whether that means expenses *incurred* or decisions *made* after it. The lab takes the conservative reading: a settlement must be in force at both times. | `SEMANTIC_REVIEW` |"
+      },
+      {
+        "id": "reading:L24",
+        "document_id": "reading",
+        "location": "line 24",
+        "role": "operational",
+        "text": "| R14 | — | Any category outside {hotel, meal, equipment, travel} is outside the adopted surface. | `REQUEST_AUTHORITY` |"
+      },
+      {
+        "id": "reading:L26",
+        "document_id": "reading",
+        "location": "line 26",
+        "role": "operational",
+        "text": "Three of these (R0, R4x, R13) are not in the draft's own list of open issues. The draft also pre-digests facts that"
+      },
+      {
+        "id": "reading:L27",
+        "document_id": "reading",
+        "location": "line 27",
+        "role": "operational",
+        "text": "are judgments in real life: whether a meal was a \"team celebration\" or a \"work planning meeting\" is exactly the"
+      },
+      {
+        "id": "reading:L28",
+        "document_id": "reading",
+        "location": "line 28",
+        "role": "operational",
+        "text": "kind of question the Aquarone review turned on, and here it arrives as a clean column."
+      }
+    ],
+    "reviewer_prompt_sha256": "4ef3a32cb349ac4829ade23d0b9c8688b6a43c4893883736a8e52229803e6357",
+    "response_schema_sha256": "7f2020425fb70689060712f6dc590ea8be1f8794559a92c6cfaf60c979abb713",
+    "packet_id": "9af31851dab4dbcf8537b25e46a184ecf83f29823097b0f273c8bf54fbafb93b"
+  },
+  "review": {
+    "packet_id": "9af31851dab4dbcf8537b25e46a184ecf83f29823097b0f273c8bf54fbafb93b",
+    "findings": [
+      {
+        "id": "F1",
+        "kind": "UNSUPPORTED_ASSUMPTION",
+        "severity": "medium",
+        "title": "Supporting evidence is narrowed to a receipt",
+        "explanation": "The policy requires supporting evidence; R2 selects receipt_present == yes as its operational proxy. The draft does not state that a receipt is the sole acceptable evidence. The table openly labels its readings as proposed choices, so this is a ratification question, not an adopted-policy breach.",
+        "consequence": "An expense supported by another acceptable document could be routed as missing evidence.",
+        "suggested_action": "Confirm the accepted evidence types and document the receipt-only choice or map the broader evidence predicate.",
+        "governing_evidence": [
+          {
+            "segment_id": "policy:L5",
+            "quote": "1. Reimbursement requires a documented company purpose and supporting evidence. An employee may not approve their own expense."
+          }
+        ],
+        "operational_evidence": [
+          {
+            "segment_id": "reading:L11",
+            "quote": "| R2 | 1 | Supporting evidence: `receipt_present == yes`. Blank or anything else is *not* yes. | `REQUEST_FACT` |"
+          },
+          {
+            "segment_id": "reading:L4",
+            "quote": "can be compared; every row is a choice the sandbox owner must confirm or change at adoption"
+          }
+        ]
+      },
+      {
+        "id": "F2",
+        "kind": "MISSING_REQUIREMENT",
+        "severity": "medium",
+        "title": "Necessary business travel has no explicit disposition",
+        "explanation": "The hotel clause refers to necessary business travel. R1 tests whether purpose is non-empty; R4 checks manager approval; R8 preserves reasonable price. This supplied table does not explicitly evaluate necessity or establish that manager approval attests it. This is a gap in this table only; other operational evidence was not supplied.",
+        "consequence": "The listed checks may permit the necessity condition to disappear during implementation.",
+        "suggested_action": "Add a necessity disposition or reference the approved rule establishing how necessity is attested.",
+        "governing_evidence": [
+          {
+            "segment_id": "policy:L6",
+            "quote": "2. Hotel costs for necessary business travel should be **reasonable** for the destination and circumstances. A manager must approve travel."
+          }
+        ],
+        "operational_evidence": [
+          {
+            "segment_id": "reading:L10",
+            "quote": "| R1 | 1 | Purpose is documented (non-empty). | `REQUEST_FACT` |"
+          },
+          {
+            "segment_id": "reading:L13",
+            "quote": "| R4 | 2 | Travel (hotel, travel) needs `manager_approved == yes`. | `REQUEST_AUTHORITY` |"
+          },
+          {
+            "segment_id": "reading:L18",
+            "quote": "| R8 | 2 | Hotel: open term `hotel.reasonable`. | `SEMANTIC_REVIEW` until settled |"
+          }
+        ]
+      },
+      {
+        "id": "F3",
+        "kind": "UNSUPPORTED_ASSUMPTION",
+        "severity": "medium",
+        "title": "The alternative-supplier rule is partitioned by catalogue availability",
+        "explanation": "The source states documented unavailability or business necessity. R10 requires documented unavailability when an item is absent and considers business necessity when it is available. That partition is an additional interpretation of the source OR. The table acknowledges it is unadopted, but this branching choice still needs explicit disposition.",
+        "consequence": "The implementation may not consider business necessity as an alternative when an item is unavailable and documentary proof of unavailability is missing.",
+        "suggested_action": "Review whether either source alternative applies independently of catalogue availability; preserve the unresolved branch until settled.",
+        "governing_evidence": [
+          {
+            "segment_id": "policy:L8",
+            "quote": "4. Equipment should be obtained through the shared IT catalogue **where practicable**. A different supplier requires documented unavailability or business necessity."
+          }
+        ],
+        "operational_evidence": [
+          {
+            "segment_id": "reading:L20",
+            "quote": "| R10 | 4 | Equipment from a non-catalogue supplier: if the catalogue lacks the item, unavailability must be documented (`REQUEST_FACT` otherwise). If the catalogue *has* the item, \"business necessity\" is open term `equipment.necessity`. A de-minimis exemption is a **relaxation**, not an interpretation. | `SEMANTIC_REVIEW` until settled |"
+          },
+          {
+            "segment_id": "reading:L4",
+            "quote": "can be compared; every row is a choice the sandbox owner must confirm or change at adoption"
+          }
+        ]
+      },
+      {
+        "id": "F4",
+        "kind": "UNSUPPORTED_ASSUMPTION",
+        "severity": "medium",
+        "title": "Non-empty purpose does not establish company purpose",
+        "explanation": "R1 treats a non-empty purpose as the documented-purpose check. That can establish presence but does not itself establish a company purpose. The policy and the supplied table contain no approved equivalence between these predicates.",
+        "consequence": "A personal-purpose description could pass the documented-purpose check unless another assessment supplies the missing classification.",
+        "suggested_action": "Separate evidence presence from company-purpose classification and identify who or what attests the latter.",
+        "governing_evidence": [
+          {
+            "segment_id": "policy:L5",
+            "quote": "1. Reimbursement requires a documented company purpose and supporting evidence. An employee may not approve their own expense."
+          }
+        ],
+        "operational_evidence": [
+          {
+            "segment_id": "reading:L10",
+            "quote": "| R1 | 1 | Purpose is documented (non-empty). | `REQUEST_FACT` |"
+          }
+        ]
+      }
+    ],
+    "coverage": [
+      {
+        "segment_id": "policy:L1",
+        "disposition": "NON_SUBSTANTIVE",
+        "rationale": "Draft label, not an operative rule.",
+        "finding_ids": []
+      },
+      {
+        "segment_id": "policy:L3",
+        "disposition": "ASSESSED",
+        "rationale": "Authority boundary preserved by the target introduction; no adopted status inferred.",
+        "finding_ids": []
+      },
+      {
+        "segment_id": "policy:L5",
+        "disposition": "ASSESSED",
+        "rationale": "Self-approval prohibition represented; evidence and purpose proxies require review (F1/F4).",
+        "finding_ids": [
+          "F1",
+          "F4"
+        ]
+      },
+      {
+        "segment_id": "policy:L6",
+        "disposition": "ASSESSED",
+        "rationale": "Manager approval and reasonable cost represented; necessity disposition not explicit (F2).",
+        "finding_ids": [
+          "F2"
+        ]
+      },
+      {
+        "segment_id": "policy:L7",
+        "disposition": "ASSESSED",
+        "rationale": "Modesty, alcohol/tip exclusions and celebration approval represented; fact classification remains assumed.",
+        "finding_ids": []
+      },
+      {
+        "segment_id": "policy:L8",
+        "disposition": "ASSESSED",
+        "rationale": "Source alternatives are narrowed into availability branches (F3); impracticability remains an open issue.",
+        "finding_ids": [
+          "F3"
+        ]
+      },
+      {
+        "segment_id": "policy:L9",
+        "disposition": "ASSESSED",
+        "rationale": "Strict >1000 and >5000 thresholds preserved in R5; amount validity is an additional implementation constraint.",
+        "finding_ids": []
+      },
+      {
+        "segment_id": "policy:L10",
+        "disposition": "ASSESSED",
+        "rationale": "R7/R11 reference matching case exceptions. Full exception payload validation lies outside this descriptive table; do not infer absence from this file.",
+        "finding_ids": []
+      },
+      {
+        "segment_id": "policy:L11",
+        "disposition": "ASSESSED",
+        "rationale": "R5/R10 distinguish relaxation from interpretation; issuer-power validation is not demonstrated by this table.",
+        "finding_ids": []
+      },
+      {
+        "segment_id": "policy:L12",
+        "disposition": "ASSESSED",
+        "rationale": "R13 exposes timing ambiguity; table alone does not verify amendment suspension or runtime implementation.",
+        "finding_ids": []
+      },
+      {
+        "segment_id": "policy:L14",
+        "disposition": "NON_SUBSTANTIVE",
+        "rationale": "Open-issue heading.",
+        "finding_ids": []
+      },
+      {
+        "segment_id": "policy:L16",
+        "disposition": "ASSESSED",
+        "rationale": "R8 preserves the open hotel-price standard rather than inventing a threshold.",
+        "finding_ids": []
+      },
+      {
+        "segment_id": "policy:L17",
+        "disposition": "ASSESSED",
+        "rationale": "R9 preserves modesty; restaurant eligibility remains a semantic issue.",
+        "finding_ids": []
+      },
+      {
+        "segment_id": "policy:L18",
+        "disposition": "ASSESSED",
+        "rationale": "R10 does not settle catalogue impracticability; F3 addresses an extra branch interpretation.",
+        "finding_ids": []
+      },
+      {
+        "segment_id": "policy:L19",
+        "disposition": "ASSESSED",
+        "rationale": "Delegation remains unsettled; no additional delegation is adopted by this table.",
+        "finding_ids": []
+      },
+      {
+        "segment_id": "policy:L21",
+        "disposition": "ASSESSED",
+        "rationale": "R0/R8/R9/R10 and the introduction explicitly preserve owner judgment.",
+        "finding_ids": []
+      },
+      {
+        "segment_id": "reading:L1",
+        "disposition": "NON_SUBSTANTIVE",
+        "rationale": "Document title.",
+        "finding_ids": []
+      },
+      {
+        "segment_id": "reading:L3",
+        "disposition": "ASSESSED",
+        "rationale": "Target clearly declares it is unadopted.",
+        "finding_ids": []
+      },
+      {
+        "segment_id": "reading:L4",
+        "disposition": "ASSESSED",
+        "rationale": "Proposed-choice disclaimer limits every finding; it does not supply ratification.",
+        "finding_ids": [
+          "F1",
+          "F3"
+        ]
+      },
+      {
+        "segment_id": "reading:L5",
+        "disposition": "ASSESSED",
+        "rationale": "Confirms interpretive nature of operational choices; referenced adoption material is outside this input scope.",
+        "finding_ids": []
+      },
+      {
+        "segment_id": "reading:L7",
+        "disposition": "NON_SUBSTANTIVE",
+        "rationale": "Table headings.",
+        "finding_ids": []
+      },
+      {
+        "segment_id": "reading:L8",
+        "disposition": "NON_SUBSTANTIVE",
+        "rationale": "Table separator.",
+        "finding_ids": []
+      },
+      {
+        "segment_id": "reading:L9",
+        "disposition": "ASSESSED",
+        "rationale": "Explicitly preserves the unsettled sufficiency/closure choice; not an invented live grant.",
+        "finding_ids": []
+      },
+      {
+        "segment_id": "reading:L10",
+        "disposition": "ASSESSED",
+        "rationale": "Purpose presence is represented but company-purpose semantics and necessity are not established (F2/F4).",
+        "finding_ids": [
+          "F2",
+          "F4"
+        ]
+      },
+      {
+        "segment_id": "reading:L11",
+        "disposition": "ASSESSED",
+        "rationale": "Receipt-only mapping is an additional choice (F1).",
+        "finding_ids": [
+          "F1"
+        ]
+      },
+      {
+        "segment_id": "reading:L12",
+        "disposition": "ASSESSED",
+        "rationale": "Self-approval exclusion matches clause 1.",
+        "finding_ids": []
+      },
+      {
+        "segment_id": "reading:L13",
+        "disposition": "ASSESSED",
+        "rationale": "Manager approval matches clause 2; no explicit attestation of necessity (F2).",
+        "finding_ids": [
+          "F2"
+        ]
+      },
+      {
+        "segment_id": "reading:L14",
+        "disposition": "ASSESSED",
+        "rationale": "Explicitly identified approval-scope ambiguity; not a contradiction.",
+        "finding_ids": []
+      },
+      {
+        "segment_id": "reading:L15",
+        "disposition": "ASSESSED",
+        "rationale": "Strict threshold operators preserved. Finite-positive check is an acknowledged proposed validation choice.",
+        "finding_ids": []
+      },
+      {
+        "segment_id": "reading:L16",
+        "disposition": "ASSESSED",
+        "rationale": "Exclusion of alcohol/tips preserved; whole-submission blocking is an explicit operational treatment.",
+        "finding_ids": []
+      },
+      {
+        "segment_id": "reading:L17",
+        "disposition": "ASSESSED",
+        "rationale": "Celebration owner approval preserved; semantic classification of purpose is assumed.",
+        "finding_ids": []
+      },
+      {
+        "segment_id": "reading:L18",
+        "disposition": "ASSESSED",
+        "rationale": "Reasonable-price uncertainty correctly retained; travel necessity not addressed here (F2).",
+        "finding_ids": [
+          "F2"
+        ]
+      },
+      {
+        "segment_id": "reading:L19",
+        "disposition": "ASSESSED",
+        "rationale": "Modesty retained as unresolved; this file does not establish the full behavior for celebration meals.",
+        "finding_ids": []
+      },
+      {
+        "segment_id": "reading:L20",
+        "disposition": "ASSESSED",
+        "rationale": "Conditional decomposition of the source alternatives needs review (F3).",
+        "finding_ids": [
+          "F3"
+        ]
+      },
+      {
+        "segment_id": "reading:L21",
+        "disposition": "ASSESSED",
+        "rationale": "Matching-exception requirement does not itself create a new permission.",
+        "finding_ids": []
+      },
+      {
+        "segment_id": "reading:L22",
+        "disposition": "ASSESSED",
+        "rationale": "Accurately distinguishes case columns from source requirements; no missing-rule claim.",
+        "finding_ids": []
+      },
+      {
+        "segment_id": "reading:L23",
+        "disposition": "ASSESSED",
+        "rationale": "Conservative dual-time reading is explicitly acknowledged, not presented as source wording.",
+        "finding_ids": []
+      },
+      {
+        "segment_id": "reading:L24",
+        "disposition": "ASSESSED",
+        "rationale": "Unknown categories route to review, not silently to permission.",
+        "finding_ids": []
+      },
+      {
+        "segment_id": "reading:L26",
+        "disposition": "ASSESSED",
+        "rationale": "Acknowledges extra ambiguities and preclassified facts.",
+        "finding_ids": []
+      },
+      {
+        "segment_id": "reading:L27",
+        "disposition": "ASSESSED",
+        "rationale": "Continuation of the acknowledged fact-classification limitation.",
+        "finding_ids": []
+      },
+      {
+        "segment_id": "reading:L28",
+        "disposition": "ASSESSED",
+        "rationale": "Continuation of the acknowledged fact-classification limitation.",
+        "finding_ids": []
+      }
+    ],
+    "limitations": [
+      "Interactive assistant-authored draft observations, not an unattended API run or independent benchmark.",
+      "Both sources are draft lab materials; no contract breach or adopted authority is asserted.",
+      "Only supplied documentation was compared. Actual runtime behavior, omitted documents and company data were not verified.",
+      "Exact quotations and segment coverage do not establish semantic correctness or exhaustive obligation coverage."
+    ]
+  },
+  "validation": "Evidence locations, quotations, shape and segment accounting checked; semantic correctness not certified"
+}
