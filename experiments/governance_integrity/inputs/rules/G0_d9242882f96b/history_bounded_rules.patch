@@ -1,0 +1,2112 @@
+commit 303adafde506f6207436f919c6c7e0cc95e95a04
+2024-04-06 00:02:14 +0200 Jalil Arfaoui
+feat: ajoute les taux spécifiques aux DOM pour les AE
+
+
+diff --git "a/modele-social/r\303\250gles/dirigeant/auto-entrepreneur/auto-entrepreneur.publicodes" "b/modele-social/r\303\250gles/dirigeant/auto-entrepreneur/auto-entrepreneur.publicodes"
+new file mode 100644
+index 000000000..e5e83b1d2
+--- /dev/null
++++ "b/modele-social/r\303\250gles/dirigeant/auto-entrepreneur/auto-entrepreneur.publicodes"
+@@ -0,0 +1,289 @@
++dirigeant . auto-entrepreneur:
++  valeur: régime social = 'auto-entrepreneur'
++  par défaut: non
++  icônes: 🚶
++  description: |
++    L'auto-entreprise est une entreprise individuelle simplifiée. À l'origine connu sous l'appellation « auto-entrepreneur », le régime de « micro-entrepreneur » est un régime de travailleur indépendant créé pour simplifier la gestion administrative, notamment en remplaçant toutes les cotisations sociales par un prélèvement unique mensuel.
++
++dirigeant . auto-entrepreneur . revenu net:
++  arrondi: oui
++  unité: €/an
++  identifiant court: auto-entrepreneur-net
++  résumé: Avant impôt
++  question: Quel revenu avant impôt voulez-vous toucher ?
++  description: Il s'agit du revenu après déductions des cotisations, avant le
++    paiement de l'impôt sur le revenu.
++  valeur: entreprise . chiffre d'affaires - cotisations et contributions
++
++dirigeant . auto-entrepreneur . cotisations et contributions:
++  unité: €/mois
++  somme:
++    - cotisations
++    - TFC
++    - CFP
++  références:
++    Imposition du micro-entrepreneur (régime micro-fiscal et social): https://www.service-public.fr/professionnels-entreprises/vosdroits/F23267
++    Les cotisations et contributions sociales: https://www.autoentrepreneur.urssaf.fr/portail/accueil/sinformer-sur-le-statut/lessentiel-du-statut.html#cout-durant-vie-auto-entreprise
++
++dirigeant . auto-entrepreneur . cotisations et contributions . TFC:
++  titre: Taxes pour frais de chambre
++  unité: €/mois
++  note: |
++    Nous n'avons pas intégré les exceptions suivantes :
++    - Artisans en double immatriculation CCI-CMA
++  références:
++    Fiche service-public.fr: https://www.service-public.fr/professionnels-entreprises/vosdroits/F32847
++  somme:
++    - commerce
++    - métiers
++
++dirigeant . auto-entrepreneur . cotisations et contributions . TFC . commerce:
++  applicable si: entreprise . activité . nature = 'commerciale'
++  références:
++    service-public.fr: https://www.service-public.fr/professionnels-entreprises/vosdroits/F32847
++  somme:
++    - produit:
++        - entreprise . chiffre d'affaires . service BIC
++        - 0.044%
++      unité: €/mois
++      arrondi: oui
++    - produit:
++        - entreprise . chiffre d'affaires . vente restauration hébergement
++        - 0.015%
++      unité: €/mois
++      arrondi: oui
++
++dirigeant . auto-entrepreneur . cotisations et contributions . TFC . métiers:
++  unité: €/mois
++  applicable si: entreprise . activité . nature = 'artisanale'
++
++  références:
++    service-public.fr: https://www.service-public.fr/professionnels-entreprises/vosdroits/F32847
++  somme:
++    - produit:
++        - entreprise . chiffre d'affaires . service BIC
++        - taux service
++      unité: €/mois
++      arrondi: oui
++    - produit:
++        - entreprise . chiffre d'affaires . vente restauration hébergement
++        - taux vente
++      unité: €/mois
++      arrondi: oui
++
++  avec:
++    taux service: 0.48%
++    taux vente: 0.22%
++
++dirigeant . auto-entrepreneur . cotisations et contributions . TFC . métiers . taux Alsace:
++  par défaut: non
++  une de ces conditions:
++    - établissement . commune . département = 'Bas-Rhin'
++    - établissement . commune . département = 'Haut-Rhin'
++  références:
++    service-public.fr: https://www.service-public.fr/professionnels-entreprises/vosdroits/F32847
++
++  avec:
++    taux service:
++      remplace: taux service
++      valeur: 0.65%
++
++    taux vente:
++      remplace: taux vente
++      valeur: 0.29%
++
++dirigeant . auto-entrepreneur . cotisations et contributions . TFC . métiers . taux Moselle:
++  par défaut: non
++  valeur: établissement . commune . département = 'Moselle'
++  références:
++    service-public.fr: https://www.service-public.fr/professionnels-entreprises/vosdroits/F32847
++
++  avec:
++    taux service:
++      remplace: taux service
++      valeur: 0.83%
++
++    taux vente:
++      remplace: taux vente
++      valeur: 0.37%
++
++dirigeant . auto-entrepreneur . affiliation CIPAV:
++  une de ces conditions:
++    - entreprise . activité . nature . libérale . réglementée
++    - toutes ces conditions:
++        - entreprise . activité . nature = 'libérale'
++        - entreprise . date de création < 01/2018
++
++dirigeant . auto-entrepreneur . cotisations et contributions . CFP:
++  titre: Contribution à la formation professionnelle
++  description: |
++    En plus des charges sociales, les auto-entrepreneurs sont redevables d’une
++    contribution à la formation professionnelle leur permettant de bénéficier du
++    droit à la formation professionnelle (à condition d’avoir déclaré un chiffre
++    d’affaires positif au cours des 12 derniers mois).
++  acronyme: CFP
++  unité: €/mois
++  références:
++    Article L6331-48 du code du travail: https://www.legifrance.gouv.fr/affichCodeArticle.do?cidTexte=LEGITEXT000006072050&idArticle=LEGIARTI000006904325
++    autoentrepreneur.urssaf.fr: https://www.autoentrepreneur.urssaf.fr/portail/accueil/sinformer-sur-le-statut/lessentiel-du-statut.html#cout-durant-vie-auto-entreprise
++    Fiche service-public.fr: https://www.service-public.fr/professionnels-entreprises/vosdroits/F23459
++    shine.fr: https://www.shine.fr/blog/formation-professionnelle-auto-entrepreneur/
++  note: |
++    Les taux implémentés sont ceux prélevés par l'Urssaf.
++  somme:
++    - produit:
++        - entreprise . chiffre d'affaires . BIC
++        - variations:
++            - si: entreprise . activité . nature = 'artisanale'
++              alors: 0.3%
++            - sinon: 0.1%
++    - produit:
++        - entreprise . chiffre d'affaires . service BNC
++        - variations:
++            - si:
++                # Avant 2022, le taux était de 1% pour les PLNR non affiliés à la CIPAV
++                toutes ces conditions:
++                  - date <= 01/2022
++                  - affiliation CIPAV = non
++              alors: 0.1%
++            - sinon: 0.2%
++
++  avec:
++    revenus BIC:
++      valeur: entreprise . chiffre d'affaires . BIC
++      déprécié: oui
++
++    revenus BNC:
++      valeur: entreprise . chiffre d'affaires . service BNC
++      déprécié: oui
++
++dirigeant . auto-entrepreneur . cotisations et contributions . cotisations:
++  description: |
++    Les cotisations sociales donnent à l'auto-entrepreneur accès à une
++    protection sociale minimale : une retraite, des soins de santé, des
++    allocations familiales, etc.
++
++    L'auto-entreprise est un régime simplifié : plutôt qu'une fiche de paie
++    complexe, toutes les cotisations sont regroupées dans un *forfait* dont le
++    taux dépend de la catégorie d'activité.
++
++  références:
++    Les cotisations et contributions sociales: https://www.autoentrepreneur.urssaf.fr/portail/accueil/sinformer-sur-le-statut/lessentiel-du-statut.html#cout-durant-vie-auto-entreprise
++    'Cotisations et contributions sociales : montant et déclaration': https://entreprendre.service-public.fr/vosdroits/F36232#fiche-item-aria-2
++  somme:
++    - produit:
++        - entreprise . chiffre d'affaires . vente restauration hébergement
++        - taux vente restauration hébergement
++    - produit:
++        - entreprise . chiffre d'affaires . service BIC
++        - taux service BIC
++    - produit:
++        - entreprise . chiffre d'affaires . service BNC
++        - taux service BNC
++
++  avec:
++    cotisations CIPAV:
++      remplace: cotisations
++      description: |
++        Pour les professions libérales relevant de la CIPAV, le taux est le même quelle que soit la catégorie d’imposition/activité (BIC ou BNC, service ou vente).
++      applicable si: affiliation CIPAV
++      rend non applicable: entreprise . activités . revenus mixtes
++      produit:
++        - entreprise . chiffre d'affaires
++        - taux
++
++    cotisations CIPAV . taux:  21.2%
++
++    taux prestation de service:
++      déprécié: oui
++      note:
++        Il y a maintenant un taux différent pour les prestations de service BIC ou
++        BNC.
++      valeur: taux service BIC
++
++    taux service BIC:
++      variations:
++        - si: date >= 10/2022
++          alors: 21.2%
++        - sinon: 22%
++
++    taux service BNC:
++      variations:
++        - si: date >= 10/2022
++          alors: 21.1%
++        - sinon: 22%
++
++    taux vente restauration hébergement:
++      variations:
++        - si: date >= 10/2022
++          alors: 12.3%
++        - sinon: 12.8%
++
++dirigeant . auto-entrepreneur . impôt: oui
++dirigeant . auto-entrepreneur . impôt . revenu imposable: entreprise . imposition . régime . micro-entreprise . revenu abattu
++
++dirigeant . auto-entrepreneur . impôt . versement libératoire:
++  rend non applicable: revenu imposable
++  description: >
++    Avec l'option pour le versement libératoire, l’impôt sur le revenu est payé
++    en même temps que vos cotisations (par mois ou par trimestre) avec
++    application d’un taux spécifique en fonction de votre activité. Pour en
++    bénéficier, votre revenu fiscal de référence ne doit pas excéder 27 086 € en
++    2018
++  question: Bénéficiez-vous du versement libératoire de l'impôt sur le revenu ?
++  par défaut: non
++
++dirigeant . auto-entrepreneur . impôt . versement libératoire . seuil dépassé:
++  type: notification
++  valeur: impôt . foyer fiscal . revenu fiscal de référence > 27519 €/an
++  description: |
++    Le versement libératoire n'est pas disponible si le revenu fiscal de
++    référence de votre ménage est supérieur à 27 519 € par part en 2018
++
++dirigeant . auto-entrepreneur . impôt . versement libératoire . montant:
++  titre: versement libératoire auto-entrepreneur
++  description: |
++    Si vous avez opté pour le versement libératoire, l’impôt sur le revenu est
++    payé en même temps que vos cotisations (par mois ou par trimestre) avec
++    application d’un taux spécifique en fonction de votre activité
++  somme:
++    - produit:
++        - entreprise . chiffre d'affaires . vente restauration hébergement
++        - 1%
++    - produit:
++        - entreprise . chiffre d'affaires . service BIC
++        - 1.7%
++    - produit:
++        - entreprise . chiffre d'affaires . service BNC
++        - 2.2%
++
++dirigeant . auto-entrepreneur . revenu net . après impôt:
++  identifiant court: auto-entrepreneur-net-apres-impot
++  résumé: Avant déduction des dépenses liées à l'activité
++  unité: €/an
++  arrondi: oui
++  question: Quel est le revenu net après impôt souhaité ?
++  description: >-
++    Le revenu net de l'auto-entrepreneur après déduction de l'impôt sur le
++    revenu et des cotisations sociales.
++
++
++    **Attention :** Pour bien évaluer la rentabilité de l'entreprise, il ne faut pas oublier de retrancher à ce montant les dépenses engagées dans le cadre de l'activité. Cela peut inclure par exemple :
++
++    - L'achat des matière premières
++
++    - L'achat des outils / materiel
++
++    - L'abonnement à des services payants
++
++    - La location d'un local
++
++    - etc...
++  valeur: revenu net - rémunération . impôt
++
++dirigeant . auto-entrepreneur . chiffre d'affaires:
++  question: Quel est votre chiffre d'affaires ?
++  résumé: Montant total des recettes (hors taxe)
++  inversion numérique:
++    - revenu net
++    - revenu net . après impôt
+diff --git "a/modele-social/r\303\250gles/dirigeant/auto-entrepreneur/exon\303\251rations.publicodes" "b/modele-social/r\303\250gles/dirigeant/auto-entrepreneur/exon\303\251rations.publicodes"
+new file mode 100644
+index 000000000..59939836c
+--- /dev/null
++++ "b/modele-social/r\303\250gles/dirigeant/auto-entrepreneur/exon\303\251rations.publicodes"
+@@ -0,0 +1,143 @@
++
++dirigeant . auto-entrepreneur . DROM:
++    experimental: oui
++    description: |
++      En tant qu’auto-entrepreneur en début d’activité, vous bénéficiez d’une exonération qui se traduit par l’application de taux réduits de cotisations sur trois ans, correspondant à :
++
++       - 1/6 des taux pleins de métropole si vous êtes artisan, commerçant ou professionnel libéral non réglementé, 1/3 si vous êtes un professionnel libéral réglementé, jusqu’à la fin du 7ème trimestre qui suit celui au cours duquel vous avez débuté votre activité,
++       - ½ des taux pleins de métropole que vous soyez artisan, commerçant ou professionnel libéral, pour la période qui court entre la fin du 8ème trimestre d’activité jusqu’à la fin de la 3ème année civile d’activité,
++    note : Les taux DOM sont définis comme un pourcentage des taux métropole, mais les règles d'arrondi ne sont pas claires
++    applicable si: établissement . commune . département . outre-mer
++    valeur: oui
++    rend non applicable: exonérations . ACRE
++    références:
++        'Vous êtes auto-entrepreneur dans les DROM ?': https://www.autoentrepreneur.urssaf.fr/portail/accueil/sinformer-sur-le-statut/lessentiel-du-statut.html#vous-etes-auto-entrepreneur-dans
++    references:
++        Taux auto-entrepreneur dans les Drom (PDF): https://www.autoentrepreneur.urssaf.fr/portail/files/Guides/Urssaf-AutoEntrepreneur-Drom.pdf#page=13
++    avec:
++        première période:
++            titre: Jusqu'à la fin du 8ème trimestre d'activité
++            privé: oui
++            valeur: entreprise . durée d'activité . trimestres civils <= 8
++        seconde période:
++            titre: Entre le 9ème trimestre civil et la fin de la 3ème année civile d'activité
++            privé: oui
++            valeur: entreprise . durée d'activité . années civiles <= 3
++
++        service BIC:
++            remplace: cotisations et contributions . cotisations . taux service BIC
++            variations:
++                - si: première période
++                  alors: 3.60%
++                - si: seconde période
++                  alors: 10.60%
++                - sinon: 14.20%
++
++        taux service BNC:
++            remplace: cotisations et contributions . cotisations . taux service BNC
++            variations:
++                - si: première période
++                  alors: 3.60%
++                - si: seconde période
++                  alors: 10.60%
++                - sinon: 14.10%
++
++
++        taux vente restauration hébergement:
++            remplace: cotisations et contributions . cotisations . taux vente restauration hébergement
++            variations:
++                - si: première période
++                  alors: 2.10%
++                - si: seconde période
++                  alors: 6.20%
++                - sinon: 8.20%
++
++        taux CIPAV:
++            remplace: cotisations et contributions . cotisations . cotisations CIPAV . taux
++            variations:
++                - si: première période
++                  alors: 7.10%
++                - si: seconde période
++                  alors: 10.60%
++                - sinon: 14.20%
++
++
++dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux ACRE:
++    privé: oui
++    applicable si: dirigeant . exonérations . ACRE
++    description: |
++        Ce taux correspond à la réduction de cotisations qui s'applique pour
++        l'auto-entrepreneur bénéficiant de l'Acre. Un taux de 75% signifie que
++        l'auto-entrepreneur doit s'acquitter de 75% du montant d'origine des
++        cotisations.
++    unité: '%'
++    variations:
++        - si: entreprise . date de création < 01/04/2019
++          alors:
++              grille:
++                  assiette: entreprise . durée d'activité
++                  tranches:
++                      - montant: 25%
++                        plafond: 1 an
++                      - montant: 50%
++                        plafond: 2 ans
++                      - montant: 90%
++                        plafond: 3 ans
++        - si: entreprise . date de création < 01/04/2020
++          alors:
++              grille:
++                  assiette: entreprise . durée d'activité
++                  tranches:
++                      - montant: 25%
++                        plafond: 1 an
++                      - montant: 75%
++                        plafond: 2 ans
++                      - montant: 90%
++                        plafond: 3 ans
++        - si: entreprise . durée d'activité < 1 an
++          alors: 50%
++
++    références:
++        FAQ Urssaf depuis 04/2020: https://www.autoentrepreneur.urssaf.fr/portail/accueil/une-question/questions-frequentes.html#jai-cree-mon-auto-entreprise-en
++        FAQ Urssaf avant 04/2020: https://www.autoentrepreneur.urssaf.fr/portail/accueil/une-question/questions-frequentes.html#quest-ce-qui-change-pour-moi-si
++        service-public.fr: https://www.service-public.fr/professionnels-entreprises/vosdroits/F32318
++
++    avec:
++        CIPAV:
++            remplace: cotisations CIPAV . taux
++            titre:
++            variations:
++                - si: entreprise . date de création >= 01/04/2020
++                  alors: 12.10%
++                - sinon: cotisations CIPAV . taux * taux ACRE
++
++        prestation de service:
++            déprécié: oui
++            note:
++                Il y a maintenant des taux différents pour les prestations de service BIC
++                et BNC
++            valeur: service BIC
++
++        service BIC:
++            remplace: taux service BIC
++            valeur: taux ACRE * taux service BIC
++            arrondi: 1 décimale
++
++        service BNC:
++            remplace: taux service BNC
++            valeur: taux ACRE * taux service BNC
++            arrondi: 1 décimale
++
++        vente restauration hébergement:
++            remplace: taux vente restauration hébergement
++            valeur: taux ACRE * taux vente restauration hébergement
++            arrondi: 1 décimale
++
++dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux ACRE . notification calcul ACRE annuel:
++    experimental: oui
++    formule: dirigeant . exonérations . ACRE
++    type: notification
++    description: |
++        Le taux ACRE utilisé est celui correspondant au mois courant. Le
++        simulateur ne prend pas encore en compte le chevauchement de deux périodes
++        d'acre sur une meme année.
+commit b18e1737c834ad8749436e1569f41ca01dc6f5fc
+2024-04-05 18:08:57 +0200 Jalil Arfaoui
+feat: met à jour l'affichage du simulateur des charges déductibles #2920
+
+
+diff --git "a/modele-social/r\303\250gles/dirigeant/ind\303\251pendant.publicodes" "b/modele-social/r\303\250gles/dirigeant/ind\303\251pendant.publicodes"
+index 05f65c7c9..fc14bb2d9 100644
+--- "a/modele-social/r\303\250gles/dirigeant/ind\303\251pendant.publicodes"
++++ "b/modele-social/r\303\250gles/dirigeant/ind\303\251pendant.publicodes"
+@@ -143,7 +143,7 @@ dirigeant . indépendant . assiette minimale . retraite:
+         produit:
+           - plafond sécurité sociale
+           - 11.5 %
+-    - sinon: 450 heure/an * SMIC . horaire . début d'année  
++    - sinon: 450 heure/an * SMIC . horaire . début d'année
+   unité: €/an
+   arrondi: oui
+   références:
+@@ -439,8 +439,8 @@ dirigeant . indépendant . cotisations et contributions . indemnités journaliè
+       plafond: 5 * plafond sécurité sociale
+ 
+     taux:
+-      valeur: 
+-        variations: 
++      valeur:
++        variations:
+           - si: date >= 01/2024
+             alors: 0.5%
+           - sinon: 0.85%
+@@ -467,10 +467,10 @@ dirigeant . indépendant . cotisations et contributions . maladie:
+   avec:
+     total:
+       description: |
+-        Le montant de la cotisation pour la couverture des risques d'assurance maladie et maternité. Contient deux composantes : 
++        Le montant de la cotisation pour la couverture des risques d'assurance maladie et maternité. Contient deux composantes :
+         - la cotisation maladie 1 (assurance maladie et maternité)
+         - la cotisation maladie 2 (indemnités journalières maladie)
+-      note: 
++      note:
+         Pour calculer le montant de la cotisation maladie 1, on soustrait le montant de la cotisation maladie 2 du montant total de la cotisation maladie.
+       barème:
+         assiette:
+@@ -501,7 +501,7 @@ dirigeant . indépendant . cotisations et contributions . maladie:
+ 
+     taux progressif . assiette: assiette des cotisations
+ 
+-    # Règles avant 2022 :  
++    # Règles avant 2022 :
+     taux progressif avant 2022:
+       privé: oui
+       applicable si: date < 01/2022
+@@ -807,4 +807,5 @@ dirigeant . indépendant . IJSS . imposable:
+     - allocation forfaitaire de repos maternel
+     - indemnité journalière forfaitaire d’interruption d’activité (maternité)
+     - indemnité de remplacement pour maternité, paternité ou adoption
++    - allocation journalière du proche aidant (AJPA, versée par la CAF)
+   par défaut: 0 €/an
+commit 99166447c310a65c070a1901aa66ba06485c8dcc
+2024-03-28 18:17:47 +0100 Johan Girod
+chore: update references for BPI
+
+
+diff --git "a/modele-social/r\303\250gles/dirigeant/dirigeant.publicodes" "b/modele-social/r\303\250gles/dirigeant/dirigeant.publicodes"
+index 2bd63eb66..272b47c3c 100644
+--- "a/modele-social/r\303\250gles/dirigeant/dirigeant.publicodes"
++++ "b/modele-social/r\303\250gles/dirigeant/dirigeant.publicodes"
+@@ -138,6 +138,9 @@ dirigeant . exonérations . ACRE:
+   références:
+     Aide à la création ou à la reprise d'une entreprise: https://www.service-public.fr/particuliers/vosdroits/F11677
+     "Indépendants : qui peut bénéficier de l'ACRE ?": https://www.urssaf.fr/portail/home/independant/je-beneficie-dexonerations/accre/qui-peut-en-beneficier.html
++    
++    # BPI ONLY
++    "Acre : aide aux créateurs et repreneurs d'entreprise": https://bpifrance-creation.fr/encyclopedie/aides-a-creation-a-reprise-dentreprise/aides-sociales-financieres/acre-aide-aux
+ 
+   avec:
+     ACRE par défaut:
+commit d5607fe8f1ce33557f87ed41b828cb6f3e7c480d
+2024-02-23 14:03:26 +0100 Johan Girod
+fix: update to publicodes 1.0.4
+
+
+diff --git "a/modele-social/r\303\250gles/dirigeant/exon\303\251rations.publicodes" "b/modele-social/r\303\250gles/dirigeant/exon\303\251rations.publicodes"
+index 6e82ddf48..c79d2f607 100644
+--- "a/modele-social/r\303\250gles/dirigeant/exon\303\251rations.publicodes"
++++ "b/modele-social/r\303\250gles/dirigeant/exon\303\251rations.publicodes"
+@@ -157,7 +157,7 @@ dirigeant . indépendant . cotisations et contributions . exonérations . pensio
+ 
+ dirigeant . indépendant . cotisations et contributions . exonérations . ACRE:
+   applicable si: dirigeant . exonérations . ACRE
+-  valeur: non
++  valeur: oui
+   références:
+     'L’Acre pour les indépendants: quel avantages ?': https://www.urssaf.fr/portail/home/independant/je-beneficie-dexonerations/accre/quels-avantages/travailleurs-independants-ne-rel.html
+ 
+diff --git "a/modele-social/r\303\250gles/dirigeant/ind\303\251pendant.publicodes" "b/modele-social/r\303\250gles/dirigeant/ind\303\251pendant.publicodes"
+index fac609e25..05f65c7c9 100644
+--- "a/modele-social/r\303\250gles/dirigeant/ind\303\251pendant.publicodes"
++++ "b/modele-social/r\303\250gles/dirigeant/ind\303\251pendant.publicodes"
+@@ -172,7 +172,7 @@ dirigeant . indépendant . cotisations et contributions . contributions spécial
+ dirigeant . indépendant . cotisations et contributions . PCV:
+   titre: Prestations complémentaires vieillesse
+   acronyme: PCV
+-  formule: non
++  non applicable si: oui
+   description: |
+     Certaines catégories professionnelles bénéficient de
+     prestations complémentaires vieillesse (PCV), auparavant nommées « avantage
+commit 0a5b279b27420c8c15d684be289ac296e41826b0
+2024-02-23 14:03:26 +0100 Johan Girod
+wip
+
+
+diff --git "a/modele-social/r\303\250gles/dirigeant/exon\303\251rations.publicodes" "b/modele-social/r\303\250gles/dirigeant/exon\303\251rations.publicodes"
+index c79d2f607..6e82ddf48 100644
+--- "a/modele-social/r\303\250gles/dirigeant/exon\303\251rations.publicodes"
++++ "b/modele-social/r\303\250gles/dirigeant/exon\303\251rations.publicodes"
+@@ -157,7 +157,7 @@ dirigeant . indépendant . cotisations et contributions . exonérations . pensio
+ 
+ dirigeant . indépendant . cotisations et contributions . exonérations . ACRE:
+   applicable si: dirigeant . exonérations . ACRE
+-  valeur: oui
++  valeur: non
+   références:
+     'L’Acre pour les indépendants: quel avantages ?': https://www.urssaf.fr/portail/home/independant/je-beneficie-dexonerations/accre/quels-avantages/travailleurs-independants-ne-rel.html
+ 
+commit 0f785f9c986b7ca8221528403b5c54fd823f081c
+2024-02-08 17:50:48 +0100 Johan Girod
+# This is a combination of 2 commits.
+
+
+diff --git "a/modele-social/r\303\250gles/dirigeant/ind\303\251pendant.publicodes" "b/modele-social/r\303\250gles/dirigeant/ind\303\251pendant.publicodes"
+index f49c4aa47..fac609e25 100644
+--- "a/modele-social/r\303\250gles/dirigeant/ind\303\251pendant.publicodes"
++++ "b/modele-social/r\303\250gles/dirigeant/ind\303\251pendant.publicodes"
+@@ -137,9 +137,13 @@ dirigeant . indépendant . assiette minimale . maladie:
+ dirigeant . indépendant . assiette minimale . retraite:
+   description: La cotisation minimale de retraite de base permet de valider 3
+     trimestres de retraite, quel que soit le revenu.
+-  produit:
+-    - plafond sécurité sociale
+-    - 11.5%
++  variations:
++    - si: date < 01/2023
++      alors:
++        produit:
++          - plafond sécurité sociale
++          - 11.5 %
++    - sinon: 450 heure/an * SMIC . horaire . début d'année  
+   unité: €/an
+   arrondi: oui
+   références:
+@@ -413,14 +417,15 @@ dirigeant . indépendant . cotisations et contributions . indemnités journaliè
+ 
+   arrondi: oui
+   plafond:
++    applicable si: date >= 01/2022
++    non applicable si: date > 01/2024
+     # Le taux indemnité est de 0.5%, dans la loi.
+     # Mais parce que l'Urssaf regorge d'inventivité et qu'ils n'ont pas envie de se baser
+     # sur la loi - non, non, ça sera trop simple - ils ont choisi de continuer d'appliquer
+-    # le taux de 0.85% tout en abaissant la cotisation maladie 1.
++    # le taux de 0.85% tout en abaissant la cotisation maladie 1 en 2022 et 2023
+     #
+     # Pour les revenu ou le taux de la cotisation total (maladie 1 + 2) est inférieur à 0.85, on
+     # plafonne donc la cotis maladie 2 à ce total
+-    applicable si: date >= 01/2022
+     valeur: maladie . total
+   unité: €/an
+   références:
+@@ -434,8 +439,11 @@ dirigeant . indépendant . cotisations et contributions . indemnités journaliè
+       plafond: 5 * plafond sécurité sociale
+ 
+     taux:
+-      déprécié: oui
+-      valeur: 0.85%
++      valeur: 
++        variations: 
++          - si: date >= 01/2024
++            alors: 0.5%
++          - sinon: 0.85%
+ 
+ dirigeant . indépendant . cotisations et contributions . maladie:
+   description: |
+@@ -450,7 +458,6 @@ dirigeant . indépendant . cotisations et contributions . maladie:
+   abattement:
+     applicable si: date >= 01/2022
+     valeur: indemnités journalières maladie
+-
+   unité: €/an
+   références:
+     Article D621-2 du Code de la sécurité sociale: https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000046714747
+@@ -458,26 +465,24 @@ dirigeant . indépendant . cotisations et contributions . maladie:
+     Liste des cotisations: https://www.urssaf.fr/portail/home/artisan-commercant/comment-sont-calculees-les-cotis/liste-des-cotisations.html
+ 
+   avec:
+-    réduction supplémentaire:
+-      applicable si:
+-        toutes ces conditions:
+-          - date < 01/2022
+-          - assiette minimale
+-      titre: réduction supplémentaire (avant 2022)
+-      déprécié: oui
++    total:
+       description: |
+-        La réduction supplémentaire du taux maladie pour les revenu inférieurs à 40% du plafond de la sécurité sociale
+-      taux progressif:
+-        assiette: taux progressif . assiette
++        Le montant de la cotisation pour la couverture des risques d'assurance maladie et maternité. Contient deux composantes : 
++        - la cotisation maladie 1 (assurance maladie et maternité)
++        - la cotisation maladie 2 (indemnités journalières maladie)
++      note: 
++        Pour calculer le montant de la cotisation maladie 1, on soustrait le montant de la cotisation maladie 2 du montant total de la cotisation maladie.
++      barème:
++        assiette:
++          valeur: assiette des cotisations
++          plancher: assiette minimale . maladie
+         multiplicateur: plafond sécurité sociale
+         tranches:
+-          - plafond: 0%
+-            taux: 1.35%
+-          - plafond: 40%
+-            taux: 0%
+-
+-    références:
+-      Article D621-2 du Code de la sécurité sociale au 01/12/2022: https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000046714747/2022-12-01/
++          - taux: taux progressif
++            plafond: 5
++          - taux: 6.50 %
++      références:
++        Article D621-1 du Code de la sécurité sociale: https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000046714760
+ 
+     taux progressif:
+       arrondi: 2 décimales
+@@ -491,8 +496,12 @@ dirigeant . indépendant . cotisations et contributions . maladie:
+             plafond: 60%
+           - taux: 7.20%
+             plafond: 110%
++      références:
++        Article D621-2 du Code de la sécurité sociale: https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000046714747/
++
+     taux progressif . assiette: assiette des cotisations
+ 
++    # Règles avant 2022 :  
+     taux progressif avant 2022:
+       privé: oui
+       applicable si: date < 01/2022
+@@ -508,16 +517,24 @@ dirigeant . indépendant . cotisations et contributions . maladie:
+       abattement: réduction supplémentaire
+       arrondi: 2 décimales
+ 
+-    total:
+-      barème:
+-        assiette:
+-          valeur: assiette des cotisations
+-          plancher: assiette minimale . maladie
++    réduction supplémentaire:
++      titre: réduction supplémentaire (avant 2022)
++      applicable si:
++        toutes ces conditions:
++          - date < 01/2022
++          - assiette minimale
++      déprécié: oui
++      description: |
++        La réduction supplémentaire du taux maladie pour les revenu inférieurs à 40% du plafond de la sécurité sociale
++      taux progressif:
++        assiette: taux progressif . assiette
+         multiplicateur: plafond sécurité sociale
+         tranches:
+-          - taux: taux progressif
+-            plafond: 5
+-          - taux: 6.50 %
++          - plafond: 0%
++            taux: 1.35%
++          - plafond: 40%
++            taux: 0%
++
+ 
+ dirigeant . indépendant . cotisations et contributions . retraite de base:
+   description: |
+commit c20a7cb80d290b2f3fd6a737225acda7d05fbe33
+2024-01-25 18:34:00 +0100 Johan Girod
+chore: change extension of publicodes files
+
+
+diff --git "a/modele-social/r\303\250gles/dirigeant/dirigeant.publicodes" "b/modele-social/r\303\250gles/dirigeant/dirigeant.publicodes"
+new file mode 100644
+index 000000000..2bd63eb66
+--- /dev/null
++++ "b/modele-social/r\303\250gles/dirigeant/dirigeant.publicodes"
+@@ -0,0 +1,265 @@
++dirigeant: oui
++dirigeant . gérant minoritaire:
++  experimental: oui
++  titre: Gérant minoritaire ou égalitaire
++  question: Êtes-vous gérant minoritaire ou égalitaire de votre entreprise ?
++  applicable si: entreprise . associés . multiples
++  par défaut: non
++
++dirigeant . régime social:
++  experimental: oui
++  variations:
++    - si: entreprise . catégorie juridique . EI . auto-entrepreneur
++      alors: "'auto-entrepreneur'"
++    - si:
++        une de ces conditions:
++          - entreprise . catégorie juridique . SAS
++          - toutes ces conditions:
++              - entreprise . catégorie juridique . SARL
++              - gérant minoritaire
++      alors: "'assimilé salarié'"
++    - si:
++        une de ces conditions:
++          - non applicable si: gérant minoritaire
++            une de ces conditions:
++              - entreprise . catégorie juridique . EI
++              - entreprise . catégorie juridique . SARL
++          - entreprise . catégorie juridique . SELARL
++          - entreprise . catégorie juridique . SELAS
++      alors: "'indépendant'"
++
++dirigeant . rémunération: oui
++dirigeant . rémunération . totale:
++  titre: Rémunération totale
++  question: Quel montant total pensez-vous dégager pour votre rémunération ?
++  description: |
++    C'est ce que l'entreprise dépense en tout pour la rémunération du dirigeant. Cette rémunération "super-brute" inclut toutes les cotisations sociales à payer. On peut aussi considérer que c'est la valeur monétaire du travail du dirigeant.
++  titre global: Rémunération totale dirigeant
++  unité: €/an
++  résumé: Total payé par l'entreprise pour la rémunération du dirigeant
++  variations:
++    - si: assimilé salarié
++      alors:
++        valeur: salarié . coût total employeur
++        abattement: assimilé salarié . réduction ACRE . montant
++    - si: entreprise . imposition . IS
++      alors:
++        somme:
++          - net . après impôt
++          - impôt . montant
++          - cotisations
++        par défaut: entreprise . chiffre d'affaires - entreprise . charges
++        plancher: cotisations
++    - sinon: entreprise . chiffre d'affaires - entreprise . charges
++
++dirigeant . rémunération . net:
++  unité: €/an
++  titre: Rémunération nette
++  question: Quelle est votre rémunération nette ?
++  résumé: Après déduction des cotisations, contributions et charges
++  somme:
++    - rémunération . totale
++    - (- cotisations)
++
++dirigeant . rémunération . cotisations:
++  variations:
++    - si: assimilé salarié
++      alors: assimilé salarié . cotisations
++    - si: indépendant
++      alors: indépendant . cotisations et contributions
++    - si: auto-entrepreneur
++      alors: auto-entrepreneur . cotisations et contributions
++
++dirigeant . rémunération . net . imposable:
++  titre: revenu imposable
++  variations:
++    - si: assimilé salarié
++      alors: salarié . rémunération . net . imposable
++    - si: indépendant
++      alors: indépendant . revenu professionnel
++    - si: auto-entrepreneur
++      alors: auto-entrepreneur . impôt . revenu imposable
++    - sinon: 0 €/an
++
++dirigeant . rémunération . impôt:
++  titre: impôt sur le revenu
++  somme:
++    - produit:
++        - net . imposable
++        - impôt . taux d'imposition
++    - auto-entrepreneur . impôt . versement libératoire . montant
++
++dirigeant . rémunération . net . après impôt:
++  titre: Revenu après impôt
++  question: Quel est le revenu net après impôt souhaité ?
++  description: >-
++    Le revenu net après déduction de l'impôt sur le revenu et des cotisations
++    sociales.
++  valeur: rémunération . net - impôt . montant
++  résumé: Ce que vous rapporte cette activité
++
++dirigeant . exonérations:
++dirigeant . exonérations . ACRE:
++  description: >-
++    L'aide à la création ou à la reprise d'une entreprise (Acre) consiste en une
++    exonération partielle de charges sociales, dite exonération de début
++    d'activité pendant 12 mois.
++
++
++    Elle est **automatique** pour les **sociétés et les entreprises individuelles** (sous certaines conditions, comme par exemple ne pas en avoir bénéficié les trois dernières années).
++
++
++    Pour les **auto-entrepreneurs** en revanche, elle doit être demandée et est réservée aux bénéficiaires suivants:
++
++    - Les demandeurs d'emplois (indemnisés ou non indemnisés mais ayant au moins 6 mois d’inscription à Pôle Emploi au cours des 18 derniers mois).
++
++    - Les bénéficiaires d'aides sociales (RSA, ASS, ATA)
++
++    - Les jeunes entre 18 et 25 ans (jusqu'à 29 ans pour les personnes reconnues en situation de handicap)
++
++    - Les personnes créant une micro-entreprise dans un quartier prioritaire de la ville (QPPV)
++
++  notes: |
++    #### Historique
++
++    - Pour les auto-entreprise créées à partir du 1er janvier 2020, l'exonération est
++    de nouveau soumise à condition.
++    - Pour les entreprises créées entre le 1er janvier 2019 et le 31 décembre 2019, la réduction est généralisée à tous les créateurs, sauf si vous avez déjà obtenu l'ACCRE dans les trois années précédentes
++    - Pour les entreprises créées avant le 1er janvier 2019, la l'exonération de cotisation s'appelait ACCRE était soumise à conditions et n'était pas automatique : il fallait en faire la demande.
++  question: Bénéficiez-vous de l'ACRE ?
++  applicable si:
++    une de ces conditions:
++      - toutes ces conditions:
++          - auto-entrepreneur
++          - entreprise . durée d'activité < 3 ans
++          - entreprise . date de création < 04/2020
++      - entreprise . durée d'activité . en début d'année < 1 an
++  par défaut: ACRE par défaut
++  références:
++    Aide à la création ou à la reprise d'une entreprise: https://www.service-public.fr/particuliers/vosdroits/F11677
++    "Indépendants : qui peut bénéficier de l'ACRE ?": https://www.urssaf.fr/portail/home/independant/je-beneficie-dexonerations/accre/qui-peut-en-beneficier.html
++
++  avec:
++    ACRE par défaut:
++      privé: oui
++      une de ces conditions:
++        - auto-entrepreneur = non
++        # Pour l'année 2019, l'acre était automatiquement accordée aux auto-entrepreneur
++        - une de ces conditions:
++            - entreprise . date de création < 01/01/2019
++            - entreprise . date de création > 31/12/2019
++
++dirigeant . assimilé salarié:
++  description: |
++    Certains dirigeants d'entreprise (c'est notamment le cas pour les SASU) sont considérés par la sécurité sociale comme assimilés aux salariés. Ils sont alors au régime général de la sécurité sociale, avec quelques contraintes cependant. Par exemple, ils ne cotisent pas au chômage, et n'y ont donc pas droit.
++  valeur: régime social = 'assimilé salarié'
++  par défaut: non
++  rend non applicable:
++    - salarié . rémunération . primes
++    - salarié . rémunération . frais professionnels
++    - salarié . rémunération . assiette de vérification du SMIC . contrôle
++
++    - salarié . activité partielle
++    - salarié . contrat . temps de travail . temps partiel
++    - salarié . temps de travail . heures supplémentaires
++
++    - salarié . cotisations . chômage
++    - salarié . cotisations . exonérations . lodeom
++    - salarié . cotisations . exonérations . réduction générale
++    - salarié . cotisations . AGS
++    - salarié . cotisations . APEC
++    - salarié . cotisations . contribution au dialogue social
++    - salarié . cotisations . allocations familiales . taux réduit
++    - salarié . cotisations . maladie . employeur . taux réduit
++
++    - salarié . convention collective
++    - salarié . régimes spécifiques . DFS
++    - salarié . régimes spécifiques . impatriés
++    - entreprise . association non lucrative
++  références:
++    Le régime des dirigeants: https://www.urssaf.fr/portail/home/employeur/creer/choisir-une-forme-juridique/le-statut-du-dirigeant/les-dirigeants-assimiles-salarie.html
++  note: Nous ne gérons pas le cas des SAS(U) à l'IR pour l'instant
++
++  avec:
++    salarié:
++      remplace: salarié
++      valeur: oui
++
++    salarié contrat:
++      remplace: salarié . contrat
++      valeur: "'CDI'"
++
++    salarié contrat statut cadre:
++      remplace: salarié . contrat . statut cadre
++      valeur: oui
++
++dirigeant . assimilé salarié . cotisations:
++  valeur: salarié . cotisations
++  abattement: réduction ACRE . montant
++
++dirigeant . assimilé salarié . réduction ACRE:
++  experimental: oui
++  applicable si: dirigeant . exonérations . ACRE
++  non applicable si: salarié . cotisations . assiette > 100% * plafond sécurité sociale
++
++  avec:
++    notification taux annuel:
++      type: notification
++      description: |
++        Le taux ACRE utilisé est une moyenne annuelle. Le
++        simulateur ne prend pas encore en compte le calcul de l'ACRE mois par mois.
++  #   cumul JEI:
++  #     description: Il n'est pas possible de cumuler les exonérations ACRE et JEI.
++  #     applicable si: salarié . cotisations . exonérations . JEI
++  #     avec:
++  #       ACRE plus avantageux:
++  #         applicable si: réduction ACRE . montant >= salarié . cotisations . exonérations . JEI . montant
++  #         rend non applicable:
++  #           règle: salarié . cotisations . exonérations . JEI . montant
++  #           sauf dans:
++  #             - ACRE plus avantageux
++  #             - JEI plus avantageux
++  #         type: notification
++  #         valeur: oui
++  #         description: |
++  #           Il n'est pas possible de cumuler les exonérations ACRE et JEI. Dans votre cas, l'exonération ACRE est plus élevé, c'est donc ce scénario qui a été retenu pour la simulation.
++
++  #           *Vous pourrez demander l'option JEI pour l'année suivante*
++
++  #       JEI plus avantageux:
++  #         applicable si: réduction ACRE . montant < salarié . cotisations . exonérations . JEI . montant
++  #         rend non applicable:
++  #           règle: réduction ACRE . montant
++  #           sauf dans:
++  #             - ACRE plus avantageux
++  #             - JEI plus avantageux
++  #         valeur: oui
++  #         type: notification
++  #         description: Il n'est pas possible de cumuler les exonérations ACRE et JEI. Dans votre cas, l'exonération JEI est plus élevé, c'est donc ce scénario qui a été retenu pour la simulation.
++
++dirigeant . assimilé salarié . réduction ACRE . montant:
++  arrondi: oui
++  variations:
++    - si: salarié . cotisations . assiette <= 75% * plafond sécurité sociale
++      alors: cotisations exonérées
++    - sinon:
++        produit:
++          - valeur: cotisations exonérées
++            contexte:
++              dirigeant . exonérations . ACRE: non
++              salarié . cotisations . assiette: 75% * plafond sécurité sociale
++          - (plafond sécurité sociale - salarié . cotisations . assiette) / (25%
++            * plafond sécurité sociale)
++  références:
++    L'ACRE pour les assimilés salariés: https://www.urssaf.fr/portail/home/employeur/beneficier-dune-exoneration/exonerations-generales/laccre.html
++    Article D131-6-1 du code de la sécurité sociale: https://www.legifrance.gouv.fr/codes/id/LEGIARTI000036475110/2018-01-01/#LEGIARTI000036475110
++
++  avec:
++    cotisations exonérées:
++      unité: €/an
++      privé: oui
++      somme:
++        - salarié . cotisations . maladie
++        - salarié . cotisations . allocations familiales
++        - salarié . cotisations . vieillesse
++      arrondi: oui
+diff --git "a/modele-social/r\303\250gles/dirigeant/exon\303\251rations.publicodes" "b/modele-social/r\303\250gles/dirigeant/exon\303\251rations.publicodes"
+new file mode 100644
+index 000000000..c79d2f607
+--- /dev/null
++++ "b/modele-social/r\303\250gles/dirigeant/exon\303\251rations.publicodes"
+@@ -0,0 +1,303 @@
++dirigeant . indépendant . cotisations et contributions . exonérations:
++  somme:
++    - ZFU
++
++dirigeant . indépendant . cotisations et contributions . exonérations . ZFU:
++  applicable si: établissement . ZFU
++  produit:
++    - valeur: maladie
++      plafond:
++        valeur: exonérations . ZFU
++        contexte:
++          revenu professionnel: 3042 heures/an * SMIC . horaire
++    - taux
++  arrondi: oui
++  unité: €/an
++
++dirigeant . indépendant . cotisations et contributions . exonérations . âge:
++  question: Bénéficiez-vous du dispositif d’exonération « âge pour la retraite »
++    de la cotisation invalidité-décès ?
++  description: |
++    ### Artisans, commerçants, et professions libérales hors CIPAV
++    Ce dispositif a été arrêté en 2015, mais est toujours actif pour les personnes qui en bénéficiaient
++    avant son abrogation.
++
++    #### Professions libérales relevants de la CIPAV
++    L'exonération s'applique automatique à partir de l'année de vos 68 ans.
++    Vous pouvez cependant cotiser volontairement entre 68 et 80 ans, si :
++    - vous poursuivez votre activité ;
++    - vous avez un conjoint de moins de 67 ans ou des enfants à charge de moins de 21 ans ;
++    - vous avez une personne à charge ayant un handicap majeur.
++
++  par défaut: non
++  applicable si:
++    une de ces conditions:
++      - entreprise . date de création < 01/2016
++      - PL . CIPAV
++  # L'exonération s'est arreté en 2015 pour les AC / PLNR, soit après la possibilité d'opter pour le régime général pour les PLNR CIPAV
++  non applicable si: PL . option régime général
++
++  avec:
++    invalidité et décès:
++      valeur: invalidité et décès
++      remplace: invalidité et décès
++      abattement: 100%
++
++dirigeant . indépendant . cotisations et contributions . exonérations . pension invalidité:
++  titre: exonération invalidité
++  acronyme: PI
++  question:
++    variations:
++      - si: dirigeant . indépendant . PL . PAMC #TODO demande Urssaf implémentée sans reflechir : il faudra regarder de plus près le pourquoi du comment de cette variations
++        alors:
++          texte:
++            Êtes-vous titulaire d’une pension d’invalidité versée par votre caisse
++            retraite ?
++      - sinon:
++          texte:
++            Êtes-vous titulaire d’une pension d’invalidité à titre de travailleur
++            indépendant ?
++  description: |-
++    Si vous êtes titulaire d’une pension d’invalidité versée par un régime des travailleurs non-salariés
++    non agricoles, vous bénéficiez d’une exonération des cotisations de retraite de base, de
++    retraite complémentaire et maladie. 
++
++    Cette exonération est au prorata du nombre de mois où votre invalidité a été reconnue. 
++    Si vous avez reçu une pension d'invalidité sur l'année complète, alors l'exonération est totale.
++
++  # A faire valider par la CNAV
++  # Vous validez des trimestres de retraite pour chaque trimestre civil de perception d'une pension d'invalidité.
++
++  # Pour que vous puissiez continuer à accumuler des points de retraite complémentaire comme les autres travailleurs,
++  # il vous est attribué des "points gratuits".
++
++  # En règle générale, le nombre de points reçu correspond à la moyenne mensuelle des points cotisés
++  # pendant la période d'activité indépendante avant versement de la pension.
++
++  # > Par exemple, si vous avez cotisé pendant 6 ans et 11 mois pour un total de 588 points,
++  # > le nombre de points gratuits reçu chaque mois sera de : `588 / (6 * 12 + 11) = 7,08`
++
++  par défaut: non
++  rend non applicable: exonérations . ZFU
++  référence:
++    Notice RSI (PDF): https://www.secu-independants.fr/fileadmin/mediatheque/Espace_telechargement/Protection_sociale/Depliant_assur_invalidite.pdf#page=8
++    Article D635-2 du code de la sécurité sociale: https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000041966510
++    Article D621-4 du code de la sécurité sociale: https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000043656758
++    Circulaire RSI 2013/004 du 17/01/2013: https://www.legislation.cnav.fr/Documents/circulaire_rsi_2013_004_17012013.pdf#page=24
++    Trimestres assimilés pour le régime de base des indépendants: https://www.legislation.cnav.fr/Pages/expose.aspx?Nom=independant_regime_base_duree_assurance_trimestre_assimile_ex
++
++  avec:
++    durée:
++      question: Pendant combien de mois dans l'année bénéficiez-vous de cette pension ?
++      par défaut: 12 mois
++      plafond: 12 mois
++      plancher: 1 mois
++      unité: mois
++
++    indemnités journalières maladie:
++      arrondi: oui
++      non applicable si: prorata < ACRE . prorata sur l'année
++      valeur: indemnités journalières maladie
++      remplace:
++        références à: indemnités journalières maladie
++        sauf dans:
++          - cotisations et contributions . maladie
++          - cotisations et contributions . indemnités journalières maladie .
++            assiette
++      abattement: prorata
++
++    maladie:
++      arrondi: oui
++      non applicable si: prorata < ACRE . prorata sur l'année
++      remplace:
++        références à: maladie
++        sauf dans:
++          - cotisations et contributions . maladie . total
++          - cotisations et contributions . maladie . taux progressif
++      valeur: maladie
++      abattement: prorata
++
++    profession libérale réglementées hors Urssaf:
++      privé: oui
++      toutes ces conditions:
++        - PL . CNAVPL
++        - une de ces conditions:
++            - PL . CIPAV = non
++            - date < 01/2023
++
++    prorata:
++      valeur: durée / 1 an
++      unité: '%'
++      arrondi: oui
++
++    retraite complémentaire:
++      arrondi: oui
++      remplace: retraite complémentaire
++      valeur: retraite complémentaire
++      abattement:
++        valeur: prorata
++        non applicable si:
++          une de ces conditions:
++            - profession libérale réglementées hors Urssaf
++            # l'exonération incapacité est plus avantageuse
++            - PL . CNAVPL . exonération incapacité
++
++    retraite de base:
++      arrondi: oui
++      non applicable si: prorata < ACRE . prorata sur l'année
++      remplace: retraite de base
++      valeur: retraite de base
++      abattement:
++        valeur: prorata
++        non applicable si:
++          une de ces conditions:
++            - profession libérale réglementées hors Urssaf
++            # l'exonération incapacité est plus avantageuse
++            - PL . CNAVPL . exonération incapacité
++
++dirigeant . indépendant . cotisations et contributions . exonérations . ACRE:
++  applicable si: dirigeant . exonérations . ACRE
++  valeur: oui
++  références:
++    'L’Acre pour les indépendants: quel avantages ?': https://www.urssaf.fr/portail/home/independant/je-beneficie-dexonerations/accre/quels-avantages/travailleurs-independants-ne-rel.html
++
++  avec:
++    allocations familiales:
++      remplace: allocations familiales
++      valeur: cotisations et contributions . allocations familiales
++      abattement: taux * prorata sur l'année
++      arrondi: oui
++
++    indemnités journalières maladie:
++      # On préfère l'exonération pension invalidité si elle est plus avantageuse
++      non applicable si: pension invalidité . prorata >= prorata sur l'année
++      remplace:
++        références à: indemnités journalières maladie
++        priorité: 10
++        sauf dans:
++          - cotisations et contributions . maladie
++          - cotisations et contributions . indemnités journalières maladie .
++            assiette
++      valeur: cotisations et contributions . indemnités journalières maladie
++      abattement: taux * prorata sur l'année
++      arrondi: oui
++
++    invalidité et décès:
++      # On préfère l'exonération âge car elle est plus avantageuse
++      non applicable si: exonérations . âge
++      remplace:
++        références à: invalidité et décès
++        priorité: 10
++      valeur: cotisations et contributions . invalidité et décès
++      abattement: taux * prorata sur l'année
++      arrondi: oui
++
++    maladie:
++      # On préfère l'exonération pension invalidité si elle est plus avantageuse
++      non applicable si: pension invalidité . prorata >= prorata sur l'année
++      remplace:
++        références à: maladie
++        priorité: 10
++        sauf dans:
++          - cotisations et contributions . maladie . total
++          - cotisations et contributions . maladie . taux progressif
++      valeur: cotisations et contributions . maladie
++      abattement: taux * prorata sur l'année
++      arrondi: oui
++
++    retraite de base:
++      non applicable si:
++        une de ces conditions:
++          # On préfère l'exonération incapacité car cette dernière est plus avantageuse
++          - PL . CNAVPL . exonération incapacité
++          # On préfère l'exonération pension invalidité si elle est plus avantageuse
++          - pension invalidité . prorata >= prorata sur l'année
++      remplace:
++        références à: retraite de base
++        priorité: 10
++        sauf dans: protection sociale . retraite . base . cotisée . indépendant
++      valeur: cotisations et contributions . retraite de base
++      abattement: taux * prorata sur l'année
++      arrondi: oui
++
++dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . prorata sur l'année:
++  description: |
++    Comme le calcul des cotisations indépendants s'effectue sur l'année entière,
++    l'exonération est proratisée en fonction de la durée effective de l'ACRE sur l'année courante.
++
++    Par exemple, pour une entreprise crée le 1 fevrier 2018, le calcul du prorata pour les
++    cotisations 2019 sera le suivant :
++
++    `31 jours d'acre restant en 2019 / 365 jours = 8,5%`
++  unité: '%'
++  arrondi: oui
++  valeur: (1 an - entreprise . durée d'activité . en début d'année) / 1 an
++
++dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . taux:
++  taux progressif:
++    assiette: assiette des cotisations
++    multiplicateur: PSS proratisé
++    tranches:
++      - taux: 100%
++        plafond: 75%
++      - taux: 0%
++        plafond: 100%
++
++dirigeant . indépendant . cotisations et contributions . exonérations . ZFU . taux:
++  variations:
++    - si: entreprise . salariés . effectif < 5
++      alors:
++        taux progressif:
++          assiette: entreprise . durée d'activité . en fin d'année
++          retourne seulement le taux: oui
++          tranches:
++            - plafond: 5 ans
++              taux: 100%
++            - plafond: 6 ans
++              taux: 60%
++            - plafond: 10 ans
++              taux: 60%
++            - plafond: 11 ans
++              taux: 40%
++            - plafond: 12 ans
++              taux: 40%
++            - plafond: 13 ans
++              taux: 20%
++            - plafond: 14 ans
++              taux: 20%
++            - plafond: 15 ans
++              taux: 0%
++    - sinon:
++        taux progressif:
++          assiette: entreprise . durée d'activité . en fin d'année
++          retourne seulement le taux: oui
++          tranches:
++            - plafond: 5 ans
++              taux: 100%
++            - plafond: 6 ans
++              taux: 60%
++            - plafond: 7 ans
++              taux: 40%
++            - plafond: 8 ans
++              taux: 20%
++            - plafond: 9 ans
++              taux: 0%
++
++dirigeant . indépendant . cotisations et contributions . exonérations . DROM:
++  applicable si: établissement . commune . département . outre-mer
++  valeur: oui
++  rend non applicable: exonérations . ACRE
++  type: notification
++  sévérité: avertissement
++  titre: exonération DROM
++  résumé: |
++    Ce simulateur ne prend pas en compte les exonérations DROM.
++  description: |
++    En début d’activité pendant 24 mois, les indépendants dont l'entreprise est localisée dans les DOM bénéficient, sous conditions de revenus, d’une exonération de certaines cotisations et de contributions sociales.
++
++    Il existe également des exonérations et des abattements en régime de croisière (à partir de la troisième année).
++
++    Ce simulateur ne prend pas en compte ces exonérations pour le moment.
++  références:
++    "Exonérations de début d'activité": https://www.urssaf.fr/portail/home/taux-et-baremes/taux-de-cotisations/travailleurs-independants-en-out/debut-dactivite--cotisations-et.html
++    'Exonérations et abattements en régime de croisière': https://www.urssaf.fr/portail/home/taux-et-baremes/taux-de-cotisations/travailleurs-independants-en-out/exonerations-et-abattements-en-r.html
+diff --git "a/modele-social/r\303\250gles/dirigeant/ind\303\251pendant.publicodes" "b/modele-social/r\303\250gles/dirigeant/ind\303\251pendant.publicodes"
+new file mode 100644
+index 000000000..f49c4aa47
+--- /dev/null
++++ "b/modele-social/r\303\250gles/dirigeant/ind\303\251pendant.publicodes"
+@@ -0,0 +1,793 @@
++dirigeant . indépendant:
++  valeur: régime social = 'indépendant'
++  par défaut: non
++
++dirigeant . indépendant . revenu professionnel:
++  résumé: rémunération du dirigeant au régime des indépendant
++  description:
++    Le revenu professionnel est la rémunération du dirigeant au régime
++    des indépendant.
++
++    Pour les entreprises qui ont opté pour l'**impôt sur le revenu**, il
++    s'agit du **résultat fiscal**.
++
++    Pour les entreprises qui ont opté pour l'**impôt sur les sociétés**, il
++    s'agit de la rémunération du dirigeant, auquel on ajoute les cotisations non
++    déductibles.
++  note: |
++    ### Comment est calculé le revenu professionnel à partir du chiffre d'affaires dans le simulateur ?
++
++    Pour retrouver le revenu professionnel il faut résoudre l'équation suivante :
++
++    `CA = revenu professionnel + charges + cotisations (revenu professionnel)`
++
++    Comme les cotisations dépendent du revenu professionnel, nous ne pouvons pas avoir de formule « toute faite » pour le calculer. Nous procédons donc par un algorithme qui retrouve la valeur qui fonctionne dans l'équation précédente. C'est ce que signifie « résoudre la référence circulaire »
++
++    Cet algorithme fonctionne par essai-erreur, en testant des valeurs jusqu'à trouver la bonne (avec une heuristique pour trouver les valeurs à tester).
++
++    Dans la réalité, comme les cotisations sont régularisées d'une année sur l'autre, ce calcul n'est jamais à faire (sauf exceptions). Mais nous avons choisi de l'implémenter pour fournir le résultat le plus proche sans avoir à demander le montant des cotisations provisionnelles payées l'année N-1.
++
++  unité: €/an
++  résoudre la référence circulaire: oui
++  variations:
++    - si: entreprise . imposition = 'IS'
++      alors:
++        somme:
++          - rémunération . net
++          - cotisations et contributions . non déductibles
++    - sinon: entreprise . résultat fiscal
++
++dirigeant . indépendant . assiette des cotisations:
++  unité: €/an
++  description: Il s'agit de l'assiette des cotisations sociales, nombre forcément positif
++  valeur: sans plancher
++  plancher: 0
++
++  avec:
++    sans plancher:
++      somme:
++        - revenu professionnel
++        - cotisations facultatives . déductibles
++
++dirigeant . indépendant . cotisations et contributions . non déductibles:
++  titre: Part non déductibles fiscalement
++  somme:
++    - CSG-CRDS . non déductible
++    - cotisations facultatives . non déductibles
++
++dirigeant . indépendant . cotisations et contributions . PSS proratisé:
++  titre: plafond de la sécurité sociale proratisé
++  description: |
++    Le plafond de la sécurité sociale, proratisé par la durée d'activité pendant l'année (dans le cas d'activité crée ou cessée en cours d'année).
++
++    Utile pour calculer les cotisations forfaitaires de début d'activité ou le montant de l'ACRE
++  unité: €/an
++  produit:
++    - plafond sécurité sociale
++    - valeur: entreprise . durée d'activité . en fin d'année / 1 an
++      plafond: 100%
++  arrondi: oui
++
++dirigeant . indépendant . cotisations et contributions . cotisations:
++  références:
++    'Professions libérales réglementées: Bases de calcul et taux des cotisations': https://www.urssaf.fr/portail/home/taux-et-baremes/taux-de-cotisations/les-professions-liberales-reglem/bases-de-calcul-et-taux-des-coti.html
++    'Artisans, commerçants et professions libérales non réglementées : Bases de calcul et taux des cotisations': https://www.urssaf.fr/portail/home/taux-et-baremes/taux-de-cotisations/artisans-commercants-et-professi/bases-de-calcul-et-taux-des-coti.html
++    'Practiciens et auxiliaires médicaux : Bases de calcul et taux des cotisations': https://www.urssaf.fr/portail/home/taux-et-baremes/taux-de-cotisations/les-praticiens-et-auxiliaires-me.html
++  formule:
++    somme:
++      - maladie
++      - retraite de base
++      - retraite complémentaire
++      - indemnités journalières maladie
++      - invalidité et décès
++      - allocations familiales
++      - PCV
++      - (- exonérations)
++
++dirigeant . indépendant . cotisations et contributions:
++  description: |
++    C'est le montant total dû par l'indépendant au titre des cotisations et
++    contributions obligatoires ainsi qu'au titre de ses cotisations facultatives
++    telles que les contrats Madelin.
++
++  somme:
++    - cotisations et contributions . cotisations
++    - conjoint collaborateur . cotisations
++    - cotisations facultatives . montant
++    - CSG-CRDS
++    - contributions spéciales
++    - formation professionnelle
++  note: |
++    À la différence des cotisations, les contributions ne sont pas réintroduites
++    pour le calcul de la CSG/CRDS. Elles ne bénéficient pas non plus de la
++    réduction ACRE.
++
++  avec:
++    Urssaf:
++      experimentale: oui
++      titre: cotisations recouvrées par l'Urssaf
++      valeur: cotisations et contributions
++      abattement: cotisations facultatives . montant
++
++dirigeant . indépendant . assiette minimale:
++  non applicable si:
++    une de ces conditions:
++      - situation personnelle . RSA
++      - entreprise . activités . saisonnière
++  valeur: oui
++  description: |
++    Si le revenu du chef d'entreprise est déficitaire ou inférieur aux bases de calcul, certaines cotisations seront portées à un montant minimum.
++    Les cotisations pour les indemnités journalières, retraite de base, invalidité-décès et pour la formation ne sont plus calculées selon le revenu du chef d'entreprise mais selon une "assiette" (montant retenu qui sert de base au calcul d'un impôt ou d'une taxe).
++
++    Les cotisations minimales ne s'appliquent pas si vous bénéficiez du RSA ou de la prime d’activité.
++  références:
++    cotisations minimales: https://www.secu-independants.fr/cotisations/calcul-cotisations/cotisations-minimales/
++
++dirigeant . indépendant . assiette minimale . maladie:
++  description: |
++    Si le revenu du chef d'entreprise est déficitaire ou inférieur aux bases de calcul, certaines cotisations seront portées à un montant minimum.
++  produit:
++    - plafond sécurité sociale
++    - 40%
++  unité: €/an
++  arrondi: oui
++  références:
++    cotisations minimales: https://www.secu-independants.fr/cotisations/calcul-cotisations/cotisations-minimales/
++
++dirigeant . indépendant . assiette minimale . retraite:
++  description: La cotisation minimale de retraite de base permet de valider 3
++    trimestres de retraite, quel que soit le revenu.
++  produit:
++    - plafond sécurité sociale
++    - 11.5%
++  unité: €/an
++  arrondi: oui
++  références:
++    cotisations minimales: https://www.secu-independants.fr/cotisations/calcul-cotisations/cotisations-minimales/
++
++dirigeant . indépendant . assiette minimale . retraite . en 2022:
++  description: |
++    L’assiette minimale de 11,50% n’était pas suffisante pour valider 3 trimestres. Par conséquent cette assiette minimale a été révisée en cours d’année et sera appliquée de manière rétroactive à compté du 1er janvier 2022.
++
++    L’assiette minimale est de 4 758 €  pour 2022 uniquement. Pour 2023, on repasse à une assiette minimale de 11,5% du PASS.
++  remplace:
++    références à: assiette minimale . retraite
++    sauf dans: cotisations et contributions . invalidité et décès
++  applicable si:
++    toutes ces conditions:
++      - date >= 01/2022
++      - date < 01/2023
++  valeur: 4758 €/an
++
++dirigeant . indépendant . cotisations et contributions . contributions spéciales:
++  description: |
++    Certains régimes spéciaux peuvent ajouter des contributions additionnelles
++    (par exemple, la CURPS pour les CPAM)
++  formule: non
++
++dirigeant . indépendant . cotisations et contributions . PCV:
++  titre: Prestations complémentaires vieillesse
++  acronyme: PCV
++  formule: non
++  description: |
++    Certaines catégories professionnelles bénéficient de
++    prestations complémentaires vieillesse (PCV), auparavant nommées « avantage
++    social vieillesse » (ASV). Cela concerne les médecins généralistes, les
++    chirurgiens-dentistes, les sages-femmes, les auxiliaires médicaux et les
++    directeurs de laboratoires. Ce régime résulte de la prise en charge
++    partielle par l’Assurance maladie de leurs cotisations d’assurance
++    vieillesse sous réserve qu’ils aient exercé leur activité dans le cadre
++    conventionnel.
++
++dirigeant . indépendant . cotisations et contributions . déduction tabac:
++  applicable si: entreprise . activités . commerciale . débit de tabac
++  question: Quel est le montant des revenus issus de la vente de tabac que vous
++    souhaitez exonérer de cotisation vieillesse ?
++  description: |
++    Si vous exercez une activité de débit de tabac simultanément à une activité commerciale, vous avez la possibilité d’opter pour le calcul de votre cotisation d’assurance vieillesse sur le seul revenu tiré de votre activité commerciale (en effet, les remises pour débit de tabac sont soumises par ailleurs à un prélèvement vieillesse particulier). Nous attirons cependant votre attention sur le fait qu’en cotisant sur une base moins importante, excluant les revenus de débit de tabac, vos droits à retraite pour l’assurance vieillesse des commerçants en seront diminués.
++  par défaut: 0 €/an
++
++dirigeant . indépendant . cotisations et contributions . déduction tabac . revenus déduits:
++  titre: assiette des cotisations (avec déduction tabac)
++  applicable si: déduction tabac
++  remplace:
++    références à: assiette des cotisations
++    dans:
++      - retraite de base
++      - retraite complémentaire
++      - invalidité et décès
++      - conjoint collaborateur
++
++  valeur: assiette des cotisations
++  abattement: déduction tabac
++
++dirigeant . indépendant . cotisations facultatives:
++  question: Avez-vous souscrit à des contrats de prévoyance et / ou de retraite
++    complémentaire privés (contrats Madelin, plans d'épargne retraite) ?
++  description: |
++    Il est possible pour l'indépendant de souscrire à des contrats privés pour la prévoyance santé, ou un plan d'épargne retraite.
++    Les versements à ces contrats sont désigné par l'appellation "cotisations facultative" par l'administration fiscale.
++
++    Ils sont déductible d'impôts (dans la limite d'un plafond), mais non déductible pour l'assiette des cotisations et contributions sociales.
++  par défaut: non
++  références:
++    Contrats Madelin: https://www.impots.gouv.fr/particulier/questions/je-cotise-un-contrat-madelin-quel-est-mon-avantage-fiscal
++    PER: https://www.economie.gouv.fr/PER-epargne-retraite
++
++dirigeant . indépendant . cotisations facultatives . montant:
++  somme:
++    - contrats madelin
++    - PER
++
++dirigeant . indépendant . cotisations facultatives . déductibles:
++  titre: Part déductible fiscalement
++  formule:
++    somme:
++      - valeur: contrats madelin . prévoyance
++        plafond: plafond prévoyance
++      - somme:
++          - PER
++          - contrats madelin . retraite
++        plafond: plafond retraite complémentaire
++
++dirigeant . indépendant . cotisations facultatives . non déductibles:
++  titre: Part non déductible fiscalement
++  formule: montant - déductibles
++
++dirigeant . indépendant . cotisations facultatives . PER:
++  description: Le PER individuel est ouvert à tous. Vous pouvez le souscrire
++    auprès d'un établissement financier ou d'un organisme d'assurance. Ce
++    nouveau plan succède au PERP et au contrat Madelin, qui ne seront plus
++    proposés à partir du 1er octobre 2020. Votre épargne accumulée sur le Perp
++    et le Madelin peut être à votre demande transférée sur le PER individuel. Ce
++    contrat donne droit à des avantages fiscaux et vos droits sont transférables
++    vers les autres PER. Il y a des cas de déblocage anticipé.
++  titre: Plan d'épargne retraite
++  unité: €/an
++  question:
++    Quel est le montant des cotisations que vous versez dans le cadre d'un
++    PER (nouveau plan épargne retraite, depuis le 1er octobre 2019) ?
++  par défaut: 0 €/mois
++  références:
++    Fiche service-public.fr: https://www.service-public.fr/particuliers/vosdroits/F34982
++    Fiche economie.gouv.fr: https://www.economie.gouv.fr/PER-epargne-retraite
++
++dirigeant . indépendant . cotisations facultatives . contrats madelin:
++  titre: contrats Madelin
++  somme:
++    - prévoyance
++    - retraite
++
++dirigeant . indépendant . cotisations facultatives . contrats madelin . prévoyance:
++  titre: Prévoyance complémentaire
++  question: Quel est le montant que vous versez pour vos contrats Madelin de
++    prévoyance complémentaire (santé, perte d'emploi subie) ?
++  unité: €/an
++  description: |
++    Si vous cotisez au titre d'un contrat de prévoyance complémentaire (santé, perte d'emploi subie)
++    de type loi Madelin, vous pouvez déduire ces cotisations des bénéfices
++    imposables que vous déclarez pour votre activité non salariée.
++  références:
++    Fiche impôts: https://www.impots.gouv.fr/portail/particulier/questions/je-cotise-un-contrat-madelin-quel-est-mon-avantage-fiscal
++    Bofip (contrats d'assurance de groupe): https://bofip.impots.gouv.fr/bofip/4639-PGP.html
++    Article de loi: https://www.legifrance.gouv.fr/affichCodeArticle.do?idArticle=LEGIARTI000029042287&cidTexte=LEGITEXT000006069577&dateTexte=20140530&fastReqId=1900907951&nbResultRech=1
++  par défaut: 50 €/mois
++
++dirigeant . indépendant . cotisations facultatives . plafond prévoyance:
++  unité: €/an
++  formule:
++    somme:
++      - produit:
++          - revenu professionnel
++          - 3.75%
++      - produit:
++          - plafond sécurité sociale
++          - 7%
++    plafond:
++      produit:
++        - 8 * plafond sécurité sociale
++        - 3%
++  références:
++    Code général des impôts: https://www.legifrance.gouv.fr/affichCodeArticle.do?idArticle=LEGIARTI000029042287&cidTexte=LEGITEXT000006069577&dateTexte=20140530
++    Réassurez-moi: https://reassurez-moi.fr/guide/pro/tns/plafond#le_plafond_de_deduction_madelin_pour_une_mutuelle_santenbsp
++  note: |
++    Normalement c'est le résultat fiscal qui devrait être utilisé pour l'assiette du plafond, mais on utilise le revenu professionnel pour éviter un cycle.
++dirigeant . indépendant . cotisations facultatives . contrats madelin . retraite:
++  question: Quel est le montant que vous versez pour votre contrat Madelin
++    retraite complémentaire ?
++  description: |
++    Si vous cotisez au titre d'un contrat retraite de type loi Madelin,
++    vous pouvez déduire une partie de ces cotisations des bénéfices
++    imposables que vous déclarez pour votre activité non salariée.
++  références:
++    Fiche impôts: https://www.impots.gouv.fr/portail/particulier/questions/je-cotise-un-contrat-madelin-quel-est-mon-avantage-fiscal
++    Bofip (contrats d'assurance de groupe): https://bofip.impots.gouv.fr/bofip/4639-PGP.html
++    Article de loi: https://www.legifrance.gouv.fr/affichCodeArticle.do?idArticle=LEGIARTI000029042287&cidTexte=LEGITEXT000006069577&dateTexte=20140530&fastReqId=1900907951&nbResultRech=1
++  par défaut: 0 €/an
++
++dirigeant . indépendant . cotisations facultatives . plafond retraite complémentaire:
++  unité: €/an
++  formule:
++    le maximum de:
++      - barème:
++          assiette: revenu professionnel
++          multiplicateur: plafond sécurité sociale
++          tranches:
++            - taux: 10%
++              plafond: 1
++            - taux: 25%
++              plafond: 8
++      - produit:
++          - plafond sécurité sociale
++          - 10%
++  références:
++    Bofip: https://bofip.impots.gouv.fr/bofip/1124-PGP.html
++    LegiFiscal: https://www.legifiscal.fr/impots-personnels/impot-revenu/deduction-des-contrats-madelin-retraite.html
++  note: |
++    Normalement c'est le résultat fiscal qui devrait être utilisé pour l'assiette du plafond, mais on utilise le revenu professionnel pour éviter un cycle.
++
++dirigeant . indépendant . cotisations et contributions . début activité:
++  titre: Cotisations forfaitaires de début d'activité
++  description: |
++    Lorsque vous commencez votre activité, vos **revenus professionnels**
++    n’étant pas connus**, les cotisations et contributions des deux premières
++    années sont calculées sur une **base forfaitaire**.
++
++
++    Ces cotisations seront ajustées et régularisées en fonction de vos revenus réels de
++    l’année d’exercice. Si votre revenu est supérieur à la base forfaitaire prise en compte
++    pour le calcul des cotisations provisionnelles alors vous serez redevable d’un
++    **complément de cotisations**.
++
++
++    Ce simulateur calcule les cotisations dites définitives sur la base des revenus réels de votre
++    activité. Il vous permet donc de pouvoir anticiper le montant de cette régularisation et de
++    **planifier votre trésorerie** en conséquence.
++
++  note: La base forfaitaire s’élève à **19 % du plafond annuel de la Sécurité
++    sociale** au titre de la première et de la deuxième année d’activité (à
++    l’exception de la cotisation Maladie et indemnités journalières pour
++    lesquelles l’assiette forfaitaire est égale à 40% du plafond annuel de la
++    Sécurité sociale).
++  applicable si: entreprise . date de création >= période . début d'année
++  unité: €/an
++
++  références:
++    Fiche Urssaf: https://www.urssaf.fr/portail/home/independant/mes-cotisations/les-etapes-de-calcul/le-mode-de-calcul/lajustement-et-la-regularisation.html
++  valeur: cotisations et contributions
++  contexte:
++    assiette des cotisations: assiette forfaitaire
++    CSG-CRDS . assiette: assiette forfaitaire
++    dirigeant . indépendant . cotisations facultatives: non
++    maladie . taux progressif . assiette: assiette forfaitaire maladie
++
++  avec:
++    assiette forfaitaire:
++      produit:
++        - PSS proratisé
++        - 19%
++      arrondi: oui
++      unité: €/an
++      références:
++        Fiche Urssaf: https://www.urssaf.fr/portail/home/independant/mes-cotisations/les-etapes-de-calcul/le-mode-de-calcul/les-cotisations-provisionnelles/debut-dactivite.html
++
++    assiette forfaitaire maladie:
++      valeur: 40% * plafond sécurité sociale
++      unité: €/an
++      arrondi: oui
++
++dirigeant . indépendant . cotisations et contributions . régularisation:
++  titre: Comment fonctionne la régularisation des cotisations provisionnelles
++  description: |
++    Les cotisations et contributions sont calculées à titre provisionnel
++    sur la base du dernier revenu déclaré
++    (ou du montat forfaitaire, si aucun revenu n'est encore déclaré).
++    Une fois l'année écoulée et le revenu professionnel connu,
++    les cotisations et contributions sont régularisées.
++
++
++    Ce simulateur calcule les cotisations **après régularisation**.
++    Il vous permet donc d'anticiper le montant de cette régularisation et de planifier votre
++    trésorerie en conséquence.
++
++
++    Si vos revenus d'activité changent beaucoup par rapport à l'année précédente,
++    vous avez la possibilité de communiquer à l'URSSAF un
++    **montant prévisionnel pour l'année en cours, qui sera pris comme base de calcul**
++    (attention cependant, vous serez tenus de faire une estimation précise).
++
++  références:
++    Fiche Urssaf: https://www.urssaf.fr/portail/cms/render/live/fr/sites/urssaf/home/independant/mes-cotisations/les-etapes-de-calcul/le-mode-de-calcul/les-cotisations-provisionnelles/demande-de-modulation.html
++    Article L131-6-2 du Code de la sécurité sociale: https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000037062224/
++    Article D131-3 du Code de la sécurité sociale: https://www.legifrance.gouv.fr/codes/id/LEGIARTI000038786941/2021-03-01/?isSuggest=true
++
++dirigeant . indépendant . cotisations et contributions . indemnités journalières maladie:
++  synonymes: [maladie 2]
++  description: |
++    Cette cotisation permet d'obtenir le versement d'indemnités journalières en cas d'arrêt de travail pour cause de maladie ou d'accident.
++
++    Les indemnités sont calculées sur la base du revenu moyen soumis à cotisations des trois dernières années.
++  produit:
++    - assiette
++    - taux
++
++  arrondi: oui
++  plafond:
++    # Le taux indemnité est de 0.5%, dans la loi.
++    # Mais parce que l'Urssaf regorge d'inventivité et qu'ils n'ont pas envie de se baser
++    # sur la loi - non, non, ça sera trop simple - ils ont choisi de continuer d'appliquer
++    # le taux de 0.85% tout en abaissant la cotisation maladie 1.
++    #
++    # Pour les revenu ou le taux de la cotisation total (maladie 1 + 2) est inférieur à 0.85, on
++    # plafonne donc la cotis maladie 2 à ce total
++    applicable si: date >= 01/2022
++    valeur: maladie . total
++  unité: €/an
++  références:
++    Cotisation minimale: https://www.secu-independants.fr/cotisations/calcul-des-cotisations/cotisations-minimales/
++    Liste des cotisations: https://www.urssaf.fr/portail/home/artisan-commercant/comment-sont-calculees-les-cotis/liste-des-cotisations.html
++
++  avec:
++    assiette:
++      valeur: assiette des cotisations
++      plancher: assiette minimale . maladie
++      plafond: 5 * plafond sécurité sociale
++
++    taux:
++      déprécié: oui
++      valeur: 0.85%
++
++dirigeant . indépendant . cotisations et contributions . maladie:
++  description: |
++    Cette cotisation permet de bénéficier de l'ensemble des prestations maladie-maternité géré par l'assurance maladie et les Cpam :
++
++    - une couverture maladie pour l’assuré et les membres de sa famille, identique à celle des salariés (mêmes taux et mêmes conditions de remboursement) ;
++    - une assurance maternité complète en cas de grossesse ou d’adoption ;
++    - une complémentaire santé solidaire en cas de revenus faibles ou une aide pour souscrire une assurance maladie complémentaire.
++  synonymes: [maladie 1]
++  arrondi: oui
++  valeur: total
++  abattement:
++    applicable si: date >= 01/2022
++    valeur: indemnités journalières maladie
++
++  unité: €/an
++  références:
++    Article D621-2 du Code de la sécurité sociale: https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000046714747
++    Pouvoir d'achat - Baisse de vos cotisations sociales: https://www.urssaf.fr/portail/home/actualites/toute-lactualite-independant/pouvoir-dachat---baisse-de-vos-c.html
++    Liste des cotisations: https://www.urssaf.fr/portail/home/artisan-commercant/comment-sont-calculees-les-cotis/liste-des-cotisations.html
++
++  avec:
++    réduction supplémentaire:
++      applicable si:
++        toutes ces conditions:
++          - date < 01/2022
++          - assiette minimale
++      titre: réduction supplémentaire (avant 2022)
++      déprécié: oui
++      description: |
++        La réduction supplémentaire du taux maladie pour les revenu inférieurs à 40% du plafond de la sécurité sociale
++      taux progressif:
++        assiette: taux progressif . assiette
++        multiplicateur: plafond sécurité sociale
++        tranches:
++          - plafond: 0%
++            taux: 1.35%
++          - plafond: 40%
++            taux: 0%
++
++    références:
++      Article D621-2 du Code de la sécurité sociale au 01/12/2022: https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000046714747/2022-12-01/
++
++    taux progressif:
++      arrondi: 2 décimales
++      taux progressif:
++        assiette: assiette
++        multiplicateur: plafond sécurité sociale
++        tranches:
++          - taux: 0.5%
++            plafond: 40%
++          - taux: 4.5%
++            plafond: 60%
++          - taux: 7.20%
++            plafond: 110%
++    taux progressif . assiette: assiette des cotisations
++
++    taux progressif avant 2022:
++      privé: oui
++      applicable si: date < 01/2022
++      remplace: taux progressif
++      taux progressif:
++        assiette: taux progressif . assiette
++        multiplicateur: plafond sécurité sociale
++        tranches:
++          - plafond: 0%
++            taux: 1.35%
++          - plafond: 110%
++            taux: 6.35%
++      abattement: réduction supplémentaire
++      arrondi: 2 décimales
++
++    total:
++      barème:
++        assiette:
++          valeur: assiette des cotisations
++          plancher: assiette minimale . maladie
++        multiplicateur: plafond sécurité sociale
++        tranches:
++          - taux: taux progressif
++            plafond: 5
++          - taux: 6.50 %
++
++dirigeant . indépendant . cotisations et contributions . retraite de base:
++  description: |
++    Depuis 1973, la cotisation versée au titre de l'assurance vieillesse de base permet aux artisans et commerçants de bénéficier d'une retraite de base calculée de la même manière que les salariés.
++
++    Le régime est géré depuis 2020 par l'assurance retraite et les Carsat et se fonde sur la solidarité nationale.
++
++    Il garantit des pensions égales à celles des salariés non cadres du secteur privé pour une durée et un niveau de cotisation identique.
++  barème:
++    assiette:
++      valeur: assiette des cotisations
++      plancher: assiette minimale . retraite
++    tranches:
++      - taux: taux
++        plafond: plafond sécurité sociale
++      - taux: 0.6%
++  arrondi: oui
++  références:
++    Cotisation minimale: https://www.secu-independants.fr/cotisations/calcul-des-cotisations/cotisations-minimales/
++    Liste des cotisations: https://www.urssaf.fr/portail/home/artisan-commercant/comment-sont-calculees-les-cotis/liste-des-cotisations.html
++
++  avec:
++    taux: 17.75%
++
++dirigeant . indépendant . cotisations et contributions . retraite complémentaire:
++  description: |
++    Depuis le 1er janvier 2013, les artisans et les commerçants bénéficient de droits identiques en matière de retraite complémentaire.
++    Ce régime commun est géré, depuis 2020 par l'assurance et les Carsat, suivant le principe de répartition avec la constitution d'une réserve de sécurité qui garantit à long terme son équilibre.
++
++    Il fonctionne selon les mêmes principes que les régimes de retraite complémentaire des salariés.
++  barème:
++    assiette: assiette des cotisations
++    tranches:
++      - taux: 7%
++        plafond: plafond
++      - taux: 8%
++        plafond: 4 * plafond sécurité sociale
++  arrondi: oui
++  unité: €/an
++  références:
++    Liste des cotisations: https://www.urssaf.fr/portail/home/artisan-commercant/comment-sont-calculees-les-cotis/liste-des-cotisations.html
++    Bases de calcul et taux des cotisations obligatoires: https://www.urssaf.fr/portail/home/taux-et-baremes/taux-de-cotisations/artisans-commercants-et-professi/bases-de-calcul-et-taux-des-coti.html
++
++  avec:
++    plafond:
++      acronyme: PRCI
++      titre global: plafond retraite complémentaire des indépendants
++      valeur:
++        variations:
++          - si: date >= 01/2024
++            alors: 42946 €/an
++          - si: date >= 01/2023
++            alors: 40784 €/an
++          - si: date >= 01/2022
++            alors: 38916 €/an
++          - si: date >= 01/2021
++            alors: 38493 €/an
++    références:
++      Plafond de cotisations - Régime complémentaire des indépendants: https://legislation.lassuranceretraite.fr/#/bareme?file_leaf_ref=ti_cotisation_plafond_cotisation_rci.aspx
++
++dirigeant . indépendant . cotisations et contributions . invalidité et décès:
++  description: |
++    Cette cotisation permet de bénéficier, sous certaines conditions, d’une pension d’invalidité avant l’âge de départ à la retraite.
++
++    L’assurance décès garantit le versement aux ayants droit d’un capital décès quel que soit le statut de l'assuré décédé : assuré cotisant ou assuré retraité.
++  produit:
++    - assiette
++    - 1.3%
++  unité: €/an
++  arrondi: oui
++  références:
++    Cotisation minimale: https://www.secu-independants.fr/cotisations/calcul-des-cotisations/cotisations-minimales/
++    Liste des cotisations: https://www.urssaf.fr/portail/home/artisan-commercant/comment-sont-calculees-les-cotis/liste-des-cotisations.html
++
++  avec:
++    assiette:
++      experimental: oui
++      valeur: assiette des cotisations
++      plancher: assiette minimale . retraite
++      plafond: plafond sécurité sociale
++
++dirigeant . indépendant . cotisations et contributions . CSG-CRDS:
++  formule:
++    somme:
++      - non déductible
++      - déductible
++
++  références:
++    fiche Urssaf: https://www.urssaf.fr/portail/home/independant/mes-cotisations/quelles-cotisations/les-contributions-csg-crds/taux-de-la-csg-crds.html
++    IJSS (amelie.fr): https://www.ameli.fr/assure/remboursements/indemnites-journalieres/arret-maladie
++    IJSS (service-public.fr): https://www.service-public.fr/particuliers/vosdroits/F2971
++    Article 154 quiquies du Code Général des Impôts: https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000038836652/
++
++  avec:
++    déductible:
++      arrondi: oui
++      unité: €/an
++      somme:
++        - produit:
++            - assiette
++            - taux
++        - revenus de remplacement
++
++    déductible . revenus de remplacement:
++      produit:
++        - dirigeant . indépendant . IJSS . montant
++        - 3.8%
++    déductible . taux: 6.8%
++
++    non déductible:
++      arrondi: oui
++      unité: €/an
++      somme:
++        - produit:
++            - assiette
++            - taux
++        - revenus de remplacement
++
++    non déductible . revenus de remplacement:
++      produit:
++        - dirigeant . indépendant . IJSS . montant
++        - non déductible . taux
++    non déductible . taux: 2.9%
++
++dirigeant . indépendant . revenus étrangers:
++  question:
++    Avez-vous perçu des revenus au titre de l’exercice d’une activité non
++    salariée à l’étranger ?
++  description: |
++    Si vous exercez une activité non salariée hors de France, dans un État de l’Union Européenne (UE)\*, de l’Espace Économique Européen (EEE)\** ou en Suisse
++    ou dans un Etat hors UE/EEE/Suisse, avec lequel des dispositions de coordination des régimes de protection sociale s’appliquent,
++    et que l’exercice de votre activité non salariée hors de France a donné lieu à affiliation au régime général des travailleurs indépendants :
++    indiquez le montant de votre revenu établi hors de France.
++
++    En effet, les revenus provenant d’une activité exercée hors de France sont uniquement soumis à cotisations sociales. Ces revenus ne sont pas soumis à la CSG-CRDS.
++
++    \* États de l’UE : Allemagne, Autriche, Belgique, Bulgarie, Chypre, Croatie, Danemark, Espagne, Estonie, Finlande, Grèce, Hongrie, Irlande,
++    Italie, Lettonie, Lituanie, Luxembourg, Malte, Pays-Bas, Pologne, Portugal, République Tchèque, Roumanie, Slovaquie, Slovénie, Suède.
++
++    \** États l’EEE : Islande, Liechtenstein, Norvège.
++  par défaut: non
++
++dirigeant . indépendant . revenus étrangers . montant:
++  titre: revenus perçu à l'étranger
++  question: Quel est leur montant ?
++  par défaut: 0 €/an
++
++dirigeant . indépendant . cotisations et contributions . CSG-CRDS . assiette:
++  note: >-
++    Seule la partie imposable des IJSS est retranchée de l'assiette de la CSG,
++    puisque la partie non imposable a déjà été retranchée du revenu net fiscal
++    fourni
++  valeur:
++    somme:
++      - assiette des cotisations . sans plancher
++      - cotisations
++      - conjoint collaborateur . cotisations
++  abattement:
++    somme:
++      - revenus étrangers . montant
++      - dirigeant . indépendant . IJSS . imposable
++  plancher: 0 €/mois
++
++dirigeant . indépendant . cotisations et contributions . formation professionnelle:
++  acronyme: CFP
++  produit:
++    - plafond sécurité sociale
++    - variations:
++        - si: entreprise . activité . nature = 'artisanale'
++          alors: 0.29%
++        - si: conjoint collaborateur
++          alors: 0.34%
++        - sinon: 0.25%
++  unité: €/an
++  arrondi: oui
++  note: Le taux n'est pas majoré pour les artisans avec conjoint collaborateur
++
++  références:
++    fiche service-public.fr: https://www.service-public.fr/professionnels-entreprises/vosdroits/F23459
++    fiche Urssaf: https://www.urssaf.fr/portail/home/independant/mes-cotisations/quelles-cotisations/les-contributions-csg-crds/taux-de-la-csg-crds.html
++
++dirigeant . indépendant . cotisations et contributions . allocations familiales:
++  description: |
++    Cette cotisation permet de bénéficier des allocations familiales versées par la caisse d’allocations familiales dans les mêmes conditions que les salariés :
++
++    - compensation des charges familiales (naissance, enfant à charge, garde, rentrée scolaire) ;
++    - prestations liées au logement, handicap, précarité (RSA...).
++
++    Le versement de la plupart de ces prestations est soumis à des conditions de ressources.
++    Le montant des allocations attribuées à partir du 2ème enfant varie en fonction des revenus de la famille.
++  produit:
++    - assiette des cotisations
++    - taux
++  arrondi: oui
++  unité: €/an
++  références:
++    Liste des cotisations: https://www.urssaf.fr/portail/home/artisan-commercant/comment-sont-calculees-les-cotis/liste-des-cotisations.html
++
++  avec:
++    taux:
++      taux progressif:
++        assiette: assiette des cotisations
++        multiplicateur: plafond sécurité sociale
++        tranches:
++          - plafond: 110%
++            taux: 0%
++          - plafond: 140%
++            taux: 3.1%
++
++dirigeant . indépendant . cotisations et contributions . maladie domiciliation fiscale étranger:
++  applicable si: situation personnelle . domiciliation fiscale à l'étranger
++  titre: Maladie (domiciliation fiscale à l'étranger)
++  description:
++    En contrepartie de l'exonération de CSG, les cotisants ont un taux
++    maladie plus elevé. Contrairement aux autres assurés commerçants/artisans
++    ils ne bénéficient pas de la réduction du taux de la cotisation maladie en
++    fonction du revenu déclaré.
++  remplace: maladie
++  produit:
++    - assiette des cotisations
++    - 14.5%
++  unité: €/an
++  arrondi: oui
++
++dirigeant . indépendant . IJSS:
++  titre: Allocations et indemnités journalières de sécurité sociale
++  description: |
++    Il s’agit des allocations et indemnités journalières versées par votre caisse primaire d’assurance maladie en cas de maladie, maternité, paternité ou adoption, arrêt de travail ou garde d’enfant en lien avec l’épidémie de Covid-19.
++
++    Ces revenus de remplacement sont demandés spécifiquement car ils bénéficient d’un taux réduit de CSG-CRDS.
++
++    Les indemnités complémentaires versées dans le cadre de contrats de prévoyance privés (y compris contrat Madelin) ne sont pas concernées.
++
++    Les prestations d’invalidité versées par les régimes d’invalidité-décès ne sont pas concernées.
++
++  question:
++    Avez-vous perçu des indemnités journalières ou allocations de sécurité
++    sociale au titre de votre activité indépendante (maladie, maternité,
++    paternité, adoption) ?
++  par défaut: non
++
++dirigeant . indépendant . IJSS . montant:
++  titre: Montant total
++  question: Quel est le montant brut total de vos allocations et indemnités
++    journalières de sécurité sociale ?
++  description: |
++    Indiquez le montant total brut de vos allocations et indemnités journalières perçues, imposables et non imposables, qui figure sur le relevé de prestations fourni par votre caisse primaire d’assurance maladie.
++
++    Ces revenus de remplacement sont soumis au taux réduit de CSG-CRDS.
++
++    <p><u>Les allocations et indemnités journalières concernées sont :</u></p>
++    - indemnité journalière maladie
++    - allocation forfaitaire de repos maternel
++    - indemnité journalière forfaitaire d’interruption d’activité (maternité)
++    - indemnité de remplacement pour maternité, paternité ou adoption
++  par défaut: 0 €/an
++
++dirigeant . indépendant . IJSS . imposable:
++  titre: part imposable
++  résumé: Uniquement si vous ne relevez pas du régime micro-fiscal
++  question: Quel est le montant brut imposable de vos allocations et indemnités
++    journalières de sécurité sociale ?
++  description: |
++    Indiquez uniquement le montant des allocations et indemnités journalières imposables perçues, c’est-à-dire l’ensemble des allocations et indemnités, à l’exception de celles en lien avec une affection de longue durée.
++
++    Ces indemnités seront déduites de vos revenus d’activité, afin d’être soumises au taux réduit de la CSG-CRDS.
++
++    <p><u>Les revenus de remplacement concernés sont :</u></p>
++    - indemnité journalière maladie
++    - allocation forfaitaire de repos maternel
++    - indemnité journalière forfaitaire d’interruption d’activité (maternité)
++    - indemnité de remplacement pour maternité, paternité ou adoption
++  par défaut: 0 €/an

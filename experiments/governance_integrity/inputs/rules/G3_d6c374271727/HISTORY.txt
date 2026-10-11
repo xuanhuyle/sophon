@@ -1,0 +1,720 @@
+# git log for modele-social/règles up to 2025-12-30 23:52:36 +0100 (commit d6c37427172707b4c0fa64d9e6f18ea67f9f67b4)
+2b9b9b80541a9a2d0cc2edbfbf2d5f1b9334fc63 2025-12-19 18:33:07 +0100 Alice Dahan feat(cout-creation): màj des coûts de création des statuts juridiques
+9ea8b55a00b6c0dd50a16687d506fe6098c9f97c 2025-12-16 09:49:27 +0100 Alice Dahan fix(salarié): corrige le retour au début en répondant à emploi franc
+670114d585348bc41fc3985196584f84c05ff172 2025-11-30 12:42:50 +0100 Alice Dahan fix(ae): corrige les points de retraite complémentaire acquis avec l'Acre
+cf4efc8bffa55aa5994ba58b2f8457c4e876b0e2 2025-11-28 11:05:06 +0100 Alice Dahan fix: correction des calculs de durée
+fe2e8086aaa2083358b2731f56b9f56335577a59 2025-11-20 13:02:31 +0100 Alice Dahan feat(activité partielle): renomme chômage partiel en activité partielle dans les règles
+8cd9702bb78b3e031fd317f915e53e0bd918d832 2025-11-18 09:50:54 +0100 Alice Dahan feat(activité-partielle): màj du taux horaire minimum Commit initial de @ThomasKsK
+2f3a19656e00e8f45714bfda3be7bffeed435f17 2025-11-18 09:44:54 +0100 Alice Dahan feat(profession-libérale): nettoyage des PLR - suppression des métiers vétérinaire et agents généraux d'assurances qui ne sont pas implémentés - rend applicable par défaut les métiers d'officier et notaire - ajoute un avertissement sur les officiers et notaires
+836f39855bc0d6710e3625526dd3dee976d9bd7f 2025-10-23 10:24:57 +0200 Alice Dahan fix(pamc): masque les cotisations forfaitaires en cas de résidence fiscale à l'étranger
+1d812944a975e94db639e4f30f291425e919b4d4 2025-10-23 10:24:57 +0200 Alice Dahan feat(apprentis): ajoute l'exonération de taxe sur les salaires des apprentis
+d86a66d1671a18e8d75cefed9c81fe5eafac29db 2025-10-23 10:24:57 +0200 Alice Dahan fix(apprentis): exonération de CSG-CRDS pour les apprentis
+25c2fab9985e3429b676b9ea4fcfd644b3a430bc 2025-10-23 10:24:57 +0200 Alice Dahan fix(médecin): correction du taux maladie pour médecins S2
+0ed5dca1928f43f53733dbbd7519a194a441a926 2025-10-23 10:24:57 +0200 Alice Dahan feat(cessation activité): reformulation de la question sur la cessation d'activité
+362fe31ed9bed64203af4cbe2fc84f2581028bb4 2025-10-23 10:24:57 +0200 Alice Dahan chore(modele-social): migration 'une possibilité'
+9e789cc3d058292872e58fee0438caddce91caf3 2025-10-23 10:24:57 +0200 Alice Dahan refactor(imposition): réorganisation du calcul de l'IS et suppression des valeurs < 2022
+64a8ac166093481db076d91d20a2decd0f5066bb 2025-10-23 10:24:57 +0200 Alice Dahan fix(is): correction du calcul de la durée de l'exercice
+04a6e65fc0cb23a1ffef9da7e2b444a7cf6abdb1 2025-10-23 10:24:57 +0200 Alice Dahan feat(imposition): ajout de la règle  incluant la contribution sociale
+c2892f4c0b5c0c369445b8d998377f3eabcc6892 2025-10-23 10:24:57 +0200 Alice Dahan refactor(imposition): déplace l'attribut description
+0513e44b3fe63d6a867faa49d96f3ecaa5e99331 2025-10-23 10:24:57 +0200 Alice Dahan docs(imposition): ajoute un lien à la notification sur le report de déficit
+afe49d3445ca7a8e0f95aea522bca74f16fa20a4 2025-10-23 10:24:57 +0200 Alice Dahan fix(entreprise): Change la date limite d'exercice de 2018 à 2022
+dadc0ffce716de1a551b7a15ebda78001570e5ae 2025-10-23 10:24:57 +0200 Alice Dahan refactor(imposition): déplace les règles entreprise . chiffre d'affaires vers entreprise
+27b9d01aafaee3341c5b71937be3e1f2e49e3a6d 2025-09-19 11:02:09 +0200 Alice Dahan refactor: déplace un texte explicatif de modele-social à site
+c4c603f6240b30de7aee69322551af7353b8191a 2025-09-19 09:54:39 +0200 Alice Dahan refactor(indépendant): réorganisation des règles indépendant et mise à jour des références
+3c6f2a4fe8fcbedb12bb63a7722c1659509700b7 2025-09-19 09:53:58 +0200 Alice Dahan feat(salarié): mise à jour du montant de l'aide à l'embauche d'un⋅e apprenti⋅e
+96fec3259666e9e550710ff50c90655aca826549 2025-09-16 11:57:14 +0200 Alice Dahan fix(indépendant): ajout d'unité à dirigeant . rémunération . net . après impôt
+50a814df5824db728a2198f4b19c3550ef2d4b6a 2025-09-12 09:34:29 +0200 Alice Dahan feat(CARCDSF): mise à jour des cotisations forfaitaires CARCDSF
+b66717ff2ba5dc44dd5fa9ecfeedfd7cf4794f53 2025-09-08 15:39:43 +0200 Alice Dahan feat(salarié): mise à jour du plafond des indemnités journalières d'arrêt maladie
+0df110f943e8b3a7416bed84e146b02d682f9898 2025-09-08 15:39:43 +0200 Alice Dahan fix(salarié): suppression des questions lodeom hors contexte
+24a011a9e0dfee2af7be6ec2692b063bb249e59c 2025-09-08 15:39:43 +0200 Alice Dahan fix(rgcp/lodeom): correction de la valeur du coef T
+5aa1cd9c38c81d696ca43d1192affa17afa36e5f 2025-08-01 09:12:17 +0200 Jalil Arfaoui fix: met à jour quelques liens Github morts
+4d3c3b87e2ca5e9354266a28ae77d5354290504c 2025-07-15 15:31:03 +0200 Jalil Arfaoui fix(modele-social): corriger les unités au pluriel pour assurer la cohérence API/NPM
+5d7930244ef443f439656c2ccde540bee6d990f3 2025-07-09 15:55:33 +0200 Jalil Arfaoui fix(impôts-société): Le montant se met en `NaN` dès qu’on saisi quelque chose.
+977fb40c714c15ceb70463a7afbcca0c1b7f20a0 2025-07-01 14:57:47 +0200 Alice Dahan fix(SASU): correction du NaN
+8f9bc74beb3665a1a0375fc4aab98aefe743331c 2025-06-19 16:51:48 +0200 Maxime Quandalle feat: mise à jour du salaire médian avec les données INSEE 2023
+f676dca798acdce57b6b2d50ad30a7d1f52639e8 2025-06-13 02:30:12 +0200 Jalil Arfaoui fix(auto-entrepreneureuse): la règle `dirigeant . auto-entrepreneur . chiffre d'affaires` n’est pas typée en montant
+a80e5a6f756750587da545d94dcd67a085d26ffa 2025-06-13 02:30:12 +0200 Jalil Arfaoui chore(économie-collaborative): supprime les fichiers Publicodes pour l’économie collaborative
+63029b9dc25321c5d9fee710d70d64fabb403592 2025-06-13 02:30:12 +0200 Jalil Arfaoui fix(économie-collaborative): correction d’affichage des objectifs
+d44c233551fe0c460436bd34446a1d31c81c954e 2025-06-13 02:30:12 +0200 Jalil Arfaoui refactor(économie-collaborative): découple l’objectif de simulation de l’engine Publicodes
+0db852b46e95f705492d7e758cf00f31644fab0b 2025-06-13 02:30:12 +0200 Jalil Arfaoui chore(économie-collaborative): champ estimation inutilisé
+2cc6875a9c0a16fcd312dc66a96bd88365afa7ff 2025-06-13 02:30:12 +0200 Jalil Arfaoui fix(économoie-collaborative): cotisations incorrectes pour le régime TI
+61b2e7ddbfaabbe6c56536b0cac6151e3c63c1de 2025-06-13 02:30:12 +0200 Jalil Arfaoui feat(économie-collaborative): introduit le choix entre les 3 régimes de location de meublé
+470d340f0bddfbcab304706a037468a690dfd343 2025-05-13 21:23:08 +0200 Alice Dahan chore: màj de la date de modele-social
+aac578a0f492cedda13b31b3f2cdffbcb4bfaf1c 2025-05-12 11:44:34 +0200 Alice Dahan refactor(assistant pam): simplification des formules
+81306b3e76ea3e441e1501f4e3c19fda6ced22b8 2025-05-12 10:29:05 +0200 Alice Dahan feat(assistant pam): ajout d'un avertissement pour les revenus structures de soin
+b66c4bd951512a0261b9ed509fd558fead9429f9 2025-05-09 16:30:51 +0200 Alice Dahan fix(assistant pam): correction de la description des honoraires remboursables
+720d7e4edb16ac6c2d85cfde1dd797723bc0301c 2025-05-09 15:55:27 +0200 Alice Dahan docs(pam): ajout de documentation sur la participation CPAM
+c6b60dfe9fef30432a7f530946d181c660a431c1 2025-05-09 15:55:27 +0200 Alice Dahan fix(pamc): apostrophe typographiques, guillemets, espaces insécables
+59a5d5d00a303d664fcb920bfff000a9c0331457 2025-05-09 15:11:45 +0200 Alice Dahan fix(assistant pam): correction du calcul des revenus nets
+db18562d0deee5772ce20745849bac139e7b7d59 2025-05-02 12:30:22 +0200 Florent Mata feat(salarié): utilisation du SMIC au 01/01/2025 pour la maladie et les allocations familiales
+3882076cdb461d32c0b50208b9555bb8483a52cd 2025-04-10 15:46:02 +0200 Alice Dahan feat(pam): ajout d'avertissements à la saisie
+61cf9c22f8705cdd51b65e45fc76df37249f62b3 2025-04-10 15:46:02 +0200 Alice Dahan feat(pam): mise de l'astérisque en rouge
+e57920f1d72a682dbeb914fe5105a2cba7a60ba5 2025-04-10 15:46:02 +0200 Alice Dahan refactor(rgcp/lodeom): label des switch
+105bf4d53559f37ccd440eac4d28a70cf293a2f5 2025-04-09 10:40:57 +0200 Florent Mata feat(salarié): mise à jour 2025 de la déduction forfaire pour heures supplémentaires
+505122fe9535e41d718c3381d897c2c0fc1c01e1 2025-04-07 15:49:58 +0200 Alice Dahan docs(assistant pam): modification de descriptions
+08c6d1263c07b55825adf253852ab958e98e53a1 2025-04-07 15:49:58 +0200 Alice Dahan feat(assistant pam): nouvelles règles
+1c2bee32a436f45bd7a8eb5d270e1870ffc131ff 2025-04-07 15:49:58 +0200 Alice Dahan refactor(assistant pam): simplifie la question sur les autres revenus
+ecf927d60a940ecd6341f8e84864bad626ac86cf 2025-04-06 22:19:49 +0200 Jalil Arfaoui docs(cessation-activité): meilleure description des règles entreprise . radiée
+6de98f00133c3891947e0929f04b9802e9d11812 2025-04-06 22:19:49 +0200 Jalil Arfaoui docs(cessation-activité): meilleure description des règles entreprise . radiée
+4970a27ade09cac774b4ee9f6afbbc5833b49bf0 2025-04-06 22:19:49 +0200 Jalil Arfaoui docs(cessation-activité): mise à jour de référence
+4c2c4a992d592051265fede706c7826dbee69e4d 2025-04-06 22:19:49 +0200 Jalil Arfaoui fix(cessation-activité): désactive la date de cessation d’activité par défaut
+e1241d89fdd18e08f90590727e94c021f02db5f2 2025-04-04 17:10:57 +0200 Alice Dahan feat(ae - plr): ajout des points Cipav acquis pour les AE
+592565be2019e14c006f9cfc8e6847ece30f54fe 2025-03-31 15:44:39 +0200 Alice Dahan docs(salariés): mise à jour du critère JEI (description)
+0419d2137e925664c958b6acfa8edc636a42bdee 2025-03-31 15:44:39 +0200 Alice Dahan feat(salarié): mise à jour de la CSG-CRDS pour les apprentis
+bf9948c67f9fffe70104305fec53b60f813f3512 2025-03-31 15:44:39 +0200 Alice Dahan fix(salariés): correction de la liste des cotisations exonérées pour les apprentis
+196db6e8c93d7d58a9f5cb5196a6da0e8e029582 2025-03-31 15:44:39 +0200 Alice Dahan feat(salarié): mise à jour du plafond d'exonération des cotisations apprentis
+d566da8a61b5ef5892efcd6ca48e0df20103b79c 2025-03-31 15:44:39 +0200 Alice Dahan feat(salarié): mise à jour des plafond de rémunération pour les taux de cotisations patronales réduits
+c4f97d562634523165f84b02e028bc922f2b4e26 2025-03-27 16:10:37 +0100 Alice Dahan feat(salarié): mise à jour du taux de cotisation chômage pour mai 2025
+fa6f3e83d5af37c750157108816eed0eeb85b588 2025-03-27 10:55:24 +0100 Alice Dahan fix(cipav): correction du taux Acre CIPAV
+6dcb6e1c966b69ac42861dcdd2790f23326e47df 2025-03-27 10:55:24 +0100 Alice Dahan fix(auto-entrepreneur): correction de l'application de l'Acre pour les AE Cipav
+f57b3e11bd7900a72f332561896e292d0af82e44 2025-03-27 10:55:24 +0100 Alice Dahan Renomme CIPAV en Cipav dans les textes
+c6435db644f5c9cf574c0ac270d79436a69b6ec2 2025-03-27 10:55:24 +0100 Alice Dahan fix(auto-entrepreneur): correction du calcul des cotisations pour les PLR sans Acre
+a63fea5be48579e74daca5f15d5aa015960f4993 2025-03-27 10:55:24 +0100 Alice Dahan fix: typo
+5dcbd4d8b266907e2ad7333491c453e0e7874de9 2025-03-27 10:55:24 +0100 Alice Dahan feat(auto-entrepreneur): suppression des règles dépréciées
+a23824ae88d8f02fe0f1029964b7224356134243 2025-03-27 10:55:24 +0100 Alice Dahan fix(auto-entrepreneur): apostrophe typographique et espaces insécables
+20da9e4c4424b87c992d7ca0c28cfdab0f8c430a 2025-03-27 10:55:24 +0100 Alice Dahan refactor(auto-entrepreneur): corrige les longueurs de ligne
+0ac69f7fbaebcce2d61259ff9fd8ac5c0b61fd61 2025-03-27 10:55:24 +0100 Alice Dahan refactor(auto-entrepreneur): découpe les règles AE en plusieurs fichiers
+29cd59d014547e9cd7016b1e04c9a2cc160cc384 2025-03-17 16:00:33 +0100 Alice Dahan fix(pam): application de la CURPS si création au 1er janvier
+7a23c24e55dba10326b295091a7845336a3c5af7 2025-03-17 14:39:01 +0100 Alice Dahan fix(pam): correction de la contribution maladie additionnelle
+2fc3f9652620a104ffc9e2c671974af6f0842e1e 2025-03-14 09:43:03 +0100 Alice Dahan fix(assistant pam): correction du calcul de l'assiette sociale en cas de déficit
+575bb9df977b53b1832066912e7b25656ba62f26 2025-03-14 09:43:03 +0100 Alice Dahan fix(assistant pam): correction du calcul du montant des chèques vacances exonérés
+337102d0c126eee806fe77e437d094b71297b5e0 2025-03-14 09:43:03 +0100 Alice Dahan fix(assistant pam): suppression du doublon de régime fiscaux
+58545ab4f7bc2fce76f66bc4aac5748b399d202a 2025-03-14 09:42:04 +0100 Alice Dahan tests(rgcp): ajout de tests unitaires sur les règles RGCP
+ade81f0246aaa5f8a7a10a6ed2e303ec7b3a7fda 2025-03-11 22:50:16 +0100 Johan Girod chore: update publicodes to 1.8.0
+16ea92b1a61863429d225d873e49b1a91f1c895a 2025-03-11 15:54:34 +0100 Alice Dahan feat(salarié): mise à jour des plafonds liés à la taxe sur les salaires
+35e1b4356d7b04e01c43f4fbb87e87ee69b825c3 2025-03-11 15:54:34 +0100 Alice Dahan docs(impôt): utilisation de l'apostrophe typographique
+5e411bfa1514a38805444bb20aab95e1667c721d 2025-03-11 15:54:34 +0100 Alice Dahan feat(impôt): mise à jour 2025 des montants liés au calcul de l'IR
+988fa9ec4ef7e2614abc0dfcaf7f75e74452f18d 2025-03-11 12:33:05 +0100 liliced chore: remplace autoentrepeneur par auto-entrepreneur (#3394)
+7f0495268804388830ae7a956d94c9d805e68405 2025-03-11 12:32:12 +0100 liliced docs: corrige et ajoute les drapeaux outre mer (#3472)
+29b436fbe93a91b762200ce96ccade2bda214991 2025-03-11 12:30:16 +0100 fmata Mise à jour du barème de l'impôt sur le revenu et des grilles des taux neutres pour 2025 (#3455)
+06a9d1c10676d99cd40d30267f21642b409d0aa2 2025-03-11 11:46:15 +0100 liliced [AE] Préciser les définitions des rubriques retraite (#3444)
+30447a6239b797bec006b2fb511366acbd24bbe5 2025-03-06 11:23:19 +0100 Alice Dahan fix(assistant pam): correction de l'assiette à l'IR
+197088c56319736ca7233f0e1407659ea81a9e7c 2025-03-05 19:12:54 +0100 Alice Dahan fix(assistant pam): correction de l'affichage de la question sur les actes conventionnés
+620881fbb5b343d0e458de51dd4b242c35ca4046 2025-03-05 19:12:54 +0100 Alice Dahan fix(assiistant pam): correction de l'erreur division par 0
+888d2658ec9027e42d1413d3bd67e93016e5bf51 2025-03-05 19:12:54 +0100 Alice Dahan fix(assistant pam): corrige l'affichage des résultats à l'IS
+9097a44341322c01006a6eb426255ac0f008fc4a 2025-03-05 19:12:54 +0100 Alice Dahan feat(assistant pam): ajout de l'IS
+31b9f8440a6a195163d53adc16e9e270fd99ee8f 2025-03-04 17:53:37 +0100 Alice Dahan fix: mise en forme de la doc
+959ad24fd77e73cc219aa6184521e63a916aa3a4 2025-03-04 17:53:37 +0100 Alice Dahan docs(assistant pam): ajout de doc pour le régime micro-fiscal
+3bb239a5819f9228347533d5c8efd732f671d8f6 2025-03-04 17:53:37 +0100 Alice Dahan docs(assistant pam): correction de la description des plus-values
+0928260c4d2d18e1c0303a9913ba03ffc9a9362e 2025-03-04 17:53:37 +0100 Alice Dahan feat(assistant pam): ajout de la question sur les cotisations facultatives
+a050fb38e2004818afe857c5694b8808f8e8d2c0 2025-03-04 17:53:37 +0100 Alice Dahan fix(pam): correction du formulaire hors micro-fiscal
+88160a8af352506bae8c027e78f1d094024f5551 2025-03-04 17:53:37 +0100 Alice Dahan feat(pam): ajout du cas de l'IR non micro-fiscal à l'assistant PAM
+9c4df9835e98b24c18b7d8dcefee8dbf531d86f9 2025-03-04 17:53:37 +0100 Alice Dahan refacto: apostrophe typographique + longueur de ligne
+46213de497ce532ea85852a01be65fffc9752ddf 2025-03-04 17:53:37 +0100 Alice Dahan feat(pam): ajout des règles IR non micro-fiscal à l'assistant PAM
+c4e0e2770b64c8e0b82ed17a6888835eafc88d2e 2025-03-04 11:53:05 +0100 Alice Dahan fix(assistant pam): correction du calcul des chèques vacances exonérés
+fceb250aedd06008a5d1c3feef3eefe78f57ed48 2025-03-04 11:53:05 +0100 Alice Dahan feat(assistant pam): ajout d'une valeur par défaut aux champs SNIR médecin
+b06ae4b6ddbeee61afe163220932a5d1aa002d7e 2025-03-04 11:53:05 +0100 Alice Dahan feat: suppression de l'unité du taux urssaf
+68be03cb13789e5ead6af2adfa8e7171ef269618 2025-03-04 11:53:05 +0100 Alice Dahan fix: correction erreur grammaticale
+6b0d7bac28bdae0428f3d954204bc1d1ea2d2223 2025-03-04 11:53:05 +0100 Alice Dahan docs: correction de la présentation du taux urssaf
+3c41a833dbc79cf12ef1875151e114f3f10d73c4 2025-03-04 11:53:05 +0100 Alice Dahan docs: correction de la description du taux urssaf
+f2477066c67a867dfc8b2177fb8c4b3558f8ac7c 2025-03-04 11:53:05 +0100 Alice Dahan fix: correction d'une faute de grammaire
+e3c634d0ad994698214c287d2f4f592e87215045 2025-02-25 17:30:54 +0100 Jalil Arfaoui feat: met en gras la première phrase de la description de `entreprise . charges`
+f1e4b50c6524261799a80dd7d2ce7d3f794ff52f 2025-02-25 17:30:54 +0100 Jalil Arfaoui feat(indépendant): précision sur le résumé de `entreprise . charges`
+8283fceacbb294e2a2bc1dc6d4b9391fa44c7e9d 2025-02-25 16:45:22 +0100 Alice Dahan fix(ae): correction des points de retraite complémentaire pour les AE PLR
+8ae92ca9d1baa28997d695671bfbecd921cb5652 2025-02-25 15:24:24 +0100 Jalil Arfaoui fix(économie-collaborative): les logements classés ne sont pas encore pris en compte
+20aa9aea7ef8e3fc1793ec3d360b0ba205854e5b 2025-02-21 09:38:48 +0100 Alice Dahan fix(sasu): correction de la rémunération avec Acre
+89886ea537eccbb432a90bbfde64a9608e91905f 2025-02-13 14:27:58 +0100 Alice Dahan i18n(pam): correction d'une faute d'orthographe
+08608fc072592c4dfb24e83971109d2053f860bb 2025-02-13 10:43:44 +0100 Alice Dahan feat(plr): mise à jour des valeurs CARPIMKO 2025
+6b2e77a15ad5756026a7c883273892970b95879a 2025-02-13 10:43:10 +0100 Alice Dahan feat(pam): distinction entre les différentes catégories de médecin
+2e6f66f44d488a779f9135494d273cf697e49d30 2025-02-13 09:56:32 +0100 Jalil Arfaoui refactor(économie-collaborative): enlève une somme inutile
+3f79d65020712ed432f25408d3174544c964fbde 2025-02-13 09:56:32 +0100 Jalil Arfaoui refactor(économie-collaborative): utilise `période . début d'année . N-1` plutôt qu’une date en dur
+27b930470e2a4979bd0536be8bba8ce54a81c2ce 2025-02-13 09:56:32 +0100 Jalil Arfaoui refactor(économie-collaborative): renomme `plafond de loyer autorisé pour le régime général` en `plafond régime général`
+f12db266d19568b2063fdda002d3e84c1a48bac2 2025-02-13 09:56:32 +0100 Jalil Arfaoui feat(économie-collaborative): prend en compte le taux de cotisation Alsace-Moselle
+455eee1cbf2aa7c82bfa41f697d2daf5bf0ff0ef 2025-02-13 09:56:32 +0100 Jalil Arfaoui feat(économie-collaborative): ne compte pas les 23_000 premiers euros la première année
+21d441270153235a24325c7c03e697a524529e30 2025-02-13 09:56:32 +0100 Jalil Arfaoui feat(économie-collaborative): valeur du plafond non cliquable dans le message d’avertissement
+21591ec17673b02aee3acc6c23f7012fab7ab1a3 2025-02-13 09:56:32 +0100 Jalil Arfaoui feat(économie-collaborative): aucune cotisation en dessous de 23 000 € de recettes
+9a372ffc082a9f2aadfc367707ad54e92750f7a4 2025-02-13 09:56:32 +0100 Jalil Arfaoui refactor(économie-collaborative): renomme loyer en recettes et réorganise
+4808d242b967bdac7860e0974b66c1bbabc0a1f2 2025-02-13 09:56:32 +0100 Jalil Arfaoui feat(économie-collaborative): renvoie vers AE ou TI si loyer net au-dessus du plafond RG
+6687db3667ba2924875dbbbb30ba1c36be98cd66 2025-02-13 09:56:32 +0100 Jalil Arfaoui feat(économie-collaborative): n’applique pas le régime général au-dessus de 77 700 €
+956addbaa844e83f33e1f881084a47c85aac5ceb 2025-02-13 09:56:32 +0100 Jalil Arfaoui feat(économie-collaborative): ajoute le simulateur de location de meublé
+917670d63dd05244b88eb4254815535cb53bf725 2025-02-11 09:36:27 +0100 Alice Dahan fix: rend dynamique la date de création limite
+d56dfb7d8cceda5990b19bb24ae910a9217a779e 2025-02-10 14:06:29 +0100 Alice Dahan docs: remplace la balise strong par le markdown **
+8b7ad1dba373f12d775d67d830bb5534d855f0bb 2025-02-10 14:06:29 +0100 Alice Dahan docs(pam): ajout de documentation pour l'assistant PAM
+ca46960a85e19cf7b1a17b2a59d192ef390e928f 2025-02-10 14:06:08 +0100 Alice Dahan fix(pam): correction des règles assistant PAM
+36daa71ef9c98375e46bbbac463bb51dc697ba5a 2025-02-06 09:35:26 +0100 Alice Dahan fix: utilisation des apostrophes typographiques dans activité
+541a4955aaa0945140a830347a036ce9b8f8c350 2025-02-06 09:35:26 +0100 Alice Dahan docs: mise à jour de la description des charges de l'entreprise
+ba0b15d5d702615aa9f68a47f46703fb36df4dff 2025-02-03 16:36:09 +0100 Alice Dahan fix: correction d'une faute de grammaire
+c6a77a68da269c05c843e2d7a7969ac949dc2421 2025-02-03 16:36:09 +0100 Alice Dahan fix: utilisation des apostrophes typographiques dans activité
+7b6c7d17a95665c279e9f17d9ecef0e626066e6b 2025-02-03 10:27:44 +0100 Alice Dahan fix(pam): correction des règles de l'assistant revenus pour les dentistes
+19333434d6912bda154c8ac36fdc32f641c22aa5 2025-02-03 10:27:44 +0100 Alice Dahan feat(pam): ajout de règles pour l'assistant à la déclaration de revenus PAM
+bb9b9d9877feefaae3947b91204fbc8a58f006f1 2025-01-31 10:48:52 +0100 Florent Mata feat(salarié): rendre publiques les sous-règles de la taxe d'apprentissage
+1b6a5eca8f80f61d90384bbc4e16d6492eaafca1 2025-01-31 09:35:25 +0100 Alice Dahan i18n: typo
+0a5cfb7ee8bbe06eb499801841100d8e3a72dac0 2025-01-31 09:35:25 +0100 Alice Dahan i18n: correction de déclaration de revenu en revenus
+f20ebbea01132327120a9a6d17d2565e6c4c608d 2025-01-31 09:35:25 +0100 Alice Dahan chore: mise à jour de la suggestion date de création
+ffab079b354f8086461f5b94dd49f04e215f731b 2025-01-31 09:35:25 +0100 Alice Dahan chore(charges-sociales): mise à jour de l'année de l'assistant à la déclaration des indépendants
+acb8e02baa91925602508c5844f31cee2e124329 2025-01-31 09:35:25 +0100 Alice Dahan i18n: typo
+678d7f965b6e229f487f7ce1699386d7db430c4d 2025-01-31 09:35:25 +0100 Alice Dahan chore(rgcp/lodeom): rend dynamique l'avertissement salaire trop haut
+e588eeffab1b3684af44e8a45f5484d96d2f9edb 2025-01-31 09:35:25 +0100 Alice Dahan feat(CAVP): mise à jour des valeurs de revenus pour demande de réduction
+b9471c2c7ffa58fd3b0d724d9a76379ad1f5047c 2025-01-28 20:23:12 +0100 Alice Dahan refactor: déplace la règle PFSS N-1 sous PFSS
+fa1469ca4f1da4636237541f3622ba7583de7160 2025-01-28 19:53:42 +0100 Alice Dahan refactor: utilisation de valeur pour une division
+422b2859db2d383aa0e538a986857605126323bd 2025-01-23 23:11:53 +0100 Jalil Arfaoui fix(professions libérales): l’assiette de cotisation invalidité-décès pour les CIPAV doit être proratisée
+83245f3968038f2ffdc5222a93d29dc5a3dc1c59 2025-01-23 23:11:53 +0100 Jalil Arfaoui fix: créée cette année doit renvoyer faux si création année ultérieure
+a51f53e0540778f1751f3a68c0c8ec5879cb3cd8 2025-01-23 23:11:53 +0100 Jalil Arfaoui docs(indépendant): mise à jour de la fiche Urssaf pour la CSG-CRDS
+cc4185a52619a2419431f70b9d3569aa3633e3f0 2025-01-23 23:11:53 +0100 Jalil Arfaoui feat(indépendant): proratisation des cotisations pour les années incomplètes
+32b23895c845cc456c2045bbaed01b9670ce6859 2025-01-23 23:11:53 +0100 Jalil Arfaoui feat: durée d'activité de l'entreprise et prorata temporis
+f463ccb5022d0ead4c8bdf3acc2df9c1bad60eca 2025-01-23 23:11:53 +0100 Jalil Arfaoui feat(indépendant): ajoute le simulateur cessation d’activité
+e57199bde22532b1ceb33da7558434c866c81c82 2025-01-22 19:36:06 +0100 Alice Dahan feat(lodeom): déplace le calcul du SMIC mois incomplet dans modele-social
+fca29549fcfe70b2878484cf005700e1a66357bf 2025-01-21 16:52:19 +0100 Alice Dahan feat(rgcp): formulation des questions préalables sous forme interrogative
+df072feb1cc3691b72ed3687d83c2e8b29e803b3 2025-01-20 12:14:05 +0100 Alice Dahan refactor(lodeom): renomme les possibilités de barèmes
+c98957fce48cf81784f73029e9bd8d994fde9036 2025-01-20 12:14:05 +0100 Alice Dahan refactor(salarié): déplace les exonérations dans un dossier et des fichiers dédiés
+4c2ee316044ad2e41af81e8834fe8075024571b2 2025-01-20 12:13:35 +0100 Alice Dahan fix(lodeom): corrige l'affichage des avertissements
+d443cc8d592bda62f5a44d31718fc22bd83a8f45 2025-01-20 12:13:35 +0100 Alice Dahan feat(lodeom): ajoute un titre au montant Lodeom
+3f7368fe28737f87c99fbfe246310e073ccd72c5 2025-01-20 12:13:35 +0100 Alice Dahan refactor(lodeom): déplace la question sur la zone dans modele-social
+b67d0dec5f35c92b0fdae17bc28266864ae89c8d 2025-01-20 12:13:35 +0100 Alice Dahan feat(lodeom): ajout de messages d'avertissement adaptés à la zone
+1ff21450d8ee7610e96a82bac4527c9617d500b6 2025-01-20 12:13:35 +0100 Alice Dahan feat(lodeom): ajout de la sélection de zone
+67764dae095d29b32c0eb5162ded3f4f247fe79d 2025-01-20 12:13:35 +0100 Alice Dahan refactor(lodeom): renomme la zone un
+dc81639afaf3ad92497225b7f48a3031746d3458 2025-01-20 12:12:57 +0100 Alice Dahan feat(lodeom): ajout de codes adaptés au barème
+06379f4ce565f9b16fe57af2029d1d70b7ffdeb3 2025-01-20 12:12:57 +0100 Alice Dahan feat(lodeom): ajout de la sélection de barème
+4c2b5308d565f1e59276bd6101cfa364218220a9 2025-01-20 12:12:57 +0100 Alice Dahan refactor(modele-social): ordonne attributs
+4fabd0dffc508096eab5f9fc7f204c8395227bd5 2025-01-20 12:12:57 +0100 Alice Dahan refactor(modele-social): correction de l'indentation
+4f93c72324ead9e6cc34905f614fe1e23d2652f1 2025-01-20 12:12:23 +0100 Alice Dahan refactor(lodeom): factorise le code commun avec RGCP
+2b3de4c2aab620fc4c3861e317287304f78556b0 2025-01-20 12:12:23 +0100 Alice Dahan feat(lodeom): ajout du simulateur lodem (zone un - barème compétitivité)
+349abf2de1f69b0e797303b2106d0d22a6d2bf08 2025-01-20 12:11:01 +0100 Alice Dahan feat(lodeom): ajout des règles de calcul pour St Barthélémy et St Martin - Corrige le montant de l'exonération lorsqu'elle est totale - Corrige la répartition
+50131baae87408f02a46b2f004abd84714c9c7d1 2025-01-14 16:43:33 +0100 Florent Mata feat(salarié): ajout d'une sous-règle pour exposer le taux AGS
+5b15506c5e7edb3474606d279f750c3f9f1c8256 2025-01-14 16:43:33 +0100 Florent Mata fix(salarié): rendre les exonérations sur les heures supplémentaires réellement non applicables
+e585c6b6a98b329fd586238457ca148b0aa39e6b 2025-01-14 15:08:23 +0100 Alice Dahan fix(salarié): correction de la suggestion part employeur maximum déductible pour les transports en commun
+7ce3c5466c895c64001577e3c553f4a5060e4d6b 2025-01-14 15:08:23 +0100 Alice Dahan feat(CNBF): mise à jour des cotisations
+2188008306ec29e267ff27b66c30ba64028fe399 2025-01-13 11:32:45 +0100 Alice Dahan feat(salarié): mise à jour de la part déductible de la participation employeur aux frais de transports en commun en 2025
+a7c0d3ef874e697796e959ce537b013cf9c9a15b 2025-01-13 11:32:45 +0100 Alice Dahan feat(modele-social): Mise à jour de la date au 1er janvier 2025
+db274acca271e4f157af2eef81086c51c15fa34c 2025-01-13 11:32:45 +0100 Alice Dahan fix(salarié): Correction des seuils 2023 pour la taxe sur les salaires
+239f6ace201e185494bf31fb1cd15085e148345b 2025-01-13 11:32:45 +0100 Alice Dahan feat(salarié): Mise à jour de l'évaluation forfaitaire de l'avantage en nature repas
+b4e84ac757384f772078df73aa5d153e2b19e9a7 2025-01-13 11:32:45 +0100 Alice Dahan feat(salarié): Mise à jour du montant déductible sur les titres-restaurant
+e7e6119d5e2fb1da023fb3120a1f4e11f5e014d0 2025-01-13 11:32:45 +0100 Alice Dahan feat(CAVP): Mise à jour des cotisations CAVP
+151dc8af88036f08bd0825ec32581abb55040374 2025-01-13 11:32:45 +0100 Alice Dahan feat(CAVEC): Mise à jour des cotisations CAVEC
+ccddeb24d8ce7a44e993d178cc67c994457753b6 2025-01-13 11:32:45 +0100 Alice Dahan feat(CNAVPL): Mise à jour de la valeur du point de la CNAVPL
+732fbd02dabdac950b3bb27eff185a5646349a17 2025-01-13 11:32:45 +0100 Alice Dahan feat(CARMF): mise à jour des valeurs 2025 de la CARMF
+7e5805388447332297e2a527592bb67349539b2f 2025-01-13 11:32:45 +0100 Alice Dahan docs(indépendant): Mise à jour du lien vers la liste des cotisations des indépendants
+0a98d7808da16fbb885b7eeb698ef2aec06f8ec4 2025-01-13 11:32:45 +0100 Alice Dahan refactor(artiste-auteur): remplacement de valeurs en dur par des références
+878a05ded5433995cb1484a7819b93efbb444a9e 2025-01-13 11:32:45 +0100 Alice Dahan feat(salarié): ajout du taux ATMP pour VRP multicarte
+45aed34b0deafc7ec9133fe847a49fb2e3e0ccd5 2025-01-13 11:32:45 +0100 Alice Dahan feat(salarié): ajout des taux CSA pour l'Alsace-Moselle
+34978f111a4fa7cff3c758dc7c81587aed11afec 2025-01-13 11:32:45 +0100 Alice Dahan docs: ajout de référence sur l'aide à l'emploi d'apprentis
+f56a604427fa03a219f7dd03283b6d9e54f29351 2025-01-13 11:32:45 +0100 Alice Dahan docs: ajout de références sur le versement mobilité
+47113a4fa0573d337ee4d23d60f0ce04eb4a7cab 2025-01-13 11:32:45 +0100 Alice Dahan fix(modele-social): correction de la comparaison de date
+9675dfebf5e383f45f1ee52b1567fc2a992efba3 2025-01-10 10:06:14 +0100 Alice Dahan feat: ajoute un avertissement lorsque le simulateur ne correspond pas à la catégorie juridique de l'entreprise
+e77565ca24730dfc09cf46aa065b471123611333 2025-01-09 13:50:58 +0100 Loic Guibert Indépendants - Correction de l'assiette plancher pour la cotisation "Invalidité et Décès"
+3ee2dfcfdd63224716a00c21529850e8f58d3bf0 2025-01-09 12:48:20 +0100 Alice Dahan fix(modele-social): Corrige les calculs de durée en ajoutant jusqu'à: date
+3c1fa83afe6c65aea10d3b6db23bddd131c65a8f 2025-01-09 12:48:00 +0100 Alice Dahan fix(modele-social): Supprime la règle non utilisée ZFU . durée d'implantation en fin d'année
+34d10af936987ee59b738bac06de0fb8dd953d5b 2025-01-07 14:07:56 +0100 Alice Dahan feat(indépendant): Mise à jour des valeurs RCI
+1101c53ee7b284800f93d1c5f896625590a1a55e 2025-01-07 13:49:38 +0100 Alice Dahan feat(salarié): Mise à jour des valeurs Agirc-Arrco
+d8d7a8c2d73638365b0b8caf69078a9b7b597786 2024-12-26 12:24:54 +0100 Alice Dahan feat(salarié): mise à jour du montant forfaitaire d'un repas pour HCR
+556795dc2e85eeb75c5b92a33a7d8344b195bce3 2024-12-26 11:32:04 +0100 Alice Dahan feat(salarié): mise à jour du taux de cotisation AGS
+821c088c8b1192ff417a046a0c0ce2ed69ad393d 2024-12-12 10:49:15 +0100 Alice Dahan feat(salarié): ajout des taux réduits cas particuliers
+a4b0f5bc16a76b8da6413d3f724d7925b433c411 2024-12-12 10:49:15 +0100 Alice Dahan fix(salarié): correction du régime spécifique journaliste
+5ba2ec9c8c6f8c841215463c95eae27e2e70682d 2024-12-12 10:49:15 +0100 Alice Dahan feat(salarié): mise à jour des professions et taux pour la DFS
+cbfcb9361e9bb23e4ebfe043e074e82b35b62e3f 2024-12-10 10:52:16 +0100 Alice Dahan feat(auto-entrepreneur): mise à jour des taux BNC pour les DROM
+02408bc250eed4290953b78481651ff09900a8f1 2024-12-06 18:44:08 +0100 Alice Dahan feat(rgcp): Ajout du coef de majoration pour les caisses de CP
+d9a65e50626be71648c99a1044c9f858484bf188 2024-12-06 14:55:15 +0100 Alice Dahan docs(PLNR): Précisions sur le taux spécifique de cotisation retraite complémentaire
+410992e853235f6dddd18beb6e6190661659a459 2024-12-06 14:55:15 +0100 Alice Dahan fix(PLNR): Correction de la règle d'affiliation au régime général
+6982e16faf3b8307f3657717659ae69c52fbd456 2024-12-06 10:14:55 +0100 Alice Dahan feat(médecin): Ajout du cumul retraite et activité libérale (cotisations invalidité-décès)
+b9b69674e8a8d61d21d4a182131163f61fccda32 2024-12-05 16:12:22 +0100 Alice Dahan feat(auto-entrepreneur): mise à jour de l'affichage des droits à la retraite
+eddf8b6064018bcd9ed78ed72c2938340487f520 2024-12-03 16:20:38 +0100 Alice Dahan docs: ajout de documentation sur la régularisation RGCP
+4f2d6fc69e6ea089b167cc460dc74a4a7632efc3 2024-11-29 11:21:04 +0100 Alice Dahan ajoute le calcul de la régularisation progressive pour un mois donné
+83ef09967e03485e9fecf0e5a5866b8cbc5899e4 2024-11-28 10:07:19 +0100 Jonathan Bonnefoy correction d'un bug causant l'inférence de l'unité €/an au lieu de €/mois pour le calcul de l'abattement du "montant net social"
+457f86d3884a34fb5d62b43657280c100ea2ee27 2024-11-15 15:19:41 +0100 Alice Dahan feat: Ajout du montant du PASS pour 2025
+1932271a6b0bd8788d21db353bb79ddc360337fe 2024-11-15 09:58:01 +0100 Alice Dahan fix: Corrige le plafond de revenus micro-BNC pour les artistes-auteurs
+280eadfa9a42b0f020b75e3017c8139b0c175f3a 2024-11-04 11:02:00 +0100 Alice Dahan chore: modifie la date à 01/11/2024
+a56aedd1cf0de5bee63623e5a733534923a083df 2024-10-31 10:33:33 +0100 Alice Dahan refactor: utilise la répartition de RGCP pré-existante
+70f9df066a7b59b341f543514e0e6761b6a51b56 2024-10-29 15:30:42 +0100 Alice Dahan docs: corrige le lien pour les TFC auto-entrepreneurs
+6685d59458859d78cf36aabac7262ab0990ce670 2024-10-29 10:17:08 +0100 Alice Dahan fix: corrige le taux de cotisation maladie pour les PAMC
+aece8e58938dfd84d0275a5760eb21ff19d35f61 2024-10-28 09:32:26 +0100 Jonathan Bonnefoy Mise à jour du SMIC horaire à partir du 01/11/2024
+a7cb7b84e1bdf42258e2f7f4108b6ae3690658ae 2024-10-18 10:27:11 +0200 Alice Dahan feat: pluralise et traduit les unités des questions
+8ff36d6d30c774ac9060d63357dc36351020fcea 2024-10-18 09:50:11 +0200 Alice Dahan fix: ajoute l'unité de cotisations . assiette
+1115a8a59b2ccf3cf39804e291cdf9e68f53aa11 2024-10-18 09:50:11 +0200 Alice Dahan feat(simulateurs): Nouveau simulateur réduction générale
+0f8de800acb2a8afe72d179f59bf8224ee4c3406 2024-10-18 09:50:11 +0200 Alice Dahan feat: ajoute la répartition de la réduction générale
+5455a669857ad46674234d50e8080165e6134913 2024-10-18 09:50:11 +0200 Alice Dahan refactor: réécrit la formule du coefficient de réduction générale comme documentée
+705dcf794ec79b0b2805d0325e8377dc765916f3 2024-10-18 09:50:11 +0200 Alice Dahan fix: corrige l'arrondi du coefficient de la réduction générale
+5c4e3918b4f4410cbc5030497d42db2df0741f39 2024-10-18 09:50:11 +0200 Alice Dahan docs: ajoute de la documentation sur la réduction générale
+923310871f9dc42f1c8962694f5d55ef576fb9e8 2024-10-15 11:18:02 +0200 Alice Dahan fix: corrige l'affiliation Cipav des PLNR créées avant 2018
+474daf625ec96f9c76d01a52ff881e38218089df 2024-10-14 16:37:10 +0200 Alice Dahan fix: corrige la mise en gras d'une phrase
+afde6555f3d0bbd45dc396e645278e99c6e6b99f 2024-10-14 16:37:10 +0200 Alice Dahan refactor: supprime les règles d'Acre obsolètes
+01b5a6c0053d7dd09c7988b46f4bf79680570fc4 2024-10-14 16:37:10 +0200 Alice Dahan docs: met à jour les références sur l'Acre
+851ab1c0033e906c16907f943b489199b84930cb 2024-10-14 16:37:10 +0200 Alice Dahan feat: conditionne l'éligibilité AE à l'Acre à la durée d'activité
+7f08645088b82a45c554e0f46adf9c46b14fc948 2024-10-11 18:15:44 +0200 Alice Dahan fix: corrige l'indentation de dirigeant . auto-entrepreneur . éligible à l'ACRE
+9bb43d710094d8f572c64997ce991c8d395c5753 2024-10-11 09:34:14 +0200 Alice Dahan fix: correction des taux auto-entrepreneur DROM
+3a4091ae1cafdd4572bfd10d6352fd04db8da419 2024-10-10 16:37:41 +0200 Alice Dahan docs: ajout d'un avertissement sur la valeur du montant net social
+3c2d9a3999a283360833004fa3887aad9a383406 2024-10-10 16:37:41 +0200 Alice Dahan feat(salarié): Met à jour la présentation de la fiche de paie
+db307c73175f6688754315b44497d53ffb930bbd 2024-10-10 10:06:32 +0200 Alice Dahan docs: change la définition du salaire brut pour celle de l'INSEE
+31e21db784d58edc7924c1a890c74af46a79d2ef 2024-10-10 10:06:32 +0200 Alice Dahan Fix(doc): Met à jour des références sur les frais professionnels
+4c716132b4f7b15f8692683765b6a2354b8a917e 2024-10-10 10:06:32 +0200 Alice Dahan refactor(salarié): Réorganise les composants de fiche de paie
+bdd85ca297f50b857ca7801d51f27125c1929b15 2024-10-10 10:06:32 +0200 Alice Dahan feat(modèle-social): Ajoute le calcul du Montant Net Social
+38a0b44aebcd84b9c32de42d22aa48c0680d429e 2024-10-10 10:06:32 +0200 Alice Dahan refactor(modèle-social): Réorganise les règles de rémunération du salarié
+7293c31b36060ac33d891dfae731a3feff815721 2024-10-10 10:06:32 +0200 Alice Dahan fix(règles): Corrige a-t'il en a-t-il
+0caebaa95e39bd63762b8da4fc5dd631bc080ee0 2024-10-08 12:11:59 +0200 Alice Dahan feat: change la nature par défaut de l'activité artisanale
+6358c80e622099b6f4eb375614d813d079d43099 2024-10-08 10:16:19 +0200 Alice Dahan fix: correction du calcul du taux réduit de cotisation maladie et familiale
+0a55c91b553152e9766ac811ee61867ddffd5b13 2024-09-30 16:15:03 +0200 Alice Dahan feat: suppression de la question sur le taux personnalisé de retraite pour les PNLR
+b1f6a7c5fee4cfcd623b2f40aaf52d99fcfe82ab 2024-09-30 16:10:05 +0200 Alice Dahan feat: supprime l'option 'taux neutre' pour l'impôt sur le revenu des indépendants
+5043af502021ebbdf2770d524a79caee790faf3e 2024-09-23 13:29:00 +0200 Alice Dahan fix: Correction de la valeur d'acquisition du point Agirc-Arrco pour 2023
+0e6f544b63d8ec73952843417e2cdeec3f2e3c2a 2024-09-13 16:29:18 +0200 Alice Dahan docs: modifie la documentation sur le versement libératoire
+fefc929e0ac633dd90ad9559e85a3caf573ca027 2024-09-10 09:48:55 +0200 Jalil Arfaoui fix: activer l’ACRE par défaut si auto-entrepreneur éligible
+20677de5ce42ff4cbbca27078d64bd16ae39a069 2024-09-10 09:48:55 +0200 Jalil Arfaoui fix: l’ACRE ne se déclenche pas pour les auto-entrepreneurs éligibles
+90c5a47b988da1f18415f5d291419a67c070d1ec 2024-09-10 09:48:55 +0200 Jalil Arfaoui refactor: revamp ModifierOptions.tsx
+e767348204c31324c29446c176179fd186d77122 2024-09-06 16:43:32 +0200 Alice Dahan docs: met à jour les liens de la documentation sur le versement libératoire
+2e7a16461cfc604e304d20a03fe5e71f0ad54371 2024-09-06 16:43:32 +0200 Alice Dahan docs: remplace l'emploi de micro-entreprise dans les simulateurs indépendants
+39494b65b86c6b4c4ae8dc723a2c85bcab948653 2024-09-02 17:29:35 +0200 Alice Dahan fix(auto-entrepreneur): Corrige le nombre de points acquis pour la retraite complémentaire des auto-entrepreneurs
+1932d654cf7a81dbac73df88487fc70553e52a19 2024-09-02 12:25:29 +0200 Alice Dahan docs(auto-entrepreneur): Rend publique la règle taux ACRE des auto-entrepreneurs
+4f18a812de3c11e45f7b002eb13bbf301077cd8f 2024-09-02 12:25:29 +0200 Alice Dahan fix(auto-entrepreneur): Corrige le taux ACRE pour BIC
+05334b12f895af2ea0f907de5aa9c7017292ec82 2024-09-02 12:25:29 +0200 Alice Dahan refactor(auto-entrepreneur): Corrige l'indentation des règles AE
+180e57f3c4c95ea61753430c4bfc6b89aee1ea01 2024-08-30 15:56:02 +0200 Alice Dahan docs(salarié): Met à jour et ajoute des références sur les cotisations employeur
+0a0d1819ad201d7e7d507456becc8459bf2a5e30 2024-08-30 15:56:02 +0200 Alice Dahan refactor(modele-social): Remplace les références à 'durée légale' (déprécié) par 'durée légale du travail'
+a24f4bfea8a028f3bd5948bf1c09af7496f240da 2024-08-26 11:37:34 +0200 Alice Dahan docs(auto-entrepreneur): Met à jour la documentation sur le versement libératoire
+48e8a022f8a065b11e3187978f3542bf54489b02 2024-08-26 11:13:53 +0200 Alice Dahan docs(artiste-auteur): Ajout de documentation sur la retraite des artiste-auteurs
+77553b42e4b915bb837145efcf51b94775076f83 2024-08-19 09:30:40 +0200 Alice Dahan fix(artiste-auteur): Rend applicable l'option de surcotisation forfaitaire pour les revenus artistiques à 0
+9ac022081c26836a47bdf451a0f35b2ab7ae5a1a 2024-08-16 18:54:20 +0200 Jalil Arfaoui doc(auto-entrepreneur): ajoute lien vers la circulaire CNAV 2024
+26b21a6e8b75f6b0f95f5e31a46cb2734cfc18e8 2024-08-16 18:54:20 +0200 Jalil Arfaoui fix(auto-entrepreneur): prends en compte le bon revenu cotisé pour la retraite-complémentaire
+3166a70fa6f7279a72b1665681d9004f43ed53f3 2024-08-16 11:35:13 +0200 Alice Dahan docs(profession-libérale): Supprime des liens morts
+451c14194af0cfa7bbc1bcdbad1ba4efc61f9efe 2024-08-16 11:35:13 +0200 Alice Dahan feat(profession-libérale): Met à jour les valeurs 2024 des caisses de retraite
+d0a49c3f7dfb23541549e69193534df6a19f0efc 2024-08-16 09:54:18 +0200 Alice Dahan fix(auto-entrepreneur): Corrige l'assiette de calcul des professions libérales réglementées
+e1ad8e5515dbe3324c586426eb509026fd256bc1 2024-08-16 09:40:32 +0200 Antoine Augusti Mise à jour lien vers fiche modulation des cotisations Urssaf
+1d2874c5eb0f5a26b913c72a83920504c42766c9 2024-08-01 15:01:55 +0200 Alice Dahan feat(auto-entrepreneur): Ajoute les taux de cotisation BNC pour 2025 et 2026
+73f8a21cd1b0e8982f0425f940bbea801cd622a7 2024-08-01 10:33:30 +0200 Alice Dahan docs: Corrige des références manquantes à cause d'une typo
+0f3fed07701138847c0942245dd00ca28337be41 2024-08-01 10:33:30 +0200 Alice Dahan feat(auto-entrepreneur): Ajoute la CFP dans la répartition des cotisations
+e1271c8bf472afa1e9c0d73d6bcc32e212f11b30 2024-07-18 17:08:45 +0200 Jalil Arfaoui feat(artistes-auteurs): met à jour le lien vers le guide IRCEC 2024
+1e45d30a32af37e7ba9587abcec0511d827c4dc7 2024-07-18 16:11:43 +0200 Jalil Arfaoui feat(salarié): ajoute la précision droit-commun après autre convention collective
+8d04dbb650366c0bb4af0858a569049d845a7230 2024-07-17 14:48:20 +0200 Alice Dahan feat(auto-entrepreneur): met à jour les taux de cotisation des auto-entrepreneurs au 1er juillet 2024 #3010
+2645b49b562831c28a69bc3bf4cd468bb0156504 2024-07-17 10:18:25 +0200 Aurelien Violette Ajout des unité pour quelques règles.
+2a0e452617fc33b955096f4bb7f7f305ec0670ad 2024-07-16 21:29:59 +0200 Jalil Arfaoui fix: met à jour les liens morts
+155229df8f1b0a5afad60ba50f29af86d9eccefb 2024-07-16 19:59:59 +0200 logic-fabric fix(artiste-auteur): màj seuils cotisation RAAP
+4f3fe7b1a0d7cb74feb6f43e6ebcd27cdb2da4f3 2024-07-16 19:59:59 +0200 logic-fabric fix(artiste-auteur): màj seuils cotisation RAAP
+29c18b199c40b4454c9cb34cf804bf8ee0913bc7 2024-07-16 19:59:59 +0200 logic-fabric fix(artiste-auteur): màj seuils cotisation RAAP
+9cd6d3f8533bffb8a12d863593321c04613f3a21 2024-07-16 19:38:14 +0200 logic-fabric feat(salarié): ajoute 'autre' au choix de conventions collectives
+17da3e6d8fc11ad6cf2265b103af3b23bea91fef 2024-06-26 17:00:54 +0200 Jalil Arfaoui fix: lien du panorama des régimes de retraites mort
+c83d01a7131308942a94bdcf31069f183e3d64c8 2024-06-26 15:30:47 +0200 Jalil Arfaoui feat(autoentrepreneur): ajoute le lien vers la doc explicative pour la répartition des cotisations autoentrepreneur
+ffab95034fdce28ea42a5f418defeb2b490426fd 2024-06-26 15:30:47 +0200 Jalil Arfaoui feat(autoentrepreneur): ajoute la distribution des cotisations à la simulation AutoEntrepreneur
+b548384d024fd27fcb539e5df59db846394587c2 2024-05-10 15:55:23 +0200 Jalil Arfaoui feat: passe de place-des-entreprises vers conseillers-entreprises
+303adafde506f6207436f919c6c7e0cc95e95a04 2024-04-06 00:02:14 +0200 Jalil Arfaoui feat: ajoute les taux spécifiques aux DOM pour les AE
+4b2706bab6d5b056521f9eb2125e13afc5fc1cba 2024-04-06 00:02:14 +0200 Jalil Arfaoui refactor: réuni les taux de cotisations DROM dans auto-entrepreneur . DROM
+b2899bc7f8dc522a9fad46853b22f8d260985d6d 2024-04-06 00:02:14 +0200 Jalil Arfaoui feat: ajoute les taux spécifiques aux DOM pour les AE
+b18e1737c834ad8749436e1569f41ca01dc6f5fc 2024-04-05 18:08:57 +0200 Jalil Arfaoui feat: met à jour l'affichage du simulateur des charges déductibles #2920
+04131510cb88ff49decef13c7a3d9a10a24d128e 2024-04-04 15:03:42 +0200 Johan Girod chore: add link for BPIFrance-creation
+99166447c310a65c070a1901aa66ba06485c8dcc 2024-03-28 18:17:47 +0100 Johan Girod chore: update references for BPI
+3aaa51ae07bc82eb51fde8ad61aa4d7a6d82aa49 2024-02-29 11:08:31 +0100 Guillaume Warckol Ajout de plancher sur les règles pour les salariés
+37f7efc1cf892a2ebe7e9ec97425516e110b0017 2024-02-29 11:08:31 +0100 Guillaume Warckol Ajout de planchers à 0€
+a928d5d21eb721a3ce3170b9b0af804bf61b515e 2024-02-29 11:08:31 +0100 Guillaume Warckol Application de la condition sur les revenus des indépendants pour le capital décès
+d5607fe8f1ce33557f87ed41b828cb6f3e7c480d 2024-02-23 14:03:26 +0100 Johan Girod fix: update to publicodes 1.0.4
+0a5b279b27420c8c15d684be289ac296e41826b0 2024-02-23 14:03:26 +0100 Johan Girod wip
+ca3ea24d386e2c7eac2cd1c2aa5315039b1b7348 2024-02-16 14:15:26 +0100 Marie Destandau fix: add minimum invalidité décès condition for salarié
+0f785f9c986b7ca8221528403b5c54fd823f081c 2024-02-08 17:50:48 +0100 Johan Girod # This is a combination of 2 commits.
+903c4177d32f068fa759f310c3a4ac526ee54719 2024-02-02 13:36:13 +0100 fmata Ajout de la CET dans les cotisations salariales
+c20a7cb80d290b2f3fd6a737225acda7d05fbe33 2024-01-25 18:34:00 +0100 Johan Girod chore: change extension of publicodes files
+8bd336541435ba52cd3c97adbccccc7628b7cf68 2024-01-25 17:10:50 +0100 Antoine Augusti Mise à jour suggestion de salaire médian
+3e96a687771a7f858a59e60baa6443206c81a4ee 2024-01-12 09:46:46 +0000 Johan Girod Enlève les cotisations Madelin de la ligne Urssaf
+ba6c5ca3ec147652a15aa94c53d2f5b629365625 2024-01-12 09:46:46 +0000 Johan Girod Met à jour le plafond RC de la cipav
+bfaab3dec32c0c5ca8087a5814e0857bf57b8d92 2024-01-12 09:46:46 +0000 Johan Girod Ajoute les taux neutre pour 2024
+bff1d9fd4f968a277730194c751c4985010ee4ed 2024-01-08 08:12:26 +0000 Antoine Augusti Correction référence vers Contrats Madelin
+b08921ba590c2ad266f49dd24a25fa114ec1305f 2024-01-06 17:39:47 +0000 Johan Girod Mise à jour 2024
+4f0b69b506c93619a2dd56082291454d8162c333 2024-01-06 17:39:47 +0000 Antoine Augusti Mise à jour des valeurs 2024 du RCI (#2859)
+90e28c5e779bed3a373dcf4a0e28e9a3a74fa5f2 2024-01-06 17:39:47 +0000 Johan Girod Mise à jour 2024
+cd7e826b14874918694cdd3e3f55b302d75212ae 2023-12-21 10:12:01 +0100 Johan Girod feat: show only BPI links to BPI users
+94d56d1c78c35435be043f90923cf25daf74fc07 2023-12-20 19:12:52 +0100 Johan Girod update: use publicodes 1.0.0-rc.3
+49dac893cc352178bd20fb11da161445a64c5d27 2023-12-20 19:12:52 +0100 Johan Girod fix: remove space in unité
+1e02bca6ec333dd971322cb2df1711ae6b086dbf 2023-12-20 19:12:52 +0100 Johan Girod chore: update to publicodes 1.0-rfc.1
+72830d10dccbbcf9835f11dc1c70fedd0bd83931 2023-12-20 19:12:52 +0100 Johan Girod fix: replace mutliplication par produit'
+b28fd65586aa4f158decae3670ca7134e7177da9 2023-12-15 10:18:21 +0100 Johan Girod Revert "fix: change node version to 21"
+6bcb1d3d24f200c69049e5384114f5a4205823e8 2023-12-13 15:13:19 +0100 Johan Girod fix: Met à jour la valeur du point CNAVPL en 2023
+e0ac7b4ad851404591f9c123d0caf7f242f7b21d 2023-11-24 17:07:54 +0100 Johan Girod mise à jour du PRCI 2023
+3d475f870957060dad71a9b3fbf0fff3fd693a74 2023-09-29 10:00:50 +0200 Johan Girod Met à jour l'exonération de cotisation sur les titres-restaurants
+70dbeeb6f36e90257706a90078acb9a3464cf0a3 2023-09-15 11:06:47 +0200 Johan Girod Supprime l'assistant à la déclaration de revenu
+d28e446ca5a175b853dd872934a986d1e45a3356 2023-09-14 09:00:32 +0200 Johan Girod Ajoute une explication pour la page de documentation sur le revenu professionnel des indépendants
+2a921c60b2585a23280edef685f82601d2afc440 2023-09-05 14:57:15 +0200 Johan Girod Ajoute une aide pour différencier BIC et BNC et change le wording
+ec5ca2e09133abced81eb7703760d4301a4a9336 2023-09-04 15:19:20 +0200 Johan Girod Répare les liens morts
+3090dac59350c287d0ed77d797b93b6ecaa1654b 2023-08-02 12:48:41 +0200 Johan Girod Ajoute le revenu avant impôt
+423dd72cb5161c580f7ce5c01a9db100fb442f34 2023-08-02 12:48:41 +0200 Johan Girod Ajoute des tests E2E pour le comparateur de statut
+2cbe7bd59099e80f7a85dfceb93e0bc5b2ef7318 2023-08-02 12:48:41 +0200 Johan Girod Corrige le calcul de la retraite estimé AGIRC ARCO
+05951cffce5f7912a598c5bb74419c5845b27bd3 2023-08-02 12:48:41 +0200 Johan Girod Corrige l'avertissement CDD
+b1ac475871f19acacf2056f24580fc0001f92b27 2023-08-02 12:48:41 +0200 Johan Girod Implémentation de la page résultat
+03cb5d43fd87264974d0da65f8670e2de79ee222 2023-08-02 12:48:41 +0200 Johan Girod Ajoute un avertissement pour les cas exclus de l'assistant statut
+0f4c31911301c693f1b2392f5406278a038aca86 2023-08-02 12:48:41 +0200 Johan Girod Correction de la description exonération DROM indep
+e47e8945d8ab5941d9bbb587b1651ffd804f5722 2023-08-02 12:48:41 +0200 Johan Girod Désactive les associations pour les PLR, et répare la selection pour les pharmaciens
+2cc9e6f1e2e12606a8bec709864ff7ed46084a0a 2023-08-02 12:48:41 +0200 Johan Girod Finit la correction du panneau « modifier mes options »
+fad08e29fc8c48590a0097761351ada910479690 2023-08-02 12:48:41 +0200 Johan Girod Derniers petits ajustements sur le modèle
+0cc4038665d00c93957d06a71eb5b53f4d764fa8 2023-08-02 12:48:41 +0200 Johan Girod Première version du comparateur à la suite de l'assistant (WIP)
+2765240404fd93b7bb12b5eca719e94d4929d51d 2023-08-02 12:48:41 +0200 Johan Girod Ajoute un lien avec les activités libérales
+637d879f901f000cf3adbb91b4ee5c3e2b49c585 2023-08-02 12:48:41 +0200 Johan Girod Ajoute le lien avec le nombre d'associés
+f6f478767a9753675186ad33f3b4639889a2e941 2023-08-02 12:48:41 +0200 Johan Girod Sauvegarde l'état entre deux reload
+88ec1cc2f635e595ec6ea12a6a746d832e55bee0 2023-08-02 12:48:41 +0200 Johan Girod wip
+3aacc4d35907cfa94edd072b916119babec103d1 2023-08-02 12:48:41 +0200 Johan Girod Ajoute le lien avec publicodes (in progress)
+fb57b99daa67b25152c91508b01906ab2e22e083 2023-08-02 12:48:41 +0200 Johan Girod Ajoute la selection du guichet unique sur l'assistant au choix du statut
+8883ae6b41cba7ba49bd7c7cda0c7b91a359a134 2023-08-02 12:48:41 +0200 Johan Girod Continue l'implémentation de l'aide au choix du statut
+c05b81dbfdf25be14a6fe5cb51808e64fee6251f 2023-08-01 17:54:47 +0200 Jérémy Rialland fix #2756
+5346da696e8ff41458b11f72df2d799be4678d4a 2023-07-24 18:52:03 +0200 Johan Girod Correction de la description exonération DROM indep
+483a75e82909d93c834b408e375d59d13cdc4dc5 2023-07-24 13:55:22 +0200 Johan Girod Ajoute un avertissement pour les indépendants et AE dans les DOM (exonération non implémentées)
+8a85585bd5f07c05b59e55cf53377f2101f38294 2023-07-24 12:23:46 +0200 Johan Girod Corrige le bug de la convention collective du sport
+19c1b256b1f4321ce51b1f5e9caf069d36995438 2023-06-15 11:17:06 +0200 Jérémy Rialland Correction de l'avertissement manquant pour dépassement du seuil libéral en AE
+87cbb143b48ff4995bbd44ecafec06917edceb1a 2023-06-01 15:11:32 +0200 Johan Girod :fire: Réecrit les règles de l'activité partielle
+b8212f5835d2effb02c397fa424ed4a97bd1e1ae 2023-05-31 19:02:42 +0200 Johan Girod Met à jour l'indemnité de chômage partiel
+c084f046f648fde460ad7d3426c61c1d40bf4ad4 2023-05-31 19:02:42 +0200 Johan Girod Met à jour l'aide à l'embauche des apprenti 2023
+5a155cdfc46bccb1362c661925ff2949ac879a88 2023-05-30 10:32:55 +0200 Johan Girod Mise à jour des valeurs 2023 du point de retraite complémentaire indépendant (RCI)
+a9472810b2d88e381fb4dfa928d1242a80792c63 2023-05-09 19:34:04 +0200 Johan Girod Release modele-social@1.6.2
+b50d99257544649eb01a3f76390c236b1f335b28 2023-05-09 19:34:04 +0200 Antoine Augusti Modifie dernier arrêté
+f4cc7bfdabe327a937dc7d3b0bb2e47cad25ea99 2023-05-09 19:34:04 +0200 Antoine Augusti Mise à jour montant SMIC mai 2023
+e45e2a6033024a48c69e71455fbbb44fb409b7cd 2023-04-28 20:46:20 +0200 Jérémy Rialland Fix wording
+59950faf77c12264ca3021e14e63a8b7327bbad3 2023-04-28 20:46:20 +0200 Jérémy Rialland Remove markdown in question
+a86dcb9deb6074fbcad6ce1f1f60504a77f889b2 2023-04-24 08:40:43 +0200 gndu91 Mise à jour d'une URL
+bb0e0eb54b27c1b2f5137a09dcd6039ddd484995 2023-04-21 15:45:34 +0200 Johan Girod Fix taux CPF auto-entrepreneur PLNR
+3c2917bf249505cd304bbbdf519cbbb9250e7fbc 2023-04-04 18:04:55 +0200 Johan Girod Ajoute les frais liés à la déclaration de bénéficiaires effectifs
+35ab0c612a69c368ae74f661a68af689b1269324 2023-04-04 18:04:55 +0200 Johan Girod L'activité agent commerciale est remise au même niveau que les autres
+7ba57f784c86a7254435c8aaff0f70b30f8dd637 2023-04-04 14:37:01 +0200 Johan Girod Mise à jour de l'aide au calcul des charges sociales déductibles
+cb4bcec4ce52f49f33c4d475367e496b44c13152 2023-02-28 17:00:52 +0100 Johan Girod Met à jour les assistants à la déclaration de revenu pour 2022
+48f6a8341e9ef413960242c0e961b60388d40900 2023-02-28 15:58:23 +0100 Johan Girod Fix modele-social
+551d2fb2e28e607094656bb1ef67c685cd71351b 2023-02-17 14:18:48 +0100 Johan Girod Mise à jour des taux PLR pour 2023
+f646092aa6566b01b0592ab7065b0fdf1dac1e8c 2023-02-17 14:18:48 +0100 Johan Girod Retours Acoss
+1275f0300a359fac65bc2a2b6e95b1be73ffeba9 2023-02-17 14:18:48 +0100 Johan Girod Correction montant droits ouvert retraite avec exonération invalidité indépendant et ACRE
+e4973e50c2120f259c9e7075e54e59d3b63cb030 2023-02-17 14:18:48 +0100 Johan Girod Retours Acoss
+5852d460393327957016dc655ee99079abb053a7 2023-02-17 14:18:48 +0100 Johan Girod Met à jour les tests de non regression et les traductions
+97076fba873116b72d9a5a485efa7dfd42b7d4aa 2023-02-17 14:18:48 +0100 Johan Girod Mise à jour cotisation maladie indépendant 2023 et ajout de CIPAV
+2c3eab1f2320984346145e3bbb41335ed6242944 2023-02-13 16:41:18 +0100 Jérémy Rialland fix reference
+6dfce760a4e9ed1483163602c0d84f2df4977bf4 2023-02-13 16:41:18 +0100 Jérémy Rialland fix caisse avocat
+de2d962bb3e369a4868bec4d5338e71e08a43ee0 2023-02-09 11:00:25 +0100 Jérémy Rialland Fix wording
+13748a4d73b2392190f255940e6dd0fc5c95b602 2023-02-08 14:19:08 +0100 Johan Girod [cout-creation] Prends en compte les exonération de publication au JAL de certaines professions libérales
+b0e14f9bae0f09d71b8e466aba9444dfaa888f55 2023-02-02 15:30:18 +0100 Johan Girod Répare quelques bugs sur le simulateur cout de création
+50dee3a23065f2137ab7bc4fafd405517f54c15d 2023-02-02 14:34:04 +0100 Johan Girod Répare les tests de non regression
+6300c2086d070c6b8eb290bbba713be005148f5c 2023-02-02 14:34:04 +0100 Johan Girod [cout de création] Amélioration suite retour Urssaf
+3730706f8cfdef5d421004a2a805e12b86986659 2023-02-02 14:34:04 +0100 Jérémy Rialland Update seuil franchise TVA
+17eda32f75fe2920521d3ed18ecf63cb8313db20 2023-02-02 14:34:04 +0100 Johan Girod Améliore les labels et l'accessibilité
+56bda2133a4ec9d827b80cb789e99e2006315f1c 2023-02-02 14:34:04 +0100 Jérémy Rialland Update seuil micro 2023
+54b5ceb0d45f9e4e9f0f4f93cc5d58e4b8014354 2023-02-02 14:34:04 +0100 Jérémy Rialland Fix error on entreprise . coût formalités
+adc2cb8b2493f09a833476fb230318a5ec6305cd 2023-02-02 14:34:04 +0100 Johan Girod Ajoute le dépôt d'annonce légal et le détail
+370d828caf4316a311183d1defb29794d0701e5c 2023-02-02 14:34:04 +0100 Johan Girod Corrections diverses (tests, questions, etc)
+08084625e81560aaf72215dd0d131482934954fc 2023-02-02 14:34:04 +0100 Johan Girod 🔥🪲 répare la gestion des questions lorsque l'on change de simulateur
+e84fbf730a595740a287b6955243e8ee09a8c6bf 2023-02-02 14:34:04 +0100 Jérémy Rialland fix exemple
+4c0e3776e7aae81c92fd7ad81b7b40134a61bef0 2023-02-02 14:34:04 +0100 Jérémy Rialland Fix list of radio button
+1328f2f805abc923d642ebe6e459de4726c8d1c4 2023-02-02 14:34:04 +0100 Jérémy Rialland WIP
+0d0491bd1770c59a1410353d135b4ae2b88c89eb 2023-01-26 14:48:00 +0100 Benjamin Arias ✨ Rework du comparateur de statut (#2442)
+51424e0fa8001f86708a18905409c63fcafabd60 2023-01-23 08:21:12 +0100 Johan Girod Fix test & add changelog
+857542bc9315d3fcd41b6b6e379cf0f8395b5611 2023-01-23 08:21:12 +0100 fmata :hammer: Augmentation du plafond pour l'IS à taux réduit
+132fb0f5df204ac8d9c72365aaa74a00e22842a1 2023-01-18 13:05:19 +0100 Jérémy Rialland Fix modele social units
+650c13872bece64e5f703c00d4f127e3fbb874a9 2023-01-03 16:49:04 +0100 Johan Girod Mise à jour du 1er janvier 2023
+bd35a4a6384143f32db12574e6612104e3db3e90 2022-12-23 17:05:10 +0100 Johan Girod Redeploy
+1cabb41ceb2ab0a6aa472f35c61ed4daa0cfcb4d 2022-12-22 16:18:14 +0100 Johan Girod Met à jour les taux auto-entrepreneur
+529f13f658dd38f90cded9588c5932b900ff8376 2022-12-12 18:59:51 +0100 Jérémy Rialland Ajout du plafond 2022 pour le quotient familial
+f9d10cf548a335e154d1af0abf1047d693db43b3 2022-12-08 11:44:28 +0100 Johan Girod Corrige le bug de référence introuvable "PL . PAMC"
+f60663eff79271578ad2865d224a66c463f6502d 2022-12-05 14:32:47 +0100 Jérémy Rialland Fix regression test with division by zero
+551fa48ebf3c9c96e4fad688740b74c8fb446fad 2022-12-02 15:23:37 +0100 Johan Girod Ajoute le revenu cotisé retraite complémentaire pour les auto-entrepreneur
+9c9d72bba733393980de7c6c1f3c4924e7663436 2022-12-02 15:23:37 +0100 Johan Girod Corrige bug sur simulateur PAMC
+307e3500022f5a81cf69cdffa3b145a1850cded7 2022-12-02 15:23:37 +0100 Johan Girod Revoie les montants affiché pour la retraite dans le comparateur
+45db495f2c2f5d0d85bbf504ea2b27579ce037d3 2022-11-30 17:58:58 +0100 Johan Girod Corrige le bug sur les SASU sur le tableau comparatif
+96bbe522f9b62925a2af0ee45dfabac30276666f 2022-11-30 17:42:22 +0100 Johan Girod Désactive l'assiette minimale maladie pour les PAMC
+ad7ea0706afbb16fd58618daca43cb75052ba1db 2022-11-30 17:42:22 +0100 Johan Girod Enlève l'arrondi sur les rémunération dirigeant
+cf0b493992c630846888ed11cdca386b5ae4a134 2022-11-30 17:42:22 +0100 Johan Girod Correction des liens morts
+32587a1939a41152e4d4d11f33e4c6000389a230 2022-11-30 17:42:22 +0100 Johan Girod Les PL PAMC ont un taux maladie progressif comme les autres PL
+5932d14d5e2a8ff6883916c7f0da8fae5cc5390e 2022-11-30 17:42:22 +0100 Johan Girod Affiche un petit texte pour les médecins régulateurs
+a9467a63e17c0d1b894afc2ac8f2f4a406ae0f18 2022-11-30 17:42:22 +0100 Johan Girod Améliore les simulateur profession libérale
+632fa24e61e7c20eaf31d1ddf4c28dbaa545756e 2022-11-25 16:39:13 +0100 Johan Girod Ajoute les arrêts maladie au comparateur de statut
+ca31f1675cd6cee0a3dc895c0348c5cd0a80ac79 2022-11-22 19:55:22 +0100 Johan Girod Crée des documentation explorables pour chacun des éléments du tableau
+72a7dc5036230a83ca804b16d61bc35015c491d6 2022-11-22 19:55:22 +0100 Johan Girod Corrige l'exonération ACRE pour les SASU
+8cde6dddcf4db15f88d55875b045d750ee2fafe5 2022-11-22 19:55:22 +0100 Johan Girod Ajoute le cas particulier des trimestres validés pour les apprentis
+ab0616860259930286b2f4b103b2aabec2f34e99 2022-11-22 19:55:22 +0100 Johan Girod Réecrit la logique de validation de trimestre retraite
+117f743c4341b025b68d60f513c5862398be5a32 2022-11-07 10:25:37 +0100 Benjamin Arias Mise en conformité RGAA : structuration de l'information (#2356)
+cf23cf47c7fcf170ef4659e15caa1577c703728f 2022-11-01 11:39:19 +0100 Johan Girod Fix E2E tests
+65832f376c6a7a7ecc404029337039ab4e0124a0 2022-10-25 13:33:27 +0200 Johan Girod Change le libellé de l'impôt sur le revenu pour les simulateurs
+e3316ba33b12e4882038c4bf0731f2fe6f514b0d 2022-10-17 18:29:49 +0200 Johan Girod Utilise la valeur du SMIC en début d'année pour l'assiette surcotisation artiste auteuré
+c2d54f74a21e1ae79cb945084e14822f94b839bc 2022-10-17 18:29:49 +0200 Johan Girod Répare le bug de l'option surcotisation
+b11436d0527a107f2f8d764e2ca9f829391c9723 2022-10-12 13:17:19 +0200 Johan Girod Ajoute l'historisation des changements de taux / montant + correction pour éviter les breakings
+94fda68fc583477292ae614baa3a71c216657a40 2022-10-12 13:17:19 +0200 Maxime Quandalle 🔨 Frais de transports déductibles jusqu'à 75%
+08dbf09f67debd6abbfdeee5b5aece5c65bd8fe0 2022-10-12 13:17:19 +0200 Maxime Quandalle 🔨 Plus d'entreprises éligibles à la déduction patronale pour les heures sup
+b2738d4203698ec22a280ae5dc7cd73f203d002c 2022-10-12 13:17:19 +0200 Maxime Quandalle 🔨 Augmentation du plafond pour la participation patronale aux titres-restaurant
+977c3cb162906eab5ee5216e6ec00e17c0f1e982 2022-10-11 12:07:51 +0200 Johan Girod wip
+4ffee557713e8ffd368257941033358ed0f78f17 2022-10-11 12:07:51 +0200 Jérémy Rialland WIP
+6e5c51d43a6c3b66748a8471e27b1b7b56645108 2022-10-10 16:59:44 +0200 Jérémy Rialland Remove old exemples used for Publicodes tests
+61db7d33f7532e8f52732a0d84cc6e57b40bff1e 2022-10-06 14:46:53 +0200 Johan Girod Met à jour la version du cache local storage pour éviter les crashs
+59d9e7177f5b988ba1c7cccbe8e68b3d50f886e9 2022-10-06 14:46:53 +0200 Johan Girod Dernières modifs avant passage à la v1
+1c4625e530bb986ffbe6688aa69fc67e3ecd9622 2022-10-06 14:46:53 +0200 Johan Girod Sépare activité et activité . nature
+fb33f909a7aaa2fbdda1c7ad14e7818ff871dd37 2022-10-06 14:46:53 +0200 Johan Girod Déplace l'ACRE sur le dirigeant plutôt que l'entreprise
+860d7b4cf4d520495924a43265f11e6bfd6123f3 2022-10-05 19:44:55 +0200 Johan Girod Supprime l'utilisation du mécanisme synchronisation pour la commune de localisation
+e9a61d0dc14dd6844381b2b32a054504db6d61aa 2022-10-05 19:44:55 +0200 Johan Girod Réecrit les règles liées à la cotisations ATMP
+877947e82ab9a14797634399a211b9851d078db9 2022-09-20 11:47:19 +0200 Johan Girod Améliore la documentation de l'API et de la bibliothèque
+26fee44a8edf17503c77c27ebefcece40cba4296 2022-09-19 16:21:27 +0200 Johan Girod Répare les tests de non regression
+1ca2c9527386f76e0b33c500bd89efc15c981a9a 2022-09-15 14:51:51 +0200 Johan Girod :fountain_pen: Améliore la documentation de l'utilisation de la bibliothèque npm
+d9e8a742f2a4422f3054f21e28fe15e2087e4b9f 2022-09-15 14:51:51 +0200 Johan Girod Change le titre des règles suite à la refacto publicodes
+c00ec711e630b95f7f3dae1a33725c1917b6c7f5 2022-09-15 14:51:51 +0200 Johan Girod Réorganise la base de règle salariés
+ca6e467c231df27b9004cc65ffde0da8d9237938 2022-09-15 14:51:51 +0200 Johan Girod Réecrit l'exonération LODEOM de la même manière que la réduction générale
+9f63ffdb7dcecb691e1c6ea792658c541c99718b 2022-09-15 14:51:51 +0200 Johan Girod Refacto des règles salarié
+d8acd234cb86ac30c4a3d71c92d0dfd2ad6ea654 2022-08-26 17:21:52 +0200 Johan Girod Met à jour la surcotisation artiste-auteur
+d55922eacfc3b0f0ec99fdab234abd7e60c0f4a9 2022-08-02 12:27:37 +0200 Maxime Quandalle Supprime les liens morts
+78691c87638089acadc2f13f2c2786e49b93cada 2022-08-02 12:27:37 +0200 Maxime Quandalle 📅 Mise à jour avantage forfaitaire repas 2022
+1309dcd80a3b95e2be6048e195e78259a5c9c9c2 2022-08-02 12:27:37 +0200 Maxime Quandalle 📅 Mise à jour barèmes CARMF 2022
+156617401b78ccd7c7d399e3d73682841cf91f42 2022-08-02 12:27:37 +0200 Maxime Quandalle 📅 Baisse du taux maladie Alsace-Moselle au 1er avril
+23f3f4b03fd85c654ef4d5d35ca57b59deb87402 2022-08-01 12:28:47 +0200 Maxime Quandalle 🔨 Mise à jour de la suggestion salaire médian
+be66488379c501f59d61b92ed1a0beb037e99e99 2022-08-01 12:28:47 +0200 Maxime Quandalle 📅 Mise à jour du SMIC 1er août
+14b8bc216d73fad45ee5dd94400d1f8a2927db87 2022-07-25 17:04:56 +0200 Johan Girod Met à jour à la dernière version de publicodes (beta.45)
+8055350cbeedffa199362484349b4734d107e073 2022-07-12 09:41:55 +0200 Florent Mata :hammer: Mise à jour des grilles du taux neutre de l'impôt sur le revenu
+0784ebf206b331aa2c0da7efd0da863cda05c9cf 2022-06-17 10:39:19 +0100 Maxime Quandalle 🐛 Corrige des liens morts
+ee2dd096bdc094e3c0573ac6b9681bbdc3949254 2022-06-08 11:18:57 +0200 Johan Girod Ajoute de nouvelles références dans l'assistant déclaration de revenu
+0302147a2479ab25b5d3979b5cdb82f5d48972ac 2022-06-08 11:18:57 +0200 Johan Girod Amélioration des références - Nouveau style pour les références - Ajoute des références dans l'aide à la déclaration - Ajoute les références dans les infobulles des questions
+8cacba5d68727abc539b7c753e115968510edf1d 2022-06-02 15:14:08 +0200 Johan Girod Répare un bug de conversion pour le calcul de l'impôt
+d86d37926116925a90b229b3e9615eb57208e918 2022-06-02 11:29:06 +0200 Johan Girod Met à jour les règles ACRE
+e86e0426f30d4dcfc5775d4fa674ab63f6310b48 2022-05-31 17:02:26 +0200 Johan Girod Répare le simulateur artiste auteur
+3d2021ca2140a25ac5a002322ea6157cd1023c38 2022-05-24 14:35:06 +0200 Johan Girod Met à jour vers la dernière version de publicodes (1.0.0-beta.38)
+2c1411c91a6c549dad8e189f3c0d6fedf10affa1 2022-05-09 18:07:05 +0200 Johan Girod Corrige le plafonnement du quotient familial
+69a1852e4f832fd40a53952d96d39db2e065d519 2022-05-09 18:07:05 +0200 Florent Mata :hammer: Correction du taux effectif de l'impôt sur le revenu qui se détermine à partir du revenu d'activité non abattu
+072ac28ba63243ab238ff2b1d2a2cfcb88b5cccc 2022-05-09 14:28:38 +0200 Florent Mata :hammer: Correction de l'abattement sur les dividendes
+af0458ae41da62c87927d5800056e34144ef7e94 2022-05-04 11:31:04 +0200 Maxime Quandalle 🔥 Suppression des aides exceptionnelles à l'embauche
+103f47f64f352dce108ed97d53fe4ce87f1dddf6 2022-05-03 14:22:27 +0200 Johan Girod Améliore le comportement des champs de nombre vides en cas de variables manquantes
+ce64d0cc2430d45b39177c231200f2942eb59812 2022-05-03 09:23:12 +0200 Johan Girod Fix typos
+901cc6ed4caac94901cd1826920ac4e5554b5753 2022-05-02 17:18:53 +0200 Maxime Quandalle MAJ du SMIC mai 2022 (#2117)
+d055b1ed5a4b7352f2d2467c73ee68508d181e3b 2022-04-22 12:25:53 +0200 Johan Girod Corrige un bug sur le simulateur artiste auteur
+2e5f7db0418058754c55a5afc10826c6cfaf0ad4 2022-04-21 17:04:37 +0200 Johan Girod Change le style de la question imposition en dehors du toggle au dessus des simulateurs
+ef8df374cc27b53acea44c0b3a9f6e48bc7fcbb0 2022-04-21 15:13:29 +0200 Jérémy Rialland ✨ Remplace ImpositionSwitch par un RuleInput ✨ Refacto useSelection
+8be2be03ed01014f976456951c81f898b913b726 2022-04-21 15:02:06 +0200 Johan Girod Corrige les tests sur master
+a2f8ef197efa5e85c9093e190de8925313fd618f 2022-04-21 11:17:38 +0200 Johan Girod Répare les bugs sur la question DFS et sur les cotisations forfaitaires
+a2c69a8570eb83649fde6bf5127463fc28f0dec1 2022-04-21 11:06:16 +0200 Johan Girod Répare le bug sur la question CDD
+02173393adf1d0be1ed6c338fc34839619a7b9c1 2022-04-21 10:54:13 +0200 Johan Girod :art: Améliore le bouton 'voir ma situation' : change le label et le style ensuite
+928e28bce986e3ac7e1f7965adddf0cd46b38a51 2022-04-20 19:17:11 +0200 Johan Girod Enlève les réductions de cotisation CIPAV qui vont etre supprimée en 2023
+4af1c14d33b127e034e87d5fe74851f5dc337e7f 2022-04-20 19:17:11 +0200 Johan Girod Répare l'option pour la surcotisation
+e458f0b759389792b6f136ba90f99cca76961afa 2022-04-20 19:17:11 +0200 Johan Girod Complète l'exonération incapacité CIPAV
+c2ba35cb375717c4c14875d2d069121f4a91e785 2022-04-20 19:17:11 +0200 Jérémy Rialland Ajout des références
+ccefda5eff8a0c7eba3adbf6dac79e5fbbd9c93b 2022-04-20 19:17:11 +0200 Jérémy Rialland Exonération de cotisation régime invalidité-décès
+0d3cc06bbebad34fb181d1497c3ff28092d59c4b 2022-04-20 19:17:11 +0200 Johan Girod Ajoute l'exonération ACRE dans pour la retraite complémentaire CIPAV
+7cb5a82256fb21a7f7887541414b149d473a80af 2022-04-20 19:17:11 +0200 Jérémy Rialland Corrige l'exonération d'incapacité d'exercice
+f2f87b2e74443d95b4baac8283ffdb915e346527 2022-04-20 19:17:11 +0200 Jérémy Rialland Exonération des cotisations de retraite complémentaire si invalidité
+a66da0b4c1b1577c1c5c79ae395e2ded94078b7a 2022-04-20 19:17:11 +0200 Johan Girod Ajoute les tests de non regression
+176eed090fe92fcbcfcf278668aa567f4ea325b4 2022-04-20 19:17:11 +0200 Johan Girod Ajoute le conjoint collaborateur pour la CIPAV
+28ad797a0cedb36db5570e083270d088d86fde9b 2022-04-20 19:17:11 +0200 Johan Girod Ajoute la réduction de cotisation CIPAV
+fef635db6ab2cb1102b48e50a6d8a5920069074d 2022-04-20 19:17:11 +0200 Johan Girod Ajoute l'option pour surcotiser à la CIPAV
+61d729a159a41ba5dbb9254a107c513f2aff4770 2022-04-20 19:17:11 +0200 Johan Girod Ajoute les trimestres validé pour la CNAVPL
+eed28f499b3b8909433ba48ebc3ef727079485d0 2022-04-20 19:17:11 +0200 Johan Girod Ajoute les point cotisés pour la retraite complémentaire CIPAV
+1c97faefb8d11b3e0561f027be2102551172aadc 2022-04-20 19:17:11 +0200 Johan Girod Légère réecriture du calcul des points de la retraite de base CNAVPL
+fe1cdb14ba6022399045c654d428460b8d06414b 2022-04-20 19:17:11 +0200 Jérémy Rialland Ajout des points retraite de base CNAVPL
+eaae26cdfe8a0a032f0092dfe000e319e9ec7f9f 2022-04-20 18:46:32 +0200 Johan Girod Répare les tests end to end
+1723256ccf79316c9ab7b74dc3cf3d08237965fa 2022-04-20 18:46:32 +0200 Johan Girod Ajoute la déclaration dans la situation
+389ecbcd0735d554fbeeade6166e2820639c226e 2022-04-20 18:46:32 +0200 Johan Girod Ajoute quelques correctifs suite au retour du comptable
+62f7a1a8bdf56e6d81358c48412f9c97ff2a35da 2022-04-20 18:46:32 +0200 Jérémy Rialland Corrections fautes
+6bf5e34b3d035d76b91eee7d1bc2951c97595a73 2022-04-20 18:46:32 +0200 Johan Girod Quelques correctifs sur la section IS
+8c26c2d278c81bf05b54818318068086d541f96e 2022-04-20 18:46:32 +0200 Maxime Quandalle Retouche texte
+a2f9f1d9a58baac429cacef14792df0feb1caba5 2022-04-20 18:46:32 +0200 Johan Girod Ajoute quelques corrections sur l'assistant DRI
+c81af13b39f86c61ac07c5239b89dfe1400989a7 2022-04-20 18:46:32 +0200 Jérémy Rialland Ajout de la déclaration de revenu manuel
+cd65e35665d2521e5585741767169715fbf731d1 2022-04-20 18:46:32 +0200 Johan Girod Affiche les cas non pris en compte dans l'assistant
+33f748844a259f57d1960659610b72faa92cc192 2022-04-20 18:46:32 +0200 Johan Girod Répare la question deficit / benefice en IS
+94de3f17cc5772591fc2b9feb5ee41f0f8c2c3cf 2022-04-20 18:46:32 +0200 Jérémy Rialland Ajout du choix bénéfice ou déficit
+2e6cddf5c3ae3b49e9cab42cea2a7b8db40e6f19 2022-04-20 18:46:32 +0200 Johan Girod Améliore l'autosave de l'assistant à la déclaration de revenu
+b8816cfc95af178485e33fbfc89c99df71c8026e 2022-04-20 18:46:32 +0200 Jérémy Rialland Ajout des champs requis
+c9c99b8b60d7c920a0e7ae683052a91e12595da5 2022-04-20 18:46:32 +0200 Johan Girod Ajoute le cas des entreprises à l'IS
+cb8968a5e9248a915d050a72e01068d52ae38077 2022-04-20 18:46:32 +0200 Johan Girod Répare les autres simulateurs
+36c2cab92e023e3429983afc8f15ea0df83d937c 2022-04-20 18:46:32 +0200 Jérémy Rialland Ajout du choix du déclarant
+3eaf981dfb7513493d64915eed7d1a9b6f01e61d 2022-04-20 18:46:32 +0200 Johan Girod DRI : Ajuste le calcul des cotisations sociales (provisionnelles et régularisation)
+2a7c940dc3aa81b5a4647cb02303d289dd6d872e 2022-04-20 18:46:32 +0200 Johan Girod Nouvel assistant à la déclaration de revenu des indépendants
+91b2e25e26c8b6cdb7171f812168b9fad586df91 2022-04-05 15:16:18 +0200 Johan Girod Rétabli les titres-restaurant dans le simulateur salarié
+dbad75b0ddf5d7afa502177d776f811d4d3a862d 2022-04-01 17:15:25 +0200 Johan Girod Derniers retours Dnrti
+eab0331c185cb19a263216d38d8cdcccaefaaf80 2022-04-01 17:15:25 +0200 Johan Girod Corrige les derniers retours sur assistant charge sociales
+70f23688af12b61b3540ff9c1ac6105c08bde565 2022-04-01 17:15:25 +0200 Johan Girod Ajoute l'exonération covid dans le simulateur de calcul des charges sociales
+948e859316c2560f833099612f595775cfb6d1ed 2022-04-01 17:15:25 +0200 Johan Girod Enlève la version plus complète de l'aide à la déclaration
+383676843d6bf82acef0d394a88d0a7258d2a812 2022-03-31 12:11:54 +0200 Johan Girod Evalue les questions pour afficher un texte dynamique
+7d7b8f48a73f22dea8aae5f1b2253b0405233038 2022-03-30 11:52:04 +0200 Jérémy Rialland Update des textes du formulaire + traduction
+dbb25fcf3ea99ac70ab5aea98469073aded7c762 2022-03-30 11:52:04 +0200 Jérémy Rialland Update des textes du formulaire
+2d7a478baae090fc6f8ba7cb286447f8a0d5e9e8 2022-03-15 15:45:16 +0100 Johan Girod :fire: Améliore la gestion de la recherche des commune
+289524639ebb512a5169d8afa54aee74c6937ebb 2022-03-15 14:29:26 +0100 Johan Girod Enlève les questions 'bénéficiaires' sur le simulateur SASU
+b78dafdd380630e397297011d4d5bfc99c18c16c 2022-03-15 14:29:26 +0100 Johan Girod Corrige le comportement de la carte sur le KBis
+730f5bfa066e872587d8ee1a2b9b2976659d757c 2022-03-15 14:29:26 +0100 Johan Girod Met à jour les tests de non-regression
+3aa11ace73136705e5f32b87af6babcd1a8c83cb 2022-03-15 14:29:26 +0100 Johan Girod :sparkles: Revoie les parcours avec entreprise existante
+14328dc841bae529a081e776362f9b5a2a455e32 2022-03-10 10:51:21 +0100 Johan Girod Répare les questions vides suite à la refacto applicabilité
+b601202cc5488f1b5663e68ff4de357cdc9ecf35 2022-03-09 11:32:58 +0100 Johan Girod Répare le formulaire d'assistant à la déclaration de revenus pour indépendants
+1362c89bae2497ce1126b4a5ac2d85e6b67ae2f0 2022-03-08 11:56:54 +0000 Maxime Quandalle ⬆ Mise à jour publicodes
+f9315f75d119a8af1f85072b572c526818cfca7c 2022-02-21 18:57:03 +0100 Johan Girod Enlève la question sur la DFS pour les SASU (non applicable)
+450a163c994e6ccb8d2a64e116e37f78dba02e9d 2022-02-10 14:32:55 +0100 Johan Girod Corrige le taux de CFP pour les autoentrepreneurs PLNR depuis le 1er janvier 2022
+1a8316e0fe994cc79dead08b4fa3ddb20e888784 2022-02-10 14:32:55 +0100 Johan Girod Corrige la taxe de frais de chambre pour les autoentrepreneur artisans
+5e827fa76564f62377a14b81a265fdfbe5aba075 2022-02-09 19:03:26 +0100 Johan Girod Met à jour l'aide à l'aide à la déclaration indépendant pour 2021
+35073b5f1a1fad112a205337179c329f0ca054f6 2022-01-26 16:10:47 +0100 Johan Girod Met à jour les valeurs de points de retraite complémentaire
+e0469b5940011b35f34fef562b0d09cad4f41c79 2022-01-26 16:10:47 +0100 Johan Girod Corrige la formule du nombre de trimestre validés pour les indépendants
+933e5363be17001665faf814dd3d24462d2b0aae 2022-01-26 16:10:47 +0100 Johan Girod Change l'assiette du nombre de trimestre cotisé pour les indépendant
+345c88dca70fa42ff00f2509c4316ede80f8029e 2022-01-26 16:10:47 +0100 Johan Girod Améliore la gestion des exonération en cas de pension d'invalidité pour les TNS
+b89aaad87ef09701333ec931084bf44b2c4a0ce0 2022-01-25 18:45:53 +0100 Johan Girod Corrige le bug critique sur mycompanyinfrance
+32f7a6eefc66a645a13f06ed67f6938ec4d630a6 2022-01-20 16:52:13 +0100 Maxime Quandalle 🐛 Corrige le calcul des dividendes au barème
+aa63dd45113b4d8587a740643acaf4a30e5c1a9a 2022-01-11 19:05:42 +0100 Johan Girod Répare l'unité dans le barème CIPAV
+f3d3c38f3721c9812d8db827ed6fb21ab7f890a3 2022-01-11 18:55:30 +0100 Johan Girod Met à jour pour 2022 les barèmes et cotisations forfaitaires des professions libérales reglementées
+10c0f3c06ffb1ff030d97fa1ec29045d14809688 2022-01-05 11:32:46 +0100 Johan Girod Update modele-social/règles/impôt.yaml
+982bb7f375c0fc7622cd8759b78eeb2a624d433a 2022-01-05 11:32:46 +0100 Johan Girod Met à jour la décôte et les plafonds abattement frais pro sur impôt
+3c8acd7f8cbbfefd10281d3f54ae9a69b8711420 2022-01-05 11:32:46 +0100 Johan Girod Met à jour l'impôt et le chômage partiel
+a6724b311555a3892ff5a2b89edd5d42f4f85393 2022-01-04 10:25:10 +0100 Johan Girod Met à jour les tests de non-regression
+dd9a864e8e3c7e107e5a83542af8ca69bd42c0fe 2022-01-04 10:25:10 +0100 Johan Girod Fix linting & traduction
+c38e5f98aadd9bea8c813d0227811fdc0a2762c7 2022-01-04 10:25:10 +0100 Johan Girod Met à jour le PRCI
+87fa9698ad9b5760c4c70d23f15dbbe57588ae36 2022-01-04 10:25:10 +0100 Johan Girod Met à jour la cotisation CNAVPL pour les IJ
+76eb3f7f7826bf271e9462738c7559845b2253b4 2022-01-04 10:25:10 +0100 Johan Girod Met à jour le taux minimum AT/MP
+13c5002750f31739be5c957809b64df06abd018d 2022-01-04 10:25:10 +0100 Johan Girod Met à jour la valeur exonérée des titres restaurant
+9f44a1d391b2d0ecd0ae14026fb20e3fa60292a5 2022-01-04 10:25:10 +0100 Johan Girod Met à jour le SMIC
+b041c9c28f61be08a7a228f06bdfa29951900405 2022-01-03 11:28:34 +0100 Johan Girod Quelques petites corrections
+e2ed5605bb479c9696e419627c5b8da1223ef1cd 2021-12-16 09:38:05 +0100 Johan Girod :fountain_pen: typo
+82050636a182a0631f9d383c7ef75c76b5f6d5a8 2021-11-30 16:09:05 +0100 Johan Girod Merge pull request #1788 from betagouv/charte-urssaf-bootstrap
+84399cdd1da28f27531eae6d6932cdc1c08b5bb3 2021-11-02 14:01:46 +0100 Maxime Quandalle 🔨 Indemnités journalières pour les affiliés CNAVPL
+23287e6d6b40f6338f451435c0f166cf802965f3 2021-11-02 12:40:25 +0100 Maxime Quandalle 🔨 Congés CDD pris par défaut
+5eb8d3336b27cfee39f741ca407948326b17bb00 2021-11-02 12:40:25 +0100 Maxime Quandalle 🎨 Affiche les indemnités CDD dans le bloc bleu
+9c0f29c62fb4a6de717558eaad2d4b451c336ef9 2021-11-02 12:40:25 +0100 Maxime Quandalle 🔨 Applique l'indemnité de précarité par défaut pour les CDD
+bcefb87927ab3e61aa15efdf7fee2148798977f7 2021-10-21 18:13:39 +0200 Maxime Quandalle 📆 Désactive l'aide à l'embauche des jeunes de -26 ans
+801a81360dc7437f89728b3851222d2a74e88410 2021-10-13 15:45:07 +0200 Johan Girod :green_heart: fix CI
+878cc7be6cad29e09b7fecd622b50f4ef5541c6e 2021-10-13 15:45:07 +0200 Johan Girod Corrige la formule de coût total
+b2d40bf38645bc578a64343b43f549935a21f419 2021-10-13 15:45:07 +0200 Johan Girod :hammer: ajoute la cotisations auto-entrepreneur CNAVPL pour les indemnités maladie
+c9a596ca5e3471ff7e7b3720c5aecade121f10e0 2021-10-13 15:45:07 +0200 Johan Girod :hammer: Met à jours les taux pour le chômage partiel
+8389a5117bca1ca5a042565c1979c42829da2bf7 2021-10-01 12:58:56 +0200 Maxime Quandalle 🔨 Retire la médecine du travail du prix total
+b7430034cfdf0e3f85cc92216399a87ddd4cc092 2021-09-30 18:07:36 +0200 Maxime Quandalle 📅 Augmentation du SMIC du 1er octobre 2021
+e15828a31d7a656dc9c3c14771a99408f941b5cb 2021-09-29 14:39:40 +0200 Alex S 🔨 Ajoute un simulateur pour les pharmaciens (CAVP) (#1741)
+55d92f43399cbb840c1f3506f44d926723ac2c4e 2021-09-15 11:44:45 +0200 Johan Girod Corrige la question sur l'imposition de l'entreprise apparaissant dans tous les simulateurs
+2fcd0c7dc58d9f16bc5a74bc5d38af67cfda5665 2021-09-14 18:21:51 +0200 Maxime Quandalle 🐛 Corrige le nom de la règle pour le montant de l'IR
+3b10c4eae8c0f685d03a3248b2536b5799fefc91 2021-09-14 15:15:47 +0200 Maxime Quandalle 📅 Exercice 2021 par défaut
+49c0e8262aeb11bb2c60ba1ab065640122044326 2021-09-13 17:55:56 +0200 Johan Girod :bug: Corrige l'ordre des questions AT/MP sur le simulateur salarié
+9420a45f462c16a29d2062d5b46af65a3cf9638c 2021-09-08 16:55:06 +0200 Alexandre Hajjar 🔨 Remove option PFU from impôt . méthode de calcul
+e575ae663a3f38453f28c50fb2edc51620560f35 2021-09-08 16:55:06 +0200 Alexandre Hajjar 🔨 Amélioration du calcul de l'impôt sur dividendes
+95983cce3b68dd3026449c459be775209408ae37 2021-09-08 16:55:06 +0200 Alexandre Hajjar 🔨 Ajoute todo pour dividendes régime indépendant
+b412dbe45fb682dc52254a2293ee34b81c0834e1 2021-09-08 16:55:06 +0200 Alexandre Hajjar 🔨 Crée simulateur **dividendes** (taux effectif, hors régime indépendant)
+f63da5be5537e5e9463fda486c5169d7d5efc0c9 2021-09-01 19:44:54 +0200 Johan Girod :green_heart: fix lint
+5359392d70a880179b9526760e1cfd1595548bdb 2021-09-01 19:44:54 +0200 Pierre-Yves Dezaunay 🏗Add export as Pdf button on simulators
+5dc8b34b2e44c12d06bad5169f57029a8eebfd62 2021-08-31 15:39:04 +0200 Johan Girod :hammer: corrige la formule de l'Acre pour les SASU
+04d8c01243b0051c61d9cfd6eaec046705d3f806 2021-07-26 12:26:25 +0200 Alexandre Hajjar ✨ Reformat files
+3e4463d5d106073fdf06190393f1f0130e64426f 2021-07-06 15:47:44 +0200 Maxime Quandalle MAJ publicodes (#1645)
+39d742401c6fe0e6de95fe6296129ce8668229da 2021-06-24 18:26:46 +0200 Maxime Quandalle Supprime un cycle d'applicabilité
+282caef8512be5ebdcdc0b4fb6e270a69486a08b 2021-06-24 16:01:22 +0200 Johan Girod Corrige le gros bug dans le calcul des cotisations
+55f13fd63058779b7d1ce10c0f276d3e750008fe 2021-06-24 11:41:04 +0200 Maxime Quandalle 🔨 Clarifie les 2 seuils de cotis minimales pour les AA
+2ea61080d0c9dbe4982746316fed19e740ba8fae 2021-06-24 11:41:04 +0200 Maxime Quandalle 🖊 Clarifie la question pour le taux réduit AA
+f0fc9a67661fab6b882a4083e326fa726706a154 2021-06-17 10:38:49 +0200 Johan Girod :hammer: Supprime la taxe forfaitaire sur les CDD d'Usage
+fd1188228cf3274b5ac0434bc4e5128bab00308d 2021-06-14 10:15:33 +0200 Maxime Quandalle 🔨 Question pour la déduction forfaitaire spécifique
+071ebb60d42078c51ce9951dacedd30fa86e3ddc 2021-06-08 18:24:44 +0200 Johan Girod :hammer: Enlève les cotisations facultatives des cotisations provisionnelle de début d'activité
+c457118ffe02e19943ff7d75a941b16c176c4e4c 2021-06-08 18:24:44 +0200 Johan Girod :hammer: Ajoute une référence vers le texte de loi pour les trimestres validés de retraite
+ea24a47a3fdacc42b3c52fc951715627d709dc7d 2021-06-08 18:24:44 +0200 Johan Girod Ajoute l'activité mixte aux simulateurs indépendants
+9ebd0cb703d95c8e347c858984f9e758c4f095ce 2021-06-08 18:24:44 +0200 Johan Girod :bug: Répare la gestion de l'activité mixte chez les auto-entrepreneur
+f420974da3fceddb31f23c0a61c6c83eb78bfd39 2021-06-08 10:09:36 +0200 Johan Girod :bug: Ajoute le prélèvement libératoire de l'IR au revenu après impôt pour les auto-entrepreneurs
+1a7cb87ec08375eb6a8b80d25dd76c347b33d1ac 2021-06-07 14:11:28 +0200 Johan Girod :bug: Corrige le calcul de l'assiette des cotisations du conjoint collab
+0b6bcded0fb6b05743b224a9ef343ba2afdd19ad 2021-06-02 12:00:29 +0200 Maxime Quandalle Uniformise l'unité des arrondis
+8b919954ccc9af6bb20a19811374fe0b6f528e23 2021-06-02 11:59:56 +0200 Maxime Quandalle 🔨 MAJ activité partielle 1er juin
+b6e9ddc392105de9c00c10c47b85b3b0858a84bb 2021-06-02 11:59:33 +0200 Maxime Quandalle 🐛 Plafond micro-bnc des artistes-auteurs
+b5c75cb9e052faaac75ba80f8ecc6537853f4b15 2021-06-02 09:00:28 +0200 Johan Girod Met le CA à zéro par défaut dans la déclaration de revenu
+90395c398a5cf10ef82c70754f3dc515e2c4e920 2021-06-02 09:00:28 +0200 Johan Girod Retours Acoss
+a716f15a726d5a831c3028bbb5d4fb13d4776e66 2021-06-02 09:00:28 +0200 Johan Girod Retours Acoss
+bdb1c9a0aa799178f56c10c82385503aae70eedb 2021-06-02 09:00:28 +0200 Johan Girod :sparkles: ajoute l'option micro-fiscal sur l'aide à la déclaration revenu
+fb758376d3bb232d80dfa2c720fe05563c277265 2021-06-02 09:00:28 +0200 Johan Girod :fountain_pen: Typos
+22abf17a508a0f8d88f0d94961c6b01bc99e0a97 2021-06-02 09:00:28 +0200 Johan Girod :fire: Retour à la version d'origine des résultats du formulaire d'aide à la déclaration
+b32b27ce4ecf7a0d67e06962e7e000baa373666f 2021-06-02 09:00:28 +0200 Johan Girod Ajoute les PER et corrige quelques montants de case
+e8a58c3dfff6a0ee1a582bc8fbddf368c25fc48e 2021-06-02 09:00:28 +0200 Johan Girod :fountain_pen: Corrige la rubrique A2
+e2fd619ff482f9fa1857939743681fdf5ba9832d 2021-06-02 09:00:28 +0200 Johan Girod Ajoute la comptabilité de trésorerie au formulaire d'aide à la déclaration
+9266fbbd334975b519ce4ab2853c7e9d046c1672 2021-06-02 09:00:28 +0200 Johan Girod :art: :hammer: Change la présentation des résultat de l'aide à déclaration vers une vue par formulaire
+5f46baafb39778231c80b5cad6a043f47bc9c05f 2021-06-02 09:00:28 +0200 Johan Girod :hammer: Ajoute l'option IS dans l'aide à la déclaration
+7c88ebff1efb90ae2838b6d7e0d65867a7dbc3ef 2021-06-01 15:19:57 +0200 Maxime Quandalle 🐛 Corrige le seuil micro-bnc
+489d017da3c1d7dd1835af9e20e28d1c6d9d072c 2021-06-01 10:24:39 +0200 Johan Girod :fountain_pen: remplace 'commerciale ou industrielle' par 'commerciale' (retour dnrti)
+b6ebe51324e671291c1afa3eac9278894a39afe1 2021-05-27 12:27:46 +0200 Johan Girod utilise WhenAlreadyDefined plutôt que Condition
+3cc8094ff61716cb3d3d3e325d7aa3423a1358c4 2021-05-27 12:27:46 +0200 Johan Girod Retours acoss sur le calcul du taux maladie
+57cd4886c58f82e0ad6a7b12babc24eda60e3abd 2021-05-27 12:27:46 +0200 Johan Girod Corrige le calcul des cotisations forfaitaires de début d'activité
+c8e0d907bd2fed8c7f41cc2f89a0af49043baf41 2021-05-27 12:27:46 +0200 Johan Girod Met à jour la valeur du point RCI
+245463ec7527b1846c68c6858c7fb356e41fe946 2021-05-27 12:27:46 +0200 Johan Girod Corrige le taux progressif de la cotisation maladie des indépendant au RSA
+13af90ae5eb386743d4ca96ace66744e1c7fa70d 2021-05-27 12:27:46 +0200 Johan Girod :hammer: correction calculs dirigeant indépendant
+ea4fd57f9bca46c1d5f8adeb9f99b0b3c470c628 2021-05-27 12:27:46 +0200 Johan Girod :fountain_pen: Corrige les textes relatifs au simulateur indépendant
+a678c25dcfb5bb1b82a1af72c9ee64f23e7bfe11 2021-05-26 11:18:36 +0200 Johan Girod :bug: enlève la question sur IS/IR dans le simulateur salarié
+a4de5730ffd0d57b4eebc2652763cf34b5bc8303 2021-05-25 11:18:31 +0200 Alexandre Hajjar 📝 Notice explicative régularisations indépendants
+884c4239b0d40efe279c3fefa3e5a0634e70b2fd 2021-05-12 17:36:26 +0200 Alexandre Hajjar 📝 Wording Madelin
+5c7abd043b7b7c769678daf7667745d1e6e47503 2021-05-11 15:48:35 +0200 Maxime Quandalle 🐛 Syntaxe des références publicodes
+0a45941e853eeeef44a441834bc6ba5204661a2b 2021-05-07 16:06:35 +0200 Maxime Quandalle 🔨 Prévoyance conventionnelle HCR
+987cd0abac73103dc4b2acd8149a03b7a193cf0a 2021-05-07 12:37:10 +0200 Johan Girod La retraite pour les professions libérales n'est pas implémentée pour le momenté
+2d0501c94af5d8c3fee40863255df2a9615b0d89 2021-05-07 12:37:10 +0200 Johan Girod Ajoute les droits à la retraite acquis sur le simulateur indépendant
+144dab467f0954231d7e0deb1bd67852aefc6931 2021-05-07 10:07:08 +0200 Maxime Quandalle 🔨 Intégre les régimes RACD et RACL
+2ee4ffdeff0de11430fb09cf12d987863856f783 2021-05-07 10:07:08 +0200 Maxime Quandalle 🔧 Migre le simulateur artiste-auteur vers l'affichage "standard"
+eecb9bcad3893f8097d7d704dc8b37a2bd33b1b7 2021-05-07 10:07:08 +0200 Maxime Quandalle 🔨 Intégration basique retraite complémentaire AA
+ee303f4f74b1c102fcd68ab0431b00b102fade31 2021-05-05 18:35:20 +0200 Maxime Quandalle 🖋 Utilise le singulier pour l'IR
+fffb503c284ea7eaec0c018ec7c9cb10a5dbf444 2021-05-05 18:35:20 +0200 Maxime Quandalle 🔨 Utilise le taux neutre pour les salariés seulement
+71475830819d4d86f7cb535c05081ec7e7d9a50f 2021-05-05 15:34:46 +0200 Johan Girod :gear::art: Ajoute la possibilité d'explorer les calculs dans un recalcul
+f9fb6fc4b69b17b2b05d6d0afde4fa2cffe05845 2021-05-05 15:34:46 +0200 Johan Girod :gear: Utilise engine.shallowCopy dans recalcul
+06220dbcbc7580110b65136a849b804c2ac3081b 2021-05-03 17:39:09 +0200 Johan Girod :fountain_pen: Corrige le texte de la section sur les cotisations forfaitaires provisionnelles
+985e64b4fe365298d8893cbc5331f381e36a68a5 2021-05-03 17:39:09 +0200 Johan Girod Répare la page blanche lors de l'IS + barème standard
+eb0ccc0a42aab812c82d0eab6db3f21454885793 2021-04-30 12:21:42 +0200 Maxime Quandalle 📖 Ajout des guides Urssaf 2021
+e0f77d5d45f6ba15240a3b932809eed2edc6dade 2021-04-26 10:30:13 +0200 Maxime Quandalle 🐛 Taux progressif maladie indépendants au RSA
+fdd5433c1cc7598bfc7fb0583833299da96e2662 2021-04-26 10:30:13 +0200 Maxime Quandalle 🐛 Corrige l'assiette minimale retraite/invalidité
+fd053e638829fc1cbacd12b78604cb7c0db425cc 2021-04-26 10:30:13 +0200 Johan Girod Version avec le cycle itératif pour trouver la bonne proportion CSG / cotisations
+533b100018751747d1729129904a71c3e080340a 2021-04-26 10:30:13 +0200 Johan Girod Fix le calcul de la cotisation maladie et bien d'autres
+3c2b9aed912fe35c0b8c6cb181636b09c449ce00 2021-04-26 10:30:13 +0200 Johan Girod Ajoute les cotiz conjoint coll dans l'assiette de la CSG
+3edef771ee000b8c3c0b46c9e06f9d895248c471 2021-04-26 10:30:13 +0200 Johan Girod Ajoute les informations spécifiques aux BNC sur l'aide à la déclaration
+4b9d2a394b429e7bf28752f4da60a368fd707a73 2021-04-26 10:30:13 +0200 Johan Girod Ajoute le conjoint collaborateur
+847cfbc334d7d6bb81d84830500e8b4ba1a5f8f2 2021-04-26 10:30:13 +0200 Johan Girod La réduction covid sur la part des cotisations est maintenant proprement réintégrée dans l'assiette de la CSG
+b74328b43473ec1608ecf1148e3dd114e06e4325 2021-04-26 10:30:13 +0200 Johan Girod Cache le bandeau pour récuperer la situation précendente quand un montant est entré
+03a3679005d3d868a1bb1b9573a278948ec165cb 2021-04-26 10:30:13 +0200 Johan Girod :alien: traductions manquantes
+5c10bcd8f5f52061ba6d982caa0e026f2a86fc24 2021-04-26 10:30:13 +0200 Johan Girod Impute la réduction covid dans chaque cotisations
+cc6f898dea59a9e600bb094a7b59879b54bfc3fb 2021-04-26 10:30:13 +0200 Johan Girod Améliore la présentation des résultat
+b1d73257391ecccaf2c20ce6b73a309be55b440a 2021-04-21 10:05:36 +0200 Johan Girod Ajoute les cotisations forfaitaire de début d'activité
+845930abf405d98d45660aaa3ff9f7bc5a9faddc 2021-04-12 16:22:52 +0200 Johan Girod Réorganise les règles entreprise et dirigeant pour mieux refleter la réalité comptable sociale / fiscale
+5685c04b7cd57cd186351c9bbdec79fea0cd018e 2021-04-12 16:22:52 +0200 Johan Girod Enlève la règle spécifique pour l'ACRE par défaut
+ed01e058b9f4561895a312c62cbc13577c161bc8 2021-04-09 18:59:38 +0200 Maxime Quandalle 🐛 Corrections diverses
+547973f4119acaed2b770ca862090c7fd04ef34a 2021-04-09 18:59:38 +0200 Maxime Quandalle 🔨 Imputation de la réduction covid
+a2e07d927539a9246b4ab69e2732102a38c856b9 2021-04-09 18:59:38 +0200 Maxime Quandalle ✅ Rétablit les suggestions de date de création
+fc0ff8145126d32126b524035d30a3bbee7ac357 2021-04-09 18:59:38 +0200 Johan Girod Corrige le plafond des exo covid
+c92c37313f3cad3451b0d2dc9be193ead99c5a2d 2021-04-09 18:59:38 +0200 Johan Girod Corrige les tests
+d0e18e70b63f91a0e663ddd2cacf1d0d44a0329a 2021-04-09 18:59:38 +0200 Johan Girod Correction aide déclaration et suppression des suggestions de date
+10f33e955a31c58ac598bd61e65e8387d6ade156 2021-04-09 18:59:38 +0200 Johan Girod Retours Acoss
+c26b1904e2dc0072e5711d3fe54b47b9d9142bdd 2021-04-09 18:59:38 +0200 Maxime Quandalle ✅ MAJ des traductions et tests
+86b7f19027c96abab2e05ac03731af5398d01c3b 2021-04-09 18:59:38 +0200 Maxime Quandalle 🔥 Suppression des aides covid sur les simulateurs de revenus 2021
+b2b97995702db62fe0d0389e6df23414982ce9bd 2021-04-09 18:59:38 +0200 Maxime Quandalle Calcul de la réduction Covid sur l'aide à la déclaration
+25ca91bf0c291f0d794d7da7b7898abecf934bbb 2021-04-08 12:36:38 +0200 Alexandre Hajjar ✨ Make parsePublicodes code more robust and remove empty rule case
+edb999ee8523c8574c1df3ddeeb319181af31510 2021-04-07 15:09:32 +0200 Maxime Quandalle 🔨 Non cumul des aides à l'embauche
+bc7a6f925c44cdbc015b2b27976a645ad26ec2ae 2021-04-07 15:09:32 +0200 Maxime Quandalle 🔨 Ajout de l'aide pour les travailleurs handicapés
+abc9376a7e5b998dfa40cc78043a26bba1c1069a 2021-04-07 15:09:32 +0200 Maxime Quandalle 📆 MAJ dates aides à l'embauche
+e76a40c412d7e4eea2b12a7a0f5c99947e9e5575 2021-03-29 15:41:26 +0200 Johan Girod Utilise le taux de versement transport du fichier json plutôt que des lambda netlify
+db80ebde7c3b8a914936c23eb1f3fedd0ca5cead 2021-03-23 09:27:08 +0100 Johan Girod Ajuste le calcul de l'indemnité compensatrice de congé payé
+fc5aa8ec96099f1e7abef534dfd33e95216b5203 2021-03-23 09:27:08 +0100 Johan Girod Ajoute la prime de précarité dans l'indemnité de congés payés
+5589020409cae93f9fb5af5f5d5367737f03add3 2021-02-18 21:31:47 +0100 Johan Girod Corrections diverses
+88c0a0fae2b87965031202e4e62cf9fe6b79931b 2021-02-18 21:31:47 +0100 Johan Girod Ajoute des suggestions pour les abonnements transports
+747cbf10cbf0f14cca3dd9f1f14ad7524bed087d 2021-02-18 21:31:47 +0100 Johan Girod Ajoute des suggestions pour les ticket restaurant
+4457f1afacfd3dfaa31da79e2ebfee7233bc6043 2021-02-18 21:31:47 +0100 Johan Girod Ajoute les bornes dans les effectifs salariés
+e7dbf67f1d94ed25be9af758e152ed5bbe992dde 2021-02-17 18:18:23 +0100 Johan Girod Intègre les retours ACOSS
+00857d40a52ddc36abf0a072947b3766e63460aa 2021-02-17 18:18:23 +0100 Johan Girod :fountain_pen: typos
+7b2d9752d63fae9e30e52c63061f83cb65107799 2021-02-17 18:18:23 +0100 Johan Girod :green_heart: circle ci test
+c6a92f3d101091ca7be39c9a1553bc46ef421ae4 2021-02-17 18:18:23 +0100 Johan Girod :bug: Répare la page blanche sur artiste auteur et le CA sur indépendant et SASU
+27425122f268d01df3e877573b3b38f8bf06f8ae 2021-02-17 18:18:23 +0100 Johan Girod Corrige la logique de mise à jour des CA multi-activité
+1cebad45e45c81d249c2e6c05973e39f69a4521f 2021-02-17 18:18:23 +0100 Johan Girod Change les formules des CA pour une meilleure UX
+9714525a9c1fd47c4627ff89fba7cd7bf2d718c9 2021-02-17 18:18:23 +0100 Johan Girod :art: Améliore le style des champs de saisi principaux dex simulateurs
+f49fc6aaa6784929b63bbb92ee9b8e7f05358b4a 2021-02-17 18:18:23 +0100 Johan Girod Ajoute une checkbox activité mixte qui change l'interface du simulateur auto-entrepreneur
+926b38e428c32c6a8f60850343679655e3ffde70 2021-02-17 18:18:23 +0100 Johan Girod (auto-entrepreneur) Ajoute les revenus mixtes
+fd0cf3c999683ad3747682725b1297c88fca78cf 2021-02-16 17:40:48 +0100 Maxime Quandalle 🖋 Aides Embauche : Ajout de descriptions
+11b10e6f80048ced45f7a62616bdd0bd53e409f3 2021-02-16 17:40:48 +0100 Maxime Quandalle 🔨 Ajout d'arrondis sur les aides
+a0b0ba55c193978231879b24d45a805a1ffd2f40 2021-02-16 17:40:48 +0100 Maxime Quandalle 🔨 Prolongation emploi franc+ et aide jeune
+46aa846fc762f64ae644ffe8acb504e87a55819e 2021-02-09 10:07:06 +0100 Alexandre Hajjar 🐛 Fix plafond forfait mobilités durables
+75c33836321631b2c61501b02aef320945e5a26b 2021-02-03 12:12:13 +0100 Alexandre Hajjar 🔨 Modif: frais transports personnels non applicable si DFS
+8e01d7a6496194d6b177105e095d79b01a82026b 2021-02-03 12:12:13 +0100 Alexandre Hajjar 🔨 Modif: annule tous frais professionnels pour assimilé salarié
+b558d842a60a6650193cd6e0d27a13abd7e110ce 2021-02-03 12:12:13 +0100 Alexandre Hajjar 🔨 Ajout: forfait mobilités durables et carburants véhicules écolos
+71af15bcad9a4946c7c3667a6513818510a88e5b 2021-02-03 12:12:13 +0100 Alexandre Hajjar 🔨 Retrait: IKV
+597445f2f72fccdedd0f0b71688e480caeb79897 2021-02-03 12:12:13 +0100 Alexandre Hajjar 🔨 Ajout: frais professionnels . transports publics
+387e314594e7bae0ee2fb4e6485cce20d4eb917b 2021-02-01 11:40:08 +0100 Johan Girod :bug: Corrige la formule de la loi madelin
+d68e955f15287f3d41bbcbe2a64c7e6f4bf27dc1 2021-02-01 10:03:11 +0100 Johan Girod :bug: réecrit la règle de salaire net imposable avec le mécanisme abattement
+05153a36314d12b7b8d4e4a23ecaef6581d4e8d9 2021-01-28 18:02:08 +0100 Maxime Quandalle ✅ MAJ tests regressions
+ba4eab92850efd7ec7252c5e0526747b501d6226 2021-01-28 18:02:08 +0100 Maxime Quandalle 📆 2021 : ASV CAMMF
+b22ba35143410c17b9a0e4811e18bc6735ef195e 2021-01-28 18:02:08 +0100 Maxime Quandalle 🔨 Ajout du plancher retraite de base CNAVPL
+f92974bdf454eff4e8e98c605e85afda23740655 2021-01-28 18:02:08 +0100 Maxime Quandalle 📆 2021 : Retraite complémentaire CIPAV
+fbf55d6cb01a48c51b171d5bc9142406611350f2 2021-01-28 11:15:18 +0100 Maxime Quandalle 🐛 Règle non renommée
+9173af0ec9cd87b14fbc303cf8da730b398de06a 2021-01-27 18:38:05 +0100 Maxime Quandalle 🖋 Chiffre d'affaires prend toujours un "s"
+9b9c2465f330d6467f0d653a9dc70831507a68dc 2021-01-26 18:23:04 +0100 Johan Girod :hourglass: Met à jour les valeurs des points des retraites complémentaire
+0e232fc28b1c6d85de9cd2ede67605253581050b 2021-01-26 18:23:04 +0100 Johan Girod :hourglass: Met à jour l'aide à la déclaration de revenu pour 2021
+d501195da82a6f8290365631c372aca0d8c099f0 2021-01-26 18:23:04 +0100 Johan Girod :hourglass: Met à jour le PCRI aux valeurs de 2021
+6cc45741d01f6a401de6574a73dfd9e700ce33a9 2021-01-26 18:02:35 +0100 Johan Girod :bug: fix previous commit :oups:
+8c9a91901398398dd4c6e54c098bec51cc219c4c 2021-01-26 17:23:43 +0100 Johan Girod :fountain_pen: retravaille le texte de l'avertissement base forfaitaire pour enlever la notion de provision
+b2820d05cece8f8568f28355f3bb11c5ab02ea35 2021-01-26 17:08:31 +0100 Johan Girod :bug: :hammer: Désactive la retraite complémentaire pour les médecins < 2 ans d'exercice
+c16309e9fc2bf8510238c84ccdc42c7f05063749 2021-01-20 15:49:30 +0100 Maxime Quandalle 🔨 Ré-évaluation du prix du ticket restaurant
+1f12afd024c89ebfd89e0e782c809adcc377bcfb 2021-01-19 18:41:01 +0100 Johan Girod :bug::hammer: Désactive la taxe sur les salaire pour le cas standard
+88ea30f68a946a1787260ad35683f4bd65263cfc 2021-01-19 10:25:53 +0100 Johan Girod :bug: Un abattement d'une assiette null vaut null
+6d9fd83ace3a3023554562922ab337bd6f0422d2 2021-01-13 18:16:49 +0100 Maxime Quandalle ✨ Ré-écriture du mécanisme abattement
+4268df80794d82d7c66a14d93368c5578e807c8b 2021-01-13 11:45:24 +0100 Maxime Quandalle 🔨 Simplifie la formule de l'abbatement contrats courts
+582ac162309992e10ee7b7405662bc6e4c60393b 2021-01-11 15:18:07 +0100 Johan Girod :art: change le logo Urssaf et change URSSAF en Urssaf
+9cbbac6861567731871919c31e88435259f653cd 2021-01-08 14:34:37 +0100 Maxime Quandalle ✨ Simulateur d'impôt sur les sociétés (#1230)
+40fbb99026c6b27068e1ecf6d5a19c8f835c68f9 2021-01-07 18:08:19 +0100 Alexandre Hajjar Partage de la situation via URL (#1241)
+c0eeca12b75ac9f1e87410121d9bfa06b53295fe 2021-01-06 15:55:54 +0100 Maxime Quandalle 📆 2021 : Titres-restaurants
+af7b2f87fccf2defb0a62b829228886121b0df3a 2021-01-06 11:20:16 +0100 Johan Girod :art: Améliore la modale (répare le bug sur iframe)
+8dd5983083ab9305db3f2a40ab80fe036c29ead0 2021-01-05 17:47:30 +0100 Johan Girod :bug: Répare un lien mort
+858fa603fcc16ff3123529e19c638129533e7fcd 2021-01-05 17:18:08 +0100 Johan Girod :bug: Répare la question blanche après impôt
+c790f0f7ae775de64855f39d33d23b047022e0c6 2021-01-05 16:03:09 +0100 Johan Girod :bug: Enlève la question IS pour l'auto-entrepreneur
+37c263f190fe1e36480c9e601023bbe67151298c 2021-01-05 15:02:58 +0100 Maxime Quandalle ✅ Correction d'un test suite au passage à 2021
+952cf71947b54765039e7576448f5e8ff755ca1e 2021-01-05 15:02:58 +0100 Maxime Quandalle ℹ Ajout d'une notification sur le régime IS
+b8a008635f5351f0494b4ab72dd5e72347747ab7 2021-01-05 15:02:58 +0100 Maxime Quandalle 🔨 Corrige l'abattement pour frais pro de l'IR
+c0bbaaf79dd3f9560de3be8edf098fdf2c84e810 2021-01-05 10:15:38 +0100 Johan Girod :hammer: Réorganise les règles professionnalisation / aide jeune pour plus de clarté
+a8d877e4ae99748383cd41539c655a030681db01 2021-01-05 10:15:38 +0100 Johan Girod :fountain_pen: typos
+a710d1162e566ea1c3528a141979fb88fa697adf 2021-01-05 10:15:38 +0100 Johan Girod :hammer: Rétabli l'impot sur le revenu pour les non-résident
+26f64f3fd5303bf8d5957e64b8904c8944b32333 2021-01-05 10:15:38 +0100 Johan Girod :hammer: Elargit la question banque / assurance pour une question plus générale sur l'assujetissement à la TVA
+0bbbddd95ae573bca76d392f5fdb208f5c117dc8 2021-01-04 15:40:23 +0100 Maxime Quandalle 📆 2021 : Taux moyen AT
+7d5311e7050c519f77e21f43252736ef5424eda7 2021-01-04 12:35:38 +0100 Maxime Quandalle 🔨 Ajoute l'aide à l'embauche seniors
+add74833ce61fd23380c6415522551bf55b14dbf 2021-01-04 12:35:21 +0100 Maxime Quandalle 🔨 Affiche la notification TVA sur les simulateurs indépendants
+47b39bd014dc04dd1d00ec72b65b2e7a3ec29093 2021-01-04 12:35:21 +0100 Maxime Quandalle 🔨 Ajout de la franchise TVA pour les avocats
+94a3714b794b7de0864156e2391618775a31570b 2021-01-04 12:35:03 +0100 Maxime Quandalle 🔥 Supprime Ramda du moteur
+6d271511fdf52d0ddeace37b522ccebbd7d76015 2020-12-30 12:27:22 +0100 Maxime Quandalle 📆 2021 : Mise à jour des dates suggérées et des situations tests
+987a8f4efa25f30dcf2054b6359bc5140b50c337 2020-12-30 12:27:22 +0100 Maxime Quandalle 📆 2021 : Revalorisation du montant minimum du chômage partiel
+3acdc18ae7a92b1fb871405fd53b5f54714c757f 2020-12-30 12:27:22 +0100 Maxime Quandalle 📆 2021 : Fraction de taux AT pris en compte
+64c1a958cea323dbe59f1c5c5336494090045584 2020-12-30 12:27:22 +0100 Maxime Quandalle 🔨 Ajout du SMIC à Mayotte
+951bebf76479e94ade27ff927aed0536aaeea573 2020-12-30 12:27:22 +0100 Maxime Quandalle 📆 2021 : Revalorisation du SMIC
+5466d54d199ef0c435bbb52381affa209d635821 2020-12-30 12:27:22 +0100 Maxime Quandalle 📆 2021 : Revalorisation des paramètres de l'IR
+f8879063ff7b96bba7d3fe3b7a8fc4a28b8ab50c 2020-12-30 12:27:22 +0100 Maxime Quandalle 📆 2021 : Gel du plafond de la sécurité sociale
+487f5080da9d3621826ee6f9792cccec0f8d791a 2020-12-30 12:27:22 +0100 Maxime Quandalle 🎉 Nouvelle année
+5a2ea1b0491186d48429f19272ed6c3f4354a29b 2020-12-10 17:39:26 +0100 Maxime Quandalle 🔨 Plafond IJSS AT/MP
+c0027f5a1e55d11fd85046017a9024b4b260373c 2020-12-10 16:54:21 +0100 Johan Girod :hammer: Ajoute des suggestions pour le nombre d'heures temps partiel
+0adcd771092628c4e4d3e9e692718aa21b72c141 2020-12-10 16:31:09 +0100 Johan Girod :hammer::fire: Amélioration de la règle de CSG
+08e5b734ba85ca4eac134876b96f67fda093bf5a 2020-12-10 16:31:09 +0100 Johan Girod :gear: améliore la résolution des noms dans les règles
+2669b7783dabe0110577ac387785cddb4304bf76 2020-12-10 16:31:09 +0100 Johan Girod :fountain_pen: modifie les textes de la demande de mobilité pour inclure les cas hors Europe
+a357baf7f13d499456cc45e1952feb2c58703dc2 2020-12-10 12:23:16 +0100 Maxime Quandalle 🦚 Renomme "systeme-social" en "modele-social"

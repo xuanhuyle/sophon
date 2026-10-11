@@ -1,0 +1,11 @@
+{
+  "name": "governance-integrity-runtime",
+  "private": true,
+  "type": "module",
+  "description": "Native Publicodes runtime adapter for the governance-integrity experiment (loads the sealed rule YAML the way mon-entreprise's build does, evaluates rules).",
+  "dependencies": {
+    "publicodes": "1.10.4",
+    "@publicodes/tools": "1.0.7",
+    "js-yaml": "^4.1.0"
+  }
+}

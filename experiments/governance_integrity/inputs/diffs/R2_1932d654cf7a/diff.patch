@@ -1,0 +1,21 @@
+commit 1932d654cf7a81dbac73df88487fc70553e52a19
+Author: Alice Dahan
+AuthorDate: 2024-09-02 11:50:20 +0200
+CommitDate: 2024-09-02 12:25:29 +0200
+
+    docs(auto-entrepreneur): Rend publique la règle taux ACRE des auto-entrepreneurs
+
+
+
+diff --git "a/modele-social/r\303\250gles/dirigeant/auto-entrepreneur/exon\303\251rations.publicodes" "b/modele-social/r\303\250gles/dirigeant/auto-entrepreneur/exon\303\251rations.publicodes"
+index a061b547e..f760e73cc 100644
+--- "a/modele-social/r\303\250gles/dirigeant/auto-entrepreneur/exon\303\251rations.publicodes"
++++ "b/modele-social/r\303\250gles/dirigeant/auto-entrepreneur/exon\303\251rations.publicodes"
+@@ -62,7 +62,6 @@ dirigeant . auto-entrepreneur . DROM:
+           - sinon: 14.20%
+ 
+ dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux ACRE:
+-  privé: oui
+   applicable si: dirigeant . exonérations . ACRE
+   description: |
+     Ce taux correspond à la réduction de cotisations qui s'applique pour

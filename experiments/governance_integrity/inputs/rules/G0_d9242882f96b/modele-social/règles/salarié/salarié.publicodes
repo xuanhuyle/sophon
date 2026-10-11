@@ -1,0 +1,281 @@
+salarié:
+  icônes: 🤝
+  valeur: oui
+
+salarié . ancienneté:
+  durée:
+    depuis: contrat . date d'embauche
+
+salarié . convention collective:
+  experimental: oui
+  par défaut: "'droit commun'"
+  question: "Quelle convention collective est applicable à l'entreprise ?"
+  formule:
+    une possibilité:
+      choix obligatoire: oui
+      possibilités:
+        - droit commun
+        - HCR
+        - BTP
+        - sport
+        - SVP
+        - compta
+        - optique
+
+  avec:
+    contrôle décharge:
+      type: notification
+      sévérité: avertissement
+      valeur: convention collective != 'droit commun'
+      description: >-
+        Attention : l'implémentation des conventions collective est encore
+        partielle et non vérifiée. Néanmoins, cela permet d'obtenir une première
+        estimation, plus précise que le régime général.
+    droit commun: convention collective = 'droit commun'
+
+salarié . régimes spécifiques:
+salarié . régimes spécifiques . alsace moselle:
+  titre: Régime Alsace-Moselle
+  description: |
+    Nous considérons qu'un salarié est affilié au régime Alsace-Moselle quand l'établissement dans lequel il travaille est situé dans ces départements.
+
+    Attention : c'est une **simplification** : l'affiliation est plus compliquée que celà, voir les conditions exactes [sur le site du régime](https://regime-local.fr/affiliation/).
+  par défaut: non
+  une de ces conditions:
+    - établissement . commune . département = 'Bas-Rhin'
+    - établissement . commune . département = 'Haut-Rhin'
+    - établissement . commune . département = 'Moselle'
+
+salarié . régimes spécifiques . alsace moselle . ATMP:
+  avec:
+    seuil taux mixte ou individuel:
+      remplace: cotisations . ATMP . seuil taux mixte ou individuel
+      valeur: 50 employés
+
+    taux fonctions support:
+      référence:
+        Annexe de l'Arrêté du 24 décembre 2021 Relatif à la tarification des risques d'accidents du travail et de maladies professionnelles pour l'année 2022: https://www.legifrance.gouv.fr/jorf/article_jo/JORFARTI000044616039
+      remplace: cotisations . ATMP . taux fonctions support . montant
+      valeur: 0.86%
+
+salarié . régimes spécifiques . impatriés:
+  question: Le salarié bénéficie-t-il du régime des impatriés ?
+  non applicable si: situation personnelle . domiciliation fiscale à l'étranger
+  par défaut: non
+  description: |
+    Si vous êtes salarié ou dirigeant fiscalement assimilé, et si vous avez été appelé par une entreprise étrangère à occuper un emploi dans une entreprise établie en France ayant un lien avec la première ou si vous avez été directement recruté à l’étranger par une entreprise établie en France, vous pouvez bénéficier du régime spécifiques des impatriés.
+
+    Vous devez en outre ne pas avoir été fiscalement domicilié en France les cinq années civiles précédant celle de la prise de fonctions et fixer en France votre domicile fiscal dès votre prise de fonctions.
+
+    Les impatriés sont exonérés de cotisations retraite (régime de base et complémentaire) à condition de justifier d'une contribution minimale versée par ailleurs (par exemple dans une caisse de retraite ou un fond de pension étranger). Ils n’acquièrent aucun droit pendant la durée d’exonération.
+
+  note: La durée d’application est fixée au maximum jusqu’au 31 décembre de la
+    huitième année civile suivant la prise de fonctions dans l’entreprise
+    d’accueil.
+  rend non applicable:
+    - cotisations . vieillesse
+    - cotisations . retraite complémentaire
+  références:
+    impots.gouv.fr: https://www.impots.gouv.fr/portail/particulier/questions/puis-je-beneficier-du-regime-des-impatries
+    bofip: http://bofip.impots.gouv.fr/bofip/5694-PGP
+    Article 155B du Code général des impôts: https://www.legifrance.gouv.fr/affichCodeArticle.do?cidTexte=LEGITEXT000006069577&idArticle=LEGIARTI000006307476&dateTexte=&categorieLien=cid
+
+  avec:
+    information:
+      type: notification
+      description: |-
+        Pour bénéficier de l'exonération de cotisations vieillesse, il faut remplir les conditions suivantes :
+        - Pouvoir justifier d'une contribution minimale versée ailleurs pour une assurance vieillesse
+        - Ne pas avoir été affilié, au cours des cinq années civiles précédant celle de la prise de fonctions, à un régime français obligatoire d'assurance vieillesse, sauf pour des activités accessoires, de caractère saisonnier ou pour les études.
+
+        [Lire le texte de loi](https://www.legifrance.gouv.fr/codes/id/LEGISCTA000038510929)
+
+salarié . régimes spécifiques . DFS:
+  titre: déduction forfaitaire spécifique
+  acronyme: DFS
+  description: >-
+    Pour une liste précise de professions, l'employeur peut pratiquer une
+    déduction forfaitaire spécifique (DFS) pour frais professionnels sur la base
+    de calcul des cotisations sociales. spécifique consiste en un abattement sur
+    l'assiette des cotisations sociales. Elle peut s'appliquer si le salarié
+    supporte effectivement des frais lors de son activité professionnelle.
+
+    En l’absence de frais effectivement engagés, ou si l’employeur prend en charge ou rembourse la totalité des frais professionnels, il est impossible d’appliquer la DFS.
+  question: Le salarié bénéficie-t-il d'une déduction forfaitaire spécifique ?
+  par défaut: non
+  références:
+    Fiche Urssaf.fr: https://www.urssaf.fr/portail/home/employeur/calculer-les-cotisations/les-elements-a-prendre-en-compte/les-frais-professionnels/la-deduction-forfaitaire-specifi.html
+
+  avec:
+    assiette minimale:
+      valeur: rémunération . assiette de vérification du SMIC
+      contexte:
+        contrat . salaire brut: SMIC . horaire * temps de travail . effectif
+
+    cotisations assiette:
+      valeur: cotisations . assiette
+      abattement:
+        valeur: taux * cotisations . assiette
+        plafond: 7600 €/an
+      plancher: assiette minimale
+      remplace:
+        références à: cotisations . assiette
+        sauf dans: salarié . cotisations . CSG-CRDS
+
+    taux:
+      variations:
+        - si: profession = 'journaliste'
+          alors: 20%
+        - si: profession = 'ouvrier du bâtiment'
+          alors: 10%
+        - si: profession = 'artiste musicien'
+          alors: 20%
+        - si: profession = 'pilote de ligne ou personnel navigant'
+          alors: 30%
+        - sinon: 0%
+      par défaut: 10%
+      références:
+        Circulaire DSS: https://solidarites-sante.gouv.fr/fichiers/bo/2005/05-09/a0090046.htm
+
+salarié . régimes spécifiques . DFS . profession:
+  question:
+    Quelle est la profession du salarié pour l'application de la déduction
+    forfaitaire spécifique ?
+  formule:
+    une possibilité:
+      possibilités:
+        - journaliste
+        - ouvrier du bâtiment
+        - artiste musicien
+        - pilote de ligne ou personnel navigant
+      choix obligatoire: oui
+
+  avec:
+    artiste musicien:
+      icônes: 🎼
+      description: >-
+        Concerne les artistes musiciens, choristes, chefs d’orchestre,
+        régisseurs de théâtre
+
+    journaliste:
+      valeur: profession = 'journaliste'
+      icônes: ✒
+      description: >-
+        Concerne les journalistes, rédacteurs, photographes, directeurs de
+        journaux Critiques dramatiques et musicaux.
+
+    ouvrier du bâtiment:
+      icônes: 👷‍♂️
+      description: >-
+        Concerne les ouvriers du bâtiment visés aux paragraphes 1er et 2 de
+        l’article 1er du décret du 17 novembre 1936, à l’exclusion de ceux qui
+        travaillent en usine ou en atelier.
+
+    pilote de ligne ou personnel navigant:
+      icônes: ✈
+      description: >-
+        Concerne les pilotes, radios, mécaniciens navigants des compagnies de
+        transports aériens ; pilotes et mécaniciens employés par les maisons de
+        construction d’avions et de moteurs pour l’essai de prototypes ; pilotes
+        moniteurs d’aéro-clubs et des écoles d’aviation civile
+
+salarié . régimes spécifiques . DFS . profession . journaliste . réduction de taux:
+  valeur: 80%
+
+  avec:
+    cotisations allocations familiales taux:
+      remplace: cotisations . allocations familiales . taux
+      valeur: cotisations . allocations familiales . taux * réduction de taux
+
+    cotisations ATMP taux:
+      remplace: cotisations . ATMP . taux
+      valeur: cotisations . ATMP . taux * réduction de taux
+
+    cotisations ATMP taux minimum:
+      remplace: cotisations . ATMP . taux minimum
+      valeur: cotisations . ATMP . taux minimum * réduction de taux
+
+    cotisations versement mobilité:
+      remplace: cotisations . versement mobilité
+      valeur: cotisations . versement mobilité * réduction de taux
+
+    cotisations vieillesse employeur déplafonnée taux:
+      remplace: cotisations . vieillesse . employeur . déplafonnée . taux
+      valeur:
+        cotisations . vieillesse . employeur . déplafonnée . taux * réduction de
+        taux
+
+    cotisations vieillesse employeur plafonnée taux:
+      remplace: cotisations . vieillesse . employeur . plafonnée . taux
+      valeur:
+        cotisations . vieillesse . employeur . plafonnée . taux * réduction de
+        taux
+
+    cotisations vieillesse salarié déplafonnée taux:
+      remplace: cotisations . vieillesse . salarié . déplafonnée . taux
+      valeur:
+        cotisations . vieillesse . salarié . déplafonnée . taux * réduction de
+        taux
+
+    cotisations vieillesse salarié plafonnée taux:
+      remplace: cotisations . vieillesse . salarié . plafonnée . taux
+      valeur: cotisations . vieillesse . salarié . plafonnée . taux * réduction de taux
+
+salarié . régimes spécifiques . DFS . profession . journaliste . abattement fiscal:
+  remplace: rémunération . net . imposable
+  titre: net imposable journaliste
+  formule:
+    valeur: rémunération . net . imposable
+    abattement: 7650€/an
+
+salarié . régimes spécifiques . taxe sur les salaires:
+  applicable si: entreprise . TVA = non
+  unité: €/an
+  description:
+    La taxe sur les salaires en France est un impôt progressif créé en
+    1948 que certains employeurs doivent acquitter sur les salaires qu'ils
+    distribuent.
+  barème:
+    assiette:
+      somme:
+        - cotisations . assiette
+        - cotisations . prévoyances . employeur
+      abattement: rémunération . net . imposable . exonération prime d'impatriation
+    tranches:
+      - taux: 4.25%
+        plafond:
+          variations:
+            - si: date >= 01/2024
+              alors: 8984 €/an
+            - sinon: 8004 €/an
+      - taux: 8.5%
+        plafond:
+          variations:
+            - si: date >= 01/2024
+              alors: 17936 €/an
+            - sinon: 15981 €/an
+      - taux: 13.6%
+  note: Nous n'implémentons pas les taux spécifiques pour l'outre-mer, ni la décôte
+  références:
+    Taxe sur les salaires: https://www.service-public.fr/professionnels-entreprises/vosdroits/F22576
+    Exonérations spécifiques à la taxe sur les salaires: http://bofip.impots.gouv.fr/bofip/6691-PGP.html
+
+salarié . coût total employeur:
+  identifiant court: cout-total-employeur
+  synonymes: [salaire chargé]
+  résumé: Dépensé par l'entreprise
+  question: Quel est le coût total de cette embauche ?
+  description: |
+    Coût total d'embauche d'un salarié en incluant, en plus des éléments de rémunération, les aides différées.
+    > C'est donc aussi une mesure de la valeur apportée par le salarié à l'entreprise : l'employeur est prêt à verser cette somme en contrepartie du travail fourni.
+
+    À ce coût total, il ne faut pas oublier d'ajouter les dépenses spécifiques à votre entreprise : recherche du bon candidat, poste de travail, équipement, formation initiale, médecine du travail, etc.
+
+  somme:
+    - rémunération . brut
+    - cotisations . employeur
+    - activité partielle . indemnités
+    - régimes spécifiques . taxe sur les salaires
+  abattement: aides
+  unité: €/mois
+  plancher: 0€/an
