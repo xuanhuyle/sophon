@@ -1,0 +1,197 @@
+{
+  "Q1": {
+    "sealed_ground_truth": {
+      "article_version_in_force_2026-01-01": "D131-6-1 LEGIARTI000053451315 (version 8.0, etat VIGUEUR, dateDebut 1767225600000 = 2026-01-01T00:00:00Z, dateFin 2999-01-01), modified by Décret n°2026-69 du 6 février 2026 art. 1 (JORF 2026-02-08); nota: 'entrent en vigueur le 1 er janvier 2026 et s'appliquent aux créations et reprises d'entreprise intervenant à compter de cette date'. Text sha256 59f4edcf15fbdb3311608c1d29fa14e81dff6adaf68446e3e297814eea36ebf5 (recomputed from inputs/law/S9_legi-data-2.514.0/articles.json).",
+      "requirement_below_3_4_PSS": "II: 'l'exonération applicable pendant la période mentionnée au I correspond au quart du montant total des cotisations dues aux régimes d'assurance maladie, maternité, veuvage, vieillesse de base, invalidité et décès et d'allocations familiales mentionnées au 1° ou au 2° du II de l'article L. 131-6-4' — i.e. one quarter (25 %) of those contributions; the previous version LEGIARTI000036475110 (2018-01-01 → 2026-01-01) said 'au montant total' (100 %).",
+      "first_snapshot_showing_it": "S9 (legi-data 2.514.0, published 2026-03-31T16:18:17.431Z); also S10 ('latest at investigation'). S8 (legi-data 2.489.0, published 2026-01-01T15:46:43.781Z) still showed LEGIARTI000036475110 as VIGUEUR with no announced successor version. So on the decision date 2026-01-01 itself no sealed snapshot could show the version; it became visible only with S9 (the decree was signed 2026-02-06).",
+      "rules_pin": "G4 = commit a61b72947fec1e1383e07b3278424593dc296ba2 (inputs/rules/G4_a61b72947fec/meta.json, committed 2026-03-03 09:30:36 +0100); build recomputed: 652 raw / 1334 parsed rules. The rule 'dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . taux' (règles/dirigeant/exonérations.publicodes line 236) is a 'taux progressif' 100 % up to 75 % of PSS proratisé, 0 % at 100 %, with no 2026 branch — the sealed pin does NOT implement the quarter."
+    },
+    "A": {
+      "fields": {
+        "article_version_id": {
+          "value": "LEGIARTI000053451315 (replacing LEGIARTI000036475110)",
+          "source_path": "arms/A/outputs/M2/answer.json (changed_articles[0].new, rules[*].article); arms/A/outputs/M2/NOTES.md §1; arms/A/work/notes/M2_findings.md; arms/A/work/law/S9_index.json; arms/A/work/README.md ('Key state after M2')",
+          "verification": "VERIFIED",
+          "how": "Sealed inputs/law/S9_legi-data-2.514.0/articles.json and S10: articles['D131-6-1'][0].id == LEGIARTI000053451315, articleVersions v8.0 VIGUEUR. Arm A's S9_index.json entry carries the same id/cid/dates; A's S9_texts.md holds the S9 text verbatim (python substring test True)."
+        },
+        "in_force_date": {
+          "value": "2026-01-01 → 2999-01-01 (etat VIGUEUR); A reads the nota as 'criterion = date de création/reprise ≥ 2026-01-01, not the period'; A also notes dateDebutCible 2026-02-09 in the lien and follows the nota",
+          "source_path": "arms/A/outputs/M2/answer.json (changed_articles[0].new/nota, abstentions[4] 'Application in time'); arms/A/outputs/M2/NOTES.md §1",
+          "verification": "VERIFIED",
+          "how": "Sealed S9 record: dateDebut 1767225600000 (= 2026-01-01T00:00:00Z), dateFin 32472144000000 (2999-01-01); nota text recomputed as exact substring; lienModifications datePubliTexte 2026-02-08, dateSignaTexte 2026-02-06."
+        },
+        "snapshot_and_publish_date": {
+          "value": "S9 = legi-data 2.514.0 published 2026-03-31T16:18:17.431Z shows the version; S8 = legi-data 2.489.0 published 2026-01-01T15:46:43.781Z still showed LEGIARTI000036475110 (A's M1 artifacts record D131-6-1 as byte-identical S7→S8)",
+          "source_path": "arms/A/outputs/M2/answer.json (law_snapshots.S8/S9); arms/A/outputs/M1/answer.json (law_snapshots, unchanged_articles); arms/A/work/law/M2_S8_S9_record_diff.json",
+          "verification": "VERIFIED",
+          "how": "Sealed 'published' fields read from inputs/law/S8_*/articles.json and S9_*/articles.json; S8's D131-6-1 record is still LEGIARTI000036475110 (sha af896c57… recomputed) with only 7 articleVersions (no VIGUEUR_DIFF successor)."
+        },
+        "interpretation_status": {
+          "value": "Arm A uses its own vocabulary, not verified/inferred/unknown/abstained: rule classified AFFECTED, confidence high, reassessed true, action 'edit … 25 % (<= 75 % PSS) to 0 % (PSS) for création ≥ 01/01/2026'; the micro-social (auto-entrepreneur) Acre rate, Acre Cipav 13,40 %, L131-6-5 interaction, E-at-3/4-PSS approximation and assimilé-salarié rules are explicitly ABSTAINED (abstentions list, 7 entries). No per-link status taxonomy exists.",
+          "source_path": "arms/A/outputs/M2/answer.json (rules[] entry for '… exonérations . ACRE . taux': classification/confidence/evidence/action/caveat; abstentions[]); arms/A/outputs/M2/NOTES.md §3, §6",
+          "verification": "VERIFIED",
+          "how": "The label itself is A's judgement (not independently checkable), but every quote-shaped evidence string in rules[].evidence, evaluations[].law_basis and abstentions[].reason (462 strings of the form '<art> <LEGIARTI> (…): \"…\"') was tested as an exact substring of the sealed S8/S9 text or nota of that exact version: 462 found, 0 missing. The reading 'quart' = 25 % matches the sealed text."
+        },
+        "implementing_rules_and_pin": {
+          "value": "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . taux (edited in proposal M2), plus dependents '… exonérations . ACRE' and its 5 remplace children (maladie, IJ maladie, invalidité et décès, retraite de base, allocations familiales), '… cotisations', '… CSG-CRDS', 'dirigeant . indépendant . cotisations et contributions'; outside the bounded set: salarié . cotisations . exonérations . Acre (+ employeur/salarié). Pin: G4 a61b72947fec (committed 2026-03-03 09:30:36 +0100, modele-social 10.0.1), build 652 raw / 1334 parsed; proposal tree arms/A/work/proposals/M2 builds 654/1336.",
+          "source_path": "arms/A/outputs/M2/answer.json (rules_pin, rules[], build, proposal_dir); arms/A/outputs/M2/NOTES.md §3–4; arms/A/work/proposals/M2/{apply_M2.mjs,M2.diff}",
+          "verification": "VERIFIED",
+          "how": "Rule present at inputs/rules/G4_a61b72947fec/modele-social/règles/dirigeant/exonérations.publicodes:236 (taux progressif 100 %/75 % → 0 %/100 %); G4 meta.json commit a61b72947fec1e1383e07b3278424593dc296ba2 committed 2026-03-03 09:30:36 +0100; 'node src/publicodes_eval.mjs build' on the sealed G4 re-run → 652 raw / 1334 parsed."
+        },
+        "rule_file_hash_or_commit": {
+          "value": "Commit only: G4 a61b72947fec (+ build counts). No rule-file hash is recorded anywhere in arm A's artifacts (the 49 'sha256' occurrences in outputs/M2/answer.json are article text hashes in unchanged_articles; A's law/S*_index.json has no text hashes either).",
+          "source_path": "arms/A/outputs/M2/answer.json (rules_pin, build); inputs/rules/G4_a61b72947fec/meta.json (sealed)",
+          "verification": "VERIFIED",
+          "how": "Commit prefix a61b72947fec matches sealed meta.json commit a61b72947fec1e1383e07b3278424593dc296ba2 and the folder name. Rule-file hash: ABSENT in arm A (nothing to recompute). For the record the sealed file règles/dirigeant/exonérations.publicodes hashes to ef52869dc171882c2a81c9dff4d0290ddb97fac2324960318c9125d765d3f025."
+        },
+        "executable_check_and_result": {
+          "value": "Spec arms/A/work/engine/checks_M2_ti.json, run through run_checks.sh → results_M2_G4_ti.jsonl / results_M2_proposal_ti.jsonl. Check TI_ACRE_crea2026_rev20000@01-06-2026 (EI/IR commerciale, création 01/01/2026, durée en début d'année 0 an, ACRE oui, revenu professionnel 20 000 €/an, date 01/06/2026): '… exonérations . ACRE . taux' G4 = 100 % vs proposal = 25 %; retraite de base 0 → 2 663 €/an; cotisations 1 400 → 4 333 €/an. rev 42 000: 50,437 % → 12,609 %. The result shows the sealed pin G4 does NOT comply with the 2026 text; only A's unmerged proposal does.",
+          "source_path": "arms/A/work/engine/checks_M2_ti.json; arms/A/work/engine/results_M2_G4_ti.jsonl; arms/A/work/engine/results_M2_proposal_ti.jsonl; arms/A/outputs/M2/answer.json (evaluations[], rules[].evidence); arms/A/outputs/M2/NOTES.md §5",
+          "verification": "VERIFIED",
+          "how": "Re-ran 'node src/publicodes_eval.mjs evaluate' with A's exact situation on the sealed G4 pin → taux 100 %, retraite de base 0 €/an, cotisations 1400 €/an; on arms/A/work/proposals/M2/modele-social/règles → 25 %, 2663, 4333. Identical to the recorded values."
+        },
+        "approval_record": {
+          "value": "none recorded ('no sign-off, ratification or approval record exists in this corpus; merges/commits/tests are not approvals')",
+          "source_path": "arms/A/outputs/M2/answer.json ('approval': 'none recorded'); arms/A/outputs/M2/NOTES.md §7; arms/A/outputs/M1/NOTES.md line 3; arms/A/work/notes/R3_findings.md",
+          "verification": "ABSENT",
+          "how": "Consistent with the sealed inputs: grep -i 'approv|sign-off|signoff|ratif' over inputs/rules/*/meta.json, HISTORY.txt, history_bounded_rules.patch and inputs/law returned no approval record (0 hits in G4 HISTORY/patch). No approval artefact exists in arm A's work/ or outputs/. The 'none recorded' statement is therefore correct; the record itself is absent."
+        },
+        "stated_limits": {
+          "value": "7 abstentions: (1) micro-social Acre rate from 2026 (taux Acre 50 %; 12,8/10,6/6,2 %) — decree under L613-7 I not in the set, notification 'taux Acre 2026 à confirmer' added instead; (2) Acre . taux CIPAV 13,40 % (G4 commit ea8f00f0) has no source; (3) L131-6-5 outside the set; (4) E defined at 3/4 PSS vs model applying the degressive rate to actual-revenue cotisations (pre-existing approximation kept); (5) application in time: création ≥ 01/01/2026 used, reprise not distinguished, dateDebutCible 2026-02-09 vs nota 2026-01-01; (6) DROM 2026 category-e rates 4,3/12,8/17,1 are derived, not published; (7) assimilé-salarié Acre rules edited but outside the bounded file set. Also: 13 rules not re-examined (listed), D613-5 / D613-4 row c / D756-5 II not implemented.",
+          "source_path": "arms/A/outputs/M2/answer.json (abstentions[], not_reassessed_rules[]); arms/A/outputs/M2/NOTES.md §3 'Not re-examined', §6; arms/A/work/notes/M2_findings.md 'TO DO'",
+          "verification": "VERIFIED",
+          "how": "Quotes inside the abstention reasons are exact substrings of sealed S8/S9 texts (part of the 462/462 test); L131-6-5 is indeed not among the 12 sealed article keys; the G4 HISTORY.txt confirms commit ea8f00f0 (2026-01-27, 'chore(AE): mise à jour du taux BNC Cipav avec Acre'); '26,1 %', '4,4 %', '13,1 %', '17,4 %' appear in no sealed text."
+        }
+      },
+      "tool_calls_spent": 9,
+      "summary": "Arm A reconstructs the 2026-01-01 state correctly: D131-6-1 LEGIARTI000053451315 (in force 2026-01-01, Décret 2026-69, visible only from S9 published 2026-03-31) requires 'le quart' (25 %) of the listed contributions below 3/4 PSS; the sealed pin G4 a61b72947fec still exempts 100 % (A's check and my re-run both give 100 % on G4, 25 % on A's proposal). Every quote A wrote is an exact sealed substring (462/462). Weaknesses: no rule-file hashes anywhere (only the commit id), no formal interpretation-status taxonomy (AFFECTED/high + free-text abstentions), and the law texts are preserved as verbatim markdown copies without hashes. Approval: none recorded, confirmed absent."
+    },
+    "B": {
+      "fields": {
+        "article_version_id": {
+          "value": "LEGIARTI000053451315 (v8.0), previous LEGIARTI000036475110; recorded with text sha256 59f4edcf15fb… in the store",
+          "source_path": "arms/B/work/sophon/store/law/S9.json; arms/B/work/sophon/store/links.jsonl (L0301–L0309, L0319, L0329–L0332, L0347: article_id LEGIARTI000053451315, law_snapshot S9); arms/B/work/sophon/reports/M2_asof_D131-6-1_2026-03-31.json (article_versions_known); arms/B/outputs/M2/NOTES.md §1",
+          "verification": "VERIFIED",
+          "how": "Sealed S9/S10 id matches; the stored article_text_sha256 (59f4edcf15fbdb3311608c1d29fa14e81dff6adaf68446e3e297814eea36ebf5) equals the hash I recomputed from the sealed S9 text; all 55 D131-6-1 links point to a version that exists in the recorded snapshot."
+        },
+        "in_force_date": {
+          "value": "2026-01-01 → 2999-01-01 (article_dateDebut/article_dateFin on every S9 link; asof 'in_force_on_date': true for S9/S10); nota quoted in link claims ('en vigueur le 1er janvier 2026, s'applique aux créations et reprises…'); proposal condition 'entreprise . date de création >= 01/01/2026'",
+          "source_path": "arms/B/work/sophon/store/links.jsonl (L0301 claim); arms/B/work/sophon/reports/M2_asof_D131-6-1_2026-03-31.json; arms/B/outputs/M2/NOTES.md §1, §6",
+          "verification": "VERIFIED",
+          "how": "Sealed dateDebut 2026-01-01 / dateFin 2999-01-01 and nota recomputed from S9; B's asof tool re-run by me for --date 2026-01-01 (scratch/B_asof_D131-6-1_2026-01-01.json) reproduces S9/S10 → …315 in force, S0–S8 → …110."
+        },
+        "snapshot_and_publish_date": {
+          "value": "S9 legi-data 2.514.0 published 2026-03-31T16:18:17.431Z (and S10 'latest at investigation'); S8 published 2026-01-01T15:46:43.781Z still carried LEGIARTI000036475110 (B's M1 artifacts: D131-6-1 unchanged S7→S8)",
+          "source_path": "arms/B/work/sophon/reports/M2_asof_D131-6-1_2026-03-31.json (article_versions_known, one entry per snapshot with 'published'); arms/B/work/sophon/store/law/S8.json, S9.json; arms/B/outputs/M2/NOTES.md header",
+          "verification": "VERIFIED",
+          "how": "Each 'published' value in the asof report equals the sealed articles.json 'published' field of that snapshot (S0–S10 compared); S8's sealed record is still …110."
+        },
+        "interpretation_status": {
+          "value": "Store statuses (sophon vocabulary): on the pin G4 the quarter-rule links are FAILED — L0301/L0302 '… exonérations . ACRE . taux' expect 25 observed 100; L0303 degressive expect 12.5 observed 49.99…; L0304 VERIFIED (0 % above PSS); L0309 INFERRED (E definition, no check); L0319 UNKNOWN. On the proposal P_M2: L0329/L0330 VERIFIED (25), L0331 VERIFIED (12.5), L0332 VERIFIED, L0347 UNKNOWN. NOTES §5: rule AFFECTED; §7 lists abstentions. Revalidate S9×G4 marked the 15 older D131-6-1 links REASSESS_LAW_CHANGED.",
+          "source_path": "arms/B/work/sophon/store/links.jsonl; arms/B/work/sophon/reports/M2_asof_D131-6-1_2026-03-31.json; arms/B/work/sophon/reports/M2_revalidate_S9_G4_cmd.json; arms/B/outputs/M2/NOTES.md §3, §5, §7, §8",
+          "verification": "VERIFIED",
+          "how": "Re-ran L0301's exact stored situation (date 01/07/2026, création 01/01/2026, revenu 20 000 €/an) on the sealed G4 → 100 % (FAILED reproduced) and on arms/B/work/proposals/M2 → 25 % (VERIFIED reproduced). All 55 D131-6-1 link quotes are exact substrings of the sealed text of the recorded version at the recorded quote_offset; hash chain recomputed independently (356/356 records, canonical JSON sha256)."
+        },
+        "implementing_rules_and_pin": {
+          "value": "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . taux (own edit) + propagation links on '… exonérations . ACRE', retraite de base, invalidité et décès, indemnités journalières maladie, cotisations; pin G4 a61b72947fec1e1383e07b3278424593dc296ba2 (committed 2026-03-03 09:30:36 +0100; store engine_build 652/1334) and proposal snapshot P_M2 (no commit).",
+          "source_path": "arms/B/work/sophon/store/rules/G4.json (meta, engine_build, rules[…ACRE . taux]); arms/B/work/sophon/store/rules/P_M2.json; arms/B/work/sophon/reports/M2_asof_D131-6-1_2026-03-31.json (rules_snapshots_known); arms/B/outputs/M2/NOTES.md §3, §6",
+          "verification": "VERIFIED",
+          "how": "Sealed G4 meta.json commit/committed identical; rule at règles/dirigeant/exonérations.publicodes:236; my rebuild of sealed G4 gives 652/1334 = store engine_build."
+        },
+        "rule_file_hash_or_commit": {
+          "value": "rule_file règles/dirigeant/exonérations.publicodes sha256 ef52869dc171882c2a81c9dff4d0290ddb97fac2324960318c9125d765d3f025; rule_body_sha256 16f80bb3c82f7b10275f118d27afc292a9d9f7f13e55cbda45001907b22d5b34; commit a61b72947fec1e1383e07b3278424593dc296ba2 (store meta). Other G4 files in links: règles/dirigeant/indépendant.publicodes 3fbab922… (not recomputed).",
+          "source_path": "arms/B/work/sophon/store/rules/G4.json (files, rules); arms/B/work/sophon/store/links.jsonl (L0301 rule_file_sha256, rule_body_sha256)",
+          "verification": "VERIFIED",
+          "how": "sha256sum of the sealed inputs/rules/G4_a61b72947fec/modele-social/règles/dirigeant/exonérations.publicodes = ef52869d…f025 (match); body hash recomputed with PyYAML safe_load + sophon's canonical() (json.dumps sort_keys, separators (',',':')) = 16f80bb3c82f7b10… (match); commit matches meta.json. Caveat: the store's rules_dirs record an absolute path outside this audit directory (…/runs/B/R4/inputs/…), so B's own verify-store 'ok' is not proof that files were re-hashed from disk — my recomputation against the sealed pin is."
+        },
+        "executable_check_and_result": {
+          "value": "L0301 (G4): rule '… exonérations . ACRE . taux', situation {salarié non, EI, auto-entrepreneur non, IR, commerciale, outre-mer non, ACRE oui, création 01/01/2026, date 01/07/2026, revenu 20 000 €/an}, expect 25.0 tolerance 0.001 → observed 100, passed false, detail 'observed != expected' (FAILED). L0329 (P_M2): same situation → observed 25, passed true (VERIFIED). L0305–L0308 (G4) retraite de base 2662.5 / invalidité-décès 195 / IJ 75 / cotisations 4332.5 expected vs 0/0/0/1400 observed (FAILED).",
+          "source_path": "arms/B/work/sophon/store/links.jsonl (L0301, L0305–L0308, L0329); arms/B/work/evals/M2_G4.jsonl, M2_proposal.jsonl, M2_grid.txt; arms/B/outputs/M2/NOTES.md §4",
+          "verification": "VERIFIED",
+          "how": "Re-ran the stored L0301 situation with node src/publicodes_eval.mjs on the sealed G4 → 100 %; on arms/B/work/proposals/M2/modele-social/règles → 25 %. Also re-ran arm A's TI situation on B's proposal tree → 25 % / 2663 / 4333 (same as A's proposal)."
+        },
+        "approval_record": {
+          "value": "{\"status\": \"none recorded\", \"evidence_sha256\": null} on every one of the 356 links; asof report approvals: ['none recorded']; NOTES §9 'None recorded anywhere in the corpus'. The store has no --approve flag; --approval-file would need an existing evidence file, none exists.",
+          "source_path": "arms/B/work/sophon/store/links.jsonl; arms/B/work/sophon/reports/M2_asof_D131-6-1_2026-03-31.json (approvals); arms/B/outputs/M2/NOTES.md §9; src/USAGE.md §2",
+          "verification": "ABSENT",
+          "how": "Every link's approval field read programmatically = 'none recorded'; sealed inputs contain no approval/sign-off/ratification record (grep). Correctly reported as absent."
+        },
+        "stated_limits": {
+          "value": "asof report 'limits': (a) only what was recorded is reported, absence is reported as absence; (b) snapshot publish dates are capture dates, not entry-into-force dates; (c) a matching hash shows unchanged text, not correctness or authorisation. NOTES §7 abstentions: L131-6-5 reservation (outside set); 60-day request deadline (IV) not modelled; micro-social Acre rate (50 %, Cipav 13,40 %) fixed by an article outside the set — AE Acre probes evaluate None; E vs R in the degressive zone (pre-existing structure kept); transitional cases (création vs reprise; affiliation date not modelled); salarié Acre rules outside bounded files still on the 2018 text; D613-4 c), D756-5 II cap, L613-7 minimum option, D613-5 not implemented. §5: 300 rules not re-examined (reasons per rule in answer.json).",
+          "source_path": "arms/B/work/sophon/reports/M2_asof_D131-6-1_2026-03-31.json (limits); arms/B/outputs/M2/NOTES.md §5, §7, §10",
+          "verification": "VERIFIED",
+          "how": "Quoted fragments in §7 ('Les dispositions du présent II s'appliquent sans préjudice…', 'La demande d'exonérations…soixantième jour', 'E est le montant total…') are exact substrings of the sealed S9 text; L131-6-5 and the micro-social Acre decree are indeed absent from the 12 sealed articles ('taux global' appears only in L613-7 and D613-4)."
+        }
+      },
+      "tool_calls_spent": 14,
+      "summary": "Arm B's store reconstructs the same facts with machine-checkable provenance: version id, dates, publish dates, text sha256, rule-file and rule-body sha256, commit, exact quotes with offsets, executable checks and their outcomes, and explicit 'none recorded' approvals. I recomputed the article hash, the file hash, the body hash, the 356-record hash chain, re-ran the stored check (G4 → 100 % FAILED; P_M2 → 25 % VERIFIED) and re-generated the as-of view for 2026-01-01 with B's tool. Caveats: the as-of report in the artifacts is dated 2026-03-31 (not 2026-01-01); the store's rules_dirs are absolute paths outside this directory, so verify-store's file re-hash claim could not be relied on and was replaced by my own recomputation; nested 'avec' rules (e.g. DROM . taux service BNC) are not indexed in G4.json 'rules' (links carry a rule_owner instead)."
+    }
+  },
+  "Q2": {
+    "A": {
+      "preserved": [
+        "Verbatim text of D756-5 (LEGIARTI000034726710, VIGUEUR since 2017-05-12, created by Décret n°2017-972 du 9 mai 2017 art. 1) in arms/A/work/law/S0_texts.md … S10_texts.md — I confirmed the S5 and S9 sealed texts appear verbatim (python substring test True) — with id/cid/etat/dates/versions/lienModifications in arms/A/work/law/S*_index.json.",
+        "Exact article quotes in arms/A/outputs/R3/answer.json (evidence kind 'article_quote'): D756-5 LEGIARTI000034726710 (601-char quote: 'le taux mentionné au premier alinéa de l'article L. 133-6-8 correspond, après arrondi au dixième de pour cent supérieur, à une fraction des taux prévus par l'article D. 131-6-1 fixée à : a) 1/6 … 1/3 … ; b) 1/2 … ; c) 2/3 …'), D613-4 LEGIARTI000049624068 (rates 23,1/23,2 from 2024-07-01 — 5 quotes incl. one from the nota), L613-7 LEGIARTI000048683570 ('Un taux global différent peut être fixé par décret…'), D131-6-1 LEGIARTI000036475110 — all 8 found as exact substrings of the sealed S5 text/nota of those versions.",
+        "In arms/A/outputs/M2/answer.json abstentions[5]: D756-5 quote 'après arrondi au dixième de pour cent supérieur, à une fraction des taux prévus par l'article D. 131-6-1 fixée à : a) 1/6 … 1/3 dans les autres cas' (exact substring of sealed S9) with the derivation of the 2026 category-e DROM rates 4,3/12,8/17,1 = ceil10(1/6, 1/2, 2/3 × 25,6 %).",
+        "Engine evidence: arms/A/work/engine/checks_R3_drom.json, results_R3_before_drom.jsonl / results_R3_after_drom.jsonl (G2 vs 9bb43d710094), results_M1_*/results_M2_G4_drom.jsonl (G4 DROM BNC 2026 = 4,4/13,1/17,4 observed), expected_values_table in outputs/R3/answer.json (expected 3,9/11,6/15,4 BNC and 7,8/11,6/15,5 CIPAV from 2024-07-01).",
+        "Derivation chain stated in arms/A/work/notes/R3_findings.md and M1/M2 findings: DROM rate = D756-5 fraction × D613-4 rate in force, rounded up to 0.1; D756-5 cites old numbering (D. 131-6-1 / L. 133-6-8)."
+      ],
+      "cited_only": [
+        "URLs carried in the rules' own 'références' and copied into arms/A/work/proposals/M2/modele-social/règles/dirigeant/auto-entrepreneur/exonérations.publicodes: https://www.autoentrepreneur.urssaf.fr/portail/files/Guides/Urssaf-AutoEntrepreneur-Drom.pdf#page=13, https://www.autoentrepreneur.urssaf.fr/portail/accueil/sinformer-sur-le-statut/lessentiel-du-statut.html#vous-etes-auto-entrepreneur-dans, https://www.urssaf.fr/files/live/sites/urssaffr/files/autres/Diaporama_Auto-entrepreneur.pdf#page=15, https://entreprendre.service-public.gouv.fr/vosdroits/F11677, plus legifrance links A added (LEGIARTI000053451315, LEGIARTI000048683570). None of these documents' contents or hashes are preserved anywhere (no network in any task).",
+        "Commit ids as provenance of upstream values: 9bb43d710094 (R3 DROM fix), 55470937 (DROM Cipav 7,8/11,6/15,5), 88cb2ce9 (2026 BNC 25,6 %) — cited from sealed HISTORY.txt/history_bounded_rules.patch; no link to any source document for the numbers in those commits.",
+        "Decree numbers (2017-972, 2024-484, 2025-943, 2026-69) cited from lienModifications; the decree texts themselves are not in the corpus."
+      ],
+      "absent": [
+        "No text sha256 of D756-5 (or any article) in arm A's own artifacts: outputs/R3/answer.json contains no 'sha256'; law/S*_index.json stores ids/dates but no text hash; integrity of the verbatim copies rests on my re-comparison, not on A's records.",
+        "No primary source for the G4 2026 DROM BNC rates 4,4/13,1/17,4 %: they are fractions of 26,1 %, a rate that appears in no sealed text (grep over S0–S10: '26,1 %' absent; the only 2026 category-e rate is 25,6 % in LEGIARTI000052218738). Arm A flags this (NEEDS_REVIEW) and re-proposes 4,3/12,8/17,1 — themselves derived, 'not published as such in the corpus'.",
+        "No source for which group gets 1/6 vs 1/3 (L611-1 2°, outside the set), for L751-1 (collectivities), for the renumbering decree mapping D. 131-6-1 → D613-4 and L. 133-6-8 → L613-7; D756-5 II turnover cap not implemented and unsupported by any rule.",
+        "No source for the micro-social Acre rates (50 %; Acre Cipav 13,40 %) interacting with DROM: decree under L613-7 I not in the set (A abstains)."
+      ],
+      "verification_notes": "Sealed D756-5 is byte-identical across S0–S10 (id LEGIARTI000034726710, text sha256 74b05fccfc127af3cb39815adcf4817241bd4422737f9c1f7181b2c79e909638 recomputed from each snapshot). I read the full sealed text: fractions a) 1/6 (1/3 'dans les autres cas') until the end of the 7th civil quarter after affiliation, b) 1/2 until the end of the 3rd civil year, c) 2/3 from the 4th year, 'après arrondi au dixième de pour cent supérieur', applied to 'les taux prévus par l'article D. 131-6-1' (old numbering). All 8 of A's R3 article_quote entries and the M2 D756-5 abstention quote are exact sealed substrings (one is from the nota of D613-4 LEGIARTI000049624068, found there). A's outputs/R3/answer.json contains no URL and no hash; URLs appear only in rule files (upstream's) and A's proposal copies."
+    },
+    "B": {
+      "preserved": [
+        "70 store links on D756-5 (arms/B/work/sophon/store/links.jsonl; rules_snapshot G0 ×14, G2 ×4, G2post_R3 ×15, G3 ×19, P_M1 ×10, G4 ×4, P_M2 ×4) each carrying article_id LEGIARTI000034726710, article_dateDebut 2017-05-12, article_text_sha256 74b05fcc…9638, law_snapshot (S0/S5/S7/S8/S9), an exact quote with quote_offset, rule, rule_file_sha256, rule_body_sha256 (or rule_owner for nested rules), claim, check and check_result, approval 'none recorded'. I verified all 70: stored sha = sealed sha = recomputed sha; every quote is an exact substring at the stored offset.",
+        "9 distinct D756-5 quotes preserved: '1/6 pour les travailleurs indépendants mentionnés au 2° de l'article L. 611-1 et 1/3 dans les autres cas, jusqu'à la fin du septième trimestre civil…', '1/2 pour la période qui court…troisième année civile d'activité', '2/3 à compter de la quatrième année civile d'activité', 'après arrondi au dixième de pour cent supérieur, à une fraction des taux prévus par l'article D. 131-6-1', 'L'exonération prévue au I est calculée sur le chiffre d'affaires…' (II cap, link L0144 INFERRED).",
+        "Full D756-5 text and hash in arms/B/work/sophon/store/law/S0.json…S9.json (store snapshots) and human dumps arms/B/work/law/S*_dump.txt; as-of report arms/B/work/sophon/reports/R3_asof_D756-5_2024-10-19.json; evidence tables R3_evidence.md, M2_evidence.md.",
+        "Cross-links to the base rates: D613-4 LEGIARTI000049624068 (23,1/23,2 from 2024-07-01, S5), D613-4 LEGIARTI000052218738 (25,6 % 2026, S8/S9) and L613-7 LEGIARTI000048683570 ('Un taux global différent peut être fixé par décret…', links L0010/L0145 INFERRED, quote and sha verified) — the full derivation chain for the DROM constants is recorded as claims on links.",
+        "Executable checks on the pin in use: L0325 G4 DROM taux CIPAV expect 7.8 observed 7.8 VERIFIED; L0326/L0327/L0328 G4 DROM taux service BNC 2026 expect 4.3/12.8/17.1 observed 4.4/13.1/17.4 FAILED; L0354–L0356 on P_M2 VERIFIED (4.3/12.8/17.1); R3-era links L0120–L0145 (G2 FAILED all four; G2post_R3 BIC/vente VERIFIED, BNC/CIPAV FAILED vs 3,9/11,6/15,4 and 7,8/11,6/15,5)."
+      ],
+      "cited_only": [
+        "The same upstream URLs (URSSAF DROM guide PDF page 13, 'lessentiel-du-statut' page, Diaporama PDF page 15, service-public F11677) copied into arms/B/work/proposals/M2/…/auto-entrepreneur/exonérations.publicodes; B's R3 NOTES says the rule 'cites the URSSAF DROM guide (outside the set)'. No content, hash or capture of these documents exists.",
+        "Commits 9bb43d710094, 05334b12, 55470937, 88cb2ce9, ea8f00f0 cited as the origin of upstream values (from sealed HISTORY.txt / patch); no source document behind them is preserved.",
+        "Decree references (2017-972 creating D756-5; 2025-943; 2026-69) from lienModifications; decree texts not in the corpus."
+      ],
+      "absent": [
+        "No primary source for the G4 2026 DROM BNC rates 4,4/13,1/17,4 % (B: 'mort-né basis' = fractions of the never-enacted 26,1 % of LEGIARTI000049624125 MODIFIE_MORT_NE, which has no text in any snapshot) — recorded as FAILED links, not filled.",
+        "No source for the 1/6 vs 1/3 classification (L. 611-1 2°, outside the set; B adopts the library's reading 'and flags it'), for L. 751-1, for the renumbering of D. 131-6-1 / L. 133-6-8; D756-5 II cap only INFERRED (L0144), not implemented.",
+        "No source for the micro-social Acre rate (50 %) or Acre Cipav 13,40 % (links INFERRED/UNKNOWN); no approval evidence for any DROM value (every link 'none recorded')."
+      ],
+      "verification_notes": "Programmatic check over links.jsonl: for the 70 D756-5 links, 74 D613-4 links and 55 D131-6-1 links, article_text_sha256 == sealed text_sha256 == sha256 recomputed from the sealed text, and quote == text[quote_offset:quote_offset+len] in every case (0 problems). The hash chain (prev_hash/record_hash over canonical JSON) recomputed independently: 356/356 records consistent. verify-store re-run: {ok: true, problems: [], links_checked: 356} — but note it ran in 0.7 s and the store's rules_dirs point outside this directory, so its on-disk file check is not evidence; my own sha256 of the sealed G4 files is. B's outputs/R3/answer.json itself carries no URL and no sha256; the hashes live in the store, referenced by link ids (sophon_links L0120–L0145)."
+    }
+  },
+  "Q3": {
+    "sealed_ground_truth": "D613-4 LEGIARTI000052218738 (VIGUEUR 2026-01-01 → 2999-01-01; Décret n°2025-943 du 8 septembre 2025 art. 1, JORF 2025-09-09, signed 2025-09-08; nota 'périodes courant à compter du 1 er janvier 2026'); row e '23 609 euros 34 % 15 582 euros 25,6 %' (previous version LEGIARTI000049624097: 24,6 %). Present with text in sealed S8 (published 2026-01-01T15:46:43.781Z) and S9; S7 listed it only as VIGUEUR_DIFF (text sha256 f86c045c3f09f385dc625fd373e554c1d1f5b23d4accba09d29347e66f319818 recomputed). Rules: sealed G3 d6c374271727 (committed 2025-12-30) evaluates 'service BNC . taux' at 01/01/2026 = 26.1 % (re-run); sealed G4 a61b72947fec (committed 2026-03-03) = 25.6 % (re-run). The change is commit 88cb2ce9660ba41bbc91ae6676a6ef96bb0281af, 2026-01-08 12:12:20 +0100, author Alice Dahan, 'chore(auto-entrepreneur): mise à jour des taux de cotisation et de répartition' (inputs/rules/G4_a61b72947fec/HISTORY.txt; history_bounded_rules.patch lines 267–268 '-alors: 26.1%' / '+alors: 25.6%'). No reviewer, merge, sign-off or approval metadata exists anywhere in the sealed inputs (grep 'approv|sign-off|signoff|ratif': 0 hits in meta.json, HISTORY.txt, patch, law).",
+    "A": {
+      "approval_found": false,
+      "what_exists_instead": [
+        "Law: arms/A/outputs/M1/answer.json changed_articles[0] — D613-4 LEGIARTI000049624097 (ABROGE_DIFF) → LEGIARTI000052218738 (VIGUEUR 2026-01-01 → 2999-01-01), modifying text Décret n°2025-943 du 8 septembre 2025 art. 1 (JORF 2025-09-09, signé 2025-09-08, dateDebutCible 2025-09-10), nota quoted, row-e quote '… 23 609 euros 34 % 15 582 euros 25,6 %' (exact sealed substring); law snapshot S8 legi-data 2.489.0 published 2026-01-01T15:46:43.781Z; arms/A/work/law/S8_index.json, S8_texts.md, M1_S7_S8_record_diff.json.",
+        "Rules/commit: arms/A/outputs/M2/NOTES.md §2 and arms/A/work/notes/M2_findings.md — 'commit 88cb2ce9 (2026-01-08) adopted exactly the M1 values: BNC 25,6 % from 01/2026…' (from sealed history_bounded_rules.patch + diff of G4 against A's M1 proposal); pins G3 d6c374271727 (26,1 %, 'WRONG, matches no text in S6/S7/S8') and G4 a61b72947fec (25,6 %). The author's name is not reproduced in A's deliverables (it is in sealed HISTORY.txt); no approver, reviewer or merge record is cited because none exists.",
+        "Checks: arms/A/work/engine/results_M1_G3_ae.jsonl BNC@01-01-2026 'service BNC . taux' = 26.1 % (G3); results_M1_proposal_ae.jsonl = 25.6 % (A's M1 proposal, dated 2026-01-01); results_M2_G4_ae.jsonl = 25.6 % (G4). Re-run by me on the sealed pins: G3 → 26.1 %, G4 → 25.6 % (identical).",
+        "Explicit statements: arms/A/outputs/M1/answer.json 'approval': 'none recorded'; outputs/M1/NOTES.md line 3 'Approval: none recorded (the corpus holds no sign-off, ratification or approval record; a merge, commit, package or test is not approval)'; same in M2."
+      ],
+      "verification_notes": "No approval evidence exists in arm A's artifacts or in the sealed inputs; the correct answer is that nobody's approval is recorded, and arm A says exactly that. What A preserves — version id, dates, decree, snapshot publish date, exact row-e quote, pin commits and engine values — all re-verified against the sealed S8/S9 records, G3/G4 meta.json and re-run evaluations. A's claim that G3's 26,1 % 'matches no text' is confirmed: '26,1 %' occurs in no sealed snapshot. A's M1 proposal (25,6 %) predates upstream commit 88cb2ce9 by 7 days; no artifact shows any causal or approval relation."
+    },
+    "B": {
+      "approval_found": false,
+      "what_exists_instead": [
+        "Law: store snapshots arms/B/work/sophon/store/law/S8.json, S9.json (D613-4 LEGIARTI000052218738, text sha256 f86c045c…9818); as-of report arms/B/work/sophon/reports/M1_asof_D613-4_2026-01-01.json (72 links; article_versions_known S8/S9 → …738 in force, published 2026-01-01T15:46:43.781Z / 2026-03-31T16:18:17.431Z; approvals ['none recorded']); arms/B/work/law/compare_S7_S8.txt, S8_dump.txt; outputs/M1/NOTES.md.",
+        "Links on LEGIARTI000052218738 with exact quote 'e) Travailleurs indépendants relevant à la fois de l'article L. 631-1 et du régime prévu à l'article 102 ter …' (verified): L0217 G3 'service BNC . taux' expect 25.6 observed 26.1 FAILED; L0221/L0222 G3 amounts FAILED (256 vs 261); L0259 P_M1 VERIFIED 25.6; L0321 G4 VERIFIED 25.6 (recorded 2026-10-11T19:58:02Z); L0349 P_M2 VERIFIED 25.6 — every one with approval {'status': 'none recorded', 'evidence_sha256': null}.",
+        "Commit: arms/B/outputs/M2/NOTES.md §2 and outputs/M2/answer.json (60 mentions) — 'Commits 88cb2ce9 + 55470937 (2026-01-08) and ea8f00f0 (2026-01-27) transposed the 2026 D613-4/D613-6 values (BNC 25,6 %, all splits, arrondi, références pinned to LEGIARTI000052218738/…747)'; store rules/G3.json vs G4.json file hashes (règles/dirigeant/auto-entrepreneur/cotisations-et-contributions.publicodes changed; G4 hash 0f7d906a… recomputed OK). Author/approver not named in B's deliverables; the sealed HISTORY.txt gives only the commit author.",
+        "Explicit statements: outputs/M1/NOTES.md §8 and M2 §9 'None recorded anywhere in the corpus (no sign-off, ratification or approval file)'; answer.json 'approval': 'none recorded'; src/USAGE.md: the store cannot record an approval without an evidence file, and 'In this corpus no such file exists'."
+      ],
+      "verification_notes": "Approval: absent in the store (356/356 links 'none recorded'), in B's notes and in the sealed inputs — B's answer 'none recorded' is exactly right. What exists was re-verified: sealed S8 record (id, dates, decree, 25,6 % quote, sha256 recomputed), G4 commit and file hash, commit 88cb2ce9 in sealed HISTORY.txt/patch, and re-run evaluations G3 26.1 % / G4 25.6 % matching links L0217/L0321. B's P_M1 proposal (2026-01-01) also carried 25.6 % before upstream commit 88cb2ce9 (2026-01-08); no artifact links the two."
+    }
+  },
+  "overall_notes": "Method: everything was checked against the sealed inputs inside the audit directory only, with python3 -I, sha256sum and node src/publicodes_eval.mjs; no network, no git, 50 tool calls in total (see output/AUDIT_NOTES.md for every command). Shared findings: (1) both arms give the same correct reconstruction for Q1 — D131-6-1 LEGIARTI000053451315, in force 2026-01-01 (créations/reprises from that date), 'le quart' of the listed contributions below 3/4 PSS, visible only from S9 (2026-03-31); the sealed pin G4 a61b72947fec still exempts 100 % and only each arm's unmerged proposal yields 25 % (re-run confirmed for both); (2) for Q2 both preserve D756-5 (fractions 1/6-or-1/3, 1/2, 2/3, rounded up to 0,1, of the D613-4 rates) — arm B with hashes, offsets and checks in a chained store, arm A with verbatim text copies and exact quotes but no hashes — and both only cite the URSSAF URLs that upstream rules carry; nobody has a primary source for G4's 2026 DROM BNC 4,4/13,1/17,4 (fractions of a rate that appears in no sealed text); (3) for Q3 no approval record exists anywhere — the artifacts hold the S8 snapshot, the decree reference, exact row-e quote, the upstream commit 88cb2ce9 (2026-01-08, author Alice Dahan per sealed HISTORY.txt — an author, not an approver) and passing/failing engine checks; both arms state 'none recorded' and neither invents one. Differences: arm B's records are independently recomputable (article sha256, rule-file sha256, rule-body sha256, hash chain, stored check situations) whereas arm A's rest on commit ids, verbatim copies and engine result files; arm A's quotes are nevertheless 100 % exact (462/462 in M2, 8/8 in R3). Caveats found: B's as-of report for D131-6-1 was generated for 2026-03-31, not 2026-01-01 (I regenerated it; same content); B's store rules_dirs are absolute paths outside this directory, so verify-store's 'ok' does not prove on-disk file re-hashing (replaced by my own recomputation); B's G4.json indexes top-level rules only (nested DROM rules resolve via rule_owner). No WRONG element was found in either arm for the three questions."
+}

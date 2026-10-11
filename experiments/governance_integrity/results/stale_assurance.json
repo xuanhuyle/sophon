@@ -1,0 +1,45 @@
+{
+ "links_total": 356,
+ "verified_total": 224,
+ "replay": {
+  "hold": 224,
+  "fail": 0,
+  "no_check": 0,
+  "unresolvable_rules_dir": 0,
+  "fail_rows": []
+ },
+ "chain": {
+  "ok": true,
+  "broken_at": null
+ },
+ "anchors": {
+  "article_hash_ok": 224,
+  "article_hash_bad": 0,
+  "quote_offset_ok": 224,
+  "quote_offset_bad": 0,
+  "rule_file_hash_ok": 224,
+  "rule_file_hash_bad": 0,
+  "missing_anchor_fields": 0,
+  "bad_rows": []
+ },
+ "stale_reports": [
+  {
+   "report": "M1_revalidate_S8_G3_final.json",
+   "link": "L0243",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC Cipav . répartition . invalidité-décès . taux de répartition"
+  }
+ ],
+ "stale_pin_links": [
+  {
+   "link": "L0243",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC Cipav . répartition . invalidité-décès . taux de répartition",
+   "date": "01/01/2026"
+  },
+  {
+   "link": "L0304",
+   "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . taux",
+   "date": "01/01/2026"
+  }
+ ],
+ "SA": 3
+}

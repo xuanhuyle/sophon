@@ -1,0 +1,107 @@
+commit 1d2874c5eb0f5a26b913c72a83920504c42766c9
+AuthorDate: 2024-08-01 10:08:19 +0200
+CommitDate: 2024-08-01 15:01:55 +0200
+feat(auto-entrepreneur): Ajoute les taux de cotisation BNC pour 2025 et 2026
+
+
+diff --git "a/modele-social/r\303\250gles/dirigeant/auto-entrepreneur/auto-entrepreneur.publicodes" "b/modele-social/r\303\250gles/dirigeant/auto-entrepreneur/auto-entrepreneur.publicodes"
+index 19a2b621e..20a2a510e 100644
+--- "a/modele-social/r\303\250gles/dirigeant/auto-entrepreneur/auto-entrepreneur.publicodes"
++++ "b/modele-social/r\303\250gles/dirigeant/auto-entrepreneur/auto-entrepreneur.publicodes"
+@@ -297,6 +297,10 @@ dirigeant . auto-entrepreneur . cotisations et contributions . cotisations:
+       avec:
+         taux:
+           variations:
++            - si: date >= 01/2026
++              alors: 26.1%
++            - si: date >= 01/2025
++              alors: 24.6%
+             - si: date >= 07/2024
+               alors: 23.1%
+             - si: date >= 10/2022
+@@ -308,23 +312,63 @@ dirigeant . auto-entrepreneur . cotisations et contributions . cotisations:
+             maladie-maternité:
+               valeur: service BNC * taux de répartition
+               avec:
+-                taux de répartition: 3.90%
++                taux de répartition:
++                  variations:
++                    - si: date >= 01/2026
++                      alors: 3%
++                    - si: date >= 01/2025
++                      alors: 3.40%
++                    - si: date >= 07/2024
++                      alors: 3.60%
++                    - sinon: 3.90%
+             invalidité-décès:
+               valeur: service BNC * taux de répartition
+               avec:
+-                taux de répartition: 4.10%
++                taux de répartition:
++                  variations:
++                    - si: date >= 01/2026
++                      alors: 3.25%
++                    - si: date >= 01/2025
++                      alors: 3.50%
++                    - si: date >= 07/2024
++                      alors: 3.70%
++                    - sinon: 4.10%
+             retraite de base:
+               valeur: service BNC * taux de répartition
+               avec:
+-                taux de répartition: 55.50%
++                taux de répartition:
++                  variations:
++                    - si: date >= 01/2026
++                      alors: 44.85%
++                    - si: date >= 01/2025
++                      alors: 47.60%
++                    - si: date >= 07/2024
++                      alors: 50.75%
++                    - sinon: 55.50%
+             retraite complémentaire:
+               valeur: service BNC * taux de répartition
+               avec:
+-                taux de répartition: 0%
++                taux de répartition:
++                  variations:
++                    - si: date >= 01/2026
++                      alors: 17.7%
++                    - si: date >= 01/2025
++                      alors: 13%
++                    - si: date >= 07/2024
++                      alors: 7.85%
++                    - sinon: 0%
+             autres contributions:
+               valeur: service BNC * taux de répartition
+               avec:
+-                taux de répartition: 36.50%
++                taux de répartition:
++                  variations:
++                    - si: date >= 01/2026
++                      alors: 31.20%
++                    - si: date >= 01/2025
++                      alors: 32.50%
++                    - si: date >= 07/2024
++                      alors: 34.10%
++                    - sinon: 36.50%
+ 
+     vente restauration hébergement:
+       description: Cotisations pour la part du chiffre d'affaires en vente, restauration et hébergement
+diff --git "a/modele-social/r\303\250gles/dirigeant/auto-entrepreneur/exon\303\251rations.publicodes" "b/modele-social/r\303\250gles/dirigeant/auto-entrepreneur/exon\303\251rations.publicodes"
+index 8914c3ae1..bd6607f97 100644
+--- "a/modele-social/r\303\250gles/dirigeant/auto-entrepreneur/exon\303\251rations.publicodes"
++++ "b/modele-social/r\303\250gles/dirigeant/auto-entrepreneur/exon\303\251rations.publicodes"
+@@ -126,7 +126,11 @@ dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . tau
+         service BNC:
+             remplace: cotisations . service BNC . taux
+             valeur: taux ACRE * cotisations . service BNC . taux
+-            arrondi: 1 décimale
++            arrondi: 
++              variations:
++                - si: date >= 01/2026
++                  alors: 2 décimales
++                - sinon: 1 décimale
+ 
+         vente restauration hébergement:
+             remplace: cotisations . vente restauration hébergement . taux

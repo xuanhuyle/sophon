@@ -30,11 +30,15 @@ fresh subagent context pointed only at its staged directory. Tool-call counts an
 | 10 | B | M1 | b129935d0461 | a862e0600b64005dc | 32 | 59 | 1287 | none | Found the same D613-4/D613-6 change (Décret 2025-943); 56 AFFECTED / 4 NEEDS_REVIEW / 316 UNAFFECTED (297 not re-examined, articles byte-identical); proposal with BNC 25,6 %, 2026 splits, DROM BNC re-derived and the DROM Cipav fix; build OK; store: 84 links added (300 total, verify-store clean) |
 | 11 | B | M2 | 3dfc235fd52c | a0aa9fefad0b8257f | 39 | 83 | 1632 | none | Found the single changed article D131-6-1 (Acre share → quarter for creations from 2026-01-01); 18 AFFECTED / 15 NEEDS_REVIEW / 43 UNAFFECTED, 300 not re-examined; proposal builds (652/1334); store: 56 links added (356 total, verify-store clean), 11 reports |
 
-All 22 solver runs complete: arm A 357 tool calls over 11 tasks, arm B 334. No run contaminated after review.
+All 22 solver runs complete: arm A 314 tool calls over 11 tasks (538 assistant turns, 11 180 s wall-clock), arm B 301
+(640 turns, 12 927 s). No run contaminated after review. (Correction: the first version of this line said 357 / 334,
+an addition slip; the per-run values in the table and in each `AUDIT.json` were always 314 / 301. Token usage as
+recorded by the harness per run, summed: A cache-read 55.29 M, cache-creation 7.29 M; B cache-read 74.48 M,
+cache-creation 7.70 M.)
 
-| Round | Role | Staged prompt sha256 (first 12) | Agent transcript id | Tool calls | Notes |
-|---|---|---|---|---|---|
-| 12 | T4 auditor (fresh context, both arms' artifacts + sealed inputs, no held_out) | see `audit/STAGE_MANIFEST.json` | a768aa636237fdf22 | (filled after completion) | |
+| Round | Role | Staged prompt sha256 (first 12) | Agent transcript id | Tool calls | Assistant turns | Wall-clock (s) | Leakage flags | Notes |
+|---|---|---|---|---|---|---|---|---|
+| 12 | T4 auditor (fresh context, both arms' artifacts + sealed inputs, no held_out) | 038414846581 | a768aa636237fdf22 | 50 | 64 | 993 | none | Answered Q1–Q3 for both arms; recomputed hashes, re-ran stored checks, substring-tested quotes; no WRONG element in either arm; wrote `audit/output/audit.json` and `AUDIT_NOTES.md` (every command listed). Mechanically re-checked by `src/verify_audit.py` (`results/audit_verification.json`) |
 
 **Protocol limitation surfaced by round 9.** The preregistered task order runs R4 (decision date 2026-03-31, snapshot S9) and
 R5 (2026-10-05, S10) before M0, M1 and M2 (2025-10-01, 2026-01-01, 2026-03-31). Each arm's persistent `work/` therefore

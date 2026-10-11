@@ -56,10 +56,17 @@ def main():
             row = {"auditor_label": f.get("verification"), "source_path": f.get("source_path")}
             sp = f.get("source_path")
             if sp:
-                p = stage / sp
-                row["source_exists"] = p.exists()
-                if p.exists() and p.is_file():
-                    row["source_sha256"] = hashlib.sha256(p.read_bytes()).hexdigest()
+                # the auditor cites several paths per field, with annotations: "arms/A/outputs/M2/answer.json (rules[*]); arms/A/work/README.md ('Key state')"
+                cands = [c for c in re.findall(r"[A-Za-z0-9_./\-§]+/[A-Za-z0-9_.\-§]+", str(sp)) if "/" in c]
+                checked = {}
+                for c in dict.fromkeys(cands):
+                    c2 = c.split("§")[0].rstrip(".,;:")
+                    if not (stage / c2.split("/")[0]).is_dir():
+                        continue  # a JSON path fragment such as "changed_articles[0].new/nota", not a file path
+                    checked[c2] = (stage / c2).exists()
+                row["source_paths_checked"] = checked
+                row["source_exists"] = bool(checked) and all(checked.values())
+                row["source_paths_missing"] = [c for c, ok in checked.items() if not ok]
             digests = HEX.findall(val + " " + json.dumps(f.get("how", ""), ensure_ascii=False))
             if digests:
                 row["digests_quoted"] = digests
