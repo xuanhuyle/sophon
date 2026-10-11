@@ -1,195 +1,171 @@
-# Sophon — Next task: Semantic-Layer Boundary & Baseline Failure Test
+# Sophon — Build the minimal persistent AI-governance infrastructure
 
-**Date:** 2026-10-11  
-**Status:** Execution prompt — bounded technical spike, NOT a request for a platform.  
-**Goal:** Find a reproducible technical limitation in a *competent* Claude Code + native semantic-layer workflow that could justify ONE specialized Sophon mechanism. If no such limitation can be demonstrated, say so and stop.
+Date: 2026-10-11
+Status: **REVISED execution prompt**, superseding the earlier "Semantic Layer Boundary & Baseline Failure Test" at this path.
 
-## 0. Why we are doing this
+## 0. Essential correction: product thesis and evaluation objective
 
-The owner's precise Sophon thesis is:
+The owner has explicitly rejected the idea that Sophon's reason to exist is to outperform the best LLM at comparing a governing policy with business code.
 
-> An authoritative governing corpus (contracts, regulations, organizational policies and approved amendments) is transposed **through the enterprise's existing semantic layer**, which is connected to downstream data systems and serves BI/AI consumers. Sophon should maintain a correct, evidence-backed, bidirectional relationship between governing authority and that semantic layer, support proposed changes when requirements change, verify when semantic definitions change, and preserve independent audit evidence over time.
+**Sophon is proposed as AI-native governance INFRASTRUCTURE.** A capable LLM may perform the interpretation and coding extremely well, but a chat or an ephemeral coding session is not itself an organization's durable system of record, change-control mechanism or audit interface. Conversely, competent engineers *can* construct such infrastructure with Git, databases and existing governance products. Sophon does not claim an intrinsically novel algorithm merely because it persists information.
 
-The semantic layer is the **actual integration boundary**, not a decorative YAML representation. We do NOT substitute an independent policy runtime or reconstruct the entire warehouse in Sophon. The semantic layer is not assumed to govern actions outside its coverage, and correct semantic responses do not prove downstream agent behavioral compliance.
+The architecture is SPECIFIC:
 
-On 2026-10-11 the previous **governance-integrity** experiment finished with **STOP_KERNEL**, narrowly for a persistent link store added to Claude Code in a Publicodes legal-to-rule environment. Both arms produced identical material changes (22/22) and an equal as-of audit (9/9). The specialist store preserved provenance and revalidated, but changed no scored answers and consumed more tokens/time. Publicodes is **not** a dbt MetricFlow / Snowflake / Databricks business semantic layer.
+    AUTHORITY: contracts / regulations / approved organizational policies / amendments
+                                 |
+                                 v
+                              SOPHON
+       translate proposals / maintain evidence & authority / verify / audit
+                                 |
+                                 v
+               EXISTING ENTERPRISE SEMANTIC LAYER
+             (dbt MetricFlow or verified native equivalent)
+                                 |
+                                 v
+                     EXISTING DATA SYSTEMS
+                                 |
+                                 v
+                   BI and AI metric consumers
 
-Moreover, the prior preregistration contained a **chronology leak**: 2026 reverse episodes were executed before 2025/early-2026 maintenance tasks, with future evidence carried in each arm's memory. Two scoring passes were needed to repair ambiguous reference labels and evaluator bugs. These defects cannot recur.
+**Transposition occurs THROUGH the existing semantic layer**, which already represents business meaning and connects to the data systems. Do NOT separately rebuild the warehouse, directly patch every downstream consumer, or invent a parallel semantics engine. A correct semantic metric does not prove all downstream agent actions comply with policy; state this boundary.
 
-**Do not rescue the stopped mechanism by simply re-running the same comparison on another repository.** Do not build a new ledger, graph, legal DSL, orchestration framework, product/UI, agent runtime or generalized compliance engine.
+The real next question is:
 
-The next decision is smaller and earlier in the causal chain:
+> Can we build the smallest working infrastructure that keeps authoritative policy versions, approved interpretations, semantic definitions, applicable dates, validation runs, changes and their evidence persistently linked, and that remains queryable and independently auditable after the LLM session ends and either side changes?
 
-> **Does a strong Claude Code workflow using an actual pre-existing enterprise-style semantic layer and conventional governance/testing tools exhibit a concrete, reproducible failure in transposition, bidirectional verification, scope/coverage or evidence-based audit that is worth solving with specialized machinery?**
+The experiment is a **functional vertical-slice validation** of infrastructure, not another A-versus-B LLM accuracy benchmark, sales exercise, or claim of novelty.
 
-We are looking for the *failure and its cause*, not proving Sophon succeeds.
+**Do the build-and-test, not just write a proposal.** If the actual semantic runtime cannot be made to work in the bounded effort, report BLOCKED with reproducible diagnostics; do not substitute Publicodes or pretend static YAML is a functioning BI semantic layer.
 
-## 1. Read repository evidence BEFORE selecting a test
+## 1. Read and preserve previous evidence
 
-Inspect all of:
+Read:
+- README.md, docs/REPORT.md, docs/DECISION.md, docs/OWNER_REQUEST.md.
+- The completed experiment on branch \`origin/experiment/governance-integrity-2026-10-11\`: \`experiments/governance_integrity/EVIDENCE_GATE.md\`, \`PROTOCOL.md\`, \`RESULTS.md\`, \`DECISION.md\`, \`AUDIT_REPORT.md\`.
+- On \`origin/codex/alignment-review-agent\` (PR #2): \`viability/RESULTS.md\` and \`viability/public_nyc/README.md\`.
+- The historical prompt at this file's parent Git commit if needed to understand why the task changed.
 
-- README.md
-- docs/REPORT.md and docs/DECISION.md (2026-09-21 policy-as-code parity)
-- docs/OWNER_REQUEST.md
-- Claude_Code_Sophon_Amendment_Impact_Experiment_Prompt_2026-10-04.md (prompt only, never executed)
-- Claude_Code_Sophon_Governance_Integrity_Experiment_Prompt_2026-10-11.md
-- On branch origin/experiment/governance-integrity-2026-10-11:
-  - experiments/governance_integrity/EVIDENCE_GATE.md
-  - experiments/governance_integrity/PROTOCOL.md
-  - experiments/governance_integrity/RESULTS.md
-  - experiments/governance_integrity/DECISION.md
-  - experiments/governance_integrity/AUDIT_REPORT.md
-- On branch origin/codex/alignment-review-agent (PR #2):
-  - viability/RESULTS.md
-  - viability/public_nyc/README.md
+Record a short \`experiments/governance_infrastructure/PRIOR.md\` explicitly affirming:
 
-Read those branches **without modifying them** (git show, or a read-only worktree). Summarize in <= 500 words what is already known vs the one new uncertainty. Preserve negative evidence; never retroactively change prior verdicts.
+(a) Publicodes experiment: **STOP_KERNEL** for the extra hash-linked store as a performance differentiator on that bounded law-to-rule task, not a verdict that governance infrastructure is unnecessary;  
+(b) previous dbt/DuckDB viability: technically interesting but synthetic/manual reference and NOT a live MetricFlow test;  
+(c) the previous experiment was chronologically contaminated (2026 texts before 2025 tasks);  
+(d) persistent governance / provenance / independent audit **must actually work**, irrespective of LLM comparative accuracy.
 
-**Important existing observations:** a synthetic Jaffle dbt/DuckDB governance fixture already passed 9/9 scripted checks, but all reference tests were authored manually; a public NYC taxi/dbt review found real record-loss and monetary-precision problems in existing transformation SQL but had no blinded baseline, no genuine MetricFlow semantic interface, and no authoritative contract matched to the upstream project. Do not count either as a new proof.
+Do not overwrite, selectively reinterpret or quietly erase the negative findings. Do not rerun the previous 22-agent experiment.
 
-## 2. Scope / time discipline
+## 2. Choose ONE existing real semantic-layer execution environment
 
-This is a **single, bounded technical spike**, not another 22-run research program.
+Preferred starting candidate:
+https://github.com/behramkorkut/Governed-Analytics-Agent
 
-- Evaluate no more than TWO public candidate environments; choose ONE.
-- Make ONE attempt to reproduce a genuine semantic-layer runtime and query (version-pin dependencies and inputs).
-- ONE baseline solver run (one independent fresh context) covering at most two small change episodes plus one no-op/uncertain control.
-- ONE independent verification pass with an immutable reference.
-- No more than one narrow fix for a setup/runtime bug; if environment fundamentally cannot execute, document the failure and stop.
-- No sophisticated agent swarms, no 15–30-case benchmarks, no API spending loops, no lengthy competitive landscape sweep, and no repo-wide refactoring.
-- If a genuine technical failure is absent, **do not manufacture one** just to justify Sophon.
+It claims a working dbt + MetricFlow + DuckDB retail analytics stack, native \`mf\` queries, downstream AI/BI consumers and 15 metrics. Inspect actual source, versions, SQL, executable metrics, licenses and tests; do not trust the README alone. Its data are **synthetic** and no authentic external policy corpus is established. That is fine for a labelled **ENGINEERING** proof of infrastructure, but not for claiming real enterprise compliance.
 
-Write and commit under experiments/semantic_boundary/ only; do not modify prior PR #2 or PR #3.
+If blocked, inspect at most ONE credible alternative with a real, executable native semantic interface. Do not spend days building a new data estate. If neither works, stop with BLOCKED / exact execution evidence; no fake semantic substitute.
 
-## 3. Find the right environment — GATE FIRST
+Reuse the existing published semantic definitions and their underlying data as-is initially. Choose a metric whose meaning is governed by an intelligible, independently checkable business policy. Run a real native semantic query before proceeding. Preserve upstream commit, manifest, relevant semantic files, compiled query and query output/data fingerprint. Check at least one downstream BI/AI consumer is actually wired to the same semantic catalog if the project provides one. Do not claim live external platform compatibility when running DuckDB locally.
 
-Candidates worth verifying directly from source (not preapproved):
+## 3. Freeze a tiny, transparently labelled policy-and-change scenario BEFORE coding
 
-**Candidate 1, actual MetricFlow:**  
-https://github.com/behramkorkut/Governed-Analytics-Agent  
-README claims dbt + MetricFlow + DuckDB/Snowflake, 15 governed metrics and an LLM consumer. The inputs are synthetic; there is no established external authoritative governing corpus or authentic amendment history. Confirm actual source, runtime, tests and versions.
+If no **authentic matched governing policy** exists (likely), use a small explicitly **LAB-AUTHORED** governing document. This is permitted to validate infrastructure mechanics but *never* used as evidence that Sophon can interpret real legal complexity or that a company's policy was approved.
 
-**Candidate 2, native alternative with governance checks:**  
-https://github.com/flyersworder/agentic-data-contracts  
-Claims dbt/Cube/other semantic-source integration, contract-based business policies, verified-example validation, drift checks and evaluated agent access. Inspect what is runnable. This is a **conventional/competitor baseline**, not automatically a metric-layer implementation or an external legal corpus.
+Have an independent harness prepare and freeze BEFORE the implementation:
+- V1 of a *bounded* business policy with an explicit effective date, 1–2 requirements and an example expected semantic outcome;
+- a plausible policy amendment V2 with publication/observed time and effective date;
+- one changed semantic definition that should be identified as drift (separate reverse direction);
+- one equivalent refactor or untouched metric as a negative control;
+- an ambiguity/out-of-scope example that cannot honestly be verified through the semantic layer;
+- deterministic expected behavior on selected underlying records / metric queries, prepared separately from the code generator. The oracle must not simply replay the generated implementation.
 
-Choose an existing project with real executable **dbt MetricFlow semantic models** (entities/dimensions/measures/metrics or equivalent verified native Snowflake/Databricks semantic objects), executable underlying data, and at least one real downstream query or consumer. We prefer a single organization that has its own genuine, dated policy/metric-governing requirements and changed both sides historically. But **do not invent authenticity**.
+Keep exact test inputs and oracle out of the LLM proposing the implementation when feasible. Include publication, observed and effective dates as distinct concepts. Validate that a historical "known as of" query cannot know later-published amendments, even if an amendment is backdated. **Mechanically enforce chronology**; no future memory leaks.
 
-Hard classifications:
+A small controlled scenario is not cheating if it is candidly an engineering test. It is cheating to claim it is a real historical enterprise governance benchmark.
 
-- REAL GOVERNANCE MATCH: a demonstrably pre-existing normative/approved business policy from the same entity, not generated after looking at the implementation, mapped to existing semantic objects with genuine change history and independent reference.
-- SEMANTIC-BOUNDARY ENGINEERING PROXY: real pre-existing semantic interface and executable data, but policy is project README (descriptive, not approved), data are synthetic, history is insufficient, or changes must be controlled mutations. This can test integration and certain failure modes, **not the enterprise governance thesis**.
-- NO EXECUTABLE MATCH: none runnable. Report exact obstacles; don't spend time building a new synthetic organization.
+## 4. Build the MINIMUM reusable infrastructure (one narrow vertical slice)
 
-Write GATE.md with source URLs, immutable SHAs, versions, governing-authority classification, data provenance, downstream consumption, run evidence, and limits. The earlier Publicodes experiment must not be reused as the target; its negative evidence stands.
+Implement under \`experiments/governance_infrastructure/\` with one native semantic adapter and a minimal durable state store, using conventional standards/libraries whenever possible (Git, SQLite, content hashes, JSON; no proprietary DSL, graph database, orchestration platform, new legal ontology, production service or web UI).
 
-## 4. The smallest runnable challenge (if gate permits)
+Six functional properties must exist:
 
-Focus on **an existing semantic layer and its consumers**, not transformation SQL alone.
+**I. INGEST & VERSION authority.**
+Register original governing text, amendments, observed-at time, effective period, source provenance, interpretation state (proposed / approved / rejected / unresolved), and the real approver event *if any*. It must never infer an approval merely from LLM output or a Git merge. Synthetic acceptance events must be labelled simulation.
 
-A. BASELINE STATE:
-- Run the native semantic query interface (e.g., \`mf query\`, or the exact native equivalent) against its actual configured data.
-- Identify a bounded *business requirement* independent of the solver's own generated rationale. Label actual authority: approved public policy, existing documented metric contract, or controlled lab requirement.
-- Capture actual semantic source files, manifest (if available), output query and result, underlying data fingerprint, Git SHA, versions, and downstream BI/AI consumption evidence if the project exposes it.
+**II. MAP THROUGH THE EXISTING SEMANTIC LAYER.**
+Propose requirement <-> existing metric / semantic model / dimension / dependency links, referencing actual source file, semantic identity and git revision; show provenance, confidence and unresolved coverage. The LLM can propose links. The infrastructure must persist both proposal and disposition, not magically treat a proposal as verified.
 
-B. FORWARD CASE:
-- Use ONE genuine later requirement change if there is an authentic dated source and historical pre-change snapshot.
-- Otherwise, use ONE **explicitly labelled controlled policy amendment** prepared and frozen by a separate builder against the PRE-change semantic project, not leaked to the baseline solver and NOT scored as genuine historical governance.
-- Let Claude Code + native tools analyze the governing delta, identify the *existing semantic definitions* requiring change, propose edits on a disposable branch, execute the real semantic runtime on data, and produce source-grounded audit evidence. It is acceptable to abstain where the source is insufficient.
-- Test both affected and unaffected metrics. The intended result must not be embedded in object names or post-change descriptions.
+**III. TRANSPOSE WITH CONTROL.**
+Given amendment V2, propose a change to the *existing semantic-layer code/configuration* in a disposable copy/branch, not directly to raw production tables. Gate the change on the actual applicable authority/approval status. Execute its native syntax/compile, metric query and relevant data-backed assertions against the independently frozen expected results. Preserve the proposed patch, rule/metric version, input fingerprint, test output and who/what authorized promotion. If no real person has approved it, the result remains explicitly UNAPPROVED / SANDBOX_ONLY.
 
-C. REVERSE CASE + NEGATIVE CONTROL:
-- A separate real historical semantic-model change is preferable. If unavailable, make ONE controlled semantic mutation, separately prepared and hidden: changed aggregation, filter, join path/entity grain, effective date or an expression with non-obvious business implications. Do not only change a string literal.
-- Include a legitimate no-op/equivalent refactor OR out-of-scope requirement. The solver should not flag everything as a violation.
-- Ask if the unchanged governing definition is still correctly implemented, verify against live semantic results, and specify what remains NOT OBSERVABLE.
+**IV. BIDIRECTIONAL VERIFY / INVALIDATE.**
+After a governing change, automatically mark dependent verification stale and produce an actionable impact set, including no-op links. After an independent semantic change, re-evaluate relevant governing claims and distinguish material discrepancy / harmless refactor / unknown. No manual reset of links between changes. Show both "correct for recorded test cases" and "not fully verified" rather than claiming universal legal compliance.
 
-D. AS-OF EVIDENCE CHECK (small, not the old trivial audit):
-- From the baseline's own retained artifacts, attempt to reproduce the governing-source/version claim, the semantic definition/commit, the executable metric result and any genuinely recorded approval. Validate hashes and executable commands.
-- Do NOT make hashes a proprietary Sophon advantage. The baseline may use Git, checksums, documentation, tests, native metadata/lineage and existing governance tooling.
-- Distinguish what the semantic layer can verify from actual behavior of downstream agents; do not claim the latter.
+**V. PERSIST WITHOUT LLM CONTEXT.**
+Terminate the initial execution/context, start a clean process/worktree (and ideally a separate fresh Claude context for the independent auditor). Without original chat or transient agent memory, query durable state and reconstruct the relevant source versions, interpretation/approval status, semantic versions, events and execution receipts. Exact immutable source material or retrievable content-addressed records must be preserved: a hash alone is not the evidence.
 
-Do not make the same model both inventor of the only reference assertions and evaluator of its own output. Seal the builder's deterministic reference scenarios and expected outputs before the solver runs; keep any injected cases segregated from real-world evidence. Label ambiguous/unprovable claims UNRESOLVED.
+**VI. INDEPENDENT AUDIT.**
+Provide \`as-of\` queries for (a) effective policy at date X *as known at date Y*, (b) semantic definition in force, (c) last verification and what data it tested, (d) missing or superseded authority, (e) amendments and recorded approvals, and (f) **coverage/unknowns**. An independent audit script must recompute the hashes, inspect the actual source snippets/semantic files and re-execute at least one recorded metric check. An LLM-written PDF/report without verifiable receipts FAILS.
 
-## 5. Chronology / information isolation (mechanically enforced)
+Only use an LLM where it adds interpretation/proposal convenience. The audit, source integrity, as-of ordering, stale-state transitions and compiled semantic query must be demonstrably operational without believing the LLM's narrative.
 
-This requirement fixes the mistake in the previous experiment.
+## 5. Acceptance / adversarial checks
 
-Before any solver run, create a machine-readable timeline manifest: each input source with (publication/commit time, effective time, allowed decision time); all historical cases must be in ascending **decision time**. Publication, legal effective date and date of observation are NOT interchangeable.
+Pre-register an independent machine-checkable \`PROTOCOL.md\` and immutable reference BEFORE writing solution code. Focus on functionality, not benchmark superiority.
 
-- Programmatically assert: no staged file, historical note, tool transcript, stored context or prior scenario contains an artifact published after that task's decision-time cutoff. Fail closed on violations.
-- Never let a future episode's notes flow backwards. Use separate clean worktrees if tasks are nonchronological, or don't retain memory in that case.
-- If a timeline cannot be reconstructed, make the task a **contemporaneous controlled diagnostic**, never a blind historical replay. Say so.
-- A shared model's pretraining might already contain public commits; note this limitation. Do not assert complete blinding merely because the hidden folder was inaccessible.
-- Execute scorer smoke tests with known pass, known fail and an ambiguous case **before** scoring. Freeze scorer code and reference before seeing solver results. No post-result gold redefinition.
-- If a scoring error is found later, retain the entire first pass and issue a separate marked methodological amendment; do not present repaired scores as if preregistered.
+Required pass/fail tests:
+1. V1 policy is stored with a stable original artifact, correct source identity, observed/effective dates and semantic binding.
+2. Native semantic query actually runs on underlying data, and V1 result matches a *separately specified* expectation.
+3. V2 policy arrival invalidates only relevant links, can be transposed into a proposed semantic change, and native result matches the separate V2 expectation (no false claim of deployment/approval).
+4. Independently editing the existing semantic definition creates an appropriate review/failed-verification status; an equivalent refactor/no-op does not produce a fabricated compliance violation.
+5. After a fresh process/session starts, an auditor **without the first agent's chat/session** can reconstruct both V1 and V2, binding versions, recorded tests, approvals or their absence, and unknown coverage.
+6. Tampering with stored source or semantic code, deleting evidence, modifying effective dates or modifying a result receipt causes independent integrity/audit checks to fail closed. If hashes/archives are themselves editable without an anchored trusted root, state the integrity trust assumption.
+7. An unpublished future amendment is never treated as already known for an earlier knowledge-time query even if its effective date is retroactive.
+8. A policy item not represented by the semantic layer is classified OUT_OF_SCOPE or UNKNOWN, not VERIFIED.
+9. Outputs remain **accurately labelled**: LAB_AUTHORED policy, simulated approval vs real, native runtime vs emulation, verified test-case behavior vs general compliance, semantics vs downstream agent behavior.
 
-One solver and one scorer context is enough. Record costs, model, exact commits and task transcript. Only let scorer see the hidden reference after the baseline answer is frozen.
+Include tests that fail if the core implementation is disabled (mutation/sabotage sanity). Treat generic successful scripts, a hash match or 100% test pass with a vacuous oracle as no evidence.
 
-## 6. Baseline FIRST; no Sophon-specific mechanism yet
+What we seek is a *real running infrastructure capability*, not higher recall than Claude on a constrained dataset. Correctness, persistence, traceability, auditability and as-of reconstruction are **necessary acceptance criteria** even if an LLM can perform all interpretive work.
 
-The baseline is Claude Code with **all competent ordinary options**:
-- same source corpus and semantic artifacts;
-- Git history up to the correct date;
-- dbt/MetricFlow tooling, manifests, compiled queries, data tests and read-only database checks;
-- ordinary scripts, documentation, JSON/markdown, provenance hashes and change-impact mapping;
-- existing compatible governance/data-contract tooling, if installable without turning this into a dependency project.
+## 6. Failure interpretation: do not confuse product thesis and engineering feasibility
 
-It may maintain persistent notes. Do not artificially limit the baseline to one-shot prompting, prohibit Git, or withhold data to make it fail.
+**INFRASTRUCTURE_SLICE_WORKS**: Native semantic layer executed; the end-to-end sequence passes independently replayed tests, survives context loss and preserves audit/authority boundaries. Conclude only that the minimal infrastructure is feasible in a small controlled workflow; not that we have legal accuracy, a commercially differentiated kernel, adoption or production reliability.
 
-**Do NOT implement a new Sophon link store.** The previous test already stopped that differentiator. Only build minimum fixture/run/scorer plumbing needed to observe a potential failure at the real semantic boundary.
+**SLICE_FAILS**: An actual required property cannot be made to work in the bounded implementation, with reproducible evidence. Describe the cause and whether architectural assumptions are at fault.
 
-Collect concrete proof of how the strong baseline does, including semantic query outputs and independent reference checks.
+**BLOCKED / INCONCLUSIVE**: Unable to execute native semantic runtime or establish independent expected outcomes under the resource bound. Do not fabricate them.
 
-A **qualifying failure** must be all of:
-1. material and evidenced by actual semantic metric execution or objectively unambiguous independent governing evidence;
-2. not merely a missing dependency, artificially withheld context, fabricated policy, trivial mutation, compiler misconfiguration, hindsight artefact or scorer mistake;
-3. reproducible (same failure without per-case prompt tuning), with a plausible reason why conventional tests or tools didn't catch it;
-4. attributable to the governing-document ↔ existing semantic-layer translation, bidirectional verification, coverage, or audit relationship, not an unrelated coding bug.
+No A/B performance comparison to a stronger LLM is required. Use conventional technologies and existing tools as building blocks, not enemies to defeat. A useful governance infrastructure can be entirely composed of existing primitives. No novelty claim is necessary.
 
-Record ordinary baseline successes with the same prominence as failures. An unsolved ambiguity or missing authorized interpretation is **not** automatically an AI failure; correct abstention counts as success.
+Separately disclose remaining product/platform engineering obligations (integrations, authentication, authorized workflows, source-of-truth management, nonrepudiation, throughput, permissions, deployment, long-running maintenance and real-policy coverage). Do not expand this spike to implement them.
 
-## 7. Decision / follow-up: only if the evidence earns it
+## 7. Execution limits and outputs
 
-Pre-register the following decision outputs in PROTOCOL.md before seeing baseline results.
+Limit: ONE environment, ONE bounded policy with one amendment, ONE reverse semantic drift and one harmless control, ONE independent audit replay. Small scripts and a CLI, not a platform. Do not create a large synthetic organization, dozens of subagents, or run another long literature/market sweep.
 
-**NO_GAP_FOUND**:
-The competent baseline handles the bounded cases (or its errors are minor and fixed with ordinary tools). Do not implement a specialized Sophon mechanism. Conclusion: no demonstrated differentiation; the larger enterprise thesis remains unproven.
+Repository hygiene:
+- Check status; do not overwrite uncommitted work.
+- Start feature branch \`experiment/governance-infrastructure-slice-2026-10-11\` based on \`origin/main\`. Read PR #2 and #3 as references only, not as active work branches.
+- Put all new work under \`experiments/governance_infrastructure/\`.
+- Commit reproducible code and small evidence; license/pin upstream; keep heavy dependencies and datasets out of Git.
+- Push branch and open a **draft PR** if tooling permits. No changes to upstream third-party repositories.
 
-**QUALIFYING_GAP_FOUND**:
-A significant, independently verified and reproducible baseline failure survives normal available tools, within the semantic-layer boundary. Write a one-page follow-up hypothesis specifying ONE causal mechanism, what conventional baseline it must beat, a decisive independent oracle, and a kill condition. **Do not implement the mechanism in this task.** This is permission for a new experiment, not evidence that Sophon fixes it.
+Deliver:
+- PRIOR.md (what the prior STOP_KERNEL did and did not mean)
+- SOURCE_GATE.md (authentic vs LAB_AUTHORED source truth; actual semantic interface)
+- PROTOCOL.md, TIMELINE.json + chronology validation, SHA256 and frozen independent reference
+- README.md with exact PowerShell reproduction commands
+- \`src/\`, \`tests/\`, minimal fixtures, state, real native-semantic output receipts
+- SCENARIO_RESULTS.md (each pass/fail, original outputs and reproducible checks)
+- AUDIT.md (fresh-context as-of audit and tamper result)
+- DECISION.md (one of the three statuses, exact limitations, next smallest usable increment)
 
-**INCONCLUSIVE_INPUTS**:
-No runnable real semantic layer, no defensible governing source/reference, invalid chronology, or inadequate independent truth to claim a meaningful baseline result. Write the exact gap and stop. A successfully executed controlled fixture may be separately labelled ENGINEERING_SMOKE_PASS, but never silently upgraded into real-world validation.
+In the final answer tell the owner:
+1. Which existing semantic runtime, metrics and underlying data actually executed.
+2. Exactly how the policies enter, get versioned, link to semantics and trigger reassessment.
+3. The specific forward transposition and reverse-check outputs.
+4. What survives the initial LLM process and what an independent auditor can reproduce.
+5. How missing authority, retroactive dates, source tampering and out-of-scope requirements behave.
+6. What remains unproven about real contracts and agent compliance.
+7. Branch/PR/commit, commands and honest PASS/FAIL decision.
 
-No GO/CONTINUE_SOPHON or business verdict is available from this small task. The technical hypothesis is not established by a good demo.
-
-## 8. Deliverables (ONLY under experiments/semantic_boundary/)
-
-- PRIOR.md — <= 500 words on what the repo already established; link precise prior evidence.
-- GATE.md — why selected candidate, exact authority level, model, runtime, version, data and source limitations.
-- PROTOCOL.md and protocol SHA256 — frozen ahead of scored baseline; objective metrics and fail-closed timeline constraints.
-- TIMELINE.json + validator script; case manifest containing input hashes and provenance.
-- README.md — exact reproducible commands including **Windows PowerShell** and expected native MetricFlow output.
-- inputs/ and scripts/ — smallest artifacts needed to run semantic query and independently verify outcome. Controlled mutations explicitly separated and labelled.
-- BASELINE.md — actual solver behavior, original outputs, tool calls, failures, clean successes, uncertainty.
-- RESULTS.md — mechanical/independent verification and case-level outcomes, observed/inferred/assumed.
-- DECISION.md — exactly one decision above and specific next engineering action.
-
-Do not commit third-party dependencies or large raw datasets without license assurance. Keep upstream inputs pinned/retrievable with hashes; never push changes to upstream projects. Do not touch the established PR #2 or PR #3 artifacts.
-
-## 9. Execution instructions and final response
-
-Before coding: check repository branch and uncommitted files. Start a new feature worktree/branch \`experiment/semantic-boundary-kill-test-2026-10-11\` from current \`origin/main\`; preserve all user work. Fetch the existing two experiment branches for read-only inspection. If git fetch/network is blocked, report that, use already available refs where possible, and don't rewrite prior artifacts.
-
-Carry out the evidence gate and, if valid, the native semantic runtime reproduction and small baseline test. Commit reproducible outputs, push the new feature branch, and open a **draft PR** when possible.
-
-Your final response must answer:
-1. What precise existing semantic-layer runtime did you actually execute against what data?
-2. What governing requirement was actually authoritative versus only synthetic/descriptive?
-3. Did the baseline succeed or fail on the forward, reverse and no-op cases? Show executed outputs/counterexamples.
-4. Which failure, **if any**, cannot already be handled by conventional Claude Code + native tools?
-5. Was chronological isolation validated mechanically, or are results only a non-scored diagnostic?
-6. What is the exact decision and the cheapest justified next action?
-7. Which paths, commits and draft PR contain the work?
-
-**Do the experiment, not another architecture essay. Be willing to report NO_GAP_FOUND or INCONCLUSIVE_INPUTS.**
+**Build a working, persistent, independently auditable governance infrastructure slice. Do not ask the LLM to defeat itself.**
