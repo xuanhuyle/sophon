@@ -78,8 +78,8 @@ def main():
                     continue  # a relative fragment such as "$DIR"/règles/x.publicodes, not a root path
                 if p.startswith(stage) or p in ("/", "/tmp"):
                     continue
-                if "/tasks/" in p and p.endswith(".output"):
-                    continue  # the harness's own background-command output file (the agent reading its own shell result)
+                if ("/tasks/" in p and p.endswith(".output")) or "/tool-results/" in p:
+                    continue  # the harness's own persisted tool output (the agent reading its own oversized shell result)
                 if p.startswith(ALLOWED_PREFIXES):
                     continue
                 flags.append({"flag": "OUTSIDE", "tool": name, "path": p[:300]})
