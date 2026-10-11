@@ -1,0 +1,199 @@
+[
+ {
+  "id": "AE_base_2024-05",
+  "situation": {
+   "salarié": "non",
+   "entreprise . catégorie juridique": "'EI'",
+   "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+   "dirigeant . auto-entrepreneur": "oui",
+   "entreprise . activité . nature": "'libérale'",
+   "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+   "date": "01/05/2024"
+  },
+  "rules": [
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BIC",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux vente restauration hébergement",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV . taux",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "dirigeant . auto-entrepreneur . cotisations et contributions",
+   "entreprise . imposition . régime . micro-entreprise . revenu abattu",
+   "plafond sécurité sociale",
+   "dirigeant . indépendant . conjoint collaborateur . cotisations",
+   "dirigeant . auto-entrepreneur . DROM"
+  ]
+ },
+ {
+  "id": "AE_base_2022-09_pre-decree",
+  "situation": {
+   "salarié": "non",
+   "entreprise . catégorie juridique": "'EI'",
+   "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+   "dirigeant . auto-entrepreneur": "oui",
+   "entreprise . activité . nature": "'libérale'",
+   "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+   "date": "01/09/2022"
+  },
+  "rules": [
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BIC",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux vente restauration hébergement",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV . taux"
+  ]
+ },
+ {
+  "id": "AE_DROM_P1_8q",
+  "situation": {
+   "salarié": "non",
+   "entreprise . catégorie juridique": "'EI'",
+   "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+   "dirigeant . auto-entrepreneur": "oui",
+   "entreprise . activité . nature": "'libérale'",
+   "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+   "date": "01/05/2024",
+   "établissement . commune . département . outre-mer": "oui",
+   "entreprise . date de création": "01/07/2022"
+  },
+  "rules": [
+   "dirigeant . auto-entrepreneur . DROM . taux service BNC",
+   "dirigeant . auto-entrepreneur . DROM . service BIC",
+   "dirigeant . auto-entrepreneur . DROM . taux vente restauration hébergement",
+   "dirigeant . auto-entrepreneur . DROM . taux CIPAV",
+   "entreprise . durée d'activité . trimestres civils",
+   "entreprise . durée d'activité . années civiles",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC"
+  ]
+ },
+ {
+  "id": "AE_DROM_P2_9q_3y",
+  "situation": {
+   "salarié": "non",
+   "entreprise . catégorie juridique": "'EI'",
+   "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+   "dirigeant . auto-entrepreneur": "oui",
+   "entreprise . activité . nature": "'libérale'",
+   "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+   "date": "01/05/2024",
+   "établissement . commune . département . outre-mer": "oui",
+   "entreprise . date de création": "01/04/2022"
+  },
+  "rules": [
+   "dirigeant . auto-entrepreneur . DROM . taux service BNC",
+   "dirigeant . auto-entrepreneur . DROM . service BIC",
+   "dirigeant . auto-entrepreneur . DROM . taux vente restauration hébergement",
+   "dirigeant . auto-entrepreneur . DROM . taux CIPAV",
+   "entreprise . durée d'activité . trimestres civils",
+   "entreprise . durée d'activité . années civiles"
+  ]
+ },
+ {
+  "id": "AE_DROM_P2_3y_10q",
+  "situation": {
+   "salarié": "non",
+   "entreprise . catégorie juridique": "'EI'",
+   "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+   "dirigeant . auto-entrepreneur": "oui",
+   "entreprise . activité . nature": "'libérale'",
+   "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+   "date": "01/05/2024",
+   "établissement . commune . département . outre-mer": "oui",
+   "entreprise . date de création": "01/01/2022"
+  },
+  "rules": [
+   "dirigeant . auto-entrepreneur . DROM . taux service BNC",
+   "dirigeant . auto-entrepreneur . DROM . service BIC",
+   "dirigeant . auto-entrepreneur . DROM . taux vente restauration hébergement",
+   "dirigeant . auto-entrepreneur . DROM . taux CIPAV",
+   "entreprise . durée d'activité . trimestres civils",
+   "entreprise . durée d'activité . années civiles"
+  ]
+ },
+ {
+  "id": "AE_DROM_P3_4y",
+  "situation": {
+   "salarié": "non",
+   "entreprise . catégorie juridique": "'EI'",
+   "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+   "dirigeant . auto-entrepreneur": "oui",
+   "entreprise . activité . nature": "'libérale'",
+   "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+   "date": "01/05/2024",
+   "établissement . commune . département . outre-mer": "oui",
+   "entreprise . date de création": "01/01/2021"
+  },
+  "rules": [
+   "dirigeant . auto-entrepreneur . DROM . taux service BNC",
+   "dirigeant . auto-entrepreneur . DROM . service BIC",
+   "dirigeant . auto-entrepreneur . DROM . taux vente restauration hébergement",
+   "dirigeant . auto-entrepreneur . DROM . taux CIPAV",
+   "entreprise . durée d'activité . trimestres civils",
+   "entreprise . durée d'activité . années civiles"
+  ]
+ },
+ {
+  "id": "AE_ACRE_9m",
+  "situation": {
+   "salarié": "non",
+   "entreprise . catégorie juridique": "'EI'",
+   "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+   "dirigeant . auto-entrepreneur": "oui",
+   "entreprise . activité . nature": "'libérale'",
+   "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+   "date": "01/05/2024",
+   "dirigeant . exonérations . ACRE": "oui",
+   "entreprise . date de création": "01/08/2023"
+  },
+  "rules": [
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux ACRE",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BIC",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux vente restauration hébergement",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV . taux",
+   "dirigeant . exonérations . ACRE",
+   "entreprise . durée d'activité"
+  ]
+ },
+ {
+  "id": "AE_ACRE_13m",
+  "situation": {
+   "salarié": "non",
+   "entreprise . catégorie juridique": "'EI'",
+   "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+   "dirigeant . auto-entrepreneur": "oui",
+   "entreprise . activité . nature": "'libérale'",
+   "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+   "date": "01/05/2024",
+   "dirigeant . exonérations . ACRE": "oui",
+   "entreprise . date de création": "01/04/2023"
+  },
+  "rules": [
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux ACRE",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BIC",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux vente restauration hébergement",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV . taux",
+   "dirigeant . exonérations . ACRE",
+   "entreprise . durée d'activité"
+  ]
+ },
+ {
+  "id": "AE_ACRE_DROM_conflict",
+  "situation": {
+   "salarié": "non",
+   "entreprise . catégorie juridique": "'EI'",
+   "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+   "dirigeant . auto-entrepreneur": "oui",
+   "entreprise . activité . nature": "'libérale'",
+   "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+   "date": "01/05/2024",
+   "dirigeant . exonérations . ACRE": "oui",
+   "établissement . commune . département . outre-mer": "oui",
+   "entreprise . date de création": "01/08/2023"
+  },
+  "rules": [
+   "dirigeant . exonérations . ACRE",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux ACRE",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC"
+  ]
+ }
+]

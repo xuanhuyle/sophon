@@ -1,0 +1,258 @@
+{
+ "task": "R5",
+ "commit": "c14ee26d0c67bab90354db32ff1f51879ea3c5e8",
+ "label": "UNRESOLVED",
+ "confidence": "medium",
+ "rationale": "The commit is a real semantic change, not a refactor: for a travailleur indépendant whose établissement is at Mayotte, the 26 % abattement of `indépendant . cotisations et contributions . assiette CSG-CRDS` is no longer floored at 1,76 % nor capped at 130 % of the (Mayotte) PASS, so the post-reform cotisations base (`assiette sociale`, built on `assiette CSG-CRDS`) and every cotisation on it change at low revenue (floor) and above ~169 000 €/an (cap): engine 118/850 cells differ, all in Mayotte situations; métropole values are byte-identical and CSG-CRDS itself is non applicable at Mayotte in both trees. The bounded articles in force (L136-3 III LEGIARTI000051284498 and D136-5 LEGIARTI000049899286, L131-6 LEGIARTI000048683707) impose the floor and cap without any territorial exception, but none of the 12 bounded records mentions Mayotte: whether L136-3/D136-5 govern a TI established at Mayotte at all (the CSS applies there only through the Mayotte-specific texts, under which the tree already treats CSG-CRDS as non applicable and uses a separate PSS and separate rates) is decided by texts outside the set. The text available therefore neither supports nor forbids the carve-out, and the commit cites no source for it; I abstain from calling it a mismatch or a legitimate choice.",
+ "evidence": [
+  {
+   "kind": "diff_excerpt",
+   "article": "D136-5",
+   "article_version_id": "LEGIARTI000049899286",
+   "quote_or_values": "modele-ti/règles/indépendant/cotisations-et-contributions/cotisations-et-contributions.publicodes, rule `indépendant . cotisations et contributions . assiette CSG-CRDS . abattement` (valeur: 26% * revenu brut): `-      plancher: 1.76% * plafond sécurité sociale . annuel` / `-      plafond: 130% * plafond sécurité sociale . annuel` replaced by `plancher: { non applicable si: établissement . commune . département . outre-mer . Mayotte, valeur: 1.76% * plafond sécurité sociale . annuel }` and `plafond: { non applicable si: établissement . commune . département . outre-mer . Mayotte, valeur: 130% * plafond sécurité sociale . annuel }`. stat.txt also lists site/test/modele-ti/assiettes.test.ts (+26) which is not in diff.patch. The rule's `références:` still cite only L136-3 and D136-5; no Mayotte source was added."
+  },
+  {
+   "kind": "article_quote",
+   "article": "L136-3",
+   "article_version_id": "LEGIARTI000051284498",
+   "in_force": "2025-02-28",
+   "quote_or_values": "III.-L'assiette résultant de l'application des I et II du présent article fait l'objet d'un abattement de 26 %. Toutefois, cet abattement ne peut être ni inférieur à un montant plancher, fixé par décret, qui ne peut dépasser le montant mentionné à la dernière phrase de l' article L. 633-1 du présent code , ni supérieur à un montant plafond fixé, également par décret, à une valeur au moins égale au plafond annuel mentionné à l'article L. 241-3 ."
+  },
+  {
+   "kind": "article_quote",
+   "article": "D136-5",
+   "article_version_id": "LEGIARTI000049899286",
+   "in_force": "2024-07-07",
+   "quote_or_values": "I. - Le montant plancher prévu au III de l'article L. 136-3 est fixé à 1,76 % de la valeur annuelle du plafond de la sécurité sociale mentionné au premier alinéa de l'article L. 241-3. II. - Le montant plafond mentionné au III de l'article L. 136-3 est fixé à 130 % de la valeur annuelle du plafond de la sécurité sociale mentionné au premier alinéa de l'article L. 241-3."
+  },
+  {
+   "kind": "article_quote",
+   "article": "D136-5 (nota)",
+   "article_version_id": "LEGIARTI000049899286",
+   "in_force": "2024-07-07",
+   "quote_or_values": "ces dispositions s'appliquent au calcul des cotisations et des contributions dues par les travailleurs indépendants non agricoles ainsi qu'à leurs prestations dues en application de l'article D. 643-1 du code de la sécurité sociale au titre des périodes courant à compter du 1er janvier 2025"
+  },
+  {
+   "kind": "article_quote",
+   "article": "L131-6",
+   "article_version_id": "LEGIARTI000048683707",
+   "in_force": "2023-12-28",
+   "quote_or_values": "I.-Les cotisations de sécurité sociale dues par les travailleurs indépendants non agricoles ne relevant pas du dispositif prévu à l'article L. 613-7 sont assises sur l'assiette définie à l'article L. 136-3."
+  },
+  {
+   "kind": "article_quote",
+   "article": "all 12 bounded articles (S10, legi-data 2.572.0)",
+   "article_version_id": "L131-6=LEGIARTI000048683707, L136-3=LEGIARTI000051284498, L613-7=LEGIARTI000048683570, D131-6-1=LEGIARTI000053451315, D136-5=LEGIARTI000049899286, D613-4=LEGIARTI000052218738, D613-5=LEGIARTI000041918205, D613-6=LEGIARTI000052218747, D621-2=LEGIARTI000049904592, D632-1=LEGIARTI000041966755, D633-3=LEGIARTI000049904636, D756-5=LEGIARTI000034726710",
+   "quote_or_values": "Negative finding: the string \"Mayotte\" occurs 0 times in the text and nota of the 12 bounded records. None of them contains a territorial clause for Mayotte; the bounded set cannot say whether L136-3 III / D136-5 govern a travailleur indépendant established at Mayotte."
+  },
+  {
+   "kind": "engine_before_after",
+   "article": "D136-5",
+   "article_version_id": "LEGIARTI000049899286",
+   "rule": "indépendant . cotisations et contributions . assiette CSG-CRDS . abattement",
+   "situation": "{\"date\":\"01/06/2025\",\"entreprise . catégorie juridique\":\"'EI'\",\"entreprise . imposition\":\"'IR'\",\"entreprise . date de création\":\"01/01/2015\",\"entreprise . activité\":\"'artisanale'\",\"indépendant . revenu professionnel\":\"1000 €/an\",\"indépendant . revenu brut\":\"1000 €/an\",\"entreprise . imposition . IR . régime micro-fiscal\":\"non\",\"établissement . commune . département\":\"'Mayotte'\"}",
+   "date": "01/06/2025",
+   "before": "596 €/an",
+   "after": "260 €/an",
+   "quote_or_values": "before=596 €/an ; after=260 €/an ; floor 1,76 % x 33 852 €/an (Mayotte PSS 2 821 €/mois) = 596 €/an no longer applied; 26 % x 1 000 = 260"
+  },
+  {
+   "kind": "engine_before_after",
+   "article": "D136-5",
+   "article_version_id": "LEGIARTI000049899286",
+   "rule": "indépendant . cotisations et contributions . assiette sociale",
+   "situation": "{\"date\":\"01/06/2025\",\"entreprise . catégorie juridique\":\"'EI'\",\"entreprise . imposition\":\"'IR'\",\"entreprise . date de création\":\"01/01/2015\",\"entreprise . activité\":\"'artisanale'\",\"indépendant . revenu professionnel\":\"1000 €/an\",\"indépendant . revenu brut\":\"1000 €/an\",\"entreprise . imposition . IR . régime micro-fiscal\":\"non\",\"établissement . commune . département\":\"'Mayotte'\"}",
+   "date": "01/06/2025",
+   "before": "404 €/an [missing 2]",
+   "after": "740 €/an [missing 2]",
+   "quote_or_values": "before=404 €/an [missing 2] ; after=740 €/an [missing 2]"
+  },
+  {
+   "kind": "engine_before_after",
+   "article": "D136-5",
+   "article_version_id": "LEGIARTI000049899286",
+   "rule": "indépendant . cotisations et contributions . cotisations",
+   "situation": "{\"date\":\"01/06/2025\",\"entreprise . catégorie juridique\":\"'EI'\",\"entreprise . imposition\":\"'IR'\",\"entreprise . date de création\":\"01/01/2015\",\"entreprise . activité\":\"'artisanale'\",\"indépendant . revenu professionnel\":\"1000 €/an\",\"indépendant . revenu brut\":\"1000 €/an\",\"entreprise . imposition . IR . régime micro-fiscal\":\"non\",\"établissement . commune . département\":\"'Mayotte'\"}",
+   "date": "01/06/2025",
+   "before": "434 €/an [missing 6]",
+   "after": "455 €/an [missing 6]",
+   "quote_or_values": "before=434 €/an [missing 6] ; after=455 €/an [missing 6]"
+  },
+  {
+   "kind": "engine_before_after",
+   "article": "D136-5",
+   "article_version_id": "LEGIARTI000049899286",
+   "rule": "indépendant . cotisations et contributions . assiette CSG-CRDS . abattement",
+   "situation": "{\"date\":\"01/06/2025\",\"entreprise . catégorie juridique\":\"'EI'\",\"entreprise . imposition\":\"'IR'\",\"entreprise . date de création\":\"01/01/2015\",\"entreprise . activité\":\"'artisanale'\",\"indépendant . revenu professionnel\":\"300000 €/an\",\"indépendant . revenu brut\":\"300000 €/an\",\"entreprise . imposition . IR . régime micro-fiscal\":\"non\",\"établissement . commune . département\":\"'Mayotte'\"}",
+   "date": "01/06/2025",
+   "before": "44008 €/an",
+   "after": "78000 €/an",
+   "quote_or_values": "before=44008 €/an ; after=78000 €/an ; cap 130 % x 33 852 = 44 008 €/an no longer applied; 26 % x 300 000 = 78 000"
+  },
+  {
+   "kind": "engine_before_after",
+   "article": "D136-5",
+   "article_version_id": "LEGIARTI000049899286",
+   "rule": "indépendant . cotisations et contributions . assiette sociale",
+   "situation": "{\"date\":\"01/06/2025\",\"entreprise . catégorie juridique\":\"'EI'\",\"entreprise . imposition\":\"'IR'\",\"entreprise . date de création\":\"01/01/2015\",\"entreprise . activité\":\"'artisanale'\",\"indépendant . revenu professionnel\":\"300000 €/an\",\"indépendant . revenu brut\":\"300000 €/an\",\"entreprise . imposition . IR . régime micro-fiscal\":\"non\",\"établissement . commune . département\":\"'Mayotte'\"}",
+   "date": "01/06/2025",
+   "before": "255992 €/an [missing 2]",
+   "after": "222000 €/an [missing 2]",
+   "quote_or_values": "before=255992 €/an [missing 2] ; after=222000 €/an [missing 2]"
+  },
+  {
+   "kind": "engine_before_after",
+   "article": "D136-5",
+   "article_version_id": "LEGIARTI000049899286",
+   "rule": "indépendant . cotisations et contributions . cotisations",
+   "situation": "{\"date\":\"01/06/2025\",\"entreprise . catégorie juridique\":\"'EI'\",\"entreprise . imposition\":\"'IR'\",\"entreprise . date de création\":\"01/01/2015\",\"entreprise . activité\":\"'artisanale'\",\"indépendant . revenu professionnel\":\"300000 €/an\",\"indépendant . revenu brut\":\"300000 €/an\",\"entreprise . imposition . IR . régime micro-fiscal\":\"non\",\"établissement . commune . département\":\"'Mayotte'\"}",
+   "date": "01/06/2025",
+   "before": "23518 €/an [missing 6]",
+   "after": "20791 €/an [missing 6]",
+   "quote_or_values": "before=23518 €/an [missing 6] ; after=20791 €/an [missing 6]"
+  },
+  {
+   "kind": "engine_before_after",
+   "article": "D136-5",
+   "article_version_id": "LEGIARTI000049899286",
+   "rule": "indépendant . cotisations et contributions . cotisations . maladie-maternité-invalidité-décès-autonomie",
+   "situation": "{\"date\":\"01/06/2025\",\"entreprise . catégorie juridique\":\"'EI'\",\"entreprise . imposition\":\"'IR'\",\"entreprise . date de création\":\"01/01/2015\",\"entreprise . activité\":\"'artisanale'\",\"indépendant . revenu professionnel\":\"300000 €/an\",\"indépendant . revenu brut\":\"300000 €/an\",\"entreprise . imposition . IR . régime micro-fiscal\":\"non\",\"établissement . commune . département\":\"'Mayotte'\"}",
+   "date": "01/06/2025",
+   "before": "10547 €/an [missing 2]",
+   "after": "9146 €/an [missing 2]",
+   "quote_or_values": "before=10547 €/an [missing 2] ; after=9146 €/an [missing 2]"
+  },
+  {
+   "kind": "engine_before_after",
+   "article": "D136-5",
+   "article_version_id": "LEGIARTI000049899286",
+   "rule": "indépendant . cotisations et contributions",
+   "situation": "{\"date\":\"01/06/2025\",\"entreprise . catégorie juridique\":\"'EI'\",\"entreprise . imposition\":\"'IR'\",\"entreprise . date de création\":\"01/01/2015\",\"entreprise . activité\":\"'artisanale'\",\"indépendant . revenu professionnel\":\"300000 €/an\",\"indépendant . revenu brut\":\"300000 €/an\",\"entreprise . imposition . IR . régime micro-fiscal\":\"non\",\"établissement . commune . département\":\"'Mayotte'\"}",
+   "date": "01/06/2025",
+   "before": "23616 €/an [missing 7]",
+   "after": "20889 €/an [missing 7]",
+   "quote_or_values": "before=23616 €/an [missing 7] ; after=20889 €/an [missing 7]"
+  },
+  {
+   "kind": "engine_before_after",
+   "article": "D136-5",
+   "article_version_id": "LEGIARTI000049899286",
+   "rule": "indépendant . cotisations et contributions . assiette CSG-CRDS . abattement",
+   "situation": "{\"date\":\"01/03/2026\",\"entreprise . catégorie juridique\":\"'EI'\",\"entreprise . imposition\":\"'IR'\",\"entreprise . date de création\":\"01/01/2015\",\"entreprise . activité\":\"'artisanale'\",\"indépendant . revenu professionnel\":\"2000 €/an\",\"indépendant . revenu brut\":\"2000 €/an\",\"entreprise . imposition . IR . régime micro-fiscal\":\"non\",\"établissement . commune . département\":\"'Mayotte'\"}",
+   "date": "01/03/2026",
+   "before": "638 €/an",
+   "after": "520 €/an",
+   "quote_or_values": "before=638 €/an ; after=520 €/an ; floor 1,76 % x 36 264 (Mayotte PSS 2026 3 022 €/mois) = 638 no longer applied"
+  },
+  {
+   "kind": "engine_before_after",
+   "article": "D136-5",
+   "article_version_id": "LEGIARTI000049899286",
+   "rule": "indépendant . cotisations et contributions . assiette sociale",
+   "situation": "{\"date\":\"01/03/2026\",\"entreprise . catégorie juridique\":\"'EI'\",\"entreprise . imposition\":\"'IR'\",\"entreprise . date de création\":\"01/01/2015\",\"entreprise . activité\":\"'artisanale'\",\"indépendant . revenu professionnel\":\"300000 €/an\",\"indépendant . revenu brut\":\"300000 €/an\",\"entreprise . imposition . IR . régime micro-fiscal\":\"non\",\"établissement . commune . département\":\"'Mayotte'\"}",
+   "date": "01/03/2026",
+   "before": "252857 €/an [missing 2]",
+   "after": "222000 €/an [missing 2]",
+   "quote_or_values": "before=252857 €/an [missing 2] ; after=222000 €/an [missing 2]"
+  },
+  {
+   "kind": "engine_before_after",
+   "article": "D136-5",
+   "article_version_id": "LEGIARTI000049899286",
+   "rule": "indépendant . cotisations et contributions",
+   "situation": "{\"date\":\"01/03/2026\",\"entreprise . catégorie juridique\":\"'EI'\",\"entreprise . imposition\":\"'IR'\",\"entreprise . date de création\":\"01/01/2015\",\"entreprise . activité\":\"'artisanale'\",\"indépendant . revenu professionnel\":\"300000 €/an\",\"indépendant . revenu brut\":\"300000 €/an\",\"entreprise . imposition . IR . régime micro-fiscal\":\"non\",\"établissement . commune . département\":\"'Mayotte'\"}",
+   "date": "01/03/2026",
+   "before": "25454 €/an [missing 7]",
+   "after": "22778 €/an [missing 7]",
+   "quote_or_values": "before=25454 €/an [missing 7] ; after=22778 €/an [missing 7]"
+  },
+  {
+   "kind": "engine_before_after",
+   "article": "D136-5",
+   "article_version_id": "LEGIARTI000049899286",
+   "rule": "indépendant . cotisations et contributions . cotisations . retraite de base",
+   "situation": "{\"date\":\"01/06/2025\",\"entreprise . catégorie juridique\":\"'EI'\",\"entreprise . imposition\":\"'IR'\",\"entreprise . date de création\":\"01/01/2015\",\"entreprise . activité\":\"'libérale'\",\"indépendant . revenu professionnel\":\"300000 €/an\",\"indépendant . revenu brut\":\"300000 €/an\",\"entreprise . imposition . IR . régime micro-fiscal\":\"non\",\"établissement . commune . département\":\"'Mayotte'\",\"entreprise . activité . libérale . réglementée\":\"non\"}",
+   "date": "01/06/2025",
+   "before": "8516 €/an [missing 8]",
+   "after": "8263 €/an [missing 8]",
+   "quote_or_values": "before=8516 €/an [missing 8] ; after=8263 €/an [missing 8]"
+  },
+  {
+   "kind": "engine_before_after",
+   "article": "D136-5",
+   "article_version_id": "LEGIARTI000049899286",
+   "rule": "indépendant . cotisations et contributions . CSG-CRDS",
+   "situation": "{\"date\":\"01/06/2025\",\"entreprise . catégorie juridique\":\"'EI'\",\"entreprise . imposition\":\"'IR'\",\"entreprise . date de création\":\"01/01/2015\",\"entreprise . activité\":\"'artisanale'\",\"indépendant . revenu professionnel\":\"1000 €/an\",\"indépendant . revenu brut\":\"1000 €/an\",\"entreprise . imposition . IR . régime micro-fiscal\":\"non\",\"établissement . commune . département\":\"'Mayotte'\"}",
+   "date": "01/06/2025",
+   "before": "null",
+   "after": "null",
+   "quote_or_values": "before=null ; after=null ; CSG-CRDS is non applicable at Mayotte in both trees: the carve-out only changes the cotisations base"
+  },
+  {
+   "kind": "engine_before_after",
+   "article": "D136-5",
+   "article_version_id": "LEGIARTI000049899286",
+   "rule": "indépendant . cotisations et contributions . assiette sociale",
+   "situation": "{\"date\":\"01/06/2025\",\"entreprise . catégorie juridique\":\"'EI'\",\"entreprise . imposition\":\"'IR'\",\"entreprise . date de création\":\"01/01/2015\",\"entreprise . activité\":\"'artisanale'\",\"indépendant . revenu professionnel\":\"20000 €/an\",\"indépendant . revenu brut\":\"20000 €/an\",\"entreprise . imposition . IR . régime micro-fiscal\":\"non\",\"établissement . commune . département\":\"'Mayotte'\"}",
+   "date": "01/06/2025",
+   "before": "14800 €/an [missing 2]",
+   "after": "14800 €/an [missing 2]",
+   "quote_or_values": "before=14800 €/an [missing 2] ; after=14800 €/an [missing 2] ; middle revenue: floor and cap do not bind, identical"
+  },
+  {
+   "kind": "engine_before_after",
+   "article": "D136-5",
+   "article_version_id": "LEGIARTI000049899286",
+   "rule": "indépendant . cotisations et contributions . assiette CSG-CRDS . abattement",
+   "situation": "{\"date\":\"01/06/2025\",\"entreprise . catégorie juridique\":\"'EI'\",\"entreprise . imposition\":\"'IR'\",\"entreprise . date de création\":\"01/01/2015\",\"entreprise . activité\":\"'artisanale'\",\"indépendant . revenu professionnel\":\"2000 €/an\",\"indépendant . revenu brut\":\"2000 €/an\",\"entreprise . imposition . IR . régime micro-fiscal\":\"non\",\"établissement . commune . département\":\"'Paris'\"}",
+   "date": "01/06/2025",
+   "before": "829 €/an",
+   "after": "829 €/an",
+   "quote_or_values": "before=829 €/an ; after=829 €/an ; métropole control: floor 1,76 % x 47 100 = 829 still applied, identical"
+  },
+  {
+   "kind": "engine_before_after",
+   "article": "D136-5",
+   "article_version_id": "LEGIARTI000049899286",
+   "rule": "indépendant . cotisations et contributions . assiette CSG-CRDS . abattement",
+   "situation": "{\"date\":\"01/06/2025\",\"entreprise . catégorie juridique\":\"'EI'\",\"entreprise . imposition\":\"'IR'\",\"entreprise . date de création\":\"01/01/2015\",\"entreprise . activité\":\"'artisanale'\",\"indépendant . revenu professionnel\":\"300000 €/an\",\"indépendant . revenu brut\":\"300000 €/an\",\"entreprise . imposition . IR . régime micro-fiscal\":\"non\",\"établissement . commune . département\":\"'Paris'\"}",
+   "date": "01/06/2025",
+   "before": "61230 €/an",
+   "after": "61230 €/an",
+   "quote_or_values": "before=61230 €/an ; after=61230 €/an ; métropole control: cap 130 % x 47 100 = 61 230 still applied, identical"
+  },
+  {
+   "kind": "engine_before_after",
+   "article": "D136-5",
+   "article_version_id": "LEGIARTI000049899286",
+   "rule": "indépendant . cotisations et contributions . assiette sociale",
+   "situation": "{\"date\":\"01/06/2025\",\"entreprise . catégorie juridique\":\"'EI'\",\"entreprise . imposition\":\"'IR'\",\"entreprise . date de création\":\"01/01/2015\",\"entreprise . activité\":\"'artisanale'\",\"indépendant . revenu professionnel\":\"2000 €/an\",\"indépendant . revenu brut\":\"2000 €/an\",\"entreprise . imposition . IR . régime micro-fiscal\":\"non\"}",
+   "date": "01/06/2025",
+   "before": "1171 €/an [missing 4]",
+   "after": "1171 €/an [missing 4]",
+   "quote_or_values": "before=1171 €/an [missing 4] ; after=1171 €/an [missing 4] ; commune not given (missing variable): identical, no regression for unanswered département"
+  },
+  {
+   "kind": "engine_before_after",
+   "article": "D136-5",
+   "article_version_id": "LEGIARTI000049899286",
+   "rule": "indépendant . cotisations et contributions . assiette CSG-CRDS",
+   "situation": "{\"date\":\"01/12/2024\",\"entreprise . catégorie juridique\":\"'EI'\",\"entreprise . imposition\":\"'IR'\",\"entreprise . date de création\":\"01/01/2015\",\"entreprise . activité\":\"'artisanale'\",\"indépendant . revenu professionnel\":\"2000 €/an\",\"indépendant . revenu brut\":\"2000 €/an\",\"entreprise . imposition . IR . régime micro-fiscal\":\"non\",\"établissement . commune . département\":\"'Mayotte'\"}",
+   "date": "01/12/2024",
+   "before": "2534 €/an [missing 6]",
+   "after": "2534 €/an [missing 6]",
+   "quote_or_values": "before=2534 €/an [missing 6] ; after=2534 €/an [missing 6] ; pre-reform date: assiette unchanged (the `abattement` sub-rule is only consumed by the après-réforme branch)"
+  }
+ ],
+ "expected_values_if_mismatch": [],
+ "outside_bounded_set": [
+  "The territorial applicability of CSS book I (L136-1 et seq., hence L136-3 and D136-5) and of L131-6 to travailleurs indépendants established at Mayotte: ordonnance n° 96-1122 du 20 décembre 1996 relative à l’amélioration de la santé publique à Mayotte and its application decrees (the Mayotte TI cotisations regime), as amended for the 2025 assiette reform if at all (loi n° 2023-1250 du 26 décembre 2023 art. 18 is only visible here through the nota of L131-6).",
+  "Article L241-3 CSS (the national plafond annuel the floor and cap of D136-5 refer to) and the text fixing the separate Mayotte plafond de la sécurité sociale (2 821 €/mois in 2025, 3 022 €/mois in 2026 in the tree): needed to know which PSS the floor/cap should use at Mayotte if they apply.",
+  "Article L633-1 CSS (last sentence, the upper bound of the floor named in L136-3 III).",
+  "The maintainers’ factual source for “pas de plancher ni de plafond à Mayotte”: not cited in the commit; the tree’s Mayotte notification cites Urssaf “Taux de cotisations - Travailleur indépendant à Mayotte” (taux-cotisations-ti-mayotte.html) and a CSSM leaflet, neither available here.",
+  "The added regression test site/test/modele-ti/assiettes.test.ts (+26 lines) is listed in stat.txt but not included in diff.patch."
+ ],
+ "approval": "none recorded",
+ "notes": "Law S10 (legi-data 2.572.0) is identical to S9 on all 12 articles (compare_snapshots.mjs: all \"same\"). Build OK on both trees, 298 raw / 460 parsed rules on both sides, parsed rule lists identical; the floor/cap are mechanism keys, not rules, so they cannot be evaluated separately. Mayotte, 2025 (PSS 2 821 €/mois -> PASS 33 852 €/an): before, abattement = max(596, min(44 008, 26 % x RB)); after, abattement = 26 % x RB. Revenu brut 1 000 €/an: abattement 596 -> 260, assiette sociale 404 -> 740, cotisations 434 -> 455 €/an. Revenu brut 300 000: abattement 44 008 -> 78 000, assiette sociale 255 992 -> 222 000, cotisations 23 518 -> 20 791, total 23 616 -> 20 889 €/an. 2026 (PASS 36 264): floor 638 / cap 47 143 removed, e.g. RB 300 000: assiette 252 857 -> 222 000. Identical: all métropole checks (floor 829 / cap 61 230 in 2025, 846 / 62 478 in 2026 still applied), Mayotte middle revenues (2 300 to 169 000), pre-reform dates. If L136-3 III and D136-5 do apply to Mayotte TI as written, the after-state understates the abattement floor (expected 1,76 % PASS: 596 €/an with the Mayotte PSS, 829 €/an with the L241-3 national PSS, 2025) and ignores the cap (44 008 / 61 230) -> that would be a MISMATCH; if the Mayotte regime excludes them, the change is legitimate. The bounded text cannot decide, hence UNRESOLVED. Side observations for maintainers: (1) the before-state already used the Mayotte PSS for a floor/cap that D136-5 defines on the L241-3 plafond; (2) the changed rule's références still cite only L136-3 and D136-5, which contain no Mayotte exception, so the rule now contradicts its own citations; (3) the 26 % abattement itself is kept at Mayotte while CSG-CRDS (the contribution L136-3 defines the base of) is non applicable there, a combination the bounded text does not describe. No proposal made (nothing in the bounded set to anchor one). Approval: none recorded.",
+ "self_reported_tool_calls": 21
+}

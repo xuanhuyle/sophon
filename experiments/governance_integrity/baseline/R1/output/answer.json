@@ -1,0 +1,101 @@
+{
+ "task": "R1",
+ "commit": "2a0e452617fc33b955096f4bb7f7f305ec0670ad",
+ "label": "HARMLESS_REFACTOR",
+ "confidence": "high",
+ "rationale": "The only rule-tree change in commit 2a0e452617fc is the replacement of a dead URL under the `références:` key of rule `établissement . taux ATMP` (AT/MP rate of an employer's establishment). `références` is documentation metadata that the publicodes engine does not evaluate: the organisation's engine parses the same 641 raw / 1220 parsed rules on both sides, the parsed rule list is identical, and 69 evaluations covering the AT/MP rules themselves and every rule bound to the twelve articles of the set (auto-entrepreneur rates, ACRE, DROM, RCI, indépendant base, maladie, retraite de base, invalidité-décès, CSG) return byte-identical values before and after. No bounded article mentions accidents du travail or the AT/MP contribution, so the change has no relation to the governing text in force; nothing it touches needs legal support. The remaining four files of the commit are site/ UI sources outside the rule tree.",
+ "evidence": [
+  {
+   "kind": "diff_excerpt",
+   "article": null,
+   "article_version_id": null,
+   "quote_or_values": "fix: met à jour les liens morts | -    Connaître le taux AT/MP de votre entreprise sur votre compte AT/MP: https://www.net-entreprises.fr/declaration/compte-atmp/#lessentiel | +    Connaître le taux AT/MP de votre entreprise sur votre compte AT/MP: https://www.ameli.fr/entreprise/votre-entreprise/cotisation-atmp | only rule-tree file in the commit: modele-social/r\\303\\250gles/entreprise/\\303\\251tablissement.publicodes (key `références:` of rule `établissement . taux ATMP`, line 61); the 4 other files are site/ UI sources outside the rule tree"
+  },
+  {
+   "kind": "engine_before_after",
+   "article": null,
+   "article_version_id": null,
+   "quote_or_values": "build: before raw_rule_count 641 / parsed_rule_count 1220; after raw_rule_count 641 / parsed_rule_count 1220. list: 1220 parsed rule names, identical on both trees. diff -r before after: exactly one line differs (établissement.publicodes line 61, the URL)."
+  },
+  {
+   "kind": "engine_before_after",
+   "article": null,
+   "article_version_id": null,
+   "quote_or_values": "date 01/07/2024; situation {\"date\":\"01/07/2024\",\"salarié . contrat . salaire brut\":\"3000 €/mois\"}; établissement . taux ATMP: before=2.23 % after=2.23 %; établissement . taux ATMP . taux collectif: before=2.23 % after=2.23 %; salarié . cotisations . ATMP: before=66.9 €/mois after=66.9 €/mois; salarié . cotisations . ATMP . taux minimum: before=0.46 % after=0.46 %; salarié . cotisations . employeur: before=1074.6799999999998 €/mois after=1074.6799999999998 €/mois"
+  },
+  {
+   "kind": "engine_before_after",
+   "article": null,
+   "article_version_id": null,
+   "quote_or_values": "date 01/07/2024; situation {\"date\":\"01/07/2024\",\"salarié . contrat . salaire brut\":\"3000 €/mois\",\"établissement . taux ATMP\":\"1.5 %\"}; établissement . taux ATMP: before=1.5 % after=1.5 %; salarié . cotisations . ATMP: before=45 €/mois after=45 €/mois"
+  },
+  {
+   "kind": "engine_before_after",
+   "article": null,
+   "article_version_id": null,
+   "quote_or_values": "date 01/07/2024; situation {\"date\":\"01/07/2024\",\"salarié . contrat . salaire brut\":\"3000 €/mois\",\"établissement . taux ATMP\":\"0.1 %\"}; établissement . taux ATMP: before=0.46 % after=0.46 %; salarié . cotisations . ATMP . taux minimum: before=0.46 % after=0.46 %; salarié . cotisations . ATMP: before=13.8 €/mois after=13.8 €/mois"
+  },
+  {
+   "kind": "engine_before_after",
+   "article": null,
+   "article_version_id": null,
+   "quote_or_values": "date 01/07/2024; situation {\"date\":\"01/07/2024\",\"salarié\":\"non\",\"entreprise . catégorie juridique\":\"'EI'\",\"entreprise . catégorie juridique . EI . auto-entrepreneur\":\"oui\",\"dirigeant . auto-entrepreneur\":\"oui\",\"dirigeant . auto-entrepreneur . chiffre d'affaires\":\"1000 €/mois\",\"établissement . commune . département . outre-mer\":\"non\",\"entreprise . activités . revenus mixtes\":\"non\",\"entreprise . date de création\":\"01/01/2019\",\"dirigeant . exonérations . ACRE\":\"non\",\"entreprise . activité . nature\":\"'libérale'\"}; dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC: before=21.1 % after=21.1 %; dirigeant . auto-entrepreneur . cotisations et contributions . cotisations: before=211.00000000000003 €/mois after=211.00000000000003 €/mois; dirigeant . auto-entrepreneur . cotisations et contributions: before=213.00000000000003 €/mois after=213.00000000000003 €/mois; protection sociale . retraite . base . cotisée . revenu auto-entrepreneur: before=7920.000000000116 €/an after=7920.000000000116 €/an"
+  },
+  {
+   "kind": "engine_before_after",
+   "article": null,
+   "article_version_id": null,
+   "quote_or_values": "date 01/07/2024; situation {\"date\":\"01/07/2024\",\"salarié\":\"non\",\"entreprise . catégorie juridique\":\"'EI'\",\"entreprise . catégorie juridique . EI . auto-entrepreneur\":\"oui\",\"dirigeant . auto-entrepreneur\":\"oui\",\"dirigeant . auto-entrepreneur . chiffre d'affaires\":\"1000 €/mois\",\"établissement . commune . département . outre-mer\":\"non\",\"entreprise . activités . revenus mixtes\":\"non\",\"entreprise . date de création\":\"01/01/2019\",\"dirigeant . exonérations . ACRE\":\"non\",\"entreprise . activité . nature\":\"'libérale'\",\"entreprise . activité . nature . libérale . réglementée\":\"oui\"}; dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV . taux: before=21.2 % after=21.2 %; dirigeant . auto-entrepreneur . cotisations et contributions . cotisations: before=2544 €/an after=2544 €/an"
+  },
+  {
+   "kind": "engine_before_after",
+   "article": null,
+   "article_version_id": null,
+   "quote_or_values": "date 01/07/2024; situation {\"date\":\"01/07/2024\",\"salarié\":\"non\",\"entreprise . catégorie juridique\":\"'EI'\",\"entreprise . catégorie juridique . EI . auto-entrepreneur\":\"oui\",\"dirigeant . auto-entrepreneur\":\"oui\",\"dirigeant . auto-entrepreneur . chiffre d'affaires\":\"1000 €/mois\",\"établissement . commune . département . outre-mer\":\"non\",\"entreprise . activités . revenus mixtes\":\"non\",\"entreprise . date de création\":\"01/01/2019\",\"dirigeant . exonérations . ACRE\":\"non\",\"entreprise . activité . nature\":\"'commerciale'\"}; dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux vente restauration hébergement: before=12.3 % after=12.3 %; protection sociale . retraite . complémentaire . RCI . revenu cotisé auto-entrepreneur: before=243.59999999999997 €/an after=243.59999999999997 €/an"
+  },
+  {
+   "kind": "engine_before_after",
+   "article": null,
+   "article_version_id": null,
+   "quote_or_values": "date 01/07/2024; situation {\"date\":\"01/07/2024\",\"salarié\":\"non\",\"entreprise . catégorie juridique\":\"'EI'\",\"entreprise . catégorie juridique . EI . auto-entrepreneur\":\"oui\",\"dirigeant . auto-entrepreneur\":\"oui\",\"dirigeant . auto-entrepreneur . chiffre d'affaires\":\"1000 €/mois\",\"établissement . commune . département . outre-mer\":\"non\",\"entreprise . activités . revenus mixtes\":\"non\",\"entreprise . activité . nature\":\"'libérale'\",\"entreprise . date de création\":\"01/01/2024\",\"entreprise . durée d'activité\":\"6 mois\",\"dirigeant . exonérations . ACRE\":\"oui\"}; dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC: before=10.6 % after=10.6 %; dirigeant . exonérations . ACRE: before=true after=true"
+  },
+  {
+   "kind": "engine_before_after",
+   "article": null,
+   "article_version_id": null,
+   "quote_or_values": "date 01/07/2024; situation {\"date\":\"01/07/2024\",\"salarié\":\"non\",\"entreprise . catégorie juridique\":\"'EI'\",\"entreprise . catégorie juridique . EI . auto-entrepreneur\":\"oui\",\"dirigeant . auto-entrepreneur\":\"oui\",\"dirigeant . auto-entrepreneur . chiffre d'affaires\":\"1000 €/mois\",\"établissement . commune . département . outre-mer\":\"oui\",\"entreprise . activités . revenus mixtes\":\"non\",\"entreprise . activité . nature\":\"'libérale'\",\"entreprise . date de création\":\"01/01/2019\",\"dirigeant . exonérations . ACRE\":\"non\",\"entreprise . durée d'activité . trimestres civils\":\"8\",\"entreprise . durée d'activité . années civiles\":\"2\"}; dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC: before=3.6 % after=3.6 %"
+  },
+  {
+   "kind": "engine_before_after",
+   "article": null,
+   "article_version_id": null,
+   "quote_or_values": "date 01/12/2024; situation {\"date\":\"01/12/2024\",\"salarié\":\"non\",\"dirigeant . régime social\":\"'indépendant'\",\"entreprise . catégorie juridique\":\"'EI'\",\"entreprise . catégorie juridique . EI . auto-entrepreneur\":\"non\",\"entreprise . imposition\":\"'IR'\",\"entreprise . activité . nature\":\"'commerciale'\",\"entreprise . date de création\":\"01/01/2010\",\"dirigeant . exonérations . ACRE\":\"non\",\"dirigeant . indépendant . revenu professionnel\":\"40000 €/an\"}; dirigeant . indépendant . assiette des cotisations: before=40000 €/an after=40000 €/an; dirigeant . indépendant . cotisations et contributions . maladie . taux progressif: before=5.92 % after=5.92 %; dirigeant . indépendant . cotisations et contributions . maladie: before=2168 €/an after=2168 €/an; dirigeant . indépendant . cotisations et contributions . retraite de base: before=7100 €/an after=7100 €/an; dirigeant . indépendant . cotisations et contributions . invalidité et décès . assiette: before=40000 €/an after=40000 €/an; dirigeant . indépendant . cotisations et contributions . CSG-CRDS . assiette: before=52788 €/an after=52788 €/an; dirigeant . indépendant . cotisations et contributions: before=18025 €/an after=18025 €/an"
+  },
+  {
+   "kind": "engine_before_after",
+   "article": null,
+   "article_version_id": null,
+   "quote_or_values": "date 01/01/2024; situation {\"date\":\"01/01/2024\",\"salarié\":\"non\",\"entreprise . catégorie juridique\":\"'EI'\",\"entreprise . catégorie juridique . EI . auto-entrepreneur\":\"non\",\"entreprise . imposition\":\"'IR'\",\"entreprise . activité . nature\":\"'artisanale'\",\"entreprise . date de création\":\"01/01/2010\",\"dirigeant . exonérations . ACRE\":\"non\",\"dirigeant . indépendant . revenu professionnel\":\"0 €/an\"}; dirigeant . indépendant . assiette minimale . retraite: before=5243 €/an after=5243 €/an; dirigeant . indépendant . cotisations et contributions . invalidité et décès . assiette: before=5243 €/an after=5243 €/an; dirigeant . indépendant . cotisations et contributions . retraite de base: before=931 €/an after=931 €/an"
+  },
+  {
+   "kind": "engine_before_after",
+   "article": null,
+   "article_version_id": null,
+   "quote_or_values": "All 69 checks in 5 specs (work/engine/checks_{R1_atmp,T1a_rates,T0_ae3,T1b_trader,T0_ti}.json) were run on both trees with the organisation's engine; the result files are byte-identical: true."
+  },
+  {
+   "kind": "article_quote",
+   "article": "D613-4",
+   "article_version_id": "LEGIARTI000049624068",
+   "quote_or_values": "[context only - pre-existing gap NOT created by this commit] in force 2024-07-01 (VIGUEUR_DIFF); \"b) Travailleurs indépendants affiliés à la section professionnelle mentionnée au 11° de l'article R. 641-1 35 076 euros 34 % 23 150 euros 23,2 %\" ; \"e) Travailleurs indépendants relevant à la fois de l'article L. 631-1 et du régime prévu à l' article 102 ter du code général des impôts 10 000 euros 34 % 6 600 euros 23,1 %\" ; nota: \"Conformément au 2° de l'article 1 du décret n° 2024-484 du 30 mai 2024, ces dispositions entrent en vigueur à compter du 1er juillet 2024.\""
+  }
+ ],
+ "expected_values_if_mismatch": [],
+ "outside_bounded_set": [
+  "The AT/MP contribution rate of an establishment (`établissement . taux ATMP`, `salarié . cotisations . ATMP . *`) is governed by the CSS provisions on the tarification of accidents du travail / maladies professionnelles, which are not among the twelve supplied articles; no claim is made about their content, and the URL change is not a legal statement anyway.",
+  "site/source/locales/ui-en.yaml, site/source/locales/ui-fr.yaml, site/source/.../RésultatSimple.tsx, site/source/pages/integration/components/CasParticuliers.tsx: changed by the same commit but outside modele-social/règles and not supplied; they cannot alter what the engine computes."
+ ],
+ "approval": "none recorded",
+ "notes": "Method: 'before' tree = G1 with diff.patch reverse-applied (work/proposals/R1/modele-social/règles; diff -r confirms a single differing line), 'after' = inputs/rules/G1_2a0e452617fc. build + list + 69 evaluations on both (work/engine/results_R1_before_*.jsonl vs results_R1_G1_*.jsonl, identical=true). Engine facts for AT/MP: default `établissement . taux ATMP` = taux collectif = `salarié . cotisations . ATMP . taux moyen` 2.23 % (01/07/2024), floor `taux minimum` 0.46 % applied when 0.1 % is entered, 3000 €/mois brut gives ATMP 66.9 €/mois. Pre-existing gap, independent of this commit and present identically on both sides: D613-4 LEGIARTI000049624068 (in force 2024-07-01, nota: entrée en vigueur 1er juillet 2024) sets rows b) 23,2 % and e) 23,1 %, while G1 (before and after) computes `… cotisations CIPAV . taux` = 21.2 % and `… taux service BNC` = 21.1 % at 01/07/2024 (derived ACRE/DROM/RCI constants likewise unchanged since G0). This is the library's state, not the effect of this change, so it does not alter the HARMLESS_REFACTOR label; it is recorded in output/NOTES.md and work/notes/R1_findings.md as the open item to fix (T1a to-do). No approval, sign-off or ratification record exists in the corpus.",
+ "self_reported_tool_calls": 16
+}

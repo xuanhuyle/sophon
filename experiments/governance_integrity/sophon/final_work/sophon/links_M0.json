@@ -1,0 +1,956 @@
+[
+ {
+  "id": "M0-01",
+  "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . taux",
+  "article": "D613-4",
+  "quote": "10 000 euros 34 % 6 600 euros 24,6 %",
+  "claim": "D613-4 v.LEGIARTI000049624097 (in force 2025-01-01..2026-01-01; current text in S6 and S7): e) BNC global rate 24,6 %.",
+  "note": "M0",
+  "check": {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . taux",
+   "situation": {
+    "date": "01/07/2025",
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "entreprise . date de création": "01/01/2021",
+    "dirigeant . exonérations . ACRE": "non",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activité . nature": "'libérale'",
+    "entreprise . activité . nature . libérale . réglementée": "non"
+   },
+   "expect": 24.6,
+   "tolerance": 0.001
+  }
+ },
+ {
+  "id": "M0-02",
+  "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . taux",
+  "article": "D613-4",
+  "quote": "2° du 1 de l'article 50-0 du code général des impôt 46 300 euros 50 % 23 150 euros 21,2 %",
+  "claim": "D613-4 v.LEGIARTI000049624097 (in force 2025-01-01..2026-01-01; current text in S6 and S7): d) service BIC global rate 21,2 %.",
+  "note": "M0",
+  "check": {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . taux",
+   "situation": {
+    "date": "01/07/2025",
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "entreprise . date de création": "01/01/2021",
+    "dirigeant . exonérations . ACRE": "non",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activité . nature": "'artisanale'",
+    "entreprise . activités . service ou vente": "'service'"
+   },
+   "expect": 21.2,
+   "tolerance": 0.001
+  }
+ },
+ {
+  "id": "M0-03",
+  "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement . taux",
+  "article": "D613-4",
+  "quote": "79 828 euros 71 % 23 150 euros 12,3 %",
+  "claim": "D613-4 v.LEGIARTI000049624097 (in force 2025-01-01..2026-01-01; current text in S6 and S7): a) vente global rate 12,3 %.",
+  "note": "M0",
+  "check": {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement . taux",
+   "situation": {
+    "date": "01/07/2025",
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "entreprise . date de création": "01/01/2021",
+    "dirigeant . exonérations . ACRE": "non",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activité . nature": "'commerciale'",
+    "entreprise . activités . service ou vente": "'vente'"
+   },
+   "expect": 12.3,
+   "tolerance": 0.001
+  }
+ },
+ {
+  "id": "M0-04",
+  "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC Cipav . taux",
+  "article": "D613-4",
+  "quote": "11° de l'article R. 641-1 35 076 euros 34 % 23 150 euros 23,2 %",
+  "claim": "D613-4 v.LEGIARTI000049624097 (in force 2025-01-01..2026-01-01; current text in S6 and S7): b) CIPAV (11° R641-1) global rate 23,2 %.",
+  "note": "M0",
+  "check": {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC Cipav . taux",
+   "situation": {
+    "date": "01/07/2025",
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "entreprise . date de création": "01/01/2019",
+    "dirigeant . exonérations . ACRE": "non",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activité . nature": "'libérale'",
+    "entreprise . activité . nature . libérale . réglementée": "oui"
+   },
+   "expect": 23.2,
+   "tolerance": 0.001
+  }
+ },
+ {
+  "id": "M0-05",
+  "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC",
+  "article": "D613-4",
+  "quote": "10 000 euros 34 % 6 600 euros 24,6 %",
+  "claim": "D613-4 v.LEGIARTI000049624097 (in force 2025-01-01..2026-01-01; current text in S6 and S7): BNC AE, CA 1 000 €/mois -> 246 €/mois.",
+  "note": "M0",
+  "check": {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC",
+   "situation": {
+    "date": "01/07/2025",
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "entreprise . date de création": "01/01/2021",
+    "dirigeant . exonérations . ACRE": "non",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activité . nature": "'libérale'",
+    "entreprise . activité . nature . libérale . réglementée": "non"
+   },
+   "expect": 246,
+   "tolerance": 0.001
+  }
+ },
+ {
+  "id": "M0-06",
+  "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+  "article": "D613-4",
+  "quote": "10 000 euros 34 % 6 600 euros 24,6 %",
+  "claim": "D613-4 v.LEGIARTI000049624097 (in force 2025-01-01..2026-01-01; current text in S6 and S7): BNC AE total cotisations 246 €/mois on 1 000 €/mois.",
+  "note": "M0",
+  "check": {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "situation": {
+    "date": "01/07/2025",
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "entreprise . date de création": "01/01/2021",
+    "dirigeant . exonérations . ACRE": "non",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activité . nature": "'libérale'",
+    "entreprise . activité . nature . libérale . réglementée": "non"
+   },
+   "expect": 246,
+   "tolerance": 0.001
+  }
+ },
+ {
+  "id": "M0-07",
+  "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC",
+  "article": "D613-4",
+  "quote": "2° du 1 de l'article 50-0 du code général des impôt 46 300 euros 50 % 23 150 euros 21,2 %",
+  "claim": "D613-4 v.LEGIARTI000049624097 (in force 2025-01-01..2026-01-01; current text in S6 and S7): service BIC AE, CA 1 000 €/mois -> 212 €/mois.",
+  "note": "M0",
+  "check": {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC",
+   "situation": {
+    "date": "01/07/2025",
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "entreprise . date de création": "01/01/2021",
+    "dirigeant . exonérations . ACRE": "non",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activité . nature": "'artisanale'",
+    "entreprise . activités . service ou vente": "'service'"
+   },
+   "expect": 212,
+   "tolerance": 0.001
+  }
+ },
+ {
+  "id": "M0-08",
+  "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement",
+  "article": "D613-4",
+  "quote": "79 828 euros 71 % 23 150 euros 12,3 %",
+  "claim": "D613-4 v.LEGIARTI000049624097 (in force 2025-01-01..2026-01-01; current text in S6 and S7): vente AE, CA 1 000 €/mois -> 123 €/mois.",
+  "note": "M0",
+  "check": {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement",
+   "situation": {
+    "date": "01/07/2025",
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "entreprise . date de création": "01/01/2021",
+    "dirigeant . exonérations . ACRE": "non",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activité . nature": "'commerciale'",
+    "entreprise . activités . service ou vente": "'vente'"
+   },
+   "expect": 123,
+   "tolerance": 0.001
+  }
+ },
+ {
+  "id": "M0-09",
+  "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC Cipav",
+  "article": "D613-4",
+  "quote": "11° de l'article R. 641-1 35 076 euros 34 % 23 150 euros 23,2 %",
+  "claim": "D613-4 v.LEGIARTI000049624097 (in force 2025-01-01..2026-01-01; current text in S6 and S7): CIPAV AE (created 2019), CA 1 000 €/mois -> 232 €/mois.",
+  "note": "M0",
+  "check": {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC Cipav",
+   "situation": {
+    "date": "01/07/2025",
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "entreprise . date de création": "01/01/2019",
+    "dirigeant . exonérations . ACRE": "non",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activité . nature": "'libérale'",
+    "entreprise . activité . nature . libérale . réglementée": "oui"
+   },
+   "expect": 232,
+   "tolerance": 0.001
+  }
+ },
+ {
+  "id": "M0-10",
+  "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+  "article": "D613-4",
+  "quote": "29 230 euros 87 % 3 800 euros 6 %",
+  "claim": "D613-4 v.LEGIARTI000049624097 (in force 2025-01-01..2026-01-01; current text in S6 and S7): c) meublés de tourisme 6 % - still no rule for this category in G3 (names list has no meublé/tourisme).",
+  "note": "M0",
+  "status": "UNKNOWN"
+ },
+ {
+  "id": "M0-11",
+  "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . répartition . maladie-maternité . taux de répartition",
+  "article": "D613-6",
+  "quote": "Cotisation d'assurance maladie maternité 3,40 % Cotisation d'assurance invalidité-décès 3,50 % Cotisations d'assurance vieillesse de base mentionnées aux I et II de l'article D. 633-3 du code de la sécurité sociale 47,60 % Cotisation d'assurance vieillesse complémentaire 13,00 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale 32,50 %",
+  "claim": "D613-6 v.LEGIARTI000049625405 (in force 2025-01-01..2026-01-01; current text in S6 and S7): e) share maladie-maternité = 3.4 %.",
+  "note": "M0",
+  "check": {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . répartition . maladie-maternité . taux de répartition",
+   "situation": {
+    "date": "01/07/2025",
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "entreprise . date de création": "01/01/2021",
+    "dirigeant . exonérations . ACRE": "non",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activité . nature": "'libérale'",
+    "entreprise . activité . nature . libérale . réglementée": "non"
+   },
+   "expect": 3.4,
+   "tolerance": 0.001
+  }
+ },
+ {
+  "id": "M0-12",
+  "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . répartition . invalidité-décès . taux de répartition",
+  "article": "D613-6",
+  "quote": "Cotisation d'assurance maladie maternité 3,40 % Cotisation d'assurance invalidité-décès 3,50 % Cotisations d'assurance vieillesse de base mentionnées aux I et II de l'article D. 633-3 du code de la sécurité sociale 47,60 % Cotisation d'assurance vieillesse complémentaire 13,00 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale 32,50 %",
+  "claim": "D613-6 v.LEGIARTI000049625405 (in force 2025-01-01..2026-01-01; current text in S6 and S7): e) share invalidité-décès = 3.5 %.",
+  "note": "M0",
+  "check": {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . répartition . invalidité-décès . taux de répartition",
+   "situation": {
+    "date": "01/07/2025",
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "entreprise . date de création": "01/01/2021",
+    "dirigeant . exonérations . ACRE": "non",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activité . nature": "'libérale'",
+    "entreprise . activité . nature . libérale . réglementée": "non"
+   },
+   "expect": 3.5,
+   "tolerance": 0.001
+  }
+ },
+ {
+  "id": "M0-13",
+  "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . répartition . retraite de base . taux de répartition",
+  "article": "D613-6",
+  "quote": "Cotisation d'assurance maladie maternité 3,40 % Cotisation d'assurance invalidité-décès 3,50 % Cotisations d'assurance vieillesse de base mentionnées aux I et II de l'article D. 633-3 du code de la sécurité sociale 47,60 % Cotisation d'assurance vieillesse complémentaire 13,00 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale 32,50 %",
+  "claim": "D613-6 v.LEGIARTI000049625405 (in force 2025-01-01..2026-01-01; current text in S6 and S7): e) share retraite de base = 47.6 %.",
+  "note": "M0",
+  "check": {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . répartition . retraite de base . taux de répartition",
+   "situation": {
+    "date": "01/07/2025",
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "entreprise . date de création": "01/01/2021",
+    "dirigeant . exonérations . ACRE": "non",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activité . nature": "'libérale'",
+    "entreprise . activité . nature . libérale . réglementée": "non"
+   },
+   "expect": 47.6,
+   "tolerance": 0.001
+  }
+ },
+ {
+  "id": "M0-14",
+  "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . répartition . retraite complémentaire . taux de répartition",
+  "article": "D613-6",
+  "quote": "Cotisation d'assurance maladie maternité 3,40 % Cotisation d'assurance invalidité-décès 3,50 % Cotisations d'assurance vieillesse de base mentionnées aux I et II de l'article D. 633-3 du code de la sécurité sociale 47,60 % Cotisation d'assurance vieillesse complémentaire 13,00 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale 32,50 %",
+  "claim": "D613-6 v.LEGIARTI000049625405 (in force 2025-01-01..2026-01-01; current text in S6 and S7): e) share retraite complémentaire = 13 %.",
+  "note": "M0",
+  "check": {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . répartition . retraite complémentaire . taux de répartition",
+   "situation": {
+    "date": "01/07/2025",
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "entreprise . date de création": "01/01/2021",
+    "dirigeant . exonérations . ACRE": "non",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activité . nature": "'libérale'",
+    "entreprise . activité . nature . libérale . réglementée": "non"
+   },
+   "expect": 13,
+   "tolerance": 0.001
+  }
+ },
+ {
+  "id": "M0-15",
+  "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . répartition . autres contributions . taux de répartition",
+  "article": "D613-6",
+  "quote": "Cotisation d'assurance maladie maternité 3,40 % Cotisation d'assurance invalidité-décès 3,50 % Cotisations d'assurance vieillesse de base mentionnées aux I et II de l'article D. 633-3 du code de la sécurité sociale 47,60 % Cotisation d'assurance vieillesse complémentaire 13,00 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale 32,50 %",
+  "claim": "D613-6 v.LEGIARTI000049625405 (in force 2025-01-01..2026-01-01; current text in S6 and S7): e) share autres contributions = 32.5 %.",
+  "note": "M0",
+  "check": {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . répartition . autres contributions . taux de répartition",
+   "situation": {
+    "date": "01/07/2025",
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "entreprise . date de création": "01/01/2021",
+    "dirigeant . exonérations . ACRE": "non",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activité . nature": "'libérale'",
+    "entreprise . activité . nature . libérale . réglementée": "non"
+   },
+   "expect": 32.5,
+   "tolerance": 0.001
+  }
+ },
+ {
+  "id": "M0-16",
+  "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . répartition . maladie-maternité . taux de répartition",
+  "article": "D613-6",
+  "quote": "Cotisation d'assurance maladie-maternité 8,90 % Cotisation d'assurance invalidité-décès 3,10 % Cotisation d'assurance vieillesse de base mentionnée aux I et II de l'article D. 633-3 41,80 % Cotisation d'assurance vieillesse complémentaire 16,50 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale 29,70 %",
+  "claim": "D613-6 v.LEGIARTI000049625405 (in force 2025-01-01..2026-01-01; current text in S6 and S7): a/d share maladie-maternité = 8.9 % (service BIC).",
+  "note": "M0",
+  "check": {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . répartition . maladie-maternité . taux de répartition",
+   "situation": {
+    "date": "01/07/2025",
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "entreprise . date de création": "01/01/2021",
+    "dirigeant . exonérations . ACRE": "non",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activité . nature": "'artisanale'",
+    "entreprise . activités . service ou vente": "'service'"
+   },
+   "expect": 8.9,
+   "tolerance": 0.001
+  }
+ },
+ {
+  "id": "M0-17",
+  "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . répartition . invalidité-décès . taux de répartition",
+  "article": "D613-6",
+  "quote": "Cotisation d'assurance maladie-maternité 8,90 % Cotisation d'assurance invalidité-décès 3,10 % Cotisation d'assurance vieillesse de base mentionnée aux I et II de l'article D. 633-3 41,80 % Cotisation d'assurance vieillesse complémentaire 16,50 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale 29,70 %",
+  "claim": "D613-6 v.LEGIARTI000049625405 (in force 2025-01-01..2026-01-01; current text in S6 and S7): a/d share invalidité-décès = 3.1 % (service BIC).",
+  "note": "M0",
+  "check": {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . répartition . invalidité-décès . taux de répartition",
+   "situation": {
+    "date": "01/07/2025",
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "entreprise . date de création": "01/01/2021",
+    "dirigeant . exonérations . ACRE": "non",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activité . nature": "'artisanale'",
+    "entreprise . activités . service ou vente": "'service'"
+   },
+   "expect": 3.1,
+   "tolerance": 0.001
+  }
+ },
+ {
+  "id": "M0-18",
+  "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . répartition . retraite de base . taux de répartition",
+  "article": "D613-6",
+  "quote": "Cotisation d'assurance maladie-maternité 8,90 % Cotisation d'assurance invalidité-décès 3,10 % Cotisation d'assurance vieillesse de base mentionnée aux I et II de l'article D. 633-3 41,80 % Cotisation d'assurance vieillesse complémentaire 16,50 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale 29,70 %",
+  "claim": "D613-6 v.LEGIARTI000049625405 (in force 2025-01-01..2026-01-01; current text in S6 and S7): a/d share retraite de base = 41.8 % (service BIC).",
+  "note": "M0",
+  "check": {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . répartition . retraite de base . taux de répartition",
+   "situation": {
+    "date": "01/07/2025",
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "entreprise . date de création": "01/01/2021",
+    "dirigeant . exonérations . ACRE": "non",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activité . nature": "'artisanale'",
+    "entreprise . activités . service ou vente": "'service'"
+   },
+   "expect": 41.8,
+   "tolerance": 0.001
+  }
+ },
+ {
+  "id": "M0-19",
+  "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . répartition . retraite complémentaire . taux de répartition",
+  "article": "D613-6",
+  "quote": "Cotisation d'assurance maladie-maternité 8,90 % Cotisation d'assurance invalidité-décès 3,10 % Cotisation d'assurance vieillesse de base mentionnée aux I et II de l'article D. 633-3 41,80 % Cotisation d'assurance vieillesse complémentaire 16,50 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale 29,70 %",
+  "claim": "D613-6 v.LEGIARTI000049625405 (in force 2025-01-01..2026-01-01; current text in S6 and S7): a/d share retraite complémentaire = 16.5 % (service BIC).",
+  "note": "M0",
+  "check": {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . répartition . retraite complémentaire . taux de répartition",
+   "situation": {
+    "date": "01/07/2025",
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "entreprise . date de création": "01/01/2021",
+    "dirigeant . exonérations . ACRE": "non",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activité . nature": "'artisanale'",
+    "entreprise . activités . service ou vente": "'service'"
+   },
+   "expect": 16.5,
+   "tolerance": 0.001
+  }
+ },
+ {
+  "id": "M0-20",
+  "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . répartition . autres contributions . taux de répartition",
+  "article": "D613-6",
+  "quote": "Cotisation d'assurance maladie-maternité 8,90 % Cotisation d'assurance invalidité-décès 3,10 % Cotisation d'assurance vieillesse de base mentionnée aux I et II de l'article D. 633-3 41,80 % Cotisation d'assurance vieillesse complémentaire 16,50 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale 29,70 %",
+  "claim": "D613-6 v.LEGIARTI000049625405 (in force 2025-01-01..2026-01-01; current text in S6 and S7): a/d share autres contributions = 29.7 % (service BIC).",
+  "note": "M0",
+  "check": {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . répartition . autres contributions . taux de répartition",
+   "situation": {
+    "date": "01/07/2025",
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "entreprise . date de création": "01/01/2021",
+    "dirigeant . exonérations . ACRE": "non",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activité . nature": "'artisanale'",
+    "entreprise . activités . service ou vente": "'service'"
+   },
+   "expect": 29.7,
+   "tolerance": 0.001
+  }
+ },
+ {
+  "id": "M0-21",
+  "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement . répartition . retraite complémentaire . taux de répartition",
+  "article": "D613-6",
+  "quote": "Cotisation d'assurance maladie-maternité 8,90 % Cotisation d'assurance invalidité-décès 3,10 % Cotisation d'assurance vieillesse de base mentionnée aux I et II de l'article D. 633-3 41,80 % Cotisation d'assurance vieillesse complémentaire 16,50 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale 29,70 %",
+  "claim": "D613-6 v.LEGIARTI000049625405 (in force 2025-01-01..2026-01-01; current text in S6 and S7): a/d share retraite complémentaire 16,50 % (vente).",
+  "note": "M0",
+  "check": {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement . répartition . retraite complémentaire . taux de répartition",
+   "situation": {
+    "date": "01/07/2025",
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "entreprise . date de création": "01/01/2021",
+    "dirigeant . exonérations . ACRE": "non",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activité . nature": "'commerciale'",
+    "entreprise . activités . service ou vente": "'vente'"
+   },
+   "expect": 16.5,
+   "tolerance": 0.001
+  }
+ },
+ {
+  "id": "M0-22",
+  "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC Cipav . répartition . maladie-maternité . taux de répartition",
+  "article": "D613-6",
+  "quote": "Cotisation d'assurance maladie maternité mentionnée au premier alinéa de l'article L. 621-1 9,30 % Cotisation de prestations maladie en espèces mentionnée au dernier alinéa de l'article L. 621-2 0,90 % Cotisation d'assurance invalidité décès 1,40 % Cotisation d'assurance vieillesse de base mentionnée au 1° de l'article D. 642-3 23,45 % Cotisation d'assurance vieillesse de base mentionnée au 2° de l'article D. 642-3 5,35 % Cotisation d'assurance vieillesse complémentaire 25,60 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale 34,00 %",
+  "claim": "D613-6 v.LEGIARTI000049625405 (in force 2025-01-01..2026-01-01; current text in S6 and S7): b) share maladie-maternité: 9,30 % (L621-1) + 0,90 % (L621-2 espèces) = 10,20 % aggregated in one rule.",
+  "note": "M0",
+  "check": {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC Cipav . répartition . maladie-maternité . taux de répartition",
+   "situation": {
+    "date": "01/07/2025",
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "entreprise . date de création": "01/01/2019",
+    "dirigeant . exonérations . ACRE": "non",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activité . nature": "'libérale'",
+    "entreprise . activité . nature . libérale . réglementée": "oui"
+   },
+   "expect": 10.2,
+   "tolerance": 0.001
+  }
+ },
+ {
+  "id": "M0-23",
+  "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC Cipav . répartition . invalidité-décès . taux de répartition",
+  "article": "D613-6",
+  "quote": "Cotisation d'assurance maladie maternité mentionnée au premier alinéa de l'article L. 621-1 9,30 % Cotisation de prestations maladie en espèces mentionnée au dernier alinéa de l'article L. 621-2 0,90 % Cotisation d'assurance invalidité décès 1,40 % Cotisation d'assurance vieillesse de base mentionnée au 1° de l'article D. 642-3 23,45 % Cotisation d'assurance vieillesse de base mentionnée au 2° de l'article D. 642-3 5,35 % Cotisation d'assurance vieillesse complémentaire 25,60 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale 34,00 %",
+  "claim": "D613-6 v.LEGIARTI000049625405 (in force 2025-01-01..2026-01-01; current text in S6 and S7): b) share invalidité-décès: 1,40 %.",
+  "note": "M0",
+  "check": {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC Cipav . répartition . invalidité-décès . taux de répartition",
+   "situation": {
+    "date": "01/07/2025",
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "entreprise . date de création": "01/01/2019",
+    "dirigeant . exonérations . ACRE": "non",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activité . nature": "'libérale'",
+    "entreprise . activité . nature . libérale . réglementée": "oui"
+   },
+   "expect": 1.4,
+   "tolerance": 0.001
+  }
+ },
+ {
+  "id": "M0-24",
+  "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC Cipav . répartition . retraite de base . taux de répartition",
+  "article": "D613-6",
+  "quote": "Cotisation d'assurance maladie maternité mentionnée au premier alinéa de l'article L. 621-1 9,30 % Cotisation de prestations maladie en espèces mentionnée au dernier alinéa de l'article L. 621-2 0,90 % Cotisation d'assurance invalidité décès 1,40 % Cotisation d'assurance vieillesse de base mentionnée au 1° de l'article D. 642-3 23,45 % Cotisation d'assurance vieillesse de base mentionnée au 2° de l'article D. 642-3 5,35 % Cotisation d'assurance vieillesse complémentaire 25,60 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale 34,00 %",
+  "claim": "D613-6 v.LEGIARTI000049625405 (in force 2025-01-01..2026-01-01; current text in S6 and S7): b) share retraite de base: 23,45 % (1° D642-3) + 5,35 % (2° D642-3) = 28,80 % aggregated.",
+  "note": "M0",
+  "check": {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC Cipav . répartition . retraite de base . taux de répartition",
+   "situation": {
+    "date": "01/07/2025",
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "entreprise . date de création": "01/01/2019",
+    "dirigeant . exonérations . ACRE": "non",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activité . nature": "'libérale'",
+    "entreprise . activité . nature . libérale . réglementée": "oui"
+   },
+   "expect": 28.8,
+   "tolerance": 0.001
+  }
+ },
+ {
+  "id": "M0-25",
+  "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC Cipav . répartition . retraite complémentaire . taux de répartition",
+  "article": "D613-6",
+  "quote": "Cotisation d'assurance maladie maternité mentionnée au premier alinéa de l'article L. 621-1 9,30 % Cotisation de prestations maladie en espèces mentionnée au dernier alinéa de l'article L. 621-2 0,90 % Cotisation d'assurance invalidité décès 1,40 % Cotisation d'assurance vieillesse de base mentionnée au 1° de l'article D. 642-3 23,45 % Cotisation d'assurance vieillesse de base mentionnée au 2° de l'article D. 642-3 5,35 % Cotisation d'assurance vieillesse complémentaire 25,60 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale 34,00 %",
+  "claim": "D613-6 v.LEGIARTI000049625405 (in force 2025-01-01..2026-01-01; current text in S6 and S7): b) share retraite complémentaire: 25,60 %.",
+  "note": "M0",
+  "check": {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC Cipav . répartition . retraite complémentaire . taux de répartition",
+   "situation": {
+    "date": "01/07/2025",
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "entreprise . date de création": "01/01/2019",
+    "dirigeant . exonérations . ACRE": "non",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activité . nature": "'libérale'",
+    "entreprise . activité . nature . libérale . réglementée": "oui"
+   },
+   "expect": 25.6,
+   "tolerance": 0.001
+  }
+ },
+ {
+  "id": "M0-26",
+  "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC Cipav . répartition . autres contributions . taux de répartition",
+  "article": "D613-6",
+  "quote": "Cotisation d'assurance maladie maternité mentionnée au premier alinéa de l'article L. 621-1 9,30 % Cotisation de prestations maladie en espèces mentionnée au dernier alinéa de l'article L. 621-2 0,90 % Cotisation d'assurance invalidité décès 1,40 % Cotisation d'assurance vieillesse de base mentionnée au 1° de l'article D. 642-3 23,45 % Cotisation d'assurance vieillesse de base mentionnée au 2° de l'article D. 642-3 5,35 % Cotisation d'assurance vieillesse complémentaire 25,60 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale 34,00 %",
+  "claim": "D613-6 v.LEGIARTI000049625405 (in force 2025-01-01..2026-01-01; current text in S6 and S7): b) share autres contributions: 34,00 %.",
+  "note": "M0",
+  "check": {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC Cipav . répartition . autres contributions . taux de répartition",
+   "situation": {
+    "date": "01/07/2025",
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "entreprise . date de création": "01/01/2019",
+    "dirigeant . exonérations . ACRE": "non",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activité . nature": "'libérale'",
+    "entreprise . activité . nature . libérale . réglementée": "oui"
+   },
+   "expect": 34,
+   "tolerance": 0.001
+  }
+ },
+ {
+  "id": "M0-27",
+  "rule": "dirigeant . auto-entrepreneur . DROM . taux service BNC",
+  "article": "D756-5",
+  "quote": "après arrondi au dixième de pour cent supérieur, à une fraction des taux prévus par l'article D. 131-6-1 fixée à : a) 1/6 pour les travailleurs indépendants mentionnés au 2° de l'article L. 611-1 et 1/3 dans les autres cas",
+  "claim": "D756-5 v.LEGIARTI000034726710 (unchanged S6->S7) a) 1/6 of 24,6 % = 4,1 % (BNC, first period).",
+  "note": "M0",
+  "check": {
+   "rule": "dirigeant . auto-entrepreneur . DROM . taux service BNC",
+   "situation": {
+    "date": "01/07/2025",
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "entreprise . date de création": "01/01/2021",
+    "dirigeant . exonérations . ACRE": "non",
+    "établissement . commune . département . outre-mer": "oui",
+    "entreprise . activité . nature": "'libérale'",
+    "entreprise . activité . nature . libérale . réglementée": "non",
+    "entreprise . durée d'activité": "300 jour",
+    "entreprise . durée d'activité . trimestres civils": "4 trimestre civil",
+    "entreprise . durée d'activité . années civiles": "1 année civile"
+   },
+   "expect": 4.1,
+   "tolerance": 0.001
+  }
+ },
+ {
+  "id": "M0-28",
+  "rule": "dirigeant . auto-entrepreneur . DROM . taux service BNC",
+  "article": "D756-5",
+  "quote": "b) 1/2 pour la période qui court entre la fin de la période mentionnée au a et la fin de la troisième année civile d'activité",
+  "claim": "D756-5 v.LEGIARTI000034726710 (unchanged S6->S7) b) 1/2 of 24,6 % = 12,3 % (BNC, second period).",
+  "note": "M0",
+  "check": {
+   "rule": "dirigeant . auto-entrepreneur . DROM . taux service BNC",
+   "situation": {
+    "date": "01/07/2025",
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "entreprise . date de création": "01/01/2021",
+    "dirigeant . exonérations . ACRE": "non",
+    "établissement . commune . département . outre-mer": "oui",
+    "entreprise . activité . nature": "'libérale'",
+    "entreprise . activité . nature . libérale . réglementée": "non",
+    "entreprise . durée d'activité": "900 jour",
+    "entreprise . durée d'activité . trimestres civils": "10 trimestre civil",
+    "entreprise . durée d'activité . années civiles": "3 année civile"
+   },
+   "expect": 12.3,
+   "tolerance": 0.001
+  }
+ },
+ {
+  "id": "M0-29",
+  "rule": "dirigeant . auto-entrepreneur . DROM . taux service BNC",
+  "article": "D756-5",
+  "quote": "c) 2/3 à compter de la quatrième année civile d'activité",
+  "claim": "D756-5 v.LEGIARTI000034726710 (unchanged S6->S7) c) 2/3 of 24,6 % = 16,4 % (BNC, from 4th civil year).",
+  "note": "M0",
+  "check": {
+   "rule": "dirigeant . auto-entrepreneur . DROM . taux service BNC",
+   "situation": {
+    "date": "01/07/2025",
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "entreprise . date de création": "01/01/2021",
+    "dirigeant . exonérations . ACRE": "non",
+    "établissement . commune . département . outre-mer": "oui",
+    "entreprise . activité . nature": "'libérale'",
+    "entreprise . activité . nature . libérale . réglementée": "non",
+    "entreprise . durée d'activité": "1500 jour",
+    "entreprise . durée d'activité . trimestres civils": "20 trimestre civil",
+    "entreprise . durée d'activité . années civiles": "5 année civile"
+   },
+   "expect": 16.4,
+   "tolerance": 0.001
+  }
+ },
+ {
+  "id": "M0-30",
+  "rule": "dirigeant . auto-entrepreneur . DROM . taux service BIC",
+  "article": "D756-5",
+  "quote": "après arrondi au dixième de pour cent supérieur, à une fraction des taux prévus par l'article D. 131-6-1 fixée à : a) 1/6 pour les travailleurs indépendants mentionnés au 2° de l'article L. 611-1 et 1/3 dans les autres cas",
+  "claim": "D756-5 v.LEGIARTI000034726710 (unchanged S6->S7) a) 1/6 of 21,2 % = 3,53 -> 3,6 % (rounded up to 0,1).",
+  "note": "M0",
+  "check": {
+   "rule": "dirigeant . auto-entrepreneur . DROM . taux service BIC",
+   "situation": {
+    "date": "01/07/2025",
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "entreprise . date de création": "01/01/2021",
+    "dirigeant . exonérations . ACRE": "non",
+    "établissement . commune . département . outre-mer": "oui",
+    "entreprise . activité . nature": "'artisanale'",
+    "entreprise . activités . service ou vente": "'service'",
+    "entreprise . durée d'activité": "300 jour",
+    "entreprise . durée d'activité . trimestres civils": "4 trimestre civil",
+    "entreprise . durée d'activité . années civiles": "1 année civile"
+   },
+   "expect": 3.6,
+   "tolerance": 0.001
+  }
+ },
+ {
+  "id": "M0-31",
+  "rule": "dirigeant . auto-entrepreneur . DROM . taux vente restauration hébergement",
+  "article": "D756-5",
+  "quote": "après arrondi au dixième de pour cent supérieur, à une fraction des taux prévus par l'article D. 131-6-1 fixée à : a) 1/6 pour les travailleurs indépendants mentionnés au 2° de l'article L. 611-1 et 1/3 dans les autres cas",
+  "claim": "D756-5 v.LEGIARTI000034726710 (unchanged S6->S7) a) 1/6 of 12,3 % = 2,05 -> 2,1 %.",
+  "note": "M0",
+  "check": {
+   "rule": "dirigeant . auto-entrepreneur . DROM . taux vente restauration hébergement",
+   "situation": {
+    "date": "01/07/2025",
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "entreprise . date de création": "01/01/2021",
+    "dirigeant . exonérations . ACRE": "non",
+    "établissement . commune . département . outre-mer": "oui",
+    "entreprise . activité . nature": "'commerciale'",
+    "entreprise . activités . service ou vente": "'vente'",
+    "entreprise . durée d'activité": "300 jour",
+    "entreprise . durée d'activité . trimestres civils": "4 trimestre civil",
+    "entreprise . durée d'activité . années civiles": "1 année civile"
+   },
+   "expect": 2.1,
+   "tolerance": 0.001
+  }
+ },
+ {
+  "id": "M0-32",
+  "rule": "dirigeant . auto-entrepreneur . DROM . taux CIPAV",
+  "article": "D756-5",
+  "quote": "après arrondi au dixième de pour cent supérieur, à une fraction des taux prévus par l'article D. 131-6-1 fixée à : a) 1/6 pour les travailleurs indépendants mentionnés au 2° de l'article L. 611-1 et 1/3 dans les autres cas",
+  "claim": "D756-5 v.LEGIARTI000034726710 (unchanged S6->S7) a) 1/3 of 23,2 % (D613-4 b, 2025) = 7,73 -> 7,8 %; G3 still returns 7,1 (1/3 of the superseded 21,2 %). PRE-EXISTING mismatch (since 07/2024), not caused by S6->S7; check expected to FAIL.",
+  "note": "M0",
+  "check": {
+   "rule": "dirigeant . auto-entrepreneur . DROM . taux CIPAV",
+   "situation": {
+    "date": "01/07/2025",
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "entreprise . date de création": "01/01/2019",
+    "dirigeant . exonérations . ACRE": "non",
+    "établissement . commune . département . outre-mer": "oui",
+    "entreprise . activité . nature": "'libérale'",
+    "entreprise . activité . nature . libérale . réglementée": "oui",
+    "entreprise . durée d'activité": "300 jour",
+    "entreprise . durée d'activité . trimestres civils": "4 trimestre civil",
+    "entreprise . durée d'activité . années civiles": "1 année civile"
+   },
+   "expect": 7.8,
+   "tolerance": 0.001
+  }
+ },
+ {
+  "id": "M0-33",
+  "rule": "dirigeant . auto-entrepreneur . DROM . taux CIPAV",
+  "article": "D756-5",
+  "quote": "b) 1/2 pour la période qui court entre la fin de la période mentionnée au a et la fin de la troisième année civile d'activité",
+  "claim": "D756-5 v.LEGIARTI000034726710 (unchanged S6->S7) b) 1/2 of 23,2 % = 11,6 %; G3 returns 10,6. Pre-existing mismatch; expected to FAIL.",
+  "note": "M0",
+  "check": {
+   "rule": "dirigeant . auto-entrepreneur . DROM . taux CIPAV",
+   "situation": {
+    "date": "01/07/2025",
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "entreprise . date de création": "01/01/2019",
+    "dirigeant . exonérations . ACRE": "non",
+    "établissement . commune . département . outre-mer": "oui",
+    "entreprise . activité . nature": "'libérale'",
+    "entreprise . activité . nature . libérale . réglementée": "oui",
+    "entreprise . durée d'activité": "900 jour",
+    "entreprise . durée d'activité . trimestres civils": "10 trimestre civil",
+    "entreprise . durée d'activité . années civiles": "3 année civile"
+   },
+   "expect": 11.6,
+   "tolerance": 0.001
+  }
+ },
+ {
+  "id": "M0-34",
+  "rule": "dirigeant . auto-entrepreneur . DROM . taux CIPAV",
+  "article": "D756-5",
+  "quote": "c) 2/3 à compter de la quatrième année civile d'activité",
+  "claim": "D756-5 v.LEGIARTI000034726710 (unchanged S6->S7) c) 2/3 of 23,2 % = 15,47 -> 15,5 %; G3 returns 14,2. Pre-existing mismatch; expected to FAIL.",
+  "note": "M0",
+  "check": {
+   "rule": "dirigeant . auto-entrepreneur . DROM . taux CIPAV",
+   "situation": {
+    "date": "01/07/2025",
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "entreprise . date de création": "01/01/2019",
+    "dirigeant . exonérations . ACRE": "non",
+    "établissement . commune . département . outre-mer": "oui",
+    "entreprise . activité . nature": "'libérale'",
+    "entreprise . activité . nature . libérale . réglementée": "oui",
+    "entreprise . durée d'activité": "1500 jour",
+    "entreprise . durée d'activité . trimestres civils": "20 trimestre civil",
+    "entreprise . durée d'activité . années civiles": "5 année civile"
+   },
+   "expect": 15.5,
+   "tolerance": 0.001
+  }
+ },
+ {
+  "id": "M0-35",
+  "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . taux",
+  "article": "D613-4",
+  "quote": "10 000 euros 34 % 6 600 euros 24,6 %",
+  "claim": "ABSTENTION (M0, S6->S7): the 2026-01-01 version announced as LEGIARTI000049624125 is now MODIFIE_MORT_NE (dateFin 2025-09-10); the new version LEGIARTI000052218738 (VIGUEUR_DIFF from 2026-01-01) has no text in S7 and no modifying text is named in lienModifications. No available text settles the value for dates >= 2026-01-01. G3 carries 'date >= 01/2026: 26.1%' transposed on 2024-08-01 (commit 1d2874c5) from the now mort-ne version; unverifiable.",
+  "note": "M0",
+  "status": "UNKNOWN"
+ },
+ {
+  "id": "M0-36",
+  "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . répartition",
+  "article": "D613-6",
+  "quote": "Cotisation d'assurance maladie maternité 3,40 % Cotisation d'assurance invalidité-décès 3,50 % Cotisations d'assurance vieillesse de base mentionnées aux I et II de l'article D. 633-3 du code de la sécurité sociale 47,60 % Cotisation d'assurance vieillesse complémentaire 13,00 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale 32,50 %",
+  "claim": "ABSTENTION (M0, S6->S7): the 2026-01-01 version announced as LEGIARTI000049625445 is now MODIFIE_MORT_NE (dateFin 2025-09-10); the new version LEGIARTI000052218747 (VIGUEUR_DIFF from 2026-01-01) has no text in S7. No available text settles the shares for dates >= 2026-01-01. G3 carries 2026 shares 3 / 3,25 / 44,85 / 17,7 / 31,20 % from the mort-ne version; unverifiable.",
+  "note": "M0",
+  "status": "UNKNOWN"
+ },
+ {
+  "id": "M0-37",
+  "rule": "dirigeant . auto-entrepreneur . DROM . taux service BNC",
+  "article": "D756-5",
+  "quote": "après arrondi au dixième de pour cent supérieur, à une fraction des taux prévus par l'article D. 131-6-1 fixée à : a) 1/6 pour les travailleurs indépendants mentionnés au 2° de l'article L. 611-1 et 1/3 dans les autres cas",
+  "claim": "ABSTENTION: DROM BNC 2026 values in G3 (4,4 / 13,1 / 17,4 %) are fractions of the unverifiable 26,1 %; D756-5 itself unchanged. ABSTENTION (M0, S6->S7): the 2026-01-01 version announced as LEGIARTI000049624125 is now MODIFIE_MORT_NE (dateFin 2025-09-10); the new version LEGIARTI000052218738 (VIGUEUR_DIFF from 2026-01-01) has no text in S7 and no modifying text is named in lienModifications. No available text settles the value for dates >= 2026-01-01.",
+  "note": "M0",
+  "status": "UNKNOWN"
+ },
+ {
+  "id": "M0-38",
+  "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . taux",
+  "article": "D613-4",
+  "quote": "2° du 1 de l'article 50-0 du code général des impôt 46 300 euros 50 % 23 150 euros 21,2 %",
+  "claim": "ABSTENTION (M0, S6->S7): the 2026-01-01 version announced as LEGIARTI000049624125 is now MODIFIE_MORT_NE (dateFin 2025-09-10); the new version LEGIARTI000052218738 (VIGUEUR_DIFF from 2026-01-01) has no text in S7 and no modifying text is named in lienModifications. No available text settles the value for dates >= 2026-01-01. G3 keeps 21,2 % for 2026 without textual support.",
+  "note": "M0",
+  "status": "UNKNOWN"
+ },
+ {
+  "id": "M0-39",
+  "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement . taux",
+  "article": "D613-4",
+  "quote": "79 828 euros 71 % 23 150 euros 12,3 %",
+  "claim": "ABSTENTION (M0, S6->S7): the 2026-01-01 version announced as LEGIARTI000049624125 is now MODIFIE_MORT_NE (dateFin 2025-09-10); the new version LEGIARTI000052218738 (VIGUEUR_DIFF from 2026-01-01) has no text in S7 and no modifying text is named in lienModifications. No available text settles the value for dates >= 2026-01-01. G3 keeps 12,3 % for 2026 without textual support.",
+  "note": "M0",
+  "status": "UNKNOWN"
+ },
+ {
+  "id": "M0-40",
+  "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC Cipav . taux",
+  "article": "D613-4",
+  "quote": "11° de l'article R. 641-1 35 076 euros 34 % 23 150 euros 23,2 %",
+  "claim": "ABSTENTION (M0, S6->S7): the 2026-01-01 version announced as LEGIARTI000049624125 is now MODIFIE_MORT_NE (dateFin 2025-09-10); the new version LEGIARTI000052218738 (VIGUEUR_DIFF from 2026-01-01) has no text in S7 and no modifying text is named in lienModifications. No available text settles the value for dates >= 2026-01-01. G3 keeps 23,2 % for 2026 without textual support.",
+  "note": "M0",
+  "status": "UNKNOWN"
+ },
+ {
+  "id": "M0-41",
+  "rule": "dirigeant . auto-entrepreneur . Acre . taux service BNC",
+  "article": "D613-4",
+  "quote": "10 000 euros 34 % 6 600 euros 24,6 %",
+  "claim": "ABSTENTION: the 2026 rounding branch (2 décimales) presupposes the unverifiable 26,1 %; Acre rate article itself outside the bounded set. ABSTENTION (M0, S6->S7): the 2026-01-01 version announced as LEGIARTI000049624125 is now MODIFIE_MORT_NE (dateFin 2025-09-10); the new version LEGIARTI000052218738 (VIGUEUR_DIFF from 2026-01-01) has no text in S7 and no modifying text is named in lienModifications. No available text settles the value for dates >= 2026-01-01.",
+  "note": "M0",
+  "status": "UNKNOWN"
+ }
+]

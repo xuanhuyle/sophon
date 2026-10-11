@@ -1,0 +1,10 @@
+[
+ {"id":"SAL_default_3000","situation":{"date":"01/07/2024","salarié . contrat . salaire brut":"3000 €/mois"},
+  "rules":["établissement . taux ATMP","établissement . taux ATMP . taux collectif","salarié . cotisations . ATMP","salarié . cotisations . ATMP . taux","salarié . cotisations . ATMP . taux minimum","salarié . cotisations . ATMP . taux moyen","salarié . cotisations . employeur","salarié . cotisations","salarié . rémunération . net . à payer avant impôt"]},
+ {"id":"SAL_tauxATMP_1.5","situation":{"date":"01/07/2024","salarié . contrat . salaire brut":"3000 €/mois","établissement . taux ATMP":"1.5 %"},
+  "rules":["établissement . taux ATMP","salarié . cotisations . ATMP","salarié . cotisations . ATMP . taux","salarié . cotisations . employeur"]},
+ {"id":"SAL_tauxcollectif_3_jan2024","situation":{"date":"01/01/2024","salarié . contrat . salaire brut":"3000 €/mois","établissement . taux ATMP . taux collectif":"3 %"},
+  "rules":["établissement . taux ATMP","établissement . taux ATMP . taux collectif","salarié . cotisations . ATMP","salarié . cotisations . employeur"]},
+ {"id":"SAL_tauxATMP_below_min","situation":{"date":"01/07/2024","salarié . contrat . salaire brut":"3000 €/mois","établissement . taux ATMP":"0.1 %"},
+  "rules":["établissement . taux ATMP","salarié . cotisations . ATMP . taux minimum","salarié . cotisations . ATMP"]}
+]

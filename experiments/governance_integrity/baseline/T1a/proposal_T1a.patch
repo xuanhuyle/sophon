@@ -1,0 +1,87 @@
+# unified diff: sealed pin G0_d9242882f96b -> work/proposals/T1a/modele-social/règles (diff -ruN; exit 1)
+diff -ruN "/tmp/claude-0/-home-user-sophon/980382c3-789d-515f-926e-c8bdd3dd6b4b/scratchpad/runs/A/T1a/inputs/rules/G0_d9242882f96b/modele-social/r\303\250gles/dirigeant/auto-entrepreneur/auto-entrepreneur.publicodes" "/tmp/claude-0/-home-user-sophon/980382c3-789d-515f-926e-c8bdd3dd6b4b/scratchpad/runs/A/T1a/work/proposals/T1a/modele-social/r\303\250gles/dirigeant/auto-entrepreneur/auto-entrepreneur.publicodes"
+--- "/tmp/claude-0/-home-user-sophon/980382c3-789d-515f-926e-c8bdd3dd6b4b/scratchpad/runs/A/T1a/inputs/rules/G0_d9242882f96b/modele-social/r\303\250gles/dirigeant/auto-entrepreneur/auto-entrepreneur.publicodes"	2024-05-15 07:38:43.000000000 +0000
++++ "/tmp/claude-0/-home-user-sophon/980382c3-789d-515f-926e-c8bdd3dd6b4b/scratchpad/runs/A/T1a/work/proposals/T1a/modele-social/r\303\250gles/dirigeant/auto-entrepreneur/auto-entrepreneur.publicodes"	2026-10-11 17:01:30.316248401 +0000
+@@ -192,7 +192,31 @@
+         - entreprise . chiffre d'affaires
+         - taux
+ 
+-    cotisations CIPAV . taux:  21.2%
++    cotisations CIPAV . taux:
++      note: |
++        Source au 01/06/2024 : CSS D613-4, version LEGIARTI000049623867 (décret n°2024-484 du 30 mai 2024, art. 1,
++        JORF 31/05/2024, en vigueur 01/06/2024), ligne b) : « 21,2 % ». Même valeur que la version précédente
++        LEGIARTI000046714712 (10/12/2022 → 31/05/2024).
++        Versions ultérieures de D613-4 annoncées par le même décret : LEGIARTI000049624068 (01/07/2024),
++        LEGIARTI000049624097 (01/01/2025), LEGIARTI000049624125 (01/01/2026). Leur texte n est pas disponible
++        dans le corpus au 01/06/2024 : aucune nouvelle valeur n est fixée pour ces dates (abstention) ; la
++        notification « taux à confirmer » signale la période non couverte.
++      variations:
++        - si: date >= 06/2024
++          alors: 21.2%
++        - sinon: 21.2%
++
++    taux à confirmer:
++      type: notification
++      sévérité: avertissement
++      valeur: date >= 07/2024
++      description: |
++        Le décret n°2024-484 du 30 mai 2024 (JORF 31/05/2024) a remplacé le tableau de l article D613-4
++        au 01/06/2024 (version LEGIARTI000049623867, taux inchangés : a) 12,3 % ; b) 21,2 % ; c) 6 % ;
++        d) 21,2 % ; e) 21,1 %) et annonce trois nouvelles versions au 01/07/2024 (LEGIARTI000049624068),
++        au 01/01/2025 (LEGIARTI000049624097) et au 01/01/2026 (LEGIARTI000049624125) dont le texte n est
++        pas disponible dans notre corpus. Les taux appliqués à partir de juillet 2024 ne sont donc pas
++        confirmés par le texte en vigueur à ces dates.
+ 
+     taux prestation de service:
+       déprécié: oui
+@@ -202,19 +226,49 @@
+       valeur: taux service BIC
+ 
+     taux service BIC:
++      note: |
++        Source au 01/06/2024 : CSS D613-4, version LEGIARTI000049623867 (décret n°2024-484 du 30 mai 2024, art. 1,
++        JORF 31/05/2024, en vigueur 01/06/2024), ligne d) : « 21,2 % ». Même valeur que la version précédente
++        LEGIARTI000046714712 (10/12/2022 → 31/05/2024).
++        Versions ultérieures de D613-4 annoncées par le même décret : LEGIARTI000049624068 (01/07/2024),
++        LEGIARTI000049624097 (01/01/2025), LEGIARTI000049624125 (01/01/2026). Leur texte n est pas disponible
++        dans le corpus au 01/06/2024 : aucune nouvelle valeur n est fixée pour ces dates (abstention) ; la
++        notification « taux à confirmer » signale la période non couverte.
+       variations:
++        - si: date >= 06/2024
++          alors: 21.2%
+         - si: date >= 10/2022
+           alors: 21.2%
+         - sinon: 22%
+ 
+     taux service BNC:
++      note: |
++        Source au 01/06/2024 : CSS D613-4, version LEGIARTI000049623867 (décret n°2024-484 du 30 mai 2024, art. 1,
++        JORF 31/05/2024, en vigueur 01/06/2024), ligne e) : « 21,1 % ». Même valeur que la version précédente
++        LEGIARTI000046714712 (10/12/2022 → 31/05/2024).
++        Versions ultérieures de D613-4 annoncées par le même décret : LEGIARTI000049624068 (01/07/2024),
++        LEGIARTI000049624097 (01/01/2025), LEGIARTI000049624125 (01/01/2026). Leur texte n est pas disponible
++        dans le corpus au 01/06/2024 : aucune nouvelle valeur n est fixée pour ces dates (abstention) ; la
++        notification « taux à confirmer » signale la période non couverte.
+       variations:
++        - si: date >= 06/2024
++          alors: 21.1%
+         - si: date >= 10/2022
+           alors: 21.1%
+         - sinon: 22%
+ 
+     taux vente restauration hébergement:
++      note: |
++        Source au 01/06/2024 : CSS D613-4, version LEGIARTI000049623867 (décret n°2024-484 du 30 mai 2024, art. 1,
++        JORF 31/05/2024, en vigueur 01/06/2024), ligne a) : « 12,3 % ». Même valeur que la version précédente
++        LEGIARTI000046714712 (10/12/2022 → 31/05/2024).
++        Versions ultérieures de D613-4 annoncées par le même décret : LEGIARTI000049624068 (01/07/2024),
++        LEGIARTI000049624097 (01/01/2025), LEGIARTI000049624125 (01/01/2026). Leur texte n est pas disponible
++        dans le corpus au 01/06/2024 : aucune nouvelle valeur n est fixée pour ces dates (abstention) ; la
++        notification « taux à confirmer » signale la période non couverte.
+       variations:
++        - si: date >= 06/2024
++          alors: 12.3%
+         - si: date >= 10/2022
+           alors: 12.3%
+         - sinon: 12.8%

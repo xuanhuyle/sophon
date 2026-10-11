@@ -1,0 +1,1177 @@
+{
+ "as_of": "2024-07-17",
+ "question": {
+  "rule": null,
+  "article": "D613-4"
+ },
+ "generated_at": "2026-10-11T17:49:36+00:00",
+ "links": [
+  {
+   "link_id": "L0001",
+   "recorded_at": "2026-10-11T16:46:22+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC",
+   "rules_snapshot": "G0",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/auto-entrepreneur.publicodes",
+   "rule_file_sha256": "145ca5ae234bd65d97f3d5591b11a6fd518382d943767b889fcb7a56d3c2cdb7",
+   "article": "D613-4",
+   "article_id": "LEGIARTI000046714712",
+   "article_dateDebut": "2022-12-10",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "2336dc9e52e5064b5a72aa158869a38aa720218935bdefc08f5cf20a3eeb08aa",
+   "law_snapshot": "S0",
+   "quote": "10 000 euros 34 % 6 600 euros 21,1 %",
+   "claim": "Category e) (L631-1 + CGI 102 ter, BNC): global contribution rate 21,1 %.",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC",
+    "situation": {
+     "date": "01/05/2024",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "entreprise . activité . nature": "'libérale'",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "non"
+    },
+    "expect": 21.1,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 21.1,
+    "expected": 21.1,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0002",
+   "recorded_at": "2026-10-11T16:46:23+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BIC",
+   "rules_snapshot": "G0",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/auto-entrepreneur.publicodes",
+   "rule_file_sha256": "145ca5ae234bd65d97f3d5591b11a6fd518382d943767b889fcb7a56d3c2cdb7",
+   "article": "D613-4",
+   "article_id": "LEGIARTI000046714712",
+   "article_dateDebut": "2022-12-10",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "2336dc9e52e5064b5a72aa158869a38aa720218935bdefc08f5cf20a3eeb08aa",
+   "law_snapshot": "S0",
+   "quote": "2° du 1 de l'article 50-0 du code général des impôt 46 300 euros 50 % 23 150 euros 21,2 %",
+   "claim": "Category d) (CGI 50-0 1 2°, prestations de service BIC): global rate 21,2 %.",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BIC",
+    "situation": {
+     "date": "01/05/2024",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "entreprise . activité . nature": "'libérale'",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "non"
+    },
+    "expect": 21.2,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 21.2,
+    "expected": 21.2,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0003",
+   "recorded_at": "2026-10-11T16:46:25+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux vente restauration hébergement",
+   "rules_snapshot": "G0",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/auto-entrepreneur.publicodes",
+   "rule_file_sha256": "145ca5ae234bd65d97f3d5591b11a6fd518382d943767b889fcb7a56d3c2cdb7",
+   "article": "D613-4",
+   "article_id": "LEGIARTI000046714712",
+   "article_dateDebut": "2022-12-10",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "2336dc9e52e5064b5a72aa158869a38aa720218935bdefc08f5cf20a3eeb08aa",
+   "law_snapshot": "S0",
+   "quote": "79 828 euros 71 % 23 150 euros 12,3 %",
+   "claim": "Category a) (CGI 50-0 1 1°, vente/restauration/hébergement): global rate 12,3 %.",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux vente restauration hébergement",
+    "situation": {
+     "date": "01/05/2024",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "entreprise . activité . nature": "'libérale'",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "non"
+    },
+    "expect": 12.3,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 12.3,
+    "expected": 12.3,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0004",
+   "recorded_at": "2026-10-11T16:46:26+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV . taux",
+   "rules_snapshot": "G0",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/auto-entrepreneur.publicodes",
+   "rule_file_sha256": "145ca5ae234bd65d97f3d5591b11a6fd518382d943767b889fcb7a56d3c2cdb7",
+   "article": "D613-4",
+   "article_id": "LEGIARTI000046714712",
+   "article_dateDebut": "2022-12-10",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "2336dc9e52e5064b5a72aa158869a38aa720218935bdefc08f5cf20a3eeb08aa",
+   "law_snapshot": "S0",
+   "quote": "11° de l'article R. 641-1 35 076 euros 34 % 23 150 euros 21,2 %",
+   "claim": "Category b) (section professionnelle 11° R641-1 = CIPAV): global rate 21,2 % (rate constant).",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV . taux",
+    "situation": {
+     "date": "01/05/2024",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "entreprise . activité . nature": "'libérale'",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "non",
+     "entreprise . activité . nature . libérale . réglementée": "oui"
+    },
+    "expect": 21.2,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 21.2,
+    "expected": 21.2,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0005",
+   "recorded_at": "2026-10-11T16:46:27+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "rules_snapshot": "G0",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/auto-entrepreneur.publicodes",
+   "rule_file_sha256": "145ca5ae234bd65d97f3d5591b11a6fd518382d943767b889fcb7a56d3c2cdb7",
+   "article": "D613-4",
+   "article_id": "LEGIARTI000046714712",
+   "article_dateDebut": "2022-12-10",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "2336dc9e52e5064b5a72aa158869a38aa720218935bdefc08f5cf20a3eeb08aa",
+   "law_snapshot": "S0",
+   "quote": "10 000 euros 34 % 6 600 euros 21,1 %",
+   "claim": "BNC AE with CA 12 000 €/an pays 12 000 × 21,1 % = 2 532 €/an.",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+    "situation": {
+     "date": "01/05/2024",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "entreprise . activité . nature": "'libérale'",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "non"
+    },
+    "expect": 2532.0,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 2532.0000000000005,
+    "expected": 2532.0,
+    "unit": "€/an",
+    "missing_variables": [
+     "entreprise . activité . nature . libérale . réglementée",
+     "entreprise . activités . revenus mixtes",
+     "entreprise . activités",
+     "entreprise . activités . commerciale",
+     "entreprise . activités . artisanale",
+     "entreprise . activités . libérale"
+    ],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0006",
+   "recorded_at": "2026-10-11T16:46:29+00:00",
+   "status": "FAILED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "rules_snapshot": "G0",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/auto-entrepreneur.publicodes",
+   "rule_file_sha256": "145ca5ae234bd65d97f3d5591b11a6fd518382d943767b889fcb7a56d3c2cdb7",
+   "article": "D613-4",
+   "article_id": "LEGIARTI000046714712",
+   "article_dateDebut": "2022-12-10",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "2336dc9e52e5064b5a72aa158869a38aa720218935bdefc08f5cf20a3eeb08aa",
+   "law_snapshot": "S0",
+   "quote": "11° de l'article R. 641-1 35 076 euros 34 % 23 150 euros 21,2 %",
+   "claim": "CIPAV AE with CA 12 000 €/an should pay 12 000 × 21,2 % = 2 544 €/an; engine returns 1 452 (12,1 %) for a company created on/after 01/04/2020 even with Acre = non (the Acre CIPAV rate replacement leaks).",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+    "situation": {
+     "date": "01/05/2024",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "entreprise . activité . nature": "'libérale'",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "non",
+     "entreprise . activité . nature . libérale . réglementée": "oui"
+    },
+    "expect": 2544.0,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": false,
+    "observed": 1452,
+    "expected": 2544.0,
+    "unit": "€/an",
+    "missing_variables": [],
+    "detail": "observed != expected"
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0007",
+   "recorded_at": "2026-10-11T16:46:31+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "rules_snapshot": "G0",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/auto-entrepreneur.publicodes",
+   "rule_file_sha256": "145ca5ae234bd65d97f3d5591b11a6fd518382d943767b889fcb7a56d3c2cdb7",
+   "article": "D613-4",
+   "article_id": "LEGIARTI000046714712",
+   "article_dateDebut": "2022-12-10",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "2336dc9e52e5064b5a72aa158869a38aa720218935bdefc08f5cf20a3eeb08aa",
+   "law_snapshot": "S0",
+   "quote": "11° de l'article R. 641-1 35 076 euros 34 % 23 150 euros 21,2 %",
+   "claim": "Same CIPAV AE created 01/01/2019 (before 01/04/2020): 2 544 €/an = 21,2 % as required.",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+    "situation": {
+     "date": "01/05/2024",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "entreprise . activité . nature": "'libérale'",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2019",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "non",
+     "entreprise . activité . nature . libérale . réglementée": "oui"
+    },
+    "expect": 2544.0,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 2544,
+    "expected": 2544.0,
+    "unit": "€/an",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0008",
+   "recorded_at": "2026-10-11T16:46:32+00:00",
+   "status": "UNKNOWN",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "rules_snapshot": "G0",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/auto-entrepreneur.publicodes",
+   "rule_file_sha256": "145ca5ae234bd65d97f3d5591b11a6fd518382d943767b889fcb7a56d3c2cdb7",
+   "article": "D613-4",
+   "article_id": "LEGIARTI000046714712",
+   "article_dateDebut": "2022-12-10",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "2336dc9e52e5064b5a72aa158869a38aa720218935bdefc08f5cf20a3eeb08aa",
+   "law_snapshot": "S0",
+   "quote": "meublés de tourisme, définis conformément à l'article L. 324-1 du code du tourisme 29 230 euros 87 % 3 800 euros 6 %",
+   "claim": "Category c) meublés de tourisme: 6 % global rate — no rule distinguishes this category; not implemented.",
+   "check": null,
+   "check_result": null,
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0056",
+   "recorded_at": "2026-10-11T17:08:29+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC",
+   "rules_snapshot": "G0",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/auto-entrepreneur.publicodes",
+   "rule_file_sha256": "145ca5ae234bd65d97f3d5591b11a6fd518382d943767b889fcb7a56d3c2cdb7",
+   "article": "D613-4",
+   "article_id": "LEGIARTI000049623867",
+   "article_dateDebut": "2024-06-01",
+   "article_dateFin": "2024-07-01",
+   "article_text_sha256": "82c51b5b3c09c43bb7aa3b4596e43160fbd1f33567138f47d88bf81129be85db",
+   "law_snapshot": "S1",
+   "quote": "10 000 euros 34 % 6 600 euros 21,1 %",
+   "claim": "D613-4 version LEGIARTI000049623867 (Décret n°2024-484 du 30 mai 2024 art. 1, in force 2024-06-01..2024-07-01), text identical in substance to LEGIARTI000046714712: category e) BNC global rate 21,1 % (unchanged).",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC",
+    "situation": {
+     "date": "01/06/2024",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "entreprise . activité . nature": "'libérale'",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois"
+    },
+    "expect": 21.1,
+    "tolerance": 1e-09
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 21.1,
+    "expected": 21.1,
+    "unit": "%",
+    "missing_variables": [
+     "établissement . commune . département",
+     "établissement . commune . département . outre-mer",
+     "entreprise . date de création"
+    ],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0057",
+   "recorded_at": "2026-10-11T17:08:30+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BIC",
+   "rules_snapshot": "G0",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/auto-entrepreneur.publicodes",
+   "rule_file_sha256": "145ca5ae234bd65d97f3d5591b11a6fd518382d943767b889fcb7a56d3c2cdb7",
+   "article": "D613-4",
+   "article_id": "LEGIARTI000049623867",
+   "article_dateDebut": "2024-06-01",
+   "article_dateFin": "2024-07-01",
+   "article_text_sha256": "82c51b5b3c09c43bb7aa3b4596e43160fbd1f33567138f47d88bf81129be85db",
+   "law_snapshot": "S1",
+   "quote": "2° du 1 de l'article 50-0 du code général des impôt 46 300 euros 50 % 23 150 euros 21,2 %",
+   "claim": "D613-4 version LEGIARTI000049623867 (Décret n°2024-484 du 30 mai 2024 art. 1, in force 2024-06-01..2024-07-01), text identical in substance to LEGIARTI000046714712: category d) service BIC global rate 21,2 % (unchanged).",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BIC",
+    "situation": {
+     "date": "01/06/2024",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "entreprise . activité . nature": "'libérale'",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois"
+    },
+    "expect": 21.2,
+    "tolerance": 1e-09
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 21.2,
+    "expected": 21.2,
+    "unit": "%",
+    "missing_variables": [
+     "établissement . commune . département",
+     "établissement . commune . département . outre-mer",
+     "entreprise . date de création"
+    ],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0058",
+   "recorded_at": "2026-10-11T17:08:32+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux vente restauration hébergement",
+   "rules_snapshot": "G0",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/auto-entrepreneur.publicodes",
+   "rule_file_sha256": "145ca5ae234bd65d97f3d5591b11a6fd518382d943767b889fcb7a56d3c2cdb7",
+   "article": "D613-4",
+   "article_id": "LEGIARTI000049623867",
+   "article_dateDebut": "2024-06-01",
+   "article_dateFin": "2024-07-01",
+   "article_text_sha256": "82c51b5b3c09c43bb7aa3b4596e43160fbd1f33567138f47d88bf81129be85db",
+   "law_snapshot": "S1",
+   "quote": "79 828 euros 71 % 23 150 euros 12,3 %",
+   "claim": "D613-4 version LEGIARTI000049623867 (Décret n°2024-484 du 30 mai 2024 art. 1, in force 2024-06-01..2024-07-01), text identical in substance to LEGIARTI000046714712: category a) vente global rate 12,3 % (unchanged).",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux vente restauration hébergement",
+    "situation": {
+     "date": "01/06/2024",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "entreprise . activité . nature": "'libérale'",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois"
+    },
+    "expect": 12.3,
+    "tolerance": 1e-09
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 12.3,
+    "expected": 12.3,
+    "unit": "%",
+    "missing_variables": [
+     "établissement . commune . département",
+     "établissement . commune . département . outre-mer",
+     "entreprise . date de création"
+    ],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0059",
+   "recorded_at": "2026-10-11T17:08:33+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV . taux",
+   "rules_snapshot": "G0",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/auto-entrepreneur.publicodes",
+   "rule_file_sha256": "145ca5ae234bd65d97f3d5591b11a6fd518382d943767b889fcb7a56d3c2cdb7",
+   "article": "D613-4",
+   "article_id": "LEGIARTI000049623867",
+   "article_dateDebut": "2024-06-01",
+   "article_dateFin": "2024-07-01",
+   "article_text_sha256": "82c51b5b3c09c43bb7aa3b4596e43160fbd1f33567138f47d88bf81129be85db",
+   "law_snapshot": "S1",
+   "quote": "11° de l'article R. 641-1 35 076 euros 34 % 23 150 euros 21,2 %",
+   "claim": "D613-4 version LEGIARTI000049623867 (Décret n°2024-484 du 30 mai 2024 art. 1, in force 2024-06-01..2024-07-01), text identical in substance to LEGIARTI000046714712: category b) CIPAV global rate 21,2 % (unchanged).",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV . taux",
+    "situation": {
+     "date": "01/06/2024",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "entreprise . activité . nature": "'libérale'",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "non",
+     "entreprise . activité . nature . libérale . réglementée": "oui"
+    },
+    "expect": 21.2,
+    "tolerance": 1e-09
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 21.2,
+    "expected": 21.2,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0060",
+   "recorded_at": "2026-10-11T17:08:35+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "rules_snapshot": "G0",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/auto-entrepreneur.publicodes",
+   "rule_file_sha256": "145ca5ae234bd65d97f3d5591b11a6fd518382d943767b889fcb7a56d3c2cdb7",
+   "article": "D613-4",
+   "article_id": "LEGIARTI000049623867",
+   "article_dateDebut": "2024-06-01",
+   "article_dateFin": "2024-07-01",
+   "article_text_sha256": "82c51b5b3c09c43bb7aa3b4596e43160fbd1f33567138f47d88bf81129be85db",
+   "law_snapshot": "S1",
+   "quote": "10 000 euros 34 % 6 600 euros 21,1 %",
+   "claim": "D613-4 version LEGIARTI000049623867 (Décret n°2024-484 du 30 mai 2024 art. 1, in force 2024-06-01..2024-07-01), text identical in substance to LEGIARTI000046714712: BNC AE, CA 12 000 €/an -> 12 000 x 21,1 % = 2 532 €/an.",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+    "situation": {
+     "date": "01/06/2024",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "entreprise . activité . nature": "'libérale'",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "non",
+     "entreprise . activité . nature . libérale . réglementée": "non"
+    },
+    "expect": 2532.0,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 2532.0000000000005,
+    "expected": 2532.0,
+    "unit": "€/an",
+    "missing_variables": [
+     "entreprise . activités . revenus mixtes",
+     "entreprise . activités",
+     "entreprise . activités . commerciale",
+     "entreprise . activités . artisanale",
+     "entreprise . activités . libérale"
+    ],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0061",
+   "recorded_at": "2026-10-11T17:08:36+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "rules_snapshot": "G0",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/auto-entrepreneur.publicodes",
+   "rule_file_sha256": "145ca5ae234bd65d97f3d5591b11a6fd518382d943767b889fcb7a56d3c2cdb7",
+   "article": "D613-4",
+   "article_id": "LEGIARTI000049623867",
+   "article_dateDebut": "2024-06-01",
+   "article_dateFin": "2024-07-01",
+   "article_text_sha256": "82c51b5b3c09c43bb7aa3b4596e43160fbd1f33567138f47d88bf81129be85db",
+   "law_snapshot": "S1",
+   "quote": "2° du 1 de l'article 50-0 du code général des impôt 46 300 euros 50 % 23 150 euros 21,2 %",
+   "claim": "D613-4 version LEGIARTI000049623867 (Décret n°2024-484 du 30 mai 2024 art. 1, in force 2024-06-01..2024-07-01), text identical in substance to LEGIARTI000046714712: service BIC AE, CA 12 000 €/an -> 12 000 x 21,2 % = 2 544 €/an.",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+    "situation": {
+     "date": "01/06/2024",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "entreprise . activité . nature": "'artisanale'",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "non",
+     "entreprise . activités . service ou vente": "'service'"
+    },
+    "expect": 2544.0,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 2544,
+    "expected": 2544.0,
+    "unit": "€/an",
+    "missing_variables": [
+     "entreprise . activités . revenus mixtes",
+     "entreprise . activités",
+     "entreprise . activités . commerciale",
+     "entreprise . activités . artisanale",
+     "entreprise . activités . libérale"
+    ],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0062",
+   "recorded_at": "2026-10-11T17:08:37+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "rules_snapshot": "G0",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/auto-entrepreneur.publicodes",
+   "rule_file_sha256": "145ca5ae234bd65d97f3d5591b11a6fd518382d943767b889fcb7a56d3c2cdb7",
+   "article": "D613-4",
+   "article_id": "LEGIARTI000049623867",
+   "article_dateDebut": "2024-06-01",
+   "article_dateFin": "2024-07-01",
+   "article_text_sha256": "82c51b5b3c09c43bb7aa3b4596e43160fbd1f33567138f47d88bf81129be85db",
+   "law_snapshot": "S1",
+   "quote": "79 828 euros 71 % 23 150 euros 12,3 %",
+   "claim": "D613-4 version LEGIARTI000049623867 (Décret n°2024-484 du 30 mai 2024 art. 1, in force 2024-06-01..2024-07-01), text identical in substance to LEGIARTI000046714712: vente AE, CA 12 000 €/an -> 12 000 x 12,3 % = 1 476 €/an.",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+    "situation": {
+     "date": "01/06/2024",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "entreprise . activité . nature": "'commerciale'",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "non",
+     "entreprise . activités . service ou vente": "'vente'"
+    },
+    "expect": 1476.0,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 1476,
+    "expected": 1476.0,
+    "unit": "€/an",
+    "missing_variables": [
+     "entreprise . activités . revenus mixtes",
+     "entreprise . activités",
+     "entreprise . activités . commerciale",
+     "entreprise . activités . artisanale",
+     "entreprise . activités . libérale"
+    ],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0063",
+   "recorded_at": "2026-10-11T17:08:39+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "rules_snapshot": "G0",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/auto-entrepreneur.publicodes",
+   "rule_file_sha256": "145ca5ae234bd65d97f3d5591b11a6fd518382d943767b889fcb7a56d3c2cdb7",
+   "article": "D613-4",
+   "article_id": "LEGIARTI000049623867",
+   "article_dateDebut": "2024-06-01",
+   "article_dateFin": "2024-07-01",
+   "article_text_sha256": "82c51b5b3c09c43bb7aa3b4596e43160fbd1f33567138f47d88bf81129be85db",
+   "law_snapshot": "S1",
+   "quote": "11° de l'article R. 641-1 35 076 euros 34 % 23 150 euros 21,2 %",
+   "claim": "D613-4 version LEGIARTI000049623867 (Décret n°2024-484 du 30 mai 2024 art. 1, in force 2024-06-01..2024-07-01), text identical in substance to LEGIARTI000046714712: CIPAV AE created 2019, CA 12 000 €/an -> 12 000 x 21,2 % = 2 544 €/an.",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+    "situation": {
+     "date": "01/06/2024",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "entreprise . activité . nature": "'libérale'",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2019",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "non",
+     "entreprise . activité . nature . libérale . réglementée": "oui"
+    },
+    "expect": 2544.0,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 2544,
+    "expected": 2544.0,
+    "unit": "€/an",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0064",
+   "recorded_at": "2026-10-11T17:08:40+00:00",
+   "status": "FAILED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "rules_snapshot": "G0",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/auto-entrepreneur.publicodes",
+   "rule_file_sha256": "145ca5ae234bd65d97f3d5591b11a6fd518382d943767b889fcb7a56d3c2cdb7",
+   "article": "D613-4",
+   "article_id": "LEGIARTI000049623867",
+   "article_dateDebut": "2024-06-01",
+   "article_dateFin": "2024-07-01",
+   "article_text_sha256": "82c51b5b3c09c43bb7aa3b4596e43160fbd1f33567138f47d88bf81129be85db",
+   "law_snapshot": "S1",
+   "quote": "11° de l'article R. 641-1 35 076 euros 34 % 23 150 euros 21,2 %",
+   "claim": "D613-4 version LEGIARTI000049623867 (Décret n°2024-484 du 30 mai 2024 art. 1, in force 2024-06-01..2024-07-01), text identical in substance to LEGIARTI000046714712: CIPAV AE created 2021 should also pay 2 544 €/an; engine returns 1 452 (12,1 %: Acre CIPAV rate replacement leaks with Acre = non). Pre-existing bug (T0 L0006), unrelated to S1; check expected to FAIL.",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+    "situation": {
+     "date": "01/06/2024",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "entreprise . activité . nature": "'libérale'",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "non",
+     "entreprise . activité . nature . libérale . réglementée": "oui"
+    },
+    "expect": 2544.0,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": false,
+    "observed": 1452,
+    "expected": 2544.0,
+    "unit": "€/an",
+    "missing_variables": [],
+    "detail": "observed != expected"
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0065",
+   "recorded_at": "2026-10-11T17:08:41+00:00",
+   "status": "UNKNOWN",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "rules_snapshot": "G0",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/auto-entrepreneur.publicodes",
+   "rule_file_sha256": "145ca5ae234bd65d97f3d5591b11a6fd518382d943767b889fcb7a56d3c2cdb7",
+   "article": "D613-4",
+   "article_id": "LEGIARTI000049623867",
+   "article_dateDebut": "2024-06-01",
+   "article_dateFin": "2024-07-01",
+   "article_text_sha256": "82c51b5b3c09c43bb7aa3b4596e43160fbd1f33567138f47d88bf81129be85db",
+   "law_snapshot": "S1",
+   "quote": "29 230 euros 87 % 3 800 euros 6 %",
+   "claim": "D613-4 version LEGIARTI000049623867 (Décret n°2024-484 du 30 mai 2024 art. 1, in force 2024-06-01..2024-07-01), text identical in substance to LEGIARTI000046714712: category c) meublés de tourisme 6 % global rate - still not implemented (no rule distinguishes this category).",
+   "check": null,
+   "check_result": null,
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0066",
+   "recorded_at": "2026-10-11T17:08:41+00:00",
+   "status": "UNKNOWN",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC",
+   "rules_snapshot": "G0",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/auto-entrepreneur.publicodes",
+   "rule_file_sha256": "145ca5ae234bd65d97f3d5591b11a6fd518382d943767b889fcb7a56d3c2cdb7",
+   "article": "D613-4",
+   "article_id": "LEGIARTI000049623867",
+   "article_dateDebut": "2024-06-01",
+   "article_dateFin": "2024-07-01",
+   "article_text_sha256": "82c51b5b3c09c43bb7aa3b4596e43160fbd1f33567138f47d88bf81129be85db",
+   "law_snapshot": "S1",
+   "quote": "10 000 euros 34 % 6 600 euros 21,1 %",
+   "claim": "ABSTENTION. Announced versions without text in S1: LEGIARTI000049624068 (2024-07-01), LEGIARTI000049624097 (2025-01-01), LEGIARTI000049624125 (2026-01-01). The rate for those dates is NOT settled by any text available; the rule keeps its current value beyond 2024-07-01 without textual support -> ABSTAIN (no value proposed).",
+   "check": null,
+   "check_result": null,
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0067",
+   "recorded_at": "2026-10-11T17:08:42+00:00",
+   "status": "UNKNOWN",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BIC",
+   "rules_snapshot": "G0",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/auto-entrepreneur.publicodes",
+   "rule_file_sha256": "145ca5ae234bd65d97f3d5591b11a6fd518382d943767b889fcb7a56d3c2cdb7",
+   "article": "D613-4",
+   "article_id": "LEGIARTI000049623867",
+   "article_dateDebut": "2024-06-01",
+   "article_dateFin": "2024-07-01",
+   "article_text_sha256": "82c51b5b3c09c43bb7aa3b4596e43160fbd1f33567138f47d88bf81129be85db",
+   "law_snapshot": "S1",
+   "quote": "2° du 1 de l'article 50-0 du code général des impôt 46 300 euros 50 % 23 150 euros 21,2 %",
+   "claim": "ABSTENTION. Announced versions without text in S1: LEGIARTI000049624068 (2024-07-01), LEGIARTI000049624097 (2025-01-01), LEGIARTI000049624125 (2026-01-01). The rate for those dates is NOT settled by any text available; the rule keeps its current value beyond 2024-07-01 without textual support -> ABSTAIN (no value proposed).",
+   "check": null,
+   "check_result": null,
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0068",
+   "recorded_at": "2026-10-11T17:08:43+00:00",
+   "status": "UNKNOWN",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux vente restauration hébergement",
+   "rules_snapshot": "G0",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/auto-entrepreneur.publicodes",
+   "rule_file_sha256": "145ca5ae234bd65d97f3d5591b11a6fd518382d943767b889fcb7a56d3c2cdb7",
+   "article": "D613-4",
+   "article_id": "LEGIARTI000049623867",
+   "article_dateDebut": "2024-06-01",
+   "article_dateFin": "2024-07-01",
+   "article_text_sha256": "82c51b5b3c09c43bb7aa3b4596e43160fbd1f33567138f47d88bf81129be85db",
+   "law_snapshot": "S1",
+   "quote": "79 828 euros 71 % 23 150 euros 12,3 %",
+   "claim": "ABSTENTION. Announced versions without text in S1: LEGIARTI000049624068 (2024-07-01), LEGIARTI000049624097 (2025-01-01), LEGIARTI000049624125 (2026-01-01). The rate for those dates is NOT settled by any text available; the rule keeps its current value beyond 2024-07-01 without textual support -> ABSTAIN (no value proposed).",
+   "check": null,
+   "check_result": null,
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0069",
+   "recorded_at": "2026-10-11T17:08:44+00:00",
+   "status": "UNKNOWN",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV . taux",
+   "rules_snapshot": "G0",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/auto-entrepreneur.publicodes",
+   "rule_file_sha256": "145ca5ae234bd65d97f3d5591b11a6fd518382d943767b889fcb7a56d3c2cdb7",
+   "article": "D613-4",
+   "article_id": "LEGIARTI000049623867",
+   "article_dateDebut": "2024-06-01",
+   "article_dateFin": "2024-07-01",
+   "article_text_sha256": "82c51b5b3c09c43bb7aa3b4596e43160fbd1f33567138f47d88bf81129be85db",
+   "law_snapshot": "S1",
+   "quote": "11° de l'article R. 641-1 35 076 euros 34 % 23 150 euros 21,2 %",
+   "claim": "ABSTENTION. Announced versions without text in S1: LEGIARTI000049624068 (2024-07-01), LEGIARTI000049624097 (2025-01-01), LEGIARTI000049624125 (2026-01-01). The rate for those dates is NOT settled by any text available; the rule keeps its current value beyond 2024-07-01 without textual support -> ABSTAIN (no value proposed).",
+   "check": null,
+   "check_result": null,
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0110",
+   "recorded_at": "2026-10-11T17:46:50+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BIC",
+   "rules_snapshot": "G1pre_R1",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/auto-entrepreneur.publicodes",
+   "rule_file_sha256": "084a36bd557870ceaa899d81bc19ed136ced797e9e31d54f5c62e31862ddc247",
+   "article": "D613-4",
+   "article_id": "LEGIARTI000049624068",
+   "article_dateDebut": "2024-07-01",
+   "article_dateFin": "2025-05-01",
+   "article_text_sha256": "bdd006b1c72e3edf16ea3bce9d5ad199924f7cdccb11005c1f13267b34cd5213",
+   "law_snapshot": "S3",
+   "quote": "46 300 euros 50 % 23 150 euros 21,2 %",
+   "claim": "D613-4 v.LEGIARTI000049624068 (in force 2024-07-01) d) BIC services: global rate 21,2 % -- library G1pre_R1 computes 21.2 at 01/07/2024 (aligned; identical before/after commit 2a0e452617fc)",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BIC",
+    "situation": {
+     "date": "01/07/2024",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "non",
+     "entreprise . activité . nature": "'artisanale'",
+     "entreprise . activités . service ou vente": "'service'"
+    },
+    "expect": 21.2,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 21.2,
+    "expected": 21.2,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0111",
+   "recorded_at": "2026-10-11T17:46:51+00:00",
+   "status": "FAILED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC",
+   "rules_snapshot": "G1pre_R1",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/auto-entrepreneur.publicodes",
+   "rule_file_sha256": "084a36bd557870ceaa899d81bc19ed136ced797e9e31d54f5c62e31862ddc247",
+   "article": "D613-4",
+   "article_id": "LEGIARTI000049624068",
+   "article_dateDebut": "2024-07-01",
+   "article_dateFin": "2025-05-01",
+   "article_text_sha256": "bdd006b1c72e3edf16ea3bce9d5ad199924f7cdccb11005c1f13267b34cd5213",
+   "law_snapshot": "S3",
+   "quote": "10 000 euros 34 % 6 600 euros 23,1 %",
+   "claim": "D613-4 v.LEGIARTI000049624068 (in force 2024-07-01) e) BNC: global rate 23,1 % -- library G1pre_R1 still computes 21.1 at 01/07/2024 (PRE-EXISTING gap, not touched by commit 2a0e452617fc; expected FAILED)",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC",
+    "situation": {
+     "date": "01/07/2024",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "non",
+     "entreprise . activité . nature": "'libérale'"
+    },
+    "expect": 23.1,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": false,
+    "observed": 21.1,
+    "expected": 23.1,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": "observed != expected"
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0112",
+   "recorded_at": "2026-10-11T17:46:53+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BIC",
+   "rules_snapshot": "G1",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/auto-entrepreneur.publicodes",
+   "rule_file_sha256": "084a36bd557870ceaa899d81bc19ed136ced797e9e31d54f5c62e31862ddc247",
+   "article": "D613-4",
+   "article_id": "LEGIARTI000049624068",
+   "article_dateDebut": "2024-07-01",
+   "article_dateFin": "2025-05-01",
+   "article_text_sha256": "bdd006b1c72e3edf16ea3bce9d5ad199924f7cdccb11005c1f13267b34cd5213",
+   "law_snapshot": "S3",
+   "quote": "46 300 euros 50 % 23 150 euros 21,2 %",
+   "claim": "D613-4 v.LEGIARTI000049624068 (in force 2024-07-01) d) BIC services: global rate 21,2 % -- library G1 computes 21.2 at 01/07/2024 (aligned; identical before/after commit 2a0e452617fc)",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BIC",
+    "situation": {
+     "date": "01/07/2024",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "non",
+     "entreprise . activité . nature": "'artisanale'",
+     "entreprise . activités . service ou vente": "'service'"
+    },
+    "expect": 21.2,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 21.2,
+    "expected": 21.2,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0113",
+   "recorded_at": "2026-10-11T17:46:54+00:00",
+   "status": "FAILED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC",
+   "rules_snapshot": "G1",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/auto-entrepreneur.publicodes",
+   "rule_file_sha256": "084a36bd557870ceaa899d81bc19ed136ced797e9e31d54f5c62e31862ddc247",
+   "article": "D613-4",
+   "article_id": "LEGIARTI000049624068",
+   "article_dateDebut": "2024-07-01",
+   "article_dateFin": "2025-05-01",
+   "article_text_sha256": "bdd006b1c72e3edf16ea3bce9d5ad199924f7cdccb11005c1f13267b34cd5213",
+   "law_snapshot": "S3",
+   "quote": "10 000 euros 34 % 6 600 euros 23,1 %",
+   "claim": "D613-4 v.LEGIARTI000049624068 (in force 2024-07-01) e) BNC: global rate 23,1 % -- library G1 still computes 21.1 at 01/07/2024 (PRE-EXISTING gap, not touched by commit 2a0e452617fc; expected FAILED)",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC",
+    "situation": {
+     "date": "01/07/2024",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "non",
+     "entreprise . activité . nature": "'libérale'"
+    },
+    "expect": 23.1,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": false,
+    "observed": 21.1,
+    "expected": 23.1,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": "observed != expected"
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  }
+ ],
+ "article_versions_known": [
+  {
+   "law_snapshot": "S0",
+   "published": "2024-05-25T23:36:37.034Z",
+   "article": "D613-4",
+   "id": "LEGIARTI000046714712",
+   "etat": "VIGUEUR",
+   "dateDebut": "2022-12-10",
+   "dateFin": "2999-01-01",
+   "in_force_on_date": true,
+   "text_sha256": "2336dc9e52e5064b5a72aa158869a38aa720218935bdefc08f5cf20a3eeb08aa"
+  },
+  {
+   "law_snapshot": "S1",
+   "published": "2024-06-01T23:22:24.265Z",
+   "article": "D613-4",
+   "id": "LEGIARTI000049623867",
+   "etat": "ABROGE_DIFF",
+   "dateDebut": "2024-06-01",
+   "dateFin": "2024-07-01",
+   "in_force_on_date": false,
+   "text_sha256": "82c51b5b3c09c43bb7aa3b4596e43160fbd1f33567138f47d88bf81129be85db"
+  },
+  {
+   "law_snapshot": "S3",
+   "published": "2024-07-17T15:37:04.165Z",
+   "article": "D613-4",
+   "id": "LEGIARTI000049624068",
+   "etat": "VIGUEUR_DIFF",
+   "dateDebut": "2024-07-01",
+   "dateFin": "2025-05-01",
+   "in_force_on_date": true,
+   "text_sha256": "bdd006b1c72e3edf16ea3bce9d5ad199924f7cdccb11005c1f13267b34cd5213"
+  }
+ ],
+ "rules_snapshots_known": [
+  {
+   "snapshot": "G0",
+   "commit": "d9242882f96bda5b4418b7c1c3ff46b0e2a1c5ce",
+   "committed": "2024-05-15 09:38:43 +0200"
+  },
+  {
+   "snapshot": "G1",
+   "commit": "2a0e452617fc33b955096f4bb7f7f305ec0670ad",
+   "committed": "2024-07-16 21:29:59 +0200"
+  },
+  {
+   "snapshot": "G1pre_R1",
+   "commit": null,
+   "committed": null
+  },
+  {
+   "snapshot": "P_T1a",
+   "commit": null,
+   "committed": null
+  },
+  {
+   "snapshot": "P_T1b",
+   "commit": "2a0e452617fc33b955096f4bb7f7f305ec0670ad",
+   "committed": "2024-07-16 21:29:59 +0200"
+  }
+ ],
+ "approvals": [
+  "none recorded"
+ ],
+ "limits": [
+  "Only what was recorded in this store is reported; absence of a record is reported as absence, not inferred.",
+  "Snapshot publish dates are when the governing text was captured, not when it entered into force; both are listed.",
+  "A matching hash shows the preserved text is unchanged; it does not show the interpretation is correct or that anyone authorised it."
+ ]
+}

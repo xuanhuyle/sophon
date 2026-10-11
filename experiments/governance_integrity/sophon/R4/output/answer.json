@@ -1,0 +1,424 @@
+{
+ "task": "R4",
+ "commit": "d3e0cfe0f12dcade20d5d1ea8bc51fee609bbc06",
+ "label": "LEGITIMATE_INDEPENDENT_CHANGE",
+ "confidence": "high",
+ "rationale": "Commit d3e0cfe0 ('chore: remplace la formule de la retraite de base par celle de l'Urssaf') rewrites the artisan/commerçant/PLNR retraite de base from the CSS decomposition (tranche 1 = 17,15 % x assiette within the PSS + tranche 2 = 0,72 % x the whole assiette, a literal transcription of D633-3 I and II) into the Urssaf presentation (barème: 17,87 % = 17,15 + 0,72 on the part up to the PSS, 0,72 % on the part above only), explicitly because 'l'Urssaf ... a insisté pour que l'on reprenne leur méthode' - a source outside the bounded set. D633-3 v.LEGIARTI000049904636 does not forbid it: the two formulas are algebraically identical and the engine returns identical contribution amounts for every 2025/2026 situation tested on both trees (e.g. 3 574 at 20 000; 8 417 at 47 100 = PSS; 8 510 at 60 000; 9 878 at 250 000; 8 438 with the tabac deduction), and identical CNAVPL amounts. It is not a harmless refactor: what the engine computes did change - 'taux T1' now exposes 17,87 % (a folded rate the text does not state), 'protection sociale . retraite . base . revenu cotisé' (now divided by 17,87 % instead of 17,15 %) falls for every assiette below the PSS (20 840 -> 20 000 at 20 000), the validated 'trimestres' change at the thresholds (4 -> 3 at 6 900; 3 -> 2 at 4 000 in 2025, where the after-value 5 344 falls 2 EUR short of the 450 h SMIC floor the library's own assiette minimale is meant to guarantee) and the pension estimate moves; those rules rest on R351-9 / R634-1 / D634-1, outside the bounded set, so they are reported, not judged. Not a mismatch: no bounded requirement is computed differently. At 2024 dates the trees differ by 1 EUR in three cases (rounding path) under the pre-reform rates 17,75/0,60, which cannot be checked because the D633-3 version then in force (LEGIARTI000041967101) has no text in S9: abstain.",
+ "evidence": [
+  {
+   "kind": "article_quote",
+   "article": "D633-3",
+   "article_version_id": "LEGIARTI000049904636",
+   "quote_or_values": "Le taux des cotisations assises sur l'assiette de cotisations dans la limite du plafond est fixé à 17,15 %. [in force 2024-07-07 (Décret n°2024-688 du 5 juillet 2024, art. 3); nota: applies to periods from 2025-01-01]"
+  },
+  {
+   "kind": "article_quote",
+   "article": "D633-3",
+   "article_version_id": "LEGIARTI000049904636",
+   "quote_or_values": "Le taux des cotisations assises sur la totalité de l'assiette de cotisations est fixé à 0,72 %."
+  },
+  {
+   "kind": "diff_excerpt",
+   "article": "D633-3",
+   "article_version_id": "LEGIARTI000049904636",
+   "quote_or_values": "cotisations.publicodes: '- somme: [tranche 1, tranche 2]' (tranche 1 = assiette plafonnée au PSS proratisé x taux 17.15% ; tranche 2 = assiette (non plafonnée hors CNAVPL) x taux 0.72%/0.60%) replaced by '+ barème: assiette, multiplicateur: PSS proratisé, tranches: [taux T1 (17.87% après réforme / 17.75%) plafond 1, taux T2 (0.72% / 0.60%)]' with the comment: 'Le code de la sécurité sociale décrit un calcul identique à celui des PLR (taux T1 sur la part de l'assiette < PASS + taux T2 sur toute l'assiette) mais l'Urssaf calcule différemment (taux T2 sur la part de l'assiette > PASS uniquement) et a insisté pour que l'on reprenne leur méthode.' CNAVPL moved to 'indépendant . profession libérale . CNAVPL . retraite de base' (8.73%/8.23% to PSS + 1.87% to 5 PSS). retraite-base.publicodes: 'revenu cotisé' = retraite de base / 'tranche 1 . taux' (17.15 %) -> / 'taux de cotisation' (= taux T1 17.87 % for non-CNAVPL)."
+  },
+  {
+   "kind": "engine_before_after",
+   "article": "D633-3",
+   "article_version_id": "LEGIARTI000049904636",
+   "quote_or_values": "rule 'indépendant . cotisations et contributions . cotisations . retraite de base', situation {\"entreprise . imposition\": \"'IR'\", \"entreprise . date de création\": \"01/01/2020\", \"établissement . commune . département . outre-mer\": \"non\", \"situation personnelle . RSA\": \"non\", \"situation personnelle . domiciliation fiscale à l'étranger\": \"non\", \"entreprise . activité . saisonnière\": \"non\", \"indépendant . conjoint collaborateur\": \"non\", \"indépendant . cotisations et contributions . cotisations . exonérations . pension invalidité\": \"non\", \"entreprise . activité\": \"'commerciale'\", \"entreprise . activité . commerciale . débit de tabac\": \"non\", \"date\": \"01/07/2025\", \"indépendant . cotisations et contributions . assiette sociale\": \"60000 €/an\"}: before (G4pre_R4) 8510 €/an (tranche 1 8078 + tranche 2 432), after (G4post_R4) 8510 €/an; text: 17,15 % x 47 100 + 0,72 % x 60 000 = 8 077,65 + 432 = 8 509,65 -> 8 510. Identical."
+  },
+  {
+   "kind": "engine_before_after",
+   "article": "D633-3",
+   "article_version_id": "LEGIARTI000049904636",
+   "quote_or_values": "retraite de base before|after at 01/07/2025 (assiette set via 'indépendant . cotisations et contributions . assiette sociale', EI/IR commerciale unless stated): AC_4000_2025: 955|955; AC_6900_2025: 1233|1233; AC_20000_2025: 3574|3574; AC_23000_2025: 4110|4110; AC_47100_2025: 8417|8417; AC_60000_2025: 8510|8510; AC_120000_2025: 8942|8942; AC_250000_2025: 9878|9878; PLNR_20000_2025: 3574|3574; PLNR_60000_2025: 8510|8510; CNAVPL_20000_2025: 2120|2120; CNAVPL_60000_2025: 5234|5234; CNAVPL_250000_2025: 8516|8516; AC_tabac_60000_2025: 8438|8438; AC_60000_2026: 8674|8674. All 26 2025/2026 cases identical: True."
+  },
+  {
+   "kind": "engine_before_after",
+   "article": "D633-3",
+   "article_version_id": "LEGIARTI000049904636",
+   "quote_or_values": "rates: before 'tranche 1 . taux' = 17.15 % and 'tranche 2 . taux' = 0.72 % (textual, D633-3 I/II); after 'taux T1' = 17.87 % (= 17,15 + 0,72, not a rate written in the text) and 'taux T2' = 0.72 % (applied above the PSS only). At 01/07/2024: 17.15/0.6 before vs 17.75/0.6 after (version LEGIARTI000041967101 text not in S9: unverifiable)."
+  },
+  {
+   "kind": "engine_before_after",
+   "article": "D633-3",
+   "article_version_id": "LEGIARTI000049904636",
+   "quote_or_values": "NOT identical (rules outside the bounded articles): 'protection sociale . retraite . base . revenu cotisé' before|after: AC_4000_2025: 5569|5344; AC_6900_2025: 7190|6900; AC_20000_2025: 20840|20000; AC_23000_2025: 23965|22999; PLNR_20000_2025: 20840|20000; AC_4000_2024: 5423|5245; AC_6900_2024: 7137|6901; AC_20000_2024: 20700|20000; AC_23000_2024: 23802|23003 (16 of 50 cases changed; all below the PSS, non-CNAVPL). 'trimestres' changed: AC_6900_2024: 4|3; AC_4000_2025: 3|2; AC_6900_2025: 4|3; PLNR_6900_2024: 4|3; PLNR_4000_2025: 3|2; PLNR_6900_2025: 4|3. Pension estimate 'protection sociale . retraite . base' changes accordingly (e.g. AC_20000_2025 868|833 €/mois)."
+  },
+  {
+   "kind": "engine_before_after",
+   "article": "D633-3",
+   "article_version_id": "LEGIARTI000049904636",
+   "quote_or_values": "2024 dates (pre-reform rates, governing version not in snapshot): 1 € rounding-path differences AC_4000_2024: 930|931; AC_6900_2024: 1224|1225; AC_23000_2024: 4082|4083; PLNR_4000_2024: 930|931; PLNR_6900_2024: 1224|1225; PLNR_23000_2024: 4082|4083 (before = round(T1)+round(T2), after = round(barème)). Other 2024 cases identical. CNAVPL cases: all identical before/after (D642-3, outside the set)."
+  },
+  {
+   "kind": "engine_before_after",
+   "article": "D633-3",
+   "article_version_id": "LEGIARTI000049904636",
+   "quote_or_values": "build: before raw 296 / parsed 446 rules, after raw 295 / parsed 449; names: -6 (tranche 1/2 + assiette/taux) +3 (assiette, taux T1, taux T2) under retraite de base, +5 'indépendant . profession libérale . CNAVPL . retraite de base[. tranche 1/2[. taux]]', +1 'revenu cotisé . taux de cotisation'."
+  }
+ ],
+ "expected_values_if_mismatch": [],
+ "outside_bounded_set": [
+  "Urssaf calculation method ('taux T2 sur la part de l'assiette > PASS uniquement'): the commit's stated source; no legal text for it in the corpus",
+  "R351-9, R634-1, D634-1 CSS: revenu cotisé and trimestres validés (the rules whose values actually change)",
+  "D642-3 / D642-4 CSS: CNAVPL retraite de base rates 8,73 % / 8,23 % / 1,87 % and 5 PSS cap (moved, values identical)",
+  "D633-2 CSS: assiette minimale retraite (450 h SMIC floor used in the 4 000 cases)",
+  "D633-3 v.LEGIARTI000041967101 (2020-05-25..2024-07-07): text not in S9, so the 2024 rates 17,75 % / 0,60 % and the 1 EUR rounding differences are unverifiable",
+  "PSS 2025 (47 100 €/an) and 2026 (48 060 €/an), SMIC 2024/2025: library parameters whose source (arrêtés) is not in the corpus"
+ ],
+ "approval": "none recorded",
+ "notes": "Law S9 = legi-data 2.514.0; D633-3 unchanged since S3 (same id and text hash). Trees evaluated: inputs/diffs/R4_d3e0cfe0f12d/context_parent_tree (sophon G4pre_R4, 446 parsed rules) and context_tree_after (G4post_R4, 449) with --rules modele-ti/règles --rules modele-commun/règles; the task's rules pin G4 (modele-social 10.0.1, 2026-03-03) is a different package layout (dirigeant . indépendant . ...) and does not contain the commit's rules. Situations set the assiette directly ('indépendant . cotisations et contributions . assiette sociale'); going through 'indépendant . revenu professionnel' is circular in modele-ti. 50 cases x 2 trees in work/evals/R4_*; grid in work/evals/R4_grid.txt. Sophon: links L0146-L0159 (13 VERIFIED, 1 UNKNOWN = the 2024 abstention); revalidation counts S9xG4: {'BROKEN': 26, 'REASSESS_LAW_CHANGED': 70, 'REASSESS_RULE_CHANGED': 14, 'RULE_CHANGED_CHECK_STILL_PASSES': 34, 'UNVERIFIED_NO_CHECK': 1}; S9xG4pre_R4: {'BROKEN': 60, 'REASSESS_LAW_CHANGED': 70, 'REASSESS_RULE_CHANGED': 15}; S9xG4post_R4: {'BROKEN': 62, 'REASSESS_LAW_CHANGED': 70, 'REASSESS_RULE_CHANGED': 15, 'RULE_CHANGED_CHECK_STILL_PASSES': 3, 'STILL_VERIFIED': 8, 'UNVERIFIED_NO_CHECK': 1} (older links name modele-social rules, hence BROKEN/RULE_FILE_ABSENT on the modele-ti trees). Corroboration outside S9 (my sophon store's law snapshot S0 = legi-data 2.360.0, registered in T0, not part of this task's inputs): the pre-2024-07-07 version LEGIARTI000041967101 (2020-05-25) reads 'I.-Le taux des cotisations assises sur le revenu d'activité dans la limite du plafond est fixé à 17,15 %. II.-Le taux des cotisations assises sur la totalité du revenu d'activité est fixé à 0,60 %.' - consistent with both trees' 2024 rates (17,15 + 0,60 = 17,75; the only 2024 difference is the rounding path), but since S9 does not carry that text the 2024 values stay an abstention here. Side finding for the maintainers (outside the bounded set): after the commit a minimal-assiette contributor (5 346) validates 2 trimestres instead of 3 because revenu cotisé = round(955) / 17,87 % = 5 344 < 5 346. Also still open from earlier tasks: S9 brings new D613-4 (LEGIARTI000052218738, 2026-01-01: BNC 25,6 %, vente 89 776 €/26 035 €... ), D613-6 (LEGIARTI000052218747), D131-6-1 (LEGIARTI000053451315), L136-3 (LEGIARTI000051284498) versions not assessed here (AE side, not touched by this commit).",
+ "sophon_reports": [
+  "work/sophon/reports/R4_asof_D633-3_2026-03-31.json",
+  "work/sophon/reports/R4_evidence.json",
+  "work/sophon/reports/R4_evidence.md",
+  "work/sophon/reports/R4_report_cmd.json",
+  "work/sophon/reports/R4_revalidate_S9_G4.json",
+  "work/sophon/reports/R4_revalidate_S9_G4.md",
+  "work/sophon/reports/R4_revalidate_S9_G4_cmd.json",
+  "work/sophon/reports/R4_revalidate_S9_G4post_R4.json",
+  "work/sophon/reports/R4_revalidate_S9_G4post_R4.md",
+  "work/sophon/reports/R4_revalidate_S9_G4post_R4_cmd.json",
+  "work/sophon/reports/R4_revalidate_S9_G4pre_R4.json",
+  "work/sophon/reports/R4_revalidate_S9_G4pre_R4.md",
+  "work/sophon/reports/R4_revalidate_S9_G4pre_R4_cmd.json",
+  "work/sophon/reports/R4_verify-store.json"
+ ],
+ "self_reported_tool_calls": 36,
+ "engine_grid": [
+  {
+   "case": "AC_4000_2025",
+   "date": "01/07/2025",
+   "assiette": "4000 €/an",
+   "retraite_de_base_before": 955,
+   "retraite_de_base_after": 955,
+   "revenu_cotise_before": 5569,
+   "revenu_cotise_after": 5344,
+   "trimestres_before": 3,
+   "trimestres_after": 2,
+   "pension_before": 232,
+   "pension_after": 223
+  },
+  {
+   "case": "AC_6900_2025",
+   "date": "01/07/2025",
+   "assiette": "6900 €/an",
+   "retraite_de_base_before": 1233,
+   "retraite_de_base_after": 1233,
+   "revenu_cotise_before": 7190,
+   "revenu_cotise_after": 6900,
+   "trimestres_before": 4,
+   "trimestres_after": 3,
+   "pension_before": 300,
+   "pension_after": 288
+  },
+  {
+   "case": "AC_20000_2025",
+   "date": "01/07/2025",
+   "assiette": "20000 €/an",
+   "retraite_de_base_before": 3574,
+   "retraite_de_base_after": 3574,
+   "revenu_cotise_before": 20840,
+   "revenu_cotise_after": 20000,
+   "trimestres_before": 4,
+   "trimestres_after": 4,
+   "pension_before": 868,
+   "pension_after": 833
+  },
+  {
+   "case": "AC_23000_2025",
+   "date": "01/07/2025",
+   "assiette": "23000 €/an",
+   "retraite_de_base_before": 4110,
+   "retraite_de_base_after": 4110,
+   "revenu_cotise_before": 23965,
+   "revenu_cotise_after": 22999,
+   "trimestres_before": 4,
+   "trimestres_after": 4,
+   "pension_before": 999,
+   "pension_after": 958
+  },
+  {
+   "case": "AC_47100_2025",
+   "date": "01/07/2025",
+   "assiette": "47100 €/an",
+   "retraite_de_base_before": 8417,
+   "retraite_de_base_after": 8417,
+   "revenu_cotise_before": 3925,
+   "revenu_cotise_after": 3925,
+   "trimestres_before": 4,
+   "trimestres_after": 4,
+   "pension_before": 1963,
+   "pension_after": 1963
+  },
+  {
+   "case": "AC_60000_2025",
+   "date": "01/07/2025",
+   "assiette": "60000 €/an",
+   "retraite_de_base_before": 8510,
+   "retraite_de_base_after": 8510,
+   "revenu_cotise_before": 3925,
+   "revenu_cotise_after": 3925,
+   "trimestres_before": 4,
+   "trimestres_after": 4,
+   "pension_before": 1963,
+   "pension_after": 1963
+  },
+  {
+   "case": "AC_120000_2025",
+   "date": "01/07/2025",
+   "assiette": "120000 €/an",
+   "retraite_de_base_before": 8942,
+   "retraite_de_base_after": 8942,
+   "revenu_cotise_before": 3925,
+   "revenu_cotise_after": 3925,
+   "trimestres_before": 4,
+   "trimestres_after": 4,
+   "pension_before": 1963,
+   "pension_after": 1963
+  },
+  {
+   "case": "AC_250000_2025",
+   "date": "01/07/2025",
+   "assiette": "250000 €/an",
+   "retraite_de_base_before": 9878,
+   "retraite_de_base_after": 9878,
+   "revenu_cotise_before": 3925,
+   "revenu_cotise_after": 3925,
+   "trimestres_before": 4,
+   "trimestres_after": 4,
+   "pension_before": 1963,
+   "pension_after": 1963
+  },
+  {
+   "case": "PLNR_20000_2025",
+   "date": "01/07/2025",
+   "assiette": "20000 €/an",
+   "retraite_de_base_before": 3574,
+   "retraite_de_base_after": 3574,
+   "revenu_cotise_before": 20840,
+   "revenu_cotise_after": 20000,
+   "trimestres_before": 4,
+   "trimestres_after": 4,
+   "pension_before": 868,
+   "pension_after": 833
+  },
+  {
+   "case": "PLNR_60000_2025",
+   "date": "01/07/2025",
+   "assiette": "60000 €/an",
+   "retraite_de_base_before": 8510,
+   "retraite_de_base_after": 8510,
+   "revenu_cotise_before": 3925,
+   "revenu_cotise_after": 3925,
+   "trimestres_before": 4,
+   "trimestres_after": 4,
+   "pension_before": 1963,
+   "pension_after": 1963
+  },
+  {
+   "case": "CNAVPL_20000_2025",
+   "date": "01/07/2025",
+   "assiette": "20000 €/an",
+   "retraite_de_base_before": 2120,
+   "retraite_de_base_after": 2120,
+   "revenu_cotise_before": 24284,
+   "revenu_cotise_after": 24284,
+   "trimestres_before": 4,
+   "trimestres_after": 4,
+   "pension_before": 13,
+   "pension_after": 13
+  },
+  {
+   "case": "CNAVPL_60000_2025",
+   "date": "01/07/2025",
+   "assiette": "60000 €/an",
+   "retraite_de_base_before": 5234,
+   "retraite_de_base_after": 5234,
+   "revenu_cotise_before": 3925,
+   "revenu_cotise_after": 3925,
+   "trimestres_before": 4,
+   "trimestres_after": 4,
+   "pension_before": 31,
+   "pension_after": 31
+  },
+  {
+   "case": "CNAVPL_250000_2025",
+   "date": "01/07/2025",
+   "assiette": "250000 €/an",
+   "retraite_de_base_before": 8516,
+   "retraite_de_base_after": 8516,
+   "revenu_cotise_before": 3925,
+   "revenu_cotise_after": 3925,
+   "trimestres_before": 4,
+   "trimestres_after": 4,
+   "pension_before": 32,
+   "pension_after": 32
+  },
+  {
+   "case": "AC_tabac_60000_2025",
+   "date": "01/07/2025",
+   "assiette": "60000 €/an",
+   "retraite_de_base_before": 8438,
+   "retraite_de_base_after": 8438,
+   "revenu_cotise_before": 3925,
+   "revenu_cotise_after": 3925,
+   "trimestres_before": 4,
+   "trimestres_after": 4,
+   "pension_before": 1963,
+   "pension_after": 1963
+  },
+  {
+   "case": "AC_60000_2026",
+   "date": "01/07/2026",
+   "assiette": "60000 €/an",
+   "retraite_de_base_before": 8674,
+   "retraite_de_base_after": 8674,
+   "revenu_cotise_before": 4005,
+   "revenu_cotise_after": 4005,
+   "trimestres_before": 4,
+   "trimestres_after": 4,
+   "pension_before": 2003,
+   "pension_after": 2003
+  },
+  {
+   "case": "AC_4000_2024",
+   "date": "01/07/2024",
+   "assiette": "4000 €/an",
+   "retraite_de_base_before": 930,
+   "retraite_de_base_after": 931,
+   "revenu_cotise_before": 5423,
+   "revenu_cotise_after": 5245,
+   "trimestres_before": 3,
+   "trimestres_after": 3,
+   "pension_before": 226,
+   "pension_after": 219
+  },
+  {
+   "case": "AC_6900_2024",
+   "date": "01/07/2024",
+   "assiette": "6900 €/an",
+   "retraite_de_base_before": 1224,
+   "retraite_de_base_after": 1225,
+   "revenu_cotise_before": 7137,
+   "revenu_cotise_after": 6901,
+   "trimestres_before": 4,
+   "trimestres_after": 3,
+   "pension_before": 297,
+   "pension_after": 288
+  },
+  {
+   "case": "AC_20000_2024",
+   "date": "01/07/2024",
+   "assiette": "20000 €/an",
+   "retraite_de_base_before": 3550,
+   "retraite_de_base_after": 3550,
+   "revenu_cotise_before": 20700,
+   "revenu_cotise_after": 20000,
+   "trimestres_before": 4,
+   "trimestres_after": 4,
+   "pension_before": 863,
+   "pension_after": 833
+  },
+  {
+   "case": "AC_23000_2024",
+   "date": "01/07/2024",
+   "assiette": "23000 €/an",
+   "retraite_de_base_before": 4082,
+   "retraite_de_base_after": 4083,
+   "revenu_cotise_before": 23802,
+   "revenu_cotise_after": 23003,
+   "trimestres_before": 4,
+   "trimestres_after": 4,
+   "pension_before": 992,
+   "pension_after": 958
+  },
+  {
+   "case": "AC_60000_2024",
+   "date": "01/07/2024",
+   "assiette": "60000 €/an",
+   "retraite_de_base_before": 8312,
+   "retraite_de_base_after": 8312,
+   "revenu_cotise_before": 3864,
+   "revenu_cotise_after": 3864,
+   "trimestres_before": 4,
+   "trimestres_after": 4,
+   "pension_before": 1932,
+   "pension_after": 1932
+  },
+  {
+   "case": "AC_250000_2024",
+   "date": "01/07/2024",
+   "assiette": "250000 €/an",
+   "retraite_de_base_before": 9452,
+   "retraite_de_base_after": 9452,
+   "revenu_cotise_before": 3864,
+   "revenu_cotise_after": 3864,
+   "trimestres_before": 4,
+   "trimestres_after": 4,
+   "pension_before": 1932,
+   "pension_after": 1932
+  }
+ ],
+ "sophon_links": {
+  "R4-pre-D633-3-I-taux-17.15": [
+   "L0146",
+   "VERIFIED"
+  ],
+  "R4-pre-D633-3-II-taux-0.72": [
+   "L0147",
+   "VERIFIED"
+  ],
+  "R4-pre-D633-3-I-amount-60000": [
+   "L0148",
+   "VERIFIED"
+  ],
+  "R4-pre-D633-3-II-amount-20000": [
+   "L0149",
+   "VERIFIED"
+  ],
+  "R4-pre-D633-3-I-amount-250000": [
+   "L0150",
+   "VERIFIED"
+  ],
+  "R4-post-D633-3-I+II-tauxT1-17.87": [
+   "L0151",
+   "VERIFIED"
+  ],
+  "R4-post-D633-3-II-tauxT2-0.72": [
+   "L0152",
+   "VERIFIED"
+  ],
+  "R4-post-D633-3-I-amount-60000": [
+   "L0153",
+   "VERIFIED"
+  ],
+  "R4-post-D633-3-II-amount-20000": [
+   "L0154",
+   "VERIFIED"
+  ],
+  "R4-post-D633-3-I-amount-250000": [
+   "L0155",
+   "VERIFIED"
+  ],
+  "R4-post-D633-3-I-amount-PSS": [
+   "L0156",
+   "VERIFIED"
+  ],
+  "R4-post-D633-3-I-amount-tabac": [
+   "L0157",
+   "VERIFIED"
+  ],
+  "R4-post-D633-3-floor-4000": [
+   "L0158",
+   "VERIFIED"
+  ],
+  "R4-2024-abstain-23000": [
+   "L0159",
+   "UNKNOWN"
+  ]
+ }
+}

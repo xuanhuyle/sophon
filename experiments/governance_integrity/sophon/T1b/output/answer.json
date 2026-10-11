@@ -1,0 +1,2087 @@
+{
+ "task": "T1b",
+ "decision_date": "2024-07-17",
+ "law_snapshot": "S3 (legi-data 2.381.0, published 2024-07-17)",
+ "rules_pin": "G1 2a0e452617fc (committed 2024-07-16)",
+ "changed_articles": [
+  {
+   "article": "D136-5",
+   "change": "CREATED",
+   "version_id": "LEGIARTI000049899286",
+   "in_force": "2024-07-07",
+   "modifying_text": "Décret n°2024-688 du 5 juillet 2024 art. 1 (JORF 2024-07-06)",
+   "content": "floor 1,76 % and ceiling 130 % of the annual PSS for the L136-3 III abattement"
+  },
+  {
+   "article": "D621-2",
+   "change": "MODIFIED",
+   "previous_version_id": "LEGIARTI000046714747 (2022-12-10)",
+   "version_id": "LEGIARTI000049904592",
+   "in_force": "2024-07-07",
+   "modifying_text": "Décret n°2024-688 du 5 juillet 2024 art. 2 (JORF 2024-07-06)",
+   "content": "maladie reduced-rate formula on the L131-6 base: nil < 20 % PSS; T1 1,5 % (40 %), T2 4 % (60 %), T3 6,5 % (110 %), T4 7,7 % (200 %), T5 8,5 % (300 %); reduction only below 3 PSS"
+  },
+  {
+   "article": "D633-3",
+   "change": "MODIFIED",
+   "previous_version_id": "LEGIARTI000041967101 (2020-05-25)",
+   "version_id": "LEGIARTI000049904636",
+   "in_force": "2024-07-07",
+   "modifying_text": "Décret n°2024-688 du 5 juillet 2024 art. 3 (JORF 2024-07-06)",
+   "content": "17,15 % within the PSS (unchanged), 0,72 % on the whole base (was 0,60 %)"
+  },
+  {
+   "article": "D613-4",
+   "change": "MODIFIED (AE, out of T1b scope)",
+   "previous_version_id": "LEGIARTI000049623867 (2024-06-01)",
+   "version_id": "LEGIARTI000049624068",
+   "in_force": "2024-07-01 .. 2025-05-01",
+   "modifying_text": "Décret n°2024-484 du 30 mai 2024 art. 1",
+   "content": "b) 21,2 -> 23,2 % ; e) 21,1 -> 23,1 %"
+  },
+  {
+   "article": "D613-6",
+   "change": "MODIFIED (AE, out of T1b scope)",
+   "previous_version_id": "LEGIARTI000049623885 (2024-06-01)",
+   "version_id": "LEGIARTI000049625264",
+   "in_force": "2024-07-01 .. 2025-01-01",
+   "modifying_text": "Décret n°2024-484 du 30 mai 2024 art. 2",
+   "content": "new branch splits (e.g. b) 9,30/0,90/1,40/23,45/5,35/25,60/34,00 ; e) 3,60/3,70/50,75/7,85/34,10)"
+  }
+ ],
+ "law_side_unchanged_since_S0": [
+  {
+   "article": "L131-6",
+   "version_id": "LEGIARTI000048683707",
+   "in_force": "2023-12-28",
+   "modified_by": "LOI n°2023-1250 du 26 décembre 2023 art. 18 (JORF 2023-12-27)"
+  },
+  {
+   "article": "L136-3",
+   "version_id": "LEGIARTI000048683641",
+   "in_force": "2023-12-28",
+   "modified_by": "LOI n°2023-1250 du 26 décembre 2023 art. 18 (JORF 2023-12-27)"
+  }
+ ],
+ "unchanged_articles": [
+  "L131-6",
+  "L136-3",
+  "L613-7",
+  "D131-6-1",
+  "D613-5",
+  "D632-1",
+  "D756-5"
+ ],
+ "articles_missing_in_snapshot": [],
+ "rules": [
+  {
+   "rule": "/tmp/claude-0/-home-user-sophon/980382c3-789d-515f-926e-c8bdd3dd6b4b/scratchpad/runs/B/T1b/inputs/rules/G1_2a0e452617fc/modele-social/règles",
+   "classification": "NEEDS_REVIEW",
+   "confidence": "low",
+   "evidence": [
+    "not individually analysed"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . covid",
+   "classification": "UNAFFECTED",
+   "confidence": "high",
+   "evidence": [
+    "2020-2021 covid scheme; no bounded article; dates before the reform"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . covid . cotisations",
+   "classification": "UNAFFECTED",
+   "confidence": "high",
+   "evidence": [
+    "2020-2021 covid scheme; no bounded article; dates before the reform"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . covid . CSG-CRDS déductible",
+   "classification": "UNAFFECTED",
+   "confidence": "high",
+   "evidence": [
+    "2020-2021 covid scheme; no bounded article; dates before the reform"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . covid . CSG-CRDS non déductible",
+   "classification": "UNAFFECTED",
+   "confidence": "high",
+   "evidence": [
+    "2020-2021 covid scheme; no bounded article; dates before the reform"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . covid . montant",
+   "classification": "UNAFFECTED",
+   "confidence": "high",
+   "evidence": [
+    "2020-2021 covid scheme; no bounded article; dates before the reform"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . covid . conjoint collaborateur",
+   "classification": "UNAFFECTED",
+   "confidence": "high",
+   "evidence": [
+    "2020-2021 covid scheme; no bounded article; dates before the reform"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . covid . conjoint collaborateur . conjoint collaborateur cotisations",
+   "classification": "UNAFFECTED",
+   "confidence": "high",
+   "evidence": [
+    "2020-2021 covid scheme; no bounded article; dates before the reform"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . covid . total",
+   "classification": "UNAFFECTED",
+   "confidence": "high",
+   "evidence": [
+    "2020-2021 covid scheme; no bounded article; dates before the reform"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . covid . part cotisations",
+   "classification": "UNAFFECTED",
+   "confidence": "high",
+   "evidence": [
+    "2020-2021 covid scheme; no bounded article; dates before the reform"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . covid . pourcentage cotisations",
+   "classification": "UNAFFECTED",
+   "confidence": "high",
+   "evidence": [
+    "2020-2021 covid scheme; no bounded article; dates before the reform"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . covid . part CSG",
+   "classification": "UNAFFECTED",
+   "confidence": "high",
+   "evidence": [
+    "2020-2021 covid scheme; no bounded article; dates before the reform"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . covid . part CSG . déductible",
+   "classification": "UNAFFECTED",
+   "confidence": "high",
+   "evidence": [
+    "2020-2021 covid scheme; no bounded article; dates before the reform"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . covid . part CSG . non déductible",
+   "classification": "UNAFFECTED",
+   "confidence": "high",
+   "evidence": [
+    "2020-2021 covid scheme; no bounded article; dates before the reform"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . covid . taux CSG",
+   "classification": "UNAFFECTED",
+   "confidence": "high",
+   "evidence": [
+    "2020-2021 covid scheme; no bounded article; dates before the reform"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . exonérations",
+   "classification": "NEEDS_REVIEW",
+   "confidence": "medium",
+   "evidence": [
+    "sum of exemptions; ACRE depends on the redefined base"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . ZFU",
+   "classification": "UNAFFECTED",
+   "confidence": "high",
+   "evidence": [
+    "no bounded article governs ZFU / âge / DROM exemptions of indépendants"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . âge",
+   "classification": "UNAFFECTED",
+   "confidence": "high",
+   "evidence": [
+    "no bounded article governs ZFU / âge / DROM exemptions of indépendants"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . âge . invalidité et décès",
+   "classification": "UNAFFECTED",
+   "confidence": "high",
+   "evidence": [
+    "no bounded article governs ZFU / âge / DROM exemptions of indépendants"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . pension invalidité",
+   "classification": "UNAFFECTED",
+   "confidence": "medium",
+   "evidence": [
+    "no bounded article; exempted amounts derive from the affected contributions"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . pension invalidité . durée",
+   "classification": "UNAFFECTED",
+   "confidence": "medium",
+   "evidence": [
+    "no bounded article; exempted amounts derive from the affected contributions"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . pension invalidité . indemnités journalières maladie",
+   "classification": "UNAFFECTED",
+   "confidence": "medium",
+   "evidence": [
+    "no bounded article; exempted amounts derive from the affected contributions"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . pension invalidité . maladie",
+   "classification": "UNAFFECTED",
+   "confidence": "medium",
+   "evidence": [
+    "no bounded article; exempted amounts derive from the affected contributions"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . pension invalidité . prorata",
+   "classification": "UNAFFECTED",
+   "confidence": "medium",
+   "evidence": [
+    "no bounded article; exempted amounts derive from the affected contributions"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . pension invalidité . retraite complémentaire",
+   "classification": "UNAFFECTED",
+   "confidence": "medium",
+   "evidence": [
+    "no bounded article; exempted amounts derive from the affected contributions"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . pension invalidité . retraite de base",
+   "classification": "UNAFFECTED",
+   "confidence": "medium",
+   "evidence": [
+    "no bounded article; exempted amounts derive from the affected contributions"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE",
+   "classification": "NEEDS_REVIEW",
+   "confidence": "medium",
+   "evidence": [
+    "D131-6-1 unchanged in S3 (LEGIARTI000036475110) but its 3/4 PSS - PSS thresholds are compared to the base, which the reform redefines; amounts exempted derive from changed contributions"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . allocations familiales",
+   "classification": "NEEDS_REVIEW",
+   "confidence": "medium",
+   "evidence": [
+    "D131-6-1 unchanged in S3 (LEGIARTI000036475110) but its 3/4 PSS - PSS thresholds are compared to the base, which the reform redefines; amounts exempted derive from changed contributions"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . indemnités journalières maladie",
+   "classification": "NEEDS_REVIEW",
+   "confidence": "medium",
+   "evidence": [
+    "D131-6-1 unchanged in S3 (LEGIARTI000036475110) but its 3/4 PSS - PSS thresholds are compared to the base, which the reform redefines; amounts exempted derive from changed contributions"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . invalidité et décès",
+   "classification": "NEEDS_REVIEW",
+   "confidence": "medium",
+   "evidence": [
+    "D131-6-1 unchanged in S3 (LEGIARTI000036475110) but its 3/4 PSS - PSS thresholds are compared to the base, which the reform redefines; amounts exempted derive from changed contributions"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . maladie",
+   "classification": "NEEDS_REVIEW",
+   "confidence": "medium",
+   "evidence": [
+    "D131-6-1 unchanged in S3 (LEGIARTI000036475110) but its 3/4 PSS - PSS thresholds are compared to the base, which the reform redefines; amounts exempted derive from changed contributions"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . retraite de base",
+   "classification": "NEEDS_REVIEW",
+   "confidence": "medium",
+   "evidence": [
+    "D131-6-1 unchanged in S3 (LEGIARTI000036475110) but its 3/4 PSS - PSS thresholds are compared to the base, which the reform redefines; amounts exempted derive from changed contributions"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . prorata sur l'année",
+   "classification": "UNAFFECTED",
+   "confidence": "high",
+   "evidence": [
+    "date-based prorata; D131-6-1 unchanged in S3; sophon L0028 STILL_VERIFIED"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . taux",
+   "classification": "NEEDS_REVIEW",
+   "confidence": "medium",
+   "evidence": [
+    "D131-6-1 unchanged in S3 (LEGIARTI000036475110) but its 3/4 PSS - PSS thresholds are compared to the base, which the reform redefines; amounts exempted derive from changed contributions"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . ZFU . taux",
+   "classification": "UNAFFECTED",
+   "confidence": "high",
+   "evidence": [
+    "no bounded article governs ZFU / âge / DROM exemptions of indépendants"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . DROM",
+   "classification": "UNAFFECTED",
+   "confidence": "high",
+   "evidence": [
+    "no bounded article governs ZFU / âge / DROM exemptions of indépendants"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . non déductibles",
+   "classification": "AFFECTED",
+   "confidence": "medium",
+   "evidence": [
+    "derived from changed CSG-CRDS/contribution amounts",
+    "aggregate of CSG-CRDS non déductible"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . PSS proratisé",
+   "classification": "UNAFFECTED",
+   "confidence": "high",
+   "evidence": [
+    "PSS x activity duration; no bounded article; sophon L0039/L0040 (D131-6-1) unchanged"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . cotisations",
+   "classification": "AFFECTED",
+   "confidence": "high",
+   "evidence": [
+    "L131-6 LEGIARTI000048683707 (2023-12-28): \"sont assises sur l'assiette définie à l'article L. 136-3\" ; L136-3 LEGIARTI000048683641: \"fait l'objet d'un abattement de 26 %\" ; D136-5 LEGIARTI000049899286 (2024-07-07): floor 1,76 % / ceiling 130 % of the annual PSS",
+    "sum of contributions assessed on the new base",
+    "engine trader@01/12/2024: G1 12788 -> proposal 8987 €/an"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions",
+   "classification": "AFFECTED",
+   "confidence": "high",
+   "evidence": [
+    "L131-6 LEGIARTI000048683707 (2023-12-28): \"sont assises sur l'assiette définie à l'article L. 136-3\" ; L136-3 LEGIARTI000048683641: \"fait l'objet d'un abattement de 26 %\" ; D136-5 LEGIARTI000049899286 (2024-07-07): floor 1,76 % / ceiling 130 % of the annual PSS",
+    "total of changed components",
+    "engine trader@01/12/2024: G1 18025 -> proposal 11974 €/an",
+    "sophon T1b-P05 (link L0087): VERIFIED observed=29600 expected=29600.0"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . Urssaf",
+   "classification": "AFFECTED",
+   "confidence": "medium",
+   "evidence": [
+    "derived from changed CSG-CRDS/contribution amounts",
+    "engine trader@01/12/2024: G1 n/a -> proposal n/a "
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . contributions spéciales",
+   "classification": "UNAFFECTED",
+   "confidence": "high",
+   "evidence": [
+    "no formula / not applicable / documentation only; no bounded article"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . PCV",
+   "classification": "UNAFFECTED",
+   "confidence": "high",
+   "evidence": [
+    "no formula / not applicable / documentation only; no bounded article"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . déduction tabac",
+   "classification": "NEEDS_REVIEW",
+   "confidence": "medium",
+   "evidence": [
+    "applies on assiette des cotisations, which becomes the abated base; order of the tobacco deduction vs the abattement not settled by the texts"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . déduction tabac . revenus déduits",
+   "classification": "NEEDS_REVIEW",
+   "confidence": "medium",
+   "evidence": [
+    "applies on assiette des cotisations, which becomes the abated base; order of the tobacco deduction vs the abattement not settled by the texts"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . début activité",
+   "classification": "NEEDS_REVIEW",
+   "confidence": "medium",
+   "evidence": [
+    "forfaits 19 % / 40 % PSS come from articles outside the set; the contexte overrides assiette des cotisations so the abattement is bypassed in the proposal; whether the forfait is a pre- or post-abattement base is not settled"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . début activité . assiette forfaitaire",
+   "classification": "NEEDS_REVIEW",
+   "confidence": "medium",
+   "evidence": [
+    "forfaits 19 % / 40 % PSS come from articles outside the set; the contexte overrides assiette des cotisations so the abattement is bypassed in the proposal; whether the forfait is a pre- or post-abattement base is not settled"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . début activité . assiette forfaitaire maladie",
+   "classification": "NEEDS_REVIEW",
+   "confidence": "medium",
+   "evidence": [
+    "forfaits 19 % / 40 % PSS come from articles outside the set; the contexte overrides assiette des cotisations so the abattement is bypassed in the proposal; whether the forfait is a pre- or post-abattement base is not settled"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . régularisation",
+   "classification": "UNAFFECTED",
+   "confidence": "high",
+   "evidence": [
+    "no formula / not applicable / documentation only; no bounded article"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . indemnités journalières maladie",
+   "classification": "AFFECTED",
+   "confidence": "medium",
+   "evidence": [
+    "L131-6 LEGIARTI000048683707 (2023-12-28): \"sont assises sur l'assiette définie à l'article L. 136-3\" ; L136-3 LEGIARTI000048683641: \"fait l'objet d'un abattement de 26 %\" ; D136-5 LEGIARTI000049899286 (2024-07-07): floor 1,76 % / ceiling 130 % of the annual PSS",
+    "base change only; 0,5 % and the 40 % PSS floor outside the set",
+    "engine trader@01/12/2024: G1 200 -> proposal 148 €/an",
+    "sophon T1b-P26 (link L0108): VERIFIED observed=148 expected=148.0"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . indemnités journalières maladie . assiette",
+   "classification": "AFFECTED",
+   "confidence": "medium",
+   "evidence": [
+    "L131-6 LEGIARTI000048683707 (2023-12-28): \"sont assises sur l'assiette définie à l'article L. 136-3\" ; L136-3 LEGIARTI000048683641: \"fait l'objet d'un abattement de 26 %\" ; D136-5 LEGIARTI000049899286 (2024-07-07): floor 1,76 % / ceiling 130 % of the annual PSS",
+    "base change only; 0,5 % and the 40 % PSS floor outside the set",
+    "engine trader@01/12/2024: G1 n/a -> proposal n/a ",
+    "sophon T1b-P26 (link L0108): VERIFIED observed=148 expected=148.0"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . indemnités journalières maladie . taux",
+   "classification": "UNAFFECTED",
+   "confidence": "medium",
+   "evidence": [
+    "no article of the bounded set states this rule's own rate/threshold; not asserted",
+    "engine trader@01/12/2024: G1 n/a -> proposal n/a "
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . maladie",
+   "classification": "AFFECTED",
+   "confidence": "high",
+   "evidence": [
+    "D621-2 LEGIARTI000049904592 (2024-07-07): \"T1 est égal à 1,5 %\" \"T2 est égal à 4 %\" \"T3 est égal à 6,5 %\" \"T4 est égal à 7,7 %\" \"T5 est égal à 8,5 %\", nil below 20 % PSS, 'a' = L131-6 base",
+    "L131-6 LEGIARTI000048683707 (2023-12-28): \"sont assises sur l'assiette définie à l'article L. 136-3\" ; L136-3 LEGIARTI000048683641: \"fait l'objet d'un abattement de 26 %\" ; D136-5 LEGIARTI000049899286 (2024-07-07): floor 1,76 % / ceiling 130 % of the annual PSS",
+    "engine trader@01/12/2024: G1 2168 -> proposal 1092 €/an",
+    "sophon T1b-P08 (link L0090): VERIFIED observed=0 expected=0.0",
+    "sophon T1b-P10 (link L0092): VERIFIED observed=4 expected=4.0",
+    "sophon T1b-P16 (link L0098): VERIFIED observed=4.19 expected=4.19",
+    "sophon T1b-G02 (link L0076): FAILED observed=4.5 expected=4.0",
+    "sophon T1b-G08 (link L0082): FAILED observed=5.92 expected=4.19"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . maladie . total",
+   "classification": "AFFECTED",
+   "confidence": "high",
+   "evidence": [
+    "D621-2 LEGIARTI000049904592 (2024-07-07): \"T1 est égal à 1,5 %\" \"T2 est égal à 4 %\" \"T3 est égal à 6,5 %\" \"T4 est égal à 7,7 %\" \"T5 est égal à 8,5 %\", nil below 20 % PSS, 'a' = L131-6 base",
+    "L131-6 LEGIARTI000048683707 (2023-12-28): \"sont assises sur l'assiette définie à l'article L. 136-3\" ; L136-3 LEGIARTI000048683641: \"fait l'objet d'un abattement de 26 %\" ; D136-5 LEGIARTI000049899286 (2024-07-07): floor 1,76 % / ceiling 130 % of the annual PSS",
+    "engine trader@01/12/2024: G1 2368 -> proposal 1240.24 €/an",
+    "sophon T1b-P08 (link L0090): VERIFIED observed=0 expected=0.0",
+    "sophon T1b-P10 (link L0092): VERIFIED observed=4 expected=4.0",
+    "sophon T1b-P16 (link L0098): VERIFIED observed=4.19 expected=4.19",
+    "sophon T1b-G02 (link L0076): FAILED observed=4.5 expected=4.0",
+    "sophon T1b-G08 (link L0082): FAILED observed=5.92 expected=4.19"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+   "classification": "AFFECTED",
+   "confidence": "high",
+   "evidence": [
+    "D621-2 LEGIARTI000049904592 (2024-07-07): \"T1 est égal à 1,5 %\" \"T2 est égal à 4 %\" \"T3 est égal à 6,5 %\" \"T4 est égal à 7,7 %\" \"T5 est égal à 8,5 %\", nil below 20 % PSS, 'a' = L131-6 base",
+    "L131-6 LEGIARTI000048683707 (2023-12-28): \"sont assises sur l'assiette définie à l'article L. 136-3\" ; L136-3 LEGIARTI000048683641: \"fait l'objet d'un abattement de 26 %\" ; D136-5 LEGIARTI000049899286 (2024-07-07): floor 1,76 % / ceiling 130 % of the annual PSS",
+    "engine trader@01/12/2024: G1 5.92 -> proposal 4.19 %",
+    "sophon T1b-P08 (link L0090): VERIFIED observed=0 expected=0.0",
+    "sophon T1b-P10 (link L0092): VERIFIED observed=4 expected=4.0",
+    "sophon T1b-P16 (link L0098): VERIFIED observed=4.19 expected=4.19",
+    "sophon T1b-G02 (link L0076): FAILED observed=4.5 expected=4.0",
+    "sophon T1b-G08 (link L0082): FAILED observed=5.92 expected=4.19"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif . assiette",
+   "classification": "AFFECTED",
+   "confidence": "high",
+   "evidence": [
+    "D621-2 LEGIARTI000049904592 (2024-07-07): \"T1 est égal à 1,5 %\" \"T2 est égal à 4 %\" \"T3 est égal à 6,5 %\" \"T4 est égal à 7,7 %\" \"T5 est égal à 8,5 %\", nil below 20 % PSS, 'a' = L131-6 base",
+    "L131-6 LEGIARTI000048683707 (2023-12-28): \"sont assises sur l'assiette définie à l'article L. 136-3\" ; L136-3 LEGIARTI000048683641: \"fait l'objet d'un abattement de 26 %\" ; D136-5 LEGIARTI000049899286 (2024-07-07): floor 1,76 % / ceiling 130 % of the annual PSS",
+    "engine trader@01/12/2024: G1 n/a -> proposal n/a ",
+    "sophon T1b-P08 (link L0090): VERIFIED observed=0 expected=0.0",
+    "sophon T1b-P10 (link L0092): VERIFIED observed=4 expected=4.0",
+    "sophon T1b-P16 (link L0098): VERIFIED observed=4.19 expected=4.19",
+    "sophon T1b-G02 (link L0076): FAILED observed=4.5 expected=4.0",
+    "sophon T1b-G08 (link L0082): FAILED observed=5.92 expected=4.19"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . maladie . réduction supplémentaire",
+   "classification": "UNAFFECTED",
+   "confidence": "high",
+   "evidence": [
+    "deprecated rule applicable only before 01/2022; no S3 text concerns that period"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . retraite de base",
+   "classification": "AFFECTED",
+   "confidence": "high",
+   "evidence": [
+    "D633-3 LEGIARTI000049904636 (2024-07-07): \"dans la limite du plafond est fixé à 17,15 %\" ; \"sur la totalité de l'assiette de cotisations est fixé à 0,72 %\" (was 0,60 %)",
+    "L131-6 LEGIARTI000048683707 (2023-12-28): \"sont assises sur l'assiette définie à l'article L. 136-3\" ; L136-3 LEGIARTI000048683641: \"fait l'objet d'un abattement de 26 %\" ; D136-5 LEGIARTI000049899286 (2024-07-07): floor 1,76 % / ceiling 130 % of the annual PSS",
+    "engine trader@01/12/2024: G1 7100 -> proposal 5290 €/an",
+    "sophon T1b-P18 (link L0100): VERIFIED observed=17.87 expected=17.87",
+    "sophon T1b-P19 (link L0101): VERIFIED observed=0.72 expected=0.72",
+    "sophon T1b-P20 (link L0102): VERIFIED observed=5290 expected=5290.0",
+    "sophon T1b-G01 (link L0075): FAILED observed=17.75 expected=17.87"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . retraite de base . taux",
+   "classification": "AFFECTED",
+   "confidence": "high",
+   "evidence": [
+    "D633-3 LEGIARTI000049904636 (2024-07-07): \"dans la limite du plafond est fixé à 17,15 %\" ; \"sur la totalité de l'assiette de cotisations est fixé à 0,72 %\" (was 0,60 %)",
+    "L131-6 LEGIARTI000048683707 (2023-12-28): \"sont assises sur l'assiette définie à l'article L. 136-3\" ; L136-3 LEGIARTI000048683641: \"fait l'objet d'un abattement de 26 %\" ; D136-5 LEGIARTI000049899286 (2024-07-07): floor 1,76 % / ceiling 130 % of the annual PSS",
+    "engine trader@01/12/2024: G1 17.75 -> proposal 17.87 %",
+    "sophon T1b-P18 (link L0100): VERIFIED observed=17.87 expected=17.87",
+    "sophon T1b-P19 (link L0101): VERIFIED observed=0.72 expected=0.72",
+    "sophon T1b-P20 (link L0102): VERIFIED observed=5290 expected=5290.0",
+    "sophon T1b-G01 (link L0075): FAILED observed=17.75 expected=17.87"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . retraite complémentaire",
+   "classification": "AFFECTED",
+   "confidence": "medium",
+   "evidence": [
+    "L131-6 LEGIARTI000048683707 (2023-12-28): \"sont assises sur l'assiette définie à l'article L. 136-3\" ; L136-3 LEGIARTI000048683641: \"fait l'objet d'un abattement de 26 %\" ; D136-5 LEGIARTI000049899286 (2024-07-07): floor 1,76 % / ceiling 130 % of the annual PSS",
+    "base change only; 7 %/8 % rates and PRCI ceiling outside the set",
+    "engine trader@01/12/2024: G1 2800 -> proposal 2072 €/an",
+    "sophon T1b-P24 (link L0106): VERIFIED observed=2072 expected=2072.0"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . retraite complémentaire . plafond",
+   "classification": "UNAFFECTED",
+   "confidence": "medium",
+   "evidence": [
+    "no article of the bounded set states this rule's own rate/threshold; not asserted"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . retraite complémentaire . références",
+   "classification": "UNAFFECTED",
+   "confidence": "medium",
+   "evidence": [
+    "no article of the bounded set states this rule's own rate/threshold; not asserted"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . invalidité et décès",
+   "classification": "AFFECTED",
+   "confidence": "medium",
+   "evidence": [
+    "L131-6 LEGIARTI000048683707 (2023-12-28): \"sont assises sur l'assiette définie à l'article L. 136-3\" ; L136-3 LEGIARTI000048683641: \"fait l'objet d'un abattement de 26 %\" ; D136-5 LEGIARTI000049899286 (2024-07-07): floor 1,76 % / ceiling 130 % of the annual PSS",
+    "base change only; 1,3 % outside the set; D632-1 floor/cap unchanged in S3 (pre-existing 2024 floor mismatch L0048 BROKEN: 5 243 vs 5 332)",
+    "engine trader@01/12/2024: G1 520 -> proposal 385 €/an",
+    "sophon T1b-P25 (link L0107): VERIFIED observed=385 expected=385.0"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . invalidité et décès . assiette",
+   "classification": "AFFECTED",
+   "confidence": "medium",
+   "evidence": [
+    "L131-6 LEGIARTI000048683707 (2023-12-28): \"sont assises sur l'assiette définie à l'article L. 136-3\" ; L136-3 LEGIARTI000048683641: \"fait l'objet d'un abattement de 26 %\" ; D136-5 LEGIARTI000049899286 (2024-07-07): floor 1,76 % / ceiling 130 % of the annual PSS",
+    "base change only; 1,3 % outside the set; D632-1 floor/cap unchanged in S3 (pre-existing 2024 floor mismatch L0048 BROKEN: 5 243 vs 5 332)",
+    "engine trader@01/12/2024: G1 n/a -> proposal n/a ",
+    "sophon T1b-P25 (link L0107): VERIFIED observed=385 expected=385.0"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . CSG-CRDS",
+   "classification": "AFFECTED",
+   "confidence": "high",
+   "evidence": [
+    "L131-6 LEGIARTI000048683707 (2023-12-28): \"sont assises sur l'assiette définie à l'article L. 136-3\" ; L136-3 LEGIARTI000048683641: \"fait l'objet d'un abattement de 26 %\" ; D136-5 LEGIARTI000049899286 (2024-07-07): floor 1,76 % / ceiling 130 % of the annual PSS",
+    "L136-3 I/III: CSG-CRDS assessed on the abated base; G1 adds the contributions back (52 788)",
+    "engine trader@01/12/2024: G1 5121 -> proposal 2871 €/an",
+    "sophon T1b-P06 (link L0088): VERIFIED observed=29600 expected=29600.0",
+    "sophon T1b-G05 (link L0079): INFERRED observed=None expected=None"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . CSG-CRDS . déductible",
+   "classification": "AFFECTED",
+   "confidence": "high",
+   "evidence": [
+    "L131-6 LEGIARTI000048683707 (2023-12-28): \"sont assises sur l'assiette définie à l'article L. 136-3\" ; L136-3 LEGIARTI000048683641: \"fait l'objet d'un abattement de 26 %\" ; D136-5 LEGIARTI000049899286 (2024-07-07): floor 1,76 % / ceiling 130 % of the annual PSS",
+    "base change; the 6,8 % / 2,9 % rates are outside the bounded set",
+    "engine trader@01/12/2024: G1 3590 -> proposal 2013 €/an"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . CSG-CRDS . déductible . revenus de remplacement",
+   "classification": "NEEDS_REVIEW",
+   "confidence": "medium",
+   "evidence": [
+    "L131-6 I: \"Cette assiette inclut également le montant des revenus de remplacement sans lien avec une affection de longue durée\" - the treatment of IJSS in the new base is not transposed; reduced CSG rates are outside the set"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . CSG-CRDS . déductible . taux",
+   "classification": "UNAFFECTED",
+   "confidence": "medium",
+   "evidence": [
+    "no article of the bounded set states this rule's own rate/threshold; not asserted",
+    "engine trader@01/12/2024: G1 n/a -> proposal n/a "
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . CSG-CRDS . non déductible",
+   "classification": "AFFECTED",
+   "confidence": "high",
+   "evidence": [
+    "L131-6 LEGIARTI000048683707 (2023-12-28): \"sont assises sur l'assiette définie à l'article L. 136-3\" ; L136-3 LEGIARTI000048683641: \"fait l'objet d'un abattement de 26 %\" ; D136-5 LEGIARTI000049899286 (2024-07-07): floor 1,76 % / ceiling 130 % of the annual PSS",
+    "base change; the 6,8 % / 2,9 % rates are outside the bounded set",
+    "engine trader@01/12/2024: G1 1531 -> proposal 858 €/an"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . CSG-CRDS . non déductible . revenus de remplacement",
+   "classification": "NEEDS_REVIEW",
+   "confidence": "medium",
+   "evidence": [
+    "L131-6 I: \"Cette assiette inclut également le montant des revenus de remplacement sans lien avec une affection de longue durée\" - the treatment of IJSS in the new base is not transposed; reduced CSG rates are outside the set"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . CSG-CRDS . non déductible . taux",
+   "classification": "UNAFFECTED",
+   "confidence": "medium",
+   "evidence": [
+    "no article of the bounded set states this rule's own rate/threshold; not asserted",
+    "engine trader@01/12/2024: G1 n/a -> proposal n/a "
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . CSG-CRDS . assiette",
+   "classification": "AFFECTED",
+   "confidence": "high",
+   "evidence": [
+    "L131-6 LEGIARTI000048683707 (2023-12-28): \"sont assises sur l'assiette définie à l'article L. 136-3\" ; L136-3 LEGIARTI000048683641: \"fait l'objet d'un abattement de 26 %\" ; D136-5 LEGIARTI000049899286 (2024-07-07): floor 1,76 % / ceiling 130 % of the annual PSS",
+    "engine trader@01/12/2024: G1 52788 -> proposal 29600 €/an",
+    "sophon T1b-P06 (link L0088): VERIFIED observed=29600 expected=29600.0",
+    "sophon T1b-G05 (link L0079): INFERRED observed=None expected=None"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . formation professionnelle",
+   "classification": "UNAFFECTED",
+   "confidence": "high",
+   "evidence": [
+    "computed on the PSS, not on income; no bounded article",
+    "engine trader@01/12/2024: G1 116 -> proposal 116 €/an"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . allocations familiales",
+   "classification": "AFFECTED",
+   "confidence": "medium",
+   "evidence": [
+    "L131-6 LEGIARTI000048683707 (2023-12-28): \"sont assises sur l'assiette définie à l'article L. 136-3\" ; L136-3 LEGIARTI000048683641: \"fait l'objet d'un abattement de 26 %\" ; D136-5 LEGIARTI000049899286 (2024-07-07): floor 1,76 % / ceiling 130 % of the annual PSS",
+    "base change only (thresholds 110-140 % PSS compare the base); AF article outside the set",
+    "engine trader@01/12/2024: G1 0 -> proposal 0 €/an"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . allocations familiales . taux",
+   "classification": "AFFECTED",
+   "confidence": "medium",
+   "evidence": [
+    "L131-6 LEGIARTI000048683707 (2023-12-28): \"sont assises sur l'assiette définie à l'article L. 136-3\" ; L136-3 LEGIARTI000048683641: \"fait l'objet d'un abattement de 26 %\" ; D136-5 LEGIARTI000049899286 (2024-07-07): floor 1,76 % / ceiling 130 % of the annual PSS",
+    "base change only (thresholds 110-140 % PSS compare the base); AF article outside the set",
+    "engine trader@01/12/2024: G1 n/a -> proposal n/a "
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . maladie domiciliation fiscale étranger",
+   "classification": "NEEDS_REVIEW",
+   "confidence": "medium",
+   "evidence": [
+    "14,5 % outside the set; input base changes under the reform"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . assiette des cotisations",
+   "classification": "AFFECTED",
+   "confidence": "high",
+   "evidence": [
+    "L131-6 LEGIARTI000048683707 (2023-12-28): \"sont assises sur l'assiette définie à l'article L. 136-3\" ; L136-3 LEGIARTI000048683641: \"fait l'objet d'un abattement de 26 %\" ; D136-5 LEGIARTI000049899286 (2024-07-07): floor 1,76 % / ceiling 130 % of the annual PSS",
+    "engine trader@01/12/2024: G1 40000 -> proposal 29600 €/an",
+    "sophon T1b-P05 (link L0087): VERIFIED observed=29600 expected=29600.0",
+    "sophon T1b-P07 (link L0089): VERIFIED observed=40000 expected=40000.0",
+    "sophon T1b-G04 (link L0078): FAILED observed=40000 expected=29600.0"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . assiette minimale",
+   "classification": "NEEDS_REVIEW",
+   "confidence": "medium",
+   "evidence": [
+    "L136-3 III: the abattement floor \"ne peut dépasser le montant mentionné à la dernière phrase de l'article L. 633-1\" (L633-1 outside the set); D632-1 unchanged in S3; how minimum bases interact with the abated base is not settled",
+    "sophon T1b-G07 (link L0081): UNKNOWN observed=None expected=None"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . assiette minimale . maladie",
+   "classification": "NEEDS_REVIEW",
+   "confidence": "medium",
+   "evidence": [
+    "40 % PSS floor from an article outside the set; D621-2 new 1°: \"inférieur à 20 % ... le taux est nul\" interacts with it",
+    "engine trader@01/12/2024: G1 18547 -> proposal 18547 €/an",
+    "sophon T1b-G06 (link L0080): UNKNOWN observed=None expected=None"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . assiette minimale . retraite",
+   "classification": "NEEDS_REVIEW",
+   "confidence": "medium",
+   "evidence": [
+    "D632-1 LEGIARTI000041966755 unchanged in S3; pre-existing mismatch: library 450 h SMIC = 5 243 vs 11,5 % PSS = 5 332 in 2024 (sophon L0048 BROKEN); comparison with the abated base not settled",
+    "engine trader@01/12/2024: G1 5243 -> proposal 5243 €/an",
+    "sophon T1b-G07 (link L0081): UNKNOWN observed=None expected=None"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . assiette minimale . retraite . en 2022",
+   "classification": "UNAFFECTED",
+   "confidence": "high",
+   "evidence": [
+    "2022-only value; no S3 text concerns 2022"
+   ]
+  }
+ ],
+ "proposal_dir": "work/proposals/T1b/modele-social/règles",
+ "proposal_script": "work/scripts/apply_proposal_T1b.py",
+ "proposal_diff": "work/proposals/T1b/CHANGES.diff",
+ "proposal_nature": "5 edits in dirigeant/indépendant.publicodes gated on date >= 07/07/2024: (1) assiette des cotisations = unified base = placeholder line - abattement(26 %, floor 1,76 % PSS, ceiling 130 % PSS) via new sub-rules `réforme assiette 2024 . {plafond annuel, assiette avant abattement, abattement forfaitaire, assiette unifiée}`; (2) maladie . taux progressif new tranches 0/1,5/4/6,5/7,7/8,5 % at 20/40/60/110/200/300 % PSS; (3) retraite de base . taux 17,87 % and new `taux déplafonné` 0,72 %; (4) CSG-CRDS . assiette = the same unified base (no add-back of contributions). Before 07/07/2024 every value is unchanged (control run 01/06/2024 identical to G1).",
+ "build_ok": true,
+ "build_counts": {
+  "raw_rule_count": 641,
+  "parsed_rule_count": 1226,
+  "G1_parsed_rule_count": 1220
+ },
+ "evaluations": [
+  {
+   "transposed": "26 % flat abattement",
+   "rule": "dirigeant . indépendant . assiette des cotisations . réforme assiette 2024 . abattement forfaitaire",
+   "expected_from_text": 10400,
+   "comment": "26 % x 40 000 = 10 400 €/an",
+   "justification": [
+    {
+     "article": "L136-3",
+     "version_id": "LEGIARTI000048683641",
+     "in_force": "2023-12-28",
+     "modified_by": "LOI n°2023-1250 du 26 décembre 2023 art. 18 (JORF 2023-12-27)",
+     "quote": "fait l'objet d'un abattement de 26 %",
+     "sophon_link": "L0083",
+     "sophon_status": "VERIFIED"
+    }
+   ],
+   "date": "01/12/2024",
+   "situation": {
+    "dirigeant . régime social": "'indépendant'",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . imposition": "'IR'",
+    "entreprise . activité . nature": "'commerciale'",
+    "dirigeant . indépendant . revenu professionnel": "40000 €/an",
+    "date": "01/12/2024"
+   },
+   "value_after": 10400,
+   "unit": "€/an",
+   "value_before_G1": null
+  },
+  {
+   "transposed": "abattement floor 1,76 % of annual PSS",
+   "rule": "dirigeant . indépendant . assiette des cotisations . réforme assiette 2024 . abattement forfaitaire",
+   "expected_from_text": 816.0768,
+   "comment": "1,76 % x 46 368 = 816,0768 €/an (binds: 26 % x 2 000 = 520 < floor)",
+   "justification": [
+    {
+     "article": "D136-5",
+     "version_id": "LEGIARTI000049899286",
+     "in_force": "2024-07-07",
+     "modified_by": "Décret n°2024-688 du 5 juillet 2024 art. 1 (JORF 2024-07-06) - CREE",
+     "quote": "Le montant plancher prévu au III de l'article L. 136-3 est fixé à 1,76 % de la valeur annuelle du plafond de la sécurité sociale",
+     "sophon_link": "L0084",
+     "sophon_status": "VERIFIED"
+    }
+   ],
+   "date": "01/12/2024",
+   "situation": {
+    "dirigeant . régime social": "'indépendant'",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . imposition": "'IR'",
+    "entreprise . activité . nature": "'commerciale'",
+    "dirigeant . indépendant . revenu professionnel": "2000 €/an",
+    "date": "01/12/2024"
+   },
+   "value_after": 816.0768,
+   "unit": "€/an",
+   "value_before_G1": null
+  },
+  {
+   "transposed": "abattement ceiling 130 % of annual PSS",
+   "rule": "dirigeant . indépendant . assiette des cotisations . réforme assiette 2024 . abattement forfaitaire",
+   "expected_from_text": 60278.4,
+   "comment": "130 % x 46 368 = 60 278,4 €/an (binds: 26 % x 300 000 = 78 000 > ceiling)",
+   "justification": [
+    {
+     "article": "D136-5",
+     "version_id": "LEGIARTI000049899286",
+     "in_force": "2024-07-07",
+     "modified_by": "Décret n°2024-688 du 5 juillet 2024 art. 1 (JORF 2024-07-06) - CREE",
+     "quote": "Le montant plafond mentionné au III de l'article L. 136-3 est fixé à 130 % de la valeur annuelle du plafond de la sécurité sociale",
+     "sophon_link": "L0085",
+     "sophon_status": "VERIFIED"
+    }
+   ],
+   "date": "01/12/2024",
+   "situation": {
+    "dirigeant . régime social": "'indépendant'",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . imposition": "'IR'",
+    "entreprise . activité . nature": "'commerciale'",
+    "dirigeant . indépendant . revenu professionnel": "300000 €/an",
+    "date": "01/12/2024"
+   },
+   "value_after": 60278.4,
+   "unit": "€/an",
+   "value_before_G1": null
+  },
+  {
+   "transposed": "annual PSS used for floor/ceiling",
+   "rule": "dirigeant . indépendant . assiette des cotisations . réforme assiette 2024 . plafond annuel",
+   "expected_from_text": 46368,
+   "comment": "library PSS 2024 = 3 864 €/mois x 12 ; PSS 2025 not in corpus",
+   "justification": [
+    {
+     "article": "D136-5",
+     "version_id": "LEGIARTI000049899286",
+     "in_force": "2024-07-07",
+     "modified_by": "Décret n°2024-688 du 5 juillet 2024 art. 1 (JORF 2024-07-06) - CREE",
+     "quote": "Le montant plancher prévu au III de l'article L. 136-3 est fixé à 1,76 % de la valeur annuelle du plafond de la sécurité sociale",
+     "sophon_link": "L0086",
+     "sophon_status": "VERIFIED"
+    }
+   ],
+   "date": "01/12/2024",
+   "situation": {
+    "dirigeant . régime social": "'indépendant'",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . imposition": "'IR'",
+    "entreprise . activité . nature": "'commerciale'",
+    "dirigeant . indépendant . revenu professionnel": "40000 €/an",
+    "date": "01/12/2024"
+   },
+   "value_after": 46368,
+   "unit": "€/an",
+   "value_before_G1": null
+  },
+  {
+   "transposed": "maladie: rate nil below 20 % PSS",
+   "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+   "expected_from_text": 0,
+   "comment": "assiette 10 % PSS -> 0 % (G1: 0,5 %)",
+   "justification": [
+    {
+     "article": "D621-2",
+     "version_id": "LEGIARTI000049904592",
+     "in_force": "2024-07-07",
+     "modified_by": "Décret n°2024-688 du 5 juillet 2024 art. 2 (JORF 2024-07-06)",
+     "quote": "inférieur à 20 % de la valeur annuelle du plafond mentionné au premier alinéa de l'article L. 241-3, le taux est nul",
+     "sophon_link": "L0090",
+     "sophon_status": "VERIFIED"
+    },
+    {
+     "article": "D621-2",
+     "version_id": "LEGIARTI000049904592",
+     "in_force": "2024-07-07",
+     "modified_by": "Décret n°2024-688 du 5 juillet 2024 art. 2 (JORF 2024-07-06)",
+     "quote": "inférieur à 20 % de la valeur annuelle du plafond mentionné au premier alinéa de l'article L. 241-3, le taux est nul",
+     "sophon_link": "L0077",
+     "sophon_status": "FAILED"
+    }
+   ],
+   "date": "01/12/2024",
+   "situation": {
+    "dirigeant . régime social": "'indépendant'",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . imposition": "'IR'",
+    "entreprise . activité . nature": "'commerciale'",
+    "dirigeant . indépendant . revenu professionnel": "40000 €/an",
+    "date": "01/12/2024",
+    "dirigeant . indépendant . assiette des cotisations": "4636.8 €/an"
+   },
+   "value_after": 0,
+   "unit": "%",
+   "value_before_G1": 0.5
+  },
+  {
+   "transposed": "maladie T1 = 1,5 % at 40 % PSS",
+   "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+   "expected_from_text": 1.5,
+   "comment": "assiette 18 547,2 €/an (40 % PSS) -> 1,5 %",
+   "justification": [
+    {
+     "article": "D621-2",
+     "version_id": "LEGIARTI000049904592",
+     "in_force": "2024-07-07",
+     "modified_by": "Décret n°2024-688 du 5 juillet 2024 art. 2 (JORF 2024-07-06)",
+     "quote": "T1 est égal à 1,5 %",
+     "sophon_link": "L0091",
+     "sophon_status": "VERIFIED"
+    }
+   ],
+   "date": "01/12/2024",
+   "situation": {
+    "dirigeant . régime social": "'indépendant'",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . imposition": "'IR'",
+    "entreprise . activité . nature": "'commerciale'",
+    "dirigeant . indépendant . revenu professionnel": "40000 €/an",
+    "date": "01/12/2024",
+    "dirigeant . indépendant . assiette des cotisations": "18547.2 €/an"
+   },
+   "value_after": 1.5,
+   "unit": "%"
+  },
+  {
+   "transposed": "maladie T2 = 4 % at 60 % PSS",
+   "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+   "expected_from_text": 4,
+   "comment": "assiette 27 820,8 €/an (60 % PSS) -> 4 % (G1: 4,5 %)",
+   "justification": [
+    {
+     "article": "D621-2",
+     "version_id": "LEGIARTI000049904592",
+     "in_force": "2024-07-07",
+     "modified_by": "Décret n°2024-688 du 5 juillet 2024 art. 2 (JORF 2024-07-06)",
+     "quote": "T2 est égal à 4 %",
+     "sophon_link": "L0092",
+     "sophon_status": "VERIFIED"
+    },
+    {
+     "article": "D621-2",
+     "version_id": "LEGIARTI000049904592",
+     "in_force": "2024-07-07",
+     "modified_by": "Décret n°2024-688 du 5 juillet 2024 art. 2 (JORF 2024-07-06)",
+     "quote": "T2 est égal à 4 %",
+     "sophon_link": "L0076",
+     "sophon_status": "FAILED"
+    }
+   ],
+   "date": "01/12/2024",
+   "situation": {
+    "dirigeant . régime social": "'indépendant'",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . imposition": "'IR'",
+    "entreprise . activité . nature": "'commerciale'",
+    "dirigeant . indépendant . revenu professionnel": "40000 €/an",
+    "date": "01/12/2024",
+    "dirigeant . indépendant . assiette des cotisations": "27820.8 €/an"
+   },
+   "value_after": 4,
+   "unit": "%"
+  },
+  {
+   "transposed": "maladie T3 = 6,5 % at 110 % PSS",
+   "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+   "expected_from_text": 6.5,
+   "comment": "assiette 51 004,8 €/an -> 6,5 %",
+   "justification": [
+    {
+     "article": "D621-2",
+     "version_id": "LEGIARTI000049904592",
+     "in_force": "2024-07-07",
+     "modified_by": "Décret n°2024-688 du 5 juillet 2024 art. 2 (JORF 2024-07-06)",
+     "quote": "T3 est égal à 6,5 %",
+     "sophon_link": "L0093",
+     "sophon_status": "VERIFIED"
+    }
+   ],
+   "date": "01/12/2024",
+   "situation": {
+    "dirigeant . régime social": "'indépendant'",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . imposition": "'IR'",
+    "entreprise . activité . nature": "'commerciale'",
+    "dirigeant . indépendant . revenu professionnel": "40000 €/an",
+    "date": "01/12/2024",
+    "dirigeant . indépendant . assiette des cotisations": "51004.8 €/an"
+   },
+   "value_after": 6.5,
+   "unit": "%"
+  },
+  {
+   "transposed": "maladie T4 = 7,7 % at 200 % PSS",
+   "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+   "expected_from_text": 7.7,
+   "comment": "assiette 92 736 €/an -> 7,7 %",
+   "justification": [
+    {
+     "article": "D621-2",
+     "version_id": "LEGIARTI000049904592",
+     "in_force": "2024-07-07",
+     "modified_by": "Décret n°2024-688 du 5 juillet 2024 art. 2 (JORF 2024-07-06)",
+     "quote": "T4 est égal à 7,7 %",
+     "sophon_link": "L0094",
+     "sophon_status": "VERIFIED"
+    }
+   ],
+   "date": "01/12/2024",
+   "situation": {
+    "dirigeant . régime social": "'indépendant'",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . imposition": "'IR'",
+    "entreprise . activité . nature": "'commerciale'",
+    "dirigeant . indépendant . revenu professionnel": "40000 €/an",
+    "date": "01/12/2024",
+    "dirigeant . indépendant . assiette des cotisations": "92736 €/an"
+   },
+   "value_after": 7.7,
+   "unit": "%"
+  },
+  {
+   "transposed": "maladie T5 = 8,5 % at 300 % PSS",
+   "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+   "expected_from_text": 8.5,
+   "comment": "assiette 139 104 €/an -> 8,5 %",
+   "justification": [
+    {
+     "article": "D621-2",
+     "version_id": "LEGIARTI000049904592",
+     "in_force": "2024-07-07",
+     "modified_by": "Décret n°2024-688 du 5 juillet 2024 art. 2 (JORF 2024-07-06)",
+     "quote": "T5 est égal à 8,5 %",
+     "sophon_link": "L0095",
+     "sophon_status": "VERIFIED"
+    }
+   ],
+   "date": "01/12/2024",
+   "situation": {
+    "dirigeant . régime social": "'indépendant'",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . imposition": "'IR'",
+    "entreprise . activité . nature": "'commerciale'",
+    "dirigeant . indépendant . revenu professionnel": "40000 €/an",
+    "date": "01/12/2024",
+    "dirigeant . indépendant . assiette des cotisations": "139104 €/an"
+   },
+   "value_after": 8.5,
+   "unit": "%"
+  },
+  {
+   "transposed": "maladie linear formula (3° tranche) at 50 % PSS",
+   "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+   "expected_from_text": 2.75,
+   "comment": "(4-1,5) x (0,5-0,4)/0,2 + 1,5 = 2,75 % (G1: 2,5 %)",
+   "justification": [
+    {
+     "article": "D621-2",
+     "version_id": "LEGIARTI000049904592",
+     "in_force": "2024-07-07",
+     "modified_by": "Décret n°2024-688 du 5 juillet 2024 art. 2 (JORF 2024-07-06)",
+     "quote": "Taux = { (T3-T2) × [a-(0,6 × PSS)]/ (0,5 × PSS) } + T2",
+     "sophon_link": "L0096",
+     "sophon_status": "VERIFIED"
+    }
+   ],
+   "date": "01/12/2024",
+   "situation": {
+    "dirigeant . régime social": "'indépendant'",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . imposition": "'IR'",
+    "entreprise . activité . nature": "'commerciale'",
+    "dirigeant . indépendant . revenu professionnel": "40000 €/an",
+    "date": "01/12/2024",
+    "dirigeant . indépendant . assiette des cotisations": "23184 €/an"
+   },
+   "value_after": 2.75,
+   "unit": "%",
+   "value_before_G1": 2.5
+  },
+  {
+   "transposed": "maladie linear formula (5° tranche) at 150 % PSS",
+   "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+   "expected_from_text": 7.03,
+   "comment": "(7,7-6,5) x (1,5-1,1)/0,9 + 6,5 = 7,0333 ; the rule rounds to 2 decimals (7,03) - rounding not stated by the text",
+   "justification": [
+    {
+     "article": "D621-2",
+     "version_id": "LEGIARTI000049904592",
+     "in_force": "2024-07-07",
+     "modified_by": "Décret n°2024-688 du 5 juillet 2024 art. 2 (JORF 2024-07-06)",
+     "quote": "T4 est égal à 7,7 %",
+     "sophon_link": "L0097",
+     "sophon_status": "VERIFIED"
+    }
+   ],
+   "date": "01/12/2024",
+   "situation": {
+    "dirigeant . régime social": "'indépendant'",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . imposition": "'IR'",
+    "entreprise . activité . nature": "'commerciale'",
+    "dirigeant . indépendant . revenu professionnel": "40000 €/an",
+    "date": "01/12/2024",
+    "dirigeant . indépendant . assiette des cotisations": "69552 €/an"
+   },
+   "value_after": 7.03,
+   "unit": "%",
+   "value_before_G1": 7.2
+  },
+  {
+   "transposed": "retraite de base within PSS: 17,15 % + 0,72 % = 17,87 %",
+   "rule": "dirigeant . indépendant . cotisations et contributions . retraite de base . taux",
+   "expected_from_text": 17.87,
+   "comment": "first tranche cumulates D633-3 I (17,15 %) and II (0,72 % on the whole base); before: 17,15 + 0,60 = 17,75 %",
+   "justification": [
+    {
+     "article": "D633-3",
+     "version_id": "LEGIARTI000049904636",
+     "in_force": "2024-07-07",
+     "modified_by": "Décret n°2024-688 du 5 juillet 2024 art. 3 (JORF 2024-07-06)",
+     "quote": "Le taux des cotisations assises sur l'assiette de cotisations dans la limite du plafond est fixé à 17,15 %",
+     "sophon_link": "L0100",
+     "sophon_status": "VERIFIED"
+    },
+    {
+     "article": "D633-3",
+     "version_id": "LEGIARTI000049904636",
+     "in_force": "2024-07-07",
+     "modified_by": "Décret n°2024-688 du 5 juillet 2024 art. 3 (JORF 2024-07-06)",
+     "quote": "Le taux des cotisations assises sur la totalité de l'assiette de cotisations est fixé à 0,72 %",
+     "sophon_link": "L0075",
+     "sophon_status": "FAILED"
+    }
+   ],
+   "date": "01/12/2024",
+   "situation": {
+    "dirigeant . régime social": "'indépendant'",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . imposition": "'IR'",
+    "entreprise . activité . nature": "'commerciale'",
+    "dirigeant . indépendant . revenu professionnel": "40000 €/an",
+    "date": "01/12/2024"
+   },
+   "value_after": 17.87,
+   "unit": "%"
+  },
+  {
+   "transposed": "retraite de base above PSS: 0,72 %",
+   "rule": "dirigeant . indépendant . cotisations et contributions . retraite de base . taux déplafonné",
+   "expected_from_text": 0.72,
+   "comment": "D633-3 II (was 0,60 %)",
+   "justification": [
+    {
+     "article": "D633-3",
+     "version_id": "LEGIARTI000049904636",
+     "in_force": "2024-07-07",
+     "modified_by": "Décret n°2024-688 du 5 juillet 2024 art. 3 (JORF 2024-07-06)",
+     "quote": "Le taux des cotisations assises sur la totalité de l'assiette de cotisations est fixé à 0,72 %",
+     "sophon_link": "L0101",
+     "sophon_status": "VERIFIED"
+    }
+   ],
+   "date": "01/12/2024",
+   "situation": {
+    "dirigeant . régime social": "'indépendant'",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . imposition": "'IR'",
+    "entreprise . activité . nature": "'commerciale'",
+    "dirigeant . indépendant . revenu professionnel": "40000 €/an",
+    "date": "01/12/2024"
+   },
+   "value_after": 0.72,
+   "unit": "%"
+  },
+  {
+   "transposed": "in-force date 2024-07-07 (decree) - gate",
+   "rule": "dirigeant . indépendant . assiette des cotisations . réforme assiette 2024",
+   "expected_from_text": true,
+   "comment": "true at 01/12/2024, false at 01/06/2024 (BEFOREDATE probe); application to a given contribution year not stated in the bounded texts",
+   "justification": [
+    {
+     "article": "D136-5",
+     "version_id": "LEGIARTI000049899286",
+     "in_force": "2024-07-07",
+     "modified_by": "Décret n°2024-688 du 5 juillet 2024 art. 1 (JORF 2024-07-06) - CREE",
+     "quote": "Le montant plancher prévu au III de l'article L. 136-3 est fixé à 1,76 % de la valeur annuelle du plafond de la sécurité sociale",
+     "sophon_link": "L0109",
+     "sophon_status": "INFERRED"
+    },
+    {
+     "article": "L131-6",
+     "version_id": "LEGIARTI000048683707",
+     "in_force": "2023-12-28",
+     "modified_by": "LOI n°2023-1250 du 26 décembre 2023 art. 18 (JORF 2023-12-27)",
+     "quote": "sont assises sur l'assiette définie à l'article L. 136-3",
+     "sophon_link": "L0089",
+     "sophon_status": "VERIFIED"
+    },
+    {
+     "article": "D633-3",
+     "version_id": "LEGIARTI000049904636",
+     "in_force": "2024-07-07",
+     "modified_by": "Décret n°2024-688 du 5 juillet 2024 art. 3 (JORF 2024-07-06)",
+     "quote": "Le taux des cotisations assises sur l'assiette de cotisations dans la limite du plafond est fixé à 17,15 %",
+     "sophon_link": "L0103",
+     "sophon_status": "VERIFIED"
+    }
+   ],
+   "date": "01/12/2024",
+   "situation": {
+    "dirigeant . régime social": "'indépendant'",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . imposition": "'IR'",
+    "entreprise . activité . nature": "'commerciale'",
+    "dirigeant . indépendant . revenu professionnel": "40000 €/an",
+    "date": "01/12/2024"
+   },
+   "value_after": true,
+   "unit": null,
+   "value_before_G1": null
+  }
+ ],
+ "trader_before_after": [
+  {
+   "date": "01/12/2024",
+   "situation": {
+    "dirigeant . régime social": "'indépendant'",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . imposition": "'IR'",
+    "entreprise . activité . nature": "'commerciale'",
+    "dirigeant . indépendant . revenu professionnel": "40000 €/an",
+    "date": "01/12/2024"
+   },
+   "rules": [
+    {
+     "rule": "dirigeant . indépendant . cotisations et contributions",
+     "value_before_G1": 18025,
+     "value_after_proposal": 11974,
+     "unit": "€/an",
+     "changed": true
+    },
+    {
+     "rule": "dirigeant . indépendant . cotisations et contributions . cotisations",
+     "value_before_G1": 12788,
+     "value_after_proposal": 8987,
+     "unit": "€/an",
+     "changed": true
+    },
+    {
+     "rule": "dirigeant . indépendant . cotisations et contributions . CSG-CRDS",
+     "value_before_G1": 5121,
+     "value_after_proposal": 2871,
+     "unit": "€/an",
+     "changed": true
+    },
+    {
+     "rule": "dirigeant . indépendant . cotisations et contributions . CSG-CRDS . assiette",
+     "value_before_G1": 52788,
+     "value_after_proposal": 29600,
+     "unit": "€/an",
+     "changed": true
+    },
+    {
+     "rule": "dirigeant . indépendant . cotisations et contributions . CSG-CRDS . déductible",
+     "value_before_G1": 3590,
+     "value_after_proposal": 2013,
+     "unit": "€/an",
+     "changed": true
+    },
+    {
+     "rule": "dirigeant . indépendant . cotisations et contributions . CSG-CRDS . non déductible",
+     "value_before_G1": 1531,
+     "value_after_proposal": 858,
+     "unit": "€/an",
+     "changed": true
+    },
+    {
+     "rule": "dirigeant . indépendant . cotisations et contributions . maladie",
+     "value_before_G1": 2168,
+     "value_after_proposal": 1092,
+     "unit": "€/an",
+     "changed": true
+    },
+    {
+     "rule": "dirigeant . indépendant . cotisations et contributions . maladie . total",
+     "value_before_G1": 2368,
+     "value_after_proposal": 1240.24,
+     "unit": "€/an",
+     "changed": true
+    },
+    {
+     "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+     "value_before_G1": 5.92,
+     "value_after_proposal": 4.19,
+     "unit": "%",
+     "changed": true
+    },
+    {
+     "rule": "dirigeant . indépendant . cotisations et contributions . retraite de base",
+     "value_before_G1": 7100,
+     "value_after_proposal": 5290,
+     "unit": "€/an",
+     "changed": true
+    },
+    {
+     "rule": "dirigeant . indépendant . cotisations et contributions . retraite de base . taux",
+     "value_before_G1": 17.75,
+     "value_after_proposal": 17.87,
+     "unit": "%",
+     "changed": true
+    },
+    {
+     "rule": "dirigeant . indépendant . cotisations et contributions . retraite complémentaire",
+     "value_before_G1": 2800,
+     "value_after_proposal": 2072,
+     "unit": "€/an",
+     "changed": true
+    },
+    {
+     "rule": "dirigeant . indépendant . cotisations et contributions . invalidité et décès",
+     "value_before_G1": 520,
+     "value_after_proposal": 385,
+     "unit": "€/an",
+     "changed": true
+    },
+    {
+     "rule": "dirigeant . indépendant . cotisations et contributions . indemnités journalières maladie",
+     "value_before_G1": 200,
+     "value_after_proposal": 148,
+     "unit": "€/an",
+     "changed": true
+    },
+    {
+     "rule": "dirigeant . indépendant . cotisations et contributions . allocations familiales",
+     "value_before_G1": 0,
+     "value_after_proposal": 0,
+     "unit": "€/an",
+     "changed": false
+    },
+    {
+     "rule": "dirigeant . indépendant . cotisations et contributions . formation professionnelle",
+     "value_before_G1": 116,
+     "value_after_proposal": 116,
+     "unit": "€/an",
+     "changed": false
+    },
+    {
+     "rule": "dirigeant . indépendant . assiette des cotisations",
+     "value_before_G1": 40000,
+     "value_after_proposal": 29600,
+     "unit": "€/an",
+     "changed": true
+    },
+    {
+     "rule": "dirigeant . indépendant . assiette minimale . maladie",
+     "value_before_G1": 18547,
+     "value_after_proposal": 18547,
+     "unit": "€/an",
+     "changed": false
+    },
+    {
+     "rule": "dirigeant . indépendant . assiette minimale . retraite",
+     "value_before_G1": 5243,
+     "value_after_proposal": 5243,
+     "unit": "€/an",
+     "changed": false
+    },
+    {
+     "rule": "plafond sécurité sociale",
+     "value_before_G1": 3864,
+     "value_after_proposal": 3864,
+     "unit": "€/mois",
+     "changed": false
+    }
+   ],
+   "comment": "reform gate true (date >= 07/07/2024): abated unified base 29 600 €/an. Conditional on the PLACEHOLDER pre-abattement line (revenu professionnel + cotisations facultatives déductibles): which income lines enter the L136-3 base is NOT settled by the texts (see abstentions)."
+  },
+  {
+   "date": "01/06/2025",
+   "situation": {
+    "dirigeant . régime social": "'indépendant'",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . imposition": "'IR'",
+    "entreprise . activité . nature": "'commerciale'",
+    "dirigeant . indépendant . revenu professionnel": "40000 €/an",
+    "date": "01/06/2025"
+   },
+   "rules": [
+    {
+     "rule": "dirigeant . indépendant . cotisations et contributions",
+     "value_before_G1": 18025,
+     "value_after_proposal": 11974,
+     "unit": "€/an",
+     "changed": true
+    },
+    {
+     "rule": "dirigeant . indépendant . cotisations et contributions . cotisations",
+     "value_before_G1": 12788,
+     "value_after_proposal": 8987,
+     "unit": "€/an",
+     "changed": true
+    },
+    {
+     "rule": "dirigeant . indépendant . cotisations et contributions . CSG-CRDS",
+     "value_before_G1": 5121,
+     "value_after_proposal": 2871,
+     "unit": "€/an",
+     "changed": true
+    },
+    {
+     "rule": "dirigeant . indépendant . cotisations et contributions . CSG-CRDS . assiette",
+     "value_before_G1": 52788,
+     "value_after_proposal": 29600,
+     "unit": "€/an",
+     "changed": true
+    },
+    {
+     "rule": "dirigeant . indépendant . cotisations et contributions . CSG-CRDS . déductible",
+     "value_before_G1": 3590,
+     "value_after_proposal": 2013,
+     "unit": "€/an",
+     "changed": true
+    },
+    {
+     "rule": "dirigeant . indépendant . cotisations et contributions . CSG-CRDS . non déductible",
+     "value_before_G1": 1531,
+     "value_after_proposal": 858,
+     "unit": "€/an",
+     "changed": true
+    },
+    {
+     "rule": "dirigeant . indépendant . cotisations et contributions . maladie",
+     "value_before_G1": 2168,
+     "value_after_proposal": 1092,
+     "unit": "€/an",
+     "changed": true
+    },
+    {
+     "rule": "dirigeant . indépendant . cotisations et contributions . maladie . total",
+     "value_before_G1": 2368,
+     "value_after_proposal": 1240.24,
+     "unit": "€/an",
+     "changed": true
+    },
+    {
+     "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+     "value_before_G1": 5.92,
+     "value_after_proposal": 4.19,
+     "unit": "%",
+     "changed": true
+    },
+    {
+     "rule": "dirigeant . indépendant . cotisations et contributions . retraite de base",
+     "value_before_G1": 7100,
+     "value_after_proposal": 5290,
+     "unit": "€/an",
+     "changed": true
+    },
+    {
+     "rule": "dirigeant . indépendant . cotisations et contributions . retraite de base . taux",
+     "value_before_G1": 17.75,
+     "value_after_proposal": 17.87,
+     "unit": "%",
+     "changed": true
+    },
+    {
+     "rule": "dirigeant . indépendant . cotisations et contributions . retraite complémentaire",
+     "value_before_G1": 2800,
+     "value_after_proposal": 2072,
+     "unit": "€/an",
+     "changed": true
+    },
+    {
+     "rule": "dirigeant . indépendant . cotisations et contributions . invalidité et décès",
+     "value_before_G1": 520,
+     "value_after_proposal": 385,
+     "unit": "€/an",
+     "changed": true
+    },
+    {
+     "rule": "dirigeant . indépendant . cotisations et contributions . indemnités journalières maladie",
+     "value_before_G1": 200,
+     "value_after_proposal": 148,
+     "unit": "€/an",
+     "changed": true
+    },
+    {
+     "rule": "dirigeant . indépendant . cotisations et contributions . allocations familiales",
+     "value_before_G1": 0,
+     "value_after_proposal": 0,
+     "unit": "€/an",
+     "changed": false
+    },
+    {
+     "rule": "dirigeant . indépendant . cotisations et contributions . formation professionnelle",
+     "value_before_G1": 116,
+     "value_after_proposal": 116,
+     "unit": "€/an",
+     "changed": false
+    },
+    {
+     "rule": "dirigeant . indépendant . assiette des cotisations",
+     "value_before_G1": 40000,
+     "value_after_proposal": 29600,
+     "unit": "€/an",
+     "changed": true
+    },
+    {
+     "rule": "dirigeant . indépendant . assiette minimale . maladie",
+     "value_before_G1": 18547,
+     "value_after_proposal": 18547,
+     "unit": "€/an",
+     "changed": false
+    },
+    {
+     "rule": "dirigeant . indépendant . assiette minimale . retraite",
+     "value_before_G1": 5243,
+     "value_after_proposal": 5243,
+     "unit": "€/an",
+     "changed": false
+    },
+    {
+     "rule": "plafond sécurité sociale",
+     "value_before_G1": 3864,
+     "value_after_proposal": 3864,
+     "unit": "€/mois",
+     "changed": false
+    }
+   ],
+   "comment": "reform gate true (date >= 07/07/2024): abated unified base 29 600 €/an. Conditional on the PLACEHOLDER pre-abattement line (revenu professionnel + cotisations facultatives déductibles): which income lines enter the L136-3 base is NOT settled by the texts (see abstentions)."
+  },
+  {
+   "date": "01/06/2024",
+   "situation": {
+    "dirigeant . régime social": "'indépendant'",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . imposition": "'IR'",
+    "entreprise . activité . nature": "'commerciale'",
+    "dirigeant . indépendant . revenu professionnel": "40000 €/an",
+    "date": "01/06/2024"
+   },
+   "rules": [
+    {
+     "rule": "dirigeant . indépendant . cotisations et contributions",
+     "value_before_G1": 18025,
+     "value_after_proposal": 18025,
+     "unit": "€/an",
+     "changed": false
+    },
+    {
+     "rule": "dirigeant . indépendant . cotisations et contributions . cotisations",
+     "value_before_G1": 12788,
+     "value_after_proposal": 12788,
+     "unit": "€/an",
+     "changed": false
+    },
+    {
+     "rule": "dirigeant . indépendant . cotisations et contributions . CSG-CRDS",
+     "value_before_G1": 5121,
+     "value_after_proposal": 5121,
+     "unit": "€/an",
+     "changed": false
+    },
+    {
+     "rule": "dirigeant . indépendant . cotisations et contributions . CSG-CRDS . assiette",
+     "value_before_G1": 52788,
+     "value_after_proposal": 52788,
+     "unit": "€/an",
+     "changed": false
+    },
+    {
+     "rule": "dirigeant . indépendant . cotisations et contributions . CSG-CRDS . déductible",
+     "value_before_G1": 3590,
+     "value_after_proposal": 3590,
+     "unit": "€/an",
+     "changed": false
+    },
+    {
+     "rule": "dirigeant . indépendant . cotisations et contributions . CSG-CRDS . non déductible",
+     "value_before_G1": 1531,
+     "value_after_proposal": 1531,
+     "unit": "€/an",
+     "changed": false
+    },
+    {
+     "rule": "dirigeant . indépendant . cotisations et contributions . maladie",
+     "value_before_G1": 2168,
+     "value_after_proposal": 2168,
+     "unit": "€/an",
+     "changed": false
+    },
+    {
+     "rule": "dirigeant . indépendant . cotisations et contributions . maladie . total",
+     "value_before_G1": 2368,
+     "value_after_proposal": 2368,
+     "unit": "€/an",
+     "changed": false
+    },
+    {
+     "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+     "value_before_G1": 5.92,
+     "value_after_proposal": 5.92,
+     "unit": "%",
+     "changed": false
+    },
+    {
+     "rule": "dirigeant . indépendant . cotisations et contributions . retraite de base",
+     "value_before_G1": 7100,
+     "value_after_proposal": 7100,
+     "unit": "€/an",
+     "changed": false
+    },
+    {
+     "rule": "dirigeant . indépendant . cotisations et contributions . retraite de base . taux",
+     "value_before_G1": 17.75,
+     "value_after_proposal": 17.75,
+     "unit": "%",
+     "changed": false
+    },
+    {
+     "rule": "dirigeant . indépendant . cotisations et contributions . retraite complémentaire",
+     "value_before_G1": 2800,
+     "value_after_proposal": 2800,
+     "unit": "€/an",
+     "changed": false
+    },
+    {
+     "rule": "dirigeant . indépendant . cotisations et contributions . invalidité et décès",
+     "value_before_G1": 520,
+     "value_after_proposal": 520,
+     "unit": "€/an",
+     "changed": false
+    },
+    {
+     "rule": "dirigeant . indépendant . cotisations et contributions . indemnités journalières maladie",
+     "value_before_G1": 200,
+     "value_after_proposal": 200,
+     "unit": "€/an",
+     "changed": false
+    },
+    {
+     "rule": "dirigeant . indépendant . cotisations et contributions . allocations familiales",
+     "value_before_G1": 0,
+     "value_after_proposal": 0,
+     "unit": "€/an",
+     "changed": false
+    },
+    {
+     "rule": "dirigeant . indépendant . cotisations et contributions . formation professionnelle",
+     "value_before_G1": 116,
+     "value_after_proposal": 116,
+     "unit": "€/an",
+     "changed": false
+    },
+    {
+     "rule": "dirigeant . indépendant . assiette des cotisations",
+     "value_before_G1": 40000,
+     "value_after_proposal": 40000,
+     "unit": "€/an",
+     "changed": false
+    },
+    {
+     "rule": "dirigeant . indépendant . assiette minimale . maladie",
+     "value_before_G1": 18547,
+     "value_after_proposal": 18547,
+     "unit": "€/an",
+     "changed": false
+    },
+    {
+     "rule": "dirigeant . indépendant . assiette minimale . retraite",
+     "value_before_G1": 5243,
+     "value_after_proposal": 5243,
+     "unit": "€/an",
+     "changed": false
+    },
+    {
+     "rule": "plafond sécurité sociale",
+     "value_before_G1": 3864,
+     "value_after_proposal": 3864,
+     "unit": "€/mois",
+     "changed": false
+    }
+   ],
+   "comment": "control date before the decree: proposal identical to G1 (no regression)."
+  }
+ ],
+ "abstentions": [
+  {
+   "topic": "income lines entering the unified base",
+   "articles": [
+    "L136-3 I 1°/2°",
+    "L131-6 I"
+   ],
+   "reason": "L136-3 I 1° defines the base as \"sur le montant, hors plus-values et moins-values de long terme, des produits tirés de ces mêmes activités, diminué du montant des charges que l'acquisition de ces produits nécessitent\"; whether compulsory social contributions, Madelin contributions or the spouse's contributions are such 'charges' is not stated; the former explicit add-back of contributions (old CSG base) has no counterpart in the text. The proposal keeps the library's existing line as a flagged PLACEHOLDER; all 'after' amounts are conditional on it.",
+   "sophon": [
+    "L0104",
+    "L0105"
+   ]
+  },
+  {
+   "topic": "épargne salariale deductions and revenus de remplacement in the base",
+   "articles": [
+    "L131-6 I"
+   ],
+   "reason": "\"En sont toutefois déduites les sommes mentionnées aux articles L. 3312-4, L. 3324-5 et L. 3332-27 du code du travail\" and the inclusion of revenus de remplacement: no input exists in the library; not transposed.",
+   "sophon": [
+    "L0105"
+   ]
+  },
+  {
+   "topic": "maladie rate at/above 300 % PSS",
+   "articles": [
+    "D621-2",
+    "D621-1 (not in set)",
+    "L621-3 (not in set)"
+   ],
+   "reason": "D621-2: reduction applies only when the base is \"inférieur à trois fois la valeur annuelle du plafond\"; above, the base rate of D621-1 applies, which is not in the bounded set. The proposal's 8,5 % above 300 % is the mechanical extension of the last tranche, not a transposed value.",
+   "sophon": [
+    "L0099"
+   ]
+  },
+  {
+   "topic": "application date to contribution years",
+   "articles": [
+    "L131-6",
+    "L136-3",
+    "D136-5",
+    "D621-2",
+    "D633-3"
+   ],
+   "reason": "The consolidated records give in-force dates only (law articles 2023-12-28; decree articles 2024-07-07). The schedule of application to the contributions of a given year (LFSS 2024 art. 18 transitional provisions) is not in the corpus. The proposal gates on 07/07/2024; evaluating the reform at 2024-12-01 follows from that gate alone and is flagged NEEDS_REVIEW.",
+   "sophon": [
+    "L0109"
+   ]
+  },
+  {
+   "topic": "PSS 2025",
+   "articles": [],
+   "reason": "No 2025 value of the plafond de la sécurité sociale is in the corpus or the library; the 2025-06-01 evaluations use the library's 2024 value (3 864 €/mois)."
+  },
+  {
+   "topic": "rounding of the maladie rate",
+   "articles": [
+    "D621-2"
+   ],
+   "reason": "The text gives formulas without a rounding rule; the library rounds the rate to 2 decimals (7,0333 -> 7,03). Kept, not asserted."
+  },
+  {
+   "topic": "minimum bases (assiette minimale)",
+   "articles": [
+    "L136-3 III",
+    "D632-1",
+    "L633-1 (not in set)"
+   ],
+   "reason": "The floor's cap refers to L633-1 (outside the set); D632-1 is unchanged; the pre-existing 2024 floor mismatch (5 243 vs 5 332) is not resolved here."
+  },
+  {
+   "topic": "rates outside the bounded set",
+   "articles": [],
+   "reason": "CSG 6,8 % / 2,9 %, RCI 7 % / 8 %, invalidité-décès 1,3 %, IJ 0,5 %, AF thresholds, CFP 0,25 % / 0,29 %, maladie 6,5 % above 5 PSS: unchanged in the proposal and not asserted."
+  },
+  {
+   "topic": "AE articles D613-4 / D613-6 (out of T1b scope)",
+   "articles": [
+    "D613-4",
+    "D613-6"
+   ],
+   "reason": "S3 now carries the text of D613-4 LEGIARTI000049624068 (2024-07-01..2025-05-01: b) 23,2 %, e) 23,1 %, a) 12,3 %, c) 6 %, d) 21,2 %) and D613-6 LEGIARTI000049625264 (2024-07-01..2025-01-01, new splits). They concern auto-entrepreneur rules, not the indépendant rules of this task; recorded for a later task (sophon REASSESS_LAW_CHANGED on the T0/T1a links). Versions LEGIARTI000049624097 / LEGIARTI000049624125 / LEGIARTI000049625405 / LEGIARTI000049625445 still have no text."
+  }
+ ],
+ "approval": "none recorded",
+ "notes": "See output/NOTES.md. All 'after' amounts for the trader depend on the placeholder base line; the percentages, floor/ceiling shares and the maladie/retraite rates are settled by the quoted texts and verified by the engine (sophon T1b-P01..P26).",
+ "sophon_reports": [
+  "work/sophon/reports/T1b_revalidate_S3_G1.json",
+  "work/sophon/reports/T1b_revalidate_S3_G1.md",
+  "work/sophon/reports/T1b_revalidate_cmd.json",
+  "work/sophon/reports/T1b_revalidate_S3_PT1b.json",
+  "work/sophon/reports/T1b_revalidate_S3_PT1b.md",
+  "work/sophon/reports/T1b_revalidate_PT1b_cmd.json",
+  "work/sophon/reports/T1b_evidence.json",
+  "work/sophon/reports/T1b_evidence.md",
+  "work/sophon/reports/T1b_report_cmd.json",
+  "work/sophon/reports/T1b_verify-store.json",
+  "work/sophon/reports/T1b_asof_D621-2_2024-12-01.json",
+  "work/sophon/reports/T1b_asof_D633-3_2024-12-01.json",
+  "work/sophon/reports/T1b_asof_D136-5_2024-12-01.json"
+ ],
+ "sophon_revalidate": {
+  "S3_x_G1": {
+   "BROKEN": 1,
+   "REASSESS_LAW_CHANGED": 36,
+   "REASSESS_RULE_CHANGED": 6,
+   "RULE_CHANGED_CHECK_STILL_PASSES": 13,
+   "STILL_VERIFIED": 10,
+   "UNVERIFIED_NO_CHECK": 8
+  },
+  "S3_x_P_T1b": {
+   "BROKEN": 1,
+   "REASSESS_LAW_CHANGED": 36,
+   "REASSESS_RULE_CHANGED": 9,
+   "RULE_CHANGED_CHECK_STILL_PASSES": 20,
+   "STILL_VERIFIED": 31,
+   "UNVERIFIED_NO_CHECK": 12
+  },
+  "articles_without_any_link_before_T1b": [
+   "D136-5"
+  ],
+  "after_T1b": []
+ },
+ "sophon_snapshots": {
+  "law": [
+   "S0",
+   "S1",
+   "S3"
+  ],
+  "rules": [
+   "G0",
+   "P_T1a",
+   "G1",
+   "P_T1b (proposal copy)"
+  ]
+ },
+ "sophon_links_added": [
+  {
+   "spec_id": "T1b-G01",
+   "link_id": "L0075",
+   "status": "FAILED"
+  },
+  {
+   "spec_id": "T1b-G02",
+   "link_id": "L0076",
+   "status": "FAILED"
+  },
+  {
+   "spec_id": "T1b-G03",
+   "link_id": "L0077",
+   "status": "FAILED"
+  },
+  {
+   "spec_id": "T1b-G04",
+   "link_id": "L0078",
+   "status": "FAILED"
+  },
+  {
+   "spec_id": "T1b-G05",
+   "link_id": "L0079",
+   "status": "INFERRED"
+  },
+  {
+   "spec_id": "T1b-G06",
+   "link_id": "L0080",
+   "status": "UNKNOWN"
+  },
+  {
+   "spec_id": "T1b-G07",
+   "link_id": "L0081",
+   "status": "UNKNOWN"
+  },
+  {
+   "spec_id": "T1b-G08",
+   "link_id": "L0082",
+   "status": "FAILED"
+  },
+  {
+   "spec_id": "T1b-P01",
+   "link_id": "L0083",
+   "status": "VERIFIED"
+  },
+  {
+   "spec_id": "T1b-P02",
+   "link_id": "L0084",
+   "status": "VERIFIED"
+  },
+  {
+   "spec_id": "T1b-P03",
+   "link_id": "L0085",
+   "status": "VERIFIED"
+  },
+  {
+   "spec_id": "T1b-P04",
+   "link_id": "L0086",
+   "status": "VERIFIED"
+  },
+  {
+   "spec_id": "T1b-P05",
+   "link_id": "L0087",
+   "status": "VERIFIED"
+  },
+  {
+   "spec_id": "T1b-P06",
+   "link_id": "L0088",
+   "status": "VERIFIED"
+  },
+  {
+   "spec_id": "T1b-P07",
+   "link_id": "L0089",
+   "status": "VERIFIED"
+  },
+  {
+   "spec_id": "T1b-P08",
+   "link_id": "L0090",
+   "status": "VERIFIED"
+  },
+  {
+   "spec_id": "T1b-P09",
+   "link_id": "L0091",
+   "status": "VERIFIED"
+  },
+  {
+   "spec_id": "T1b-P10",
+   "link_id": "L0092",
+   "status": "VERIFIED"
+  },
+  {
+   "spec_id": "T1b-P11",
+   "link_id": "L0093",
+   "status": "VERIFIED"
+  },
+  {
+   "spec_id": "T1b-P12",
+   "link_id": "L0094",
+   "status": "VERIFIED"
+  },
+  {
+   "spec_id": "T1b-P13",
+   "link_id": "L0095",
+   "status": "VERIFIED"
+  },
+  {
+   "spec_id": "T1b-P14",
+   "link_id": "L0096",
+   "status": "VERIFIED"
+  },
+  {
+   "spec_id": "T1b-P15",
+   "link_id": "L0097",
+   "status": "VERIFIED"
+  },
+  {
+   "spec_id": "T1b-P16",
+   "link_id": "L0098",
+   "status": "VERIFIED"
+  },
+  {
+   "spec_id": "T1b-P17",
+   "link_id": "L0099",
+   "status": "UNKNOWN"
+  },
+  {
+   "spec_id": "T1b-P18",
+   "link_id": "L0100",
+   "status": "VERIFIED"
+  },
+  {
+   "spec_id": "T1b-P19",
+   "link_id": "L0101",
+   "status": "VERIFIED"
+  },
+  {
+   "spec_id": "T1b-P20",
+   "link_id": "L0102",
+   "status": "VERIFIED"
+  },
+  {
+   "spec_id": "T1b-P21",
+   "link_id": "L0103",
+   "status": "VERIFIED"
+  },
+  {
+   "spec_id": "T1b-P22",
+   "link_id": "L0104",
+   "status": "UNKNOWN"
+  },
+  {
+   "spec_id": "T1b-P23",
+   "link_id": "L0105",
+   "status": "UNKNOWN"
+  },
+  {
+   "spec_id": "T1b-P24",
+   "link_id": "L0106",
+   "status": "VERIFIED"
+  },
+  {
+   "spec_id": "T1b-P25",
+   "link_id": "L0107",
+   "status": "VERIFIED"
+  },
+  {
+   "spec_id": "T1b-P26",
+   "link_id": "L0108",
+   "status": "VERIFIED"
+  },
+  {
+   "spec_id": "T1b-P27",
+   "link_id": "L0109",
+   "status": "INFERRED"
+  }
+ ],
+ "self_reported_tool_calls": 25
+}

@@ -1,0 +1,625 @@
+{
+ "as_of": "2026-10-05",
+ "question": {
+  "rule": null,
+  "article": "L136-3"
+ },
+ "generated_at": "2026-10-11T18:58:24+00:00",
+ "links": [
+  {
+   "link_id": "L0055",
+   "recorded_at": "2026-10-11T16:47:29+00:00",
+   "status": "UNKNOWN",
+   "rule": "dirigeant . indépendant . cotisations et contributions . CSG-CRDS . assiette",
+   "rules_snapshot": "G0",
+   "rule_file": "règles/dirigeant/indépendant.publicodes",
+   "rule_file_sha256": "7ab4795e7a7dcf44baf8a092e6f1c968d08be2a98100a0c0639f38efd47fbf23",
+   "article": "L136-3",
+   "article_id": "LEGIARTI000048683641",
+   "article_dateDebut": "2023-12-28",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "859220b5765012dffb0f5444114a52d3c7438c3d8e3515d95c174dd0c1cc2037",
+   "law_snapshot": "S0",
+   "quote": "L'assiette résultant de l'application des I et II du présent article fait l'objet d'un abattement de 26 %",
+   "claim": "26 % abattement on the CSG/cotisations base (periods from 2025-01-01 per nota) — not implemented at G0; G0 CSG base = revenu + cotisations (old regime, text not in snapshot).",
+   "check": null,
+   "check_result": null,
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0078",
+   "recorded_at": "2026-10-11T17:28:23+00:00",
+   "status": "FAILED",
+   "rule": "dirigeant . indépendant . assiette des cotisations",
+   "rules_snapshot": "G1",
+   "rule_file": "règles/dirigeant/indépendant.publicodes",
+   "rule_file_sha256": "7ab4795e7a7dcf44baf8a092e6f1c968d08be2a98100a0c0639f38efd47fbf23",
+   "article": "L136-3",
+   "article_id": "LEGIARTI000048683641",
+   "article_dateDebut": "2023-12-28",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "859220b5765012dffb0f5444114a52d3c7438c3d8e3515d95c174dd0c1cc2037",
+   "law_snapshot": "S3",
+   "quote": "fait l'objet d'un abattement de 26 %",
+   "claim": "L136-3 LEGIARTI000048683641 (in force 2023-12-28): G1 applies no 26 % abattement (base 40 000 instead of 29 600 [conditional on the PLACEHOLDER pre-abattement line = revenu professionnel + cotisations facultatives déductibles; which income lines enter the base is NOT settled by the texts]). Expected to FAIL.",
+   "check": {
+    "rule": "dirigeant . indépendant . assiette des cotisations",
+    "situation": {
+     "dirigeant . régime social": "'indépendant'",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . imposition": "'IR'",
+     "entreprise . activité . nature": "'commerciale'",
+     "dirigeant . indépendant . revenu professionnel": "40000 €/an",
+     "date": "01/12/2024"
+    },
+    "expect": 29600.0,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": false,
+    "observed": 40000,
+    "expected": 29600.0,
+    "unit": "€/an",
+    "missing_variables": [],
+    "detail": "observed != expected"
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0081",
+   "recorded_at": "2026-10-11T17:28:25+00:00",
+   "status": "UNKNOWN",
+   "rule": "dirigeant . indépendant . assiette minimale . retraite",
+   "rules_snapshot": "G1",
+   "rule_file": "règles/dirigeant/indépendant.publicodes",
+   "rule_file_sha256": "7ab4795e7a7dcf44baf8a092e6f1c968d08be2a98100a0c0639f38efd47fbf23",
+   "article": "L136-3",
+   "article_id": "LEGIARTI000048683641",
+   "article_dateDebut": "2023-12-28",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "859220b5765012dffb0f5444114a52d3c7438c3d8e3515d95c174dd0c1cc2037",
+   "law_snapshot": "S3",
+   "quote": "ne peut être ni inférieur à un montant plancher, fixé par décret, qui ne peut dépasser le montant mentionné à la dernière phrase de l'article L. 633-1",
+   "claim": "L136-3 LEGIARTI000048683641 (in force 2023-12-28): NEEDS_REVIEW: the abattement floor is capped by the amount in the last sentence of L. 633-1 (not in the set); D632-1 unchanged in S3; pre-existing 2024 floor mismatch (L0048) remains.",
+   "check": null,
+   "check_result": null,
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0083",
+   "recorded_at": "2026-10-11T17:28:28+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . indépendant . assiette des cotisations . réforme assiette 2024 . abattement forfaitaire",
+   "rules_snapshot": "P_T1b",
+   "rule_file": "règles/dirigeant/indépendant.publicodes",
+   "rule_file_sha256": "d3734880afd8b9713583803802a4b912af52824f882b99bc91f7b7b287c25372",
+   "article": "L136-3",
+   "article_id": "LEGIARTI000048683641",
+   "article_dateDebut": "2023-12-28",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "859220b5765012dffb0f5444114a52d3c7438c3d8e3515d95c174dd0c1cc2037",
+   "law_snapshot": "S3",
+   "quote": "fait l'objet d'un abattement de 26 %",
+   "claim": "L136-3 LEGIARTI000048683641 (in force 2023-12-28): abattement = 26 % x 40 000 = 10 400 €/an (within floor/ceiling).",
+   "check": {
+    "rule": "dirigeant . indépendant . assiette des cotisations . réforme assiette 2024 . abattement forfaitaire",
+    "situation": {
+     "dirigeant . régime social": "'indépendant'",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . imposition": "'IR'",
+     "entreprise . activité . nature": "'commerciale'",
+     "dirigeant . indépendant . revenu professionnel": "40000 €/an",
+     "date": "01/12/2024"
+    },
+    "expect": 10400.0,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 10400,
+    "expected": 10400.0,
+    "unit": "€/an",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0088",
+   "recorded_at": "2026-10-11T17:28:35+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . indépendant . cotisations et contributions . CSG-CRDS . assiette",
+   "rules_snapshot": "P_T1b",
+   "rule_file": "règles/dirigeant/indépendant.publicodes",
+   "rule_file_sha256": "d3734880afd8b9713583803802a4b912af52824f882b99bc91f7b7b287c25372",
+   "article": "L136-3",
+   "article_id": "LEGIARTI000048683641",
+   "article_dateDebut": "2023-12-28",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "859220b5765012dffb0f5444114a52d3c7438c3d8e3515d95c174dd0c1cc2037",
+   "law_snapshot": "S3",
+   "quote": "fait l'objet d'un abattement de 26 %",
+   "claim": "L136-3 LEGIARTI000048683641 (in force 2023-12-28): CSG-CRDS assessed on the same abated base: 29 600 €/an (G1 added the contributions back: 52 788) [conditional on the PLACEHOLDER pre-abattement line = revenu professionnel + cotisations facultatives déductibles; which income lines enter the base is NOT settled by the texts]",
+   "check": {
+    "rule": "dirigeant . indépendant . cotisations et contributions . CSG-CRDS . assiette",
+    "situation": {
+     "dirigeant . régime social": "'indépendant'",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . imposition": "'IR'",
+     "entreprise . activité . nature": "'commerciale'",
+     "dirigeant . indépendant . revenu professionnel": "40000 €/an",
+     "date": "01/12/2024"
+    },
+    "expect": 29600.0,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 29600,
+    "expected": 29600.0,
+    "unit": "€/an",
+    "missing_variables": [
+     "dirigeant . indépendant . revenus étrangers",
+     "dirigeant . indépendant . IJSS"
+    ],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0104",
+   "recorded_at": "2026-10-11T17:28:57+00:00",
+   "status": "UNKNOWN",
+   "rule": "dirigeant . indépendant . assiette des cotisations . réforme assiette 2024 . assiette avant abattement",
+   "rules_snapshot": "P_T1b",
+   "rule_file": "règles/dirigeant/indépendant.publicodes",
+   "rule_file_sha256": "d3734880afd8b9713583803802a4b912af52824f882b99bc91f7b7b287c25372",
+   "article": "L136-3",
+   "article_id": "LEGIARTI000048683641",
+   "article_dateDebut": "2023-12-28",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "859220b5765012dffb0f5444114a52d3c7438c3d8e3515d95c174dd0c1cc2037",
+   "law_snapshot": "S3",
+   "quote": "sur le montant, hors plus-values et moins-values de long terme, des produits tirés de ces mêmes activités, diminué du montant des charges que l'acquisition de ces produits nécessitent",
+   "claim": "L136-3 LEGIARTI000048683641 (in force 2023-12-28): ABSTENTION (PLACEHOLDER): the texts do not settle which income lines enter the base (treatment of compulsory contributions, Madelin contributions, spouse contributions); the rule reuses the library's existing line pending a text.",
+   "check": null,
+   "check_result": null,
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0160",
+   "recorded_at": "2026-10-11T18:57:47+00:00",
+   "status": "VERIFIED",
+   "rule": "indépendant . cotisations et contributions . assiette CSG-CRDS . abattement",
+   "rules_snapshot": "G4pre_R5",
+   "rule_file": "règles/indépendant/cotisations-et-contributions/cotisations-et-contributions.publicodes",
+   "rule_file_sha256": "2dfcad4746435acf4f5897aca7d6fd73feb58fac942754085b27f8a65aaebfd4",
+   "article": "L136-3",
+   "article_id": "LEGIARTI000051284498",
+   "article_dateDebut": "2025-02-28",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "459fa3cfa4271d378f5847cb58dd06968c929341ddb4cefcf8c0fb9f1856f549",
+   "law_snapshot": "S10",
+   "quote": "fait l'objet d'un abattement de 26 %. Toutefois, cet abattement ne peut être ni inférieur à un montant plancher, fixé par décret",
+   "claim": "L136-3 III v.LEGIARTI000051284498: the 26 % abattement cannot be below a floor fixed by decree. BEFORE the commit, Mayotte, revenu brut 1 000 €/an, 01/07/2025: abattement = 596 = 1,76 % x 33 852 (the library's Mayotte PSS, Urssaf source outside the set; 595,8 rounded) instead of 26 % x 1 000 = 260: a floor IS applied, but computed on a Mayotte PSS that D136-5/L241-3 do not know (national PSS 2025 in the library = 47 100 -> 829). SCOPE CAVEAT: none of the 12 bounded articles mentions Mayotte; whether L136-3 III / D136-5 govern Mayotte (CSG territorial scope L136-1, the Mayotte social-security texts, the Mayotte PSS the library uses) is outside the bounded set.",
+   "check": {
+    "rule": "indépendant . cotisations et contributions . assiette CSG-CRDS . abattement",
+    "situation": {
+     "entreprise . imposition": "'IR'",
+     "entreprise . date de création": "01/01/2020",
+     "situation personnelle . RSA": "non",
+     "situation personnelle . domiciliation fiscale à l'étranger": "non",
+     "entreprise . activité . saisonnière": "non",
+     "indépendant . conjoint collaborateur": "non",
+     "entreprise . activité": "'commerciale'",
+     "entreprise . activité . commerciale . débit de tabac": "non",
+     "établissement . commune . département": "'Mayotte'",
+     "date": "01/07/2025",
+     "indépendant . revenu brut": "1000 €/an",
+     "protection sociale . invalidité et décès . pension invalidité": "non"
+    },
+    "expect": 596.0,
+    "tolerance": 1.0
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 596,
+    "expected": 596.0,
+    "unit": "€/an",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0161",
+   "recorded_at": "2026-10-11T18:57:48+00:00",
+   "status": "VERIFIED",
+   "rule": "indépendant . cotisations et contributions . assiette CSG-CRDS . abattement",
+   "rules_snapshot": "G4pre_R5",
+   "rule_file": "règles/indépendant/cotisations-et-contributions/cotisations-et-contributions.publicodes",
+   "rule_file_sha256": "2dfcad4746435acf4f5897aca7d6fd73feb58fac942754085b27f8a65aaebfd4",
+   "article": "L136-3",
+   "article_id": "LEGIARTI000051284498",
+   "article_dateDebut": "2025-02-28",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "459fa3cfa4271d378f5847cb58dd06968c929341ddb4cefcf8c0fb9f1856f549",
+   "law_snapshot": "S10",
+   "quote": "ni supérieur à un montant plafond fixé, également par décret",
+   "claim": "L136-3 III v.LEGIARTI000051284498: the abattement cannot exceed a ceiling fixed by decree. BEFORE: Mayotte, revenu brut 300 000, 01/07/2025: abattement = 44 008 = 130 % x 33 852 (44 007,6 rounded) instead of 26 % x 300 000 = 78 000: a ceiling IS applied (on the Mayotte PSS; national PSS would give 61 230). SCOPE CAVEAT: none of the 12 bounded articles mentions Mayotte; whether L136-3 III / D136-5 govern Mayotte (CSG territorial scope L136-1, the Mayotte social-security texts, the Mayotte PSS the library uses) is outside the bounded set.",
+   "check": {
+    "rule": "indépendant . cotisations et contributions . assiette CSG-CRDS . abattement",
+    "situation": {
+     "entreprise . imposition": "'IR'",
+     "entreprise . date de création": "01/01/2020",
+     "situation personnelle . RSA": "non",
+     "situation personnelle . domiciliation fiscale à l'étranger": "non",
+     "entreprise . activité . saisonnière": "non",
+     "indépendant . conjoint collaborateur": "non",
+     "entreprise . activité": "'commerciale'",
+     "entreprise . activité . commerciale . débit de tabac": "non",
+     "établissement . commune . département": "'Mayotte'",
+     "date": "01/07/2025",
+     "indépendant . revenu brut": "300000 €/an",
+     "protection sociale . invalidité et décès . pension invalidité": "non"
+    },
+    "expect": 44008.0,
+    "tolerance": 1.0
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 44008,
+    "expected": 44008.0,
+    "unit": "€/an",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0165",
+   "recorded_at": "2026-10-11T18:57:51+00:00",
+   "status": "VERIFIED",
+   "rule": "indépendant . cotisations et contributions . assiette CSG-CRDS . abattement",
+   "rules_snapshot": "G4post_R5",
+   "rule_file": "règles/indépendant/cotisations-et-contributions/cotisations-et-contributions.publicodes",
+   "rule_file_sha256": "84adc483d799e8425886a663e26c5585f2961d6a169b739dc16dc61428c8d243",
+   "article": "L136-3",
+   "article_id": "LEGIARTI000051284498",
+   "article_dateDebut": "2025-02-28",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "459fa3cfa4271d378f5847cb58dd06968c929341ddb4cefcf8c0fb9f1856f549",
+   "law_snapshot": "S10",
+   "quote": "fait l'objet d'un abattement de 26 %. Toutefois, cet abattement ne peut être ni inférieur à un montant plancher, fixé par décret",
+   "claim": "L136-3 III v.LEGIARTI000051284498 (no territorial exception in the text). AFTER the commit, Mayotte, revenu brut 1 000, 01/07/2025: abattement = 26 % x 1 000 = 260 with NO floor (BEFORE 596; the literal D136-5 floor on the national PSS would be 829). Under a literal reading of L136-3 III this is below the floor; the text does not say whether it governs Mayotte. SCOPE CAVEAT: none of the 12 bounded articles mentions Mayotte; whether L136-3 III / D136-5 govern Mayotte (CSG territorial scope L136-1, the Mayotte social-security texts, the Mayotte PSS the library uses) is outside the bounded set.",
+   "check": {
+    "rule": "indépendant . cotisations et contributions . assiette CSG-CRDS . abattement",
+    "situation": {
+     "entreprise . imposition": "'IR'",
+     "entreprise . date de création": "01/01/2020",
+     "situation personnelle . RSA": "non",
+     "situation personnelle . domiciliation fiscale à l'étranger": "non",
+     "entreprise . activité . saisonnière": "non",
+     "indépendant . conjoint collaborateur": "non",
+     "entreprise . activité": "'commerciale'",
+     "entreprise . activité . commerciale . débit de tabac": "non",
+     "établissement . commune . département": "'Mayotte'",
+     "date": "01/07/2025",
+     "indépendant . revenu brut": "1000 €/an",
+     "protection sociale . invalidité et décès . pension invalidité": "non"
+    },
+    "expect": 260.0,
+    "tolerance": 1.0
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 260,
+    "expected": 260.0,
+    "unit": "€/an",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0166",
+   "recorded_at": "2026-10-11T18:57:52+00:00",
+   "status": "VERIFIED",
+   "rule": "indépendant . cotisations et contributions . assiette CSG-CRDS . abattement",
+   "rules_snapshot": "G4post_R5",
+   "rule_file": "règles/indépendant/cotisations-et-contributions/cotisations-et-contributions.publicodes",
+   "rule_file_sha256": "84adc483d799e8425886a663e26c5585f2961d6a169b739dc16dc61428c8d243",
+   "article": "L136-3",
+   "article_id": "LEGIARTI000051284498",
+   "article_dateDebut": "2025-02-28",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "459fa3cfa4271d378f5847cb58dd06968c929341ddb4cefcf8c0fb9f1856f549",
+   "law_snapshot": "S10",
+   "quote": "ni supérieur à un montant plafond fixé, également par décret",
+   "claim": "L136-3 III v.LEGIARTI000051284498. AFTER, Mayotte, revenu brut 300 000, 01/07/2025: abattement = 26 % x 300 000 = 78 000 with NO ceiling (BEFORE 44 008; literal D136-5 ceiling on the national PSS 61 230). SCOPE CAVEAT: none of the 12 bounded articles mentions Mayotte; whether L136-3 III / D136-5 govern Mayotte (CSG territorial scope L136-1, the Mayotte social-security texts, the Mayotte PSS the library uses) is outside the bounded set.",
+   "check": {
+    "rule": "indépendant . cotisations et contributions . assiette CSG-CRDS . abattement",
+    "situation": {
+     "entreprise . imposition": "'IR'",
+     "entreprise . date de création": "01/01/2020",
+     "situation personnelle . RSA": "non",
+     "situation personnelle . domiciliation fiscale à l'étranger": "non",
+     "entreprise . activité . saisonnière": "non",
+     "indépendant . conjoint collaborateur": "non",
+     "entreprise . activité": "'commerciale'",
+     "entreprise . activité . commerciale . débit de tabac": "non",
+     "établissement . commune . département": "'Mayotte'",
+     "date": "01/07/2025",
+     "indépendant . revenu brut": "300000 €/an",
+     "protection sociale . invalidité et décès . pension invalidité": "non"
+    },
+    "expect": 78000.0,
+    "tolerance": 1.0
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 78000,
+    "expected": 78000.0,
+    "unit": "€/an",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0167",
+   "recorded_at": "2026-10-11T18:57:53+00:00",
+   "status": "VERIFIED",
+   "rule": "indépendant . cotisations et contributions . assiette CSG-CRDS . abattement",
+   "rules_snapshot": "G4post_R5",
+   "rule_file": "règles/indépendant/cotisations-et-contributions/cotisations-et-contributions.publicodes",
+   "rule_file_sha256": "84adc483d799e8425886a663e26c5585f2961d6a169b739dc16dc61428c8d243",
+   "article": "L136-3",
+   "article_id": "LEGIARTI000051284498",
+   "article_dateDebut": "2025-02-28",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "459fa3cfa4271d378f5847cb58dd06968c929341ddb4cefcf8c0fb9f1856f549",
+   "law_snapshot": "S10",
+   "quote": "fait l'objet d'un abattement de 26 %. Toutefois, cet abattement ne peut être ni inférieur à un montant plancher, fixé par décret",
+   "claim": "L136-3 III v.LEGIARTI000051284498. AFTER, Mayotte, revenu brut 1 000, 01/07/2026: abattement 260 (BEFORE 638 = 1,76 % x 36 264, the library's 2026 Mayotte PSS).",
+   "check": {
+    "rule": "indépendant . cotisations et contributions . assiette CSG-CRDS . abattement",
+    "situation": {
+     "entreprise . imposition": "'IR'",
+     "entreprise . date de création": "01/01/2020",
+     "situation personnelle . RSA": "non",
+     "situation personnelle . domiciliation fiscale à l'étranger": "non",
+     "entreprise . activité . saisonnière": "non",
+     "indépendant . conjoint collaborateur": "non",
+     "entreprise . activité": "'commerciale'",
+     "entreprise . activité . commerciale . débit de tabac": "non",
+     "établissement . commune . département": "'Mayotte'",
+     "date": "01/07/2026",
+     "indépendant . revenu brut": "1000 €/an",
+     "protection sociale . invalidité et décès . pension invalidité": "non"
+    },
+    "expect": 260.0,
+    "tolerance": 1.0
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 260,
+    "expected": 260.0,
+    "unit": "€/an",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0175",
+   "recorded_at": "2026-10-11T18:58:00+00:00",
+   "status": "UNKNOWN",
+   "rule": "indépendant . cotisations et contributions . assiette CSG-CRDS . abattement",
+   "rules_snapshot": "G4post_R5",
+   "rule_file": "règles/indépendant/cotisations-et-contributions/cotisations-et-contributions.publicodes",
+   "rule_file_sha256": "84adc483d799e8425886a663e26c5585f2961d6a169b739dc16dc61428c8d243",
+   "article": "L136-3",
+   "article_id": "LEGIARTI000051284498",
+   "article_dateDebut": "2025-02-28",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "459fa3cfa4271d378f5847cb58dd06968c929341ddb4cefcf8c0fb9f1856f549",
+   "law_snapshot": "S10",
+   "quote": "fait l'objet d'un abattement de 26 %. Toutefois, cet abattement ne peut être ni inférieur à un montant plancher, fixé par décret",
+   "claim": "ABSTENTION. L136-3 III v.LEGIARTI000051284498 and D136-5 v.LEGIARTI000049899286 state the floor/ceiling with no territorial exception, and L131-6 I makes them the cotisation base; but none of the 12 bounded articles mentions Mayotte, the CSG territorial-scope article (L136-1), the Mayotte social-security texts and the legal source of the Mayotte PSS the library already uses (33 852 €/an in 2025) are outside the bounded set, and the commit adds no source (references unchanged: Urssaf reform page, L136-3, D136-5; its test file is not in the diff). The text available does not settle whether removing the floor/ceiling at Mayotte is required, permitted or forbidden.",
+   "check": null,
+   "check_result": null,
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  }
+ ],
+ "article_versions_known": [
+  {
+   "law_snapshot": "S0",
+   "published": "2024-05-25T23:36:37.034Z",
+   "article": "L136-3",
+   "id": "LEGIARTI000048683641",
+   "etat": "VIGUEUR",
+   "dateDebut": "2023-12-28",
+   "dateFin": "2999-01-01",
+   "in_force_on_date": true,
+   "text_sha256": "859220b5765012dffb0f5444114a52d3c7438c3d8e3515d95c174dd0c1cc2037"
+  },
+  {
+   "law_snapshot": "S1",
+   "published": "2024-06-01T23:22:24.265Z",
+   "article": "L136-3",
+   "id": "LEGIARTI000048683641",
+   "etat": "VIGUEUR",
+   "dateDebut": "2023-12-28",
+   "dateFin": "2999-01-01",
+   "in_force_on_date": true,
+   "text_sha256": "859220b5765012dffb0f5444114a52d3c7438c3d8e3515d95c174dd0c1cc2037"
+  },
+  {
+   "law_snapshot": "S10",
+   "published": "latest at investigation",
+   "article": "L136-3",
+   "id": "LEGIARTI000051284498",
+   "etat": "VIGUEUR",
+   "dateDebut": "2025-02-28",
+   "dateFin": "2999-01-01",
+   "in_force_on_date": true,
+   "text_sha256": "459fa3cfa4271d378f5847cb58dd06968c929341ddb4cefcf8c0fb9f1856f549"
+  },
+  {
+   "law_snapshot": "S3",
+   "published": "2024-07-17T15:37:04.165Z",
+   "article": "L136-3",
+   "id": "LEGIARTI000048683641",
+   "etat": "VIGUEUR",
+   "dateDebut": "2023-12-28",
+   "dateFin": "2999-01-01",
+   "in_force_on_date": true,
+   "text_sha256": "859220b5765012dffb0f5444114a52d3c7438c3d8e3515d95c174dd0c1cc2037"
+  },
+  {
+   "law_snapshot": "S4",
+   "published": "2024-09-01T16:15:14.642Z",
+   "article": "L136-3",
+   "id": "LEGIARTI000048683641",
+   "etat": "VIGUEUR",
+   "dateDebut": "2023-12-28",
+   "dateFin": "2999-01-01",
+   "in_force_on_date": true,
+   "text_sha256": "859220b5765012dffb0f5444114a52d3c7438c3d8e3515d95c174dd0c1cc2037"
+  },
+  {
+   "law_snapshot": "S5",
+   "published": "2024-10-19T15:24:13.712Z",
+   "article": "L136-3",
+   "id": "LEGIARTI000048683641",
+   "etat": "VIGUEUR",
+   "dateDebut": "2023-12-28",
+   "dateFin": "2999-01-01",
+   "in_force_on_date": true,
+   "text_sha256": "859220b5765012dffb0f5444114a52d3c7438c3d8e3515d95c174dd0c1cc2037"
+  },
+  {
+   "law_snapshot": "S9",
+   "published": "2026-03-31T16:18:17.431Z",
+   "article": "L136-3",
+   "id": "LEGIARTI000051284498",
+   "etat": "VIGUEUR",
+   "dateDebut": "2025-02-28",
+   "dateFin": "2999-01-01",
+   "in_force_on_date": true,
+   "text_sha256": "459fa3cfa4271d378f5847cb58dd06968c929341ddb4cefcf8c0fb9f1856f549"
+  }
+ ],
+ "rules_snapshots_known": [
+  {
+   "snapshot": "G0",
+   "commit": "d9242882f96bda5b4418b7c1c3ff46b0e2a1c5ce",
+   "committed": "2024-05-15 09:38:43 +0200"
+  },
+  {
+   "snapshot": "G1",
+   "commit": "2a0e452617fc33b955096f4bb7f7f305ec0670ad",
+   "committed": "2024-07-16 21:29:59 +0200"
+  },
+  {
+   "snapshot": "G1post_R2",
+   "commit": "1932d654cf7a81dbac73df88487fc70553e52a19",
+   "committed": "2024-09-02 12:25:29 +0200"
+  },
+  {
+   "snapshot": "G1pre_R1",
+   "commit": null,
+   "committed": null
+  },
+  {
+   "snapshot": "G2",
+   "commit": "3a4091ae1cafdd4572bfd10d6352fd04db8da419",
+   "committed": "2024-10-10 16:37:41 +0200"
+  },
+  {
+   "snapshot": "G2post_R3",
+   "commit": "9bb43d710094d8f572c64997ce991c8d395c5753",
+   "committed": "2024-10-11 09:34:14 +0200"
+  },
+  {
+   "snapshot": "G4",
+   "commit": "a61b72947fec1e1383e07b3278424593dc296ba2",
+   "committed": "2026-03-03 09:30:36 +0100"
+  },
+  {
+   "snapshot": "G4post_R4",
+   "commit": "d3e0cfe0f12dcade20d5d1ea8bc51fee609bbc06",
+   "committed": "2026-03-30 16:00:14 +0200"
+  },
+  {
+   "snapshot": "G4post_R5",
+   "commit": "c14ee26d0c67bab90354db32ff1f51879ea3c5e8",
+   "committed": "2026-07-09 12:29:17 +0200"
+  },
+  {
+   "snapshot": "G4pre_R4",
+   "commit": "d3e0cfe0f12dcade20d5d1ea8bc51fee609bbc06",
+   "committed": "2026-03-30 16:00:14 +0200"
+  },
+  {
+   "snapshot": "G4pre_R5",
+   "commit": "c14ee26d0c67bab90354db32ff1f51879ea3c5e8",
+   "committed": "2026-07-09 12:29:17 +0200"
+  },
+  {
+   "snapshot": "P_T1a",
+   "commit": null,
+   "committed": null
+  },
+  {
+   "snapshot": "P_T1b",
+   "commit": "2a0e452617fc33b955096f4bb7f7f305ec0670ad",
+   "committed": "2024-07-16 21:29:59 +0200"
+  }
+ ],
+ "approvals": [
+  "none recorded"
+ ],
+ "limits": [
+  "Only what was recorded in this store is reported; absence of a record is reported as absence, not inferred.",
+  "Snapshot publish dates are when the governing text was captured, not when it entered into force; both are listed.",
+  "A matching hash shows the preserved text is unchanged; it does not show the interpretation is correct or that anyone authorised it."
+ ]
+}

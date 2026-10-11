@@ -1,0 +1,638 @@
+[
+ {
+  "id": "M2-01",
+  "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . taux",
+  "article": "D131-6-1",
+  "quote": "Lorsque le revenu ou la rémunération est inférieur ou égal aux trois quarts de la valeur du plafond mentionné à l'article L. 241-3, l'exonération applicable pendant la période mentionnée au I correspond au quart du montant total des cotisations",
+  "claim": "D131-6-1 v.LEGIARTI000053451315 (v8.0, VIGUEUR 2026-01-01..2999-01-01; Décret n°2026-69 du 6 février 2026 art. 1, JORF 2026-02-08; nota: en vigueur le 1er janvier 2026, s'applique aux créations et reprises d'entreprise intervenant à compter de cette date; S9 legi-data 2.514.0, text sha256 59f4edcf15fb...): II, revenu <= 3/4 PSS -> exoneration = a quarter of the contributions => rate 25 % (création 01/01/2026, R 20 000, 01/07/2026; PSS 2026 48 060).",
+  "note": "M2",
+  "law": "S9",
+  "check": {
+   "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . taux",
+   "situation": {
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "non",
+    "entreprise . imposition": "'IR'",
+    "établissement . commune . département . outre-mer": "non",
+    "dirigeant . exonérations . ACRE": "oui",
+    "entreprise . activité . nature": "'commerciale'",
+    "entreprise . date de création": "01/01/2026",
+    "date": "01/07/2026",
+    "dirigeant . indépendant . revenu professionnel": "20000 €/an"
+   },
+   "expect": 25,
+   "tolerance": 0.001
+  }
+ },
+ {
+  "id": "M2-02",
+  "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . taux",
+  "article": "D131-6-1",
+  "quote": "Lorsque le revenu ou la rémunération est inférieur ou égal aux trois quarts de la valeur du plafond mentionné à l'article L. 241-3, l'exonération applicable pendant la période mentionnée au I correspond au quart du montant total des cotisations",
+  "claim": "D131-6-1 v.LEGIARTI000053451315 (v8.0, VIGUEUR 2026-01-01..2999-01-01; Décret n°2026-69 du 6 février 2026 art. 1, JORF 2026-02-08; nota: en vigueur le 1er janvier 2026, s'applique aux créations et reprises d'entreprise intervenant à compter de cette date; S9 legi-data 2.514.0, text sha256 59f4edcf15fb...): II, R = 36 045 = exactly 3/4 of PSS 48 060 -> still the quarter => 25 %.",
+  "note": "M2",
+  "law": "S9",
+  "check": {
+   "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . taux",
+   "situation": {
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "non",
+    "entreprise . imposition": "'IR'",
+    "établissement . commune . département . outre-mer": "non",
+    "dirigeant . exonérations . ACRE": "oui",
+    "entreprise . activité . nature": "'commerciale'",
+    "entreprise . date de création": "01/01/2026",
+    "date": "01/07/2026",
+    "dirigeant . indépendant . revenu professionnel": "36045 €/an"
+   },
+   "expect": 25,
+   "tolerance": 0.001
+  }
+ },
+ {
+  "id": "M2-03",
+  "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . taux",
+  "article": "D131-6-1",
+  "quote": "Lorsque le revenu ou la rémunération est supérieur au trois quarts de la valeur du plafond mentionné à l'article L. 241-3 mais inférieur ou égal à la valeur de ce plafond, le montant de l'exonération applicable pendant la période mentionnée au I est calculé selon la formule suivante : Montant de l'exonération = 0,25 E/0,25 PSS​​×(PSS−R).",
+  "claim": "D131-6-1 v.LEGIARTI000053451315 (v8.0, VIGUEUR 2026-01-01..2999-01-01; Décret n°2026-69 du 6 février 2026 art. 1, JORF 2026-02-08; nota: en vigueur le 1er janvier 2026, s'applique aux créations et reprises d'entreprise intervenant à compter de cette date; S9 legi-data 2.514.0, text sha256 59f4edcf15fb...): II formula 0,25 E/0,25 PSS×(PSS−R) = E×(PSS−R)/PSS; at R = 87,5 % PSS (42 052,5) => 12,5 % of E (library: 12,5 % of the contributions at R).",
+  "note": "M2",
+  "law": "S9",
+  "check": {
+   "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . taux",
+   "situation": {
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "non",
+    "entreprise . imposition": "'IR'",
+    "établissement . commune . département . outre-mer": "non",
+    "dirigeant . exonérations . ACRE": "oui",
+    "entreprise . activité . nature": "'commerciale'",
+    "entreprise . date de création": "01/01/2026",
+    "date": "01/07/2026",
+    "dirigeant . indépendant . revenu professionnel": "42052.5 €/an"
+   },
+   "expect": 12.5,
+   "tolerance": 0.001
+  }
+ },
+ {
+  "id": "M2-04",
+  "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . taux",
+  "article": "D131-6-1",
+  "quote": "Lorsque le revenu ou la rémunération est supérieur au trois quarts de la valeur du plafond mentionné à l'article L. 241-3 mais inférieur ou égal à la valeur de ce plafond, le montant de l'exonération applicable pendant la période mentionnée au I est calculé selon la formule suivante : Montant de l'exonération = 0,25 E/0,25 PSS​​×(PSS−R).",
+  "claim": "D131-6-1 v.LEGIARTI000053451315 (v8.0, VIGUEUR 2026-01-01..2999-01-01; Décret n°2026-69 du 6 février 2026 art. 1, JORF 2026-02-08; nota: en vigueur le 1er janvier 2026, s'applique aux créations et reprises d'entreprise intervenant à compter de cette date; S9 legi-data 2.514.0, text sha256 59f4edcf15fb...): II formula gives 0 at R >= PSS (R 60 000 > 48 060) => 0 % (unchanged).",
+  "note": "M2",
+  "law": "S9",
+  "check": {
+   "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . taux",
+   "situation": {
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "non",
+    "entreprise . imposition": "'IR'",
+    "établissement . commune . département . outre-mer": "non",
+    "dirigeant . exonérations . ACRE": "oui",
+    "entreprise . activité . nature": "'commerciale'",
+    "entreprise . date de création": "01/01/2026",
+    "date": "01/07/2026",
+    "dirigeant . indépendant . revenu professionnel": "60000 €/an"
+   },
+   "expect": 0,
+   "tolerance": 0.001
+  }
+ },
+ {
+  "id": "M2-05",
+  "rule": "dirigeant . indépendant . cotisations et contributions . retraite de base",
+  "article": "D131-6-1",
+  "quote": "Lorsque le revenu ou la rémunération est inférieur ou égal aux trois quarts de la valeur du plafond mentionné à l'article L. 241-3, l'exonération applicable pendant la période mentionnée au I correspond au quart du montant total des cotisations",
+  "claim": "D131-6-1 v.LEGIARTI000053451315 (v8.0, VIGUEUR 2026-01-01..2999-01-01; Décret n°2026-69 du 6 février 2026 art. 1, JORF 2026-02-08; nota: en vigueur le 1er janvier 2026, s'applique aux créations et reprises d'entreprise intervenant à compter de cette date; S9 legi-data 2.514.0, text sha256 59f4edcf15fb...): vieillesse de base contribution for création 2026 at R 20 000 = 3/4 of the full 3 550 €/an (engine without ACRE) = 2 662,5 €/an.",
+  "note": "M2",
+  "law": "S9",
+  "check": {
+   "rule": "dirigeant . indépendant . cotisations et contributions . retraite de base",
+   "situation": {
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "non",
+    "entreprise . imposition": "'IR'",
+    "établissement . commune . département . outre-mer": "non",
+    "dirigeant . exonérations . ACRE": "oui",
+    "entreprise . activité . nature": "'commerciale'",
+    "entreprise . date de création": "01/01/2026",
+    "date": "01/07/2026",
+    "dirigeant . indépendant . revenu professionnel": "20000 €/an"
+   },
+   "expect": 2662.5,
+   "tolerance": 1
+  }
+ },
+ {
+  "id": "M2-06",
+  "rule": "dirigeant . indépendant . cotisations et contributions . invalidité et décès",
+  "article": "D131-6-1",
+  "quote": "Lorsque le revenu ou la rémunération est inférieur ou égal aux trois quarts de la valeur du plafond mentionné à l'article L. 241-3, l'exonération applicable pendant la période mentionnée au I correspond au quart du montant total des cotisations",
+  "claim": "D131-6-1 v.LEGIARTI000053451315 (v8.0, VIGUEUR 2026-01-01..2999-01-01; Décret n°2026-69 du 6 février 2026 art. 1, JORF 2026-02-08; nota: en vigueur le 1er janvier 2026, s'applique aux créations et reprises d'entreprise intervenant à compter de cette date; S9 legi-data 2.514.0, text sha256 59f4edcf15fb...): invalidité-décès for création 2026 at R 20 000 = 3/4 x 260 = 195 €/an.",
+  "note": "M2",
+  "law": "S9",
+  "check": {
+   "rule": "dirigeant . indépendant . cotisations et contributions . invalidité et décès",
+   "situation": {
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "non",
+    "entreprise . imposition": "'IR'",
+    "établissement . commune . département . outre-mer": "non",
+    "dirigeant . exonérations . ACRE": "oui",
+    "entreprise . activité . nature": "'commerciale'",
+    "entreprise . date de création": "01/01/2026",
+    "date": "01/07/2026",
+    "dirigeant . indépendant . revenu professionnel": "20000 €/an"
+   },
+   "expect": 195,
+   "tolerance": 1
+  }
+ },
+ {
+  "id": "M2-07",
+  "rule": "dirigeant . indépendant . cotisations et contributions . indemnités journalières maladie",
+  "article": "D131-6-1",
+  "quote": "Lorsque le revenu ou la rémunération est inférieur ou égal aux trois quarts de la valeur du plafond mentionné à l'article L. 241-3, l'exonération applicable pendant la période mentionnée au I correspond au quart du montant total des cotisations",
+  "claim": "D131-6-1 v.LEGIARTI000053451315 (v8.0, VIGUEUR 2026-01-01..2999-01-01; Décret n°2026-69 du 6 février 2026 art. 1, JORF 2026-02-08; nota: en vigueur le 1er janvier 2026, s'applique aux créations et reprises d'entreprise intervenant à compter de cette date; S9 legi-data 2.514.0, text sha256 59f4edcf15fb...): IJ maladie (part of the maladie-maternité contributions) for création 2026 at R 20 000 = 3/4 x 100 = 75 €/an.",
+  "note": "M2",
+  "law": "S9",
+  "check": {
+   "rule": "dirigeant . indépendant . cotisations et contributions . indemnités journalières maladie",
+   "situation": {
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "non",
+    "entreprise . imposition": "'IR'",
+    "établissement . commune . département . outre-mer": "non",
+    "dirigeant . exonérations . ACRE": "oui",
+    "entreprise . activité . nature": "'commerciale'",
+    "entreprise . date de création": "01/01/2026",
+    "date": "01/07/2026",
+    "dirigeant . indépendant . revenu professionnel": "20000 €/an"
+   },
+   "expect": 75,
+   "tolerance": 1
+  }
+ },
+ {
+  "id": "M2-08",
+  "rule": "dirigeant . indépendant . cotisations et contributions . cotisations",
+  "article": "D131-6-1",
+  "quote": "Lorsque le revenu ou la rémunération est inférieur ou égal aux trois quarts de la valeur du plafond mentionné à l'article L. 241-3, l'exonération applicable pendant la période mentionnée au I correspond au quart du montant total des cotisations",
+  "claim": "D131-6-1 v.LEGIARTI000053451315 (v8.0, VIGUEUR 2026-01-01..2999-01-01; Décret n°2026-69 du 6 février 2026 art. 1, JORF 2026-02-08; nota: en vigueur le 1er janvier 2026, s'applique aux créations et reprises d'entreprise intervenant à compter de cette date; S9 legi-data 2.514.0, text sha256 59f4edcf15fb...): total cotisations for création 2026 at R 20 000 = 1 400 (retraite complémentaire, not exonerated) + 2 662,5 + 195 + 75 = 4 332,5 €/an (G4: 1 400).",
+  "note": "M2",
+  "law": "S9",
+  "check": {
+   "rule": "dirigeant . indépendant . cotisations et contributions . cotisations",
+   "situation": {
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "non",
+    "entreprise . imposition": "'IR'",
+    "établissement . commune . département . outre-mer": "non",
+    "dirigeant . exonérations . ACRE": "oui",
+    "entreprise . activité . nature": "'commerciale'",
+    "entreprise . date de création": "01/01/2026",
+    "date": "01/07/2026",
+    "dirigeant . indépendant . revenu professionnel": "20000 €/an"
+   },
+   "expect": 4332.5,
+   "tolerance": 3
+  }
+ },
+ {
+  "id": "M2-09",
+  "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE",
+  "article": "D131-6-1",
+  "quote": "E est le montant total des cotisations dues aux régimes d'assurance maladie, maternité, veuvage, vieillesse de base, invalidité et décès et d'allocations familiales mentionnées au 1° ou au 2° du II de l'article L. 131-6-4 dues pour un revenu ou une rémunération égal aux trois quarts de la valeur du plafond mentionné à l'article L. 241-3",
+  "claim": "D131-6-1 v.LEGIARTI000053451315 (v8.0, VIGUEUR 2026-01-01..2999-01-01; Décret n°2026-69 du 6 février 2026 art. 1, JORF 2026-02-08; nota: en vigueur le 1er janvier 2026, s'applique aux créations et reprises d'entreprise intervenant à compter de cette date; S9 legi-data 2.514.0, text sha256 59f4edcf15fb...): E = contributions due for a revenue equal to 3/4 PSS; the library applies the rate to the contributions at R (pre-existing structural deviation, unchanged by the 2026 text) - no check.",
+  "note": "M2",
+  "law": "S9",
+  "status": "INFERRED"
+ },
+ {
+  "id": "M2-10",
+  "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . taux",
+  "article": "D131-6-1",
+  "quote": "Lorsque le revenu ou la rémunération est inférieur ou égal aux trois quarts de la valeur du plafond mentionné à l'article L. 241-3, l'exonération applicable pendant la période mentionnée au I correspond au montant total des cotisations",
+  "claim": "D131-6-1 v.LEGIARTI000036475110 (v7.0, in force 2018-01-01..2026-01-01 per S9 metadata; S8 legi-data 2.489.0 text sha256 af896c573ea3...; still governs créations/reprises before 2026-01-01 per the S9 nota): création 01/07/2025 still in its 12 months on 01/07/2026, R 20 000 <= 3/4 PSS -> total exoneration => 100 %.",
+  "note": "M2",
+  "law": "S8",
+  "check": {
+   "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . taux",
+   "situation": {
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "non",
+    "entreprise . imposition": "'IR'",
+    "établissement . commune . département . outre-mer": "non",
+    "dirigeant . exonérations . ACRE": "oui",
+    "entreprise . activité . nature": "'commerciale'",
+    "entreprise . date de création": "01/07/2025",
+    "date": "01/07/2026",
+    "dirigeant . indépendant . revenu professionnel": "20000 €/an"
+   },
+   "expect": 100,
+   "tolerance": 0.001
+  }
+ },
+ {
+  "id": "M2-11",
+  "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . taux",
+  "article": "D131-6-1",
+  "quote": "Montant de l'exonération = E/0,25 PSS × (PSS-R)",
+  "claim": "D131-6-1 v.LEGIARTI000036475110 (v7.0, in force 2018-01-01..2026-01-01 per S9 metadata; S8 legi-data 2.489.0 text sha256 af896c573ea3...; still governs créations/reprises before 2026-01-01 per the S9 nota): création 01/07/2025, R = 87,5 % PSS 2026 -> E/0,25 PSS × (PSS-R) = 50 % of E (library: 50 % at R).",
+  "note": "M2",
+  "law": "S8",
+  "check": {
+   "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . taux",
+   "situation": {
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "non",
+    "entreprise . imposition": "'IR'",
+    "établissement . commune . département . outre-mer": "non",
+    "dirigeant . exonérations . ACRE": "oui",
+    "entreprise . activité . nature": "'commerciale'",
+    "entreprise . date de création": "01/07/2025",
+    "date": "01/07/2026",
+    "dirigeant . indépendant . revenu professionnel": "42052.5 €/an"
+   },
+   "expect": 50,
+   "tolerance": 0.001
+  }
+ },
+ {
+  "id": "M2-12",
+  "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . taux",
+  "article": "D131-6-1",
+  "quote": "Lorsque le revenu ou la rémunération est inférieur ou égal aux trois quarts de la valeur du plafond mentionné à l'article L. 241-3, l'exonération applicable pendant la période mentionnée au I correspond au montant total des cotisations",
+  "claim": "D131-6-1 v.LEGIARTI000036475110 (v7.0, in force 2018-01-01..2026-01-01 per S9 metadata; S8 legi-data 2.489.0 text sha256 af896c573ea3...; still governs créations/reprises before 2026-01-01 per the S9 nota): 2025 control, création 01/01/2025, R 20 000 on 01/07/2025 (PSS 2025 47 100) => 100 %.",
+  "note": "M2",
+  "law": "S8",
+  "check": {
+   "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . taux",
+   "situation": {
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "non",
+    "entreprise . imposition": "'IR'",
+    "établissement . commune . département . outre-mer": "non",
+    "dirigeant . exonérations . ACRE": "oui",
+    "entreprise . activité . nature": "'commerciale'",
+    "entreprise . date de création": "01/01/2025",
+    "date": "01/07/2025",
+    "dirigeant . indépendant . revenu professionnel": "20000 €/an"
+   },
+   "expect": 100,
+   "tolerance": 0.001
+  }
+ },
+ {
+  "id": "M2-13",
+  "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . taux",
+  "article": "D131-6-1",
+  "quote": "Montant de l'exonération = E/0,25 PSS × (PSS-R)",
+  "claim": "D131-6-1 v.LEGIARTI000036475110 (v7.0, in force 2018-01-01..2026-01-01 per S9 metadata; S8 legi-data 2.489.0 text sha256 af896c573ea3...; still governs créations/reprises before 2026-01-01 per the S9 nota): 2025 control, R = 41 212,5 = 87,5 % of PSS 2025 => 50 %.",
+  "note": "M2",
+  "law": "S8",
+  "check": {
+   "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . taux",
+   "situation": {
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "non",
+    "entreprise . imposition": "'IR'",
+    "établissement . commune . département . outre-mer": "non",
+    "dirigeant . exonérations . ACRE": "oui",
+    "entreprise . activité . nature": "'commerciale'",
+    "entreprise . date de création": "01/01/2025",
+    "date": "01/07/2025",
+    "dirigeant . indépendant . revenu professionnel": "41212.5 €/an"
+   },
+   "expect": 50,
+   "tolerance": 0.001
+  }
+ },
+ {
+  "id": "M2-14",
+  "rule": "dirigeant . indépendant . cotisations et contributions . cotisations",
+  "article": "D131-6-1",
+  "quote": "Lorsque le revenu ou la rémunération est inférieur ou égal aux trois quarts de la valeur du plafond mentionné à l'article L. 241-3, l'exonération applicable pendant la période mentionnée au I correspond au montant total des cotisations",
+  "claim": "D131-6-1 v.LEGIARTI000036475110 (v7.0, in force 2018-01-01..2026-01-01 per S9 metadata; S8 legi-data 2.489.0 text sha256 af896c573ea3...; still governs créations/reprises before 2026-01-01 per the S9 nota): 2025 control, création 2025, R 20 000: only retraite complémentaire remains => 1 400 €/an.",
+  "note": "M2",
+  "law": "S8",
+  "check": {
+   "rule": "dirigeant . indépendant . cotisations et contributions . cotisations",
+   "situation": {
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "non",
+    "entreprise . imposition": "'IR'",
+    "établissement . commune . département . outre-mer": "non",
+    "dirigeant . exonérations . ACRE": "oui",
+    "entreprise . activité . nature": "'commerciale'",
+    "entreprise . date de création": "01/01/2025",
+    "date": "01/07/2025",
+    "dirigeant . indépendant . revenu professionnel": "20000 €/an"
+   },
+   "expect": 1400,
+   "tolerance": 1
+  }
+ },
+ {
+  "id": "M2-15",
+  "rule": "dirigeant . exonérations . ACRE",
+  "article": "D131-6-1",
+  "quote": "La durée de l'exonération des cotisations dues par les personnes bénéficiant de l'aide à la création et à la reprise d'entreprise prévue à l'article L. 131-6-4 est de douze mois",
+  "claim": "D131-6-1 v.LEGIARTI000053451315 (v8.0, VIGUEUR 2026-01-01..2999-01-01; Décret n°2026-69 du 6 février 2026 art. 1, JORF 2026-02-08; nota: en vigueur le 1er janvier 2026, s'applique aux créations et reprises d'entreprise intervenant à compter de cette date; S9 legi-data 2.514.0, text sha256 59f4edcf15fb...): I unchanged - 12 months from affiliation; the rule's applicability (durée d'activité en début d'année < 1 an) is unchanged; textual link only.",
+  "note": "M2",
+  "law": "S9",
+  "status": "INFERRED"
+ },
+ {
+  "id": "M2-16",
+  "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . prorata sur l'année",
+  "article": "D131-6-1",
+  "quote": "La valeur du plafond de la sécurité sociale mentionné à la présente section est la valeur annuelle de ce plafond, tel que prévu à l'article L. 241-3, en vigueur au 1er janvier de l'année au titre de laquelle les cotisations sont dues. En cas de période d'affiliation inférieure à une année, cette valeur est réduite au prorata de la durée d'affiliation.",
+  "claim": "D131-6-1 v.LEGIARTI000053451315 (v8.0, VIGUEUR 2026-01-01..2999-01-01; Décret n°2026-69 du 6 février 2026 art. 1, JORF 2026-02-08; nota: en vigueur le 1er janvier 2026, s'applique aux créations et reprises d'entreprise intervenant à compter de cette date; S9 legi-data 2.514.0, text sha256 59f4edcf15fb...): III - annual PSS at 1 January, prorated for an affiliation shorter than a year (marins sentence deleted, irrelevant here); prorata rule unchanged; textual link.",
+  "note": "M2",
+  "law": "S9",
+  "status": "INFERRED"
+ },
+ {
+  "id": "M2-17",
+  "rule": "dirigeant . exonérations . ACRE",
+  "article": "D131-6-1",
+  "quote": "La demande d'exonérations de cotisations sociales mentionnée au II de l'article L. 131-6-4 est introduite au plus tard le soixantième jour qui suit la date d'ouverture de l'activité telle que mentionnée par le justificatif de création d'activité délivré par l'organisme unique mentionné à l'article L. 123-33 du code de commerce.",
+  "claim": "D131-6-1 v.LEGIARTI000053451315 (v8.0, VIGUEUR 2026-01-01..2999-01-01; Décret n°2026-69 du 6 février 2026 art. 1, JORF 2026-02-08; nota: en vigueur le 1er janvier 2026, s'applique aux créations et reprises d'entreprise intervenant à compter de cette date; S9 legi-data 2.514.0, text sha256 59f4edcf15fb...): IV new - the Acre request (II of L. 131-6-4) must be filed within 60 days of the start of activity; not modelled (no date-of-request input; L. 131-6-4 outside the set).",
+  "note": "M2",
+  "law": "S9",
+  "status": "UNKNOWN"
+ },
+ {
+  "id": "M2-18",
+  "rule": "dirigeant . auto-entrepreneur . éligible à l'ACRE",
+  "article": "D131-6-1",
+  "quote": "La demande d'exonérations de cotisations sociales mentionnée au II de l'article L. 131-6-4 est introduite au plus tard le soixantième jour qui suit la date d'ouverture de l'activité telle que mentionnée par le justificatif de création d'activité délivré par l'organisme unique mentionné à l'article L. 123-33 du code de commerce.",
+  "claim": "D131-6-1 v.LEGIARTI000053451315 (v8.0, VIGUEUR 2026-01-01..2999-01-01; Décret n°2026-69 du 6 février 2026 art. 1, JORF 2026-02-08; nota: en vigueur le 1er janvier 2026, s'applique aux créations et reprises d'entreprise intervenant à compter de cette date; S9 legi-data 2.514.0, text sha256 59f4edcf15fb...): IV 60-day request deadline concerns the micro-entrepreneur request; the eligibility rule has no request-date input; L. 131-6-4 outside the set - abstain.",
+  "note": "M2",
+  "law": "S9",
+  "status": "UNKNOWN"
+ },
+ {
+  "id": "M2-19",
+  "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . taux",
+  "article": "D131-6-1",
+  "quote": "Les dispositions du présent II s'appliquent sans préjudice des dispositions de l'article L. 131-6-5.",
+  "claim": "D131-6-1 v.LEGIARTI000053451315 (v8.0, VIGUEUR 2026-01-01..2999-01-01; Décret n°2026-69 du 6 février 2026 art. 1, JORF 2026-02-08; nota: en vigueur le 1er janvier 2026, s'applique aux créations et reprises d'entreprise intervenant à compter de cette date; S9 legi-data 2.514.0, text sha256 59f4edcf15fb...): II applies 'sans préjudice' of L. 131-6-5, which is outside the bounded set - its effect cannot be assessed; abstain.",
+  "note": "M2",
+  "law": "S9",
+  "status": "UNKNOWN"
+ },
+ {
+  "id": "M2-20",
+  "rule": "dirigeant . auto-entrepreneur . Acre . taux Acre",
+  "article": "D131-6-1",
+  "quote": "Lorsque le revenu ou la rémunération est inférieur ou égal aux trois quarts de la valeur du plafond mentionné à l'article L. 241-3, l'exonération applicable pendant la période mentionnée au I correspond au quart du montant total des cotisations",
+  "claim": "D131-6-1 v.LEGIARTI000053451315 (v8.0, VIGUEUR 2026-01-01..2999-01-01; Décret n°2026-69 du 6 février 2026 art. 1, JORF 2026-02-08; nota: en vigueur le 1er janvier 2026, s'applique aux créations et reprises d'entreprise intervenant à compter de cette date; S9 legi-data 2.514.0, text sha256 59f4edcf15fb...): the micro-social Acre rate (50 % in the library) is set by another article outside the set; whether the 2026 'quart' has a micro-social counterpart cannot be checked here - abstain.",
+  "note": "M2",
+  "law": "S9",
+  "status": "UNKNOWN"
+ },
+ {
+  "id": "M2-21",
+  "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . taux",
+  "article": "D613-4",
+  "quote": "e) Travailleurs indépendants relevant à la fois de l'article L. 631-1 et du régime prévu à l'article 102 ter du code général des impôts 23 609 euros 34 % 15 582 euros 25,6 %",
+  "claim": "D613-4 v.LEGIARTI000052218738 (VIGUEUR 2026-01-01; identical in S8 and S9): e) BNC 25,6 % on 01/01/2026 - transposed by G4 commit 88cb2ce9 (2026-01-08).",
+  "note": "M2",
+  "law": "S9",
+  "check": {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . taux",
+   "situation": {
+    "date": "01/01/2026",
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "entreprise . date de création": "01/01/2021",
+    "dirigeant . exonérations . ACRE": "non",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activité . nature": "'libérale'",
+    "entreprise . activité . nature . libérale . réglementée": "non"
+   },
+   "expect": 25.6,
+   "tolerance": 0.001
+  }
+ },
+ {
+  "id": "M2-22",
+  "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . répartition . maladie-maternité . taux de répartition",
+  "article": "D613-6",
+  "quote": "-pour les personnes relevant du e : Cotisations et contributions Taux de répartition des montants de cotisations Cotisation d'assurance maladie maternité mentionnée à l'article L. 621-1 2,60 % Cotisation de prestations maladie en espèces mentionnée à l'article L. 621-2 1,50 % Cotisation d'assurance invalidité-décès mentionnées à l'article L. 632-1 3,30 % Cotisations d'assurance vieillesse de base mentionnées à l'article D. 633-3 du code de la sécurité sociale 46,40 % Cotisation d'assurance vieillesse complémentaire mentionnée à l'article L. 635-1 21,00 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale mentionnées à l'article L. 136-3 25,20 %",
+  "claim": "D613-6 v.LEGIARTI000052218747 (identical in S8 and S9): e) 2,60 + 1,50 = 4,10 % on 01/01/2026 (G4).",
+  "note": "M2",
+  "law": "S9",
+  "check": {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . répartition . maladie-maternité . taux de répartition",
+   "situation": {
+    "date": "01/01/2026",
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "entreprise . date de création": "01/01/2021",
+    "dirigeant . exonérations . ACRE": "non",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activité . nature": "'libérale'",
+    "entreprise . activité . nature . libérale . réglementée": "non"
+   },
+   "expect": 4.1,
+   "tolerance": 0.001
+  }
+ },
+ {
+  "id": "M2-23",
+  "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . répartition . maladie-maternité . taux de répartition",
+  "article": "D613-6",
+  "quote": "-pour les personnes relevant des a et d : Cotisations et contributions Taux de répartition des montants de cotisations Cotisation d'assurance maladie-maternité mentionnée à l'article L. 621-1 8,80 % Cotisation de prestations maladie en espèces mentionnée à l'article L. 621-2 1,25 % Cotisation d'assurance invalidité-décès mentionnée à l'article L. 632-1 3,15 % Cotisation d'assurance vieillesse de base mentionnée à l'article D. 633-3 43,45 % Cotisation d'assurance vieillesse complémentaire mentionnée à l'article L. 635-1 19,75 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale mentionnées à l'article L. 136-3 23,60 %",
+  "claim": "D613-6 v.LEGIARTI000052218747 (identical in S8 and S9): a/d 8,80 + 1,25 = 10,05 % on 01/01/2026 (G4).",
+  "note": "M2",
+  "law": "S9",
+  "check": {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . répartition . maladie-maternité . taux de répartition",
+   "situation": {
+    "date": "01/01/2026",
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "entreprise . date de création": "01/01/2021",
+    "dirigeant . exonérations . ACRE": "non",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activité . nature": "'artisanale'",
+    "entreprise . activités . service ou vente": "'service'"
+   },
+   "expect": 10.05,
+   "tolerance": 0.001
+  }
+ },
+ {
+  "id": "M2-24",
+  "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC Cipav . répartition . maladie-maternité . taux de répartition",
+  "article": "D613-6",
+  "quote": "-pour les personnes relevant du b : Cotisations et contributions Taux de répartition des montants de cotisations Cotisation d'assurance maladie maternité mentionnée à l'article L. 621-1 10,60 % Cotisation de prestations maladie en espèces mentionnée à l'article L. 621-2 0,80 % Cotisation d'assurance invalidité décès mentionnée à l'article L. 644-2 1,40 % Cotisation d'assurance vieillesse de base mentionnée au 1° de l'article D. 642-3 24,30 % Cotisation d'assurance vieillesse de base mentionnée au 2° de l'article D. 642-3 5,20 % Cotisation d'assurance vieillesse complémentaire mentionnée à l'article L. 644-1 30,70 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale mentionnées à l'article L. 136-3 27,00 %",
+  "claim": "D613-6 v.LEGIARTI000052218747 (identical in S8 and S9): b) 10,60 + 0,80 = 11,40 % on 01/01/2026 (G4).",
+  "note": "M2",
+  "law": "S9",
+  "check": {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC Cipav . répartition . maladie-maternité . taux de répartition",
+   "situation": {
+    "date": "01/01/2026",
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "entreprise . date de création": "01/01/2019",
+    "dirigeant . exonérations . ACRE": "non",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activité . nature": "'libérale'",
+    "entreprise . activité . nature . libérale . réglementée": "oui"
+   },
+   "expect": 11.4,
+   "tolerance": 0.001
+  }
+ },
+ {
+  "id": "M2-25",
+  "rule": "dirigeant . auto-entrepreneur . DROM . taux CIPAV",
+  "article": "D756-5",
+  "quote": "après arrondi au dixième de pour cent supérieur, à une fraction des taux prévus par l'article D. 131-6-1 fixée à : a) 1/6 pour les travailleurs indépendants mentionnés au 2° de l'article L. 611-1 et 1/3 dans les autres cas",
+  "claim": "D756-5 v.LEGIARTI000034726710 (identical in S8 and S9) a) 1/3 of 23,2 % (D613-4 v.LEGIARTI000052218738 (VIGUEUR 2026-01-01; identical in S8 and S9) b) = 7,8 % - fixed by G4 commit 55470937 (2026-01-08).",
+  "note": "M2",
+  "law": "S9",
+  "check": {
+   "rule": "dirigeant . auto-entrepreneur . DROM . taux CIPAV",
+   "situation": {
+    "date": "01/01/2026",
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "entreprise . date de création": "01/01/2019",
+    "dirigeant . exonérations . ACRE": "non",
+    "établissement . commune . département . outre-mer": "oui",
+    "entreprise . activité . nature": "'libérale'",
+    "entreprise . activité . nature . libérale . réglementée": "oui",
+    "entreprise . durée d'activité": "300 jour",
+    "entreprise . durée d'activité . trimestres civils": "4 trimestre civil",
+    "entreprise . durée d'activité . années civiles": "1 année civile"
+   },
+   "expect": 7.8,
+   "tolerance": 0.001
+  }
+ },
+ {
+  "id": "M2-26",
+  "rule": "dirigeant . auto-entrepreneur . DROM . taux service BNC",
+  "article": "D756-5",
+  "quote": "après arrondi au dixième de pour cent supérieur, à une fraction des taux prévus par l'article D. 131-6-1 fixée à : a) 1/6 pour les travailleurs indépendants mentionnés au 2° de l'article L. 611-1 et 1/3 dans les autres cas",
+  "claim": "D756-5 v.LEGIARTI000034726710 (identical in S8 and S9) a) 1/6 of 25,6 % (D613-4 v.LEGIARTI000052218738 (VIGUEUR 2026-01-01; identical in S8 and S9) e) = 4,27 -> 4,3 % on 01/01/2026; G4 still 4,4 % (mort-né 26,1 % basis).",
+  "note": "M2",
+  "law": "S9",
+  "check": {
+   "rule": "dirigeant . auto-entrepreneur . DROM . taux service BNC",
+   "situation": {
+    "date": "01/01/2026",
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "entreprise . date de création": "01/01/2021",
+    "dirigeant . exonérations . ACRE": "non",
+    "établissement . commune . département . outre-mer": "oui",
+    "entreprise . activité . nature": "'libérale'",
+    "entreprise . activité . nature . libérale . réglementée": "non",
+    "entreprise . durée d'activité": "300 jour",
+    "entreprise . durée d'activité . trimestres civils": "4 trimestre civil",
+    "entreprise . durée d'activité . années civiles": "1 année civile"
+   },
+   "expect": 4.3,
+   "tolerance": 0.001
+  }
+ },
+ {
+  "id": "M2-27",
+  "rule": "dirigeant . auto-entrepreneur . DROM . taux service BNC",
+  "article": "D756-5",
+  "quote": "b) 1/2 pour la période qui court entre la fin de la période mentionnée au a et la fin de la troisième année civile d'activité",
+  "claim": "D756-5 v.LEGIARTI000034726710 (identical in S8 and S9) b) 1/2 of 25,6 % = 12,8 %; G4 13,1 %.",
+  "note": "M2",
+  "law": "S9",
+  "check": {
+   "rule": "dirigeant . auto-entrepreneur . DROM . taux service BNC",
+   "situation": {
+    "date": "01/01/2026",
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "entreprise . date de création": "01/01/2021",
+    "dirigeant . exonérations . ACRE": "non",
+    "établissement . commune . département . outre-mer": "oui",
+    "entreprise . activité . nature": "'libérale'",
+    "entreprise . activité . nature . libérale . réglementée": "non",
+    "entreprise . durée d'activité": "900 jour",
+    "entreprise . durée d'activité . trimestres civils": "10 trimestre civil",
+    "entreprise . durée d'activité . années civiles": "3 année civile"
+   },
+   "expect": 12.8,
+   "tolerance": 0.001
+  }
+ },
+ {
+  "id": "M2-28",
+  "rule": "dirigeant . auto-entrepreneur . DROM . taux service BNC",
+  "article": "D756-5",
+  "quote": "c) 2/3 à compter de la quatrième année civile d'activité",
+  "claim": "D756-5 v.LEGIARTI000034726710 (identical in S8 and S9) c) 2/3 of 25,6 % = 17,07 -> 17,1 %; G4 17,4 %.",
+  "note": "M2",
+  "law": "S9",
+  "check": {
+   "rule": "dirigeant . auto-entrepreneur . DROM . taux service BNC",
+   "situation": {
+    "date": "01/01/2026",
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "entreprise . date de création": "01/01/2021",
+    "dirigeant . exonérations . ACRE": "non",
+    "établissement . commune . département . outre-mer": "oui",
+    "entreprise . activité . nature": "'libérale'",
+    "entreprise . activité . nature . libérale . réglementée": "non",
+    "entreprise . durée d'activité": "1500 jour",
+    "entreprise . durée d'activité . trimestres civils": "20 trimestre civil",
+    "entreprise . durée d'activité . années civiles": "5 année civile"
+   },
+   "expect": 17.1,
+   "tolerance": 0.001
+  }
+ }
+]

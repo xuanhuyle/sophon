@@ -1,0 +1,1752 @@
+{
+ "task": "T1a",
+ "decision_date": "2024-06-01",
+ "law_snapshot": "S1 (legi-data 2.361.0, published 2024-06-01)",
+ "rules_pin": "G0 d9242882f96b",
+ "unchanged_articles": [
+  "L131-6",
+  "L136-3",
+  "L613-7",
+  "D131-6-1",
+  "D613-5",
+  "D621-2",
+  "D632-1",
+  "D633-3",
+  "D756-5"
+ ],
+ "articles_missing_in_snapshot": [
+  "D136-5"
+ ],
+ "changed_articles": [
+  {
+   "article": "D613-4",
+   "from_version_id": "LEGIARTI000046714712",
+   "to_version_id": "LEGIARTI000049623867",
+   "in_force_from": "2024-06-01",
+   "in_force_to": "2024-07-01",
+   "etat": "ABROGE_DIFF",
+   "modifying_text": "Décret n°2024-484 du 30 mai 2024 - art. 1 (JORFTEXT000049620955, JORF 2024-05-31)",
+   "what_changed": "New version 4.0 whose text differs from 3.0 only by whitespace (4 occurrences of \"l'article\" -> \"l' article\"); the I. table keeps 12,3 / 21,2 / 6 / 21,2 / 21,1 %; the Conseil d'Etat annulation nota and ANNULATION link (décision 471203) are no longer attached; nota: entry into force 1 June 2024 per 1° of art. 1.",
+   "new_text_available": true
+  },
+  {
+   "article": "D613-4",
+   "from_version_id": "LEGIARTI000049623867",
+   "to_version_id": "LEGIARTI000049624068",
+   "in_force_from": "2024-07-01",
+   "in_force_to": "2025-05-01 (as recorded; overlaps version 6.0 starting 2025-01-01 - metadata inconsistency in the snapshot)",
+   "etat": "VIGUEUR_DIFF",
+   "modifying_text": "Décret n°2024-484 du 30 mai 2024 (announced version 5.0; lienModifications lists only art. 1 for the current version)",
+   "what_changed": "Announced future version; text not included in S1 -> content unknown, abstain.",
+   "new_text_available": false
+  },
+  {
+   "article": "D613-4",
+   "from_version_id": "LEGIARTI000049624068",
+   "to_version_id": "LEGIARTI000049624097",
+   "in_force_from": "2025-01-01",
+   "in_force_to": "2026-01-01",
+   "etat": "VIGUEUR_DIFF",
+   "modifying_text": "Décret n°2024-484 du 30 mai 2024 (announced version 6.0)",
+   "what_changed": "Announced future version; text not included in S1 -> abstain.",
+   "new_text_available": false
+  },
+  {
+   "article": "D613-4",
+   "from_version_id": "LEGIARTI000049624097",
+   "to_version_id": "LEGIARTI000049624125",
+   "in_force_from": "2026-01-01",
+   "in_force_to": "2999-01-01",
+   "etat": "VIGUEUR_DIFF",
+   "modifying_text": "Décret n°2024-484 du 30 mai 2024 (announced version 7.0)",
+   "what_changed": "Announced future version; text not included in S1 -> abstain.",
+   "new_text_available": false
+  },
+  {
+   "article": "D613-6",
+   "from_version_id": "LEGIARTI000046714699",
+   "to_version_id": "LEGIARTI000049623885",
+   "in_force_from": "2024-06-01",
+   "in_force_to": "2024-07-01",
+   "etat": "ABROGE_DIFF",
+   "modifying_text": "Décret n°2024-484 du 30 mai 2024 - art. 2 (JORFTEXT000049620955, JORF 2024-05-31)",
+   "what_changed": "New version 5.0 with a text byte-identical to version 4.0 (same split percentages); Conseil d'Etat annulation nota/link removed; nota: entry into force 1 June 2024 per 1° of art. 2.",
+   "new_text_available": true
+  },
+  {
+   "article": "D613-6",
+   "from_version_id": "LEGIARTI000049623885",
+   "to_version_id": "LEGIARTI000049625264",
+   "in_force_from": "2024-07-01",
+   "in_force_to": "2025-01-01",
+   "etat": "VIGUEUR_DIFF",
+   "modifying_text": "Décret n°2024-484 du 30 mai 2024 (announced version 6.0)",
+   "what_changed": "Announced future version; text not included in S1 -> abstain.",
+   "new_text_available": false
+  },
+  {
+   "article": "D613-6",
+   "from_version_id": "LEGIARTI000049625264",
+   "to_version_id": "LEGIARTI000049625405",
+   "in_force_from": "2025-01-01",
+   "in_force_to": "2026-01-01",
+   "etat": "VIGUEUR_DIFF",
+   "modifying_text": "Décret n°2024-484 du 30 mai 2024 (announced version 7.0)",
+   "what_changed": "Announced future version; text not included in S1 -> abstain.",
+   "new_text_available": false
+  },
+  {
+   "article": "D613-6",
+   "from_version_id": "LEGIARTI000049625405",
+   "to_version_id": "LEGIARTI000049625445",
+   "in_force_from": "2026-01-01",
+   "in_force_to": "2999-01-01",
+   "etat": "VIGUEUR_DIFF",
+   "modifying_text": "Décret n°2024-484 du 30 mai 2024 (announced version 8.0)",
+   "what_changed": "Announced future version; text not included in S1 -> abstain.",
+   "new_text_available": false
+  }
+ ],
+ "rules": [
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC",
+   "classification": "NEEDS_REVIEW",
+   "confidence": "high",
+   "evidence": [
+    "D613-4 LEGIARTI000049623867 (in force 2024-06-01, Décret n°2024-484 du 30 mai 2024 art. 1): \"10 000 euros 34 % 6 600 euros 21,1 %\"",
+    "engine G0 and proposal: taux service BNC = 21.1 on 01/06/2024, 01/07/2024, 01/01/2025, 01/01/2026 (prompt BNC situation); text supports the value only for 01/06/2024",
+    "announced versions without text: LEGIARTI000049624068 (2024-07-01), LEGIARTI000049624097 (2025-01-01), LEGIARTI000049624125 (2026-01-01) -> abstain",
+    "sophon revalidate S1xG0: REASSESS_LAW_CHANGED (LAW_CHANGED, RULE_SAME, CHECK_PASS)",
+    "sophon T1a-01: VERIFIED (link L0056) observed=21.1",
+    "sophon T1a-11: UNKNOWN (link L0066) observed=None"
+   ]
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BIC",
+   "classification": "NEEDS_REVIEW",
+   "confidence": "high",
+   "evidence": [
+    "D613-4 LEGIARTI000049623867 (in force 2024-06-01, Décret n°2024-484 du 30 mai 2024 art. 1): \"2° du 1 de l'article 50-0 du code général des impôt 46 300 euros 50 % 23 150 euros 21,2 %\"",
+    "engine G0 and proposal: taux service BIC = 21.2 on 01/06/2024, 01/07/2024, 01/01/2025, 01/01/2026 (prompt BNC situation); text supports the value only for 01/06/2024",
+    "announced versions without text: LEGIARTI000049624068 (2024-07-01), LEGIARTI000049624097 (2025-01-01), LEGIARTI000049624125 (2026-01-01) -> abstain",
+    "sophon revalidate S1xG0: REASSESS_LAW_CHANGED (LAW_CHANGED, RULE_SAME, CHECK_PASS)",
+    "sophon T1a-02: VERIFIED (link L0057) observed=21.2",
+    "sophon T1a-12: UNKNOWN (link L0067) observed=None"
+   ]
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux vente restauration hébergement",
+   "classification": "NEEDS_REVIEW",
+   "confidence": "high",
+   "evidence": [
+    "D613-4 LEGIARTI000049623867 (in force 2024-06-01, Décret n°2024-484 du 30 mai 2024 art. 1): \"79 828 euros 71 % 23 150 euros 12,3 %\"",
+    "engine G0 and proposal: taux vente restauration hébergement = 12.3 on 01/06/2024, 01/07/2024, 01/01/2025, 01/01/2026 (prompt BNC situation); text supports the value only for 01/06/2024",
+    "announced versions without text: LEGIARTI000049624068 (2024-07-01), LEGIARTI000049624097 (2025-01-01), LEGIARTI000049624125 (2026-01-01) -> abstain",
+    "sophon revalidate S1xG0: REASSESS_LAW_CHANGED (LAW_CHANGED, RULE_SAME, CHECK_PASS)",
+    "sophon T1a-03: VERIFIED (link L0058) observed=12.3",
+    "sophon T1a-13: UNKNOWN (link L0068) observed=None"
+   ]
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV . taux",
+   "classification": "NEEDS_REVIEW",
+   "confidence": "high",
+   "evidence": [
+    "D613-4 LEGIARTI000049623867 (in force 2024-06-01, Décret n°2024-484 du 30 mai 2024 art. 1): \"11° de l'article R. 641-1 35 076 euros 34 % 23 150 euros 21,2 %\"",
+    "engine G0 and proposal: cotisations CIPAV . taux = 21.2 on 01/06/2024, 01/07/2024, 01/01/2025, 01/01/2026 (prompt BNC situation); text supports the value only for 01/06/2024",
+    "announced versions without text: LEGIARTI000049624068 (2024-07-01), LEGIARTI000049624097 (2025-01-01), LEGIARTI000049624125 (2026-01-01) -> abstain",
+    "sophon revalidate S1xG0: REASSESS_LAW_CHANGED (LAW_CHANGED, RULE_SAME, CHECK_PASS)",
+    "sophon T1a-04: VERIFIED (link L0059) observed=21.2",
+    "sophon T1a-14: UNKNOWN (link L0069) observed=None",
+    "evaluated with CIPAV situation (libérale réglementée = oui)"
+   ]
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "classification": "NEEDS_REVIEW",
+   "confidence": "high",
+   "evidence": [
+    "amount = CA x D613-4 global rate; on 01/06/2024: BNC 2 532, BIC 2 544, vente 1 476, CIPAV(created 2019) 2 544 €/an for 12 000 €/an CA, all matching the LEGIARTI000049623867 table",
+    "same values on 01/07/2024, 01/01/2025, 01/01/2026 but no text supports them (announced versions) -> abstain",
+    "pre-existing, unrelated to S1: CIPAV AE created >= 04/2020 pays 1 452 (12,1 %) instead of 2 544 (T1a-09 FAILED); category c) meublés de tourisme 6 % not implemented (T1a-10 UNKNOWN); D613-6 split not implemented (T1a-19 UNKNOWN)",
+    "sophon T1a-05: VERIFIED (link L0060) observed=2532.0000000000005",
+    "sophon T1a-06: VERIFIED (link L0061) observed=2544",
+    "sophon T1a-07: VERIFIED (link L0062) observed=1476",
+    "sophon T1a-08: VERIFIED (link L0063) observed=2544",
+    "sophon T1a-09: FAILED (link L0064) observed=1452",
+    "sophon T1a-10: UNKNOWN (link L0065) observed=None"
+   ]
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux prestation de service",
+   "classification": "NEEDS_REVIEW",
+   "confidence": "medium",
+   "evidence": [
+    "déprécié alias of taux service BIC (valeur: taux service BIC); follows its classification"
+   ]
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions",
+   "classification": "NEEDS_REVIEW",
+   "confidence": "medium",
+   "evidence": [
+    "parent sum; engine 213 €/mois (= 2 532/12) on all four dates for the prompt BNC situation; depends entirely on the rules above"
+   ]
+  },
+  {
+   "rule": "protection sociale . retraite . complémentaire . RCI . revenu cotisé auto-entrepreneur",
+   "classification": "AFFECTED",
+   "confidence": "high",
+   "evidence": [
+    "rule références pin D613-6 to LEGIARTI000046714699/2022-12-10, a version now MODIFIE (ended 2024-06-01); new version LEGIARTI000049623885 (Décret n°2024-484 art. 2, in force 2024-06-01) has an identical text",
+    "D613-6 a)/d): \"Cotisation d'assurance vieillesse complémentaire 16,50 %\"; engine G0 = proposal: vente 243.6 €/an (text 243.54), BIC 420 €/an (text 419.76), BNC 0 on all four dates",
+    "proposal: re-pin références to LEGIARTI000049623885 + note on announced versions LEGIARTI000049625264 (2024-07-01), LEGIARTI000049625405 (2025-01-01), LEGIARTI000049625445 (2026-01-01) without text -> abstain for those dates; no numeric change",
+    "minor pre-existing wording issue: third term multiplies 'service BIC' by 0 % where 'service BNC' is meant (no numeric effect)",
+    "sophon T1a-15: VERIFIED (link L0070) observed=243.59999999999997",
+    "sophon T1a-16: VERIFIED (link L0071) observed=420",
+    "sophon T1a-17: VERIFIED (link L0072) observed=0",
+    "sophon T1a-18: UNKNOWN (link L0073) observed=None"
+   ]
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . DROM . taux service BNC",
+   "classification": "NEEDS_REVIEW",
+   "confidence": "medium",
+   "evidence": [
+    "D756-5 unchanged in S1 (LEGIARTI000034726710, LAW_SAME; T0 links L0014-L0025 STILL_VERIFIED)",
+    "but D756-5 defines fractions of the D613-4 global rates, which have announced future versions without text; if those versions change the rates these fractions must follow -> review when text arrives; no change proposed now"
+   ]
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . DROM . service BIC",
+   "classification": "NEEDS_REVIEW",
+   "confidence": "medium",
+   "evidence": [
+    "D756-5 unchanged in S1 (LEGIARTI000034726710, LAW_SAME; T0 links L0014-L0025 STILL_VERIFIED)",
+    "but D756-5 defines fractions of the D613-4 global rates, which have announced future versions without text; if those versions change the rates these fractions must follow -> review when text arrives; no change proposed now"
+   ]
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . DROM . taux vente restauration hébergement",
+   "classification": "NEEDS_REVIEW",
+   "confidence": "medium",
+   "evidence": [
+    "D756-5 unchanged in S1 (LEGIARTI000034726710, LAW_SAME; T0 links L0014-L0025 STILL_VERIFIED)",
+    "but D756-5 defines fractions of the D613-4 global rates, which have announced future versions without text; if those versions change the rates these fractions must follow -> review when text arrives; no change proposed now"
+   ]
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . DROM . taux CIPAV",
+   "classification": "NEEDS_REVIEW",
+   "confidence": "medium",
+   "evidence": [
+    "D756-5 unchanged in S1 (LEGIARTI000034726710, LAW_SAME; T0 links L0014-L0025 STILL_VERIFIED)",
+    "but D756-5 defines fractions of the D613-4 global rates, which have announced future versions without text; if those versions change the rates these fractions must follow -> review when text arrives; no change proposed now"
+   ]
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . DROM",
+   "classification": "UNAFFECTED",
+   "confidence": "medium",
+   "evidence": [
+    "applicability logic (periods, DROM) governed by D756-5/L613-7, both unchanged in S1 (LAW_SAME)"
+   ]
+  },
+  {
+   "rule": "dirigeant . exonérations . ACRE",
+   "classification": "UNAFFECTED",
+   "confidence": "high",
+   "evidence": [
+    "governing article(s) L613-7 (LEGIARTI000048683570), D131-6-1 (LEGIARTI000036475110): same version id and text hash in S1 as in S0 (revalidate LAW_SAME)",
+    "sophon links L0011; status unchanged by S1"
+   ]
+  },
+  {
+   "rule": "entreprise . imposition . régime . micro-entreprise . revenu abattu",
+   "classification": "UNAFFECTED",
+   "confidence": "high",
+   "evidence": [
+    "governing article(s) L613-7 (LEGIARTI000048683570): same version id and text hash in S1 as in S0 (revalidate LAW_SAME)",
+    "sophon links L0012 STILL_VERIFIED; status unchanged by S1"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . prorata sur l'année",
+   "classification": "UNAFFECTED",
+   "confidence": "high",
+   "evidence": [
+    "governing article(s) D131-6-1: same version id and text hash in S1 as in S0 (revalidate LAW_SAME)",
+    "sophon links L0028 STILL_VERIFIED; status unchanged by S1"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . taux",
+   "classification": "UNAFFECTED",
+   "confidence": "high",
+   "evidence": [
+    "governing article(s) D131-6-1: same version id and text hash in S1 as in S0 (revalidate LAW_SAME)",
+    "sophon links L0031/L0036/L0037 STILL_VERIFIED; status unchanged by S1"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . maladie",
+   "classification": "UNAFFECTED",
+   "confidence": "high",
+   "evidence": [
+    "governing article(s) D131-6-1: same version id and text hash in S1 as in S0 (revalidate LAW_SAME)",
+    "sophon links L0038 (no check); status unchanged by S1"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . PSS proratisé",
+   "classification": "UNAFFECTED",
+   "confidence": "high",
+   "evidence": [
+    "governing article(s) D131-6-1: same version id and text hash in S1 as in S0 (revalidate LAW_SAME)",
+    "sophon links L0039/L0040 (no check); status unchanged by S1"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . retraite de base",
+   "classification": "UNAFFECTED",
+   "confidence": "high",
+   "evidence": [
+    "governing article(s) D131-6-1, D633-3 (LEGIARTI000041967101): same version id and text hash in S1 as in S0 (revalidate LAW_SAME)",
+    "sophon links L0032/L0049/L0050 STILL_VERIFIED; status unchanged by S1"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . retraite de base . taux",
+   "classification": "UNAFFECTED",
+   "confidence": "high",
+   "evidence": [
+    "governing article(s) D633-3: same version id and text hash in S1 as in S0 (revalidate LAW_SAME)",
+    "sophon links L0051 (no check); status unchanged by S1"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . maladie",
+   "classification": "UNAFFECTED",
+   "confidence": "high",
+   "evidence": [
+    "governing article(s) D131-6-1, D621-2 (LEGIARTI000046714747): same version id and text hash in S1 as in S0 (revalidate LAW_SAME)",
+    "sophon links L0033 STILL_VERIFIED; status unchanged by S1"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+   "classification": "UNAFFECTED",
+   "confidence": "high",
+   "evidence": [
+    "governing article(s) D621-2: same version id and text hash in S1 as in S0 (revalidate LAW_SAME)",
+    "sophon links L0041-L0043 STILL_VERIFIED; status unchanged by S1"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . invalidité et décès",
+   "classification": "UNAFFECTED",
+   "confidence": "high",
+   "evidence": [
+    "governing article(s) D131-6-1, D632-1 (LEGIARTI000041966755): same version id and text hash in S1 as in S0 (revalidate LAW_SAME)",
+    "sophon links L0034 STILL_VERIFIED; status unchanged by S1"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . retraite complémentaire",
+   "classification": "UNAFFECTED",
+   "confidence": "high",
+   "evidence": [
+    "governing article(s) D131-6-1: same version id and text hash in S1 as in S0 (revalidate LAW_SAME)",
+    "sophon links L0035 (no check); status unchanged by S1"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . conjoint collaborateur . cotisations",
+   "classification": "UNAFFECTED",
+   "confidence": "high",
+   "evidence": [
+    "governing article(s) D613-5 (LEGIARTI000041918205): same version id and text hash in S1 as in S0 (revalidate LAW_SAME)",
+    "sophon links L0053 UNKNOWN (not implemented for AE); status unchanged by S1"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . assiette des cotisations",
+   "classification": "UNAFFECTED",
+   "confidence": "high",
+   "evidence": [
+    "governing article(s) L131-6 (LEGIARTI000048683707): same version id and text hash in S1 as in S0 (revalidate LAW_SAME)",
+    "sophon links L0054 UNKNOWN; status unchanged by S1"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . CSG-CRDS . assiette",
+   "classification": "UNAFFECTED",
+   "confidence": "high",
+   "evidence": [
+    "governing article(s) L136-3 (LEGIARTI000048683641): same version id and text hash in S1 as in S0 (revalidate LAW_SAME)",
+    "sophon links L0055 UNKNOWN; status unchanged by S1"
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . invalidité et décès . assiette",
+   "classification": "UNAFFECTED",
+   "confidence": "high",
+   "evidence": [
+    "D632-1 LEGIARTI000041966755 unchanged (LAW_SAME); L0046/L0047 STILL_VERIFIED",
+    "L0048 BROKEN = pre-existing 2024 floor mismatch found in T0 (library 450 h SMIC = 5 243 vs 11,5 % PSS = 5 332), not caused by S1"
+   ]
+  }
+ ],
+ "proposal_dir": "work/proposals/T1a/modele-social/règles",
+ "proposal_nature": "traceability-only: références re-pinned to the 2024-06-01 versions (D613-4 LEGIARTI000049623867, D613-6 LEGIARTI000049623885) and notes recording the announced versions whose text is unavailable; NO numeric value changed (none is supported by available text)",
+ "proposal_diff": "work/proposals/T1a/CHANGES.diff",
+ "build_ok": true,
+ "build_counts": {
+  "raw_rule_count": 639,
+  "parsed_rule_count": 1172
+ },
+ "evaluations": [
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC",
+   "date": "01/06/2024",
+   "situation": {
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "entreprise . activité . nature": "'libérale'",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "date": "01/06/2024"
+   },
+   "value_before": 21.1,
+   "value_after": 21.1,
+   "article": "D613-4",
+   "expected_from_text": 21.1,
+   "quote": "10 000 euros 34 % 6 600 euros 21,1 %",
+   "article_version_id": "LEGIARTI000049623867",
+   "in_force": "2024-06-01..2024-07-01",
+   "text_available": true,
+   "comment": "I e) BNC (L631-1 + CGI 102 ter): taux global 21,1 %",
+   "aligned": true
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC",
+   "date": "01/07/2024",
+   "situation": {
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "entreprise . activité . nature": "'libérale'",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "date": "01/07/2024"
+   },
+   "value_before": 21.1,
+   "value_after": 21.1,
+   "article": "D613-4",
+   "expected_from_text": null,
+   "quote": null,
+   "article_version_id": "LEGIARTI000049624068",
+   "text_available": false,
+   "abstain": true,
+   "comment": "Version LEGIARTI000049624068 of D613-4 is announced in force from 2024-07-01 but its text is not in snapshot S1; the engine value shown is the unchanged G0/proposal value, not a value derived from text."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC",
+   "date": "01/01/2025",
+   "situation": {
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "entreprise . activité . nature": "'libérale'",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "date": "01/01/2025"
+   },
+   "value_before": 21.1,
+   "value_after": 21.1,
+   "article": "D613-4",
+   "expected_from_text": null,
+   "quote": null,
+   "article_version_id": "LEGIARTI000049624097",
+   "text_available": false,
+   "abstain": true,
+   "comment": "Version LEGIARTI000049624097 of D613-4 is announced in force from 2025-01-01 but its text is not in snapshot S1; the engine value shown is the unchanged G0/proposal value, not a value derived from text."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC",
+   "date": "01/01/2026",
+   "situation": {
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "entreprise . activité . nature": "'libérale'",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "date": "01/01/2026"
+   },
+   "value_before": 21.1,
+   "value_after": 21.1,
+   "article": "D613-4",
+   "expected_from_text": null,
+   "quote": null,
+   "article_version_id": "LEGIARTI000049624125",
+   "text_available": false,
+   "abstain": true,
+   "comment": "Version LEGIARTI000049624125 of D613-4 is announced in force from 2026-01-01 but its text is not in snapshot S1; the engine value shown is the unchanged G0/proposal value, not a value derived from text."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BIC",
+   "date": "01/06/2024",
+   "situation": {
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "entreprise . activité . nature": "'libérale'",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "date": "01/06/2024"
+   },
+   "value_before": 21.2,
+   "value_after": 21.2,
+   "article": "D613-4",
+   "expected_from_text": 21.2,
+   "quote": "2° du 1 de l'article 50-0 du code général des impôt 46 300 euros 50 % 23 150 euros 21,2 %",
+   "article_version_id": "LEGIARTI000049623867",
+   "in_force": "2024-06-01..2024-07-01",
+   "text_available": true,
+   "comment": "I d) service BIC: 21,2 %",
+   "aligned": true
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BIC",
+   "date": "01/07/2024",
+   "situation": {
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "entreprise . activité . nature": "'libérale'",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "date": "01/07/2024"
+   },
+   "value_before": 21.2,
+   "value_after": 21.2,
+   "article": "D613-4",
+   "expected_from_text": null,
+   "quote": null,
+   "article_version_id": "LEGIARTI000049624068",
+   "text_available": false,
+   "abstain": true,
+   "comment": "Version LEGIARTI000049624068 of D613-4 is announced in force from 2024-07-01 but its text is not in snapshot S1; the engine value shown is the unchanged G0/proposal value, not a value derived from text."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BIC",
+   "date": "01/01/2025",
+   "situation": {
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "entreprise . activité . nature": "'libérale'",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "date": "01/01/2025"
+   },
+   "value_before": 21.2,
+   "value_after": 21.2,
+   "article": "D613-4",
+   "expected_from_text": null,
+   "quote": null,
+   "article_version_id": "LEGIARTI000049624097",
+   "text_available": false,
+   "abstain": true,
+   "comment": "Version LEGIARTI000049624097 of D613-4 is announced in force from 2025-01-01 but its text is not in snapshot S1; the engine value shown is the unchanged G0/proposal value, not a value derived from text."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BIC",
+   "date": "01/01/2026",
+   "situation": {
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "entreprise . activité . nature": "'libérale'",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "date": "01/01/2026"
+   },
+   "value_before": 21.2,
+   "value_after": 21.2,
+   "article": "D613-4",
+   "expected_from_text": null,
+   "quote": null,
+   "article_version_id": "LEGIARTI000049624125",
+   "text_available": false,
+   "abstain": true,
+   "comment": "Version LEGIARTI000049624125 of D613-4 is announced in force from 2026-01-01 but its text is not in snapshot S1; the engine value shown is the unchanged G0/proposal value, not a value derived from text."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux vente restauration hébergement",
+   "date": "01/06/2024",
+   "situation": {
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "entreprise . activité . nature": "'libérale'",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "date": "01/06/2024"
+   },
+   "value_before": 12.3,
+   "value_after": 12.3,
+   "article": "D613-4",
+   "expected_from_text": 12.3,
+   "quote": "79 828 euros 71 % 23 150 euros 12,3 %",
+   "article_version_id": "LEGIARTI000049623867",
+   "in_force": "2024-06-01..2024-07-01",
+   "text_available": true,
+   "comment": "I a) vente: 12,3 %",
+   "aligned": true
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux vente restauration hébergement",
+   "date": "01/07/2024",
+   "situation": {
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "entreprise . activité . nature": "'libérale'",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "date": "01/07/2024"
+   },
+   "value_before": 12.3,
+   "value_after": 12.3,
+   "article": "D613-4",
+   "expected_from_text": null,
+   "quote": null,
+   "article_version_id": "LEGIARTI000049624068",
+   "text_available": false,
+   "abstain": true,
+   "comment": "Version LEGIARTI000049624068 of D613-4 is announced in force from 2024-07-01 but its text is not in snapshot S1; the engine value shown is the unchanged G0/proposal value, not a value derived from text."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux vente restauration hébergement",
+   "date": "01/01/2025",
+   "situation": {
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "entreprise . activité . nature": "'libérale'",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "date": "01/01/2025"
+   },
+   "value_before": 12.3,
+   "value_after": 12.3,
+   "article": "D613-4",
+   "expected_from_text": null,
+   "quote": null,
+   "article_version_id": "LEGIARTI000049624097",
+   "text_available": false,
+   "abstain": true,
+   "comment": "Version LEGIARTI000049624097 of D613-4 is announced in force from 2025-01-01 but its text is not in snapshot S1; the engine value shown is the unchanged G0/proposal value, not a value derived from text."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux vente restauration hébergement",
+   "date": "01/01/2026",
+   "situation": {
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "entreprise . activité . nature": "'libérale'",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "date": "01/01/2026"
+   },
+   "value_before": 12.3,
+   "value_after": 12.3,
+   "article": "D613-4",
+   "expected_from_text": null,
+   "quote": null,
+   "article_version_id": "LEGIARTI000049624125",
+   "text_available": false,
+   "abstain": true,
+   "comment": "Version LEGIARTI000049624125 of D613-4 is announced in force from 2026-01-01 but its text is not in snapshot S1; the engine value shown is the unchanged G0/proposal value, not a value derived from text."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV . taux",
+   "date": "01/06/2024",
+   "situation": {
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "entreprise . date de création": "01/01/2021",
+    "dirigeant . exonérations . ACRE": "non",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activité . nature": "'libérale'",
+    "entreprise . activité . nature . libérale . réglementée": "oui",
+    "date": "01/06/2024"
+   },
+   "value_before": 21.2,
+   "value_after": 21.2,
+   "article": "D613-4",
+   "expected_from_text": 21.2,
+   "quote": "11° de l'article R. 641-1 35 076 euros 34 % 23 150 euros 21,2 %",
+   "article_version_id": "LEGIARTI000049623867",
+   "in_force": "2024-06-01..2024-07-01",
+   "text_available": true,
+   "comment": "I b) section 11° R641-1 (CIPAV): 21,2 %",
+   "aligned": true
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV . taux",
+   "date": "01/07/2024",
+   "situation": {
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "entreprise . date de création": "01/01/2021",
+    "dirigeant . exonérations . ACRE": "non",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activité . nature": "'libérale'",
+    "entreprise . activité . nature . libérale . réglementée": "oui",
+    "date": "01/07/2024"
+   },
+   "value_before": 21.2,
+   "value_after": 21.2,
+   "article": "D613-4",
+   "expected_from_text": null,
+   "quote": null,
+   "article_version_id": "LEGIARTI000049624068",
+   "text_available": false,
+   "abstain": true,
+   "comment": "Version LEGIARTI000049624068 of D613-4 is announced in force from 2024-07-01 but its text is not in snapshot S1; the engine value shown is the unchanged G0/proposal value, not a value derived from text."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV . taux",
+   "date": "01/01/2025",
+   "situation": {
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "entreprise . date de création": "01/01/2021",
+    "dirigeant . exonérations . ACRE": "non",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activité . nature": "'libérale'",
+    "entreprise . activité . nature . libérale . réglementée": "oui",
+    "date": "01/01/2025"
+   },
+   "value_before": 21.2,
+   "value_after": 21.2,
+   "article": "D613-4",
+   "expected_from_text": null,
+   "quote": null,
+   "article_version_id": "LEGIARTI000049624097",
+   "text_available": false,
+   "abstain": true,
+   "comment": "Version LEGIARTI000049624097 of D613-4 is announced in force from 2025-01-01 but its text is not in snapshot S1; the engine value shown is the unchanged G0/proposal value, not a value derived from text."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV . taux",
+   "date": "01/01/2026",
+   "situation": {
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "entreprise . date de création": "01/01/2021",
+    "dirigeant . exonérations . ACRE": "non",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activité . nature": "'libérale'",
+    "entreprise . activité . nature . libérale . réglementée": "oui",
+    "date": "01/01/2026"
+   },
+   "value_before": 21.2,
+   "value_after": 21.2,
+   "article": "D613-4",
+   "expected_from_text": null,
+   "quote": null,
+   "article_version_id": "LEGIARTI000049624125",
+   "text_available": false,
+   "abstain": true,
+   "comment": "Version LEGIARTI000049624125 of D613-4 is announced in force from 2026-01-01 but its text is not in snapshot S1; the engine value shown is the unchanged G0/proposal value, not a value derived from text."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "date": "01/06/2024",
+   "situation": {
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "entreprise . activité . nature": "'libérale'",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "date": "01/06/2024"
+   },
+   "value_before": 2532.0000000000005,
+   "value_after": 2532.0000000000005,
+   "article": "D613-4",
+   "expected_from_text": 2532,
+   "quote": "10 000 euros 34 % 6 600 euros 21,1 %",
+   "article_version_id": "LEGIARTI000049623867",
+   "in_force": "2024-06-01..2024-07-01",
+   "text_available": true,
+   "comment": "12 000 €/an x 21,1 %",
+   "aligned": true
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "date": "01/07/2024",
+   "situation": {
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "entreprise . activité . nature": "'libérale'",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "date": "01/07/2024"
+   },
+   "value_before": 2532.0000000000005,
+   "value_after": 2532.0000000000005,
+   "article": "D613-4",
+   "expected_from_text": null,
+   "quote": null,
+   "article_version_id": "LEGIARTI000049624068",
+   "text_available": false,
+   "abstain": true,
+   "comment": "Version LEGIARTI000049624068 of D613-4 is announced in force from 2024-07-01 but its text is not in snapshot S1; the engine value shown is the unchanged G0/proposal value, not a value derived from text."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "date": "01/01/2025",
+   "situation": {
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "entreprise . activité . nature": "'libérale'",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "date": "01/01/2025"
+   },
+   "value_before": 2532.0000000000005,
+   "value_after": 2532.0000000000005,
+   "article": "D613-4",
+   "expected_from_text": null,
+   "quote": null,
+   "article_version_id": "LEGIARTI000049624097",
+   "text_available": false,
+   "abstain": true,
+   "comment": "Version LEGIARTI000049624097 of D613-4 is announced in force from 2025-01-01 but its text is not in snapshot S1; the engine value shown is the unchanged G0/proposal value, not a value derived from text."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "date": "01/01/2026",
+   "situation": {
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "entreprise . activité . nature": "'libérale'",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "date": "01/01/2026"
+   },
+   "value_before": 2532.0000000000005,
+   "value_after": 2532.0000000000005,
+   "article": "D613-4",
+   "expected_from_text": null,
+   "quote": null,
+   "article_version_id": "LEGIARTI000049624125",
+   "text_available": false,
+   "abstain": true,
+   "comment": "Version LEGIARTI000049624125 of D613-4 is announced in force from 2026-01-01 but its text is not in snapshot S1; the engine value shown is the unchanged G0/proposal value, not a value derived from text."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "date": "01/06/2024",
+   "situation": {
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "entreprise . date de création": "01/01/2021",
+    "dirigeant . exonérations . ACRE": "non",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activité . nature": "'artisanale'",
+    "entreprise . activités . service ou vente": "'service'",
+    "date": "01/06/2024"
+   },
+   "value_before": 2544,
+   "value_after": 2544,
+   "article": "D613-4",
+   "expected_from_text": 2544,
+   "quote": "2° du 1 de l'article 50-0 du code général des impôt 46 300 euros 50 % 23 150 euros 21,2 %",
+   "article_version_id": "LEGIARTI000049623867",
+   "in_force": "2024-06-01..2024-07-01",
+   "text_available": true,
+   "comment": "12 000 €/an x 21,2 %",
+   "aligned": true
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "date": "01/07/2024",
+   "situation": {
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "entreprise . date de création": "01/01/2021",
+    "dirigeant . exonérations . ACRE": "non",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activité . nature": "'artisanale'",
+    "entreprise . activités . service ou vente": "'service'",
+    "date": "01/07/2024"
+   },
+   "value_before": 2544,
+   "value_after": 2544,
+   "article": "D613-4",
+   "expected_from_text": null,
+   "quote": null,
+   "article_version_id": "LEGIARTI000049624068",
+   "text_available": false,
+   "abstain": true,
+   "comment": "Version LEGIARTI000049624068 of D613-4 is announced in force from 2024-07-01 but its text is not in snapshot S1; the engine value shown is the unchanged G0/proposal value, not a value derived from text."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "date": "01/01/2025",
+   "situation": {
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "entreprise . date de création": "01/01/2021",
+    "dirigeant . exonérations . ACRE": "non",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activité . nature": "'artisanale'",
+    "entreprise . activités . service ou vente": "'service'",
+    "date": "01/01/2025"
+   },
+   "value_before": 2544,
+   "value_after": 2544,
+   "article": "D613-4",
+   "expected_from_text": null,
+   "quote": null,
+   "article_version_id": "LEGIARTI000049624097",
+   "text_available": false,
+   "abstain": true,
+   "comment": "Version LEGIARTI000049624097 of D613-4 is announced in force from 2025-01-01 but its text is not in snapshot S1; the engine value shown is the unchanged G0/proposal value, not a value derived from text."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "date": "01/01/2026",
+   "situation": {
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "entreprise . date de création": "01/01/2021",
+    "dirigeant . exonérations . ACRE": "non",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activité . nature": "'artisanale'",
+    "entreprise . activités . service ou vente": "'service'",
+    "date": "01/01/2026"
+   },
+   "value_before": 2544,
+   "value_after": 2544,
+   "article": "D613-4",
+   "expected_from_text": null,
+   "quote": null,
+   "article_version_id": "LEGIARTI000049624125",
+   "text_available": false,
+   "abstain": true,
+   "comment": "Version LEGIARTI000049624125 of D613-4 is announced in force from 2026-01-01 but its text is not in snapshot S1; the engine value shown is the unchanged G0/proposal value, not a value derived from text."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "date": "01/06/2024",
+   "situation": {
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "entreprise . date de création": "01/01/2021",
+    "dirigeant . exonérations . ACRE": "non",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activité . nature": "'commerciale'",
+    "entreprise . activités . service ou vente": "'vente'",
+    "date": "01/06/2024"
+   },
+   "value_before": 1476,
+   "value_after": 1476,
+   "article": "D613-4",
+   "expected_from_text": 1476,
+   "quote": "79 828 euros 71 % 23 150 euros 12,3 %",
+   "article_version_id": "LEGIARTI000049623867",
+   "in_force": "2024-06-01..2024-07-01",
+   "text_available": true,
+   "comment": "12 000 €/an x 12,3 %",
+   "aligned": true
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "date": "01/07/2024",
+   "situation": {
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "entreprise . date de création": "01/01/2021",
+    "dirigeant . exonérations . ACRE": "non",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activité . nature": "'commerciale'",
+    "entreprise . activités . service ou vente": "'vente'",
+    "date": "01/07/2024"
+   },
+   "value_before": 1476,
+   "value_after": 1476,
+   "article": "D613-4",
+   "expected_from_text": null,
+   "quote": null,
+   "article_version_id": "LEGIARTI000049624068",
+   "text_available": false,
+   "abstain": true,
+   "comment": "Version LEGIARTI000049624068 of D613-4 is announced in force from 2024-07-01 but its text is not in snapshot S1; the engine value shown is the unchanged G0/proposal value, not a value derived from text."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "date": "01/01/2025",
+   "situation": {
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "entreprise . date de création": "01/01/2021",
+    "dirigeant . exonérations . ACRE": "non",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activité . nature": "'commerciale'",
+    "entreprise . activités . service ou vente": "'vente'",
+    "date": "01/01/2025"
+   },
+   "value_before": 1476,
+   "value_after": 1476,
+   "article": "D613-4",
+   "expected_from_text": null,
+   "quote": null,
+   "article_version_id": "LEGIARTI000049624097",
+   "text_available": false,
+   "abstain": true,
+   "comment": "Version LEGIARTI000049624097 of D613-4 is announced in force from 2025-01-01 but its text is not in snapshot S1; the engine value shown is the unchanged G0/proposal value, not a value derived from text."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "date": "01/01/2026",
+   "situation": {
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "entreprise . date de création": "01/01/2021",
+    "dirigeant . exonérations . ACRE": "non",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activité . nature": "'commerciale'",
+    "entreprise . activités . service ou vente": "'vente'",
+    "date": "01/01/2026"
+   },
+   "value_before": 1476,
+   "value_after": 1476,
+   "article": "D613-4",
+   "expected_from_text": null,
+   "quote": null,
+   "article_version_id": "LEGIARTI000049624125",
+   "text_available": false,
+   "abstain": true,
+   "comment": "Version LEGIARTI000049624125 of D613-4 is announced in force from 2026-01-01 but its text is not in snapshot S1; the engine value shown is the unchanged G0/proposal value, not a value derived from text."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "date": "01/06/2024",
+   "situation": {
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "entreprise . date de création": "01/01/2019",
+    "dirigeant . exonérations . ACRE": "non",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activité . nature": "'libérale'",
+    "entreprise . activité . nature . libérale . réglementée": "oui",
+    "date": "01/06/2024"
+   },
+   "value_before": 2544,
+   "value_after": 2544,
+   "article": "D613-4",
+   "expected_from_text": 2544,
+   "quote": "11° de l'article R. 641-1 35 076 euros 34 % 23 150 euros 21,2 %",
+   "article_version_id": "LEGIARTI000049623867",
+   "in_force": "2024-06-01..2024-07-01",
+   "text_available": true,
+   "comment": "12 000 €/an x 21,2 % (AE created 2019; for an AE created >= 04/2020 the engine returns 1 452 = pre-existing bug T0 L0006 / T1a-09)",
+   "aligned": true
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "date": "01/07/2024",
+   "situation": {
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "entreprise . date de création": "01/01/2019",
+    "dirigeant . exonérations . ACRE": "non",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activité . nature": "'libérale'",
+    "entreprise . activité . nature . libérale . réglementée": "oui",
+    "date": "01/07/2024"
+   },
+   "value_before": 2544,
+   "value_after": 2544,
+   "article": "D613-4",
+   "expected_from_text": null,
+   "quote": null,
+   "article_version_id": "LEGIARTI000049624068",
+   "text_available": false,
+   "abstain": true,
+   "comment": "Version LEGIARTI000049624068 of D613-4 is announced in force from 2024-07-01 but its text is not in snapshot S1; the engine value shown is the unchanged G0/proposal value, not a value derived from text."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "date": "01/01/2025",
+   "situation": {
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "entreprise . date de création": "01/01/2019",
+    "dirigeant . exonérations . ACRE": "non",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activité . nature": "'libérale'",
+    "entreprise . activité . nature . libérale . réglementée": "oui",
+    "date": "01/01/2025"
+   },
+   "value_before": 2544,
+   "value_after": 2544,
+   "article": "D613-4",
+   "expected_from_text": null,
+   "quote": null,
+   "article_version_id": "LEGIARTI000049624097",
+   "text_available": false,
+   "abstain": true,
+   "comment": "Version LEGIARTI000049624097 of D613-4 is announced in force from 2025-01-01 but its text is not in snapshot S1; the engine value shown is the unchanged G0/proposal value, not a value derived from text."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "date": "01/01/2026",
+   "situation": {
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "entreprise . date de création": "01/01/2019",
+    "dirigeant . exonérations . ACRE": "non",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activité . nature": "'libérale'",
+    "entreprise . activité . nature . libérale . réglementée": "oui",
+    "date": "01/01/2026"
+   },
+   "value_before": 2544,
+   "value_after": 2544,
+   "article": "D613-4",
+   "expected_from_text": null,
+   "quote": null,
+   "article_version_id": "LEGIARTI000049624125",
+   "text_available": false,
+   "abstain": true,
+   "comment": "Version LEGIARTI000049624125 of D613-4 is announced in force from 2026-01-01 but its text is not in snapshot S1; the engine value shown is the unchanged G0/proposal value, not a value derived from text."
+  },
+  {
+   "rule": "protection sociale . retraite . complémentaire . RCI . revenu cotisé auto-entrepreneur",
+   "date": "01/06/2024",
+   "situation": {
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "entreprise . date de création": "01/01/2021",
+    "dirigeant . exonérations . ACRE": "non",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activité . nature": "'commerciale'",
+    "entreprise . activités . service ou vente": "'vente'",
+    "date": "01/06/2024"
+   },
+   "value_before": 243.59999999999997,
+   "value_after": 243.59999999999997,
+   "article": "D613-6",
+   "expected_from_text": 243.54,
+   "quote": "Cotisation d'assurance vieillesse complémentaire 16,50 %",
+   "article_version_id": "LEGIARTI000049623885",
+   "in_force": "2024-06-01..2024-07-01",
+   "text_available": true,
+   "comment": "a) share 16,50 % of 12 000 x 12,3 % = 243,54; rule uses rounded 2,03 % -> 243,6",
+   "aligned": true
+  },
+  {
+   "rule": "protection sociale . retraite . complémentaire . RCI . revenu cotisé auto-entrepreneur",
+   "date": "01/07/2024",
+   "situation": {
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "entreprise . date de création": "01/01/2021",
+    "dirigeant . exonérations . ACRE": "non",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activité . nature": "'commerciale'",
+    "entreprise . activités . service ou vente": "'vente'",
+    "date": "01/07/2024"
+   },
+   "value_before": 243.59999999999997,
+   "value_after": 243.59999999999997,
+   "article": "D613-6",
+   "expected_from_text": null,
+   "quote": null,
+   "article_version_id": "LEGIARTI000049625264",
+   "text_available": false,
+   "abstain": true,
+   "comment": "Version LEGIARTI000049625264 of D613-6 is announced in force from 2024-07-01 but its text is not in snapshot S1; the engine value shown is the unchanged G0/proposal value, not a value derived from text."
+  },
+  {
+   "rule": "protection sociale . retraite . complémentaire . RCI . revenu cotisé auto-entrepreneur",
+   "date": "01/01/2025",
+   "situation": {
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "entreprise . date de création": "01/01/2021",
+    "dirigeant . exonérations . ACRE": "non",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activité . nature": "'commerciale'",
+    "entreprise . activités . service ou vente": "'vente'",
+    "date": "01/01/2025"
+   },
+   "value_before": 243.59999999999997,
+   "value_after": 243.59999999999997,
+   "article": "D613-6",
+   "expected_from_text": null,
+   "quote": null,
+   "article_version_id": "LEGIARTI000049625405",
+   "text_available": false,
+   "abstain": true,
+   "comment": "Version LEGIARTI000049625405 of D613-6 is announced in force from 2025-01-01 but its text is not in snapshot S1; the engine value shown is the unchanged G0/proposal value, not a value derived from text."
+  },
+  {
+   "rule": "protection sociale . retraite . complémentaire . RCI . revenu cotisé auto-entrepreneur",
+   "date": "01/01/2026",
+   "situation": {
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "entreprise . date de création": "01/01/2021",
+    "dirigeant . exonérations . ACRE": "non",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activité . nature": "'commerciale'",
+    "entreprise . activités . service ou vente": "'vente'",
+    "date": "01/01/2026"
+   },
+   "value_before": 243.59999999999997,
+   "value_after": 243.59999999999997,
+   "article": "D613-6",
+   "expected_from_text": null,
+   "quote": null,
+   "article_version_id": "LEGIARTI000049625445",
+   "text_available": false,
+   "abstain": true,
+   "comment": "Version LEGIARTI000049625445 of D613-6 is announced in force from 2026-01-01 but its text is not in snapshot S1; the engine value shown is the unchanged G0/proposal value, not a value derived from text."
+  },
+  {
+   "rule": "protection sociale . retraite . complémentaire . RCI . revenu cotisé auto-entrepreneur",
+   "date": "01/06/2024",
+   "situation": {
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "entreprise . date de création": "01/01/2021",
+    "dirigeant . exonérations . ACRE": "non",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activité . nature": "'artisanale'",
+    "entreprise . activités . service ou vente": "'service'",
+    "date": "01/06/2024"
+   },
+   "value_before": 420,
+   "value_after": 420,
+   "article": "D613-6",
+   "expected_from_text": 419.76,
+   "quote": "Cotisation d'assurance vieillesse complémentaire 16,50 %",
+   "article_version_id": "LEGIARTI000049623885",
+   "in_force": "2024-06-01..2024-07-01",
+   "text_available": true,
+   "comment": "d) share 16,50 % of 12 000 x 21,2 % = 419,76; rule uses rounded 3,50 % -> 420",
+   "aligned": true
+  },
+  {
+   "rule": "protection sociale . retraite . complémentaire . RCI . revenu cotisé auto-entrepreneur",
+   "date": "01/07/2024",
+   "situation": {
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "entreprise . date de création": "01/01/2021",
+    "dirigeant . exonérations . ACRE": "non",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activité . nature": "'artisanale'",
+    "entreprise . activités . service ou vente": "'service'",
+    "date": "01/07/2024"
+   },
+   "value_before": 420,
+   "value_after": 420,
+   "article": "D613-6",
+   "expected_from_text": null,
+   "quote": null,
+   "article_version_id": "LEGIARTI000049625264",
+   "text_available": false,
+   "abstain": true,
+   "comment": "Version LEGIARTI000049625264 of D613-6 is announced in force from 2024-07-01 but its text is not in snapshot S1; the engine value shown is the unchanged G0/proposal value, not a value derived from text."
+  },
+  {
+   "rule": "protection sociale . retraite . complémentaire . RCI . revenu cotisé auto-entrepreneur",
+   "date": "01/01/2025",
+   "situation": {
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "entreprise . date de création": "01/01/2021",
+    "dirigeant . exonérations . ACRE": "non",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activité . nature": "'artisanale'",
+    "entreprise . activités . service ou vente": "'service'",
+    "date": "01/01/2025"
+   },
+   "value_before": 420,
+   "value_after": 420,
+   "article": "D613-6",
+   "expected_from_text": null,
+   "quote": null,
+   "article_version_id": "LEGIARTI000049625405",
+   "text_available": false,
+   "abstain": true,
+   "comment": "Version LEGIARTI000049625405 of D613-6 is announced in force from 2025-01-01 but its text is not in snapshot S1; the engine value shown is the unchanged G0/proposal value, not a value derived from text."
+  },
+  {
+   "rule": "protection sociale . retraite . complémentaire . RCI . revenu cotisé auto-entrepreneur",
+   "date": "01/01/2026",
+   "situation": {
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "entreprise . date de création": "01/01/2021",
+    "dirigeant . exonérations . ACRE": "non",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activité . nature": "'artisanale'",
+    "entreprise . activités . service ou vente": "'service'",
+    "date": "01/01/2026"
+   },
+   "value_before": 420,
+   "value_after": 420,
+   "article": "D613-6",
+   "expected_from_text": null,
+   "quote": null,
+   "article_version_id": "LEGIARTI000049625445",
+   "text_available": false,
+   "abstain": true,
+   "comment": "Version LEGIARTI000049625445 of D613-6 is announced in force from 2026-01-01 but its text is not in snapshot S1; the engine value shown is the unchanged G0/proposal value, not a value derived from text."
+  },
+  {
+   "rule": "protection sociale . retraite . complémentaire . RCI . revenu cotisé auto-entrepreneur",
+   "date": "01/06/2024",
+   "situation": {
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "entreprise . date de création": "01/01/2021",
+    "dirigeant . exonérations . ACRE": "non",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activité . nature": "'libérale'",
+    "entreprise . activité . nature . libérale . réglementée": "non",
+    "date": "01/06/2024"
+   },
+   "value_before": 0,
+   "value_after": 0,
+   "article": "D613-6",
+   "expected_from_text": 0,
+   "quote": "Cotisation d'assurance maladie maternité 3,90 % Cotisation d'assurance invalidité-décès 4,10 % Cotisations d'assurance vieillesse de base mentionnées aux I et II de l'article D. 633-3 du code de la sécurité sociale 55,50 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale 36,50 %",
+   "article_version_id": "LEGIARTI000049623885",
+   "in_force": "2024-06-01..2024-07-01",
+   "text_available": true,
+   "comment": "e) lists no complementary-pension share -> 0",
+   "aligned": true
+  },
+  {
+   "rule": "protection sociale . retraite . complémentaire . RCI . revenu cotisé auto-entrepreneur",
+   "date": "01/07/2024",
+   "situation": {
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "entreprise . date de création": "01/01/2021",
+    "dirigeant . exonérations . ACRE": "non",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activité . nature": "'libérale'",
+    "entreprise . activité . nature . libérale . réglementée": "non",
+    "date": "01/07/2024"
+   },
+   "value_before": 0,
+   "value_after": 0,
+   "article": "D613-6",
+   "expected_from_text": null,
+   "quote": null,
+   "article_version_id": "LEGIARTI000049625264",
+   "text_available": false,
+   "abstain": true,
+   "comment": "Version LEGIARTI000049625264 of D613-6 is announced in force from 2024-07-01 but its text is not in snapshot S1; the engine value shown is the unchanged G0/proposal value, not a value derived from text."
+  },
+  {
+   "rule": "protection sociale . retraite . complémentaire . RCI . revenu cotisé auto-entrepreneur",
+   "date": "01/01/2025",
+   "situation": {
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "entreprise . date de création": "01/01/2021",
+    "dirigeant . exonérations . ACRE": "non",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activité . nature": "'libérale'",
+    "entreprise . activité . nature . libérale . réglementée": "non",
+    "date": "01/01/2025"
+   },
+   "value_before": 0,
+   "value_after": 0,
+   "article": "D613-6",
+   "expected_from_text": null,
+   "quote": null,
+   "article_version_id": "LEGIARTI000049625405",
+   "text_available": false,
+   "abstain": true,
+   "comment": "Version LEGIARTI000049625405 of D613-6 is announced in force from 2025-01-01 but its text is not in snapshot S1; the engine value shown is the unchanged G0/proposal value, not a value derived from text."
+  },
+  {
+   "rule": "protection sociale . retraite . complémentaire . RCI . revenu cotisé auto-entrepreneur",
+   "date": "01/01/2026",
+   "situation": {
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "entreprise . date de création": "01/01/2021",
+    "dirigeant . exonérations . ACRE": "non",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activité . nature": "'libérale'",
+    "entreprise . activité . nature . libérale . réglementée": "non",
+    "date": "01/01/2026"
+   },
+   "value_before": 0,
+   "value_after": 0,
+   "article": "D613-6",
+   "expected_from_text": null,
+   "quote": null,
+   "article_version_id": "LEGIARTI000049625445",
+   "text_available": false,
+   "abstain": true,
+   "comment": "Version LEGIARTI000049625445 of D613-6 is announced in force from 2026-01-01 but its text is not in snapshot S1; the engine value shown is the unchanged G0/proposal value, not a value derived from text."
+  }
+ ],
+ "abstentions": [
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC",
+   "date": "01/07/2024",
+   "article": "D613-4",
+   "announced_version_id": "LEGIARTI000049624068",
+   "reason": "D613-4 version LEGIARTI000049624068 (Décret n°2024-484 du 30 mai 2024) is announced for this date by id and date only; S1 contains only the text of the version in force 2024-06-01..2024-07-01. No available text states the rate/split for this date, so no value is proposed and the current rule value is not asserted to be correct."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC",
+   "date": "01/01/2025",
+   "article": "D613-4",
+   "announced_version_id": "LEGIARTI000049624097",
+   "reason": "D613-4 version LEGIARTI000049624097 (Décret n°2024-484 du 30 mai 2024) is announced for this date by id and date only; S1 contains only the text of the version in force 2024-06-01..2024-07-01. No available text states the rate/split for this date, so no value is proposed and the current rule value is not asserted to be correct."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC",
+   "date": "01/01/2026",
+   "article": "D613-4",
+   "announced_version_id": "LEGIARTI000049624125",
+   "reason": "D613-4 version LEGIARTI000049624125 (Décret n°2024-484 du 30 mai 2024) is announced for this date by id and date only; S1 contains only the text of the version in force 2024-06-01..2024-07-01. No available text states the rate/split for this date, so no value is proposed and the current rule value is not asserted to be correct."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BIC",
+   "date": "01/07/2024",
+   "article": "D613-4",
+   "announced_version_id": "LEGIARTI000049624068",
+   "reason": "D613-4 version LEGIARTI000049624068 (Décret n°2024-484 du 30 mai 2024) is announced for this date by id and date only; S1 contains only the text of the version in force 2024-06-01..2024-07-01. No available text states the rate/split for this date, so no value is proposed and the current rule value is not asserted to be correct."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BIC",
+   "date": "01/01/2025",
+   "article": "D613-4",
+   "announced_version_id": "LEGIARTI000049624097",
+   "reason": "D613-4 version LEGIARTI000049624097 (Décret n°2024-484 du 30 mai 2024) is announced for this date by id and date only; S1 contains only the text of the version in force 2024-06-01..2024-07-01. No available text states the rate/split for this date, so no value is proposed and the current rule value is not asserted to be correct."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BIC",
+   "date": "01/01/2026",
+   "article": "D613-4",
+   "announced_version_id": "LEGIARTI000049624125",
+   "reason": "D613-4 version LEGIARTI000049624125 (Décret n°2024-484 du 30 mai 2024) is announced for this date by id and date only; S1 contains only the text of the version in force 2024-06-01..2024-07-01. No available text states the rate/split for this date, so no value is proposed and the current rule value is not asserted to be correct."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux vente restauration hébergement",
+   "date": "01/07/2024",
+   "article": "D613-4",
+   "announced_version_id": "LEGIARTI000049624068",
+   "reason": "D613-4 version LEGIARTI000049624068 (Décret n°2024-484 du 30 mai 2024) is announced for this date by id and date only; S1 contains only the text of the version in force 2024-06-01..2024-07-01. No available text states the rate/split for this date, so no value is proposed and the current rule value is not asserted to be correct."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux vente restauration hébergement",
+   "date": "01/01/2025",
+   "article": "D613-4",
+   "announced_version_id": "LEGIARTI000049624097",
+   "reason": "D613-4 version LEGIARTI000049624097 (Décret n°2024-484 du 30 mai 2024) is announced for this date by id and date only; S1 contains only the text of the version in force 2024-06-01..2024-07-01. No available text states the rate/split for this date, so no value is proposed and the current rule value is not asserted to be correct."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux vente restauration hébergement",
+   "date": "01/01/2026",
+   "article": "D613-4",
+   "announced_version_id": "LEGIARTI000049624125",
+   "reason": "D613-4 version LEGIARTI000049624125 (Décret n°2024-484 du 30 mai 2024) is announced for this date by id and date only; S1 contains only the text of the version in force 2024-06-01..2024-07-01. No available text states the rate/split for this date, so no value is proposed and the current rule value is not asserted to be correct."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV . taux",
+   "date": "01/07/2024",
+   "article": "D613-4",
+   "announced_version_id": "LEGIARTI000049624068",
+   "reason": "D613-4 version LEGIARTI000049624068 (Décret n°2024-484 du 30 mai 2024) is announced for this date by id and date only; S1 contains only the text of the version in force 2024-06-01..2024-07-01. No available text states the rate/split for this date, so no value is proposed and the current rule value is not asserted to be correct."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV . taux",
+   "date": "01/01/2025",
+   "article": "D613-4",
+   "announced_version_id": "LEGIARTI000049624097",
+   "reason": "D613-4 version LEGIARTI000049624097 (Décret n°2024-484 du 30 mai 2024) is announced for this date by id and date only; S1 contains only the text of the version in force 2024-06-01..2024-07-01. No available text states the rate/split for this date, so no value is proposed and the current rule value is not asserted to be correct."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV . taux",
+   "date": "01/01/2026",
+   "article": "D613-4",
+   "announced_version_id": "LEGIARTI000049624125",
+   "reason": "D613-4 version LEGIARTI000049624125 (Décret n°2024-484 du 30 mai 2024) is announced for this date by id and date only; S1 contains only the text of the version in force 2024-06-01..2024-07-01. No available text states the rate/split for this date, so no value is proposed and the current rule value is not asserted to be correct."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "date": "01/07/2024",
+   "article": "D613-4",
+   "announced_version_id": "LEGIARTI000049624068",
+   "reason": "D613-4 version LEGIARTI000049624068 (Décret n°2024-484 du 30 mai 2024) is announced for this date by id and date only; S1 contains only the text of the version in force 2024-06-01..2024-07-01. No available text states the rate/split for this date, so no value is proposed and the current rule value is not asserted to be correct."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "date": "01/01/2025",
+   "article": "D613-4",
+   "announced_version_id": "LEGIARTI000049624097",
+   "reason": "D613-4 version LEGIARTI000049624097 (Décret n°2024-484 du 30 mai 2024) is announced for this date by id and date only; S1 contains only the text of the version in force 2024-06-01..2024-07-01. No available text states the rate/split for this date, so no value is proposed and the current rule value is not asserted to be correct."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "date": "01/01/2026",
+   "article": "D613-4",
+   "announced_version_id": "LEGIARTI000049624125",
+   "reason": "D613-4 version LEGIARTI000049624125 (Décret n°2024-484 du 30 mai 2024) is announced for this date by id and date only; S1 contains only the text of the version in force 2024-06-01..2024-07-01. No available text states the rate/split for this date, so no value is proposed and the current rule value is not asserted to be correct."
+  },
+  {
+   "rule": "protection sociale . retraite . complémentaire . RCI . revenu cotisé auto-entrepreneur",
+   "date": "01/07/2024",
+   "article": "D613-6",
+   "announced_version_id": "LEGIARTI000049625264",
+   "reason": "D613-6 version LEGIARTI000049625264 (Décret n°2024-484 du 30 mai 2024) is announced for this date by id and date only; S1 contains only the text of the version in force 2024-06-01..2024-07-01. No available text states the rate/split for this date, so no value is proposed and the current rule value is not asserted to be correct."
+  },
+  {
+   "rule": "protection sociale . retraite . complémentaire . RCI . revenu cotisé auto-entrepreneur",
+   "date": "01/01/2025",
+   "article": "D613-6",
+   "announced_version_id": "LEGIARTI000049625405",
+   "reason": "D613-6 version LEGIARTI000049625405 (Décret n°2024-484 du 30 mai 2024) is announced for this date by id and date only; S1 contains only the text of the version in force 2024-06-01..2024-07-01. No available text states the rate/split for this date, so no value is proposed and the current rule value is not asserted to be correct."
+  },
+  {
+   "rule": "protection sociale . retraite . complémentaire . RCI . revenu cotisé auto-entrepreneur",
+   "date": "01/01/2026",
+   "article": "D613-6",
+   "announced_version_id": "LEGIARTI000049625445",
+   "reason": "D613-6 version LEGIARTI000049625445 (Décret n°2024-484 du 30 mai 2024) is announced for this date by id and date only; S1 contains only the text of the version in force 2024-06-01..2024-07-01. No available text states the rate/split for this date, so no value is proposed and the current rule value is not asserted to be correct."
+  }
+ ],
+ "approval": "none recorded",
+ "notes": "S1 vs S0: only D613-4 and D613-6 changed, both re-versioned on 2024-06-01 by Décret n°2024-484 du 30 mai 2024 with no substantive text change (D613-4: whitespace only; D613-6: identical). The same decree announces three further versions of each article (2024-07-01, 2025-01-01, 2026-01-01) whose text is NOT in the snapshot; every value for those dates is therefore abstained. No value from outside the corpus was used. Engine values before and after the proposal are identical by construction. Pre-existing, S1-independent defects remain: CIPAV AE created >= 04/2020 charged 12,1 % (T1a-09 FAILED), D632-1 2024 floor (L0048 BROKEN), meublés de tourisme 6 % and D613-6 split not implemented. See output/NOTES.md.",
+ "sophon_reports": [
+  "work/sophon/reports/T1a_revalidate_S1_G0.json",
+  "work/sophon/reports/T1a_revalidate_S1_G0.md",
+  "work/sophon/reports/T1a_revalidate_cmd.json",
+  "work/sophon/reports/T1a_revalidate_S1_PT1a.json",
+  "work/sophon/reports/T1a_revalidate_S1_PT1a.md",
+  "work/sophon/reports/T1a_revalidate_PT1a_cmd.json",
+  "work/sophon/reports/T1a_evidence.json",
+  "work/sophon/reports/T1a_evidence.md",
+  "work/sophon/reports/T1a_report_cmd.json",
+  "work/sophon/reports/T1a_verify-store.json",
+  "work/sophon/reports/T1a_asof_D613-4_2024-07-01.json"
+ ],
+ "sophon_snapshots": {
+  "law": [
+   "S0",
+   "S1"
+  ],
+  "rules": [
+   "G0",
+   "P_T1a (proposal copy)"
+  ]
+ },
+ "sophon_links_added": [
+  {
+   "spec_id": "T1a-01",
+   "link_id": "L0056",
+   "status": "VERIFIED"
+  },
+  {
+   "spec_id": "T1a-02",
+   "link_id": "L0057",
+   "status": "VERIFIED"
+  },
+  {
+   "spec_id": "T1a-03",
+   "link_id": "L0058",
+   "status": "VERIFIED"
+  },
+  {
+   "spec_id": "T1a-04",
+   "link_id": "L0059",
+   "status": "VERIFIED"
+  },
+  {
+   "spec_id": "T1a-05",
+   "link_id": "L0060",
+   "status": "VERIFIED"
+  },
+  {
+   "spec_id": "T1a-06",
+   "link_id": "L0061",
+   "status": "VERIFIED"
+  },
+  {
+   "spec_id": "T1a-07",
+   "link_id": "L0062",
+   "status": "VERIFIED"
+  },
+  {
+   "spec_id": "T1a-08",
+   "link_id": "L0063",
+   "status": "VERIFIED"
+  },
+  {
+   "spec_id": "T1a-09",
+   "link_id": "L0064",
+   "status": "FAILED"
+  },
+  {
+   "spec_id": "T1a-10",
+   "link_id": "L0065",
+   "status": "UNKNOWN"
+  },
+  {
+   "spec_id": "T1a-11",
+   "link_id": "L0066",
+   "status": "UNKNOWN"
+  },
+  {
+   "spec_id": "T1a-12",
+   "link_id": "L0067",
+   "status": "UNKNOWN"
+  },
+  {
+   "spec_id": "T1a-13",
+   "link_id": "L0068",
+   "status": "UNKNOWN"
+  },
+  {
+   "spec_id": "T1a-14",
+   "link_id": "L0069",
+   "status": "UNKNOWN"
+  },
+  {
+   "spec_id": "T1a-15",
+   "link_id": "L0070",
+   "status": "VERIFIED"
+  },
+  {
+   "spec_id": "T1a-16",
+   "link_id": "L0071",
+   "status": "VERIFIED"
+  },
+  {
+   "spec_id": "T1a-17",
+   "link_id": "L0072",
+   "status": "VERIFIED"
+  },
+  {
+   "spec_id": "T1a-18",
+   "link_id": "L0073",
+   "status": "UNKNOWN"
+  },
+  {
+   "spec_id": "T1a-19",
+   "link_id": "L0074",
+   "status": "UNKNOWN"
+  }
+ ],
+ "self_reported_tool_calls": 22
+}

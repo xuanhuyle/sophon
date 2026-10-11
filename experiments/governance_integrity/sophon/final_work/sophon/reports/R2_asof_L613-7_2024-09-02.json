@@ -1,0 +1,288 @@
+{
+ "as_of": "2024-09-02",
+ "question": {
+  "rule": null,
+  "article": "L613-7"
+ },
+ "generated_at": "2026-10-11T18:06:57+00:00",
+ "links": [
+  {
+   "link_id": "L0009",
+   "recorded_at": "2026-10-11T16:46:32+00:00",
+   "status": "INFERRED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "rules_snapshot": "G0",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/auto-entrepreneur.publicodes",
+   "rule_file_sha256": "145ca5ae234bd65d97f3d5591b11a6fd518382d943767b889fcb7a56d3c2cdb7",
+   "article": "L613-7",
+   "article_id": "LEGIARTI000048683570",
+   "article_dateDebut": "2023-12-28",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "e7d236dab3bf67e7bcadd8e03aabc43924d795231fddc1d0b5cd5d666353ad99",
+   "law_snapshot": "S0",
+   "quote": "en appliquant au montant de leur chiffre d'affaires ou de leurs recettes effectivement réalisés le mois ou le trimestre précédent un taux global fixé par décret pour chaque catégorie d'activité",
+   "claim": "AE contributions = turnover × a global rate per activity category (rates in D613-4).",
+   "check": null,
+   "check_result": null,
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0010",
+   "recorded_at": "2026-10-11T16:46:33+00:00",
+   "status": "INFERRED",
+   "rule": "dirigeant . auto-entrepreneur . DROM",
+   "rules_snapshot": "G0",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/exonérations.publicodes",
+   "rule_file_sha256": "eb00c5dff98bbbceb5f5d9dc96eff03f5c8d50d8b1806808cd995fd7519c31a0",
+   "article": "L613-7",
+   "article_id": "LEGIARTI000048683570",
+   "article_dateDebut": "2023-12-28",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "e7d236dab3bf67e7bcadd8e03aabc43924d795231fddc1d0b5cd5d666353ad99",
+   "law_snapshot": "S0",
+   "quote": "Un taux global différent peut être fixé par décret pour les périodes au cours desquelles le travailleur indépendant est éligible à une exonération de cotisations et de contributions de sécurité sociale",
+   "claim": "The DROM reduced rates are a 'different global rate' for exemption periods (decree D756-5).",
+   "check": null,
+   "check_result": null,
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0011",
+   "recorded_at": "2026-10-11T16:46:34+00:00",
+   "status": "INFERRED",
+   "rule": "dirigeant . exonérations . ACRE",
+   "rules_snapshot": "G0",
+   "rule_file": "règles/dirigeant/dirigeant.publicodes",
+   "rule_file_sha256": "2b17033ed573da7fba7d744f23b999f616505b46e4a08341fa44f68e25421e16",
+   "article": "L613-7",
+   "article_id": "LEGIARTI000048683570",
+   "article_dateDebut": "2023-12-28",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "e7d236dab3bf67e7bcadd8e03aabc43924d795231fddc1d0b5cd5d666353ad99",
+   "law_snapshot": "S0",
+   "quote": "Un taux global différent peut être fixé par décret pour les périodes au cours desquelles le travailleur indépendant est éligible à une exonération de cotisations et de contributions de sécurité sociale",
+   "claim": "AE Acre = reduced global rate (library: 50 % of the rate, 12,1 % for CIPAV); the decree fixing these reduced rates is NOT in the bounded set, so the 50 %/12,1 % values cannot be verified.",
+   "check": null,
+   "check_result": null,
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0012",
+   "recorded_at": "2026-10-11T16:46:35+00:00",
+   "status": "VERIFIED",
+   "rule": "entreprise . imposition . régime . micro-entreprise . revenu abattu",
+   "rules_snapshot": "G0",
+   "rule_file": "règles/entreprise/imposition.publicodes",
+   "rule_file_sha256": "a3dbbf2c0c6e7a26b88fadd3d0bc75f557e8ac7383055d166a7fb16a3057d5cc",
+   "article": "L613-7",
+   "article_id": "LEGIARTI000048683570",
+   "article_dateDebut": "2023-12-28",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "e7d236dab3bf67e7bcadd8e03aabc43924d795231fddc1d0b5cd5d666353ad99",
+   "law_snapshot": "S0",
+   "quote": "après application d'un taux d'abattement de 71 % lorsqu'elles relèvent du 1° du 1 de l'article 50-0 du code général des impôts, de 50 % lorsqu'elles relèvent du 2° du même 1 et de 34 % lorsqu'elles relèvent de l'article 102 ter du même code",
+   "claim": "34 % abattement for BNC (102 ter): 12 000 × (1 − 0,34) = 7 920 €/an (rule is the fiscal abattement; the article uses it for benefits).",
+   "check": {
+    "rule": "entreprise . imposition . régime . micro-entreprise . revenu abattu",
+    "situation": {
+     "date": "01/05/2024",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "entreprise . activité . nature": "'libérale'",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "non"
+    },
+    "expect": 7920.0,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 7920.000000000116,
+    "expected": 7920.0,
+    "unit": "€/an",
+    "missing_variables": [
+     "entreprise . activité . nature . libérale . réglementée",
+     "entreprise . activités . revenus mixtes",
+     "entreprise . activités",
+     "entreprise . activités . commerciale",
+     "entreprise . activités . artisanale",
+     "entreprise . activités . libérale"
+    ],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0013",
+   "recorded_at": "2026-10-11T16:46:36+00:00",
+   "status": "UNKNOWN",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "rules_snapshot": "G0",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/auto-entrepreneur.publicodes",
+   "rule_file_sha256": "145ca5ae234bd65d97f3d5591b11a6fd518382d943767b889fcb7a56d3c2cdb7",
+   "article": "L613-7",
+   "article_id": "LEGIARTI000048683570",
+   "article_dateDebut": "2023-12-28",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "e7d236dab3bf67e7bcadd8e03aabc43924d795231fddc1d0b5cd5d666353ad99",
+   "law_snapshot": "S0",
+   "quote": "peuvent demander que leurs cotisations ne soient pas inférieures au montant minimal de cotisations de sécurité sociale",
+   "claim": "Option for AE to pay at least the minimum contributions — not implemented.",
+   "check": null,
+   "check_result": null,
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0114",
+   "recorded_at": "2026-10-11T18:06:48+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux ACRE",
+   "rules_snapshot": "G1post_R2",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/exonérations.publicodes",
+   "rule_file_sha256": "dcf5e0c265aff7f7e1b4c2eefde1a5f47bccc26f33ee1e4b883b33f2f890e71f",
+   "article": "L613-7",
+   "article_id": "LEGIARTI000048683570",
+   "article_dateDebut": "2023-12-28",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "e7d236dab3bf67e7bcadd8e03aabc43924d795231fddc1d0b5cd5d666353ad99",
+   "law_snapshot": "S4",
+   "quote": "Un taux global différent peut être fixé par décret pour les périodes au cours desquelles le travailleur indépendant est éligible à une exonération de cotisations et de contributions de sécurité sociale",
+   "claim": "L613-7 v.LEGIARTI000048683570 I delegates to a DECREE a different global rate for ACRE-eligible micro-entrepreneurs; that decree article is NOT in the bounded set. The library rule 'taux ACRE' (50 % of the normal rate during the first year for AE created >= 01/04/2020; sources cited by the rule: URSSAF FAQ, service-public.fr, outside the set) is checked here as the ENGINE value only (50 at 180 days, ACRE oui): the number 50 is not in the bounded text. On G1 the rule is 'privé: oui' and not evaluable (expected FAILED); commit 1932d654cf7a removes 'privé: oui' (G1post_R2: expected VERIFIED).",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux ACRE",
+    "situation": {
+     "date": "01/09/2024",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "établissement . commune . département . outre-mer": "non",
+     "entreprise . activité . nature": "'libérale'",
+     "dirigeant . exonérations . ACRE": "oui",
+     "entreprise . date de création": "01/03/2024",
+     "entreprise . durée d'activité": "180 jour"
+    },
+    "expect": 50.0,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 50,
+    "expected": 50.0,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  }
+ ],
+ "article_versions_known": [
+  {
+   "law_snapshot": "S0",
+   "published": "2024-05-25T23:36:37.034Z",
+   "article": "L613-7",
+   "id": "LEGIARTI000048683570",
+   "etat": "VIGUEUR",
+   "dateDebut": "2023-12-28",
+   "dateFin": "2999-01-01",
+   "in_force_on_date": true,
+   "text_sha256": "e7d236dab3bf67e7bcadd8e03aabc43924d795231fddc1d0b5cd5d666353ad99"
+  },
+  {
+   "law_snapshot": "S1",
+   "published": "2024-06-01T23:22:24.265Z",
+   "article": "L613-7",
+   "id": "LEGIARTI000048683570",
+   "etat": "VIGUEUR",
+   "dateDebut": "2023-12-28",
+   "dateFin": "2999-01-01",
+   "in_force_on_date": true,
+   "text_sha256": "e7d236dab3bf67e7bcadd8e03aabc43924d795231fddc1d0b5cd5d666353ad99"
+  },
+  {
+   "law_snapshot": "S3",
+   "published": "2024-07-17T15:37:04.165Z",
+   "article": "L613-7",
+   "id": "LEGIARTI000048683570",
+   "etat": "VIGUEUR",
+   "dateDebut": "2023-12-28",
+   "dateFin": "2999-01-01",
+   "in_force_on_date": true,
+   "text_sha256": "e7d236dab3bf67e7bcadd8e03aabc43924d795231fddc1d0b5cd5d666353ad99"
+  },
+  {
+   "law_snapshot": "S4",
+   "published": "2024-09-01T16:15:14.642Z",
+   "article": "L613-7",
+   "id": "LEGIARTI000048683570",
+   "etat": "VIGUEUR",
+   "dateDebut": "2023-12-28",
+   "dateFin": "2999-01-01",
+   "in_force_on_date": true,
+   "text_sha256": "e7d236dab3bf67e7bcadd8e03aabc43924d795231fddc1d0b5cd5d666353ad99"
+  }
+ ],
+ "rules_snapshots_known": [
+  {
+   "snapshot": "G0",
+   "commit": "d9242882f96bda5b4418b7c1c3ff46b0e2a1c5ce",
+   "committed": "2024-05-15 09:38:43 +0200"
+  },
+  {
+   "snapshot": "G1",
+   "commit": "2a0e452617fc33b955096f4bb7f7f305ec0670ad",
+   "committed": "2024-07-16 21:29:59 +0200"
+  },
+  {
+   "snapshot": "G1post_R2",
+   "commit": "1932d654cf7a81dbac73df88487fc70553e52a19",
+   "committed": "2024-09-02 12:25:29 +0200"
+  },
+  {
+   "snapshot": "G1pre_R1",
+   "commit": null,
+   "committed": null
+  },
+  {
+   "snapshot": "P_T1a",
+   "commit": null,
+   "committed": null
+  },
+  {
+   "snapshot": "P_T1b",
+   "commit": "2a0e452617fc33b955096f4bb7f7f305ec0670ad",
+   "committed": "2024-07-16 21:29:59 +0200"
+  }
+ ],
+ "approvals": [
+  "none recorded"
+ ],
+ "limits": [
+  "Only what was recorded in this store is reported; absence of a record is reported as absence, not inferred.",
+  "Snapshot publish dates are when the governing text was captured, not when it entered into force; both are listed.",
+  "A matching hash shows the preserved text is unchanged; it does not show the interpretation is correct or that anyone authorised it."
+ ]
+}

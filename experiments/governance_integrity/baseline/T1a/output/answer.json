@@ -1,0 +1,1555 @@
+{
+ "task": "T1a",
+ "decision_date": "2024-06-01",
+ "law_snapshot": "S1 legi-data 2.361.0 published 2024-06-01T23:22:24.265Z",
+ "rules_pin": "G0 d9242882f96b (2024-05-15)",
+ "changed_articles": [
+  {
+   "article": "D613-4",
+   "from_version_id": "LEGIARTI000046714712",
+   "to_version_id": "LEGIARTI000049623867",
+   "in_force_from": "2024-06-01",
+   "in_force_to": "2024-07-01",
+   "etat": "ABROGE_DIFF",
+   "modifying_text": "Décret n°2024-484 du 30 mai 2024 - art. 1 (JORFTEXT000049620955, publié 2024-05-31, dateDebutCible 2024-06-01)",
+   "what_changed": "The article was re-issued on 2024-06-01 with an identical rate table (a 12,3 % / b 21,2 % / c 6 % / d 21,2 % / e 21,1 %; only spacing differs), is now ABROGE_DIFF ending 2024-07-01, and three further versions are announced (LEGIARTI000049624068 2024-07-01, LEGIARTI000049624097 2025-01-01, LEGIARTI000049624125 2026-01-01) whose text is not supplied; the 2022 decree link and the 2024-02-21 CE annulment link (471203) no longer appear in lienModifications.",
+   "new_text_available": true,
+   "nota": "Conformément au 1° de l'article 1 du décret n° 2024-484 du 30 mai 2024, ces dispositions entrent en vigueur à compter du 1er juin 2024.",
+   "future_versions": [
+    {
+     "id": "LEGIARTI000049624068",
+     "from": "2024-07-01",
+     "to": "2025-05-01 (as recorded; overlaps the next version — legi-data inconsistency)",
+     "text_available": false
+    },
+    {
+     "id": "LEGIARTI000049624097",
+     "from": "2025-01-01",
+     "to": "2026-01-01",
+     "text_available": false
+    },
+    {
+     "id": "LEGIARTI000049624125",
+     "from": "2026-01-01",
+     "to": "2999-01-01",
+     "text_available": false
+    }
+   ]
+  },
+  {
+   "article": "D613-6",
+   "from_version_id": "LEGIARTI000046714699",
+   "to_version_id": "LEGIARTI000049623885",
+   "in_force_from": "2024-06-01",
+   "in_force_to": "2024-07-01",
+   "etat": "ABROGE_DIFF",
+   "modifying_text": "Décret n°2024-484 du 30 mai 2024 - art. 2 (JORFTEXT000049620955, publié 2024-05-31, dateDebutCible 2024-06-01)",
+   "what_changed": "Re-issued on 2024-06-01 with text identical to the previous version (shares 8,90/3,10/41,80/16,50/29,70 % etc.), now ABROGE_DIFF ending 2024-07-01; three further versions announced (LEGIARTI000049625264 2024-07-01, LEGIARTI000049625405 2025-01-01, LEGIARTI000049625445 2026-01-01) without text; 2022 decree and CE annulment links dropped from lienModifications.",
+   "new_text_available": true,
+   "nota": "Conformément au 1° de l'article 2 du décret n° 2024-484 du 30 mai 2024, ces dispositions entrent en vigueur à compter du 1er juin 2024.",
+   "future_versions": [
+    {
+     "id": "LEGIARTI000049625264",
+     "from": "2024-07-01",
+     "to": "2025-01-01",
+     "text_available": false
+    },
+    {
+     "id": "LEGIARTI000049625405",
+     "from": "2025-01-01",
+     "to": "2026-01-01",
+     "text_available": false
+    },
+    {
+     "id": "LEGIARTI000049625445",
+     "from": "2026-01-01",
+     "to": "2999-01-01",
+     "text_available": false
+    }
+   ]
+  }
+ ],
+ "unchanged_articles": [
+  "L131-6 LEGIARTI000048683707",
+  "L136-3 LEGIARTI000048683641",
+  "L613-7 LEGIARTI000048683570",
+  "D131-6-1 LEGIARTI000036475110",
+  "D613-5 LEGIARTI000041918205",
+  "D621-2 LEGIARTI000046714747",
+  "D632-1 LEGIARTI000041966755",
+  "D633-3 LEGIARTI000041967101",
+  "D756-5 LEGIARTI000034726710"
+ ],
+ "missing_articles": [
+  "D136-5"
+ ],
+ "rules": [
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC",
+   "classification": "AFFECTED",
+   "confidence": "medium",
+   "article": "D613-4 LEGIARTI000049623867, in force 2024-06-01",
+   "evidence": [
+    "D613-4 LEGIARTI000049623867, in force 2024-06-01 (etat ABROGE_DIFF, dateFin 2024-07-01), modified by Décret n°2024-484 du 30 mai 2024 - art. 1 (JORF 2024-05-31): \"e) Travailleurs indépendants relevant à la fois de l'article L. 631-1 et du régime prévu à l' article 102 ter du code général des impôts 10 000 euros 34 % 6 600 euros 21,1 %\"",
+    "nota: \"Conformément au 1° de l'article 1 du décret n° 2024-484 du 30 mai 2024, ces dispositions entrent en vigueur à compter du 1er juin 2024.\"",
+    "D613-4 articleVersions announced in S1 (etat VIGUEUR_DIFF, text NOT included): LEGIARTI000049624068 from 2024-07-01, LEGIARTI000049624097 from 2025-01-01, LEGIARTI000049624125 from 2026-01-01; the only text supplied (LEGIARTI000049623867) has dateFin 2024-07-01.",
+    "engine G0 d9242882f96b (src/publicodes_eval.mjs): dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC = 21.1 % | situation BNC ({\"date\":\"01/06/2024\",\"salarié\":\"non\",\"entreprise . catégorie juridique\":\"'EI'\",\"entreprise . catégorie juridique . EI . auto-entrepreneur\":\"oui\",\"dirigeant . auto-entrepreneur\":\"oui\",\"dirigeant . auto-entrepreneur . chiffre d'affaires\":\"1000 €/mois\",\"établissement . commune . département . outre-mer\":\"non\",\"entreprise . activités . revenus mixtes\":\"non\",\"entreprise . date de création\":\"01/01/2019\",\"dirigeant . exonérations . ACRE\":\"non\",\"entreprise . activité . nature\":\"'libérale'\"})",
+    "engine on work/proposals/T1a: dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC = 21.1 % (unchanged; citation re-anchored to LEGIARTI000049623867, dated branch 06/2024 added, notification 'taux à confirmer' added) | situation BNC ({\"date\":\"01/06/2024\",\"salarié\":\"non\",\"entreprise . catégorie juridique\":\"'EI'\",\"entreprise . catégorie juridique . EI . auto-entrepreneur\":\"oui\",\"dirigeant . auto-entrepreneur\":\"oui\",\"dirigeant . auto-entrepreneur . chiffre d'affaires\":\"1000 €/mois\",\"établissement . commune . département . outre-mer\":\"non\",\"entreprise . activités . revenus mixtes\":\"non\",\"entreprise . date de création\":\"01/01/2019\",\"dirigeant . exonérations . ACRE\":\"non\",\"entreprise . activité . nature\":\"'libérale'\"})",
+    "engine G0 d9242882f96b (src/publicodes_eval.mjs) and engine on work/proposals/T1a: same value 21.1 % on 01/07/2024, 01/01/2025, 01/01/2026 — no change proposed for those dates because the governing texts are not available (abstention).",
+    "Why AFFECTED and not UNAFFECTED: the governing version id changed on 2024-06-01 and three further versions are scheduled inside the rule's date range; which rows change is not stated, so all four D613-4 rate rules are treated symmetrically. Why medium: the value in force on 2024-06-01 is identical, only the future is open."
+   ]
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV . taux",
+   "classification": "AFFECTED",
+   "confidence": "medium",
+   "article": "D613-4 LEGIARTI000049623867, in force 2024-06-01",
+   "evidence": [
+    "D613-4 LEGIARTI000049623867, in force 2024-06-01 (etat ABROGE_DIFF, dateFin 2024-07-01), modified by Décret n°2024-484 du 30 mai 2024 - art. 1 (JORF 2024-05-31): \"b) Travailleurs indépendants affiliés à la section professionnelle mentionnée au 11° de l'article R. 641-1 35 076 euros 34 % 23 150 euros 21,2 %\"",
+    "nota: \"Conformément au 1° de l'article 1 du décret n° 2024-484 du 30 mai 2024, ces dispositions entrent en vigueur à compter du 1er juin 2024.\"",
+    "D613-4 articleVersions announced in S1 (etat VIGUEUR_DIFF, text NOT included): LEGIARTI000049624068 from 2024-07-01, LEGIARTI000049624097 from 2025-01-01, LEGIARTI000049624125 from 2026-01-01; the only text supplied (LEGIARTI000049623867) has dateFin 2024-07-01.",
+    "engine G0 d9242882f96b (src/publicodes_eval.mjs): dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV . taux = 21.2 % | situation CIPAV ({\"date\":\"01/06/2024\",\"salarié\":\"non\",\"entreprise . catégorie juridique\":\"'EI'\",\"entreprise . catégorie juridique . EI . auto-entrepreneur\":\"oui\",\"dirigeant . auto-entrepreneur\":\"oui\",\"dirigeant . auto-entrepreneur . chiffre d'affaires\":\"1000 €/mois\",\"établissement . commune . département . outre-mer\":\"non\",\"entreprise . activités . revenus mixtes\":\"non\",\"entreprise . date de création\":\"01/01/2019\",\"dirigeant . exonérations . ACRE\":\"non\",\"entreprise . activité . nature\":\"'libérale'\",\"entreprise . activité . nature . libérale . réglementée\":\"oui\"})",
+    "engine on work/proposals/T1a: dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV . taux = 21.2 % (unchanged; citation re-anchored to LEGIARTI000049623867, dated branch 06/2024 added, notification 'taux à confirmer' added) | situation CIPAV ({\"date\":\"01/06/2024\",\"salarié\":\"non\",\"entreprise . catégorie juridique\":\"'EI'\",\"entreprise . catégorie juridique . EI . auto-entrepreneur\":\"oui\",\"dirigeant . auto-entrepreneur\":\"oui\",\"dirigeant . auto-entrepreneur . chiffre d'affaires\":\"1000 €/mois\",\"établissement . commune . département . outre-mer\":\"non\",\"entreprise . activités . revenus mixtes\":\"non\",\"entreprise . date de création\":\"01/01/2019\",\"dirigeant . exonérations . ACRE\":\"non\",\"entreprise . activité . nature\":\"'libérale'\",\"entreprise . activité . nature . libérale . réglementée\":\"oui\"})",
+    "engine G0 d9242882f96b (src/publicodes_eval.mjs) and engine on work/proposals/T1a: same value 21.2 % on 01/07/2024, 01/01/2025, 01/01/2026 — no change proposed for those dates because the governing texts are not available (abstention).",
+    "Why AFFECTED and not UNAFFECTED: the governing version id changed on 2024-06-01 and three further versions are scheduled inside the rule's date range; which rows change is not stated, so all four D613-4 rate rules are treated symmetrically. Why medium: the value in force on 2024-06-01 is identical, only the future is open."
+   ]
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BIC",
+   "classification": "AFFECTED",
+   "confidence": "medium",
+   "article": "D613-4 LEGIARTI000049623867, in force 2024-06-01",
+   "evidence": [
+    "D613-4 LEGIARTI000049623867, in force 2024-06-01 (etat ABROGE_DIFF, dateFin 2024-07-01), modified by Décret n°2024-484 du 30 mai 2024 - art. 1 (JORF 2024-05-31): \"d) Travailleurs indépendants appartenant à la catégorie mentionnée au 2° du 1 de l'article 50-0 du code général des impôt 46 300 euros 50 % 23 150 euros 21,2 %\"",
+    "nota: \"Conformément au 1° de l'article 1 du décret n° 2024-484 du 30 mai 2024, ces dispositions entrent en vigueur à compter du 1er juin 2024.\"",
+    "D613-4 articleVersions announced in S1 (etat VIGUEUR_DIFF, text NOT included): LEGIARTI000049624068 from 2024-07-01, LEGIARTI000049624097 from 2025-01-01, LEGIARTI000049624125 from 2026-01-01; the only text supplied (LEGIARTI000049623867) has dateFin 2024-07-01.",
+    "engine G0 d9242882f96b (src/publicodes_eval.mjs): dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BIC = 21.2 % | situation SBIC_service ({\"date\":\"01/06/2024\",\"salarié\":\"non\",\"entreprise . catégorie juridique\":\"'EI'\",\"entreprise . catégorie juridique . EI . auto-entrepreneur\":\"oui\",\"dirigeant . auto-entrepreneur\":\"oui\",\"dirigeant . auto-entrepreneur . chiffre d'affaires\":\"1000 €/mois\",\"établissement . commune . département . outre-mer\":\"non\",\"entreprise . activités . revenus mixtes\":\"non\",\"entreprise . date de création\":\"01/01/2019\",\"dirigeant . exonérations . ACRE\":\"non\",\"entreprise . activité . nature\":\"'artisanale'\",\"entreprise . activités . service ou vente\":\"'service'\"})",
+    "engine on work/proposals/T1a: dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BIC = 21.2 % (unchanged; citation re-anchored to LEGIARTI000049623867, dated branch 06/2024 added, notification 'taux à confirmer' added) | situation SBIC_service ({\"date\":\"01/06/2024\",\"salarié\":\"non\",\"entreprise . catégorie juridique\":\"'EI'\",\"entreprise . catégorie juridique . EI . auto-entrepreneur\":\"oui\",\"dirigeant . auto-entrepreneur\":\"oui\",\"dirigeant . auto-entrepreneur . chiffre d'affaires\":\"1000 €/mois\",\"établissement . commune . département . outre-mer\":\"non\",\"entreprise . activités . revenus mixtes\":\"non\",\"entreprise . date de création\":\"01/01/2019\",\"dirigeant . exonérations . ACRE\":\"non\",\"entreprise . activité . nature\":\"'artisanale'\",\"entreprise . activités . service ou vente\":\"'service'\"})",
+    "engine G0 d9242882f96b (src/publicodes_eval.mjs) and engine on work/proposals/T1a: same value 21.2 % on 01/07/2024, 01/01/2025, 01/01/2026 — no change proposed for those dates because the governing texts are not available (abstention).",
+    "Why AFFECTED and not UNAFFECTED: the governing version id changed on 2024-06-01 and three further versions are scheduled inside the rule's date range; which rows change is not stated, so all four D613-4 rate rules are treated symmetrically. Why medium: the value in force on 2024-06-01 is identical, only the future is open."
+   ]
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux vente restauration hébergement",
+   "classification": "AFFECTED",
+   "confidence": "medium",
+   "article": "D613-4 LEGIARTI000049623867, in force 2024-06-01",
+   "evidence": [
+    "D613-4 LEGIARTI000049623867, in force 2024-06-01 (etat ABROGE_DIFF, dateFin 2024-07-01), modified by Décret n°2024-484 du 30 mai 2024 - art. 1 (JORF 2024-05-31): \"a) Travailleurs indépendants appartenant à la catégorie mentionnée au 1° du 1 de l' article 50-0 du code général des impôts 79 828 euros 71 % 23 150 euros 12,3 %\"",
+    "nota: \"Conformément au 1° de l'article 1 du décret n° 2024-484 du 30 mai 2024, ces dispositions entrent en vigueur à compter du 1er juin 2024.\"",
+    "D613-4 articleVersions announced in S1 (etat VIGUEUR_DIFF, text NOT included): LEGIARTI000049624068 from 2024-07-01, LEGIARTI000049624097 from 2025-01-01, LEGIARTI000049624125 from 2026-01-01; the only text supplied (LEGIARTI000049623867) has dateFin 2024-07-01.",
+    "engine G0 d9242882f96b (src/publicodes_eval.mjs): dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux vente restauration hébergement = 12.3 % | situation VENTE_explicit ({\"date\":\"01/06/2024\",\"salarié\":\"non\",\"entreprise . catégorie juridique\":\"'EI'\",\"entreprise . catégorie juridique . EI . auto-entrepreneur\":\"oui\",\"dirigeant . auto-entrepreneur\":\"oui\",\"dirigeant . auto-entrepreneur . chiffre d'affaires\":\"1000 €/mois\",\"établissement . commune . département . outre-mer\":\"non\",\"entreprise . activités . revenus mixtes\":\"non\",\"entreprise . date de création\":\"01/01/2019\",\"dirigeant . exonérations . ACRE\":\"non\",\"entreprise . activité . nature\":\"'commerciale'\",\"entreprise . activités . service ou vente\":\"'vente'\"})",
+    "engine on work/proposals/T1a: dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux vente restauration hébergement = 12.3 % (unchanged; citation re-anchored to LEGIARTI000049623867, dated branch 06/2024 added, notification 'taux à confirmer' added) | situation VENTE_explicit ({\"date\":\"01/06/2024\",\"salarié\":\"non\",\"entreprise . catégorie juridique\":\"'EI'\",\"entreprise . catégorie juridique . EI . auto-entrepreneur\":\"oui\",\"dirigeant . auto-entrepreneur\":\"oui\",\"dirigeant . auto-entrepreneur . chiffre d'affaires\":\"1000 €/mois\",\"établissement . commune . département . outre-mer\":\"non\",\"entreprise . activités . revenus mixtes\":\"non\",\"entreprise . date de création\":\"01/01/2019\",\"dirigeant . exonérations . ACRE\":\"non\",\"entreprise . activité . nature\":\"'commerciale'\",\"entreprise . activités . service ou vente\":\"'vente'\"})",
+    "engine G0 d9242882f96b (src/publicodes_eval.mjs) and engine on work/proposals/T1a: same value 12.3 % on 01/07/2024, 01/01/2025, 01/01/2026 — no change proposed for those dates because the governing texts are not available (abstention).",
+    "Why AFFECTED and not UNAFFECTED: the governing version id changed on 2024-06-01 and three further versions are scheduled inside the rule's date range; which rows change is not stated, so all four D613-4 rate rules are treated symmetrically. Why medium: the value in force on 2024-06-01 is identical, only the future is open."
+   ]
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux ACRE",
+   "classification": "NEEDS_REVIEW",
+   "confidence": "medium",
+   "article": "L613-7 LEGIARTI000048683570, in force 2023-12-28",
+   "evidence": [
+    "L613-7 LEGIARTI000048683570, in force 2023-12-28 (unchanged in S1): \"Un taux global différent peut être fixé par décret pour les périodes au cours desquelles le travailleur indépendant est éligible à une exonération de cotisations et de contributions de sécurité sociale.\"",
+    "D131-6-1 LEGIARTI000036475110, in force 2018-01-01 (unchanged in S1): \"Lorsque le revenu ou la rémunération est inférieur ou égal aux trois quarts de la valeur du plafond mentionné à l'article L. 241-3, l'exonération applicable pendant la période mentionnée au I correspond au montant total des cotisations dues\"",
+    "Private rule (engine: cannot be evaluated directly, 'règle privée'); its effect is visible through the remplace on the rate rules: engine G0 d9242882f96b (src/publicodes_eval.mjs): dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC = 10.6 % | situation BNC_ACRE_6m ({\"date\":\"01/06/2024\",\"salarié\":\"non\",\"entreprise . catégorie juridique\":\"'EI'\",\"entreprise . catégorie juridique . EI . auto-entrepreneur\":\"oui\",\"dirigeant . auto-entrepreneur\":\"oui\",\"dirigeant . auto-entrepreneur . chiffre d'affaires\":\"1000 €/mois\",\"établissement . commune . département . outre-mer\":\"non\",\"entreprise . activités . revenus mixtes\":\"non\",\"entreprise . date de création\":\"01/01/2024\",\"dirigeant . exonérations . ACRE\":\"oui\",\"entreprise . activité . nature\":\"'libérale'\",\"entreprise . durée d'activité\":\"6 mois\"}); taux vente = 6.2 %; cotisations CIPAV . taux = 12.1 %",
+    "Rates are 50 % x D613-4 rate (10,6/10,6/6,2) plus a hard-coded 12,10 % for CIPAV: if the announced D613-4 versions change the rates, the 50 % products follow automatically but the 12,10 % constant must be re-derived. Text for those dates unavailable."
+   ]
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . DROM . taux service BNC",
+   "classification": "NEEDS_REVIEW",
+   "confidence": "medium",
+   "article": "D756-5 LEGIARTI000034726710, in force 2017-05-12",
+   "evidence": [
+    "D756-5 LEGIARTI000034726710, in force 2017-05-12 (unchanged in S1): \"correspond, après arrondi au dixième de pour cent supérieur, à une fraction des taux prévus par l'article D. 131-6-1 fixée à :\" \"a) 1/6 pour les travailleurs indépendants mentionnés au 2° de l'article L. 611-1 et 1/3 dans les autres cas, jusqu'à la fin du septième trimestre civil qui suit celui au cours duquel intervient la date d'effet de l'affiliation ;\"",
+    "Hard-coded values are ceil10(fraction x D613-4 rate) — engine G0 d9242882f96b (src/publicodes_eval.mjs): dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC = 3.6 % | situation DROM_Q8_BNC ({\"date\":\"01/06/2024\",\"salarié\":\"non\",\"entreprise . catégorie juridique\":\"'EI'\",\"entreprise . catégorie juridique . EI . auto-entrepreneur\":\"oui\",\"dirigeant . auto-entrepreneur\":\"oui\",\"dirigeant . auto-entrepreneur . chiffre d'affaires\":\"1000 €/mois\",\"établissement . commune . département . outre-mer\":\"oui\",\"entreprise . activités . revenus mixtes\":\"non\",\"entreprise . date de création\":\"01/01/2019\",\"dirigeant . exonérations . ACRE\":\"non\",\"entreprise . activité . nature\":\"'libérale'\",\"entreprise . durée d'activité . trimestres civils\":\"8\",\"entreprise . durée d'activité . années civiles\":\"2\"}); identical on the proposal tree.",
+    "D756-5 itself did not change, but its fractions apply to D613-4 rates whose announced versions (2024-07-01, 2025-01-01, 2026-01-01) have no text in S1: constants must be recomputed once the text is available."
+   ]
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . DROM . service BIC",
+   "classification": "NEEDS_REVIEW",
+   "confidence": "medium",
+   "article": "D756-5 LEGIARTI000034726710, in force 2017-05-12",
+   "evidence": [
+    "D756-5 LEGIARTI000034726710, in force 2017-05-12 (unchanged in S1): \"correspond, après arrondi au dixième de pour cent supérieur, à une fraction des taux prévus par l'article D. 131-6-1 fixée à :\" \"a) 1/6 pour les travailleurs indépendants mentionnés au 2° de l'article L. 611-1 et 1/3 dans les autres cas, jusqu'à la fin du septième trimestre civil qui suit celui au cours duquel intervient la date d'effet de l'affiliation ;\"",
+    "Hard-coded values are ceil10(fraction x D613-4 rate) — engine G0 d9242882f96b (src/publicodes_eval.mjs): dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BIC = 3.6 % | situation DROM_Q8_BNC ({\"date\":\"01/06/2024\",\"salarié\":\"non\",\"entreprise . catégorie juridique\":\"'EI'\",\"entreprise . catégorie juridique . EI . auto-entrepreneur\":\"oui\",\"dirigeant . auto-entrepreneur\":\"oui\",\"dirigeant . auto-entrepreneur . chiffre d'affaires\":\"1000 €/mois\",\"établissement . commune . département . outre-mer\":\"oui\",\"entreprise . activités . revenus mixtes\":\"non\",\"entreprise . date de création\":\"01/01/2019\",\"dirigeant . exonérations . ACRE\":\"non\",\"entreprise . activité . nature\":\"'libérale'\",\"entreprise . durée d'activité . trimestres civils\":\"8\",\"entreprise . durée d'activité . années civiles\":\"2\"}); identical on the proposal tree.",
+    "D756-5 itself did not change, but its fractions apply to D613-4 rates whose announced versions (2024-07-01, 2025-01-01, 2026-01-01) have no text in S1: constants must be recomputed once the text is available."
+   ]
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . DROM . taux vente restauration hébergement",
+   "classification": "NEEDS_REVIEW",
+   "confidence": "medium",
+   "article": "D756-5 LEGIARTI000034726710, in force 2017-05-12",
+   "evidence": [
+    "D756-5 LEGIARTI000034726710, in force 2017-05-12 (unchanged in S1): \"correspond, après arrondi au dixième de pour cent supérieur, à une fraction des taux prévus par l'article D. 131-6-1 fixée à :\" \"a) 1/6 pour les travailleurs indépendants mentionnés au 2° de l'article L. 611-1 et 1/3 dans les autres cas, jusqu'à la fin du septième trimestre civil qui suit celui au cours duquel intervient la date d'effet de l'affiliation ;\"",
+    "Hard-coded values are ceil10(fraction x D613-4 rate) — engine G0 d9242882f96b (src/publicodes_eval.mjs): dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux vente restauration hébergement = 2.1 % | situation DROM_Q8_BNC ({\"date\":\"01/06/2024\",\"salarié\":\"non\",\"entreprise . catégorie juridique\":\"'EI'\",\"entreprise . catégorie juridique . EI . auto-entrepreneur\":\"oui\",\"dirigeant . auto-entrepreneur\":\"oui\",\"dirigeant . auto-entrepreneur . chiffre d'affaires\":\"1000 €/mois\",\"établissement . commune . département . outre-mer\":\"oui\",\"entreprise . activités . revenus mixtes\":\"non\",\"entreprise . date de création\":\"01/01/2019\",\"dirigeant . exonérations . ACRE\":\"non\",\"entreprise . activité . nature\":\"'libérale'\",\"entreprise . durée d'activité . trimestres civils\":\"8\",\"entreprise . durée d'activité . années civiles\":\"2\"}); identical on the proposal tree.",
+    "D756-5 itself did not change, but its fractions apply to D613-4 rates whose announced versions (2024-07-01, 2025-01-01, 2026-01-01) have no text in S1: constants must be recomputed once the text is available."
+   ]
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . DROM . taux CIPAV",
+   "classification": "NEEDS_REVIEW",
+   "confidence": "medium",
+   "article": "D756-5 LEGIARTI000034726710, in force 2017-05-12",
+   "evidence": [
+    "D756-5 LEGIARTI000034726710, in force 2017-05-12 (unchanged in S1): \"correspond, après arrondi au dixième de pour cent supérieur, à une fraction des taux prévus par l'article D. 131-6-1 fixée à :\" \"a) 1/6 pour les travailleurs indépendants mentionnés au 2° de l'article L. 611-1 et 1/3 dans les autres cas, jusqu'à la fin du septième trimestre civil qui suit celui au cours duquel intervient la date d'effet de l'affiliation ;\"",
+    "Hard-coded values are ceil10(fraction x D613-4 rate) — engine G0 d9242882f96b (src/publicodes_eval.mjs): dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV . taux = 7.1 % | situation DROM_Q8_BNC ({\"date\":\"01/06/2024\",\"salarié\":\"non\",\"entreprise . catégorie juridique\":\"'EI'\",\"entreprise . catégorie juridique . EI . auto-entrepreneur\":\"oui\",\"dirigeant . auto-entrepreneur\":\"oui\",\"dirigeant . auto-entrepreneur . chiffre d'affaires\":\"1000 €/mois\",\"établissement . commune . département . outre-mer\":\"oui\",\"entreprise . activités . revenus mixtes\":\"non\",\"entreprise . date de création\":\"01/01/2019\",\"dirigeant . exonérations . ACRE\":\"non\",\"entreprise . activité . nature\":\"'libérale'\",\"entreprise . durée d'activité . trimestres civils\":\"8\",\"entreprise . durée d'activité . années civiles\":\"2\"}); identical on the proposal tree.",
+    "D756-5 itself did not change, but its fractions apply to D613-4 rates whose announced versions (2024-07-01, 2025-01-01, 2026-01-01) have no text in S1: constants must be recomputed once the text is available."
+   ]
+  },
+  {
+   "rule": "protection sociale . retraite . complémentaire . RCI . revenu cotisé auto-entrepreneur",
+   "classification": "NEEDS_REVIEW",
+   "confidence": "medium",
+   "article": "D613-6 LEGIARTI000049623885, in force 2024-06-01",
+   "evidence": [
+    "D613-6 LEGIARTI000049623885, in force 2024-06-01 (new id, etat ABROGE_DIFF, dateFin 2024-07-01; text identical to LEGIARTI000046714699): \"sont répartis, pour chacune des catégories de travailleurs indépendants mentionnées dans le tableau du deuxième alinéa de l'article D. 613-4 , dans les proportions suivantes :\" ... \"Cotisation d'assurance vieillesse complémentaire 16,50 %\"",
+    "nota: \"Conformément au 1° de l'article 2 du décret n° 2024-484 du 30 mai 2024, ces dispositions entrent en vigueur à compter du 1er juin 2024.\"",
+    "D613-6 articleVersions announced in S1 (etat VIGUEUR_DIFF, text NOT included): LEGIARTI000049625264 from 2024-07-01, LEGIARTI000049625405 from 2025-01-01, LEGIARTI000049625445 from 2026-01-01; the only text supplied (LEGIARTI000049623885) has dateFin 2024-07-01.",
+    "engine G0 d9242882f96b (src/publicodes_eval.mjs): protection sociale . retraite . complémentaire . RCI . revenu cotisé auto-entrepreneur = 420 €/an (= 12 000 x 3,50 %) | situation SBIC_service ({\"date\":\"01/06/2024\",\"salarié\":\"non\",\"entreprise . catégorie juridique\":\"'EI'\",\"entreprise . catégorie juridique . EI . auto-entrepreneur\":\"oui\",\"dirigeant . auto-entrepreneur\":\"oui\",\"dirigeant . auto-entrepreneur . chiffre d'affaires\":\"1000 €/mois\",\"établissement . commune . département . outre-mer\":\"non\",\"entreprise . activités . revenus mixtes\":\"non\",\"entreprise . date de création\":\"01/01/2019\",\"dirigeant . exonérations . ACRE\":\"non\",\"entreprise . activité . nature\":\"'artisanale'\",\"entreprise . activités . service ou vente\":\"'service'\"})",
+    "engine G0 d9242882f96b (src/publicodes_eval.mjs): protection sociale . retraite . complémentaire . RCI . revenu cotisé auto-entrepreneur = 243.6 €/an (= 12 000 x 2,03 %) | situation VENTE_explicit ({\"date\":\"01/06/2024\",\"salarié\":\"non\",\"entreprise . catégorie juridique\":\"'EI'\",\"entreprise . catégorie juridique . EI . auto-entrepreneur\":\"oui\",\"dirigeant . auto-entrepreneur\":\"oui\",\"dirigeant . auto-entrepreneur . chiffre d'affaires\":\"1000 €/mois\",\"établissement . commune . département . outre-mer\":\"non\",\"entreprise . activités . revenus mixtes\":\"non\",\"entreprise . date de création\":\"01/01/2019\",\"dirigeant . exonérations . ACRE\":\"non\",\"entreprise . activité . nature\":\"'commerciale'\",\"entreprise . activités . service ou vente\":\"'vente'\"})",
+    "engine G0 d9242882f96b (src/publicodes_eval.mjs): protection sociale . retraite . complémentaire . RCI . revenu cotisé auto-entrepreneur = 0 (pre-existing: BNC share not implemented, see T0) | situation BNC ({\"date\":\"01/06/2024\",\"salarié\":\"non\",\"entreprise . catégorie juridique\":\"'EI'\",\"entreprise . catégorie juridique . EI . auto-entrepreneur\":\"oui\",\"dirigeant . auto-entrepreneur\":\"oui\",\"dirigeant . auto-entrepreneur . chiffre d'affaires\":\"1000 €/mois\",\"établissement . commune . département . outre-mer\":\"non\",\"entreprise . activités . revenus mixtes\":\"non\",\"entreprise . date de création\":\"01/01/2019\",\"dirigeant . exonérations . ACRE\":\"non\",\"entreprise . activité . nature\":\"'libérale'\"})",
+    "Constants 2,03 % / 3,50 % = 16,50 % x 12,3 % / 21,2 %: both factors have announced future versions without text; no value can be proposed now."
+   ]
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "classification": "UNAFFECTED",
+   "confidence": "high",
+   "article": "L613-7 LEGIARTI000048683570, in force 2023-12-28",
+   "evidence": [
+    "L613-7 LEGIARTI000048683570, in force 2023-12-28: same version id and text in S0 and S1; \"un taux global fixé par décret pour chaque catégorie d'activité mentionnée aux mêmes articles\"",
+    "engine G0 d9242882f96b (src/publicodes_eval.mjs): dirigeant . auto-entrepreneur . cotisations et contributions . cotisations = 2532 €/an | situation BNC ({\"date\":\"01/06/2024\",\"salarié\":\"non\",\"entreprise . catégorie juridique\":\"'EI'\",\"entreprise . catégorie juridique . EI . auto-entrepreneur\":\"oui\",\"dirigeant . auto-entrepreneur\":\"oui\",\"dirigeant . auto-entrepreneur . chiffre d'affaires\":\"1000 €/mois\",\"établissement . commune . département . outre-mer\":\"non\",\"entreprise . activités . revenus mixtes\":\"non\",\"entreprise . date de création\":\"01/01/2019\",\"dirigeant . exonérations . ACRE\":\"non\",\"entreprise . activité . nature\":\"'libérale'\"}); proposal: 2532 €/an",
+    "The rule is CA x taux (structure of L613-7 I, unchanged); its output follows the AFFECTED rate rules but the rule itself needs no edit."
+   ]
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV",
+   "classification": "UNAFFECTED",
+   "confidence": "high",
+   "article": "L613-7 LEGIARTI000048683570, in force 2023-12-28",
+   "evidence": [
+    "L613-7 LEGIARTI000048683570, in force 2023-12-28: same version id and text in S0 and S1; \"un taux global fixé par décret pour chaque catégorie d'activité mentionnée aux mêmes articles\"",
+    "engine G0 d9242882f96b (src/publicodes_eval.mjs): dirigeant . auto-entrepreneur . cotisations et contributions . cotisations = 2544 €/an (remplace active) | situation CIPAV ({\"date\":\"01/06/2024\",\"salarié\":\"non\",\"entreprise . catégorie juridique\":\"'EI'\",\"entreprise . catégorie juridique . EI . auto-entrepreneur\":\"oui\",\"dirigeant . auto-entrepreneur\":\"oui\",\"dirigeant . auto-entrepreneur . chiffre d'affaires\":\"1000 €/mois\",\"établissement . commune . département . outre-mer\":\"non\",\"entreprise . activités . revenus mixtes\":\"non\",\"entreprise . date de création\":\"01/01/2019\",\"dirigeant . exonérations . ACRE\":\"non\",\"entreprise . activité . nature\":\"'libérale'\",\"entreprise . activité . nature . libérale . réglementée\":\"oui\"})",
+    "Structure only (CA x cotisations CIPAV . taux); the rate lives in the AFFECTED child rule."
+   ]
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux prestation de service",
+   "classification": "UNAFFECTED",
+   "confidence": "high",
+   "article": "D613-4 LEGIARTI000049623867, in force 2024-06-01",
+   "evidence": [
+    "D613-4 LEGIARTI000049623867, in force 2024-06-01: same version id and text in S0 and S1; \"d) Travailleurs indépendants appartenant à la catégorie mentionnée au 2° du 1 de l'article 50-0 du code général des impôt 46 300 euros 50 % 23 150 euros 21,2 %\"",
+    "Deprecated alias (valeur: taux service BIC); follows that rule."
+   ]
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions",
+   "classification": "UNAFFECTED",
+   "confidence": "high",
+   "article": "L613-7 LEGIARTI000048683570, in force 2023-12-28",
+   "evidence": [
+    "L613-7 LEGIARTI000048683570, in force 2023-12-28: same version id and text in S0 and S1; \"un taux global fixé par décret pour chaque catégorie d'activité mentionnée aux mêmes articles\"",
+    "engine G0 d9242882f96b (src/publicodes_eval.mjs): dirigeant . auto-entrepreneur . cotisations et contributions = 213 €/mois | situation BNC ({\"date\":\"01/06/2024\",\"salarié\":\"non\",\"entreprise . catégorie juridique\":\"'EI'\",\"entreprise . catégorie juridique . EI . auto-entrepreneur\":\"oui\",\"dirigeant . auto-entrepreneur\":\"oui\",\"dirigeant . auto-entrepreneur . chiffre d'affaires\":\"1000 €/mois\",\"établissement . commune . département . outre-mer\":\"non\",\"entreprise . activités . revenus mixtes\":\"non\",\"entreprise . date de création\":\"01/01/2019\",\"dirigeant . exonérations . ACRE\":\"non\",\"entreprise . activité . nature\":\"'libérale'\"}); proposal: 213 €/mois"
+   ]
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . affiliation CIPAV",
+   "classification": "UNAFFECTED",
+   "confidence": "high",
+   "article": "D613-4 LEGIARTI000049623867, in force 2024-06-01",
+   "evidence": [
+    "D613-4 LEGIARTI000049623867, in force 2024-06-01: same version id and text in S0 and S1; \"b) Travailleurs indépendants affiliés à la section professionnelle mentionnée au 11° de l'article R. 641-1 35 076 euros 34 % 23 150 euros 21,2 %\"",
+    "engine G0 d9242882f96b (src/publicodes_eval.mjs): dirigeant . auto-entrepreneur . affiliation CIPAV = true | situation CIPAV ({\"date\":\"01/06/2024\",\"salarié\":\"non\",\"entreprise . catégorie juridique\":\"'EI'\",\"entreprise . catégorie juridique . EI . auto-entrepreneur\":\"oui\",\"dirigeant . auto-entrepreneur\":\"oui\",\"dirigeant . auto-entrepreneur . chiffre d'affaires\":\"1000 €/mois\",\"établissement . commune . département . outre-mer\":\"non\",\"entreprise . activités . revenus mixtes\":\"non\",\"entreprise . date de création\":\"01/01/2019\",\"dirigeant . exonérations . ACRE\":\"non\",\"entreprise . activité . nature\":\"'libérale'\",\"entreprise . activité . nature . libérale . réglementée\":\"oui\"}); BNC: false",
+    "Row b) still targets the same population (11° de l'article R. 641-1)."
+   ]
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . DROM",
+   "classification": "UNAFFECTED",
+   "confidence": "high",
+   "article": "D756-5 LEGIARTI000034726710, in force 2017-05-12",
+   "evidence": [
+    "D756-5 LEGIARTI000034726710, in force 2017-05-12: same version id and text in S0 and S1; \"a) 1/6 pour les travailleurs indépendants mentionnés au 2° de l'article L. 611-1 et 1/3 dans les autres cas, jusqu'à la fin du septième trimestre civil qui suit celui au cours duquel intervient la date d'effet de l'affiliation ;\"",
+    "engine G0 d9242882f96b (src/publicodes_eval.mjs): dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC = 3.6 % (DROM applicable) | situation DROM_Q8_BNC ({\"date\":\"01/06/2024\",\"salarié\":\"non\",\"entreprise . catégorie juridique\":\"'EI'\",\"entreprise . catégorie juridique . EI . auto-entrepreneur\":\"oui\",\"dirigeant . auto-entrepreneur\":\"oui\",\"dirigeant . auto-entrepreneur . chiffre d'affaires\":\"1000 €/mois\",\"établissement . commune . département . outre-mer\":\"oui\",\"entreprise . activités . revenus mixtes\":\"non\",\"entreprise . date de création\":\"01/01/2019\",\"dirigeant . exonérations . ACRE\":\"non\",\"entreprise . activité . nature\":\"'libérale'\",\"entreprise . durée d'activité . trimestres civils\":\"8\",\"entreprise . durée d'activité . années civiles\":\"2\"})",
+    "Applicability conditions (outre-mer, trimestres/années civiles) unchanged."
+   ]
+  },
+  {
+   "rule": "dirigeant . exonérations . ACRE",
+   "classification": "UNAFFECTED",
+   "confidence": "high",
+   "article": "D131-6-1 LEGIARTI000036475110, in force 2018-01-01",
+   "evidence": [
+    "D131-6-1 LEGIARTI000036475110, in force 2018-01-01: same version id and text in S0 and S1; \"Lorsque le revenu ou la rémunération est inférieur ou égal aux trois quarts de la valeur du plafond mentionné à l'article L. 241-3, l'exonération applicable pendant la période mentionnée au I correspond au montant total des cotisations dues\"",
+    "D131-6-1 LEGIARTI000036475110 unchanged; no new lienModifications."
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE",
+   "classification": "UNAFFECTED",
+   "confidence": "high",
+   "article": "D131-6-1 LEGIARTI000036475110, in force 2018-01-01",
+   "evidence": [
+    "D131-6-1 LEGIARTI000036475110, in force 2018-01-01: same version id and text in S0 and S1; \"Lorsque le revenu ou la rémunération est inférieur ou égal aux trois quarts de la valeur du plafond mentionné à l'article L. 241-3, l'exonération applicable pendant la période mentionnée au I correspond au montant total des cotisations dues\"",
+    "Classic (non-micro) ACRE: governed by D131-6-1 only, unchanged in S1."
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . taux",
+   "classification": "UNAFFECTED",
+   "confidence": "high",
+   "article": "D131-6-1 LEGIARTI000036475110, in force 2018-01-01",
+   "evidence": [
+    "D131-6-1 LEGIARTI000036475110, in force 2018-01-01: same version id and text in S0 and S1; \"Lorsque le revenu ou la rémunération est inférieur ou égal aux trois quarts de la valeur du plafond mentionné à l'article L. 241-3, l'exonération applicable pendant la période mentionnée au I correspond au montant total des cotisations dues\"",
+    "Classic (non-micro) ACRE: governed by D131-6-1 only, unchanged in S1."
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . prorata sur l'année",
+   "classification": "UNAFFECTED",
+   "confidence": "high",
+   "article": "D131-6-1 LEGIARTI000036475110, in force 2018-01-01",
+   "evidence": [
+    "D131-6-1 LEGIARTI000036475110, in force 2018-01-01: same version id and text in S0 and S1; \"Lorsque le revenu ou la rémunération est inférieur ou égal aux trois quarts de la valeur du plafond mentionné à l'article L. 241-3, l'exonération applicable pendant la période mentionnée au I correspond au montant total des cotisations dues\"",
+    "Classic (non-micro) ACRE: governed by D131-6-1 only, unchanged in S1."
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . allocations familiales",
+   "classification": "UNAFFECTED",
+   "confidence": "high",
+   "article": "D131-6-1 LEGIARTI000036475110, in force 2018-01-01",
+   "evidence": [
+    "D131-6-1 LEGIARTI000036475110, in force 2018-01-01: same version id and text in S0 and S1; \"Lorsque le revenu ou la rémunération est inférieur ou égal aux trois quarts de la valeur du plafond mentionné à l'article L. 241-3, l'exonération applicable pendant la période mentionnée au I correspond au montant total des cotisations dues\"",
+    "Classic (non-micro) ACRE: governed by D131-6-1 only, unchanged in S1."
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . indemnités journalières maladie",
+   "classification": "UNAFFECTED",
+   "confidence": "high",
+   "article": "D131-6-1 LEGIARTI000036475110, in force 2018-01-01",
+   "evidence": [
+    "D131-6-1 LEGIARTI000036475110, in force 2018-01-01: same version id and text in S0 and S1; \"Lorsque le revenu ou la rémunération est inférieur ou égal aux trois quarts de la valeur du plafond mentionné à l'article L. 241-3, l'exonération applicable pendant la période mentionnée au I correspond au montant total des cotisations dues\"",
+    "Classic (non-micro) ACRE: governed by D131-6-1 only, unchanged in S1."
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . invalidité et décès",
+   "classification": "UNAFFECTED",
+   "confidence": "high",
+   "article": "D131-6-1 LEGIARTI000036475110, in force 2018-01-01",
+   "evidence": [
+    "D131-6-1 LEGIARTI000036475110, in force 2018-01-01: same version id and text in S0 and S1; \"Lorsque le revenu ou la rémunération est inférieur ou égal aux trois quarts de la valeur du plafond mentionné à l'article L. 241-3, l'exonération applicable pendant la période mentionnée au I correspond au montant total des cotisations dues\"",
+    "Classic (non-micro) ACRE: governed by D131-6-1 only, unchanged in S1."
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . maladie",
+   "classification": "UNAFFECTED",
+   "confidence": "high",
+   "article": "D131-6-1 LEGIARTI000036475110, in force 2018-01-01",
+   "evidence": [
+    "D131-6-1 LEGIARTI000036475110, in force 2018-01-01: same version id and text in S0 and S1; \"Lorsque le revenu ou la rémunération est inférieur ou égal aux trois quarts de la valeur du plafond mentionné à l'article L. 241-3, l'exonération applicable pendant la période mentionnée au I correspond au montant total des cotisations dues\"",
+    "Classic (non-micro) ACRE: governed by D131-6-1 only, unchanged in S1."
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . retraite de base",
+   "classification": "UNAFFECTED",
+   "confidence": "high",
+   "article": "D131-6-1 LEGIARTI000036475110, in force 2018-01-01",
+   "evidence": [
+    "D131-6-1 LEGIARTI000036475110, in force 2018-01-01: same version id and text in S0 and S1; \"Lorsque le revenu ou la rémunération est inférieur ou égal aux trois quarts de la valeur du plafond mentionné à l'article L. 241-3, l'exonération applicable pendant la période mentionnée au I correspond au montant total des cotisations dues\"",
+    "Classic (non-micro) ACRE: governed by D131-6-1 only, unchanged in S1."
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . PSS proratisé",
+   "classification": "UNAFFECTED",
+   "confidence": "high",
+   "article": "D131-6-1 LEGIARTI000036475110, in force 2018-01-01",
+   "evidence": [
+    "D131-6-1 LEGIARTI000036475110, in force 2018-01-01: same version id and text in S0 and S1; \"Lorsque le revenu ou la rémunération est inférieur ou égal aux trois quarts de la valeur du plafond mentionné à l'article L. 241-3, l'exonération applicable pendant la période mentionnée au I correspond au montant total des cotisations dues\"",
+    "Classic (non-micro) ACRE: governed by D131-6-1 only, unchanged in S1."
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+   "classification": "UNAFFECTED",
+   "confidence": "high",
+   "article": "D621-2 LEGIARTI000046714747, in force 2022-12-10",
+   "evidence": [
+    "D621-2 LEGIARTI000046714747, in force 2022-12-10: same version id and text in S0 and S1; \"En application du I de l'article L. 621-3 , le taux de base de la cotisation d'assurance maladie et maternité des travailleurs ind\""
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif . assiette",
+   "classification": "UNAFFECTED",
+   "confidence": "high",
+   "article": "D621-2 LEGIARTI000046714747, in force 2022-12-10",
+   "evidence": [
+    "D621-2 LEGIARTI000046714747, in force 2022-12-10: same version id and text in S0 and S1; \"En application du I de l'article L. 621-3 , le taux de base de la cotisation d'assurance maladie et maternité des travailleurs ind\""
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . invalidité et décès . assiette",
+   "classification": "UNAFFECTED",
+   "confidence": "high",
+   "article": "D632-1 LEGIARTI000041966755, in force 2020-05-25",
+   "evidence": [
+    "D632-1 LEGIARTI000041966755, in force 2020-05-25: same version id and text in S0 and S1; \"La cotisation annuelle au régime d'assurance invalidité-décès prévue à l'article L. 632-1 est assise sur les revenus définis par l\"",
+    "Unchanged by S1; the T0 floor mismatch (450 h SMIC vs 11,5 % PSS) is unrelated to this change and still open (proposal T0-P1)."
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . retraite de base",
+   "classification": "UNAFFECTED",
+   "confidence": "high",
+   "article": "D633-3 LEGIARTI000041967101, in force 2020-05-25",
+   "evidence": [
+    "D633-3 LEGIARTI000041967101, in force 2020-05-25: same version id and text in S0 and S1; \"I.-Le taux des cotisations assises sur le revenu d'activité dans la limite du plafond est fixé à 17,15 %. II.-Le taux des cotisati\""
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . assiette des cotisations",
+   "classification": "UNAFFECTED",
+   "confidence": "high",
+   "article": "L131-6 LEGIARTI000048683707, in force 2023-12-28",
+   "evidence": [
+    "L131-6 LEGIARTI000048683707, in force 2023-12-28: same version id and text in S0 and S1; \"I.-Les cotisations de sécurité sociale dues par les travailleurs indépendants non agricoles ne relevant pas du dispositif prévu à \"",
+    "L131-6 LEGIARTI000048683707 unchanged; unified-base entry into force still depends on LOI 2023-1250 art. 18 (outside the set)."
+   ]
+  },
+  {
+   "rule": "dirigeant . indépendant . cotisations et contributions . CSG-CRDS . assiette",
+   "classification": "UNAFFECTED",
+   "confidence": "high",
+   "article": "L136-3 LEGIARTI000048683641, in force 2023-12-28",
+   "evidence": [
+    "L136-3 LEGIARTI000048683641, in force 2023-12-28: same version id and text in S0 and S1; \"I.-La contribution due par les travailleurs indépendants non agricoles au titre des activités autres que celles relevant des artic\""
+   ]
+  },
+  {
+   "rule": "entreprise . imposition . régime . micro-entreprise . revenu abattu",
+   "classification": "UNAFFECTED",
+   "confidence": "high",
+   "article": "L613-7 LEGIARTI000048683570, in force 2023-12-28",
+   "evidence": [
+    "L613-7 LEGIARTI000048683570, in force 2023-12-28: same version id and text in S0 and S1; \"après application d'un taux d'abattement de 71 % lorsqu'elles relèvent du 1° du 1 de l'article 50-0 du code général des impôts, de 50 % lorsqu'elles relèvent du 2° du même 1 et de 34 % lorsqu'elles relèvent de l'article 102 ter du même code.\"",
+    "D613-4 abatement column unchanged in LEGIARTI000049623867: 71 % (a), 34 % (b), 87 % (c), 50 % (d), 34 % (e)."
+   ]
+  },
+  {
+   "rule": "entreprise . imposition . régime . micro-entreprise . revenu abattu . plancher abattement",
+   "classification": "UNAFFECTED",
+   "confidence": "high",
+   "article": "L613-7 LEGIARTI000048683570, in force 2023-12-28",
+   "evidence": [
+    "L613-7 LEGIARTI000048683570, in force 2023-12-28: same version id and text in S0 and S1; \"après application d'un taux d'abattement de 71 % lorsqu'elles relèvent du 1° du 1 de l'article 50-0 du code général des impôts, de 50 % lorsqu'elles relèvent du 2° du même 1 et de 34 % lorsqu'elles relèvent de l'article 102 ter du même code.\""
+   ]
+  },
+  {
+   "rule": "protection sociale . retraite . base . cotisée . revenu auto-entrepreneur",
+   "classification": "UNAFFECTED",
+   "confidence": "high",
+   "article": "L613-7 LEGIARTI000048683570, in force 2023-12-28",
+   "evidence": [
+    "L613-7 LEGIARTI000048683570, in force 2023-12-28: same version id and text in S0 and S1; \"après application d'un taux d'abattement de 71 % lorsqu'elles relèvent du 1° du 1 de l'article 50-0 du code général des impôts, de 50 % lorsqu'elles relèvent du 2° du même 1 et de 34 % lorsqu'elles relèvent de l'article 102 ter du même code.\"",
+    "engine G0 d9242882f96b (src/publicodes_eval.mjs): protection sociale . retraite . base . cotisée . revenu auto-entrepreneur = 7920 €/an (66 %) | situation BNC ({\"date\":\"01/06/2024\",\"salarié\":\"non\",\"entreprise . catégorie juridique\":\"'EI'\",\"entreprise . catégorie juridique . EI . auto-entrepreneur\":\"oui\",\"dirigeant . auto-entrepreneur\":\"oui\",\"dirigeant . auto-entrepreneur . chiffre d'affaires\":\"1000 €/mois\",\"établissement . commune . département . outre-mer\":\"non\",\"entreprise . activités . revenus mixtes\":\"non\",\"entreprise . date de création\":\"01/01/2019\",\"dirigeant . exonérations . ACRE\":\"non\",\"entreprise . activité . nature\":\"'libérale'\"}); SBIC_service: 6000 €/an (50 %); VENTE_explicit: 3480 €/an (29 %)"
+   ]
+  }
+ ],
+ "proposal_dir": "work/proposals/T1a/modele-social/règles",
+ "proposal_summary": "One file edited (dirigeant/auto-entrepreneur/auto-entrepreneur.publicodes, diff in work/proposals/T1a/T1a.diff): the four D613-4 rate rules get a `note` citing LEGIARTI000049623867 / décret 2024-484 and an explicit `date >= 06/2024` branch with the SAME value stated by that text; a new notification rule `… cotisations . taux à confirmer` (type notification, sévérité avertissement, valeur: date >= 07/2024) flags every date governed by an announced version whose text is unavailable. No numeric value changes anywhere.",
+ "build_ok": true,
+ "build": {
+  "proposal": {
+   "raw_rule_count": 639,
+   "parsed_rule_count": 1173
+  },
+  "G0": {
+   "raw_rule_count": 639,
+   "parsed_rule_count": 1172
+  }
+ },
+ "evaluations": [
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC",
+   "date": "01/06/2024",
+   "situation": {
+    "date": "01/06/2024",
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activités . revenus mixtes": "non",
+    "entreprise . date de création": "01/01/2019",
+    "dirigeant . exonérations . ACRE": "non",
+    "entreprise . activité . nature": "'libérale'"
+   },
+   "situation_id": "BNC",
+   "article_version_id": "LEGIARTI000049623867",
+   "quote": "e) Travailleurs indépendants relevant à la fois de l'article L. 631-1 et du régime prévu à l' article 102 ter du code général des impôts 10 000 euros 34 % 6 600 euros 21,1 %",
+   "quote_from_version": "LEGIARTI000049623867",
+   "value_before": 21.1,
+   "value_after": 21.1,
+   "unit": "%",
+   "expected_from_text": 21.1,
+   "abstain": false,
+   "note": "Text in force on 2024-06-01 (LEGIARTI000049623867, décret 2024-484) states 21.1 % for row e); G0 already computes it, so the proposal keeps the value and only re-anchors the citation."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "date": "01/06/2024",
+   "situation": {
+    "date": "01/06/2024",
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activités . revenus mixtes": "non",
+    "entreprise . date de création": "01/01/2019",
+    "dirigeant . exonérations . ACRE": "non",
+    "entreprise . activité . nature": "'libérale'"
+   },
+   "situation_id": "BNC",
+   "article_version_id": "LEGIARTI000049623867",
+   "quote": "e) Travailleurs indépendants relevant à la fois de l'article L. 631-1 et du régime prévu à l' article 102 ter du code général des impôts 10 000 euros 34 % 6 600 euros 21,1 %",
+   "quote_from_version": "LEGIARTI000049623867",
+   "value_before": 2532,
+   "value_after": 2532,
+   "unit": "€/an",
+   "expected_from_text": 2532,
+   "abstain": false,
+   "note": "1000 €/mois x 12 x 21.1 % (L613-7 I: taux global applied to the chiffre d'affaires)."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC",
+   "date": "01/07/2024",
+   "situation": {
+    "date": "01/07/2024",
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activités . revenus mixtes": "non",
+    "entreprise . date de création": "01/01/2019",
+    "dirigeant . exonérations . ACRE": "non",
+    "entreprise . activité . nature": "'libérale'"
+   },
+   "situation_id": "BNC",
+   "article_version_id": "LEGIARTI000049624068",
+   "quote": "e) Travailleurs indépendants relevant à la fois de l'article L. 631-1 et du régime prévu à l' article 102 ter du code général des impôts 10 000 euros 34 % 6 600 euros 21,1 %",
+   "quote_from_version": "LEGIARTI000049623867",
+   "value_before": 21.1,
+   "value_after": 21.1,
+   "unit": "%",
+   "expected_from_text": null,
+   "abstain": true,
+   "note": "Value is the unchanged G0/proposal output. The version governing 01/07/2024 (LEGIARTI000049624068) is announced by id and date only; its text is not in S1, so no expected value is asserted (abstention). The quoted row belongs to LEGIARTI000049623867, which ends 2024-07-01."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "date": "01/07/2024",
+   "situation": {
+    "date": "01/07/2024",
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activités . revenus mixtes": "non",
+    "entreprise . date de création": "01/01/2019",
+    "dirigeant . exonérations . ACRE": "non",
+    "entreprise . activité . nature": "'libérale'"
+   },
+   "situation_id": "BNC",
+   "article_version_id": "LEGIARTI000049624068",
+   "quote": "e) Travailleurs indépendants relevant à la fois de l'article L. 631-1 et du régime prévu à l' article 102 ter du code général des impôts 10 000 euros 34 % 6 600 euros 21,1 %",
+   "quote_from_version": "LEGIARTI000049623867",
+   "value_before": 2532,
+   "value_after": 2532,
+   "unit": "€/an",
+   "expected_from_text": null,
+   "abstain": true,
+   "note": "Follows the rate rule; abstained for the same reason."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC",
+   "date": "01/01/2025",
+   "situation": {
+    "date": "01/01/2025",
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activités . revenus mixtes": "non",
+    "entreprise . date de création": "01/01/2019",
+    "dirigeant . exonérations . ACRE": "non",
+    "entreprise . activité . nature": "'libérale'"
+   },
+   "situation_id": "BNC",
+   "article_version_id": "LEGIARTI000049624097",
+   "quote": "e) Travailleurs indépendants relevant à la fois de l'article L. 631-1 et du régime prévu à l' article 102 ter du code général des impôts 10 000 euros 34 % 6 600 euros 21,1 %",
+   "quote_from_version": "LEGIARTI000049623867",
+   "value_before": 21.1,
+   "value_after": 21.1,
+   "unit": "%",
+   "expected_from_text": null,
+   "abstain": true,
+   "note": "Value is the unchanged G0/proposal output. The version governing 01/01/2025 (LEGIARTI000049624097) is announced by id and date only; its text is not in S1, so no expected value is asserted (abstention). The quoted row belongs to LEGIARTI000049623867, which ends 2024-07-01."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "date": "01/01/2025",
+   "situation": {
+    "date": "01/01/2025",
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activités . revenus mixtes": "non",
+    "entreprise . date de création": "01/01/2019",
+    "dirigeant . exonérations . ACRE": "non",
+    "entreprise . activité . nature": "'libérale'"
+   },
+   "situation_id": "BNC",
+   "article_version_id": "LEGIARTI000049624097",
+   "quote": "e) Travailleurs indépendants relevant à la fois de l'article L. 631-1 et du régime prévu à l' article 102 ter du code général des impôts 10 000 euros 34 % 6 600 euros 21,1 %",
+   "quote_from_version": "LEGIARTI000049623867",
+   "value_before": 2532,
+   "value_after": 2532,
+   "unit": "€/an",
+   "expected_from_text": null,
+   "abstain": true,
+   "note": "Follows the rate rule; abstained for the same reason."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC",
+   "date": "01/01/2026",
+   "situation": {
+    "date": "01/01/2026",
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activités . revenus mixtes": "non",
+    "entreprise . date de création": "01/01/2019",
+    "dirigeant . exonérations . ACRE": "non",
+    "entreprise . activité . nature": "'libérale'"
+   },
+   "situation_id": "BNC",
+   "article_version_id": "LEGIARTI000049624125",
+   "quote": "e) Travailleurs indépendants relevant à la fois de l'article L. 631-1 et du régime prévu à l' article 102 ter du code général des impôts 10 000 euros 34 % 6 600 euros 21,1 %",
+   "quote_from_version": "LEGIARTI000049623867",
+   "value_before": 21.1,
+   "value_after": 21.1,
+   "unit": "%",
+   "expected_from_text": null,
+   "abstain": true,
+   "note": "Value is the unchanged G0/proposal output. The version governing 01/01/2026 (LEGIARTI000049624125) is announced by id and date only; its text is not in S1, so no expected value is asserted (abstention). The quoted row belongs to LEGIARTI000049623867, which ends 2024-07-01."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "date": "01/01/2026",
+   "situation": {
+    "date": "01/01/2026",
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activités . revenus mixtes": "non",
+    "entreprise . date de création": "01/01/2019",
+    "dirigeant . exonérations . ACRE": "non",
+    "entreprise . activité . nature": "'libérale'"
+   },
+   "situation_id": "BNC",
+   "article_version_id": "LEGIARTI000049624125",
+   "quote": "e) Travailleurs indépendants relevant à la fois de l'article L. 631-1 et du régime prévu à l' article 102 ter du code général des impôts 10 000 euros 34 % 6 600 euros 21,1 %",
+   "quote_from_version": "LEGIARTI000049623867",
+   "value_before": 2532,
+   "value_after": 2532,
+   "unit": "€/an",
+   "expected_from_text": null,
+   "abstain": true,
+   "note": "Follows the rate rule; abstained for the same reason."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV . taux",
+   "date": "01/06/2024",
+   "situation": {
+    "date": "01/06/2024",
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activités . revenus mixtes": "non",
+    "entreprise . date de création": "01/01/2019",
+    "dirigeant . exonérations . ACRE": "non",
+    "entreprise . activité . nature": "'libérale'",
+    "entreprise . activité . nature . libérale . réglementée": "oui"
+   },
+   "situation_id": "CIPAV",
+   "article_version_id": "LEGIARTI000049623867",
+   "quote": "b) Travailleurs indépendants affiliés à la section professionnelle mentionnée au 11° de l'article R. 641-1 35 076 euros 34 % 23 150 euros 21,2 %",
+   "quote_from_version": "LEGIARTI000049623867",
+   "value_before": 21.2,
+   "value_after": 21.2,
+   "unit": "%",
+   "expected_from_text": 21.2,
+   "abstain": false,
+   "note": "Text in force on 2024-06-01 (LEGIARTI000049623867, décret 2024-484) states 21.2 % for row b); G0 already computes it, so the proposal keeps the value and only re-anchors the citation."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "date": "01/06/2024",
+   "situation": {
+    "date": "01/06/2024",
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activités . revenus mixtes": "non",
+    "entreprise . date de création": "01/01/2019",
+    "dirigeant . exonérations . ACRE": "non",
+    "entreprise . activité . nature": "'libérale'",
+    "entreprise . activité . nature . libérale . réglementée": "oui"
+   },
+   "situation_id": "CIPAV",
+   "article_version_id": "LEGIARTI000049623867",
+   "quote": "b) Travailleurs indépendants affiliés à la section professionnelle mentionnée au 11° de l'article R. 641-1 35 076 euros 34 % 23 150 euros 21,2 %",
+   "quote_from_version": "LEGIARTI000049623867",
+   "value_before": 2544,
+   "value_after": 2544,
+   "unit": "€/an",
+   "expected_from_text": 2544,
+   "abstain": false,
+   "note": "1000 €/mois x 12 x 21.2 % (L613-7 I: taux global applied to the chiffre d'affaires)."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV . taux",
+   "date": "01/07/2024",
+   "situation": {
+    "date": "01/07/2024",
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activités . revenus mixtes": "non",
+    "entreprise . date de création": "01/01/2019",
+    "dirigeant . exonérations . ACRE": "non",
+    "entreprise . activité . nature": "'libérale'",
+    "entreprise . activité . nature . libérale . réglementée": "oui"
+   },
+   "situation_id": "CIPAV",
+   "article_version_id": "LEGIARTI000049624068",
+   "quote": "b) Travailleurs indépendants affiliés à la section professionnelle mentionnée au 11° de l'article R. 641-1 35 076 euros 34 % 23 150 euros 21,2 %",
+   "quote_from_version": "LEGIARTI000049623867",
+   "value_before": 21.2,
+   "value_after": 21.2,
+   "unit": "%",
+   "expected_from_text": null,
+   "abstain": true,
+   "note": "Value is the unchanged G0/proposal output. The version governing 01/07/2024 (LEGIARTI000049624068) is announced by id and date only; its text is not in S1, so no expected value is asserted (abstention). The quoted row belongs to LEGIARTI000049623867, which ends 2024-07-01."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "date": "01/07/2024",
+   "situation": {
+    "date": "01/07/2024",
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activités . revenus mixtes": "non",
+    "entreprise . date de création": "01/01/2019",
+    "dirigeant . exonérations . ACRE": "non",
+    "entreprise . activité . nature": "'libérale'",
+    "entreprise . activité . nature . libérale . réglementée": "oui"
+   },
+   "situation_id": "CIPAV",
+   "article_version_id": "LEGIARTI000049624068",
+   "quote": "b) Travailleurs indépendants affiliés à la section professionnelle mentionnée au 11° de l'article R. 641-1 35 076 euros 34 % 23 150 euros 21,2 %",
+   "quote_from_version": "LEGIARTI000049623867",
+   "value_before": 2544,
+   "value_after": 2544,
+   "unit": "€/an",
+   "expected_from_text": null,
+   "abstain": true,
+   "note": "Follows the rate rule; abstained for the same reason."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV . taux",
+   "date": "01/01/2025",
+   "situation": {
+    "date": "01/01/2025",
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activités . revenus mixtes": "non",
+    "entreprise . date de création": "01/01/2019",
+    "dirigeant . exonérations . ACRE": "non",
+    "entreprise . activité . nature": "'libérale'",
+    "entreprise . activité . nature . libérale . réglementée": "oui"
+   },
+   "situation_id": "CIPAV",
+   "article_version_id": "LEGIARTI000049624097",
+   "quote": "b) Travailleurs indépendants affiliés à la section professionnelle mentionnée au 11° de l'article R. 641-1 35 076 euros 34 % 23 150 euros 21,2 %",
+   "quote_from_version": "LEGIARTI000049623867",
+   "value_before": 21.2,
+   "value_after": 21.2,
+   "unit": "%",
+   "expected_from_text": null,
+   "abstain": true,
+   "note": "Value is the unchanged G0/proposal output. The version governing 01/01/2025 (LEGIARTI000049624097) is announced by id and date only; its text is not in S1, so no expected value is asserted (abstention). The quoted row belongs to LEGIARTI000049623867, which ends 2024-07-01."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "date": "01/01/2025",
+   "situation": {
+    "date": "01/01/2025",
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activités . revenus mixtes": "non",
+    "entreprise . date de création": "01/01/2019",
+    "dirigeant . exonérations . ACRE": "non",
+    "entreprise . activité . nature": "'libérale'",
+    "entreprise . activité . nature . libérale . réglementée": "oui"
+   },
+   "situation_id": "CIPAV",
+   "article_version_id": "LEGIARTI000049624097",
+   "quote": "b) Travailleurs indépendants affiliés à la section professionnelle mentionnée au 11° de l'article R. 641-1 35 076 euros 34 % 23 150 euros 21,2 %",
+   "quote_from_version": "LEGIARTI000049623867",
+   "value_before": 2544,
+   "value_after": 2544,
+   "unit": "€/an",
+   "expected_from_text": null,
+   "abstain": true,
+   "note": "Follows the rate rule; abstained for the same reason."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV . taux",
+   "date": "01/01/2026",
+   "situation": {
+    "date": "01/01/2026",
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activités . revenus mixtes": "non",
+    "entreprise . date de création": "01/01/2019",
+    "dirigeant . exonérations . ACRE": "non",
+    "entreprise . activité . nature": "'libérale'",
+    "entreprise . activité . nature . libérale . réglementée": "oui"
+   },
+   "situation_id": "CIPAV",
+   "article_version_id": "LEGIARTI000049624125",
+   "quote": "b) Travailleurs indépendants affiliés à la section professionnelle mentionnée au 11° de l'article R. 641-1 35 076 euros 34 % 23 150 euros 21,2 %",
+   "quote_from_version": "LEGIARTI000049623867",
+   "value_before": 21.2,
+   "value_after": 21.2,
+   "unit": "%",
+   "expected_from_text": null,
+   "abstain": true,
+   "note": "Value is the unchanged G0/proposal output. The version governing 01/01/2026 (LEGIARTI000049624125) is announced by id and date only; its text is not in S1, so no expected value is asserted (abstention). The quoted row belongs to LEGIARTI000049623867, which ends 2024-07-01."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "date": "01/01/2026",
+   "situation": {
+    "date": "01/01/2026",
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activités . revenus mixtes": "non",
+    "entreprise . date de création": "01/01/2019",
+    "dirigeant . exonérations . ACRE": "non",
+    "entreprise . activité . nature": "'libérale'",
+    "entreprise . activité . nature . libérale . réglementée": "oui"
+   },
+   "situation_id": "CIPAV",
+   "article_version_id": "LEGIARTI000049624125",
+   "quote": "b) Travailleurs indépendants affiliés à la section professionnelle mentionnée au 11° de l'article R. 641-1 35 076 euros 34 % 23 150 euros 21,2 %",
+   "quote_from_version": "LEGIARTI000049623867",
+   "value_before": 2544,
+   "value_after": 2544,
+   "unit": "€/an",
+   "expected_from_text": null,
+   "abstain": true,
+   "note": "Follows the rate rule; abstained for the same reason."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BIC",
+   "date": "01/06/2024",
+   "situation": {
+    "date": "01/06/2024",
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activités . revenus mixtes": "non",
+    "entreprise . date de création": "01/01/2019",
+    "dirigeant . exonérations . ACRE": "non",
+    "entreprise . activité . nature": "'artisanale'",
+    "entreprise . activités . service ou vente": "'service'"
+   },
+   "situation_id": "SBIC_service",
+   "article_version_id": "LEGIARTI000049623867",
+   "quote": "d) Travailleurs indépendants appartenant à la catégorie mentionnée au 2° du 1 de l'article 50-0 du code général des impôt 46 300 euros 50 % 23 150 euros 21,2 %",
+   "quote_from_version": "LEGIARTI000049623867",
+   "value_before": 21.2,
+   "value_after": 21.2,
+   "unit": "%",
+   "expected_from_text": 21.2,
+   "abstain": false,
+   "note": "Text in force on 2024-06-01 (LEGIARTI000049623867, décret 2024-484) states 21.2 % for row d); G0 already computes it, so the proposal keeps the value and only re-anchors the citation."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "date": "01/06/2024",
+   "situation": {
+    "date": "01/06/2024",
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activités . revenus mixtes": "non",
+    "entreprise . date de création": "01/01/2019",
+    "dirigeant . exonérations . ACRE": "non",
+    "entreprise . activité . nature": "'artisanale'",
+    "entreprise . activités . service ou vente": "'service'"
+   },
+   "situation_id": "SBIC_service",
+   "article_version_id": "LEGIARTI000049623867",
+   "quote": "d) Travailleurs indépendants appartenant à la catégorie mentionnée au 2° du 1 de l'article 50-0 du code général des impôt 46 300 euros 50 % 23 150 euros 21,2 %",
+   "quote_from_version": "LEGIARTI000049623867",
+   "value_before": 2544,
+   "value_after": 2544,
+   "unit": "€/an",
+   "expected_from_text": 2544,
+   "abstain": false,
+   "note": "1000 €/mois x 12 x 21.2 % (L613-7 I: taux global applied to the chiffre d'affaires)."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BIC",
+   "date": "01/07/2024",
+   "situation": {
+    "date": "01/07/2024",
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activités . revenus mixtes": "non",
+    "entreprise . date de création": "01/01/2019",
+    "dirigeant . exonérations . ACRE": "non",
+    "entreprise . activité . nature": "'artisanale'",
+    "entreprise . activités . service ou vente": "'service'"
+   },
+   "situation_id": "SBIC_service",
+   "article_version_id": "LEGIARTI000049624068",
+   "quote": "d) Travailleurs indépendants appartenant à la catégorie mentionnée au 2° du 1 de l'article 50-0 du code général des impôt 46 300 euros 50 % 23 150 euros 21,2 %",
+   "quote_from_version": "LEGIARTI000049623867",
+   "value_before": 21.2,
+   "value_after": 21.2,
+   "unit": "%",
+   "expected_from_text": null,
+   "abstain": true,
+   "note": "Value is the unchanged G0/proposal output. The version governing 01/07/2024 (LEGIARTI000049624068) is announced by id and date only; its text is not in S1, so no expected value is asserted (abstention). The quoted row belongs to LEGIARTI000049623867, which ends 2024-07-01."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "date": "01/07/2024",
+   "situation": {
+    "date": "01/07/2024",
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activités . revenus mixtes": "non",
+    "entreprise . date de création": "01/01/2019",
+    "dirigeant . exonérations . ACRE": "non",
+    "entreprise . activité . nature": "'artisanale'",
+    "entreprise . activités . service ou vente": "'service'"
+   },
+   "situation_id": "SBIC_service",
+   "article_version_id": "LEGIARTI000049624068",
+   "quote": "d) Travailleurs indépendants appartenant à la catégorie mentionnée au 2° du 1 de l'article 50-0 du code général des impôt 46 300 euros 50 % 23 150 euros 21,2 %",
+   "quote_from_version": "LEGIARTI000049623867",
+   "value_before": 2544,
+   "value_after": 2544,
+   "unit": "€/an",
+   "expected_from_text": null,
+   "abstain": true,
+   "note": "Follows the rate rule; abstained for the same reason."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BIC",
+   "date": "01/01/2025",
+   "situation": {
+    "date": "01/01/2025",
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activités . revenus mixtes": "non",
+    "entreprise . date de création": "01/01/2019",
+    "dirigeant . exonérations . ACRE": "non",
+    "entreprise . activité . nature": "'artisanale'",
+    "entreprise . activités . service ou vente": "'service'"
+   },
+   "situation_id": "SBIC_service",
+   "article_version_id": "LEGIARTI000049624097",
+   "quote": "d) Travailleurs indépendants appartenant à la catégorie mentionnée au 2° du 1 de l'article 50-0 du code général des impôt 46 300 euros 50 % 23 150 euros 21,2 %",
+   "quote_from_version": "LEGIARTI000049623867",
+   "value_before": 21.2,
+   "value_after": 21.2,
+   "unit": "%",
+   "expected_from_text": null,
+   "abstain": true,
+   "note": "Value is the unchanged G0/proposal output. The version governing 01/01/2025 (LEGIARTI000049624097) is announced by id and date only; its text is not in S1, so no expected value is asserted (abstention). The quoted row belongs to LEGIARTI000049623867, which ends 2024-07-01."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "date": "01/01/2025",
+   "situation": {
+    "date": "01/01/2025",
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activités . revenus mixtes": "non",
+    "entreprise . date de création": "01/01/2019",
+    "dirigeant . exonérations . ACRE": "non",
+    "entreprise . activité . nature": "'artisanale'",
+    "entreprise . activités . service ou vente": "'service'"
+   },
+   "situation_id": "SBIC_service",
+   "article_version_id": "LEGIARTI000049624097",
+   "quote": "d) Travailleurs indépendants appartenant à la catégorie mentionnée au 2° du 1 de l'article 50-0 du code général des impôt 46 300 euros 50 % 23 150 euros 21,2 %",
+   "quote_from_version": "LEGIARTI000049623867",
+   "value_before": 2544,
+   "value_after": 2544,
+   "unit": "€/an",
+   "expected_from_text": null,
+   "abstain": true,
+   "note": "Follows the rate rule; abstained for the same reason."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BIC",
+   "date": "01/01/2026",
+   "situation": {
+    "date": "01/01/2026",
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activités . revenus mixtes": "non",
+    "entreprise . date de création": "01/01/2019",
+    "dirigeant . exonérations . ACRE": "non",
+    "entreprise . activité . nature": "'artisanale'",
+    "entreprise . activités . service ou vente": "'service'"
+   },
+   "situation_id": "SBIC_service",
+   "article_version_id": "LEGIARTI000049624125",
+   "quote": "d) Travailleurs indépendants appartenant à la catégorie mentionnée au 2° du 1 de l'article 50-0 du code général des impôt 46 300 euros 50 % 23 150 euros 21,2 %",
+   "quote_from_version": "LEGIARTI000049623867",
+   "value_before": 21.2,
+   "value_after": 21.2,
+   "unit": "%",
+   "expected_from_text": null,
+   "abstain": true,
+   "note": "Value is the unchanged G0/proposal output. The version governing 01/01/2026 (LEGIARTI000049624125) is announced by id and date only; its text is not in S1, so no expected value is asserted (abstention). The quoted row belongs to LEGIARTI000049623867, which ends 2024-07-01."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "date": "01/01/2026",
+   "situation": {
+    "date": "01/01/2026",
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activités . revenus mixtes": "non",
+    "entreprise . date de création": "01/01/2019",
+    "dirigeant . exonérations . ACRE": "non",
+    "entreprise . activité . nature": "'artisanale'",
+    "entreprise . activités . service ou vente": "'service'"
+   },
+   "situation_id": "SBIC_service",
+   "article_version_id": "LEGIARTI000049624125",
+   "quote": "d) Travailleurs indépendants appartenant à la catégorie mentionnée au 2° du 1 de l'article 50-0 du code général des impôt 46 300 euros 50 % 23 150 euros 21,2 %",
+   "quote_from_version": "LEGIARTI000049623867",
+   "value_before": 2544,
+   "value_after": 2544,
+   "unit": "€/an",
+   "expected_from_text": null,
+   "abstain": true,
+   "note": "Follows the rate rule; abstained for the same reason."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux vente restauration hébergement",
+   "date": "01/06/2024",
+   "situation": {
+    "date": "01/06/2024",
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activités . revenus mixtes": "non",
+    "entreprise . date de création": "01/01/2019",
+    "dirigeant . exonérations . ACRE": "non",
+    "entreprise . activité . nature": "'commerciale'",
+    "entreprise . activités . service ou vente": "'vente'"
+   },
+   "situation_id": "VENTE_explicit",
+   "article_version_id": "LEGIARTI000049623867",
+   "quote": "a) Travailleurs indépendants appartenant à la catégorie mentionnée au 1° du 1 de l' article 50-0 du code général des impôts 79 828 euros 71 % 23 150 euros 12,3 %",
+   "quote_from_version": "LEGIARTI000049623867",
+   "value_before": 12.3,
+   "value_after": 12.3,
+   "unit": "%",
+   "expected_from_text": 12.3,
+   "abstain": false,
+   "note": "Text in force on 2024-06-01 (LEGIARTI000049623867, décret 2024-484) states 12.3 % for row a); G0 already computes it, so the proposal keeps the value and only re-anchors the citation."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "date": "01/06/2024",
+   "situation": {
+    "date": "01/06/2024",
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activités . revenus mixtes": "non",
+    "entreprise . date de création": "01/01/2019",
+    "dirigeant . exonérations . ACRE": "non",
+    "entreprise . activité . nature": "'commerciale'",
+    "entreprise . activités . service ou vente": "'vente'"
+   },
+   "situation_id": "VENTE_explicit",
+   "article_version_id": "LEGIARTI000049623867",
+   "quote": "a) Travailleurs indépendants appartenant à la catégorie mentionnée au 1° du 1 de l' article 50-0 du code général des impôts 79 828 euros 71 % 23 150 euros 12,3 %",
+   "quote_from_version": "LEGIARTI000049623867",
+   "value_before": 1476,
+   "value_after": 1476,
+   "unit": "€/an",
+   "expected_from_text": 1476,
+   "abstain": false,
+   "note": "1000 €/mois x 12 x 12.3 % (L613-7 I: taux global applied to the chiffre d'affaires)."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux vente restauration hébergement",
+   "date": "01/07/2024",
+   "situation": {
+    "date": "01/07/2024",
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activités . revenus mixtes": "non",
+    "entreprise . date de création": "01/01/2019",
+    "dirigeant . exonérations . ACRE": "non",
+    "entreprise . activité . nature": "'commerciale'",
+    "entreprise . activités . service ou vente": "'vente'"
+   },
+   "situation_id": "VENTE_explicit",
+   "article_version_id": "LEGIARTI000049624068",
+   "quote": "a) Travailleurs indépendants appartenant à la catégorie mentionnée au 1° du 1 de l' article 50-0 du code général des impôts 79 828 euros 71 % 23 150 euros 12,3 %",
+   "quote_from_version": "LEGIARTI000049623867",
+   "value_before": 12.3,
+   "value_after": 12.3,
+   "unit": "%",
+   "expected_from_text": null,
+   "abstain": true,
+   "note": "Value is the unchanged G0/proposal output. The version governing 01/07/2024 (LEGIARTI000049624068) is announced by id and date only; its text is not in S1, so no expected value is asserted (abstention). The quoted row belongs to LEGIARTI000049623867, which ends 2024-07-01."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "date": "01/07/2024",
+   "situation": {
+    "date": "01/07/2024",
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activités . revenus mixtes": "non",
+    "entreprise . date de création": "01/01/2019",
+    "dirigeant . exonérations . ACRE": "non",
+    "entreprise . activité . nature": "'commerciale'",
+    "entreprise . activités . service ou vente": "'vente'"
+   },
+   "situation_id": "VENTE_explicit",
+   "article_version_id": "LEGIARTI000049624068",
+   "quote": "a) Travailleurs indépendants appartenant à la catégorie mentionnée au 1° du 1 de l' article 50-0 du code général des impôts 79 828 euros 71 % 23 150 euros 12,3 %",
+   "quote_from_version": "LEGIARTI000049623867",
+   "value_before": 1476,
+   "value_after": 1476,
+   "unit": "€/an",
+   "expected_from_text": null,
+   "abstain": true,
+   "note": "Follows the rate rule; abstained for the same reason."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux vente restauration hébergement",
+   "date": "01/01/2025",
+   "situation": {
+    "date": "01/01/2025",
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activités . revenus mixtes": "non",
+    "entreprise . date de création": "01/01/2019",
+    "dirigeant . exonérations . ACRE": "non",
+    "entreprise . activité . nature": "'commerciale'",
+    "entreprise . activités . service ou vente": "'vente'"
+   },
+   "situation_id": "VENTE_explicit",
+   "article_version_id": "LEGIARTI000049624097",
+   "quote": "a) Travailleurs indépendants appartenant à la catégorie mentionnée au 1° du 1 de l' article 50-0 du code général des impôts 79 828 euros 71 % 23 150 euros 12,3 %",
+   "quote_from_version": "LEGIARTI000049623867",
+   "value_before": 12.3,
+   "value_after": 12.3,
+   "unit": "%",
+   "expected_from_text": null,
+   "abstain": true,
+   "note": "Value is the unchanged G0/proposal output. The version governing 01/01/2025 (LEGIARTI000049624097) is announced by id and date only; its text is not in S1, so no expected value is asserted (abstention). The quoted row belongs to LEGIARTI000049623867, which ends 2024-07-01."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "date": "01/01/2025",
+   "situation": {
+    "date": "01/01/2025",
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activités . revenus mixtes": "non",
+    "entreprise . date de création": "01/01/2019",
+    "dirigeant . exonérations . ACRE": "non",
+    "entreprise . activité . nature": "'commerciale'",
+    "entreprise . activités . service ou vente": "'vente'"
+   },
+   "situation_id": "VENTE_explicit",
+   "article_version_id": "LEGIARTI000049624097",
+   "quote": "a) Travailleurs indépendants appartenant à la catégorie mentionnée au 1° du 1 de l' article 50-0 du code général des impôts 79 828 euros 71 % 23 150 euros 12,3 %",
+   "quote_from_version": "LEGIARTI000049623867",
+   "value_before": 1476,
+   "value_after": 1476,
+   "unit": "€/an",
+   "expected_from_text": null,
+   "abstain": true,
+   "note": "Follows the rate rule; abstained for the same reason."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux vente restauration hébergement",
+   "date": "01/01/2026",
+   "situation": {
+    "date": "01/01/2026",
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activités . revenus mixtes": "non",
+    "entreprise . date de création": "01/01/2019",
+    "dirigeant . exonérations . ACRE": "non",
+    "entreprise . activité . nature": "'commerciale'",
+    "entreprise . activités . service ou vente": "'vente'"
+   },
+   "situation_id": "VENTE_explicit",
+   "article_version_id": "LEGIARTI000049624125",
+   "quote": "a) Travailleurs indépendants appartenant à la catégorie mentionnée au 1° du 1 de l' article 50-0 du code général des impôts 79 828 euros 71 % 23 150 euros 12,3 %",
+   "quote_from_version": "LEGIARTI000049623867",
+   "value_before": 12.3,
+   "value_after": 12.3,
+   "unit": "%",
+   "expected_from_text": null,
+   "abstain": true,
+   "note": "Value is the unchanged G0/proposal output. The version governing 01/01/2026 (LEGIARTI000049624125) is announced by id and date only; its text is not in S1, so no expected value is asserted (abstention). The quoted row belongs to LEGIARTI000049623867, which ends 2024-07-01."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "date": "01/01/2026",
+   "situation": {
+    "date": "01/01/2026",
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activités . revenus mixtes": "non",
+    "entreprise . date de création": "01/01/2019",
+    "dirigeant . exonérations . ACRE": "non",
+    "entreprise . activité . nature": "'commerciale'",
+    "entreprise . activités . service ou vente": "'vente'"
+   },
+   "situation_id": "VENTE_explicit",
+   "article_version_id": "LEGIARTI000049624125",
+   "quote": "a) Travailleurs indépendants appartenant à la catégorie mentionnée au 1° du 1 de l' article 50-0 du code général des impôts 79 828 euros 71 % 23 150 euros 12,3 %",
+   "quote_from_version": "LEGIARTI000049623867",
+   "value_before": 1476,
+   "value_after": 1476,
+   "unit": "€/an",
+   "expected_from_text": null,
+   "abstain": true,
+   "note": "Follows the rate rule; abstained for the same reason."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux à confirmer",
+   "date": "01/06/2024",
+   "situation": {
+    "date": "01/06/2024",
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activités . revenus mixtes": "non",
+    "entreprise . date de création": "01/01/2019",
+    "dirigeant . exonérations . ACRE": "non",
+    "entreprise . activité . nature": "'libérale'"
+   },
+   "situation_id": "BNC",
+   "value_before": null,
+   "value_after": false,
+   "unit": "boolean (notification)",
+   "expected_from_text": null,
+   "article_version_id": "LEGIARTI000049623867",
+   "quote": "Conformément au 1° de l'article 1 du décret n° 2024-484 du 30 mai 2024, ces dispositions entrent en vigueur à compter du 1er juin 2024.",
+   "quote_field": "nota",
+   "note": "New notification rule in the proposal (absent in G0: engine error 'règle inconnue'). It is true from 07/2024, i.e. for every date governed by an announced D613-4 version whose text is unavailable."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux à confirmer",
+   "date": "01/07/2024",
+   "situation": {
+    "date": "01/07/2024",
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activités . revenus mixtes": "non",
+    "entreprise . date de création": "01/01/2019",
+    "dirigeant . exonérations . ACRE": "non",
+    "entreprise . activité . nature": "'libérale'"
+   },
+   "situation_id": "BNC",
+   "value_before": null,
+   "value_after": true,
+   "unit": "boolean (notification)",
+   "expected_from_text": null,
+   "article_version_id": "LEGIARTI000049623867",
+   "quote": "Conformément au 1° de l'article 1 du décret n° 2024-484 du 30 mai 2024, ces dispositions entrent en vigueur à compter du 1er juin 2024.",
+   "quote_field": "nota",
+   "note": "New notification rule in the proposal (absent in G0: engine error 'règle inconnue'). It is true from 07/2024, i.e. for every date governed by an announced D613-4 version whose text is unavailable."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux à confirmer",
+   "date": "01/01/2025",
+   "situation": {
+    "date": "01/01/2025",
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activités . revenus mixtes": "non",
+    "entreprise . date de création": "01/01/2019",
+    "dirigeant . exonérations . ACRE": "non",
+    "entreprise . activité . nature": "'libérale'"
+   },
+   "situation_id": "BNC",
+   "value_before": null,
+   "value_after": true,
+   "unit": "boolean (notification)",
+   "expected_from_text": null,
+   "article_version_id": "LEGIARTI000049623867",
+   "quote": "Conformément au 1° de l'article 1 du décret n° 2024-484 du 30 mai 2024, ces dispositions entrent en vigueur à compter du 1er juin 2024.",
+   "quote_field": "nota",
+   "note": "New notification rule in the proposal (absent in G0: engine error 'règle inconnue'). It is true from 07/2024, i.e. for every date governed by an announced D613-4 version whose text is unavailable."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux à confirmer",
+   "date": "01/01/2026",
+   "situation": {
+    "date": "01/01/2026",
+    "salarié": "non",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur": "oui",
+    "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+    "établissement . commune . département . outre-mer": "non",
+    "entreprise . activités . revenus mixtes": "non",
+    "entreprise . date de création": "01/01/2019",
+    "dirigeant . exonérations . ACRE": "non",
+    "entreprise . activité . nature": "'libérale'"
+   },
+   "situation_id": "BNC",
+   "value_before": null,
+   "value_after": true,
+   "unit": "boolean (notification)",
+   "expected_from_text": null,
+   "article_version_id": "LEGIARTI000049623867",
+   "quote": "Conformément au 1° de l'article 1 du décret n° 2024-484 du 30 mai 2024, ces dispositions entrent en vigueur à compter du 1er juin 2024.",
+   "quote_field": "nota",
+   "note": "New notification rule in the proposal (absent in G0: engine error 'règle inconnue'). It is true from 07/2024, i.e. for every date governed by an announced D613-4 version whose text is unavailable."
+  }
+ ],
+ "abstentions": [
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC",
+   "date": "01/07/2024",
+   "reason": "D613-4 version in force at 01/07/2024 is LEGIARTI000049624068 (articleVersions, etat VIGUEUR_DIFF); S1 includes only the text of LEGIARTI000049623867 (dateFin 2024-07-01). The text available does not state the row e) rate for 01/07/2024."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC",
+   "date": "01/01/2025",
+   "reason": "D613-4 version in force at 01/01/2025 is LEGIARTI000049624097 (articleVersions, etat VIGUEUR_DIFF); S1 includes only the text of LEGIARTI000049623867 (dateFin 2024-07-01). The text available does not state the row e) rate for 01/01/2025."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC",
+   "date": "01/01/2026",
+   "reason": "D613-4 version in force at 01/01/2026 is LEGIARTI000049624125 (articleVersions, etat VIGUEUR_DIFF); S1 includes only the text of LEGIARTI000049623867 (dateFin 2024-07-01). The text available does not state the row e) rate for 01/01/2026."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV . taux",
+   "date": "01/07/2024",
+   "reason": "D613-4 version in force at 01/07/2024 is LEGIARTI000049624068 (articleVersions, etat VIGUEUR_DIFF); S1 includes only the text of LEGIARTI000049623867 (dateFin 2024-07-01). The text available does not state the row b) rate for 01/07/2024."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV . taux",
+   "date": "01/01/2025",
+   "reason": "D613-4 version in force at 01/01/2025 is LEGIARTI000049624097 (articleVersions, etat VIGUEUR_DIFF); S1 includes only the text of LEGIARTI000049623867 (dateFin 2024-07-01). The text available does not state the row b) rate for 01/01/2025."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV . taux",
+   "date": "01/01/2026",
+   "reason": "D613-4 version in force at 01/01/2026 is LEGIARTI000049624125 (articleVersions, etat VIGUEUR_DIFF); S1 includes only the text of LEGIARTI000049623867 (dateFin 2024-07-01). The text available does not state the row b) rate for 01/01/2026."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BIC",
+   "date": "01/07/2024",
+   "reason": "D613-4 version in force at 01/07/2024 is LEGIARTI000049624068 (articleVersions, etat VIGUEUR_DIFF); S1 includes only the text of LEGIARTI000049623867 (dateFin 2024-07-01). The text available does not state the row d) rate for 01/07/2024."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BIC",
+   "date": "01/01/2025",
+   "reason": "D613-4 version in force at 01/01/2025 is LEGIARTI000049624097 (articleVersions, etat VIGUEUR_DIFF); S1 includes only the text of LEGIARTI000049623867 (dateFin 2024-07-01). The text available does not state the row d) rate for 01/01/2025."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BIC",
+   "date": "01/01/2026",
+   "reason": "D613-4 version in force at 01/01/2026 is LEGIARTI000049624125 (articleVersions, etat VIGUEUR_DIFF); S1 includes only the text of LEGIARTI000049623867 (dateFin 2024-07-01). The text available does not state the row d) rate for 01/01/2026."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux vente restauration hébergement",
+   "date": "01/07/2024",
+   "reason": "D613-4 version in force at 01/07/2024 is LEGIARTI000049624068 (articleVersions, etat VIGUEUR_DIFF); S1 includes only the text of LEGIARTI000049623867 (dateFin 2024-07-01). The text available does not state the row a) rate for 01/07/2024."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux vente restauration hébergement",
+   "date": "01/01/2025",
+   "reason": "D613-4 version in force at 01/01/2025 is LEGIARTI000049624097 (articleVersions, etat VIGUEUR_DIFF); S1 includes only the text of LEGIARTI000049623867 (dateFin 2024-07-01). The text available does not state the row a) rate for 01/01/2025."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux vente restauration hébergement",
+   "date": "01/01/2026",
+   "reason": "D613-4 version in force at 01/01/2026 is LEGIARTI000049624125 (articleVersions, etat VIGUEUR_DIFF); S1 includes only the text of LEGIARTI000049623867 (dateFin 2024-07-01). The text available does not state the row a) rate for 01/01/2026."
+  },
+  {
+   "rule": "protection sociale . retraite . complémentaire . RCI . revenu cotisé auto-entrepreneur",
+   "date": "01/07/2024",
+   "reason": "Depends on D613-6 share (16,50 %) x D613-4 rate; both articles have announced versions at 01/07/2024 (D613-6: LEGIARTI000049625264) whose text is not in S1."
+  },
+  {
+   "rule": "protection sociale . retraite . complémentaire . RCI . revenu cotisé auto-entrepreneur",
+   "date": "01/01/2025",
+   "reason": "Depends on D613-6 share (16,50 %) x D613-4 rate; both articles have announced versions at 01/01/2025 (D613-6: LEGIARTI000049625405) whose text is not in S1."
+  },
+  {
+   "rule": "protection sociale . retraite . complémentaire . RCI . revenu cotisé auto-entrepreneur",
+   "date": "01/01/2026",
+   "reason": "Depends on D613-6 share (16,50 %) x D613-4 rate; both articles have announced versions at 01/01/2026 (D613-6: LEGIARTI000049625445) whose text is not in S1."
+  }
+ ],
+ "approval": "none recorded",
+ "notes": "S1 vs S0 (kept in work/law): only D613-4 and D613-6 changed, both by décret n°2024-484 du 30 mai 2024 (JORF 2024-05-31). On the decision date the rates in force are those already in G0 (21,1 % BNC, 21,2 % CIPAV, 21,2 % BIC service, 12,3 % vente), so no numeric change is justified today. For 2024-07-01, 2025-01-01 and 2026-01-01 the governing versions exist only as ids and dates (etat VIGUEUR_DIFF); their text is absent from S1, hence the abstentions — any number for those dates would be unsupported. D613-4 future version dates overlap (…068 recorded as 2024-07-01→2025-05-01 while …097 starts 2025-01-01); D613-6 dates are consistent. ACRE sub-rules (taux ACRE . *) and DROM période rules are private in publicodes and cannot be evaluated directly; their effect is observed through the public rate rules. The BIC-service situation must set `entreprise . activités . service ou vente: 'service'` (nature 'artisanale' alone is charged at the vente rate: cotisations 1476 €/an instead of 2544 €/an). D136-5 is still missing from the snapshot. No approval, ratification or sign-off exists in the corpus.",
+ "self_reported_tool_calls": 22
+}

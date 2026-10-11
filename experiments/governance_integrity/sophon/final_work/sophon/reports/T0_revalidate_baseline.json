@@ -1,0 +1,990 @@
+{
+ "generated_at": "2026-10-11T16:51:11+00:00",
+ "law_snapshot": "S0",
+ "rules_snapshot": "G0",
+ "links_total": 55,
+ "rules_to_reassess": [
+  "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+  "dirigeant . indépendant . cotisations et contributions . invalidité et décès . assiette"
+ ],
+ "articles_changed": [],
+ "articles_without_any_link": [],
+ "rows": [
+  {
+   "link_id": "L0001",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC",
+   "article": "D613-4",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "CHECK_PASS",
+   "check_result": {
+    "passed": true,
+    "observed": 21.1,
+    "expected": 21.1,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "status": "STILL_VERIFIED"
+  },
+  {
+   "link_id": "L0002",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BIC",
+   "article": "D613-4",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "CHECK_PASS",
+   "check_result": {
+    "passed": true,
+    "observed": 21.2,
+    "expected": 21.2,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "status": "STILL_VERIFIED"
+  },
+  {
+   "link_id": "L0003",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux vente restauration hébergement",
+   "article": "D613-4",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "CHECK_PASS",
+   "check_result": {
+    "passed": true,
+    "observed": 12.3,
+    "expected": 12.3,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "status": "STILL_VERIFIED"
+  },
+  {
+   "link_id": "L0004",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV . taux",
+   "article": "D613-4",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "CHECK_PASS",
+   "check_result": {
+    "passed": true,
+    "observed": 21.2,
+    "expected": 21.2,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "status": "STILL_VERIFIED"
+  },
+  {
+   "link_id": "L0005",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "article": "D613-4",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "CHECK_PASS",
+   "check_result": {
+    "passed": true,
+    "observed": 2532.0000000000005,
+    "expected": 2532.0,
+    "unit": "€/an",
+    "missing_variables": [
+     "entreprise . activité . nature . libérale . réglementée",
+     "entreprise . activités . revenus mixtes",
+     "entreprise . activités",
+     "entreprise . activités . commerciale",
+     "entreprise . activités . artisanale",
+     "entreprise . activités . libérale"
+    ],
+    "detail": null
+   },
+   "status": "STILL_VERIFIED"
+  },
+  {
+   "link_id": "L0006",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "article": "D613-4",
+   "prior_status": "FAILED",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "CHECK_FAIL",
+   "check_result": {
+    "passed": false,
+    "observed": 1452,
+    "expected": 2544.0,
+    "unit": "€/an",
+    "missing_variables": [],
+    "detail": "observed != expected"
+   },
+   "status": "BROKEN"
+  },
+  {
+   "link_id": "L0007",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "article": "D613-4",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "CHECK_PASS",
+   "check_result": {
+    "passed": true,
+    "observed": 2544,
+    "expected": 2544.0,
+    "unit": "€/an",
+    "missing_variables": [],
+    "detail": null
+   },
+   "status": "STILL_VERIFIED"
+  },
+  {
+   "link_id": "L0008",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "article": "D613-4",
+   "prior_status": "UNKNOWN",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "NO_CHECK",
+   "status": "UNVERIFIED_NO_CHECK"
+  },
+  {
+   "link_id": "L0009",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "article": "L613-7",
+   "prior_status": "INFERRED",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "NO_CHECK",
+   "status": "UNVERIFIED_NO_CHECK"
+  },
+  {
+   "link_id": "L0010",
+   "rule": "dirigeant . auto-entrepreneur . DROM",
+   "article": "L613-7",
+   "prior_status": "INFERRED",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "NO_CHECK",
+   "status": "UNVERIFIED_NO_CHECK"
+  },
+  {
+   "link_id": "L0011",
+   "rule": "dirigeant . exonérations . ACRE",
+   "article": "L613-7",
+   "prior_status": "INFERRED",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "NO_CHECK",
+   "status": "UNVERIFIED_NO_CHECK"
+  },
+  {
+   "link_id": "L0012",
+   "rule": "entreprise . imposition . régime . micro-entreprise . revenu abattu",
+   "article": "L613-7",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "CHECK_PASS",
+   "check_result": {
+    "passed": true,
+    "observed": 7920.000000000116,
+    "expected": 7920.0,
+    "unit": "€/an",
+    "missing_variables": [
+     "entreprise . activité . nature . libérale . réglementée",
+     "entreprise . activités . revenus mixtes",
+     "entreprise . activités",
+     "entreprise . activités . commerciale",
+     "entreprise . activités . artisanale",
+     "entreprise . activités . libérale"
+    ],
+    "detail": null
+   },
+   "status": "STILL_VERIFIED"
+  },
+  {
+   "link_id": "L0013",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "article": "L613-7",
+   "prior_status": "UNKNOWN",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "NO_CHECK",
+   "status": "UNVERIFIED_NO_CHECK"
+  },
+  {
+   "link_id": "L0014",
+   "rule": "dirigeant . auto-entrepreneur . DROM . taux service BNC",
+   "article": "D756-5",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "CHECK_PASS",
+   "check_result": {
+    "passed": true,
+    "observed": 3.6,
+    "expected": 3.6,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "status": "STILL_VERIFIED"
+  },
+  {
+   "link_id": "L0015",
+   "rule": "dirigeant . auto-entrepreneur . DROM . taux service BNC",
+   "article": "D756-5",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "CHECK_PASS",
+   "check_result": {
+    "passed": true,
+    "observed": 10.6,
+    "expected": 10.6,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "status": "STILL_VERIFIED"
+  },
+  {
+   "link_id": "L0016",
+   "rule": "dirigeant . auto-entrepreneur . DROM . taux service BNC",
+   "article": "D756-5",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "CHECK_PASS",
+   "check_result": {
+    "passed": true,
+    "observed": 14.1,
+    "expected": 14.1,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "status": "STILL_VERIFIED"
+  },
+  {
+   "link_id": "L0017",
+   "rule": "dirigeant . auto-entrepreneur . DROM . service BIC",
+   "article": "D756-5",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "CHECK_PASS",
+   "check_result": {
+    "passed": true,
+    "observed": 3.6,
+    "expected": 3.6,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "status": "STILL_VERIFIED"
+  },
+  {
+   "link_id": "L0018",
+   "rule": "dirigeant . auto-entrepreneur . DROM . service BIC",
+   "article": "D756-5",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "CHECK_PASS",
+   "check_result": {
+    "passed": true,
+    "observed": 10.6,
+    "expected": 10.6,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "status": "STILL_VERIFIED"
+  },
+  {
+   "link_id": "L0019",
+   "rule": "dirigeant . auto-entrepreneur . DROM . service BIC",
+   "article": "D756-5",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "CHECK_PASS",
+   "check_result": {
+    "passed": true,
+    "observed": 14.2,
+    "expected": 14.2,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "status": "STILL_VERIFIED"
+  },
+  {
+   "link_id": "L0020",
+   "rule": "dirigeant . auto-entrepreneur . DROM . taux vente restauration hébergement",
+   "article": "D756-5",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "CHECK_PASS",
+   "check_result": {
+    "passed": true,
+    "observed": 2.1,
+    "expected": 2.1,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "status": "STILL_VERIFIED"
+  },
+  {
+   "link_id": "L0021",
+   "rule": "dirigeant . auto-entrepreneur . DROM . taux vente restauration hébergement",
+   "article": "D756-5",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "CHECK_PASS",
+   "check_result": {
+    "passed": true,
+    "observed": 6.2,
+    "expected": 6.2,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "status": "STILL_VERIFIED"
+  },
+  {
+   "link_id": "L0022",
+   "rule": "dirigeant . auto-entrepreneur . DROM . taux vente restauration hébergement",
+   "article": "D756-5",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "CHECK_PASS",
+   "check_result": {
+    "passed": true,
+    "observed": 8.2,
+    "expected": 8.2,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "status": "STILL_VERIFIED"
+  },
+  {
+   "link_id": "L0023",
+   "rule": "dirigeant . auto-entrepreneur . DROM . taux CIPAV",
+   "article": "D756-5",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "CHECK_PASS",
+   "check_result": {
+    "passed": true,
+    "observed": 7.1,
+    "expected": 7.1,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "status": "STILL_VERIFIED"
+  },
+  {
+   "link_id": "L0024",
+   "rule": "dirigeant . auto-entrepreneur . DROM . taux CIPAV",
+   "article": "D756-5",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "CHECK_PASS",
+   "check_result": {
+    "passed": true,
+    "observed": 10.6,
+    "expected": 10.6,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "status": "STILL_VERIFIED"
+  },
+  {
+   "link_id": "L0025",
+   "rule": "dirigeant . auto-entrepreneur . DROM . taux CIPAV",
+   "article": "D756-5",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "CHECK_PASS",
+   "check_result": {
+    "passed": true,
+    "observed": 14.2,
+    "expected": 14.2,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "status": "STILL_VERIFIED"
+  },
+  {
+   "link_id": "L0026",
+   "rule": "dirigeant . auto-entrepreneur . DROM",
+   "article": "D756-5",
+   "prior_status": "INFERRED",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "NO_CHECK",
+   "status": "UNVERIFIED_NO_CHECK"
+  },
+  {
+   "link_id": "L0027",
+   "rule": "dirigeant . auto-entrepreneur . DROM",
+   "article": "D756-5",
+   "prior_status": "UNKNOWN",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "NO_CHECK",
+   "status": "UNVERIFIED_NO_CHECK"
+  },
+  {
+   "link_id": "L0028",
+   "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . prorata sur l'année",
+   "article": "D131-6-1",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "CHECK_PASS",
+   "check_result": {
+    "passed": true,
+    "observed": 50,
+    "expected": 50.0,
+    "unit": "%",
+    "missing_variables": [
+     "établissement . commune . département",
+     "établissement . commune . département . outre-mer",
+     "dirigeant . exonérations . ACRE"
+    ],
+    "detail": null
+   },
+   "status": "STILL_VERIFIED"
+  },
+  {
+   "link_id": "L0029",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC",
+   "article": "D131-6-1",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "CHECK_PASS",
+   "check_result": {
+    "passed": true,
+    "observed": 21.1,
+    "expected": 21.1,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "status": "STILL_VERIFIED"
+  },
+  {
+   "link_id": "L0030",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC",
+   "article": "D131-6-1",
+   "prior_status": "INFERRED",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "NO_CHECK",
+   "status": "UNVERIFIED_NO_CHECK"
+  },
+  {
+   "link_id": "L0031",
+   "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . taux",
+   "article": "D131-6-1",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "CHECK_PASS",
+   "check_result": {
+    "passed": true,
+    "observed": 100,
+    "expected": 100.0,
+    "unit": "%",
+    "missing_variables": [
+     "établissement . commune . département",
+     "établissement . commune . département . outre-mer",
+     "dirigeant . exonérations . ACRE"
+    ],
+    "detail": null
+   },
+   "status": "STILL_VERIFIED"
+  },
+  {
+   "link_id": "L0032",
+   "rule": "dirigeant . indépendant . cotisations et contributions . retraite de base",
+   "article": "D131-6-1",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "CHECK_PASS",
+   "check_result": {
+    "passed": true,
+    "observed": 0,
+    "expected": 0.0,
+    "unit": "€/an",
+    "missing_variables": [
+     "établissement . commune . département",
+     "établissement . commune . département . outre-mer",
+     "dirigeant . exonérations . ACRE",
+     "dirigeant . indépendant . cotisations et contributions . exonérations . pension invalidité",
+     "entreprise . activités",
+     "entreprise . activités . commerciale",
+     "entreprise . activités . artisanale",
+     "entreprise . activités . libérale",
+     "entreprise . activités . agricole",
+     "dirigeant . indépendant . conjoint collaborateur",
+     "entreprise . imposition . régime",
+     "entreprise . imposition . régime . micro-entreprise"
+    ],
+    "detail": null
+   },
+   "status": "STILL_VERIFIED"
+  },
+  {
+   "link_id": "L0033",
+   "rule": "dirigeant . indépendant . cotisations et contributions . maladie",
+   "article": "D131-6-1",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "CHECK_PASS",
+   "check_result": {
+    "passed": true,
+    "observed": 0,
+    "expected": 0.0,
+    "unit": "€/an",
+    "missing_variables": [
+     "établissement . commune . département",
+     "établissement . commune . département . outre-mer",
+     "dirigeant . exonérations . ACRE",
+     "dirigeant . indépendant . cotisations et contributions . exonérations . pension invalidité",
+     "situation personnelle . domiciliation fiscale à l'étranger",
+     "entreprise . imposition . régime",
+     "entreprise . imposition . régime . micro-entreprise",
+     "dirigeant . indépendant . cotisations facultatives",
+     "situation personnelle . RSA",
+     "entreprise . activités . saisonnière",
+     "entreprise . activités",
+     "entreprise . activités . commerciale"
+    ],
+    "detail": null
+   },
+   "status": "STILL_VERIFIED"
+  },
+  {
+   "link_id": "L0034",
+   "rule": "dirigeant . indépendant . cotisations et contributions . invalidité et décès",
+   "article": "D131-6-1",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "CHECK_PASS",
+   "check_result": {
+    "passed": true,
+    "observed": 0,
+    "expected": 0.0,
+    "unit": "€/an",
+    "missing_variables": [
+     "établissement . commune . département",
+     "établissement . commune . département . outre-mer",
+     "dirigeant . exonérations . ACRE",
+     "entreprise . activités",
+     "entreprise . activités . commerciale",
+     "entreprise . activités . artisanale",
+     "entreprise . activités . libérale",
+     "entreprise . activités . agricole",
+     "dirigeant . indépendant . conjoint collaborateur",
+     "entreprise . imposition . régime",
+     "entreprise . imposition . régime . micro-entreprise",
+     "dirigeant . indépendant . cotisations facultatives"
+    ],
+    "detail": null
+   },
+   "status": "STILL_VERIFIED"
+  },
+  {
+   "link_id": "L0035",
+   "rule": "dirigeant . indépendant . cotisations et contributions . retraite complémentaire",
+   "article": "D131-6-1",
+   "prior_status": "INFERRED",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "NO_CHECK",
+   "status": "UNVERIFIED_NO_CHECK"
+  },
+  {
+   "link_id": "L0036",
+   "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . taux",
+   "article": "D131-6-1",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "CHECK_PASS",
+   "check_result": {
+    "passed": true,
+    "observed": 50,
+    "expected": 50.0,
+    "unit": "%",
+    "missing_variables": [
+     "établissement . commune . département",
+     "établissement . commune . département . outre-mer",
+     "dirigeant . exonérations . ACRE"
+    ],
+    "detail": null
+   },
+   "status": "STILL_VERIFIED"
+  },
+  {
+   "link_id": "L0037",
+   "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . taux",
+   "article": "D131-6-1",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "CHECK_PASS",
+   "check_result": {
+    "passed": true,
+    "observed": 0,
+    "expected": 0.0,
+    "unit": "%",
+    "missing_variables": [
+     "établissement . commune . département",
+     "établissement . commune . département . outre-mer",
+     "dirigeant . exonérations . ACRE"
+    ],
+    "detail": null
+   },
+   "status": "STILL_VERIFIED"
+  },
+  {
+   "link_id": "L0038",
+   "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . maladie",
+   "article": "D131-6-1",
+   "prior_status": "INFERRED",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "NO_CHECK",
+   "status": "UNVERIFIED_NO_CHECK"
+  },
+  {
+   "link_id": "L0039",
+   "rule": "dirigeant . indépendant . cotisations et contributions . PSS proratisé",
+   "article": "D131-6-1",
+   "prior_status": "INFERRED",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "NO_CHECK",
+   "status": "UNVERIFIED_NO_CHECK"
+  },
+  {
+   "link_id": "L0040",
+   "rule": "dirigeant . indépendant . cotisations et contributions . PSS proratisé",
+   "article": "D131-6-1",
+   "prior_status": "INFERRED",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "NO_CHECK",
+   "status": "UNVERIFIED_NO_CHECK"
+  },
+  {
+   "link_id": "L0041",
+   "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+   "article": "D621-2",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "CHECK_PASS",
+   "check_result": {
+    "passed": true,
+    "observed": 0.5,
+    "expected": 0.5,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "status": "STILL_VERIFIED"
+  },
+  {
+   "link_id": "L0042",
+   "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+   "article": "D621-2",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "CHECK_PASS",
+   "check_result": {
+    "passed": true,
+    "observed": 2.5,
+    "expected": 2.5,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "status": "STILL_VERIFIED"
+  },
+  {
+   "link_id": "L0043",
+   "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+   "article": "D621-2",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "CHECK_PASS",
+   "check_result": {
+    "passed": true,
+    "observed": 4.5,
+    "expected": 4.5,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "status": "STILL_VERIFIED"
+  },
+  {
+   "link_id": "L0044",
+   "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+   "article": "D621-2",
+   "prior_status": "INFERRED",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "NO_CHECK",
+   "status": "UNVERIFIED_NO_CHECK"
+  },
+  {
+   "link_id": "L0045",
+   "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+   "article": "D621-2",
+   "prior_status": "UNKNOWN",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "NO_CHECK",
+   "status": "UNVERIFIED_NO_CHECK"
+  },
+  {
+   "link_id": "L0046",
+   "rule": "dirigeant . indépendant . cotisations et contributions . invalidité et décès . assiette",
+   "article": "D632-1",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "CHECK_PASS",
+   "check_result": {
+    "passed": true,
+    "observed": 3864,
+    "expected": 3864.0,
+    "unit": "€/mois",
+    "missing_variables": [
+     "entreprise . activités",
+     "entreprise . activités . commerciale",
+     "entreprise . activités . artisanale",
+     "entreprise . activités . libérale",
+     "entreprise . activités . agricole",
+     "dirigeant . indépendant . conjoint collaborateur",
+     "entreprise . imposition . régime",
+     "entreprise . imposition . régime . micro-entreprise",
+     "dirigeant . indépendant . cotisations facultatives",
+     "établissement . commune . département",
+     "établissement . commune . département . outre-mer",
+     "situation personnelle . RSA"
+    ],
+    "detail": null
+   },
+   "status": "STILL_VERIFIED"
+  },
+  {
+   "link_id": "L0047",
+   "rule": "dirigeant . indépendant . cotisations et contributions . invalidité et décès . assiette",
+   "article": "D632-1",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "CHECK_PASS",
+   "check_result": {
+    "passed": true,
+    "observed": 4731,
+    "expected": 4731.0,
+    "unit": "€/an",
+    "missing_variables": [
+     "situation personnelle . RSA",
+     "entreprise . activités . saisonnière",
+     "entreprise . activités",
+     "entreprise . activités . commerciale",
+     "entreprise . activités . artisanale",
+     "entreprise . activités . libérale",
+     "entreprise . activités . agricole",
+     "dirigeant . indépendant . conjoint collaborateur",
+     "entreprise . imposition . régime",
+     "entreprise . imposition . régime . micro-entreprise",
+     "dirigeant . indépendant . cotisations facultatives"
+    ],
+    "detail": null
+   },
+   "status": "STILL_VERIFIED"
+  },
+  {
+   "link_id": "L0048",
+   "rule": "dirigeant . indépendant . cotisations et contributions . invalidité et décès . assiette",
+   "article": "D632-1",
+   "prior_status": "FAILED",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "CHECK_FAIL",
+   "check_result": {
+    "passed": false,
+    "observed": 5243,
+    "expected": 5332.0,
+    "unit": "€/an",
+    "missing_variables": [
+     "établissement . commune . département",
+     "établissement . commune . département . outre-mer",
+     "situation personnelle . RSA",
+     "entreprise . activités . saisonnière",
+     "entreprise . activités",
+     "entreprise . activités . commerciale",
+     "entreprise . activités . artisanale",
+     "entreprise . activités . libérale",
+     "entreprise . activités . agricole",
+     "dirigeant . indépendant . conjoint collaborateur",
+     "entreprise . imposition . régime",
+     "entreprise . imposition . régime . micro-entreprise"
+    ],
+    "detail": "observed != expected"
+   },
+   "status": "BROKEN"
+  },
+  {
+   "link_id": "L0049",
+   "rule": "dirigeant . indépendant . cotisations et contributions . retraite de base",
+   "article": "D633-3",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "CHECK_PASS",
+   "check_result": {
+    "passed": true,
+    "observed": 1598,
+    "expected": 1598.0,
+    "unit": "€/an",
+    "missing_variables": [
+     "établissement . commune . département",
+     "établissement . commune . département . outre-mer",
+     "dirigeant . indépendant . cotisations et contributions . exonérations . pension invalidité",
+     "entreprise . activités",
+     "entreprise . activités . commerciale",
+     "entreprise . activités . artisanale",
+     "entreprise . activités . libérale",
+     "entreprise . activités . agricole",
+     "dirigeant . indépendant . conjoint collaborateur",
+     "entreprise . imposition . régime",
+     "entreprise . imposition . régime . micro-entreprise",
+     "dirigeant . indépendant . cotisations facultatives"
+    ],
+    "detail": null
+   },
+   "status": "STILL_VERIFIED"
+  },
+  {
+   "link_id": "L0050",
+   "rule": "dirigeant . indépendant . cotisations et contributions . retraite de base",
+   "article": "D633-3",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "CHECK_PASS",
+   "check_result": {
+    "passed": true,
+    "observed": 8312,
+    "expected": 8312.0,
+    "unit": "€/an",
+    "missing_variables": [
+     "établissement . commune . département",
+     "établissement . commune . département . outre-mer",
+     "dirigeant . indépendant . cotisations et contributions . exonérations . pension invalidité",
+     "entreprise . activités",
+     "entreprise . activités . commerciale",
+     "entreprise . activités . artisanale",
+     "entreprise . activités . libérale",
+     "entreprise . activités . agricole",
+     "dirigeant . indépendant . conjoint collaborateur",
+     "entreprise . imposition . régime",
+     "entreprise . imposition . régime . micro-entreprise",
+     "dirigeant . indépendant . cotisations facultatives"
+    ],
+    "detail": null
+   },
+   "status": "STILL_VERIFIED"
+  },
+  {
+   "link_id": "L0051",
+   "rule": "dirigeant . indépendant . cotisations et contributions . retraite de base . taux",
+   "article": "D633-3",
+   "prior_status": "INFERRED",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "NO_CHECK",
+   "status": "UNVERIFIED_NO_CHECK"
+  },
+  {
+   "link_id": "L0052",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "article": "D613-6",
+   "prior_status": "UNKNOWN",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "NO_CHECK",
+   "status": "UNVERIFIED_NO_CHECK"
+  },
+  {
+   "link_id": "L0053",
+   "rule": "dirigeant . indépendant . conjoint collaborateur . cotisations",
+   "article": "D613-5",
+   "prior_status": "UNKNOWN",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "NO_CHECK",
+   "status": "UNVERIFIED_NO_CHECK"
+  },
+  {
+   "link_id": "L0054",
+   "rule": "dirigeant . indépendant . assiette des cotisations",
+   "article": "L131-6",
+   "prior_status": "UNKNOWN",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "NO_CHECK",
+   "status": "UNVERIFIED_NO_CHECK"
+  },
+  {
+   "link_id": "L0055",
+   "rule": "dirigeant . indépendant . cotisations et contributions . CSG-CRDS . assiette",
+   "article": "L136-3",
+   "prior_status": "UNKNOWN",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "NO_CHECK",
+   "status": "UNVERIFIED_NO_CHECK"
+  }
+ ],
+ "counts": {
+  "BROKEN": 2,
+  "STILL_VERIFIED": 34,
+  "UNVERIFIED_NO_CHECK": 19
+ }
+}

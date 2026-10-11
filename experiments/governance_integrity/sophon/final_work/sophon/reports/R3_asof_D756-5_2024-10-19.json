@@ -1,0 +1,1755 @@
+{
+ "as_of": "2024-10-19",
+ "question": {
+  "rule": null,
+  "article": "D756-5"
+ },
+ "generated_at": "2026-10-11T18:24:07+00:00",
+ "links": [
+  {
+   "link_id": "L0014",
+   "recorded_at": "2026-10-11T16:46:38+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . auto-entrepreneur . DROM . taux service BNC",
+   "rules_snapshot": "G0",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/exonérations.publicodes",
+   "rule_file_sha256": "eb00c5dff98bbbceb5f5d9dc96eff03f5c8d50d8b1806808cd995fd7519c31a0",
+   "article": "D756-5",
+   "article_id": "LEGIARTI000034726710",
+   "article_dateDebut": "2017-05-12",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "74b05fccfc127af3cb39815adcf4817241bd4422737f9c1f7181b2c79e909638",
+   "law_snapshot": "S0",
+   "quote": "a) 1/6 pour les travailleurs indépendants mentionnés au 2° de l'article L. 611-1 et 1/3 dans les autres cas, jusqu'à la fin du septième trimestre civil qui suit celui au cours duquel intervient la date d'effet de l'affiliation",
+   "claim": "First period (8 civil quarters incl. the affiliation quarter): 1/6 × 21.1 % rounded up to 0,1 → 3.6 %.",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . DROM . taux service BNC",
+    "situation": {
+     "date": "01/05/2024",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "entreprise . activité . nature": "'libérale'",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "oui",
+     "entreprise . durée d'activité . trimestres civils": "8 trimestre civil",
+     "entreprise . durée d'activité . années civiles": "2 année civile"
+    },
+    "expect": 3.6,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 3.6,
+    "expected": 3.6,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0015",
+   "recorded_at": "2026-10-11T16:46:39+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . auto-entrepreneur . DROM . taux service BNC",
+   "rules_snapshot": "G0",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/exonérations.publicodes",
+   "rule_file_sha256": "eb00c5dff98bbbceb5f5d9dc96eff03f5c8d50d8b1806808cd995fd7519c31a0",
+   "article": "D756-5",
+   "article_id": "LEGIARTI000034726710",
+   "article_dateDebut": "2017-05-12",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "74b05fccfc127af3cb39815adcf4817241bd4422737f9c1f7181b2c79e909638",
+   "law_snapshot": "S0",
+   "quote": "b) 1/2 pour la période qui court entre la fin de la période mentionnée au a et la fin de la troisième année civile d'activité",
+   "claim": "Second period (9th quarter to end of 3rd civil year): 1/2 × 21.1 % rounded up → 10.6 %.",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . DROM . taux service BNC",
+    "situation": {
+     "date": "01/05/2024",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "entreprise . activité . nature": "'libérale'",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "oui",
+     "entreprise . durée d'activité . trimestres civils": "9 trimestre civil",
+     "entreprise . durée d'activité . années civiles": "3 année civile"
+    },
+    "expect": 10.6,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 10.6,
+    "expected": 10.6,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0016",
+   "recorded_at": "2026-10-11T16:46:41+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . auto-entrepreneur . DROM . taux service BNC",
+   "rules_snapshot": "G0",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/exonérations.publicodes",
+   "rule_file_sha256": "eb00c5dff98bbbceb5f5d9dc96eff03f5c8d50d8b1806808cd995fd7519c31a0",
+   "article": "D756-5",
+   "article_id": "LEGIARTI000034726710",
+   "article_dateDebut": "2017-05-12",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "74b05fccfc127af3cb39815adcf4817241bd4422737f9c1f7181b2c79e909638",
+   "law_snapshot": "S0",
+   "quote": "c) 2/3 à compter de la quatrième année civile d'activité",
+   "claim": "From the 4th civil year: 2/3 × 21.1 % rounded up → 14.1 %.",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . DROM . taux service BNC",
+    "situation": {
+     "date": "01/05/2024",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "entreprise . activité . nature": "'libérale'",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "oui",
+     "entreprise . durée d'activité . trimestres civils": "16 trimestre civil",
+     "entreprise . durée d'activité . années civiles": "4 année civile"
+    },
+    "expect": 14.1,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 14.1,
+    "expected": 14.1,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0017",
+   "recorded_at": "2026-10-11T16:46:42+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . auto-entrepreneur . DROM . service BIC",
+   "rules_snapshot": "G0",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/exonérations.publicodes",
+   "rule_file_sha256": "eb00c5dff98bbbceb5f5d9dc96eff03f5c8d50d8b1806808cd995fd7519c31a0",
+   "article": "D756-5",
+   "article_id": "LEGIARTI000034726710",
+   "article_dateDebut": "2017-05-12",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "74b05fccfc127af3cb39815adcf4817241bd4422737f9c1f7181b2c79e909638",
+   "law_snapshot": "S0",
+   "quote": "a) 1/6 pour les travailleurs indépendants mentionnés au 2° de l'article L. 611-1 et 1/3 dans les autres cas, jusqu'à la fin du septième trimestre civil qui suit celui au cours duquel intervient la date d'effet de l'affiliation",
+   "claim": "First period (8 civil quarters incl. the affiliation quarter): 1/6 × 21.2 % rounded up to 0,1 → 3.6 %.",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . DROM . service BIC",
+    "situation": {
+     "date": "01/05/2024",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "entreprise . activité . nature": "'libérale'",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "oui",
+     "entreprise . durée d'activité . trimestres civils": "8 trimestre civil",
+     "entreprise . durée d'activité . années civiles": "2 année civile"
+    },
+    "expect": 3.6,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 3.6,
+    "expected": 3.6,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0018",
+   "recorded_at": "2026-10-11T16:46:44+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . auto-entrepreneur . DROM . service BIC",
+   "rules_snapshot": "G0",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/exonérations.publicodes",
+   "rule_file_sha256": "eb00c5dff98bbbceb5f5d9dc96eff03f5c8d50d8b1806808cd995fd7519c31a0",
+   "article": "D756-5",
+   "article_id": "LEGIARTI000034726710",
+   "article_dateDebut": "2017-05-12",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "74b05fccfc127af3cb39815adcf4817241bd4422737f9c1f7181b2c79e909638",
+   "law_snapshot": "S0",
+   "quote": "b) 1/2 pour la période qui court entre la fin de la période mentionnée au a et la fin de la troisième année civile d'activité",
+   "claim": "Second period (9th quarter to end of 3rd civil year): 1/2 × 21.2 % rounded up → 10.6 %.",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . DROM . service BIC",
+    "situation": {
+     "date": "01/05/2024",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "entreprise . activité . nature": "'libérale'",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "oui",
+     "entreprise . durée d'activité . trimestres civils": "9 trimestre civil",
+     "entreprise . durée d'activité . années civiles": "3 année civile"
+    },
+    "expect": 10.6,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 10.6,
+    "expected": 10.6,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0019",
+   "recorded_at": "2026-10-11T16:46:45+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . auto-entrepreneur . DROM . service BIC",
+   "rules_snapshot": "G0",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/exonérations.publicodes",
+   "rule_file_sha256": "eb00c5dff98bbbceb5f5d9dc96eff03f5c8d50d8b1806808cd995fd7519c31a0",
+   "article": "D756-5",
+   "article_id": "LEGIARTI000034726710",
+   "article_dateDebut": "2017-05-12",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "74b05fccfc127af3cb39815adcf4817241bd4422737f9c1f7181b2c79e909638",
+   "law_snapshot": "S0",
+   "quote": "c) 2/3 à compter de la quatrième année civile d'activité",
+   "claim": "From the 4th civil year: 2/3 × 21.2 % rounded up → 14.2 %.",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . DROM . service BIC",
+    "situation": {
+     "date": "01/05/2024",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "entreprise . activité . nature": "'libérale'",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "oui",
+     "entreprise . durée d'activité . trimestres civils": "16 trimestre civil",
+     "entreprise . durée d'activité . années civiles": "4 année civile"
+    },
+    "expect": 14.2,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 14.2,
+    "expected": 14.2,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0020",
+   "recorded_at": "2026-10-11T16:46:46+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . auto-entrepreneur . DROM . taux vente restauration hébergement",
+   "rules_snapshot": "G0",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/exonérations.publicodes",
+   "rule_file_sha256": "eb00c5dff98bbbceb5f5d9dc96eff03f5c8d50d8b1806808cd995fd7519c31a0",
+   "article": "D756-5",
+   "article_id": "LEGIARTI000034726710",
+   "article_dateDebut": "2017-05-12",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "74b05fccfc127af3cb39815adcf4817241bd4422737f9c1f7181b2c79e909638",
+   "law_snapshot": "S0",
+   "quote": "a) 1/6 pour les travailleurs indépendants mentionnés au 2° de l'article L. 611-1 et 1/3 dans les autres cas, jusqu'à la fin du septième trimestre civil qui suit celui au cours duquel intervient la date d'effet de l'affiliation",
+   "claim": "First period (8 civil quarters incl. the affiliation quarter): 1/6 × 12.3 % rounded up to 0,1 → 2.1 %.",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . DROM . taux vente restauration hébergement",
+    "situation": {
+     "date": "01/05/2024",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "entreprise . activité . nature": "'libérale'",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "oui",
+     "entreprise . durée d'activité . trimestres civils": "8 trimestre civil",
+     "entreprise . durée d'activité . années civiles": "2 année civile"
+    },
+    "expect": 2.1,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 2.1,
+    "expected": 2.1,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0021",
+   "recorded_at": "2026-10-11T16:46:48+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . auto-entrepreneur . DROM . taux vente restauration hébergement",
+   "rules_snapshot": "G0",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/exonérations.publicodes",
+   "rule_file_sha256": "eb00c5dff98bbbceb5f5d9dc96eff03f5c8d50d8b1806808cd995fd7519c31a0",
+   "article": "D756-5",
+   "article_id": "LEGIARTI000034726710",
+   "article_dateDebut": "2017-05-12",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "74b05fccfc127af3cb39815adcf4817241bd4422737f9c1f7181b2c79e909638",
+   "law_snapshot": "S0",
+   "quote": "b) 1/2 pour la période qui court entre la fin de la période mentionnée au a et la fin de la troisième année civile d'activité",
+   "claim": "Second period (9th quarter to end of 3rd civil year): 1/2 × 12.3 % rounded up → 6.2 %.",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . DROM . taux vente restauration hébergement",
+    "situation": {
+     "date": "01/05/2024",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "entreprise . activité . nature": "'libérale'",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "oui",
+     "entreprise . durée d'activité . trimestres civils": "9 trimestre civil",
+     "entreprise . durée d'activité . années civiles": "3 année civile"
+    },
+    "expect": 6.2,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 6.2,
+    "expected": 6.2,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0022",
+   "recorded_at": "2026-10-11T16:46:49+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . auto-entrepreneur . DROM . taux vente restauration hébergement",
+   "rules_snapshot": "G0",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/exonérations.publicodes",
+   "rule_file_sha256": "eb00c5dff98bbbceb5f5d9dc96eff03f5c8d50d8b1806808cd995fd7519c31a0",
+   "article": "D756-5",
+   "article_id": "LEGIARTI000034726710",
+   "article_dateDebut": "2017-05-12",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "74b05fccfc127af3cb39815adcf4817241bd4422737f9c1f7181b2c79e909638",
+   "law_snapshot": "S0",
+   "quote": "c) 2/3 à compter de la quatrième année civile d'activité",
+   "claim": "From the 4th civil year: 2/3 × 12.3 % rounded up → 8.2 %.",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . DROM . taux vente restauration hébergement",
+    "situation": {
+     "date": "01/05/2024",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "entreprise . activité . nature": "'libérale'",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "oui",
+     "entreprise . durée d'activité . trimestres civils": "16 trimestre civil",
+     "entreprise . durée d'activité . années civiles": "4 année civile"
+    },
+    "expect": 8.2,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 8.2,
+    "expected": 8.2,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0023",
+   "recorded_at": "2026-10-11T16:46:51+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . auto-entrepreneur . DROM . taux CIPAV",
+   "rules_snapshot": "G0",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/exonérations.publicodes",
+   "rule_file_sha256": "eb00c5dff98bbbceb5f5d9dc96eff03f5c8d50d8b1806808cd995fd7519c31a0",
+   "article": "D756-5",
+   "article_id": "LEGIARTI000034726710",
+   "article_dateDebut": "2017-05-12",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "74b05fccfc127af3cb39815adcf4817241bd4422737f9c1f7181b2c79e909638",
+   "law_snapshot": "S0",
+   "quote": "a) 1/6 pour les travailleurs indépendants mentionnés au 2° de l'article L. 611-1 et 1/3 dans les autres cas, jusqu'à la fin du septième trimestre civil qui suit celui au cours duquel intervient la date d'effet de l'affiliation",
+   "claim": "First period (8 civil quarters incl. the affiliation quarter): 1/3 × 21.2 % rounded up to 0,1 → 7.1 %.",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . DROM . taux CIPAV",
+    "situation": {
+     "date": "01/05/2024",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "entreprise . activité . nature": "'libérale'",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "oui",
+     "entreprise . durée d'activité . trimestres civils": "8 trimestre civil",
+     "entreprise . durée d'activité . années civiles": "2 année civile",
+     "entreprise . activité . nature . libérale . réglementée": "oui"
+    },
+    "expect": 7.1,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 7.1,
+    "expected": 7.1,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0024",
+   "recorded_at": "2026-10-11T16:46:53+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . auto-entrepreneur . DROM . taux CIPAV",
+   "rules_snapshot": "G0",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/exonérations.publicodes",
+   "rule_file_sha256": "eb00c5dff98bbbceb5f5d9dc96eff03f5c8d50d8b1806808cd995fd7519c31a0",
+   "article": "D756-5",
+   "article_id": "LEGIARTI000034726710",
+   "article_dateDebut": "2017-05-12",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "74b05fccfc127af3cb39815adcf4817241bd4422737f9c1f7181b2c79e909638",
+   "law_snapshot": "S0",
+   "quote": "b) 1/2 pour la période qui court entre la fin de la période mentionnée au a et la fin de la troisième année civile d'activité",
+   "claim": "Second period (9th quarter to end of 3rd civil year): 1/2 × 21.2 % rounded up → 10.6 %.",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . DROM . taux CIPAV",
+    "situation": {
+     "date": "01/05/2024",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "entreprise . activité . nature": "'libérale'",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "oui",
+     "entreprise . durée d'activité . trimestres civils": "9 trimestre civil",
+     "entreprise . durée d'activité . années civiles": "3 année civile",
+     "entreprise . activité . nature . libérale . réglementée": "oui"
+    },
+    "expect": 10.6,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 10.6,
+    "expected": 10.6,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0025",
+   "recorded_at": "2026-10-11T16:46:55+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . auto-entrepreneur . DROM . taux CIPAV",
+   "rules_snapshot": "G0",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/exonérations.publicodes",
+   "rule_file_sha256": "eb00c5dff98bbbceb5f5d9dc96eff03f5c8d50d8b1806808cd995fd7519c31a0",
+   "article": "D756-5",
+   "article_id": "LEGIARTI000034726710",
+   "article_dateDebut": "2017-05-12",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "74b05fccfc127af3cb39815adcf4817241bd4422737f9c1f7181b2c79e909638",
+   "law_snapshot": "S0",
+   "quote": "c) 2/3 à compter de la quatrième année civile d'activité",
+   "claim": "From the 4th civil year: 2/3 × 21.2 % rounded up → 14.2 %.",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . DROM . taux CIPAV",
+    "situation": {
+     "date": "01/05/2024",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "entreprise . activité . nature": "'libérale'",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "oui",
+     "entreprise . durée d'activité . trimestres civils": "16 trimestre civil",
+     "entreprise . durée d'activité . années civiles": "4 année civile",
+     "entreprise . activité . nature . libérale . réglementée": "oui"
+    },
+    "expect": 14.2,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 14.2,
+    "expected": 14.2,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0026",
+   "recorded_at": "2026-10-11T16:46:55+00:00",
+   "status": "INFERRED",
+   "rule": "dirigeant . auto-entrepreneur . DROM",
+   "rules_snapshot": "G0",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/exonérations.publicodes",
+   "rule_file_sha256": "eb00c5dff98bbbceb5f5d9dc96eff03f5c8d50d8b1806808cd995fd7519c31a0",
+   "article": "D756-5",
+   "article_id": "LEGIARTI000034726710",
+   "article_dateDebut": "2017-05-12",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "74b05fccfc127af3cb39815adcf4817241bd4422737f9c1f7181b2c79e909638",
+   "law_snapshot": "S0",
+   "quote": "après arrondi au dixième de pour cent supérieur, à une fraction des taux prévus par l'article D. 131-6-1",
+   "claim": "Rounding up to the next tenth; the library applies the fractions to the D613-4 rates although the article still cites D. 131-6-1 (stale cross-reference, D131-6-1 now holds the Acre rules).",
+   "check": null,
+   "check_result": null,
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0027",
+   "recorded_at": "2026-10-11T16:46:56+00:00",
+   "status": "UNKNOWN",
+   "rule": "dirigeant . auto-entrepreneur . DROM",
+   "rules_snapshot": "G0",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/exonérations.publicodes",
+   "rule_file_sha256": "eb00c5dff98bbbceb5f5d9dc96eff03f5c8d50d8b1806808cd995fd7519c31a0",
+   "article": "D756-5",
+   "article_id": "LEGIARTI000034726710",
+   "article_dateDebut": "2017-05-12",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "74b05fccfc127af3cb39815adcf4817241bd4422737f9c1f7181b2c79e909638",
+   "law_snapshot": "S0",
+   "quote": "L'exonération prévue au I est calculée sur le chiffre d'affaires ou les recettes dans la limite du seuil fixé par les articles 50-0 et 102 ter du code général des impôts",
+   "claim": "DROM reduced rates only up to the micro thresholds — no cap implemented.",
+   "check": null,
+   "check_result": null,
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0120",
+   "recorded_at": "2026-10-11T18:22:11+00:00",
+   "status": "FAILED",
+   "rule": "dirigeant . auto-entrepreneur . DROM",
+   "rules_snapshot": "G2",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/exonérations.publicodes",
+   "rule_file_sha256": "4b9267ad9847fac623f4cba734eeb241d66e7c01e0029187139ee5759d5bb49d",
+   "article": "D756-5",
+   "article_id": "LEGIARTI000034726710",
+   "article_dateDebut": "2017-05-12",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "74b05fccfc127af3cb39815adcf4817241bd4422737f9c1f7181b2c79e909638",
+   "law_snapshot": "S5",
+   "quote": "1/6 pour les travailleurs indépendants mentionnés au 2° de l'article L. 611-1 et 1/3 dans les autres cas, jusqu'à la fin du septième trimestre civil qui suit celui au cours duquel intervient la date d'effet de l'affiliation",
+   "claim": "D756-5 v.LEGIARTI000034726710 (in force since 2017-05-12) a): 1/6 of the base rate during the first 7 quarters. At 01/05/2024 the base is BNC 21,1 % (D613-4 v.LEGIARTI000046714712 (in force 2022-12-10..2024-06-01, text in store snapshot S0)): 21,1/6 = 3,517 -> rounded up 3,6 % -> 36 €/mois on 1 000 €/mois. BEFORE commit 9bb43d710094 (G2) the DROM rate rules are nested inside 'seconde période' and not parsed (1258 rules): the engine charges the full 21,1 % = 211 €/mois (expected FAILED). The base rates are read in D613-4 because D756-5 still cites the pre-2020 numbering 'D. 131-6-1' (renumbering decree outside the bounded set); the 1/6-vs-1/3 split rests on L. 611-1 (outside the set) and follows the library's own reading (1/3 = CIPAV).",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC",
+    "situation": {
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "oui",
+     "entreprise . activité . nature": "'libérale'",
+     "date": "01/05/2024",
+     "entreprise . durée d'activité . trimestres civils": "4 trimestre civil",
+     "entreprise . durée d'activité . années civiles": "1 année civile",
+     "entreprise . durée d'activité": "300 jour"
+    },
+    "expect": 36.0,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": false,
+    "observed": 211.00000000000003,
+    "expected": 36.0,
+    "unit": "€/mois",
+    "missing_variables": [
+     "entreprise . activité . nature . libérale . réglementée",
+     "entreprise . activités . revenus mixtes",
+     "entreprise . activités",
+     "entreprise . activités . commerciale",
+     "entreprise . activités . artisanale",
+     "entreprise . activités . libérale"
+    ],
+    "detail": "observed != expected"
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0121",
+   "recorded_at": "2026-10-11T18:22:12+00:00",
+   "status": "FAILED",
+   "rule": "dirigeant . auto-entrepreneur . DROM",
+   "rules_snapshot": "G2",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/exonérations.publicodes",
+   "rule_file_sha256": "4b9267ad9847fac623f4cba734eeb241d66e7c01e0029187139ee5759d5bb49d",
+   "article": "D756-5",
+   "article_id": "LEGIARTI000034726710",
+   "article_dateDebut": "2017-05-12",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "74b05fccfc127af3cb39815adcf4817241bd4422737f9c1f7181b2c79e909638",
+   "law_snapshot": "S5",
+   "quote": "1/6 pour les travailleurs indépendants mentionnés au 2° de l'article L. 611-1 et 1/3 dans les autres cas, jusqu'à la fin du septième trimestre civil qui suit celui au cours duquel intervient la date d'effet de l'affiliation",
+   "claim": "D756-5 v.LEGIARTI000034726710 (in force since 2017-05-12) a) x D613-4 v.LEGIARTI000049624068 (in force 2024-07-01..2025-05-01) e) BNC 23,1 %: 23,1/6 = 3,85 -> rounded up 3,9 % -> 39 €/mois. BEFORE (G2): full 23,1 % = 231 €/mois (expected FAILED).",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC",
+    "situation": {
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "oui",
+     "entreprise . activité . nature": "'libérale'",
+     "date": "01/10/2024",
+     "entreprise . durée d'activité . trimestres civils": "4 trimestre civil",
+     "entreprise . durée d'activité . années civiles": "1 année civile",
+     "entreprise . durée d'activité": "300 jour"
+    },
+    "expect": 39.0,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": false,
+    "observed": 231,
+    "expected": 39.0,
+    "unit": "€/mois",
+    "missing_variables": [
+     "entreprise . activité . nature . libérale . réglementée",
+     "entreprise . activités . revenus mixtes",
+     "entreprise . activités",
+     "entreprise . activités . commerciale",
+     "entreprise . activités . artisanale",
+     "entreprise . activités . libérale"
+    ],
+    "detail": "observed != expected"
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0122",
+   "recorded_at": "2026-10-11T18:22:14+00:00",
+   "status": "FAILED",
+   "rule": "dirigeant . auto-entrepreneur . DROM",
+   "rules_snapshot": "G2",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/exonérations.publicodes",
+   "rule_file_sha256": "4b9267ad9847fac623f4cba734eeb241d66e7c01e0029187139ee5759d5bb49d",
+   "article": "D756-5",
+   "article_id": "LEGIARTI000034726710",
+   "article_dateDebut": "2017-05-12",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "74b05fccfc127af3cb39815adcf4817241bd4422737f9c1f7181b2c79e909638",
+   "law_snapshot": "S5",
+   "quote": "1/6 pour les travailleurs indépendants mentionnés au 2° de l'article L. 611-1 et 1/3 dans les autres cas, jusqu'à la fin du septième trimestre civil qui suit celui au cours duquel intervient la date d'effet de l'affiliation",
+   "claim": "D756-5 v.LEGIARTI000034726710 (in force since 2017-05-12) a) x D613-4 v.LEGIARTI000049624068 (in force 2024-07-01..2025-05-01) d) BIC 21,2 %: 21,2/6 = 3,533 -> 3,6 % -> 36 €/mois. BEFORE (G2): full 21,2 % = 212 €/mois (expected FAILED).",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC",
+    "situation": {
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "oui",
+     "entreprise . activité . nature": "'artisanale'",
+     "entreprise . activités . service ou vente": "'service'",
+     "date": "01/10/2024",
+     "entreprise . durée d'activité . trimestres civils": "4 trimestre civil",
+     "entreprise . durée d'activité . années civiles": "1 année civile",
+     "entreprise . durée d'activité": "300 jour"
+    },
+    "expect": 36.0,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": false,
+    "observed": 212,
+    "expected": 36.0,
+    "unit": "€/mois",
+    "missing_variables": [
+     "entreprise . activités . revenus mixtes",
+     "entreprise . activités",
+     "entreprise . activités . commerciale",
+     "entreprise . activités . artisanale",
+     "entreprise . activités . libérale"
+    ],
+    "detail": "observed != expected"
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0123",
+   "recorded_at": "2026-10-11T18:22:17+00:00",
+   "status": "FAILED",
+   "rule": "dirigeant . auto-entrepreneur . DROM",
+   "rules_snapshot": "G2",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/exonérations.publicodes",
+   "rule_file_sha256": "4b9267ad9847fac623f4cba734eeb241d66e7c01e0029187139ee5759d5bb49d",
+   "article": "D756-5",
+   "article_id": "LEGIARTI000034726710",
+   "article_dateDebut": "2017-05-12",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "74b05fccfc127af3cb39815adcf4817241bd4422737f9c1f7181b2c79e909638",
+   "law_snapshot": "S5",
+   "quote": "1/6 pour les travailleurs indépendants mentionnés au 2° de l'article L. 611-1 et 1/3 dans les autres cas, jusqu'à la fin du septième trimestre civil qui suit celui au cours duquel intervient la date d'effet de l'affiliation",
+   "claim": "D756-5 v.LEGIARTI000034726710 (in force since 2017-05-12) a) x D613-4 v.LEGIARTI000049624068 (in force 2024-07-01..2025-05-01) a) vente 12,3 %: 12,3/6 = 2,05 -> 2,1 % -> 21 €/mois. BEFORE (G2): full 12,3 % = 123 €/mois (expected FAILED).",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement",
+    "situation": {
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "oui",
+     "entreprise . activité . nature": "'commerciale'",
+     "entreprise . activités . service ou vente": "'vente'",
+     "date": "01/10/2024",
+     "entreprise . durée d'activité . trimestres civils": "4 trimestre civil",
+     "entreprise . durée d'activité . années civiles": "1 année civile",
+     "entreprise . durée d'activité": "300 jour"
+    },
+    "expect": 21.0,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": false,
+    "observed": 123,
+    "expected": 21.0,
+    "unit": "€/mois",
+    "missing_variables": [
+     "entreprise . activités . revenus mixtes",
+     "entreprise . activités",
+     "entreprise . activités . commerciale",
+     "entreprise . activités . artisanale",
+     "entreprise . activités . libérale"
+    ],
+    "detail": "observed != expected"
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0124",
+   "recorded_at": "2026-10-11T18:22:19+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . auto-entrepreneur . DROM . taux service BIC",
+   "rules_snapshot": "G2post_R3",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/exonérations.publicodes",
+   "rule_file_sha256": "6abaafa12fca034ba8d0a49e1fba61dd22c04cb9974ed3ae98d81a24d3550d98",
+   "article": "D756-5",
+   "article_id": "LEGIARTI000034726710",
+   "article_dateDebut": "2017-05-12",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "74b05fccfc127af3cb39815adcf4817241bd4422737f9c1f7181b2c79e909638",
+   "law_snapshot": "S5",
+   "quote": "1/6 pour les travailleurs indépendants mentionnés au 2° de l'article L. 611-1 et 1/3 dans les autres cas, jusqu'à la fin du septième trimestre civil qui suit celui au cours duquel intervient la date d'effet de l'affiliation",
+   "claim": "D756-5 v.LEGIARTI000034726710 (in force since 2017-05-12) a) x D613-4 v.LEGIARTI000049624068 (in force 2024-07-01..2025-05-01) d) 21,2 %: 21,2/6 = 3,533 -> 3,6 % = 36 €/mois. AFTER the commit the DROM rule replaces the BIC rate: engine 36 (aligned). The base rates are read in D613-4 because D756-5 still cites the pre-2020 numbering 'D. 131-6-1' (renumbering decree outside the bounded set); the 1/6-vs-1/3 split rests on L. 611-1 (outside the set) and follows the library's own reading (1/3 = CIPAV).",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC",
+    "situation": {
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "oui",
+     "entreprise . activité . nature": "'artisanale'",
+     "entreprise . activités . service ou vente": "'service'",
+     "date": "01/10/2024",
+     "entreprise . durée d'activité . trimestres civils": "4 trimestre civil",
+     "entreprise . durée d'activité . années civiles": "1 année civile",
+     "entreprise . durée d'activité": "300 jour"
+    },
+    "expect": 36.0,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 36,
+    "expected": 36.0,
+    "unit": "€/mois",
+    "missing_variables": [
+     "entreprise . activités . revenus mixtes",
+     "entreprise . activités",
+     "entreprise . activités . commerciale",
+     "entreprise . activités . artisanale",
+     "entreprise . activités . libérale"
+    ],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0126",
+   "recorded_at": "2026-10-11T18:22:23+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . auto-entrepreneur . DROM . taux service BIC",
+   "rules_snapshot": "G2post_R3",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/exonérations.publicodes",
+   "rule_file_sha256": "6abaafa12fca034ba8d0a49e1fba61dd22c04cb9974ed3ae98d81a24d3550d98",
+   "article": "D756-5",
+   "article_id": "LEGIARTI000034726710",
+   "article_dateDebut": "2017-05-12",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "74b05fccfc127af3cb39815adcf4817241bd4422737f9c1f7181b2c79e909638",
+   "law_snapshot": "S5",
+   "quote": "1/2 pour la période qui court entre la fin de la période mentionnée au a et la fin de la troisième année civile d'activité",
+   "claim": "D756-5 v.LEGIARTI000034726710 (in force since 2017-05-12) b): 1/2 x 21,2 = 10,6 % -> 106 €/mois (aligned).",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC",
+    "situation": {
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "oui",
+     "entreprise . activité . nature": "'artisanale'",
+     "entreprise . activités . service ou vente": "'service'",
+     "date": "01/10/2024",
+     "entreprise . durée d'activité . trimestres civils": "10 trimestre civil",
+     "entreprise . durée d'activité . années civiles": "3 année civile",
+     "entreprise . durée d'activité": "900 jour"
+    },
+    "expect": 106.0,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 106,
+    "expected": 106.0,
+    "unit": "€/mois",
+    "missing_variables": [
+     "entreprise . activités . revenus mixtes",
+     "entreprise . activités",
+     "entreprise . activités . commerciale",
+     "entreprise . activités . artisanale",
+     "entreprise . activités . libérale"
+    ],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0127",
+   "recorded_at": "2026-10-11T18:22:24+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . auto-entrepreneur . DROM . taux service BIC",
+   "rules_snapshot": "G2post_R3",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/exonérations.publicodes",
+   "rule_file_sha256": "6abaafa12fca034ba8d0a49e1fba61dd22c04cb9974ed3ae98d81a24d3550d98",
+   "article": "D756-5",
+   "article_id": "LEGIARTI000034726710",
+   "article_dateDebut": "2017-05-12",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "74b05fccfc127af3cb39815adcf4817241bd4422737f9c1f7181b2c79e909638",
+   "law_snapshot": "S5",
+   "quote": "2/3 à compter de la quatrième année civile d'activité",
+   "claim": "D756-5 v.LEGIARTI000034726710 (in force since 2017-05-12) c): 2/3 x 21,2 = 14,133 -> rounded up 14,2 % -> 142 €/mois (aligned).",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC",
+    "situation": {
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "oui",
+     "entreprise . activité . nature": "'artisanale'",
+     "entreprise . activités . service ou vente": "'service'",
+     "date": "01/10/2024",
+     "entreprise . durée d'activité . trimestres civils": "20 trimestre civil",
+     "entreprise . durée d'activité . années civiles": "5 année civile",
+     "entreprise . durée d'activité": "1800 jour"
+    },
+    "expect": 142.0,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 142,
+    "expected": 142.0,
+    "unit": "€/mois",
+    "missing_variables": [
+     "entreprise . activités . revenus mixtes",
+     "entreprise . activités",
+     "entreprise . activités . commerciale",
+     "entreprise . activités . artisanale",
+     "entreprise . activités . libérale"
+    ],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0128",
+   "recorded_at": "2026-10-11T18:22:27+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . auto-entrepreneur . DROM . taux service BIC",
+   "rules_snapshot": "G2post_R3",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/exonérations.publicodes",
+   "rule_file_sha256": "6abaafa12fca034ba8d0a49e1fba61dd22c04cb9974ed3ae98d81a24d3550d98",
+   "article": "D756-5",
+   "article_id": "LEGIARTI000034726710",
+   "article_dateDebut": "2017-05-12",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "74b05fccfc127af3cb39815adcf4817241bd4422737f9c1f7181b2c79e909638",
+   "law_snapshot": "S5",
+   "quote": "après arrondi au dixième de pour cent supérieur, à une fraction des taux prévus par l'article D. 131-6-1",
+   "claim": "D756-5 v.LEGIARTI000034726710 (in force since 2017-05-12): rounding UP to the tenth of a percent: 14,133 -> 14,2 (engine 142 €/mois on 1 000 €/mois; aligned for BIC).",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC",
+    "situation": {
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "oui",
+     "entreprise . activité . nature": "'artisanale'",
+     "entreprise . activités . service ou vente": "'service'",
+     "date": "01/10/2024",
+     "entreprise . durée d'activité . trimestres civils": "20 trimestre civil",
+     "entreprise . durée d'activité . années civiles": "5 année civile",
+     "entreprise . durée d'activité": "1800 jour"
+    },
+    "expect": 142.0,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 142,
+    "expected": 142.0,
+    "unit": "€/mois",
+    "missing_variables": [
+     "entreprise . activités . revenus mixtes",
+     "entreprise . activités",
+     "entreprise . activités . commerciale",
+     "entreprise . activités . artisanale",
+     "entreprise . activités . libérale"
+    ],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0129",
+   "recorded_at": "2026-10-11T18:22:29+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . auto-entrepreneur . DROM . taux vente restauration hébergement",
+   "rules_snapshot": "G2post_R3",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/exonérations.publicodes",
+   "rule_file_sha256": "6abaafa12fca034ba8d0a49e1fba61dd22c04cb9974ed3ae98d81a24d3550d98",
+   "article": "D756-5",
+   "article_id": "LEGIARTI000034726710",
+   "article_dateDebut": "2017-05-12",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "74b05fccfc127af3cb39815adcf4817241bd4422737f9c1f7181b2c79e909638",
+   "law_snapshot": "S5",
+   "quote": "1/6 pour les travailleurs indépendants mentionnés au 2° de l'article L. 611-1 et 1/3 dans les autres cas, jusqu'à la fin du septième trimestre civil qui suit celui au cours duquel intervient la date d'effet de l'affiliation",
+   "claim": "D756-5 v.LEGIARTI000034726710 (in force since 2017-05-12) a) x D613-4 v.LEGIARTI000049624068 (in force 2024-07-01..2025-05-01) a) 12,3 %: 2,05 -> 2,1 % = 21 €/mois (aligned).",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement",
+    "situation": {
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "oui",
+     "entreprise . activité . nature": "'commerciale'",
+     "entreprise . activités . service ou vente": "'vente'",
+     "date": "01/10/2024",
+     "entreprise . durée d'activité . trimestres civils": "4 trimestre civil",
+     "entreprise . durée d'activité . années civiles": "1 année civile",
+     "entreprise . durée d'activité": "300 jour"
+    },
+    "expect": 21.0,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 21,
+    "expected": 21.0,
+    "unit": "€/mois",
+    "missing_variables": [
+     "entreprise . activités . revenus mixtes",
+     "entreprise . activités",
+     "entreprise . activités . commerciale",
+     "entreprise . activités . artisanale",
+     "entreprise . activités . libérale"
+    ],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0131",
+   "recorded_at": "2026-10-11T18:22:32+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . auto-entrepreneur . DROM . taux vente restauration hébergement",
+   "rules_snapshot": "G2post_R3",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/exonérations.publicodes",
+   "rule_file_sha256": "6abaafa12fca034ba8d0a49e1fba61dd22c04cb9974ed3ae98d81a24d3550d98",
+   "article": "D756-5",
+   "article_id": "LEGIARTI000034726710",
+   "article_dateDebut": "2017-05-12",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "74b05fccfc127af3cb39815adcf4817241bd4422737f9c1f7181b2c79e909638",
+   "law_snapshot": "S5",
+   "quote": "1/2 pour la période qui court entre la fin de la période mentionnée au a et la fin de la troisième année civile d'activité",
+   "claim": "D756-5 v.LEGIARTI000034726710 (in force since 2017-05-12) b): 1/2 x 12,3 = 6,15 -> 6,2 % = 62 €/mois (aligned).",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement",
+    "situation": {
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "oui",
+     "entreprise . activité . nature": "'commerciale'",
+     "entreprise . activités . service ou vente": "'vente'",
+     "date": "01/10/2024",
+     "entreprise . durée d'activité . trimestres civils": "10 trimestre civil",
+     "entreprise . durée d'activité . années civiles": "3 année civile",
+     "entreprise . durée d'activité": "900 jour"
+    },
+    "expect": 62.0,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 62,
+    "expected": 62.0,
+    "unit": "€/mois",
+    "missing_variables": [
+     "entreprise . activités . revenus mixtes",
+     "entreprise . activités",
+     "entreprise . activités . commerciale",
+     "entreprise . activités . artisanale",
+     "entreprise . activités . libérale"
+    ],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0132",
+   "recorded_at": "2026-10-11T18:22:34+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . auto-entrepreneur . DROM . taux vente restauration hébergement",
+   "rules_snapshot": "G2post_R3",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/exonérations.publicodes",
+   "rule_file_sha256": "6abaafa12fca034ba8d0a49e1fba61dd22c04cb9974ed3ae98d81a24d3550d98",
+   "article": "D756-5",
+   "article_id": "LEGIARTI000034726710",
+   "article_dateDebut": "2017-05-12",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "74b05fccfc127af3cb39815adcf4817241bd4422737f9c1f7181b2c79e909638",
+   "law_snapshot": "S5",
+   "quote": "2/3 à compter de la quatrième année civile d'activité",
+   "claim": "D756-5 v.LEGIARTI000034726710 (in force since 2017-05-12) c): 2/3 x 12,3 = 8,2 % = 82 €/mois (aligned).",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement",
+    "situation": {
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "oui",
+     "entreprise . activité . nature": "'commerciale'",
+     "entreprise . activités . service ou vente": "'vente'",
+     "date": "01/10/2024",
+     "entreprise . durée d'activité . trimestres civils": "20 trimestre civil",
+     "entreprise . durée d'activité . années civiles": "5 année civile",
+     "entreprise . durée d'activité": "1800 jour"
+    },
+    "expect": 82.0,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 81.99999999999999,
+    "expected": 82.0,
+    "unit": "€/mois",
+    "missing_variables": [
+     "entreprise . activités . revenus mixtes",
+     "entreprise . activités",
+     "entreprise . activités . commerciale",
+     "entreprise . activités . artisanale",
+     "entreprise . activités . libérale"
+    ],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0133",
+   "recorded_at": "2026-10-11T18:22:36+00:00",
+   "status": "FAILED",
+   "rule": "dirigeant . auto-entrepreneur . DROM . taux service BNC",
+   "rules_snapshot": "G2post_R3",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/exonérations.publicodes",
+   "rule_file_sha256": "6abaafa12fca034ba8d0a49e1fba61dd22c04cb9974ed3ae98d81a24d3550d98",
+   "article": "D756-5",
+   "article_id": "LEGIARTI000034726710",
+   "article_dateDebut": "2017-05-12",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "74b05fccfc127af3cb39815adcf4817241bd4422737f9c1f7181b2c79e909638",
+   "law_snapshot": "S5",
+   "quote": "1/6 pour les travailleurs indépendants mentionnés au 2° de l'article L. 611-1 et 1/3 dans les autres cas, jusqu'à la fin du septième trimestre civil qui suit celui au cours duquel intervient la date d'effet de l'affiliation",
+   "claim": "D756-5 v.LEGIARTI000034726710 (in force since 2017-05-12) a) x D613-4 v.LEGIARTI000049624068 (in force 2024-07-01..2025-05-01) e) BNC 23,1 %: 23,1/6 = 3,85 -> rounded up 3,9 % -> 39 €/mois. AFTER the commit the engine computes 3,6 % = 36 €/mois (1/6 of the superseded 21,1 %) -> MISMATCH (expected FAILED). The base rates are read in D613-4 because D756-5 still cites the pre-2020 numbering 'D. 131-6-1' (renumbering decree outside the bounded set); the 1/6-vs-1/3 split rests on L. 611-1 (outside the set) and follows the library's own reading (1/3 = CIPAV).",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC",
+    "situation": {
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "oui",
+     "entreprise . activité . nature": "'libérale'",
+     "date": "01/10/2024",
+     "entreprise . durée d'activité . trimestres civils": "4 trimestre civil",
+     "entreprise . durée d'activité . années civiles": "1 année civile",
+     "entreprise . durée d'activité": "300 jour"
+    },
+    "expect": 39.0,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": false,
+    "observed": 36,
+    "expected": 39.0,
+    "unit": "€/mois",
+    "missing_variables": [
+     "entreprise . activité . nature . libérale . réglementée",
+     "entreprise . activités . revenus mixtes",
+     "entreprise . activités",
+     "entreprise . activités . commerciale",
+     "entreprise . activités . artisanale",
+     "entreprise . activités . libérale"
+    ],
+    "detail": "observed != expected"
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0135",
+   "recorded_at": "2026-10-11T18:22:40+00:00",
+   "status": "FAILED",
+   "rule": "dirigeant . auto-entrepreneur . DROM . taux service BNC",
+   "rules_snapshot": "G2post_R3",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/exonérations.publicodes",
+   "rule_file_sha256": "6abaafa12fca034ba8d0a49e1fba61dd22c04cb9974ed3ae98d81a24d3550d98",
+   "article": "D756-5",
+   "article_id": "LEGIARTI000034726710",
+   "article_dateDebut": "2017-05-12",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "74b05fccfc127af3cb39815adcf4817241bd4422737f9c1f7181b2c79e909638",
+   "law_snapshot": "S5",
+   "quote": "1/2 pour la période qui court entre la fin de la période mentionnée au a et la fin de la troisième année civile d'activité",
+   "claim": "D756-5 v.LEGIARTI000034726710 (in force since 2017-05-12) b): 1/2 x 23,1 = 11,55 -> 11,6 % -> 116 €/mois; engine 10,6 % = 106 (MISMATCH, expected FAILED).",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC",
+    "situation": {
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "oui",
+     "entreprise . activité . nature": "'libérale'",
+     "date": "01/10/2024",
+     "entreprise . durée d'activité . trimestres civils": "10 trimestre civil",
+     "entreprise . durée d'activité . années civiles": "3 année civile",
+     "entreprise . durée d'activité": "900 jour"
+    },
+    "expect": 116.0,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": false,
+    "observed": 106,
+    "expected": 116.0,
+    "unit": "€/mois",
+    "missing_variables": [
+     "entreprise . activité . nature . libérale . réglementée",
+     "entreprise . activités . revenus mixtes",
+     "entreprise . activités",
+     "entreprise . activités . commerciale",
+     "entreprise . activités . artisanale",
+     "entreprise . activités . libérale"
+    ],
+    "detail": "observed != expected"
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0136",
+   "recorded_at": "2026-10-11T18:22:42+00:00",
+   "status": "FAILED",
+   "rule": "dirigeant . auto-entrepreneur . DROM . taux service BNC",
+   "rules_snapshot": "G2post_R3",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/exonérations.publicodes",
+   "rule_file_sha256": "6abaafa12fca034ba8d0a49e1fba61dd22c04cb9974ed3ae98d81a24d3550d98",
+   "article": "D756-5",
+   "article_id": "LEGIARTI000034726710",
+   "article_dateDebut": "2017-05-12",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "74b05fccfc127af3cb39815adcf4817241bd4422737f9c1f7181b2c79e909638",
+   "law_snapshot": "S5",
+   "quote": "2/3 à compter de la quatrième année civile d'activité",
+   "claim": "D756-5 v.LEGIARTI000034726710 (in force since 2017-05-12) c): 2/3 x 23,1 = 15,4 % -> 154 €/mois; engine 14,1 % = 141 (MISMATCH, expected FAILED).",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC",
+    "situation": {
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "oui",
+     "entreprise . activité . nature": "'libérale'",
+     "date": "01/10/2024",
+     "entreprise . durée d'activité . trimestres civils": "20 trimestre civil",
+     "entreprise . durée d'activité . années civiles": "5 année civile",
+     "entreprise . durée d'activité": "1800 jour"
+    },
+    "expect": 154.0,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": false,
+    "observed": 141,
+    "expected": 154.0,
+    "unit": "€/mois",
+    "missing_variables": [
+     "entreprise . activité . nature . libérale . réglementée",
+     "entreprise . activités . revenus mixtes",
+     "entreprise . activités",
+     "entreprise . activités . commerciale",
+     "entreprise . activités . artisanale",
+     "entreprise . activités . libérale"
+    ],
+    "detail": "observed != expected"
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0138",
+   "recorded_at": "2026-10-11T18:22:45+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . auto-entrepreneur . DROM . taux service BNC",
+   "rules_snapshot": "G2post_R3",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/exonérations.publicodes",
+   "rule_file_sha256": "6abaafa12fca034ba8d0a49e1fba61dd22c04cb9974ed3ae98d81a24d3550d98",
+   "article": "D756-5",
+   "article_id": "LEGIARTI000034726710",
+   "article_dateDebut": "2017-05-12",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "74b05fccfc127af3cb39815adcf4817241bd4422737f9c1f7181b2c79e909638",
+   "law_snapshot": "S5",
+   "quote": "2/3 à compter de la quatrième année civile d'activité",
+   "claim": "D756-5 v.LEGIARTI000034726710 (in force since 2017-05-12) c) x BNC 21,1 % (D613-4 v.LEGIARTI000046714712 (in force 2022-12-10..2024-06-01, text in store snapshot S0)): 14,067 -> 14,1 % = 141 €/mois at 01/05/2024; engine 141 (aligned for the pre-07/2024 base only).",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC",
+    "situation": {
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "oui",
+     "entreprise . activité . nature": "'libérale'",
+     "date": "01/05/2024",
+     "entreprise . durée d'activité . trimestres civils": "20 trimestre civil",
+     "entreprise . durée d'activité . années civiles": "5 année civile",
+     "entreprise . durée d'activité": "1800 jour"
+    },
+    "expect": 141.0,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 141,
+    "expected": 141.0,
+    "unit": "€/mois",
+    "missing_variables": [
+     "entreprise . activité . nature . libérale . réglementée",
+     "entreprise . activités . revenus mixtes",
+     "entreprise . activités",
+     "entreprise . activités . commerciale",
+     "entreprise . activités . artisanale",
+     "entreprise . activités . libérale"
+    ],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0139",
+   "recorded_at": "2026-10-11T18:22:47+00:00",
+   "status": "FAILED",
+   "rule": "dirigeant . auto-entrepreneur . DROM . taux CIPAV",
+   "rules_snapshot": "G2post_R3",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/exonérations.publicodes",
+   "rule_file_sha256": "6abaafa12fca034ba8d0a49e1fba61dd22c04cb9974ed3ae98d81a24d3550d98",
+   "article": "D756-5",
+   "article_id": "LEGIARTI000034726710",
+   "article_dateDebut": "2017-05-12",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "74b05fccfc127af3cb39815adcf4817241bd4422737f9c1f7181b2c79e909638",
+   "law_snapshot": "S5",
+   "quote": "1/6 pour les travailleurs indépendants mentionnés au 2° de l'article L. 611-1 et 1/3 dans les autres cas, jusqu'à la fin du septième trimestre civil qui suit celui au cours duquel intervient la date d'effet de l'affiliation",
+   "claim": "D756-5 v.LEGIARTI000034726710 (in force since 2017-05-12) a) '1/3 dans les autres cas' x D613-4 v.LEGIARTI000049624068 (in force 2024-07-01..2025-05-01) b) CIPAV 23,2 %: 23,2/3 = 7,733 -> rounded up 7,8 % -> 936 €/an on 12 000 €/an. AFTER the commit the engine computes 7,1 % = 852 €/an (1/3 of the superseded 21,2 %) -> MISMATCH (expected FAILED). The base rates are read in D613-4 because D756-5 still cites the pre-2020 numbering 'D. 131-6-1' (renumbering decree outside the bounded set); the 1/6-vs-1/3 split rests on L. 611-1 (outside the set) and follows the library's own reading (1/3 = CIPAV).",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV",
+    "situation": {
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "oui",
+     "entreprise . activité . nature": "'libérale'",
+     "entreprise . activité . nature . libérale . réglementée": "oui",
+     "date": "01/10/2024",
+     "entreprise . durée d'activité . trimestres civils": "4 trimestre civil",
+     "entreprise . durée d'activité . années civiles": "1 année civile",
+     "entreprise . durée d'activité": "300 jour"
+    },
+    "expect": 936.0,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": false,
+    "observed": 852,
+    "expected": 936.0,
+    "unit": "€/an",
+    "missing_variables": [],
+    "detail": "observed != expected"
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0141",
+   "recorded_at": "2026-10-11T18:22:51+00:00",
+   "status": "FAILED",
+   "rule": "dirigeant . auto-entrepreneur . DROM . taux CIPAV",
+   "rules_snapshot": "G2post_R3",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/exonérations.publicodes",
+   "rule_file_sha256": "6abaafa12fca034ba8d0a49e1fba61dd22c04cb9974ed3ae98d81a24d3550d98",
+   "article": "D756-5",
+   "article_id": "LEGIARTI000034726710",
+   "article_dateDebut": "2017-05-12",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "74b05fccfc127af3cb39815adcf4817241bd4422737f9c1f7181b2c79e909638",
+   "law_snapshot": "S5",
+   "quote": "1/2 pour la période qui court entre la fin de la période mentionnée au a et la fin de la troisième année civile d'activité",
+   "claim": "D756-5 v.LEGIARTI000034726710 (in force since 2017-05-12) b): 1/2 x 23,2 = 11,6 % -> 1 392 €/an; engine 10,6 % = 1 272 (MISMATCH, expected FAILED).",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV",
+    "situation": {
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "oui",
+     "entreprise . activité . nature": "'libérale'",
+     "entreprise . activité . nature . libérale . réglementée": "oui",
+     "date": "01/10/2024",
+     "entreprise . durée d'activité . trimestres civils": "10 trimestre civil",
+     "entreprise . durée d'activité . années civiles": "3 année civile",
+     "entreprise . durée d'activité": "900 jour"
+    },
+    "expect": 1392.0,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": false,
+    "observed": 1272,
+    "expected": 1392.0,
+    "unit": "€/an",
+    "missing_variables": [],
+    "detail": "observed != expected"
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0142",
+   "recorded_at": "2026-10-11T18:22:53+00:00",
+   "status": "FAILED",
+   "rule": "dirigeant . auto-entrepreneur . DROM . taux CIPAV",
+   "rules_snapshot": "G2post_R3",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/exonérations.publicodes",
+   "rule_file_sha256": "6abaafa12fca034ba8d0a49e1fba61dd22c04cb9974ed3ae98d81a24d3550d98",
+   "article": "D756-5",
+   "article_id": "LEGIARTI000034726710",
+   "article_dateDebut": "2017-05-12",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "74b05fccfc127af3cb39815adcf4817241bd4422737f9c1f7181b2c79e909638",
+   "law_snapshot": "S5",
+   "quote": "2/3 à compter de la quatrième année civile d'activité",
+   "claim": "D756-5 v.LEGIARTI000034726710 (in force since 2017-05-12) c): 2/3 x 23,2 = 15,467 -> 15,5 % -> 1 860 €/an; engine 14,2 % = 1 704 (MISMATCH, expected FAILED).",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV",
+    "situation": {
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "oui",
+     "entreprise . activité . nature": "'libérale'",
+     "entreprise . activité . nature . libérale . réglementée": "oui",
+     "date": "01/10/2024",
+     "entreprise . durée d'activité . trimestres civils": "20 trimestre civil",
+     "entreprise . durée d'activité . années civiles": "5 année civile",
+     "entreprise . durée d'activité": "1800 jour"
+    },
+    "expect": 1860.0,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": false,
+    "observed": 1704,
+    "expected": 1860.0,
+    "unit": "€/an",
+    "missing_variables": [],
+    "detail": "observed != expected"
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0144",
+   "recorded_at": "2026-10-11T18:22:56+00:00",
+   "status": "INFERRED",
+   "rule": "dirigeant . auto-entrepreneur . DROM",
+   "rules_snapshot": "G2post_R3",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/exonérations.publicodes",
+   "rule_file_sha256": "6abaafa12fca034ba8d0a49e1fba61dd22c04cb9974ed3ae98d81a24d3550d98",
+   "article": "D756-5",
+   "article_id": "LEGIARTI000034726710",
+   "article_dateDebut": "2017-05-12",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "74b05fccfc127af3cb39815adcf4817241bd4422737f9c1f7181b2c79e909638",
+   "law_snapshot": "S5",
+   "quote": "L'exonération prévue au I est calculée sur le chiffre d'affaires ou les recettes dans la limite du seuil fixé par les articles 50-0 et 102 ter du code général des impôts",
+   "claim": "D756-5 v.LEGIARTI000034726710 (in force since 2017-05-12) II: the DROM reduction applies only up to the micro-fiscal CA threshold (CGI 50-0 / 102 ter, outside the set). Not implemented before or after the commit (no CA cap in the DROM rules): pre-existing gap, textual link only.",
+   "check": null,
+   "check_result": null,
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  }
+ ],
+ "article_versions_known": [
+  {
+   "law_snapshot": "S0",
+   "published": "2024-05-25T23:36:37.034Z",
+   "article": "D756-5",
+   "id": "LEGIARTI000034726710",
+   "etat": "VIGUEUR",
+   "dateDebut": "2017-05-12",
+   "dateFin": "2999-01-01",
+   "in_force_on_date": true,
+   "text_sha256": "74b05fccfc127af3cb39815adcf4817241bd4422737f9c1f7181b2c79e909638"
+  },
+  {
+   "law_snapshot": "S1",
+   "published": "2024-06-01T23:22:24.265Z",
+   "article": "D756-5",
+   "id": "LEGIARTI000034726710",
+   "etat": "VIGUEUR",
+   "dateDebut": "2017-05-12",
+   "dateFin": "2999-01-01",
+   "in_force_on_date": true,
+   "text_sha256": "74b05fccfc127af3cb39815adcf4817241bd4422737f9c1f7181b2c79e909638"
+  },
+  {
+   "law_snapshot": "S3",
+   "published": "2024-07-17T15:37:04.165Z",
+   "article": "D756-5",
+   "id": "LEGIARTI000034726710",
+   "etat": "VIGUEUR",
+   "dateDebut": "2017-05-12",
+   "dateFin": "2999-01-01",
+   "in_force_on_date": true,
+   "text_sha256": "74b05fccfc127af3cb39815adcf4817241bd4422737f9c1f7181b2c79e909638"
+  },
+  {
+   "law_snapshot": "S4",
+   "published": "2024-09-01T16:15:14.642Z",
+   "article": "D756-5",
+   "id": "LEGIARTI000034726710",
+   "etat": "VIGUEUR",
+   "dateDebut": "2017-05-12",
+   "dateFin": "2999-01-01",
+   "in_force_on_date": true,
+   "text_sha256": "74b05fccfc127af3cb39815adcf4817241bd4422737f9c1f7181b2c79e909638"
+  },
+  {
+   "law_snapshot": "S5",
+   "published": "2024-10-19T15:24:13.712Z",
+   "article": "D756-5",
+   "id": "LEGIARTI000034726710",
+   "etat": "VIGUEUR",
+   "dateDebut": "2017-05-12",
+   "dateFin": "2999-01-01",
+   "in_force_on_date": true,
+   "text_sha256": "74b05fccfc127af3cb39815adcf4817241bd4422737f9c1f7181b2c79e909638"
+  }
+ ],
+ "rules_snapshots_known": [
+  {
+   "snapshot": "G0",
+   "commit": "d9242882f96bda5b4418b7c1c3ff46b0e2a1c5ce",
+   "committed": "2024-05-15 09:38:43 +0200"
+  },
+  {
+   "snapshot": "G1",
+   "commit": "2a0e452617fc33b955096f4bb7f7f305ec0670ad",
+   "committed": "2024-07-16 21:29:59 +0200"
+  },
+  {
+   "snapshot": "G1post_R2",
+   "commit": "1932d654cf7a81dbac73df88487fc70553e52a19",
+   "committed": "2024-09-02 12:25:29 +0200"
+  },
+  {
+   "snapshot": "G1pre_R1",
+   "commit": null,
+   "committed": null
+  },
+  {
+   "snapshot": "G2",
+   "commit": "3a4091ae1cafdd4572bfd10d6352fd04db8da419",
+   "committed": "2024-10-10 16:37:41 +0200"
+  },
+  {
+   "snapshot": "G2post_R3",
+   "commit": "9bb43d710094d8f572c64997ce991c8d395c5753",
+   "committed": "2024-10-11 09:34:14 +0200"
+  },
+  {
+   "snapshot": "P_T1a",
+   "commit": null,
+   "committed": null
+  },
+  {
+   "snapshot": "P_T1b",
+   "commit": "2a0e452617fc33b955096f4bb7f7f305ec0670ad",
+   "committed": "2024-07-16 21:29:59 +0200"
+  }
+ ],
+ "approvals": [
+  "none recorded"
+ ],
+ "limits": [
+  "Only what was recorded in this store is reported; absence of a record is reported as absence, not inferred.",
+  "Snapshot publish dates are when the governing text was captured, not when it entered into force; both are listed.",
+  "A matching hash shows the preserved text is unchanged; it does not show the interpretation is correct or that anyone authorised it."
+ ]
+}

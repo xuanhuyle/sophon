@@ -1,0 +1,236 @@
+# unified diff: sealed pin G1_2a0e452617fc -> work/proposals/T1b/modele-social/règles (diff -ruN; exit 1)
+diff -ruN "/tmp/claude-0/-home-user-sophon/980382c3-789d-515f-926e-c8bdd3dd6b4b/scratchpad/runs/A/T1b/inputs/rules/G1_2a0e452617fc/modele-social/r\303\250gles/dirigeant/ind\303\251pendant.publicodes" "/tmp/claude-0/-home-user-sophon/980382c3-789d-515f-926e-c8bdd3dd6b4b/scratchpad/runs/A/T1b/work/proposals/T1b/modele-social/r\303\250gles/dirigeant/ind\303\251pendant.publicodes"
+--- "/tmp/claude-0/-home-user-sophon/980382c3-789d-515f-926e-c8bdd3dd6b4b/scratchpad/runs/A/T1b/inputs/rules/G1_2a0e452617fc/modele-social/r\303\250gles/dirigeant/ind\303\251pendant.publicodes"	2024-07-16 19:29:59.000000000 +0000
++++ "/tmp/claude-0/-home-user-sophon/980382c3-789d-515f-926e-c8bdd3dd6b4b/scratchpad/runs/A/T1b/work/proposals/T1b/modele-social/r\303\250gles/dirigeant/ind\303\251pendant.publicodes"	2026-10-11 17:30:02.944350204 +0000
+@@ -40,8 +40,33 @@
+ dirigeant . indépendant . assiette des cotisations:
+   unité: €/an
+   description: Il s'agit de l'assiette des cotisations sociales, nombre forcément positif
+-  valeur: sans plancher
++  note: |
++    Réforme de l'assiette sociale des travailleurs indépendants (LFSS 2024). CSS L131-6 I (LEGIARTI000048683707,
++    en vigueur 28/12/2023) : « Les cotisations de sécurité sociale dues par les travailleurs indépendants non agricoles
++    ne relevant pas du dispositif prévu à l'article L. 613-7 sont assises sur l'assiette définie à l'article L. 136-3 ».
++    CSS L136-3 III (LEGIARTI000048683641, en vigueur 28/12/2023) : « L'assiette résultant de l'application des I et II
++    du présent article fait l'objet d'un abattement de 26 % », encadré par un plancher et un plafond fixés par décret.
++    CSS D136-5 (LEGIARTI000049899286, décret n°2024-688 du 5 juillet 2024, en vigueur 07/07/2024) : plancher « 1,76 % de
++    la valeur annuelle du plafond de la sécurité sociale », plafond « 130 % de la valeur annuelle du plafond ».
++
++    Transposé ici : l'abattement de 26 %, son plancher et son plafond. Période d'application (nota des articles) : « ces
++    dispositions s'appliquent au calcul des cotisations et des contributions dues par les travailleurs indépendants non
++    agricoles [...] au titre des périodes courant à compter du 1er janvier 2025 » (VII de l'article 18 de la LOI 2023-1250
++    pour L131-6/L136-3 ; article 6 du décret n°2024-688 pour D136-5), d'où la branche `date >= 01/2025`.
++    NON tranché : les lignes de revenu qui composent l'assiette avant abattement
++    (L136-3 I 1°/2° renvoient aux articles 36 à 40 et 93 du CGI ; L131-6 I ajoute les revenus de remplacement et déduit
++    l'épargne salariale) : `avant abattement` reprend provisoirement la définition existante (revenu professionnel +
++    cotisations facultatives déductibles).
++  valeur:
++    variations:
++      - si: date >= 01/2025
++        alors: après abattement
++      - sinon: sans plancher
+   plancher: 0
++  références:
++    Article L131-6 du Code de la sécurité sociale (LEGIARTI000048683707): https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048683707/
++    Article L136-3 du Code de la sécurité sociale (LEGIARTI000048683641): https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048683641/
++    Article D136-5 du Code de la sécurité sociale (LEGIARTI000049899286): https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049899286/
+ 
+   avec:
+     sans plancher:
+@@ -49,6 +74,38 @@
+         - revenu professionnel
+         - cotisations facultatives . déductibles
+ 
++    avant abattement:
++      titre: assiette avant abattement forfaitaire (L136-3 I et II)
++      description: Lignes de revenu entrant dans l'assiette avant abattement — définition provisoire, à confirmer (voir note de la règle parente).
++      unité: €/an
++      valeur: sans plancher
++
++    abattement forfaitaire:
++      titre: abattement forfaitaire de 26 % (L136-3 III, D136-5)
++      applicable si: date >= 01/2025
++      unité: €/an
++      valeur: avant abattement * 26 %
++      plancher: montant plancher
++      plafond: montant plafond
++      arrondi: oui
++
++    abattement forfaitaire . montant plancher:
++      titre: montant plancher de l'abattement (D136-5 I)
++      description: « Le montant plancher prévu au III de l'article L. 136-3 est fixé à 1,76 % de la valeur annuelle du plafond de la sécurité sociale »
++      unité: €/an
++      valeur: plafond sécurité sociale * 1.76 %
++
++    abattement forfaitaire . montant plafond:
++      titre: montant plafond de l'abattement (D136-5 II)
++      description: « Le montant plafond mentionné au III de l'article L. 136-3 est fixé à 130 % de la valeur annuelle du plafond de la sécurité sociale »
++      unité: €/an
++      valeur: plafond sécurité sociale * 130 %
++
++    après abattement:
++      titre: assiette après abattement forfaitaire
++      unité: €/an
++      valeur: avant abattement - abattement forfaitaire
++
+ dirigeant . indépendant . cotisations et contributions . non déductibles:
+   titre: Part non déductibles fiscalement
+   somme:
+@@ -126,6 +183,10 @@
+ dirigeant . indépendant . assiette minimale . maladie:
+   description: |
+     Si le revenu du chef d'entreprise est déficitaire ou inférieur aux bases de calcul, certaines cotisations seront portées à un montant minimum.
++  note: |
++    À revoir : la version de D621-2 en vigueur au 07/07/2024 (LEGIARTI000049904592) rend le taux maladie « nul » lorsque
++    l'assiette est inférieure à 20 % du PASS ; l'article qui fixe cette assiette minimale (40 % du PASS) n'est pas dans le
++    corpus. Valeur inchangée faute de texte.
+   produit:
+     - plafond sécurité sociale
+     - 40%
+@@ -486,18 +547,64 @@
+ 
+     taux progressif:
+       arrondi: 2 décimales
+-      taux progressif:
+-        assiette: assiette
+-        multiplicateur: plafond sécurité sociale
+-        tranches:
+-          - taux: 0.5%
+-            plafond: 40%
+-          - taux: 4.5%
+-            plafond: 60%
+-          - taux: 7.20%
+-            plafond: 110%
++      note: |
++        CSS D621-2 version LEGIARTI000049904592 (décret n°2024-688 du 5 juillet 2024, en vigueur 07/07/2024) : réduction du
++        taux de base « lorsque le montant annuel de leur assiette de cotisations est inférieur à trois fois la valeur
++        annuelle du plafond » : taux nul sous 20 % du PASS ; T1 = 1,5 % à 40 % ; T2 = 4 % à 60 % ; T3 = 6,5 % à 110 % ;
++        T4 = 7,7 % à 200 % ; T5 = 8,5 % à 300 % du PASS, interpolation linéaire entre ces points (formules du texte).
++        « a est l'assiette, telle que définie à l'article L. 131-6 » = assiette des cotisations (après abattement).
++        Au-delà de 3 PASS le texte renvoie au taux de base (L621-3 / D621-1, hors corpus) : non transposé, voir la
++        notification `taux au-delà de 3 PASS à confirmer`. Applicable aux périodes courant à compter du 1er janvier 2025 (nota : article 6
++        du décret n°2024-688), d'où la branche `date >= 01/2025`.
++      variations:
++        - si: date >= 01/2025
++          alors:
++            taux progressif:
++              assiette: assiette
++              multiplicateur: plafond sécurité sociale
++              tranches:
++                - taux: 0%
++                  plafond: 20%
++                - taux: 1.5%
++                  plafond: 40%
++                - taux: 4%
++                  plafond: 60%
++                - taux: 6.5%
++                  plafond: 110%
++                - taux: 7.7%
++                  plafond: 200%
++                - taux: 8.5%
++                  plafond: 300%
++        - sinon:
++            taux progressif:
++              assiette: assiette
++              multiplicateur: plafond sécurité sociale
++              tranches:
++                - taux: 0.5%
++                  plafond: 40%
++                - taux: 4.5%
++                  plafond: 60%
++                - taux: 7.20%
++                  plafond: 110%
+       références:
+-        Article D621-2 du Code de la sécurité sociale: https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000046714747/
++        Article D621-2 du Code de la sécurité sociale (LEGIARTI000049904592, en vigueur 07/07/2024): https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049904592/
++        Article D621-2 du Code de la sécurité sociale (LEGIARTI000046714747, 10/12/2022 → 07/07/2024): https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000046714747/
++
++    taux au-delà de 3 PASS à confirmer:
++      type: notification
++      sévérité: avertissement
++      valeur:
++        toutes ces conditions:
++          - date >= 01/2025
++          - assiette des cotisations > seuil
++      description: |
++        Au-delà de trois fois le PASS, D621-2 (LEGIARTI000049904592) ne fixe pas de taux : c'est le taux de base de
++        L621-3 / D621-1, absent du corpus, qui s'applique. Le simulateur conserve la structure antérieure (dernier taux du
++        barème progressif jusqu'à 5 PASS, puis 6,50 %) : valeur non confirmée par un texte.
++
++    taux au-delà de 3 PASS à confirmer . seuil:
++      unité: €/an
++      valeur: 300% * plafond sécurité sociale
+ 
+     taux progressif . assiette: assiette des cotisations
+ 
+@@ -550,14 +657,33 @@
+     tranches:
+       - taux: taux
+         plafond: plafond sécurité sociale
+-      - taux: 0.6%
++      - taux: taux déplafonné
+   arrondi: oui
++  note: |
++    CSS D633-3 version LEGIARTI000049904636 (décret n°2024-688 du 5 juillet 2024, en vigueur 07/07/2024) :
++    « I.-Le taux des cotisations assises sur l'assiette de cotisations dans la limite du plafond est fixé à 17,15 %.
++    II.-Le taux des cotisations assises sur la totalité de l'assiette de cotisations est fixé à 0,72 %. »
++    Sous le plafond les deux cotisations se cumulent : 17,15 % + 0,72 % = 17,87 % (avant : 17,15 % + 0,60 % = 17,75 %,
++    version LEGIARTI000041967101). Applicable aux périodes courant à compter du 1er janvier 2025 (nota : article 6 du décret n°2024-688), d'où la branche `date >= 01/2025`.
+   références:
+     Cotisation minimale: https://www.secu-independants.fr/cotisations/calcul-des-cotisations/cotisations-minimales/
+     Liste des cotisations: https://www.urssaf.fr/portail/home/artisan-commercant/comment-sont-calculees-les-cotis/liste-des-cotisations.html
++    Article D633-3 du Code de la sécurité sociale (LEGIARTI000049904636, en vigueur 07/07/2024): https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049904636/
+ 
+   avec:
+-    taux: 17.75%
++    taux:
++      titre: taux dans la limite du plafond (D633-3 I + II)
++      variations:
++        - si: date >= 01/2025
++          alors: 17.87%
++        - sinon: 17.75%
++
++    taux déplafonné:
++      titre: taux sur la totalité de l'assiette (D633-3 II)
++      variations:
++        - si: date >= 01/2025
++          alors: 0.72%
++        - sinon: 0.6%
+ 
+ dirigeant . indépendant . cotisations et contributions . retraite complémentaire:
+   description: |
+@@ -686,17 +812,29 @@
+   note: >-
+     Seule la partie imposable des IJSS est retranchée de l'assiette de la CSG,
+     puisque la partie non imposable a déjà été retranchée du revenu net fiscal
+-    fourni
++    fourni.
++    Pour les périodes courant à compter du 1er janvier 2025 (réforme LFSS 2024 ; nota de L131-6/L136-3) : L131-6 I (LEGIARTI000048683707) dispose que les cotisations « sont assises
++    sur l'assiette définie à l'article L. 136-3 » ; la CSG-CRDS et les cotisations partagent donc la même assiette
++    (L136-3 I/II abattue de 26 %, III) et les cotisations ne sont plus réintégrées. Le traitement des revenus de
++    remplacement (L131-6 I 1°/2°), des sommes d'épargne salariale et des revenus étrangers dans la nouvelle assiette
++    n'est pas tranché ici : l'abattement existant (revenus étrangers, IJSS imposable) est conservé provisoirement.
+   valeur:
+-    somme:
+-      - assiette des cotisations . sans plancher
+-      - cotisations
+-      - conjoint collaborateur . cotisations
++    variations:
++      - si: date >= 01/2025
++        alors: assiette des cotisations
++      - sinon:
++          somme:
++            - assiette des cotisations . sans plancher
++            - cotisations
++            - conjoint collaborateur . cotisations
+   abattement:
+     somme:
+       - revenus étrangers . montant
+       - dirigeant . indépendant . IJSS . imposable
+   plancher: 0 €/mois
++  références:
++    Article L136-3 du Code de la sécurité sociale (LEGIARTI000048683641): https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048683641/
++    Article L131-6 du Code de la sécurité sociale (LEGIARTI000048683707): https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048683707/
+ 
+ dirigeant . indépendant . cotisations et contributions . formation professionnelle:
+   acronyme: CFP

@@ -1,0 +1,289 @@
+{
+  "task": "R3",
+  "commit": "9bb43d710094d8f572c64997ce991c8d395c5753",
+  "label": "MISMATCH",
+  "confidence": "high",
+  "rationale": "The commit re-indents the four DROM replacement rules out of the body of the private rule `seconde période` into the `avec:` of `dirigeant . auto-entrepreneur . DROM` (and renames `service BIC` to `taux service BIC`). Because publicodes drops unknown rule-body keys, those rules did not exist at G2 (list: 1258 -> 1262 names): a DROM auto-entrepreneur was charged the métropole rates (23,1 % BNC, 23,2 % CIPAV, 21,2 % service BIC, 12,3 % vente at 01/10/2024) in every period, which D756-5 does not allow. After the change the D756-5 reductions apply again and, for vente (2,1/6,2/8,2 %) and service BIC (3,6/10,6/14,2 %), the engine values equal D756-5 fractions x the D613-4 rates in force rounded up to the tenth. But the BNC and CIPAV constants were not re-derived from the D613-4 version in force since 2024-07-01 (LEGIARTI000049624068: e) 23,1 %, b) 23,2 %): the engine gives 3,6/10,6/14,1 % (BNC) and 7,1/10,6/14,2 % (CIPAV) where the text gives 3,9/11,6/15,4 % and 7,8/11,6/15,5 %. The change is a genuine semantic fix in the right direction, yet the library still fails to compute what the text in force requires for the two liberal categories, so it is a MISMATCH, not a harmless refactor and not an implementation choice the text leaves open (the rule's own description says the DROM rates are fractions of the \"taux pleins de métropole\").",
+  "evidence": [
+    {
+      "kind": "diff_excerpt",
+      "article": null,
+      "article_version_id": null,
+      "quote_or_values": "modele-social/règles/dirigeant/auto-entrepreneur/exonérations.publicodes: the four replacement rules move from 6-space indentation (keys inside the body of the private rule `seconde période`) to 4-space (children of `dirigeant . auto-entrepreneur . DROM` under its `avec:`): -      service BIC: -> +    taux service BIC: (rule renamed), -      taux service BNC: -> +    taux service BNC:, same for `taux vente restauration hébergement` and `taux CIPAV`; the misspelt duplicate key -  references: is removed so the PDF link falls under `références:`; the rate constants themselves are unchanged (3.60/10.60/14.20 %, 3.60/10.60/14.10 %, 2.10/6.20/8.20 %, 7.10/10.60/14.20 %). dirigeant/dirigeant.publicodes: blank lines only. The third file of stat.txt (auto-entrepreneur.test.ts.snap, 116 lines) is not supplied."
+    },
+    {
+      "kind": "engine_before_after",
+      "article": null,
+      "article_version_id": null,
+      "quote_or_values": "build: before raw 636 / parsed 1258; after raw 636 / parsed 1262. list: only-after = [\"dirigeant . auto-entrepreneur . DROM . taux service BIC\",\"dirigeant . auto-entrepreneur . DROM . taux service BNC\",\"dirigeant . auto-entrepreneur . DROM . taux vente restauration hébergement\",\"dirigeant . auto-entrepreneur . DROM . taux CIPAV\"]; only-before = []. Mechanism: publicodes 1.10.4 parseRule keeps only keys in mecanismKeys (dist/index.js l.1985-1987 `for (const key in rawRule) { if (mecanismKeys.includes(key)) ...`), so at G2 the four keys inside `seconde période` were silently dropped and no DROM replacement existed."
+    },
+    {
+      "kind": "engine_before_after",
+      "article": null,
+      "article_version_id": null,
+      "quote_or_values": "DROM rate rules at date 01/10/2024, CA 1000 €/mois, outre-mer: oui, ACRE: non (work/engine/checks_R3_drom.json -> results_R3_before_drom.jsonl / results_R3_after_drom.jsonl): [DROM_P1_BNC@01-10-2024] cotisations . service BNC . taux: 23.1 % -> 3.6 %; cotisations 231 €/mois (missing 4) -> 36 €/mois (missing 4); revenu net 9204 €/an (missing 4) -> 11544 €/an (missing 4) | [DROM_P1_CIPAV@01-10-2024] cotisations . cotisations CIPAV . taux: 23.2 % -> 7.1 %; cotisations 2784 €/an -> 852 €/an; revenu net 9192 €/an (missing 4) -> 11124 €/an (missing 4) | [DROM_P1_SBIC@01-10-2024] cotisations . service BIC . taux: 21.2 % -> 3.6 %; cotisations 212 €/mois (missing 4) -> 36 €/mois (missing 4); revenu net 9360 €/an (missing 7) -> 11472 €/an (missing 7) | [DROM_P1_VENTE@01-10-2024] cotisations . vente restauration hébergement . taux: 12.3 % -> 2.1 %; cotisations 123 €/mois (missing 4) -> 21 €/mois (missing 4); revenu net 10512 €/an (missing 4) -> 11736 €/an (missing 4) | [DROM_P2_BNC@01-10-2024] cotisations . service BNC . taux: 23.1 % -> 10.6 %; cotisations 231 €/mois (missing 4) -> 106 €/mois (missing 4); revenu net 9204 €/an (missing 4) -> 10704 €/an (missing 4) | [DROM_P2_CIPAV@01-10-2024] cotisations . cotisations CIPAV . taux: 23.2 % -> 10.6 %; cotisations 2784 €/an -> 1272 €/an; revenu net 9192 €/an (missing 4) -> 10704 €/an (missing 4) | [DROM_P2_SBIC@01-10-2024] cotisations . service BIC . taux: 21.2 % -> 10.6 %; cotisations 212 €/mois (missing 4) -> 106 €/mois (missing 4); revenu net 9360 €/an (missing 7) -> 10632 €/an (missing 7) | [DROM_P2_VENTE@01-10-2024] cotisations . vente restauration hébergement . taux: 12.3 % -> 6.2 %; cotisations 123 €/mois (missing 4) -> 62 €/mois (missing 4); revenu net 10512 €/an (missing 4) -> 11244 €/an (missing 4) | [DROM_P3_BNC@01-10-2024] cotisations . service BNC . taux: 23.1 % -> 14.1 %; cotisations 231 €/mois (missing 4) -> 141 €/mois (missing 4); revenu net 9204 €/an (missing 4) -> 10284 €/an (missing 4) | [DROM_P3_CIPAV@01-10-2024] cotisations . cotisations CIPAV . taux: 23.2 % -> 14.2 %; cotisations 2784 €/an -> 1704 €/an; revenu net 9192 €/an (missing 4) -> 10272 €/an (missing 4) | [DROM_P3_SBIC@01-10-2024] cotisations . service BIC . taux: 21.2 % -> 14.2 %; cotisations 212 €/mois (missing 4) -> 142 €/mois (missing 4); revenu net 9360 €/an (missing 7) -> 10200 €/an (missing 7) | [DROM_P3_VENTE@01-10-2024] cotisations . vente restauration hébergement . taux: 12.3 % -> 8.2 %; cotisations 123 €/mois (missing 4) -> 81.99999999999999 €/mois (missing 4); revenu net 10512 €/an (missing 4) -> 11004 €/an (missing 4)"
+    },
+    {
+      "kind": "engine_before_after",
+      "article": null,
+      "article_version_id": null,
+      "quote_or_values": "Decision-date check [DROM_P1_BNC@19-10-2024] dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . taux: 23.1 % -> 3.6 %; cotisations 231 €/mois (missing 4) -> 36 €/mois (missing 4). Pre-07/2024 date: [DROM_P1_BNC@01-06-2024] cotisations . service BNC . taux: 21.1 % -> 3.6 %; [DROM_P1_CIPAV@01-06-2024] cotisations . cotisations CIPAV . taux: 21.2 % -> 7.1 %. Métropole controls (outre-mer: non) identical before/after: [METRO_BNC@01-10-2024] cotisations . service BNC . taux = 23.1 %; [METRO_CIPAV@01-10-2024] cotisations . cotisations CIPAV . taux = 23.2 %; [METRO_SBIC@01-10-2024] cotisations . service BIC . taux = 21.2 %; [METRO_VENTE@01-10-2024] cotisations . vente restauration hébergement . taux = 12.3 %"
+    },
+    {
+      "kind": "engine_before_after",
+      "article": null,
+      "article_version_id": null,
+      "quote_or_values": "Existing check specs re-run on both trees (results_R3_before_<spec>.jsonl vs results_R3_after_<spec>.jsonl): R1_atmp: 4 checks, 20 cells, 0 differ; T1a_rates: 24 checks, 216 cells, 27 differ (DROM_Q8_BNC@01-06-2024, DROM_Q8_BNC@01-07-2024, DROM_Q8_BNC@01-01-2025, DROM_Q8_BNC@01-01-2026); T0_ae3: 16 checks, 128 cells, 30 differ (AE_DROM_Q8_BNC_clean, AE_DROM_Q9_Y3_BNC_clean, AE_DROM_Q9_Y4_BNC_clean, AE_DROM_Q4_CIPAV_clean, AE_DROM_Q4_VENTE_ACRE_oui_overridden); T1b_trader: 7 checks, 175 cells, 0 differ; T0_ti: 18 checks, 242 cells, 0 differ; R2_acre: 10 checks, 150 cells, 7 differ (AE_DROM_Q4_VENTE_ACRE_oui_overridden). Every differing check is a DROM situation; nothing else moved."
+    },
+    {
+      "kind": "article_quote",
+      "article": "D756-5",
+      "article_version_id": "LEGIARTI000034726710",
+      "in_force": "2017-05-12",
+      "etat": "VIGUEUR",
+      "field": "text",
+      "quote_or_values": "le taux mentionné au premier alinéa de l'article L. 133-6-8 correspond, après arrondi au dixième de pour cent supérieur, à une fraction des taux prévus par l'article D. 131-6-1 fixée à : a) 1/6 pour les travailleurs indépendants mentionnés au 2° de l'article L. 611-1 et 1/3 dans les autres cas, jusqu'à la fin du septième trimestre civil qui suit celui au cours duquel intervient la date d'effet de l'affiliation ; b) 1/2 pour la période qui court entre la fin de la période mentionnée au a et la fin de la troisième année civile d'activité ; c) 2/3 à compter de la quatrième année civile d'activité.",
+      "note": "Only version in the snapshot (created by décret 2017-972, in force 2017-05-12). It still cites the pre-2018/2020 numbering L. 133-6-8 (now L613-7) and D. 131-6-1 (the micro-social rate table now sits in D613-4); the renumbering instruments are outside the bounded set."
+    },
+    {
+      "kind": "article_quote",
+      "article": "D613-4",
+      "article_version_id": "LEGIARTI000049624068",
+      "in_force": "2024-07-01",
+      "etat": "VIGUEUR_DIFF",
+      "field": "text",
+      "quote_or_values": "a) Travailleurs indépendants appartenant à la catégorie mentionnée au 1° du 1 de l' article 50-0 du code général des impôts 79 828 euros 71 % 23 150 euros 12,3 %"
+    },
+    {
+      "kind": "article_quote",
+      "article": "D613-4",
+      "article_version_id": "LEGIARTI000049624068",
+      "in_force": "2024-07-01",
+      "etat": "VIGUEUR_DIFF",
+      "field": "text",
+      "quote_or_values": "b) Travailleurs indépendants affiliés à la section professionnelle mentionnée au 11° de l'article R. 641-1 35 076 euros 34 % 23 150 euros 23,2 %"
+    },
+    {
+      "kind": "article_quote",
+      "article": "D613-4",
+      "article_version_id": "LEGIARTI000049624068",
+      "in_force": "2024-07-01",
+      "etat": "VIGUEUR_DIFF",
+      "field": "text",
+      "quote_or_values": "d) Travailleurs indépendants appartenant à la catégorie mentionnée au 2° du 1 de l'article 50-0 du code général des impôt 46 300 euros 50 % 23 150 euros 21,2 %"
+    },
+    {
+      "kind": "article_quote",
+      "article": "D613-4",
+      "article_version_id": "LEGIARTI000049624068",
+      "in_force": "2024-07-01",
+      "etat": "VIGUEUR_DIFF",
+      "field": "text",
+      "quote_or_values": "e) Travailleurs indépendants relevant à la fois de l'article L. 631-1 et du régime prévu à l' article 102 ter du code général des impôts 10 000 euros 34 % 6 600 euros 23,1 %"
+    },
+    {
+      "kind": "article_quote",
+      "article": "D613-4",
+      "article_version_id": "LEGIARTI000049624068",
+      "in_force": "2024-07-01",
+      "etat": "VIGUEUR_DIFF",
+      "field": "nota",
+      "quote_or_values": "Conformément au 2° de l'article 1 du décret n° 2024-484 du 30 mai 2024, ces dispositions entrent en vigueur à compter du 1er juillet 2024."
+    },
+    {
+      "kind": "article_quote",
+      "article": "L613-7",
+      "article_version_id": "LEGIARTI000048683570",
+      "in_force": "2023-12-28",
+      "etat": "VIGUEUR",
+      "field": "text",
+      "quote_or_values": "un taux global fixé par décret pour chaque catégorie d'activité mentionnée aux mêmes articles"
+    },
+    {
+      "kind": "article_quote",
+      "article": "D131-6-1",
+      "article_version_id": "LEGIARTI000036475110",
+      "in_force": "2018-01-01",
+      "etat": "VIGUEUR",
+      "field": "text",
+      "quote_or_values": "La durée de l'exonération des cotisations dues par les personnes bénéficiant de l'aide à la création et à la reprise d'entreprise prévue à l'article L. 131-6-4 est de douze mois",
+      "note": "Shows that the article D756-5 names as the rate base no longer carries the micro-social rates in the bounded set."
+    },
+    {
+      "kind": "diff_excerpt",
+      "article": null,
+      "article_version_id": null,
+      "quote_or_values": "existing_tests at G2 (the before tree): regression case \"DROM 3\" (auto-entrepreneur.yaml: outre-mer: oui, \"entreprise . durée d'activité . trimestres civils: 1\", CA 20000 €/an, revenus mixtes) is recorded in auto-entrepreneur.test.ts.snap with \"dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . taux: 23\" and the same cotisations as the non-DROM case \"DROM 1\" (321), i.e. the maintainers' own fixture had captured the métropole rate for a first-period DROM auto-entrepreneur."
+    }
+  ],
+  "expected_values_if_mismatch": [
+    {
+      "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . taux",
+      "date": "01/10/2024",
+      "situation": "DROM auto-entrepreneur, profession libérale non réglementée (BNC, D613-4 e), first period (trimestres civils = 4, années civiles = 1), CA 1000 €/mois (check DROM_P1_BNC@01-10-2024)",
+      "found": 3.6,
+      "expected": 3.9,
+      "before_change": 23.1,
+      "derivation": "profession libérale non réglementée (BNC, D613-4 e): D756-5 I a) fraction 1/6 x D613-4 (LEGIARTI000049624068, in force 2024-07-01) rate 23.1 % = 3.8500 %, \"arrondi au dixième de pour cent supérieur\" -> 3.9 %. The rule constant 3.6 % equals the same derivation applied to the pre-2024-07-01 rate 21.1 % (engine value at 01/06/2024; that older D613-4 text is not in the snapshot).",
+      "caveat": "1/6 applies to \"travailleurs indépendants mentionnés au 2° de l'article L. 611-1\" (L611-1 is outside the bounded set); the rule and its own description treat BNC like artisans/commerçants (1/6). Under the 1/3 reading the expected value would be 7.7 %; under neither reading is 3.6 % supported at this date."
+    },
+    {
+      "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . taux",
+      "date": "01/10/2024",
+      "situation": "DROM auto-entrepreneur, profession libérale non réglementée (BNC, D613-4 e), second period (trimestres civils = 12, années civiles = 3), CA 1000 €/mois (check DROM_P2_BNC@01-10-2024)",
+      "found": 10.6,
+      "expected": 11.6,
+      "before_change": 23.1,
+      "derivation": "profession libérale non réglementée (BNC, D613-4 e): D756-5 I b) fraction 1/2 x D613-4 (LEGIARTI000049624068, in force 2024-07-01) rate 23.1 % = 11.5500 %, \"arrondi au dixième de pour cent supérieur\" -> 11.6 %. The rule constant 10.6 % equals the same derivation applied to the pre-2024-07-01 rate 21.1 % (engine value at 01/06/2024; that older D613-4 text is not in the snapshot)."
+    },
+    {
+      "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . taux",
+      "date": "01/10/2024",
+      "situation": "DROM auto-entrepreneur, profession libérale non réglementée (BNC, D613-4 e), from the 4th civil year (trimestres civils = 24, années civiles = 6), CA 1000 €/mois (check DROM_P3_BNC@01-10-2024)",
+      "found": 14.1,
+      "expected": 15.4,
+      "before_change": 23.1,
+      "derivation": "profession libérale non réglementée (BNC, D613-4 e): D756-5 I c) fraction 2/3 x D613-4 (LEGIARTI000049624068, in force 2024-07-01) rate 23.1 % = 15.4000 %, \"arrondi au dixième de pour cent supérieur\" -> 15.4 %. The rule constant 14.1 % equals the same derivation applied to the pre-2024-07-01 rate 21.1 % (engine value at 01/06/2024; that older D613-4 text is not in the snapshot)."
+    },
+    {
+      "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV . taux",
+      "date": "01/10/2024",
+      "situation": "DROM auto-entrepreneur, profession libérale CIPAV (D613-4 b), first period (trimestres civils = 4, années civiles = 1), CA 1000 €/mois (check DROM_P1_CIPAV@01-10-2024)",
+      "found": 7.1,
+      "expected": 7.8,
+      "before_change": 23.2,
+      "derivation": "profession libérale CIPAV (D613-4 b): D756-5 I a) fraction 1/3 x D613-4 (LEGIARTI000049624068, in force 2024-07-01) rate 23.2 % = 7.7333 %, \"arrondi au dixième de pour cent supérieur\" -> 7.8 %. The rule constant 7.1 % equals the same derivation applied to the pre-2024-07-01 rate 21.2 % (engine value at 01/06/2024; that older D613-4 text is not in the snapshot)."
+    },
+    {
+      "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV . taux",
+      "date": "01/10/2024",
+      "situation": "DROM auto-entrepreneur, profession libérale CIPAV (D613-4 b), second period (trimestres civils = 12, années civiles = 3), CA 1000 €/mois (check DROM_P2_CIPAV@01-10-2024)",
+      "found": 10.6,
+      "expected": 11.6,
+      "before_change": 23.2,
+      "derivation": "profession libérale CIPAV (D613-4 b): D756-5 I b) fraction 1/2 x D613-4 (LEGIARTI000049624068, in force 2024-07-01) rate 23.2 % = 11.6000 %, \"arrondi au dixième de pour cent supérieur\" -> 11.6 %. The rule constant 10.6 % equals the same derivation applied to the pre-2024-07-01 rate 21.2 % (engine value at 01/06/2024; that older D613-4 text is not in the snapshot)."
+    },
+    {
+      "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV . taux",
+      "date": "01/10/2024",
+      "situation": "DROM auto-entrepreneur, profession libérale CIPAV (D613-4 b), from the 4th civil year (trimestres civils = 24, années civiles = 6), CA 1000 €/mois (check DROM_P3_CIPAV@01-10-2024)",
+      "found": 14.2,
+      "expected": 15.5,
+      "before_change": 23.2,
+      "derivation": "profession libérale CIPAV (D613-4 b): D756-5 I c) fraction 2/3 x D613-4 (LEGIARTI000049624068, in force 2024-07-01) rate 23.2 % = 15.4667 %, \"arrondi au dixième de pour cent supérieur\" -> 15.5 %. The rule constant 14.2 % equals the same derivation applied to the pre-2024-07-01 rate 21.2 % (engine value at 01/06/2024; that older D613-4 text is not in the snapshot)."
+    },
+    {
+      "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+      "date": "19/10/2024",
+      "situation": "same as DROM_P1_BNC, decision date",
+      "found": 36,
+      "expected": 39,
+      "unit": "€/mois",
+      "before_change": 231,
+      "derivation": "1000 €/mois x 3.9 % = 39 €/mois (engine after the change: 1000 x 3.6 % = 36 €/mois; before: 1000 x 23.1 % = 231 €/mois)."
+    }
+  ],
+  "expected_values_table": {
+    "in_force_rates_D613_4_v5": {
+      "VENTE": 12.3,
+      "SBIC": 21.2,
+      "BNC": 23.1,
+      "CIPAV": 23.2
+    },
+    "expected_DROM_rates_after_rounding_up": {
+      "VENTE": {
+        "P1": 2.1,
+        "P1_if_one_third": 4.1,
+        "P2": 6.2,
+        "P3": 8.2
+      },
+      "SBIC": {
+        "P1": 3.6,
+        "P1_if_one_third": 7.1,
+        "P2": 10.6,
+        "P3": 14.2
+      },
+      "BNC": {
+        "P1": 3.9,
+        "P1_if_one_third": 7.7,
+        "P2": 11.6,
+        "P3": 15.4
+      },
+      "CIPAV": {
+        "P1": 7.8,
+        "P1_if_one_third": 7.8,
+        "P2": 11.6,
+        "P3": 15.5
+      }
+    },
+    "rule_constants_vs_pre_2024_07_rates": {
+      "VENTE": {
+        "base_rate_used": 12.3,
+        "derived": [
+          2.1,
+          6.2,
+          8.2
+        ],
+        "rule_constants": [
+          2.1,
+          6.2,
+          8.2
+        ],
+        "equal": true
+      },
+      "SBIC": {
+        "base_rate_used": 21.2,
+        "derived": [
+          3.6,
+          10.6,
+          14.2
+        ],
+        "rule_constants": [
+          3.6,
+          10.6,
+          14.2
+        ],
+        "equal": true
+      },
+      "BNC": {
+        "base_rate_used": 21.1,
+        "derived": [
+          3.6,
+          10.6,
+          14.1
+        ],
+        "rule_constants": [
+          3.6,
+          10.6,
+          14.1
+        ],
+        "equal": true
+      },
+      "CIPAV": {
+        "base_rate_used": 21.2,
+        "derived": [
+          7.1,
+          10.6,
+          14.2
+        ],
+        "rule_constants": [
+          7.1,
+          10.6,
+          14.2
+        ],
+        "equal": true
+      }
+    }
+  },
+  "outside_bounded_set": [
+    "L. 756-5 (legal basis of the DROM micro-social reduction; D756-5 only gives the fractions) and L. 751-1 (list of the collectivités covered) - not in the set.",
+    "L. 611-1 2° (which categories get 1/6 rather than 1/3 in the first period; decides whether a BNC profession libérale non réglementée is at 3,9 % or 7,7 % in period a) - not in the set.",
+    "The renumbering/transfer instruments that moved L. 133-6-8 to L. 613-7 and the micro-social rate table from D. 131-6-1 to D. 613-4 (D756-5 still cites the old numbers; in S5, D131-6-1 LEGIARTI000036475110 is the ACRE article) - not in the set; the derivation assumes the D613-4 rates are the base.",
+    "D613-4 versions LEGIARTI000049624097 (2025-01-01) and LEGIARTI000049624125 (2026-01-01): ids and dates only, no text in S5 - abstain on the DROM rates expected from 2025 (the base rules already encode 24,6 / 26,1 % for BNC, while the DROM constants stay flat at 3,6 %).",
+    "D613-4 versions before 2024-07-01 (LEGIARTI000046714712 etc.): no text in S5, so the statement that the rule constants derive from 21,1 / 21,2 % rests on the engine values at 01/06/2024, not on quoted law.",
+    "The Urssaf DROM guide (PDF) and FAQ the rule cites as références - external sources, not in the corpus."
+  ],
+  "approval": "none recorded",
+  "notes": "Before-tree = G2 3a4091ae1caf exactly (blob sha1 of both files = patch a-side f760e73cc / 741068f66); after-tree = G2 + diff.patch applied with patch -p1 in work/proposals/R3 (blobs = b-side 3d217c4d4 / a20c444d8; diff -rq shows only those two files). The 6-space nesting is absent at G1 2a0e452617fc (2024-07-16, 4-space file, rules siblings of `seconde période`), where the G1-era results (work/engine/results_R2_after_T1a_rates.jsonl, DROM_Q8_BNC@01-06-2024) show the reduced 3,6 %; HISTORY.txt lists 05334b12 \"refactor(auto-entrepreneur): Corrige l'indentation des règles AE\" (2024-09-02) between the two pins, so the regression most likely entered there and lived in the published library for ~5 weeks. Period conditions were not changed by the commit: `première période` = trimestres civils <= 8 matches D756-5 a) (quarter of affiliation + \"septième trimestre civil qui suit\"), `seconde période` = années civiles <= 3 matches b), sinon = c). Engine pitfall: `entreprise . durée d'activité . *` (mécanisme durée) counts up to the real clock, not the situation `date` (01/01/2024 gave 12 trimestres / 3 années at date 01/10/2024), so the checks set trimestres civils / années civiles explicitly. Floating artefacts (81.99999999999999 €/mois) are engine arithmetic, not rule semantics. No approval, review or ratification record exists in the corpus.",
+  "self_reported_tool_calls": 27
+}

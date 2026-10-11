@@ -1,0 +1,2259 @@
+{
+ "generated_at": "2026-10-11T17:41:36+00:00",
+ "law_snapshot": "S3",
+ "rules_snapshot": "G1",
+ "links_total": 109,
+ "rules_to_reassess": [
+  "dirigeant . auto-entrepreneur . DROM",
+  "dirigeant . auto-entrepreneur . DROM . service BIC",
+  "dirigeant . auto-entrepreneur . DROM . taux CIPAV",
+  "dirigeant . auto-entrepreneur . DROM . taux service BNC",
+  "dirigeant . auto-entrepreneur . DROM . taux vente restauration hébergement",
+  "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+  "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV . taux",
+  "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BIC",
+  "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC",
+  "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux vente restauration hébergement",
+  "dirigeant . indépendant . assiette des cotisations",
+  "dirigeant . indépendant . assiette des cotisations . réforme assiette 2024",
+  "dirigeant . indépendant . assiette des cotisations . réforme assiette 2024 . abattement forfaitaire",
+  "dirigeant . indépendant . assiette des cotisations . réforme assiette 2024 . assiette avant abattement",
+  "dirigeant . indépendant . assiette des cotisations . réforme assiette 2024 . plafond annuel",
+  "dirigeant . indépendant . cotisations et contributions . CSG-CRDS . assiette",
+  "dirigeant . indépendant . cotisations et contributions . indemnités journalières maladie",
+  "dirigeant . indépendant . cotisations et contributions . invalidité et décès",
+  "dirigeant . indépendant . cotisations et contributions . invalidité et décès . assiette",
+  "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+  "dirigeant . indépendant . cotisations et contributions . retraite complémentaire",
+  "dirigeant . indépendant . cotisations et contributions . retraite de base",
+  "dirigeant . indépendant . cotisations et contributions . retraite de base . taux",
+  "dirigeant . indépendant . cotisations et contributions . retraite de base . taux déplafonné",
+  "protection sociale . retraite . complémentaire . RCI . revenu cotisé auto-entrepreneur"
+ ],
+ "articles_changed": [
+  "D613-4",
+  "D613-6",
+  "D621-2",
+  "D633-3"
+ ],
+ "articles_without_any_link": [],
+ "rows": [
+  {
+   "link_id": "L0001",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC",
+   "article": "D613-4",
+   "prior_status": "VERIFIED",
+   "law": "LAW_CHANGED",
+   "law_detail": {
+    "old_id": "LEGIARTI000046714712",
+    "new_id": "LEGIARTI000049624068",
+    "new_dateDebut": "2024-07-01",
+    "new_etat": "VIGUEUR_DIFF"
+   },
+   "quote_still_present": false,
+   "rules": "RULE_CHANGED",
+   "check": "CHECK_PASS",
+   "check_result": {
+    "passed": true,
+    "observed": 21.1,
+    "expected": 21.1,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "status": "REASSESS_LAW_CHANGED"
+  },
+  {
+   "link_id": "L0002",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BIC",
+   "article": "D613-4",
+   "prior_status": "VERIFIED",
+   "law": "LAW_CHANGED",
+   "law_detail": {
+    "old_id": "LEGIARTI000046714712",
+    "new_id": "LEGIARTI000049624068",
+    "new_dateDebut": "2024-07-01",
+    "new_etat": "VIGUEUR_DIFF"
+   },
+   "quote_still_present": true,
+   "rules": "RULE_CHANGED",
+   "check": "CHECK_FAIL",
+   "check_result": {
+    "passed": false,
+    "observed": null,
+    "expected": 21.2,
+    "unit": null,
+    "missing_variables": [
+     "entreprise . activité . nature . libérale . réglementée",
+     "entreprise . activités . revenus mixtes",
+     "entreprise . activités",
+     "entreprise . activités . commerciale",
+     "entreprise . activités . artisanale",
+     "entreprise . activités . libérale"
+    ],
+    "detail": "observed != expected"
+   },
+   "status": "REASSESS_LAW_CHANGED"
+  },
+  {
+   "link_id": "L0003",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux vente restauration hébergement",
+   "article": "D613-4",
+   "prior_status": "VERIFIED",
+   "law": "LAW_CHANGED",
+   "law_detail": {
+    "old_id": "LEGIARTI000046714712",
+    "new_id": "LEGIARTI000049624068",
+    "new_dateDebut": "2024-07-01",
+    "new_etat": "VIGUEUR_DIFF"
+   },
+   "quote_still_present": true,
+   "rules": "RULE_CHANGED",
+   "check": "CHECK_FAIL",
+   "check_result": {
+    "passed": false,
+    "observed": null,
+    "expected": 12.3,
+    "unit": null,
+    "missing_variables": [
+     "entreprise . activité . nature . libérale . réglementée",
+     "entreprise . activités . revenus mixtes",
+     "entreprise . activités",
+     "entreprise . activités . commerciale",
+     "entreprise . activités . artisanale",
+     "entreprise . activités . libérale"
+    ],
+    "detail": "observed != expected"
+   },
+   "status": "REASSESS_LAW_CHANGED"
+  },
+  {
+   "link_id": "L0004",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV . taux",
+   "article": "D613-4",
+   "prior_status": "VERIFIED",
+   "law": "LAW_CHANGED",
+   "law_detail": {
+    "old_id": "LEGIARTI000046714712",
+    "new_id": "LEGIARTI000049624068",
+    "new_dateDebut": "2024-07-01",
+    "new_etat": "VIGUEUR_DIFF"
+   },
+   "quote_still_present": false,
+   "rules": "RULE_CHANGED",
+   "check": "CHECK_PASS",
+   "check_result": {
+    "passed": true,
+    "observed": 21.2,
+    "expected": 21.2,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "status": "REASSESS_LAW_CHANGED"
+  },
+  {
+   "link_id": "L0005",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "article": "D613-4",
+   "prior_status": "VERIFIED",
+   "law": "LAW_CHANGED",
+   "law_detail": {
+    "old_id": "LEGIARTI000046714712",
+    "new_id": "LEGIARTI000049624068",
+    "new_dateDebut": "2024-07-01",
+    "new_etat": "VIGUEUR_DIFF"
+   },
+   "quote_still_present": false,
+   "rules": "RULE_CHANGED",
+   "check": "CHECK_FAIL",
+   "check_result": {
+    "passed": false,
+    "observed": 211.00000000000003,
+    "expected": 2532.0,
+    "unit": "€/mois",
+    "missing_variables": [
+     "entreprise . activité . nature . libérale . réglementée",
+     "entreprise . activités . revenus mixtes",
+     "entreprise . activités",
+     "entreprise . activités . commerciale",
+     "entreprise . activités . artisanale",
+     "entreprise . activités . libérale"
+    ],
+    "detail": "observed != expected"
+   },
+   "status": "REASSESS_LAW_CHANGED"
+  },
+  {
+   "link_id": "L0006",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "article": "D613-4",
+   "prior_status": "FAILED",
+   "law": "LAW_CHANGED",
+   "law_detail": {
+    "old_id": "LEGIARTI000046714712",
+    "new_id": "LEGIARTI000049624068",
+    "new_dateDebut": "2024-07-01",
+    "new_etat": "VIGUEUR_DIFF"
+   },
+   "quote_still_present": false,
+   "rules": "RULE_CHANGED",
+   "check": "CHECK_FAIL",
+   "check_result": {
+    "passed": false,
+    "observed": 1452,
+    "expected": 2544.0,
+    "unit": "€/an",
+    "missing_variables": [],
+    "detail": "observed != expected"
+   },
+   "status": "REASSESS_LAW_CHANGED"
+  },
+  {
+   "link_id": "L0007",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "article": "D613-4",
+   "prior_status": "VERIFIED",
+   "law": "LAW_CHANGED",
+   "law_detail": {
+    "old_id": "LEGIARTI000046714712",
+    "new_id": "LEGIARTI000049624068",
+    "new_dateDebut": "2024-07-01",
+    "new_etat": "VIGUEUR_DIFF"
+   },
+   "quote_still_present": false,
+   "rules": "RULE_CHANGED",
+   "check": "CHECK_PASS",
+   "check_result": {
+    "passed": true,
+    "observed": 2544,
+    "expected": 2544.0,
+    "unit": "€/an",
+    "missing_variables": [],
+    "detail": null
+   },
+   "status": "REASSESS_LAW_CHANGED"
+  },
+  {
+   "link_id": "L0008",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "article": "D613-4",
+   "prior_status": "UNKNOWN",
+   "law": "LAW_CHANGED",
+   "law_detail": {
+    "old_id": "LEGIARTI000046714712",
+    "new_id": "LEGIARTI000049624068",
+    "new_dateDebut": "2024-07-01",
+    "new_etat": "VIGUEUR_DIFF"
+   },
+   "quote_still_present": false,
+   "rules": "RULE_CHANGED",
+   "check": "NO_CHECK",
+   "status": "REASSESS_LAW_CHANGED"
+  },
+  {
+   "link_id": "L0009",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "article": "L613-7",
+   "prior_status": "INFERRED",
+   "law": "LAW_SAME",
+   "rules": "RULE_CHANGED",
+   "check": "NO_CHECK",
+   "status": "REASSESS_RULE_CHANGED"
+  },
+  {
+   "link_id": "L0010",
+   "rule": "dirigeant . auto-entrepreneur . DROM",
+   "article": "L613-7",
+   "prior_status": "INFERRED",
+   "law": "LAW_SAME",
+   "rules": "RULE_CHANGED",
+   "check": "NO_CHECK",
+   "status": "REASSESS_RULE_CHANGED"
+  },
+  {
+   "link_id": "L0011",
+   "rule": "dirigeant . exonérations . ACRE",
+   "article": "L613-7",
+   "prior_status": "INFERRED",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "NO_CHECK",
+   "status": "UNVERIFIED_NO_CHECK"
+  },
+  {
+   "link_id": "L0012",
+   "rule": "entreprise . imposition . régime . micro-entreprise . revenu abattu",
+   "article": "L613-7",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "CHECK_PASS",
+   "check_result": {
+    "passed": true,
+    "observed": 7920.000000000116,
+    "expected": 7920.0,
+    "unit": "€/an",
+    "missing_variables": [
+     "entreprise . activité . nature . libérale . réglementée",
+     "entreprise . activités . revenus mixtes",
+     "entreprise . activités",
+     "entreprise . activités . commerciale",
+     "entreprise . activités . artisanale",
+     "entreprise . activités . libérale"
+    ],
+    "detail": null
+   },
+   "status": "STILL_VERIFIED"
+  },
+  {
+   "link_id": "L0013",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "article": "L613-7",
+   "prior_status": "UNKNOWN",
+   "law": "LAW_SAME",
+   "rules": "RULE_CHANGED",
+   "check": "NO_CHECK",
+   "status": "REASSESS_RULE_CHANGED"
+  },
+  {
+   "link_id": "L0014",
+   "rule": "dirigeant . auto-entrepreneur . DROM . taux service BNC",
+   "article": "D756-5",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_CHANGED",
+   "check": "CHECK_PASS",
+   "check_result": {
+    "passed": true,
+    "observed": 3.6,
+    "expected": 3.6,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "status": "RULE_CHANGED_CHECK_STILL_PASSES"
+  },
+  {
+   "link_id": "L0015",
+   "rule": "dirigeant . auto-entrepreneur . DROM . taux service BNC",
+   "article": "D756-5",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_CHANGED",
+   "check": "CHECK_PASS",
+   "check_result": {
+    "passed": true,
+    "observed": 10.6,
+    "expected": 10.6,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "status": "RULE_CHANGED_CHECK_STILL_PASSES"
+  },
+  {
+   "link_id": "L0016",
+   "rule": "dirigeant . auto-entrepreneur . DROM . taux service BNC",
+   "article": "D756-5",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_CHANGED",
+   "check": "CHECK_PASS",
+   "check_result": {
+    "passed": true,
+    "observed": 14.1,
+    "expected": 14.1,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "status": "RULE_CHANGED_CHECK_STILL_PASSES"
+  },
+  {
+   "link_id": "L0017",
+   "rule": "dirigeant . auto-entrepreneur . DROM . service BIC",
+   "article": "D756-5",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_CHANGED",
+   "check": "CHECK_PASS",
+   "check_result": {
+    "passed": true,
+    "observed": 3.6,
+    "expected": 3.6,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "status": "RULE_CHANGED_CHECK_STILL_PASSES"
+  },
+  {
+   "link_id": "L0018",
+   "rule": "dirigeant . auto-entrepreneur . DROM . service BIC",
+   "article": "D756-5",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_CHANGED",
+   "check": "CHECK_PASS",
+   "check_result": {
+    "passed": true,
+    "observed": 10.6,
+    "expected": 10.6,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "status": "RULE_CHANGED_CHECK_STILL_PASSES"
+  },
+  {
+   "link_id": "L0019",
+   "rule": "dirigeant . auto-entrepreneur . DROM . service BIC",
+   "article": "D756-5",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_CHANGED",
+   "check": "CHECK_PASS",
+   "check_result": {
+    "passed": true,
+    "observed": 14.2,
+    "expected": 14.2,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "status": "RULE_CHANGED_CHECK_STILL_PASSES"
+  },
+  {
+   "link_id": "L0020",
+   "rule": "dirigeant . auto-entrepreneur . DROM . taux vente restauration hébergement",
+   "article": "D756-5",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_CHANGED",
+   "check": "CHECK_PASS",
+   "check_result": {
+    "passed": true,
+    "observed": 2.1,
+    "expected": 2.1,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "status": "RULE_CHANGED_CHECK_STILL_PASSES"
+  },
+  {
+   "link_id": "L0021",
+   "rule": "dirigeant . auto-entrepreneur . DROM . taux vente restauration hébergement",
+   "article": "D756-5",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_CHANGED",
+   "check": "CHECK_PASS",
+   "check_result": {
+    "passed": true,
+    "observed": 6.2,
+    "expected": 6.2,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "status": "RULE_CHANGED_CHECK_STILL_PASSES"
+  },
+  {
+   "link_id": "L0022",
+   "rule": "dirigeant . auto-entrepreneur . DROM . taux vente restauration hébergement",
+   "article": "D756-5",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_CHANGED",
+   "check": "CHECK_PASS",
+   "check_result": {
+    "passed": true,
+    "observed": 8.2,
+    "expected": 8.2,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "status": "RULE_CHANGED_CHECK_STILL_PASSES"
+  },
+  {
+   "link_id": "L0023",
+   "rule": "dirigeant . auto-entrepreneur . DROM . taux CIPAV",
+   "article": "D756-5",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_CHANGED",
+   "check": "CHECK_PASS",
+   "check_result": {
+    "passed": true,
+    "observed": 7.1,
+    "expected": 7.1,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "status": "RULE_CHANGED_CHECK_STILL_PASSES"
+  },
+  {
+   "link_id": "L0024",
+   "rule": "dirigeant . auto-entrepreneur . DROM . taux CIPAV",
+   "article": "D756-5",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_CHANGED",
+   "check": "CHECK_PASS",
+   "check_result": {
+    "passed": true,
+    "observed": 10.6,
+    "expected": 10.6,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "status": "RULE_CHANGED_CHECK_STILL_PASSES"
+  },
+  {
+   "link_id": "L0025",
+   "rule": "dirigeant . auto-entrepreneur . DROM . taux CIPAV",
+   "article": "D756-5",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_CHANGED",
+   "check": "CHECK_PASS",
+   "check_result": {
+    "passed": true,
+    "observed": 14.2,
+    "expected": 14.2,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "status": "RULE_CHANGED_CHECK_STILL_PASSES"
+  },
+  {
+   "link_id": "L0026",
+   "rule": "dirigeant . auto-entrepreneur . DROM",
+   "article": "D756-5",
+   "prior_status": "INFERRED",
+   "law": "LAW_SAME",
+   "rules": "RULE_CHANGED",
+   "check": "NO_CHECK",
+   "status": "REASSESS_RULE_CHANGED"
+  },
+  {
+   "link_id": "L0027",
+   "rule": "dirigeant . auto-entrepreneur . DROM",
+   "article": "D756-5",
+   "prior_status": "UNKNOWN",
+   "law": "LAW_SAME",
+   "rules": "RULE_CHANGED",
+   "check": "NO_CHECK",
+   "status": "REASSESS_RULE_CHANGED"
+  },
+  {
+   "link_id": "L0028",
+   "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . prorata sur l'année",
+   "article": "D131-6-1",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "CHECK_PASS",
+   "check_result": {
+    "passed": true,
+    "observed": 50,
+    "expected": 50.0,
+    "unit": "%",
+    "missing_variables": [
+     "établissement . commune . département",
+     "établissement . commune . département . outre-mer",
+     "dirigeant . exonérations . ACRE"
+    ],
+    "detail": null
+   },
+   "status": "STILL_VERIFIED"
+  },
+  {
+   "link_id": "L0029",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC",
+   "article": "D131-6-1",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_CHANGED",
+   "check": "CHECK_PASS",
+   "check_result": {
+    "passed": true,
+    "observed": 21.1,
+    "expected": 21.1,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "status": "RULE_CHANGED_CHECK_STILL_PASSES"
+  },
+  {
+   "link_id": "L0030",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC",
+   "article": "D131-6-1",
+   "prior_status": "INFERRED",
+   "law": "LAW_SAME",
+   "rules": "RULE_CHANGED",
+   "check": "NO_CHECK",
+   "status": "REASSESS_RULE_CHANGED"
+  },
+  {
+   "link_id": "L0031",
+   "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . taux",
+   "article": "D131-6-1",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "CHECK_PASS",
+   "check_result": {
+    "passed": true,
+    "observed": 100,
+    "expected": 100.0,
+    "unit": "%",
+    "missing_variables": [
+     "établissement . commune . département",
+     "établissement . commune . département . outre-mer",
+     "dirigeant . exonérations . ACRE"
+    ],
+    "detail": null
+   },
+   "status": "STILL_VERIFIED"
+  },
+  {
+   "link_id": "L0032",
+   "rule": "dirigeant . indépendant . cotisations et contributions . retraite de base",
+   "article": "D131-6-1",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "CHECK_PASS",
+   "check_result": {
+    "passed": true,
+    "observed": 0,
+    "expected": 0.0,
+    "unit": "€/an",
+    "missing_variables": [
+     "établissement . commune . département",
+     "établissement . commune . département . outre-mer",
+     "dirigeant . exonérations . ACRE",
+     "dirigeant . indépendant . cotisations et contributions . exonérations . pension invalidité",
+     "entreprise . activités",
+     "entreprise . activités . commerciale",
+     "entreprise . activités . artisanale",
+     "entreprise . activités . libérale",
+     "entreprise . activités . agricole",
+     "dirigeant . indépendant . conjoint collaborateur",
+     "entreprise . imposition . régime",
+     "entreprise . imposition . régime . micro-entreprise"
+    ],
+    "detail": null
+   },
+   "status": "STILL_VERIFIED"
+  },
+  {
+   "link_id": "L0033",
+   "rule": "dirigeant . indépendant . cotisations et contributions . maladie",
+   "article": "D131-6-1",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "CHECK_PASS",
+   "check_result": {
+    "passed": true,
+    "observed": 0,
+    "expected": 0.0,
+    "unit": "€/an",
+    "missing_variables": [
+     "établissement . commune . département",
+     "établissement . commune . département . outre-mer",
+     "dirigeant . exonérations . ACRE",
+     "dirigeant . indépendant . cotisations et contributions . exonérations . pension invalidité",
+     "situation personnelle . domiciliation fiscale à l'étranger",
+     "entreprise . imposition . régime",
+     "entreprise . imposition . régime . micro-entreprise",
+     "dirigeant . indépendant . cotisations facultatives",
+     "situation personnelle . RSA",
+     "entreprise . activités . saisonnière",
+     "entreprise . activités",
+     "entreprise . activités . commerciale"
+    ],
+    "detail": null
+   },
+   "status": "STILL_VERIFIED"
+  },
+  {
+   "link_id": "L0034",
+   "rule": "dirigeant . indépendant . cotisations et contributions . invalidité et décès",
+   "article": "D131-6-1",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "CHECK_PASS",
+   "check_result": {
+    "passed": true,
+    "observed": 0,
+    "expected": 0.0,
+    "unit": "€/an",
+    "missing_variables": [
+     "établissement . commune . département",
+     "établissement . commune . département . outre-mer",
+     "dirigeant . exonérations . ACRE",
+     "entreprise . activités",
+     "entreprise . activités . commerciale",
+     "entreprise . activités . artisanale",
+     "entreprise . activités . libérale",
+     "entreprise . activités . agricole",
+     "dirigeant . indépendant . conjoint collaborateur",
+     "entreprise . imposition . régime",
+     "entreprise . imposition . régime . micro-entreprise",
+     "dirigeant . indépendant . cotisations facultatives"
+    ],
+    "detail": null
+   },
+   "status": "STILL_VERIFIED"
+  },
+  {
+   "link_id": "L0035",
+   "rule": "dirigeant . indépendant . cotisations et contributions . retraite complémentaire",
+   "article": "D131-6-1",
+   "prior_status": "INFERRED",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "NO_CHECK",
+   "status": "UNVERIFIED_NO_CHECK"
+  },
+  {
+   "link_id": "L0036",
+   "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . taux",
+   "article": "D131-6-1",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "CHECK_PASS",
+   "check_result": {
+    "passed": true,
+    "observed": 50,
+    "expected": 50.0,
+    "unit": "%",
+    "missing_variables": [
+     "établissement . commune . département",
+     "établissement . commune . département . outre-mer",
+     "dirigeant . exonérations . ACRE"
+    ],
+    "detail": null
+   },
+   "status": "STILL_VERIFIED"
+  },
+  {
+   "link_id": "L0037",
+   "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . taux",
+   "article": "D131-6-1",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "CHECK_PASS",
+   "check_result": {
+    "passed": true,
+    "observed": 0,
+    "expected": 0.0,
+    "unit": "%",
+    "missing_variables": [
+     "établissement . commune . département",
+     "établissement . commune . département . outre-mer",
+     "dirigeant . exonérations . ACRE"
+    ],
+    "detail": null
+   },
+   "status": "STILL_VERIFIED"
+  },
+  {
+   "link_id": "L0038",
+   "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . maladie",
+   "article": "D131-6-1",
+   "prior_status": "INFERRED",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "NO_CHECK",
+   "status": "UNVERIFIED_NO_CHECK"
+  },
+  {
+   "link_id": "L0039",
+   "rule": "dirigeant . indépendant . cotisations et contributions . PSS proratisé",
+   "article": "D131-6-1",
+   "prior_status": "INFERRED",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "NO_CHECK",
+   "status": "UNVERIFIED_NO_CHECK"
+  },
+  {
+   "link_id": "L0040",
+   "rule": "dirigeant . indépendant . cotisations et contributions . PSS proratisé",
+   "article": "D131-6-1",
+   "prior_status": "INFERRED",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "NO_CHECK",
+   "status": "UNVERIFIED_NO_CHECK"
+  },
+  {
+   "link_id": "L0041",
+   "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+   "article": "D621-2",
+   "prior_status": "VERIFIED",
+   "law": "LAW_CHANGED",
+   "law_detail": {
+    "old_id": "LEGIARTI000046714747",
+    "new_id": "LEGIARTI000049904592",
+    "new_dateDebut": "2024-07-07",
+    "new_etat": "VIGUEUR"
+   },
+   "quote_still_present": false,
+   "rules": "RULE_SAME",
+   "check": "CHECK_PASS",
+   "check_result": {
+    "passed": true,
+    "observed": 0.5,
+    "expected": 0.5,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "status": "REASSESS_LAW_CHANGED"
+  },
+  {
+   "link_id": "L0042",
+   "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+   "article": "D621-2",
+   "prior_status": "VERIFIED",
+   "law": "LAW_CHANGED",
+   "law_detail": {
+    "old_id": "LEGIARTI000046714747",
+    "new_id": "LEGIARTI000049904592",
+    "new_dateDebut": "2024-07-07",
+    "new_etat": "VIGUEUR"
+   },
+   "quote_still_present": false,
+   "rules": "RULE_SAME",
+   "check": "CHECK_PASS",
+   "check_result": {
+    "passed": true,
+    "observed": 2.5,
+    "expected": 2.5,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "status": "REASSESS_LAW_CHANGED"
+  },
+  {
+   "link_id": "L0043",
+   "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+   "article": "D621-2",
+   "prior_status": "VERIFIED",
+   "law": "LAW_CHANGED",
+   "law_detail": {
+    "old_id": "LEGIARTI000046714747",
+    "new_id": "LEGIARTI000049904592",
+    "new_dateDebut": "2024-07-07",
+    "new_etat": "VIGUEUR"
+   },
+   "quote_still_present": false,
+   "rules": "RULE_SAME",
+   "check": "CHECK_PASS",
+   "check_result": {
+    "passed": true,
+    "observed": 4.5,
+    "expected": 4.5,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "status": "REASSESS_LAW_CHANGED"
+  },
+  {
+   "link_id": "L0044",
+   "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+   "article": "D621-2",
+   "prior_status": "INFERRED",
+   "law": "LAW_CHANGED",
+   "law_detail": {
+    "old_id": "LEGIARTI000046714747",
+    "new_id": "LEGIARTI000049904592",
+    "new_dateDebut": "2024-07-07",
+    "new_etat": "VIGUEUR"
+   },
+   "quote_still_present": false,
+   "rules": "RULE_SAME",
+   "check": "NO_CHECK",
+   "status": "REASSESS_LAW_CHANGED"
+  },
+  {
+   "link_id": "L0045",
+   "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+   "article": "D621-2",
+   "prior_status": "UNKNOWN",
+   "law": "LAW_CHANGED",
+   "law_detail": {
+    "old_id": "LEGIARTI000046714747",
+    "new_id": "LEGIARTI000049904592",
+    "new_dateDebut": "2024-07-07",
+    "new_etat": "VIGUEUR"
+   },
+   "quote_still_present": false,
+   "rules": "RULE_SAME",
+   "check": "NO_CHECK",
+   "status": "REASSESS_LAW_CHANGED"
+  },
+  {
+   "link_id": "L0046",
+   "rule": "dirigeant . indépendant . cotisations et contributions . invalidité et décès . assiette",
+   "article": "D632-1",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "CHECK_PASS",
+   "check_result": {
+    "passed": true,
+    "observed": 3864,
+    "expected": 3864.0,
+    "unit": "€/mois",
+    "missing_variables": [
+     "entreprise . activités",
+     "entreprise . activités . commerciale",
+     "entreprise . activités . artisanale",
+     "entreprise . activités . libérale",
+     "entreprise . activités . agricole",
+     "dirigeant . indépendant . conjoint collaborateur",
+     "entreprise . imposition . régime",
+     "entreprise . imposition . régime . micro-entreprise",
+     "dirigeant . indépendant . cotisations facultatives",
+     "établissement . commune . département",
+     "établissement . commune . département . outre-mer",
+     "situation personnelle . RSA"
+    ],
+    "detail": null
+   },
+   "status": "STILL_VERIFIED"
+  },
+  {
+   "link_id": "L0047",
+   "rule": "dirigeant . indépendant . cotisations et contributions . invalidité et décès . assiette",
+   "article": "D632-1",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "CHECK_PASS",
+   "check_result": {
+    "passed": true,
+    "observed": 4731,
+    "expected": 4731.0,
+    "unit": "€/an",
+    "missing_variables": [
+     "situation personnelle . RSA",
+     "entreprise . activités . saisonnière",
+     "entreprise . activités",
+     "entreprise . activités . commerciale",
+     "entreprise . activités . artisanale",
+     "entreprise . activités . libérale",
+     "entreprise . activités . agricole",
+     "dirigeant . indépendant . conjoint collaborateur",
+     "entreprise . imposition . régime",
+     "entreprise . imposition . régime . micro-entreprise",
+     "dirigeant . indépendant . cotisations facultatives"
+    ],
+    "detail": null
+   },
+   "status": "STILL_VERIFIED"
+  },
+  {
+   "link_id": "L0048",
+   "rule": "dirigeant . indépendant . cotisations et contributions . invalidité et décès . assiette",
+   "article": "D632-1",
+   "prior_status": "FAILED",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "CHECK_FAIL",
+   "check_result": {
+    "passed": false,
+    "observed": 5243,
+    "expected": 5332.0,
+    "unit": "€/an",
+    "missing_variables": [
+     "établissement . commune . département",
+     "établissement . commune . département . outre-mer",
+     "situation personnelle . RSA",
+     "entreprise . activités . saisonnière",
+     "entreprise . activités",
+     "entreprise . activités . commerciale",
+     "entreprise . activités . artisanale",
+     "entreprise . activités . libérale",
+     "entreprise . activités . agricole",
+     "dirigeant . indépendant . conjoint collaborateur",
+     "entreprise . imposition . régime",
+     "entreprise . imposition . régime . micro-entreprise"
+    ],
+    "detail": "observed != expected"
+   },
+   "status": "BROKEN"
+  },
+  {
+   "link_id": "L0049",
+   "rule": "dirigeant . indépendant . cotisations et contributions . retraite de base",
+   "article": "D633-3",
+   "prior_status": "VERIFIED",
+   "law": "LAW_CHANGED",
+   "law_detail": {
+    "old_id": "LEGIARTI000041967101",
+    "new_id": "LEGIARTI000049904636",
+    "new_dateDebut": "2024-07-07",
+    "new_etat": "VIGUEUR"
+   },
+   "quote_still_present": false,
+   "rules": "RULE_SAME",
+   "check": "CHECK_PASS",
+   "check_result": {
+    "passed": true,
+    "observed": 1598,
+    "expected": 1598.0,
+    "unit": "€/an",
+    "missing_variables": [
+     "établissement . commune . département",
+     "établissement . commune . département . outre-mer",
+     "dirigeant . indépendant . cotisations et contributions . exonérations . pension invalidité",
+     "entreprise . activités",
+     "entreprise . activités . commerciale",
+     "entreprise . activités . artisanale",
+     "entreprise . activités . libérale",
+     "entreprise . activités . agricole",
+     "dirigeant . indépendant . conjoint collaborateur",
+     "entreprise . imposition . régime",
+     "entreprise . imposition . régime . micro-entreprise",
+     "dirigeant . indépendant . cotisations facultatives"
+    ],
+    "detail": null
+   },
+   "status": "REASSESS_LAW_CHANGED"
+  },
+  {
+   "link_id": "L0050",
+   "rule": "dirigeant . indépendant . cotisations et contributions . retraite de base",
+   "article": "D633-3",
+   "prior_status": "VERIFIED",
+   "law": "LAW_CHANGED",
+   "law_detail": {
+    "old_id": "LEGIARTI000041967101",
+    "new_id": "LEGIARTI000049904636",
+    "new_dateDebut": "2024-07-07",
+    "new_etat": "VIGUEUR"
+   },
+   "quote_still_present": false,
+   "rules": "RULE_SAME",
+   "check": "CHECK_PASS",
+   "check_result": {
+    "passed": true,
+    "observed": 8312,
+    "expected": 8312.0,
+    "unit": "€/an",
+    "missing_variables": [
+     "établissement . commune . département",
+     "établissement . commune . département . outre-mer",
+     "dirigeant . indépendant . cotisations et contributions . exonérations . pension invalidité",
+     "entreprise . activités",
+     "entreprise . activités . commerciale",
+     "entreprise . activités . artisanale",
+     "entreprise . activités . libérale",
+     "entreprise . activités . agricole",
+     "dirigeant . indépendant . conjoint collaborateur",
+     "entreprise . imposition . régime",
+     "entreprise . imposition . régime . micro-entreprise",
+     "dirigeant . indépendant . cotisations facultatives"
+    ],
+    "detail": null
+   },
+   "status": "REASSESS_LAW_CHANGED"
+  },
+  {
+   "link_id": "L0051",
+   "rule": "dirigeant . indépendant . cotisations et contributions . retraite de base . taux",
+   "article": "D633-3",
+   "prior_status": "INFERRED",
+   "law": "LAW_CHANGED",
+   "law_detail": {
+    "old_id": "LEGIARTI000041967101",
+    "new_id": "LEGIARTI000049904636",
+    "new_dateDebut": "2024-07-07",
+    "new_etat": "VIGUEUR"
+   },
+   "quote_still_present": false,
+   "rules": "RULE_SAME",
+   "check": "NO_CHECK",
+   "status": "REASSESS_LAW_CHANGED"
+  },
+  {
+   "link_id": "L0052",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "article": "D613-6",
+   "prior_status": "UNKNOWN",
+   "law": "LAW_CHANGED",
+   "law_detail": {
+    "old_id": "LEGIARTI000046714699",
+    "new_id": "LEGIARTI000049625264",
+    "new_dateDebut": "2024-07-01",
+    "new_etat": "ABROGE_DIFF"
+   },
+   "quote_still_present": false,
+   "rules": "RULE_CHANGED",
+   "check": "NO_CHECK",
+   "status": "REASSESS_LAW_CHANGED"
+  },
+  {
+   "link_id": "L0053",
+   "rule": "dirigeant . indépendant . conjoint collaborateur . cotisations",
+   "article": "D613-5",
+   "prior_status": "UNKNOWN",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "NO_CHECK",
+   "status": "UNVERIFIED_NO_CHECK"
+  },
+  {
+   "link_id": "L0054",
+   "rule": "dirigeant . indépendant . assiette des cotisations",
+   "article": "L131-6",
+   "prior_status": "UNKNOWN",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "NO_CHECK",
+   "status": "UNVERIFIED_NO_CHECK"
+  },
+  {
+   "link_id": "L0055",
+   "rule": "dirigeant . indépendant . cotisations et contributions . CSG-CRDS . assiette",
+   "article": "L136-3",
+   "prior_status": "UNKNOWN",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "NO_CHECK",
+   "status": "UNVERIFIED_NO_CHECK"
+  },
+  {
+   "link_id": "L0056",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC",
+   "article": "D613-4",
+   "prior_status": "VERIFIED",
+   "law": "LAW_CHANGED",
+   "law_detail": {
+    "old_id": "LEGIARTI000049623867",
+    "new_id": "LEGIARTI000049624068",
+    "new_dateDebut": "2024-07-01",
+    "new_etat": "VIGUEUR_DIFF"
+   },
+   "quote_still_present": false,
+   "rules": "RULE_CHANGED",
+   "check": "CHECK_PASS",
+   "check_result": {
+    "passed": true,
+    "observed": 21.1,
+    "expected": 21.1,
+    "unit": "%",
+    "missing_variables": [
+     "établissement . commune . département",
+     "établissement . commune . département . outre-mer",
+     "entreprise . date de création"
+    ],
+    "detail": null
+   },
+   "status": "REASSESS_LAW_CHANGED"
+  },
+  {
+   "link_id": "L0057",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BIC",
+   "article": "D613-4",
+   "prior_status": "VERIFIED",
+   "law": "LAW_CHANGED",
+   "law_detail": {
+    "old_id": "LEGIARTI000049623867",
+    "new_id": "LEGIARTI000049624068",
+    "new_dateDebut": "2024-07-01",
+    "new_etat": "VIGUEUR_DIFF"
+   },
+   "quote_still_present": true,
+   "rules": "RULE_CHANGED",
+   "check": "CHECK_FAIL",
+   "check_result": {
+    "passed": false,
+    "observed": null,
+    "expected": 21.2,
+    "unit": null,
+    "missing_variables": [
+     "établissement . commune . département",
+     "établissement . commune . département . outre-mer",
+     "entreprise . date de création",
+     "entreprise . activité . nature . libérale . réglementée",
+     "entreprise . activités . revenus mixtes",
+     "entreprise . activités",
+     "entreprise . activités . commerciale",
+     "entreprise . activités . artisanale",
+     "entreprise . activités . libérale"
+    ],
+    "detail": "observed != expected"
+   },
+   "status": "REASSESS_LAW_CHANGED"
+  },
+  {
+   "link_id": "L0058",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux vente restauration hébergement",
+   "article": "D613-4",
+   "prior_status": "VERIFIED",
+   "law": "LAW_CHANGED",
+   "law_detail": {
+    "old_id": "LEGIARTI000049623867",
+    "new_id": "LEGIARTI000049624068",
+    "new_dateDebut": "2024-07-01",
+    "new_etat": "VIGUEUR_DIFF"
+   },
+   "quote_still_present": true,
+   "rules": "RULE_CHANGED",
+   "check": "CHECK_FAIL",
+   "check_result": {
+    "passed": false,
+    "observed": null,
+    "expected": 12.3,
+    "unit": null,
+    "missing_variables": [
+     "établissement . commune . département",
+     "établissement . commune . département . outre-mer",
+     "entreprise . date de création",
+     "entreprise . activité . nature . libérale . réglementée",
+     "entreprise . activités . revenus mixtes",
+     "entreprise . activités",
+     "entreprise . activités . commerciale",
+     "entreprise . activités . artisanale",
+     "entreprise . activités . libérale"
+    ],
+    "detail": "observed != expected"
+   },
+   "status": "REASSESS_LAW_CHANGED"
+  },
+  {
+   "link_id": "L0059",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV . taux",
+   "article": "D613-4",
+   "prior_status": "VERIFIED",
+   "law": "LAW_CHANGED",
+   "law_detail": {
+    "old_id": "LEGIARTI000049623867",
+    "new_id": "LEGIARTI000049624068",
+    "new_dateDebut": "2024-07-01",
+    "new_etat": "VIGUEUR_DIFF"
+   },
+   "quote_still_present": false,
+   "rules": "RULE_CHANGED",
+   "check": "CHECK_PASS",
+   "check_result": {
+    "passed": true,
+    "observed": 21.2,
+    "expected": 21.2,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "status": "REASSESS_LAW_CHANGED"
+  },
+  {
+   "link_id": "L0060",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "article": "D613-4",
+   "prior_status": "VERIFIED",
+   "law": "LAW_CHANGED",
+   "law_detail": {
+    "old_id": "LEGIARTI000049623867",
+    "new_id": "LEGIARTI000049624068",
+    "new_dateDebut": "2024-07-01",
+    "new_etat": "VIGUEUR_DIFF"
+   },
+   "quote_still_present": false,
+   "rules": "RULE_CHANGED",
+   "check": "CHECK_FAIL",
+   "check_result": {
+    "passed": false,
+    "observed": 211.00000000000003,
+    "expected": 2532.0,
+    "unit": "€/mois",
+    "missing_variables": [
+     "entreprise . activités . revenus mixtes",
+     "entreprise . activités",
+     "entreprise . activités . commerciale",
+     "entreprise . activités . artisanale",
+     "entreprise . activités . libérale"
+    ],
+    "detail": "observed != expected"
+   },
+   "status": "REASSESS_LAW_CHANGED"
+  },
+  {
+   "link_id": "L0061",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "article": "D613-4",
+   "prior_status": "VERIFIED",
+   "law": "LAW_CHANGED",
+   "law_detail": {
+    "old_id": "LEGIARTI000049623867",
+    "new_id": "LEGIARTI000049624068",
+    "new_dateDebut": "2024-07-01",
+    "new_etat": "VIGUEUR_DIFF"
+   },
+   "quote_still_present": true,
+   "rules": "RULE_CHANGED",
+   "check": "CHECK_FAIL",
+   "check_result": {
+    "passed": false,
+    "observed": 212,
+    "expected": 2544.0,
+    "unit": "€/mois",
+    "missing_variables": [
+     "entreprise . activités . revenus mixtes",
+     "entreprise . activités",
+     "entreprise . activités . commerciale",
+     "entreprise . activités . artisanale",
+     "entreprise . activités . libérale"
+    ],
+    "detail": "observed != expected"
+   },
+   "status": "REASSESS_LAW_CHANGED"
+  },
+  {
+   "link_id": "L0062",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "article": "D613-4",
+   "prior_status": "VERIFIED",
+   "law": "LAW_CHANGED",
+   "law_detail": {
+    "old_id": "LEGIARTI000049623867",
+    "new_id": "LEGIARTI000049624068",
+    "new_dateDebut": "2024-07-01",
+    "new_etat": "VIGUEUR_DIFF"
+   },
+   "quote_still_present": true,
+   "rules": "RULE_CHANGED",
+   "check": "CHECK_FAIL",
+   "check_result": {
+    "passed": false,
+    "observed": 123,
+    "expected": 1476.0,
+    "unit": "€/mois",
+    "missing_variables": [
+     "entreprise . activités . revenus mixtes",
+     "entreprise . activités",
+     "entreprise . activités . commerciale",
+     "entreprise . activités . artisanale",
+     "entreprise . activités . libérale"
+    ],
+    "detail": "observed != expected"
+   },
+   "status": "REASSESS_LAW_CHANGED"
+  },
+  {
+   "link_id": "L0063",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "article": "D613-4",
+   "prior_status": "VERIFIED",
+   "law": "LAW_CHANGED",
+   "law_detail": {
+    "old_id": "LEGIARTI000049623867",
+    "new_id": "LEGIARTI000049624068",
+    "new_dateDebut": "2024-07-01",
+    "new_etat": "VIGUEUR_DIFF"
+   },
+   "quote_still_present": false,
+   "rules": "RULE_CHANGED",
+   "check": "CHECK_PASS",
+   "check_result": {
+    "passed": true,
+    "observed": 2544,
+    "expected": 2544.0,
+    "unit": "€/an",
+    "missing_variables": [],
+    "detail": null
+   },
+   "status": "REASSESS_LAW_CHANGED"
+  },
+  {
+   "link_id": "L0064",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "article": "D613-4",
+   "prior_status": "FAILED",
+   "law": "LAW_CHANGED",
+   "law_detail": {
+    "old_id": "LEGIARTI000049623867",
+    "new_id": "LEGIARTI000049624068",
+    "new_dateDebut": "2024-07-01",
+    "new_etat": "VIGUEUR_DIFF"
+   },
+   "quote_still_present": false,
+   "rules": "RULE_CHANGED",
+   "check": "CHECK_FAIL",
+   "check_result": {
+    "passed": false,
+    "observed": 1452,
+    "expected": 2544.0,
+    "unit": "€/an",
+    "missing_variables": [],
+    "detail": "observed != expected"
+   },
+   "status": "REASSESS_LAW_CHANGED"
+  },
+  {
+   "link_id": "L0065",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "article": "D613-4",
+   "prior_status": "UNKNOWN",
+   "law": "LAW_CHANGED",
+   "law_detail": {
+    "old_id": "LEGIARTI000049623867",
+    "new_id": "LEGIARTI000049624068",
+    "new_dateDebut": "2024-07-01",
+    "new_etat": "VIGUEUR_DIFF"
+   },
+   "quote_still_present": true,
+   "rules": "RULE_CHANGED",
+   "check": "NO_CHECK",
+   "status": "REASSESS_LAW_CHANGED"
+  },
+  {
+   "link_id": "L0066",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC",
+   "article": "D613-4",
+   "prior_status": "UNKNOWN",
+   "law": "LAW_CHANGED",
+   "law_detail": {
+    "old_id": "LEGIARTI000049623867",
+    "new_id": "LEGIARTI000049624068",
+    "new_dateDebut": "2024-07-01",
+    "new_etat": "VIGUEUR_DIFF"
+   },
+   "quote_still_present": false,
+   "rules": "RULE_CHANGED",
+   "check": "NO_CHECK",
+   "status": "REASSESS_LAW_CHANGED"
+  },
+  {
+   "link_id": "L0067",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BIC",
+   "article": "D613-4",
+   "prior_status": "UNKNOWN",
+   "law": "LAW_CHANGED",
+   "law_detail": {
+    "old_id": "LEGIARTI000049623867",
+    "new_id": "LEGIARTI000049624068",
+    "new_dateDebut": "2024-07-01",
+    "new_etat": "VIGUEUR_DIFF"
+   },
+   "quote_still_present": true,
+   "rules": "RULE_CHANGED",
+   "check": "NO_CHECK",
+   "status": "REASSESS_LAW_CHANGED"
+  },
+  {
+   "link_id": "L0068",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux vente restauration hébergement",
+   "article": "D613-4",
+   "prior_status": "UNKNOWN",
+   "law": "LAW_CHANGED",
+   "law_detail": {
+    "old_id": "LEGIARTI000049623867",
+    "new_id": "LEGIARTI000049624068",
+    "new_dateDebut": "2024-07-01",
+    "new_etat": "VIGUEUR_DIFF"
+   },
+   "quote_still_present": true,
+   "rules": "RULE_CHANGED",
+   "check": "NO_CHECK",
+   "status": "REASSESS_LAW_CHANGED"
+  },
+  {
+   "link_id": "L0069",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV . taux",
+   "article": "D613-4",
+   "prior_status": "UNKNOWN",
+   "law": "LAW_CHANGED",
+   "law_detail": {
+    "old_id": "LEGIARTI000049623867",
+    "new_id": "LEGIARTI000049624068",
+    "new_dateDebut": "2024-07-01",
+    "new_etat": "VIGUEUR_DIFF"
+   },
+   "quote_still_present": false,
+   "rules": "RULE_CHANGED",
+   "check": "NO_CHECK",
+   "status": "REASSESS_LAW_CHANGED"
+  },
+  {
+   "link_id": "L0070",
+   "rule": "protection sociale . retraite . complémentaire . RCI . revenu cotisé auto-entrepreneur",
+   "article": "D613-6",
+   "prior_status": "VERIFIED",
+   "law": "LAW_CHANGED",
+   "law_detail": {
+    "old_id": "LEGIARTI000049623885",
+    "new_id": "LEGIARTI000049625264",
+    "new_dateDebut": "2024-07-01",
+    "new_etat": "ABROGE_DIFF"
+   },
+   "quote_still_present": true,
+   "rules": "RULE_FILE_CHANGED_OTHER_RULES",
+   "check": "CHECK_PASS",
+   "check_result": {
+    "passed": true,
+    "observed": 243.59999999999997,
+    "expected": 243.54,
+    "unit": "€/an",
+    "missing_variables": [
+     "entreprise . activités . revenus mixtes",
+     "entreprise . activités",
+     "entreprise . activités . commerciale",
+     "entreprise . activités . artisanale",
+     "entreprise . activités . libérale"
+    ],
+    "detail": null
+   },
+   "status": "REASSESS_LAW_CHANGED"
+  },
+  {
+   "link_id": "L0071",
+   "rule": "protection sociale . retraite . complémentaire . RCI . revenu cotisé auto-entrepreneur",
+   "article": "D613-6",
+   "prior_status": "VERIFIED",
+   "law": "LAW_CHANGED",
+   "law_detail": {
+    "old_id": "LEGIARTI000049623885",
+    "new_id": "LEGIARTI000049625264",
+    "new_dateDebut": "2024-07-01",
+    "new_etat": "ABROGE_DIFF"
+   },
+   "quote_still_present": true,
+   "rules": "RULE_FILE_CHANGED_OTHER_RULES",
+   "check": "CHECK_PASS",
+   "check_result": {
+    "passed": true,
+    "observed": 420,
+    "expected": 419.76,
+    "unit": "€/an",
+    "missing_variables": [
+     "entreprise . activités . revenus mixtes",
+     "entreprise . activités",
+     "entreprise . activités . commerciale",
+     "entreprise . activités . artisanale",
+     "entreprise . activités . libérale"
+    ],
+    "detail": null
+   },
+   "status": "REASSESS_LAW_CHANGED"
+  },
+  {
+   "link_id": "L0072",
+   "rule": "protection sociale . retraite . complémentaire . RCI . revenu cotisé auto-entrepreneur",
+   "article": "D613-6",
+   "prior_status": "VERIFIED",
+   "law": "LAW_CHANGED",
+   "law_detail": {
+    "old_id": "LEGIARTI000049623885",
+    "new_id": "LEGIARTI000049625264",
+    "new_dateDebut": "2024-07-01",
+    "new_etat": "ABROGE_DIFF"
+   },
+   "quote_still_present": false,
+   "rules": "RULE_FILE_CHANGED_OTHER_RULES",
+   "check": "CHECK_PASS",
+   "check_result": {
+    "passed": true,
+    "observed": 0,
+    "expected": 0.0,
+    "unit": null,
+    "missing_variables": [
+     "entreprise . activités . revenus mixtes",
+     "entreprise . activités",
+     "entreprise . activités . commerciale",
+     "entreprise . activités . artisanale",
+     "entreprise . activités . libérale"
+    ],
+    "detail": null
+   },
+   "status": "REASSESS_LAW_CHANGED"
+  },
+  {
+   "link_id": "L0073",
+   "rule": "protection sociale . retraite . complémentaire . RCI . revenu cotisé auto-entrepreneur",
+   "article": "D613-6",
+   "prior_status": "UNKNOWN",
+   "law": "LAW_CHANGED",
+   "law_detail": {
+    "old_id": "LEGIARTI000049623885",
+    "new_id": "LEGIARTI000049625264",
+    "new_dateDebut": "2024-07-01",
+    "new_etat": "ABROGE_DIFF"
+   },
+   "quote_still_present": true,
+   "rules": "RULE_FILE_CHANGED_OTHER_RULES",
+   "check": "NO_CHECK",
+   "status": "REASSESS_LAW_CHANGED"
+  },
+  {
+   "link_id": "L0074",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "article": "D613-6",
+   "prior_status": "UNKNOWN",
+   "law": "LAW_CHANGED",
+   "law_detail": {
+    "old_id": "LEGIARTI000049623885",
+    "new_id": "LEGIARTI000049625264",
+    "new_dateDebut": "2024-07-01",
+    "new_etat": "ABROGE_DIFF"
+   },
+   "quote_still_present": false,
+   "rules": "RULE_CHANGED",
+   "check": "NO_CHECK",
+   "status": "REASSESS_LAW_CHANGED"
+  },
+  {
+   "link_id": "L0075",
+   "rule": "dirigeant . indépendant . cotisations et contributions . retraite de base . taux",
+   "article": "D633-3",
+   "prior_status": "FAILED",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "CHECK_FAIL",
+   "check_result": {
+    "passed": false,
+    "observed": 17.75,
+    "expected": 17.87,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": "observed != expected"
+   },
+   "status": "BROKEN"
+  },
+  {
+   "link_id": "L0076",
+   "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+   "article": "D621-2",
+   "prior_status": "FAILED",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "CHECK_FAIL",
+   "check_result": {
+    "passed": false,
+    "observed": 4.5,
+    "expected": 4.0,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": "observed != expected"
+   },
+   "status": "BROKEN"
+  },
+  {
+   "link_id": "L0077",
+   "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+   "article": "D621-2",
+   "prior_status": "FAILED",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "CHECK_FAIL",
+   "check_result": {
+    "passed": false,
+    "observed": 0.5,
+    "expected": 0.0,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": "observed != expected"
+   },
+   "status": "BROKEN"
+  },
+  {
+   "link_id": "L0078",
+   "rule": "dirigeant . indépendant . assiette des cotisations",
+   "article": "L136-3",
+   "prior_status": "FAILED",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "CHECK_FAIL",
+   "check_result": {
+    "passed": false,
+    "observed": 40000,
+    "expected": 29600.0,
+    "unit": "€/an",
+    "missing_variables": [],
+    "detail": "observed != expected"
+   },
+   "status": "BROKEN"
+  },
+  {
+   "link_id": "L0079",
+   "rule": "dirigeant . indépendant . cotisations et contributions . CSG-CRDS . assiette",
+   "article": "L131-6",
+   "prior_status": "INFERRED",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "NO_CHECK",
+   "status": "UNVERIFIED_NO_CHECK"
+  },
+  {
+   "link_id": "L0080",
+   "rule": "dirigeant . indépendant . assiette minimale . maladie",
+   "article": "D621-2",
+   "prior_status": "UNKNOWN",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "NO_CHECK",
+   "status": "UNVERIFIED_NO_CHECK"
+  },
+  {
+   "link_id": "L0081",
+   "rule": "dirigeant . indépendant . assiette minimale . retraite",
+   "article": "L136-3",
+   "prior_status": "UNKNOWN",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "NO_CHECK",
+   "status": "UNVERIFIED_NO_CHECK"
+  },
+  {
+   "link_id": "L0082",
+   "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+   "article": "D621-2",
+   "prior_status": "FAILED",
+   "law": "LAW_SAME",
+   "rules": "RULE_SAME",
+   "check": "CHECK_FAIL",
+   "check_result": {
+    "passed": false,
+    "observed": 5.92,
+    "expected": 4.19,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": "observed != expected"
+   },
+   "status": "BROKEN"
+  },
+  {
+   "link_id": "L0083",
+   "rule": "dirigeant . indépendant . assiette des cotisations . réforme assiette 2024 . abattement forfaitaire",
+   "article": "L136-3",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_CHANGED",
+   "check": "CHECK_FAIL",
+   "check_result": {
+    "passed": false,
+    "observed": null,
+    "expected": 10400.0,
+    "detail": "[ Erreur syntaxique ] | ➡️  Dans la règle \"$EVALUATION\" | ✖️  La référence \"dirigeant . indépendant . assiette des cotisations . réforme assiette 2024 . abattement forfaitaire\" est introuvable."
+   },
+   "status": "BROKEN"
+  },
+  {
+   "link_id": "L0084",
+   "rule": "dirigeant . indépendant . assiette des cotisations . réforme assiette 2024 . abattement forfaitaire",
+   "article": "D136-5",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_CHANGED",
+   "check": "CHECK_FAIL",
+   "check_result": {
+    "passed": false,
+    "observed": null,
+    "expected": 816.0768,
+    "detail": "[ Erreur syntaxique ] | ➡️  Dans la règle \"$EVALUATION\" | ✖️  La référence \"dirigeant . indépendant . assiette des cotisations . réforme assiette 2024 . abattement forfaitaire\" est introuvable."
+   },
+   "status": "BROKEN"
+  },
+  {
+   "link_id": "L0085",
+   "rule": "dirigeant . indépendant . assiette des cotisations . réforme assiette 2024 . abattement forfaitaire",
+   "article": "D136-5",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_CHANGED",
+   "check": "CHECK_FAIL",
+   "check_result": {
+    "passed": false,
+    "observed": null,
+    "expected": 60278.4,
+    "detail": "[ Erreur syntaxique ] | ➡️  Dans la règle \"$EVALUATION\" | ✖️  La référence \"dirigeant . indépendant . assiette des cotisations . réforme assiette 2024 . abattement forfaitaire\" est introuvable."
+   },
+   "status": "BROKEN"
+  },
+  {
+   "link_id": "L0086",
+   "rule": "dirigeant . indépendant . assiette des cotisations . réforme assiette 2024 . plafond annuel",
+   "article": "D136-5",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_CHANGED",
+   "check": "CHECK_FAIL",
+   "check_result": {
+    "passed": false,
+    "observed": null,
+    "expected": 46368.0,
+    "detail": "[ Erreur syntaxique ] | ➡️  Dans la règle \"$EVALUATION\" | ✖️  La référence \"dirigeant . indépendant . assiette des cotisations . réforme assiette 2024 . plafond annuel\" est introuvable."
+   },
+   "status": "BROKEN"
+  },
+  {
+   "link_id": "L0087",
+   "rule": "dirigeant . indépendant . assiette des cotisations",
+   "article": "L131-6",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_CHANGED",
+   "check": "CHECK_FAIL",
+   "check_result": {
+    "passed": false,
+    "observed": 40000,
+    "expected": 29600.0,
+    "unit": "€/an",
+    "missing_variables": [],
+    "detail": "observed != expected"
+   },
+   "status": "BROKEN"
+  },
+  {
+   "link_id": "L0088",
+   "rule": "dirigeant . indépendant . cotisations et contributions . CSG-CRDS . assiette",
+   "article": "L136-3",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_CHANGED",
+   "check": "CHECK_FAIL",
+   "check_result": {
+    "passed": false,
+    "observed": 52788,
+    "expected": 29600.0,
+    "unit": "€/an",
+    "missing_variables": [
+     "établissement . commune . département",
+     "établissement . commune . département . outre-mer",
+     "entreprise . date de création",
+     "situation personnelle . domiciliation fiscale à l'étranger",
+     "dirigeant . indépendant . cotisations et contributions . exonérations . pension invalidité",
+     "situation personnelle . RSA",
+     "entreprise . activités . saisonnière",
+     "entreprise . activités",
+     "entreprise . activités . commerciale",
+     "entreprise . activités . artisanale",
+     "entreprise . activités . libérale",
+     "entreprise . imposition . IR . type de bénéfices"
+    ],
+    "detail": "observed != expected"
+   },
+   "status": "BROKEN"
+  },
+  {
+   "link_id": "L0089",
+   "rule": "dirigeant . indépendant . assiette des cotisations",
+   "article": "L131-6",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_CHANGED",
+   "check": "CHECK_PASS",
+   "check_result": {
+    "passed": true,
+    "observed": 40000,
+    "expected": 40000.0,
+    "unit": "€/an",
+    "missing_variables": [],
+    "detail": null
+   },
+   "status": "RULE_CHANGED_CHECK_STILL_PASSES"
+  },
+  {
+   "link_id": "L0090",
+   "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+   "article": "D621-2",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_CHANGED",
+   "check": "CHECK_FAIL",
+   "check_result": {
+    "passed": false,
+    "observed": 0.5,
+    "expected": 0.0,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": "observed != expected"
+   },
+   "status": "BROKEN"
+  },
+  {
+   "link_id": "L0091",
+   "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+   "article": "D621-2",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_CHANGED",
+   "check": "CHECK_FAIL",
+   "check_result": {
+    "passed": false,
+    "observed": 0.5,
+    "expected": 1.5,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": "observed != expected"
+   },
+   "status": "BROKEN"
+  },
+  {
+   "link_id": "L0092",
+   "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+   "article": "D621-2",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_CHANGED",
+   "check": "CHECK_FAIL",
+   "check_result": {
+    "passed": false,
+    "observed": 4.5,
+    "expected": 4.0,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": "observed != expected"
+   },
+   "status": "BROKEN"
+  },
+  {
+   "link_id": "L0093",
+   "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+   "article": "D621-2",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_CHANGED",
+   "check": "CHECK_FAIL",
+   "check_result": {
+    "passed": false,
+    "observed": 7.2,
+    "expected": 6.5,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": "observed != expected"
+   },
+   "status": "BROKEN"
+  },
+  {
+   "link_id": "L0094",
+   "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+   "article": "D621-2",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_CHANGED",
+   "check": "CHECK_FAIL",
+   "check_result": {
+    "passed": false,
+    "observed": 7.2,
+    "expected": 7.7,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": "observed != expected"
+   },
+   "status": "BROKEN"
+  },
+  {
+   "link_id": "L0095",
+   "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+   "article": "D621-2",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_CHANGED",
+   "check": "CHECK_FAIL",
+   "check_result": {
+    "passed": false,
+    "observed": 7.2,
+    "expected": 8.5,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": "observed != expected"
+   },
+   "status": "BROKEN"
+  },
+  {
+   "link_id": "L0096",
+   "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+   "article": "D621-2",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_CHANGED",
+   "check": "CHECK_FAIL",
+   "check_result": {
+    "passed": false,
+    "observed": 2.5,
+    "expected": 2.75,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": "observed != expected"
+   },
+   "status": "BROKEN"
+  },
+  {
+   "link_id": "L0097",
+   "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+   "article": "D621-2",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_CHANGED",
+   "check": "CHECK_FAIL",
+   "check_result": {
+    "passed": false,
+    "observed": 7.2,
+    "expected": 7.0333,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": "observed != expected"
+   },
+   "status": "BROKEN"
+  },
+  {
+   "link_id": "L0098",
+   "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+   "article": "D621-2",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_CHANGED",
+   "check": "CHECK_FAIL",
+   "check_result": {
+    "passed": false,
+    "observed": 5.92,
+    "expected": 4.19,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": "observed != expected"
+   },
+   "status": "BROKEN"
+  },
+  {
+   "link_id": "L0099",
+   "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+   "article": "D621-2",
+   "prior_status": "UNKNOWN",
+   "law": "LAW_SAME",
+   "rules": "RULE_CHANGED",
+   "check": "NO_CHECK",
+   "status": "REASSESS_RULE_CHANGED"
+  },
+  {
+   "link_id": "L0100",
+   "rule": "dirigeant . indépendant . cotisations et contributions . retraite de base . taux",
+   "article": "D633-3",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_CHANGED",
+   "check": "CHECK_FAIL",
+   "check_result": {
+    "passed": false,
+    "observed": 17.75,
+    "expected": 17.87,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": "observed != expected"
+   },
+   "status": "BROKEN"
+  },
+  {
+   "link_id": "L0101",
+   "rule": "dirigeant . indépendant . cotisations et contributions . retraite de base . taux déplafonné",
+   "article": "D633-3",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_CHANGED",
+   "check": "CHECK_FAIL",
+   "check_result": {
+    "passed": false,
+    "observed": null,
+    "expected": 0.72,
+    "detail": "[ Erreur syntaxique ] | ➡️  Dans la règle \"$EVALUATION\" | ✖️  La référence \"dirigeant . indépendant . cotisations et contributions . retraite de base . taux déplafonné\" est introuvable."
+   },
+   "status": "BROKEN"
+  },
+  {
+   "link_id": "L0102",
+   "rule": "dirigeant . indépendant . cotisations et contributions . retraite de base",
+   "article": "D633-3",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_CHANGED",
+   "check": "CHECK_FAIL",
+   "check_result": {
+    "passed": false,
+    "observed": 7100,
+    "expected": 5290.0,
+    "unit": "€/an",
+    "missing_variables": [
+     "établissement . commune . département",
+     "établissement . commune . département . outre-mer",
+     "entreprise . date de création",
+     "dirigeant . indépendant . cotisations et contributions . exonérations . pension invalidité",
+     "entreprise . activités",
+     "entreprise . activités . commerciale",
+     "entreprise . activités . artisanale",
+     "entreprise . activités . libérale",
+     "entreprise . imposition . IR . type de bénéfices",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur",
+     "entreprise . activités . agricole",
+     "dirigeant . indépendant . conjoint collaborateur"
+    ],
+    "detail": "observed != expected"
+   },
+   "status": "BROKEN"
+  },
+  {
+   "link_id": "L0103",
+   "rule": "dirigeant . indépendant . cotisations et contributions . retraite de base . taux",
+   "article": "D633-3",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_CHANGED",
+   "check": "CHECK_PASS",
+   "check_result": {
+    "passed": true,
+    "observed": 17.75,
+    "expected": 17.75,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "status": "RULE_CHANGED_CHECK_STILL_PASSES"
+  },
+  {
+   "link_id": "L0104",
+   "rule": "dirigeant . indépendant . assiette des cotisations . réforme assiette 2024 . assiette avant abattement",
+   "article": "L136-3",
+   "prior_status": "UNKNOWN",
+   "law": "LAW_SAME",
+   "rules": "RULE_CHANGED",
+   "check": "NO_CHECK",
+   "status": "REASSESS_RULE_CHANGED"
+  },
+  {
+   "link_id": "L0105",
+   "rule": "dirigeant . indépendant . assiette des cotisations . réforme assiette 2024 . assiette avant abattement",
+   "article": "L131-6",
+   "prior_status": "UNKNOWN",
+   "law": "LAW_SAME",
+   "rules": "RULE_CHANGED",
+   "check": "NO_CHECK",
+   "status": "REASSESS_RULE_CHANGED"
+  },
+  {
+   "link_id": "L0106",
+   "rule": "dirigeant . indépendant . cotisations et contributions . retraite complémentaire",
+   "article": "L131-6",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_FILE_CHANGED_OTHER_RULES",
+   "check": "CHECK_FAIL",
+   "check_result": {
+    "passed": false,
+    "observed": 2800,
+    "expected": 2072.0,
+    "unit": "€/an",
+    "missing_variables": [
+     "dirigeant . indépendant . cotisations et contributions . exonérations . pension invalidité",
+     "entreprise . activités",
+     "entreprise . activités . commerciale",
+     "entreprise . activités . artisanale",
+     "entreprise . activités . libérale",
+     "entreprise . imposition . IR . type de bénéfices",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur",
+     "entreprise . activités . agricole",
+     "dirigeant . indépendant . conjoint collaborateur"
+    ],
+    "detail": "observed != expected"
+   },
+   "status": "BROKEN"
+  },
+  {
+   "link_id": "L0107",
+   "rule": "dirigeant . indépendant . cotisations et contributions . invalidité et décès",
+   "article": "L131-6",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_FILE_CHANGED_OTHER_RULES",
+   "check": "CHECK_FAIL",
+   "check_result": {
+    "passed": false,
+    "observed": 520,
+    "expected": 385.0,
+    "unit": "€/an",
+    "missing_variables": [
+     "établissement . commune . département",
+     "établissement . commune . département . outre-mer",
+     "entreprise . date de création",
+     "entreprise . activités",
+     "entreprise . activités . commerciale",
+     "entreprise . activités . artisanale",
+     "entreprise . activités . libérale",
+     "entreprise . imposition . IR . type de bénéfices",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur",
+     "entreprise . activités . agricole",
+     "dirigeant . indépendant . conjoint collaborateur",
+     "situation personnelle . RSA"
+    ],
+    "detail": "observed != expected"
+   },
+   "status": "BROKEN"
+  },
+  {
+   "link_id": "L0108",
+   "rule": "dirigeant . indépendant . cotisations et contributions . indemnités journalières maladie",
+   "article": "L131-6",
+   "prior_status": "VERIFIED",
+   "law": "LAW_SAME",
+   "rules": "RULE_FILE_CHANGED_OTHER_RULES",
+   "check": "CHECK_FAIL",
+   "check_result": {
+    "passed": false,
+    "observed": 200,
+    "expected": 148.0,
+    "unit": "€/an",
+    "missing_variables": [
+     "établissement . commune . département",
+     "établissement . commune . département . outre-mer",
+     "entreprise . date de création",
+     "dirigeant . indépendant . cotisations et contributions . exonérations . pension invalidité",
+     "situation personnelle . RSA",
+     "entreprise . activités . saisonnière",
+     "entreprise . activités",
+     "entreprise . activités . commerciale",
+     "entreprise . activités . artisanale",
+     "entreprise . activités . libérale",
+     "entreprise . imposition . IR . type de bénéfices",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur"
+    ],
+    "detail": "observed != expected"
+   },
+   "status": "BROKEN"
+  },
+  {
+   "link_id": "L0109",
+   "rule": "dirigeant . indépendant . assiette des cotisations . réforme assiette 2024",
+   "article": "D136-5",
+   "prior_status": "INFERRED",
+   "law": "LAW_SAME",
+   "rules": "RULE_CHANGED",
+   "check": "NO_CHECK",
+   "status": "REASSESS_RULE_CHANGED"
+  }
+ ],
+ "counts": {
+  "BROKEN": 27,
+  "REASSESS_LAW_CHANGED": 36,
+  "REASSESS_RULE_CHANGED": 10,
+  "RULE_CHANGED_CHECK_STILL_PASSES": 15,
+  "STILL_VERIFIED": 10,
+  "UNVERIFIED_NO_CHECK": 11
+ }
+}

@@ -1,0 +1,3 @@
+// Usage: node work/engine/print_compact.mjs <results.jsonl>  — compact table (no missing-variable lists)
+import fs from "fs";const P="dirigeant . indépendant . cotisations et contributions";
+for(const l of fs.readFileSync(process.argv[2],"utf8").trim().split("\n")){const r=JSON.parse(l);console.log("## "+r.id+" @ "+r.date+(r.situation_error?" SITERR "+r.situation_error:"")+(r.error?" ERR "+r.error:""));for(const [k,v] of Object.entries(r.results)){const n=k.replace(P,"CC").replace("dirigeant . indépendant . ","TI . ");console.log("  "+n.padEnd(48)+(v.error?"ERR "+v.error.slice(0,120):JSON.stringify(v.value)+(v.unit?" "+v.unit:"")+(v.missing?" [miss "+v.missing+"]":"")));}}
