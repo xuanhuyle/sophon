@@ -37,6 +37,10 @@ The experiment is a **functional vertical-slice validation** of infrastructure, 
 
 **Do the build-and-test, not just write a proposal.** If the actual semantic runtime cannot be made to work in the bounded effort, report BLOCKED with reproducible diagnostics; do not substitute Publicodes or pretend static YAML is a functioning BI semantic layer.
 
+## 0A. Mandatory canonical charter — first step
+
+**Before any research, implementation, design or experiment, read `SOPHON_CHARTER.md` and `CLAUDE.md`.** The charter is the owner's explicit product definition, not a speculative technical-kernel hypothesis. In case of conflict between this execution prompt, a historical report or any intermediate implementation choice and the charter, surface the conflict and follow the charter unless the owner explicitly revises it. State the relevant validation stage, semantic-layer boundary and all four capabilities in `PRIOR.md`. Never convert an LLM accuracy/parity result into a product-level kill decision.
+
 ## 1. Read and preserve previous evidence
 
 Read:
