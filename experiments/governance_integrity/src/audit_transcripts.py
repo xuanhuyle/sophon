@@ -22,7 +22,9 @@ import re
 from pathlib import Path
 
 NET = re.compile(r"\b(git\s+(clone|fetch|pull|ls-remote|remote|push)|curl|wget|pip3?\s+install|uv\s+pip|npm\s+(install|view|pack|i)\b|npx\b|ssh\b|scp\b|fetch\()", re.I)
-GIT = re.compile(r"(^|[\s;&|(])git\s", re.I)
+# a git *command*: `git` at a command position (start of line/segment), followed by a subcommand.
+# Prose such as "a git diff" or "git-quoted paths" inside heredocs does not match.
+GIT = re.compile(r"(?:^|[;&|(\n`])\s*git\s+(?:-C\s+\S+\s+)?(clone|fetch|pull|push|log|show|diff|checkout|status|ls-remote|remote|rev-parse|archive|cat-file|ls-tree|ls-files|init|add|commit|grep|branch|tag|stash|worktree|blame|describe)\b", re.I)
 HELD = re.compile(r"held_out|REFERENCE\.json|COVERAGE\.json|maintainers/", re.I)
 # an absolute path starts at the beginning, after whitespace, a quote, '=', '(' or ',' — never after '*', '%', '€', a digit or a letter
 ABS = re.compile(r"(?:(?<=^)|(?<=[\s'\"=(,]))(/[A-Za-z_.][^\s'\"`;|&)>]*)")
