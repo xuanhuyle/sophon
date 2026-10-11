@@ -11,5 +11,7 @@ Core invariants:
 - Read the actual prior experiment results, preserve their negative findings and their limitations.
 - Do not quietly redefine product scope, invent authority or claim downstream agent behavior was proved by a passing semantic query.
 - A material change to the charter requires an explicit owner decision and a versioned decision record.
+- **v1.1:** Test whether a full governed change is completed with less time, coordination burden, risk or audit effort than actual customer practice or configured incumbents. A missing feature is not required for product value, and a feature already available in Databricks/Snowflake does not automatically prove customers' desired outcome is being met. Do not assert commercial differentiation without customer evidence.
+- Commercial/wholesale contractual calculations and telecom are possible starting segments, **not** a mandate to narrow Sophon's product thesis without owner approval.
 
 For Claude Code-specific workflows, also read [CLAUDE.md](CLAUDE.md).
