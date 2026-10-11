@@ -13,6 +13,7 @@ fresh subagent context pointed only at its staged directory. Tool-call counts an
 | 2 | B | T1a | 4e9a9b5b83f2 | a707eaecf844afc99 | 22 | 62 | 1100 | none | Same S0→S1 delta found; rate rules classified NEEDS_REVIEW (high) rather than AFFECTED, RCI rule AFFECTED, DROM NEEDS_REVIEW; abstained on all future values; store: S1 and proposal registered, revalidate run, 19 links added (74 total, verify-store OK); traceability-only proposal, build OK |
 | 3 | A | T1b | 1f783b59ece9 | a078aea63f1217cf2 | 27 | 46 | 1222 | none | 7 changed articles, 52 rules classified (20 AFFECTED), 35 evaluations, 9 abstentions, proposal builds OK |
 | 3 | B | T1b | fa992c95fc55 | a87ca64f615719503 | 25 | 58 | 1315 | none | 81 rules classified (22 AFFECTED / 20 NEEDS_REVIEW / 39 UNAFFECTED), 15 transposed numbers with quote + version id, 9 abstentions; proposal builds OK (641/1226); store: revalidate S3×G1 flagged 36 REASSESS_LAW_CHANGED + D136-5 unlinked, 35 links added (109 total, verify-store OK) |
+| 4 | A | R1 | 663a38a98db6 | ad80cffbd5725253d | 16 | 30 | 471 | none | HARMLESS_REFACTOR (high): one `références` URL changed; before/after trees built and 69 evaluations byte-identical; noted (context only) that G1 still computes 21,1/21,2 while D613-4 in force since 2024-07-01 says 23,1/23,2 |
 
 Both T0 solvers independently noted that the engine's `durée` mechanism reads the real wall clock rather than the
 situation date, and worked around it by fixing durations in the situation. Both abstained on the micro-entrepreneur
