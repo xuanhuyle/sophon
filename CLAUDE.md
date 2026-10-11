@@ -7,6 +7,8 @@ Sophon is **persistent AI-native governance infrastructure**, not an attempt to 
 
 The LLM may perform interpretation and implementation proposals. It is a component, **not the benchmark target**. Approval is not inferred from model output; implement actual provenance and explicit UNKNOWN/unverified coverage.
 
+**v1.1 product framing:** read charter §§4A and 5A. Sophon's hypothesized value is reliably completing **governed transitions** across external authority, owner-approved interpretation, existing semantic implementation, native verification and independently reproducible audit. A feature gap or novel algorithm is not required; a real, measurable **customer outcome gap** is. Do not assume an outcome gap simply because the company has governance documents or because an incumbent omits a feature from marketing. Compare with competent existing customer workflows and native platform tools at the operational-usefulness/adoption stages. A contract-to-semantic or telecom wedge is a hypothesis, not a committed scope change.
+
 ## Task entry gate
 Before starting substantial work, write a short statement of:
 1. The exact charter section and validation stage (feasibility, reliability, operational usefulness, adoption).
