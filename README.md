@@ -1,3 +1,5 @@
+> **CURRENT SOPHON PRODUCT DIRECTION (11 October 2026):** Read [SOPHON_CHARTER.md](SOPHON_CHARTER.md) before new work. Sophon is now defined by its owner as **persistent AI-native governance infrastructure operating through an organization's existing semantic layer** (TRANSPOSE / TRACE / VERIFY / AUDIT). The 21 September control-plane investigation below is **historical evidence about an earlier thesis**, not the current product definition. Its negative results remain valid within their tested scope.
+
 # Sophon: architecture investigation
 
 An independent look at whether "Sophon", a control layer that lets AI agents act under written policy and widen
