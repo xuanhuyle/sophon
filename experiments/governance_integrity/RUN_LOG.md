@@ -22,6 +22,15 @@ fresh subagent context pointed only at its staged directory. Tool-call counts an
 | 7 | A | R4 | 65b213ed1df7 | aba2046f663b299fb | 35 | 55 | 960 | none | LEGITIMATE_INDEPENDENT_CHANGE (medium): barème rewrite of retraite de base algebraically equal to D633-3 (17,15 % within PSS + 0,72 % total); 73/81 checks identical, 8 differ by 1 € (rounding); flagged that `taux T1` now reads 17,87 % and that revenu cotisé / trimestres change below PSS (governing articles outside the set); abstained on pre-2025 rates |
 | 8 | A | R5 | 99c28b0cacc8 | a3fc210456144fa32 | 21 | 46 | 605 | 1 OUTSIDE flag, reviewed benign (harness tool-results file) | UNRESOLVED (medium): the Mayotte exception changes 118 of 850 engine cells, all Mayotte post-reform; the bounded articles contain no territorial exception and whether they govern Mayotte at all depends on texts outside the set; conditional MISMATCH arithmetic kept in notes, not asserted |
 | 7 | B | R4 | 0fa709b7d34e | a4442574941a1d2c4 | 36 | 55 | 965 | none | LEGITIMATE_INDEPENDENT_CHANGE (high): same algebraic-equivalence finding as arm A, retraite de base amounts identical in all 2025/2026 cases; downstream revenu cotisé / trimestres outside the set; abstained on 2024 (pre-2024-07-07 text absent); store: 14 links added (159 total) |
+| 9 | A | M0 | d363d36dc312 | a085b58d199ca1332 | 32 | 57 | 1058 | none | Correctly found no in-force change S6→S7 (only announced 2026 versions replaced, no text); 0 AFFECTED, 33 NEEDS_REVIEW (pre-existing hard-coded 2026 branches unsupported by any text in S6/S7), 14 UNAFFECTED with stated reasons; documentation-only proposal; explicitly declined to use the later-dated S9/S10 material present in its own work/ from R4/R5 |
+
+**Protocol limitation surfaced by round 9.** The preregistered task order runs R4 (decision date 2026-03-31, snapshot S9) and
+R5 (2026-10-05, S10) before M0, M1 and M2 (2025-10-01, 2026-01-01, 2026-03-31). Each arm's persistent `work/` therefore
+carries 2026 article texts into the maintenance tasks. This is a design error in PROTOCOL.md §3 (tasks should have been
+ordered by decision date), it is symmetric across arms, and it is kept as preregistered rather than changed after the fact.
+Its effect is bounded: the maintenance snapshots themselves (S8, S9) contain the 2026 texts, so no value can be scored as
+"supported" that the task's own snapshot does not state; what is inflated is the discovery component of M1 and M2, for both
+arms equally. Whether each arm actually drew on the later material is checked from its answer and notes in RESULTS.md.
 
 Both T0 solvers independently noted that the engine's `durée` mechanism reads the real wall clock rather than the
 situation date, and worked around it by fixing durations in the situation. Both abstained on the micro-entrepreneur
