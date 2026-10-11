@@ -11,6 +11,7 @@ fresh subagent context pointed only at its staged directory. Tool-call counts an
 | 1 | B | T0 | b32284f8cfbf | ae6cba687db0193d2 | 26 | 49 | 1422 | none | 55 links (34 VERIFIED / 10 INFERRED / 8 UNKNOWN / 3 FAILED recorded); store verify-store OK; same D632-1 finding; two further executable mismatches (CIPAV Acre leak, Acre degressive zone) |
 | 2 | A | T1a | eb1ea45292f5 | ad9477f41ac571cfd | 25 | 47 | 902 | none | Found the S0→S1 delta (D613-4, D613-6 re-issued by Décret 2024-484, future versions by id/date only); 4 AFFECTED, 6 NEEDS_REVIEW (incl. the 4 DROM rules), 25 UNAFFECTED; abstained on all 2024-07/2025/2026 values; proposal adds citation notes and a "taux à confirmer" notification; build OK |
 | 2 | B | T1a | 4e9a9b5b83f2 | a707eaecf844afc99 | 22 | 62 | 1100 | none | Same S0→S1 delta found; rate rules classified NEEDS_REVIEW (high) rather than AFFECTED, RCI rule AFFECTED, DROM NEEDS_REVIEW; abstained on all future values; store: S1 and proposal registered, revalidate run, 19 links added (74 total, verify-store OK); traceability-only proposal, build OK |
+| 3 | A | T1b | 1f783b59ece9 | a078aea63f1217cf2 | 27 | 46 | 1222 | none | 7 changed articles, 52 rules classified (20 AFFECTED), 35 evaluations, 9 abstentions, proposal builds OK |
 
 Both T0 solvers independently noted that the engine's `durée` mechanism reads the real wall clock rather than the
 situation date, and worked around it by fixing durations in the situation. Both abstained on the micro-entrepreneur
