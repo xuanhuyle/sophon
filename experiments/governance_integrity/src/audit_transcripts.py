@@ -24,8 +24,10 @@ from pathlib import Path
 NET = re.compile(r"\b(git\s+(clone|fetch|pull|ls-remote|remote|push)|curl|wget|pip3?\s+install|uv\s+pip|npm\s+(install|view|pack|i)\b|npx\b|ssh\b|scp\b|fetch\()", re.I)
 GIT = re.compile(r"(^|[\s;&|(])git\s", re.I)
 HELD = re.compile(r"held_out|REFERENCE\.json|COVERAGE\.json|maintainers/", re.I)
-ABS = re.compile(r"(?<![\w@:])(/[^\s'\"`;|&)>]+)")
-ALLOWED_PREFIXES = ("/usr/", "/bin/", "/dev/null", "/etc/", "/lib", "/opt/", "/proc/", "/root/.npm", "/root/.cache", "/tmp/claude-0/")
+# an absolute path starts at the beginning, after whitespace, a quote, '=', '(' or ',' — never after '*', '%', '€', a digit or a letter
+ABS = re.compile(r"(?:(?<=^)|(?<=[\s'\"=(,]))(/[A-Za-z_.][^\s'\"`;|&)>]*)")
+ALLOWED_PREFIXES = ("/usr/", "/bin/", "/sbin/", "/dev/", "/etc/", "/lib", "/opt/", "/proc/", "/sys/", "/root/.npm", "/root/.cache", "/root/.node")
+ROOTS = ("/tmp", "/root", "/home", "/etc", "/usr", "/var", "/opt", "/mnt", "/srv", "/dev", "/proc", "/sys", "/bin", "/lib", "/boot", "/run", "/sbin", "/snap")
 
 
 def main():
@@ -70,12 +72,13 @@ def main():
                 flags.append({"flag": "HELD_OUT", "tool": name, "input": text[:300]})
             for p in ABS.findall(text):
                 p = p.rstrip(".,:")
-                if p.startswith(stage) or p.startswith(ALLOWED_PREFIXES) and not p.startswith("/tmp/claude-0/") or p in ("/", "/tmp"):
+                if not p.startswith(ROOTS):
+                    continue  # a relative fragment such as "$DIR"/règles/x.publicodes, not a root path
+                if p.startswith(stage) or p in ("/", "/tmp"):
                     continue
-                if p.startswith("/tmp/claude-0/") and not p.startswith(stage):
-                    flags.append({"flag": "OUTSIDE", "tool": name, "path": p[:300]})
-                elif not p.startswith(ALLOWED_PREFIXES) and not p.startswith(stage):
-                    flags.append({"flag": "OUTSIDE", "tool": name, "path": p[:300]})
+                if p.startswith(ALLOWED_PREFIXES):
+                    continue
+                flags.append({"flag": "OUTSIDE", "tool": name, "path": p[:300]})
     report = {"transcript": a.transcript, "stage": stage, "assistant_turns": turns, "tool_calls_total": sum(tools.values()), "tool_calls_by_tool": tools,
               "usage": usage, "flags": flags, "contaminated": bool(flags), "bash_commands": bash_cmds}
     if a.out:
