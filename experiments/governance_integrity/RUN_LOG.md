@@ -28,6 +28,13 @@ fresh subagent context pointed only at its staged directory. Tool-call counts an
 | 9 | B | M0 | f9a274cb1589 | a9c51afe15fa1dd69 | 27 | 73 | 1299 | none | Found the same metadata-only S6→S7 change; classified 376 rules: 8 AFFECTED (the rules carrying hard-coded 2026 branches that no text in S6/S7 supports, with abstention on every 2026 value), 64 NEEDS_REVIEW, 304 UNAFFECTED (273 indépendant rules by inherited status, not re-verified); documentation-only proposal; store: 41 links added (216 total, verify-store OK), revalidate S7×G3 run |
 | 11 | A | M2 | fdbf20c2a10f | a0c60d4c87ef802d9 | 43 | 63 | 1480 | none | Found the single changed article D131-6-1 (Décret 2026-69, exemption 100 % → 25 % below 3/4 PSS for creations from 2026-01-01); 13 AFFECTED (indépendant ACRE taux and dependents, plus the salarié Acre rule citing D131-6-1), 6 NEEDS_REVIEW (AE Acre 50 % and derived; unsourced Acre Cipav 13,40 %), 57 UNAFFECTED; proposal with 14 edits builds OK; 64 of 963 cells change, all 2026-creation Acre situations |
 | 10 | B | M1 | b129935d0461 | a862e0600b64005dc | 32 | 59 | 1287 | none | Found the same D613-4/D613-6 change (Décret 2025-943); 56 AFFECTED / 4 NEEDS_REVIEW / 316 UNAFFECTED (297 not re-examined, articles byte-identical); proposal with BNC 25,6 %, 2026 splits, DROM BNC re-derived and the DROM Cipav fix; build OK; store: 84 links added (300 total, verify-store clean) |
+| 11 | B | M2 | 3dfc235fd52c | a0aa9fefad0b8257f | 39 | 83 | 1632 | none | Found the single changed article D131-6-1 (Acre share → quarter for creations from 2026-01-01); 18 AFFECTED / 15 NEEDS_REVIEW / 43 UNAFFECTED, 300 not re-examined; proposal builds (652/1334); store: 56 links added (356 total, verify-store clean), 11 reports |
+
+All 22 solver runs complete: arm A 357 tool calls over 11 tasks, arm B 334. No run contaminated after review.
+
+| Round | Role | Staged prompt sha256 (first 12) | Agent transcript id | Tool calls | Notes |
+|---|---|---|---|---|---|
+| 12 | T4 auditor (fresh context, both arms' artifacts + sealed inputs, no held_out) | see `audit/STAGE_MANIFEST.json` | a768aa636237fdf22 | (filled after completion) | |
 
 **Protocol limitation surfaced by round 9.** The preregistered task order runs R4 (decision date 2026-03-31, snapshot S9) and
 R5 (2026-10-05, S10) before M0, M1 and M2 (2025-10-01, 2026-01-01, 2026-03-31). Each arm's persistent `work/` therefore
