@@ -1,0 +1,76 @@
+{
+ "pid": 1024,
+ "items": {
+  "scored:A": {
+   "replayed_case_status": "FULLY_OBSERVABLE_FOR_THIS_CALCULATION",
+   "recorded_case_status": "FULLY_OBSERVABLE_FOR_THIS_CALCULATION",
+   "equal": true,
+   "transcript_sha256": "c0c6b6abfd1f27d64c1b9d9217a49cf71c4a7c888325459dee7f6fc4da77ac58"
+  },
+  "scored:B1": {
+   "replayed_case_status": "PRESENT_IN_SOURCE_NOT_EXPOSED",
+   "recorded_case_status": "PRESENT_IN_SOURCE_NOT_EXPOSED",
+   "equal": true,
+   "transcript_sha256": "acadc2c9a67c0bb2edf38824f1a0dbf97787a855522196513d77f9d35c21cda1"
+  },
+  "scored:B2": {
+   "replayed_case_status": "NOT_FOUND_IN_BOUNDED_ESTATE",
+   "recorded_case_status": "NOT_FOUND_IN_BOUNDED_ESTATE",
+   "equal": true,
+   "transcript_sha256": "df6b3e071dd5afcdb3467d8331a608574335fdd29a7b58352bb8d61003a7bdff"
+  },
+  "adversarial:M4a_remove_status_binding": {
+   "replayed_case_status": "INVALID_BINDING",
+   "recorded_case_status": "INVALID_BINDING",
+   "equal": true,
+   "transcript_sha256": "2b60f370ae9eab82533e49446099b84f9b49d207b2a1d19e720e4cc9b7745efb"
+  },
+  "adversarial:M4b_status_bound_to_channel": {
+   "replayed_case_status": "INVALID_BINDING",
+   "recorded_case_status": "INVALID_BINDING",
+   "equal": true,
+   "transcript_sha256": "2b60f370ae9eab82533e49446099b84f9b49d207b2a1d19e720e4cc9b7745efb"
+  },
+  "adversarial:M4c_amount_bound_to_cost": {
+   "replayed_case_status": "INVALID_BINDING",
+   "recorded_case_status": "INVALID_BINDING",
+   "equal": true,
+   "transcript_sha256": "79ac6c7bd320e7325c663ad7bdf20fdfc6c0766c10a7494de579e8bdb02d8dce"
+  },
+  "adversarial:M4d_status_semantic_physical_inconsistent": {
+   "replayed_case_status": "INVALID_BINDING",
+   "recorded_case_status": "INVALID_BINDING",
+   "equal": true,
+   "transcript_sha256": "2b60f370ae9eab82533e49446099b84f9b49d207b2a1d19e720e4cc9b7745efb"
+  },
+  "adversarial:M5_settlement_predicate_added_to_A": {
+   "replayed_case_status": "NOT_FOUND_IN_BOUNDED_ESTATE",
+   "recorded_case_status": "NOT_FOUND_IN_BOUNDED_ESTATE",
+   "equal": true,
+   "transcript_sha256": "bcd4945456f416f2c734c3b2693143f185f531200ad0e9514d639486fe4e49ef"
+  },
+  "adversarial:M6_proxy_status_as_settlement": {
+   "replayed_case_status": "UNVERIFIED",
+   "recorded_case_status": "UNVERIFIED",
+   "equal": true,
+   "transcript_sha256": "6c7339cc6a45b2e08c22d6dbe3c6cecea8d52db868328e130edd9aa572b4082a"
+  },
+  "adversarial:M7_native_identity_drift": {
+   "replayed_case_status": "INVALID_BINDING",
+   "recorded_case_status": "INVALID_BINDING",
+   "equal": true,
+   "transcript_sha256": "fef915f5b4fea03a245aa339e02053b64f78a84c0a3038ea15d0094c511d7748"
+  },
+  "adversarial:D10_stale_estate_fingerprint": {
+   "replayed_case_status": "INCONCLUSIVE",
+   "recorded_case_status": "INCONCLUSIVE",
+   "equal": true,
+   "transcript_sha256": "e700cf20cabdf6bd138aed6e3d7c6106bbe6d252ab4c99f72f06db9824895534"
+  }
+ },
+ "oracle_recomputed": {
+  "scored:A:oracle:[\"P_LINE_AMOUNT\", \"P_STATUS_COMPLETED\", \"P_YEAR_BY_ORDER_DATE\"]": true
+ },
+ "all_equal": true,
+ "trust_limits": "Recorded native receipts, warehouse columns, distinct values, semantic manifest and estate fingerprint are trusted as captured; replay re-derives statuses from them with the frozen procedure and does not re-execute MetricFlow. Oracle outputs are recomputed from raw CSVs only when --raw is given."
+}

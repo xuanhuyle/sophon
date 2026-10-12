@@ -1,0 +1,112 @@
+{
+ "note": "Expected outcomes written by the experimenter from SOURCE_INVENTORY.md before the evaluator existed. The evaluator never reads this file; tests compare its output to it.",
+ "cases": {
+  "A": {
+   "case_status": "FULLY_OBSERVABLE_FOR_THIS_CALCULATION",
+   "verified_for_recorded_checks": true,
+   "predicates": {
+    "P_LINE_AMOUNT": "BOUND_AND_EXPOSED",
+    "P_STATUS_COMPLETED": "BOUND_AND_EXPOSED",
+    "P_YEAR_BY_ORDER_DATE": "BOUND_AND_EXPOSED"
+   },
+   "native_equals_oracle": true
+  },
+  "B1": {
+   "case_status": "PRESENT_IN_SOURCE_NOT_EXPOSED",
+   "verified_for_recorded_checks": false,
+   "predicates": {
+    "P_LINE_AMOUNT": "BOUND_AND_EXPOSED",
+    "P_STATUS_COMPLETED": "BOUND_AND_EXPOSED",
+    "P_YEAR_BY_ORDER_DATE": "BOUND_AND_EXPOSED",
+    "P_UNIT_PRICE_GE_100": "PRESENT_IN_SOURCE_NOT_EXPOSED"
+   },
+   "native_probe_rejected": true,
+   "uncovered": [
+    "P_UNIT_PRICE_GE_100"
+   ]
+  },
+  "B2": {
+   "case_status": "NOT_FOUND_IN_BOUNDED_ESTATE",
+   "verified_for_recorded_checks": false,
+   "predicates": {
+    "P_LINE_AMOUNT": "BOUND_AND_EXPOSED",
+    "P_STATUS_COMPLETED": "BOUND_AND_EXPOSED",
+    "P_YEAR_BY_ORDER_DATE": "BOUND_AND_EXPOSED",
+    "P_SETTLEMENT_CONFIRMED": "NOT_FOUND_IN_BOUNDED_ESTATE"
+   },
+   "uncovered": [
+    "P_SETTLEMENT_CONFIRMED"
+   ]
+  }
+ },
+ "adversarial": {
+  "M4a_remove_status_binding": {
+   "case_status": "INVALID_BINDING",
+   "verified_for_recorded_checks": false,
+   "predicate": [
+    "P_STATUS_COMPLETED",
+    "MISSING_BINDING"
+   ]
+  },
+  "M4b_status_bound_to_channel": {
+   "case_status": "INVALID_BINDING",
+   "verified_for_recorded_checks": false,
+   "predicate": [
+    "P_STATUS_COMPLETED",
+    "NOT_AUTHORITATIVE_FOR_FACT"
+   ]
+  },
+  "M4c_amount_bound_to_cost": {
+   "case_status": "INVALID_BINDING",
+   "verified_for_recorded_checks": false,
+   "predicate": [
+    "P_LINE_AMOUNT",
+    "NOT_AUTHORITATIVE_FOR_FACT"
+   ]
+  },
+  "M4d_status_semantic_physical_inconsistent": {
+   "case_status": "INVALID_BINDING",
+   "verified_for_recorded_checks": false,
+   "predicate": [
+    "P_STATUS_COMPLETED",
+    "INVALID_BINDING"
+   ]
+  },
+  "M5_settlement_predicate_added_to_A": {
+   "case_status": "NOT_FOUND_IN_BOUNDED_ESTATE",
+   "verified_for_recorded_checks": false,
+   "predicate": [
+    "P_SETTLEMENT_CONFIRMED",
+    "NOT_FOUND_IN_BOUNDED_ESTATE"
+   ],
+   "covered_native_equals_A_native": true
+  },
+  "M6_proxy_status_as_settlement": {
+   "case_status": "UNVERIFIED",
+   "verified_for_recorded_checks": false,
+   "predicate": [
+    "P_SETTLEMENT_CONFIRMED",
+    "NOT_AUTHORITATIVE_FOR_FACT"
+   ]
+  },
+  "M7_native_identity_drift": {
+   "case_status": "INVALID_BINDING",
+   "verified_for_recorded_checks": false,
+   "drifted_native_differs_from_A_native": true
+  },
+  "M8a_altered_native_amount": {
+   "comparison_rejects": true
+  },
+  "M8b_altered_oracle_input": {
+   "comparison_rejects": true,
+   "oracle_delta_equals_line_unit_price": true
+  },
+  "D10_stale_estate_fingerprint": {
+   "case_status": "INCONCLUSIVE",
+   "verified_for_recorded_checks": false
+  }
+ },
+ "replay": {
+  "fresh_process_statuses_equal_recorded": true
+ }
+}

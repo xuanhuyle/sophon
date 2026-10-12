@@ -1,0 +1,5903 @@
+{
+ "started_utc": "2026-10-12T07:09:39Z",
+ "finished_utc": "2026-10-12T07:10:46Z",
+ "live_semantic_manifest_sha256": "e8e9bfc7e1188bc3eb3f5ac551e8ed5350817af14a5471bdbcdfdca2bc01bd48",
+ "scored": {
+  "A": {
+   "result": {
+    "required": {
+     "P_LINE_AMOUNT": "B_LINE_AMOUNT",
+     "P_STATUS_COMPLETED": "B_STATUS",
+     "P_YEAR_BY_ORDER_DATE": "B_YEAR"
+    },
+    "predicates": {
+     "P_LINE_AMOUNT": {
+      "predicate": "P_LINE_AMOUNT",
+      "kind": "measure_sum",
+      "fact_kind": "order_line_amount",
+      "binding": {
+       "semantic": {
+        "measure": "revenue",
+        "semantic_model": "sales"
+       },
+       "physical": "gold.fact_sales.revenue"
+      },
+      "designated_fields": [
+       "gold.fact_sales.revenue"
+      ],
+      "designated_fields_present": [
+       "gold.fact_sales.revenue"
+      ],
+      "physical_present": true,
+      "semantic_resolution": {
+       "model": "sales",
+       "relation": "gold.fact_sales",
+       "measure_expr": "revenue",
+       "agg": "sum"
+      },
+      "status": "BOUND_AND_EXPOSED"
+     },
+     "P_STATUS_COMPLETED": {
+      "predicate": "P_STATUS_COMPLETED",
+      "kind": "categorical_equals",
+      "fact_kind": "order_status_label",
+      "binding": {
+       "semantic": {
+        "dimension": "sales__status"
+       },
+       "physical": "gold.fact_sales.status"
+      },
+      "designated_fields": [
+       "gold.fact_sales.status"
+      ],
+      "designated_fields_present": [
+       "gold.fact_sales.status"
+      ],
+      "physical_present": true,
+      "in_native_dimension_list": true,
+      "semantic_resolution": {
+       "model": "sales",
+       "relation": "gold.fact_sales",
+       "dimension_column": "status",
+       "type": "categorical"
+      },
+      "observed_values": [
+       "cancelled",
+       "completed",
+       "returned"
+      ],
+      "status": "BOUND_AND_EXPOSED"
+     },
+     "P_YEAR_BY_ORDER_DATE": {
+      "predicate": "P_YEAR_BY_ORDER_DATE",
+      "kind": "time_grain",
+      "fact_kind": "order_date",
+      "binding": {
+       "semantic": {
+        "time_dimension": "sales__order_date"
+       },
+       "physical": "gold.fact_sales.order_date"
+      },
+      "designated_fields": [
+       "gold.fact_sales.order_date"
+      ],
+      "designated_fields_present": [
+       "gold.fact_sales.order_date"
+      ],
+      "physical_present": true,
+      "in_native_dimension_list": true,
+      "semantic_resolution": {
+       "model": "sales",
+       "relation": "gold.fact_sales",
+       "dimension_column": "order_date",
+       "type": "time"
+      },
+      "status": "BOUND_AND_EXPOSED"
+     }
+    },
+    "uncovered": [],
+    "metric_consistency_problems": [],
+    "estate_fingerprint": {
+     "live": "af2fd0215120425aa71c3a2075d2057e227d8f0f50824403c06c899ce17b6566",
+     "frozen": "af2fd0215120425aa71c3a2075d2057e227d8f0f50824403c06c899ce17b6566",
+     "equal": true
+    },
+    "oracle": {
+     "computable": true,
+     "by_year": {
+      "2024": "1707052.80",
+      "2025": "1477833.96",
+      "2026": "792441.45"
+     },
+     "method": "own stdlib loop over raw CSVs",
+     "e0_crosscheck_by_year": {
+      "2024": "1707052.80",
+      "2025": "1477833.96",
+      "2026": "792441.45"
+     },
+     "own_equals_e0_crosscheck": true
+    },
+    "native": {
+     "plan": {
+      "metric": "completed_revenue",
+      "group_by": [
+       "metric_time__year"
+      ],
+      "where": []
+     },
+     "ok": true,
+     "receipt_argv": [
+      "mf",
+      "query",
+      "--metrics",
+      "completed_revenue",
+      "--group-by",
+      "metric_time__year",
+      "--csv",
+      "<csv>"
+     ],
+     "exit_code": 0,
+     "csv_sha256": "af291de3ddf3689bc009db5bae011258f4c8f1cdd3df501df00650c922e309dd",
+     "by_year": {
+      "2025": "1477833.96",
+      "2024": "1707052.80",
+      "2026": "792441.45"
+     }
+    },
+    "comparison": {
+     "equal": true,
+     "counterexamples": []
+    },
+    "case_status": "FULLY_OBSERVABLE_FOR_THIS_CALCULATION",
+    "verified_for_recorded_checks": true
+   },
+   "summary": {
+    "case_status": "FULLY_OBSERVABLE_FOR_THIS_CALCULATION",
+    "verified_for_recorded_checks": true,
+    "predicates": {
+     "P_LINE_AMOUNT": "BOUND_AND_EXPOSED",
+     "P_STATUS_COMPLETED": "BOUND_AND_EXPOSED",
+     "P_YEAR_BY_ORDER_DATE": "BOUND_AND_EXPOSED"
+    },
+    "uncovered": [],
+    "metric_consistency_problems": []
+   },
+   "transcript": {
+    "warehouse_columns": [
+     "bronze.customers.city",
+     "bronze.customers.country",
+     "bronze.customers.customer_id",
+     "bronze.customers.email",
+     "bronze.customers.first_name",
+     "bronze.customers.last_name",
+     "bronze.customers.signup_date",
+     "bronze.order_events.channel",
+     "bronze.order_events.customer_id",
+     "bronze.order_events.event_id",
+     "bronze.order_events.event_ts",
+     "bronze.order_events.order_id",
+     "bronze.order_events.order_item_id",
+     "bronze.order_events.product_id",
+     "bronze.order_events.quantity",
+     "bronze.order_events.status",
+     "bronze.order_events.store_id",
+     "bronze.order_events.unit_price",
+     "bronze.order_items.order_id",
+     "bronze.order_items.order_item_id",
+     "bronze.order_items.product_id",
+     "bronze.order_items.quantity",
+     "bronze.order_items.unit_price",
+     "bronze.orders.channel",
+     "bronze.orders.customer_id",
+     "bronze.orders.order_date",
+     "bronze.orders.order_id",
+     "bronze.orders.status",
+     "bronze.orders.store_id",
+     "bronze.products.category",
+     "bronze.products.list_price",
+     "bronze.products.product_id",
+     "bronze.products.product_name",
+     "bronze.products.unit_cost",
+     "bronze.stores.city",
+     "bronze.stores.country",
+     "bronze.stores.store_id",
+     "bronze.stores.store_name",
+     "gold.dim_customers.city",
+     "gold.dim_customers.country",
+     "gold.dim_customers.customer_id",
+     "gold.dim_customers.email",
+     "gold.dim_customers.first_name",
+     "gold.dim_customers.full_name",
+     "gold.dim_customers.last_name",
+     "gold.dim_customers.signup_date",
+     "gold.dim_dates.date_day",
+     "gold.dim_dates.date_id",
+     "gold.dim_dates.day_name",
+     "gold.dim_dates.day_of_week",
+     "gold.dim_dates.is_weekend",
+     "gold.dim_dates.month",
+     "gold.dim_dates.month_name",
+     "gold.dim_dates.quarter",
+     "gold.dim_dates.quarter_name",
+     "gold.dim_dates.week_of_year",
+     "gold.dim_dates.year",
+     "gold.dim_products.category",
+     "gold.dim_products.list_price",
+     "gold.dim_products.margin_rate",
+     "gold.dim_products.product_id",
+     "gold.dim_products.product_name",
+     "gold.dim_products.unit_cost",
+     "gold.dim_products.unit_margin",
+     "gold.dim_stores.city",
+     "gold.dim_stores.country",
+     "gold.dim_stores.store_id",
+     "gold.dim_stores.store_name",
+     "gold.fact_customer_orders.customer_id",
+     "gold.fact_customer_orders.is_repeat_customer",
+     "gold.fact_customer_orders.last_order_date",
+     "gold.fact_customer_orders.order_count",
+     "gold.fact_sales.channel",
+     "gold.fact_sales.cost_amount",
+     "gold.fact_sales.customer_id",
+     "gold.fact_sales.date_id",
+     "gold.fact_sales.discount_amount",
+     "gold.fact_sales.is_cancelled",
+     "gold.fact_sales.is_completed",
+     "gold.fact_sales.is_returned",
+     "gold.fact_sales.order_date",
+     "gold.fact_sales.order_id",
+     "gold.fact_sales.product_id",
+     "gold.fact_sales.profit",
+     "gold.fact_sales.quantity",
+     "gold.fact_sales.revenue",
+     "gold.fact_sales.sales_id",
+     "gold.fact_sales.status",
+     "gold.fact_sales.store_id",
+     "gold.fact_sales.unit_cost",
+     "gold.fact_sales.unit_price",
+     "gold.fact_sales_live.channel",
+     "gold.fact_sales_live.cost_amount",
+     "gold.fact_sales_live.customer_id",
+     "gold.fact_sales_live.date_id",
+     "gold.fact_sales_live.discount_amount",
+     "gold.fact_sales_live.event_date",
+     "gold.fact_sales_live.event_id",
+     "gold.fact_sales_live.event_ts",
+     "gold.fact_sales_live.is_cancelled",
+     "gold.fact_sales_live.is_completed",
+     "gold.fact_sales_live.is_returned",
+     "gold.fact_sales_live.order_id",
+     "gold.fact_sales_live.order_item_id",
+     "gold.fact_sales_live.product_id",
+     "gold.fact_sales_live.profit",
+     "gold.fact_sales_live.quantity",
+     "gold.fact_sales_live.revenue",
+     "gold.fact_sales_live.status",
+     "gold.fact_sales_live.store_id",
+     "gold.fact_sales_live.unit_cost",
+     "gold.fact_sales_live.unit_price",
+     "gold.rt_freshness.as_of",
+     "gold.rt_freshness.freshness_seconds",
+     "gold.rt_freshness.last_event_ts",
+     "gold.rt_freshness.no_events_yet",
+     "silver.stg_customers.city",
+     "silver.stg_customers.country",
+     "silver.stg_customers.customer_id",
+     "silver.stg_customers.email",
+     "silver.stg_customers.first_name",
+     "silver.stg_customers.last_name",
+     "silver.stg_customers.signup_date",
+     "silver.stg_order_events.channel",
+     "silver.stg_order_events.customer_id",
+     "silver.stg_order_events.event_id",
+     "silver.stg_order_events.event_ts",
+     "silver.stg_order_events.order_id",
+     "silver.stg_order_events.order_item_id",
+     "silver.stg_order_events.product_id",
+     "silver.stg_order_events.quantity",
+     "silver.stg_order_events.status",
+     "silver.stg_order_events.store_id",
+     "silver.stg_order_events.unit_price",
+     "silver.stg_order_items.order_id",
+     "silver.stg_order_items.order_item_id",
+     "silver.stg_order_items.product_id",
+     "silver.stg_order_items.quantity",
+     "silver.stg_order_items.unit_price",
+     "silver.stg_orders.channel",
+     "silver.stg_orders.customer_id",
+     "silver.stg_orders.order_date",
+     "silver.stg_orders.order_id",
+     "silver.stg_orders.status",
+     "silver.stg_orders.store_id",
+     "silver.stg_products.category",
+     "silver.stg_products.list_price",
+     "silver.stg_products.product_id",
+     "silver.stg_products.product_name",
+     "silver.stg_products.unit_cost",
+     "silver.stg_products.unit_margin",
+     "silver.stg_stores.city",
+     "silver.stg_stores.country",
+     "silver.stg_stores.store_id",
+     "silver.stg_stores.store_name"
+    ],
+    "semantic_manifest": {
+     "semantic_models": [
+      {
+       "name": "sales_live",
+       "defaults": {
+        "agg_time_dimension": "event_ts"
+       },
+       "description": "Near-real-time sales facts at order-line grain (streaming lane).",
+       "node_relation": {
+        "alias": "fact_sales_live",
+        "schema_name": "gold",
+        "database": "warehouse",
+        "relation_name": "\"warehouse\".\"gold\".\"fact_sales_live\""
+       },
+       "primary_entity": null,
+       "entities": [
+        {
+         "name": "sales_live",
+         "description": null,
+         "type": "primary",
+         "role": null,
+         "expr": "event_id",
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        },
+        {
+         "name": "order",
+         "description": null,
+         "type": "foreign",
+         "role": null,
+         "expr": "order_id",
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        },
+        {
+         "name": "customer",
+         "description": null,
+         "type": "foreign",
+         "role": null,
+         "expr": "customer_id",
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        },
+        {
+         "name": "product",
+         "description": null,
+         "type": "foreign",
+         "role": null,
+         "expr": "product_id",
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        },
+        {
+         "name": "store",
+         "description": null,
+         "type": "foreign",
+         "role": null,
+         "expr": "store_id",
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        }
+       ],
+       "measures": [
+        {
+         "name": "revenue_live_amount",
+         "agg": "sum",
+         "description": "Quantity x price charged, on streamed events.",
+         "create_metric": false,
+         "expr": "revenue",
+         "agg_params": null,
+         "metadata": null,
+         "non_additive_dimension": null,
+         "agg_time_dimension": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        },
+        {
+         "name": "gross_profit_live_amount",
+         "agg": "sum",
+         "description": null,
+         "create_metric": false,
+         "expr": "profit",
+         "agg_params": null,
+         "metadata": null,
+         "non_additive_dimension": null,
+         "agg_time_dimension": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        },
+        {
+         "name": "quantity_live_amount",
+         "agg": "sum",
+         "description": null,
+         "create_metric": false,
+         "expr": "quantity",
+         "agg_params": null,
+         "metadata": null,
+         "non_additive_dimension": null,
+         "agg_time_dimension": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        },
+        {
+         "name": "order_count_live_distinct",
+         "agg": "count_distinct",
+         "description": "Distinct live orders.",
+         "create_metric": false,
+         "expr": "order_id",
+         "agg_params": null,
+         "metadata": null,
+         "non_additive_dimension": null,
+         "agg_time_dimension": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        }
+       ],
+       "dimensions": [
+        {
+         "name": "event_ts",
+         "description": "Event timestamp — enables 'last N minutes' windows.",
+         "type": "time",
+         "is_partition": false,
+         "type_params": {
+          "time_granularity": "minute",
+          "validity_params": null
+         },
+         "expr": null,
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        },
+        {
+         "name": "channel",
+         "description": null,
+         "type": "categorical",
+         "is_partition": false,
+         "type_params": null,
+         "expr": null,
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        },
+        {
+         "name": "status",
+         "description": null,
+         "type": "categorical",
+         "is_partition": false,
+         "type_params": null,
+         "expr": null,
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        }
+       ],
+       "label": null,
+       "metadata": null,
+       "config": {
+        "meta": {}
+       }
+      },
+      {
+       "name": "sales",
+       "defaults": {
+        "agg_time_dimension": "order_date"
+       },
+       "description": "Sales facts at order-line grain.",
+       "node_relation": {
+        "alias": "fact_sales",
+        "schema_name": "gold",
+        "database": "warehouse",
+        "relation_name": "\"warehouse\".\"gold\".\"fact_sales\""
+       },
+       "primary_entity": null,
+       "entities": [
+        {
+         "name": "sales",
+         "description": null,
+         "type": "primary",
+         "role": null,
+         "expr": "sales_id",
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        },
+        {
+         "name": "order",
+         "description": null,
+         "type": "foreign",
+         "role": null,
+         "expr": "order_id",
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        },
+        {
+         "name": "customer",
+         "description": null,
+         "type": "foreign",
+         "role": null,
+         "expr": "customer_id",
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        },
+        {
+         "name": "product",
+         "description": null,
+         "type": "foreign",
+         "role": null,
+         "expr": "product_id",
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        },
+        {
+         "name": "store",
+         "description": null,
+         "type": "foreign",
+         "role": null,
+         "expr": "store_id",
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        }
+       ],
+       "measures": [
+        {
+         "name": "revenue",
+         "agg": "sum",
+         "description": "Quantity x price charged.",
+         "create_metric": false,
+         "expr": "revenue",
+         "agg_params": null,
+         "metadata": null,
+         "non_additive_dimension": null,
+         "agg_time_dimension": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        },
+        {
+         "name": "cost",
+         "agg": "sum",
+         "description": null,
+         "create_metric": false,
+         "expr": "cost_amount",
+         "agg_params": null,
+         "metadata": null,
+         "non_additive_dimension": null,
+         "agg_time_dimension": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        },
+        {
+         "name": "gross_profit",
+         "agg": "sum",
+         "description": null,
+         "create_metric": false,
+         "expr": "profit",
+         "agg_params": null,
+         "metadata": null,
+         "non_additive_dimension": null,
+         "agg_time_dimension": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        },
+        {
+         "name": "quantity_sold",
+         "agg": "sum",
+         "description": null,
+         "create_metric": false,
+         "expr": "quantity",
+         "agg_params": null,
+         "metadata": null,
+         "non_additive_dimension": null,
+         "agg_time_dimension": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        },
+        {
+         "name": "discount",
+         "agg": "sum",
+         "description": null,
+         "create_metric": false,
+         "expr": "discount_amount",
+         "agg_params": null,
+         "metadata": null,
+         "non_additive_dimension": null,
+         "agg_time_dimension": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        },
+        {
+         "name": "order_count",
+         "agg": "count_distinct",
+         "description": "Distinct orders.",
+         "create_metric": false,
+         "expr": "order_id",
+         "agg_params": null,
+         "metadata": null,
+         "non_additive_dimension": null,
+         "agg_time_dimension": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        },
+        {
+         "name": "customer_count",
+         "agg": "count_distinct",
+         "description": "Distinct customers who purchased.",
+         "create_metric": false,
+         "expr": "customer_id",
+         "agg_params": null,
+         "metadata": null,
+         "non_additive_dimension": null,
+         "agg_time_dimension": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        }
+       ],
+       "dimensions": [
+        {
+         "name": "order_date",
+         "description": null,
+         "type": "time",
+         "is_partition": false,
+         "type_params": {
+          "time_granularity": "day",
+          "validity_params": null
+         },
+         "expr": null,
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        },
+        {
+         "name": "channel",
+         "description": null,
+         "type": "categorical",
+         "is_partition": false,
+         "type_params": null,
+         "expr": null,
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        },
+        {
+         "name": "status",
+         "description": null,
+         "type": "categorical",
+         "is_partition": false,
+         "type_params": null,
+         "expr": null,
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        }
+       ],
+       "label": null,
+       "metadata": null,
+       "config": {
+        "meta": {}
+       }
+      },
+      {
+       "name": "customers",
+       "defaults": null,
+       "description": "Customer dimension.",
+       "node_relation": {
+        "alias": "dim_customers",
+        "schema_name": "gold",
+        "database": "warehouse",
+        "relation_name": "\"warehouse\".\"gold\".\"dim_customers\""
+       },
+       "primary_entity": null,
+       "entities": [
+        {
+         "name": "customer",
+         "description": null,
+         "type": "primary",
+         "role": null,
+         "expr": "customer_id",
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        }
+       ],
+       "measures": [],
+       "dimensions": [
+        {
+         "name": "country",
+         "description": null,
+         "type": "categorical",
+         "is_partition": false,
+         "type_params": null,
+         "expr": null,
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        },
+        {
+         "name": "city",
+         "description": null,
+         "type": "categorical",
+         "is_partition": false,
+         "type_params": null,
+         "expr": null,
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        },
+        {
+         "name": "signup_date",
+         "description": null,
+         "type": "time",
+         "is_partition": false,
+         "type_params": {
+          "time_granularity": "day",
+          "validity_params": null
+         },
+         "expr": null,
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        }
+       ],
+       "label": null,
+       "metadata": null,
+       "config": {
+        "meta": {}
+       }
+      },
+      {
+       "name": "products",
+       "defaults": null,
+       "description": "Product dimension.",
+       "node_relation": {
+        "alias": "dim_products",
+        "schema_name": "gold",
+        "database": "warehouse",
+        "relation_name": "\"warehouse\".\"gold\".\"dim_products\""
+       },
+       "primary_entity": null,
+       "entities": [
+        {
+         "name": "product",
+         "description": null,
+         "type": "primary",
+         "role": null,
+         "expr": "product_id",
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        }
+       ],
+       "measures": [],
+       "dimensions": [
+        {
+         "name": "category",
+         "description": null,
+         "type": "categorical",
+         "is_partition": false,
+         "type_params": null,
+         "expr": null,
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        },
+        {
+         "name": "product_name",
+         "description": null,
+         "type": "categorical",
+         "is_partition": false,
+         "type_params": null,
+         "expr": null,
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        }
+       ],
+       "label": null,
+       "metadata": null,
+       "config": {
+        "meta": {}
+       }
+      },
+      {
+       "name": "stores",
+       "defaults": null,
+       "description": "Store dimension.",
+       "node_relation": {
+        "alias": "dim_stores",
+        "schema_name": "gold",
+        "database": "warehouse",
+        "relation_name": "\"warehouse\".\"gold\".\"dim_stores\""
+       },
+       "primary_entity": null,
+       "entities": [
+        {
+         "name": "store",
+         "description": null,
+         "type": "primary",
+         "role": null,
+         "expr": "store_id",
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        }
+       ],
+       "measures": [],
+       "dimensions": [
+        {
+         "name": "store_country",
+         "description": null,
+         "type": "categorical",
+         "is_partition": false,
+         "type_params": null,
+         "expr": "country",
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        },
+        {
+         "name": "store_city",
+         "description": null,
+         "type": "categorical",
+         "is_partition": false,
+         "type_params": null,
+         "expr": "city",
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        }
+       ],
+       "label": null,
+       "metadata": null,
+       "config": {
+        "meta": {}
+       }
+      },
+      {
+       "name": "customer_orders",
+       "defaults": {
+        "agg_time_dimension": "last_order_date"
+       },
+       "description": "Per-customer order summary — basis for loyalty metrics.",
+       "node_relation": {
+        "alias": "fact_customer_orders",
+        "schema_name": "gold",
+        "database": "warehouse",
+        "relation_name": "\"warehouse\".\"gold\".\"fact_customer_orders\""
+       },
+       "primary_entity": null,
+       "entities": [
+        {
+         "name": "customer",
+         "description": null,
+         "type": "primary",
+         "role": null,
+         "expr": "customer_id",
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        }
+       ],
+       "measures": [
+        {
+         "name": "purchasing_customer_count",
+         "agg": "count_distinct",
+         "description": "Distinct customers who placed at least one order.",
+         "create_metric": false,
+         "expr": "customer_id",
+         "agg_params": null,
+         "metadata": null,
+         "non_additive_dimension": null,
+         "agg_time_dimension": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        }
+       ],
+       "dimensions": [
+        {
+         "name": "is_repeat_customer",
+         "description": null,
+         "type": "categorical",
+         "is_partition": false,
+         "type_params": null,
+         "expr": null,
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        },
+        {
+         "name": "last_order_date",
+         "description": null,
+         "type": "time",
+         "is_partition": false,
+         "type_params": {
+          "time_granularity": "day",
+          "validity_params": null
+         },
+         "expr": null,
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        }
+       ],
+       "label": null,
+       "metadata": null,
+       "config": {
+        "meta": {}
+       }
+      }
+     ],
+     "metrics": [
+      {
+       "name": "revenue_live",
+       "description": "Revenue from streamed events (near-real-time lane).",
+       "type": "simple",
+       "type_params": {
+        "measure": {
+         "name": "revenue_live_amount",
+         "filter": null,
+         "alias": null,
+         "join_to_timespine": false,
+         "fill_nulls_with": null
+        },
+        "numerator": null,
+        "denominator": null,
+        "expr": null,
+        "window": null,
+        "grain_to_date": null,
+        "metrics": [],
+        "conversion_type_params": null,
+        "cumulative_type_params": null,
+        "input_measures": [
+         {
+          "name": "revenue_live_amount",
+          "filter": null,
+          "alias": null,
+          "join_to_timespine": false,
+          "fill_nulls_with": null
+         }
+        ]
+       },
+       "filter": null,
+       "metadata": null,
+       "label": "Revenue (live)",
+       "config": {
+        "meta": {}
+       },
+       "time_granularity": null
+      },
+      {
+       "name": "gross_profit_live",
+       "description": "Gross profit from streamed events (near-real-time lane).",
+       "type": "simple",
+       "type_params": {
+        "measure": {
+         "name": "gross_profit_live_amount",
+         "filter": null,
+         "alias": null,
+         "join_to_timespine": false,
+         "fill_nulls_with": null
+        },
+        "numerator": null,
+        "denominator": null,
+        "expr": null,
+        "window": null,
+        "grain_to_date": null,
+        "metrics": [],
+        "conversion_type_params": null,
+        "cumulative_type_params": null,
+        "input_measures": [
+         {
+          "name": "gross_profit_live_amount",
+          "filter": null,
+          "alias": null,
+          "join_to_timespine": false,
+          "fill_nulls_with": null
+         }
+        ]
+       },
+       "filter": null,
+       "metadata": null,
+       "label": "Gross profit (live)",
+       "config": {
+        "meta": {}
+       },
+       "time_granularity": null
+      },
+      {
+       "name": "orders_live",
+       "description": "Number of distinct orders in the streaming lane.",
+       "type": "simple",
+       "type_params": {
+        "measure": {
+         "name": "order_count_live_distinct",
+         "filter": null,
+         "alias": null,
+         "join_to_timespine": false,
+         "fill_nulls_with": null
+        },
+        "numerator": null,
+        "denominator": null,
+        "expr": null,
+        "window": null,
+        "grain_to_date": null,
+        "metrics": [],
+        "conversion_type_params": null,
+        "cumulative_type_params": null,
+        "input_measures": [
+         {
+          "name": "order_count_live_distinct",
+          "filter": null,
+          "alias": null,
+          "join_to_timespine": false,
+          "fill_nulls_with": null
+         }
+        ]
+       },
+       "filter": null,
+       "metadata": null,
+       "label": "Orders (live)",
+       "config": {
+        "meta": {}
+       },
+       "time_granularity": null
+      },
+      {
+       "name": "average_order_value_live",
+       "description": "Revenue per order on streamed events (live AOV).",
+       "type": "ratio",
+       "type_params": {
+        "measure": null,
+        "numerator": {
+         "name": "revenue_live",
+         "filter": null,
+         "alias": null,
+         "offset_window": null,
+         "offset_to_grain": null
+        },
+        "denominator": {
+         "name": "orders_live",
+         "filter": null,
+         "alias": null,
+         "offset_window": null,
+         "offset_to_grain": null
+        },
+        "expr": null,
+        "window": null,
+        "grain_to_date": null,
+        "metrics": [],
+        "conversion_type_params": null,
+        "cumulative_type_params": null,
+        "input_measures": [
+         {
+          "name": "revenue_live_amount",
+          "filter": null,
+          "alias": null,
+          "join_to_timespine": false,
+          "fill_nulls_with": null
+         },
+         {
+          "name": "order_count_live_distinct",
+          "filter": null,
+          "alias": null,
+          "join_to_timespine": false,
+          "fill_nulls_with": null
+         }
+        ]
+       },
+       "filter": null,
+       "metadata": null,
+       "label": "Average order value (live)",
+       "config": {
+        "meta": {}
+       },
+       "time_granularity": null
+      },
+      {
+       "name": "revenue",
+       "description": "Total sales revenue.",
+       "type": "simple",
+       "type_params": {
+        "measure": {
+         "name": "revenue",
+         "filter": null,
+         "alias": null,
+         "join_to_timespine": false,
+         "fill_nulls_with": null
+        },
+        "numerator": null,
+        "denominator": null,
+        "expr": null,
+        "window": null,
+        "grain_to_date": null,
+        "metrics": [],
+        "conversion_type_params": null,
+        "cumulative_type_params": null,
+        "input_measures": [
+         {
+          "name": "revenue",
+          "filter": null,
+          "alias": null,
+          "join_to_timespine": false,
+          "fill_nulls_with": null
+         }
+        ]
+       },
+       "filter": null,
+       "metadata": null,
+       "label": "Revenue",
+       "config": {
+        "meta": {}
+       },
+       "time_granularity": null
+      },
+      {
+       "name": "cost",
+       "description": "Total cost of goods sold.",
+       "type": "simple",
+       "type_params": {
+        "measure": {
+         "name": "cost",
+         "filter": null,
+         "alias": null,
+         "join_to_timespine": false,
+         "fill_nulls_with": null
+        },
+        "numerator": null,
+        "denominator": null,
+        "expr": null,
+        "window": null,
+        "grain_to_date": null,
+        "metrics": [],
+        "conversion_type_params": null,
+        "cumulative_type_params": null,
+        "input_measures": [
+         {
+          "name": "cost",
+          "filter": null,
+          "alias": null,
+          "join_to_timespine": false,
+          "fill_nulls_with": null
+         }
+        ]
+       },
+       "filter": null,
+       "metadata": null,
+       "label": "Cost",
+       "config": {
+        "meta": {}
+       },
+       "time_granularity": null
+      },
+      {
+       "name": "gross_profit",
+       "description": "Revenue minus cost.",
+       "type": "simple",
+       "type_params": {
+        "measure": {
+         "name": "gross_profit",
+         "filter": null,
+         "alias": null,
+         "join_to_timespine": false,
+         "fill_nulls_with": null
+        },
+        "numerator": null,
+        "denominator": null,
+        "expr": null,
+        "window": null,
+        "grain_to_date": null,
+        "metrics": [],
+        "conversion_type_params": null,
+        "cumulative_type_params": null,
+        "input_measures": [
+         {
+          "name": "gross_profit",
+          "filter": null,
+          "alias": null,
+          "join_to_timespine": false,
+          "fill_nulls_with": null
+         }
+        ]
+       },
+       "filter": null,
+       "metadata": null,
+       "label": "Gross profit",
+       "config": {
+        "meta": {}
+       },
+       "time_granularity": null
+      },
+      {
+       "name": "quantity_sold",
+       "description": "Total units sold.",
+       "type": "simple",
+       "type_params": {
+        "measure": {
+         "name": "quantity_sold",
+         "filter": null,
+         "alias": null,
+         "join_to_timespine": false,
+         "fill_nulls_with": null
+        },
+        "numerator": null,
+        "denominator": null,
+        "expr": null,
+        "window": null,
+        "grain_to_date": null,
+        "metrics": [],
+        "conversion_type_params": null,
+        "cumulative_type_params": null,
+        "input_measures": [
+         {
+          "name": "quantity_sold",
+          "filter": null,
+          "alias": null,
+          "join_to_timespine": false,
+          "fill_nulls_with": null
+         }
+        ]
+       },
+       "filter": null,
+       "metadata": null,
+       "label": "Quantity sold",
+       "config": {
+        "meta": {}
+       },
+       "time_granularity": null
+      },
+      {
+       "name": "discount",
+       "description": "Total discount granted.",
+       "type": "simple",
+       "type_params": {
+        "measure": {
+         "name": "discount",
+         "filter": null,
+         "alias": null,
+         "join_to_timespine": false,
+         "fill_nulls_with": null
+        },
+        "numerator": null,
+        "denominator": null,
+        "expr": null,
+        "window": null,
+        "grain_to_date": null,
+        "metrics": [],
+        "conversion_type_params": null,
+        "cumulative_type_params": null,
+        "input_measures": [
+         {
+          "name": "discount",
+          "filter": null,
+          "alias": null,
+          "join_to_timespine": false,
+          "fill_nulls_with": null
+         }
+        ]
+       },
+       "filter": null,
+       "metadata": null,
+       "label": "Discount",
+       "config": {
+        "meta": {}
+       },
+       "time_granularity": null
+      },
+      {
+       "name": "orders",
+       "description": "Number of distinct orders.",
+       "type": "simple",
+       "type_params": {
+        "measure": {
+         "name": "order_count",
+         "filter": null,
+         "alias": null,
+         "join_to_timespine": false,
+         "fill_nulls_with": null
+        },
+        "numerator": null,
+        "denominator": null,
+        "expr": null,
+        "window": null,
+        "grain_to_date": null,
+        "metrics": [],
+        "conversion_type_params": null,
+        "cumulative_type_params": null,
+        "input_measures": [
+         {
+          "name": "order_count",
+          "filter": null,
+          "alias": null,
+          "join_to_timespine": false,
+          "fill_nulls_with": null
+         }
+        ]
+       },
+       "filter": null,
+       "metadata": null,
+       "label": "Orders",
+       "config": {
+        "meta": {}
+       },
+       "time_granularity": null
+      },
+      {
+       "name": "active_customers",
+       "description": "Distinct customers who placed at least one order.",
+       "type": "simple",
+       "type_params": {
+        "measure": {
+         "name": "customer_count",
+         "filter": null,
+         "alias": null,
+         "join_to_timespine": false,
+         "fill_nulls_with": null
+        },
+        "numerator": null,
+        "denominator": null,
+        "expr": null,
+        "window": null,
+        "grain_to_date": null,
+        "metrics": [],
+        "conversion_type_params": null,
+        "cumulative_type_params": null,
+        "input_measures": [
+         {
+          "name": "customer_count",
+          "filter": null,
+          "alias": null,
+          "join_to_timespine": false,
+          "fill_nulls_with": null
+         }
+        ]
+       },
+       "filter": null,
+       "metadata": null,
+       "label": "Active customers",
+       "config": {
+        "meta": {}
+       },
+       "time_granularity": null
+      },
+      {
+       "name": "completed_revenue",
+       "description": "Revenue from completed orders only.",
+       "type": "simple",
+       "type_params": {
+        "measure": {
+         "name": "revenue",
+         "filter": null,
+         "alias": null,
+         "join_to_timespine": false,
+         "fill_nulls_with": null
+        },
+        "numerator": null,
+        "denominator": null,
+        "expr": null,
+        "window": null,
+        "grain_to_date": null,
+        "metrics": [],
+        "conversion_type_params": null,
+        "cumulative_type_params": null,
+        "input_measures": [
+         {
+          "name": "revenue",
+          "filter": null,
+          "alias": null,
+          "join_to_timespine": false,
+          "fill_nulls_with": null
+         }
+        ]
+       },
+       "filter": {
+        "where_filters": [
+         {
+          "where_sql_template": "{{ Dimension('sales__status') }} = 'completed'"
+         }
+        ]
+       },
+       "metadata": null,
+       "label": "Completed revenue",
+       "config": {
+        "meta": {}
+       },
+       "time_granularity": null
+      },
+      {
+       "name": "returned_orders",
+       "description": "Orders that were returned.",
+       "type": "simple",
+       "type_params": {
+        "measure": {
+         "name": "order_count",
+         "filter": null,
+         "alias": null,
+         "join_to_timespine": false,
+         "fill_nulls_with": null
+        },
+        "numerator": null,
+        "denominator": null,
+        "expr": null,
+        "window": null,
+        "grain_to_date": null,
+        "metrics": [],
+        "conversion_type_params": null,
+        "cumulative_type_params": null,
+        "input_measures": [
+         {
+          "name": "order_count",
+          "filter": null,
+          "alias": null,
+          "join_to_timespine": false,
+          "fill_nulls_with": null
+         }
+        ]
+       },
+       "filter": {
+        "where_filters": [
+         {
+          "where_sql_template": "{{ Dimension('sales__status') }} = 'returned'"
+         }
+        ]
+       },
+       "metadata": null,
+       "label": "Returned orders",
+       "config": {
+        "meta": {}
+       },
+       "time_granularity": null
+      },
+      {
+       "name": "gross_margin_rate",
+       "description": "Gross profit divided by revenue.",
+       "type": "ratio",
+       "type_params": {
+        "measure": null,
+        "numerator": {
+         "name": "gross_profit",
+         "filter": null,
+         "alias": null,
+         "offset_window": null,
+         "offset_to_grain": null
+        },
+        "denominator": {
+         "name": "revenue",
+         "filter": null,
+         "alias": null,
+         "offset_window": null,
+         "offset_to_grain": null
+        },
+        "expr": null,
+        "window": null,
+        "grain_to_date": null,
+        "metrics": [],
+        "conversion_type_params": null,
+        "cumulative_type_params": null,
+        "input_measures": [
+         {
+          "name": "gross_profit",
+          "filter": null,
+          "alias": null,
+          "join_to_timespine": false,
+          "fill_nulls_with": null
+         },
+         {
+          "name": "revenue",
+          "filter": null,
+          "alias": null,
+          "join_to_timespine": false,
+          "fill_nulls_with": null
+         }
+        ]
+       },
+       "filter": null,
+       "metadata": null,
+       "label": "Gross margin rate",
+       "config": {
+        "meta": {}
+       },
+       "time_granularity": null
+      },
+      {
+       "name": "average_order_value",
+       "description": "Revenue per order (AOV).",
+       "type": "ratio",
+       "type_params": {
+        "measure": null,
+        "numerator": {
+         "name": "revenue",
+         "filter": null,
+         "alias": null,
+         "offset_window": null,
+         "offset_to_grain": null
+        },
+        "denominator": {
+         "name": "orders",
+         "filter": null,
+         "alias": null,
+         "offset_window": null,
+         "offset_to_grain": null
+        },
+        "expr": null,
+        "window": null,
+        "grain_to_date": null,
+        "metrics": [],
+        "conversion_type_params": null,
+        "cumulative_type_params": null,
+        "input_measures": [
+         {
+          "name": "revenue",
+          "filter": null,
+          "alias": null,
+          "join_to_timespine": false,
+          "fill_nulls_with": null
+         },
+         {
+          "name": "order_count",
+          "filter": null,
+          "alias": null,
+          "join_to_timespine": false,
+          "fill_nulls_with": null
+         }
+        ]
+       },
+       "filter": null,
+       "metadata": null,
+       "label": "Average order value",
+       "config": {
+        "meta": {}
+       },
+       "time_granularity": null
+      },
+      {
+       "name": "return_rate",
+       "description": "Share of orders that were returned, in percent.",
+       "type": "derived",
+       "type_params": {
+        "measure": null,
+        "numerator": null,
+        "denominator": null,
+        "expr": "returned_orders / nullif(orders, 0) * 100",
+        "window": null,
+        "grain_to_date": null,
+        "metrics": [
+         {
+          "name": "returned_orders",
+          "filter": null,
+          "alias": null,
+          "offset_window": null,
+          "offset_to_grain": null
+         },
+         {
+          "name": "orders",
+          "filter": null,
+          "alias": null,
+          "offset_window": null,
+          "offset_to_grain": null
+         }
+        ],
+        "conversion_type_params": null,
+        "cumulative_type_params": null,
+        "input_measures": [
+         {
+          "name": "order_count",
+          "filter": null,
+          "alias": null,
+          "join_to_timespine": false,
+          "fill_nulls_with": null
+         }
+        ]
+       },
+       "filter": null,
+       "metadata": null,
+       "label": "Return rate (%)",
+       "config": {
+        "meta": {}
+       },
+       "time_granularity": null
+      },
+      {
+       "name": "purchasing_customers",
+       "description": "Customers who have placed at least one order (loyalty denominator).",
+       "type": "simple",
+       "type_params": {
+        "measure": {
+         "name": "purchasing_customer_count",
+         "filter": null,
+         "alias": null,
+         "join_to_timespine": false,
+         "fill_nulls_with": null
+        },
+        "numerator": null,
+        "denominator": null,
+        "expr": null,
+        "window": null,
+        "grain_to_date": null,
+        "metrics": [],
+        "conversion_type_params": null,
+        "cumulative_type_params": null,
+        "input_measures": [
+         {
+          "name": "purchasing_customer_count",
+          "filter": null,
+          "alias": null,
+          "join_to_timespine": false,
+          "fill_nulls_with": null
+         }
+        ]
+       },
+       "filter": null,
+       "metadata": null,
+       "label": "Purchasing customers",
+       "config": {
+        "meta": {}
+       },
+       "time_granularity": null
+      },
+      {
+       "name": "repeat_customers",
+       "description": "Customers who ordered on more than one occasion.",
+       "type": "simple",
+       "type_params": {
+        "measure": {
+         "name": "purchasing_customer_count",
+         "filter": null,
+         "alias": null,
+         "join_to_timespine": false,
+         "fill_nulls_with": null
+        },
+        "numerator": null,
+        "denominator": null,
+        "expr": null,
+        "window": null,
+        "grain_to_date": null,
+        "metrics": [],
+        "conversion_type_params": null,
+        "cumulative_type_params": null,
+        "input_measures": [
+         {
+          "name": "purchasing_customer_count",
+          "filter": null,
+          "alias": null,
+          "join_to_timespine": false,
+          "fill_nulls_with": null
+         }
+        ]
+       },
+       "filter": {
+        "where_filters": [
+         {
+          "where_sql_template": "{{ Dimension('customer__is_repeat_customer') }} = true"
+         }
+        ]
+       },
+       "metadata": null,
+       "label": "Repeat customers",
+       "config": {
+        "meta": {}
+       },
+       "time_granularity": null
+      },
+      {
+       "name": "repeat_customer_rate",
+       "description": "Share of purchasing customers who ordered more than once (0-1).",
+       "type": "ratio",
+       "type_params": {
+        "measure": null,
+        "numerator": {
+         "name": "repeat_customers",
+         "filter": null,
+         "alias": null,
+         "offset_window": null,
+         "offset_to_grain": null
+        },
+        "denominator": {
+         "name": "purchasing_customers",
+         "filter": null,
+         "alias": null,
+         "offset_window": null,
+         "offset_to_grain": null
+        },
+        "expr": null,
+        "window": null,
+        "grain_to_date": null,
+        "metrics": [],
+        "conversion_type_params": null,
+        "cumulative_type_params": null,
+        "input_measures": [
+         {
+          "name": "purchasing_customer_count",
+          "filter": null,
+          "alias": null,
+          "join_to_timespine": false,
+          "fill_nulls_with": null
+         }
+        ]
+       },
+       "filter": null,
+       "metadata": null,
+       "label": "Repeat customer rate",
+       "config": {
+        "meta": {}
+       },
+       "time_granularity": null
+      }
+     ],
+     "project_configuration": {
+      "time_spine_table_configurations": [],
+      "metadata": null,
+      "dsi_package_version": {
+       "major_version": "0",
+       "minor_version": "9",
+       "patch_version": "0"
+      },
+      "time_spines": [
+       {
+        "node_relation": {
+         "alias": "dim_dates",
+         "schema_name": "gold",
+         "database": "warehouse",
+         "relation_name": "\"warehouse\".\"gold\".\"dim_dates\""
+        },
+        "primary_column": {
+         "name": "date_day",
+         "time_granularity": "day"
+        },
+        "custom_granularities": []
+       }
+      ]
+     },
+     "saved_queries": []
+    },
+    "native_dimensions:completed_revenue": {
+     "dimensions": [
+      "customer__city",
+      "customer__country",
+      "customer__is_repeat_customer",
+      "customer__last_order_date",
+      "customer__signup_date",
+      "metric_time",
+      "product__category",
+      "product__product_name",
+      "sales__channel",
+      "sales__order_date",
+      "sales__status",
+      "store__store_city",
+      "store__store_country"
+     ],
+     "exit_code": 0,
+     "stdout_sha256": "183dd24a389bd8afd12e20576dba17d77aae0e9dd53e7391bfdba0de9a891b97"
+    },
+    "distinct_values:gold.fact_sales.status": [
+     "cancelled",
+     "completed",
+     "returned"
+    ],
+    "estate_fingerprint": "af2fd0215120425aa71c3a2075d2057e227d8f0f50824403c06c899ce17b6566",
+    "native_query:[\"completed_revenue\", [\"metric_time__year\"], []]": {
+     "ok": true,
+     "rows": [
+      {
+       "metric_time__year": "2025-01-01 00:00:00",
+       "completed_revenue": "1477833.96"
+      },
+      {
+       "metric_time__year": "2024-01-01 00:00:00",
+       "completed_revenue": "1707052.8"
+      },
+      {
+       "metric_time__year": "2026-01-01 00:00:00",
+       "completed_revenue": "792441.45"
+      }
+     ],
+     "receipt": {
+      "argv": [
+       "mf",
+       "query",
+       "--metrics",
+       "completed_revenue",
+       "--group-by",
+       "metric_time__year",
+       "--csv",
+       "<csv>"
+      ],
+      "cwd": "<upstream>/dbt/retail_dwh",
+      "env": {
+       "DBT_PROFILES_DIR": "<upstream>/dbt/retail_dwh",
+       "WAREHOUSE_DB": "<upstream>/data/warehouse.duckdb"
+      },
+      "exit_code": 0,
+      "elapsed_s": 3.177,
+      "stdout": "‼️ Warning: A new version of the MetricFlow CLI is available.\n💡 Please update to version 0.15.0, released 2026-09-10 20:36:50 by running:\n\t$ pip install --upgrade dbt-metricflow\n\n\n\n⠋ Initiating query…\n\n⠙ Initiating query…\n✔ Success 🦄 - query completed after 0.07 seconds\n🖨 Wrote query output to /tmp/tmp3zlka1hk/result.csv\n\n",
+      "stderr": "",
+      "stdout_sha256": "25b3bf536bcabb05d0cff8e9b67e27d430a1a37042bfce0a8647672c82c0ac6b",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "csv_written": true,
+      "csv_sha256": "af291de3ddf3689bc009db5bae011258f4c8f1cdd3df501df00650c922e309dd",
+      "fingerprints_before": {
+       "semantic_manifest_sha256": "e8e9bfc7e1188bc3eb3f5ac551e8ed5350817af14a5471bdbcdfdca2bc01bd48",
+       "dbt_manifest_sha256": "0c4ff334ef2750e4e81e3ebd44667d7679d8d98543933b8410018aa4dc9d9d10",
+       "warehouse_sha256": "b5ad8415eb58d74053f219c40c0320a94a790c2aceab475e51f52594ecb41c7c",
+       "warehouse_bytes": 3420160
+      },
+      "fingerprints_after": {
+       "semantic_manifest_sha256": "e8e9bfc7e1188bc3eb3f5ac551e8ed5350817af14a5471bdbcdfdca2bc01bd48",
+       "dbt_manifest_sha256": "0c4ff334ef2750e4e81e3ebd44667d7679d8d98543933b8410018aa4dc9d9d10",
+       "warehouse_sha256": "b5ad8415eb58d74053f219c40c0320a94a790c2aceab475e51f52594ecb41c7c",
+       "warehouse_bytes": 3420160
+      },
+      "mf_identity": {
+       "mf_path": "<upstream>/.venv/bin/mf",
+       "mf_sha256": "c8ba59f23488eaf619cb2c0fde39544bc40d011de46b16b613e084fe6bb120bf",
+       "record_entry": "../../../bin/mf",
+       "record_hash": "sha256=yLpZ8jSI6vYZyywP3jlUS8QNAR3kaxa2E-CE_muxIL8",
+       "distribution": "dbt_metricflow-0.13.0.dist-info",
+       "versions": {
+        "dbt-metricflow": "0.13.0",
+        "metricflow": "0.211.0",
+        "dbt-core": "1.11.11",
+        "dbt-duckdb": "1.10.1",
+        "dbt-semantic-interfaces": "0.9.0",
+        "duckdb": "1.5.4"
+       }
+      }
+     }
+    },
+    "oracle:[\"P_LINE_AMOUNT\", \"P_STATUS_COMPLETED\", \"P_YEAR_BY_ORDER_DATE\"]": {
+     "computable": true,
+     "by_year": {
+      "2024": "1707052.80",
+      "2025": "1477833.96",
+      "2026": "792441.45"
+     },
+     "method": "own stdlib loop over raw CSVs",
+     "e0_crosscheck_by_year": {
+      "2024": "1707052.80",
+      "2025": "1477833.96",
+      "2026": "792441.45"
+     },
+     "own_equals_e0_crosscheck": true
+    }
+   }
+  },
+  "B1": {
+   "result": {
+    "required": {
+     "P_LINE_AMOUNT": "B_LINE_AMOUNT",
+     "P_STATUS_COMPLETED": "B_STATUS",
+     "P_YEAR_BY_ORDER_DATE": "B_YEAR",
+     "P_UNIT_PRICE_GE_100": "B_UNIT_PRICE"
+    },
+    "predicates": {
+     "P_LINE_AMOUNT": {
+      "predicate": "P_LINE_AMOUNT",
+      "kind": "measure_sum",
+      "fact_kind": "order_line_amount",
+      "binding": {
+       "semantic": {
+        "measure": "revenue",
+        "semantic_model": "sales"
+       },
+       "physical": "gold.fact_sales.revenue"
+      },
+      "designated_fields": [
+       "gold.fact_sales.revenue"
+      ],
+      "designated_fields_present": [
+       "gold.fact_sales.revenue"
+      ],
+      "physical_present": true,
+      "semantic_resolution": {
+       "model": "sales",
+       "relation": "gold.fact_sales",
+       "measure_expr": "revenue",
+       "agg": "sum"
+      },
+      "status": "BOUND_AND_EXPOSED"
+     },
+     "P_STATUS_COMPLETED": {
+      "predicate": "P_STATUS_COMPLETED",
+      "kind": "categorical_equals",
+      "fact_kind": "order_status_label",
+      "binding": {
+       "semantic": {
+        "dimension": "sales__status"
+       },
+       "physical": "gold.fact_sales.status"
+      },
+      "designated_fields": [
+       "gold.fact_sales.status"
+      ],
+      "designated_fields_present": [
+       "gold.fact_sales.status"
+      ],
+      "physical_present": true,
+      "in_native_dimension_list": true,
+      "semantic_resolution": {
+       "model": "sales",
+       "relation": "gold.fact_sales",
+       "dimension_column": "status",
+       "type": "categorical"
+      },
+      "observed_values": [
+       "cancelled",
+       "completed",
+       "returned"
+      ],
+      "status": "BOUND_AND_EXPOSED"
+     },
+     "P_YEAR_BY_ORDER_DATE": {
+      "predicate": "P_YEAR_BY_ORDER_DATE",
+      "kind": "time_grain",
+      "fact_kind": "order_date",
+      "binding": {
+       "semantic": {
+        "time_dimension": "sales__order_date"
+       },
+       "physical": "gold.fact_sales.order_date"
+      },
+      "designated_fields": [
+       "gold.fact_sales.order_date"
+      ],
+      "designated_fields_present": [
+       "gold.fact_sales.order_date"
+      ],
+      "physical_present": true,
+      "in_native_dimension_list": true,
+      "semantic_resolution": {
+       "model": "sales",
+       "relation": "gold.fact_sales",
+       "dimension_column": "order_date",
+       "type": "time"
+      },
+      "status": "BOUND_AND_EXPOSED"
+     },
+     "P_UNIT_PRICE_GE_100": {
+      "predicate": "P_UNIT_PRICE_GE_100",
+      "kind": "numeric_threshold",
+      "fact_kind": "order_line_charged_unit_price",
+      "binding": {
+       "semantic": {
+        "dimension": "sales__unit_price"
+       },
+       "physical": "gold.fact_sales.unit_price"
+      },
+      "designated_fields": [
+       "gold.fact_sales.unit_price"
+      ],
+      "designated_fields_present": [
+       "gold.fact_sales.unit_price"
+      ],
+      "physical_present": true,
+      "in_native_dimension_list": false,
+      "catalog_scan_exposing_physical_column": [],
+      "status": "PRESENT_IN_SOURCE_NOT_EXPOSED",
+      "reason": "gold.fact_sales.unit_price exists and is designated, but no semantic object exposes it for completed_revenue",
+      "native_exposure_probe": {
+       "where": "{{ Dimension('sales__unit_price') }} >= 100.00",
+       "accepted": false,
+       "exit_code": 1,
+       "argv": [
+        "mf",
+        "query",
+        "--metrics",
+        "completed_revenue",
+        "--where",
+        "{{ Dimension('sales__unit_price') }} >= 100.00",
+        "--csv",
+        "<csv>"
+       ]
+      }
+     }
+    },
+    "uncovered": [
+     "P_UNIT_PRICE_GE_100"
+    ],
+    "metric_consistency_problems": [],
+    "estate_fingerprint": {
+     "live": "af2fd0215120425aa71c3a2075d2057e227d8f0f50824403c06c899ce17b6566",
+     "frozen": "af2fd0215120425aa71c3a2075d2057e227d8f0f50824403c06c899ce17b6566",
+     "equal": true
+    },
+    "covered_subset_native": {
+     "plan": {
+      "metric": "completed_revenue",
+      "group_by": [
+       "metric_time__year"
+      ],
+      "where": []
+     },
+     "ok": true,
+     "receipt_argv": [
+      "mf",
+      "query",
+      "--metrics",
+      "completed_revenue",
+      "--group-by",
+      "metric_time__year",
+      "--csv",
+      "<csv>"
+     ],
+     "exit_code": 0,
+     "csv_sha256": "af291de3ddf3689bc009db5bae011258f4c8f1cdd3df501df00650c922e309dd",
+     "by_year": {
+      "2025": "1477833.96",
+      "2024": "1707052.80",
+      "2026": "792441.45"
+     },
+     "label": "COVERED SUBSET ONLY: does not cover P_UNIT_PRICE_GE_100"
+    },
+    "case_status": "PRESENT_IN_SOURCE_NOT_EXPOSED",
+    "verified_for_recorded_checks": false
+   },
+   "summary": {
+    "case_status": "PRESENT_IN_SOURCE_NOT_EXPOSED",
+    "verified_for_recorded_checks": false,
+    "predicates": {
+     "P_LINE_AMOUNT": "BOUND_AND_EXPOSED",
+     "P_STATUS_COMPLETED": "BOUND_AND_EXPOSED",
+     "P_YEAR_BY_ORDER_DATE": "BOUND_AND_EXPOSED",
+     "P_UNIT_PRICE_GE_100": "PRESENT_IN_SOURCE_NOT_EXPOSED"
+    },
+    "uncovered": [
+     "P_UNIT_PRICE_GE_100"
+    ],
+    "metric_consistency_problems": []
+   },
+   "transcript": {
+    "warehouse_columns": [
+     "bronze.customers.city",
+     "bronze.customers.country",
+     "bronze.customers.customer_id",
+     "bronze.customers.email",
+     "bronze.customers.first_name",
+     "bronze.customers.last_name",
+     "bronze.customers.signup_date",
+     "bronze.order_events.channel",
+     "bronze.order_events.customer_id",
+     "bronze.order_events.event_id",
+     "bronze.order_events.event_ts",
+     "bronze.order_events.order_id",
+     "bronze.order_events.order_item_id",
+     "bronze.order_events.product_id",
+     "bronze.order_events.quantity",
+     "bronze.order_events.status",
+     "bronze.order_events.store_id",
+     "bronze.order_events.unit_price",
+     "bronze.order_items.order_id",
+     "bronze.order_items.order_item_id",
+     "bronze.order_items.product_id",
+     "bronze.order_items.quantity",
+     "bronze.order_items.unit_price",
+     "bronze.orders.channel",
+     "bronze.orders.customer_id",
+     "bronze.orders.order_date",
+     "bronze.orders.order_id",
+     "bronze.orders.status",
+     "bronze.orders.store_id",
+     "bronze.products.category",
+     "bronze.products.list_price",
+     "bronze.products.product_id",
+     "bronze.products.product_name",
+     "bronze.products.unit_cost",
+     "bronze.stores.city",
+     "bronze.stores.country",
+     "bronze.stores.store_id",
+     "bronze.stores.store_name",
+     "gold.dim_customers.city",
+     "gold.dim_customers.country",
+     "gold.dim_customers.customer_id",
+     "gold.dim_customers.email",
+     "gold.dim_customers.first_name",
+     "gold.dim_customers.full_name",
+     "gold.dim_customers.last_name",
+     "gold.dim_customers.signup_date",
+     "gold.dim_dates.date_day",
+     "gold.dim_dates.date_id",
+     "gold.dim_dates.day_name",
+     "gold.dim_dates.day_of_week",
+     "gold.dim_dates.is_weekend",
+     "gold.dim_dates.month",
+     "gold.dim_dates.month_name",
+     "gold.dim_dates.quarter",
+     "gold.dim_dates.quarter_name",
+     "gold.dim_dates.week_of_year",
+     "gold.dim_dates.year",
+     "gold.dim_products.category",
+     "gold.dim_products.list_price",
+     "gold.dim_products.margin_rate",
+     "gold.dim_products.product_id",
+     "gold.dim_products.product_name",
+     "gold.dim_products.unit_cost",
+     "gold.dim_products.unit_margin",
+     "gold.dim_stores.city",
+     "gold.dim_stores.country",
+     "gold.dim_stores.store_id",
+     "gold.dim_stores.store_name",
+     "gold.fact_customer_orders.customer_id",
+     "gold.fact_customer_orders.is_repeat_customer",
+     "gold.fact_customer_orders.last_order_date",
+     "gold.fact_customer_orders.order_count",
+     "gold.fact_sales.channel",
+     "gold.fact_sales.cost_amount",
+     "gold.fact_sales.customer_id",
+     "gold.fact_sales.date_id",
+     "gold.fact_sales.discount_amount",
+     "gold.fact_sales.is_cancelled",
+     "gold.fact_sales.is_completed",
+     "gold.fact_sales.is_returned",
+     "gold.fact_sales.order_date",
+     "gold.fact_sales.order_id",
+     "gold.fact_sales.product_id",
+     "gold.fact_sales.profit",
+     "gold.fact_sales.quantity",
+     "gold.fact_sales.revenue",
+     "gold.fact_sales.sales_id",
+     "gold.fact_sales.status",
+     "gold.fact_sales.store_id",
+     "gold.fact_sales.unit_cost",
+     "gold.fact_sales.unit_price",
+     "gold.fact_sales_live.channel",
+     "gold.fact_sales_live.cost_amount",
+     "gold.fact_sales_live.customer_id",
+     "gold.fact_sales_live.date_id",
+     "gold.fact_sales_live.discount_amount",
+     "gold.fact_sales_live.event_date",
+     "gold.fact_sales_live.event_id",
+     "gold.fact_sales_live.event_ts",
+     "gold.fact_sales_live.is_cancelled",
+     "gold.fact_sales_live.is_completed",
+     "gold.fact_sales_live.is_returned",
+     "gold.fact_sales_live.order_id",
+     "gold.fact_sales_live.order_item_id",
+     "gold.fact_sales_live.product_id",
+     "gold.fact_sales_live.profit",
+     "gold.fact_sales_live.quantity",
+     "gold.fact_sales_live.revenue",
+     "gold.fact_sales_live.status",
+     "gold.fact_sales_live.store_id",
+     "gold.fact_sales_live.unit_cost",
+     "gold.fact_sales_live.unit_price",
+     "gold.rt_freshness.as_of",
+     "gold.rt_freshness.freshness_seconds",
+     "gold.rt_freshness.last_event_ts",
+     "gold.rt_freshness.no_events_yet",
+     "silver.stg_customers.city",
+     "silver.stg_customers.country",
+     "silver.stg_customers.customer_id",
+     "silver.stg_customers.email",
+     "silver.stg_customers.first_name",
+     "silver.stg_customers.last_name",
+     "silver.stg_customers.signup_date",
+     "silver.stg_order_events.channel",
+     "silver.stg_order_events.customer_id",
+     "silver.stg_order_events.event_id",
+     "silver.stg_order_events.event_ts",
+     "silver.stg_order_events.order_id",
+     "silver.stg_order_events.order_item_id",
+     "silver.stg_order_events.product_id",
+     "silver.stg_order_events.quantity",
+     "silver.stg_order_events.status",
+     "silver.stg_order_events.store_id",
+     "silver.stg_order_events.unit_price",
+     "silver.stg_order_items.order_id",
+     "silver.stg_order_items.order_item_id",
+     "silver.stg_order_items.product_id",
+     "silver.stg_order_items.quantity",
+     "silver.stg_order_items.unit_price",
+     "silver.stg_orders.channel",
+     "silver.stg_orders.customer_id",
+     "silver.stg_orders.order_date",
+     "silver.stg_orders.order_id",
+     "silver.stg_orders.status",
+     "silver.stg_orders.store_id",
+     "silver.stg_products.category",
+     "silver.stg_products.list_price",
+     "silver.stg_products.product_id",
+     "silver.stg_products.product_name",
+     "silver.stg_products.unit_cost",
+     "silver.stg_products.unit_margin",
+     "silver.stg_stores.city",
+     "silver.stg_stores.country",
+     "silver.stg_stores.store_id",
+     "silver.stg_stores.store_name"
+    ],
+    "semantic_manifest": {
+     "semantic_models": [
+      {
+       "name": "sales_live",
+       "defaults": {
+        "agg_time_dimension": "event_ts"
+       },
+       "description": "Near-real-time sales facts at order-line grain (streaming lane).",
+       "node_relation": {
+        "alias": "fact_sales_live",
+        "schema_name": "gold",
+        "database": "warehouse",
+        "relation_name": "\"warehouse\".\"gold\".\"fact_sales_live\""
+       },
+       "primary_entity": null,
+       "entities": [
+        {
+         "name": "sales_live",
+         "description": null,
+         "type": "primary",
+         "role": null,
+         "expr": "event_id",
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        },
+        {
+         "name": "order",
+         "description": null,
+         "type": "foreign",
+         "role": null,
+         "expr": "order_id",
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        },
+        {
+         "name": "customer",
+         "description": null,
+         "type": "foreign",
+         "role": null,
+         "expr": "customer_id",
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        },
+        {
+         "name": "product",
+         "description": null,
+         "type": "foreign",
+         "role": null,
+         "expr": "product_id",
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        },
+        {
+         "name": "store",
+         "description": null,
+         "type": "foreign",
+         "role": null,
+         "expr": "store_id",
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        }
+       ],
+       "measures": [
+        {
+         "name": "revenue_live_amount",
+         "agg": "sum",
+         "description": "Quantity x price charged, on streamed events.",
+         "create_metric": false,
+         "expr": "revenue",
+         "agg_params": null,
+         "metadata": null,
+         "non_additive_dimension": null,
+         "agg_time_dimension": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        },
+        {
+         "name": "gross_profit_live_amount",
+         "agg": "sum",
+         "description": null,
+         "create_metric": false,
+         "expr": "profit",
+         "agg_params": null,
+         "metadata": null,
+         "non_additive_dimension": null,
+         "agg_time_dimension": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        },
+        {
+         "name": "quantity_live_amount",
+         "agg": "sum",
+         "description": null,
+         "create_metric": false,
+         "expr": "quantity",
+         "agg_params": null,
+         "metadata": null,
+         "non_additive_dimension": null,
+         "agg_time_dimension": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        },
+        {
+         "name": "order_count_live_distinct",
+         "agg": "count_distinct",
+         "description": "Distinct live orders.",
+         "create_metric": false,
+         "expr": "order_id",
+         "agg_params": null,
+         "metadata": null,
+         "non_additive_dimension": null,
+         "agg_time_dimension": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        }
+       ],
+       "dimensions": [
+        {
+         "name": "event_ts",
+         "description": "Event timestamp — enables 'last N minutes' windows.",
+         "type": "time",
+         "is_partition": false,
+         "type_params": {
+          "time_granularity": "minute",
+          "validity_params": null
+         },
+         "expr": null,
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        },
+        {
+         "name": "channel",
+         "description": null,
+         "type": "categorical",
+         "is_partition": false,
+         "type_params": null,
+         "expr": null,
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        },
+        {
+         "name": "status",
+         "description": null,
+         "type": "categorical",
+         "is_partition": false,
+         "type_params": null,
+         "expr": null,
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        }
+       ],
+       "label": null,
+       "metadata": null,
+       "config": {
+        "meta": {}
+       }
+      },
+      {
+       "name": "sales",
+       "defaults": {
+        "agg_time_dimension": "order_date"
+       },
+       "description": "Sales facts at order-line grain.",
+       "node_relation": {
+        "alias": "fact_sales",
+        "schema_name": "gold",
+        "database": "warehouse",
+        "relation_name": "\"warehouse\".\"gold\".\"fact_sales\""
+       },
+       "primary_entity": null,
+       "entities": [
+        {
+         "name": "sales",
+         "description": null,
+         "type": "primary",
+         "role": null,
+         "expr": "sales_id",
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        },
+        {
+         "name": "order",
+         "description": null,
+         "type": "foreign",
+         "role": null,
+         "expr": "order_id",
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        },
+        {
+         "name": "customer",
+         "description": null,
+         "type": "foreign",
+         "role": null,
+         "expr": "customer_id",
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        },
+        {
+         "name": "product",
+         "description": null,
+         "type": "foreign",
+         "role": null,
+         "expr": "product_id",
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        },
+        {
+         "name": "store",
+         "description": null,
+         "type": "foreign",
+         "role": null,
+         "expr": "store_id",
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        }
+       ],
+       "measures": [
+        {
+         "name": "revenue",
+         "agg": "sum",
+         "description": "Quantity x price charged.",
+         "create_metric": false,
+         "expr": "revenue",
+         "agg_params": null,
+         "metadata": null,
+         "non_additive_dimension": null,
+         "agg_time_dimension": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        },
+        {
+         "name": "cost",
+         "agg": "sum",
+         "description": null,
+         "create_metric": false,
+         "expr": "cost_amount",
+         "agg_params": null,
+         "metadata": null,
+         "non_additive_dimension": null,
+         "agg_time_dimension": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        },
+        {
+         "name": "gross_profit",
+         "agg": "sum",
+         "description": null,
+         "create_metric": false,
+         "expr": "profit",
+         "agg_params": null,
+         "metadata": null,
+         "non_additive_dimension": null,
+         "agg_time_dimension": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        },
+        {
+         "name": "quantity_sold",
+         "agg": "sum",
+         "description": null,
+         "create_metric": false,
+         "expr": "quantity",
+         "agg_params": null,
+         "metadata": null,
+         "non_additive_dimension": null,
+         "agg_time_dimension": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        },
+        {
+         "name": "discount",
+         "agg": "sum",
+         "description": null,
+         "create_metric": false,
+         "expr": "discount_amount",
+         "agg_params": null,
+         "metadata": null,
+         "non_additive_dimension": null,
+         "agg_time_dimension": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        },
+        {
+         "name": "order_count",
+         "agg": "count_distinct",
+         "description": "Distinct orders.",
+         "create_metric": false,
+         "expr": "order_id",
+         "agg_params": null,
+         "metadata": null,
+         "non_additive_dimension": null,
+         "agg_time_dimension": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        },
+        {
+         "name": "customer_count",
+         "agg": "count_distinct",
+         "description": "Distinct customers who purchased.",
+         "create_metric": false,
+         "expr": "customer_id",
+         "agg_params": null,
+         "metadata": null,
+         "non_additive_dimension": null,
+         "agg_time_dimension": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        }
+       ],
+       "dimensions": [
+        {
+         "name": "order_date",
+         "description": null,
+         "type": "time",
+         "is_partition": false,
+         "type_params": {
+          "time_granularity": "day",
+          "validity_params": null
+         },
+         "expr": null,
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        },
+        {
+         "name": "channel",
+         "description": null,
+         "type": "categorical",
+         "is_partition": false,
+         "type_params": null,
+         "expr": null,
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        },
+        {
+         "name": "status",
+         "description": null,
+         "type": "categorical",
+         "is_partition": false,
+         "type_params": null,
+         "expr": null,
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        }
+       ],
+       "label": null,
+       "metadata": null,
+       "config": {
+        "meta": {}
+       }
+      },
+      {
+       "name": "customers",
+       "defaults": null,
+       "description": "Customer dimension.",
+       "node_relation": {
+        "alias": "dim_customers",
+        "schema_name": "gold",
+        "database": "warehouse",
+        "relation_name": "\"warehouse\".\"gold\".\"dim_customers\""
+       },
+       "primary_entity": null,
+       "entities": [
+        {
+         "name": "customer",
+         "description": null,
+         "type": "primary",
+         "role": null,
+         "expr": "customer_id",
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        }
+       ],
+       "measures": [],
+       "dimensions": [
+        {
+         "name": "country",
+         "description": null,
+         "type": "categorical",
+         "is_partition": false,
+         "type_params": null,
+         "expr": null,
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        },
+        {
+         "name": "city",
+         "description": null,
+         "type": "categorical",
+         "is_partition": false,
+         "type_params": null,
+         "expr": null,
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        },
+        {
+         "name": "signup_date",
+         "description": null,
+         "type": "time",
+         "is_partition": false,
+         "type_params": {
+          "time_granularity": "day",
+          "validity_params": null
+         },
+         "expr": null,
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        }
+       ],
+       "label": null,
+       "metadata": null,
+       "config": {
+        "meta": {}
+       }
+      },
+      {
+       "name": "products",
+       "defaults": null,
+       "description": "Product dimension.",
+       "node_relation": {
+        "alias": "dim_products",
+        "schema_name": "gold",
+        "database": "warehouse",
+        "relation_name": "\"warehouse\".\"gold\".\"dim_products\""
+       },
+       "primary_entity": null,
+       "entities": [
+        {
+         "name": "product",
+         "description": null,
+         "type": "primary",
+         "role": null,
+         "expr": "product_id",
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        }
+       ],
+       "measures": [],
+       "dimensions": [
+        {
+         "name": "category",
+         "description": null,
+         "type": "categorical",
+         "is_partition": false,
+         "type_params": null,
+         "expr": null,
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        },
+        {
+         "name": "product_name",
+         "description": null,
+         "type": "categorical",
+         "is_partition": false,
+         "type_params": null,
+         "expr": null,
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        }
+       ],
+       "label": null,
+       "metadata": null,
+       "config": {
+        "meta": {}
+       }
+      },
+      {
+       "name": "stores",
+       "defaults": null,
+       "description": "Store dimension.",
+       "node_relation": {
+        "alias": "dim_stores",
+        "schema_name": "gold",
+        "database": "warehouse",
+        "relation_name": "\"warehouse\".\"gold\".\"dim_stores\""
+       },
+       "primary_entity": null,
+       "entities": [
+        {
+         "name": "store",
+         "description": null,
+         "type": "primary",
+         "role": null,
+         "expr": "store_id",
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        }
+       ],
+       "measures": [],
+       "dimensions": [
+        {
+         "name": "store_country",
+         "description": null,
+         "type": "categorical",
+         "is_partition": false,
+         "type_params": null,
+         "expr": "country",
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        },
+        {
+         "name": "store_city",
+         "description": null,
+         "type": "categorical",
+         "is_partition": false,
+         "type_params": null,
+         "expr": "city",
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        }
+       ],
+       "label": null,
+       "metadata": null,
+       "config": {
+        "meta": {}
+       }
+      },
+      {
+       "name": "customer_orders",
+       "defaults": {
+        "agg_time_dimension": "last_order_date"
+       },
+       "description": "Per-customer order summary — basis for loyalty metrics.",
+       "node_relation": {
+        "alias": "fact_customer_orders",
+        "schema_name": "gold",
+        "database": "warehouse",
+        "relation_name": "\"warehouse\".\"gold\".\"fact_customer_orders\""
+       },
+       "primary_entity": null,
+       "entities": [
+        {
+         "name": "customer",
+         "description": null,
+         "type": "primary",
+         "role": null,
+         "expr": "customer_id",
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        }
+       ],
+       "measures": [
+        {
+         "name": "purchasing_customer_count",
+         "agg": "count_distinct",
+         "description": "Distinct customers who placed at least one order.",
+         "create_metric": false,
+         "expr": "customer_id",
+         "agg_params": null,
+         "metadata": null,
+         "non_additive_dimension": null,
+         "agg_time_dimension": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        }
+       ],
+       "dimensions": [
+        {
+         "name": "is_repeat_customer",
+         "description": null,
+         "type": "categorical",
+         "is_partition": false,
+         "type_params": null,
+         "expr": null,
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        },
+        {
+         "name": "last_order_date",
+         "description": null,
+         "type": "time",
+         "is_partition": false,
+         "type_params": {
+          "time_granularity": "day",
+          "validity_params": null
+         },
+         "expr": null,
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        }
+       ],
+       "label": null,
+       "metadata": null,
+       "config": {
+        "meta": {}
+       }
+      }
+     ],
+     "metrics": [
+      {
+       "name": "revenue_live",
+       "description": "Revenue from streamed events (near-real-time lane).",
+       "type": "simple",
+       "type_params": {
+        "measure": {
+         "name": "revenue_live_amount",
+         "filter": null,
+         "alias": null,
+         "join_to_timespine": false,
+         "fill_nulls_with": null
+        },
+        "numerator": null,
+        "denominator": null,
+        "expr": null,
+        "window": null,
+        "grain_to_date": null,
+        "metrics": [],
+        "conversion_type_params": null,
+        "cumulative_type_params": null,
+        "input_measures": [
+         {
+          "name": "revenue_live_amount",
+          "filter": null,
+          "alias": null,
+          "join_to_timespine": false,
+          "fill_nulls_with": null
+         }
+        ]
+       },
+       "filter": null,
+       "metadata": null,
+       "label": "Revenue (live)",
+       "config": {
+        "meta": {}
+       },
+       "time_granularity": null
+      },
+      {
+       "name": "gross_profit_live",
+       "description": "Gross profit from streamed events (near-real-time lane).",
+       "type": "simple",
+       "type_params": {
+        "measure": {
+         "name": "gross_profit_live_amount",
+         "filter": null,
+         "alias": null,
+         "join_to_timespine": false,
+         "fill_nulls_with": null
+        },
+        "numerator": null,
+        "denominator": null,
+        "expr": null,
+        "window": null,
+        "grain_to_date": null,
+        "metrics": [],
+        "conversion_type_params": null,
+        "cumulative_type_params": null,
+        "input_measures": [
+         {
+          "name": "gross_profit_live_amount",
+          "filter": null,
+          "alias": null,
+          "join_to_timespine": false,
+          "fill_nulls_with": null
+         }
+        ]
+       },
+       "filter": null,
+       "metadata": null,
+       "label": "Gross profit (live)",
+       "config": {
+        "meta": {}
+       },
+       "time_granularity": null
+      },
+      {
+       "name": "orders_live",
+       "description": "Number of distinct orders in the streaming lane.",
+       "type": "simple",
+       "type_params": {
+        "measure": {
+         "name": "order_count_live_distinct",
+         "filter": null,
+         "alias": null,
+         "join_to_timespine": false,
+         "fill_nulls_with": null
+        },
+        "numerator": null,
+        "denominator": null,
+        "expr": null,
+        "window": null,
+        "grain_to_date": null,
+        "metrics": [],
+        "conversion_type_params": null,
+        "cumulative_type_params": null,
+        "input_measures": [
+         {
+          "name": "order_count_live_distinct",
+          "filter": null,
+          "alias": null,
+          "join_to_timespine": false,
+          "fill_nulls_with": null
+         }
+        ]
+       },
+       "filter": null,
+       "metadata": null,
+       "label": "Orders (live)",
+       "config": {
+        "meta": {}
+       },
+       "time_granularity": null
+      },
+      {
+       "name": "average_order_value_live",
+       "description": "Revenue per order on streamed events (live AOV).",
+       "type": "ratio",
+       "type_params": {
+        "measure": null,
+        "numerator": {
+         "name": "revenue_live",
+         "filter": null,
+         "alias": null,
+         "offset_window": null,
+         "offset_to_grain": null
+        },
+        "denominator": {
+         "name": "orders_live",
+         "filter": null,
+         "alias": null,
+         "offset_window": null,
+         "offset_to_grain": null
+        },
+        "expr": null,
+        "window": null,
+        "grain_to_date": null,
+        "metrics": [],
+        "conversion_type_params": null,
+        "cumulative_type_params": null,
+        "input_measures": [
+         {
+          "name": "revenue_live_amount",
+          "filter": null,
+          "alias": null,
+          "join_to_timespine": false,
+          "fill_nulls_with": null
+         },
+         {
+          "name": "order_count_live_distinct",
+          "filter": null,
+          "alias": null,
+          "join_to_timespine": false,
+          "fill_nulls_with": null
+         }
+        ]
+       },
+       "filter": null,
+       "metadata": null,
+       "label": "Average order value (live)",
+       "config": {
+        "meta": {}
+       },
+       "time_granularity": null
+      },
+      {
+       "name": "revenue",
+       "description": "Total sales revenue.",
+       "type": "simple",
+       "type_params": {
+        "measure": {
+         "name": "revenue",
+         "filter": null,
+         "alias": null,
+         "join_to_timespine": false,
+         "fill_nulls_with": null
+        },
+        "numerator": null,
+        "denominator": null,
+        "expr": null,
+        "window": null,
+        "grain_to_date": null,
+        "metrics": [],
+        "conversion_type_params": null,
+        "cumulative_type_params": null,
+        "input_measures": [
+         {
+          "name": "revenue",
+          "filter": null,
+          "alias": null,
+          "join_to_timespine": false,
+          "fill_nulls_with": null
+         }
+        ]
+       },
+       "filter": null,
+       "metadata": null,
+       "label": "Revenue",
+       "config": {
+        "meta": {}
+       },
+       "time_granularity": null
+      },
+      {
+       "name": "cost",
+       "description": "Total cost of goods sold.",
+       "type": "simple",
+       "type_params": {
+        "measure": {
+         "name": "cost",
+         "filter": null,
+         "alias": null,
+         "join_to_timespine": false,
+         "fill_nulls_with": null
+        },
+        "numerator": null,
+        "denominator": null,
+        "expr": null,
+        "window": null,
+        "grain_to_date": null,
+        "metrics": [],
+        "conversion_type_params": null,
+        "cumulative_type_params": null,
+        "input_measures": [
+         {
+          "name": "cost",
+          "filter": null,
+          "alias": null,
+          "join_to_timespine": false,
+          "fill_nulls_with": null
+         }
+        ]
+       },
+       "filter": null,
+       "metadata": null,
+       "label": "Cost",
+       "config": {
+        "meta": {}
+       },
+       "time_granularity": null
+      },
+      {
+       "name": "gross_profit",
+       "description": "Revenue minus cost.",
+       "type": "simple",
+       "type_params": {
+        "measure": {
+         "name": "gross_profit",
+         "filter": null,
+         "alias": null,
+         "join_to_timespine": false,
+         "fill_nulls_with": null
+        },
+        "numerator": null,
+        "denominator": null,
+        "expr": null,
+        "window": null,
+        "grain_to_date": null,
+        "metrics": [],
+        "conversion_type_params": null,
+        "cumulative_type_params": null,
+        "input_measures": [
+         {
+          "name": "gross_profit",
+          "filter": null,
+          "alias": null,
+          "join_to_timespine": false,
+          "fill_nulls_with": null
+         }
+        ]
+       },
+       "filter": null,
+       "metadata": null,
+       "label": "Gross profit",
+       "config": {
+        "meta": {}
+       },
+       "time_granularity": null
+      },
+      {
+       "name": "quantity_sold",
+       "description": "Total units sold.",
+       "type": "simple",
+       "type_params": {
+        "measure": {
+         "name": "quantity_sold",
+         "filter": null,
+         "alias": null,
+         "join_to_timespine": false,
+         "fill_nulls_with": null
+        },
+        "numerator": null,
+        "denominator": null,
+        "expr": null,
+        "window": null,
+        "grain_to_date": null,
+        "metrics": [],
+        "conversion_type_params": null,
+        "cumulative_type_params": null,
+        "input_measures": [
+         {
+          "name": "quantity_sold",
+          "filter": null,
+          "alias": null,
+          "join_to_timespine": false,
+          "fill_nulls_with": null
+         }
+        ]
+       },
+       "filter": null,
+       "metadata": null,
+       "label": "Quantity sold",
+       "config": {
+        "meta": {}
+       },
+       "time_granularity": null
+      },
+      {
+       "name": "discount",
+       "description": "Total discount granted.",
+       "type": "simple",
+       "type_params": {
+        "measure": {
+         "name": "discount",
+         "filter": null,
+         "alias": null,
+         "join_to_timespine": false,
+         "fill_nulls_with": null
+        },
+        "numerator": null,
+        "denominator": null,
+        "expr": null,
+        "window": null,
+        "grain_to_date": null,
+        "metrics": [],
+        "conversion_type_params": null,
+        "cumulative_type_params": null,
+        "input_measures": [
+         {
+          "name": "discount",
+          "filter": null,
+          "alias": null,
+          "join_to_timespine": false,
+          "fill_nulls_with": null
+         }
+        ]
+       },
+       "filter": null,
+       "metadata": null,
+       "label": "Discount",
+       "config": {
+        "meta": {}
+       },
+       "time_granularity": null
+      },
+      {
+       "name": "orders",
+       "description": "Number of distinct orders.",
+       "type": "simple",
+       "type_params": {
+        "measure": {
+         "name": "order_count",
+         "filter": null,
+         "alias": null,
+         "join_to_timespine": false,
+         "fill_nulls_with": null
+        },
+        "numerator": null,
+        "denominator": null,
+        "expr": null,
+        "window": null,
+        "grain_to_date": null,
+        "metrics": [],
+        "conversion_type_params": null,
+        "cumulative_type_params": null,
+        "input_measures": [
+         {
+          "name": "order_count",
+          "filter": null,
+          "alias": null,
+          "join_to_timespine": false,
+          "fill_nulls_with": null
+         }
+        ]
+       },
+       "filter": null,
+       "metadata": null,
+       "label": "Orders",
+       "config": {
+        "meta": {}
+       },
+       "time_granularity": null
+      },
+      {
+       "name": "active_customers",
+       "description": "Distinct customers who placed at least one order.",
+       "type": "simple",
+       "type_params": {
+        "measure": {
+         "name": "customer_count",
+         "filter": null,
+         "alias": null,
+         "join_to_timespine": false,
+         "fill_nulls_with": null
+        },
+        "numerator": null,
+        "denominator": null,
+        "expr": null,
+        "window": null,
+        "grain_to_date": null,
+        "metrics": [],
+        "conversion_type_params": null,
+        "cumulative_type_params": null,
+        "input_measures": [
+         {
+          "name": "customer_count",
+          "filter": null,
+          "alias": null,
+          "join_to_timespine": false,
+          "fill_nulls_with": null
+         }
+        ]
+       },
+       "filter": null,
+       "metadata": null,
+       "label": "Active customers",
+       "config": {
+        "meta": {}
+       },
+       "time_granularity": null
+      },
+      {
+       "name": "completed_revenue",
+       "description": "Revenue from completed orders only.",
+       "type": "simple",
+       "type_params": {
+        "measure": {
+         "name": "revenue",
+         "filter": null,
+         "alias": null,
+         "join_to_timespine": false,
+         "fill_nulls_with": null
+        },
+        "numerator": null,
+        "denominator": null,
+        "expr": null,
+        "window": null,
+        "grain_to_date": null,
+        "metrics": [],
+        "conversion_type_params": null,
+        "cumulative_type_params": null,
+        "input_measures": [
+         {
+          "name": "revenue",
+          "filter": null,
+          "alias": null,
+          "join_to_timespine": false,
+          "fill_nulls_with": null
+         }
+        ]
+       },
+       "filter": {
+        "where_filters": [
+         {
+          "where_sql_template": "{{ Dimension('sales__status') }} = 'completed'"
+         }
+        ]
+       },
+       "metadata": null,
+       "label": "Completed revenue",
+       "config": {
+        "meta": {}
+       },
+       "time_granularity": null
+      },
+      {
+       "name": "returned_orders",
+       "description": "Orders that were returned.",
+       "type": "simple",
+       "type_params": {
+        "measure": {
+         "name": "order_count",
+         "filter": null,
+         "alias": null,
+         "join_to_timespine": false,
+         "fill_nulls_with": null
+        },
+        "numerator": null,
+        "denominator": null,
+        "expr": null,
+        "window": null,
+        "grain_to_date": null,
+        "metrics": [],
+        "conversion_type_params": null,
+        "cumulative_type_params": null,
+        "input_measures": [
+         {
+          "name": "order_count",
+          "filter": null,
+          "alias": null,
+          "join_to_timespine": false,
+          "fill_nulls_with": null
+         }
+        ]
+       },
+       "filter": {
+        "where_filters": [
+         {
+          "where_sql_template": "{{ Dimension('sales__status') }} = 'returned'"
+         }
+        ]
+       },
+       "metadata": null,
+       "label": "Returned orders",
+       "config": {
+        "meta": {}
+       },
+       "time_granularity": null
+      },
+      {
+       "name": "gross_margin_rate",
+       "description": "Gross profit divided by revenue.",
+       "type": "ratio",
+       "type_params": {
+        "measure": null,
+        "numerator": {
+         "name": "gross_profit",
+         "filter": null,
+         "alias": null,
+         "offset_window": null,
+         "offset_to_grain": null
+        },
+        "denominator": {
+         "name": "revenue",
+         "filter": null,
+         "alias": null,
+         "offset_window": null,
+         "offset_to_grain": null
+        },
+        "expr": null,
+        "window": null,
+        "grain_to_date": null,
+        "metrics": [],
+        "conversion_type_params": null,
+        "cumulative_type_params": null,
+        "input_measures": [
+         {
+          "name": "gross_profit",
+          "filter": null,
+          "alias": null,
+          "join_to_timespine": false,
+          "fill_nulls_with": null
+         },
+         {
+          "name": "revenue",
+          "filter": null,
+          "alias": null,
+          "join_to_timespine": false,
+          "fill_nulls_with": null
+         }
+        ]
+       },
+       "filter": null,
+       "metadata": null,
+       "label": "Gross margin rate",
+       "config": {
+        "meta": {}
+       },
+       "time_granularity": null
+      },
+      {
+       "name": "average_order_value",
+       "description": "Revenue per order (AOV).",
+       "type": "ratio",
+       "type_params": {
+        "measure": null,
+        "numerator": {
+         "name": "revenue",
+         "filter": null,
+         "alias": null,
+         "offset_window": null,
+         "offset_to_grain": null
+        },
+        "denominator": {
+         "name": "orders",
+         "filter": null,
+         "alias": null,
+         "offset_window": null,
+         "offset_to_grain": null
+        },
+        "expr": null,
+        "window": null,
+        "grain_to_date": null,
+        "metrics": [],
+        "conversion_type_params": null,
+        "cumulative_type_params": null,
+        "input_measures": [
+         {
+          "name": "revenue",
+          "filter": null,
+          "alias": null,
+          "join_to_timespine": false,
+          "fill_nulls_with": null
+         },
+         {
+          "name": "order_count",
+          "filter": null,
+          "alias": null,
+          "join_to_timespine": false,
+          "fill_nulls_with": null
+         }
+        ]
+       },
+       "filter": null,
+       "metadata": null,
+       "label": "Average order value",
+       "config": {
+        "meta": {}
+       },
+       "time_granularity": null
+      },
+      {
+       "name": "return_rate",
+       "description": "Share of orders that were returned, in percent.",
+       "type": "derived",
+       "type_params": {
+        "measure": null,
+        "numerator": null,
+        "denominator": null,
+        "expr": "returned_orders / nullif(orders, 0) * 100",
+        "window": null,
+        "grain_to_date": null,
+        "metrics": [
+         {
+          "name": "returned_orders",
+          "filter": null,
+          "alias": null,
+          "offset_window": null,
+          "offset_to_grain": null
+         },
+         {
+          "name": "orders",
+          "filter": null,
+          "alias": null,
+          "offset_window": null,
+          "offset_to_grain": null
+         }
+        ],
+        "conversion_type_params": null,
+        "cumulative_type_params": null,
+        "input_measures": [
+         {
+          "name": "order_count",
+          "filter": null,
+          "alias": null,
+          "join_to_timespine": false,
+          "fill_nulls_with": null
+         }
+        ]
+       },
+       "filter": null,
+       "metadata": null,
+       "label": "Return rate (%)",
+       "config": {
+        "meta": {}
+       },
+       "time_granularity": null
+      },
+      {
+       "name": "purchasing_customers",
+       "description": "Customers who have placed at least one order (loyalty denominator).",
+       "type": "simple",
+       "type_params": {
+        "measure": {
+         "name": "purchasing_customer_count",
+         "filter": null,
+         "alias": null,
+         "join_to_timespine": false,
+         "fill_nulls_with": null
+        },
+        "numerator": null,
+        "denominator": null,
+        "expr": null,
+        "window": null,
+        "grain_to_date": null,
+        "metrics": [],
+        "conversion_type_params": null,
+        "cumulative_type_params": null,
+        "input_measures": [
+         {
+          "name": "purchasing_customer_count",
+          "filter": null,
+          "alias": null,
+          "join_to_timespine": false,
+          "fill_nulls_with": null
+         }
+        ]
+       },
+       "filter": null,
+       "metadata": null,
+       "label": "Purchasing customers",
+       "config": {
+        "meta": {}
+       },
+       "time_granularity": null
+      },
+      {
+       "name": "repeat_customers",
+       "description": "Customers who ordered on more than one occasion.",
+       "type": "simple",
+       "type_params": {
+        "measure": {
+         "name": "purchasing_customer_count",
+         "filter": null,
+         "alias": null,
+         "join_to_timespine": false,
+         "fill_nulls_with": null
+        },
+        "numerator": null,
+        "denominator": null,
+        "expr": null,
+        "window": null,
+        "grain_to_date": null,
+        "metrics": [],
+        "conversion_type_params": null,
+        "cumulative_type_params": null,
+        "input_measures": [
+         {
+          "name": "purchasing_customer_count",
+          "filter": null,
+          "alias": null,
+          "join_to_timespine": false,
+          "fill_nulls_with": null
+         }
+        ]
+       },
+       "filter": {
+        "where_filters": [
+         {
+          "where_sql_template": "{{ Dimension('customer__is_repeat_customer') }} = true"
+         }
+        ]
+       },
+       "metadata": null,
+       "label": "Repeat customers",
+       "config": {
+        "meta": {}
+       },
+       "time_granularity": null
+      },
+      {
+       "name": "repeat_customer_rate",
+       "description": "Share of purchasing customers who ordered more than once (0-1).",
+       "type": "ratio",
+       "type_params": {
+        "measure": null,
+        "numerator": {
+         "name": "repeat_customers",
+         "filter": null,
+         "alias": null,
+         "offset_window": null,
+         "offset_to_grain": null
+        },
+        "denominator": {
+         "name": "purchasing_customers",
+         "filter": null,
+         "alias": null,
+         "offset_window": null,
+         "offset_to_grain": null
+        },
+        "expr": null,
+        "window": null,
+        "grain_to_date": null,
+        "metrics": [],
+        "conversion_type_params": null,
+        "cumulative_type_params": null,
+        "input_measures": [
+         {
+          "name": "purchasing_customer_count",
+          "filter": null,
+          "alias": null,
+          "join_to_timespine": false,
+          "fill_nulls_with": null
+         }
+        ]
+       },
+       "filter": null,
+       "metadata": null,
+       "label": "Repeat customer rate",
+       "config": {
+        "meta": {}
+       },
+       "time_granularity": null
+      }
+     ],
+     "project_configuration": {
+      "time_spine_table_configurations": [],
+      "metadata": null,
+      "dsi_package_version": {
+       "major_version": "0",
+       "minor_version": "9",
+       "patch_version": "0"
+      },
+      "time_spines": [
+       {
+        "node_relation": {
+         "alias": "dim_dates",
+         "schema_name": "gold",
+         "database": "warehouse",
+         "relation_name": "\"warehouse\".\"gold\".\"dim_dates\""
+        },
+        "primary_column": {
+         "name": "date_day",
+         "time_granularity": "day"
+        },
+        "custom_granularities": []
+       }
+      ]
+     },
+     "saved_queries": []
+    },
+    "native_dimensions:completed_revenue": {
+     "dimensions": [
+      "customer__city",
+      "customer__country",
+      "customer__is_repeat_customer",
+      "customer__last_order_date",
+      "customer__signup_date",
+      "metric_time",
+      "product__category",
+      "product__product_name",
+      "sales__channel",
+      "sales__order_date",
+      "sales__status",
+      "store__store_city",
+      "store__store_country"
+     ],
+     "exit_code": 0,
+     "stdout_sha256": "183dd24a389bd8afd12e20576dba17d77aae0e9dd53e7391bfdba0de9a891b97"
+    },
+    "distinct_values:gold.fact_sales.status": [
+     "cancelled",
+     "completed",
+     "returned"
+    ],
+    "native_query:[\"completed_revenue\", [], [\"{{ Dimension('sales__unit_price') }} >= 100.00\"]]": {
+     "ok": false,
+     "rows": [],
+     "receipt": {
+      "argv": [
+       "mf",
+       "query",
+       "--metrics",
+       "completed_revenue",
+       "--where",
+       "{{ Dimension('sales__unit_price') }} >= 100.00",
+       "--csv",
+       "<csv>"
+      ],
+      "cwd": "<upstream>/dbt/retail_dwh",
+      "env": {
+       "DBT_PROFILES_DIR": "<upstream>/dbt/retail_dwh",
+       "WAREHOUSE_DB": "<upstream>/data/warehouse.duckdb"
+      },
+      "exit_code": 1,
+      "elapsed_s": 3.721,
+      "stdout": "‼️ Warning: A new version of the MetricFlow CLI is available.\n💡 Please update to version 0.15.0, released 2026-09-10 20:36:50 by running:\n\t$ pip install --upgrade dbt-metricflow\n\n\n\n⠋ Initiating query…\n\n⠙ Initiating query…\nERROR: Got error(s) during query resolution.\n\nError #1:\n  Message:\n\n    The given input does not match any of the available group-by-items for\n    SimpleMetric('completed_revenue'). Common issues are:\n\n      * Incorrect names.\n      * No valid join paths exist from the measure to the group-by-item.\n        (fan-out join support is pending).\n      * There are multiple matching join paths.\n        (disambiguation support is pending).\n\n    Suggestions:\n      [\n        \"Dimension('sales__channel')\",\n        \"Dimension('sales__status')\",\n        \"Dimension('customer__country')\",\n        \"Dimension('customer__city')\",\n        \"Dimension('store__store_city')\",\n        \"Dimension('store__store_country')\",\n      ]\n\n  Query Input:\n\n    WhereFilter(\n      [\"{{ Dimension('sales__unit_price') }} >= 100.00\"]\n    )\n    Filter Path:\n      [Resolve Query(['completed_revenue'])]\n    Object Builder Input:\n      Dimension('sales__unit_price')\n\n  Issue Location:\n\n    [Resolve Query(['completed_revenue'])]\n      -> [Resolve SimpleMetric('completed_revenue')]\n\nLog File:: <upstream>/dbt/retail_dwh/logs/metricflow.log\nArtifact Path: <upstream>/dbt/retail_dwh/target/semantic_manifest.json\nArtifact Modified Time: 2026-10-12T07:00:42.404166\n\nIf you think you found a bug, please report it here:\n    https://github.com/dbt-labs/metricflow/issues\n\n\n",
+      "stderr": "",
+      "stdout_sha256": "5ee824513a22848b19bf5c04e413317a55ef54eb488f368abf3aaf31eba95c5b",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "csv_written": false,
+      "csv_sha256": null,
+      "fingerprints_before": {
+       "semantic_manifest_sha256": "e8e9bfc7e1188bc3eb3f5ac551e8ed5350817af14a5471bdbcdfdca2bc01bd48",
+       "dbt_manifest_sha256": "0c4ff334ef2750e4e81e3ebd44667d7679d8d98543933b8410018aa4dc9d9d10",
+       "warehouse_sha256": "b5ad8415eb58d74053f219c40c0320a94a790c2aceab475e51f52594ecb41c7c",
+       "warehouse_bytes": 3420160
+      },
+      "fingerprints_after": {
+       "semantic_manifest_sha256": "e8e9bfc7e1188bc3eb3f5ac551e8ed5350817af14a5471bdbcdfdca2bc01bd48",
+       "dbt_manifest_sha256": "0c4ff334ef2750e4e81e3ebd44667d7679d8d98543933b8410018aa4dc9d9d10",
+       "warehouse_sha256": "b5ad8415eb58d74053f219c40c0320a94a790c2aceab475e51f52594ecb41c7c",
+       "warehouse_bytes": 3420160
+      },
+      "mf_identity": {
+       "mf_path": "<upstream>/.venv/bin/mf",
+       "mf_sha256": "c8ba59f23488eaf619cb2c0fde39544bc40d011de46b16b613e084fe6bb120bf",
+       "record_entry": "../../../bin/mf",
+       "record_hash": "sha256=yLpZ8jSI6vYZyywP3jlUS8QNAR3kaxa2E-CE_muxIL8",
+       "distribution": "dbt_metricflow-0.13.0.dist-info",
+       "versions": {
+        "dbt-metricflow": "0.13.0",
+        "metricflow": "0.211.0",
+        "dbt-core": "1.11.11",
+        "dbt-duckdb": "1.10.1",
+        "dbt-semantic-interfaces": "0.9.0",
+        "duckdb": "1.5.4"
+       }
+      }
+     }
+    },
+    "estate_fingerprint": "af2fd0215120425aa71c3a2075d2057e227d8f0f50824403c06c899ce17b6566",
+    "native_query:[\"completed_revenue\", [\"metric_time__year\"], []]": {
+     "ok": true,
+     "rows": [
+      {
+       "metric_time__year": "2025-01-01 00:00:00",
+       "completed_revenue": "1477833.96"
+      },
+      {
+       "metric_time__year": "2024-01-01 00:00:00",
+       "completed_revenue": "1707052.8"
+      },
+      {
+       "metric_time__year": "2026-01-01 00:00:00",
+       "completed_revenue": "792441.45"
+      }
+     ],
+     "receipt": {
+      "argv": [
+       "mf",
+       "query",
+       "--metrics",
+       "completed_revenue",
+       "--group-by",
+       "metric_time__year",
+       "--csv",
+       "<csv>"
+      ],
+      "cwd": "<upstream>/dbt/retail_dwh",
+      "env": {
+       "DBT_PROFILES_DIR": "<upstream>/dbt/retail_dwh",
+       "WAREHOUSE_DB": "<upstream>/data/warehouse.duckdb"
+      },
+      "exit_code": 0,
+      "elapsed_s": 3.505,
+      "stdout": "‼️ Warning: A new version of the MetricFlow CLI is available.\n💡 Please update to version 0.15.0, released 2026-09-10 20:36:50 by running:\n\t$ pip install --upgrade dbt-metricflow\n\n\n\n⠋ Initiating query…\n\n⠙ Initiating query…\n✔ Success 🦄 - query completed after 0.06 seconds\n🖨 Wrote query output to /tmp/tmpdb7vscv8/result.csv\n\n",
+      "stderr": "",
+      "stdout_sha256": "c03e00de79ec94412057fe3b9204624fbb51f201051ea21d78b5dfbee702e4ff",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "csv_written": true,
+      "csv_sha256": "af291de3ddf3689bc009db5bae011258f4c8f1cdd3df501df00650c922e309dd",
+      "fingerprints_before": {
+       "semantic_manifest_sha256": "e8e9bfc7e1188bc3eb3f5ac551e8ed5350817af14a5471bdbcdfdca2bc01bd48",
+       "dbt_manifest_sha256": "0c4ff334ef2750e4e81e3ebd44667d7679d8d98543933b8410018aa4dc9d9d10",
+       "warehouse_sha256": "b5ad8415eb58d74053f219c40c0320a94a790c2aceab475e51f52594ecb41c7c",
+       "warehouse_bytes": 3420160
+      },
+      "fingerprints_after": {
+       "semantic_manifest_sha256": "e8e9bfc7e1188bc3eb3f5ac551e8ed5350817af14a5471bdbcdfdca2bc01bd48",
+       "dbt_manifest_sha256": "0c4ff334ef2750e4e81e3ebd44667d7679d8d98543933b8410018aa4dc9d9d10",
+       "warehouse_sha256": "b5ad8415eb58d74053f219c40c0320a94a790c2aceab475e51f52594ecb41c7c",
+       "warehouse_bytes": 3420160
+      },
+      "mf_identity": {
+       "mf_path": "<upstream>/.venv/bin/mf",
+       "mf_sha256": "c8ba59f23488eaf619cb2c0fde39544bc40d011de46b16b613e084fe6bb120bf",
+       "record_entry": "../../../bin/mf",
+       "record_hash": "sha256=yLpZ8jSI6vYZyywP3jlUS8QNAR3kaxa2E-CE_muxIL8",
+       "distribution": "dbt_metricflow-0.13.0.dist-info",
+       "versions": {
+        "dbt-metricflow": "0.13.0",
+        "metricflow": "0.211.0",
+        "dbt-core": "1.11.11",
+        "dbt-duckdb": "1.10.1",
+        "dbt-semantic-interfaces": "0.9.0",
+        "duckdb": "1.5.4"
+       }
+      }
+     }
+    }
+   }
+  },
+  "B2": {
+   "result": {
+    "required": {
+     "P_LINE_AMOUNT": "B_LINE_AMOUNT",
+     "P_STATUS_COMPLETED": "B_STATUS",
+     "P_YEAR_BY_ORDER_DATE": "B_YEAR",
+     "P_SETTLEMENT_CONFIRMED": null
+    },
+    "predicates": {
+     "P_LINE_AMOUNT": {
+      "predicate": "P_LINE_AMOUNT",
+      "kind": "measure_sum",
+      "fact_kind": "order_line_amount",
+      "binding": {
+       "semantic": {
+        "measure": "revenue",
+        "semantic_model": "sales"
+       },
+       "physical": "gold.fact_sales.revenue"
+      },
+      "designated_fields": [
+       "gold.fact_sales.revenue"
+      ],
+      "designated_fields_present": [
+       "gold.fact_sales.revenue"
+      ],
+      "physical_present": true,
+      "semantic_resolution": {
+       "model": "sales",
+       "relation": "gold.fact_sales",
+       "measure_expr": "revenue",
+       "agg": "sum"
+      },
+      "status": "BOUND_AND_EXPOSED"
+     },
+     "P_STATUS_COMPLETED": {
+      "predicate": "P_STATUS_COMPLETED",
+      "kind": "categorical_equals",
+      "fact_kind": "order_status_label",
+      "binding": {
+       "semantic": {
+        "dimension": "sales__status"
+       },
+       "physical": "gold.fact_sales.status"
+      },
+      "designated_fields": [
+       "gold.fact_sales.status"
+      ],
+      "designated_fields_present": [
+       "gold.fact_sales.status"
+      ],
+      "physical_present": true,
+      "in_native_dimension_list": true,
+      "semantic_resolution": {
+       "model": "sales",
+       "relation": "gold.fact_sales",
+       "dimension_column": "status",
+       "type": "categorical"
+      },
+      "observed_values": [
+       "cancelled",
+       "completed",
+       "returned"
+      ],
+      "status": "BOUND_AND_EXPOSED"
+     },
+     "P_YEAR_BY_ORDER_DATE": {
+      "predicate": "P_YEAR_BY_ORDER_DATE",
+      "kind": "time_grain",
+      "fact_kind": "order_date",
+      "binding": {
+       "semantic": {
+        "time_dimension": "sales__order_date"
+       },
+       "physical": "gold.fact_sales.order_date"
+      },
+      "designated_fields": [
+       "gold.fact_sales.order_date"
+      ],
+      "designated_fields_present": [
+       "gold.fact_sales.order_date"
+      ],
+      "physical_present": true,
+      "in_native_dimension_list": true,
+      "semantic_resolution": {
+       "model": "sales",
+       "relation": "gold.fact_sales",
+       "dimension_column": "order_date",
+       "type": "time"
+      },
+      "status": "BOUND_AND_EXPOSED"
+     },
+     "P_SETTLEMENT_CONFIRMED": {
+      "predicate": "P_SETTLEMENT_CONFIRMED",
+      "kind": "external_fact_required",
+      "fact_kind": "payment_settlement_confirmation",
+      "binding": null,
+      "designated_fields": [],
+      "designated_fields_present": [],
+      "status": "NOT_FOUND_IN_BOUNDED_ESTATE",
+      "reason": "no field designated for payment_settlement_confirmation exists in the bounded estate (155 warehouse columns inspected); not a claim of absence elsewhere"
+     }
+    },
+    "uncovered": [
+     "P_SETTLEMENT_CONFIRMED"
+    ],
+    "metric_consistency_problems": [],
+    "estate_fingerprint": {
+     "live": "af2fd0215120425aa71c3a2075d2057e227d8f0f50824403c06c899ce17b6566",
+     "frozen": "af2fd0215120425aa71c3a2075d2057e227d8f0f50824403c06c899ce17b6566",
+     "equal": true
+    },
+    "covered_subset_native": {
+     "plan": {
+      "metric": "completed_revenue",
+      "group_by": [
+       "metric_time__year"
+      ],
+      "where": []
+     },
+     "ok": true,
+     "receipt_argv": [
+      "mf",
+      "query",
+      "--metrics",
+      "completed_revenue",
+      "--group-by",
+      "metric_time__year",
+      "--csv",
+      "<csv>"
+     ],
+     "exit_code": 0,
+     "csv_sha256": "af291de3ddf3689bc009db5bae011258f4c8f1cdd3df501df00650c922e309dd",
+     "by_year": {
+      "2025": "1477833.96",
+      "2024": "1707052.80",
+      "2026": "792441.45"
+     },
+     "label": "COVERED SUBSET ONLY: does not cover P_SETTLEMENT_CONFIRMED"
+    },
+    "case_status": "NOT_FOUND_IN_BOUNDED_ESTATE",
+    "verified_for_recorded_checks": false
+   },
+   "summary": {
+    "case_status": "NOT_FOUND_IN_BOUNDED_ESTATE",
+    "verified_for_recorded_checks": false,
+    "predicates": {
+     "P_LINE_AMOUNT": "BOUND_AND_EXPOSED",
+     "P_STATUS_COMPLETED": "BOUND_AND_EXPOSED",
+     "P_YEAR_BY_ORDER_DATE": "BOUND_AND_EXPOSED",
+     "P_SETTLEMENT_CONFIRMED": "NOT_FOUND_IN_BOUNDED_ESTATE"
+    },
+    "uncovered": [
+     "P_SETTLEMENT_CONFIRMED"
+    ],
+    "metric_consistency_problems": []
+   },
+   "transcript": {
+    "warehouse_columns": [
+     "bronze.customers.city",
+     "bronze.customers.country",
+     "bronze.customers.customer_id",
+     "bronze.customers.email",
+     "bronze.customers.first_name",
+     "bronze.customers.last_name",
+     "bronze.customers.signup_date",
+     "bronze.order_events.channel",
+     "bronze.order_events.customer_id",
+     "bronze.order_events.event_id",
+     "bronze.order_events.event_ts",
+     "bronze.order_events.order_id",
+     "bronze.order_events.order_item_id",
+     "bronze.order_events.product_id",
+     "bronze.order_events.quantity",
+     "bronze.order_events.status",
+     "bronze.order_events.store_id",
+     "bronze.order_events.unit_price",
+     "bronze.order_items.order_id",
+     "bronze.order_items.order_item_id",
+     "bronze.order_items.product_id",
+     "bronze.order_items.quantity",
+     "bronze.order_items.unit_price",
+     "bronze.orders.channel",
+     "bronze.orders.customer_id",
+     "bronze.orders.order_date",
+     "bronze.orders.order_id",
+     "bronze.orders.status",
+     "bronze.orders.store_id",
+     "bronze.products.category",
+     "bronze.products.list_price",
+     "bronze.products.product_id",
+     "bronze.products.product_name",
+     "bronze.products.unit_cost",
+     "bronze.stores.city",
+     "bronze.stores.country",
+     "bronze.stores.store_id",
+     "bronze.stores.store_name",
+     "gold.dim_customers.city",
+     "gold.dim_customers.country",
+     "gold.dim_customers.customer_id",
+     "gold.dim_customers.email",
+     "gold.dim_customers.first_name",
+     "gold.dim_customers.full_name",
+     "gold.dim_customers.last_name",
+     "gold.dim_customers.signup_date",
+     "gold.dim_dates.date_day",
+     "gold.dim_dates.date_id",
+     "gold.dim_dates.day_name",
+     "gold.dim_dates.day_of_week",
+     "gold.dim_dates.is_weekend",
+     "gold.dim_dates.month",
+     "gold.dim_dates.month_name",
+     "gold.dim_dates.quarter",
+     "gold.dim_dates.quarter_name",
+     "gold.dim_dates.week_of_year",
+     "gold.dim_dates.year",
+     "gold.dim_products.category",
+     "gold.dim_products.list_price",
+     "gold.dim_products.margin_rate",
+     "gold.dim_products.product_id",
+     "gold.dim_products.product_name",
+     "gold.dim_products.unit_cost",
+     "gold.dim_products.unit_margin",
+     "gold.dim_stores.city",
+     "gold.dim_stores.country",
+     "gold.dim_stores.store_id",
+     "gold.dim_stores.store_name",
+     "gold.fact_customer_orders.customer_id",
+     "gold.fact_customer_orders.is_repeat_customer",
+     "gold.fact_customer_orders.last_order_date",
+     "gold.fact_customer_orders.order_count",
+     "gold.fact_sales.channel",
+     "gold.fact_sales.cost_amount",
+     "gold.fact_sales.customer_id",
+     "gold.fact_sales.date_id",
+     "gold.fact_sales.discount_amount",
+     "gold.fact_sales.is_cancelled",
+     "gold.fact_sales.is_completed",
+     "gold.fact_sales.is_returned",
+     "gold.fact_sales.order_date",
+     "gold.fact_sales.order_id",
+     "gold.fact_sales.product_id",
+     "gold.fact_sales.profit",
+     "gold.fact_sales.quantity",
+     "gold.fact_sales.revenue",
+     "gold.fact_sales.sales_id",
+     "gold.fact_sales.status",
+     "gold.fact_sales.store_id",
+     "gold.fact_sales.unit_cost",
+     "gold.fact_sales.unit_price",
+     "gold.fact_sales_live.channel",
+     "gold.fact_sales_live.cost_amount",
+     "gold.fact_sales_live.customer_id",
+     "gold.fact_sales_live.date_id",
+     "gold.fact_sales_live.discount_amount",
+     "gold.fact_sales_live.event_date",
+     "gold.fact_sales_live.event_id",
+     "gold.fact_sales_live.event_ts",
+     "gold.fact_sales_live.is_cancelled",
+     "gold.fact_sales_live.is_completed",
+     "gold.fact_sales_live.is_returned",
+     "gold.fact_sales_live.order_id",
+     "gold.fact_sales_live.order_item_id",
+     "gold.fact_sales_live.product_id",
+     "gold.fact_sales_live.profit",
+     "gold.fact_sales_live.quantity",
+     "gold.fact_sales_live.revenue",
+     "gold.fact_sales_live.status",
+     "gold.fact_sales_live.store_id",
+     "gold.fact_sales_live.unit_cost",
+     "gold.fact_sales_live.unit_price",
+     "gold.rt_freshness.as_of",
+     "gold.rt_freshness.freshness_seconds",
+     "gold.rt_freshness.last_event_ts",
+     "gold.rt_freshness.no_events_yet",
+     "silver.stg_customers.city",
+     "silver.stg_customers.country",
+     "silver.stg_customers.customer_id",
+     "silver.stg_customers.email",
+     "silver.stg_customers.first_name",
+     "silver.stg_customers.last_name",
+     "silver.stg_customers.signup_date",
+     "silver.stg_order_events.channel",
+     "silver.stg_order_events.customer_id",
+     "silver.stg_order_events.event_id",
+     "silver.stg_order_events.event_ts",
+     "silver.stg_order_events.order_id",
+     "silver.stg_order_events.order_item_id",
+     "silver.stg_order_events.product_id",
+     "silver.stg_order_events.quantity",
+     "silver.stg_order_events.status",
+     "silver.stg_order_events.store_id",
+     "silver.stg_order_events.unit_price",
+     "silver.stg_order_items.order_id",
+     "silver.stg_order_items.order_item_id",
+     "silver.stg_order_items.product_id",
+     "silver.stg_order_items.quantity",
+     "silver.stg_order_items.unit_price",
+     "silver.stg_orders.channel",
+     "silver.stg_orders.customer_id",
+     "silver.stg_orders.order_date",
+     "silver.stg_orders.order_id",
+     "silver.stg_orders.status",
+     "silver.stg_orders.store_id",
+     "silver.stg_products.category",
+     "silver.stg_products.list_price",
+     "silver.stg_products.product_id",
+     "silver.stg_products.product_name",
+     "silver.stg_products.unit_cost",
+     "silver.stg_products.unit_margin",
+     "silver.stg_stores.city",
+     "silver.stg_stores.country",
+     "silver.stg_stores.store_id",
+     "silver.stg_stores.store_name"
+    ],
+    "semantic_manifest": {
+     "semantic_models": [
+      {
+       "name": "sales_live",
+       "defaults": {
+        "agg_time_dimension": "event_ts"
+       },
+       "description": "Near-real-time sales facts at order-line grain (streaming lane).",
+       "node_relation": {
+        "alias": "fact_sales_live",
+        "schema_name": "gold",
+        "database": "warehouse",
+        "relation_name": "\"warehouse\".\"gold\".\"fact_sales_live\""
+       },
+       "primary_entity": null,
+       "entities": [
+        {
+         "name": "sales_live",
+         "description": null,
+         "type": "primary",
+         "role": null,
+         "expr": "event_id",
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        },
+        {
+         "name": "order",
+         "description": null,
+         "type": "foreign",
+         "role": null,
+         "expr": "order_id",
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        },
+        {
+         "name": "customer",
+         "description": null,
+         "type": "foreign",
+         "role": null,
+         "expr": "customer_id",
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        },
+        {
+         "name": "product",
+         "description": null,
+         "type": "foreign",
+         "role": null,
+         "expr": "product_id",
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        },
+        {
+         "name": "store",
+         "description": null,
+         "type": "foreign",
+         "role": null,
+         "expr": "store_id",
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        }
+       ],
+       "measures": [
+        {
+         "name": "revenue_live_amount",
+         "agg": "sum",
+         "description": "Quantity x price charged, on streamed events.",
+         "create_metric": false,
+         "expr": "revenue",
+         "agg_params": null,
+         "metadata": null,
+         "non_additive_dimension": null,
+         "agg_time_dimension": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        },
+        {
+         "name": "gross_profit_live_amount",
+         "agg": "sum",
+         "description": null,
+         "create_metric": false,
+         "expr": "profit",
+         "agg_params": null,
+         "metadata": null,
+         "non_additive_dimension": null,
+         "agg_time_dimension": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        },
+        {
+         "name": "quantity_live_amount",
+         "agg": "sum",
+         "description": null,
+         "create_metric": false,
+         "expr": "quantity",
+         "agg_params": null,
+         "metadata": null,
+         "non_additive_dimension": null,
+         "agg_time_dimension": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        },
+        {
+         "name": "order_count_live_distinct",
+         "agg": "count_distinct",
+         "description": "Distinct live orders.",
+         "create_metric": false,
+         "expr": "order_id",
+         "agg_params": null,
+         "metadata": null,
+         "non_additive_dimension": null,
+         "agg_time_dimension": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        }
+       ],
+       "dimensions": [
+        {
+         "name": "event_ts",
+         "description": "Event timestamp — enables 'last N minutes' windows.",
+         "type": "time",
+         "is_partition": false,
+         "type_params": {
+          "time_granularity": "minute",
+          "validity_params": null
+         },
+         "expr": null,
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        },
+        {
+         "name": "channel",
+         "description": null,
+         "type": "categorical",
+         "is_partition": false,
+         "type_params": null,
+         "expr": null,
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        },
+        {
+         "name": "status",
+         "description": null,
+         "type": "categorical",
+         "is_partition": false,
+         "type_params": null,
+         "expr": null,
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        }
+       ],
+       "label": null,
+       "metadata": null,
+       "config": {
+        "meta": {}
+       }
+      },
+      {
+       "name": "sales",
+       "defaults": {
+        "agg_time_dimension": "order_date"
+       },
+       "description": "Sales facts at order-line grain.",
+       "node_relation": {
+        "alias": "fact_sales",
+        "schema_name": "gold",
+        "database": "warehouse",
+        "relation_name": "\"warehouse\".\"gold\".\"fact_sales\""
+       },
+       "primary_entity": null,
+       "entities": [
+        {
+         "name": "sales",
+         "description": null,
+         "type": "primary",
+         "role": null,
+         "expr": "sales_id",
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        },
+        {
+         "name": "order",
+         "description": null,
+         "type": "foreign",
+         "role": null,
+         "expr": "order_id",
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        },
+        {
+         "name": "customer",
+         "description": null,
+         "type": "foreign",
+         "role": null,
+         "expr": "customer_id",
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        },
+        {
+         "name": "product",
+         "description": null,
+         "type": "foreign",
+         "role": null,
+         "expr": "product_id",
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        },
+        {
+         "name": "store",
+         "description": null,
+         "type": "foreign",
+         "role": null,
+         "expr": "store_id",
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        }
+       ],
+       "measures": [
+        {
+         "name": "revenue",
+         "agg": "sum",
+         "description": "Quantity x price charged.",
+         "create_metric": false,
+         "expr": "revenue",
+         "agg_params": null,
+         "metadata": null,
+         "non_additive_dimension": null,
+         "agg_time_dimension": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        },
+        {
+         "name": "cost",
+         "agg": "sum",
+         "description": null,
+         "create_metric": false,
+         "expr": "cost_amount",
+         "agg_params": null,
+         "metadata": null,
+         "non_additive_dimension": null,
+         "agg_time_dimension": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        },
+        {
+         "name": "gross_profit",
+         "agg": "sum",
+         "description": null,
+         "create_metric": false,
+         "expr": "profit",
+         "agg_params": null,
+         "metadata": null,
+         "non_additive_dimension": null,
+         "agg_time_dimension": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        },
+        {
+         "name": "quantity_sold",
+         "agg": "sum",
+         "description": null,
+         "create_metric": false,
+         "expr": "quantity",
+         "agg_params": null,
+         "metadata": null,
+         "non_additive_dimension": null,
+         "agg_time_dimension": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        },
+        {
+         "name": "discount",
+         "agg": "sum",
+         "description": null,
+         "create_metric": false,
+         "expr": "discount_amount",
+         "agg_params": null,
+         "metadata": null,
+         "non_additive_dimension": null,
+         "agg_time_dimension": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        },
+        {
+         "name": "order_count",
+         "agg": "count_distinct",
+         "description": "Distinct orders.",
+         "create_metric": false,
+         "expr": "order_id",
+         "agg_params": null,
+         "metadata": null,
+         "non_additive_dimension": null,
+         "agg_time_dimension": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        },
+        {
+         "name": "customer_count",
+         "agg": "count_distinct",
+         "description": "Distinct customers who purchased.",
+         "create_metric": false,
+         "expr": "customer_id",
+         "agg_params": null,
+         "metadata": null,
+         "non_additive_dimension": null,
+         "agg_time_dimension": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        }
+       ],
+       "dimensions": [
+        {
+         "name": "order_date",
+         "description": null,
+         "type": "time",
+         "is_partition": false,
+         "type_params": {
+          "time_granularity": "day",
+          "validity_params": null
+         },
+         "expr": null,
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        },
+        {
+         "name": "channel",
+         "description": null,
+         "type": "categorical",
+         "is_partition": false,
+         "type_params": null,
+         "expr": null,
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        },
+        {
+         "name": "status",
+         "description": null,
+         "type": "categorical",
+         "is_partition": false,
+         "type_params": null,
+         "expr": null,
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        }
+       ],
+       "label": null,
+       "metadata": null,
+       "config": {
+        "meta": {}
+       }
+      },
+      {
+       "name": "customers",
+       "defaults": null,
+       "description": "Customer dimension.",
+       "node_relation": {
+        "alias": "dim_customers",
+        "schema_name": "gold",
+        "database": "warehouse",
+        "relation_name": "\"warehouse\".\"gold\".\"dim_customers\""
+       },
+       "primary_entity": null,
+       "entities": [
+        {
+         "name": "customer",
+         "description": null,
+         "type": "primary",
+         "role": null,
+         "expr": "customer_id",
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        }
+       ],
+       "measures": [],
+       "dimensions": [
+        {
+         "name": "country",
+         "description": null,
+         "type": "categorical",
+         "is_partition": false,
+         "type_params": null,
+         "expr": null,
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        },
+        {
+         "name": "city",
+         "description": null,
+         "type": "categorical",
+         "is_partition": false,
+         "type_params": null,
+         "expr": null,
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        },
+        {
+         "name": "signup_date",
+         "description": null,
+         "type": "time",
+         "is_partition": false,
+         "type_params": {
+          "time_granularity": "day",
+          "validity_params": null
+         },
+         "expr": null,
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        }
+       ],
+       "label": null,
+       "metadata": null,
+       "config": {
+        "meta": {}
+       }
+      },
+      {
+       "name": "products",
+       "defaults": null,
+       "description": "Product dimension.",
+       "node_relation": {
+        "alias": "dim_products",
+        "schema_name": "gold",
+        "database": "warehouse",
+        "relation_name": "\"warehouse\".\"gold\".\"dim_products\""
+       },
+       "primary_entity": null,
+       "entities": [
+        {
+         "name": "product",
+         "description": null,
+         "type": "primary",
+         "role": null,
+         "expr": "product_id",
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        }
+       ],
+       "measures": [],
+       "dimensions": [
+        {
+         "name": "category",
+         "description": null,
+         "type": "categorical",
+         "is_partition": false,
+         "type_params": null,
+         "expr": null,
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        },
+        {
+         "name": "product_name",
+         "description": null,
+         "type": "categorical",
+         "is_partition": false,
+         "type_params": null,
+         "expr": null,
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        }
+       ],
+       "label": null,
+       "metadata": null,
+       "config": {
+        "meta": {}
+       }
+      },
+      {
+       "name": "stores",
+       "defaults": null,
+       "description": "Store dimension.",
+       "node_relation": {
+        "alias": "dim_stores",
+        "schema_name": "gold",
+        "database": "warehouse",
+        "relation_name": "\"warehouse\".\"gold\".\"dim_stores\""
+       },
+       "primary_entity": null,
+       "entities": [
+        {
+         "name": "store",
+         "description": null,
+         "type": "primary",
+         "role": null,
+         "expr": "store_id",
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        }
+       ],
+       "measures": [],
+       "dimensions": [
+        {
+         "name": "store_country",
+         "description": null,
+         "type": "categorical",
+         "is_partition": false,
+         "type_params": null,
+         "expr": "country",
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        },
+        {
+         "name": "store_city",
+         "description": null,
+         "type": "categorical",
+         "is_partition": false,
+         "type_params": null,
+         "expr": "city",
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        }
+       ],
+       "label": null,
+       "metadata": null,
+       "config": {
+        "meta": {}
+       }
+      },
+      {
+       "name": "customer_orders",
+       "defaults": {
+        "agg_time_dimension": "last_order_date"
+       },
+       "description": "Per-customer order summary — basis for loyalty metrics.",
+       "node_relation": {
+        "alias": "fact_customer_orders",
+        "schema_name": "gold",
+        "database": "warehouse",
+        "relation_name": "\"warehouse\".\"gold\".\"fact_customer_orders\""
+       },
+       "primary_entity": null,
+       "entities": [
+        {
+         "name": "customer",
+         "description": null,
+         "type": "primary",
+         "role": null,
+         "expr": "customer_id",
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        }
+       ],
+       "measures": [
+        {
+         "name": "purchasing_customer_count",
+         "agg": "count_distinct",
+         "description": "Distinct customers who placed at least one order.",
+         "create_metric": false,
+         "expr": "customer_id",
+         "agg_params": null,
+         "metadata": null,
+         "non_additive_dimension": null,
+         "agg_time_dimension": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        }
+       ],
+       "dimensions": [
+        {
+         "name": "is_repeat_customer",
+         "description": null,
+         "type": "categorical",
+         "is_partition": false,
+         "type_params": null,
+         "expr": null,
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        },
+        {
+         "name": "last_order_date",
+         "description": null,
+         "type": "time",
+         "is_partition": false,
+         "type_params": {
+          "time_granularity": "day",
+          "validity_params": null
+         },
+         "expr": null,
+         "metadata": null,
+         "label": null,
+         "config": {
+          "meta": {}
+         }
+        }
+       ],
+       "label": null,
+       "metadata": null,
+       "config": {
+        "meta": {}
+       }
+      }
+     ],
+     "metrics": [
+      {
+       "name": "revenue_live",
+       "description": "Revenue from streamed events (near-real-time lane).",
+       "type": "simple",
+       "type_params": {
+        "measure": {
+         "name": "revenue_live_amount",
+         "filter": null,
+         "alias": null,
+         "join_to_timespine": false,
+         "fill_nulls_with": null
+        },
+        "numerator": null,
+        "denominator": null,
+        "expr": null,
+        "window": null,
+        "grain_to_date": null,
+        "metrics": [],
+        "conversion_type_params": null,
+        "cumulative_type_params": null,
+        "input_measures": [
+         {
+          "name": "revenue_live_amount",
+          "filter": null,
+          "alias": null,
+          "join_to_timespine": false,
+          "fill_nulls_with": null
+         }
+        ]
+       },
+       "filter": null,
+       "metadata": null,
+       "label": "Revenue (live)",
+       "config": {
+        "meta": {}
+       },
+       "time_granularity": null
+      },
+      {
+       "name": "gross_profit_live",
+       "description": "Gross profit from streamed events (near-real-time lane).",
+       "type": "simple",
+       "type_params": {
+        "measure": {
+         "name": "gross_profit_live_amount",
+         "filter": null,
+         "alias": null,
+         "join_to_timespine": false,
+         "fill_nulls_with": null
+        },
+        "numerator": null,
+        "denominator": null,
+        "expr": null,
+        "window": null,
+        "grain_to_date": null,
+        "metrics": [],
+        "conversion_type_params": null,
+        "cumulative_type_params": null,
+        "input_measures": [
+         {
+          "name": "gross_profit_live_amount",
+          "filter": null,
+          "alias": null,
+          "join_to_timespine": false,
+          "fill_nulls_with": null
+         }
+        ]
+       },
+       "filter": null,
+       "metadata": null,
+       "label": "Gross profit (live)",
+       "config": {
+        "meta": {}
+       },
+       "time_granularity": null
+      },
+      {
+       "name": "orders_live",
+       "description": "Number of distinct orders in the streaming lane.",
+       "type": "simple",
+       "type_params": {
+        "measure": {
+         "name": "order_count_live_distinct",
+         "filter": null,
+         "alias": null,
+         "join_to_timespine": false,
+         "fill_nulls_with": null
+        },
+        "numerator": null,
+        "denominator": null,
+        "expr": null,
+        "window": null,
+        "grain_to_date": null,
+        "metrics": [],
+        "conversion_type_params": null,
+        "cumulative_type_params": null,
+        "input_measures": [
+         {
+          "name": "order_count_live_distinct",
+          "filter": null,
+          "alias": null,
+          "join_to_timespine": false,
+          "fill_nulls_with": null
+         }
+        ]
+       },
+       "filter": null,
+       "metadata": null,
+       "label": "Orders (live)",
+       "config": {
+        "meta": {}
+       },
+       "time_granularity": null
+      },
+      {
+       "name": "average_order_value_live",
+       "description": "Revenue per order on streamed events (live AOV).",
+       "type": "ratio",
+       "type_params": {
+        "measure": null,
+        "numerator": {
+         "name": "revenue_live",
+         "filter": null,
+         "alias": null,
+         "offset_window": null,
+         "offset_to_grain": null
+        },
+        "denominator": {
+         "name": "orders_live",
+         "filter": null,
+         "alias": null,
+         "offset_window": null,
+         "offset_to_grain": null
+        },
+        "expr": null,
+        "window": null,
+        "grain_to_date": null,
+        "metrics": [],
+        "conversion_type_params": null,
+        "cumulative_type_params": null,
+        "input_measures": [
+         {
+          "name": "revenue_live_amount",
+          "filter": null,
+          "alias": null,
+          "join_to_timespine": false,
+          "fill_nulls_with": null
+         },
+         {
+          "name": "order_count_live_distinct",
+          "filter": null,
+          "alias": null,
+          "join_to_timespine": false,
+          "fill_nulls_with": null
+         }
+        ]
+       },
+       "filter": null,
+       "metadata": null,
+       "label": "Average order value (live)",
+       "config": {
+        "meta": {}
+       },
+       "time_granularity": null
+      },
+      {
+       "name": "revenue",
+       "description": "Total sales revenue.",
+       "type": "simple",
+       "type_params": {
+        "measure": {
+         "name": "revenue",
+         "filter": null,
+         "alias": null,
+         "join_to_timespine": false,
+         "fill_nulls_with": null
+        },
+        "numerator": null,
+        "denominator": null,
+        "expr": null,
+        "window": null,
+        "grain_to_date": null,
+        "metrics": [],
+        "conversion_type_params": null,
+        "cumulative_type_params": null,
+        "input_measures": [
+         {
+          "name": "revenue",
+          "filter": null,
+          "alias": null,
+          "join_to_timespine": false,
+          "fill_nulls_with": null
+         }
+        ]
+       },
+       "filter": null,
+       "metadata": null,
+       "label": "Revenue",
+       "config": {
+        "meta": {}
+       },
+       "time_granularity": null
+      },
+      {
+       "name": "cost",
+       "description": "Total cost of goods sold.",
+       "type": "simple",
+       "type_params": {
+        "measure": {
+         "name": "cost",
+         "filter": null,
+         "alias": null,
+         "join_to_timespine": false,
+         "fill_nulls_with": null
+        },
+        "numerator": null,
+        "denominator": null,
+        "expr": null,
+        "window": null,
+        "grain_to_date": null,
+        "metrics": [],
+        "conversion_type_params": null,
+        "cumulative_type_params": null,
+        "input_measures": [
+         {
+          "name": "cost",
+          "filter": null,
+          "alias": null,
+          "join_to_timespine": false,
+          "fill_nulls_with": null
+         }
+        ]
+       },
+       "filter": null,
+       "metadata": null,
+       "label": "Cost",
+       "config": {
+        "meta": {}
+       },
+       "time_granularity": null
+      },
+      {
+       "name": "gross_profit",
+       "description": "Revenue minus cost.",
+       "type": "simple",
+       "type_params": {
+        "measure": {
+         "name": "gross_profit",
+         "filter": null,
+         "alias": null,
+         "join_to_timespine": false,
+         "fill_nulls_with": null
+        },
+        "numerator": null,
+        "denominator": null,
+        "expr": null,
+        "window": null,
+        "grain_to_date": null,
+        "metrics": [],
+        "conversion_type_params": null,
+        "cumulative_type_params": null,
+        "input_measures": [
+         {
+          "name": "gross_profit",
+          "filter": null,
+          "alias": null,
+          "join_to_timespine": false,
+          "fill_nulls_with": null
+         }
+        ]
+       },
+       "filter": null,
+       "metadata": null,
+       "label": "Gross profit",
+       "config": {
+        "meta": {}
+       },
+       "time_granularity": null
+      },
+      {
+       "name": "quantity_sold",
+       "description": "Total units sold.",
+       "type": "simple",
+       "type_params": {
+        "measure": {
+         "name": "quantity_sold",
+         "filter": null,
+         "alias": null,
+         "join_to_timespine": false,
+         "fill_nulls_with": null
+        },
+        "numerator": null,
+        "denominator": null,
+        "expr": null,
+        "window": null,
+        "grain_to_date": null,
+        "metrics": [],
+        "conversion_type_params": null,
+        "cumulative_type_params": null,
+        "input_measures": [
+         {
+          "name": "quantity_sold",
+          "filter": null,
+          "alias": null,
+          "join_to_timespine": false,
+          "fill_nulls_with": null
+         }
+        ]
+       },
+       "filter": null,
+       "metadata": null,
+       "label": "Quantity sold",
+       "config": {
+        "meta": {}
+       },
+       "time_granularity": null
+      },
+      {
+       "name": "discount",
+       "description": "Total discount granted.",
+       "type": "simple",
+       "type_params": {
+        "measure": {
+         "name": "discount",
+         "filter": null,
+         "alias": null,
+         "join_to_timespine": false,
+         "fill_nulls_with": null
+        },
+        "numerator": null,
+        "denominator": null,
+        "expr": null,
+        "window": null,
+        "grain_to_date": null,
+        "metrics": [],
+        "conversion_type_params": null,
+        "cumulative_type_params": null,
+        "input_measures": [
+         {
+          "name": "discount",
+          "filter": null,
+          "alias": null,
+          "join_to_timespine": false,
+          "fill_nulls_with": null
+         }
+        ]
+       },
+       "filter": null,
+       "metadata": null,
+       "label": "Discount",
+       "config": {
+        "meta": {}
+       },
+       "time_granularity": null
+      },
+      {
+       "name": "orders",
+       "description": "Number of distinct orders.",
+       "type": "simple",
+       "type_params": {
+        "measure": {
+         "name": "order_count",
+         "filter": null,
+         "alias": null,
+         "join_to_timespine": false,
+         "fill_nulls_with": null
+        },
+        "numerator": null,
+        "denominator": null,
+        "expr": null,
+        "window": null,
+        "grain_to_date": null,
+        "metrics": [],
+        "conversion_type_params": null,
+        "cumulative_type_params": null,
+        "input_measures": [
+         {
+          "name": "order_count",
+          "filter": null,
+          "alias": null,
+          "join_to_timespine": false,
+          "fill_nulls_with": null
+         }
+        ]
+       },
+       "filter": null,
+       "metadata": null,
+       "label": "Orders",
+       "config": {
+        "meta": {}
+       },
+       "time_granularity": null
+      },
+      {
+       "name": "active_customers",
+       "description": "Distinct customers who placed at least one order.",
+       "type": "simple",
+       "type_params": {
+        "measure": {
+         "name": "customer_count",
+         "filter": null,
+         "alias": null,
+         "join_to_timespine": false,
+         "fill_nulls_with": null
+        },
+        "numerator": null,
+        "denominator": null,
+        "expr": null,
+        "window": null,
+        "grain_to_date": null,
+        "metrics": [],
+        "conversion_type_params": null,
+        "cumulative_type_params": null,
+        "input_measures": [
+         {
+          "name": "customer_count",
+          "filter": null,
+          "alias": null,
+          "join_to_timespine": false,
+          "fill_nulls_with": null
+         }
+        ]
+       },
+       "filter": null,
+       "metadata": null,
+       "label": "Active customers",
+       "config": {
+        "meta": {}
+       },
+       "time_granularity": null
+      },
+      {
+       "name": "completed_revenue",
+       "description": "Revenue from completed orders only.",
+       "type": "simple",
+       "type_params": {
+        "measure": {
+         "name": "revenue",
+         "filter": null,
+         "alias": null,
+         "join_to_timespine": false,
+         "fill_nulls_with": null
+        },
+        "numerator": null,
+        "denominator": null,
+        "expr": null,
+        "window": null,
+        "grain_to_date": null,
+        "metrics": [],
+        "conversion_type_params": null,
+        "cumulative_type_params": null,
+        "input_measures": [
+         {
+          "name": "revenue",
+          "filter": null,
+          "alias": null,
+          "join_to_timespine": false,
+          "fill_nulls_with": null
+         }
+        ]
+       },
+       "filter": {
+        "where_filters": [
+         {
+          "where_sql_template": "{{ Dimension('sales__status') }} = 'completed'"
+         }
+        ]
+       },
+       "metadata": null,
+       "label": "Completed revenue",
+       "config": {
+        "meta": {}
+       },
+       "time_granularity": null
+      },
+      {
+       "name": "returned_orders",
+       "description": "Orders that were returned.",
+       "type": "simple",
+       "type_params": {
+        "measure": {
+         "name": "order_count",
+         "filter": null,
+         "alias": null,
+         "join_to_timespine": false,
+         "fill_nulls_with": null
+        },
+        "numerator": null,
+        "denominator": null,
+        "expr": null,
+        "window": null,
+        "grain_to_date": null,
+        "metrics": [],
+        "conversion_type_params": null,
+        "cumulative_type_params": null,
+        "input_measures": [
+         {
+          "name": "order_count",
+          "filter": null,
+          "alias": null,
+          "join_to_timespine": false,
+          "fill_nulls_with": null
+         }
+        ]
+       },
+       "filter": {
+        "where_filters": [
+         {
+          "where_sql_template": "{{ Dimension('sales__status') }} = 'returned'"
+         }
+        ]
+       },
+       "metadata": null,
+       "label": "Returned orders",
+       "config": {
+        "meta": {}
+       },
+       "time_granularity": null
+      },
+      {
+       "name": "gross_margin_rate",
+       "description": "Gross profit divided by revenue.",
+       "type": "ratio",
+       "type_params": {
+        "measure": null,
+        "numerator": {
+         "name": "gross_profit",
+         "filter": null,
+         "alias": null,
+         "offset_window": null,
+         "offset_to_grain": null
+        },
+        "denominator": {
+         "name": "revenue",
+         "filter": null,
+         "alias": null,
+         "offset_window": null,
+         "offset_to_grain": null
+        },
+        "expr": null,
+        "window": null,
+        "grain_to_date": null,
+        "metrics": [],
+        "conversion_type_params": null,
+        "cumulative_type_params": null,
+        "input_measures": [
+         {
+          "name": "gross_profit",
+          "filter": null,
+          "alias": null,
+          "join_to_timespine": false,
+          "fill_nulls_with": null
+         },
+         {
+          "name": "revenue",
+          "filter": null,
+          "alias": null,
+          "join_to_timespine": false,
+          "fill_nulls_with": null
+         }
+        ]
+       },
+       "filter": null,
+       "metadata": null,
+       "label": "Gross margin rate",
+       "config": {
+        "meta": {}
+       },
+       "time_granularity": null
+      },
+      {
+       "name": "average_order_value",
+       "description": "Revenue per order (AOV).",
+       "type": "ratio",
+       "type_params": {
+        "measure": null,
+        "numerator": {
+         "name": "revenue",
+         "filter": null,
+         "alias": null,
+         "offset_window": null,
+         "offset_to_grain": null
+        },
+        "denominator": {
+         "name": "orders",
+         "filter": null,
+         "alias": null,
+         "offset_window": null,
+         "offset_to_grain": null
+        },
+        "expr": null,
+        "window": null,
+        "grain_to_date": null,
+        "metrics": [],
+        "conversion_type_params": null,
+        "cumulative_type_params": null,
+        "input_measures": [
+         {
+          "name": "revenue",
+          "filter": null,
+          "alias": null,
+          "join_to_timespine": false,
+          "fill_nulls_with": null
+         },
+         {
+          "name": "order_count",
+          "filter": null,
+          "alias": null,
+          "join_to_timespine": false,
+          "fill_nulls_with": null
+         }
+        ]
+       },
+       "filter": null,
+       "metadata": null,
+       "label": "Average order value",
+       "config": {
+        "meta": {}
+       },
+       "time_granularity": null
+      },
+      {
+       "name": "return_rate",
+       "description": "Share of orders that were returned, in percent.",
+       "type": "derived",
+       "type_params": {
+        "measure": null,
+        "numerator": null,
+        "denominator": null,
+        "expr": "returned_orders / nullif(orders, 0) * 100",
+        "window": null,
+        "grain_to_date": null,
+        "metrics": [
+         {
+          "name": "returned_orders",
+          "filter": null,
+          "alias": null,
+          "offset_window": null,
+          "offset_to_grain": null
+         },
+         {
+          "name": "orders",
+          "filter": null,
+          "alias": null,
+          "offset_window": null,
+          "offset_to_grain": null
+         }
+        ],
+        "conversion_type_params": null,
+        "cumulative_type_params": null,
+        "input_measures": [
+         {
+          "name": "order_count",
+          "filter": null,
+          "alias": null,
+          "join_to_timespine": false,
+          "fill_nulls_with": null
+         }
+        ]
+       },
+       "filter": null,
+       "metadata": null,
+       "label": "Return rate (%)",
+       "config": {
+        "meta": {}
+       },
+       "time_granularity": null
+      },
+      {
+       "name": "purchasing_customers",
+       "description": "Customers who have placed at least one order (loyalty denominator).",
+       "type": "simple",
+       "type_params": {
+        "measure": {
+         "name": "purchasing_customer_count",
+         "filter": null,
+         "alias": null,
+         "join_to_timespine": false,
+         "fill_nulls_with": null
+        },
+        "numerator": null,
+        "denominator": null,
+        "expr": null,
+        "window": null,
+        "grain_to_date": null,
+        "metrics": [],
+        "conversion_type_params": null,
+        "cumulative_type_params": null,
+        "input_measures": [
+         {
+          "name": "purchasing_customer_count",
+          "filter": null,
+          "alias": null,
+          "join_to_timespine": false,
+          "fill_nulls_with": null
+         }
+        ]
+       },
+       "filter": null,
+       "metadata": null,
+       "label": "Purchasing customers",
+       "config": {
+        "meta": {}
+       },
+       "time_granularity": null
+      },
+      {
+       "name": "repeat_customers",
+       "description": "Customers who ordered on more than one occasion.",
+       "type": "simple",
+       "type_params": {
+        "measure": {
+         "name": "purchasing_customer_count",
+         "filter": null,
+         "alias": null,
+         "join_to_timespine": false,
+         "fill_nulls_with": null
+        },
+        "numerator": null,
+        "denominator": null,
+        "expr": null,
+        "window": null,
+        "grain_to_date": null,
+        "metrics": [],
+        "conversion_type_params": null,
+        "cumulative_type_params": null,
+        "input_measures": [
+         {
+          "name": "purchasing_customer_count",
+          "filter": null,
+          "alias": null,
+          "join_to_timespine": false,
+          "fill_nulls_with": null
+         }
+        ]
+       },
+       "filter": {
+        "where_filters": [
+         {
+          "where_sql_template": "{{ Dimension('customer__is_repeat_customer') }} = true"
+         }
+        ]
+       },
+       "metadata": null,
+       "label": "Repeat customers",
+       "config": {
+        "meta": {}
+       },
+       "time_granularity": null
+      },
+      {
+       "name": "repeat_customer_rate",
+       "description": "Share of purchasing customers who ordered more than once (0-1).",
+       "type": "ratio",
+       "type_params": {
+        "measure": null,
+        "numerator": {
+         "name": "repeat_customers",
+         "filter": null,
+         "alias": null,
+         "offset_window": null,
+         "offset_to_grain": null
+        },
+        "denominator": {
+         "name": "purchasing_customers",
+         "filter": null,
+         "alias": null,
+         "offset_window": null,
+         "offset_to_grain": null
+        },
+        "expr": null,
+        "window": null,
+        "grain_to_date": null,
+        "metrics": [],
+        "conversion_type_params": null,
+        "cumulative_type_params": null,
+        "input_measures": [
+         {
+          "name": "purchasing_customer_count",
+          "filter": null,
+          "alias": null,
+          "join_to_timespine": false,
+          "fill_nulls_with": null
+         }
+        ]
+       },
+       "filter": null,
+       "metadata": null,
+       "label": "Repeat customer rate",
+       "config": {
+        "meta": {}
+       },
+       "time_granularity": null
+      }
+     ],
+     "project_configuration": {
+      "time_spine_table_configurations": [],
+      "metadata": null,
+      "dsi_package_version": {
+       "major_version": "0",
+       "minor_version": "9",
+       "patch_version": "0"
+      },
+      "time_spines": [
+       {
+        "node_relation": {
+         "alias": "dim_dates",
+         "schema_name": "gold",
+         "database": "warehouse",
+         "relation_name": "\"warehouse\".\"gold\".\"dim_dates\""
+        },
+        "primary_column": {
+         "name": "date_day",
+         "time_granularity": "day"
+        },
+        "custom_granularities": []
+       }
+      ]
+     },
+     "saved_queries": []
+    },
+    "native_dimensions:completed_revenue": {
+     "dimensions": [
+      "customer__city",
+      "customer__country",
+      "customer__is_repeat_customer",
+      "customer__last_order_date",
+      "customer__signup_date",
+      "metric_time",
+      "product__category",
+      "product__product_name",
+      "sales__channel",
+      "sales__order_date",
+      "sales__status",
+      "store__store_city",
+      "store__store_country"
+     ],
+     "exit_code": 0,
+     "stdout_sha256": "183dd24a389bd8afd12e20576dba17d77aae0e9dd53e7391bfdba0de9a891b97"
+    },
+    "distinct_values:gold.fact_sales.status": [
+     "cancelled",
+     "completed",
+     "returned"
+    ],
+    "estate_fingerprint": "af2fd0215120425aa71c3a2075d2057e227d8f0f50824403c06c899ce17b6566",
+    "native_query:[\"completed_revenue\", [\"metric_time__year\"], []]": {
+     "ok": true,
+     "rows": [
+      {
+       "metric_time__year": "2025-01-01 00:00:00",
+       "completed_revenue": "1477833.96"
+      },
+      {
+       "metric_time__year": "2024-01-01 00:00:00",
+       "completed_revenue": "1707052.8"
+      },
+      {
+       "metric_time__year": "2026-01-01 00:00:00",
+       "completed_revenue": "792441.45"
+      }
+     ],
+     "receipt": {
+      "argv": [
+       "mf",
+       "query",
+       "--metrics",
+       "completed_revenue",
+       "--group-by",
+       "metric_time__year",
+       "--csv",
+       "<csv>"
+      ],
+      "cwd": "<upstream>/dbt/retail_dwh",
+      "env": {
+       "DBT_PROFILES_DIR": "<upstream>/dbt/retail_dwh",
+       "WAREHOUSE_DB": "<upstream>/data/warehouse.duckdb"
+      },
+      "exit_code": 0,
+      "elapsed_s": 3.586,
+      "stdout": "‼️ Warning: A new version of the MetricFlow CLI is available.\n💡 Please update to version 0.15.0, released 2026-09-10 20:36:50 by running:\n\t$ pip install --upgrade dbt-metricflow\n\n\n\n⠋ Initiating query…\n\n⠙ Initiating query…\n✔ Success 🦄 - query completed after 0.08 seconds\n🖨 Wrote query output to /tmp/tmpeb0ourgu/result.csv\n\n",
+      "stderr": "",
+      "stdout_sha256": "2577b382025bc13f813ef3c4736c295259b195650cde9dde191ef0f929338c8c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "csv_written": true,
+      "csv_sha256": "af291de3ddf3689bc009db5bae011258f4c8f1cdd3df501df00650c922e309dd",
+      "fingerprints_before": {
+       "semantic_manifest_sha256": "e8e9bfc7e1188bc3eb3f5ac551e8ed5350817af14a5471bdbcdfdca2bc01bd48",
+       "dbt_manifest_sha256": "0c4ff334ef2750e4e81e3ebd44667d7679d8d98543933b8410018aa4dc9d9d10",
+       "warehouse_sha256": "b5ad8415eb58d74053f219c40c0320a94a790c2aceab475e51f52594ecb41c7c",
+       "warehouse_bytes": 3420160
+      },
+      "fingerprints_after": {
+       "semantic_manifest_sha256": "e8e9bfc7e1188bc3eb3f5ac551e8ed5350817af14a5471bdbcdfdca2bc01bd48",
+       "dbt_manifest_sha256": "0c4ff334ef2750e4e81e3ebd44667d7679d8d98543933b8410018aa4dc9d9d10",
+       "warehouse_sha256": "b5ad8415eb58d74053f219c40c0320a94a790c2aceab475e51f52594ecb41c7c",
+       "warehouse_bytes": 3420160
+      },
+      "mf_identity": {
+       "mf_path": "<upstream>/.venv/bin/mf",
+       "mf_sha256": "c8ba59f23488eaf619cb2c0fde39544bc40d011de46b16b613e084fe6bb120bf",
+       "record_entry": "../../../bin/mf",
+       "record_hash": "sha256=yLpZ8jSI6vYZyywP3jlUS8QNAR3kaxa2E-CE_muxIL8",
+       "distribution": "dbt_metricflow-0.13.0.dist-info",
+       "versions": {
+        "dbt-metricflow": "0.13.0",
+        "metricflow": "0.211.0",
+        "dbt-core": "1.11.11",
+        "dbt-duckdb": "1.10.1",
+        "dbt-semantic-interfaces": "0.9.0",
+        "duckdb": "1.5.4"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
