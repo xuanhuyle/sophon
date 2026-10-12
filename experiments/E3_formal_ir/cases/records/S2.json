@@ -1,0 +1,228 @@
+{
+ "ir_version": "E3-IR-0.1",
+ "record_id": "S2",
+ "proposed_by_role": "LLM_PROPOSER",
+ "governing_source": {
+  "source_id": "LAB-REV-POLICY",
+  "path": "cases/sources/LAB_REVENUE_POLICY.md",
+  "content_sha256": "20263fa531d3b3c946f80a85fc863cd1d004b9b2b907f75de32faf100853a957",
+  "clause_id": "S2",
+  "clause_version": 1,
+  "observed_at": "2026-10-01T09:00:00Z",
+  "effective_from": "2024-01-01",
+  "effective_to": null,
+  "provenance": "LAB_AUTHORED"
+ },
+ "requirement": {
+  "text": "Report, for each calendar year of order date, the revenue from completed orders that is attributable to the French market.",
+  "atoms": [
+   {
+    "atom_id": "year",
+    "span": [
+     17,
+     44
+    ],
+    "text": "calendar year of order date",
+    "kind": "GROUP_BY",
+    "fact_kind": "order_date",
+    "period": "CALENDAR_YEAR"
+   },
+   {
+    "atom_id": "amount",
+    "span": [
+     50,
+     57
+    ],
+    "text": "revenue",
+    "kind": "MEASURE",
+    "fact_kind": "order_line_amount",
+    "aggregation": "SUM",
+    "unit": "CURRENCY"
+   },
+   {
+    "atom_id": "completed",
+    "span": [
+     63,
+     79
+    ],
+    "text": "completed orders",
+    "kind": "PREDICATE",
+    "fact_kind": "order_status_label",
+    "op": "EQ",
+    "value": "completed",
+    "unit": null
+   },
+   {
+    "atom_id": "french_market",
+    "span": [
+     88,
+     121
+    ],
+    "text": "attributable to the French market",
+    "kind": "PREDICATE",
+    "fact_kind": null,
+    "op": "EQ",
+    "value": "France",
+    "unit": null
+   }
+  ],
+  "population": "order lines of the pinned estate",
+  "exceptions": []
+ },
+ "interpretation": {
+  "claimed_state": "UNRESOLVED_INTERPRETATION",
+  "claimed_approval_ids": [],
+  "readings": [
+   {
+    "reading_id": "R_CUSTOMER_COUNTRY",
+    "statement": "French market = customer__country is France",
+    "atom_fact_kinds": {
+     "french_market": "customer_country_attribute"
+    },
+    "bindings": {
+     "year": {
+      "kind": "DIRECT",
+      "semantic_object": {
+       "type": "time_dimension",
+       "name": "metric_time__year"
+      },
+      "physical_lineage": [
+       "gold.fact_sales.order_date",
+       "silver.stg_orders.order_date",
+       "bronze.orders.order_date"
+      ]
+     },
+     "amount": {
+      "kind": "DIRECT",
+      "semantic_object": {
+       "type": "metric",
+       "name": "revenue"
+      },
+      "physical_lineage": [
+       "gold.fact_sales.revenue",
+       "silver.stg_order_items.quantity",
+       "silver.stg_order_items.unit_price"
+      ]
+     },
+     "completed": {
+      "kind": "DIRECT",
+      "semantic_object": {
+       "type": "dimension",
+       "name": "sales__status"
+      },
+      "physical_lineage": [
+       "gold.fact_sales.status",
+       "silver.stg_orders.status",
+       "bronze.orders.status"
+      ]
+     },
+     "french_market": {
+      "kind": "DIRECT",
+      "semantic_object": {
+       "type": "dimension",
+       "name": "customer__country"
+      },
+      "physical_lineage": [
+       "gold.dim_customers.country"
+      ]
+     }
+    },
+    "native_query": {
+     "metric": "revenue",
+     "group_by": [
+      "metric_time__year"
+     ],
+     "where": [
+      "{{ Dimension('sales__status') }} = 'completed'",
+      "{{ Dimension('customer__country') }} = 'France'"
+     ]
+    },
+    "native_receipt_id": "NR_S2_CUSTOMER",
+    "oracle_id": "OR_S2_CUSTOMER"
+   },
+   {
+    "reading_id": "R_STORE_COUNTRY",
+    "statement": "French market = store__store_country is France",
+    "atom_fact_kinds": {
+     "french_market": "store_country_attribute"
+    },
+    "bindings": {
+     "year": {
+      "kind": "DIRECT",
+      "semantic_object": {
+       "type": "time_dimension",
+       "name": "metric_time__year"
+      },
+      "physical_lineage": [
+       "gold.fact_sales.order_date",
+       "silver.stg_orders.order_date",
+       "bronze.orders.order_date"
+      ]
+     },
+     "amount": {
+      "kind": "DIRECT",
+      "semantic_object": {
+       "type": "metric",
+       "name": "revenue"
+      },
+      "physical_lineage": [
+       "gold.fact_sales.revenue",
+       "silver.stg_order_items.quantity",
+       "silver.stg_order_items.unit_price"
+      ]
+     },
+     "completed": {
+      "kind": "DIRECT",
+      "semantic_object": {
+       "type": "dimension",
+       "name": "sales__status"
+      },
+      "physical_lineage": [
+       "gold.fact_sales.status",
+       "silver.stg_orders.status",
+       "bronze.orders.status"
+      ]
+     },
+     "french_market": {
+      "kind": "DIRECT",
+      "semantic_object": {
+       "type": "dimension",
+       "name": "store__store_country"
+      },
+      "physical_lineage": [
+       "gold.dim_stores.country"
+      ]
+     }
+    },
+    "native_query": {
+     "metric": "revenue",
+     "group_by": [
+      "metric_time__year"
+     ],
+     "where": [
+      "{{ Dimension('sales__status') }} = 'completed'",
+      "{{ Dimension('store__store_country') }} = 'France'"
+     ]
+    },
+    "native_receipt_id": "NR_S2_STORE",
+    "oracle_id": "OR_S2_STORE"
+   }
+  ],
+  "open_questions": [
+   "Does 'French market' mean the customer's country or the country of the store the order is booked to?"
+  ]
+ },
+ "lab_assumptions": [
+  "Currency is not declared anywhere in the pinned estate; all amounts are taken as one unspecified currency (ASSUMED)."
+ ],
+ "verification_request": {
+  "semantic_manifest_sha256": "e8e9bfc7e1188bc3eb3f5ac551e8ed5350817af14a5471bdbcdfdca2bc01bd48",
+  "raw_csv_sha256": {
+   "customers.csv": "e570cfec57af94cee3b974db5642fe0c276b495f83dd82e6af077dbb3784680d",
+   "order_items.csv": "513de0a77e90c7312a2935d47efcced60b6811a33de589e1a4fe63d2045e5f26",
+   "orders.csv": "be942a616a816158924f538b8f9cde29de773bc324411c5c6f7c83c980ec4f03",
+   "products.csv": "3783c0e35d83c571e8fc18bbafa98f59e217944288a92f590b6a15d4320c2311",
+   "stores.csv": "78d2cbff192a861f4f880bcc0c25ddc43df72bfecf8a3517abf18723109f8c44"
+  }
+ }
+}

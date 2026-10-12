@@ -1,0 +1,147 @@
+{
+ "native": {
+  "NR_S1": {
+   "snapshot": "PINNED",
+   "query": {
+    "metric": "revenue",
+    "group_by": [
+     "metric_time__year"
+    ],
+    "where": [
+     "{{ Dimension('sales__status') }} = 'completed'",
+     "{{ Metric('revenue', group_by=['sales']) }} >= 100 * {{ Metric('quantity_sold', group_by=['sales']) }}"
+    ]
+   }
+  },
+  "NR_S1_GRAIN_ORDER": {
+   "snapshot": "PINNED",
+   "query": {
+    "metric": "revenue",
+    "group_by": [
+     "metric_time__year"
+    ],
+    "where": [
+     "{{ Dimension('sales__status') }} = 'completed'",
+     "{{ Metric('revenue', group_by=['order']) }} >= 100 * {{ Metric('quantity_sold', group_by=['order']) }}"
+    ]
+   }
+  },
+  "NR_S1_NO_QTY": {
+   "snapshot": "PINNED",
+   "query": {
+    "metric": "revenue",
+    "group_by": [
+     "metric_time__year"
+    ],
+    "where": [
+     "{{ Dimension('sales__status') }} = 'completed'",
+     "{{ Metric('revenue', group_by=['sales']) }} >= 100"
+    ]
+   }
+  },
+  "NR_S1_NEGQTY": {
+   "snapshot": "COPY_NEGATIVE_QUANTITY",
+   "query": {
+    "metric": "revenue",
+    "group_by": [
+     "metric_time__year"
+    ],
+    "where": [
+     "{{ Dimension('sales__status') }} = 'completed'",
+     "{{ Metric('revenue', group_by=['sales']) }} >= 100 * {{ Metric('quantity_sold', group_by=['sales']) }}"
+    ]
+   }
+  },
+  "NR_S2_CUSTOMER": {
+   "snapshot": "PINNED",
+   "query": {
+    "metric": "revenue",
+    "group_by": [
+     "metric_time__year"
+    ],
+    "where": [
+     "{{ Dimension('sales__status') }} = 'completed'",
+     "{{ Dimension('customer__country') }} = 'France'"
+    ]
+   }
+  },
+  "NR_S2_STORE": {
+   "snapshot": "PINNED",
+   "query": {
+    "metric": "revenue",
+    "group_by": [
+     "metric_time__year"
+    ],
+    "where": [
+     "{{ Dimension('sales__status') }} = 'completed'",
+     "{{ Dimension('store__store_country') }} = 'France'"
+    ]
+   }
+  },
+  "NR_S2_CUSTOMER_VALUE_CHANGED": {
+   "snapshot": "COPY_VALUE_CHANGED",
+   "query": {
+    "metric": "revenue",
+    "group_by": [
+     "metric_time__year"
+    ],
+    "where": [
+     "{{ Dimension('sales__status') }} = 'completed'",
+     "{{ Dimension('customer__country') }} = 'France'"
+    ]
+   }
+  },
+  "NR_S3": {
+   "snapshot": "PINNED",
+   "query": {
+    "metric": "orders",
+    "group_by": [
+     "metric_time__year"
+    ],
+    "where": [
+     "{{ Dimension('sales__channel') }} = 'online'",
+     "{{ Dimension('customer__country') }} = 'France'"
+    ]
+   }
+  },
+  "NR_S4_PROXY": {
+   "snapshot": "PINNED",
+   "query": {
+    "metric": "revenue",
+    "group_by": [
+     "metric_time__year"
+    ],
+    "where": [
+     "{{ Dimension('sales__status') }} = 'completed'",
+     "{{ Dimension('sales__status') }} = 'completed'"
+    ]
+   }
+  },
+  "NR_PROBE_UNIT_PRICE_DIMENSION": {
+   "snapshot": "PINNED",
+   "expect_rejected": true,
+   "query": {
+    "metric": "revenue",
+    "group_by": [
+     "metric_time__year"
+    ],
+    "where": [
+     "{{ Dimension('sales__unit_price') }} >= 100"
+    ]
+   }
+  }
+ },
+ "guards": {
+  "GR_S1": {
+   "snapshot": "PINNED"
+  },
+  "GR_S1_NEGQTY": {
+   "snapshot": "COPY_NEGATIVE_QUANTITY"
+  }
+ },
+ "snapshots": {
+  "PINNED": "the rebuilt pinned warehouse, unmodified",
+  "COPY_NEGATIVE_QUANTITY": "disposable copy; the lowest-id completed line with unit_price > 100 and the lowest-id completed line with unit_price < 100 set to quantity -1, revenue = quantity * unit_price",
+  "COPY_VALUE_CHANGED": "disposable copy; revenue of the lowest-id completed line of a French customer (customer__country = 'France') increased by 100.00"
+ }
+}

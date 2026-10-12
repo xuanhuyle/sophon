@@ -1,0 +1,21 @@
+{
+ "approval_id": "AP_S3_EQ",
+ "provenance": "LAB_SIMULATED",
+ "approver_role": "LAB_CUSTOMER_DATA_STEWARD",
+ "claim": {
+  "kind": "SEMANTIC_EQUIVALENCE",
+  "record_id": "S3",
+  "fact_kind": "customer_residence_country",
+  "field": "gold.dim_customers.country",
+  "statement": "customers.country denotes the customer's country of residence"
+ },
+ "scope": {
+  "source_id": "LAB-REV-POLICY",
+  "source_sha256": "20263fa531d3b3c946f80a85fc863cd1d004b9b2b907f75de32faf100853a957",
+  "clause_id": "S3",
+  "clause_version": 1
+ },
+ "known_at": "2026-10-05T10:00:00Z",
+ "effective_from": "2024-01-01",
+ "effective_to": null
+}

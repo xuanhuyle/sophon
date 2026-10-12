@@ -1,0 +1,162 @@
+{
+ "ir_version": "E3-IR-0.1",
+ "record_id": "S3",
+ "proposed_by_role": "LLM_PROPOSER",
+ "governing_source": {
+  "source_id": "LAB-REV-POLICY",
+  "path": "cases/sources/LAB_REVENUE_POLICY.md",
+  "content_sha256": "20263fa531d3b3c946f80a85fc863cd1d004b9b2b907f75de32faf100853a957",
+  "clause_id": "S3",
+  "clause_version": 1,
+  "observed_at": "2026-10-01T09:00:00Z",
+  "effective_from": "2024-01-01",
+  "effective_to": null,
+  "provenance": "LAB_AUTHORED"
+ },
+ "requirement": {
+  "text": "Report, for each calendar year of order date, the number of distinct orders placed through the online channel by customers whose country of residence is France, regardless of order status.",
+  "atoms": [
+   {
+    "atom_id": "year",
+    "span": [
+     17,
+     44
+    ],
+    "text": "calendar year of order date",
+    "kind": "GROUP_BY",
+    "fact_kind": "order_date",
+    "period": "CALENDAR_YEAR"
+   },
+   {
+    "atom_id": "distinct_orders",
+    "span": [
+     50,
+     75
+    ],
+    "text": "number of distinct orders",
+    "kind": "MEASURE",
+    "fact_kind": "distinct_order",
+    "aggregation": "COUNT_DISTINCT",
+    "unit": "COUNT"
+   },
+   {
+    "atom_id": "online",
+    "span": [
+     95,
+     109
+    ],
+    "text": "online channel",
+    "kind": "PREDICATE",
+    "fact_kind": "sales_channel",
+    "op": "EQ",
+    "value": "online",
+    "unit": null
+   },
+   {
+    "atom_id": "residence_france",
+    "span": [
+     129,
+     159
+    ],
+    "text": "country of residence is France",
+    "kind": "PREDICATE",
+    "fact_kind": "customer_residence_country",
+    "op": "EQ",
+    "value": "France",
+    "unit": null
+   }
+  ],
+  "population": "order lines of the pinned estate",
+  "exceptions": []
+ },
+ "interpretation": {
+  "claimed_state": "PROPOSED",
+  "claimed_approval_ids": [],
+  "readings": [
+   {
+    "reading_id": "R_SINGLE",
+    "statement": "Distinct online orders whose customer's residence country is France, any status, by year.",
+    "bindings": {
+     "year": {
+      "kind": "DIRECT",
+      "semantic_object": {
+       "type": "time_dimension",
+       "name": "metric_time__year"
+      },
+      "physical_lineage": [
+       "gold.fact_sales.order_date",
+       "silver.stg_orders.order_date",
+       "bronze.orders.order_date"
+      ]
+     },
+     "distinct_orders": {
+      "kind": "DIRECT",
+      "semantic_object": {
+       "type": "metric",
+       "name": "orders"
+      },
+      "physical_lineage": [
+       "gold.fact_sales.order_id"
+      ]
+     },
+     "online": {
+      "kind": "DIRECT",
+      "semantic_object": {
+       "type": "dimension",
+       "name": "sales__channel"
+      },
+      "physical_lineage": [
+       "gold.fact_sales.channel",
+       "silver.stg_orders.channel",
+       "bronze.orders.channel"
+      ]
+     },
+     "residence_france": {
+      "kind": "CANDIDATE_EQUIVALENCE",
+      "semantic_object": {
+       "type": "dimension",
+       "name": "customer__country"
+      },
+      "physical_lineage": [
+       "gold.dim_customers.country",
+       "silver.stg_customers.country",
+       "bronze.customers.country"
+      ],
+      "equivalence": {
+       "field": "gold.dim_customers.country",
+       "fact_kind": "customer_residence_country",
+       "statement": "customers.country denotes the customer's country of residence",
+       "claimed_approval_id": null
+      }
+     }
+    },
+    "native_query": {
+     "metric": "orders",
+     "group_by": [
+      "metric_time__year"
+     ],
+     "where": [
+      "{{ Dimension('sales__channel') }} = 'online'",
+      "{{ Dimension('customer__country') }} = 'France'"
+     ]
+    },
+    "native_receipt_id": "NR_S3",
+    "oracle_id": "OR_S3"
+   }
+  ],
+  "open_questions": [
+   "Is customers.country the country of residence?"
+  ]
+ },
+ "lab_assumptions": [],
+ "verification_request": {
+  "semantic_manifest_sha256": "e8e9bfc7e1188bc3eb3f5ac551e8ed5350817af14a5471bdbcdfdca2bc01bd48",
+  "raw_csv_sha256": {
+   "customers.csv": "e570cfec57af94cee3b974db5642fe0c276b495f83dd82e6af077dbb3784680d",
+   "order_items.csv": "513de0a77e90c7312a2935d47efcced60b6811a33de589e1a4fe63d2045e5f26",
+   "orders.csv": "be942a616a816158924f538b8f9cde29de773bc324411c5c6f7c83c980ec4f03",
+   "products.csv": "3783c0e35d83c571e8fc18bbafa98f59e217944288a92f590b6a15d4320c2311",
+   "stores.csv": "78d2cbff192a861f4f880bcc0c25ddc43df72bfecf8a3517abf18723109f8c44"
+  }
+ }
+}
