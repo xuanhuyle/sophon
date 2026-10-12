@@ -1,0 +1,20 @@
+{
+ "candidate_id": "M5",
+ "policy": "P2",
+ "change_of": "M2",
+ "patch": [
+  {
+   "op": "append",
+   "file": "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+   "text": "\n  - name: french_market_revenue\n    description: \"Completed revenue of stores in France.\"\n    label: \"French market revenue\"\n    type: simple\n    type_params:\n      measure: revenue\n    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('store__store_country') }} = 'France'\"\n"
+  }
+ ],
+ "query": {
+  "metric": "french_market_revenue",
+  "group_by": [
+   "metric_time__year"
+  ],
+  "where": []
+ },
+ "note": "WRONG binding: store country instead of customer country (native semantic YAML mutation)"
+}

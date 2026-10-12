@@ -1,0 +1,20 @@
+{
+ "candidate_id": "C4",
+ "policy": "P2",
+ "change_of": "M2",
+ "patch": [
+  {
+   "op": "append",
+   "file": "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+   "text": "\n  - name: french_market_revenue\n    description: \"Refers to a dimension that does not exist.\"\n    label: \"French market revenue\"\n    type: simple\n    type_params:\n      measure: revenue\n    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('customer__residence_country') }} = 'France'\"\n"
+  }
+ ],
+ "query": {
+  "metric": "french_market_revenue",
+  "group_by": [
+   "metric_time__year"
+  ],
+  "where": []
+ },
+ "note": "broken candidate: filter references a nonexistent dimension"
+}

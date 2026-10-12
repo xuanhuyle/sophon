@@ -1,0 +1,26 @@
+--- pristine/dbt/retail_dwh/models/marts/semantic/_semantic_models.yml
++++ candidate/dbt/retail_dwh/models/marts/semantic/_semantic_models.yml
+@@ -34,6 +34,9 @@
+         type: categorical
+       - name: status
+         type: categorical
++      - name: unit_price
++        type: categorical
++        expr: unit_price
+     measures:
+       - name: revenue
+         description: "Quantity x price charged."
+--- pristine/dbt/retail_dwh/models/marts/semantic/_metrics.yml
++++ candidate/dbt/retail_dwh/models/marts/semantic/_metrics.yml
+@@ -117,3 +117,11 @@
+     type_params:
+       numerator: repeat_customers
+       denominator: purchasing_customers
++
++  - name: premium_completed_revenue
++    description: "Non-cancelled revenue on lines with unit price at least 100."
++    label: "Premium completed revenue"
++    type: simple
++    type_params:
++      measure: revenue
++    filter: "{{ Dimension('sales__status') }} != 'cancelled' AND {{ Dimension('sales__unit_price') }} >= 100"

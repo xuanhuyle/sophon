@@ -1,0 +1,26 @@
+{
+ "candidate_id": "M6B",
+ "policy": "P1",
+ "change_of": "M1",
+ "patch": [
+  {
+   "op": "replace",
+   "file": "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+   "old": "      - name: status\n        type: categorical\n    measures:\n      - name: revenue\n        description: \"Quantity x price charged.\"\n",
+   "new": "      - name: status\n        type: categorical\n      - name: unit_price\n        type: categorical\n        expr: unit_price\n    measures:\n      - name: revenue\n        description: \"Quantity x price charged.\"\n"
+  },
+  {
+   "op": "append",
+   "file": "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+   "text": "\n  - name: premium_completed_revenue\n    description: \"Completed revenue on lines with unit price at least 100.\"\n    label: \"Premium completed revenue\"\n    type: simple\n    type_params:\n      measure: revenue\n    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 100\"\n"
+  }
+ ],
+ "query": {
+  "metric": "premium_completed_revenue",
+  "group_by": [
+   "metric_time__year"
+  ],
+  "where": []
+ },
+ "note": "harmless alternative: expose unit_price as a dimension and define a metric with >= 100"
+}

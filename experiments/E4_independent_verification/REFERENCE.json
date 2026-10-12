@@ -1,0 +1,246 @@
+{
+ "label": "E4 REFERENCE (frozen): approved LAB meaning + independent raw-CSV results. Never derived from any candidate.",
+ "approved_specs": {
+  "P1": {
+   "source": {
+    "e3_record": "experiments/E3_formal_ir/cases/records/S1.json",
+    "clause": "S1 v1",
+    "reading": "R_SINGLE",
+    "approved_reading_meaning_sha256": "cc1af11b1954bfd2bb7ad462d083b63933ffcb8ad9e25614cf33ea19381a47c6",
+    "lab_approval": "AP_S1_READ (LAB_SIMULATED)",
+    "governing_source_sha256": "20263fa531d3b3c946f80a85fc863cd1d004b9b2b907f75de32faf100853a957"
+   },
+   "predicates": [
+    {
+     "field": "order status (normalised lower(trim))",
+     "op": "=",
+     "value": "completed"
+    },
+    {
+     "field": "charged unit price of the order line",
+     "op": ">=",
+     "value": "100",
+     "unit": "currency per unit"
+    }
+   ],
+   "amount": "sum over eligible order lines of quantity * unit_price",
+   "period": "calendar year of order date",
+   "population": "order lines that join to an order and a product (fact_sales inner joins)",
+   "row_grain": "order line (order_item_id = sales_id)",
+   "derivation_guards_if_derived": [
+    "quantity_positive",
+    "revenue_exact",
+    "price_source_exact",
+    "line_entity_unique",
+    "exact_comparison"
+   ]
+  },
+  "P2": {
+   "source": {
+    "e3_record": "experiments/E3_formal_ir/cases/records/S2.json",
+    "clause": "S2 v1",
+    "reading": "R_CUSTOMER_COUNTRY",
+    "approved_reading_meaning_sha256": "d202a53091de1b1f07d6d90305a3ab33dbf338495b2b90becc32a56df5bde909",
+    "lab_approval": "AP_S2_CUSTOMER (LAB_SIMULATED)",
+    "governing_source_sha256": "20263fa531d3b3c946f80a85fc863cd1d004b9b2b907f75de32faf100853a957",
+    "rejected_alternative": "R_STORE_COUNTRY (store country), NOT approved"
+   },
+   "predicates": [
+    {
+     "field": "order status (normalised lower(trim))",
+     "op": "=",
+     "value": "completed"
+    },
+    {
+     "field": "customer country (normalised by the pinned stg_customers CASE table, aliases FR/FRA/France)",
+     "op": "=",
+     "value": "France"
+    }
+   ],
+   "amount": "sum over eligible order lines of quantity * unit_price",
+   "period": "calendar year of order date",
+   "population": "order lines that join to an order and a product (fact_sales inner joins)",
+   "row_grain": "order line (order_item_id = sales_id)"
+  }
+ },
+ "registered_snapshots": {
+  "verification": {
+   "P1": [
+    "PINNED",
+    "BOUNDARY"
+   ],
+   "P2": [
+    "PINNED"
+   ]
+  },
+  "guard_fixtures": [
+   "NEGQTY"
+  ],
+  "snapshots": {
+   "PINNED": {
+    "csv_sha256": {
+     "customers.csv": "e570cfec57af94cee3b974db5642fe0c276b495f83dd82e6af077dbb3784680d",
+     "order_items.csv": "513de0a77e90c7312a2935d47efcced60b6811a33de589e1a4fe63d2045e5f26",
+     "orders.csv": "be942a616a816158924f538b8f9cde29de773bc324411c5c6f7c83c980ec4f03",
+     "products.csv": "3783c0e35d83c571e8fc18bbafa98f59e217944288a92f590b6a15d4320c2311",
+     "stores.csv": "78d2cbff192a861f4f880bcc0c25ddc43df72bfecf8a3517abf18723109f8c44"
+    },
+    "edits": [],
+    "origin": "pinned generator"
+   },
+   "BOUNDARY": {
+    "csv_sha256": {
+     "customers.csv": "e570cfec57af94cee3b974db5642fe0c276b495f83dd82e6af077dbb3784680d",
+     "order_items.csv": "d6f0ef2708650e13665f89821557f867bbe7aa012f05734fde4d3aae84cad92f",
+     "orders.csv": "be942a616a816158924f538b8f9cde29de773bc324411c5c6f7c83c980ec4f03",
+     "products.csv": "3783c0e35d83c571e8fc18bbafa98f59e217944288a92f590b6a15d4320c2311",
+     "stores.csv": "78d2cbff192a861f4f880bcc0c25ddc43df72bfecf8a3517abf18723109f8c44"
+    },
+    "edits": [
+     {
+      "file": "order_items.csv",
+      "order_item_id": "2",
+      "field": "unit_price",
+      "old": "44.06",
+      "new": "100.00"
+     },
+     {
+      "file": "order_items.csv",
+      "order_item_id": "3",
+      "field": "unit_price",
+      "old": "99.25",
+      "new": "99.99"
+     },
+     {
+      "file": "order_items.csv",
+      "order_item_id": "15",
+      "field": "unit_price",
+      "old": "65.97",
+      "new": "100.01"
+     }
+    ],
+    "origin": "controlled fixture from PINNED"
+   },
+   "NEGQTY": {
+    "csv_sha256": {
+     "customers.csv": "e570cfec57af94cee3b974db5642fe0c276b495f83dd82e6af077dbb3784680d",
+     "order_items.csv": "a6081d5079de60c9482321aeb0fd50ee5afc0311f872d8db51da45b308fe5cae",
+     "orders.csv": "be942a616a816158924f538b8f9cde29de773bc324411c5c6f7c83c980ec4f03",
+     "products.csv": "3783c0e35d83c571e8fc18bbafa98f59e217944288a92f590b6a15d4320c2311",
+     "stores.csv": "78d2cbff192a861f4f880bcc0c25ddc43df72bfecf8a3517abf18723109f8c44"
+    },
+    "edits": [
+     {
+      "file": "order_items.csv",
+      "order_item_id": "1",
+      "field": "quantity",
+      "old": "3",
+      "new": "-1"
+     }
+    ],
+    "origin": "controlled fixture from PINNED"
+   }
+  }
+ },
+ "unregistered_example": {
+  "STALE": {
+   "csv_sha256": {
+    "customers.csv": "e570cfec57af94cee3b974db5642fe0c276b495f83dd82e6af077dbb3784680d",
+    "order_items.csv": "513de0a77e90c7312a2935d47efcced60b6811a33de589e1a4fe63d2045e5f26",
+    "orders.csv": "2429d30aa392a13b07862c1395b1ce01706384c1099c1a02e5b27b74e6047bf3",
+    "products.csv": "3783c0e35d83c571e8fc18bbafa98f59e217944288a92f590b6a15d4320c2311",
+    "stores.csv": "78d2cbff192a861f4f880bcc0c25ddc43df72bfecf8a3517abf18723109f8c44"
+   },
+   "edits": [
+    {
+     "file": "orders.csv",
+     "order_id": "1",
+     "field": "status",
+     "old": "completed",
+     "new": "returned"
+    }
+   ],
+   "registered": false
+  }
+ },
+ "reference_results": {
+  "P1@PINNED": {
+   "by_year": {
+    "2024": "1634542.08",
+    "2025": "1400232.75",
+    "2026": "752191.54"
+   },
+   "line_count": 3305,
+   "lines_sha256": "7150b4fee8651f0ef02c7c1f5f8ebe98d1b9c4cf8a395482d2932bf941ffed3d"
+  },
+  "P1@BOUNDARY": {
+   "by_year": {
+    "2024": "1634542.08",
+    "2025": "1400632.76",
+    "2026": "752191.54"
+   },
+   "line_count": 3307,
+   "lines_sha256": "c43d0cd6aa021bdd62ceacc6ce43d49501d82052cf27909d59971ff0e2b8c61c"
+  },
+  "P1@NEGQTY": {
+   "by_year": {
+    "2024": "1634542.08",
+    "2025": "1398759.55",
+    "2026": "752191.54"
+   },
+   "line_count": 3305,
+   "lines_sha256": "93c1b72c22efd79a8e34337db2269704fb278a285456c822e2ad2530aaf1ca35"
+  },
+  "P1@STALE": {
+   "by_year": {
+    "2024": "1634542.08",
+    "2025": "1399127.85",
+    "2026": "752191.54"
+   },
+   "line_count": 3304,
+   "lines_sha256": "081ac5b16303e3523de1bfc179d9e8de7657efc258a44a366adf45989513eefc"
+  },
+  "P2@PINNED": {
+   "by_year": {
+    "2024": "310780.14",
+    "2025": "261972.06",
+    "2026": "155221.02"
+   },
+   "line_count": 840,
+   "lines_sha256": "60f5eb406d25d8953a872ce284737a895724a0e7e314730d9179248b12bde9a4"
+  },
+  "P2@BOUNDARY": {
+   "by_year": {
+    "2024": "310780.14",
+    "2025": "262143.58",
+    "2026": "155221.02"
+   },
+   "line_count": 840,
+   "lines_sha256": "bdba35fc3e2c526f36bc09c8798975e12bb6326e48e3ac7ab97d7171a0b5c88d"
+  },
+  "P2@NEGQTY": {
+   "by_year": {
+    "2024": "310780.14",
+    "2025": "260498.86",
+    "2026": "155221.02"
+   },
+   "line_count": 840,
+   "lines_sha256": "d5bb7439f45e3cb0697cb7b7451ed7d876ea0aa5b66a82dbd96c104fb2481849"
+  },
+  "P2@STALE": {
+   "by_year": {
+    "2024": "310780.14",
+    "2025": "260238.73",
+    "2026": "155221.02"
+   },
+   "line_count": 837,
+   "lines_sha256": "2714de82e4167b228ca77c195d6a2c5a9f31904009986dac14a55289b6cba81c"
+  }
+ },
+ "pristine_semantic_manifest_sha256": "e8e9bfc7e1188bc3eb3f5ac551e8ed5350817af14a5471bdbcdfdca2bc01bd48",
+ "reference_code_sha256": {
+  "src/reference.py": "5b323d1459ae37cd93da9b398c6d22ab7f83b85fd805c6223c1039dff620160b",
+  "src/fixtures.py": "407ba94ccb95a9d0472999ee9260e3aee1e5b1fb2d53d7e3be34934c29e40a78"
+ },
+ "cross_check": "P1@PINNED and P2@PINNED equal E3.1 TRUSTED_MANIFEST expected_reference_values (erratum oracle_b1 / E2 e2_oracle)"
+}
