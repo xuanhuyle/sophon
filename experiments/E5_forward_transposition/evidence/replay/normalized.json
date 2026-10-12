@@ -1,0 +1,935 @@
+{
+ "F3": {
+  "baseline_semantic_manifest_sha256": {
+   "BOUNDARY120": "3532b0e66f9758055ec4e8fc2085e15226c87adecdd6c72ab2554afb4c7515bf",
+   "PINNED": "3532b0e66f9758055ec4e8fc2085e15226c87adecdd6c72ab2554afb4c7515bf"
+  },
+  "compiled_sql_contains_threshold_120": true,
+  "delta": [
+   {
+    "atom_id": "unit_price_threshold",
+    "fact_kind": "order_line_charged_unit_price",
+    "from": "100",
+    "op": "GE",
+    "to": "120",
+    "unit": "CURRENCY_PER_UNIT"
+   }
+  ],
+  "generated_compiled_sql": "SELECT\n  metric_time__year\n  , SUM(premium_completed_revenue) AS premium_completed_revenue\nFROM (\n  SELECT\n    DATE_TRUNC('year', order_date) AS metric_time__year\n    , status AS sales__status\n    , unit_price AS sales__unit_price\n    , revenue AS premium_completed_revenue\n  FROM \"warehouse\".\"gold\".\"fact_sales\" sales_src_10000\n) subq_2\nWHERE sales__status = 'completed' AND sales__unit_price >= 120\nGROUP BY\n  metric_time__year",
+  "generated_semantic_manifest_sha256": {
+   "BOUNDARY120": "fd26cecdbb44ff2e0e8807db1ce0af4836a0b412c8ad29646aecbaddcf6ce265",
+   "PINNED": "fd26cecdbb44ff2e0e8807db1ce0af4836a0b412c8ad29646aecbaddcf6ce265"
+  },
+  "generated_stack_builds": true,
+  "metric_name_set_unchanged": true,
+  "modified_metrics": [
+   "premium_completed_revenue"
+  ],
+  "no_repository_file_opened_by_transposer": true,
+  "not_affected": [
+   "french_market_revenue"
+  ],
+  "p1_yaml_after": {
+   "description": "Completed revenue on lines with unit price at least 120.",
+   "filter": "{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 120",
+   "label": "Premium completed revenue",
+   "name": "premium_completed_revenue",
+   "type": "simple",
+   "type_params": {
+    "measure": "revenue"
+   }
+  },
+  "p1_yaml_before": {
+   "description": "Completed revenue on lines with unit price at least 100.",
+   "filter": "{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 100",
+   "label": "Premium completed revenue",
+   "name": "premium_completed_revenue",
+   "type": "simple",
+   "type_params": {
+    "measure": "revenue"
+   }
+  },
+  "p2_block_unchanged_by_patch": true,
+  "patch_differs_from_every_frozen_candidate": true,
+  "patch_files": [
+   "dbt/retail_dwh/models/marts/semantic/_metrics.yml"
+  ],
+  "patch_ops": 1,
+  "patch_sha256": "bbc5a6b1b68f545dc01309a94120580e3a12d2e67d79ad647df3cf37a58f897a",
+  "status": "PROPOSED_NOT_DEPLOYED"
+ },
+ "F5": {
+  "naive": {
+   "BOUNDARY120": {
+    "differs_in_2024": true,
+    "generated_all_dates_by_year": {
+     "2024": "1615473.58",
+     "2025": "1385328.92",
+     "2026": "746528.40"
+    },
+    "routed_by_year": {
+     "2024": "1635322.04",
+     "2025": "1385328.92",
+     "2026": "746528.40"
+    }
+   },
+   "PINNED": {
+    "differs_in_2024": true,
+    "generated_all_dates_by_year": {
+     "2024": "1615473.58",
+     "2025": "1384728.90",
+     "2026": "746528.40"
+    },
+    "routed_by_year": {
+     "2024": "1634542.08",
+     "2025": "1384728.90",
+     "2026": "746528.40"
+    }
+   }
+  },
+  "routings": {
+   "F5.K_POST": {
+    "combined": {
+     "BOUNDARY120": {
+      "by_year": {
+       "2024": "1635322.04",
+       "2025": "1385328.92",
+       "2026": "746528.40"
+      },
+      "line_count": 3240,
+      "lines_sha256": "2853d81c755eb2fce81076dc6de48757af8b4e322911ccc62b50e747498259f1"
+     },
+     "PINNED": {
+      "by_year": {
+       "2024": "1634542.08",
+       "2025": "1384728.90",
+       "2026": "746528.40"
+      },
+      "line_count": 3236,
+      "lines_sha256": "fc6c8e4283d06d87713b2091fb45f6d6acb3b92b3ba7c880b4c19ea1148cb586"
+     }
+    },
+    "equals": {
+     "per_snapshot": {
+      "BOUNDARY120": true,
+      "PINNED": true
+     },
+     "reference": "ROUTED@K_POST"
+    },
+    "segments": [
+     {
+      "revision": "BASELINE",
+      "status": "CONFORMS",
+      "version": "P1_v1",
+      "window": [
+       "2024-01-01",
+       "2025-01-01"
+      ]
+     },
+     {
+      "revision": "GENERATED",
+      "status": "CONFORMS",
+      "version": "P1_v2",
+      "window": [
+       "2025-01-01",
+       null
+      ]
+     }
+    ]
+   },
+   "F5.K_PRE": {
+    "combined": {
+     "BOUNDARY120": {
+      "by_year": {
+       "2024": "1635322.04",
+       "2025": "1401292.74",
+       "2026": "752191.54"
+      },
+      "line_count": 3311,
+      "lines_sha256": "ba092bd538d336a9814bb52abbb94bb5b4abc54aa0d434b8e43dc2de206be3e5"
+     },
+     "PINNED": {
+      "by_year": {
+       "2024": "1634542.08",
+       "2025": "1400232.75",
+       "2026": "752191.54"
+      },
+      "line_count": 3305,
+      "lines_sha256": "7150b4fee8651f0ef02c7c1f5f8ebe98d1b9c4cf8a395482d2932bf941ffed3d"
+     }
+    },
+    "equals": {
+     "per_snapshot": {
+      "BOUNDARY120": true,
+      "PINNED": true
+     },
+     "reference": "ROUTED@K_PRE"
+    },
+    "segments": [
+     {
+      "revision": "BASELINE",
+      "status": "CONFORMS",
+      "version": "P1_v1",
+      "window": [
+       "2024-01-01",
+       null
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "F6": {
+  "after_conforms_to_P2_oracle": true,
+  "has_row_counterexample": false,
+  "manifest_node_identical": true,
+  "native_identical": true,
+  "status": "P2_UNCHANGED_VERIFIED",
+  "yaml_block_identical": true
+ },
+ "F7": {
+  "deployed": false,
+  "deployment_authorization": null,
+  "original_semantic_manifest_sha256": "3532b0e66f9758055ec4e8fc2085e15226c87adecdd6c72ab2554afb4c7515bf",
+  "proposal_id": "PROP_LAB-REV-POLICY_S1_P1_v1_to_P1_v2",
+  "proposal_review_status": "PROPOSED_NOT_DEPLOYED",
+  "proposed_semantic_manifest_sha256": "fd26cecdbb44ff2e0e8807db1ce0af4836a0b412c8ad29646aecbaddcf6ce265",
+  "reasons": [
+   "NO_DEPLOYMENT_RECEIPT"
+  ],
+  "reviewer_decision": "PENDING",
+  "state": "PROPOSED_VERIFIED_NOT_DEPLOYED"
+ },
+ "G0": {
+  "build_ok": true,
+  "p1_by_year": {
+   "2024": "1634542.08",
+   "2025": "1400232.75",
+   "2026": "752191.54"
+  },
+  "p1_ok": true,
+  "p2_by_year": {
+   "2024": "310780.14",
+   "2025": "261972.06",
+   "2026": "155221.02"
+  },
+  "p2_ok": true,
+  "semantic_manifest_sha256": "3532b0e66f9758055ec4e8fc2085e15226c87adecdd6c72ab2554afb4c7515bf"
+ },
+ "N1": {
+  "N1A_SOURCE_HASH_V1_MISMATCH": {
+   "patch": null,
+   "reasons": [
+    "SOURCE_HASH_MISMATCH"
+   ],
+   "status": "BLOCKED"
+  },
+  "N1B_SOURCE_HASH_MISSING": {
+   "patch": null,
+   "reasons": [
+    "SOURCE_HASH_MISSING"
+   ],
+   "status": "BLOCKED"
+  },
+  "N1C_APPROVAL_MISSING": {
+   "patch": null,
+   "reasons": [
+    "APPROVAL_MISSING"
+   ],
+   "status": "BLOCKED"
+  },
+  "N1D_APPROVAL_MEANING_MISMATCH": {
+   "patch": null,
+   "reasons": [
+    "APPROVAL_MEANING_MISMATCH"
+   ],
+   "status": "BLOCKED"
+  },
+  "N1E_APPROVER_NOT_AUTHORIZED": {
+   "patch": null,
+   "reasons": [
+    "APPROVER_NOT_AUTHORIZED"
+   ],
+   "status": "BLOCKED"
+  },
+  "N1F_PREDECESSOR_MISMATCH": {
+   "patch": null,
+   "reasons": [
+    "PREDECESSOR_MISMATCH"
+   ],
+   "status": "BLOCKED"
+  },
+  "N1G_VALUE_NOT_IN_SOURCE": {
+   "patch": null,
+   "reasons": [
+    "VALUE_NOT_GROUNDED_IN_SOURCE"
+   ],
+   "status": "BLOCKED"
+  },
+  "N1H_UNIT_CHANGED": {
+   "patch": null,
+   "reasons": [
+    "UNIT_CHANGED"
+   ],
+   "status": "UNRESOLVED"
+  },
+  "N1I_UNSUPPORTED_OPERATOR": {
+   "patch": null,
+   "reasons": [
+    "UNSUPPORTED_OPERATOR"
+   ],
+   "status": "UNRESOLVED"
+  },
+  "N1J_BINDING_MISSING": {
+   "patch": null,
+   "reasons": [
+    "BINDING_MISSING"
+   ],
+   "status": "UNRESOLVED"
+  },
+  "N1K_BASELINE_NOT_V1": {
+   "patch": null,
+   "reasons": [
+    "BASELINE_DOES_NOT_IMPLEMENT_PREDECESSOR"
+   ],
+   "status": "UNRESOLVED"
+  }
+ },
+ "N3": {
+  "after_conforms_to_P2_oracle": false,
+  "has_row_counterexample": true,
+  "manifest_node_identical": false,
+  "native_identical": false,
+  "status": "P2_CHANGED_DETECTED",
+  "yaml_block_identical": false
+ },
+ "N3_counterexample_ids": {
+  "BOUNDARY120": [
+   "2",
+   "3",
+   "95",
+   "110",
+   "131"
+  ],
+  "PINNED": [
+   "2",
+   "3",
+   "22",
+   "95",
+   "110"
+  ]
+ },
+ "N4": {
+  "N4A": {
+   "deployed": false,
+   "reasons": [
+    "NO_DEPLOYMENT_RECEIPT"
+   ],
+   "state": "PROPOSED_NOT_DEPLOYED"
+  },
+  "N4B": {
+   "deployed": false,
+   "reasons": [
+    "CLAIM_WITHOUT_EVIDENCE",
+    "NO_DEPLOYMENT_RECEIPT"
+   ],
+   "state": "PROPOSED_NOT_DEPLOYED"
+  },
+  "N4C": {
+   "deployed": false,
+   "reasons": [
+    "NO_DEPLOYMENT_RECEIPT"
+   ],
+   "state": "PROPOSED_VERIFIED_NOT_DEPLOYED"
+  },
+  "N4D": {
+   "deployed": false,
+   "reasons": [
+    "DEPLOYMENT_AUTHORITY_NOT_RECOGNIZED",
+    "NO_DEPLOYMENT_RECEIPT"
+   ],
+   "state": "PROPOSED_VERIFIED_NOT_DEPLOYED"
+  }
+ },
+ "authority": {
+  "F1": {
+   "governing": {
+    "2024-06-01": "P1_v1",
+    "2025-06-01": "P1_v1",
+    "2026-06-01": "P1_v1"
+   },
+   "knowledge_at": "2026-10-06T00:00:00Z",
+   "version_state": {
+    "P1_v1": "LAB_APPROVED",
+    "P1_v2": "NOT_KNOWN"
+   }
+  },
+  "F1B": {
+   "governing": {
+    "2024-06-01": "P1_v1",
+    "2025-06-01": "P1_v1"
+   },
+   "knowledge_at": "2026-10-09T12:00:00Z",
+   "version_state": {
+    "P1_v1": "LAB_APPROVED",
+    "P1_v2": "NOT_APPROVED"
+   }
+  },
+  "F2": {
+   "governing": {
+    "2024-06-01": "P1_v1",
+    "2024-12-31": "P1_v1",
+    "2025-01-01": "P1_v2",
+    "2026-06-01": "P1_v2"
+   },
+   "knowledge_at": "2026-10-11T00:00:00Z",
+   "version_state": {
+    "P1_v1": "LAB_APPROVED",
+    "P1_v2": "LAB_APPROVED"
+   }
+  }
+ },
+ "checks": {
+  "F1.generated_vs_governing": {
+   "reasons": [
+    "MEMBERSHIP_MISMATCH",
+    "TOTAL_MISMATCH"
+   ],
+   "snapshots": [
+    {
+     "candidate_by_year": {
+      "2025": "1384728.90",
+      "2026": "746528.40"
+     },
+     "candidate_line_count": 1834,
+     "counterexample_ids": [
+      "169",
+      "170",
+      "171",
+      "379",
+      "438"
+     ],
+     "membership": {
+      "amount_differs": 0,
+      "candidate_not_expected": 0,
+      "expected_not_in_candidate": 69
+     },
+     "native_executed_ok": true,
+     "reasons": [
+      "TOTAL_MISMATCH",
+      "MEMBERSHIP_MISMATCH"
+     ],
+     "reference_by_year": {
+      "2025": "1400232.75",
+      "2026": "752191.54"
+     },
+     "snapshot": "PINNED",
+     "status": "MISMATCH"
+    },
+    {
+     "candidate_by_year": {
+      "2025": "1385328.92",
+      "2026": "746528.40"
+     },
+     "candidate_line_count": 1836,
+     "counterexample_ids": [
+      "15",
+      "21",
+      "169",
+      "170",
+      "171"
+     ],
+     "membership": {
+      "amount_differs": 0,
+      "candidate_not_expected": 0,
+      "expected_not_in_candidate": 71
+     },
+     "native_executed_ok": true,
+     "reasons": [
+      "TOTAL_MISMATCH",
+      "MEMBERSHIP_MISMATCH"
+     ],
+     "reference_by_year": {
+      "2025": "1401292.74",
+      "2026": "752191.54"
+     },
+     "snapshot": "BOUNDARY120",
+     "status": "MISMATCH"
+    }
+   ],
+   "status": "NONCONFORMING_IMPLEMENTATION"
+  },
+  "F1.generated_vs_requested_v2": {
+   "reasons": [
+    "REQUIREMENT_VERSION_NOT_KNOWN"
+   ],
+   "snapshots": [
+    {
+     "candidate_by_year": {
+      "2025": "1384728.90",
+      "2026": "746528.40"
+     },
+     "candidate_line_count": 1834,
+     "counterexample_ids": [],
+     "membership": {
+      "amount_differs": 0,
+      "candidate_not_expected": 0,
+      "expected_not_in_candidate": 0
+     },
+     "native_executed_ok": true,
+     "reasons": [],
+     "reference_by_year": {
+      "2025": "1384728.90",
+      "2026": "746528.40"
+     },
+     "snapshot": "PINNED",
+     "status": "CONFORMS"
+    },
+    {
+     "candidate_by_year": {
+      "2025": "1385328.92",
+      "2026": "746528.40"
+     },
+     "candidate_line_count": 1836,
+     "counterexample_ids": [],
+     "membership": {
+      "amount_differs": 0,
+      "candidate_not_expected": 0,
+      "expected_not_in_candidate": 0
+     },
+     "native_executed_ok": true,
+     "reasons": [],
+     "reference_by_year": {
+      "2025": "1385328.92",
+      "2026": "746528.40"
+     },
+     "snapshot": "BOUNDARY120",
+     "status": "CONFORMS"
+    }
+   ],
+   "status": "NOT_VERIFIED"
+  },
+  "F1B.generated_vs_requested_v2": {
+   "reasons": [
+    "REQUIREMENT_VERSION_NOT_APPROVED"
+   ],
+   "snapshots": [
+    {
+     "candidate_by_year": {
+      "2025": "1384728.90",
+      "2026": "746528.40"
+     },
+     "candidate_line_count": 1834,
+     "counterexample_ids": [],
+     "membership": {
+      "amount_differs": 0,
+      "candidate_not_expected": 0,
+      "expected_not_in_candidate": 0
+     },
+     "native_executed_ok": true,
+     "reasons": [],
+     "reference_by_year": {
+      "2025": "1384728.90",
+      "2026": "746528.40"
+     },
+     "snapshot": "PINNED",
+     "status": "CONFORMS"
+    },
+    {
+     "candidate_by_year": {
+      "2025": "1385328.92",
+      "2026": "746528.40"
+     },
+     "candidate_line_count": 1836,
+     "counterexample_ids": [],
+     "membership": {
+      "amount_differs": 0,
+      "candidate_not_expected": 0,
+      "expected_not_in_candidate": 0
+     },
+     "native_executed_ok": true,
+     "reasons": [],
+     "reference_by_year": {
+      "2025": "1385328.92",
+      "2026": "746528.40"
+     },
+     "snapshot": "BOUNDARY120",
+     "status": "CONFORMS"
+    }
+   ],
+   "status": "NOT_VERIFIED"
+  },
+  "F2.baseline_vs_governing": {
+   "reasons": [
+    "MEMBERSHIP_MISMATCH",
+    "TOTAL_MISMATCH"
+   ],
+   "snapshots": [
+    {
+     "candidate_by_year": {
+      "2025": "1400232.75",
+      "2026": "752191.54"
+     },
+     "candidate_line_count": 1903,
+     "counterexample_ids": [
+      "169",
+      "170",
+      "171",
+      "379",
+      "438"
+     ],
+     "membership": {
+      "amount_differs": 0,
+      "candidate_not_expected": 69,
+      "expected_not_in_candidate": 0
+     },
+     "native_executed_ok": true,
+     "reasons": [
+      "TOTAL_MISMATCH",
+      "MEMBERSHIP_MISMATCH"
+     ],
+     "reference_by_year": {
+      "2025": "1384728.90",
+      "2026": "746528.40"
+     },
+     "snapshot": "PINNED",
+     "status": "MISMATCH"
+    },
+    {
+     "candidate_by_year": {
+      "2025": "1401292.74",
+      "2026": "752191.54"
+     },
+     "candidate_line_count": 1907,
+     "counterexample_ids": [
+      "15",
+      "21",
+      "169",
+      "170",
+      "171"
+     ],
+     "membership": {
+      "amount_differs": 0,
+      "candidate_not_expected": 71,
+      "expected_not_in_candidate": 0
+     },
+     "native_executed_ok": true,
+     "reasons": [
+      "TOTAL_MISMATCH",
+      "MEMBERSHIP_MISMATCH"
+     ],
+     "reference_by_year": {
+      "2025": "1385328.92",
+      "2026": "746528.40"
+     },
+     "snapshot": "BOUNDARY120",
+     "status": "MISMATCH"
+    }
+   ],
+   "status": "NONCONFORMING_IMPLEMENTATION"
+  },
+  "F4.generated_vs_governing": {
+   "reasons": [],
+   "snapshots": [
+    {
+     "candidate_by_year": {
+      "2025": "1384728.90",
+      "2026": "746528.40"
+     },
+     "candidate_line_count": 1834,
+     "counterexample_ids": [],
+     "membership": {
+      "amount_differs": 0,
+      "candidate_not_expected": 0,
+      "expected_not_in_candidate": 0
+     },
+     "native_executed_ok": true,
+     "reasons": [],
+     "reference_by_year": {
+      "2025": "1384728.90",
+      "2026": "746528.40"
+     },
+     "snapshot": "PINNED",
+     "status": "CONFORMS"
+    },
+    {
+     "candidate_by_year": {
+      "2025": "1385328.92",
+      "2026": "746528.40"
+     },
+     "candidate_line_count": 1836,
+     "counterexample_ids": [],
+     "membership": {
+      "amount_differs": 0,
+      "candidate_not_expected": 0,
+      "expected_not_in_candidate": 0
+     },
+     "native_executed_ok": true,
+     "reasons": [],
+     "reference_by_year": {
+      "2025": "1385328.92",
+      "2026": "746528.40"
+     },
+     "snapshot": "BOUNDARY120",
+     "status": "CONFORMS"
+    }
+   ],
+   "status": "VERIFIED_FOR_LAB_CHECKS"
+  },
+  "N2A": {
+   "reasons": [
+    "MEMBERSHIP_MISMATCH",
+    "TOTAL_MISMATCH"
+   ],
+   "snapshots": [
+    {
+     "candidate_by_year": {
+      "2025": "1386875.46",
+      "2026": "746647.68"
+     },
+     "candidate_line_count": 1844,
+     "counterexample_ids": [
+      "454",
+      "690",
+      "1199",
+      "1690",
+      "2220"
+     ],
+     "membership": {
+      "amount_differs": 0,
+      "candidate_not_expected": 10,
+      "expected_not_in_candidate": 0
+     },
+     "native_executed_ok": true,
+     "reasons": [
+      "TOTAL_MISMATCH",
+      "MEMBERSHIP_MISMATCH"
+     ],
+     "reference_by_year": {
+      "2025": "1384728.90",
+      "2026": "746528.40"
+     },
+     "snapshot": "PINNED",
+     "status": "MISMATCH"
+    },
+    {
+     "candidate_by_year": {
+      "2025": "1387835.45",
+      "2026": "746647.68"
+     },
+     "candidate_line_count": 1847,
+     "counterexample_ids": [
+      "21",
+      "454",
+      "690",
+      "1199",
+      "1690"
+     ],
+     "membership": {
+      "amount_differs": 0,
+      "candidate_not_expected": 11,
+      "expected_not_in_candidate": 0
+     },
+     "native_executed_ok": true,
+     "reasons": [
+      "TOTAL_MISMATCH",
+      "MEMBERSHIP_MISMATCH"
+     ],
+     "reference_by_year": {
+      "2025": "1385328.92",
+      "2026": "746528.40"
+     },
+     "snapshot": "BOUNDARY120",
+     "status": "MISMATCH"
+    }
+   ],
+   "status": "NONCONFORMING_IMPLEMENTATION"
+  },
+  "N2B": {
+   "reasons": [
+    "MEMBERSHIP_MISMATCH",
+    "TOTAL_MISMATCH"
+   ],
+   "snapshots": [
+    {
+     "candidate_by_year": {
+      "2025": "1384728.90",
+      "2026": "746528.40"
+     },
+     "candidate_line_count": 1834,
+     "counterexample_ids": [],
+     "membership": {
+      "amount_differs": 0,
+      "candidate_not_expected": 0,
+      "expected_not_in_candidate": 0
+     },
+     "native_executed_ok": true,
+     "reasons": [],
+     "reference_by_year": {
+      "2025": "1384728.90",
+      "2026": "746528.40"
+     },
+     "snapshot": "PINNED",
+     "status": "CONFORMS"
+    },
+    {
+     "candidate_by_year": {
+      "2025": "1384968.92",
+      "2026": "746528.40"
+     },
+     "candidate_line_count": 1835,
+     "counterexample_ids": [
+      "22"
+     ],
+     "membership": {
+      "amount_differs": 0,
+      "candidate_not_expected": 0,
+      "expected_not_in_candidate": 1
+     },
+     "native_executed_ok": true,
+     "reasons": [
+      "TOTAL_MISMATCH",
+      "MEMBERSHIP_MISMATCH"
+     ],
+     "reference_by_year": {
+      "2025": "1385328.92",
+      "2026": "746528.40"
+     },
+     "snapshot": "BOUNDARY120",
+     "status": "MISMATCH"
+    }
+   ],
+   "status": "NONCONFORMING_IMPLEMENTATION"
+  },
+  "N2C": {
+   "reasons": [
+    "MEMBERSHIP_MISMATCH",
+    "TOTAL_MISMATCH"
+   ],
+   "snapshots": [
+    {
+     "candidate_by_year": {
+      "2025": "1615318.71",
+      "2026": "806230.02"
+     },
+     "candidate_line_count": 2078,
+     "counterexample_ids": [
+      "16",
+      "17",
+      "18",
+      "36",
+      "37"
+     ],
+     "membership": {
+      "amount_differs": 0,
+      "candidate_not_expected": 244,
+      "expected_not_in_candidate": 0
+     },
+     "native_executed_ok": true,
+     "reasons": [
+      "TOTAL_MISMATCH",
+      "MEMBERSHIP_MISMATCH"
+     ],
+     "reference_by_year": {
+      "2025": "1384728.90",
+      "2026": "746528.40"
+     },
+     "snapshot": "PINNED",
+     "status": "MISMATCH"
+    },
+    {
+     "candidate_by_year": {
+      "2025": "1616158.73",
+      "2026": "806230.02"
+     },
+     "candidate_line_count": 2081,
+     "counterexample_ids": [
+      "16",
+      "17",
+      "18",
+      "19",
+      "36"
+     ],
+     "membership": {
+      "amount_differs": 0,
+      "candidate_not_expected": 245,
+      "expected_not_in_candidate": 0
+     },
+     "native_executed_ok": true,
+     "reasons": [
+      "TOTAL_MISMATCH",
+      "MEMBERSHIP_MISMATCH"
+     ],
+     "reference_by_year": {
+      "2025": "1385328.92",
+      "2026": "746528.40"
+     },
+     "snapshot": "BOUNDARY120",
+     "status": "MISMATCH"
+    }
+   ],
+   "status": "NONCONFORMING_IMPLEMENTATION"
+  }
+ },
+ "packet_sha256": "b82a0e8eaacebbb1e884e3dc8c334e5716ead92a555982329102b6d13261bc08",
+ "proposal": {
+  "delta": [
+   {
+    "atom_id": "unit_price_threshold",
+    "fact_kind": "order_line_charged_unit_price",
+    "from": "100",
+    "grain": "ORDER_LINE",
+    "kind": "PREDICATE_VALUE_CHANGE",
+    "op": "GE",
+    "source_span_from": "charged unit price is at least 100",
+    "source_span_to": "charged unit price is at least 120",
+    "to": "120",
+    "unit": "CURRENCY_PER_UNIT"
+   }
+  ],
+  "deployment": null,
+  "modified_metrics": [
+   "premium_completed_revenue"
+  ],
+  "patch": [
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+    "new": "  - name: premium_completed_revenue\n    description: \"Completed revenue on lines with unit price at least 120.\"\n    label: \"Premium completed revenue\"\n    type: simple\n    type_params:\n      measure: revenue\n    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 120\"\n",
+    "old": "  - name: premium_completed_revenue\n    description: \"Completed revenue on lines with unit price at least 100.\"\n    label: \"Premium completed revenue\"\n    type: simple\n    type_params:\n      measure: revenue\n    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 100\"\n",
+    "op": "replace"
+   }
+  ],
+  "rendered": {
+   "after": {
+    "description": "Completed revenue on lines with unit price at least 120.",
+    "filter": "{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 120"
+   },
+   "before": {
+    "description": "Completed revenue on lines with unit price at least 100.",
+    "filter": "{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 100"
+   }
+  },
+  "review_status": "PROPOSED_NOT_DEPLOYED",
+  "status": "PROPOSED_NOT_DEPLOYED"
+ },
+ "sensitivity": {
+  "threshold_120.00_same_text": {
+   "emitted_filter": "{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 120",
+   "ir_value": "120.00",
+   "reasons": [],
+   "status": "PROPOSED_NOT_DEPLOYED"
+  },
+  "threshold_135_reapproved": {
+   "emitted_filter": "{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 135",
+   "ir_value": "135",
+   "reasons": [],
+   "status": "PROPOSED_NOT_DEPLOYED"
+  },
+  "threshold_99.5_reapproved": {
+   "emitted_filter": "{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 99.5",
+   "ir_value": "99.5",
+   "reasons": [],
+   "status": "PROPOSED_NOT_DEPLOYED"
+  }
+ }
+}

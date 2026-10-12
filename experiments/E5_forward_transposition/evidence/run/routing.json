@@ -1,0 +1,473 @@
+{
+ "routings": {
+  "F5.K_POST": {
+   "knowledge_at": "2026-10-11T00:00:00Z",
+   "label": "HISTORICAL_VERSION_ROUTING (explicit selection of preserved native revisions; not a native bitemporal capability)",
+   "segments": [
+    {
+     "window": [
+      "2024-01-01",
+      "2025-01-01"
+     ],
+     "native_window": [
+      null,
+      "2025-01-01"
+     ],
+     "version": "P1_v1",
+     "revision": "BASELINE",
+     "status": "CONFORMS",
+     "check": {
+      "check_id": "F5.K_POST.seg0",
+      "candidate": "BASELINE",
+      "status": "VERIFIED_FOR_LAB_CHECKS",
+      "reasons": [],
+      "authority": {
+       "requested_version": "P1_v1",
+       "knowledge_at": "2026-10-11T00:00:00Z",
+       "window": [
+        null,
+        "2025-01-01"
+       ],
+       "version_state": {
+        "state": "LAB_APPROVED",
+        "reasons": []
+       },
+       "governing": {
+        "version": "P1_v1",
+        "probes": {
+         "2024-01-01": "P1_v1"
+        }
+       },
+       "version": "P1_v1"
+      },
+      "reference_key": "P1v1|<2025-01-01",
+      "query": {
+       "metric": "premium_completed_revenue",
+       "group_by": [
+        "metric_time__year"
+       ],
+       "where": [
+        "{{ TimeDimension('metric_time', 'day') }} < '2025-01-01'"
+       ]
+      },
+      "snapshots": [
+       {
+        "snapshot": "PINNED",
+        "stack_raw_csv_registered_as": "PINNED",
+        "reasons": [],
+        "candidate_semantic_manifest_sha256": "3532b0e66f9758055ec4e8fc2085e15226c87adecdd6c72ab2554afb4c7515bf",
+        "manifest_differs_from_pristine": true,
+        "patch_diff_files": [
+         "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+         "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+         "dbt/retail_dwh/models/marts/semantic/_metrics.yml"
+        ],
+        "native": {
+         "year_exit": 0,
+         "line_exit": 0,
+         "compiled_sql_sha256": "81e9391c361f50165b165820267c6e7ea801bc0f1317bd652e650647a103340c"
+        },
+        "candidate_by_year": {
+         "2024": "1634542.08"
+        },
+        "candidate_line_count": 1402,
+        "reference_by_year": {
+         "2024": "1634542.08"
+        },
+        "reference_line_count": 1402,
+        "reference_equals_frozen": true,
+        "membership": {
+         "expected_not_in_candidate": 0,
+         "candidate_not_expected": 0,
+         "amount_differs": 0
+        },
+        "counterexamples": [],
+        "mismatch": [],
+        "status": "CONFORMS",
+        "native_executed_ok": true
+       },
+       {
+        "snapshot": "BOUNDARY120",
+        "stack_raw_csv_registered_as": "BOUNDARY120",
+        "reasons": [],
+        "candidate_semantic_manifest_sha256": "3532b0e66f9758055ec4e8fc2085e15226c87adecdd6c72ab2554afb4c7515bf",
+        "manifest_differs_from_pristine": true,
+        "patch_diff_files": [
+         "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+         "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+         "dbt/retail_dwh/models/marts/semantic/_metrics.yml"
+        ],
+        "native": {
+         "year_exit": 0,
+         "line_exit": 0,
+         "compiled_sql_sha256": "81e9391c361f50165b165820267c6e7ea801bc0f1317bd652e650647a103340c"
+        },
+        "candidate_by_year": {
+         "2024": "1635322.04"
+        },
+        "candidate_line_count": 1404,
+        "reference_by_year": {
+         "2024": "1635322.04"
+        },
+        "reference_line_count": 1404,
+        "reference_equals_frozen": true,
+        "membership": {
+         "expected_not_in_candidate": 0,
+         "candidate_not_expected": 0,
+         "amount_differs": 0
+        },
+        "counterexamples": [],
+        "mismatch": [],
+        "status": "CONFORMS",
+        "native_executed_ok": true
+       }
+      ],
+      "scope": "bounded LAB checks: registered snapshots, order-line grain, LAB_SIMULATED approvals; not legal compliance"
+     }
+    },
+    {
+     "window": [
+      "2025-01-01",
+      null
+     ],
+     "native_window": [
+      "2025-01-01",
+      null
+     ],
+     "version": "P1_v2",
+     "revision": "GENERATED",
+     "status": "CONFORMS",
+     "check": {
+      "check_id": "F5.K_POST.seg1",
+      "candidate": "GENERATED",
+      "status": "VERIFIED_FOR_LAB_CHECKS",
+      "reasons": [],
+      "authority": {
+       "requested_version": "P1_v2",
+       "knowledge_at": "2026-10-11T00:00:00Z",
+       "window": [
+        "2025-01-01",
+        null
+       ],
+       "version_state": {
+        "state": "LAB_APPROVED",
+        "reasons": []
+       },
+       "governing": {
+        "version": "P1_v2",
+        "probes": {
+         "2025-01-01": "P1_v2"
+        }
+       },
+       "version": "P1_v2"
+      },
+      "reference_key": "P1v2|>=2025-01-01",
+      "query": {
+       "metric": "premium_completed_revenue",
+       "group_by": [
+        "metric_time__year"
+       ],
+       "where": [
+        "{{ TimeDimension('metric_time', 'day') }} >= '2025-01-01'"
+       ]
+      },
+      "snapshots": [
+       {
+        "snapshot": "PINNED",
+        "stack_raw_csv_registered_as": "PINNED",
+        "reasons": [],
+        "candidate_semantic_manifest_sha256": "fd26cecdbb44ff2e0e8807db1ce0af4836a0b412c8ad29646aecbaddcf6ce265",
+        "manifest_differs_from_pristine": true,
+        "patch_diff_files": [
+         "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+         "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+         "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+         "dbt/retail_dwh/models/marts/semantic/_metrics.yml"
+        ],
+        "native": {
+         "year_exit": 0,
+         "line_exit": 0,
+         "compiled_sql_sha256": "5d54c532c1a100382f280513664d2dc85e3b813c266cac05c7f19beba231fdad"
+        },
+        "candidate_by_year": {
+         "2025": "1384728.90",
+         "2026": "746528.40"
+        },
+        "candidate_line_count": 1834,
+        "reference_by_year": {
+         "2025": "1384728.90",
+         "2026": "746528.40"
+        },
+        "reference_line_count": 1834,
+        "reference_equals_frozen": true,
+        "membership": {
+         "expected_not_in_candidate": 0,
+         "candidate_not_expected": 0,
+         "amount_differs": 0
+        },
+        "counterexamples": [],
+        "mismatch": [],
+        "status": "CONFORMS",
+        "native_executed_ok": true
+       },
+       {
+        "snapshot": "BOUNDARY120",
+        "stack_raw_csv_registered_as": "BOUNDARY120",
+        "reasons": [],
+        "candidate_semantic_manifest_sha256": "fd26cecdbb44ff2e0e8807db1ce0af4836a0b412c8ad29646aecbaddcf6ce265",
+        "manifest_differs_from_pristine": true,
+        "patch_diff_files": [
+         "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+         "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+         "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+         "dbt/retail_dwh/models/marts/semantic/_metrics.yml"
+        ],
+        "native": {
+         "year_exit": 0,
+         "line_exit": 0,
+         "compiled_sql_sha256": "5d54c532c1a100382f280513664d2dc85e3b813c266cac05c7f19beba231fdad"
+        },
+        "candidate_by_year": {
+         "2025": "1385328.92",
+         "2026": "746528.40"
+        },
+        "candidate_line_count": 1836,
+        "reference_by_year": {
+         "2025": "1385328.92",
+         "2026": "746528.40"
+        },
+        "reference_line_count": 1836,
+        "reference_equals_frozen": true,
+        "membership": {
+         "expected_not_in_candidate": 0,
+         "candidate_not_expected": 0,
+         "amount_differs": 0
+        },
+        "counterexamples": [],
+        "mismatch": [],
+        "status": "CONFORMS",
+        "native_executed_ok": true
+       }
+      ],
+      "scope": "bounded LAB checks: registered snapshots, order-line grain, LAB_SIMULATED approvals; not legal compliance"
+     }
+    }
+   ],
+   "combined": {
+    "PINNED": {
+     "by_year": {
+      "2024": "1634542.08",
+      "2025": "1384728.90",
+      "2026": "746528.40"
+     },
+     "lines_sha256": "fc6c8e4283d06d87713b2091fb45f6d6acb3b92b3ba7c880b4c19ea1148cb586",
+     "line_count": 3236
+    },
+    "BOUNDARY120": {
+     "by_year": {
+      "2024": "1635322.04",
+      "2025": "1385328.92",
+      "2026": "746528.40"
+     },
+     "lines_sha256": "2853d81c755eb2fce81076dc6de48757af8b4e322911ccc62b50e747498259f1",
+     "line_count": 3240
+    }
+   },
+   "combined_equals_reference": {
+    "reference": "ROUTED@K_POST",
+    "per_snapshot": {
+     "PINNED": true,
+     "BOUNDARY120": true
+    }
+   }
+  },
+  "F5.K_PRE": {
+   "knowledge_at": "2026-10-06T00:00:00Z",
+   "label": "HISTORICAL_VERSION_ROUTING (explicit selection of preserved native revisions; not a native bitemporal capability)",
+   "segments": [
+    {
+     "window": [
+      "2024-01-01",
+      null
+     ],
+     "native_window": [
+      null,
+      null
+     ],
+     "version": "P1_v1",
+     "revision": "BASELINE",
+     "status": "CONFORMS",
+     "check": {
+      "check_id": "F5.K_PRE.seg0",
+      "candidate": "BASELINE",
+      "status": "VERIFIED_FOR_LAB_CHECKS",
+      "reasons": [],
+      "authority": {
+       "requested_version": "P1_v1",
+       "knowledge_at": "2026-10-06T00:00:00Z",
+       "window": [
+        null,
+        null
+       ],
+       "version_state": {
+        "state": "LAB_APPROVED",
+        "reasons": []
+       },
+       "governing": {
+        "version": "P1_v1",
+        "probes": {
+         "2024-01-01": "P1_v1"
+        }
+       },
+       "version": "P1_v1"
+      },
+      "reference_key": "P1v1|ALL",
+      "query": {
+       "metric": "premium_completed_revenue",
+       "group_by": [
+        "metric_time__year"
+       ],
+       "where": []
+      },
+      "snapshots": [
+       {
+        "snapshot": "PINNED",
+        "stack_raw_csv_registered_as": "PINNED",
+        "reasons": [],
+        "candidate_semantic_manifest_sha256": "3532b0e66f9758055ec4e8fc2085e15226c87adecdd6c72ab2554afb4c7515bf",
+        "manifest_differs_from_pristine": true,
+        "patch_diff_files": [
+         "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+         "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+         "dbt/retail_dwh/models/marts/semantic/_metrics.yml"
+        ],
+        "native": {
+         "year_exit": 0,
+         "line_exit": 0,
+         "compiled_sql_sha256": "c26d617de1eccb52daedf20dea6e2f156201a69cfd747513a37f9e78c13035f4"
+        },
+        "candidate_by_year": {
+         "2025": "1400232.75",
+         "2024": "1634542.08",
+         "2026": "752191.54"
+        },
+        "candidate_line_count": 3305,
+        "reference_by_year": {
+         "2024": "1634542.08",
+         "2025": "1400232.75",
+         "2026": "752191.54"
+        },
+        "reference_line_count": 3305,
+        "reference_equals_frozen": true,
+        "membership": {
+         "expected_not_in_candidate": 0,
+         "candidate_not_expected": 0,
+         "amount_differs": 0
+        },
+        "counterexamples": [],
+        "mismatch": [],
+        "status": "CONFORMS",
+        "native_executed_ok": true
+       },
+       {
+        "snapshot": "BOUNDARY120",
+        "stack_raw_csv_registered_as": "BOUNDARY120",
+        "reasons": [],
+        "candidate_semantic_manifest_sha256": "3532b0e66f9758055ec4e8fc2085e15226c87adecdd6c72ab2554afb4c7515bf",
+        "manifest_differs_from_pristine": true,
+        "patch_diff_files": [
+         "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+         "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+         "dbt/retail_dwh/models/marts/semantic/_metrics.yml"
+        ],
+        "native": {
+         "year_exit": 0,
+         "line_exit": 0,
+         "compiled_sql_sha256": "c26d617de1eccb52daedf20dea6e2f156201a69cfd747513a37f9e78c13035f4"
+        },
+        "candidate_by_year": {
+         "2025": "1401292.74",
+         "2024": "1635322.04",
+         "2026": "752191.54"
+        },
+        "candidate_line_count": 3311,
+        "reference_by_year": {
+         "2024": "1635322.04",
+         "2025": "1401292.74",
+         "2026": "752191.54"
+        },
+        "reference_line_count": 3311,
+        "reference_equals_frozen": true,
+        "membership": {
+         "expected_not_in_candidate": 0,
+         "candidate_not_expected": 0,
+         "amount_differs": 0
+        },
+        "counterexamples": [],
+        "mismatch": [],
+        "status": "CONFORMS",
+        "native_executed_ok": true
+       }
+      ],
+      "scope": "bounded LAB checks: registered snapshots, order-line grain, LAB_SIMULATED approvals; not legal compliance"
+     }
+    }
+   ],
+   "combined": {
+    "PINNED": {
+     "by_year": {
+      "2024": "1634542.08",
+      "2025": "1400232.75",
+      "2026": "752191.54"
+     },
+     "lines_sha256": "7150b4fee8651f0ef02c7c1f5f8ebe98d1b9c4cf8a395482d2932bf941ffed3d",
+     "line_count": 3305
+    },
+    "BOUNDARY120": {
+     "by_year": {
+      "2024": "1635322.04",
+      "2025": "1401292.74",
+      "2026": "752191.54"
+     },
+     "lines_sha256": "ba092bd538d336a9814bb52abbb94bb5b4abc54aa0d434b8e43dc2de206be3e5",
+     "line_count": 3311
+    }
+   },
+   "combined_equals_reference": {
+    "reference": "ROUTED@K_PRE",
+    "per_snapshot": {
+     "PINNED": true,
+     "BOUNDARY120": true
+    }
+   }
+  }
+ },
+ "naive_single_revision": {
+  "PINNED": {
+   "generated_all_dates_by_year": {
+    "2025": "1384728.90",
+    "2024": "1615473.58",
+    "2026": "746528.40"
+   },
+   "routed_by_year": {
+    "2024": "1634542.08",
+    "2025": "1384728.90",
+    "2026": "746528.40"
+   },
+   "differs_in_2024": true
+  },
+  "BOUNDARY120": {
+   "generated_all_dates_by_year": {
+    "2025": "1385328.92",
+    "2024": "1615473.58",
+    "2026": "746528.40"
+   },
+   "routed_by_year": {
+    "2024": "1635322.04",
+    "2025": "1385328.92",
+    "2026": "746528.40"
+   },
+   "differs_in_2024": true
+  }
+ }
+}

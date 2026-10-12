@@ -1,0 +1,17 @@
+--- pristine/dbt/retail_dwh/models/marts/semantic/_metrics.yml
++++ candidate/dbt/retail_dwh/models/marts/semantic/_metrics.yml
+@@ -119,12 +119,12 @@
+       denominator: purchasing_customers
+ 
+   - name: premium_completed_revenue
+-    description: "Completed revenue on lines with unit price at least 100."
++    description: "Completed revenue on lines with unit price at least 120."
+     label: "Premium completed revenue"
+     type: simple
+     type_params:
+       measure: revenue
+-    filter: "{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 100"
++    filter: "{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 120"
+ 
+   - name: french_market_revenue
+     description: "Completed revenue of customers in France."

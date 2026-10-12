@@ -1,0 +1,122 @@
+{
+ "proposal_id": "PROP_LAB-REV-POLICY_S1_P1_v1_to_P1_v2",
+ "generator": {
+  "name": "E5 deterministic transposer",
+  "model": null,
+  "paid_calls": 0
+ },
+ "input_packet_sha256": "fa0911f28bf84789ce68898f96cb22ee0132e1e7c115adbae7d69e4eac5edd78",
+ "task": {
+  "policy": "P1",
+  "series": "LAB-REV-POLICY/S1",
+  "from_version": "P1_v1",
+  "to_version": "P1_v2"
+ },
+ "status": "PROPOSED_NOT_DEPLOYED",
+ "refusals": [],
+ "impacted_metrics": [
+  "premium_completed_revenue"
+ ],
+ "modified_metrics": [
+  "premium_completed_revenue"
+ ],
+ "edit_mode": "IN_PLACE_EXISTING_METRIC",
+ "not_affected": [
+  {
+   "metric": "french_market_revenue",
+   "status": "NOT_AFFECTED",
+   "implements_series": "LAB-REV-POLICY/S2",
+   "rationale": "implements LAB-REV-POLICY/S2, not the amended series LAB-REV-POLICY/S1; its bound predicates use ['customer_country', 'order_status_label'], none of the changed fact kinds ['order_line_charged_unit_price']",
+   "block_unchanged_by_patch": true
+  }
+ ],
+ "delta": [
+  {
+   "atom_id": "unit_price_threshold",
+   "kind": "PREDICATE_VALUE_CHANGE",
+   "fact_kind": "order_line_charged_unit_price",
+   "op": "GE",
+   "from": "100",
+   "to": "135",
+   "unit": "CURRENCY_PER_UNIT",
+   "grain": "ORDER_LINE",
+   "source_span_from": "charged unit price is at least 100",
+   "source_span_to": "charged unit price is at least 135"
+  }
+ ],
+ "rendered": {
+  "before": {
+   "filter": "{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 100",
+   "description": "Completed revenue on lines with unit price at least 100."
+  },
+  "after": {
+   "filter": "{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 135",
+   "description": "Completed revenue on lines with unit price at least 135."
+  }
+ },
+ "patch": [
+  {
+   "op": "replace",
+   "file": "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+   "old": "  - name: premium_completed_revenue\n    description: \"Completed revenue on lines with unit price at least 100.\"\n    label: \"Premium completed revenue\"\n    type: simple\n    type_params:\n      measure: revenue\n    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 100\"\n",
+   "new": "  - name: premium_completed_revenue\n    description: \"Completed revenue on lines with unit price at least 135.\"\n    label: \"Premium completed revenue\"\n    type: simple\n    type_params:\n      measure: revenue\n    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 135\"\n"
+  }
+ ],
+ "versions": {
+  "P1_v1": {
+   "ir_sha256": "16e13832caed10832e58b13f95e3ebfb5adfad213b88181290cbdd3e91088f4f",
+   "meaning_sha256": "df7b4a6afe2ef23bafbc6269565d292f97b41f5f7cf8331668c4c1b2b843c430",
+   "document_id": "LAB-REV-POLICY",
+   "source_sha256": "20263fa531d3b3c946f80a85fc863cd1d004b9b2b907f75de32faf100853a957",
+   "clause": "S1 v1",
+   "observed_at": "2026-10-01T09:00:00Z",
+   "effective_from": "2024-01-01",
+   "effective_to": null,
+   "approvals": [
+    {
+     "approval_id": "AP_S1_READ",
+     "provenance": "LAB_SIMULATED",
+     "approver_role": "LAB_REVENUE_POLICY_OWNER",
+     "known_at": "2026-10-05T10:00:00Z"
+    }
+   ]
+  },
+  "P1_v2": {
+   "ir_sha256": "ff2e6bd944ff85cb994bfcc8b6ecfd177cdb4f1bc7dd61640f1d38b0143fe293",
+   "meaning_sha256": "0b844428413477d4c0c53369d35446811b46d956dcbf8ef39146544d4acef1fe",
+   "document_id": "LAB-REV-POLICY-AMD-1",
+   "source_sha256": "399b7d0a95b118e66c1c33c8165b70d929f37ed74e804526a4cf81e55893f08d",
+   "clause": "S1 v2",
+   "observed_at": "2026-10-09T09:00:00Z",
+   "effective_from": "2025-01-01",
+   "effective_to": null,
+   "approvals": [
+    {
+     "approval_id": "AP_S1_V2",
+     "provenance": "LAB_SIMULATED",
+     "approver_role": "LAB_REVENUE_POLICY_OWNER",
+     "known_at": "2026-10-10T10:00:00Z"
+    }
+   ]
+  }
+ },
+ "native_revision": {
+  "from": "REV_P1_V1_BASELINE",
+  "to": "REV_P1_V2_PROPOSED",
+  "file": "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+  "file_sha256_before": "1413cf0c4e0310ad265699ff2e4887821fcd8aaefbffd24035700f0efe61990c",
+  "file_sha256_after": "e9ef45c745b64002872f8750a92de53d1fd2b4108a34e155e270cbfe9d4c5a85",
+  "semantic_manifest_sha256_before": "3532b0e66f9758055ec4e8fc2085e15226c87adecdd6c72ab2554afb4c7515bf",
+  "semantic_manifest_sha256_after": null
+ },
+ "review_status": "PROPOSED_NOT_DEPLOYED",
+ "deployment": null,
+ "reviewer": {
+  "role": "LAB_SEMANTIC_LAYER_OWNER (placeholder)",
+  "decision": "PENDING"
+ },
+ "notes": [
+  "Interpretation approval of the amendment is not a deployment authorization.",
+  "History: the proposal does not make the metric version-aware; earlier order dates need the preserved prior revision."
+ ]
+}

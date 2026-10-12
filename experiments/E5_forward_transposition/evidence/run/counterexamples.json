@@ -1,0 +1,1865 @@
+{
+ "F1.generated_vs_requested_v2": {
+  "PINNED": [],
+  "BOUNDARY120": []
+ },
+ "F1.generated_vs_governing": {
+  "PINNED": [
+   {
+    "order_item_id": "169",
+    "order_id": "66",
+    "order_date": "2025-09-26",
+    "status_raw": "completed",
+    "status": "completed",
+    "quantity": 4,
+    "unit_price_raw": "112.62",
+    "customer_id": "124",
+    "customer_country_raw": "spain",
+    "customer_country": "Spain",
+    "store_id": "4",
+    "store_country": "Italy",
+    "expected_included": true,
+    "expected_amount": "450.48",
+    "actual_native_included": false,
+    "actual_native_amount": null,
+    "lineage": {
+     "patch_diff_files": [
+      "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml"
+     ],
+     "compiled_sql_sha256": "5d54c532c1a100382f280513664d2dc85e3b813c266cac05c7f19beba231fdad",
+     "candidate_query": {
+      "metric": "premium_completed_revenue",
+      "group_by": [
+       "metric_time__year"
+      ],
+      "where": [
+       "{{ TimeDimension('metric_time', 'day') }} >= '2025-01-01'"
+      ]
+     }
+    }
+   },
+   {
+    "order_item_id": "170",
+    "order_id": "66",
+    "order_date": "2025-09-26",
+    "status_raw": "completed",
+    "status": "completed",
+    "quantity": 2,
+    "unit_price_raw": "110.28",
+    "customer_id": "124",
+    "customer_country_raw": "spain",
+    "customer_country": "Spain",
+    "store_id": "4",
+    "store_country": "Italy",
+    "expected_included": true,
+    "expected_amount": "220.56",
+    "actual_native_included": false,
+    "actual_native_amount": null,
+    "lineage": {
+     "patch_diff_files": [
+      "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml"
+     ],
+     "compiled_sql_sha256": "5d54c532c1a100382f280513664d2dc85e3b813c266cac05c7f19beba231fdad",
+     "candidate_query": {
+      "metric": "premium_completed_revenue",
+      "group_by": [
+       "metric_time__year"
+      ],
+      "where": [
+       "{{ TimeDimension('metric_time', 'day') }} >= '2025-01-01'"
+      ]
+     }
+    }
+   },
+   {
+    "order_item_id": "171",
+    "order_id": "67",
+    "order_date": "2025-10-31",
+    "status_raw": "completed",
+    "status": "completed",
+    "quantity": 1,
+    "unit_price_raw": "112.22",
+    "customer_id": "154",
+    "customer_country_raw": "BE",
+    "customer_country": "Belgium",
+    "store_id": "2",
+    "store_country": "Germany",
+    "expected_included": true,
+    "expected_amount": "112.22",
+    "actual_native_included": false,
+    "actual_native_amount": null,
+    "lineage": {
+     "patch_diff_files": [
+      "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml"
+     ],
+     "compiled_sql_sha256": "5d54c532c1a100382f280513664d2dc85e3b813c266cac05c7f19beba231fdad",
+     "candidate_query": {
+      "metric": "premium_completed_revenue",
+      "group_by": [
+       "metric_time__year"
+      ],
+      "where": [
+       "{{ TimeDimension('metric_time', 'day') }} >= '2025-01-01'"
+      ]
+     }
+    }
+   },
+   {
+    "order_item_id": "379",
+    "order_id": "144",
+    "order_date": "2026-03-16",
+    "status_raw": "completed",
+    "status": "completed",
+    "quantity": 3,
+    "unit_price_raw": "112.22",
+    "customer_id": "356",
+    "customer_country_raw": "DE",
+    "customer_country": "Germany",
+    "store_id": "10",
+    "store_country": "Belgium",
+    "expected_included": true,
+    "expected_amount": "336.66",
+    "actual_native_included": false,
+    "actual_native_amount": null,
+    "lineage": {
+     "patch_diff_files": [
+      "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml"
+     ],
+     "compiled_sql_sha256": "5d54c532c1a100382f280513664d2dc85e3b813c266cac05c7f19beba231fdad",
+     "candidate_query": {
+      "metric": "premium_completed_revenue",
+      "group_by": [
+       "metric_time__year"
+      ],
+      "where": [
+       "{{ TimeDimension('metric_time', 'day') }} >= '2025-01-01'"
+      ]
+     }
+    }
+   },
+   {
+    "order_item_id": "438",
+    "order_id": "167",
+    "order_date": "2025-12-22",
+    "status_raw": "completed",
+    "status": "completed",
+    "quantity": 4,
+    "unit_price_raw": "112.62",
+    "customer_id": "26",
+    "customer_country_raw": "Spain",
+    "customer_country": "Spain",
+    "store_id": "6",
+    "store_country": "France",
+    "expected_included": true,
+    "expected_amount": "450.48",
+    "actual_native_included": false,
+    "actual_native_amount": null,
+    "lineage": {
+     "patch_diff_files": [
+      "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml"
+     ],
+     "compiled_sql_sha256": "5d54c532c1a100382f280513664d2dc85e3b813c266cac05c7f19beba231fdad",
+     "candidate_query": {
+      "metric": "premium_completed_revenue",
+      "group_by": [
+       "metric_time__year"
+      ],
+      "where": [
+       "{{ TimeDimension('metric_time', 'day') }} >= '2025-01-01'"
+      ]
+     }
+    }
+   }
+  ],
+  "BOUNDARY120": [
+   {
+    "order_item_id": "15",
+    "order_id": "6",
+    "order_date": "2025-07-29",
+    "status_raw": "completed",
+    "status": "completed",
+    "quantity": 1,
+    "unit_price_raw": "100.00",
+    "customer_id": "266",
+    "customer_country_raw": "IT",
+    "customer_country": "Italy",
+    "store_id": "7",
+    "store_country": "Germany",
+    "expected_included": true,
+    "expected_amount": "100.00",
+    "actual_native_included": false,
+    "actual_native_amount": null,
+    "lineage": {
+     "patch_diff_files": [
+      "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml"
+     ],
+     "compiled_sql_sha256": "5d54c532c1a100382f280513664d2dc85e3b813c266cac05c7f19beba231fdad",
+     "candidate_query": {
+      "metric": "premium_completed_revenue",
+      "group_by": [
+       "metric_time__year"
+      ],
+      "where": [
+       "{{ TimeDimension('metric_time', 'day') }} >= '2025-01-01'"
+      ]
+     }
+    }
+   },
+   {
+    "order_item_id": "21",
+    "order_id": "8",
+    "order_date": "2025-06-04",
+    "status_raw": "completed",
+    "status": "completed",
+    "quantity": 3,
+    "unit_price_raw": "119.99",
+    "customer_id": "407",
+    "customer_country_raw": "Italy",
+    "customer_country": "Italy",
+    "store_id": "6",
+    "store_country": "France",
+    "expected_included": true,
+    "expected_amount": "359.97",
+    "actual_native_included": false,
+    "actual_native_amount": null,
+    "lineage": {
+     "patch_diff_files": [
+      "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml"
+     ],
+     "compiled_sql_sha256": "5d54c532c1a100382f280513664d2dc85e3b813c266cac05c7f19beba231fdad",
+     "candidate_query": {
+      "metric": "premium_completed_revenue",
+      "group_by": [
+       "metric_time__year"
+      ],
+      "where": [
+       "{{ TimeDimension('metric_time', 'day') }} >= '2025-01-01'"
+      ]
+     }
+    }
+   },
+   {
+    "order_item_id": "169",
+    "order_id": "66",
+    "order_date": "2025-09-26",
+    "status_raw": "completed",
+    "status": "completed",
+    "quantity": 4,
+    "unit_price_raw": "112.62",
+    "customer_id": "124",
+    "customer_country_raw": "spain",
+    "customer_country": "Spain",
+    "store_id": "4",
+    "store_country": "Italy",
+    "expected_included": true,
+    "expected_amount": "450.48",
+    "actual_native_included": false,
+    "actual_native_amount": null,
+    "lineage": {
+     "patch_diff_files": [
+      "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml"
+     ],
+     "compiled_sql_sha256": "5d54c532c1a100382f280513664d2dc85e3b813c266cac05c7f19beba231fdad",
+     "candidate_query": {
+      "metric": "premium_completed_revenue",
+      "group_by": [
+       "metric_time__year"
+      ],
+      "where": [
+       "{{ TimeDimension('metric_time', 'day') }} >= '2025-01-01'"
+      ]
+     }
+    }
+   },
+   {
+    "order_item_id": "170",
+    "order_id": "66",
+    "order_date": "2025-09-26",
+    "status_raw": "completed",
+    "status": "completed",
+    "quantity": 2,
+    "unit_price_raw": "110.28",
+    "customer_id": "124",
+    "customer_country_raw": "spain",
+    "customer_country": "Spain",
+    "store_id": "4",
+    "store_country": "Italy",
+    "expected_included": true,
+    "expected_amount": "220.56",
+    "actual_native_included": false,
+    "actual_native_amount": null,
+    "lineage": {
+     "patch_diff_files": [
+      "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml"
+     ],
+     "compiled_sql_sha256": "5d54c532c1a100382f280513664d2dc85e3b813c266cac05c7f19beba231fdad",
+     "candidate_query": {
+      "metric": "premium_completed_revenue",
+      "group_by": [
+       "metric_time__year"
+      ],
+      "where": [
+       "{{ TimeDimension('metric_time', 'day') }} >= '2025-01-01'"
+      ]
+     }
+    }
+   },
+   {
+    "order_item_id": "171",
+    "order_id": "67",
+    "order_date": "2025-10-31",
+    "status_raw": "completed",
+    "status": "completed",
+    "quantity": 1,
+    "unit_price_raw": "112.22",
+    "customer_id": "154",
+    "customer_country_raw": "BE",
+    "customer_country": "Belgium",
+    "store_id": "2",
+    "store_country": "Germany",
+    "expected_included": true,
+    "expected_amount": "112.22",
+    "actual_native_included": false,
+    "actual_native_amount": null,
+    "lineage": {
+     "patch_diff_files": [
+      "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml"
+     ],
+     "compiled_sql_sha256": "5d54c532c1a100382f280513664d2dc85e3b813c266cac05c7f19beba231fdad",
+     "candidate_query": {
+      "metric": "premium_completed_revenue",
+      "group_by": [
+       "metric_time__year"
+      ],
+      "where": [
+       "{{ TimeDimension('metric_time', 'day') }} >= '2025-01-01'"
+      ]
+     }
+    }
+   }
+  ]
+ },
+ "F1B.generated_vs_requested_v2": {
+  "PINNED": [],
+  "BOUNDARY120": []
+ },
+ "F2.baseline_vs_governing": {
+  "PINNED": [
+   {
+    "order_item_id": "169",
+    "order_id": "66",
+    "order_date": "2025-09-26",
+    "status_raw": "completed",
+    "status": "completed",
+    "quantity": 4,
+    "unit_price_raw": "112.62",
+    "customer_id": "124",
+    "customer_country_raw": "spain",
+    "customer_country": "Spain",
+    "store_id": "4",
+    "store_country": "Italy",
+    "expected_included": false,
+    "expected_amount": null,
+    "actual_native_included": true,
+    "actual_native_amount": "450.48",
+    "lineage": {
+     "patch_diff_files": [
+      "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml"
+     ],
+     "compiled_sql_sha256": "40570ae9675250a8d635f69f99015b341c6d367ba6ff80eb2999f0ce9003622e",
+     "candidate_query": {
+      "metric": "premium_completed_revenue",
+      "group_by": [
+       "metric_time__year"
+      ],
+      "where": [
+       "{{ TimeDimension('metric_time', 'day') }} >= '2025-01-01'"
+      ]
+     }
+    }
+   },
+   {
+    "order_item_id": "170",
+    "order_id": "66",
+    "order_date": "2025-09-26",
+    "status_raw": "completed",
+    "status": "completed",
+    "quantity": 2,
+    "unit_price_raw": "110.28",
+    "customer_id": "124",
+    "customer_country_raw": "spain",
+    "customer_country": "Spain",
+    "store_id": "4",
+    "store_country": "Italy",
+    "expected_included": false,
+    "expected_amount": null,
+    "actual_native_included": true,
+    "actual_native_amount": "220.56",
+    "lineage": {
+     "patch_diff_files": [
+      "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml"
+     ],
+     "compiled_sql_sha256": "40570ae9675250a8d635f69f99015b341c6d367ba6ff80eb2999f0ce9003622e",
+     "candidate_query": {
+      "metric": "premium_completed_revenue",
+      "group_by": [
+       "metric_time__year"
+      ],
+      "where": [
+       "{{ TimeDimension('metric_time', 'day') }} >= '2025-01-01'"
+      ]
+     }
+    }
+   },
+   {
+    "order_item_id": "171",
+    "order_id": "67",
+    "order_date": "2025-10-31",
+    "status_raw": "completed",
+    "status": "completed",
+    "quantity": 1,
+    "unit_price_raw": "112.22",
+    "customer_id": "154",
+    "customer_country_raw": "BE",
+    "customer_country": "Belgium",
+    "store_id": "2",
+    "store_country": "Germany",
+    "expected_included": false,
+    "expected_amount": null,
+    "actual_native_included": true,
+    "actual_native_amount": "112.22",
+    "lineage": {
+     "patch_diff_files": [
+      "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml"
+     ],
+     "compiled_sql_sha256": "40570ae9675250a8d635f69f99015b341c6d367ba6ff80eb2999f0ce9003622e",
+     "candidate_query": {
+      "metric": "premium_completed_revenue",
+      "group_by": [
+       "metric_time__year"
+      ],
+      "where": [
+       "{{ TimeDimension('metric_time', 'day') }} >= '2025-01-01'"
+      ]
+     }
+    }
+   },
+   {
+    "order_item_id": "379",
+    "order_id": "144",
+    "order_date": "2026-03-16",
+    "status_raw": "completed",
+    "status": "completed",
+    "quantity": 3,
+    "unit_price_raw": "112.22",
+    "customer_id": "356",
+    "customer_country_raw": "DE",
+    "customer_country": "Germany",
+    "store_id": "10",
+    "store_country": "Belgium",
+    "expected_included": false,
+    "expected_amount": null,
+    "actual_native_included": true,
+    "actual_native_amount": "336.66",
+    "lineage": {
+     "patch_diff_files": [
+      "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml"
+     ],
+     "compiled_sql_sha256": "40570ae9675250a8d635f69f99015b341c6d367ba6ff80eb2999f0ce9003622e",
+     "candidate_query": {
+      "metric": "premium_completed_revenue",
+      "group_by": [
+       "metric_time__year"
+      ],
+      "where": [
+       "{{ TimeDimension('metric_time', 'day') }} >= '2025-01-01'"
+      ]
+     }
+    }
+   },
+   {
+    "order_item_id": "438",
+    "order_id": "167",
+    "order_date": "2025-12-22",
+    "status_raw": "completed",
+    "status": "completed",
+    "quantity": 4,
+    "unit_price_raw": "112.62",
+    "customer_id": "26",
+    "customer_country_raw": "Spain",
+    "customer_country": "Spain",
+    "store_id": "6",
+    "store_country": "France",
+    "expected_included": false,
+    "expected_amount": null,
+    "actual_native_included": true,
+    "actual_native_amount": "450.48",
+    "lineage": {
+     "patch_diff_files": [
+      "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml"
+     ],
+     "compiled_sql_sha256": "40570ae9675250a8d635f69f99015b341c6d367ba6ff80eb2999f0ce9003622e",
+     "candidate_query": {
+      "metric": "premium_completed_revenue",
+      "group_by": [
+       "metric_time__year"
+      ],
+      "where": [
+       "{{ TimeDimension('metric_time', 'day') }} >= '2025-01-01'"
+      ]
+     }
+    }
+   }
+  ],
+  "BOUNDARY120": [
+   {
+    "order_item_id": "15",
+    "order_id": "6",
+    "order_date": "2025-07-29",
+    "status_raw": "completed",
+    "status": "completed",
+    "quantity": 1,
+    "unit_price_raw": "100.00",
+    "customer_id": "266",
+    "customer_country_raw": "IT",
+    "customer_country": "Italy",
+    "store_id": "7",
+    "store_country": "Germany",
+    "expected_included": false,
+    "expected_amount": null,
+    "actual_native_included": true,
+    "actual_native_amount": "100.00",
+    "lineage": {
+     "patch_diff_files": [
+      "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml"
+     ],
+     "compiled_sql_sha256": "40570ae9675250a8d635f69f99015b341c6d367ba6ff80eb2999f0ce9003622e",
+     "candidate_query": {
+      "metric": "premium_completed_revenue",
+      "group_by": [
+       "metric_time__year"
+      ],
+      "where": [
+       "{{ TimeDimension('metric_time', 'day') }} >= '2025-01-01'"
+      ]
+     }
+    }
+   },
+   {
+    "order_item_id": "21",
+    "order_id": "8",
+    "order_date": "2025-06-04",
+    "status_raw": "completed",
+    "status": "completed",
+    "quantity": 3,
+    "unit_price_raw": "119.99",
+    "customer_id": "407",
+    "customer_country_raw": "Italy",
+    "customer_country": "Italy",
+    "store_id": "6",
+    "store_country": "France",
+    "expected_included": false,
+    "expected_amount": null,
+    "actual_native_included": true,
+    "actual_native_amount": "359.97",
+    "lineage": {
+     "patch_diff_files": [
+      "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml"
+     ],
+     "compiled_sql_sha256": "40570ae9675250a8d635f69f99015b341c6d367ba6ff80eb2999f0ce9003622e",
+     "candidate_query": {
+      "metric": "premium_completed_revenue",
+      "group_by": [
+       "metric_time__year"
+      ],
+      "where": [
+       "{{ TimeDimension('metric_time', 'day') }} >= '2025-01-01'"
+      ]
+     }
+    }
+   },
+   {
+    "order_item_id": "169",
+    "order_id": "66",
+    "order_date": "2025-09-26",
+    "status_raw": "completed",
+    "status": "completed",
+    "quantity": 4,
+    "unit_price_raw": "112.62",
+    "customer_id": "124",
+    "customer_country_raw": "spain",
+    "customer_country": "Spain",
+    "store_id": "4",
+    "store_country": "Italy",
+    "expected_included": false,
+    "expected_amount": null,
+    "actual_native_included": true,
+    "actual_native_amount": "450.48",
+    "lineage": {
+     "patch_diff_files": [
+      "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml"
+     ],
+     "compiled_sql_sha256": "40570ae9675250a8d635f69f99015b341c6d367ba6ff80eb2999f0ce9003622e",
+     "candidate_query": {
+      "metric": "premium_completed_revenue",
+      "group_by": [
+       "metric_time__year"
+      ],
+      "where": [
+       "{{ TimeDimension('metric_time', 'day') }} >= '2025-01-01'"
+      ]
+     }
+    }
+   },
+   {
+    "order_item_id": "170",
+    "order_id": "66",
+    "order_date": "2025-09-26",
+    "status_raw": "completed",
+    "status": "completed",
+    "quantity": 2,
+    "unit_price_raw": "110.28",
+    "customer_id": "124",
+    "customer_country_raw": "spain",
+    "customer_country": "Spain",
+    "store_id": "4",
+    "store_country": "Italy",
+    "expected_included": false,
+    "expected_amount": null,
+    "actual_native_included": true,
+    "actual_native_amount": "220.56",
+    "lineage": {
+     "patch_diff_files": [
+      "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml"
+     ],
+     "compiled_sql_sha256": "40570ae9675250a8d635f69f99015b341c6d367ba6ff80eb2999f0ce9003622e",
+     "candidate_query": {
+      "metric": "premium_completed_revenue",
+      "group_by": [
+       "metric_time__year"
+      ],
+      "where": [
+       "{{ TimeDimension('metric_time', 'day') }} >= '2025-01-01'"
+      ]
+     }
+    }
+   },
+   {
+    "order_item_id": "171",
+    "order_id": "67",
+    "order_date": "2025-10-31",
+    "status_raw": "completed",
+    "status": "completed",
+    "quantity": 1,
+    "unit_price_raw": "112.22",
+    "customer_id": "154",
+    "customer_country_raw": "BE",
+    "customer_country": "Belgium",
+    "store_id": "2",
+    "store_country": "Germany",
+    "expected_included": false,
+    "expected_amount": null,
+    "actual_native_included": true,
+    "actual_native_amount": "112.22",
+    "lineage": {
+     "patch_diff_files": [
+      "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml"
+     ],
+     "compiled_sql_sha256": "40570ae9675250a8d635f69f99015b341c6d367ba6ff80eb2999f0ce9003622e",
+     "candidate_query": {
+      "metric": "premium_completed_revenue",
+      "group_by": [
+       "metric_time__year"
+      ],
+      "where": [
+       "{{ TimeDimension('metric_time', 'day') }} >= '2025-01-01'"
+      ]
+     }
+    }
+   }
+  ]
+ },
+ "F4.generated_vs_governing": {
+  "PINNED": [],
+  "BOUNDARY120": []
+ },
+ "N2A": {
+  "PINNED": [
+   {
+    "order_item_id": "454",
+    "order_id": "174",
+    "order_date": "2025-11-02",
+    "status_raw": "completed",
+    "status": "completed",
+    "quantity": 1,
+    "unit_price_raw": "119.28",
+    "customer_id": "370",
+    "customer_country_raw": "Spain",
+    "customer_country": "Spain",
+    "store_id": "1",
+    "store_country": "France",
+    "expected_included": false,
+    "expected_amount": null,
+    "actual_native_included": true,
+    "actual_native_amount": "119.28",
+    "lineage": {
+     "patch_diff_files": [
+      "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml"
+     ],
+     "compiled_sql_sha256": "f6f414783a0133af7f8d728508ac23cfbdeae67f36e88de89a43f19e55f92b80",
+     "candidate_query": {
+      "metric": "premium_completed_revenue",
+      "group_by": [
+       "metric_time__year"
+      ],
+      "where": [
+       "{{ TimeDimension('metric_time', 'day') }} >= '2025-01-01'"
+      ]
+     }
+    }
+   },
+   {
+    "order_item_id": "690",
+    "order_id": "269",
+    "order_date": "2025-05-04",
+    "status_raw": "completed",
+    "status": "completed",
+    "quantity": 2,
+    "unit_price_raw": "119.24",
+    "customer_id": "410",
+    "customer_country_raw": "IT",
+    "customer_country": "Italy",
+    "store_id": "7",
+    "store_country": "Germany",
+    "expected_included": false,
+    "expected_amount": null,
+    "actual_native_included": true,
+    "actual_native_amount": "238.48",
+    "lineage": {
+     "patch_diff_files": [
+      "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml"
+     ],
+     "compiled_sql_sha256": "f6f414783a0133af7f8d728508ac23cfbdeae67f36e88de89a43f19e55f92b80",
+     "candidate_query": {
+      "metric": "premium_completed_revenue",
+      "group_by": [
+       "metric_time__year"
+      ],
+      "where": [
+       "{{ TimeDimension('metric_time', 'day') }} >= '2025-01-01'"
+      ]
+     }
+    }
+   },
+   {
+    "order_item_id": "1199",
+    "order_id": "476",
+    "order_date": "2025-07-29",
+    "status_raw": "completed",
+    "status": "completed",
+    "quantity": 3,
+    "unit_price_raw": "119.24",
+    "customer_id": "241",
+    "customer_country_raw": "Italia",
+    "customer_country": "Italy",
+    "store_id": "8",
+    "store_country": "Spain",
+    "expected_included": false,
+    "expected_amount": null,
+    "actual_native_included": true,
+    "actual_native_amount": "357.72",
+    "lineage": {
+     "patch_diff_files": [
+      "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml"
+     ],
+     "compiled_sql_sha256": "f6f414783a0133af7f8d728508ac23cfbdeae67f36e88de89a43f19e55f92b80",
+     "candidate_query": {
+      "metric": "premium_completed_revenue",
+      "group_by": [
+       "metric_time__year"
+      ],
+      "where": [
+       "{{ TimeDimension('metric_time', 'day') }} >= '2025-01-01'"
+      ]
+     }
+    }
+   },
+   {
+    "order_item_id": "1690",
+    "order_id": "673",
+    "order_date": "2025-02-05",
+    "status_raw": "completed",
+    "status": "completed",
+    "quantity": 5,
+    "unit_price_raw": "119.24",
+    "customer_id": "12",
+    "customer_country_raw": "germany",
+    "customer_country": "Germany",
+    "store_id": "9",
+    "store_country": "Italy",
+    "expected_included": false,
+    "expected_amount": null,
+    "actual_native_included": true,
+    "actual_native_amount": "596.20",
+    "lineage": {
+     "patch_diff_files": [
+      "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml"
+     ],
+     "compiled_sql_sha256": "f6f414783a0133af7f8d728508ac23cfbdeae67f36e88de89a43f19e55f92b80",
+     "candidate_query": {
+      "metric": "premium_completed_revenue",
+      "group_by": [
+       "metric_time__year"
+      ],
+      "where": [
+       "{{ TimeDimension('metric_time', 'day') }} >= '2025-01-01'"
+      ]
+     }
+    }
+   },
+   {
+    "order_item_id": "2220",
+    "order_id": "885",
+    "order_date": "2025-10-31",
+    "status_raw": "completed",
+    "status": "completed",
+    "quantity": 2,
+    "unit_price_raw": "119.28",
+    "customer_id": "40",
+    "customer_country_raw": "Deutschland",
+    "customer_country": "Germany",
+    "store_id": "6",
+    "store_country": "France",
+    "expected_included": false,
+    "expected_amount": null,
+    "actual_native_included": true,
+    "actual_native_amount": "238.56",
+    "lineage": {
+     "patch_diff_files": [
+      "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml"
+     ],
+     "compiled_sql_sha256": "f6f414783a0133af7f8d728508ac23cfbdeae67f36e88de89a43f19e55f92b80",
+     "candidate_query": {
+      "metric": "premium_completed_revenue",
+      "group_by": [
+       "metric_time__year"
+      ],
+      "where": [
+       "{{ TimeDimension('metric_time', 'day') }} >= '2025-01-01'"
+      ]
+     }
+    }
+   }
+  ],
+  "BOUNDARY120": [
+   {
+    "order_item_id": "21",
+    "order_id": "8",
+    "order_date": "2025-06-04",
+    "status_raw": "completed",
+    "status": "completed",
+    "quantity": 3,
+    "unit_price_raw": "119.99",
+    "customer_id": "407",
+    "customer_country_raw": "Italy",
+    "customer_country": "Italy",
+    "store_id": "6",
+    "store_country": "France",
+    "expected_included": false,
+    "expected_amount": null,
+    "actual_native_included": true,
+    "actual_native_amount": "359.97",
+    "lineage": {
+     "patch_diff_files": [
+      "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml"
+     ],
+     "compiled_sql_sha256": "f6f414783a0133af7f8d728508ac23cfbdeae67f36e88de89a43f19e55f92b80",
+     "candidate_query": {
+      "metric": "premium_completed_revenue",
+      "group_by": [
+       "metric_time__year"
+      ],
+      "where": [
+       "{{ TimeDimension('metric_time', 'day') }} >= '2025-01-01'"
+      ]
+     }
+    }
+   },
+   {
+    "order_item_id": "454",
+    "order_id": "174",
+    "order_date": "2025-11-02",
+    "status_raw": "completed",
+    "status": "completed",
+    "quantity": 1,
+    "unit_price_raw": "119.28",
+    "customer_id": "370",
+    "customer_country_raw": "Spain",
+    "customer_country": "Spain",
+    "store_id": "1",
+    "store_country": "France",
+    "expected_included": false,
+    "expected_amount": null,
+    "actual_native_included": true,
+    "actual_native_amount": "119.28",
+    "lineage": {
+     "patch_diff_files": [
+      "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml"
+     ],
+     "compiled_sql_sha256": "f6f414783a0133af7f8d728508ac23cfbdeae67f36e88de89a43f19e55f92b80",
+     "candidate_query": {
+      "metric": "premium_completed_revenue",
+      "group_by": [
+       "metric_time__year"
+      ],
+      "where": [
+       "{{ TimeDimension('metric_time', 'day') }} >= '2025-01-01'"
+      ]
+     }
+    }
+   },
+   {
+    "order_item_id": "690",
+    "order_id": "269",
+    "order_date": "2025-05-04",
+    "status_raw": "completed",
+    "status": "completed",
+    "quantity": 2,
+    "unit_price_raw": "119.24",
+    "customer_id": "410",
+    "customer_country_raw": "IT",
+    "customer_country": "Italy",
+    "store_id": "7",
+    "store_country": "Germany",
+    "expected_included": false,
+    "expected_amount": null,
+    "actual_native_included": true,
+    "actual_native_amount": "238.48",
+    "lineage": {
+     "patch_diff_files": [
+      "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml"
+     ],
+     "compiled_sql_sha256": "f6f414783a0133af7f8d728508ac23cfbdeae67f36e88de89a43f19e55f92b80",
+     "candidate_query": {
+      "metric": "premium_completed_revenue",
+      "group_by": [
+       "metric_time__year"
+      ],
+      "where": [
+       "{{ TimeDimension('metric_time', 'day') }} >= '2025-01-01'"
+      ]
+     }
+    }
+   },
+   {
+    "order_item_id": "1199",
+    "order_id": "476",
+    "order_date": "2025-07-29",
+    "status_raw": "completed",
+    "status": "completed",
+    "quantity": 3,
+    "unit_price_raw": "119.24",
+    "customer_id": "241",
+    "customer_country_raw": "Italia",
+    "customer_country": "Italy",
+    "store_id": "8",
+    "store_country": "Spain",
+    "expected_included": false,
+    "expected_amount": null,
+    "actual_native_included": true,
+    "actual_native_amount": "357.72",
+    "lineage": {
+     "patch_diff_files": [
+      "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml"
+     ],
+     "compiled_sql_sha256": "f6f414783a0133af7f8d728508ac23cfbdeae67f36e88de89a43f19e55f92b80",
+     "candidate_query": {
+      "metric": "premium_completed_revenue",
+      "group_by": [
+       "metric_time__year"
+      ],
+      "where": [
+       "{{ TimeDimension('metric_time', 'day') }} >= '2025-01-01'"
+      ]
+     }
+    }
+   },
+   {
+    "order_item_id": "1690",
+    "order_id": "673",
+    "order_date": "2025-02-05",
+    "status_raw": "completed",
+    "status": "completed",
+    "quantity": 5,
+    "unit_price_raw": "119.24",
+    "customer_id": "12",
+    "customer_country_raw": "germany",
+    "customer_country": "Germany",
+    "store_id": "9",
+    "store_country": "Italy",
+    "expected_included": false,
+    "expected_amount": null,
+    "actual_native_included": true,
+    "actual_native_amount": "596.20",
+    "lineage": {
+     "patch_diff_files": [
+      "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml"
+     ],
+     "compiled_sql_sha256": "f6f414783a0133af7f8d728508ac23cfbdeae67f36e88de89a43f19e55f92b80",
+     "candidate_query": {
+      "metric": "premium_completed_revenue",
+      "group_by": [
+       "metric_time__year"
+      ],
+      "where": [
+       "{{ TimeDimension('metric_time', 'day') }} >= '2025-01-01'"
+      ]
+     }
+    }
+   }
+  ]
+ },
+ "N2B": {
+  "PINNED": [],
+  "BOUNDARY120": [
+   {
+    "order_item_id": "22",
+    "order_id": "9",
+    "order_date": "2025-04-23",
+    "status_raw": "completed",
+    "status": "completed",
+    "quantity": 3,
+    "unit_price_raw": "120.00",
+    "customer_id": "294",
+    "customer_country_raw": "france",
+    "customer_country": "France",
+    "store_id": "6",
+    "store_country": "France",
+    "expected_included": true,
+    "expected_amount": "360.00",
+    "actual_native_included": false,
+    "actual_native_amount": null,
+    "lineage": {
+     "patch_diff_files": [
+      "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml"
+     ],
+     "compiled_sql_sha256": "e2fb82153f2b76086afb6a276bc3c86c9c59ee403f9c9e1d6eea01379a23bf7f",
+     "candidate_query": {
+      "metric": "premium_completed_revenue",
+      "group_by": [
+       "metric_time__year"
+      ],
+      "where": [
+       "{{ TimeDimension('metric_time', 'day') }} >= '2025-01-01'"
+      ]
+     }
+    }
+   }
+  ]
+ },
+ "N2C": {
+  "PINNED": [
+   {
+    "order_item_id": "16",
+    "order_id": "7",
+    "order_date": "2025-04-07",
+    "status_raw": "returned",
+    "status": "returned",
+    "quantity": 3,
+    "unit_price_raw": "630.92",
+    "customer_id": "437",
+    "customer_country_raw": "spain",
+    "customer_country": "Spain",
+    "store_id": "2",
+    "store_country": "Germany",
+    "expected_included": false,
+    "expected_amount": null,
+    "actual_native_included": true,
+    "actual_native_amount": "1892.76",
+    "lineage": {
+     "patch_diff_files": [
+      "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml"
+     ],
+     "compiled_sql_sha256": "fef9ccdf010ba1ea55ee388f4a7c01a746732c62f411de0f2988977d05dca5d1",
+     "candidate_query": {
+      "metric": "premium_completed_revenue",
+      "group_by": [
+       "metric_time__year"
+      ],
+      "where": [
+       "{{ TimeDimension('metric_time', 'day') }} >= '2025-01-01'"
+      ]
+     }
+    }
+   },
+   {
+    "order_item_id": "17",
+    "order_id": "7",
+    "order_date": "2025-04-07",
+    "status_raw": "returned",
+    "status": "returned",
+    "quantity": 5,
+    "unit_price_raw": "474.37",
+    "customer_id": "437",
+    "customer_country_raw": "spain",
+    "customer_country": "Spain",
+    "store_id": "2",
+    "store_country": "Germany",
+    "expected_included": false,
+    "expected_amount": null,
+    "actual_native_included": true,
+    "actual_native_amount": "2371.85",
+    "lineage": {
+     "patch_diff_files": [
+      "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml"
+     ],
+     "compiled_sql_sha256": "fef9ccdf010ba1ea55ee388f4a7c01a746732c62f411de0f2988977d05dca5d1",
+     "candidate_query": {
+      "metric": "premium_completed_revenue",
+      "group_by": [
+       "metric_time__year"
+      ],
+      "where": [
+       "{{ TimeDimension('metric_time', 'day') }} >= '2025-01-01'"
+      ]
+     }
+    }
+   },
+   {
+    "order_item_id": "18",
+    "order_id": "7",
+    "order_date": "2025-04-07",
+    "status_raw": "returned",
+    "status": "returned",
+    "quantity": 3,
+    "unit_price_raw": "415.42",
+    "customer_id": "437",
+    "customer_country_raw": "spain",
+    "customer_country": "Spain",
+    "store_id": "2",
+    "store_country": "Germany",
+    "expected_included": false,
+    "expected_amount": null,
+    "actual_native_included": true,
+    "actual_native_amount": "1246.26",
+    "lineage": {
+     "patch_diff_files": [
+      "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml"
+     ],
+     "compiled_sql_sha256": "fef9ccdf010ba1ea55ee388f4a7c01a746732c62f411de0f2988977d05dca5d1",
+     "candidate_query": {
+      "metric": "premium_completed_revenue",
+      "group_by": [
+       "metric_time__year"
+      ],
+      "where": [
+       "{{ TimeDimension('metric_time', 'day') }} >= '2025-01-01'"
+      ]
+     }
+    }
+   },
+   {
+    "order_item_id": "36",
+    "order_id": "15",
+    "order_date": "2025-05-09",
+    "status_raw": "returned",
+    "status": "returned",
+    "quantity": 1,
+    "unit_price_raw": "170.78",
+    "customer_id": "149",
+    "customer_country_raw": "ES",
+    "customer_country": "Spain",
+    "store_id": "5",
+    "store_country": "Belgium",
+    "expected_included": false,
+    "expected_amount": null,
+    "actual_native_included": true,
+    "actual_native_amount": "170.78",
+    "lineage": {
+     "patch_diff_files": [
+      "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml"
+     ],
+     "compiled_sql_sha256": "fef9ccdf010ba1ea55ee388f4a7c01a746732c62f411de0f2988977d05dca5d1",
+     "candidate_query": {
+      "metric": "premium_completed_revenue",
+      "group_by": [
+       "metric_time__year"
+      ],
+      "where": [
+       "{{ TimeDimension('metric_time', 'day') }} >= '2025-01-01'"
+      ]
+     }
+    }
+   },
+   {
+    "order_item_id": "37",
+    "order_id": "15",
+    "order_date": "2025-05-09",
+    "status_raw": "returned",
+    "status": "returned",
+    "quantity": 4,
+    "unit_price_raw": "143.03",
+    "customer_id": "149",
+    "customer_country_raw": "ES",
+    "customer_country": "Spain",
+    "store_id": "5",
+    "store_country": "Belgium",
+    "expected_included": false,
+    "expected_amount": null,
+    "actual_native_included": true,
+    "actual_native_amount": "572.12",
+    "lineage": {
+     "patch_diff_files": [
+      "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml"
+     ],
+     "compiled_sql_sha256": "fef9ccdf010ba1ea55ee388f4a7c01a746732c62f411de0f2988977d05dca5d1",
+     "candidate_query": {
+      "metric": "premium_completed_revenue",
+      "group_by": [
+       "metric_time__year"
+      ],
+      "where": [
+       "{{ TimeDimension('metric_time', 'day') }} >= '2025-01-01'"
+      ]
+     }
+    }
+   }
+  ],
+  "BOUNDARY120": [
+   {
+    "order_item_id": "16",
+    "order_id": "7",
+    "order_date": "2025-04-07",
+    "status_raw": "returned",
+    "status": "returned",
+    "quantity": 3,
+    "unit_price_raw": "630.92",
+    "customer_id": "437",
+    "customer_country_raw": "spain",
+    "customer_country": "Spain",
+    "store_id": "2",
+    "store_country": "Germany",
+    "expected_included": false,
+    "expected_amount": null,
+    "actual_native_included": true,
+    "actual_native_amount": "1892.76",
+    "lineage": {
+     "patch_diff_files": [
+      "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml"
+     ],
+     "compiled_sql_sha256": "fef9ccdf010ba1ea55ee388f4a7c01a746732c62f411de0f2988977d05dca5d1",
+     "candidate_query": {
+      "metric": "premium_completed_revenue",
+      "group_by": [
+       "metric_time__year"
+      ],
+      "where": [
+       "{{ TimeDimension('metric_time', 'day') }} >= '2025-01-01'"
+      ]
+     }
+    }
+   },
+   {
+    "order_item_id": "17",
+    "order_id": "7",
+    "order_date": "2025-04-07",
+    "status_raw": "returned",
+    "status": "returned",
+    "quantity": 5,
+    "unit_price_raw": "474.37",
+    "customer_id": "437",
+    "customer_country_raw": "spain",
+    "customer_country": "Spain",
+    "store_id": "2",
+    "store_country": "Germany",
+    "expected_included": false,
+    "expected_amount": null,
+    "actual_native_included": true,
+    "actual_native_amount": "2371.85",
+    "lineage": {
+     "patch_diff_files": [
+      "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml"
+     ],
+     "compiled_sql_sha256": "fef9ccdf010ba1ea55ee388f4a7c01a746732c62f411de0f2988977d05dca5d1",
+     "candidate_query": {
+      "metric": "premium_completed_revenue",
+      "group_by": [
+       "metric_time__year"
+      ],
+      "where": [
+       "{{ TimeDimension('metric_time', 'day') }} >= '2025-01-01'"
+      ]
+     }
+    }
+   },
+   {
+    "order_item_id": "18",
+    "order_id": "7",
+    "order_date": "2025-04-07",
+    "status_raw": "returned",
+    "status": "returned",
+    "quantity": 3,
+    "unit_price_raw": "415.42",
+    "customer_id": "437",
+    "customer_country_raw": "spain",
+    "customer_country": "Spain",
+    "store_id": "2",
+    "store_country": "Germany",
+    "expected_included": false,
+    "expected_amount": null,
+    "actual_native_included": true,
+    "actual_native_amount": "1246.26",
+    "lineage": {
+     "patch_diff_files": [
+      "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml"
+     ],
+     "compiled_sql_sha256": "fef9ccdf010ba1ea55ee388f4a7c01a746732c62f411de0f2988977d05dca5d1",
+     "candidate_query": {
+      "metric": "premium_completed_revenue",
+      "group_by": [
+       "metric_time__year"
+      ],
+      "where": [
+       "{{ TimeDimension('metric_time', 'day') }} >= '2025-01-01'"
+      ]
+     }
+    }
+   },
+   {
+    "order_item_id": "19",
+    "order_id": "7",
+    "order_date": "2025-04-07",
+    "status_raw": "returned",
+    "status": "returned",
+    "quantity": 2,
+    "unit_price_raw": "120.00",
+    "customer_id": "437",
+    "customer_country_raw": "spain",
+    "customer_country": "Spain",
+    "store_id": "2",
+    "store_country": "Germany",
+    "expected_included": false,
+    "expected_amount": null,
+    "actual_native_included": true,
+    "actual_native_amount": "240.00",
+    "lineage": {
+     "patch_diff_files": [
+      "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml"
+     ],
+     "compiled_sql_sha256": "fef9ccdf010ba1ea55ee388f4a7c01a746732c62f411de0f2988977d05dca5d1",
+     "candidate_query": {
+      "metric": "premium_completed_revenue",
+      "group_by": [
+       "metric_time__year"
+      ],
+      "where": [
+       "{{ TimeDimension('metric_time', 'day') }} >= '2025-01-01'"
+      ]
+     }
+    }
+   },
+   {
+    "order_item_id": "36",
+    "order_id": "15",
+    "order_date": "2025-05-09",
+    "status_raw": "returned",
+    "status": "returned",
+    "quantity": 1,
+    "unit_price_raw": "170.78",
+    "customer_id": "149",
+    "customer_country_raw": "ES",
+    "customer_country": "Spain",
+    "store_id": "5",
+    "store_country": "Belgium",
+    "expected_included": false,
+    "expected_amount": null,
+    "actual_native_included": true,
+    "actual_native_amount": "170.78",
+    "lineage": {
+     "patch_diff_files": [
+      "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml"
+     ],
+     "compiled_sql_sha256": "fef9ccdf010ba1ea55ee388f4a7c01a746732c62f411de0f2988977d05dca5d1",
+     "candidate_query": {
+      "metric": "premium_completed_revenue",
+      "group_by": [
+       "metric_time__year"
+      ],
+      "where": [
+       "{{ TimeDimension('metric_time', 'day') }} >= '2025-01-01'"
+      ]
+     }
+    }
+   }
+  ]
+ },
+ "N3_P2_COLLATERAL": {
+  "PINNED": [
+   {
+    "order_item_id": "2",
+    "order_id": "1",
+    "order_date": "2025-09-08",
+    "status_raw": "completed",
+    "status": "completed",
+    "quantity": 3,
+    "unit_price_raw": "44.06",
+    "customer_id": "41",
+    "customer_country_raw": "France",
+    "customer_country": "France",
+    "store_id": "7",
+    "store_country": "Germany",
+    "expected_included": true,
+    "expected_amount": "132.18",
+    "actual_native_included": false,
+    "actual_native_amount": null,
+    "lineage": {
+     "patch_diff_files": [
+      "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml"
+     ],
+     "compiled_sql_sha256": "96244953507a2eb39143d07272166a3ccff3fd5cfd70e3e484a5a20f1fef29f8",
+     "candidate_query": {
+      "metric": "french_market_revenue",
+      "group_by": [
+       "metric_time__year"
+      ],
+      "where": []
+     }
+    }
+   },
+   {
+    "order_item_id": "3",
+    "order_id": "1",
+    "order_date": "2025-09-08",
+    "status_raw": "completed",
+    "status": "completed",
+    "quantity": 5,
+    "unit_price_raw": "99.25",
+    "customer_id": "41",
+    "customer_country_raw": "France",
+    "customer_country": "France",
+    "store_id": "7",
+    "store_country": "Germany",
+    "expected_included": true,
+    "expected_amount": "496.25",
+    "actual_native_included": false,
+    "actual_native_amount": null,
+    "lineage": {
+     "patch_diff_files": [
+      "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml"
+     ],
+     "compiled_sql_sha256": "96244953507a2eb39143d07272166a3ccff3fd5cfd70e3e484a5a20f1fef29f8",
+     "candidate_query": {
+      "metric": "french_market_revenue",
+      "group_by": [
+       "metric_time__year"
+      ],
+      "where": []
+     }
+    }
+   },
+   {
+    "order_item_id": "22",
+    "order_id": "9",
+    "order_date": "2025-04-23",
+    "status_raw": "completed",
+    "status": "completed",
+    "quantity": 3,
+    "unit_price_raw": "77.36",
+    "customer_id": "294",
+    "customer_country_raw": "france",
+    "customer_country": "France",
+    "store_id": "6",
+    "store_country": "France",
+    "expected_included": true,
+    "expected_amount": "232.08",
+    "actual_native_included": false,
+    "actual_native_amount": null,
+    "lineage": {
+     "patch_diff_files": [
+      "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml"
+     ],
+     "compiled_sql_sha256": "96244953507a2eb39143d07272166a3ccff3fd5cfd70e3e484a5a20f1fef29f8",
+     "candidate_query": {
+      "metric": "french_market_revenue",
+      "group_by": [
+       "metric_time__year"
+      ],
+      "where": []
+     }
+    }
+   },
+   {
+    "order_item_id": "95",
+    "order_id": "40",
+    "order_date": "2024-06-28",
+    "status_raw": "completed",
+    "status": "completed",
+    "quantity": 2,
+    "unit_price_raw": "43.86",
+    "customer_id": "346",
+    "customer_country_raw": "FR",
+    "customer_country": "France",
+    "store_id": "4",
+    "store_country": "Italy",
+    "expected_included": true,
+    "expected_amount": "87.72",
+    "actual_native_included": false,
+    "actual_native_amount": null,
+    "lineage": {
+     "patch_diff_files": [
+      "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml"
+     ],
+     "compiled_sql_sha256": "96244953507a2eb39143d07272166a3ccff3fd5cfd70e3e484a5a20f1fef29f8",
+     "candidate_query": {
+      "metric": "french_market_revenue",
+      "group_by": [
+       "metric_time__year"
+      ],
+      "where": []
+     }
+    }
+   },
+   {
+    "order_item_id": "110",
+    "order_id": "45",
+    "order_date": "2024-06-02",
+    "status_raw": "completed",
+    "status": "completed",
+    "quantity": 5,
+    "unit_price_raw": "34.2",
+    "customer_id": "294",
+    "customer_country_raw": "france",
+    "customer_country": "France",
+    "store_id": "9",
+    "store_country": "Italy",
+    "expected_included": true,
+    "expected_amount": "171.00",
+    "actual_native_included": false,
+    "actual_native_amount": null,
+    "lineage": {
+     "patch_diff_files": [
+      "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml"
+     ],
+     "compiled_sql_sha256": "96244953507a2eb39143d07272166a3ccff3fd5cfd70e3e484a5a20f1fef29f8",
+     "candidate_query": {
+      "metric": "french_market_revenue",
+      "group_by": [
+       "metric_time__year"
+      ],
+      "where": []
+     }
+    }
+   }
+  ],
+  "BOUNDARY120": [
+   {
+    "order_item_id": "2",
+    "order_id": "1",
+    "order_date": "2025-09-08",
+    "status_raw": "completed",
+    "status": "completed",
+    "quantity": 3,
+    "unit_price_raw": "99.99",
+    "customer_id": "41",
+    "customer_country_raw": "France",
+    "customer_country": "France",
+    "store_id": "7",
+    "store_country": "Germany",
+    "expected_included": true,
+    "expected_amount": "299.97",
+    "actual_native_included": false,
+    "actual_native_amount": null,
+    "lineage": {
+     "patch_diff_files": [
+      "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml"
+     ],
+     "compiled_sql_sha256": "96244953507a2eb39143d07272166a3ccff3fd5cfd70e3e484a5a20f1fef29f8",
+     "candidate_query": {
+      "metric": "french_market_revenue",
+      "group_by": [
+       "metric_time__year"
+      ],
+      "where": []
+     }
+    }
+   },
+   {
+    "order_item_id": "3",
+    "order_id": "1",
+    "order_date": "2025-09-08",
+    "status_raw": "completed",
+    "status": "completed",
+    "quantity": 5,
+    "unit_price_raw": "99.25",
+    "customer_id": "41",
+    "customer_country_raw": "France",
+    "customer_country": "France",
+    "store_id": "7",
+    "store_country": "Germany",
+    "expected_included": true,
+    "expected_amount": "496.25",
+    "actual_native_included": false,
+    "actual_native_amount": null,
+    "lineage": {
+     "patch_diff_files": [
+      "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml"
+     ],
+     "compiled_sql_sha256": "96244953507a2eb39143d07272166a3ccff3fd5cfd70e3e484a5a20f1fef29f8",
+     "candidate_query": {
+      "metric": "french_market_revenue",
+      "group_by": [
+       "metric_time__year"
+      ],
+      "where": []
+     }
+    }
+   },
+   {
+    "order_item_id": "95",
+    "order_id": "40",
+    "order_date": "2024-06-28",
+    "status_raw": "completed",
+    "status": "completed",
+    "quantity": 2,
+    "unit_price_raw": "43.86",
+    "customer_id": "346",
+    "customer_country_raw": "FR",
+    "customer_country": "France",
+    "store_id": "4",
+    "store_country": "Italy",
+    "expected_included": true,
+    "expected_amount": "87.72",
+    "actual_native_included": false,
+    "actual_native_amount": null,
+    "lineage": {
+     "patch_diff_files": [
+      "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml"
+     ],
+     "compiled_sql_sha256": "96244953507a2eb39143d07272166a3ccff3fd5cfd70e3e484a5a20f1fef29f8",
+     "candidate_query": {
+      "metric": "french_market_revenue",
+      "group_by": [
+       "metric_time__year"
+      ],
+      "where": []
+     }
+    }
+   },
+   {
+    "order_item_id": "110",
+    "order_id": "45",
+    "order_date": "2024-06-02",
+    "status_raw": "completed",
+    "status": "completed",
+    "quantity": 5,
+    "unit_price_raw": "34.2",
+    "customer_id": "294",
+    "customer_country_raw": "france",
+    "customer_country": "France",
+    "store_id": "9",
+    "store_country": "Italy",
+    "expected_included": true,
+    "expected_amount": "171.00",
+    "actual_native_included": false,
+    "actual_native_amount": null,
+    "lineage": {
+     "patch_diff_files": [
+      "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml"
+     ],
+     "compiled_sql_sha256": "96244953507a2eb39143d07272166a3ccff3fd5cfd70e3e484a5a20f1fef29f8",
+     "candidate_query": {
+      "metric": "french_market_revenue",
+      "group_by": [
+       "metric_time__year"
+      ],
+      "where": []
+     }
+    }
+   },
+   {
+    "order_item_id": "131",
+    "order_id": "51",
+    "order_date": "2024-09-07",
+    "status_raw": "completed",
+    "status": "completed",
+    "quantity": 2,
+    "unit_price_raw": "56.07",
+    "customer_id": "307",
+    "customer_country_raw": " France ",
+    "customer_country": "France",
+    "store_id": "1",
+    "store_country": "France",
+    "expected_included": true,
+    "expected_amount": "112.14",
+    "actual_native_included": false,
+    "actual_native_amount": null,
+    "lineage": {
+     "patch_diff_files": [
+      "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml"
+     ],
+     "compiled_sql_sha256": "96244953507a2eb39143d07272166a3ccff3fd5cfd70e3e484a5a20f1fef29f8",
+     "candidate_query": {
+      "metric": "french_market_revenue",
+      "group_by": [
+       "metric_time__year"
+      ],
+      "where": []
+     }
+    }
+   }
+  ]
+ }
+}

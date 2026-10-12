@@ -1,0 +1,15 @@
+F1.generated_vs_requested_v2       NOT_VERIFIED                   REQUIREMENT_VERSION_NOT_KNOWN                                          PINNED=CONFORMS BOUNDARY120=CONFORMS
+F1.generated_vs_governing          NONCONFORMING_IMPLEMENTATION   MEMBERSHIP_MISMATCH,TOTAL_MISMATCH                                     PINNED=MISMATCH BOUNDARY120=MISMATCH
+F1B.generated_vs_requested_v2      NOT_VERIFIED                   REQUIREMENT_VERSION_NOT_APPROVED                                       PINNED=CONFORMS BOUNDARY120=CONFORMS
+F2.baseline_vs_governing           NONCONFORMING_IMPLEMENTATION   MEMBERSHIP_MISMATCH,TOTAL_MISMATCH                                     PINNED=MISMATCH BOUNDARY120=MISMATCH
+F4.generated_vs_governing          VERIFIED_FOR_LAB_CHECKS                                                                               PINNED=CONFORMS BOUNDARY120=CONFORMS
+N2A                                NONCONFORMING_IMPLEMENTATION   MEMBERSHIP_MISMATCH,TOTAL_MISMATCH                                     PINNED=MISMATCH BOUNDARY120=MISMATCH
+N2B                                NONCONFORMING_IMPLEMENTATION   MEMBERSHIP_MISMATCH,TOTAL_MISMATCH                                     PINNED=CONFORMS BOUNDARY120=MISMATCH
+N2C                                NONCONFORMING_IMPLEMENTATION   MEMBERSHIP_MISMATCH,TOTAL_MISMATCH                                     PINNED=MISMATCH BOUNDARY120=MISMATCH
+F3 PROPOSED_NOT_DEPLOYED True F6 P2_UNCHANGED_VERIFIED N3 P2_CHANGED_DETECTED F7 PROPOSED_VERIFIED_NOT_DEPLOYED
+N1 {'N1A_SOURCE_HASH_V1_MISMATCH': ('BLOCKED', ['SOURCE_HASH_MISMATCH']), 'N1B_SOURCE_HASH_MISSING': ('BLOCKED', ['SOURCE_HASH_MISSING']), 'N1C_APPROVAL_MISSING': ('BLOCKED', ['APPROVAL_MISSING']), 'N1D_APPROVAL_MEANING_MISMATCH': ('BLOCKED', ['APPROVAL_MEANING_MISMATCH']), 'N1E_APPROVER_NOT_AUTHORIZED': ('BLOCKED', ['APPROVER_NOT_AUTHORIZED']), 'N1F_PREDECESSOR_MISMATCH': ('BLOCKED', ['PREDECESSOR_MISMATCH']), 'N1G_VALUE_NOT_IN_SOURCE': ('BLOCKED', ['VALUE_NOT_GROUNDED_IN_SOURCE']), 'N1H_UNIT_CHANGED': ('UNRESOLVED', ['UNIT_CHANGED']), 'N1I_UNSUPPORTED_OPERATOR': ('UNRESOLVED', ['UNSUPPORTED_OPERATOR']), 'N1J_BINDING_MISSING': ('UNRESOLVED', ['BINDING_MISSING']), 'N1K_BASELINE_NOT_V1': ('UNRESOLVED', ['BASELINE_DOES_NOT_IMPLEMENT_PREDECESSOR'])}
+routing {'F5.K_POST': [('P1_v1', 'CONFORMS'), ('P1_v2', 'CONFORMS')], 'F5.K_PRE': [('P1_v1', 'CONFORMS')]} sens {'threshold_135_reapproved': "{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 135", 'threshold_120.00_same_text': "{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 120", 'threshold_99.5_reapproved': "{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 99.5"}
+
+real	6m54.970s
+user	5m47.370s
+sys	0m30.719s
