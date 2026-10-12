@@ -1,0 +1,21 @@
+{
+ "argv": [
+  "<python>",
+  "-I",
+  "src/run_scenarios.py",
+  "--out",
+  "<replay>"
+ ],
+ "env": {
+  "PATH": "/usr/bin:/bin"
+ },
+ "cwd": "fresh temporary directory",
+ "exit_code": 0,
+ "stdout": "54/54 scenarios as frozen\n",
+ "stderr": "",
+ "scored_sha256": "69065623dc4965bb8c43da44d33c6a8c5c8cde05c53eb95472ee8971d51d44fc",
+ "replay_sha256": "69065623dc4965bb8c43da44d33c6a8c5c8cde05c53eb95472ee8971d51d44fc",
+ "byte_identical": true,
+ "inputs": "cases/ (frozen), evidence/catalog.json, evidence/receipts/ (recorded native/guard/oracle receipts)",
+ "trust_limit": "replay re-validates recorded receipts; it does not re-execute MetricFlow. Receipt integrity is checked by hashes inside the receipts and by git history, not against a forger with write access."
+}

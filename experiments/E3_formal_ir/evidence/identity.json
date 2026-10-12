@@ -1,0 +1,32 @@
+{
+ "upstream_commit": "312e97ad192dcef02f688e31edc0a08c6cf4345f",
+ "upstream_commit_ok": true,
+ "env_freeze_sha256": "db0a13e99f318c413caf84a108b6a95ef3d2167376f59285ce15e7b858586add",
+ "env_freeze_ok": true,
+ "semantic_manifest_sha256": "e8e9bfc7e1188bc3eb3f5ac551e8ed5350817af14a5471bdbcdfdca2bc01bd48",
+ "semantic_manifest_ok": true,
+ "raw_csv_sha256": {
+  "customers.csv": "e570cfec57af94cee3b974db5642fe0c276b495f83dd82e6af077dbb3784680d",
+  "order_items.csv": "513de0a77e90c7312a2935d47efcced60b6811a33de589e1a4fe63d2045e5f26",
+  "orders.csv": "be942a616a816158924f538b8f9cde29de773bc324411c5c6f7c83c980ec4f03",
+  "products.csv": "3783c0e35d83c571e8fc18bbafa98f59e217944288a92f590b6a15d4320c2311",
+  "stores.csv": "78d2cbff192a861f4f880bcc0c25ddc43df72bfecf8a3517abf18723109f8c44"
+ },
+ "raw_csv_ok": true,
+ "mf_identity": {
+  "mf_path": "/home/user/sophon-e3/experiments/E3_formal_ir/.upstream/.venv/bin/mf",
+  "mf_sha256": "10a2e8496dd331f6dcfa7042bf796e5f2277e9dd47e556505ec847610eb4dfb5",
+  "record_entry": "../../../bin/mf",
+  "record_hash": "sha256=EKLoSW3TMfbc-nBCv3luXyJ36d1H5VZQXshHYQ6037U",
+  "distribution": "dbt_metricflow-0.13.0.dist-info",
+  "versions": {
+   "dbt-metricflow": "0.13.0",
+   "metricflow": "0.211.0",
+   "dbt-core": "1.11.11",
+   "dbt-duckdb": "1.10.1",
+   "dbt-semantic-interfaces": "0.9.0",
+   "duckdb": "1.5.4"
+  }
+ },
+ "ok": true
+}

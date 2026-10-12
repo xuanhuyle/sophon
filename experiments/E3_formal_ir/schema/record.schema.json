@@ -1,0 +1,664 @@
+{
+ "$defs": {
+  "Atom": {
+   "additionalProperties": false,
+   "properties": {
+    "aggregation": {
+     "anyOf": [
+      {
+       "enum": [
+        "SUM",
+        "COUNT_DISTINCT"
+       ],
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Aggregation"
+    },
+    "atom_id": {
+     "title": "Atom Id",
+     "type": "string"
+    },
+    "fact_kind": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "title": "Fact Kind"
+    },
+    "grain": {
+     "anyOf": [
+      {
+       "const": "ORDER_LINE",
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Grain"
+    },
+    "kind": {
+     "enum": [
+      "MEASURE",
+      "PREDICATE",
+      "GROUP_BY"
+     ],
+     "title": "Kind",
+     "type": "string"
+    },
+    "op": {
+     "anyOf": [
+      {
+       "enum": [
+        "EQ",
+        "GE",
+        "IS_TRUE"
+       ],
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Op"
+    },
+    "period": {
+     "anyOf": [
+      {
+       "const": "CALENDAR_YEAR",
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Period"
+    },
+    "span": {
+     "maxItems": 2,
+     "minItems": 2,
+     "prefixItems": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "integer"
+      }
+     ],
+     "title": "Span",
+     "type": "array"
+    },
+    "text": {
+     "title": "Text",
+     "type": "string"
+    },
+    "unit": {
+     "anyOf": [
+      {
+       "enum": [
+        "CURRENCY",
+        "CURRENCY_PER_UNIT",
+        "UNIT",
+        "COUNT"
+       ],
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Unit"
+    },
+    "value": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Value"
+    }
+   },
+   "required": [
+    "atom_id",
+    "span",
+    "text",
+    "kind",
+    "fact_kind"
+   ],
+   "title": "Atom",
+   "type": "object"
+  },
+  "Binding": {
+   "additionalProperties": false,
+   "properties": {
+    "derivation": {
+     "anyOf": [
+      {
+       "$ref": "#/$defs/Derivation"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null
+    },
+    "equivalence": {
+     "anyOf": [
+      {
+       "$ref": "#/$defs/Equivalence"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null
+    },
+    "kind": {
+     "enum": [
+      "DIRECT",
+      "DERIVED",
+      "CANDIDATE_EQUIVALENCE",
+      "MISSING"
+     ],
+     "title": "Kind",
+     "type": "string"
+    },
+    "missing_fact": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Missing Fact"
+    },
+    "physical_lineage": {
+     "items": {
+      "type": "string"
+     },
+     "title": "Physical Lineage",
+     "type": "array"
+    },
+    "semantic_object": {
+     "anyOf": [
+      {
+       "$ref": "#/$defs/SemanticObject"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "value_override": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Value Override"
+    }
+   },
+   "required": [
+    "kind",
+    "semantic_object",
+    "physical_lineage"
+   ],
+   "title": "Binding",
+   "type": "object"
+  },
+  "Derivation": {
+   "additionalProperties": false,
+   "properties": {
+    "denominator_metric": {
+     "title": "Denominator Metric",
+     "type": "string"
+    },
+    "guard_receipt_id": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "title": "Guard Receipt Id"
+    },
+    "guards_declared": {
+     "items": {
+      "type": "string"
+     },
+     "title": "Guards Declared",
+     "type": "array"
+    },
+    "line_entity": {
+     "title": "Line Entity",
+     "type": "string"
+    },
+    "numerator_metric": {
+     "title": "Numerator Metric",
+     "type": "string"
+    },
+    "pattern": {
+     "const": "LINE_GRAIN_RATIO_THRESHOLD",
+     "title": "Pattern",
+     "type": "string"
+    },
+    "threshold": {
+     "title": "Threshold",
+     "type": "string"
+    }
+   },
+   "required": [
+    "pattern",
+    "numerator_metric",
+    "denominator_metric",
+    "line_entity",
+    "threshold",
+    "guards_declared",
+    "guard_receipt_id"
+   ],
+   "title": "Derivation",
+   "type": "object"
+  },
+  "Equivalence": {
+   "additionalProperties": false,
+   "properties": {
+    "claimed_approval_id": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "title": "Claimed Approval Id"
+    },
+    "fact_kind": {
+     "title": "Fact Kind",
+     "type": "string"
+    },
+    "field": {
+     "title": "Field",
+     "type": "string"
+    },
+    "statement": {
+     "title": "Statement",
+     "type": "string"
+    }
+   },
+   "required": [
+    "field",
+    "fact_kind",
+    "statement",
+    "claimed_approval_id"
+   ],
+   "title": "Equivalence",
+   "type": "object"
+  },
+  "GoverningSource": {
+   "additionalProperties": false,
+   "properties": {
+    "clause_id": {
+     "title": "Clause Id",
+     "type": "string"
+    },
+    "clause_version": {
+     "minimum": 1,
+     "title": "Clause Version",
+     "type": "integer"
+    },
+    "content_sha256": {
+     "pattern": "^[0-9a-f]{64}$",
+     "title": "Content Sha256",
+     "type": "string"
+    },
+    "effective_from": {
+     "format": "date",
+     "title": "Effective From",
+     "type": "string"
+    },
+    "effective_to": {
+     "anyOf": [
+      {
+       "format": "date",
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "title": "Effective To"
+    },
+    "observed_at": {
+     "format": "date-time",
+     "title": "Observed At",
+     "type": "string"
+    },
+    "path": {
+     "title": "Path",
+     "type": "string"
+    },
+    "provenance": {
+     "const": "LAB_AUTHORED",
+     "title": "Provenance",
+     "type": "string"
+    },
+    "source_id": {
+     "title": "Source Id",
+     "type": "string"
+    }
+   },
+   "required": [
+    "source_id",
+    "path",
+    "content_sha256",
+    "clause_id",
+    "clause_version",
+    "observed_at",
+    "effective_from",
+    "effective_to",
+    "provenance"
+   ],
+   "title": "GoverningSource",
+   "type": "object"
+  },
+  "Interpretation": {
+   "additionalProperties": false,
+   "properties": {
+    "claimed_approval_ids": {
+     "items": {
+      "type": "string"
+     },
+     "title": "Claimed Approval Ids",
+     "type": "array"
+    },
+    "claimed_state": {
+     "enum": [
+      "PROPOSED",
+      "UNRESOLVED_INTERPRETATION",
+      "LAB_APPROVED"
+     ],
+     "title": "Claimed State",
+     "type": "string"
+    },
+    "open_questions": {
+     "items": {
+      "type": "string"
+     },
+     "title": "Open Questions",
+     "type": "array"
+    },
+    "readings": {
+     "items": {
+      "$ref": "#/$defs/Reading"
+     },
+     "minItems": 1,
+     "title": "Readings",
+     "type": "array"
+    }
+   },
+   "required": [
+    "claimed_state",
+    "claimed_approval_ids",
+    "readings",
+    "open_questions"
+   ],
+   "title": "Interpretation",
+   "type": "object"
+  },
+  "NativeQuery": {
+   "additionalProperties": false,
+   "properties": {
+    "group_by": {
+     "items": {
+      "type": "string"
+     },
+     "title": "Group By",
+     "type": "array"
+    },
+    "metric": {
+     "title": "Metric",
+     "type": "string"
+    },
+    "where": {
+     "items": {
+      "type": "string"
+     },
+     "title": "Where",
+     "type": "array"
+    }
+   },
+   "required": [
+    "metric",
+    "group_by",
+    "where"
+   ],
+   "title": "NativeQuery",
+   "type": "object"
+  },
+  "Reading": {
+   "additionalProperties": false,
+   "properties": {
+    "atom_fact_kinds": {
+     "additionalProperties": {
+      "type": "string"
+     },
+     "title": "Atom Fact Kinds",
+     "type": "object"
+    },
+    "bindings": {
+     "additionalProperties": {
+      "$ref": "#/$defs/Binding"
+     },
+     "title": "Bindings",
+     "type": "object"
+    },
+    "native_query": {
+     "anyOf": [
+      {
+       "$ref": "#/$defs/NativeQuery"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "native_receipt_id": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "title": "Native Receipt Id"
+    },
+    "oracle_id": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "title": "Oracle Id"
+    },
+    "reading_id": {
+     "title": "Reading Id",
+     "type": "string"
+    },
+    "statement": {
+     "title": "Statement",
+     "type": "string"
+    }
+   },
+   "required": [
+    "reading_id",
+    "statement",
+    "bindings",
+    "native_query",
+    "native_receipt_id",
+    "oracle_id"
+   ],
+   "title": "Reading",
+   "type": "object"
+  },
+  "Requirement": {
+   "additionalProperties": false,
+   "properties": {
+    "atoms": {
+     "items": {
+      "$ref": "#/$defs/Atom"
+     },
+     "minItems": 1,
+     "title": "Atoms",
+     "type": "array"
+    },
+    "exceptions": {
+     "items": {
+      "type": "string"
+     },
+     "title": "Exceptions",
+     "type": "array"
+    },
+    "population": {
+     "title": "Population",
+     "type": "string"
+    },
+    "text": {
+     "title": "Text",
+     "type": "string"
+    }
+   },
+   "required": [
+    "text",
+    "atoms",
+    "population",
+    "exceptions"
+   ],
+   "title": "Requirement",
+   "type": "object"
+  },
+  "SemanticObject": {
+   "additionalProperties": false,
+   "properties": {
+    "name": {
+     "title": "Name",
+     "type": "string"
+    },
+    "type": {
+     "enum": [
+      "metric",
+      "dimension",
+      "time_dimension"
+     ],
+     "title": "Type",
+     "type": "string"
+    }
+   },
+   "required": [
+    "type",
+    "name"
+   ],
+   "title": "SemanticObject",
+   "type": "object"
+  },
+  "VerificationRequest": {
+   "additionalProperties": false,
+   "properties": {
+    "raw_csv_sha256": {
+     "additionalProperties": {
+      "type": "string"
+     },
+     "title": "Raw Csv Sha256",
+     "type": "object"
+    },
+    "semantic_manifest_sha256": {
+     "title": "Semantic Manifest Sha256",
+     "type": "string"
+    }
+   },
+   "required": [
+    "semantic_manifest_sha256",
+    "raw_csv_sha256"
+   ],
+   "title": "VerificationRequest",
+   "type": "object"
+  }
+ },
+ "additionalProperties": false,
+ "properties": {
+  "governing_source": {
+   "$ref": "#/$defs/GoverningSource"
+  },
+  "interpretation": {
+   "$ref": "#/$defs/Interpretation"
+  },
+  "ir_version": {
+   "const": "E3-IR-0.1",
+   "title": "Ir Version",
+   "type": "string"
+  },
+  "lab_assumptions": {
+   "items": {
+    "type": "string"
+   },
+   "title": "Lab Assumptions",
+   "type": "array"
+  },
+  "proposed_by_role": {
+   "title": "Proposed By Role",
+   "type": "string"
+  },
+  "record_id": {
+   "title": "Record Id",
+   "type": "string"
+  },
+  "requirement": {
+   "$ref": "#/$defs/Requirement"
+  },
+  "verification_request": {
+   "$ref": "#/$defs/VerificationRequest"
+  }
+ },
+ "required": [
+  "ir_version",
+  "record_id",
+  "proposed_by_role",
+  "governing_source",
+  "requirement",
+  "interpretation",
+  "lab_assumptions",
+  "verification_request"
+ ],
+ "title": "Record",
+ "type": "object"
+}

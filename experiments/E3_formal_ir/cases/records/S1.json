@@ -1,0 +1,172 @@
+{
+ "ir_version": "E3-IR-0.1",
+ "record_id": "S1",
+ "proposed_by_role": "LLM_PROPOSER",
+ "governing_source": {
+  "source_id": "LAB-REV-POLICY",
+  "path": "cases/sources/LAB_REVENUE_POLICY.md",
+  "content_sha256": "20263fa531d3b3c946f80a85fc863cd1d004b9b2b907f75de32faf100853a957",
+  "clause_id": "S1",
+  "clause_version": 1,
+  "observed_at": "2026-10-01T09:00:00Z",
+  "effective_from": "2024-01-01",
+  "effective_to": null,
+  "provenance": "LAB_AUTHORED"
+ },
+ "requirement": {
+  "text": "Report, for each calendar year of order date, the revenue from completed orders, counting only order lines whose charged unit price is at least 100.",
+  "atoms": [
+   {
+    "atom_id": "year",
+    "span": [
+     17,
+     44
+    ],
+    "text": "calendar year of order date",
+    "kind": "GROUP_BY",
+    "fact_kind": "order_date",
+    "period": "CALENDAR_YEAR"
+   },
+   {
+    "atom_id": "amount",
+    "span": [
+     50,
+     57
+    ],
+    "text": "revenue",
+    "kind": "MEASURE",
+    "fact_kind": "order_line_amount",
+    "aggregation": "SUM",
+    "unit": "CURRENCY"
+   },
+   {
+    "atom_id": "completed",
+    "span": [
+     63,
+     79
+    ],
+    "text": "completed orders",
+    "kind": "PREDICATE",
+    "fact_kind": "order_status_label",
+    "op": "EQ",
+    "value": "completed",
+    "unit": null
+   },
+   {
+    "atom_id": "unit_price_threshold",
+    "span": [
+     113,
+     147
+    ],
+    "text": "charged unit price is at least 100",
+    "kind": "PREDICATE",
+    "fact_kind": "order_line_charged_unit_price",
+    "op": "GE",
+    "value": "100",
+    "unit": "CURRENCY_PER_UNIT",
+    "grain": "ORDER_LINE"
+   }
+  ],
+  "population": "order lines of the pinned estate",
+  "exceptions": []
+ },
+ "interpretation": {
+  "claimed_state": "PROPOSED",
+  "claimed_approval_ids": [],
+  "readings": [
+   {
+    "reading_id": "R_SINGLE",
+    "statement": "Sum of line revenue for completed orders over lines with charged unit price >= 100, by calendar year of order date.",
+    "bindings": {
+     "year": {
+      "kind": "DIRECT",
+      "semantic_object": {
+       "type": "time_dimension",
+       "name": "metric_time__year"
+      },
+      "physical_lineage": [
+       "gold.fact_sales.order_date",
+       "silver.stg_orders.order_date",
+       "bronze.orders.order_date"
+      ]
+     },
+     "amount": {
+      "kind": "DIRECT",
+      "semantic_object": {
+       "type": "metric",
+       "name": "revenue"
+      },
+      "physical_lineage": [
+       "gold.fact_sales.revenue",
+       "silver.stg_order_items.quantity",
+       "silver.stg_order_items.unit_price"
+      ]
+     },
+     "completed": {
+      "kind": "DIRECT",
+      "semantic_object": {
+       "type": "dimension",
+       "name": "sales__status"
+      },
+      "physical_lineage": [
+       "gold.fact_sales.status",
+       "silver.stg_orders.status",
+       "bronze.orders.status"
+      ]
+     },
+     "unit_price_threshold": {
+      "kind": "DERIVED",
+      "semantic_object": null,
+      "physical_lineage": [
+       "gold.fact_sales.unit_price",
+       "silver.stg_order_items.unit_price",
+       "bronze.order_items.unit_price"
+      ],
+      "derivation": {
+       "pattern": "LINE_GRAIN_RATIO_THRESHOLD",
+       "numerator_metric": "revenue",
+       "denominator_metric": "quantity_sold",
+       "line_entity": "sales",
+       "threshold": "100",
+       "guards_declared": [
+        "quantity_positive",
+        "revenue_exact",
+        "price_source_exact",
+        "line_entity_unique",
+        "exact_comparison"
+       ],
+       "guard_receipt_id": "GR_S1"
+      }
+     }
+    },
+    "native_query": {
+     "metric": "revenue",
+     "group_by": [
+      "metric_time__year"
+     ],
+     "where": [
+      "{{ Dimension('sales__status') }} = 'completed'",
+      "{{ Metric('revenue', group_by=['sales']) }} >= 100 * {{ Metric('quantity_sold', group_by=['sales']) }}"
+     ]
+    },
+    "native_receipt_id": "NR_S1",
+    "oracle_id": "OR_S1"
+   }
+  ],
+  "open_questions": []
+ },
+ "lab_assumptions": [
+  "Currency is not declared anywhere in the pinned estate; all amounts are taken as one unspecified currency (ASSUMED).",
+  "unit_price derivation valid only while every line has quantity > 0 (data guard, not enforced by the semantic layer)"
+ ],
+ "verification_request": {
+  "semantic_manifest_sha256": "e8e9bfc7e1188bc3eb3f5ac551e8ed5350817af14a5471bdbcdfdca2bc01bd48",
+  "raw_csv_sha256": {
+   "customers.csv": "e570cfec57af94cee3b974db5642fe0c276b495f83dd82e6af077dbb3784680d",
+   "order_items.csv": "513de0a77e90c7312a2935d47efcced60b6811a33de589e1a4fe63d2045e5f26",
+   "orders.csv": "be942a616a816158924f538b8f9cde29de773bc324411c5c6f7c83c980ec4f03",
+   "products.csv": "3783c0e35d83c571e8fc18bbafa98f59e217944288a92f590b6a15d4320c2311",
+   "stores.csv": "78d2cbff192a861f4f880bcc0c25ddc43df72bfecf8a3517abf18723109f8c44"
+  }
+ }
+}

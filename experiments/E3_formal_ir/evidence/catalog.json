@@ -1,0 +1,461 @@
+{
+ "semantic_manifest_sha256": "e8e9bfc7e1188bc3eb3f5ac551e8ed5350817af14a5471bdbcdfdca2bc01bd48",
+ "metrics": {
+  "revenue_live": {
+   "type": "simple",
+   "measure": "revenue_live_amount",
+   "filter": null,
+   "model": "sales_live",
+   "field": "gold.fact_sales_live.revenue",
+   "primary_entity": "sales_live"
+  },
+  "gross_profit_live": {
+   "type": "simple",
+   "measure": "gross_profit_live_amount",
+   "filter": null,
+   "model": "sales_live",
+   "field": "gold.fact_sales_live.profit",
+   "primary_entity": "sales_live"
+  },
+  "orders_live": {
+   "type": "simple",
+   "measure": "order_count_live_distinct",
+   "filter": null,
+   "model": "sales_live",
+   "field": "gold.fact_sales_live.order_id",
+   "primary_entity": "sales_live"
+  },
+  "average_order_value_live": {
+   "type": "ratio",
+   "measure": null,
+   "filter": null
+  },
+  "revenue": {
+   "type": "simple",
+   "measure": "revenue",
+   "filter": null,
+   "model": "sales",
+   "field": "gold.fact_sales.revenue",
+   "primary_entity": "sales"
+  },
+  "cost": {
+   "type": "simple",
+   "measure": "cost",
+   "filter": null,
+   "model": "sales",
+   "field": "gold.fact_sales.cost_amount",
+   "primary_entity": "sales"
+  },
+  "gross_profit": {
+   "type": "simple",
+   "measure": "gross_profit",
+   "filter": null,
+   "model": "sales",
+   "field": "gold.fact_sales.profit",
+   "primary_entity": "sales"
+  },
+  "quantity_sold": {
+   "type": "simple",
+   "measure": "quantity_sold",
+   "filter": null,
+   "model": "sales",
+   "field": "gold.fact_sales.quantity",
+   "primary_entity": "sales"
+  },
+  "discount": {
+   "type": "simple",
+   "measure": "discount",
+   "filter": null,
+   "model": "sales",
+   "field": "gold.fact_sales.discount_amount",
+   "primary_entity": "sales"
+  },
+  "orders": {
+   "type": "simple",
+   "measure": "order_count",
+   "filter": null,
+   "model": "sales",
+   "field": "gold.fact_sales.order_id",
+   "primary_entity": "sales"
+  },
+  "active_customers": {
+   "type": "simple",
+   "measure": "customer_count",
+   "filter": null,
+   "model": "sales",
+   "field": "gold.fact_sales.customer_id",
+   "primary_entity": "sales"
+  },
+  "completed_revenue": {
+   "type": "simple",
+   "measure": "revenue",
+   "filter": {
+    "where_filters": [
+     {
+      "where_sql_template": "{{ Dimension('sales__status') }} = 'completed'"
+     }
+    ]
+   },
+   "model": "sales",
+   "field": "gold.fact_sales.revenue",
+   "primary_entity": "sales"
+  },
+  "returned_orders": {
+   "type": "simple",
+   "measure": "order_count",
+   "filter": {
+    "where_filters": [
+     {
+      "where_sql_template": "{{ Dimension('sales__status') }} = 'returned'"
+     }
+    ]
+   },
+   "model": "sales",
+   "field": "gold.fact_sales.order_id",
+   "primary_entity": "sales"
+  },
+  "gross_margin_rate": {
+   "type": "ratio",
+   "measure": null,
+   "filter": null
+  },
+  "average_order_value": {
+   "type": "ratio",
+   "measure": null,
+   "filter": null
+  },
+  "return_rate": {
+   "type": "derived",
+   "measure": null,
+   "filter": null
+  },
+  "purchasing_customers": {
+   "type": "simple",
+   "measure": "purchasing_customer_count",
+   "filter": null,
+   "model": "customer_orders",
+   "field": "gold.fact_customer_orders.customer_id",
+   "primary_entity": "customer"
+  },
+  "repeat_customers": {
+   "type": "simple",
+   "measure": "purchasing_customer_count",
+   "filter": {
+    "where_filters": [
+     {
+      "where_sql_template": "{{ Dimension('customer__is_repeat_customer') }} = true"
+     }
+    ]
+   },
+   "model": "customer_orders",
+   "field": "gold.fact_customer_orders.customer_id",
+   "primary_entity": "customer"
+  },
+  "repeat_customer_rate": {
+   "type": "ratio",
+   "measure": null,
+   "filter": null
+  }
+ },
+ "measures": {
+  "revenue_live_amount": {
+   "model": "sales_live",
+   "field": "gold.fact_sales_live.revenue",
+   "agg": "sum"
+  },
+  "gross_profit_live_amount": {
+   "model": "sales_live",
+   "field": "gold.fact_sales_live.profit",
+   "agg": "sum"
+  },
+  "quantity_live_amount": {
+   "model": "sales_live",
+   "field": "gold.fact_sales_live.quantity",
+   "agg": "sum"
+  },
+  "order_count_live_distinct": {
+   "model": "sales_live",
+   "field": "gold.fact_sales_live.order_id",
+   "agg": "count_distinct"
+  },
+  "revenue": {
+   "model": "sales",
+   "field": "gold.fact_sales.revenue",
+   "agg": "sum"
+  },
+  "cost": {
+   "model": "sales",
+   "field": "gold.fact_sales.cost_amount",
+   "agg": "sum"
+  },
+  "gross_profit": {
+   "model": "sales",
+   "field": "gold.fact_sales.profit",
+   "agg": "sum"
+  },
+  "quantity_sold": {
+   "model": "sales",
+   "field": "gold.fact_sales.quantity",
+   "agg": "sum"
+  },
+  "discount": {
+   "model": "sales",
+   "field": "gold.fact_sales.discount_amount",
+   "agg": "sum"
+  },
+  "order_count": {
+   "model": "sales",
+   "field": "gold.fact_sales.order_id",
+   "agg": "count_distinct"
+  },
+  "customer_count": {
+   "model": "sales",
+   "field": "gold.fact_sales.customer_id",
+   "agg": "count_distinct"
+  },
+  "purchasing_customer_count": {
+   "model": "customer_orders",
+   "field": "gold.fact_customer_orders.customer_id",
+   "agg": "count_distinct"
+  }
+ },
+ "dimensions": {
+  "sales_live__event_ts": {
+   "field": "gold.fact_sales_live.event_ts",
+   "type": "time"
+  },
+  "sales_live__channel": {
+   "field": "gold.fact_sales_live.channel",
+   "type": "categorical"
+  },
+  "sales_live__status": {
+   "field": "gold.fact_sales_live.status",
+   "type": "categorical"
+  },
+  "metric_time__year@sales_live": {
+   "field": "gold.fact_sales_live.event_ts",
+   "type": "time"
+  },
+  "sales__order_date": {
+   "field": "gold.fact_sales.order_date",
+   "type": "time"
+  },
+  "sales__channel": {
+   "field": "gold.fact_sales.channel",
+   "type": "categorical"
+  },
+  "sales__status": {
+   "field": "gold.fact_sales.status",
+   "type": "categorical"
+  },
+  "metric_time__year@sales": {
+   "field": "gold.fact_sales.order_date",
+   "type": "time"
+  },
+  "customer__country": {
+   "field": "gold.dim_customers.country",
+   "type": "categorical"
+  },
+  "customer__city": {
+   "field": "gold.dim_customers.city",
+   "type": "categorical"
+  },
+  "customer__signup_date": {
+   "field": "gold.dim_customers.signup_date",
+   "type": "time"
+  },
+  "product__category": {
+   "field": "gold.dim_products.category",
+   "type": "categorical"
+  },
+  "product__product_name": {
+   "field": "gold.dim_products.product_name",
+   "type": "categorical"
+  },
+  "store__store_country": {
+   "field": "gold.dim_stores.country",
+   "type": "categorical"
+  },
+  "store__store_city": {
+   "field": "gold.dim_stores.city",
+   "type": "categorical"
+  },
+  "customer__is_repeat_customer": {
+   "field": "gold.fact_customer_orders.is_repeat_customer",
+   "type": "categorical"
+  },
+  "customer__last_order_date": {
+   "field": "gold.fact_customer_orders.last_order_date",
+   "type": "time"
+  },
+  "metric_time__year@customer_orders": {
+   "field": "gold.fact_customer_orders.last_order_date",
+   "type": "time"
+  }
+ },
+ "primary_entities": {
+  "sales_live": "sales_live",
+  "sales": "sales",
+  "customers": "customer",
+  "products": "product",
+  "stores": "store",
+  "customer_orders": "customer"
+ },
+ "warehouse_columns": [
+  "bronze.customers.city",
+  "bronze.customers.country",
+  "bronze.customers.customer_id",
+  "bronze.customers.email",
+  "bronze.customers.first_name",
+  "bronze.customers.last_name",
+  "bronze.customers.signup_date",
+  "bronze.order_events.channel",
+  "bronze.order_events.customer_id",
+  "bronze.order_events.event_id",
+  "bronze.order_events.event_ts",
+  "bronze.order_events.order_id",
+  "bronze.order_events.order_item_id",
+  "bronze.order_events.product_id",
+  "bronze.order_events.quantity",
+  "bronze.order_events.status",
+  "bronze.order_events.store_id",
+  "bronze.order_events.unit_price",
+  "bronze.order_items.order_id",
+  "bronze.order_items.order_item_id",
+  "bronze.order_items.product_id",
+  "bronze.order_items.quantity",
+  "bronze.order_items.unit_price",
+  "bronze.orders.channel",
+  "bronze.orders.customer_id",
+  "bronze.orders.order_date",
+  "bronze.orders.order_id",
+  "bronze.orders.status",
+  "bronze.orders.store_id",
+  "bronze.products.category",
+  "bronze.products.list_price",
+  "bronze.products.product_id",
+  "bronze.products.product_name",
+  "bronze.products.unit_cost",
+  "bronze.stores.city",
+  "bronze.stores.country",
+  "bronze.stores.store_id",
+  "bronze.stores.store_name",
+  "gold.dim_customers.city",
+  "gold.dim_customers.country",
+  "gold.dim_customers.customer_id",
+  "gold.dim_customers.email",
+  "gold.dim_customers.first_name",
+  "gold.dim_customers.full_name",
+  "gold.dim_customers.last_name",
+  "gold.dim_customers.signup_date",
+  "gold.dim_dates.date_day",
+  "gold.dim_dates.date_id",
+  "gold.dim_dates.day_name",
+  "gold.dim_dates.day_of_week",
+  "gold.dim_dates.is_weekend",
+  "gold.dim_dates.month",
+  "gold.dim_dates.month_name",
+  "gold.dim_dates.quarter",
+  "gold.dim_dates.quarter_name",
+  "gold.dim_dates.week_of_year",
+  "gold.dim_dates.year",
+  "gold.dim_products.category",
+  "gold.dim_products.list_price",
+  "gold.dim_products.margin_rate",
+  "gold.dim_products.product_id",
+  "gold.dim_products.product_name",
+  "gold.dim_products.unit_cost",
+  "gold.dim_products.unit_margin",
+  "gold.dim_stores.city",
+  "gold.dim_stores.country",
+  "gold.dim_stores.store_id",
+  "gold.dim_stores.store_name",
+  "gold.fact_customer_orders.customer_id",
+  "gold.fact_customer_orders.is_repeat_customer",
+  "gold.fact_customer_orders.last_order_date",
+  "gold.fact_customer_orders.order_count",
+  "gold.fact_sales.channel",
+  "gold.fact_sales.cost_amount",
+  "gold.fact_sales.customer_id",
+  "gold.fact_sales.date_id",
+  "gold.fact_sales.discount_amount",
+  "gold.fact_sales.is_cancelled",
+  "gold.fact_sales.is_completed",
+  "gold.fact_sales.is_returned",
+  "gold.fact_sales.order_date",
+  "gold.fact_sales.order_id",
+  "gold.fact_sales.product_id",
+  "gold.fact_sales.profit",
+  "gold.fact_sales.quantity",
+  "gold.fact_sales.revenue",
+  "gold.fact_sales.sales_id",
+  "gold.fact_sales.status",
+  "gold.fact_sales.store_id",
+  "gold.fact_sales.unit_cost",
+  "gold.fact_sales.unit_price",
+  "gold.fact_sales_live.channel",
+  "gold.fact_sales_live.cost_amount",
+  "gold.fact_sales_live.customer_id",
+  "gold.fact_sales_live.date_id",
+  "gold.fact_sales_live.discount_amount",
+  "gold.fact_sales_live.event_date",
+  "gold.fact_sales_live.event_id",
+  "gold.fact_sales_live.event_ts",
+  "gold.fact_sales_live.is_cancelled",
+  "gold.fact_sales_live.is_completed",
+  "gold.fact_sales_live.is_returned",
+  "gold.fact_sales_live.order_id",
+  "gold.fact_sales_live.order_item_id",
+  "gold.fact_sales_live.product_id",
+  "gold.fact_sales_live.profit",
+  "gold.fact_sales_live.quantity",
+  "gold.fact_sales_live.revenue",
+  "gold.fact_sales_live.status",
+  "gold.fact_sales_live.store_id",
+  "gold.fact_sales_live.unit_cost",
+  "gold.fact_sales_live.unit_price",
+  "gold.rt_freshness.as_of",
+  "gold.rt_freshness.freshness_seconds",
+  "gold.rt_freshness.last_event_ts",
+  "gold.rt_freshness.no_events_yet",
+  "silver.stg_customers.city",
+  "silver.stg_customers.country",
+  "silver.stg_customers.customer_id",
+  "silver.stg_customers.email",
+  "silver.stg_customers.first_name",
+  "silver.stg_customers.last_name",
+  "silver.stg_customers.signup_date",
+  "silver.stg_order_events.channel",
+  "silver.stg_order_events.customer_id",
+  "silver.stg_order_events.event_id",
+  "silver.stg_order_events.event_ts",
+  "silver.stg_order_events.order_id",
+  "silver.stg_order_events.order_item_id",
+  "silver.stg_order_events.product_id",
+  "silver.stg_order_events.quantity",
+  "silver.stg_order_events.status",
+  "silver.stg_order_events.store_id",
+  "silver.stg_order_events.unit_price",
+  "silver.stg_order_items.order_id",
+  "silver.stg_order_items.order_item_id",
+  "silver.stg_order_items.product_id",
+  "silver.stg_order_items.quantity",
+  "silver.stg_order_items.unit_price",
+  "silver.stg_orders.channel",
+  "silver.stg_orders.customer_id",
+  "silver.stg_orders.order_date",
+  "silver.stg_orders.order_id",
+  "silver.stg_orders.status",
+  "silver.stg_orders.store_id",
+  "silver.stg_products.category",
+  "silver.stg_products.list_price",
+  "silver.stg_products.product_id",
+  "silver.stg_products.product_name",
+  "silver.stg_products.unit_cost",
+  "silver.stg_products.unit_margin",
+  "silver.stg_stores.city",
+  "silver.stg_stores.country",
+  "silver.stg_stores.store_id",
+  "silver.stg_stores.store_name"
+ ]
+}

@@ -1,0 +1,94 @@
+{
+ "provenance": "LAB designation from reading the pinned upstream generator, loader and dbt models (extends E1 FROZEN_CASES authority_registry)",
+ "field_origins": {
+  "gold.fact_sales.revenue": "ORDER_LINE",
+  "gold.fact_sales.quantity": "ORDER_LINE",
+  "gold.fact_sales.unit_price": "ORDER_LINE",
+  "gold.fact_sales.status": "ORDER_SYSTEM",
+  "gold.fact_sales.order_date": "ORDER_SYSTEM",
+  "gold.fact_sales.channel": "ORDER_SYSTEM",
+  "gold.fact_sales.order_id": "ORDER_SYSTEM",
+  "gold.dim_customers.country": "CUSTOMER_MASTER",
+  "gold.dim_customers.email": "CUSTOMER_MASTER",
+  "gold.dim_stores.country": "STORE_MASTER"
+ },
+ "fact_kinds": {
+  "order_line_amount": {
+   "required_origin": "ORDER_LINE",
+   "designated_fields": [
+    "gold.fact_sales.revenue"
+   ]
+  },
+  "order_line_charged_unit_price": {
+   "required_origin": "ORDER_LINE",
+   "designated_fields": [
+    "gold.fact_sales.unit_price"
+   ]
+  },
+  "order_status_label": {
+   "required_origin": "ORDER_SYSTEM",
+   "designated_fields": [
+    "gold.fact_sales.status"
+   ]
+  },
+  "order_date": {
+   "required_origin": "ORDER_SYSTEM",
+   "designated_fields": [
+    "gold.fact_sales.order_date"
+   ]
+  },
+  "sales_channel": {
+   "required_origin": "ORDER_SYSTEM",
+   "designated_fields": [
+    "gold.fact_sales.channel"
+   ]
+  },
+  "distinct_order": {
+   "required_origin": "ORDER_SYSTEM",
+   "designated_fields": [
+    "gold.fact_sales.order_id"
+   ]
+  },
+  "customer_country_attribute": {
+   "required_origin": "CUSTOMER_MASTER",
+   "designated_fields": [
+    "gold.dim_customers.country"
+   ]
+  },
+  "store_country_attribute": {
+   "required_origin": "STORE_MASTER",
+   "designated_fields": [
+    "gold.dim_stores.country"
+   ]
+  },
+  "customer_residence_country": {
+   "required_origin": "CUSTOMER_MASTER",
+   "designated_fields": [],
+   "note": "upstream column is just `country`; residence meaning not documented"
+  },
+  "payment_settlement_confirmation": {
+   "required_origin": "EXTERNAL_PAYMENT_PROCESSOR",
+   "designated_fields": []
+  }
+ },
+ "metric_units": {
+  "revenue": "CURRENCY",
+  "quantity_sold": "UNIT",
+  "orders": "COUNT",
+  "completed_revenue": "CURRENCY"
+ },
+ "derivation_patterns": {
+  "LINE_GRAIN_RATIO_THRESHOLD": {
+   "where_template": "{{ Metric('<numerator>', group_by=['<line_entity>']) }} >= <threshold> * {{ Metric('<denominator>', group_by=['<line_entity>']) }}",
+   "required_guards": [
+    "quantity_positive",
+    "revenue_exact",
+    "price_source_exact",
+    "line_entity_unique",
+    "exact_comparison"
+   ],
+   "line_entity_rule": "primary entity of the semantic model that defines both measures",
+   "proof": "experiments/E1_expressibility_erratum/ERRATUM.md section 2"
+  }
+ }
+}

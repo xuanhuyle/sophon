@@ -1,0 +1,32 @@
+{
+ "PINNED": {
+  "warehouse_sha256": "47ae588c1f92d57287dc255beeb040daea6264cfe9443f57d7d80f6eb91ff11d",
+  "mutation": {
+   "unmodified": true
+  }
+ },
+ "COPY_NEGATIVE_QUANTITY": {
+  "warehouse_sha256": "3a569e4ac5dbc41cc1feceeb0270efec913ada3312e333ae5408e2646c5e5310",
+  "mutation": {
+   "set_quantity_minus_1": [
+    {
+     "sales_id": 1,
+     "unit_price": "368.30"
+    },
+    {
+     "sales_id": 2,
+     "unit_price": "44.06"
+    }
+   ]
+  }
+ },
+ "COPY_VALUE_CHANGED": {
+  "warehouse_sha256": "450be9d245e160b38370ab628481e7a39e1c84139de6cf374ad02d85d23ffb3e",
+  "mutation": {
+   "revenue_plus_100": {
+    "sales_id": 1,
+    "old_revenue": "1104.90"
+   }
+  }
+ }
+}

@@ -1,0 +1,4404 @@
+[
+ {
+  "check_failures": [],
+  "expected_status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS",
+  "passed": true,
+  "result": {
+   "approvals": [
+    {
+     "approval_id": "AP_S1_READ",
+     "claim_kind": "INTERPRETATION_CHOICE",
+     "failures": [],
+     "valid": true
+    }
+   ],
+   "computability": {
+    "R_SINGLE": {
+     "executed": true,
+     "native_receipt_id": "NR_S1"
+    }
+   },
+   "eval_effective_at": "2026-06-30",
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "evidence": {
+    "R_SINGLE": {
+     "executed": true,
+     "guards": {
+      "failed": [],
+      "receipt": "GR_S1",
+      "same_snapshot_as_native": true
+     },
+     "native_by_period": {
+      "2024": "1634542.08",
+      "2025": "1400232.75",
+      "2026": "752191.54"
+     },
+     "native_equals_oracle": true,
+     "oracle_by_period": {
+      "2024": "1634542.08",
+      "2025": "1400232.75",
+      "2026": "752191.54"
+     },
+     "reasons": []
+    }
+   },
+   "meaning": {
+    "alternatives": {},
+    "equivalences": {},
+    "interpretation": "LAB_APPROVED",
+    "open_questions": [],
+    "selected_reading": "R_SINGLE",
+    "selecting_approvals": [
+     "AP_S1_READ"
+    ]
+   },
+   "reasons": [],
+   "record_id": "S1",
+   "record_sha256": "3803b9919fc2dd4e2717df366cddc0d190a1f997c8ed0f7fa18ff5cc947e6ac9",
+   "status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS",
+   "structural_errors": [],
+   "technically_executable": true,
+   "uncovered": []
+  },
+  "scenario_id": "S1_T1_POSITIVE",
+  "status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS",
+  "test": 1
+ },
+ {
+  "check_failures": [],
+  "expected_status": "MEANING_UNRESOLVED",
+  "passed": true,
+  "result": {
+   "approvals": [],
+   "computability": {
+    "R_SINGLE": {
+     "executed": true,
+     "native_receipt_id": "NR_S1"
+    }
+   },
+   "eval_effective_at": "2026-06-30",
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "evidence": {
+    "R_SINGLE": {
+     "executed": true,
+     "guards": {
+      "failed": [],
+      "receipt": "GR_S1",
+      "same_snapshot_as_native": true
+     },
+     "native_by_period": {
+      "2024": "1634542.08",
+      "2025": "1400232.75",
+      "2026": "752191.54"
+     },
+     "native_equals_oracle": true,
+     "oracle_by_period": {
+      "2024": "1634542.08",
+      "2025": "1400232.75",
+      "2026": "752191.54"
+     },
+     "reasons": []
+    }
+   },
+   "meaning": {
+    "alternatives": {
+     "R_SINGLE": "CANDIDATE"
+    },
+    "equivalences": {},
+    "interpretation": "PROPOSED_NOT_APPROVED",
+    "open_questions": [],
+    "selected_reading": null,
+    "selecting_approvals": []
+   },
+   "reasons": [
+    "INTERPRETATION_NOT_APPROVED"
+   ],
+   "record_id": "S1",
+   "record_sha256": "3803b9919fc2dd4e2717df366cddc0d190a1f997c8ed0f7fa18ff5cc947e6ac9",
+   "status": "MEANING_UNRESOLVED",
+   "structural_errors": [],
+   "technically_executable": true,
+   "uncovered": []
+  },
+  "scenario_id": "S1_T1_NO_INTERPRETATION_APPROVAL",
+  "status": "MEANING_UNRESOLVED",
+  "test": 1
+ },
+ {
+  "check_failures": [],
+  "expected_status": "NOT_VERIFIED",
+  "passed": true,
+  "result": {
+   "approvals": [
+    {
+     "approval_id": "AP_S1_READ",
+     "claim_kind": "INTERPRETATION_CHOICE",
+     "failures": [],
+     "valid": true
+    }
+   ],
+   "computability": {
+    "R_SINGLE": {
+     "executed": true,
+     "native_receipt_id": "NR_S1"
+    }
+   },
+   "eval_effective_at": "2026-06-30",
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "evidence": {
+    "R_SINGLE": {
+     "executed": true,
+     "guards": {
+      "receipt": null
+     },
+     "native_by_period": {
+      "2024": "1634542.08",
+      "2025": "1400232.75",
+      "2026": "752191.54"
+     },
+     "native_equals_oracle": true,
+     "oracle_by_period": {
+      "2024": "1634542.08",
+      "2025": "1400232.75",
+      "2026": "752191.54"
+     },
+     "reasons": [
+      "GUARD_NOT_EVIDENCED"
+     ]
+    }
+   },
+   "meaning": {
+    "alternatives": {},
+    "equivalences": {},
+    "interpretation": "LAB_APPROVED",
+    "open_questions": [],
+    "selected_reading": "R_SINGLE",
+    "selecting_approvals": [
+     "AP_S1_READ"
+    ]
+   },
+   "reasons": [
+    "GUARD_NOT_EVIDENCED"
+   ],
+   "record_id": "S1",
+   "record_sha256": "286b518eccffc03301e8a3cf3a1d8c991f2315ac4185c3a939d94f6eb2556af3",
+   "status": "NOT_VERIFIED",
+   "structural_errors": [],
+   "technically_executable": true,
+   "uncovered": []
+  },
+  "scenario_id": "S1_T2_NO_GUARD_RECEIPT",
+  "status": "NOT_VERIFIED",
+  "test": 2
+ },
+ {
+  "check_failures": [],
+  "expected_status": "STRUCTURALLY_INVALID",
+  "passed": true,
+  "result": {
+   "approvals": [
+    {
+     "approval_id": "AP_S1_READ",
+     "claim_kind": "INTERPRETATION_CHOICE",
+     "failures": [],
+     "valid": true
+    }
+   ],
+   "computability": {
+    "R_SINGLE": {
+     "executed": true,
+     "native_receipt_id": "NR_S1"
+    }
+   },
+   "eval_effective_at": "2026-06-30",
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "evidence": {
+    "R_SINGLE": {
+     "executed": true,
+     "guards": {
+      "failed": [],
+      "receipt": "GR_S1",
+      "same_snapshot_as_native": true
+     },
+     "native_by_period": {
+      "2024": "1634542.08",
+      "2025": "1400232.75",
+      "2026": "752191.54"
+     },
+     "native_equals_oracle": true,
+     "oracle_by_period": {
+      "2024": "1634542.08",
+      "2025": "1400232.75",
+      "2026": "752191.54"
+     },
+     "reasons": []
+    }
+   },
+   "meaning": {
+    "alternatives": {},
+    "equivalences": {},
+    "interpretation": "LAB_APPROVED",
+    "open_questions": [],
+    "selected_reading": "R_SINGLE",
+    "selecting_approvals": [
+     "AP_S1_READ"
+    ]
+   },
+   "reasons": [
+    "REQUIRED_GUARD_UNDECLARED"
+   ],
+   "record_id": "S1",
+   "record_sha256": "49cb74c9bddec4a8c1b0285be0e062efddbd93113941a9683e1b4ae731e3528b",
+   "status": "STRUCTURALLY_INVALID",
+   "structural_errors": [
+    {
+     "code": "REQUIRED_GUARD_UNDECLARED",
+     "detail": "quantity_positive",
+     "path": "interpretation.readings.R_SINGLE.bindings.unit_price_threshold"
+    }
+   ],
+   "technically_executable": true,
+   "uncovered": []
+  },
+  "scenario_id": "S1_T2_GUARD_UNDECLARED",
+  "status": "STRUCTURALLY_INVALID",
+  "test": 2
+ },
+ {
+  "check_failures": [],
+  "expected_status": "STRUCTURALLY_INVALID",
+  "passed": true,
+  "result": {
+   "approvals": [
+    {
+     "approval_id": "AP_S1_READ",
+     "claim_kind": "INTERPRETATION_CHOICE",
+     "failures": [],
+     "valid": true
+    }
+   ],
+   "computability": {
+    "R_SINGLE": {
+     "executed": false,
+     "native_receipt_id": "NR_S1_GRAIN_ORDER"
+    }
+   },
+   "eval_effective_at": "2026-06-30",
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "evidence": {
+    "R_SINGLE": {
+     "executed": false,
+     "guards": {
+      "failed": [],
+      "receipt": "GR_S1",
+      "same_snapshot_as_native": true
+     },
+     "native_by_period": {},
+     "native_equals_oracle": false,
+     "oracle_by_period": {
+      "2024": "1634542.08",
+      "2025": "1400232.75",
+      "2026": "752191.54"
+     },
+     "reasons": [
+      "NATIVE_ORACLE_MISMATCH",
+      "NATIVE_QUERY_FAILED"
+     ]
+    }
+   },
+   "meaning": {
+    "alternatives": {},
+    "equivalences": {},
+    "interpretation": "LAB_APPROVED",
+    "open_questions": [],
+    "selected_reading": "R_SINGLE",
+    "selecting_approvals": [
+     "AP_S1_READ"
+    ]
+   },
+   "reasons": [
+    "DERIVATION_GRAIN_INVALID",
+    "NATIVE_ORACLE_MISMATCH",
+    "NATIVE_QUERY_FAILED"
+   ],
+   "record_id": "S1",
+   "record_sha256": "53c9d465e2ce7c019501881e5422718c1cc639b1613f7bd3ecf75b70e00d6ccc",
+   "status": "STRUCTURALLY_INVALID",
+   "structural_errors": [
+    {
+     "code": "DERIVATION_GRAIN_INVALID",
+     "detail": "line_entity order is not the primary entity sales of the model defining both measures",
+     "path": "interpretation.readings.R_SINGLE.bindings.unit_price_threshold"
+    }
+   ],
+   "technically_executable": false,
+   "uncovered": []
+  },
+  "scenario_id": "S1_T2_GRAIN_ORDER",
+  "status": "STRUCTURALLY_INVALID",
+  "test": 2
+ },
+ {
+  "check_failures": [],
+  "expected_status": "STRUCTURALLY_INVALID",
+  "passed": true,
+  "result": {
+   "approvals": [
+    {
+     "approval_id": "AP_S1_READ",
+     "claim_kind": "INTERPRETATION_CHOICE",
+     "failures": [],
+     "valid": true
+    }
+   ],
+   "computability": {
+    "R_SINGLE": {
+     "executed": true,
+     "native_receipt_id": "NR_S1_NO_QTY"
+    }
+   },
+   "eval_effective_at": "2026-06-30",
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "evidence": {
+    "R_SINGLE": {
+     "executed": true,
+     "guards": {
+      "failed": [],
+      "receipt": "GR_S1",
+      "same_snapshot_as_native": true
+     },
+     "native_by_period": {
+      "2024": "1695473.19",
+      "2025": "1466247.85",
+      "2026": "787797.1"
+     },
+     "native_equals_oracle": false,
+     "oracle_by_period": {
+      "2024": "1634542.08",
+      "2025": "1400232.75",
+      "2026": "752191.54"
+     },
+     "reasons": [
+      "NATIVE_ORACLE_MISMATCH"
+     ]
+    }
+   },
+   "meaning": {
+    "alternatives": {},
+    "equivalences": {},
+    "interpretation": "LAB_APPROVED",
+    "open_questions": [],
+    "selected_reading": "R_SINGLE",
+    "selecting_approvals": [
+     "AP_S1_READ"
+    ]
+   },
+   "reasons": [
+    "DERIVATION_QUERY_MISMATCH",
+    "NATIVE_ORACLE_MISMATCH"
+   ],
+   "record_id": "S1",
+   "record_sha256": "c2a1d32ce087449cf44cb309dab4f3204881e57e763f2d09a3ad5b59df0b7ede",
+   "status": "STRUCTURALLY_INVALID",
+   "structural_errors": [
+    {
+     "code": "DERIVATION_QUERY_MISMATCH",
+     "detail": "rendered derivation template not in the query",
+     "path": "interpretation.readings.R_SINGLE.native_query.where"
+    }
+   ],
+   "technically_executable": true,
+   "uncovered": []
+  },
+  "scenario_id": "S1_T2_EXPRESSION_WITHOUT_QUANTITY",
+  "status": "STRUCTURALLY_INVALID",
+  "test": 2
+ },
+ {
+  "check_failures": [],
+  "expected_status": "NOT_VERIFIED",
+  "passed": true,
+  "result": {
+   "approvals": [
+    {
+     "approval_id": "AP_S1_READ",
+     "claim_kind": "INTERPRETATION_CHOICE",
+     "failures": [],
+     "valid": true
+    }
+   ],
+   "computability": {
+    "R_SINGLE": {
+     "executed": true,
+     "native_receipt_id": "NR_S1_NEGQTY"
+    }
+   },
+   "eval_effective_at": "2026-06-30",
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "evidence": {
+    "R_SINGLE": {
+     "executed": true,
+     "guards": {
+      "failed": [
+       "quantity_positive"
+      ],
+      "receipt": "GR_S1_NEGQTY",
+      "same_snapshot_as_native": true
+     },
+     "native_by_period": {
+      "2024": "1634542.08",
+      "2025": "1399083.79",
+      "2026": "752191.54"
+     },
+     "native_equals_oracle": false,
+     "oracle_by_period": {
+      "2024": "1634542.08",
+      "2025": "1400232.75",
+      "2026": "752191.54"
+     },
+     "reasons": [
+      "GUARD_FAILED",
+      "NATIVE_ORACLE_MISMATCH"
+     ]
+    }
+   },
+   "meaning": {
+    "alternatives": {},
+    "equivalences": {},
+    "interpretation": "LAB_APPROVED",
+    "open_questions": [],
+    "selected_reading": "R_SINGLE",
+    "selecting_approvals": [
+     "AP_S1_READ"
+    ]
+   },
+   "reasons": [
+    "GUARD_FAILED",
+    "NATIVE_ORACLE_MISMATCH"
+   ],
+   "record_id": "S1",
+   "record_sha256": "469c61699eeac82bbdbf001cb7ce13846be5cb8dd2b23a539e86c8551d3bb294",
+   "status": "NOT_VERIFIED",
+   "structural_errors": [],
+   "technically_executable": true,
+   "uncovered": []
+  },
+  "scenario_id": "S1_T2_NEGATIVE_QUANTITY_SNAPSHOT",
+  "status": "NOT_VERIFIED",
+  "test": 2
+ },
+ {
+  "check_failures": [],
+  "expected_status": "NOT_VERIFIED",
+  "passed": true,
+  "result": {
+   "approvals": [
+    {
+     "approval_id": "AP_S1_READ",
+     "claim_kind": "INTERPRETATION_CHOICE",
+     "failures": [],
+     "valid": true
+    }
+   ],
+   "computability": {
+    "R_SINGLE": {
+     "executed": true,
+     "native_receipt_id": "NR_S1"
+    }
+   },
+   "eval_effective_at": "2026-06-30",
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "evidence": {
+    "R_SINGLE": {
+     "executed": true,
+     "guards": {
+      "failed": [
+       "quantity_positive"
+      ],
+      "receipt": "GR_S1_NEGQTY",
+      "same_snapshot_as_native": false
+     },
+     "native_by_period": {
+      "2024": "1634542.08",
+      "2025": "1400232.75",
+      "2026": "752191.54"
+     },
+     "native_equals_oracle": true,
+     "oracle_by_period": {
+      "2024": "1634542.08",
+      "2025": "1400232.75",
+      "2026": "752191.54"
+     },
+     "reasons": [
+      "GUARD_FAILED",
+      "GUARD_SNAPSHOT_MISMATCH"
+     ]
+    }
+   },
+   "meaning": {
+    "alternatives": {},
+    "equivalences": {},
+    "interpretation": "LAB_APPROVED",
+    "open_questions": [],
+    "selected_reading": "R_SINGLE",
+    "selecting_approvals": [
+     "AP_S1_READ"
+    ]
+   },
+   "reasons": [
+    "GUARD_FAILED",
+    "GUARD_SNAPSHOT_MISMATCH"
+   ],
+   "record_id": "S1",
+   "record_sha256": "2ce50b51b0bcaf7c94375580cc49b2701e39e222a13db88b2f47c1f681f76d50",
+   "status": "NOT_VERIFIED",
+   "structural_errors": [],
+   "technically_executable": true,
+   "uncovered": []
+  },
+  "scenario_id": "S1_T2_GUARD_FROM_OTHER_SNAPSHOT",
+  "status": "NOT_VERIFIED",
+  "test": 2
+ },
+ {
+  "check_failures": [],
+  "expected_status": "MEANING_UNRESOLVED",
+  "passed": true,
+  "result": {
+   "approvals": [],
+   "computability": {
+    "R_CUSTOMER_COUNTRY": {
+     "executed": true,
+     "native_receipt_id": "NR_S2_CUSTOMER"
+    },
+    "R_STORE_COUNTRY": {
+     "executed": true,
+     "native_receipt_id": "NR_S2_STORE"
+    }
+   },
+   "eval_effective_at": "2026-06-30",
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "evidence": {
+    "R_CUSTOMER_COUNTRY": {
+     "executed": true,
+     "guards": null,
+     "native_by_period": {
+      "2024": "310780.14",
+      "2025": "261972.06",
+      "2026": "155221.02"
+     },
+     "native_equals_oracle": true,
+     "oracle_by_period": {
+      "2024": "310780.14",
+      "2025": "261972.06",
+      "2026": "155221.02"
+     },
+     "reasons": []
+    },
+    "R_STORE_COUNTRY": {
+     "executed": true,
+     "guards": null,
+     "native_by_period": {
+      "2024": "366057.38",
+      "2025": "288072.98",
+      "2026": "138501.23"
+     },
+     "native_equals_oracle": true,
+     "oracle_by_period": {
+      "2024": "366057.38",
+      "2025": "288072.98",
+      "2026": "138501.23"
+     },
+     "reasons": []
+    }
+   },
+   "meaning": {
+    "alternatives": {
+     "R_CUSTOMER_COUNTRY": "CANDIDATE",
+     "R_STORE_COUNTRY": "CANDIDATE"
+    },
+    "equivalences": {},
+    "interpretation": "UNRESOLVED_INTERPRETATION",
+    "open_questions": [
+     "Does 'French market' mean the customer's country or the country of the store the order is booked to?"
+    ],
+    "selected_reading": null,
+    "selecting_approvals": []
+   },
+   "reasons": [
+    "INTERPRETATION_UNRESOLVED"
+   ],
+   "record_id": "S2",
+   "record_sha256": "f994501b6920719c85281f2a8550a8f1aaeab34015b39464596d11a4c46f8cde",
+   "status": "MEANING_UNRESOLVED",
+   "structural_errors": [],
+   "technically_executable": true,
+   "uncovered": []
+  },
+  "scenario_id": "S2_T3_NO_APPROVAL",
+  "status": "MEANING_UNRESOLVED",
+  "test": 3
+ },
+ {
+  "check_failures": [],
+  "expected_status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS",
+  "passed": true,
+  "result": {
+   "approvals": [
+    {
+     "approval_id": "AP_S2_CUSTOMER",
+     "claim_kind": "INTERPRETATION_CHOICE",
+     "failures": [],
+     "valid": true
+    }
+   ],
+   "computability": {
+    "R_CUSTOMER_COUNTRY": {
+     "executed": true,
+     "native_receipt_id": "NR_S2_CUSTOMER"
+    },
+    "R_STORE_COUNTRY": {
+     "executed": true,
+     "native_receipt_id": "NR_S2_STORE"
+    }
+   },
+   "eval_effective_at": "2026-06-30",
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "evidence": {
+    "R_CUSTOMER_COUNTRY": {
+     "executed": true,
+     "guards": null,
+     "native_by_period": {
+      "2024": "310780.14",
+      "2025": "261972.06",
+      "2026": "155221.02"
+     },
+     "native_equals_oracle": true,
+     "oracle_by_period": {
+      "2024": "310780.14",
+      "2025": "261972.06",
+      "2026": "155221.02"
+     },
+     "reasons": []
+    },
+    "R_STORE_COUNTRY": {
+     "executed": true,
+     "guards": null,
+     "native_by_period": {
+      "2024": "366057.38",
+      "2025": "288072.98",
+      "2026": "138501.23"
+     },
+     "native_equals_oracle": true,
+     "oracle_by_period": {
+      "2024": "366057.38",
+      "2025": "288072.98",
+      "2026": "138501.23"
+     },
+     "reasons": []
+    }
+   },
+   "meaning": {
+    "alternatives": {
+     "R_STORE_COUNTRY": "NOT_SELECTED"
+    },
+    "equivalences": {},
+    "interpretation": "LAB_APPROVED",
+    "open_questions": [],
+    "selected_reading": "R_CUSTOMER_COUNTRY",
+    "selecting_approvals": [
+     "AP_S2_CUSTOMER"
+    ]
+   },
+   "reasons": [],
+   "record_id": "S2",
+   "record_sha256": "f994501b6920719c85281f2a8550a8f1aaeab34015b39464596d11a4c46f8cde",
+   "status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS",
+   "structural_errors": [],
+   "technically_executable": true,
+   "uncovered": []
+  },
+  "scenario_id": "S2_T4_APPROVED_CUSTOMER",
+  "status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS",
+  "test": 4
+ },
+ {
+  "check_failures": [],
+  "expected_status": "MEANING_UNRESOLVED",
+  "passed": true,
+  "result": {
+   "approvals": [
+    {
+     "approval_id": "AP_S2_WRONG_CLAUSE",
+     "claim_kind": "INTERPRETATION_CHOICE",
+     "failures": [
+      "APPROVAL_SCOPE_MISMATCH"
+     ],
+     "valid": false
+    }
+   ],
+   "computability": {
+    "R_CUSTOMER_COUNTRY": {
+     "executed": true,
+     "native_receipt_id": "NR_S2_CUSTOMER"
+    },
+    "R_STORE_COUNTRY": {
+     "executed": true,
+     "native_receipt_id": "NR_S2_STORE"
+    }
+   },
+   "eval_effective_at": "2026-06-30",
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "evidence": {
+    "R_CUSTOMER_COUNTRY": {
+     "executed": true,
+     "guards": null,
+     "native_by_period": {
+      "2024": "310780.14",
+      "2025": "261972.06",
+      "2026": "155221.02"
+     },
+     "native_equals_oracle": true,
+     "oracle_by_period": {
+      "2024": "310780.14",
+      "2025": "261972.06",
+      "2026": "155221.02"
+     },
+     "reasons": []
+    },
+    "R_STORE_COUNTRY": {
+     "executed": true,
+     "guards": null,
+     "native_by_period": {
+      "2024": "366057.38",
+      "2025": "288072.98",
+      "2026": "138501.23"
+     },
+     "native_equals_oracle": true,
+     "oracle_by_period": {
+      "2024": "366057.38",
+      "2025": "288072.98",
+      "2026": "138501.23"
+     },
+     "reasons": []
+    }
+   },
+   "meaning": {
+    "alternatives": {
+     "R_CUSTOMER_COUNTRY": "CANDIDATE",
+     "R_STORE_COUNTRY": "CANDIDATE"
+    },
+    "equivalences": {},
+    "interpretation": "UNRESOLVED_INTERPRETATION",
+    "open_questions": [
+     "Does 'French market' mean the customer's country or the country of the store the order is booked to?"
+    ],
+    "selected_reading": null,
+    "selecting_approvals": []
+   },
+   "reasons": [
+    "APPROVAL_SCOPE_MISMATCH",
+    "INTERPRETATION_UNRESOLVED"
+   ],
+   "record_id": "S2",
+   "record_sha256": "f994501b6920719c85281f2a8550a8f1aaeab34015b39464596d11a4c46f8cde",
+   "status": "MEANING_UNRESOLVED",
+   "structural_errors": [],
+   "technically_executable": true,
+   "uncovered": []
+  },
+  "scenario_id": "S2_T5_WRONG_CLAUSE",
+  "status": "MEANING_UNRESOLVED",
+  "test": 5
+ },
+ {
+  "check_failures": [],
+  "expected_status": "MEANING_UNRESOLVED",
+  "passed": true,
+  "result": {
+   "approvals": [
+    {
+     "approval_id": "AP_S2_WRONG_VERSION",
+     "claim_kind": "INTERPRETATION_CHOICE",
+     "failures": [
+      "APPROVAL_SCOPE_MISMATCH"
+     ],
+     "valid": false
+    }
+   ],
+   "computability": {
+    "R_CUSTOMER_COUNTRY": {
+     "executed": true,
+     "native_receipt_id": "NR_S2_CUSTOMER"
+    },
+    "R_STORE_COUNTRY": {
+     "executed": true,
+     "native_receipt_id": "NR_S2_STORE"
+    }
+   },
+   "eval_effective_at": "2026-06-30",
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "evidence": {
+    "R_CUSTOMER_COUNTRY": {
+     "executed": true,
+     "guards": null,
+     "native_by_period": {
+      "2024": "310780.14",
+      "2025": "261972.06",
+      "2026": "155221.02"
+     },
+     "native_equals_oracle": true,
+     "oracle_by_period": {
+      "2024": "310780.14",
+      "2025": "261972.06",
+      "2026": "155221.02"
+     },
+     "reasons": []
+    },
+    "R_STORE_COUNTRY": {
+     "executed": true,
+     "guards": null,
+     "native_by_period": {
+      "2024": "366057.38",
+      "2025": "288072.98",
+      "2026": "138501.23"
+     },
+     "native_equals_oracle": true,
+     "oracle_by_period": {
+      "2024": "366057.38",
+      "2025": "288072.98",
+      "2026": "138501.23"
+     },
+     "reasons": []
+    }
+   },
+   "meaning": {
+    "alternatives": {
+     "R_CUSTOMER_COUNTRY": "CANDIDATE",
+     "R_STORE_COUNTRY": "CANDIDATE"
+    },
+    "equivalences": {},
+    "interpretation": "UNRESOLVED_INTERPRETATION",
+    "open_questions": [
+     "Does 'French market' mean the customer's country or the country of the store the order is booked to?"
+    ],
+    "selected_reading": null,
+    "selecting_approvals": []
+   },
+   "reasons": [
+    "APPROVAL_SCOPE_MISMATCH",
+    "INTERPRETATION_UNRESOLVED"
+   ],
+   "record_id": "S2",
+   "record_sha256": "f994501b6920719c85281f2a8550a8f1aaeab34015b39464596d11a4c46f8cde",
+   "status": "MEANING_UNRESOLVED",
+   "structural_errors": [],
+   "technically_executable": true,
+   "uncovered": []
+  },
+  "scenario_id": "S2_T5_WRONG_VERSION",
+  "status": "MEANING_UNRESOLVED",
+  "test": 5
+ },
+ {
+  "check_failures": [],
+  "expected_status": "MEANING_UNRESOLVED",
+  "passed": true,
+  "result": {
+   "approvals": [
+    {
+     "approval_id": "AP_S2_WRONG_HASH",
+     "claim_kind": "INTERPRETATION_CHOICE",
+     "failures": [
+      "APPROVAL_SCOPE_MISMATCH"
+     ],
+     "valid": false
+    }
+   ],
+   "computability": {
+    "R_CUSTOMER_COUNTRY": {
+     "executed": true,
+     "native_receipt_id": "NR_S2_CUSTOMER"
+    },
+    "R_STORE_COUNTRY": {
+     "executed": true,
+     "native_receipt_id": "NR_S2_STORE"
+    }
+   },
+   "eval_effective_at": "2026-06-30",
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "evidence": {
+    "R_CUSTOMER_COUNTRY": {
+     "executed": true,
+     "guards": null,
+     "native_by_period": {
+      "2024": "310780.14",
+      "2025": "261972.06",
+      "2026": "155221.02"
+     },
+     "native_equals_oracle": true,
+     "oracle_by_period": {
+      "2024": "310780.14",
+      "2025": "261972.06",
+      "2026": "155221.02"
+     },
+     "reasons": []
+    },
+    "R_STORE_COUNTRY": {
+     "executed": true,
+     "guards": null,
+     "native_by_period": {
+      "2024": "366057.38",
+      "2025": "288072.98",
+      "2026": "138501.23"
+     },
+     "native_equals_oracle": true,
+     "oracle_by_period": {
+      "2024": "366057.38",
+      "2025": "288072.98",
+      "2026": "138501.23"
+     },
+     "reasons": []
+    }
+   },
+   "meaning": {
+    "alternatives": {
+     "R_CUSTOMER_COUNTRY": "CANDIDATE",
+     "R_STORE_COUNTRY": "CANDIDATE"
+    },
+    "equivalences": {},
+    "interpretation": "UNRESOLVED_INTERPRETATION",
+    "open_questions": [
+     "Does 'French market' mean the customer's country or the country of the store the order is booked to?"
+    ],
+    "selected_reading": null,
+    "selecting_approvals": []
+   },
+   "reasons": [
+    "APPROVAL_SCOPE_MISMATCH",
+    "INTERPRETATION_UNRESOLVED"
+   ],
+   "record_id": "S2",
+   "record_sha256": "f994501b6920719c85281f2a8550a8f1aaeab34015b39464596d11a4c46f8cde",
+   "status": "MEANING_UNRESOLVED",
+   "structural_errors": [],
+   "technically_executable": true,
+   "uncovered": []
+  },
+  "scenario_id": "S2_T5_WRONG_SOURCE_HASH",
+  "status": "MEANING_UNRESOLVED",
+  "test": 5
+ },
+ {
+  "check_failures": [],
+  "expected_status": "MEANING_UNRESOLVED",
+  "passed": true,
+  "result": {
+   "approvals": [
+    {
+     "approval_id": "AP_S2_BAD_READING",
+     "claim_kind": "INTERPRETATION_CHOICE",
+     "failures": [
+      "APPROVAL_SCOPE_MISMATCH"
+     ],
+     "valid": false
+    }
+   ],
+   "computability": {
+    "R_CUSTOMER_COUNTRY": {
+     "executed": true,
+     "native_receipt_id": "NR_S2_CUSTOMER"
+    },
+    "R_STORE_COUNTRY": {
+     "executed": true,
+     "native_receipt_id": "NR_S2_STORE"
+    }
+   },
+   "eval_effective_at": "2026-06-30",
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "evidence": {
+    "R_CUSTOMER_COUNTRY": {
+     "executed": true,
+     "guards": null,
+     "native_by_period": {
+      "2024": "310780.14",
+      "2025": "261972.06",
+      "2026": "155221.02"
+     },
+     "native_equals_oracle": true,
+     "oracle_by_period": {
+      "2024": "310780.14",
+      "2025": "261972.06",
+      "2026": "155221.02"
+     },
+     "reasons": []
+    },
+    "R_STORE_COUNTRY": {
+     "executed": true,
+     "guards": null,
+     "native_by_period": {
+      "2024": "366057.38",
+      "2025": "288072.98",
+      "2026": "138501.23"
+     },
+     "native_equals_oracle": true,
+     "oracle_by_period": {
+      "2024": "366057.38",
+      "2025": "288072.98",
+      "2026": "138501.23"
+     },
+     "reasons": []
+    }
+   },
+   "meaning": {
+    "alternatives": {
+     "R_CUSTOMER_COUNTRY": "CANDIDATE",
+     "R_STORE_COUNTRY": "CANDIDATE"
+    },
+    "equivalences": {},
+    "interpretation": "UNRESOLVED_INTERPRETATION",
+    "open_questions": [
+     "Does 'French market' mean the customer's country or the country of the store the order is booked to?"
+    ],
+    "selected_reading": null,
+    "selecting_approvals": []
+   },
+   "reasons": [
+    "APPROVAL_SCOPE_MISMATCH",
+    "INTERPRETATION_UNRESOLVED"
+   ],
+   "record_id": "S2",
+   "record_sha256": "f994501b6920719c85281f2a8550a8f1aaeab34015b39464596d11a4c46f8cde",
+   "status": "MEANING_UNRESOLVED",
+   "structural_errors": [],
+   "technically_executable": true,
+   "uncovered": []
+  },
+  "scenario_id": "S2_T5_NONEXISTENT_READING",
+  "status": "MEANING_UNRESOLVED",
+  "test": 5
+ },
+ {
+  "check_failures": [],
+  "expected_status": "MEANING_UNRESOLVED",
+  "passed": true,
+  "result": {
+   "approvals": [
+    {
+     "approval_id": "AP_S2_CUSTOMER",
+     "claim_kind": "INTERPRETATION_CHOICE",
+     "failures": [],
+     "valid": true
+    },
+    {
+     "approval_id": "AP_S2_STORE",
+     "claim_kind": "INTERPRETATION_CHOICE",
+     "failures": [],
+     "valid": true
+    }
+   ],
+   "computability": {
+    "R_CUSTOMER_COUNTRY": {
+     "executed": true,
+     "native_receipt_id": "NR_S2_CUSTOMER"
+    },
+    "R_STORE_COUNTRY": {
+     "executed": true,
+     "native_receipt_id": "NR_S2_STORE"
+    }
+   },
+   "eval_effective_at": "2026-06-30",
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "evidence": {
+    "R_CUSTOMER_COUNTRY": {
+     "executed": true,
+     "guards": null,
+     "native_by_period": {
+      "2024": "310780.14",
+      "2025": "261972.06",
+      "2026": "155221.02"
+     },
+     "native_equals_oracle": true,
+     "oracle_by_period": {
+      "2024": "310780.14",
+      "2025": "261972.06",
+      "2026": "155221.02"
+     },
+     "reasons": []
+    },
+    "R_STORE_COUNTRY": {
+     "executed": true,
+     "guards": null,
+     "native_by_period": {
+      "2024": "366057.38",
+      "2025": "288072.98",
+      "2026": "138501.23"
+     },
+     "native_equals_oracle": true,
+     "oracle_by_period": {
+      "2024": "366057.38",
+      "2025": "288072.98",
+      "2026": "138501.23"
+     },
+     "reasons": []
+    }
+   },
+   "meaning": {
+    "alternatives": {
+     "R_CUSTOMER_COUNTRY": "CANDIDATE",
+     "R_STORE_COUNTRY": "CANDIDATE"
+    },
+    "equivalences": {},
+    "interpretation": "UNRESOLVED_INTERPRETATION",
+    "open_questions": [
+     "Does 'French market' mean the customer's country or the country of the store the order is booked to?"
+    ],
+    "selected_reading": null,
+    "selecting_approvals": []
+   },
+   "reasons": [
+    "CONFLICTING_APPROVALS"
+   ],
+   "record_id": "S2",
+   "record_sha256": "f994501b6920719c85281f2a8550a8f1aaeab34015b39464596d11a4c46f8cde",
+   "status": "MEANING_UNRESOLVED",
+   "structural_errors": [],
+   "technically_executable": true,
+   "uncovered": []
+  },
+  "scenario_id": "S2_T5_CONFLICTING_CHOICES",
+  "status": "MEANING_UNRESOLVED",
+  "test": 5
+ },
+ {
+  "check_failures": [],
+  "expected_status": "MEANING_UNRESOLVED",
+  "passed": true,
+  "result": {
+   "approvals": [
+    {
+     "approval_id": "AP_S2_ROLE_UNKNOWN",
+     "claim_kind": "INTERPRETATION_CHOICE",
+     "failures": [
+      "APPROVER_NOT_IN_ROSTER"
+     ],
+     "valid": false
+    }
+   ],
+   "computability": {
+    "R_CUSTOMER_COUNTRY": {
+     "executed": true,
+     "native_receipt_id": "NR_S2_CUSTOMER"
+    },
+    "R_STORE_COUNTRY": {
+     "executed": true,
+     "native_receipt_id": "NR_S2_STORE"
+    }
+   },
+   "eval_effective_at": "2026-06-30",
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "evidence": {
+    "R_CUSTOMER_COUNTRY": {
+     "executed": true,
+     "guards": null,
+     "native_by_period": {
+      "2024": "310780.14",
+      "2025": "261972.06",
+      "2026": "155221.02"
+     },
+     "native_equals_oracle": true,
+     "oracle_by_period": {
+      "2024": "310780.14",
+      "2025": "261972.06",
+      "2026": "155221.02"
+     },
+     "reasons": []
+    },
+    "R_STORE_COUNTRY": {
+     "executed": true,
+     "guards": null,
+     "native_by_period": {
+      "2024": "366057.38",
+      "2025": "288072.98",
+      "2026": "138501.23"
+     },
+     "native_equals_oracle": true,
+     "oracle_by_period": {
+      "2024": "366057.38",
+      "2025": "288072.98",
+      "2026": "138501.23"
+     },
+     "reasons": []
+    }
+   },
+   "meaning": {
+    "alternatives": {
+     "R_CUSTOMER_COUNTRY": "CANDIDATE",
+     "R_STORE_COUNTRY": "CANDIDATE"
+    },
+    "equivalences": {},
+    "interpretation": "UNRESOLVED_INTERPRETATION",
+    "open_questions": [
+     "Does 'French market' mean the customer's country or the country of the store the order is booked to?"
+    ],
+    "selected_reading": null,
+    "selecting_approvals": []
+   },
+   "reasons": [
+    "APPROVER_NOT_IN_ROSTER",
+    "INTERPRETATION_UNRESOLVED"
+   ],
+   "record_id": "S2",
+   "record_sha256": "f994501b6920719c85281f2a8550a8f1aaeab34015b39464596d11a4c46f8cde",
+   "status": "MEANING_UNRESOLVED",
+   "structural_errors": [],
+   "technically_executable": true,
+   "uncovered": []
+  },
+  "scenario_id": "S2_T5_APPROVER_NOT_IN_ROSTER",
+  "status": "MEANING_UNRESOLVED",
+  "test": 5
+ },
+ {
+  "check_failures": [],
+  "expected_status": "MEANING_UNRESOLVED",
+  "passed": true,
+  "result": {
+   "approvals": [
+    {
+     "approval_id": "AP_S2_ROLE_UNAUTHORIZED",
+     "claim_kind": "INTERPRETATION_CHOICE",
+     "failures": [
+      "APPROVER_NOT_AUTHORIZED_FOR_CLAIM"
+     ],
+     "valid": false
+    }
+   ],
+   "computability": {
+    "R_CUSTOMER_COUNTRY": {
+     "executed": true,
+     "native_receipt_id": "NR_S2_CUSTOMER"
+    },
+    "R_STORE_COUNTRY": {
+     "executed": true,
+     "native_receipt_id": "NR_S2_STORE"
+    }
+   },
+   "eval_effective_at": "2026-06-30",
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "evidence": {
+    "R_CUSTOMER_COUNTRY": {
+     "executed": true,
+     "guards": null,
+     "native_by_period": {
+      "2024": "310780.14",
+      "2025": "261972.06",
+      "2026": "155221.02"
+     },
+     "native_equals_oracle": true,
+     "oracle_by_period": {
+      "2024": "310780.14",
+      "2025": "261972.06",
+      "2026": "155221.02"
+     },
+     "reasons": []
+    },
+    "R_STORE_COUNTRY": {
+     "executed": true,
+     "guards": null,
+     "native_by_period": {
+      "2024": "366057.38",
+      "2025": "288072.98",
+      "2026": "138501.23"
+     },
+     "native_equals_oracle": true,
+     "oracle_by_period": {
+      "2024": "366057.38",
+      "2025": "288072.98",
+      "2026": "138501.23"
+     },
+     "reasons": []
+    }
+   },
+   "meaning": {
+    "alternatives": {
+     "R_CUSTOMER_COUNTRY": "CANDIDATE",
+     "R_STORE_COUNTRY": "CANDIDATE"
+    },
+    "equivalences": {},
+    "interpretation": "UNRESOLVED_INTERPRETATION",
+    "open_questions": [
+     "Does 'French market' mean the customer's country or the country of the store the order is booked to?"
+    ],
+    "selected_reading": null,
+    "selecting_approvals": []
+   },
+   "reasons": [
+    "APPROVER_NOT_AUTHORIZED_FOR_CLAIM",
+    "INTERPRETATION_UNRESOLVED"
+   ],
+   "record_id": "S2",
+   "record_sha256": "f994501b6920719c85281f2a8550a8f1aaeab34015b39464596d11a4c46f8cde",
+   "status": "MEANING_UNRESOLVED",
+   "structural_errors": [],
+   "technically_executable": true,
+   "uncovered": []
+  },
+  "scenario_id": "S2_T5_APPROVER_NOT_AUTHORIZED",
+  "status": "MEANING_UNRESOLVED",
+  "test": 5
+ },
+ {
+  "check_failures": [],
+  "expected_status": "MEANING_UNRESOLVED",
+  "passed": true,
+  "result": {
+   "approvals": [
+    {
+     "approval_id": "AP_S2_SELF",
+     "claim_kind": "INTERPRETATION_CHOICE",
+     "failures": [
+      "SELF_APPROVAL"
+     ],
+     "valid": false
+    }
+   ],
+   "computability": {
+    "R_CUSTOMER_COUNTRY": {
+     "executed": true,
+     "native_receipt_id": "NR_S2_CUSTOMER"
+    },
+    "R_STORE_COUNTRY": {
+     "executed": true,
+     "native_receipt_id": "NR_S2_STORE"
+    }
+   },
+   "eval_effective_at": "2026-06-30",
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "evidence": {
+    "R_CUSTOMER_COUNTRY": {
+     "executed": true,
+     "guards": null,
+     "native_by_period": {
+      "2024": "310780.14",
+      "2025": "261972.06",
+      "2026": "155221.02"
+     },
+     "native_equals_oracle": true,
+     "oracle_by_period": {
+      "2024": "310780.14",
+      "2025": "261972.06",
+      "2026": "155221.02"
+     },
+     "reasons": []
+    },
+    "R_STORE_COUNTRY": {
+     "executed": true,
+     "guards": null,
+     "native_by_period": {
+      "2024": "366057.38",
+      "2025": "288072.98",
+      "2026": "138501.23"
+     },
+     "native_equals_oracle": true,
+     "oracle_by_period": {
+      "2024": "366057.38",
+      "2025": "288072.98",
+      "2026": "138501.23"
+     },
+     "reasons": []
+    }
+   },
+   "meaning": {
+    "alternatives": {
+     "R_CUSTOMER_COUNTRY": "CANDIDATE",
+     "R_STORE_COUNTRY": "CANDIDATE"
+    },
+    "equivalences": {},
+    "interpretation": "UNRESOLVED_INTERPRETATION",
+    "open_questions": [
+     "Does 'French market' mean the customer's country or the country of the store the order is booked to?"
+    ],
+    "selected_reading": null,
+    "selecting_approvals": []
+   },
+   "reasons": [
+    "INTERPRETATION_UNRESOLVED",
+    "SELF_APPROVAL"
+   ],
+   "record_id": "S2",
+   "record_sha256": "f994501b6920719c85281f2a8550a8f1aaeab34015b39464596d11a4c46f8cde",
+   "status": "MEANING_UNRESOLVED",
+   "structural_errors": [],
+   "technically_executable": true,
+   "uncovered": []
+  },
+  "scenario_id": "S2_T5_SELF_APPROVAL",
+  "status": "MEANING_UNRESOLVED",
+  "test": 5
+ },
+ {
+  "check_failures": [],
+  "expected_status": "MEANING_UNRESOLVED",
+  "passed": true,
+  "result": {
+   "approvals": [
+    {
+     "approval_id": "AP_S2_BEFORE_SOURCE",
+     "claim_kind": "INTERPRETATION_CHOICE",
+     "failures": [
+      "APPROVAL_BEFORE_SOURCE_OBSERVED"
+     ],
+     "valid": false
+    }
+   ],
+   "computability": {
+    "R_CUSTOMER_COUNTRY": {
+     "executed": true,
+     "native_receipt_id": "NR_S2_CUSTOMER"
+    },
+    "R_STORE_COUNTRY": {
+     "executed": true,
+     "native_receipt_id": "NR_S2_STORE"
+    }
+   },
+   "eval_effective_at": "2026-06-30",
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "evidence": {
+    "R_CUSTOMER_COUNTRY": {
+     "executed": true,
+     "guards": null,
+     "native_by_period": {
+      "2024": "310780.14",
+      "2025": "261972.06",
+      "2026": "155221.02"
+     },
+     "native_equals_oracle": true,
+     "oracle_by_period": {
+      "2024": "310780.14",
+      "2025": "261972.06",
+      "2026": "155221.02"
+     },
+     "reasons": []
+    },
+    "R_STORE_COUNTRY": {
+     "executed": true,
+     "guards": null,
+     "native_by_period": {
+      "2024": "366057.38",
+      "2025": "288072.98",
+      "2026": "138501.23"
+     },
+     "native_equals_oracle": true,
+     "oracle_by_period": {
+      "2024": "366057.38",
+      "2025": "288072.98",
+      "2026": "138501.23"
+     },
+     "reasons": []
+    }
+   },
+   "meaning": {
+    "alternatives": {
+     "R_CUSTOMER_COUNTRY": "CANDIDATE",
+     "R_STORE_COUNTRY": "CANDIDATE"
+    },
+    "equivalences": {},
+    "interpretation": "UNRESOLVED_INTERPRETATION",
+    "open_questions": [
+     "Does 'French market' mean the customer's country or the country of the store the order is booked to?"
+    ],
+    "selected_reading": null,
+    "selecting_approvals": []
+   },
+   "reasons": [
+    "APPROVAL_BEFORE_SOURCE_OBSERVED",
+    "INTERPRETATION_UNRESOLVED"
+   ],
+   "record_id": "S2",
+   "record_sha256": "f994501b6920719c85281f2a8550a8f1aaeab34015b39464596d11a4c46f8cde",
+   "status": "MEANING_UNRESOLVED",
+   "structural_errors": [],
+   "technically_executable": true,
+   "uncovered": []
+  },
+  "scenario_id": "S2_T5_APPROVAL_BEFORE_SOURCE_OBSERVED",
+  "status": "MEANING_UNRESOLVED",
+  "test": 5
+ },
+ {
+  "check_failures": [],
+  "expected_status": "MEANING_UNRESOLVED",
+  "passed": true,
+  "result": {
+   "approvals": [
+    {
+     "approval_id": "AP_S2_NOT_EFFECTIVE",
+     "claim_kind": "INTERPRETATION_CHOICE",
+     "failures": [
+      "APPROVAL_NOT_EFFECTIVE"
+     ],
+     "valid": false
+    }
+   ],
+   "computability": {
+    "R_CUSTOMER_COUNTRY": {
+     "executed": true,
+     "native_receipt_id": "NR_S2_CUSTOMER"
+    },
+    "R_STORE_COUNTRY": {
+     "executed": true,
+     "native_receipt_id": "NR_S2_STORE"
+    }
+   },
+   "eval_effective_at": "2026-06-30",
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "evidence": {
+    "R_CUSTOMER_COUNTRY": {
+     "executed": true,
+     "guards": null,
+     "native_by_period": {
+      "2024": "310780.14",
+      "2025": "261972.06",
+      "2026": "155221.02"
+     },
+     "native_equals_oracle": true,
+     "oracle_by_period": {
+      "2024": "310780.14",
+      "2025": "261972.06",
+      "2026": "155221.02"
+     },
+     "reasons": []
+    },
+    "R_STORE_COUNTRY": {
+     "executed": true,
+     "guards": null,
+     "native_by_period": {
+      "2024": "366057.38",
+      "2025": "288072.98",
+      "2026": "138501.23"
+     },
+     "native_equals_oracle": true,
+     "oracle_by_period": {
+      "2024": "366057.38",
+      "2025": "288072.98",
+      "2026": "138501.23"
+     },
+     "reasons": []
+    }
+   },
+   "meaning": {
+    "alternatives": {
+     "R_CUSTOMER_COUNTRY": "CANDIDATE",
+     "R_STORE_COUNTRY": "CANDIDATE"
+    },
+    "equivalences": {},
+    "interpretation": "UNRESOLVED_INTERPRETATION",
+    "open_questions": [
+     "Does 'French market' mean the customer's country or the country of the store the order is booked to?"
+    ],
+    "selected_reading": null,
+    "selecting_approvals": []
+   },
+   "reasons": [
+    "APPROVAL_NOT_EFFECTIVE",
+    "INTERPRETATION_UNRESOLVED"
+   ],
+   "record_id": "S2",
+   "record_sha256": "f994501b6920719c85281f2a8550a8f1aaeab34015b39464596d11a4c46f8cde",
+   "status": "MEANING_UNRESOLVED",
+   "structural_errors": [],
+   "technically_executable": true,
+   "uncovered": []
+  },
+  "scenario_id": "S2_T5_APPROVAL_NOT_EFFECTIVE",
+  "status": "MEANING_UNRESOLVED",
+  "test": 5
+ },
+ {
+  "check_failures": [],
+  "expected_status": "MEANING_UNRESOLVED",
+  "passed": true,
+  "result": {
+   "approvals": [],
+   "computability": {
+    "R_CUSTOMER_COUNTRY": {
+     "executed": true,
+     "native_receipt_id": "NR_S2_CUSTOMER"
+    },
+    "R_STORE_COUNTRY": {
+     "executed": true,
+     "native_receipt_id": "NR_S2_STORE"
+    }
+   },
+   "eval_effective_at": "2026-06-30",
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "evidence": {
+    "R_CUSTOMER_COUNTRY": {
+     "executed": true,
+     "guards": null,
+     "native_by_period": {
+      "2024": "310780.14",
+      "2025": "261972.06",
+      "2026": "155221.02"
+     },
+     "native_equals_oracle": true,
+     "oracle_by_period": {
+      "2024": "310780.14",
+      "2025": "261972.06",
+      "2026": "155221.02"
+     },
+     "reasons": []
+    },
+    "R_STORE_COUNTRY": {
+     "executed": true,
+     "guards": null,
+     "native_by_period": {
+      "2024": "366057.38",
+      "2025": "288072.98",
+      "2026": "138501.23"
+     },
+     "native_equals_oracle": true,
+     "oracle_by_period": {
+      "2024": "366057.38",
+      "2025": "288072.98",
+      "2026": "138501.23"
+     },
+     "reasons": []
+    }
+   },
+   "meaning": {
+    "alternatives": {
+     "R_CUSTOMER_COUNTRY": "CANDIDATE",
+     "R_STORE_COUNTRY": "CANDIDATE"
+    },
+    "equivalences": {},
+    "interpretation": "UNRESOLVED_INTERPRETATION",
+    "open_questions": [
+     "Does 'French market' mean the customer's country or the country of the store the order is booked to?"
+    ],
+    "selected_reading": null,
+    "selecting_approvals": []
+   },
+   "reasons": [
+    "INTERPRETATION_UNRESOLVED"
+   ],
+   "record_id": "S2",
+   "record_sha256": "f994501b6920719c85281f2a8550a8f1aaeab34015b39464596d11a4c46f8cde",
+   "status": "MEANING_UNRESOLVED",
+   "structural_errors": [],
+   "technically_executable": true,
+   "uncovered": []
+  },
+  "scenario_id": "S2_T5_FUTURE_APPROVAL_UNCLAIMED",
+  "status": "MEANING_UNRESOLVED",
+  "test": 5
+ },
+ {
+  "check_failures": [],
+  "expected_status": "STRUCTURALLY_INVALID",
+  "passed": true,
+  "result": {
+   "approvals": [],
+   "computability": {
+    "R_CUSTOMER_COUNTRY": {
+     "executed": true,
+     "native_receipt_id": "NR_S2_CUSTOMER"
+    },
+    "R_STORE_COUNTRY": {
+     "executed": true,
+     "native_receipt_id": "NR_S2_STORE"
+    }
+   },
+   "eval_effective_at": "2026-06-30",
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "evidence": {
+    "R_CUSTOMER_COUNTRY": {
+     "executed": true,
+     "guards": null,
+     "native_by_period": {
+      "2024": "310780.14",
+      "2025": "261972.06",
+      "2026": "155221.02"
+     },
+     "native_equals_oracle": true,
+     "oracle_by_period": {
+      "2024": "310780.14",
+      "2025": "261972.06",
+      "2026": "155221.02"
+     },
+     "reasons": []
+    },
+    "R_STORE_COUNTRY": {
+     "executed": true,
+     "guards": null,
+     "native_by_period": {
+      "2024": "366057.38",
+      "2025": "288072.98",
+      "2026": "138501.23"
+     },
+     "native_equals_oracle": true,
+     "oracle_by_period": {
+      "2024": "366057.38",
+      "2025": "288072.98",
+      "2026": "138501.23"
+     },
+     "reasons": []
+    }
+   },
+   "meaning": {
+    "alternatives": {
+     "R_CUSTOMER_COUNTRY": "CANDIDATE",
+     "R_STORE_COUNTRY": "CANDIDATE"
+    },
+    "equivalences": {},
+    "interpretation": "UNRESOLVED_INTERPRETATION",
+    "open_questions": [
+     "Does 'French market' mean the customer's country or the country of the store the order is booked to?"
+    ],
+    "selected_reading": null,
+    "selecting_approvals": []
+   },
+   "reasons": [
+    "APPROVAL_CLAIM_WITHOUT_EVIDENCE",
+    "INTERPRETATION_UNRESOLVED"
+   ],
+   "record_id": "S2",
+   "record_sha256": "451b52ddb50a2ca30788778bca88c265e9919f45b37bb0f9eda16ef5ce376588",
+   "status": "STRUCTURALLY_INVALID",
+   "structural_errors": [
+    {
+     "code": "APPROVAL_CLAIM_WITHOUT_EVIDENCE",
+     "detail": "AP_S2_FUTURE is not a visible valid interpretation approval",
+     "path": "interpretation.claimed_approval_ids"
+    }
+   ],
+   "technically_executable": true,
+   "uncovered": []
+  },
+  "scenario_id": "S2_T5_FUTURE_APPROVAL_CLAIMED",
+  "status": "STRUCTURALLY_INVALID",
+  "test": 5
+ },
+ {
+  "check_failures": [],
+  "expected_status": "MEANING_UNRESOLVED",
+  "passed": true,
+  "result": {
+   "approvals": [
+    {
+     "approval_id": "AP_S3_READ",
+     "claim_kind": "INTERPRETATION_CHOICE",
+     "failures": [],
+     "valid": true
+    }
+   ],
+   "computability": {
+    "R_SINGLE": {
+     "executed": true,
+     "native_receipt_id": "NR_S3"
+    }
+   },
+   "eval_effective_at": "2026-06-30",
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "evidence": {
+    "R_SINGLE": {
+     "executed": true,
+     "guards": null,
+     "native_by_period": {
+      "2024": "97",
+      "2025": "98",
+      "2026": "42"
+     },
+     "native_equals_oracle": true,
+     "oracle_by_period": {
+      "2024": "97",
+      "2025": "98",
+      "2026": "42"
+     },
+     "reasons": []
+    }
+   },
+   "meaning": {
+    "alternatives": {},
+    "equivalences": {
+     "R_SINGLE/residence_france": {
+      "approvals": [],
+      "fact_kind": "customer_residence_country",
+      "field": "gold.dim_customers.country",
+      "state": "NOT_ESTABLISHED_SEMANTIC_EQUIVALENCE"
+     }
+    },
+    "interpretation": "LAB_APPROVED",
+    "open_questions": [],
+    "selected_reading": "R_SINGLE",
+    "selecting_approvals": [
+     "AP_S3_READ"
+    ]
+   },
+   "reasons": [
+    "EQUIVALENCE_UNAPPROVED"
+   ],
+   "record_id": "S3",
+   "record_sha256": "96c322978a8a7b176052980ba7a2c819d35ccd92c8e083a4d6240efefa14c800",
+   "status": "MEANING_UNRESOLVED",
+   "structural_errors": [],
+   "technically_executable": true,
+   "uncovered": []
+  },
+  "scenario_id": "S3_T6_NO_EQUIVALENCE_APPROVAL",
+  "status": "MEANING_UNRESOLVED",
+  "test": 6
+ },
+ {
+  "check_failures": [],
+  "expected_status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS",
+  "passed": true,
+  "result": {
+   "approvals": [
+    {
+     "approval_id": "AP_S3_EQ",
+     "claim_kind": "SEMANTIC_EQUIVALENCE",
+     "failures": [],
+     "valid": true
+    },
+    {
+     "approval_id": "AP_S3_READ",
+     "claim_kind": "INTERPRETATION_CHOICE",
+     "failures": [],
+     "valid": true
+    }
+   ],
+   "computability": {
+    "R_SINGLE": {
+     "executed": true,
+     "native_receipt_id": "NR_S3"
+    }
+   },
+   "eval_effective_at": "2026-06-30",
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "evidence": {
+    "R_SINGLE": {
+     "executed": true,
+     "guards": null,
+     "native_by_period": {
+      "2024": "97",
+      "2025": "98",
+      "2026": "42"
+     },
+     "native_equals_oracle": true,
+     "oracle_by_period": {
+      "2024": "97",
+      "2025": "98",
+      "2026": "42"
+     },
+     "reasons": []
+    }
+   },
+   "meaning": {
+    "alternatives": {},
+    "equivalences": {
+     "R_SINGLE/residence_france": {
+      "approvals": [
+       "AP_S3_EQ"
+      ],
+      "fact_kind": "customer_residence_country",
+      "field": "gold.dim_customers.country",
+      "state": "LAB_APPROVED"
+     }
+    },
+    "interpretation": "LAB_APPROVED",
+    "open_questions": [],
+    "selected_reading": "R_SINGLE",
+    "selecting_approvals": [
+     "AP_S3_READ"
+    ]
+   },
+   "reasons": [],
+   "record_id": "S3",
+   "record_sha256": "96c322978a8a7b176052980ba7a2c819d35ccd92c8e083a4d6240efefa14c800",
+   "status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS",
+   "structural_errors": [],
+   "technically_executable": true,
+   "uncovered": []
+  },
+  "scenario_id": "S3_T7_EQUIVALENCE_APPROVED",
+  "status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS",
+  "test": 7
+ },
+ {
+  "check_failures": [],
+  "expected_status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS",
+  "passed": true,
+  "result": {
+   "approvals": [
+    {
+     "approval_id": "AP_S3_EQ",
+     "claim_kind": "SEMANTIC_EQUIVALENCE",
+     "failures": [],
+     "valid": true
+    },
+    {
+     "approval_id": "AP_S3_READ",
+     "claim_kind": "INTERPRETATION_CHOICE",
+     "failures": [],
+     "valid": true
+    }
+   ],
+   "computability": {
+    "R_SINGLE": {
+     "executed": true,
+     "native_receipt_id": "NR_S3"
+    }
+   },
+   "eval_effective_at": "2026-06-30",
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "evidence": {
+    "R_SINGLE": {
+     "executed": true,
+     "guards": null,
+     "native_by_period": {
+      "2024": "97",
+      "2025": "98",
+      "2026": "42"
+     },
+     "native_equals_oracle": true,
+     "oracle_by_period": {
+      "2024": "97",
+      "2025": "98",
+      "2026": "42"
+     },
+     "reasons": []
+    }
+   },
+   "meaning": {
+    "alternatives": {},
+    "equivalences": {
+     "R_SINGLE/residence_france": {
+      "approvals": [
+       "AP_S3_EQ"
+      ],
+      "fact_kind": "customer_residence_country",
+      "field": "gold.dim_customers.country",
+      "state": "LAB_APPROVED"
+     }
+    },
+    "interpretation": "LAB_APPROVED",
+    "open_questions": [],
+    "selected_reading": "R_SINGLE",
+    "selecting_approvals": [
+     "AP_S3_READ"
+    ]
+   },
+   "reasons": [],
+   "record_id": "S3",
+   "record_sha256": "96c322978a8a7b176052980ba7a2c819d35ccd92c8e083a4d6240efefa14c800",
+   "status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS",
+   "structural_errors": [],
+   "technically_executable": true,
+   "uncovered": []
+  },
+  "scenario_id": "S3_T7_BEFORE_REVOCATION_KNOWN",
+  "status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS",
+  "test": 7
+ },
+ {
+  "check_failures": [],
+  "expected_status": "MEANING_UNRESOLVED",
+  "passed": true,
+  "result": {
+   "approvals": [
+    {
+     "approval_id": "AP_S3_EQ",
+     "claim_kind": "SEMANTIC_EQUIVALENCE",
+     "failures": [
+      "APPROVAL_REVOKED"
+     ],
+     "valid": false
+    },
+    {
+     "approval_id": "AP_S3_READ",
+     "claim_kind": "INTERPRETATION_CHOICE",
+     "failures": [],
+     "valid": true
+    }
+   ],
+   "computability": {
+    "R_SINGLE": {
+     "executed": true,
+     "native_receipt_id": "NR_S3"
+    }
+   },
+   "eval_effective_at": "2026-06-30",
+   "eval_known_at": "2026-10-09T00:00:00Z",
+   "evidence": {
+    "R_SINGLE": {
+     "executed": true,
+     "guards": null,
+     "native_by_period": {
+      "2024": "97",
+      "2025": "98",
+      "2026": "42"
+     },
+     "native_equals_oracle": true,
+     "oracle_by_period": {
+      "2024": "97",
+      "2025": "98",
+      "2026": "42"
+     },
+     "reasons": []
+    }
+   },
+   "meaning": {
+    "alternatives": {},
+    "equivalences": {
+     "R_SINGLE/residence_france": {
+      "approvals": [],
+      "fact_kind": "customer_residence_country",
+      "field": "gold.dim_customers.country",
+      "state": "NOT_ESTABLISHED_SEMANTIC_EQUIVALENCE"
+     }
+    },
+    "interpretation": "LAB_APPROVED",
+    "open_questions": [],
+    "selected_reading": "R_SINGLE",
+    "selecting_approvals": [
+     "AP_S3_READ"
+    ]
+   },
+   "reasons": [
+    "APPROVAL_REVOKED",
+    "EQUIVALENCE_UNAPPROVED"
+   ],
+   "record_id": "S3",
+   "record_sha256": "96c322978a8a7b176052980ba7a2c819d35ccd92c8e083a4d6240efefa14c800",
+   "status": "MEANING_UNRESOLVED",
+   "structural_errors": [],
+   "technically_executable": true,
+   "uncovered": []
+  },
+  "scenario_id": "S3_T7_REVOKED",
+  "status": "MEANING_UNRESOLVED",
+  "test": 7
+ },
+ {
+  "check_failures": [],
+  "expected_status": "MEANING_UNRESOLVED",
+  "passed": true,
+  "result": {
+   "approvals": [
+    {
+     "approval_id": "AP_S3_READ",
+     "claim_kind": "INTERPRETATION_CHOICE",
+     "failures": [],
+     "valid": true
+    }
+   ],
+   "computability": {
+    "R_SINGLE": {
+     "executed": true,
+     "native_receipt_id": "NR_S3"
+    }
+   },
+   "eval_effective_at": "2026-06-30",
+   "eval_known_at": "2026-10-09T00:00:00Z",
+   "evidence": {
+    "R_SINGLE": {
+     "executed": true,
+     "guards": null,
+     "native_by_period": {
+      "2024": "97",
+      "2025": "98",
+      "2026": "42"
+     },
+     "native_equals_oracle": true,
+     "oracle_by_period": {
+      "2024": "97",
+      "2025": "98",
+      "2026": "42"
+     },
+     "reasons": []
+    }
+   },
+   "meaning": {
+    "alternatives": {},
+    "equivalences": {
+     "R_SINGLE/residence_france": {
+      "approvals": [],
+      "fact_kind": "customer_residence_country",
+      "field": "gold.dim_customers.country",
+      "state": "NOT_ESTABLISHED_SEMANTIC_EQUIVALENCE"
+     }
+    },
+    "interpretation": "LAB_APPROVED",
+    "open_questions": [],
+    "selected_reading": "R_SINGLE",
+    "selecting_approvals": [
+     "AP_S3_READ"
+    ]
+   },
+   "reasons": [
+    "EQUIVALENCE_UNAPPROVED"
+   ],
+   "record_id": "S3",
+   "record_sha256": "96c322978a8a7b176052980ba7a2c819d35ccd92c8e083a4d6240efefa14c800",
+   "status": "MEANING_UNRESOLVED",
+   "structural_errors": [],
+   "technically_executable": true,
+   "uncovered": []
+  },
+  "scenario_id": "S3_T7_APPROVAL_REMOVED",
+  "status": "MEANING_UNRESOLVED",
+  "test": 7
+ },
+ {
+  "check_failures": [],
+  "expected_status": "STRUCTURALLY_INVALID",
+  "passed": true,
+  "result": {
+   "approvals": [
+    {
+     "approval_id": "AP_S3_READ",
+     "claim_kind": "INTERPRETATION_CHOICE",
+     "failures": [],
+     "valid": true
+    }
+   ],
+   "computability": {
+    "R_SINGLE": {
+     "executed": true,
+     "native_receipt_id": "NR_S3"
+    }
+   },
+   "eval_effective_at": "2026-06-30",
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "evidence": {
+    "R_SINGLE": {
+     "executed": true,
+     "guards": null,
+     "native_by_period": {
+      "2024": "97",
+      "2025": "98",
+      "2026": "42"
+     },
+     "native_equals_oracle": true,
+     "oracle_by_period": {
+      "2024": "97",
+      "2025": "98",
+      "2026": "42"
+     },
+     "reasons": []
+    }
+   },
+   "meaning": {
+    "alternatives": {},
+    "equivalences": {
+     "R_SINGLE/residence_france": {
+      "approvals": [],
+      "fact_kind": "customer_residence_country",
+      "field": "gold.dim_customers.country",
+      "state": "NOT_ESTABLISHED_SEMANTIC_EQUIVALENCE"
+     }
+    },
+    "interpretation": "LAB_APPROVED",
+    "open_questions": [],
+    "selected_reading": "R_SINGLE",
+    "selecting_approvals": [
+     "AP_S3_READ"
+    ]
+   },
+   "reasons": [
+    "APPROVAL_CLAIM_WITHOUT_EVIDENCE",
+    "EQUIVALENCE_UNAPPROVED"
+   ],
+   "record_id": "S3",
+   "record_sha256": "b3af05404a28e797ba9005d04664a21bb53abacb82ff9d562723911c8d1d5c07",
+   "status": "STRUCTURALLY_INVALID",
+   "structural_errors": [
+    {
+     "code": "APPROVAL_CLAIM_WITHOUT_EVIDENCE",
+     "detail": "AP_S3_EQ_FAKE is not a visible valid equivalence approval",
+     "path": "interpretation.readings.R_SINGLE.bindings.residence_france"
+    }
+   ],
+   "technically_executable": true,
+   "uncovered": []
+  },
+  "scenario_id": "S3_T7_FLAG_FLIPPED_WITHOUT_APPROVAL",
+  "status": "STRUCTURALLY_INVALID",
+  "test": 7
+ },
+ {
+  "check_failures": [],
+  "expected_status": "MEANING_UNRESOLVED",
+  "passed": true,
+  "result": {
+   "approvals": [
+    {
+     "approval_id": "AP_S3_EQ_WRONG_STEWARD",
+     "claim_kind": "SEMANTIC_EQUIVALENCE",
+     "failures": [
+      "APPROVER_NOT_AUTHORIZED_FOR_CLAIM"
+     ],
+     "valid": false
+    },
+    {
+     "approval_id": "AP_S3_READ",
+     "claim_kind": "INTERPRETATION_CHOICE",
+     "failures": [],
+     "valid": true
+    }
+   ],
+   "computability": {
+    "R_SINGLE": {
+     "executed": true,
+     "native_receipt_id": "NR_S3"
+    }
+   },
+   "eval_effective_at": "2026-06-30",
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "evidence": {
+    "R_SINGLE": {
+     "executed": true,
+     "guards": null,
+     "native_by_period": {
+      "2024": "97",
+      "2025": "98",
+      "2026": "42"
+     },
+     "native_equals_oracle": true,
+     "oracle_by_period": {
+      "2024": "97",
+      "2025": "98",
+      "2026": "42"
+     },
+     "reasons": []
+    }
+   },
+   "meaning": {
+    "alternatives": {},
+    "equivalences": {
+     "R_SINGLE/residence_france": {
+      "approvals": [],
+      "fact_kind": "customer_residence_country",
+      "field": "gold.dim_customers.country",
+      "state": "NOT_ESTABLISHED_SEMANTIC_EQUIVALENCE"
+     }
+    },
+    "interpretation": "LAB_APPROVED",
+    "open_questions": [],
+    "selected_reading": "R_SINGLE",
+    "selecting_approvals": [
+     "AP_S3_READ"
+    ]
+   },
+   "reasons": [
+    "APPROVER_NOT_AUTHORIZED_FOR_CLAIM",
+    "EQUIVALENCE_UNAPPROVED"
+   ],
+   "record_id": "S3",
+   "record_sha256": "96c322978a8a7b176052980ba7a2c819d35ccd92c8e083a4d6240efefa14c800",
+   "status": "MEANING_UNRESOLVED",
+   "structural_errors": [],
+   "technically_executable": true,
+   "uncovered": []
+  },
+  "scenario_id": "S3_T7_WRONG_STEWARD",
+  "status": "MEANING_UNRESOLVED",
+  "test": 7
+ },
+ {
+  "check_failures": [],
+  "expected_status": "MISSING_REQUIRED_FACT",
+  "passed": true,
+  "result": {
+   "approvals": [
+    {
+     "approval_id": "AP_S4_READ",
+     "claim_kind": "INTERPRETATION_CHOICE",
+     "failures": [],
+     "valid": true
+    }
+   ],
+   "computability": {
+    "R_SINGLE": {
+     "executed": false,
+     "native_receipt_id": null
+    }
+   },
+   "eval_effective_at": "2026-06-30",
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "evidence": {
+    "R_SINGLE": {
+     "executed": false,
+     "guards": null,
+     "native_by_period": null,
+     "native_equals_oracle": null,
+     "oracle_by_period": null,
+     "reasons": []
+    }
+   },
+   "meaning": {
+    "alternatives": {},
+    "equivalences": {},
+    "interpretation": "LAB_APPROVED",
+    "open_questions": [],
+    "selected_reading": "R_SINGLE",
+    "selecting_approvals": [
+     "AP_S4_READ"
+    ]
+   },
+   "reasons": [
+    "REQUIRED_FACT_ABSENT"
+   ],
+   "record_id": "S4",
+   "record_sha256": "f777b31bf56affcabd5be5137ab19bbfe79afe0c0403612d9d4a9fb839e2b5f3",
+   "status": "MISSING_REQUIRED_FACT",
+   "structural_errors": [],
+   "technically_executable": false,
+   "uncovered": [
+    "settled_by_processor"
+   ]
+  },
+  "scenario_id": "S4_T8_MISSING_SETTLEMENT",
+  "status": "MISSING_REQUIRED_FACT",
+  "test": 8
+ },
+ {
+  "check_failures": [],
+  "expected_status": "MISSING_REQUIRED_FACT",
+  "passed": true,
+  "result": {
+   "approvals": [
+    {
+     "approval_id": "AP_S4_READ",
+     "claim_kind": "INTERPRETATION_CHOICE",
+     "failures": [],
+     "valid": true
+    }
+   ],
+   "computability": {
+    "R_SINGLE": {
+     "executed": true,
+     "native_receipt_id": "NR_S4_PROXY"
+    }
+   },
+   "eval_effective_at": "2026-06-30",
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "evidence": {
+    "R_SINGLE": {
+     "executed": true,
+     "guards": null,
+     "native_by_period": {
+      "2024": "1707052.8",
+      "2025": "1477833.96",
+      "2026": "792441.45"
+     },
+     "native_equals_oracle": true,
+     "oracle_by_period": {
+      "2024": "1707052.80",
+      "2025": "1477833.96",
+      "2026": "792441.45"
+     },
+     "reasons": []
+    }
+   },
+   "meaning": {
+    "alternatives": {},
+    "equivalences": {},
+    "interpretation": "LAB_APPROVED",
+    "open_questions": [],
+    "selected_reading": "R_SINGLE",
+    "selecting_approvals": [
+     "AP_S4_READ"
+    ]
+   },
+   "reasons": [
+    "NOT_DESIGNATED_FOR_FACT",
+    "REQUIRED_FACT_ABSENT"
+   ],
+   "record_id": "S4",
+   "record_sha256": "6af6f2e01c5996054bb81b74a89579c37678c28bd661303d14397d29826e480c",
+   "status": "MISSING_REQUIRED_FACT",
+   "structural_errors": [],
+   "technically_executable": true,
+   "uncovered": [
+    "settled_by_processor"
+   ]
+  },
+  "scenario_id": "S4_T8_STATUS_PROXY_DIRECT",
+  "status": "MISSING_REQUIRED_FACT",
+  "test": 8
+ },
+ {
+  "check_failures": [],
+  "expected_status": "MISSING_REQUIRED_FACT",
+  "passed": true,
+  "result": {
+   "approvals": [
+    {
+     "approval_id": "AP_S4_PROXY_EQ",
+     "claim_kind": "SEMANTIC_EQUIVALENCE",
+     "failures": [],
+     "valid": true
+    },
+    {
+     "approval_id": "AP_S4_READ",
+     "claim_kind": "INTERPRETATION_CHOICE",
+     "failures": [],
+     "valid": true
+    }
+   ],
+   "computability": {
+    "R_SINGLE": {
+     "executed": true,
+     "native_receipt_id": "NR_S4_PROXY"
+    }
+   },
+   "eval_effective_at": "2026-06-30",
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "evidence": {
+    "R_SINGLE": {
+     "executed": true,
+     "guards": null,
+     "native_by_period": {
+      "2024": "1707052.8",
+      "2025": "1477833.96",
+      "2026": "792441.45"
+     },
+     "native_equals_oracle": true,
+     "oracle_by_period": {
+      "2024": "1707052.80",
+      "2025": "1477833.96",
+      "2026": "792441.45"
+     },
+     "reasons": []
+    }
+   },
+   "meaning": {
+    "alternatives": {},
+    "equivalences": {
+     "R_SINGLE/settled_by_processor": {
+      "approvals": [
+       "AP_S4_PROXY_EQ"
+      ],
+      "fact_kind": "payment_settlement_confirmation",
+      "field": "gold.fact_sales.status",
+      "state": "REFUSED_SOURCE_ORIGIN_MISMATCH"
+     }
+    },
+    "interpretation": "LAB_APPROVED",
+    "open_questions": [],
+    "selected_reading": "R_SINGLE",
+    "selecting_approvals": [
+     "AP_S4_READ"
+    ]
+   },
+   "reasons": [
+    "APPROVAL_CANNOT_CREATE_SOURCE",
+    "EQUIVALENCE_UNAPPROVED",
+    "REQUIRED_FACT_ABSENT",
+    "SOURCE_ORIGIN_MISMATCH"
+   ],
+   "record_id": "S4",
+   "record_sha256": "678307a5621fb2b786531548495e8bd57b80100537372a3f1068aa01b6c367ed",
+   "status": "MISSING_REQUIRED_FACT",
+   "structural_errors": [],
+   "technically_executable": true,
+   "uncovered": [
+    "settled_by_processor"
+   ]
+  },
+  "scenario_id": "S4_T8_PROXY_WITH_SIMULATED_APPROVAL",
+  "status": "MISSING_REQUIRED_FACT",
+  "test": 8
+ },
+ {
+  "check_failures": [],
+  "expected_status": "STRUCTURALLY_INVALID",
+  "passed": true,
+  "result": {
+   "approvals": [
+    {
+     "approval_id": "AP_S4_READ",
+     "claim_kind": "INTERPRETATION_CHOICE",
+     "failures": [],
+     "valid": true
+    }
+   ],
+   "computability": {
+    "R_SINGLE": {
+     "executed": false,
+     "native_receipt_id": null
+    }
+   },
+   "eval_effective_at": "2026-06-30",
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "evidence": {
+    "R_SINGLE": {
+     "executed": false,
+     "guards": null,
+     "native_by_period": null,
+     "native_equals_oracle": null,
+     "oracle_by_period": null,
+     "reasons": []
+    }
+   },
+   "meaning": {
+    "alternatives": {},
+    "equivalences": {},
+    "interpretation": "LAB_APPROVED",
+    "open_questions": [],
+    "selected_reading": "R_SINGLE",
+    "selecting_approvals": [
+     "AP_S4_READ"
+    ]
+   },
+   "reasons": [
+    "REQUIRED_FACT_ABSENT",
+    "STATUS_FIELD_FORBIDDEN"
+   ],
+   "record_id": "S4",
+   "record_sha256": "0f821a057c0a8292104001315bd9341eb5d3a591ff1fc108ab271db01f2dbc47",
+   "status": "STRUCTURALLY_INVALID",
+   "structural_errors": [
+    {
+     "code": "STATUS_FIELD_FORBIDDEN",
+     "detail": "status is an output of the validator, not an input",
+     "path": "status"
+    }
+   ],
+   "technically_executable": false,
+   "uncovered": [
+    "settled_by_processor"
+   ]
+  },
+  "scenario_id": "S4_T8_STATUS_FIELD_SET_VERIFIED",
+  "status": "STRUCTURALLY_INVALID",
+  "test": 8
+ },
+ {
+  "check_failures": [],
+  "expected_status": "STRUCTURALLY_INVALID",
+  "passed": true,
+  "result": {
+   "approvals": [
+    {
+     "approval_id": "AP_S1_READ",
+     "claim_kind": "INTERPRETATION_CHOICE",
+     "failures": [],
+     "valid": true
+    }
+   ],
+   "computability": {
+    "R_SINGLE": {
+     "executed": true,
+     "native_receipt_id": "NR_S1"
+    }
+   },
+   "eval_effective_at": "2026-06-30",
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "evidence": {
+    "R_SINGLE": {
+     "executed": true,
+     "guards": {
+      "failed": [],
+      "receipt": "GR_S1",
+      "same_snapshot_as_native": true
+     },
+     "native_by_period": {
+      "2024": "1634542.08",
+      "2025": "1400232.75",
+      "2026": "752191.54"
+     },
+     "native_equals_oracle": true,
+     "oracle_by_period": {
+      "2024": "1634542.08",
+      "2025": "1400232.75",
+      "2026": "752191.54"
+     },
+     "reasons": []
+    }
+   },
+   "meaning": {
+    "alternatives": {},
+    "equivalences": {},
+    "interpretation": "LAB_APPROVED",
+    "open_questions": [],
+    "selected_reading": "R_SINGLE",
+    "selecting_approvals": [
+     "AP_S1_READ"
+    ]
+   },
+   "reasons": [
+    "UNIT_MISMATCH"
+   ],
+   "record_id": "S1",
+   "record_sha256": "bac97c2f8d1111d8c609e8879394af5747cd82ed5aa6dbd3232a432d4fd7babb",
+   "status": "STRUCTURALLY_INVALID",
+   "structural_errors": [
+    {
+     "code": "UNIT_MISMATCH",
+     "detail": "threshold unit UNIT vs derived unit CURRENCY_PER_UNIT",
+     "path": "interpretation.readings.R_SINGLE.bindings.unit_price_threshold"
+    }
+   ],
+   "technically_executable": true,
+   "uncovered": []
+  },
+  "scenario_id": "S1_T9_UNIT_MISMATCH",
+  "status": "STRUCTURALLY_INVALID",
+  "test": 9
+ },
+ {
+  "check_failures": [],
+  "expected_status": "STRUCTURALLY_INVALID",
+  "passed": true,
+  "result": {
+   "approvals": [
+    {
+     "approval_id": "AP_S2_CUSTOMER",
+     "claim_kind": "INTERPRETATION_CHOICE",
+     "failures": [],
+     "valid": true
+    }
+   ],
+   "computability": {
+    "R_CUSTOMER_COUNTRY": {
+     "executed": true,
+     "native_receipt_id": "NR_S2_CUSTOMER"
+    },
+    "R_STORE_COUNTRY": {
+     "executed": true,
+     "native_receipt_id": "NR_S2_STORE"
+    }
+   },
+   "eval_effective_at": "2026-06-30",
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "evidence": {
+    "R_CUSTOMER_COUNTRY": {
+     "executed": true,
+     "guards": null,
+     "native_by_period": {
+      "2024": "310780.14",
+      "2025": "261972.06",
+      "2026": "155221.02"
+     },
+     "native_equals_oracle": true,
+     "oracle_by_period": {
+      "2024": "310780.14",
+      "2025": "261972.06",
+      "2026": "155221.02"
+     },
+     "reasons": []
+    },
+    "R_STORE_COUNTRY": {
+     "executed": true,
+     "guards": null,
+     "native_by_period": {
+      "2024": "366057.38",
+      "2025": "288072.98",
+      "2026": "138501.23"
+     },
+     "native_equals_oracle": true,
+     "oracle_by_period": {
+      "2024": "366057.38",
+      "2025": "288072.98",
+      "2026": "138501.23"
+     },
+     "reasons": []
+    }
+   },
+   "meaning": {
+    "alternatives": {
+     "R_STORE_COUNTRY": "NOT_SELECTED"
+    },
+    "equivalences": {},
+    "interpretation": "LAB_APPROVED",
+    "open_questions": [],
+    "selected_reading": "R_CUSTOMER_COUNTRY",
+    "selecting_approvals": [
+     "AP_S2_CUSTOMER"
+    ]
+   },
+   "reasons": [
+    "QUERY_BINDING_MISMATCH",
+    "UNKNOWN_SEMANTIC_OBJECT"
+   ],
+   "record_id": "S2",
+   "record_sha256": "c112adddfc151001947fac565714c7e5cccb393ab3b799ff3365ae2ed39656a2",
+   "status": "STRUCTURALLY_INVALID",
+   "structural_errors": [
+    {
+     "code": "QUERY_BINDING_MISMATCH",
+     "detail": "query is not the conjunction rendered from the bindings",
+     "path": "interpretation.readings.R_CUSTOMER_COUNTRY.native_query"
+    },
+    {
+     "code": "UNKNOWN_SEMANTIC_OBJECT",
+     "detail": "customer__residence_country",
+     "path": "interpretation.readings.R_CUSTOMER_COUNTRY.bindings.french_market"
+    }
+   ],
+   "technically_executable": true,
+   "uncovered": []
+  },
+  "scenario_id": "S2_T9_UNKNOWN_SEMANTIC_OBJECT",
+  "status": "STRUCTURALLY_INVALID",
+  "test": 9
+ },
+ {
+  "check_failures": [],
+  "expected_status": "STRUCTURALLY_INVALID",
+  "passed": true,
+  "result": {
+   "approvals": [
+    {
+     "approval_id": "AP_S2_CUSTOMER",
+     "claim_kind": "INTERPRETATION_CHOICE",
+     "failures": [],
+     "valid": true
+    }
+   ],
+   "computability": {
+    "R_CUSTOMER_COUNTRY": {
+     "executed": true,
+     "native_receipt_id": "NR_S2_CUSTOMER"
+    },
+    "R_STORE_COUNTRY": {
+     "executed": true,
+     "native_receipt_id": "NR_S2_STORE"
+    }
+   },
+   "eval_effective_at": "2026-06-30",
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "evidence": {
+    "R_CUSTOMER_COUNTRY": {
+     "executed": true,
+     "guards": null,
+     "native_by_period": {
+      "2024": "310780.14",
+      "2025": "261972.06",
+      "2026": "155221.02"
+     },
+     "native_equals_oracle": true,
+     "oracle_by_period": {
+      "2024": "310780.14",
+      "2025": "261972.06",
+      "2026": "155221.02"
+     },
+     "reasons": []
+    },
+    "R_STORE_COUNTRY": {
+     "executed": true,
+     "guards": null,
+     "native_by_period": {
+      "2024": "366057.38",
+      "2025": "288072.98",
+      "2026": "138501.23"
+     },
+     "native_equals_oracle": true,
+     "oracle_by_period": {
+      "2024": "366057.38",
+      "2025": "288072.98",
+      "2026": "138501.23"
+     },
+     "reasons": []
+    }
+   },
+   "meaning": {
+    "alternatives": {
+     "R_STORE_COUNTRY": "NOT_SELECTED"
+    },
+    "equivalences": {},
+    "interpretation": "LAB_APPROVED",
+    "open_questions": [],
+    "selected_reading": "R_CUSTOMER_COUNTRY",
+    "selecting_approvals": [
+     "AP_S2_CUSTOMER"
+    ]
+   },
+   "reasons": [
+    "NOT_DESIGNATED_FOR_FACT",
+    "SEMANTIC_PHYSICAL_MISMATCH",
+    "UNKNOWN_PHYSICAL_FIELD"
+   ],
+   "record_id": "S2",
+   "record_sha256": "8d422244bb47b2ae9230f41af70564117566f891c6a5a5ef20065eb61e07f23d",
+   "status": "STRUCTURALLY_INVALID",
+   "structural_errors": [
+    {
+     "code": "SEMANTIC_PHYSICAL_MISMATCH",
+     "detail": "customer__country resolves to gold.dim_customers.country",
+     "path": "interpretation.readings.R_CUSTOMER_COUNTRY.bindings.french_market"
+    },
+    {
+     "code": "UNKNOWN_PHYSICAL_FIELD",
+     "detail": "gold.dim_customers.residence",
+     "path": "interpretation.readings.R_CUSTOMER_COUNTRY.bindings.french_market"
+    }
+   ],
+   "technically_executable": true,
+   "uncovered": [
+    "french_market"
+   ]
+  },
+  "scenario_id": "S2_T9_UNKNOWN_PHYSICAL_FIELD",
+  "status": "STRUCTURALLY_INVALID",
+  "test": 9
+ },
+ {
+  "check_failures": [],
+  "expected_status": "STRUCTURALLY_INVALID",
+  "passed": true,
+  "result": {
+   "approvals": [
+    {
+     "approval_id": "AP_S2_CUSTOMER",
+     "claim_kind": "INTERPRETATION_CHOICE",
+     "failures": [],
+     "valid": true
+    }
+   ],
+   "computability": {
+    "R_CUSTOMER_COUNTRY": {
+     "executed": true,
+     "native_receipt_id": "NR_S2_CUSTOMER"
+    },
+    "R_STORE_COUNTRY": {
+     "executed": true,
+     "native_receipt_id": "NR_S2_STORE"
+    }
+   },
+   "eval_effective_at": "2026-06-30",
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "evidence": {
+    "R_CUSTOMER_COUNTRY": {
+     "executed": true,
+     "guards": null,
+     "native_by_period": {
+      "2024": "310780.14",
+      "2025": "261972.06",
+      "2026": "155221.02"
+     },
+     "native_equals_oracle": true,
+     "oracle_by_period": {
+      "2024": "310780.14",
+      "2025": "261972.06",
+      "2026": "155221.02"
+     },
+     "reasons": []
+    },
+    "R_STORE_COUNTRY": {
+     "executed": true,
+     "guards": null,
+     "native_by_period": {
+      "2024": "366057.38",
+      "2025": "288072.98",
+      "2026": "138501.23"
+     },
+     "native_equals_oracle": true,
+     "oracle_by_period": {
+      "2024": "366057.38",
+      "2025": "288072.98",
+      "2026": "138501.23"
+     },
+     "reasons": []
+    }
+   },
+   "meaning": {
+    "alternatives": {
+     "R_STORE_COUNTRY": "NOT_SELECTED"
+    },
+    "equivalences": {},
+    "interpretation": "LAB_APPROVED",
+    "open_questions": [],
+    "selected_reading": "R_CUSTOMER_COUNTRY",
+    "selecting_approvals": [
+     "AP_S2_CUSTOMER"
+    ]
+   },
+   "reasons": [
+    "NOT_DESIGNATED_FOR_FACT",
+    "SEMANTIC_PHYSICAL_MISMATCH"
+   ],
+   "record_id": "S2",
+   "record_sha256": "8f7bb9a7da2ed29d17db587605396dda09fbac0a18a0da77bd806aff48e4f0db",
+   "status": "STRUCTURALLY_INVALID",
+   "structural_errors": [
+    {
+     "code": "SEMANTIC_PHYSICAL_MISMATCH",
+     "detail": "customer__country resolves to gold.dim_customers.country",
+     "path": "interpretation.readings.R_CUSTOMER_COUNTRY.bindings.french_market"
+    }
+   ],
+   "technically_executable": true,
+   "uncovered": [
+    "french_market"
+   ]
+  },
+  "scenario_id": "S2_T9_SEMANTIC_PHYSICAL_MISMATCH",
+  "status": "STRUCTURALLY_INVALID",
+  "test": 9
+ },
+ {
+  "check_failures": [],
+  "expected_status": "STRUCTURALLY_INVALID",
+  "passed": true,
+  "result": {
+   "approvals": [
+    {
+     "approval_id": "AP_S2_CUSTOMER",
+     "claim_kind": "INTERPRETATION_CHOICE",
+     "failures": [],
+     "valid": true
+    }
+   ],
+   "computability": {
+    "R_CUSTOMER_COUNTRY": {
+     "executed": true,
+     "native_receipt_id": "NR_S2_CUSTOMER"
+    },
+    "R_STORE_COUNTRY": {
+     "executed": true,
+     "native_receipt_id": "NR_S2_STORE"
+    }
+   },
+   "eval_effective_at": "2026-06-30",
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "evidence": {
+    "R_CUSTOMER_COUNTRY": {
+     "executed": true,
+     "guards": null,
+     "native_by_period": {
+      "2024": "310780.14",
+      "2025": "261972.06",
+      "2026": "155221.02"
+     },
+     "native_equals_oracle": true,
+     "oracle_by_period": {
+      "2024": "310780.14",
+      "2025": "261972.06",
+      "2026": "155221.02"
+     },
+     "reasons": []
+    },
+    "R_STORE_COUNTRY": {
+     "executed": true,
+     "guards": null,
+     "native_by_period": {
+      "2024": "366057.38",
+      "2025": "288072.98",
+      "2026": "138501.23"
+     },
+     "native_equals_oracle": true,
+     "oracle_by_period": {
+      "2024": "366057.38",
+      "2025": "288072.98",
+      "2026": "138501.23"
+     },
+     "reasons": []
+    }
+   },
+   "meaning": {
+    "alternatives": {
+     "R_STORE_COUNTRY": "NOT_SELECTED"
+    },
+    "equivalences": {},
+    "interpretation": "LAB_APPROVED",
+    "open_questions": [],
+    "selected_reading": "R_CUSTOMER_COUNTRY",
+    "selecting_approvals": [
+     "AP_S2_CUSTOMER"
+    ]
+   },
+   "reasons": [
+    "NOT_DESIGNATED_FOR_FACT",
+    "REQUIRED_FACT_ABSENT",
+    "UNDEFINED_PREDICATE"
+   ],
+   "record_id": "S2",
+   "record_sha256": "d63f0eb22a907073610cdebdfb9a3b56243e4d2d0837d5df61abd6412f033824",
+   "status": "STRUCTURALLY_INVALID",
+   "structural_errors": [
+    {
+     "code": "UNDEFINED_PREDICATE",
+     "detail": "binding for an atom the requirement does not define",
+     "path": "interpretation.readings.R_CUSTOMER_COUNTRY.bindings.discount"
+    }
+   ],
+   "technically_executable": true,
+   "uncovered": [
+    "discount"
+   ]
+  },
+  "scenario_id": "S2_T9_UNDEFINED_PREDICATE",
+  "status": "STRUCTURALLY_INVALID",
+  "test": 9
+ },
+ {
+  "check_failures": [],
+  "expected_status": "STRUCTURALLY_INVALID",
+  "passed": true,
+  "result": {
+   "approvals": [
+    {
+     "approval_id": "AP_S2_CUSTOMER",
+     "claim_kind": "INTERPRETATION_CHOICE",
+     "failures": [],
+     "valid": true
+    }
+   ],
+   "computability": {
+    "R_CUSTOMER_COUNTRY": {
+     "executed": true,
+     "native_receipt_id": "NR_S2_CUSTOMER"
+    },
+    "R_STORE_COUNTRY": {
+     "executed": true,
+     "native_receipt_id": "NR_S2_STORE"
+    }
+   },
+   "eval_effective_at": "2026-06-30",
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "evidence": {
+    "R_CUSTOMER_COUNTRY": {
+     "executed": true,
+     "guards": null,
+     "native_by_period": {
+      "2024": "310780.14",
+      "2025": "261972.06",
+      "2026": "155221.02"
+     },
+     "native_equals_oracle": true,
+     "oracle_by_period": {
+      "2024": "310780.14",
+      "2025": "261972.06",
+      "2026": "155221.02"
+     },
+     "reasons": []
+    },
+    "R_STORE_COUNTRY": {
+     "executed": true,
+     "guards": null,
+     "native_by_period": {
+      "2024": "366057.38",
+      "2025": "288072.98",
+      "2026": "138501.23"
+     },
+     "native_equals_oracle": true,
+     "oracle_by_period": {
+      "2024": "366057.38",
+      "2025": "288072.98",
+      "2026": "138501.23"
+     },
+     "reasons": []
+    }
+   },
+   "meaning": {
+    "alternatives": {
+     "R_STORE_COUNTRY": "NOT_SELECTED"
+    },
+    "equivalences": {},
+    "interpretation": "LAB_APPROVED",
+    "open_questions": [],
+    "selected_reading": "R_CUSTOMER_COUNTRY",
+    "selecting_approvals": [
+     "AP_S2_CUSTOMER"
+    ]
+   },
+   "reasons": [
+    "ATOM_UNBOUND",
+    "QUERY_BINDING_MISMATCH"
+   ],
+   "record_id": "S2",
+   "record_sha256": "56e135b3201c32f8d3fdba1a714a4def79fb528474b5ba51ea7fe9cc9e629d01",
+   "status": "STRUCTURALLY_INVALID",
+   "structural_errors": [
+    {
+     "code": "ATOM_UNBOUND",
+     "detail": "atom has no binding (use kind MISSING to declare absence)",
+     "path": "interpretation.readings.R_CUSTOMER_COUNTRY.bindings.completed"
+    },
+    {
+     "code": "QUERY_BINDING_MISMATCH",
+     "detail": "query is not the conjunction rendered from the bindings",
+     "path": "interpretation.readings.R_CUSTOMER_COUNTRY.native_query"
+    }
+   ],
+   "technically_executable": true,
+   "uncovered": []
+  },
+  "scenario_id": "S2_T9_ATOM_UNBOUND",
+  "status": "STRUCTURALLY_INVALID",
+  "test": 9
+ },
+ {
+  "check_failures": [],
+  "expected_status": "STRUCTURALLY_INVALID",
+  "passed": true,
+  "result": {
+   "approvals": [
+    {
+     "approval_id": "AP_S2_CUSTOMER",
+     "claim_kind": "INTERPRETATION_CHOICE",
+     "failures": [],
+     "valid": true
+    }
+   ],
+   "computability": {
+    "R_CUSTOMER_COUNTRY": {
+     "executed": true,
+     "native_receipt_id": "NR_S2_CUSTOMER"
+    },
+    "R_STORE_COUNTRY": {
+     "executed": true,
+     "native_receipt_id": "NR_S2_STORE"
+    }
+   },
+   "eval_effective_at": "2026-06-30",
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "evidence": {
+    "R_CUSTOMER_COUNTRY": {
+     "executed": true,
+     "guards": null,
+     "native_by_period": {
+      "2024": "310780.14",
+      "2025": "261972.06",
+      "2026": "155221.02"
+     },
+     "native_equals_oracle": true,
+     "oracle_by_period": {
+      "2024": "310780.14",
+      "2025": "261972.06",
+      "2026": "155221.02"
+     },
+     "reasons": []
+    },
+    "R_STORE_COUNTRY": {
+     "executed": true,
+     "guards": null,
+     "native_by_period": {
+      "2024": "366057.38",
+      "2025": "288072.98",
+      "2026": "138501.23"
+     },
+     "native_equals_oracle": true,
+     "oracle_by_period": {
+      "2024": "366057.38",
+      "2025": "288072.98",
+      "2026": "138501.23"
+     },
+     "reasons": []
+    }
+   },
+   "meaning": {
+    "alternatives": {
+     "R_STORE_COUNTRY": "NOT_SELECTED"
+    },
+    "equivalences": {},
+    "interpretation": "LAB_APPROVED",
+    "open_questions": [],
+    "selected_reading": "R_CUSTOMER_COUNTRY",
+    "selecting_approvals": [
+     "AP_S2_CUSTOMER"
+    ]
+   },
+   "reasons": [
+    "TEMPORAL_ORDER_INVALID"
+   ],
+   "record_id": "S2",
+   "record_sha256": "2780ef17c10830a99943b8f78087b94c8b19fac7e706c78e001d908fff1b5953",
+   "status": "STRUCTURALLY_INVALID",
+   "structural_errors": [
+    {
+     "code": "TEMPORAL_ORDER_INVALID",
+     "detail": "effective_to precedes effective_from",
+     "path": "governing_source.effective_to"
+    }
+   ],
+   "technically_executable": true,
+   "uncovered": []
+  },
+  "scenario_id": "S2_T9_EFFECTIVE_ORDER",
+  "status": "STRUCTURALLY_INVALID",
+  "test": 9
+ },
+ {
+  "check_failures": [],
+  "expected_status": "STRUCTURALLY_INVALID",
+  "passed": true,
+  "result": {
+   "approvals": [],
+   "computability": {
+    "R_CUSTOMER_COUNTRY": {
+     "executed": true,
+     "native_receipt_id": "NR_S2_CUSTOMER"
+    },
+    "R_STORE_COUNTRY": {
+     "executed": true,
+     "native_receipt_id": "NR_S2_STORE"
+    }
+   },
+   "eval_effective_at": "2026-06-30",
+   "eval_known_at": "2026-09-30T00:00:00Z",
+   "evidence": {
+    "R_CUSTOMER_COUNTRY": {
+     "executed": true,
+     "guards": null,
+     "native_by_period": {
+      "2024": "310780.14",
+      "2025": "261972.06",
+      "2026": "155221.02"
+     },
+     "native_equals_oracle": true,
+     "oracle_by_period": {
+      "2024": "310780.14",
+      "2025": "261972.06",
+      "2026": "155221.02"
+     },
+     "reasons": []
+    },
+    "R_STORE_COUNTRY": {
+     "executed": true,
+     "guards": null,
+     "native_by_period": {
+      "2024": "366057.38",
+      "2025": "288072.98",
+      "2026": "138501.23"
+     },
+     "native_equals_oracle": true,
+     "oracle_by_period": {
+      "2024": "366057.38",
+      "2025": "288072.98",
+      "2026": "138501.23"
+     },
+     "reasons": []
+    }
+   },
+   "meaning": {
+    "alternatives": {
+     "R_CUSTOMER_COUNTRY": "CANDIDATE",
+     "R_STORE_COUNTRY": "CANDIDATE"
+    },
+    "equivalences": {},
+    "interpretation": "UNRESOLVED_INTERPRETATION",
+    "open_questions": [
+     "Does 'French market' mean the customer's country or the country of the store the order is booked to?"
+    ],
+    "selected_reading": null,
+    "selecting_approvals": []
+   },
+   "reasons": [
+    "INTERPRETATION_UNRESOLVED",
+    "SOURCE_NOT_YET_KNOWN"
+   ],
+   "record_id": "S2",
+   "record_sha256": "f994501b6920719c85281f2a8550a8f1aaeab34015b39464596d11a4c46f8cde",
+   "status": "STRUCTURALLY_INVALID",
+   "structural_errors": [
+    {
+     "code": "SOURCE_NOT_YET_KNOWN",
+     "detail": "source observed after the evaluation knowledge time",
+     "path": "governing_source.observed_at"
+    }
+   ],
+   "technically_executable": true,
+   "uncovered": []
+  },
+  "scenario_id": "S2_T9_SOURCE_NOT_YET_KNOWN",
+  "status": "STRUCTURALLY_INVALID",
+  "test": 9
+ },
+ {
+  "check_failures": [],
+  "expected_status": "STRUCTURALLY_INVALID",
+  "passed": true,
+  "result": {
+   "approvals": [
+    {
+     "approval_id": "AP_S2_CUSTOMER",
+     "claim_kind": "INTERPRETATION_CHOICE",
+     "failures": [
+      "APPROVAL_SCOPE_MISMATCH"
+     ],
+     "valid": false
+    }
+   ],
+   "computability": {
+    "R_CUSTOMER_COUNTRY": {
+     "executed": true,
+     "native_receipt_id": "NR_S2_CUSTOMER"
+    },
+    "R_STORE_COUNTRY": {
+     "executed": true,
+     "native_receipt_id": "NR_S2_STORE"
+    }
+   },
+   "eval_effective_at": "2026-06-30",
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "evidence": {
+    "R_CUSTOMER_COUNTRY": {
+     "executed": true,
+     "guards": null,
+     "native_by_period": {
+      "2024": "310780.14",
+      "2025": "261972.06",
+      "2026": "155221.02"
+     },
+     "native_equals_oracle": true,
+     "oracle_by_period": {
+      "2024": "310780.14",
+      "2025": "261972.06",
+      "2026": "155221.02"
+     },
+     "reasons": []
+    },
+    "R_STORE_COUNTRY": {
+     "executed": true,
+     "guards": null,
+     "native_by_period": {
+      "2024": "366057.38",
+      "2025": "288072.98",
+      "2026": "138501.23"
+     },
+     "native_equals_oracle": true,
+     "oracle_by_period": {
+      "2024": "366057.38",
+      "2025": "288072.98",
+      "2026": "138501.23"
+     },
+     "reasons": []
+    }
+   },
+   "meaning": {
+    "alternatives": {
+     "R_CUSTOMER_COUNTRY": "CANDIDATE",
+     "R_STORE_COUNTRY": "CANDIDATE"
+    },
+    "equivalences": {},
+    "interpretation": "UNRESOLVED_INTERPRETATION",
+    "open_questions": [
+     "Does 'French market' mean the customer's country or the country of the store the order is booked to?"
+    ],
+    "selected_reading": null,
+    "selecting_approvals": []
+   },
+   "reasons": [
+    "APPROVAL_SCOPE_MISMATCH",
+    "INTERPRETATION_UNRESOLVED",
+    "SOURCE_HASH_MISMATCH"
+   ],
+   "record_id": "S2",
+   "record_sha256": "8d646b80829df97742aaaf8e0d60519faae98dcfb69d52ecd0934a72df6c68da",
+   "status": "STRUCTURALLY_INVALID",
+   "structural_errors": [
+    {
+     "code": "SOURCE_HASH_MISMATCH",
+     "detail": "declared hash differs from the source file",
+     "path": "governing_source.content_sha256"
+    }
+   ],
+   "technically_executable": true,
+   "uncovered": []
+  },
+  "scenario_id": "S2_T9_SOURCE_HASH_ALTERED",
+  "status": "STRUCTURALLY_INVALID",
+  "test": 9
+ },
+ {
+  "check_failures": [],
+  "expected_status": "STRUCTURALLY_INVALID",
+  "passed": true,
+  "result": {
+   "approvals": [
+    {
+     "approval_id": "AP_S2_CUSTOMER",
+     "claim_kind": "INTERPRETATION_CHOICE",
+     "failures": [
+      "APPROVAL_SCOPE_MISMATCH"
+     ],
+     "valid": false
+    }
+   ],
+   "computability": {
+    "R_CUSTOMER_COUNTRY": {
+     "executed": true,
+     "native_receipt_id": "NR_S2_CUSTOMER"
+    },
+    "R_STORE_COUNTRY": {
+     "executed": true,
+     "native_receipt_id": "NR_S2_STORE"
+    }
+   },
+   "eval_effective_at": "2026-06-30",
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "evidence": {
+    "R_CUSTOMER_COUNTRY": {
+     "executed": true,
+     "guards": null,
+     "native_by_period": {
+      "2024": "310780.14",
+      "2025": "261972.06",
+      "2026": "155221.02"
+     },
+     "native_equals_oracle": true,
+     "oracle_by_period": {
+      "2024": "310780.14",
+      "2025": "261972.06",
+      "2026": "155221.02"
+     },
+     "reasons": []
+    },
+    "R_STORE_COUNTRY": {
+     "executed": true,
+     "guards": null,
+     "native_by_period": {
+      "2024": "366057.38",
+      "2025": "288072.98",
+      "2026": "138501.23"
+     },
+     "native_equals_oracle": true,
+     "oracle_by_period": {
+      "2024": "366057.38",
+      "2025": "288072.98",
+      "2026": "138501.23"
+     },
+     "reasons": []
+    }
+   },
+   "meaning": {
+    "alternatives": {
+     "R_CUSTOMER_COUNTRY": "CANDIDATE",
+     "R_STORE_COUNTRY": "CANDIDATE"
+    },
+    "equivalences": {},
+    "interpretation": "UNRESOLVED_INTERPRETATION",
+    "open_questions": [
+     "Does 'French market' mean the customer's country or the country of the store the order is booked to?"
+    ],
+    "selected_reading": null,
+    "selecting_approvals": []
+   },
+   "reasons": [
+    "APPROVAL_SCOPE_MISMATCH",
+    "INTERPRETATION_UNRESOLVED",
+    "SOURCE_CLAUSE_MISMATCH"
+   ],
+   "record_id": "S2",
+   "record_sha256": "dd2ab57e9e5d89c581248ef65ae7e16873c083db3ee786cd68d57c0469c14c5e",
+   "status": "STRUCTURALLY_INVALID",
+   "structural_errors": [
+    {
+     "code": "SOURCE_CLAUSE_MISMATCH",
+     "detail": "clause id/version/text not found in the source",
+     "path": "governing_source"
+    }
+   ],
+   "technically_executable": true,
+   "uncovered": []
+  },
+  "scenario_id": "S2_T9_SOURCE_VERSION_UNKNOWN",
+  "status": "STRUCTURALLY_INVALID",
+  "test": 9
+ },
+ {
+  "check_failures": [],
+  "expected_status": "STRUCTURALLY_INVALID",
+  "passed": true,
+  "result": {
+   "approvals": [
+    {
+     "approval_id": "AP_S2_CUSTOMER",
+     "claim_kind": "INTERPRETATION_CHOICE",
+     "failures": [],
+     "valid": true
+    }
+   ],
+   "computability": {
+    "R_CUSTOMER_COUNTRY": {
+     "executed": true,
+     "native_receipt_id": "NR_S2_CUSTOMER"
+    },
+    "R_STORE_COUNTRY": {
+     "executed": true,
+     "native_receipt_id": "NR_S2_STORE"
+    }
+   },
+   "eval_effective_at": "2026-06-30",
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "evidence": {
+    "R_CUSTOMER_COUNTRY": {
+     "executed": true,
+     "guards": null,
+     "native_by_period": {
+      "2024": "310780.14",
+      "2025": "261972.06",
+      "2026": "155221.02"
+     },
+     "native_equals_oracle": true,
+     "oracle_by_period": {
+      "2024": "310780.14",
+      "2025": "261972.06",
+      "2026": "155221.02"
+     },
+     "reasons": []
+    },
+    "R_STORE_COUNTRY": {
+     "executed": true,
+     "guards": null,
+     "native_by_period": {
+      "2024": "366057.38",
+      "2025": "288072.98",
+      "2026": "138501.23"
+     },
+     "native_equals_oracle": true,
+     "oracle_by_period": {
+      "2024": "366057.38",
+      "2025": "288072.98",
+      "2026": "138501.23"
+     },
+     "reasons": []
+    }
+   },
+   "meaning": {
+    "alternatives": {
+     "R_STORE_COUNTRY": "NOT_SELECTED"
+    },
+    "equivalences": {},
+    "interpretation": "LAB_APPROVED",
+    "open_questions": [],
+    "selected_reading": "R_CUSTOMER_COUNTRY",
+    "selecting_approvals": [
+     "AP_S2_CUSTOMER"
+    ]
+   },
+   "reasons": [
+    "SPAN_TEXT_MISMATCH"
+   ],
+   "record_id": "S2",
+   "record_sha256": "470d5f7140707f509226b2dbcafaa54efd43fdf32ed1317b638eeb14b0f59d24",
+   "status": "STRUCTURALLY_INVALID",
+   "structural_errors": [
+    {
+     "code": "SPAN_TEXT_MISMATCH",
+     "detail": "text[10:40] != atom text",
+     "path": "requirement.atoms.3.span"
+    }
+   ],
+   "technically_executable": true,
+   "uncovered": []
+  },
+  "scenario_id": "S2_T9_SPAN_TEXT_MISMATCH",
+  "status": "STRUCTURALLY_INVALID",
+  "test": 9
+ },
+ {
+  "check_failures": [],
+  "expected_status": "STRUCTURALLY_INVALID",
+  "passed": true,
+  "result": {
+   "approvals": [],
+   "computability": {
+    "R_CUSTOMER_COUNTRY": {
+     "executed": true,
+     "native_receipt_id": "NR_S2_CUSTOMER"
+    },
+    "R_STORE_COUNTRY": {
+     "executed": true,
+     "native_receipt_id": "NR_S2_STORE"
+    }
+   },
+   "eval_effective_at": "2026-06-30",
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "evidence": {
+    "R_CUSTOMER_COUNTRY": {
+     "executed": true,
+     "guards": null,
+     "native_by_period": {
+      "2024": "310780.14",
+      "2025": "261972.06",
+      "2026": "155221.02"
+     },
+     "native_equals_oracle": true,
+     "oracle_by_period": {
+      "2024": "310780.14",
+      "2025": "261972.06",
+      "2026": "155221.02"
+     },
+     "reasons": []
+    },
+    "R_STORE_COUNTRY": {
+     "executed": true,
+     "guards": null,
+     "native_by_period": {
+      "2024": "366057.38",
+      "2025": "288072.98",
+      "2026": "138501.23"
+     },
+     "native_equals_oracle": true,
+     "oracle_by_period": {
+      "2024": "366057.38",
+      "2025": "288072.98",
+      "2026": "138501.23"
+     },
+     "reasons": []
+    }
+   },
+   "meaning": {
+    "alternatives": {
+     "R_CUSTOMER_COUNTRY": "CANDIDATE",
+     "R_STORE_COUNTRY": "CANDIDATE"
+    },
+    "equivalences": {},
+    "interpretation": "UNRESOLVED_INTERPRETATION",
+    "open_questions": [
+     "Does 'French market' mean the customer's country or the country of the store the order is booked to?"
+    ],
+    "selected_reading": null,
+    "selecting_approvals": []
+   },
+   "reasons": [
+    "APPROVAL_CLAIM_WITHOUT_EVIDENCE",
+    "INTERPRETATION_UNRESOLVED"
+   ],
+   "record_id": "S2",
+   "record_sha256": "f5d0031cc8cae21b525de93e9cd81b91aa9e0b0265d462900ef3951b8fe74eb6",
+   "status": "STRUCTURALLY_INVALID",
+   "structural_errors": [
+    {
+     "code": "APPROVAL_CLAIM_WITHOUT_EVIDENCE",
+     "detail": "LAB_APPROVED claimed without approval ids",
+     "path": "interpretation.claimed_state"
+    }
+   ],
+   "technically_executable": true,
+   "uncovered": []
+  },
+  "scenario_id": "S2_T9_APPROVED_CLAIM_WITHOUT_IDS",
+  "status": "STRUCTURALLY_INVALID",
+  "test": 9
+ },
+ {
+  "check_failures": [],
+  "expected_status": "STRUCTURALLY_INVALID",
+  "passed": true,
+  "result": {
+   "approvals": [],
+   "computability": {},
+   "eval_effective_at": "2026-06-30",
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "meaning": {},
+   "reasons": [
+    "SCHEMA_INVALID"
+   ],
+   "record_id": "S2",
+   "record_sha256": "e03152d0dbecd7809bf45dcbd1271313e309f9c86f579402669fe1ef1d835bbc",
+   "status": "STRUCTURALLY_INVALID",
+   "structural_errors": [
+    {
+     "code": "SCHEMA_INVALID",
+     "detail": "Input should be 'PROPOSED', 'UNRESOLVED_INTERPRETATION' or 'LAB_APPROVED'",
+     "path": "interpretation.claimed_state"
+    }
+   ],
+   "technically_executable": false,
+   "uncovered": []
+  },
+  "scenario_id": "S2_T9_SCHEMA_INVALID_STATE",
+  "status": "STRUCTURALLY_INVALID",
+  "test": 9
+ },
+ {
+  "check_failures": [],
+  "expected_status": "NOT_VERIFIED",
+  "passed": true,
+  "result": {
+   "approvals": [
+    {
+     "approval_id": "AP_S2_CUSTOMER",
+     "claim_kind": "INTERPRETATION_CHOICE",
+     "failures": [],
+     "valid": true
+    }
+   ],
+   "computability": {
+    "R_CUSTOMER_COUNTRY": {
+     "executed": true,
+     "native_receipt_id": "NR_S2_CUSTOMER"
+    },
+    "R_STORE_COUNTRY": {
+     "executed": true,
+     "native_receipt_id": "NR_S2_STORE"
+    }
+   },
+   "eval_effective_at": "2026-06-30",
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "evidence": {
+    "R_CUSTOMER_COUNTRY": {
+     "executed": true,
+     "guards": null,
+     "native_by_period": {
+      "2024": "310780.14",
+      "2025": "261972.07",
+      "2026": "155221.02"
+     },
+     "native_equals_oracle": false,
+     "oracle_by_period": {
+      "2024": "310780.14",
+      "2025": "261972.06",
+      "2026": "155221.02"
+     },
+     "reasons": [
+      "NATIVE_ORACLE_MISMATCH"
+     ]
+    },
+    "R_STORE_COUNTRY": {
+     "executed": true,
+     "guards": null,
+     "native_by_period": {
+      "2024": "366057.38",
+      "2025": "288072.98",
+      "2026": "138501.23"
+     },
+     "native_equals_oracle": true,
+     "oracle_by_period": {
+      "2024": "366057.38",
+      "2025": "288072.98",
+      "2026": "138501.23"
+     },
+     "reasons": []
+    }
+   },
+   "meaning": {
+    "alternatives": {
+     "R_STORE_COUNTRY": "NOT_SELECTED"
+    },
+    "equivalences": {},
+    "interpretation": "LAB_APPROVED",
+    "open_questions": [],
+    "selected_reading": "R_CUSTOMER_COUNTRY",
+    "selecting_approvals": [
+     "AP_S2_CUSTOMER"
+    ]
+   },
+   "reasons": [
+    "NATIVE_ORACLE_MISMATCH"
+   ],
+   "record_id": "S2",
+   "record_sha256": "f994501b6920719c85281f2a8550a8f1aaeab34015b39464596d11a4c46f8cde",
+   "status": "NOT_VERIFIED",
+   "structural_errors": [],
+   "technically_executable": true,
+   "uncovered": []
+  },
+  "scenario_id": "S2_T10_RECEIPT_VALUE_CHANGED_REHASHED",
+  "status": "NOT_VERIFIED",
+  "test": 10
+ },
+ {
+  "check_failures": [],
+  "expected_status": "NOT_VERIFIED",
+  "passed": true,
+  "result": {
+   "approvals": [
+    {
+     "approval_id": "AP_S2_CUSTOMER",
+     "claim_kind": "INTERPRETATION_CHOICE",
+     "failures": [],
+     "valid": true
+    }
+   ],
+   "computability": {
+    "R_CUSTOMER_COUNTRY": {
+     "executed": false,
+     "native_receipt_id": "NR_S2_CUSTOMER"
+    },
+    "R_STORE_COUNTRY": {
+     "executed": true,
+     "native_receipt_id": "NR_S2_STORE"
+    }
+   },
+   "eval_effective_at": "2026-06-30",
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "evidence": {
+    "R_CUSTOMER_COUNTRY": {
+     "executed": false,
+     "guards": null,
+     "native_by_period": {
+      "2024": "310780.14",
+      "2025": "261972.07",
+      "2026": "155221.02"
+     },
+     "native_equals_oracle": false,
+     "oracle_by_period": {
+      "2024": "310780.14",
+      "2025": "261972.06",
+      "2026": "155221.02"
+     },
+     "reasons": [
+      "NATIVE_ORACLE_MISMATCH",
+      "RECEIPT_INTEGRITY_FAILED"
+     ]
+    },
+    "R_STORE_COUNTRY": {
+     "executed": true,
+     "guards": null,
+     "native_by_period": {
+      "2024": "366057.38",
+      "2025": "288072.98",
+      "2026": "138501.23"
+     },
+     "native_equals_oracle": true,
+     "oracle_by_period": {
+      "2024": "366057.38",
+      "2025": "288072.98",
+      "2026": "138501.23"
+     },
+     "reasons": []
+    }
+   },
+   "meaning": {
+    "alternatives": {
+     "R_STORE_COUNTRY": "NOT_SELECTED"
+    },
+    "equivalences": {},
+    "interpretation": "LAB_APPROVED",
+    "open_questions": [],
+    "selected_reading": "R_CUSTOMER_COUNTRY",
+    "selecting_approvals": [
+     "AP_S2_CUSTOMER"
+    ]
+   },
+   "reasons": [
+    "NATIVE_ORACLE_MISMATCH",
+    "RECEIPT_INTEGRITY_FAILED"
+   ],
+   "record_id": "S2",
+   "record_sha256": "f994501b6920719c85281f2a8550a8f1aaeab34015b39464596d11a4c46f8cde",
+   "status": "NOT_VERIFIED",
+   "structural_errors": [],
+   "technically_executable": true,
+   "uncovered": []
+  },
+  "scenario_id": "S2_T10_RECEIPT_VALUE_CHANGED_NOT_REHASHED",
+  "status": "NOT_VERIFIED",
+  "test": 10
+ },
+ {
+  "check_failures": [],
+  "expected_status": "NOT_VERIFIED",
+  "passed": true,
+  "result": {
+   "approvals": [
+    {
+     "approval_id": "AP_S2_CUSTOMER",
+     "claim_kind": "INTERPRETATION_CHOICE",
+     "failures": [],
+     "valid": true
+    }
+   ],
+   "computability": {
+    "R_CUSTOMER_COUNTRY": {
+     "executed": true,
+     "native_receipt_id": "NR_S2_CUSTOMER_VALUE_CHANGED"
+    },
+    "R_STORE_COUNTRY": {
+     "executed": true,
+     "native_receipt_id": "NR_S2_STORE"
+    }
+   },
+   "eval_effective_at": "2026-06-30",
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "evidence": {
+    "R_CUSTOMER_COUNTRY": {
+     "executed": true,
+     "guards": null,
+     "native_by_period": {
+      "2024": "310780.14",
+      "2025": "262072.06",
+      "2026": "155221.02"
+     },
+     "native_equals_oracle": false,
+     "oracle_by_period": {
+      "2024": "310780.14",
+      "2025": "261972.06",
+      "2026": "155221.02"
+     },
+     "reasons": [
+      "NATIVE_ORACLE_MISMATCH"
+     ]
+    },
+    "R_STORE_COUNTRY": {
+     "executed": true,
+     "guards": null,
+     "native_by_period": {
+      "2024": "366057.38",
+      "2025": "288072.98",
+      "2026": "138501.23"
+     },
+     "native_equals_oracle": true,
+     "oracle_by_period": {
+      "2024": "366057.38",
+      "2025": "288072.98",
+      "2026": "138501.23"
+     },
+     "reasons": []
+    }
+   },
+   "meaning": {
+    "alternatives": {
+     "R_STORE_COUNTRY": "NOT_SELECTED"
+    },
+    "equivalences": {},
+    "interpretation": "LAB_APPROVED",
+    "open_questions": [],
+    "selected_reading": "R_CUSTOMER_COUNTRY",
+    "selecting_approvals": [
+     "AP_S2_CUSTOMER"
+    ]
+   },
+   "reasons": [
+    "NATIVE_ORACLE_MISMATCH"
+   ],
+   "record_id": "S2",
+   "record_sha256": "48fc1cf0ce602d5afe31938c6bdc81de01a0f9ad57f4b19b763b4a8a149db89d",
+   "status": "NOT_VERIFIED",
+   "structural_errors": [],
+   "technically_executable": true,
+   "uncovered": []
+  },
+  "scenario_id": "S2_T10_UNDERLYING_VALUE_CHANGED",
+  "status": "NOT_VERIFIED",
+  "test": 10
+ },
+ {
+  "check_failures": [],
+  "expected_status": "NOT_VERIFIED",
+  "passed": true,
+  "result": {
+   "approvals": [
+    {
+     "approval_id": "AP_S2_CUSTOMER",
+     "claim_kind": "INTERPRETATION_CHOICE",
+     "failures": [],
+     "valid": true
+    }
+   ],
+   "computability": {
+    "R_CUSTOMER_COUNTRY": {
+     "executed": false,
+     "native_receipt_id": "NR_S2_STORE"
+    },
+    "R_STORE_COUNTRY": {
+     "executed": true,
+     "native_receipt_id": "NR_S2_STORE"
+    }
+   },
+   "eval_effective_at": "2026-06-30",
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "evidence": {
+    "R_CUSTOMER_COUNTRY": {
+     "executed": false,
+     "guards": null,
+     "native_by_period": {
+      "2024": "366057.38",
+      "2025": "288072.98",
+      "2026": "138501.23"
+     },
+     "native_equals_oracle": false,
+     "oracle_by_period": {
+      "2024": "310780.14",
+      "2025": "261972.06",
+      "2026": "155221.02"
+     },
+     "reasons": [
+      "NATIVE_ORACLE_MISMATCH",
+      "RECEIPT_QUERY_MISMATCH"
+     ]
+    },
+    "R_STORE_COUNTRY": {
+     "executed": true,
+     "guards": null,
+     "native_by_period": {
+      "2024": "366057.38",
+      "2025": "288072.98",
+      "2026": "138501.23"
+     },
+     "native_equals_oracle": true,
+     "oracle_by_period": {
+      "2024": "366057.38",
+      "2025": "288072.98",
+      "2026": "138501.23"
+     },
+     "reasons": []
+    }
+   },
+   "meaning": {
+    "alternatives": {
+     "R_STORE_COUNTRY": "NOT_SELECTED"
+    },
+    "equivalences": {},
+    "interpretation": "LAB_APPROVED",
+    "open_questions": [],
+    "selected_reading": "R_CUSTOMER_COUNTRY",
+    "selecting_approvals": [
+     "AP_S2_CUSTOMER"
+    ]
+   },
+   "reasons": [
+    "NATIVE_ORACLE_MISMATCH",
+    "RECEIPT_QUERY_MISMATCH"
+   ],
+   "record_id": "S2",
+   "record_sha256": "e359e6fc5a1556e465962f5f1fe1bdcd5c14c2d9c5fabfa425b9de74679dad3d",
+   "status": "NOT_VERIFIED",
+   "structural_errors": [],
+   "technically_executable": true,
+   "uncovered": []
+  },
+  "scenario_id": "S2_T10_RECEIPT_FOR_OTHER_QUERY",
+  "status": "NOT_VERIFIED",
+  "test": 10
+ },
+ {
+  "check_failures": [],
+  "expected_status": "NOT_VERIFIED",
+  "passed": true,
+  "result": {
+   "approvals": [
+    {
+     "approval_id": "AP_S2_CUSTOMER",
+     "claim_kind": "INTERPRETATION_CHOICE",
+     "failures": [],
+     "valid": true
+    }
+   ],
+   "computability": {
+    "R_CUSTOMER_COUNTRY": {
+     "executed": true,
+     "native_receipt_id": "NR_S2_CUSTOMER"
+    },
+    "R_STORE_COUNTRY": {
+     "executed": true,
+     "native_receipt_id": "NR_S2_STORE"
+    }
+   },
+   "eval_effective_at": "2026-06-30",
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "evidence": {
+    "R_CUSTOMER_COUNTRY": {
+     "executed": true,
+     "guards": null,
+     "native_by_period": {
+      "2024": "310780.14",
+      "2025": "261972.06",
+      "2026": "155221.02"
+     },
+     "native_equals_oracle": false,
+     "oracle_by_period": {
+      "2024": "366057.38",
+      "2025": "288072.98",
+      "2026": "138501.23"
+     },
+     "reasons": [
+      "NATIVE_ORACLE_MISMATCH",
+      "ORACLE_READING_MISMATCH"
+     ]
+    },
+    "R_STORE_COUNTRY": {
+     "executed": true,
+     "guards": null,
+     "native_by_period": {
+      "2024": "366057.38",
+      "2025": "288072.98",
+      "2026": "138501.23"
+     },
+     "native_equals_oracle": true,
+     "oracle_by_period": {
+      "2024": "366057.38",
+      "2025": "288072.98",
+      "2026": "138501.23"
+     },
+     "reasons": []
+    }
+   },
+   "meaning": {
+    "alternatives": {
+     "R_STORE_COUNTRY": "NOT_SELECTED"
+    },
+    "equivalences": {},
+    "interpretation": "LAB_APPROVED",
+    "open_questions": [],
+    "selected_reading": "R_CUSTOMER_COUNTRY",
+    "selecting_approvals": [
+     "AP_S2_CUSTOMER"
+    ]
+   },
+   "reasons": [
+    "NATIVE_ORACLE_MISMATCH",
+    "ORACLE_READING_MISMATCH"
+   ],
+   "record_id": "S2",
+   "record_sha256": "20e6f40f57dd7c284a65f2927262dcfb6f6c134797c0fd9da182fc06d518b7d8",
+   "status": "NOT_VERIFIED",
+   "structural_errors": [],
+   "technically_executable": true,
+   "uncovered": []
+  },
+  "scenario_id": "S2_T10_ORACLE_FOR_OTHER_READING",
+  "status": "NOT_VERIFIED",
+  "test": 10
+ },
+ {
+  "check_failures": [],
+  "expected_status": "NOT_VERIFIED",
+  "passed": true,
+  "result": {
+   "approvals": [
+    {
+     "approval_id": "AP_S2_CUSTOMER",
+     "claim_kind": "INTERPRETATION_CHOICE",
+     "failures": [],
+     "valid": true
+    }
+   ],
+   "computability": {
+    "R_CUSTOMER_COUNTRY": {
+     "executed": true,
+     "native_receipt_id": "NR_S2_CUSTOMER"
+    },
+    "R_STORE_COUNTRY": {
+     "executed": true,
+     "native_receipt_id": "NR_S2_STORE"
+    }
+   },
+   "eval_effective_at": "2026-06-30",
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "evidence": {
+    "R_CUSTOMER_COUNTRY": {
+     "executed": true,
+     "guards": null,
+     "native_by_period": {
+      "2024": "310780.14",
+      "2025": "261972.06",
+      "2026": "155221.02"
+     },
+     "native_equals_oracle": true,
+     "oracle_by_period": {
+      "2024": "310780.14",
+      "2025": "261972.06",
+      "2026": "155221.02"
+     },
+     "reasons": [
+      "RECEIPT_REVISION_MISMATCH"
+     ]
+    },
+    "R_STORE_COUNTRY": {
+     "executed": true,
+     "guards": null,
+     "native_by_period": {
+      "2024": "366057.38",
+      "2025": "288072.98",
+      "2026": "138501.23"
+     },
+     "native_equals_oracle": true,
+     "oracle_by_period": {
+      "2024": "366057.38",
+      "2025": "288072.98",
+      "2026": "138501.23"
+     },
+     "reasons": [
+      "RECEIPT_REVISION_MISMATCH"
+     ]
+    }
+   },
+   "meaning": {
+    "alternatives": {
+     "R_STORE_COUNTRY": "NOT_SELECTED"
+    },
+    "equivalences": {},
+    "interpretation": "LAB_APPROVED",
+    "open_questions": [],
+    "selected_reading": "R_CUSTOMER_COUNTRY",
+    "selecting_approvals": [
+     "AP_S2_CUSTOMER"
+    ]
+   },
+   "reasons": [
+    "RECEIPT_REVISION_MISMATCH"
+   ],
+   "record_id": "S2",
+   "record_sha256": "d0ea5b8407673cee78ddd7251222c33337eb6c7dd5f9f50ef91e4fd2dc16e58b",
+   "status": "NOT_VERIFIED",
+   "structural_errors": [],
+   "technically_executable": true,
+   "uncovered": []
+  },
+  "scenario_id": "S2_T10_WRONG_SEMANTIC_REVISION",
+  "status": "NOT_VERIFIED",
+  "test": 10
+ },
+ {
+  "check_failures": [],
+  "expected_status": "MEANING_UNRESOLVED",
+  "passed": true,
+  "result": {
+   "approvals": [],
+   "computability": {
+    "R_CUSTOMER_COUNTRY": {
+     "executed": true,
+     "native_receipt_id": "NR_S2_CUSTOMER"
+    },
+    "R_STORE_COUNTRY": {
+     "executed": true,
+     "native_receipt_id": "NR_S2_STORE"
+    }
+   },
+   "eval_effective_at": "2026-06-30",
+   "eval_known_at": "2026-10-03T00:00:00Z",
+   "evidence": {
+    "R_CUSTOMER_COUNTRY": {
+     "executed": true,
+     "guards": null,
+     "native_by_period": {
+      "2024": "310780.14",
+      "2025": "261972.06",
+      "2026": "155221.02"
+     },
+     "native_equals_oracle": true,
+     "oracle_by_period": {
+      "2024": "310780.14",
+      "2025": "261972.06",
+      "2026": "155221.02"
+     },
+     "reasons": []
+    },
+    "R_STORE_COUNTRY": {
+     "executed": true,
+     "guards": null,
+     "native_by_period": {
+      "2024": "366057.38",
+      "2025": "288072.98",
+      "2026": "138501.23"
+     },
+     "native_equals_oracle": true,
+     "oracle_by_period": {
+      "2024": "366057.38",
+      "2025": "288072.98",
+      "2026": "138501.23"
+     },
+     "reasons": []
+    }
+   },
+   "meaning": {
+    "alternatives": {
+     "R_CUSTOMER_COUNTRY": "CANDIDATE",
+     "R_STORE_COUNTRY": "CANDIDATE"
+    },
+    "equivalences": {},
+    "interpretation": "UNRESOLVED_INTERPRETATION",
+    "open_questions": [
+     "Does 'French market' mean the customer's country or the country of the store the order is booked to?"
+    ],
+    "selected_reading": null,
+    "selecting_approvals": []
+   },
+   "reasons": [
+    "INTERPRETATION_UNRESOLVED"
+   ],
+   "record_id": "S2",
+   "record_sha256": "f994501b6920719c85281f2a8550a8f1aaeab34015b39464596d11a4c46f8cde",
+   "status": "MEANING_UNRESOLVED",
+   "structural_errors": [],
+   "technically_executable": true,
+   "uncovered": []
+  },
+  "scenario_id": "S2_T11_AS_OF_BEFORE_APPROVAL",
+  "status": "MEANING_UNRESOLVED",
+  "test": 11
+ },
+ {
+  "check_failures": [],
+  "expected_status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS",
+  "passed": true,
+  "result": {
+   "approvals": [
+    {
+     "approval_id": "AP_S2_CUSTOMER",
+     "claim_kind": "INTERPRETATION_CHOICE",
+     "failures": [],
+     "valid": true
+    }
+   ],
+   "computability": {
+    "R_CUSTOMER_COUNTRY": {
+     "executed": true,
+     "native_receipt_id": "NR_S2_CUSTOMER"
+    },
+    "R_STORE_COUNTRY": {
+     "executed": true,
+     "native_receipt_id": "NR_S2_STORE"
+    }
+   },
+   "eval_effective_at": "2026-06-30",
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "evidence": {
+    "R_CUSTOMER_COUNTRY": {
+     "executed": true,
+     "guards": null,
+     "native_by_period": {
+      "2024": "310780.14",
+      "2025": "261972.06",
+      "2026": "155221.02"
+     },
+     "native_equals_oracle": true,
+     "oracle_by_period": {
+      "2024": "310780.14",
+      "2025": "261972.06",
+      "2026": "155221.02"
+     },
+     "reasons": []
+    },
+    "R_STORE_COUNTRY": {
+     "executed": true,
+     "guards": null,
+     "native_by_period": {
+      "2024": "366057.38",
+      "2025": "288072.98",
+      "2026": "138501.23"
+     },
+     "native_equals_oracle": true,
+     "oracle_by_period": {
+      "2024": "366057.38",
+      "2025": "288072.98",
+      "2026": "138501.23"
+     },
+     "reasons": []
+    }
+   },
+   "meaning": {
+    "alternatives": {
+     "R_STORE_COUNTRY": "NOT_SELECTED"
+    },
+    "equivalences": {},
+    "interpretation": "LAB_APPROVED",
+    "open_questions": [],
+    "selected_reading": "R_CUSTOMER_COUNTRY",
+    "selecting_approvals": [
+     "AP_S2_CUSTOMER"
+    ]
+   },
+   "reasons": [],
+   "record_id": "S2",
+   "record_sha256": "f994501b6920719c85281f2a8550a8f1aaeab34015b39464596d11a4c46f8cde",
+   "status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS",
+   "structural_errors": [],
+   "technically_executable": true,
+   "uncovered": []
+  },
+  "scenario_id": "S2_T11_AS_OF_AFTER_APPROVAL",
+  "status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS",
+  "test": 11
+ }
+]

@@ -1,0 +1,72 @@
+{
+ "receipt_id": "NR_S1_NO_QTY",
+ "kind": "NATIVE_METRICFLOW",
+ "snapshot": "PINNED",
+ "query": {
+  "metric": "revenue",
+  "group_by": [
+   "metric_time__year"
+  ],
+  "where": [
+   "{{ Dimension('sales__status') }} = 'completed'",
+   "{{ Metric('revenue', group_by=['sales']) }} >= 100"
+  ]
+ },
+ "exit_code": 0,
+ "ok": true,
+ "rows": [
+  {
+   "metric_time__year": "2026-01-01 00:00:00",
+   "revenue": "787797.1"
+  },
+  {
+   "metric_time__year": "2025-01-01 00:00:00",
+   "revenue": "1466247.85"
+  },
+  {
+   "metric_time__year": "2024-01-01 00:00:00",
+   "revenue": "1695473.19"
+  }
+ ],
+ "rows_sha256": "e718d500dde8a8f180035048ab51e56105ee1d62dafb252ca8b908b0c3a57569",
+ "mf_csv_sha256": "28f62e8b86ab10bbad899badb78a38539d865c14d9b18ea8af199b86fcd33314",
+ "argv": [
+  "mf",
+  "query",
+  "--metrics",
+  "revenue",
+  "--group-by",
+  "metric_time__year",
+  "--where",
+  "{{ Dimension('sales__status') }} = 'completed' AND {{ Metric('revenue', group_by=['sales']) }} >= 100",
+  "--csv",
+  "<csv>"
+ ],
+ "mf_identity": {
+  "mf_path": "/home/user/sophon-e3/experiments/E3_formal_ir/.upstream/.venv/bin/mf",
+  "mf_sha256": "10a2e8496dd331f6dcfa7042bf796e5f2277e9dd47e556505ec847610eb4dfb5",
+  "record_entry": "../../../bin/mf",
+  "record_hash": "sha256=EKLoSW3TMfbc-nBCv3luXyJ36d1H5VZQXshHYQ6037U",
+  "distribution": "dbt_metricflow-0.13.0.dist-info",
+  "versions": {
+   "dbt-metricflow": "0.13.0",
+   "metricflow": "0.211.0",
+   "dbt-core": "1.11.11",
+   "dbt-duckdb": "1.10.1",
+   "dbt-semantic-interfaces": "0.9.0",
+   "duckdb": "1.5.4"
+  }
+ },
+ "stdout_tail": null,
+ "fingerprint": {
+  "semantic_manifest_sha256": "e8e9bfc7e1188bc3eb3f5ac551e8ed5350817af14a5471bdbcdfdca2bc01bd48",
+  "raw_csv_sha256": {
+   "customers.csv": "e570cfec57af94cee3b974db5642fe0c276b495f83dd82e6af077dbb3784680d",
+   "order_items.csv": "513de0a77e90c7312a2935d47efcced60b6811a33de589e1a4fe63d2045e5f26",
+   "orders.csv": "be942a616a816158924f538b8f9cde29de773bc324411c5c6f7c83c980ec4f03",
+   "products.csv": "3783c0e35d83c571e8fc18bbafa98f59e217944288a92f590b6a15d4320c2311",
+   "stores.csv": "78d2cbff192a861f4f880bcc0c25ddc43df72bfecf8a3517abf18723109f8c44"
+  },
+  "warehouse_sha256": "47ae588c1f92d57287dc255beeb040daea6264cfe9443f57d7d80f6eb91ff11d"
+ }
+}

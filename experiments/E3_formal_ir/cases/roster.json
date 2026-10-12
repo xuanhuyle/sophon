@@ -1,0 +1,33 @@
+{
+ "provenance": "LAB_SIMULATED",
+ "note": "Roles only; no real people, signatures or identity verification.",
+ "roles": {
+  "LAB_REVENUE_POLICY_OWNER": {
+   "may_approve": [
+    "INTERPRETATION_CHOICE"
+   ],
+   "source_ids": [
+    "LAB-REV-POLICY"
+   ]
+  },
+  "LAB_CUSTOMER_DATA_STEWARD": {
+   "may_approve": [
+    "SEMANTIC_EQUIVALENCE"
+   ],
+   "field_prefixes": [
+    "gold.dim_customers."
+   ]
+  },
+  "LAB_ORDER_DATA_STEWARD": {
+   "may_approve": [
+    "SEMANTIC_EQUIVALENCE"
+   ],
+   "field_prefixes": [
+    "gold.fact_sales."
+   ]
+  }
+ },
+ "never_approvers": [
+  "LLM_PROPOSER"
+ ]
+}

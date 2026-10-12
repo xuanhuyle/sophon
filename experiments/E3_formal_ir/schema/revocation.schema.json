@@ -1,0 +1,36 @@
+{
+ "additionalProperties": false,
+ "properties": {
+  "approver_role": {
+   "title": "Approver Role",
+   "type": "string"
+  },
+  "known_at": {
+   "format": "date-time",
+   "title": "Known At",
+   "type": "string"
+  },
+  "provenance": {
+   "const": "LAB_SIMULATED",
+   "title": "Provenance",
+   "type": "string"
+  },
+  "revocation_id": {
+   "title": "Revocation Id",
+   "type": "string"
+  },
+  "revokes": {
+   "title": "Revokes",
+   "type": "string"
+  }
+ },
+ "required": [
+  "revocation_id",
+  "provenance",
+  "revokes",
+  "approver_role",
+  "known_at"
+ ],
+ "title": "Revocation",
+ "type": "object"
+}

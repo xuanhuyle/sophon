@@ -1,0 +1,1627 @@
+{
+ "lab_clock": {
+  "T_PRE_SOURCE": "2026-09-30T00:00:00Z",
+  "T1": "2026-10-03T00:00:00Z",
+  "TA_approvals_known": "2026-10-05T10:00:00Z",
+  "T3": "2026-10-06T00:00:00Z",
+  "TR_revocation_known": "2026-10-08T10:00:00Z",
+  "T5": "2026-10-09T00:00:00Z",
+  "eval_effective_at": "2026-06-30"
+ },
+ "scenarios": [
+  {
+   "scenario_id": "S1_T1_POSITIVE",
+   "test": 1,
+   "record": "S1",
+   "approvals": [
+    "AP_S1_READ"
+   ],
+   "revocations": [],
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [],
+   "receipt_tamper": null,
+   "expected": {
+    "status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS",
+    "reasons_include": [],
+    "selected_reading": "R_SINGLE"
+   },
+   "note": ""
+  },
+  {
+   "scenario_id": "S1_T1_NO_INTERPRETATION_APPROVAL",
+   "test": 1,
+   "record": "S1",
+   "approvals": [],
+   "revocations": [],
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [],
+   "receipt_tamper": null,
+   "expected": {
+    "status": "MEANING_UNRESOLVED",
+    "reasons_include": [
+     "INTERPRETATION_NOT_APPROVED"
+    ],
+    "technically_executable": true
+   },
+   "note": ""
+  },
+  {
+   "scenario_id": "S1_T2_NO_GUARD_RECEIPT",
+   "test": 2,
+   "record": "S1",
+   "approvals": [
+    "AP_S1_READ"
+   ],
+   "revocations": [],
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [
+    {
+     "op": "set",
+     "path": [
+      "interpretation",
+      "readings",
+      0,
+      "bindings",
+      "unit_price_threshold",
+      "derivation",
+      "guard_receipt_id"
+     ],
+     "value": null
+    }
+   ],
+   "receipt_tamper": null,
+   "expected": {
+    "status": "NOT_VERIFIED",
+    "reasons_include": [
+     "GUARD_NOT_EVIDENCED"
+    ]
+   },
+   "note": ""
+  },
+  {
+   "scenario_id": "S1_T2_GUARD_UNDECLARED",
+   "test": 2,
+   "record": "S1",
+   "approvals": [
+    "AP_S1_READ"
+   ],
+   "revocations": [],
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [
+    {
+     "op": "set",
+     "path": [
+      "interpretation",
+      "readings",
+      0,
+      "bindings",
+      "unit_price_threshold",
+      "derivation",
+      "guards_declared"
+     ],
+     "value": [
+      "revenue_exact",
+      "price_source_exact",
+      "line_entity_unique",
+      "exact_comparison"
+     ]
+    }
+   ],
+   "receipt_tamper": null,
+   "expected": {
+    "status": "STRUCTURALLY_INVALID",
+    "reasons_include": [
+     "REQUIRED_GUARD_UNDECLARED"
+    ]
+   },
+   "note": ""
+  },
+  {
+   "scenario_id": "S1_T2_GRAIN_ORDER",
+   "test": 2,
+   "record": "S1",
+   "approvals": [
+    "AP_S1_READ"
+   ],
+   "revocations": [],
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [
+    {
+     "op": "set",
+     "path": [
+      "interpretation",
+      "readings",
+      0,
+      "bindings",
+      "unit_price_threshold",
+      "derivation",
+      "line_entity"
+     ],
+     "value": "order"
+    },
+    {
+     "op": "set",
+     "path": [
+      "interpretation",
+      "readings",
+      0,
+      "native_query",
+      "where"
+     ],
+     "value": [
+      "{{ Dimension('sales__status') }} = 'completed'",
+      "{{ Metric('revenue', group_by=['order']) }} >= 100 * {{ Metric('quantity_sold', group_by=['order']) }}"
+     ]
+    },
+    {
+     "op": "set",
+     "path": [
+      "interpretation",
+      "readings",
+      0,
+      "native_receipt_id"
+     ],
+     "value": "NR_S1_GRAIN_ORDER"
+    }
+   ],
+   "receipt_tamper": null,
+   "expected": {
+    "status": "STRUCTURALLY_INVALID",
+    "reasons_include": [
+     "DERIVATION_GRAIN_INVALID"
+    ]
+   },
+   "note": ""
+  },
+  {
+   "scenario_id": "S1_T2_EXPRESSION_WITHOUT_QUANTITY",
+   "test": 2,
+   "record": "S1",
+   "approvals": [
+    "AP_S1_READ"
+   ],
+   "revocations": [],
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [
+    {
+     "op": "set",
+     "path": [
+      "interpretation",
+      "readings",
+      0,
+      "native_query",
+      "where"
+     ],
+     "value": [
+      "{{ Dimension('sales__status') }} = 'completed'",
+      "{{ Metric('revenue', group_by=['sales']) }} >= 100"
+     ]
+    },
+    {
+     "op": "set",
+     "path": [
+      "interpretation",
+      "readings",
+      0,
+      "native_receipt_id"
+     ],
+     "value": "NR_S1_NO_QTY"
+    }
+   ],
+   "receipt_tamper": null,
+   "expected": {
+    "status": "STRUCTURALLY_INVALID",
+    "reasons_include": [
+     "DERIVATION_QUERY_MISMATCH"
+    ]
+   },
+   "note": ""
+  },
+  {
+   "scenario_id": "S1_T2_NEGATIVE_QUANTITY_SNAPSHOT",
+   "test": 2,
+   "record": "S1",
+   "approvals": [
+    "AP_S1_READ"
+   ],
+   "revocations": [],
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [
+    {
+     "op": "set",
+     "path": [
+      "interpretation",
+      "readings",
+      0,
+      "native_receipt_id"
+     ],
+     "value": "NR_S1_NEGQTY"
+    },
+    {
+     "op": "set",
+     "path": [
+      "interpretation",
+      "readings",
+      0,
+      "bindings",
+      "unit_price_threshold",
+      "derivation",
+      "guard_receipt_id"
+     ],
+     "value": "GR_S1_NEGQTY"
+    }
+   ],
+   "receipt_tamper": null,
+   "expected": {
+    "status": "NOT_VERIFIED",
+    "reasons_include": [
+     "GUARD_FAILED"
+    ]
+   },
+   "note": "disposable copy with two completed lines at quantity -1"
+  },
+  {
+   "scenario_id": "S1_T2_GUARD_FROM_OTHER_SNAPSHOT",
+   "test": 2,
+   "record": "S1",
+   "approvals": [
+    "AP_S1_READ"
+   ],
+   "revocations": [],
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [
+    {
+     "op": "set",
+     "path": [
+      "interpretation",
+      "readings",
+      0,
+      "bindings",
+      "unit_price_threshold",
+      "derivation",
+      "guard_receipt_id"
+     ],
+     "value": "GR_S1_NEGQTY"
+    }
+   ],
+   "receipt_tamper": null,
+   "expected": {
+    "status": "NOT_VERIFIED",
+    "reasons_include": [
+     "GUARD_SNAPSHOT_MISMATCH"
+    ]
+   },
+   "note": ""
+  },
+  {
+   "scenario_id": "S2_T3_NO_APPROVAL",
+   "test": 3,
+   "record": "S2",
+   "approvals": [],
+   "revocations": [],
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [],
+   "receipt_tamper": null,
+   "expected": {
+    "status": "MEANING_UNRESOLVED",
+    "reasons_include": [
+     "INTERPRETATION_UNRESOLVED"
+    ],
+    "technically_executable": true,
+    "readings_native_equals_oracle": {
+     "R_CUSTOMER_COUNTRY": true,
+     "R_STORE_COUNTRY": true
+    }
+   },
+   "note": ""
+  },
+  {
+   "scenario_id": "S2_T4_APPROVED_CUSTOMER",
+   "test": 4,
+   "record": "S2",
+   "approvals": [
+    "AP_S2_CUSTOMER"
+   ],
+   "revocations": [],
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [],
+   "receipt_tamper": null,
+   "expected": {
+    "status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS",
+    "reasons_include": [],
+    "selected_reading": "R_CUSTOMER_COUNTRY",
+    "alternatives": {
+     "R_STORE_COUNTRY": "NOT_SELECTED"
+    }
+   },
+   "note": ""
+  },
+  {
+   "scenario_id": "S2_T5_WRONG_CLAUSE",
+   "test": 5,
+   "record": "S2",
+   "approvals": [
+    "AP_S2_WRONG_CLAUSE"
+   ],
+   "revocations": [],
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [],
+   "receipt_tamper": null,
+   "expected": {
+    "status": "MEANING_UNRESOLVED",
+    "reasons_include": [
+     "APPROVAL_SCOPE_MISMATCH"
+    ]
+   },
+   "note": ""
+  },
+  {
+   "scenario_id": "S2_T5_WRONG_VERSION",
+   "test": 5,
+   "record": "S2",
+   "approvals": [
+    "AP_S2_WRONG_VERSION"
+   ],
+   "revocations": [],
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [],
+   "receipt_tamper": null,
+   "expected": {
+    "status": "MEANING_UNRESOLVED",
+    "reasons_include": [
+     "APPROVAL_SCOPE_MISMATCH"
+    ]
+   },
+   "note": ""
+  },
+  {
+   "scenario_id": "S2_T5_WRONG_SOURCE_HASH",
+   "test": 5,
+   "record": "S2",
+   "approvals": [
+    "AP_S2_WRONG_HASH"
+   ],
+   "revocations": [],
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [],
+   "receipt_tamper": null,
+   "expected": {
+    "status": "MEANING_UNRESOLVED",
+    "reasons_include": [
+     "APPROVAL_SCOPE_MISMATCH"
+    ]
+   },
+   "note": ""
+  },
+  {
+   "scenario_id": "S2_T5_NONEXISTENT_READING",
+   "test": 5,
+   "record": "S2",
+   "approvals": [
+    "AP_S2_BAD_READING"
+   ],
+   "revocations": [],
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [],
+   "receipt_tamper": null,
+   "expected": {
+    "status": "MEANING_UNRESOLVED",
+    "reasons_include": [
+     "APPROVAL_SCOPE_MISMATCH"
+    ]
+   },
+   "note": ""
+  },
+  {
+   "scenario_id": "S2_T5_CONFLICTING_CHOICES",
+   "test": 5,
+   "record": "S2",
+   "approvals": [
+    "AP_S2_CUSTOMER",
+    "AP_S2_STORE"
+   ],
+   "revocations": [],
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [],
+   "receipt_tamper": null,
+   "expected": {
+    "status": "MEANING_UNRESOLVED",
+    "reasons_include": [
+     "CONFLICTING_APPROVALS"
+    ]
+   },
+   "note": ""
+  },
+  {
+   "scenario_id": "S2_T5_APPROVER_NOT_IN_ROSTER",
+   "test": 5,
+   "record": "S2",
+   "approvals": [
+    "AP_S2_ROLE_UNKNOWN"
+   ],
+   "revocations": [],
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [],
+   "receipt_tamper": null,
+   "expected": {
+    "status": "MEANING_UNRESOLVED",
+    "reasons_include": [
+     "APPROVER_NOT_IN_ROSTER"
+    ]
+   },
+   "note": ""
+  },
+  {
+   "scenario_id": "S2_T5_APPROVER_NOT_AUTHORIZED",
+   "test": 5,
+   "record": "S2",
+   "approvals": [
+    "AP_S2_ROLE_UNAUTHORIZED"
+   ],
+   "revocations": [],
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [],
+   "receipt_tamper": null,
+   "expected": {
+    "status": "MEANING_UNRESOLVED",
+    "reasons_include": [
+     "APPROVER_NOT_AUTHORIZED_FOR_CLAIM"
+    ]
+   },
+   "note": ""
+  },
+  {
+   "scenario_id": "S2_T5_SELF_APPROVAL",
+   "test": 5,
+   "record": "S2",
+   "approvals": [
+    "AP_S2_SELF"
+   ],
+   "revocations": [],
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [],
+   "receipt_tamper": null,
+   "expected": {
+    "status": "MEANING_UNRESOLVED",
+    "reasons_include": [
+     "SELF_APPROVAL"
+    ]
+   },
+   "note": ""
+  },
+  {
+   "scenario_id": "S2_T5_APPROVAL_BEFORE_SOURCE_OBSERVED",
+   "test": 5,
+   "record": "S2",
+   "approvals": [
+    "AP_S2_BEFORE_SOURCE"
+   ],
+   "revocations": [],
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [],
+   "receipt_tamper": null,
+   "expected": {
+    "status": "MEANING_UNRESOLVED",
+    "reasons_include": [
+     "APPROVAL_BEFORE_SOURCE_OBSERVED"
+    ]
+   },
+   "note": ""
+  },
+  {
+   "scenario_id": "S2_T5_APPROVAL_NOT_EFFECTIVE",
+   "test": 5,
+   "record": "S2",
+   "approvals": [
+    "AP_S2_NOT_EFFECTIVE"
+   ],
+   "revocations": [],
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [],
+   "receipt_tamper": null,
+   "expected": {
+    "status": "MEANING_UNRESOLVED",
+    "reasons_include": [
+     "APPROVAL_NOT_EFFECTIVE"
+    ]
+   },
+   "note": ""
+  },
+  {
+   "scenario_id": "S2_T5_FUTURE_APPROVAL_UNCLAIMED",
+   "test": 5,
+   "record": "S2",
+   "approvals": [
+    "AP_S2_FUTURE"
+   ],
+   "revocations": [],
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [],
+   "receipt_tamper": null,
+   "expected": {
+    "status": "MEANING_UNRESOLVED",
+    "reasons_include": [
+     "INTERPRETATION_UNRESOLVED"
+    ],
+    "must_not_mention": [
+     "AP_S2_FUTURE"
+    ]
+   },
+   "note": ""
+  },
+  {
+   "scenario_id": "S2_T5_FUTURE_APPROVAL_CLAIMED",
+   "test": 5,
+   "record": "S2",
+   "approvals": [
+    "AP_S2_FUTURE"
+   ],
+   "revocations": [],
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [
+    {
+     "op": "set",
+     "path": [
+      "interpretation",
+      "claimed_state"
+     ],
+     "value": "LAB_APPROVED"
+    },
+    {
+     "op": "set",
+     "path": [
+      "interpretation",
+      "claimed_approval_ids"
+     ],
+     "value": [
+      "AP_S2_FUTURE"
+     ]
+    }
+   ],
+   "receipt_tamper": null,
+   "expected": {
+    "status": "STRUCTURALLY_INVALID",
+    "reasons_include": [
+     "APPROVAL_CLAIM_WITHOUT_EVIDENCE"
+    ]
+   },
+   "note": ""
+  },
+  {
+   "scenario_id": "S3_T6_NO_EQUIVALENCE_APPROVAL",
+   "test": 6,
+   "record": "S3",
+   "approvals": [
+    "AP_S3_READ"
+   ],
+   "revocations": [],
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [],
+   "receipt_tamper": null,
+   "expected": {
+    "status": "MEANING_UNRESOLVED",
+    "reasons_include": [
+     "EQUIVALENCE_UNAPPROVED"
+    ],
+    "technically_executable": true,
+    "readings_native_equals_oracle": {
+     "R_SINGLE": true
+    }
+   },
+   "note": ""
+  },
+  {
+   "scenario_id": "S3_T7_EQUIVALENCE_APPROVED",
+   "test": 7,
+   "record": "S3",
+   "approvals": [
+    "AP_S3_READ",
+    "AP_S3_EQ"
+   ],
+   "revocations": [],
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [],
+   "receipt_tamper": null,
+   "expected": {
+    "status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS",
+    "reasons_include": [],
+    "selected_reading": "R_SINGLE"
+   },
+   "note": ""
+  },
+  {
+   "scenario_id": "S3_T7_BEFORE_REVOCATION_KNOWN",
+   "test": 7,
+   "record": "S3",
+   "approvals": [
+    "AP_S3_READ",
+    "AP_S3_EQ"
+   ],
+   "revocations": [
+    "RV_S3_EQ"
+   ],
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [],
+   "receipt_tamper": null,
+   "expected": {
+    "status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS",
+    "reasons_include": [],
+    "must_not_mention": [
+     "RV_S3_EQ"
+    ]
+   },
+   "note": ""
+  },
+  {
+   "scenario_id": "S3_T7_REVOKED",
+   "test": 7,
+   "record": "S3",
+   "approvals": [
+    "AP_S3_READ",
+    "AP_S3_EQ"
+   ],
+   "revocations": [
+    "RV_S3_EQ"
+   ],
+   "eval_known_at": "2026-10-09T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [],
+   "receipt_tamper": null,
+   "expected": {
+    "status": "MEANING_UNRESOLVED",
+    "reasons_include": [
+     "APPROVAL_REVOKED"
+    ]
+   },
+   "note": ""
+  },
+  {
+   "scenario_id": "S3_T7_APPROVAL_REMOVED",
+   "test": 7,
+   "record": "S3",
+   "approvals": [
+    "AP_S3_READ"
+   ],
+   "revocations": [],
+   "eval_known_at": "2026-10-09T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [],
+   "receipt_tamper": null,
+   "expected": {
+    "status": "MEANING_UNRESOLVED",
+    "reasons_include": [
+     "EQUIVALENCE_UNAPPROVED"
+    ]
+   },
+   "note": ""
+  },
+  {
+   "scenario_id": "S3_T7_FLAG_FLIPPED_WITHOUT_APPROVAL",
+   "test": 7,
+   "record": "S3",
+   "approvals": [
+    "AP_S3_READ"
+   ],
+   "revocations": [],
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [
+    {
+     "op": "set",
+     "path": [
+      "interpretation",
+      "readings",
+      0,
+      "bindings",
+      "residence_france",
+      "equivalence",
+      "claimed_approval_id"
+     ],
+     "value": "AP_S3_EQ_FAKE"
+    }
+   ],
+   "receipt_tamper": null,
+   "expected": {
+    "status": "STRUCTURALLY_INVALID",
+    "reasons_include": [
+     "APPROVAL_CLAIM_WITHOUT_EVIDENCE"
+    ]
+   },
+   "note": ""
+  },
+  {
+   "scenario_id": "S3_T7_WRONG_STEWARD",
+   "test": 7,
+   "record": "S3",
+   "approvals": [
+    "AP_S3_READ",
+    "AP_S3_EQ_WRONG_STEWARD"
+   ],
+   "revocations": [],
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [],
+   "receipt_tamper": null,
+   "expected": {
+    "status": "MEANING_UNRESOLVED",
+    "reasons_include": [
+     "APPROVER_NOT_AUTHORIZED_FOR_CLAIM"
+    ]
+   },
+   "note": ""
+  },
+  {
+   "scenario_id": "S4_T8_MISSING_SETTLEMENT",
+   "test": 8,
+   "record": "S4",
+   "approvals": [
+    "AP_S4_READ"
+   ],
+   "revocations": [],
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [],
+   "receipt_tamper": null,
+   "expected": {
+    "status": "MISSING_REQUIRED_FACT",
+    "reasons_include": [
+     "REQUIRED_FACT_ABSENT"
+    ],
+    "uncovered": [
+     "settled_by_processor"
+    ]
+   },
+   "note": ""
+  },
+  {
+   "scenario_id": "S4_T8_STATUS_PROXY_DIRECT",
+   "test": 8,
+   "record": "S4",
+   "approvals": [
+    "AP_S4_READ"
+   ],
+   "revocations": [],
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [
+    {
+     "op": "set",
+     "path": [
+      "interpretation",
+      "readings",
+      0,
+      "bindings",
+      "settled_by_processor"
+     ],
+     "value": {
+      "kind": "DIRECT",
+      "semantic_object": {
+       "type": "dimension",
+       "name": "sales__status"
+      },
+      "physical_lineage": [
+       "gold.fact_sales.status"
+      ],
+      "value_override": "completed"
+     }
+    },
+    {
+     "op": "set",
+     "path": [
+      "interpretation",
+      "readings",
+      0,
+      "native_query"
+     ],
+     "value": {
+      "metric": "revenue",
+      "group_by": [
+       "metric_time__year"
+      ],
+      "where": [
+       "{{ Dimension('sales__status') }} = 'completed'",
+       "{{ Dimension('sales__status') }} = 'completed'"
+      ]
+     }
+    },
+    {
+     "op": "set",
+     "path": [
+      "interpretation",
+      "readings",
+      0,
+      "native_receipt_id"
+     ],
+     "value": "NR_S4_PROXY"
+    },
+    {
+     "op": "set",
+     "path": [
+      "interpretation",
+      "readings",
+      0,
+      "oracle_id"
+     ],
+     "value": "OR_S4_PROXY"
+    }
+   ],
+   "receipt_tamper": null,
+   "expected": {
+    "status": "MISSING_REQUIRED_FACT",
+    "reasons_include": [
+     "NOT_DESIGNATED_FOR_FACT"
+    ],
+    "uncovered": [
+     "settled_by_processor"
+    ],
+    "readings_native_equals_oracle": {
+     "R_SINGLE": true
+    }
+   },
+   "note": ""
+  },
+  {
+   "scenario_id": "S4_T8_PROXY_WITH_SIMULATED_APPROVAL",
+   "test": 8,
+   "record": "S4",
+   "approvals": [
+    "AP_S4_READ",
+    "AP_S4_PROXY_EQ"
+   ],
+   "revocations": [],
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [
+    {
+     "op": "set",
+     "path": [
+      "interpretation",
+      "readings",
+      0,
+      "bindings",
+      "settled_by_processor"
+     ],
+     "value": {
+      "kind": "CANDIDATE_EQUIVALENCE",
+      "semantic_object": {
+       "type": "dimension",
+       "name": "sales__status"
+      },
+      "physical_lineage": [
+       "gold.fact_sales.status"
+      ],
+      "value_override": "completed",
+      "equivalence": {
+       "field": "gold.fact_sales.status",
+       "fact_kind": "payment_settlement_confirmation",
+       "statement": "status = 'completed' means settled by a payment processor",
+       "claimed_approval_id": "AP_S4_PROXY_EQ"
+      }
+     }
+    },
+    {
+     "op": "set",
+     "path": [
+      "interpretation",
+      "readings",
+      0,
+      "native_query"
+     ],
+     "value": {
+      "metric": "revenue",
+      "group_by": [
+       "metric_time__year"
+      ],
+      "where": [
+       "{{ Dimension('sales__status') }} = 'completed'",
+       "{{ Dimension('sales__status') }} = 'completed'"
+      ]
+     }
+    },
+    {
+     "op": "set",
+     "path": [
+      "interpretation",
+      "readings",
+      0,
+      "native_receipt_id"
+     ],
+     "value": "NR_S4_PROXY"
+    },
+    {
+     "op": "set",
+     "path": [
+      "interpretation",
+      "readings",
+      0,
+      "oracle_id"
+     ],
+     "value": "OR_S4_PROXY"
+    }
+   ],
+   "receipt_tamper": null,
+   "expected": {
+    "status": "MISSING_REQUIRED_FACT",
+    "reasons_include": [
+     "APPROVAL_CANNOT_CREATE_SOURCE"
+    ],
+    "uncovered": [
+     "settled_by_processor"
+    ]
+   },
+   "note": ""
+  },
+  {
+   "scenario_id": "S4_T8_STATUS_FIELD_SET_VERIFIED",
+   "test": 8,
+   "record": "S4",
+   "approvals": [
+    "AP_S4_READ"
+   ],
+   "revocations": [],
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [
+    {
+     "op": "set",
+     "path": [
+      "status"
+     ],
+     "value": "VERIFIED"
+    }
+   ],
+   "receipt_tamper": null,
+   "expected": {
+    "status": "STRUCTURALLY_INVALID",
+    "reasons_include": [
+     "STATUS_FIELD_FORBIDDEN"
+    ]
+   },
+   "note": ""
+  },
+  {
+   "scenario_id": "S1_T9_UNIT_MISMATCH",
+   "test": 9,
+   "record": "S1",
+   "approvals": [
+    "AP_S1_READ"
+   ],
+   "revocations": [],
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [
+    {
+     "op": "set",
+     "path": [
+      "requirement",
+      "atoms",
+      3,
+      "unit"
+     ],
+     "value": "UNIT"
+    }
+   ],
+   "receipt_tamper": null,
+   "expected": {
+    "status": "STRUCTURALLY_INVALID",
+    "reasons_include": [
+     "UNIT_MISMATCH"
+    ]
+   },
+   "note": ""
+  },
+  {
+   "scenario_id": "S2_T9_UNKNOWN_SEMANTIC_OBJECT",
+   "test": 9,
+   "record": "S2",
+   "approvals": [
+    "AP_S2_CUSTOMER"
+   ],
+   "revocations": [],
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [
+    {
+     "op": "set",
+     "path": [
+      "interpretation",
+      "readings",
+      0,
+      "bindings",
+      "french_market",
+      "semantic_object",
+      "name"
+     ],
+     "value": "customer__residence_country"
+    }
+   ],
+   "receipt_tamper": null,
+   "expected": {
+    "status": "STRUCTURALLY_INVALID",
+    "reasons_include": [
+     "UNKNOWN_SEMANTIC_OBJECT"
+    ]
+   },
+   "note": ""
+  },
+  {
+   "scenario_id": "S2_T9_UNKNOWN_PHYSICAL_FIELD",
+   "test": 9,
+   "record": "S2",
+   "approvals": [
+    "AP_S2_CUSTOMER"
+   ],
+   "revocations": [],
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [
+    {
+     "op": "set",
+     "path": [
+      "interpretation",
+      "readings",
+      0,
+      "bindings",
+      "french_market",
+      "physical_lineage"
+     ],
+     "value": [
+      "gold.dim_customers.residence"
+     ]
+    }
+   ],
+   "receipt_tamper": null,
+   "expected": {
+    "status": "STRUCTURALLY_INVALID",
+    "reasons_include": [
+     "UNKNOWN_PHYSICAL_FIELD"
+    ]
+   },
+   "note": ""
+  },
+  {
+   "scenario_id": "S2_T9_SEMANTIC_PHYSICAL_MISMATCH",
+   "test": 9,
+   "record": "S2",
+   "approvals": [
+    "AP_S2_CUSTOMER"
+   ],
+   "revocations": [],
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [
+    {
+     "op": "set",
+     "path": [
+      "interpretation",
+      "readings",
+      0,
+      "bindings",
+      "french_market",
+      "physical_lineage"
+     ],
+     "value": [
+      "gold.dim_stores.country"
+     ]
+    }
+   ],
+   "receipt_tamper": null,
+   "expected": {
+    "status": "STRUCTURALLY_INVALID",
+    "reasons_include": [
+     "SEMANTIC_PHYSICAL_MISMATCH"
+    ]
+   },
+   "note": ""
+  },
+  {
+   "scenario_id": "S2_T9_UNDEFINED_PREDICATE",
+   "test": 9,
+   "record": "S2",
+   "approvals": [
+    "AP_S2_CUSTOMER"
+   ],
+   "revocations": [],
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [
+    {
+     "op": "set",
+     "path": [
+      "interpretation",
+      "readings",
+      0,
+      "bindings",
+      "discount"
+     ],
+     "value": {
+      "kind": "DIRECT",
+      "semantic_object": {
+       "type": "dimension",
+       "name": "sales__status"
+      },
+      "physical_lineage": [
+       "gold.fact_sales.status",
+       "silver.stg_orders.status",
+       "bronze.orders.status"
+      ]
+     }
+    }
+   ],
+   "receipt_tamper": null,
+   "expected": {
+    "status": "STRUCTURALLY_INVALID",
+    "reasons_include": [
+     "UNDEFINED_PREDICATE"
+    ]
+   },
+   "note": ""
+  },
+  {
+   "scenario_id": "S2_T9_ATOM_UNBOUND",
+   "test": 9,
+   "record": "S2",
+   "approvals": [
+    "AP_S2_CUSTOMER"
+   ],
+   "revocations": [],
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [
+    {
+     "op": "delete",
+     "path": [
+      "interpretation",
+      "readings",
+      0,
+      "bindings",
+      "completed"
+     ]
+    }
+   ],
+   "receipt_tamper": null,
+   "expected": {
+    "status": "STRUCTURALLY_INVALID",
+    "reasons_include": [
+     "ATOM_UNBOUND"
+    ]
+   },
+   "note": ""
+  },
+  {
+   "scenario_id": "S2_T9_EFFECTIVE_ORDER",
+   "test": 9,
+   "record": "S2",
+   "approvals": [
+    "AP_S2_CUSTOMER"
+   ],
+   "revocations": [],
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [
+    {
+     "op": "set",
+     "path": [
+      "governing_source",
+      "effective_to"
+     ],
+     "value": "2023-12-31"
+    }
+   ],
+   "receipt_tamper": null,
+   "expected": {
+    "status": "STRUCTURALLY_INVALID",
+    "reasons_include": [
+     "TEMPORAL_ORDER_INVALID"
+    ]
+   },
+   "note": ""
+  },
+  {
+   "scenario_id": "S2_T9_SOURCE_NOT_YET_KNOWN",
+   "test": 9,
+   "record": "S2",
+   "approvals": [
+    "AP_S2_CUSTOMER"
+   ],
+   "revocations": [],
+   "eval_known_at": "2026-09-30T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [],
+   "receipt_tamper": null,
+   "expected": {
+    "status": "STRUCTURALLY_INVALID",
+    "reasons_include": [
+     "SOURCE_NOT_YET_KNOWN"
+    ]
+   },
+   "note": ""
+  },
+  {
+   "scenario_id": "S2_T9_SOURCE_HASH_ALTERED",
+   "test": 9,
+   "record": "S2",
+   "approvals": [
+    "AP_S2_CUSTOMER"
+   ],
+   "revocations": [],
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [
+    {
+     "op": "set",
+     "path": [
+      "governing_source",
+      "content_sha256"
+     ],
+     "value": "01012fa0ab708797f66ee4d74f286a07468e5285f574610d22d14ace78475d0b"
+    }
+   ],
+   "receipt_tamper": null,
+   "expected": {
+    "status": "STRUCTURALLY_INVALID",
+    "reasons_include": [
+     "SOURCE_HASH_MISMATCH"
+    ]
+   },
+   "note": ""
+  },
+  {
+   "scenario_id": "S2_T9_SOURCE_VERSION_UNKNOWN",
+   "test": 9,
+   "record": "S2",
+   "approvals": [
+    "AP_S2_CUSTOMER"
+   ],
+   "revocations": [],
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [
+    {
+     "op": "set",
+     "path": [
+      "governing_source",
+      "clause_version"
+     ],
+     "value": 2
+    }
+   ],
+   "receipt_tamper": null,
+   "expected": {
+    "status": "STRUCTURALLY_INVALID",
+    "reasons_include": [
+     "SOURCE_CLAUSE_MISMATCH"
+    ]
+   },
+   "note": ""
+  },
+  {
+   "scenario_id": "S2_T9_SPAN_TEXT_MISMATCH",
+   "test": 9,
+   "record": "S2",
+   "approvals": [
+    "AP_S2_CUSTOMER"
+   ],
+   "revocations": [],
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [
+    {
+     "op": "set",
+     "path": [
+      "requirement",
+      "atoms",
+      3,
+      "span"
+     ],
+     "value": [
+      10,
+      40
+     ]
+    }
+   ],
+   "receipt_tamper": null,
+   "expected": {
+    "status": "STRUCTURALLY_INVALID",
+    "reasons_include": [
+     "SPAN_TEXT_MISMATCH"
+    ]
+   },
+   "note": ""
+  },
+  {
+   "scenario_id": "S2_T9_APPROVED_CLAIM_WITHOUT_IDS",
+   "test": 9,
+   "record": "S2",
+   "approvals": [],
+   "revocations": [],
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [
+    {
+     "op": "set",
+     "path": [
+      "interpretation",
+      "claimed_state"
+     ],
+     "value": "LAB_APPROVED"
+    }
+   ],
+   "receipt_tamper": null,
+   "expected": {
+    "status": "STRUCTURALLY_INVALID",
+    "reasons_include": [
+     "APPROVAL_CLAIM_WITHOUT_EVIDENCE"
+    ]
+   },
+   "note": ""
+  },
+  {
+   "scenario_id": "S2_T9_SCHEMA_INVALID_STATE",
+   "test": 9,
+   "record": "S2",
+   "approvals": [
+    "AP_S2_CUSTOMER"
+   ],
+   "revocations": [],
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [
+    {
+     "op": "set",
+     "path": [
+      "interpretation",
+      "claimed_state"
+     ],
+     "value": "MAYBE"
+    }
+   ],
+   "receipt_tamper": null,
+   "expected": {
+    "status": "STRUCTURALLY_INVALID",
+    "reasons_include": [
+     "SCHEMA_INVALID"
+    ]
+   },
+   "note": ""
+  },
+  {
+   "scenario_id": "S2_T10_RECEIPT_VALUE_CHANGED_REHASHED",
+   "test": 10,
+   "record": "S2",
+   "approvals": [
+    "AP_S2_CUSTOMER"
+   ],
+   "revocations": [],
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [],
+   "receipt_tamper": {
+    "receipt_id": "NR_S2_CUSTOMER",
+    "mode": "ADD_ONE_CENT_FIRST_ROW_REHASH"
+   },
+   "expected": {
+    "status": "NOT_VERIFIED",
+    "reasons_include": [
+     "NATIVE_ORACLE_MISMATCH"
+    ]
+   },
+   "note": ""
+  },
+  {
+   "scenario_id": "S2_T10_RECEIPT_VALUE_CHANGED_NOT_REHASHED",
+   "test": 10,
+   "record": "S2",
+   "approvals": [
+    "AP_S2_CUSTOMER"
+   ],
+   "revocations": [],
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [],
+   "receipt_tamper": {
+    "receipt_id": "NR_S2_CUSTOMER",
+    "mode": "ADD_ONE_CENT_FIRST_ROW"
+   },
+   "expected": {
+    "status": "NOT_VERIFIED",
+    "reasons_include": [
+     "RECEIPT_INTEGRITY_FAILED"
+    ]
+   },
+   "note": ""
+  },
+  {
+   "scenario_id": "S2_T10_UNDERLYING_VALUE_CHANGED",
+   "test": 10,
+   "record": "S2",
+   "approvals": [
+    "AP_S2_CUSTOMER"
+   ],
+   "revocations": [],
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [
+    {
+     "op": "set",
+     "path": [
+      "interpretation",
+      "readings",
+      0,
+      "native_receipt_id"
+     ],
+     "value": "NR_S2_CUSTOMER_VALUE_CHANGED"
+    }
+   ],
+   "receipt_tamper": null,
+   "expected": {
+    "status": "NOT_VERIFIED",
+    "reasons_include": [
+     "NATIVE_ORACLE_MISMATCH"
+    ]
+   },
+   "note": "disposable copy: one completed French-customer line's revenue +100.00"
+  },
+  {
+   "scenario_id": "S2_T10_RECEIPT_FOR_OTHER_QUERY",
+   "test": 10,
+   "record": "S2",
+   "approvals": [
+    "AP_S2_CUSTOMER"
+   ],
+   "revocations": [],
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [
+    {
+     "op": "set",
+     "path": [
+      "interpretation",
+      "readings",
+      0,
+      "native_receipt_id"
+     ],
+     "value": "NR_S2_STORE"
+    }
+   ],
+   "receipt_tamper": null,
+   "expected": {
+    "status": "NOT_VERIFIED",
+    "reasons_include": [
+     "RECEIPT_QUERY_MISMATCH"
+    ]
+   },
+   "note": ""
+  },
+  {
+   "scenario_id": "S2_T10_ORACLE_FOR_OTHER_READING",
+   "test": 10,
+   "record": "S2",
+   "approvals": [
+    "AP_S2_CUSTOMER"
+   ],
+   "revocations": [],
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [
+    {
+     "op": "set",
+     "path": [
+      "interpretation",
+      "readings",
+      0,
+      "oracle_id"
+     ],
+     "value": "OR_S2_STORE"
+    }
+   ],
+   "receipt_tamper": null,
+   "expected": {
+    "status": "NOT_VERIFIED",
+    "reasons_include": [
+     "ORACLE_READING_MISMATCH"
+    ]
+   },
+   "note": ""
+  },
+  {
+   "scenario_id": "S2_T10_WRONG_SEMANTIC_REVISION",
+   "test": 10,
+   "record": "S2",
+   "approvals": [
+    "AP_S2_CUSTOMER"
+   ],
+   "revocations": [],
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [
+    {
+     "op": "set",
+     "path": [
+      "verification_request",
+      "semantic_manifest_sha256"
+     ],
+     "value": "0000000000000000000000000000000000000000000000000000000000000000"
+    }
+   ],
+   "receipt_tamper": null,
+   "expected": {
+    "status": "NOT_VERIFIED",
+    "reasons_include": [
+     "RECEIPT_REVISION_MISMATCH"
+    ]
+   },
+   "note": ""
+  },
+  {
+   "scenario_id": "S2_T11_AS_OF_BEFORE_APPROVAL",
+   "test": 11,
+   "record": "S2",
+   "approvals": [
+    "AP_S2_CUSTOMER"
+   ],
+   "revocations": [],
+   "eval_known_at": "2026-10-03T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [],
+   "receipt_tamper": null,
+   "expected": {
+    "status": "MEANING_UNRESOLVED",
+    "reasons_include": [
+     "INTERPRETATION_UNRESOLVED"
+    ],
+    "must_not_mention": [
+     "AP_S2_CUSTOMER"
+    ]
+   },
+   "note": ""
+  },
+  {
+   "scenario_id": "S2_T11_AS_OF_AFTER_APPROVAL",
+   "test": 11,
+   "record": "S2",
+   "approvals": [
+    "AP_S2_CUSTOMER"
+   ],
+   "revocations": [],
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [],
+   "receipt_tamper": null,
+   "expected": {
+    "status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS",
+    "reasons_include": [],
+    "selected_reading": "R_CUSTOMER_COUNTRY",
+    "alternatives": {
+     "R_STORE_COUNTRY": "NOT_SELECTED"
+    }
+   },
+   "note": ""
+  }
+ ]
+}

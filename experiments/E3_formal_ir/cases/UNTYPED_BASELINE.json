@@ -1,0 +1,40 @@
+{
+ "rule": "A plain JSON note store (json.loads only) read naively: a stored status field is taken as the status; otherwise a requirement is 'verified' when its recorded native query executed and its recorded numbers match a recorded expected value.",
+ "cases": [
+  {
+   "id": "U1",
+   "e3_scenario": "S2_T3_NO_APPROVAL",
+   "false_state": "metric executed => requirement verified (both French-market readings execute and match their oracles)"
+  },
+  {
+   "id": "U2",
+   "e3_scenario": "S3_T7_FLAG_FLIPPED_WITHOUT_APPROVAL",
+   "false_state": "approval flag set without an approval object => equivalence approved"
+  },
+  {
+   "id": "U3",
+   "e3_scenario": "S2_T10_WRONG_SEMANTIC_REVISION",
+   "false_state": "receipt from a different semantic revision => verified"
+  },
+  {
+   "id": "U4",
+   "e3_scenario": "S4_T8_STATUS_PROXY_DIRECT",
+   "false_state": "status proxy executes and matches its own oracle => settlement verified"
+  },
+  {
+   "id": "U5",
+   "e3_scenario": "S2_T5_WRONG_VERSION",
+   "false_state": "approval of another clause version => approved"
+  },
+  {
+   "id": "U6",
+   "e3_scenario": "S1_T2_NEGATIVE_QUANTITY_SNAPSHOT",
+   "false_state": "derived expression executes => unit-price threshold verified despite quantity <= 0 rows"
+  },
+  {
+   "id": "U7",
+   "e3_scenario": "S4_T8_STATUS_FIELD_SET_VERIFIED",
+   "false_state": "status: VERIFIED written into the record => verified"
+  }
+ ]
+}

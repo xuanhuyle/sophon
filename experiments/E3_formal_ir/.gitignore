@@ -1,0 +1,7 @@
+# E3: pinned upstream, virtualenv, generated data, warehouses and disposable copies are reproducible and never committed
+.upstream/
+runs/
+__pycache__/
+.pytest_cache/
+*.duckdb
+*.duckdb.wal
