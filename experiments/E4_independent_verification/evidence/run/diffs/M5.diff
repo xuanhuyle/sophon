@@ -1,0 +1,14 @@
+--- pristine/dbt/retail_dwh/models/marts/semantic/_metrics.yml
++++ candidate/dbt/retail_dwh/models/marts/semantic/_metrics.yml
+@@ -117,3 +117,11 @@
+     type_params:
+       numerator: repeat_customers
+       denominator: purchasing_customers
++
++  - name: french_market_revenue
++    description: "Completed revenue of stores in France."
++    label: "French market revenue"
++    type: simple
++    type_params:
++      measure: revenue
++    filter: "{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('store__store_country') }} = 'France'"

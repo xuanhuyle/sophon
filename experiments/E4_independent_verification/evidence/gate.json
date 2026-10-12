@@ -1,0 +1,126 @@
+{
+ "criteria": {
+  "Q0": true,
+  "Q1": true,
+  "Q2": true,
+  "Q3": true,
+  "Q4": true,
+  "Q5": true,
+  "Q6": true,
+  "Q7": true
+ },
+ "verdict": "PASS_INDEPENDENT_VERIFICATION_SIGNAL",
+ "scored": {
+  "M1": {
+   "status": "VERIFIED_FOR_LAB_CHECKS",
+   "expected": "VERIFIED_FOR_LAB_CHECKS",
+   "passed": true,
+   "failures": []
+  },
+  "M2": {
+   "status": "VERIFIED_FOR_LAB_CHECKS",
+   "expected": "VERIFIED_FOR_LAB_CHECKS",
+   "passed": true,
+   "failures": []
+  },
+  "M6B": {
+   "status": "NO_MATERIAL_DRIFT_FOR_CHECKS",
+   "expected": "NO_MATERIAL_DRIFT_FOR_CHECKS",
+   "passed": true,
+   "failures": []
+  },
+  "M6": {
+   "status": "NO_MATERIAL_DRIFT_FOR_CHECKS",
+   "expected": "NO_MATERIAL_DRIFT_FOR_CHECKS",
+   "passed": true,
+   "failures": []
+  },
+  "M3": {
+   "status": "NONCONFORMING_IMPLEMENTATION",
+   "expected": "NONCONFORMING_IMPLEMENTATION",
+   "passed": true,
+   "failures": []
+  },
+  "M4": {
+   "status": "NONCONFORMING_IMPLEMENTATION",
+   "expected": "NONCONFORMING_IMPLEMENTATION",
+   "passed": true,
+   "failures": []
+  },
+  "M5": {
+   "status": "NONCONFORMING_IMPLEMENTATION",
+   "expected": "NONCONFORMING_IMPLEMENTATION",
+   "passed": true,
+   "failures": []
+  },
+  "M5B": {
+   "status": "NONCONFORMING_IMPLEMENTATION",
+   "expected": "NONCONFORMING_IMPLEMENTATION",
+   "passed": true,
+   "failures": []
+  },
+  "C1": {
+   "status": "NOT_VERIFIED",
+   "expected": "NOT_VERIFIED",
+   "passed": true,
+   "failures": []
+  },
+  "C2A": {
+   "status": "NOT_VERIFIED",
+   "expected": "NOT_VERIFIED",
+   "passed": true,
+   "failures": []
+  },
+  "C2B": {
+   "status": "NOT_APPLICABLE",
+   "expected": "NOT_APPLICABLE",
+   "passed": true,
+   "failures": []
+  },
+  "C3": {
+   "status": "NONCONFORMING_IMPLEMENTATION",
+   "expected": "NONCONFORMING_IMPLEMENTATION",
+   "passed": true,
+   "failures": []
+  },
+  "C4": {
+   "status": "NOT_VERIFIED",
+   "expected": "NOT_VERIFIED",
+   "passed": true,
+   "failures": []
+  },
+  "C5": {
+   "status": "NOT_VERIFIED",
+   "expected": "NOT_VERIFIED",
+   "passed": true,
+   "failures": []
+  }
+ },
+ "false_assurances": [],
+ "false_alarms": [],
+ "detected_wrong": [
+  "M3",
+  "M4",
+  "M5",
+  "M5B",
+  "C3"
+ ],
+ "missed_wrong": [],
+ "counterexamples_present": {
+  "M3": true,
+  "M4": true,
+  "M5": true,
+  "M5B": true,
+  "C3": true
+ },
+ "m3_accidental_agreement_then_boundary_detection": true,
+ "native_mutation_evidence": {
+  "M3": true,
+  "M4": true,
+  "M5": true,
+  "M5B": true
+ },
+ "freeze_hash_mismatch": [],
+ "prior_dirs_unchanged": true,
+ "pytest_tail": "5 passed in 0.23s"
+}

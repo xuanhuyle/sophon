@@ -1,0 +1,602 @@
+[
+ {
+  "claim_contradicted": null,
+  "reasons": [],
+  "snapshots": [
+   {
+    "candidate_by_year": {
+     "2024": "1634542.08",
+     "2025": "1400232.75",
+     "2026": "752191.54"
+    },
+    "candidate_line_count": 3305,
+    "counterexample_ids": [],
+    "manifest_differs_from_pristine": false,
+    "membership": {
+     "amount_differs": 0,
+     "candidate_not_expected": 0,
+     "expected_not_in_candidate": 0
+    },
+    "reasons": [],
+    "reference_by_year": {
+     "2024": "1634542.08",
+     "2025": "1400232.75",
+     "2026": "752191.54"
+    },
+    "snapshot": "PINNED",
+    "status": "CONFORMS"
+   },
+   {
+    "candidate_by_year": {
+     "2024": "1634542.08",
+     "2025": "1400632.76",
+     "2026": "752191.54"
+    },
+    "candidate_line_count": 3307,
+    "counterexample_ids": [],
+    "manifest_differs_from_pristine": false,
+    "membership": {
+     "amount_differs": 0,
+     "candidate_not_expected": 0,
+     "expected_not_in_candidate": 0
+    },
+    "reasons": [],
+    "reference_by_year": {
+     "2024": "1634542.08",
+     "2025": "1400632.76",
+     "2026": "752191.54"
+    },
+    "snapshot": "BOUNDARY",
+    "status": "CONFORMS"
+   }
+  ],
+  "status": "VERIFIED_FOR_LAB_CHECKS",
+  "variant_id": "M1"
+ },
+ {
+  "claim_contradicted": null,
+  "reasons": [],
+  "snapshots": [
+   {
+    "candidate_by_year": {
+     "2024": "310780.14",
+     "2025": "261972.06",
+     "2026": "155221.02"
+    },
+    "candidate_line_count": 840,
+    "counterexample_ids": [],
+    "manifest_differs_from_pristine": true,
+    "membership": {
+     "amount_differs": 0,
+     "candidate_not_expected": 0,
+     "expected_not_in_candidate": 0
+    },
+    "reasons": [],
+    "reference_by_year": {
+     "2024": "310780.14",
+     "2025": "261972.06",
+     "2026": "155221.02"
+    },
+    "snapshot": "PINNED",
+    "status": "CONFORMS"
+   }
+  ],
+  "status": "VERIFIED_FOR_LAB_CHECKS",
+  "variant_id": "M2"
+ },
+ {
+  "claim_contradicted": null,
+  "reasons": [],
+  "snapshots": [
+   {
+    "candidate_by_year": {
+     "2024": "1634542.08",
+     "2025": "1400232.75",
+     "2026": "752191.54"
+    },
+    "candidate_line_count": 3305,
+    "counterexample_ids": [],
+    "manifest_differs_from_pristine": true,
+    "membership": {
+     "amount_differs": 0,
+     "candidate_not_expected": 0,
+     "expected_not_in_candidate": 0
+    },
+    "reasons": [],
+    "reference_by_year": {
+     "2024": "1634542.08",
+     "2025": "1400232.75",
+     "2026": "752191.54"
+    },
+    "snapshot": "PINNED",
+    "status": "CONFORMS"
+   },
+   {
+    "candidate_by_year": {
+     "2024": "1634542.08",
+     "2025": "1400632.76",
+     "2026": "752191.54"
+    },
+    "candidate_line_count": 3307,
+    "counterexample_ids": [],
+    "manifest_differs_from_pristine": true,
+    "membership": {
+     "amount_differs": 0,
+     "candidate_not_expected": 0,
+     "expected_not_in_candidate": 0
+    },
+    "reasons": [],
+    "reference_by_year": {
+     "2024": "1634542.08",
+     "2025": "1400632.76",
+     "2026": "752191.54"
+    },
+    "snapshot": "BOUNDARY",
+    "status": "CONFORMS"
+   }
+  ],
+  "status": "NO_MATERIAL_DRIFT_FOR_CHECKS",
+  "variant_id": "M6B"
+ },
+ {
+  "claim_contradicted": null,
+  "reasons": [],
+  "snapshots": [
+   {
+    "candidate_by_year": {
+     "2024": "310780.14",
+     "2025": "261972.06",
+     "2026": "155221.02"
+    },
+    "candidate_line_count": 840,
+    "counterexample_ids": [],
+    "manifest_differs_from_pristine": true,
+    "membership": {
+     "amount_differs": 0,
+     "candidate_not_expected": 0,
+     "expected_not_in_candidate": 0
+    },
+    "reasons": [],
+    "reference_by_year": {
+     "2024": "310780.14",
+     "2025": "261972.06",
+     "2026": "155221.02"
+    },
+    "snapshot": "PINNED",
+    "status": "CONFORMS"
+   }
+  ],
+  "status": "NO_MATERIAL_DRIFT_FOR_CHECKS",
+  "variant_id": "M6"
+ },
+ {
+  "claim_contradicted": null,
+  "reasons": [
+   "MEMBERSHIP_MISMATCH",
+   "TOTAL_MISMATCH"
+  ],
+  "snapshots": [
+   {
+    "candidate_by_year": {
+     "2024": "1634542.08",
+     "2025": "1400232.75",
+     "2026": "752191.54"
+    },
+    "candidate_line_count": 3305,
+    "counterexample_ids": [],
+    "manifest_differs_from_pristine": true,
+    "membership": {
+     "amount_differs": 0,
+     "candidate_not_expected": 0,
+     "expected_not_in_candidate": 0
+    },
+    "reasons": [],
+    "reference_by_year": {
+     "2024": "1634542.08",
+     "2025": "1400232.75",
+     "2026": "752191.54"
+    },
+    "snapshot": "PINNED",
+    "status": "CONFORMS"
+   },
+   {
+    "candidate_by_year": {
+     "2024": "1634542.08",
+     "2025": "1400332.76",
+     "2026": "752191.54"
+    },
+    "candidate_line_count": 3306,
+    "counterexample_ids": [
+     "2"
+    ],
+    "manifest_differs_from_pristine": true,
+    "membership": {
+     "amount_differs": 0,
+     "candidate_not_expected": 0,
+     "expected_not_in_candidate": 1
+    },
+    "reasons": [
+     "TOTAL_MISMATCH",
+     "MEMBERSHIP_MISMATCH"
+    ],
+    "reference_by_year": {
+     "2024": "1634542.08",
+     "2025": "1400632.76",
+     "2026": "752191.54"
+    },
+    "snapshot": "BOUNDARY",
+    "status": "MISMATCH"
+   }
+  ],
+  "status": "NONCONFORMING_IMPLEMENTATION",
+  "variant_id": "M3"
+ },
+ {
+  "claim_contradicted": null,
+  "reasons": [
+   "MEMBERSHIP_MISMATCH",
+   "TOTAL_MISMATCH"
+  ],
+  "snapshots": [
+   {
+    "candidate_by_year": {
+     "2024": "1825593.43",
+     "2025": "1632852.72",
+     "2026": "812109.96"
+    },
+    "candidate_line_count": 3713,
+    "counterexample_ids": [
+     "7",
+     "8",
+     "16",
+     "17",
+     "18"
+    ],
+    "manifest_differs_from_pristine": true,
+    "membership": {
+     "amount_differs": 0,
+     "candidate_not_expected": 408,
+     "expected_not_in_candidate": 0
+    },
+    "reasons": [
+     "TOTAL_MISMATCH",
+     "MEMBERSHIP_MISMATCH"
+    ],
+    "reference_by_year": {
+     "2024": "1634542.08",
+     "2025": "1400232.75",
+     "2026": "752191.54"
+    },
+    "snapshot": "PINNED",
+    "status": "MISMATCH"
+   },
+   {
+    "candidate_by_year": {
+     "2024": "1825593.43",
+     "2025": "1633252.73",
+     "2026": "812109.96"
+    },
+    "candidate_line_count": 3715,
+    "counterexample_ids": [
+     "7",
+     "8",
+     "16",
+     "17",
+     "18"
+    ],
+    "manifest_differs_from_pristine": true,
+    "membership": {
+     "amount_differs": 0,
+     "candidate_not_expected": 408,
+     "expected_not_in_candidate": 0
+    },
+    "reasons": [
+     "TOTAL_MISMATCH",
+     "MEMBERSHIP_MISMATCH"
+    ],
+    "reference_by_year": {
+     "2024": "1634542.08",
+     "2025": "1400632.76",
+     "2026": "752191.54"
+    },
+    "snapshot": "BOUNDARY",
+    "status": "MISMATCH"
+   }
+  ],
+  "status": "NONCONFORMING_IMPLEMENTATION",
+  "variant_id": "M4"
+ },
+ {
+  "claim_contradicted": null,
+  "reasons": [
+   "MEMBERSHIP_MISMATCH",
+   "TOTAL_MISMATCH"
+  ],
+  "snapshots": [
+   {
+    "candidate_by_year": {
+     "2024": "366057.38",
+     "2025": "288072.98",
+     "2026": "138501.23"
+    },
+    "candidate_line_count": 889,
+    "counterexample_ids": [
+     "1",
+     "2",
+     "3",
+     "4",
+     "5",
+     "20",
+     "21",
+     "58",
+     "59",
+     "60"
+    ],
+    "manifest_differs_from_pristine": true,
+    "membership": {
+     "amount_differs": 0,
+     "candidate_not_expected": 718,
+     "expected_not_in_candidate": 669
+    },
+    "reasons": [
+     "TOTAL_MISMATCH",
+     "MEMBERSHIP_MISMATCH"
+    ],
+    "reference_by_year": {
+     "2024": "310780.14",
+     "2025": "261972.06",
+     "2026": "155221.02"
+    },
+    "snapshot": "PINNED",
+    "status": "MISMATCH"
+   }
+  ],
+  "status": "NONCONFORMING_IMPLEMENTATION",
+  "variant_id": "M5"
+ },
+ {
+  "claim_contradicted": null,
+  "reasons": [
+   "MEMBERSHIP_MISMATCH",
+   "TOTAL_MISMATCH"
+  ],
+  "snapshots": [
+   {
+    "candidate_by_year": {
+     "2024": "173242.00",
+     "2025": "183852.39",
+     "2026": "84683.73"
+    },
+    "candidate_line_count": 511,
+    "counterexample_ids": [
+     "45",
+     "46",
+     "47",
+     "88",
+     "94"
+    ],
+    "manifest_differs_from_pristine": true,
+    "membership": {
+     "amount_differs": 0,
+     "candidate_not_expected": 0,
+     "expected_not_in_candidate": 329
+    },
+    "reasons": [
+     "TOTAL_MISMATCH",
+     "MEMBERSHIP_MISMATCH"
+    ],
+    "reference_by_year": {
+     "2024": "310780.14",
+     "2025": "261972.06",
+     "2026": "155221.02"
+    },
+    "snapshot": "PINNED",
+    "status": "MISMATCH"
+   }
+  ],
+  "status": "NONCONFORMING_IMPLEMENTATION",
+  "variant_id": "M5B"
+ },
+ {
+  "claim_contradicted": null,
+  "reasons": [
+   "SOURCE_SNAPSHOT_UNREGISTERED"
+  ],
+  "snapshots": [
+   {
+    "candidate_by_year": null,
+    "candidate_line_count": null,
+    "counterexample_ids": [],
+    "manifest_differs_from_pristine": true,
+    "membership": null,
+    "reasons": [
+     "SOURCE_SNAPSHOT_UNREGISTERED"
+    ],
+    "reference_by_year": null,
+    "snapshot": "STALE",
+    "status": "NOT_VERIFIED"
+   }
+  ],
+  "status": "NOT_VERIFIED",
+  "variant_id": "C1"
+ },
+ {
+  "claim_contradicted": null,
+  "reasons": [
+   "APPROVAL_MISSING"
+  ],
+  "snapshots": [
+   {
+    "candidate_by_year": {
+     "2024": "310780.14",
+     "2025": "261972.06",
+     "2026": "155221.02"
+    },
+    "candidate_line_count": 840,
+    "counterexample_ids": [],
+    "manifest_differs_from_pristine": true,
+    "membership": {
+     "amount_differs": 0,
+     "candidate_not_expected": 0,
+     "expected_not_in_candidate": 0
+    },
+    "reasons": [],
+    "reference_by_year": {
+     "2024": "310780.14",
+     "2025": "261972.06",
+     "2026": "155221.02"
+    },
+    "snapshot": "PINNED",
+    "status": "CONFORMS"
+   }
+  ],
+  "status": "NOT_VERIFIED",
+  "variant_id": "C2A"
+ },
+ {
+  "claim_contradicted": null,
+  "reasons": [
+   "REQUIREMENT_NOT_IN_FORCE"
+  ],
+  "snapshots": [
+   {
+    "candidate_by_year": {
+     "2024": "310780.14",
+     "2025": "261972.06",
+     "2026": "155221.02"
+    },
+    "candidate_line_count": 840,
+    "counterexample_ids": [],
+    "manifest_differs_from_pristine": true,
+    "membership": {
+     "amount_differs": 0,
+     "candidate_not_expected": 0,
+     "expected_not_in_candidate": 0
+    },
+    "reasons": [],
+    "reference_by_year": {
+     "2024": "310780.14",
+     "2025": "261972.06",
+     "2026": "155221.02"
+    },
+    "snapshot": "PINNED",
+    "status": "CONFORMS"
+   }
+  ],
+  "status": "NOT_APPLICABLE",
+  "variant_id": "C2B"
+ },
+ {
+  "claim_contradicted": true,
+  "reasons": [
+   "CANDIDATE_CLAIM_CONTRADICTED",
+   "MEMBERSHIP_MISMATCH",
+   "TOTAL_MISMATCH"
+  ],
+  "snapshots": [
+   {
+    "candidate_by_year": {
+     "2024": "366057.38",
+     "2025": "288072.98",
+     "2026": "138501.23"
+    },
+    "candidate_line_count": 889,
+    "counterexample_ids": [
+     "1",
+     "2",
+     "3",
+     "4",
+     "5",
+     "20",
+     "21",
+     "58",
+     "59",
+     "60"
+    ],
+    "manifest_differs_from_pristine": true,
+    "membership": {
+     "amount_differs": 0,
+     "candidate_not_expected": 718,
+     "expected_not_in_candidate": 669
+    },
+    "reasons": [
+     "TOTAL_MISMATCH",
+     "MEMBERSHIP_MISMATCH"
+    ],
+    "reference_by_year": {
+     "2024": "310780.14",
+     "2025": "261972.06",
+     "2026": "155221.02"
+    },
+    "snapshot": "PINNED",
+    "status": "MISMATCH"
+   }
+  ],
+  "status": "NONCONFORMING_IMPLEMENTATION",
+  "variant_id": "C3"
+ },
+ {
+  "claim_contradicted": null,
+  "reasons": [
+   "EXECUTION_FAILURE"
+  ],
+  "snapshots": [
+   {
+    "candidate_by_year": null,
+    "candidate_line_count": null,
+    "counterexample_ids": [],
+    "manifest_differs_from_pristine": true,
+    "membership": null,
+    "reasons": [
+     "EXECUTION_FAILURE"
+    ],
+    "reference_by_year": null,
+    "snapshot": "PINNED",
+    "status": "NOT_VERIFIED"
+   }
+  ],
+  "status": "NOT_VERIFIED",
+  "variant_id": "C4"
+ },
+ {
+  "claim_contradicted": null,
+  "reasons": [
+   "DATA_GUARD_FAILURE",
+   "MEMBERSHIP_MISMATCH",
+   "TOTAL_MISMATCH"
+  ],
+  "snapshots": [
+   {
+    "candidate_by_year": {
+     "2024": "1634542.08",
+     "2025": "1399127.85",
+     "2026": "752191.54"
+    },
+    "candidate_line_count": 3304,
+    "counterexample_ids": [
+     "1"
+    ],
+    "manifest_differs_from_pristine": false,
+    "membership": {
+     "amount_differs": 0,
+     "candidate_not_expected": 0,
+     "expected_not_in_candidate": 1
+    },
+    "reasons": [
+     "DATA_GUARD_FAILURE",
+     "TOTAL_MISMATCH",
+     "MEMBERSHIP_MISMATCH"
+    ],
+    "reference_by_year": {
+     "2024": "1634542.08",
+     "2025": "1398759.55",
+     "2026": "752191.54"
+    },
+    "snapshot": "NEGQTY",
+    "status": "NOT_VERIFIED"
+   }
+  ],
+  "status": "NOT_VERIFIED",
+  "variant_id": "C5"
+ }
+]

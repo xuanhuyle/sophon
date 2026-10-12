@@ -1,0 +1,23 @@
+--- pristine/dbt/retail_dwh/models/marts/semantic/_metrics.yml
++++ candidate/dbt/retail_dwh/models/marts/semantic/_metrics.yml
+@@ -117,3 +117,11 @@
+     type_params:
+       numerator: repeat_customers
+       denominator: purchasing_customers
++
++  - name: french_market_revenue
++    description: "Refactored: revenue of completed orders whose customer country is France."
++    label: "French market revenue (customer country)"
++    type: simple
++    type_params:
++      measure: revenue
++    filter: "{{ Dimension('customer__country') }} IN ('France') AND {{ Dimension('sales__status') }} IN ('completed')"
+--- pristine/dbt/retail_dwh/models/marts/facts/fact_sales.sql
++++ candidate/dbt/retail_dwh/models/marts/facts/fact_sales.sql
+@@ -1,4 +1,5 @@
+--- Gold fact: one row per order line (the grain). Joins items -> orders ->
++-- Gold fact: one row per order line (the grain).
++-- (E4 M6: comment-only refactor; no behaviour change intended) Joins items -> orders ->
+ -- products to bring in the foreign keys and compute additive measures.
+ --
+ -- Measures (all additive, the property that makes a star schema fast):

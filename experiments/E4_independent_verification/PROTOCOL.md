@@ -163,4 +163,15 @@ NOT_VERIFIED even if numbers also differ. Variant precedence:
 
 ## Amendments
 
-(none)
+Added after the freeze. The frozen bytes are `PROTOCOL.md` at `6553fb3` (sha256 in `FREEZE_MANIFEST.txt`). No
+reference, variant, candidate, expectation or gate changed.
+
+1. **Code written after the freeze, as planned:**
+   - `src/checker.py`, `src/gate.py` (scorer + verdict), `src/replay.py`;
+   - `src/extract_evidence.py`, which writes readable compiled SQL, diffs and counterexamples from the run;
+   - `tests/test_e4.py`.
+2. **Replay environment.** The child process gets `PATH` and a temporary `HOME` (dbt needs a writable home), with
+   `python -I` and a temporary cwd. It rebuilds every fixture and candidate stack under `runs/checker_replay`.
+3. **Q3 evidence tokens.** The scorer looks for these strings in the compiled SQL: `sales__unit_price > 100`
+   (M3), `!= 'cancelled'` (M4) and `store__store_country` (M5). M5B is evidenced by its `stg_customers.sql` diff
+   plus mismatching rebuilt rows, as §5 specifies for dbt model mutations.

@@ -1,0 +1,23 @@
+{
+ "argv": [
+  "<python>",
+  "-I",
+  "src/checker.py",
+  "--upstream",
+  ".upstream",
+  "--out",
+  "<replay>"
+ ],
+ "env_keys": [
+  "HOME",
+  "PATH"
+ ],
+ "cwd": "fresh temporary directory",
+ "exit_code": 0,
+ "stdout": "M1    VERIFIED_FOR_LAB_CHECKS                                                                                                   PINNED=CONFORMS BOUNDARY=CONFORMS\nM2    VERIFIED_FOR_LAB_CHECKS                                                                                                   PINNED=CONFORMS\nM6B   NO_MATERIAL_DRIFT_FOR_CHECKS                                                                                              PINNED=CONFORMS BOUNDARY=CONFORMS\nM6    NO_MATERIAL_DRIFT_FOR_CHECKS                                                                                              PINNED=CONFORMS\nM3    NONCONFORMING_IMPLEMENTATION   MEMBERSHIP_MISMATCH,TOTAL_MISMATCH                                                         PINNED=CONFORMS BOUNDARY=MISMATCH\nM4    NONCONFORMING_IMPLEMENTATION   MEMBERSHIP_MISMATCH,TOTAL_MISMATCH                                                         PINNED=MISMATCH BOUNDARY=MISMATCH\nM5    NONCONFORMING_IMPLEMENTATION   MEMBERSHIP_MISMATCH,TOTAL_MISMATCH                                                         PINNED=MISMATCH\nM5B   NONCONFORMING_IMPLEMENTATION   MEMBERSHIP_MISMATCH,TOTAL_MISMATCH                                                         PINNED=MISMATCH\nC1    NOT_VERIFIED                   SOURCE_SNAPSHOT_UNREGISTERED                                                               STALE=NOT_VERIFIED\nC2A   NOT_VERIFIED                   APPROVAL_MISSING                                                                           PINNED=CONFORMS\nC2B   NOT_APPLICABLE                 REQUIREMENT_NOT_IN_FORCE                                                                   PINNED=CONFORMS\nC3    NONCONFORMING_IMPLEMENTATION   CANDIDATE_CLAIM_CONTRADICTED,MEMBERSHIP_MISMATCH,TOTAL_MISMATCH                            PINNED=MISMATCH\nC4    NOT_VERIFIED                   EXECUTION_FAILURE                                                                          PINNED=NOT_VERIFIED\nC5    NOT_VERIFIED                   DATA_GUARD_FAILURE,MEMBERSHIP_MISMATCH,TOTAL_MISMATCH                                      NEGQTY=NOT_VERIFIED\n",
+ "stderr_tail": "",
+ "normalized_scored_sha256": "ad324aa1e71fd0ca820774e084eeddbe0c5777ec8ccd59f4b66b678c80172fc1",
+ "normalized_replay_sha256": "ad324aa1e71fd0ca820774e084eeddbe0c5777ec8ccd59f4b66b678c80172fc1",
+ "normalized_identical": true,
+ "note": "every fixture and candidate stack is rebuilt in this process (runs/checker_replay); no scored artefact is reused"
+}
