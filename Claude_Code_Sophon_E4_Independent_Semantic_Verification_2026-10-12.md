@@ -79,6 +79,19 @@ Before implementing the E4 detector or running scored mutations:
 
 The same engineer is designing references and mutations, so this is **not independent case authorship**. Independence means *separate frozen approved reference / oracle from candidate implementation*, not third-party adjudication.
 
+## 5A. CRITICAL E3.1→E4 integration trap: baseline replay is not candidate inspection
+
+E3.1's `src/e31.py::fresh_check` explicitly calls `trusted_reading(...)` and runs **the trusted reference reading's native query on a rebuilt pristine warehouse**, then compares a candidate's *recorded receipts*. This is correct for E3.1's purpose (detect poisoned receipts), but **it does not inspect an altered actual MetricFlow implementation**. An E4 harness that simply calls E3.1's fresh verifier and claims it detected a wrong implementation has not performed E4.
+
+For E4, the **implementation under inspection must be independently instantiated from the actual mutated semantic YAML/dbt code and genuinely executed by MetricFlow on its own controlled warehouse/semantic manifest**. The approved interpretation and independent raw-data oracle must remain anchored to the original LAB governing source and explicitly frozen authority. These may have different hashes: an altered candidate semantic manifest is *expected*, not by itself evidence of business nonconformance.
+
+Therefore:
+- Run and record the **candidate** metric/query against the **candidate** native semantic stack; record the compiled SQL, manifest fingerprint, actual results and lineage. Prove the mutations were really effective. Separately run the **reference** calculation from source rows and approved meaning.
+- Do not call a mismatch of candidate manifest hash versus the pristine E3.1 manifest a substantive `NONCONFORMING_IMPLEMENTATION` finding. That mismatch can indicate a changed version or an unverifiable provenance claim; only an independently demonstrated behavioral/semantic mismatch with an identified source-row counterexample establishes substantive nonconformance.
+- If a candidate metric is renamed or its declared filters change, do not quietly substitute the E3 trusted query in place of the candidate. Conversely, changes that preserve approved behavior should not be rejected solely because their semantic artifact hash differs.
+- For the **two mandatory native YAML/dbt mutations**, inspect the actual resulting compiled native SQL and source-row membership. If the candidate executor cannot run separately from the pinned pristine verifier, return PARTIAL/BLOCKED according to the frozen rules, **never PASS**.
+- Treat E3.1 as a source/authority/time/receipt **foundation**, not the semantic conformance detector itself. A candidate implementation is not "verified" simply because its pristine predecessor was.
+
 ## 6. Verification process and abstention
 
 For every variant:
