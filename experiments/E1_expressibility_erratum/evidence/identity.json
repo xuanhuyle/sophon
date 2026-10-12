@@ -1,0 +1,86 @@
+{
+ "upstream_commit": "312e97ad192dcef02f688e31edc0a08c6cf4345f",
+ "upstream_commit_ok": true,
+ "env_freeze_sha256": "db0a13e99f318c413caf84a108b6a95ef3d2167376f59285ce15e7b858586add",
+ "env_freeze_ok": true,
+ "semantic_manifest_sha256": "e8e9bfc7e1188bc3eb3f5ac551e8ed5350817af14a5471bdbcdfdca2bc01bd48",
+ "semantic_manifest_ok": true,
+ "csv_sha256": {
+  "customers.csv": "e570cfec57af94cee3b974db5642fe0c276b495f83dd82e6af077dbb3784680d",
+  "order_items.csv": "513de0a77e90c7312a2935d47efcced60b6811a33de589e1a4fe63d2045e5f26",
+  "orders.csv": "be942a616a816158924f538b8f9cde29de773bc324411c5c6f7c83c980ec4f03",
+  "products.csv": "3783c0e35d83c571e8fc18bbafa98f59e217944288a92f590b6a15d4320c2311",
+  "stores.csv": "78d2cbff192a861f4f880bcc0c25ddc43df72bfecf8a3517abf18723109f8c44"
+ },
+ "csv_ok": true,
+ "N0_completed_revenue": {
+  "2026": "792441.45",
+  "2025": "1477833.96",
+  "2024": "1707052.80"
+ },
+ "N0_e0": {
+  "2024": "1707052.80",
+  "2025": "1477833.96",
+  "2026": "792441.45"
+ },
+ "N0_ok": true,
+ "ok": true,
+ "fingerprints": {
+  "semantic_manifest_sha256": "e8e9bfc7e1188bc3eb3f5ac551e8ed5350817af14a5471bdbcdfdca2bc01bd48",
+  "dbt_manifest_sha256": "2dc18ac43958f931e56ed58c3901e0b775b5cd14a0fe22c38247f593d05a4bb9",
+  "warehouse_sha256": "3d65717f746681d48d7f995fe0f3e5386734fafcee2f4ad50c73238e856236ad",
+  "warehouse_bytes": 3420160
+ },
+ "N0_receipt": {
+  "argv": [
+   "mf",
+   "query",
+   "--metrics",
+   "completed_revenue",
+   "--group-by",
+   "metric_time__year",
+   "--csv",
+   "<csv>"
+  ],
+  "cwd": "/home/user/sophon-erratum/experiments/E1_expressibility_erratum/.upstream/dbt/retail_dwh",
+  "env": {
+   "DBT_PROFILES_DIR": "/home/user/sophon-erratum/experiments/E1_expressibility_erratum/.upstream/dbt/retail_dwh",
+   "WAREHOUSE_DB": "/home/user/sophon-erratum/experiments/E1_expressibility_erratum/.upstream/data/warehouse.duckdb"
+  },
+  "exit_code": 0,
+  "elapsed_s": 3.459,
+  "stdout": "\u203c\ufe0f Warning: A new version of the MetricFlow CLI is available.\n\ud83d\udca1 Please update to version 0.15.0, released 2026-09-10 20:36:50 by running:\n\t$ pip install --upgrade dbt-metricflow\n\n\n\n\u280b Initiating query\u2026\n\n\u2819 Initiating query\u2026\n\u2714 Success \ud83e\udd84 - query completed after 0.06 seconds\n\ud83d\udda8 Wrote query output to /tmp/tmpza4v_34q/result.csv\n\n",
+  "stderr": "",
+  "stdout_sha256": "2e9816ff95335fe9e66bcbd736b3b44a77b50237955a6b3fe9af285f32e0cbec",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "csv_written": true,
+  "csv_sha256": "e693be2c5d1611e5310c7b40b0a8744c2fa96eb4b9fac2a34b5756cc01c68a71",
+  "fingerprints_before": {
+   "semantic_manifest_sha256": "e8e9bfc7e1188bc3eb3f5ac551e8ed5350817af14a5471bdbcdfdca2bc01bd48",
+   "dbt_manifest_sha256": "2dc18ac43958f931e56ed58c3901e0b775b5cd14a0fe22c38247f593d05a4bb9",
+   "warehouse_sha256": "3d65717f746681d48d7f995fe0f3e5386734fafcee2f4ad50c73238e856236ad",
+   "warehouse_bytes": 3420160
+  },
+  "fingerprints_after": {
+   "semantic_manifest_sha256": "e8e9bfc7e1188bc3eb3f5ac551e8ed5350817af14a5471bdbcdfdca2bc01bd48",
+   "dbt_manifest_sha256": "2dc18ac43958f931e56ed58c3901e0b775b5cd14a0fe22c38247f593d05a4bb9",
+   "warehouse_sha256": "3d65717f746681d48d7f995fe0f3e5386734fafcee2f4ad50c73238e856236ad",
+   "warehouse_bytes": 3420160
+  },
+  "mf_identity": {
+   "mf_path": "/home/user/sophon-erratum/experiments/E1_expressibility_erratum/.upstream/.venv/bin/mf",
+   "mf_sha256": "04cc2240488f2cc8537b256ba4711bf77ab540e0d250f38daaec2ce5fc10d62a",
+   "record_entry": "../../../bin/mf",
+   "record_hash": "sha256=BMwiQEiPLMhTeyVrpHEb93q1QODSUPONquws5fwQ1io",
+   "distribution": "dbt_metricflow-0.13.0.dist-info",
+   "versions": {
+    "dbt-metricflow": "0.13.0",
+    "metricflow": "0.211.0",
+    "dbt-core": "1.11.11",
+    "dbt-duckdb": "1.10.1",
+    "dbt-semantic-interfaces": "0.9.0",
+    "duckdb": "1.5.4"
+   }
+  }
+ }
+}

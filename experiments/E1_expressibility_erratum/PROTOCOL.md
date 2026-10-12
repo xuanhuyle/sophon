@@ -137,4 +137,23 @@ These apply whatever the verdict.
 
 ## Amendments
 
-(none)
+These were added after the freeze. The frozen bytes are `PROTOCOL.md` at commit `6068e25` (sha256 `aeeb2c54…` in
+`FREEZE_MANIFEST.txt`). No gate, threshold or oracle definition changed.
+
+1. **Compiled SQL truncated in run 1.**
+   - The first reproduction's `--explain` extraction cut at the first `SELECT`, the same way E0's `explain`
+     does. That dropped the plan's opening `WITH sma_10002_cte AS (` line.
+   - The extraction now starts at the first line beginning with `WITH` or `SELECT`. The whole reproduction was
+     re-run.
+   - The run-1 file equals the run-2 file minus that header. The run-1 gate summary is identical apart from
+     timestamps.
+   - Run 1 is kept in `evidence/run1_sql_truncated/`.
+2. **How G7 picks its lines** (a refinement that the specification permits):
+   - The negative-quantity control uses the lowest-id completed line with u **> 100** (368.30), so that the
+     inequality flip is strict.
+   - The zero-quantity and near-threshold controls use completed lines whose orders have no line with u ≥ 100.
+     That way the `orders` count can only move through the touched line.
+3. **G7 guard source.** In a control, `price_source_exact` compares against the copy's own rewritten rows. The
+   control simulates an estate whose source carries those values.
+4. **The gate was first computed inline, then saved** as `src/gate.py` with the same logic and re-run. The output
+   is identical.

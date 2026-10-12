@@ -1,0 +1,20 @@
+{
+ "evidence": {
+  "source_column_present": true,
+  "direct_dimension_present": false,
+  "native_witness_accepted": true,
+  "native_equals_oracle_yearly": true,
+  "native_equals_oracle_lines": true,
+  "guards": {
+   "quantity_positive": true,
+   "revenue_exact": true,
+   "price_source_exact": true,
+   "line_entity_unique": true,
+   "exact_comparison": true
+  }
+ },
+ "result": {
+  "classification": "NATIVELY_DERIVABLE_WITH_PROOF_AND_GUARDS",
+  "failed": []
+ }
+}

@@ -1,0 +1,550 @@
+{
+ "selection": {
+  "hi": [
+   "1",
+   "1",
+   "3",
+   "368.30"
+  ],
+  "lo": [
+   "2",
+   "1",
+   "3",
+   "44.06"
+  ],
+  "lo_alone": [
+   "22",
+   "9",
+   "3",
+   "77.36"
+  ],
+  "near": [
+   [
+    "27",
+    "11",
+    "2",
+    "74.72"
+   ],
+   [
+    "48",
+    "19",
+    "3",
+    "65.97"
+   ],
+   [
+    "50",
+    "20",
+    "4",
+    "48.96"
+   ]
+  ]
+ },
+ "neg_quantity": {
+  "control": "neg_quantity",
+  "updates": [
+   {
+    "sales_id": 1,
+    "quantity": -1,
+    "unit_price": "368.30"
+   },
+   {
+    "sales_id": 2,
+    "quantity": -1,
+    "unit_price": "44.06"
+   }
+  ],
+  "native_ok": true,
+  "native_yearly": {
+   "2026": "752191.54",
+   "2025": "1399083.79",
+   "2024": "1634542.08"
+  },
+  "truth_yearly": {
+   "2024": "1634542.08",
+   "2025": "1398759.55",
+   "2026": "752191.54"
+  },
+  "yearly_equal": false,
+  "lines_equal": false,
+  "touched_lines": {
+   "1": {
+    "in_native_derived": false,
+    "in_truth": true,
+    "native_amount": null,
+    "truth_amount": "-368.30"
+   },
+   "2": {
+    "in_native_derived": true,
+    "in_truth": false,
+    "native_amount": "-44.06",
+    "truth_amount": null
+   }
+  },
+  "guards": {
+   "quantity_positive": false,
+   "revenue_exact": true,
+   "price_source_exact": true,
+   "line_entity_unique": true,
+   "exact_comparison": true
+  },
+  "guard_detail_quantity": {
+   "ok": false,
+   "min_quantity": -1,
+   "nonpositive_ids": [
+    "1",
+    "2"
+   ],
+   "nonpositive_count": 2
+  },
+  "capability": {
+   "classification": "SOURCE_PRESENT_BUT_UNSUPPORTED_BY_NATIVE_SEMANTICS",
+   "failed": [
+    "quantity_positive",
+    "native_equals_oracle_yearly",
+    "native_equals_oracle_lines"
+   ]
+  },
+  "pinned_warehouse_unchanged": true,
+  "receipts": {
+   "NW": {
+    "argv": [
+     "mf",
+     "query",
+     "--metrics",
+     "revenue",
+     "--group-by",
+     "metric_time__year",
+     "--where",
+     "{{ Metric('revenue', group_by=['sales']) }} >= 100 * {{ Metric('quantity_sold', group_by=['sales']) }} AND {{ Dimension('sales__status') }} = 'completed'",
+     "--csv",
+     "<csv>"
+    ],
+    "cwd": "/home/user/sophon-erratum/experiments/E1_expressibility_erratum/.upstream/dbt/retail_dwh",
+    "env": {
+     "DBT_PROFILES_DIR": "/home/user/sophon-erratum/experiments/E1_expressibility_erratum/.upstream/dbt/retail_dwh",
+     "WAREHOUSE_DB": "/home/user/sophon-erratum/experiments/E1_expressibility_erratum/runs/controls/neg_quantity/warehouse.duckdb"
+    },
+    "exit_code": 0,
+    "elapsed_s": 4.603,
+    "stdout": "\u203c\ufe0f Warning: A new version of the MetricFlow CLI is available.\n\ud83d\udca1 Please update to version 0.15.0, released 2026-09-10 20:36:50 by running:\n\t$ pip install --upgrade dbt-metricflow\n\n\n\n\u280b Initiating query\u2026\n\n\u2819 Initiating query\u2026\n\n\u2839 Initiating query\u2026\n\u2714 Success \ud83e\udd84 - query completed after 0.13 seconds\n\ud83d\udda8 Wrote query output to /tmp/tmp3yk117x3/result.csv\n\n",
+    "stderr": "",
+    "stdout_sha256": "171b828656abc1d7434e4a460f08c1ed2d65a1ca73990f51e8192089944e2b56",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "csv_written": true,
+    "csv_sha256": "6255cce1a41a1d4502128ea47c729bb90088c2aa4bbbc0cf13c6e7853fb98272",
+    "fingerprints_before": {
+     "semantic_manifest_sha256": "e8e9bfc7e1188bc3eb3f5ac551e8ed5350817af14a5471bdbcdfdca2bc01bd48",
+     "dbt_manifest_sha256": "2dc18ac43958f931e56ed58c3901e0b775b5cd14a0fe22c38247f593d05a4bb9",
+     "warehouse_sha256": "f65f03063908598619ea7e30722745ed5c639785b3a8e36ae3ccad38e2e74b3b",
+     "warehouse_bytes": 3944448
+    },
+    "fingerprints_after": {
+     "semantic_manifest_sha256": "e8e9bfc7e1188bc3eb3f5ac551e8ed5350817af14a5471bdbcdfdca2bc01bd48",
+     "dbt_manifest_sha256": "2dc18ac43958f931e56ed58c3901e0b775b5cd14a0fe22c38247f593d05a4bb9",
+     "warehouse_sha256": "f65f03063908598619ea7e30722745ed5c639785b3a8e36ae3ccad38e2e74b3b",
+     "warehouse_bytes": 3944448
+    },
+    "mf_identity": {
+     "mf_path": "/home/user/sophon-erratum/experiments/E1_expressibility_erratum/.upstream/.venv/bin/mf",
+     "mf_sha256": "04cc2240488f2cc8537b256ba4711bf77ab540e0d250f38daaec2ce5fc10d62a",
+     "record_entry": "../../../bin/mf",
+     "record_hash": "sha256=BMwiQEiPLMhTeyVrpHEb93q1QODSUPONquws5fwQ1io",
+     "distribution": "dbt_metricflow-0.13.0.dist-info",
+     "versions": {
+      "dbt-metricflow": "0.13.0",
+      "metricflow": "0.211.0",
+      "dbt-core": "1.11.11",
+      "dbt-duckdb": "1.10.1",
+      "dbt-semantic-interfaces": "0.9.0",
+      "duckdb": "1.5.4"
+     }
+    }
+   },
+   "NL_exit": 0,
+   "NL_rows": 3305
+  }
+ },
+ "zero_quantity": {
+  "control": "zero_quantity",
+  "updates": [
+   {
+    "sales_id": 22,
+    "quantity": 0,
+    "unit_price": "77.36"
+   }
+  ],
+  "native_ok": true,
+  "native_yearly": {
+   "2025": "1400232.75",
+   "2024": "1634542.08",
+   "2026": "752191.54"
+  },
+  "truth_yearly": {
+   "2024": "1634542.08",
+   "2025": "1400232.75",
+   "2026": "752191.54"
+  },
+  "yearly_equal": true,
+  "lines_equal": false,
+  "touched_lines": {
+   "22": {
+    "in_native_derived": true,
+    "in_truth": false,
+    "native_amount": "0.00",
+    "truth_amount": null
+   }
+  },
+  "guards": {
+   "quantity_positive": false,
+   "revenue_exact": true,
+   "price_source_exact": true,
+   "line_entity_unique": true,
+   "exact_comparison": true
+  },
+  "guard_detail_quantity": {
+   "ok": false,
+   "min_quantity": 0,
+   "nonpositive_ids": [
+    "22"
+   ],
+   "nonpositive_count": 1
+  },
+  "capability": {
+   "classification": "SOURCE_PRESENT_BUT_UNSUPPORTED_BY_NATIVE_SEMANTICS",
+   "failed": [
+    "quantity_positive",
+    "native_equals_oracle_lines"
+   ]
+  },
+  "pinned_warehouse_unchanged": true,
+  "receipts": {
+   "NW": {
+    "argv": [
+     "mf",
+     "query",
+     "--metrics",
+     "revenue",
+     "--group-by",
+     "metric_time__year",
+     "--where",
+     "{{ Metric('revenue', group_by=['sales']) }} >= 100 * {{ Metric('quantity_sold', group_by=['sales']) }} AND {{ Dimension('sales__status') }} = 'completed'",
+     "--csv",
+     "<csv>"
+    ],
+    "cwd": "/home/user/sophon-erratum/experiments/E1_expressibility_erratum/.upstream/dbt/retail_dwh",
+    "env": {
+     "DBT_PROFILES_DIR": "/home/user/sophon-erratum/experiments/E1_expressibility_erratum/.upstream/dbt/retail_dwh",
+     "WAREHOUSE_DB": "/home/user/sophon-erratum/experiments/E1_expressibility_erratum/runs/controls/zero_quantity/warehouse.duckdb"
+    },
+    "exit_code": 0,
+    "elapsed_s": 3.425,
+    "stdout": "\u203c\ufe0f Warning: A new version of the MetricFlow CLI is available.\n\ud83d\udca1 Please update to version 0.15.0, released 2026-09-10 20:36:50 by running:\n\t$ pip install --upgrade dbt-metricflow\n\n\n\n\u280b Initiating query\u2026\n\n\u2819 Initiating query\u2026\n\n\u2839 Initiating query\u2026\n\u2714 Success \ud83e\udd84 - query completed after 0.12 seconds\n\ud83d\udda8 Wrote query output to /tmp/tmpdmixp2q7/result.csv\n\n",
+    "stderr": "",
+    "stdout_sha256": "5193f5454908bbc3691e2afb57be23d93836e5e46afc1b72ca6ae9e54bfbe13f",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "csv_written": true,
+    "csv_sha256": "c58476180854da825f4a8074c76e4bde56b056e55de0aee329789c4dfbae7a59",
+    "fingerprints_before": {
+     "semantic_manifest_sha256": "e8e9bfc7e1188bc3eb3f5ac551e8ed5350817af14a5471bdbcdfdca2bc01bd48",
+     "dbt_manifest_sha256": "2dc18ac43958f931e56ed58c3901e0b775b5cd14a0fe22c38247f593d05a4bb9",
+     "warehouse_sha256": "8f96544b05d09a460db02c270589f9a6069bcf31a7c40228102abb36bc6d7ec8",
+     "warehouse_bytes": 3944448
+    },
+    "fingerprints_after": {
+     "semantic_manifest_sha256": "e8e9bfc7e1188bc3eb3f5ac551e8ed5350817af14a5471bdbcdfdca2bc01bd48",
+     "dbt_manifest_sha256": "2dc18ac43958f931e56ed58c3901e0b775b5cd14a0fe22c38247f593d05a4bb9",
+     "warehouse_sha256": "8f96544b05d09a460db02c270589f9a6069bcf31a7c40228102abb36bc6d7ec8",
+     "warehouse_bytes": 3944448
+    },
+    "mf_identity": {
+     "mf_path": "/home/user/sophon-erratum/experiments/E1_expressibility_erratum/.upstream/.venv/bin/mf",
+     "mf_sha256": "04cc2240488f2cc8537b256ba4711bf77ab540e0d250f38daaec2ce5fc10d62a",
+     "record_entry": "../../../bin/mf",
+     "record_hash": "sha256=BMwiQEiPLMhTeyVrpHEb93q1QODSUPONquws5fwQ1io",
+     "distribution": "dbt_metricflow-0.13.0.dist-info",
+     "versions": {
+      "dbt-metricflow": "0.13.0",
+      "metricflow": "0.211.0",
+      "dbt-core": "1.11.11",
+      "dbt-duckdb": "1.10.1",
+      "dbt-semantic-interfaces": "0.9.0",
+      "duckdb": "1.5.4"
+     }
+    }
+   },
+   "NL_exit": 0,
+   "NL_rows": 3306,
+   "NO": {
+    "argv": [
+     "mf",
+     "query",
+     "--metrics",
+     "orders",
+     "--group-by",
+     "metric_time__year",
+     "--where",
+     "{{ Metric('revenue', group_by=['sales']) }} >= 100 * {{ Metric('quantity_sold', group_by=['sales']) }} AND {{ Dimension('sales__status') }} = 'completed'",
+     "--csv",
+     "<csv>"
+    ],
+    "cwd": "/home/user/sophon-erratum/experiments/E1_expressibility_erratum/.upstream/dbt/retail_dwh",
+    "env": {
+     "DBT_PROFILES_DIR": "/home/user/sophon-erratum/experiments/E1_expressibility_erratum/.upstream/dbt/retail_dwh",
+     "WAREHOUSE_DB": "/home/user/sophon-erratum/experiments/E1_expressibility_erratum/runs/controls/zero_quantity/warehouse.duckdb"
+    },
+    "exit_code": 0,
+    "elapsed_s": 3.485,
+    "stdout": "\u203c\ufe0f Warning: A new version of the MetricFlow CLI is available.\n\ud83d\udca1 Please update to version 0.15.0, released 2026-09-10 20:36:50 by running:\n\t$ pip install --upgrade dbt-metricflow\n\n\n\n\u280b Initiating query\u2026\n\n\u2819 Initiating query\u2026\n\n\u2839 Initiating query\u2026\n\u2714 Success \ud83e\udd84 - query completed after 0.11 seconds\n\ud83d\udda8 Wrote query output to /tmp/tmpblkkcjn7/result.csv\n\n",
+    "stderr": "",
+    "stdout_sha256": "e3751fd70ed4a8c4d6039371f4e273ee1224490e9af5c4222934131654b4ff12",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "csv_written": true,
+    "csv_sha256": "b30c0ef61cc85947c5a6467120545fffc3762396b0d552a89f09dcd723267c22",
+    "fingerprints_before": {
+     "semantic_manifest_sha256": "e8e9bfc7e1188bc3eb3f5ac551e8ed5350817af14a5471bdbcdfdca2bc01bd48",
+     "dbt_manifest_sha256": "2dc18ac43958f931e56ed58c3901e0b775b5cd14a0fe22c38247f593d05a4bb9",
+     "warehouse_sha256": "8f96544b05d09a460db02c270589f9a6069bcf31a7c40228102abb36bc6d7ec8",
+     "warehouse_bytes": 3944448
+    },
+    "fingerprints_after": {
+     "semantic_manifest_sha256": "e8e9bfc7e1188bc3eb3f5ac551e8ed5350817af14a5471bdbcdfdca2bc01bd48",
+     "dbt_manifest_sha256": "2dc18ac43958f931e56ed58c3901e0b775b5cd14a0fe22c38247f593d05a4bb9",
+     "warehouse_sha256": "8f96544b05d09a460db02c270589f9a6069bcf31a7c40228102abb36bc6d7ec8",
+     "warehouse_bytes": 3944448
+    },
+    "mf_identity": {
+     "mf_path": "/home/user/sophon-erratum/experiments/E1_expressibility_erratum/.upstream/.venv/bin/mf",
+     "mf_sha256": "04cc2240488f2cc8537b256ba4711bf77ab540e0d250f38daaec2ce5fc10d62a",
+     "record_entry": "../../../bin/mf",
+     "record_hash": "sha256=BMwiQEiPLMhTeyVrpHEb93q1QODSUPONquws5fwQ1io",
+     "distribution": "dbt_metricflow-0.13.0.dist-info",
+     "versions": {
+      "dbt-metricflow": "0.13.0",
+      "metricflow": "0.211.0",
+      "dbt-core": "1.11.11",
+      "dbt-duckdb": "1.10.1",
+      "dbt-semantic-interfaces": "0.9.0",
+      "duckdb": "1.5.4"
+     }
+    }
+   }
+  },
+  "native_orders_yearly": {
+   "2025": "629",
+   "2024": "689",
+   "2026": "312"
+  },
+  "truth_orders_yearly": {
+   "2024": "689",
+   "2025": "628",
+   "2026": "312"
+  },
+  "orders_equal": false
+ },
+ "near_threshold": {
+  "control": "near_threshold",
+  "updates": [
+   {
+    "sales_id": 27,
+    "quantity": 3,
+    "unit_price": "99.99"
+   },
+   {
+    "sales_id": 48,
+    "quantity": 3,
+    "unit_price": "100.00"
+   },
+   {
+    "sales_id": 50,
+    "quantity": 3,
+    "unit_price": "100.01"
+   }
+  ],
+  "native_ok": true,
+  "native_yearly": {
+   "2025": "1400532.75",
+   "2024": "1634542.08",
+   "2026": "752491.57"
+  },
+  "truth_yearly": {
+   "2024": "1634542.08",
+   "2025": "1400532.75",
+   "2026": "752491.57"
+  },
+  "yearly_equal": true,
+  "lines_equal": true,
+  "touched_lines": {
+   "27": {
+    "in_native_derived": false,
+    "in_truth": false,
+    "native_amount": null,
+    "truth_amount": null
+   },
+   "48": {
+    "in_native_derived": true,
+    "in_truth": true,
+    "native_amount": "300.00",
+    "truth_amount": "300.00"
+   },
+   "50": {
+    "in_native_derived": true,
+    "in_truth": true,
+    "native_amount": "300.03",
+    "truth_amount": "300.03"
+   }
+  },
+  "guards": {
+   "quantity_positive": true,
+   "revenue_exact": true,
+   "price_source_exact": true,
+   "line_entity_unique": true,
+   "exact_comparison": true
+  },
+  "guard_detail_quantity": {
+   "ok": true,
+   "min_quantity": 1,
+   "nonpositive_ids": [],
+   "nonpositive_count": 0
+  },
+  "capability": {
+   "classification": "NATIVELY_DERIVABLE_WITH_PROOF_AND_GUARDS",
+   "failed": []
+  },
+  "pinned_warehouse_unchanged": true,
+  "receipts": {
+   "NW": {
+    "argv": [
+     "mf",
+     "query",
+     "--metrics",
+     "revenue",
+     "--group-by",
+     "metric_time__year",
+     "--where",
+     "{{ Metric('revenue', group_by=['sales']) }} >= 100 * {{ Metric('quantity_sold', group_by=['sales']) }} AND {{ Dimension('sales__status') }} = 'completed'",
+     "--csv",
+     "<csv>"
+    ],
+    "cwd": "/home/user/sophon-erratum/experiments/E1_expressibility_erratum/.upstream/dbt/retail_dwh",
+    "env": {
+     "DBT_PROFILES_DIR": "/home/user/sophon-erratum/experiments/E1_expressibility_erratum/.upstream/dbt/retail_dwh",
+     "WAREHOUSE_DB": "/home/user/sophon-erratum/experiments/E1_expressibility_erratum/runs/controls/near_threshold/warehouse.duckdb"
+    },
+    "exit_code": 0,
+    "elapsed_s": 3.468,
+    "stdout": "\u203c\ufe0f Warning: A new version of the MetricFlow CLI is available.\n\ud83d\udca1 Please update to version 0.15.0, released 2026-09-10 20:36:50 by running:\n\t$ pip install --upgrade dbt-metricflow\n\n\n\n\u280b Initiating query\u2026\n\n\u2819 Initiating query\u2026\n\n\u2839 Initiating query\u2026\n\u2714 Success \ud83e\udd84 - query completed after 0.09 seconds\n\ud83d\udda8 Wrote query output to /tmp/tmpvu9u7r5b/result.csv\n\n",
+    "stderr": "",
+    "stdout_sha256": "60ff42a7ea3fbb6bad6fcbea5515b861e2b02997d0c8d23d1c9528debf043575",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "csv_written": true,
+    "csv_sha256": "9379db3ed1a75b0361ae0729ed25c2aa8d5fbb0c5c1c7b353c23ce30210fc2a7",
+    "fingerprints_before": {
+     "semantic_manifest_sha256": "e8e9bfc7e1188bc3eb3f5ac551e8ed5350817af14a5471bdbcdfdca2bc01bd48",
+     "dbt_manifest_sha256": "2dc18ac43958f931e56ed58c3901e0b775b5cd14a0fe22c38247f593d05a4bb9",
+     "warehouse_sha256": "85bd8c7b1065f5ea00394d87dfead9863f7df64a6f66a501e9e566e2d63850b0",
+     "warehouse_bytes": 3944448
+    },
+    "fingerprints_after": {
+     "semantic_manifest_sha256": "e8e9bfc7e1188bc3eb3f5ac551e8ed5350817af14a5471bdbcdfdca2bc01bd48",
+     "dbt_manifest_sha256": "2dc18ac43958f931e56ed58c3901e0b775b5cd14a0fe22c38247f593d05a4bb9",
+     "warehouse_sha256": "85bd8c7b1065f5ea00394d87dfead9863f7df64a6f66a501e9e566e2d63850b0",
+     "warehouse_bytes": 3944448
+    },
+    "mf_identity": {
+     "mf_path": "/home/user/sophon-erratum/experiments/E1_expressibility_erratum/.upstream/.venv/bin/mf",
+     "mf_sha256": "04cc2240488f2cc8537b256ba4711bf77ab540e0d250f38daaec2ce5fc10d62a",
+     "record_entry": "../../../bin/mf",
+     "record_hash": "sha256=BMwiQEiPLMhTeyVrpHEb93q1QODSUPONquws5fwQ1io",
+     "distribution": "dbt_metricflow-0.13.0.dist-info",
+     "versions": {
+      "dbt-metricflow": "0.13.0",
+      "metricflow": "0.211.0",
+      "dbt-core": "1.11.11",
+      "dbt-duckdb": "1.10.1",
+      "dbt-semantic-interfaces": "0.9.0",
+      "duckdb": "1.5.4"
+     }
+    }
+   },
+   "NL_exit": 0,
+   "NL_rows": 3307,
+   "NO": {
+    "argv": [
+     "mf",
+     "query",
+     "--metrics",
+     "orders",
+     "--group-by",
+     "metric_time__year",
+     "--where",
+     "{{ Metric('revenue', group_by=['sales']) }} >= 100 * {{ Metric('quantity_sold', group_by=['sales']) }} AND {{ Dimension('sales__status') }} = 'completed'",
+     "--csv",
+     "<csv>"
+    ],
+    "cwd": "/home/user/sophon-erratum/experiments/E1_expressibility_erratum/.upstream/dbt/retail_dwh",
+    "env": {
+     "DBT_PROFILES_DIR": "/home/user/sophon-erratum/experiments/E1_expressibility_erratum/.upstream/dbt/retail_dwh",
+     "WAREHOUSE_DB": "/home/user/sophon-erratum/experiments/E1_expressibility_erratum/runs/controls/near_threshold/warehouse.duckdb"
+    },
+    "exit_code": 0,
+    "elapsed_s": 3.64,
+    "stdout": "\u203c\ufe0f Warning: A new version of the MetricFlow CLI is available.\n\ud83d\udca1 Please update to version 0.15.0, released 2026-09-10 20:36:50 by running:\n\t$ pip install --upgrade dbt-metricflow\n\n\n\n\u280b Initiating query\u2026\n\n\u2819 Initiating query\u2026\n\n\u2839 Initiating query\u2026\n\u2714 Success \ud83e\udd84 - query completed after 0.16 seconds\n\ud83d\udda8 Wrote query output to /tmp/tmpykibog_h/result.csv\n\n",
+    "stderr": "",
+    "stdout_sha256": "12d7ba089c0d1787322ff9fa0a4a7712c488b76f5da0e19d0a56b5a9f75e6c54",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "csv_written": true,
+    "csv_sha256": "a4480312c2915c8fe7a2980900c8eb5ba165c1ab6185417ca909b6a0b8f16fb5",
+    "fingerprints_before": {
+     "semantic_manifest_sha256": "e8e9bfc7e1188bc3eb3f5ac551e8ed5350817af14a5471bdbcdfdca2bc01bd48",
+     "dbt_manifest_sha256": "2dc18ac43958f931e56ed58c3901e0b775b5cd14a0fe22c38247f593d05a4bb9",
+     "warehouse_sha256": "85bd8c7b1065f5ea00394d87dfead9863f7df64a6f66a501e9e566e2d63850b0",
+     "warehouse_bytes": 3944448
+    },
+    "fingerprints_after": {
+     "semantic_manifest_sha256": "e8e9bfc7e1188bc3eb3f5ac551e8ed5350817af14a5471bdbcdfdca2bc01bd48",
+     "dbt_manifest_sha256": "2dc18ac43958f931e56ed58c3901e0b775b5cd14a0fe22c38247f593d05a4bb9",
+     "warehouse_sha256": "85bd8c7b1065f5ea00394d87dfead9863f7df64a6f66a501e9e566e2d63850b0",
+     "warehouse_bytes": 3944448
+    },
+    "mf_identity": {
+     "mf_path": "/home/user/sophon-erratum/experiments/E1_expressibility_erratum/.upstream/.venv/bin/mf",
+     "mf_sha256": "04cc2240488f2cc8537b256ba4711bf77ab540e0d250f38daaec2ce5fc10d62a",
+     "record_entry": "../../../bin/mf",
+     "record_hash": "sha256=BMwiQEiPLMhTeyVrpHEb93q1QODSUPONquws5fwQ1io",
+     "distribution": "dbt_metricflow-0.13.0.dist-info",
+     "versions": {
+      "dbt-metricflow": "0.13.0",
+      "metricflow": "0.211.0",
+      "dbt-core": "1.11.11",
+      "dbt-duckdb": "1.10.1",
+      "dbt-semantic-interfaces": "0.9.0",
+      "duckdb": "1.5.4"
+     }
+    }
+   }
+  },
+  "native_orders_yearly": {
+   "2026": "313",
+   "2025": "629",
+   "2024": "689"
+  },
+  "truth_orders_yearly": {
+   "2024": "689",
+   "2025": "629",
+   "2026": "313"
+  },
+  "orders_equal": true
+ },
+ "G7": {
+  "a_negative_diverges": true,
+  "a_capability_refuses": true,
+  "b_zero_line_admitted_wrongly": true,
+  "b_orders_diverge": true,
+  "b_revenue_sum_unaffected_observed": true,
+  "b_capability_refuses": true,
+  "c_boundary_exact": true,
+  "c_capability_derivable": true,
+  "pinned_warehouse_unchanged": true,
+  "ok": true
+ }
+}

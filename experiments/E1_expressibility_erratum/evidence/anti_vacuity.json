@@ -1,0 +1,41 @@
+{
+ "NW": {
+  "2025": "1400232.75",
+  "2024": "1634542.08",
+  "2026": "752191.54"
+ },
+ "N2_status_only": {
+  "2025": "1477833.96",
+  "2024": "1707052.80",
+  "2026": "792441.45"
+ },
+ "N1_unfiltered": {
+  "2025": "1866567.68",
+  "2024": "2083998.02",
+  "2026": "944513.09"
+ },
+ "strict_NW_lt_N2_lt_N1": true,
+ "below_threshold_line": {
+  "order_item_id": "2",
+  "unit_price": "44.06",
+  "quantity": "3",
+  "in_native_NL": false
+ },
+ "above_threshold_line": {
+  "order_item_id": "1",
+  "unit_price": "368.3",
+  "quantity": "3",
+  "in_native_NL": true
+ },
+ "ND_direct_dimension_probe": {
+  "where": "{{ Dimension('sales__unit_price') }} >= 100",
+  "accepted": false,
+  "exit_code": 1,
+  "stderr_tail": "",
+  "stdout_tail": "[Resolve Query(['revenue'])]\n    Object Builder Input:\n      Dimension('sales__unit_price')\n\n  Issue Location:\n\n    [Resolve Query(['revenue'])]\n      -> [Resolve SimpleMetric('revenue')]\n\nLog File:: /home/user/sophon-erratum/experiments/E1_expressibility_erratum/.upstream/dbt/retail_dwh/logs/metricflow.log\nArtifact Path: /home/user/sophon-erratum/experiments/E1_expressibility_erratum/.upstream/dbt/retail_dwh/target/semantic_manifest.json\nArtifact Modified Time: 2026-10-12T08:56:54.046404\n\nIf you think you found a bug, please report it here:\n    https://github.com/dbt-labs/metricflow/issues\n\n\n"
+ },
+ "NW_accepted": true,
+ "LD_unit_price_dimensions": [],
+ "LD_dimension_count": 13,
+ "ok": true
+}
