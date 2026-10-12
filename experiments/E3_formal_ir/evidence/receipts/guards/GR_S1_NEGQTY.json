@@ -1,0 +1,74 @@
+{
+ "receipt_id": "GR_S1_NEGQTY",
+ "kind": "GUARD",
+ "snapshot": "COPY_NEGATIVE_QUANTITY",
+ "warehouse_sha256": "3a569e4ac5dbc41cc1feceeb0270efec913ada3312e333ae5408e2646c5e5310",
+ "guards": {
+  "quantity_positive": false,
+  "revenue_exact": true,
+  "price_source_exact": true,
+  "line_entity_unique": true,
+  "exact_comparison": true
+ },
+ "detail": {
+  "quantity_positive": {
+   "ok": false,
+   "min_quantity": -1,
+   "nonpositive_ids": [
+    "1",
+    "2"
+   ],
+   "nonpositive_count": 2
+  },
+  "revenue_exact": {
+   "ok": true,
+   "mismatch_ids": [],
+   "mismatch_count": 0,
+   "rule": "Decimal(revenue) == quantity * Decimal(unit_price) for every fact_sales row"
+  },
+  "price_source_exact": {
+   "ok": true,
+   "mismatch_ids": [],
+   "mismatch_count": 0,
+   "source_max_decimals": 2
+  },
+  "line_entity_unique": {
+   "ok": true,
+   "fact_rows": 5526,
+   "distinct_sales_id": 5526,
+   "source_order_items": 5526
+  },
+  "exact_comparison": {
+   "ok": true,
+   "float_tokens_in_compiled_sql": [],
+   "column_types": {
+    "sales_id": "BIGINT",
+    "order_id": "BIGINT",
+    "customer_id": "BIGINT",
+    "product_id": "BIGINT",
+    "store_id": "BIGINT",
+    "order_date": "DATE",
+    "date_id": "INTEGER",
+    "channel": "VARCHAR",
+    "status": "VARCHAR",
+    "quantity": "INTEGER",
+    "unit_price": "DECIMAL(10,2)",
+    "unit_cost": "DECIMAL(10,2)",
+    "revenue": "DECIMAL(12,2)",
+    "cost_amount": "DECIMAL(12,2)",
+    "profit": "DECIMAL(12,2)",
+    "discount_amount": "DECIMAL(12,2)",
+    "is_completed": "BOOLEAN",
+    "is_returned": "BOOLEAN",
+    "is_cancelled": "BOOLEAN"
+   },
+   "duckdb_types_sum_revenue__100x_sum_quantity__comparison": [
+    "DECIMAL(38,2)",
+    "HUGEINT",
+    "BOOLEAN"
+   ]
+  }
+ },
+ "compiled_sql_sha256": "ad4da5ca015e260cc2717e991afcd8a0cfb33c60b2ab4a5e36601437d766670a",
+ "compiled_sql": "WITH sma_10002_cte AS (\n  SELECT\n    DATE_TRUNC('year', order_date) AS metric_time__year\n    , sales_id AS sales\n    , status AS sales__status\n    , revenue AS __revenue\n    , quantity AS __quantity_sold\n  FROM \"warehouse\".\"gold\".\"fact_sales\" sales_src_10000\n)\n\nSELECT\n  metric_time__year AS metric_time__year\n  , SUM(revenue) AS revenue\nFROM (\n  SELECT\n    subq_9.metric_time__year AS metric_time__year\n    , subq_9.sales__status AS sales__status\n    , subq_15.sales__revenue AS sales__revenue\n    , subq_21.sales__quantity_sold AS sales__quantity_sold\n    , subq_9.__revenue AS revenue\n  FROM (\n    SELECT\n      metric_time__year\n      , sales\n      , sales__status\n      , __revenue\n    FROM sma_10002_cte\n  ) subq_9\n  LEFT OUTER JOIN (\n    SELECT\n      sales\n      , SUM(__revenue) AS sales__revenue\n    FROM sma_10002_cte\n    GROUP BY\n      sales\n  ) subq_15\n  ON\n    subq_9.sales = subq_15.sales\n  LEFT OUTER JOIN (\n    SELECT\n      sales\n      , SUM(__quantity_sold) AS sales__quantity_sold\n    FROM sma_10002_cte\n    GROUP BY\n      sales\n  ) subq_21\n  ON\n    subq_9.sales = subq_21.sales\n) subq_23\nWHERE sales__status = 'completed' AND sales__revenue >= 100 * sales__quantity_sold\nGROUP BY\n  metric_time__year"
+}

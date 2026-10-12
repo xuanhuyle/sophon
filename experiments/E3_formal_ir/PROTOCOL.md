@@ -309,4 +309,19 @@ rejects each one.
 
 ## Amendments
 
-(none)
+These were added after the freeze. The frozen bytes are `PROTOCOL.md` at commit `cbb0850` (sha256 in
+`FREEZE_MANIFEST.txt`). No scenario, expectation, oracle value or gate was changed.
+
+1. **Receipt integrity hash.** E1's `native_query_with_where` returns the parsed rows and mf's CSV sha256, but
+   not the CSV text. RECEIPT_INTEGRITY_FAILED therefore compares `rows_sha256` (sha256 of the canonical JSON of
+   the recorded rows) with the recorded value. mf's own `csv_sha256` is also kept in each receipt.
+2. **`gate.py` skips `PROTOCOL.md` when re-checking `FREEZE_MANIFEST.txt`,** because these amendments are
+   appended. Every other frozen file is re-hashed at gate time, and none differs.
+3. **Implementation details not named in §3** (no expectation depends on them):
+   - reason code `FACT_KIND_UNDECLARED`;
+   - equivalence state `REFUSED_SOURCE_ORIGIN_MISMATCH` in the `meaning` output.
+4. **Labelling of extra checks.**
+   - `tests/test_e3.py` contains, besides the frozen-scenario check, post-freeze robustness tests: purity,
+     schema strictness, and single-mutation fail-closed checks on the three positives. They are labelled as
+     such.
+   - `evidence/diagnostics_nonscored.json` holds non-scored probes run after the scored evaluation (RESULTS §6).

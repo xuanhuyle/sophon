@@ -1,0 +1,56 @@
+{
+ "criteria": {
+  "C0": true,
+  "C0_runtime": true,
+  "C1": true,
+  "C2": true,
+  "C3": true,
+  "C4": true,
+  "C5": true,
+  "C6": true
+ },
+ "verdict": "PASS_IR_GUARD_VALUE",
+ "false_verified": [],
+ "fixture_hash_mismatch": [],
+ "failing_scenarios": [],
+ "positives": {
+  "S1_T1_POSITIVE": {
+   "status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS",
+   "receipt": "NR_S1",
+   "snapshot": "PINNED",
+   "exit": 0,
+   "native_equals_oracle": true
+  },
+  "S2_T4_APPROVED_CUSTOMER": {
+   "status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS",
+   "receipt": "NR_S2_CUSTOMER",
+   "snapshot": "PINNED",
+   "exit": 0,
+   "native_equals_oracle": true
+  },
+  "S3_T7_EQUIVALENCE_APPROVED": {
+   "status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS",
+   "receipt": "NR_S3",
+   "snapshot": "PINNED",
+   "exit": 0,
+   "native_equals_oracle": true
+  }
+ },
+ "untyped_rejected": [
+  "U1",
+  "U2",
+  "U3",
+  "U4",
+  "U5",
+  "U7"
+ ],
+ "untyped_rejected_new_or_partly": [
+  "U1",
+  "U2",
+  "U3",
+  "U5",
+  "U7"
+ ],
+ "pytest_tail": "16 passed in 0.28s",
+ "replay_sha256": "69065623dc4965bb8c43da44d33c6a8c5c8cde05c53eb95472ee8971d51d44fc"
+}

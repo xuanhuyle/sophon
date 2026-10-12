@@ -1,0 +1,23 @@
+{
+ "receipt_id": "OR_S3",
+ "kind": "INDEPENDENT_ORACLE",
+ "computes": {
+  "record_id": "S3",
+  "reading_id": "R_SINGLE"
+ },
+ "by_year": {
+  "2024": "97",
+  "2025": "98",
+  "2026": "42"
+ },
+ "equals_frozen_expectation": true,
+ "raw_csv_sha256": {
+  "customers.csv": "e570cfec57af94cee3b974db5642fe0c276b495f83dd82e6af077dbb3784680d",
+  "order_items.csv": "513de0a77e90c7312a2935d47efcced60b6811a33de589e1a4fe63d2045e5f26",
+  "orders.csv": "be942a616a816158924f538b8f9cde29de773bc324411c5c6f7c83c980ec4f03",
+  "products.csv": "3783c0e35d83c571e8fc18bbafa98f59e217944288a92f590b6a15d4320c2311",
+  "stores.csv": "78d2cbff192a861f4f880bcc0c25ddc43df72bfecf8a3517abf18723109f8c44"
+ },
+ "code": "experiments/E2_blind_discovery/src/e2_oracle.py",
+ "code_sha256": "2bcfd2d27bd7ae80e4cbb3c3e36ecf07686d2a1e786583306fc443858d088d04"
+}

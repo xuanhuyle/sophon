@@ -1,0 +1,160 @@
+{
+ "$defs": {
+  "ApprovalScope": {
+   "additionalProperties": false,
+   "properties": {
+    "clause_id": {
+     "title": "Clause Id",
+     "type": "string"
+    },
+    "clause_version": {
+     "title": "Clause Version",
+     "type": "integer"
+    },
+    "source_id": {
+     "title": "Source Id",
+     "type": "string"
+    },
+    "source_sha256": {
+     "title": "Source Sha256",
+     "type": "string"
+    }
+   },
+   "required": [
+    "source_id",
+    "source_sha256",
+    "clause_id",
+    "clause_version"
+   ],
+   "title": "ApprovalScope",
+   "type": "object"
+  },
+  "Claim": {
+   "additionalProperties": false,
+   "properties": {
+    "fact_kind": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Fact Kind"
+    },
+    "field": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Field"
+    },
+    "kind": {
+     "enum": [
+      "INTERPRETATION_CHOICE",
+      "SEMANTIC_EQUIVALENCE"
+     ],
+     "title": "Kind",
+     "type": "string"
+    },
+    "reading_id": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Reading Id"
+    },
+    "record_id": {
+     "title": "Record Id",
+     "type": "string"
+    },
+    "statement": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Statement"
+    }
+   },
+   "required": [
+    "kind",
+    "record_id"
+   ],
+   "title": "Claim",
+   "type": "object"
+  }
+ },
+ "additionalProperties": false,
+ "properties": {
+  "approval_id": {
+   "title": "Approval Id",
+   "type": "string"
+  },
+  "approver_role": {
+   "title": "Approver Role",
+   "type": "string"
+  },
+  "claim": {
+   "$ref": "#/$defs/Claim"
+  },
+  "effective_from": {
+   "format": "date",
+   "title": "Effective From",
+   "type": "string"
+  },
+  "effective_to": {
+   "anyOf": [
+    {
+     "format": "date",
+     "type": "string"
+    },
+    {
+     "type": "null"
+    }
+   ],
+   "title": "Effective To"
+  },
+  "known_at": {
+   "format": "date-time",
+   "title": "Known At",
+   "type": "string"
+  },
+  "provenance": {
+   "const": "LAB_SIMULATED",
+   "title": "Provenance",
+   "type": "string"
+  },
+  "scope": {
+   "$ref": "#/$defs/ApprovalScope"
+  }
+ },
+ "required": [
+  "approval_id",
+  "provenance",
+  "approver_role",
+  "claim",
+  "scope",
+  "known_at",
+  "effective_from",
+  "effective_to"
+ ],
+ "title": "Approval",
+ "type": "object"
+}
