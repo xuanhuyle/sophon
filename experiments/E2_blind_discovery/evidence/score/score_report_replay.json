@@ -1,0 +1,638 @@
+{
+ "cases": {
+  "H1": {
+   "clause_id": "H1",
+   "correct": true,
+   "corrections_needed": 0,
+   "errors": [],
+   "predicates": {
+    "amount": {
+     "checks": {
+      "classification": true,
+      "physical": true,
+      "semantic": true
+     },
+     "matched": true,
+     "ok": true,
+     "reference_kind": "bound",
+     "solver_classification": "BOUND_AND_EXPOSED",
+     "solver_confidence": "high",
+     "solver_physical": [
+      "gold.fact_sales.revenue",
+      "gold.fact_sales.quantity",
+      "gold.fact_sales.unit_price"
+     ],
+     "solver_semantic": "revenue",
+     "solver_span": "the value (quantity times unit price charged) of order lines"
+    },
+    "completed": {
+     "checks": {
+      "classification": true,
+      "physical": true,
+      "semantic": true,
+      "value": true
+     },
+     "matched": true,
+     "ok": true,
+     "reference_kind": "bound",
+     "solver_classification": "BOUND_AND_EXPOSED",
+     "solver_confidence": "high",
+     "solver_physical": [
+      "gold.fact_sales.status"
+     ],
+     "solver_semantic": "Dimension('sales__status')",
+     "solver_span": "belonging to completed orders"
+    },
+    "payment_received": {
+     "checks": {
+      "classification": true
+     },
+     "matched": true,
+     "ok": true,
+     "reference_kind": "not_found",
+     "solver_classification": "NOT_FOUND_IN_BOUNDED_ESTATE",
+     "solver_confidence": "high",
+     "solver_physical": [],
+     "solver_semantic": null,
+     "solver_span": "for which the customer's payment has been received in full, as evidenced by a payment record"
+    },
+    "year": {
+     "checks": {
+      "classification": true,
+      "physical": true,
+      "semantic": true
+     },
+     "matched": true,
+     "ok": true,
+     "reference_kind": "bound",
+     "solver_classification": "BOUND_AND_EXPOSED",
+     "solver_confidence": "high",
+     "solver_physical": [
+      "gold.fact_sales.order_date"
+     ],
+     "solver_semantic": "metric_time__year",
+     "solver_span": "for each calendar year of order date"
+    }
+   },
+   "severe": [],
+   "solver_overall_confidence": "high",
+   "solver_verdict": "NOT_VERIFIABLE",
+   "stratum": "missing_fact_with_tempting_proxy",
+   "verdict_ok": true
+  },
+  "H2": {
+   "clause_id": "H2",
+   "correct": true,
+   "corrections_needed": 0,
+   "errors": [],
+   "metric_ok": true,
+   "native": {
+    "argv": [
+     "mf",
+     "query",
+     "--metrics",
+     "gross_profit",
+     "--group-by",
+     "metric_time__year",
+     "--where",
+     "{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('product__category') }} = 'Electronics'",
+     "--csv",
+     "<csv>"
+    ],
+    "by_year": {
+     "2024": "189330.77",
+     "2025": "164032.78",
+     "2026": "94006.03"
+    },
+    "exit_code": 0,
+    "ok": true
+   },
+   "native_equals_reference": true,
+   "predicates": {
+    "completed": {
+     "checks": {
+      "classification": true,
+      "physical": true,
+      "semantic": true,
+      "value": true
+     },
+     "matched": true,
+     "ok": true,
+     "reference_kind": "bound",
+     "solver_classification": "BOUND_AND_EXPOSED",
+     "solver_confidence": "high",
+     "solver_physical": [
+      "gold.fact_sales.status"
+     ],
+     "solver_semantic": "Dimension('sales__status')",
+     "solver_span": "earned on completed orders"
+    },
+    "electronics": {
+     "checks": {
+      "classification": true,
+      "physical": true,
+      "semantic": true,
+      "value": true
+     },
+     "matched": true,
+     "ok": true,
+     "reference_kind": "bound",
+     "solver_classification": "BOUND_AND_EXPOSED",
+     "solver_confidence": "high",
+     "solver_physical": [
+      "gold.dim_products.category",
+      "gold.fact_sales.product_id"
+     ],
+     "solver_semantic": "Dimension('product__category')",
+     "solver_span": "of products in the Electronics category"
+    },
+    "gross_profit": {
+     "checks": {
+      "classification": true,
+      "physical": true,
+      "semantic": true
+     },
+     "matched": true,
+     "ok": true,
+     "reference_kind": "bound",
+     "solver_classification": "BOUND_AND_EXPOSED",
+     "solver_confidence": "high",
+     "solver_physical": [
+      "gold.fact_sales.profit",
+      "gold.fact_sales.quantity",
+      "gold.fact_sales.unit_price",
+      "gold.fact_sales.unit_cost"
+     ],
+     "solver_semantic": "gross_profit",
+     "solver_span": "gross profit (unit price charged minus the product's unit cost, multiplied by the units on the line)"
+    },
+    "year": {
+     "checks": {
+      "classification": true,
+      "physical": true,
+      "semantic": true
+     },
+     "matched": true,
+     "ok": true,
+     "reference_kind": "bound",
+     "solver_classification": "BOUND_AND_EXPOSED",
+     "solver_confidence": "high",
+     "solver_physical": [
+      "gold.fact_sales.order_date"
+     ],
+     "solver_semantic": "metric_time__year",
+     "solver_span": "For each calendar year of order date"
+    }
+   },
+   "severe": [],
+   "solver_overall_confidence": "high",
+   "solver_verdict": "VERIFIED_FOR_SPECIFIED_CHECKS",
+   "stratum": "representable_positive",
+   "verdict_ok": true
+  },
+  "H3": {
+   "clause_id": "H3",
+   "correct": false,
+   "corrections_needed": 1,
+   "errors": [
+    "missed_predicate: completed"
+   ],
+   "predicates": {
+    "amount": {
+     "checks": {
+      "classification": true,
+      "physical": true,
+      "semantic": true
+     },
+     "matched": true,
+     "ok": true,
+     "reference_kind": "bound",
+     "solver_classification": "BOUND_AND_EXPOSED",
+     "solver_confidence": "medium",
+     "solver_physical": [
+      "gold.fact_sales.revenue",
+      "gold.fact_sales.status"
+     ],
+     "solver_semantic": "completed_revenue",
+     "solver_span": "the revenue from completed orders"
+    },
+    "completed": {
+     "checks": {},
+     "matched": false,
+     "reference_kind": "bound"
+    },
+    "french_market": {
+     "checks": {
+      "classification": true,
+      "reason": true
+     },
+     "matched": true,
+     "ok": true,
+     "reference_kind": "unresolved",
+     "solver_classification": "UNRESOLVED_INTERPRETATION",
+     "solver_confidence": "high",
+     "solver_physical": [
+      "gold.dim_stores.country",
+      "gold.dim_customers.country",
+      "gold.fact_sales.channel"
+     ],
+     "solver_semantic": null,
+     "solver_span": "attributable to the French market"
+    },
+    "year": {
+     "checks": {
+      "classification": true,
+      "physical": true,
+      "semantic": true
+     },
+     "matched": true,
+     "ok": true,
+     "reference_kind": "bound",
+     "solver_classification": "BOUND_AND_EXPOSED",
+     "solver_confidence": "high",
+     "solver_physical": [
+      "gold.fact_sales.order_date"
+     ],
+     "solver_semantic": "metric_time__year",
+     "solver_span": "for each calendar year of order date"
+    }
+   },
+   "severe": [],
+   "solver_overall_confidence": "high",
+   "solver_verdict": "REQUIRES_AUTHORIZED_INTERPRETATION",
+   "stratum": "semantic_ambiguity_requires_authority",
+   "verdict_ok": true
+  },
+  "H4": {
+   "clause_id": "H4",
+   "correct": true,
+   "corrections_needed": 0,
+   "errors": [],
+   "metric_ok": true,
+   "native": {
+    "argv": [
+     "mf",
+     "query",
+     "--metrics",
+     "quantity_sold",
+     "--group-by",
+     "metric_time__year",
+     "--where",
+     "{{ Dimension('store__store_country') }} = 'Germany' AND {{ Dimension('sales__status') }} != 'cancelled'",
+     "--csv",
+     "<csv>"
+    ],
+    "by_year": {
+     "2024": "1218",
+     "2025": "1192",
+     "2026": "534"
+    },
+    "exit_code": 0,
+    "ok": true
+   },
+   "native_equals_reference": true,
+   "predicates": {
+    "germany_stores": {
+     "checks": {
+      "classification": true,
+      "physical": true,
+      "semantic": true,
+      "value": true
+     },
+     "matched": true,
+     "ok": true,
+     "reference_kind": "bound",
+     "solver_classification": "BOUND_AND_EXPOSED",
+     "solver_confidence": "high",
+     "solver_physical": [
+      "gold.dim_stores.country",
+      "gold.fact_sales.store_id"
+     ],
+     "solver_semantic": "Dimension('store__store_country')",
+     "solver_span": "on orders booked to stores located in Germany"
+    },
+    "not_cancelled": {
+     "checks": {
+      "classification": true,
+      "physical": true,
+      "semantic": true
+     },
+     "matched": true,
+     "ok": true,
+     "reference_kind": "bound",
+     "solver_classification": "BOUND_AND_EXPOSED",
+     "solver_confidence": "high",
+     "solver_physical": [
+      "gold.fact_sales.status"
+     ],
+     "solver_semantic": "Dimension('sales__status')",
+     "solver_span": "excluding cancelled orders"
+    },
+    "units": {
+     "checks": {
+      "classification": true,
+      "physical": true,
+      "semantic": true
+     },
+     "matched": true,
+     "ok": true,
+     "reference_kind": "bound",
+     "solver_classification": "BOUND_AND_EXPOSED",
+     "solver_confidence": "high",
+     "solver_physical": [
+      "gold.fact_sales.quantity"
+     ],
+     "solver_semantic": "quantity_sold",
+     "solver_span": "the total number of product units sold"
+    },
+    "year": {
+     "checks": {
+      "classification": true,
+      "physical": true,
+      "semantic": true
+     },
+     "matched": true,
+     "ok": true,
+     "reference_kind": "bound",
+     "solver_classification": "BOUND_AND_EXPOSED",
+     "solver_confidence": "high",
+     "solver_physical": [
+      "gold.fact_sales.order_date"
+     ],
+     "solver_semantic": "metric_time__year",
+     "solver_span": "For each calendar year of order date"
+    }
+   },
+   "severe": [],
+   "solver_overall_confidence": "high",
+   "solver_verdict": "VERIFIED_FOR_SPECIFIED_CHECKS",
+   "stratum": "misleading_near_match_representable",
+   "verdict_ok": true
+  },
+  "H5": {
+   "clause_id": "H5",
+   "correct": true,
+   "corrections_needed": 0,
+   "errors": [],
+   "predicates": {
+    "amount": {
+     "checks": {
+      "classification": true,
+      "physical": true,
+      "semantic": true
+     },
+     "matched": true,
+     "ok": true,
+     "reference_kind": "bound",
+     "solver_classification": "BOUND_AND_EXPOSED",
+     "solver_confidence": "high",
+     "solver_physical": [
+      "gold.fact_sales.revenue"
+     ],
+     "solver_semantic": "revenue",
+     "solver_span": "the revenue (quantity times unit price charged)"
+    },
+    "completed": {
+     "checks": {
+      "classification": true,
+      "physical": true,
+      "semantic": true
+     },
+     "matched": true,
+     "ok": true,
+     "reference_kind": "bound",
+     "solver_classification": "BOUND_AND_EXPOSED",
+     "solver_confidence": "high",
+     "solver_physical": [
+      "gold.fact_sales.status"
+     ],
+     "solver_semantic": "completed_revenue",
+     "solver_span": "from completed orders"
+    },
+    "gmail": {
+     "checks": {
+      "classification": true,
+      "physical": true
+     },
+     "matched": true,
+     "ok": true,
+     "reference_kind": "not_exposed",
+     "solver_classification": "PRESENT_IN_SOURCE_NOT_EXPOSED",
+     "solver_confidence": "high",
+     "solver_physical": [
+      "gold.dim_customers.email",
+      "silver.stg_customers.email",
+      "bronze.customers.email"
+     ],
+     "solver_semantic": null,
+     "solver_span": "placed by customers whose registered e-mail address is on the gmail.com domain"
+    },
+    "year": {
+     "checks": {
+      "classification": true,
+      "physical": true,
+      "semantic": true
+     },
+     "matched": true,
+     "ok": true,
+     "reference_kind": "bound",
+     "solver_classification": "BOUND_AND_EXPOSED",
+     "solver_confidence": "high",
+     "solver_physical": [
+      "gold.fact_sales.order_date"
+     ],
+     "solver_semantic": "metric_time__year",
+     "solver_span": "for each calendar year of order date"
+    }
+   },
+   "severe": [],
+   "solver_overall_confidence": "high",
+   "solver_verdict": "PARTIAL_OR_UNKNOWN",
+   "stratum": "source_present_not_natively_exposed",
+   "verdict_ok": true
+  },
+  "H6": {
+   "clause_id": "H6",
+   "correct": false,
+   "corrections_needed": 2,
+   "errors": [
+    "wrong_exposure_classification: france_residence is natively bindable, solver said NOT_ESTABLISHED_AUTHORITY",
+    "over_abstention: verifiable case given PARTIAL_OR_UNKNOWN"
+   ],
+   "metric_ok": true,
+   "native": {
+    "argv": [
+     "mf",
+     "query",
+     "--metrics",
+     "orders",
+     "--group-by",
+     "metric_time__year",
+     "--where",
+     "{{ Dimension('sales__channel') }} = 'online' AND {{ Dimension('customer__country') }} = 'France'",
+     "--csv",
+     "<csv>"
+    ],
+    "by_year": {
+     "2024": "97",
+     "2025": "98",
+     "2026": "42"
+    },
+    "exit_code": 0,
+    "ok": true
+   },
+   "native_equals_reference": true,
+   "predicates": {
+    "distinct_orders": {
+     "checks": {
+      "classification": true,
+      "physical": true,
+      "semantic": true
+     },
+     "matched": true,
+     "ok": true,
+     "reference_kind": "bound",
+     "solver_classification": "BOUND_AND_EXPOSED",
+     "solver_confidence": "high",
+     "solver_physical": [
+      "gold.fact_sales.order_id"
+     ],
+     "solver_semantic": "orders",
+     "solver_span": "the number of distinct orders"
+    },
+    "france_residence": {
+     "checks": {
+      "classification": false,
+      "physical": true,
+      "semantic": true,
+      "value": true
+     },
+     "matched": true,
+     "ok": false,
+     "reference_kind": "bound",
+     "solver_classification": "NOT_ESTABLISHED_AUTHORITY",
+     "solver_confidence": "medium",
+     "solver_physical": [
+      "gold.dim_customers.country",
+      "bronze.customers.country"
+     ],
+     "solver_semantic": "Dimension('customer__country')",
+     "solver_span": "by customers whose country of residence is France"
+    },
+    "online": {
+     "checks": {
+      "classification": true,
+      "physical": true,
+      "semantic": true,
+      "value": true
+     },
+     "matched": true,
+     "ok": true,
+     "reference_kind": "bound",
+     "solver_classification": "BOUND_AND_EXPOSED",
+     "solver_confidence": "high",
+     "solver_physical": [
+      "gold.fact_sales.channel"
+     ],
+     "solver_semantic": "Dimension('sales__channel')",
+     "solver_span": "placed through the online channel"
+    },
+    "year": {
+     "checks": {
+      "classification": true,
+      "physical": true,
+      "semantic": true
+     },
+     "matched": true,
+     "ok": true,
+     "reference_kind": "bound",
+     "solver_classification": "BOUND_AND_EXPOSED",
+     "solver_confidence": "high",
+     "solver_physical": [
+      "gold.fact_sales.order_date"
+     ],
+     "solver_semantic": "metric_time__year",
+     "solver_span": "for each calendar year of order date"
+    }
+   },
+   "severe": [],
+   "solver_overall_confidence": "medium",
+   "solver_verdict": "PARTIAL_OR_UNKNOWN",
+   "stratum": "representable_positive",
+   "verdict_ok": false
+  }
+ },
+ "confusion": {
+  "H1": {
+   "correct": true,
+   "expected": [
+    "NOT_VERIFIABLE",
+    "PARTIAL_OR_UNKNOWN"
+   ],
+   "solver": "NOT_VERIFIABLE",
+   "stratum": "missing_fact_with_tempting_proxy"
+  },
+  "H2": {
+   "correct": true,
+   "expected": [
+    "VERIFIED_FOR_SPECIFIED_CHECKS"
+   ],
+   "solver": "VERIFIED_FOR_SPECIFIED_CHECKS",
+   "stratum": "representable_positive"
+  },
+  "H3": {
+   "correct": false,
+   "expected": [
+    "REQUIRES_AUTHORIZED_INTERPRETATION"
+   ],
+   "solver": "REQUIRES_AUTHORIZED_INTERPRETATION",
+   "stratum": "semantic_ambiguity_requires_authority"
+  },
+  "H4": {
+   "correct": true,
+   "expected": [
+    "VERIFIED_FOR_SPECIFIED_CHECKS"
+   ],
+   "solver": "VERIFIED_FOR_SPECIFIED_CHECKS",
+   "stratum": "misleading_near_match_representable"
+  },
+  "H5": {
+   "correct": true,
+   "expected": [
+    "PARTIAL_OR_UNKNOWN",
+    "NOT_VERIFIABLE"
+   ],
+   "solver": "PARTIAL_OR_UNKNOWN",
+   "stratum": "source_present_not_natively_exposed"
+  },
+  "H6": {
+   "correct": false,
+   "expected": [
+    "VERIFIED_FOR_SPECIFIED_CHECKS"
+   ],
+   "solver": "PARTIAL_OR_UNKNOWN",
+   "stratum": "representable_positive"
+  }
+ },
+ "corrections_needed_total": 3,
+ "error_counts": {
+  "missed_predicate": 1,
+  "over_abstention": 1,
+  "wrong_exposure_classification": 1
+ },
+ "format_failure": null,
+ "gate": {
+  "cases_correct": 4,
+  "criteria": {
+   "1_fresh_isolated_no_leakage": true,
+   "2_at_least_5_of_6_correct": false,
+   "3_both_representable_positives_correct": false,
+   "4_dangerous_classes_not_verified": true,
+   "5_zero_false_verified": true,
+   "6_scorer_controls_and_replay": true
+  },
+  "severe_errors": [],
+  "verdict": "PARTIAL_DISCOVERY_SIGNAL"
+ },
+ "unexpected_clause_ids": []
+}

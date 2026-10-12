@@ -1,0 +1,119 @@
+metrics:
+  # --- Simple metrics: one measure, surfaced as a business number -------
+  - name: revenue
+    description: "Total sales revenue."
+    label: "Revenue"
+    type: simple
+    type_params:
+      measure: revenue
+
+  - name: cost
+    description: "Total cost of goods sold."
+    label: "Cost"
+    type: simple
+    type_params:
+      measure: cost
+
+  - name: gross_profit
+    description: "Revenue minus cost."
+    label: "Gross profit"
+    type: simple
+    type_params:
+      measure: gross_profit
+
+  - name: quantity_sold
+    description: "Total units sold."
+    label: "Quantity sold"
+    type: simple
+    type_params:
+      measure: quantity_sold
+
+  - name: discount
+    description: "Total discount granted."
+    label: "Discount"
+    type: simple
+    type_params:
+      measure: discount
+
+  - name: orders
+    description: "Number of distinct orders."
+    label: "Orders"
+    type: simple
+    type_params:
+      measure: order_count
+
+  - name: active_customers
+    description: "Distinct customers who placed at least one order."
+    label: "Active customers"
+    type: simple
+    type_params:
+      measure: customer_count
+
+  # --- Filtered simple metrics -----------------------------------------
+  - name: completed_revenue
+    description: "Revenue from completed orders only."
+    label: "Completed revenue"
+    type: simple
+    type_params:
+      measure: revenue
+    filter: "{{ Dimension('sales__status') }} = 'completed'"
+
+  - name: returned_orders
+    description: "Orders that were returned."
+    label: "Returned orders"
+    type: simple
+    type_params:
+      measure: order_count
+    filter: "{{ Dimension('sales__status') }} = 'returned'"
+
+  # --- Ratio metrics ----------------------------------------------------
+  - name: gross_margin_rate
+    description: "Gross profit divided by revenue."
+    label: "Gross margin rate"
+    type: ratio
+    type_params:
+      numerator: gross_profit
+      denominator: revenue
+
+  - name: average_order_value
+    description: "Revenue per order (AOV)."
+    label: "Average order value"
+    type: ratio
+    type_params:
+      numerator: revenue
+      denominator: orders
+
+  # --- Derived metric: a formula over other metrics ---------------------
+  - name: return_rate
+    description: "Share of orders that were returned, in percent."
+    label: "Return rate (%)"
+    type: derived
+    type_params:
+      expr: "returned_orders / nullif(orders, 0) * 100"
+      metrics:
+        - name: returned_orders
+        - name: orders
+
+  # --- Customer loyalty: repeat-purchase behaviour ----------------------
+  - name: purchasing_customers
+    description: "Customers who have placed at least one order (loyalty denominator)."
+    label: "Purchasing customers"
+    type: simple
+    type_params:
+      measure: purchasing_customer_count
+
+  - name: repeat_customers
+    description: "Customers who ordered on more than one occasion."
+    label: "Repeat customers"
+    type: simple
+    type_params:
+      measure: purchasing_customer_count
+    filter: "{{ Dimension('customer__is_repeat_customer') }} = true"
+
+  - name: repeat_customer_rate
+    description: "Share of purchasing customers who ordered more than once (0-1)."
+    label: "Repeat customer rate"
+    type: ratio
+    type_params:
+      numerator: repeat_customers
+      denominator: purchasing_customers

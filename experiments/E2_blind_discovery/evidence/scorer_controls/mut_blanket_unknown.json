@@ -1,0 +1,77 @@
+{
+ "confusion": {
+  "H1": {
+   "correct": false,
+   "expected": [
+    "NOT_VERIFIABLE",
+    "PARTIAL_OR_UNKNOWN"
+   ],
+   "solver": "PARTIAL_OR_UNKNOWN",
+   "stratum": "missing_fact_with_tempting_proxy"
+  },
+  "H2": {
+   "correct": false,
+   "expected": [
+    "VERIFIED_FOR_SPECIFIED_CHECKS"
+   ],
+   "solver": "PARTIAL_OR_UNKNOWN",
+   "stratum": "representable_positive"
+  },
+  "H3": {
+   "correct": false,
+   "expected": [
+    "REQUIRES_AUTHORIZED_INTERPRETATION"
+   ],
+   "solver": "PARTIAL_OR_UNKNOWN",
+   "stratum": "semantic_ambiguity_requires_authority"
+  },
+  "H4": {
+   "correct": false,
+   "expected": [
+    "VERIFIED_FOR_SPECIFIED_CHECKS"
+   ],
+   "solver": "PARTIAL_OR_UNKNOWN",
+   "stratum": "misleading_near_match_representable"
+  },
+  "H5": {
+   "correct": false,
+   "expected": [
+    "PARTIAL_OR_UNKNOWN",
+    "NOT_VERIFIABLE"
+   ],
+   "solver": "PARTIAL_OR_UNKNOWN",
+   "stratum": "source_present_not_natively_exposed"
+  },
+  "H6": {
+   "correct": false,
+   "expected": [
+    "VERIFIED_FOR_SPECIFIED_CHECKS"
+   ],
+   "solver": "PARTIAL_OR_UNKNOWN",
+   "stratum": "representable_positive"
+  }
+ },
+ "error_counts": {
+  "failure_to_abstain_or_wrong_verdict": 1,
+  "native_mismatch": 3,
+  "over_abstention": 3,
+  "wrong_exposure_classification": 23,
+  "wrong_metric": 3,
+  "wrong_physical_lineage": 22,
+  "wrong_semantic_object": 21
+ },
+ "format_failure": null,
+ "gate": {
+  "cases_correct": 0,
+  "criteria": {
+   "1_fresh_isolated_no_leakage": true,
+   "2_at_least_5_of_6_correct": false,
+   "3_both_representable_positives_correct": false,
+   "4_dangerous_classes_not_verified": true,
+   "5_zero_false_verified": true,
+   "6_scorer_controls_and_replay": true
+  },
+  "severe_errors": [],
+  "verdict": "PARTIAL_DISCOVERY_SIGNAL"
+ }
+}

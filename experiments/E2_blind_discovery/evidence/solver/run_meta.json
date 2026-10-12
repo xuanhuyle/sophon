@@ -1,0 +1,125 @@
+{
+ "argv": [
+  "claude",
+  "-p",
+  "--tools",
+  "",
+  "--no-session-persistence",
+  "--safe-mode",
+  "--strict-mcp-config",
+  "--output-format",
+  "json",
+  "--model",
+  "claude-opus-5-5",
+  "--system-prompt",
+  "You are a careful data-governance analyst. Answer only from the evidence in the user's message.",
+  "--max-budget-usd",
+  "25"
+ ],
+ "cli_version": "2.1.296 (Claude Code)",
+ "model_requested": "claude-opus-5-5",
+ "env_variable_names_passed": [
+  "ANTHROPIC_BASE_URL",
+  "HOME",
+  "HTTPS_PROXY",
+  "NODE_EXTRA_CA_CERTS",
+  "NO_PROXY",
+  "PATH",
+  "SSL_CERT_FILE",
+  "https_proxy",
+  "no_proxy"
+ ],
+ "home": "<fresh empty dir containing only .claude/.credentials.json>",
+ "cwd": "<fresh empty dir outside any git repository>",
+ "stdin_sha256": "77e181e624c9741ae20d722582babfc5876bf49274b6c3ad83571318d6eed3b0",
+ "stdin_bytes": 82958,
+ "tools": "none (--tools \"\")",
+ "files_before_run": [
+  "cwd",
+  "home",
+  "home/.claude",
+  "home/.claude/.credentials.json"
+ ],
+ "files_after_run": [
+  "cwd",
+  "home",
+  "home/.claude",
+  "home/.claude.json",
+  "home/.claude/.credentials.json",
+  "home/.claude/.last-cleanup",
+  "home/.claude/backups",
+  "home/.claude/backups/.claude.json.backup.1791792347960",
+  "home/.claude/backups/.claude.json.backup.1791792429229",
+  "home/.claude/policy-limits.json",
+  "home/.claude/policy-limits.json.stamp.json",
+  "home/.claude/remote-settings.json",
+  "home/.claude/sessions"
+ ],
+ "started_utc": "2026-10-12T08:05:47Z",
+ "wall_seconds": 82.0,
+ "exit_code": 0,
+ "stdout_sha256": "a3d5fabea893c1c81fcdf147bdac57f66762fd3b3071b8e599357b7cec1b79e8",
+ "stdout_bytes": 25380,
+ "stderr_bytes": 0,
+ "envelope": {
+  "session_id": "c5e1a9d0-a797-45e3-989f-b6b1890c4326",
+  "total_cost_usd": 0.47696,
+  "usage": {
+   "input_tokens": 2,
+   "cache_creation_input_tokens": 33659,
+   "cache_read_input_tokens": 0,
+   "output_tokens": 10384,
+   "output_tokens_details": {
+    "thinking_tokens": 2512
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 33659,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 10384,
+     "cache_read_input_tokens": 0,
+     "cache_creation_input_tokens": 33659,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 33659
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "modelUsage": {
+   "claude-opus-5-5": {
+    "inputTokens": 2,
+    "outputTokens": 10384,
+    "cacheReadInputTokens": 0,
+    "cacheCreationInputTokens": 33659,
+    "webSearchRequests": 0,
+    "costUSD": 0.47696,
+    "contextWindow": 1000000,
+    "maxOutputTokens": 128000,
+    "thinkingTokens": 2512,
+    "canonicalModel": "claude-opus-5-5",
+    "provider": "firstParty",
+    "costBasis": "list"
+   }
+  },
+  "num_turns": 1,
+  "is_error": false,
+  "stop_reason": "end_turn",
+  "terminal_reason": "completed",
+  "permission_denials": [],
+  "duration_ms": 80720,
+  "duration_api_ms": 80504
+ }
+}

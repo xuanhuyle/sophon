@@ -1,0 +1,74 @@
+{
+ "label": "NON-SCORED sensitivity (merged predicates may serve several reference predicates); primary score unchanged",
+ "confusion": {
+  "H1": {
+   "stratum": "missing_fact_with_tempting_proxy",
+   "expected": [
+    "NOT_VERIFIABLE",
+    "PARTIAL_OR_UNKNOWN"
+   ],
+   "solver": "NOT_VERIFIABLE",
+   "correct": true
+  },
+  "H2": {
+   "stratum": "representable_positive",
+   "expected": [
+    "VERIFIED_FOR_SPECIFIED_CHECKS"
+   ],
+   "solver": "VERIFIED_FOR_SPECIFIED_CHECKS",
+   "correct": true
+  },
+  "H3": {
+   "stratum": "semantic_ambiguity_requires_authority",
+   "expected": [
+    "REQUIRES_AUTHORIZED_INTERPRETATION"
+   ],
+   "solver": "REQUIRES_AUTHORIZED_INTERPRETATION",
+   "correct": true
+  },
+  "H4": {
+   "stratum": "misleading_near_match_representable",
+   "expected": [
+    "VERIFIED_FOR_SPECIFIED_CHECKS"
+   ],
+   "solver": "VERIFIED_FOR_SPECIFIED_CHECKS",
+   "correct": true
+  },
+  "H5": {
+   "stratum": "source_present_not_natively_exposed",
+   "expected": [
+    "PARTIAL_OR_UNKNOWN",
+    "NOT_VERIFIABLE"
+   ],
+   "solver": "PARTIAL_OR_UNKNOWN",
+   "correct": true
+  },
+  "H6": {
+   "stratum": "representable_positive",
+   "expected": [
+    "VERIFIED_FOR_SPECIFIED_CHECKS"
+   ],
+   "solver": "PARTIAL_OR_UNKNOWN",
+   "correct": false
+  }
+ },
+ "gate_under_relaxation": {
+  "criteria": {
+   "1_fresh_isolated_no_leakage": true,
+   "2_at_least_5_of_6_correct": true,
+   "3_both_representable_positives_correct": false,
+   "4_dangerous_classes_not_verified": true,
+   "5_zero_false_verified": true,
+   "6_scorer_controls_and_replay": true
+  },
+  "cases_correct": 5,
+  "severe_errors": [],
+  "verdict": "PARTIAL_DISCOVERY_SIGNAL"
+ },
+ "errors": {
+  "H6": [
+   "wrong_exposure_classification: france_residence is natively bindable, solver said NOT_ESTABLISHED_AUTHORITY",
+   "over_abstention: verifiable case given PARTIAL_OR_UNKNOWN"
+  ]
+ }
+}

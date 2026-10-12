@@ -1,0 +1,2525 @@
+# Task: map governing clauses to an existing semantic layer (read-only, evidence-grounded)
+
+You are given (below, in this single message) six short governing clauses and a read-only evidence packet describing
+one existing analytics stack: a dbt project on DuckDB with a MetricFlow semantic layer, its source tables and
+the scripts that produced the raw data. You have no tools; everything you may use is in this message. Do not
+assume any file, table, column, system or approval that is not shown here.
+
+The clauses are LAB_AUTHORED test requirements, not approved organizational policy. The data are synthetic.
+
+For each clause, decide which business predicates it requires, which existing MetricFlow metric and semantic
+objects (if any) can apply each predicate, which physical warehouse fields carry the underlying facts, and what
+cannot be established. Abstaining or reporting a gap is an acceptable outcome when the evidence does not support a
+mapping. A confident mapping that the evidence does not support is the worst possible answer.
+
+## Bounded estate
+
+The bounded estate is exactly what this packet shows: the semantic YAML and native MetricFlow catalog listings,
+the dbt models, the warehouse schema (every relation and column), low-cardinality observed values, the raw
+landing-file headers and the scripts that generated and loaded the raw data. "Not found" means not found in this
+estate, never "does not exist anywhere".
+
+## Predicate classifications (use exactly these strings)
+
+- `BOUND_AND_EXPOSED`: the fact exists in the estate AND a native MetricFlow query can apply the predicate by
+  itself: choice of metric, `group_by` items (dimensions, entities, `metric_time__<grain>`), and `where`
+  filters referencing `{{ Dimension('entity__dimension') }}`, `{{ TimeDimension('entity__dimension', 'grain') }}`,
+  `{{ Entity('entity') }}` or `{{ Metric('metric_name', group_by=['entity']) }}` (MetricFlow 0.211 supports
+  metric filters evaluated at an entity's grain). No computation, lookup or post-processing outside MetricFlow.
+- `PRESENT_IN_SOURCE_NOT_EXPOSED`: the fact exists in the estate's tables, but no native MetricFlow construct
+  listed above can apply it; it would need custom SQL, an external lookup or post-processing.
+- `NOT_FOUND_IN_BOUNDED_ESTATE`: no field in the estate records the required fact. Do not substitute a
+  different fact.
+- `UNRESOLVED_INTERPRETATION`: the clause admits materially different readings that nothing in the packet
+  resolves; name the readings.
+- `NOT_ESTABLISHED_AUTHORITY`: a candidate field exists, but nothing in the packet establishes that it is an
+  authoritative record of the required fact.
+
+An order lifecycle status (for example a value such as completed, returned or cancelled) is not evidence of
+payment, cash collection or settlement unless the packet explicitly shows an authoritative equivalence.
+
+## Overall verdict per clause (use exactly one)
+
+- `VERIFIED_FOR_SPECIFIED_CHECKS`: every required predicate is BOUND_AND_EXPOSED and your native query computes
+  the whole requirement.
+- `PARTIAL_OR_UNKNOWN`: some predicates can be applied natively, others cannot or are unknown.
+- `NOT_VERIFIABLE`: a required fact is absent from the estate, so the requirement cannot be computed or checked.
+- `REQUIRES_AUTHORIZED_INTERPRETATION`: a material reading must be decided by an authorized person before any
+  mapping can be accepted.
+
+## Output: a single JSON object and nothing else
+
+```
+{
+  "cases": [
+    {
+      "clause_id": "<H1..H6>",
+      "predicates": [
+        {
+          "predicate_id": "<your id>",
+          "text_span": "<exact phrase copied from the clause>",
+          "meaning": "<what must be true>",
+          "classification": "<one of the five strings>",
+          "semantic_object": "<native object applying it, e.g. a metric name, Dimension('x__y'), metric_time__year, or null>",
+          "value": "<literal compared, if any, else null>",
+          "physical_fields": ["<schema.table.column>", "..."],
+          "evidence": ["<packet file and the line or excerpt you rely on>"],
+          "missing_or_open_question": "<what is missing or must be decided, else null>",
+          "confidence": "<high|medium|low>"
+        }
+      ],
+      "native_query": {"metric": "<metric name>", "group_by": ["..."], "where": ["<MetricFlow where expression>", "..."]},
+      "can_establish": "<what a native query would establish>",
+      "cannot_establish": "<what it cannot establish>",
+      "overall_verdict": "<one of the four strings>",
+      "overall_confidence": "<high|medium|low>",
+      "abstain": <true|false>
+    }
+  ]
+}
+```
+
+Rules: one entry per clause, ids H1 to H6. Split each clause into atomic predicates (one fact per predicate; a
+grouping by year is a predicate). `native_query` may be null when no native query is appropriate. Use only
+evidence shown in this message.
+
+
+# EVIDENCE PACKET
+
+
+===== FILE: 01_CLAUSES.md =====
+
+# Clauses (LAB_AUTHORED)
+
+Provenance: LAB_AUTHORED by the E2 orchestrator on 2026-10-12 for experiment E2 only. Not approved organizational policy, not a contract, no real authority. Retail data in the referenced warehouse are synthetic.
+
+- **H1**: Report cash-collected revenue for each calendar year of order date: the value (quantity times unit price charged) of order lines belonging to completed orders for which the customer's payment has been received in full, as evidenced by a payment record.
+- **H2**: For each calendar year of order date, report the gross profit (unit price charged minus the product's unit cost, multiplied by the units on the line) earned on completed orders of products in the Electronics category.
+- **H3**: Report, for each calendar year of order date, the revenue from completed orders that is attributable to the French market.
+- **H4**: For each calendar year of order date, report the total number of product units sold on orders booked to stores located in Germany, whatever the sales channel, excluding cancelled orders.
+- **H5**: Report, for each calendar year of order date, the revenue (quantity times unit price charged) from completed orders placed by customers whose registered e-mail address is on the gmail.com domain.
+- **H6**: Report, for each calendar year of order date, the number of distinct orders placed through the online channel by customers whose country of residence is France, regardless of order status.
+
+
+===== FILE: 10_upstream/dbt/retail_dwh/dbt_project.yml =====
+
+name: "retail_dwh"
+version: "1.0.0"
+config-version: 2
+
+# This profile name must match an entry in profiles.yml
+profile: "retail_dwh"
+
+model-paths: ["models"]
+macro-paths: ["macros"]
+seed-paths: ["seeds"]
+test-paths: ["tests"]
+
+target-path: "target"
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+# Medallion materialization strategy:
+#  - staging (Silver) -> views   : cheap, always fresh, just cleans/conforms
+#  - marts   (Gold)   -> tables  : materialized for fast analytical reads
+models:
+  retail_dwh:
+    staging:
+      +materialized: view
+      +schema: silver
+    marts:
+      +materialized: table
+      +schema: gold
+    # Near-real-time lane. Defaults to the Silver conventions; fact_sales_live
+    # overrides them in its own config() (gold schema + dynamic table on
+    # Snowflake / incremental on DuckDB).
+    streaming:
+      +materialized: view
+      +schema: silver
+
+
+===== FILE: 10_upstream/dbt/retail_dwh/macros/portability.sql =====
+
+{#
+    Cross-warehouse helpers so the SAME models run on DuckDB (local + CI) and
+    Snowflake (prod). We branch on `target.type`.
+
+    The DuckDB branch reproduces the ORIGINAL SQL byte-for-byte, so the local
+    build and the test suite are strictly unchanged. Only `--target prod`
+    (Snowflake) takes the alternative branch.
+
+    Validated end-to-end on Snowflake (dbt build 58/60 PASS): the day-of-week
+    numbering matches DuckDB (0=Sunday .. 6=Saturday) under the default
+    WEEK_START, so `day_name` / `is_weekend` are consistent across both engines.
+#}
+
+{# yyyymmdd integer surrogate key from a date column #}
+{% macro date_id(col) -%}
+    {%- if target.type == 'duckdb' -%}
+cast(strftime({{ col }}, '%Y%m%d') as integer)
+    {%- else -%}
+cast(to_char({{ col }}, 'YYYYMMDD') as integer)
+    {%- endif -%}
+{%- endmacro %}
+
+{# full month name, e.g. "January" #}
+{% macro month_name(col) -%}
+    {%- if target.type == 'duckdb' -%}
+strftime({{ col }}, '%B')
+    {%- else -%}
+case extract(month from {{ col }})
+    when 1 then 'January' when 2 then 'February' when 3 then 'March'
+    when 4 then 'April' when 5 then 'May' when 6 then 'June'
+    when 7 then 'July' when 8 then 'August' when 9 then 'September'
+    when 10 then 'October' when 11 then 'November' when 12 then 'December'
+end
+    {%- endif -%}
+{%- endmacro %}
+
+{# full weekday name, e.g. "Monday" #}
+{% macro day_name(col) -%}
+    {%- if target.type == 'duckdb' -%}
+strftime({{ col }}, '%A')
+    {%- else -%}
+{# dayofweek: 0=Sun..6=Sat under default WEEK_START — validated vs DuckDB #}
+case extract(dayofweek from {{ col }})
+    when 0 then 'Sunday' when 1 then 'Monday' when 2 then 'Tuesday'
+    when 3 then 'Wednesday' when 4 then 'Thursday' when 5 then 'Friday'
+    when 6 then 'Saturday'
+end
+    {%- endif -%}
+{%- endmacro %}
+
+{# a contiguous daily date spine over [start_date, end_date) #}
+{% macro date_spine_days(start_date, end_date) -%}
+    {%- if target.type == 'duckdb' -%}
+select cast(d as date) as date_day
+from range(date '{{ start_date }}', date '{{ end_date }}', interval 1 day) as t(d)
+    {%- else -%}
+{#- Snowflake GENERATOR(ROWCOUNT => ...) requires a CONSTANT, so we compute the
+    day count at compile time (Jinja) instead of with datediff at run time. -#}
+{%- set _s = modules.datetime.datetime.strptime(start_date, '%Y-%m-%d') -%}
+{%- set _e = modules.datetime.datetime.strptime(end_date, '%Y-%m-%d') -%}
+{%- set _n_days = (_e - _s).days -%}
+select dateadd(day, seq4(), date '{{ start_date }}') as date_day
+from table(generator(rowcount => {{ _n_days }}))
+    {%- endif -%}
+{%- endmacro %}
+
+
+===== FILE: 10_upstream/dbt/retail_dwh/models/_exposures.yml =====
+
+version: 2
+
+# Exposures close the lineage loop: they declare the *downstream consumers* of
+# the dbt project, so `dbt docs` draws the graph end to end — raw → Silver →
+# Gold → semantic layer → these two apps. A reviewer can see exactly which
+# models a dashboard or the agent depends on (and `dbt build --select +exposure`
+# can target only what feeds them).
+exposures:
+  - name: governed_dashboard
+    label: "Governed Analytics — Streamlit dashboard"
+    type: dashboard
+    maturity: high
+    url: "http://localhost:8501"
+    description: >
+      BI dashboard whose KPIs and charts are computed from the MetricFlow
+      semantic layer (no hand-written SQL), plus a governed chat over the same
+      metrics.
+    depends_on:
+      - ref('fact_sales')
+      - ref('dim_customers')
+      - ref('dim_products')
+      - ref('dim_stores')
+      - ref('dim_dates')
+    owner:
+      name: Behram Korkut
+      email: behramkorkut@gmail.com
+
+  - name: governed_agent
+    label: "Governed Analytics — Claude tool-use agent"
+    type: application
+    maturity: high
+    description: >
+      LLM agent that maps a natural-language question to governed metrics +
+      dimensions and runs deterministic SQL via MetricFlow. It never writes SQL;
+      its only lever on the warehouse is the validated semantic-layer query.
+    depends_on:
+      - ref('fact_sales')
+      - ref('dim_customers')
+      - ref('dim_products')
+      - ref('dim_stores')
+      - ref('dim_dates')
+    owner:
+      name: Behram Korkut
+      email: behramkorkut@gmail.com
+
+
+===== FILE: 10_upstream/dbt/retail_dwh/models/marts/_marts.yml =====
+
+version: 2
+
+models:
+  - name: dim_customers
+    description: "Customer dimension (Gold)."
+    columns:
+      - name: customer_id
+        data_tests: [not_null, unique]
+      - name: country
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ["France", "Germany", "Spain", "Italy", "Belgium", "Other"]
+
+  - name: dim_products
+    description: "Product dimension (Gold)."
+    columns:
+      - name: product_id
+        data_tests: [not_null, unique]
+      - name: category
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ["Electronics", "Clothing", "Home", "Sports"]
+
+  - name: dim_stores
+    description: "Store dimension (Gold)."
+    columns:
+      - name: store_id
+        data_tests: [not_null, unique]
+
+  - name: dim_dates
+    description: "Conformed date dimension (Gold). Also the MetricFlow time spine."
+    # Declares this model as the time spine: MetricFlow uses it to handle
+    # time granularities and to fill gaps in time-based metric queries.
+    time_spine:
+      standard_granularity_column: date_day
+    columns:
+      - name: date_id
+        data_tests: [not_null, unique]
+      - name: date_day
+        granularity: day
+        data_tests: [not_null, unique]
+
+  - name: fact_sales
+    description: "Sales fact, grain = one order line (Gold)."
+    columns:
+      - name: sales_id
+        data_tests: [not_null, unique]
+      - name: customer_id
+        description: "FK -> dim_customers."
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_customers')
+                field: customer_id
+      - name: product_id
+        description: "FK -> dim_products."
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_products')
+                field: product_id
+      - name: store_id
+        description: "FK -> dim_stores."
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_stores')
+                field: store_id
+      - name: date_id
+        description: "FK -> dim_dates."
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_dates')
+                field: date_id
+      - name: status
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ["completed", "returned", "cancelled"]
+
+  - name: fact_customer_orders
+    description: "Customer-loyalty summary fact (Gold). Grain = one purchasing customer."
+    columns:
+      - name: customer_id
+        description: "PK; FK -> dim_customers."
+        data_tests:
+          - not_null
+          - unique
+          - relationships:
+              arguments:
+                to: ref('dim_customers')
+                field: customer_id
+      - name: order_count
+        description: "Distinct orders the customer has placed (always >= 1 here)."
+        data_tests: [not_null]
+      - name: is_repeat_customer
+        description: "True when the customer ordered on more than one occasion."
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [true, false]
+                quote: false
+
+
+===== FILE: 10_upstream/dbt/retail_dwh/models/marts/dimensions/dim_customers.sql =====
+
+-- Gold dimension: descriptive customer attributes for slicing/grouping.
+-- Kept purely descriptive (Kimball) — lifetime metrics belong to the
+-- semantic layer / facts, not to the dimension.
+select
+    customer_id,
+    first_name,
+    last_name,
+    first_name || ' ' || last_name as full_name,
+    email,
+    country,
+    city,
+    signup_date
+from {{ ref('stg_customers') }}
+
+
+===== FILE: 10_upstream/dbt/retail_dwh/models/marts/dimensions/dim_dates.sql =====
+
+-- Gold dimension: a date spine generated in SQL (no external package).
+-- Covers the data range with room to spare. A conformed date dimension
+-- lets every fact be analyzed by year/quarter/month/weekday consistently.
+--
+-- Portable across DuckDB (local/CI) and Snowflake (prod) via macros/portability.sql:
+-- the date spine and the date-formatting functions differ between engines; the
+-- DuckDB branch reproduces the original SQL exactly, so local output is unchanged.
+with spine as (
+    {{ date_spine_days('2024-01-01', '2027-01-01') }}
+)
+
+select
+    {{ date_id('date_day') }}                     as date_id,   -- yyyymmdd surrogate
+    date_day,
+    extract(year   from date_day)                 as year,
+    extract(quarter from date_day)                as quarter,
+    'Q' || extract(quarter from date_day)         as quarter_name,
+    extract(month  from date_day)                 as month,
+    {{ month_name('date_day') }}                  as month_name,
+    extract(week   from date_day)                 as week_of_year,
+    extract(dayofweek from date_day)              as day_of_week,   -- 0=Sun .. 6=Sat
+    {{ day_name('date_day') }}                    as day_name,
+    (extract(dayofweek from date_day) in (0, 6))  as is_weekend
+from spine
+
+
+===== FILE: 10_upstream/dbt/retail_dwh/models/marts/dimensions/dim_products.sql =====
+
+-- Gold dimension: product attributes + a simple margin-rate classification.
+select
+    product_id,
+    product_name,
+    category,
+    unit_cost,
+    list_price,
+    unit_margin,
+    round(unit_margin / nullif(list_price, 0), 4) as margin_rate
+from {{ ref('stg_products') }}
+
+
+===== FILE: 10_upstream/dbt/retail_dwh/models/marts/dimensions/dim_stores.sql =====
+
+-- Gold dimension: store attributes.
+select
+    store_id,
+    store_name,
+    country,
+    city
+from {{ ref('stg_stores') }}
+
+
+===== FILE: 10_upstream/dbt/retail_dwh/models/marts/facts/fact_customer_orders.sql =====
+
+-- Gold summary fact: one row per *purchasing* customer, summarising their order
+-- history. Behavioural/lifetime metrics live in facts (not the descriptive
+-- customer dimension), so customer-loyalty metrics (repeat-customer rate) build
+-- from here. Customers who never ordered do not appear — purchasing customers
+-- are exactly the rows of this table, which is the denominator for loyalty.
+with orders as (
+    select
+        customer_id,
+        count(distinct order_id) as order_count,
+        max(order_date)          as last_order_date
+    from {{ ref('stg_orders') }}
+    group by customer_id
+)
+
+select
+    customer_id,
+    order_count,
+    order_count >= 2 as is_repeat_customer,  -- ordered on more than one occasion
+    last_order_date
+from orders
+
+
+===== FILE: 10_upstream/dbt/retail_dwh/models/marts/facts/fact_sales.sql =====
+
+-- Gold fact: one row per order line (the grain). Joins items -> orders ->
+-- products to bring in the foreign keys and compute additive measures.
+--
+-- Measures (all additive, the property that makes a star schema fast):
+--   revenue          = quantity * unit_price (price actually charged)
+--   cost_amount      = quantity * unit_cost
+--   profit           = revenue - cost_amount
+--   discount_amount  = quantity * (list_price - unit_price)
+with items as (
+    select * from {{ ref('stg_order_items') }}
+),
+orders as (
+    select * from {{ ref('stg_orders') }}
+),
+products as (
+    select * from {{ ref('stg_products') }}
+)
+
+select
+    i.order_item_id                                       as sales_id,        -- PK (degenerate)
+    i.order_id,
+    o.customer_id,
+    i.product_id,
+    o.store_id,
+    o.order_date,
+    {{ date_id('o.order_date') }}                         as date_id,         -- FK -> dim_dates
+    o.channel,
+    o.status,
+    i.quantity,
+    i.unit_price,
+    p.unit_cost,
+    cast(i.quantity * i.unit_price as decimal(12, 2))                 as revenue,
+    cast(i.quantity * p.unit_cost as decimal(12, 2))                  as cost_amount,
+    cast(i.quantity * (i.unit_price - p.unit_cost) as decimal(12, 2)) as profit,
+    cast(i.quantity * (p.list_price - i.unit_price) as decimal(12, 2)) as discount_amount,
+    (o.status = 'completed') as is_completed,
+    (o.status = 'returned')  as is_returned,
+    (o.status = 'cancelled') as is_cancelled
+from items i
+inner join orders o   on i.order_id   = o.order_id
+inner join products p  on i.product_id = p.product_id
+
+
+===== FILE: 10_upstream/dbt/retail_dwh/models/marts/semantic/_metrics.yml =====
+
+metrics:
+  # --- Simple metrics: one measure, surfaced as a business number -------
+  - name: revenue
+    description: "Total sales revenue."
+    label: "Revenue"
+    type: simple
+    type_params:
+      measure: revenue
+
+  - name: cost
+    description: "Total cost of goods sold."
+    label: "Cost"
+    type: simple
+    type_params:
+      measure: cost
+
+  - name: gross_profit
+    description: "Revenue minus cost."
+    label: "Gross profit"
+    type: simple
+    type_params:
+      measure: gross_profit
+
+  - name: quantity_sold
+    description: "Total units sold."
+    label: "Quantity sold"
+    type: simple
+    type_params:
+      measure: quantity_sold
+
+  - name: discount
+    description: "Total discount granted."
+    label: "Discount"
+    type: simple
+    type_params:
+      measure: discount
+
+  - name: orders
+    description: "Number of distinct orders."
+    label: "Orders"
+    type: simple
+    type_params:
+      measure: order_count
+
+  - name: active_customers
+    description: "Distinct customers who placed at least one order."
+    label: "Active customers"
+    type: simple
+    type_params:
+      measure: customer_count
+
+  # --- Filtered simple metrics -----------------------------------------
+  - name: completed_revenue
+    description: "Revenue from completed orders only."
+    label: "Completed revenue"
+    type: simple
+    type_params:
+      measure: revenue
+    filter: "{{ Dimension('sales__status') }} = 'completed'"
+
+  - name: returned_orders
+    description: "Orders that were returned."
+    label: "Returned orders"
+    type: simple
+    type_params:
+      measure: order_count
+    filter: "{{ Dimension('sales__status') }} = 'returned'"
+
+  # --- Ratio metrics ----------------------------------------------------
+  - name: gross_margin_rate
+    description: "Gross profit divided by revenue."
+    label: "Gross margin rate"
+    type: ratio
+    type_params:
+      numerator: gross_profit
+      denominator: revenue
+
+  - name: average_order_value
+    description: "Revenue per order (AOV)."
+    label: "Average order value"
+    type: ratio
+    type_params:
+      numerator: revenue
+      denominator: orders
+
+  # --- Derived metric: a formula over other metrics ---------------------
+  - name: return_rate
+    description: "Share of orders that were returned, in percent."
+    label: "Return rate (%)"
+    type: derived
+    type_params:
+      expr: "returned_orders / nullif(orders, 0) * 100"
+      metrics:
+        - name: returned_orders
+        - name: orders
+
+  # --- Customer loyalty: repeat-purchase behaviour ----------------------
+  - name: purchasing_customers
+    description: "Customers who have placed at least one order (loyalty denominator)."
+    label: "Purchasing customers"
+    type: simple
+    type_params:
+      measure: purchasing_customer_count
+
+  - name: repeat_customers
+    description: "Customers who ordered on more than one occasion."
+    label: "Repeat customers"
+    type: simple
+    type_params:
+      measure: purchasing_customer_count
+    filter: "{{ Dimension('customer__is_repeat_customer') }} = true"
+
+  - name: repeat_customer_rate
+    description: "Share of purchasing customers who ordered more than once (0-1)."
+    label: "Repeat customer rate"
+    type: ratio
+    type_params:
+      numerator: repeat_customers
+      denominator: purchasing_customers
+
+
+===== FILE: 10_upstream/dbt/retail_dwh/models/marts/semantic/_semantic_models.yml =====
+
+semantic_models:
+  # ---------------------------------------------------------------------
+  # SALES: the central fact. Its measures are the raw aggregation inputs.
+  # Entities let MetricFlow auto-join to the dimension semantic models
+  # below — nobody writes JOINs by hand (that is the safety guarantee).
+  # ---------------------------------------------------------------------
+  - name: sales
+    description: "Sales facts at order-line grain."
+    model: ref('fact_sales')
+    defaults:
+      agg_time_dimension: order_date
+    entities:
+      - name: sales            # primary key of this table
+        type: primary
+        expr: sales_id
+      - name: order            # degenerate, used to count distinct orders
+        type: foreign
+        expr: order_id
+      - name: customer         # FK -> customers semantic model
+        type: foreign
+        expr: customer_id
+      - name: product          # FK -> products semantic model
+        type: foreign
+        expr: product_id
+      - name: store            # FK -> stores semantic model
+        type: foreign
+        expr: store_id
+    dimensions:
+      - name: order_date
+        type: time
+        type_params:
+          time_granularity: day
+      - name: channel
+        type: categorical
+      - name: status
+        type: categorical
+    measures:
+      - name: revenue
+        description: "Quantity x price charged."
+        agg: sum
+        expr: revenue
+      - name: cost
+        agg: sum
+        expr: cost_amount
+      - name: gross_profit
+        agg: sum
+        expr: profit
+      - name: quantity_sold
+        agg: sum
+        expr: quantity
+      - name: discount
+        agg: sum
+        expr: discount_amount
+      - name: order_count
+        description: "Distinct orders."
+        agg: count_distinct
+        expr: order_id
+      - name: customer_count
+        description: "Distinct customers who purchased."
+        agg: count_distinct
+        expr: customer_id
+
+  # ---------------------------------------------------------------------
+  # DIMENSION semantic models: they expose attributes for grouping and,
+  # via their primary entity, the join path from the fact.
+  # ---------------------------------------------------------------------
+  - name: customers
+    description: "Customer dimension."
+    model: ref('dim_customers')
+    entities:
+      - name: customer
+        type: primary
+        expr: customer_id
+    dimensions:
+      - name: country
+        type: categorical
+      - name: city
+        type: categorical
+      - name: signup_date
+        type: time
+        type_params:
+          time_granularity: day
+
+  - name: products
+    description: "Product dimension."
+    model: ref('dim_products')
+    entities:
+      - name: product
+        type: primary
+        expr: product_id
+    dimensions:
+      - name: category
+        type: categorical
+      - name: product_name
+        type: categorical
+
+  - name: stores
+    description: "Store dimension."
+    model: ref('dim_stores')
+    entities:
+      - name: store
+        type: primary
+        expr: store_id
+    dimensions:
+      - name: store_country
+        type: categorical
+        expr: country
+      - name: store_city
+        type: categorical
+        expr: city
+
+  # ---------------------------------------------------------------------
+  # CUSTOMER ORDERS: a customer-grain summary fact. Shares the `customer`
+  # entity with the customers dimension above, so MetricFlow joins them
+  # automatically. Its measure + flag power the loyalty (repeat-rate) metrics.
+  # ---------------------------------------------------------------------
+  - name: customer_orders
+    description: "Per-customer order summary — basis for loyalty metrics."
+    model: ref('fact_customer_orders')
+    defaults:
+      agg_time_dimension: last_order_date
+    entities:
+      - name: customer
+        type: primary
+        expr: customer_id
+    dimensions:
+      - name: is_repeat_customer
+        type: categorical
+      - name: last_order_date
+        type: time
+        type_params:
+          time_granularity: day
+    measures:
+      - name: purchasing_customer_count
+        description: "Distinct customers who placed at least one order."
+        agg: count_distinct
+        expr: customer_id
+
+
+===== FILE: 10_upstream/dbt/retail_dwh/models/staging/_sources.yml =====
+
+version: 2
+
+# Declares the Bronze tables (loaded by scripts/load_bronze.py) as dbt
+# "sources". Staging models read from these via {{ source('bronze', ...) }},
+# which also lets dbt track lineage from the raw layer onward.
+sources:
+  - name: bronze
+    description: "Raw, untransformed source extracts landed into DuckDB."
+    schema: bronze
+    tables:
+      - name: customers
+      - name: products
+      - name: stores
+      - name: orders
+      - name: order_items
+      # Near-real-time landing table, fed by scripts/stream_orders.py (and by
+      # Snowpipe Streaming in production). Unlike the day-grain CSV extracts
+      # above, each row carries an `event_ts` timestamp — that is what makes
+      # "last N minutes" windows possible.
+      - name: order_events
+
+
+===== FILE: 10_upstream/dbt/retail_dwh/models/staging/_staging.yml =====
+
+version: 2
+
+models:
+  - name: stg_customers
+    description: "Cleaned & conformed customers (Silver)."
+    columns:
+      - name: customer_id
+        description: "Natural key."
+        data_tests: [not_null, unique]
+      - name: country
+        description: "Standardized country name."
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ["France", "Germany", "Spain", "Italy", "Belgium", "Other"]
+      - name: signup_date
+        data_tests: [not_null]
+
+  - name: stg_products
+    description: "Cleaned products with unit margin (Silver)."
+    columns:
+      - name: product_id
+        data_tests: [not_null, unique]
+      - name: category
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ["Electronics", "Clothing", "Home", "Sports"]
+
+  - name: stg_stores
+    description: "Cleaned stores (Silver)."
+    columns:
+      - name: store_id
+        data_tests: [not_null, unique]
+
+  - name: stg_orders
+    description: "Cleaned orders (Silver)."
+    columns:
+      - name: order_id
+        data_tests: [not_null, unique]
+      - name: status
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ["completed", "returned", "cancelled"]
+      - name: channel
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ["online", "in_store"]
+
+  - name: stg_order_items
+    description: "Order line items (Silver)."
+    columns:
+      - name: order_item_id
+        data_tests: [not_null, unique]
+      - name: quantity
+        data_tests: [not_null]
+
+
+===== FILE: 10_upstream/dbt/retail_dwh/models/staging/stg_customers.sql =====
+
+-- Silver: clean & conform raw customers.
+--   * cast signup_date (text in Bronze) -> DATE
+--   * standardize the ~20 country spellings back to a canonical name
+--   * trim names, lowercase emails, replace missing city with 'Unknown'
+with source as (
+    select * from {{ source('bronze', 'customers') }}
+)
+
+select
+    customer_id,
+    trim(first_name)                                  as first_name,
+    trim(last_name)                                   as last_name,
+    lower(trim(email))                                as email,
+    case upper(trim(country))
+        when 'FRANCE'      then 'France'
+        when 'FR'          then 'France'
+        when 'FRA'         then 'France'
+        when 'GERMANY'     then 'Germany'
+        when 'DE'          then 'Germany'
+        when 'DEUTSCHLAND' then 'Germany'
+        when 'SPAIN'       then 'Spain'
+        when 'ES'          then 'Spain'
+        when 'ESPAÑA'      then 'Spain'
+        when 'ITALY'       then 'Italy'
+        when 'IT'          then 'Italy'
+        when 'ITALIA'      then 'Italy'
+        when 'BELGIUM'     then 'Belgium'
+        when 'BE'          then 'Belgium'
+        when 'BELGIQUE'    then 'Belgium'
+        else 'Other'
+    end                                               as country,
+    coalesce(nullif(trim(city), ''), 'Unknown')       as city,
+    cast(signup_date as date)                         as signup_date
+from source
+
+
+===== FILE: 10_upstream/dbt/retail_dwh/models/staging/stg_order_items.sql =====
+
+-- Silver: order line items (the future grain of the fact table).
+with source as (
+    select * from {{ source('bronze', 'order_items') }}
+)
+
+select
+    order_item_id,
+    order_id,
+    product_id,
+    cast(quantity as integer)           as quantity,
+    cast(unit_price as decimal(10, 2))  as unit_price
+from source
+
+
+===== FILE: 10_upstream/dbt/retail_dwh/models/staging/stg_orders.sql =====
+
+-- Silver: clean orders.
+--   * cast order_date (text in Bronze) -> DATE
+--   * normalize channel/status to lowercase enums
+with source as (
+    select * from {{ source('bronze', 'orders') }}
+)
+
+select
+    order_id,
+    customer_id,
+    store_id,
+    cast(order_date as date) as order_date,
+    lower(trim(channel))     as channel,
+    lower(trim(status))      as status
+from source
+
+
+===== FILE: 10_upstream/dbt/retail_dwh/models/staging/stg_products.sql =====
+
+-- Silver: clean products + derive a unit-level margin (a measure we can
+-- reuse downstream). Pricing is kept as-is; cost/price come from source.
+with source as (
+    select * from {{ source('bronze', 'products') }}
+)
+
+select
+    product_id,
+    trim(product_name)                       as product_name,
+    category,
+    cast(unit_cost as decimal(10, 2))        as unit_cost,
+    cast(list_price as decimal(10, 2))       as list_price,
+    cast(list_price - unit_cost as decimal(10, 2)) as unit_margin
+from source
+
+
+===== FILE: 10_upstream/dbt/retail_dwh/models/staging/stg_stores.sql =====
+
+-- Silver: clean stores (countries are already canonical at source here).
+with source as (
+    select * from {{ source('bronze', 'stores') }}
+)
+
+select
+    store_id,
+    trim(store_name) as store_name,
+    trim(country)    as country,
+    trim(city)       as city
+from source
+
+
+===== FILE: 10_upstream/dbt/retail_dwh/models/streaming/_semantic_live.yml =====
+
+semantic_models:
+  # ---------------------------------------------------------------------
+  # SALES_LIVE: the near-real-time twin of the `sales` semantic model.
+  #
+  # Two lanes, one vocabulary: this model declares the SAME foreign entities
+  # (customer / product / store) as the batch one, so MetricFlow reuses the
+  # existing dimension semantic models. "Live revenue by category" needs zero
+  # duplicated dimensions — only the fact and its time grain differ.
+  #
+  # The decisive difference is `agg_time_dimension: event_ts` at MINUTE grain:
+  # the batch lane is day-grain (order_date), which cannot answer
+  # "in the last 15 minutes".
+  # ---------------------------------------------------------------------
+  - name: sales_live
+    description: "Near-real-time sales facts at order-line grain (streaming lane)."
+    model: ref('fact_sales_live')
+    defaults:
+      agg_time_dimension: event_ts
+    entities:
+      - name: sales_live       # primary key of this table
+        type: primary
+        expr: event_id
+      - name: order            # degenerate, to count distinct live orders
+        type: foreign
+        expr: order_id
+      - name: customer         # FK -> customers semantic model (reused)
+        type: foreign
+        expr: customer_id
+      - name: product          # FK -> products semantic model (reused)
+        type: foreign
+        expr: product_id
+      - name: store            # FK -> stores semantic model (reused)
+        type: foreign
+        expr: store_id
+    dimensions:
+      - name: event_ts
+        description: "Event timestamp — enables 'last N minutes' windows."
+        type: time
+        type_params:
+          time_granularity: minute
+      - name: channel
+        type: categorical
+      - name: status
+        type: categorical
+    measures:
+      - name: revenue_live_amount
+        description: "Quantity x price charged, on streamed events."
+        agg: sum
+        expr: revenue
+      - name: gross_profit_live_amount
+        agg: sum
+        expr: profit
+      - name: quantity_live_amount
+        agg: sum
+        expr: quantity
+      - name: order_count_live_distinct
+        description: "Distinct live orders."
+        agg: count_distinct
+        expr: order_id
+
+metrics:
+  # The `_live` suffix is deliberate: metric names are globally unique in
+  # MetricFlow, and these answer a different question than their batch
+  # counterparts (fresh window vs. history). The *formulas* are identical —
+  # they are defined once, in fact_sales_live, exactly like the batch fact.
+  - name: revenue_live
+    description: "Revenue from streamed events (near-real-time lane)."
+    label: "Revenue (live)"
+    type: simple
+    type_params:
+      measure: revenue_live_amount
+
+  - name: gross_profit_live
+    description: "Gross profit from streamed events (near-real-time lane)."
+    label: "Gross profit (live)"
+    type: simple
+    type_params:
+      measure: gross_profit_live_amount
+
+  - name: orders_live
+    description: "Number of distinct orders in the streaming lane."
+    label: "Orders (live)"
+    type: simple
+    type_params:
+      measure: order_count_live_distinct
+
+  - name: average_order_value_live
+    description: "Revenue per order on streamed events (live AOV)."
+    label: "Average order value (live)"
+    type: ratio
+    type_params:
+      numerator: revenue_live
+      denominator: orders_live
+
+
+===== FILE: 10_upstream/dbt/retail_dwh/models/streaming/_streaming.yml =====
+
+version: 2
+
+models:
+  - name: stg_order_events
+    description: >
+      Cleaned streaming order events (Silver, near-real-time lane). Same
+      cast/conform contract as the batch staging models, but each row carries a
+      real `event_ts` timestamp instead of a day-grain date.
+    columns:
+      - name: event_id
+        description: "Natural key of the event."
+        data_tests: [not_null, unique]
+      - name: event_ts
+        description: "Event timestamp — enables 'last N minutes' windows."
+        data_tests: [not_null]
+      - name: channel
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ["online", "in_store"]
+      - name: status
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ["completed", "returned", "cancelled"]
+
+  - name: fact_sales_live
+    description: >
+      Near-real-time twin of fact_sales: same order-line grain and the same
+      measure formulas, only fresher. Materialized as a Snowflake DYNAMIC TABLE
+      (TARGET_LAG = 1 minute) in prod and as an incremental model on DuckDB.
+    columns:
+      - name: event_id
+        description: "Primary key (one row per streamed order line)."
+        data_tests: [not_null, unique]
+      - name: event_ts
+        data_tests: [not_null]
+      - name: date_id
+        description: "FK -> dim_dates (day grain, for reuse of the date dimension)."
+        data_tests: [not_null]
+      - name: revenue
+        data_tests: [not_null]
+      - name: customer_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_customers')
+                field: customer_id
+      - name: product_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_products')
+                field: product_id
+      - name: store_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_stores')
+                field: store_id
+
+  - name: rt_freshness
+    description: >
+      Single-row VIEW exposing how fresh the streaming lane is, evaluated at
+      query time (seconds since the latest event). A view — not a table — so the
+      answer reflects "now", not the last refresh. The freshness SLA is enforced
+      by tests/assert_rt_freshness_within_sla.sql.
+    columns:
+      - name: freshness_seconds
+        description: "Seconds between the latest event and current_timestamp (null if no events yet)."
+      - name: no_events_yet
+        description: "True when the lane is empty (fresh clone / CI, before any stream)."
+        data_tests: [not_null]
+
+
+===== FILE: 10_upstream/dbt/retail_dwh/models/streaming/fact_sales_live.sql =====
+
+{%- set is_snowflake = target.type == 'snowflake' -%}
+{{
+    config(
+        materialized = 'dynamic_table' if is_snowflake else 'incremental',
+        target_lag = '1 minute' if is_snowflake else none,
+        snowflake_warehouse = target.warehouse if is_snowflake else none,
+        unique_key = none if is_snowflake else 'event_id',
+        schema = 'gold',
+    )
+}}
+
+-- Gold (streaming lane): the near-real-time twin of fact_sales.
+--
+-- Same grain (one row per order line) and the SAME measure formulas as the
+-- batch fact — only the freshness differs:
+--   revenue         = quantity * unit_price
+--   cost_amount     = quantity * unit_cost
+--   profit          = revenue - cost_amount
+--   discount_amount = quantity * (list_price - unit_price)
+--
+-- Materialization is the whole point of this model:
+--   * Snowflake -> DYNAMIC TABLE with TARGET_LAG='1 minute'. Snowflake keeps it
+--     incrementally refreshed on its own; we declare the freshness we want and
+--     it figures out how (declarative, the 2026 idiom).
+--   * DuckDB    -> INCREMENTAL model (no dynamic tables), refreshed by re-running
+--     dbt. Same SQL, so local and CI stay fully offline.
+--
+-- NOTE: no CURRENT_TIMESTAMP here on purpose — a non-deterministic expression
+-- would break Snowflake's incremental refresh. "How fresh is the data *now*" is
+-- answered by the separate rt_freshness view, evaluated at query time.
+with events as (
+    select * from {{ ref('stg_order_events') }}
+
+    {%- if is_incremental() %}
+    -- Only the events we have not loaded yet (DuckDB lane; on Snowflake the
+    -- dynamic table handles incrementality itself and this block is skipped).
+    where event_ts > (select coalesce(max(event_ts), timestamp '1900-01-01') from {{ this }})
+    {%- endif %}
+),
+
+products as (
+    select * from {{ ref('stg_products') }}
+)
+
+select
+    e.event_id,
+    e.order_id,
+    e.order_item_id,
+    e.customer_id,
+    e.product_id,
+    e.store_id,
+    e.event_ts,
+    cast(e.event_ts as date)                    as event_date,
+    {{ date_id('cast(e.event_ts as date)') }}   as date_id,     -- FK -> dim_dates
+    e.channel,
+    e.status,
+    e.quantity,
+    e.unit_price,
+    p.unit_cost,
+    cast(e.quantity * e.unit_price as decimal(12, 2))                  as revenue,
+    cast(e.quantity * p.unit_cost as decimal(12, 2))                   as cost_amount,
+    cast(e.quantity * (e.unit_price - p.unit_cost) as decimal(12, 2))  as profit,
+    cast(e.quantity * (p.list_price - e.unit_price) as decimal(12, 2)) as discount_amount,
+    (e.status = 'completed') as is_completed,
+    (e.status = 'returned')  as is_returned,
+    (e.status = 'cancelled') as is_cancelled
+from events e
+inner join products p on e.product_id = p.product_id
+
+
+===== FILE: 10_upstream/dbt/retail_dwh/models/streaming/rt_freshness.sql =====
+
+{{ config(materialized='view', schema='gold') }}
+
+-- Freshness of the near-real-time lane, evaluated AT QUERY TIME.
+--
+-- This is deliberately a VIEW, not a table: current_timestamp must be read when
+-- the question is asked, so "how fresh is the data *now*" is honest. Baking an
+-- age column into fact_sales_live would freeze it at the last refresh and also
+-- break Snowflake's incremental dynamic-table refresh (non-deterministic expr).
+--
+-- One row: the latest event seen, and how many seconds ago that was.
+with latest as (
+    select max(event_ts) as last_event_ts
+    from {{ ref('stg_order_events') }}
+)
+
+select
+    last_event_ts,
+    current_timestamp                                              as as_of,
+    datediff('second', last_event_ts, current_timestamp)           as freshness_seconds,
+    (last_event_ts is null)                                        as no_events_yet
+from latest
+
+
+===== FILE: 10_upstream/dbt/retail_dwh/models/streaming/stg_order_events.sql =====
+
+-- Silver (streaming lane): clean the raw order events landed by the producer.
+--
+-- Same contract as the batch staging models — cast and conform, nothing more:
+--   * normalize channel/status to lowercase enums (identical to stg_orders)
+--   * cast the numeric measures
+--   * keep event_ts as a real TIMESTAMP: it is the whole point of this lane,
+--     the batch equivalent (order_date) is only day-grain.
+with source as (
+    select * from {{ source('bronze', 'order_events') }}
+)
+
+select
+    event_id,
+    order_id,
+    order_item_id,
+    customer_id,
+    store_id,
+    product_id,
+    cast(quantity as integer)          as quantity,
+    cast(unit_price as decimal(10, 2)) as unit_price,
+    lower(trim(channel))               as channel,
+    lower(trim(status))                as status,
+    cast(event_ts as timestamp)        as event_ts
+from source
+
+
+===== FILE: 10_upstream/governed_analytics_agent/streaming.py =====
+
+"""Synthetic order-event generation for the near-real-time (streaming) lane.
+
+The batch pipeline (orders + order_items CSVs) has day-grain dates. The streaming
+lane emits **timestamped** order-line events into a landing table `ORDER_EVENTS`,
+which in production would be fed by Snowpipe Streaming and here is fed by a
+micro-batch INSERT (scripts/stream_orders.py). Downstream, Dynamic Tables
+(Snowflake) / incremental models (DuckDB) refresh Silver/Gold with a small target
+lag — that's Phase 2. This module holds the pure, testable event generation; the
+I/O runner lives in scripts/ so this stays deterministic and unit-tested.
+"""
+
+from __future__ import annotations
+
+import csv
+import random
+import uuid
+from dataclasses import dataclass
+from datetime import UTC, datetime
+from pathlib import Path
+
+CHANNELS = ["online", "in_store"]
+# Streaming traffic is mostly completed orders, with a realistic tail of
+# returns/cancellations (kept in sync with the batch status enum).
+STATUS_WEIGHTS: list[tuple[str, float]] = [
+    ("completed", 0.85),
+    ("returned", 0.08),
+    ("cancelled", 0.07),
+]
+
+# Streaming ids start well above the batch range (~2.2k orders / ~5.5k items) so
+# live events can never collide with the historical CSV load.
+ORDER_ID_BASE = 1_000_000
+ITEM_ID_BASE = 5_000_000
+ITEMS_PER_ORDER = 3
+
+# Column order used by both the DDL and the INSERT in scripts/stream_orders.py.
+EVENT_COLUMNS = [
+    "event_id",
+    "order_id",
+    "order_item_id",
+    "customer_id",
+    "store_id",
+    "product_id",
+    "quantity",
+    "unit_price",
+    "channel",
+    "status",
+    "event_ts",
+]
+
+# Landing-table DDL. event_ts is a real timestamp (streaming sources carry one),
+# unlike the day-grain batch — that's what enables "last N minutes" windows.
+CREATE_TABLE_DUCKDB = """
+CREATE TABLE IF NOT EXISTS bronze.order_events (
+    event_id      VARCHAR,
+    order_id      BIGINT,
+    order_item_id BIGINT,
+    customer_id   BIGINT,
+    store_id      BIGINT,
+    product_id    BIGINT,
+    quantity      INTEGER,
+    unit_price    DECIMAL(10, 2),
+    channel       VARCHAR,
+    status        VARCHAR,
+    event_ts      TIMESTAMP
+)
+"""
+
+CREATE_TABLE_SNOWFLAKE = """
+CREATE TABLE IF NOT EXISTS BRONZE.ORDER_EVENTS (
+    EVENT_ID      VARCHAR,
+    ORDER_ID      NUMBER,
+    ORDER_ITEM_ID NUMBER,
+    CUSTOMER_ID   NUMBER,
+    STORE_ID      NUMBER,
+    PRODUCT_ID    NUMBER,
+    QUANTITY      NUMBER,
+    UNIT_PRICE    NUMBER(10, 2),
+    CHANNEL       VARCHAR,
+    STATUS        VARCHAR,
+    EVENT_TS      TIMESTAMP_NTZ
+)
+"""
+
+
+@dataclass(frozen=True)
+class OrderEvent:
+    """One streamed order line (the grain of the near-real-time fact)."""
+
+    event_id: str
+    order_id: int
+    order_item_id: int
+    customer_id: int
+    store_id: int
+    product_id: int
+    quantity: int
+    unit_price: float
+    channel: str
+    status: str
+    event_ts: datetime
+
+    def as_row(self) -> tuple[object, ...]:
+        """Positional tuple in EVENT_COLUMNS order (for parameterized INSERT)."""
+        return (
+            self.event_id,
+            self.order_id,
+            self.order_item_id,
+            self.customer_id,
+            self.store_id,
+            self.product_id,
+            self.quantity,
+            self.unit_price,
+            self.channel,
+            self.status,
+            self.event_ts,
+        )
+
+
+def load_product_prices(products_csv: Path) -> dict[int, float]:
+    """Read {product_id: list_price} from the generated products landing file so
+    streamed prices are consistent with the existing product dimension."""
+    prices: dict[int, float] = {}
+    with products_csv.open(newline="") as f:
+        for row in csv.DictReader(f):
+            prices[int(row["product_id"])] = float(row["list_price"])
+    if not prices:
+        raise ValueError(f"No products found in {products_csv}")
+    return prices
+
+
+def _weighted_status(rng: random.Random) -> str:
+    r = rng.random()
+    cumulative = 0.0
+    for status, weight in STATUS_WEIGHTS:
+        cumulative += weight
+        if r <= cumulative:
+            return status
+    return STATUS_WEIGHTS[-1][0]
+
+
+def make_event(
+    rng: random.Random,
+    prices: dict[int, float],
+    seq: int,
+    *,
+    now: datetime | None = None,
+) -> OrderEvent:
+    """Build one plausible order-line event.
+
+    `rng` is a seeded Random for reproducibility; `seq` is a monotonic counter
+    that drives the order/item ids (so ~ITEMS_PER_ORDER lines share an order).
+    """
+    event_ts = now if now is not None else datetime.now(UTC)
+    product_id = rng.choice(list(prices))
+    list_price = prices[product_id]
+    discount = rng.choice([0.0, 0.05, 0.10, 0.15, 0.20])
+    unit_price = round(list_price * (1 - discount), 2)
+    return OrderEvent(
+        # A real random UUID: unique across producer runs (a streaming source
+        # never replays identical ids). Business fields below stay deterministic
+        # for a given (seed, seq), which is what the tests pin down.
+        event_id=str(uuid.uuid4()),
+        order_id=ORDER_ID_BASE + seq // ITEMS_PER_ORDER,
+        order_item_id=ITEM_ID_BASE + seq,
+        customer_id=rng.randint(1, 500),
+        store_id=rng.randint(1, 10),
+        product_id=product_id,
+        quantity=rng.randint(1, 5),
+        unit_price=unit_price,
+        channel=rng.choice(CHANNELS),
+        status=_weighted_status(rng),
+        event_ts=event_ts,
+    )
+
+
+===== FILE: 10_upstream/scripts/generate_raw_data.py =====
+
+"""Generate synthetic retail source data (the "landing zone").
+
+This simulates raw extracts coming from operational source systems
+(an e-commerce backend + a store POS). Output = CSV files in data/raw/.
+
+Design choices worth defending in an interview:
+- Deterministic seeds (random + Faker) => the dataset is reproducible.
+  Anyone who clones the repo gets the exact same numbers.
+- Normalized, OLTP-style sources (orders + order_items separately),
+  NOT a pre-joined flat table. The star schema is built later, in dbt.
+- Intentional "messiness" (inconsistent country casing, mixed-case
+  emails, stray whitespace, a few NULLs). Bronze keeps it as-is; the
+  Silver dbt layer is what cleans/conforms it. That is the whole point
+  of the Medallion pattern.
+"""
+
+from __future__ import annotations
+
+import csv
+import random
+from datetime import date, timedelta
+from pathlib import Path
+
+from faker import Faker
+
+# --- Reproducibility -------------------------------------------------------
+SEED = 42
+random.seed(SEED)
+fake = Faker("fr_FR")
+Faker.seed(SEED)
+
+# --- Volumes (aligned with the modern-dwh-dbt-airflow star schema) ---------
+N_CUSTOMERS = 500
+N_PRODUCTS = 100
+N_STORES = 10
+N_ORDERS = 2200
+
+START_DATE = date(2024, 1, 1)
+END_DATE = date(2026, 6, 15)
+
+# --- Reference data --------------------------------------------------------
+# Canonical country -> messy variants we will randomly inject, so Silver has
+# real work to do (standardizing them back to the canonical form).
+COUNTRY_VARIANTS = {
+    "France": ["France", "france", "FR", " France ", "FRA"],
+    "Germany": ["Germany", "germany", "DE", "Deutschland"],
+    "Spain": ["Spain", "spain", "ES", "España"],
+    "Italy": ["Italy", "italy", "IT", "Italia"],
+    "Belgium": ["Belgium", "belgium", "BE", " Belgique"],
+}
+COUNTRIES = list(COUNTRY_VARIANTS)
+
+CATEGORIES = {
+    "Electronics": (40.0, 900.0, 0.35),  # (min cost, max cost, target margin)
+    "Clothing": (5.0, 120.0, 0.55),
+    "Home": (8.0, 300.0, 0.45),
+    "Sports": (10.0, 400.0, 0.40),
+}
+
+CHANNELS = (["online"] * 6) + (["in_store"] * 4)  # ~60% online
+STATUSES = (["completed"] * 82) + (["returned"] * 10) + (["cancelled"] * 8)
+
+RAW_DIR = Path(__file__).resolve().parents[1] / "data" / "raw"
+
+
+def messy_country() -> str:
+    """Pick a country then return one of its inconsistent spellings."""
+    canonical = random.choice(COUNTRIES)
+    return random.choice(COUNTRY_VARIANTS[canonical])
+
+
+def random_date(start: date, end: date) -> date:
+    return start + timedelta(days=random.randint(0, (end - start).days))
+
+
+def write_csv(name: str, header: list[str], rows: list[list]) -> None:
+    path = RAW_DIR / f"{name}.csv"
+    with path.open("w", newline="", encoding="utf-8") as f:
+        writer = csv.writer(f)
+        writer.writerow(header)
+        writer.writerows(rows)
+    print(f"  wrote {path.relative_to(RAW_DIR.parents[1])}  ({len(rows)} rows)")
+
+
+def main() -> None:
+    RAW_DIR.mkdir(parents=True, exist_ok=True)
+    print(f"Generating synthetic retail data into {RAW_DIR} (seed={SEED})")
+
+    # 1) CUSTOMERS ----------------------------------------------------------
+    customers = []
+    for cid in range(1, N_CUSTOMERS + 1):
+        first = fake.first_name()
+        last = fake.last_name()
+        # mixed-case email + occasional stray whitespace on the name
+        email = (
+            f"{first}.{last}@{fake.free_email_domain()}".upper()
+            if cid % 7 == 0
+            else f"{first.lower()}.{last.lower()}@{fake.free_email_domain()}"
+        )
+        name_display = f" {first}" if cid % 11 == 0 else first  # leading space sometimes
+        city = None if cid % 23 == 0 else fake.city()  # a few NULL cities
+        customers.append(
+            [
+                cid,
+                name_display,
+                last,
+                email,
+                messy_country(),
+                city,
+                random_date(START_DATE, END_DATE).isoformat(),
+            ]
+        )
+    write_csv(
+        "customers",
+        ["customer_id", "first_name", "last_name", "email", "country", "city", "signup_date"],
+        customers,
+    )
+
+    # 2) PRODUCTS -----------------------------------------------------------
+    products = []
+    for pid in range(1, N_PRODUCTS + 1):
+        category = random.choice(list(CATEGORIES))
+        cmin, cmax, margin = CATEGORIES[category]
+        unit_cost = round(random.uniform(cmin, cmax), 2)
+        list_price = round(unit_cost * (1 + margin + random.uniform(-0.05, 0.10)), 2)
+        products.append(
+            [
+                pid,
+                f"{category[:3].upper()}-{fake.word().capitalize()}-{pid:03d}",
+                category,
+                unit_cost,
+                list_price,
+            ]
+        )
+    write_csv(
+        "products",
+        ["product_id", "product_name", "category", "unit_cost", "list_price"],
+        products,
+    )
+
+    # 3) STORES -------------------------------------------------------------
+    stores = []
+    for sid in range(1, N_STORES + 1):
+        country = COUNTRIES[(sid - 1) % len(COUNTRIES)]
+        stores.append([sid, f"Store {fake.city()}", country, fake.city()])
+    write_csv("stores", ["store_id", "store_name", "country", "city"], stores)
+
+    # 4) ORDERS + 5) ORDER_ITEMS -------------------------------------------
+    orders = []
+    order_items = []
+    item_id = 0
+    for oid in range(1, N_ORDERS + 1):
+        customer_id = random.randint(1, N_CUSTOMERS)
+        store_id = random.randint(1, N_STORES)
+        order_date = random_date(START_DATE, END_DATE)
+        channel = random.choice(CHANNELS)
+        status = random.choice(STATUSES)
+        orders.append([oid, customer_id, store_id, order_date.isoformat(), channel, status])
+
+        # 1..4 distinct products per order
+        for product_id in random.sample(range(1, N_PRODUCTS + 1), random.randint(1, 4)):
+            item_id += 1
+            quantity = random.randint(1, 5)
+            list_price = products[product_id - 1][4]
+            # occasional discount on the line (0%, 10% or 15%)
+            discount = random.choice([0.0, 0.0, 0.0, 0.10, 0.15])
+            unit_price = round(list_price * (1 - discount), 2)
+            order_items.append([item_id, oid, product_id, quantity, unit_price])
+
+    write_csv(
+        "orders",
+        ["order_id", "customer_id", "store_id", "order_date", "channel", "status"],
+        orders,
+    )
+    write_csv(
+        "order_items",
+        ["order_item_id", "order_id", "product_id", "quantity", "unit_price"],
+        order_items,
+    )
+
+    print(f"Done. {len(orders)} orders, {len(order_items)} order lines.")
+
+
+if __name__ == "__main__":
+    main()
+
+
+===== FILE: 10_upstream/scripts/load_bronze.py =====
+
+"""Load the raw CSV landing zone into DuckDB, schema `bronze`.
+
+Bronze = raw, untouched ingestion. We deliberately do NOT clean, cast or
+deduplicate here. We just land the source files into the warehouse so that
+everything downstream (Silver/Gold in dbt) is rebuildable from this layer
+without re-reading the source systems.
+
+DuckDB note: `read_csv_auto` infers the schema. We force the two date
+columns to VARCHAR on purpose, so that *type casting* becomes an explicit,
+visible job of the Silver layer (a classic interview talking point:
+"where do you cast and conform types?" -> in Silver, never in Bronze).
+
+It also provisions the (empty) streaming landing table `bronze.order_events`, so
+the near-real-time models build on a fresh clone or in CI, before any event has
+been produced. The DDL is owned by the package — single source of truth.
+
+Run it as a MODULE (`-m scripts.load_bronze`) so the project root is on sys.path
+and the `governed_analytics_agent` package is importable — the project is not
+pip-installed.
+"""
+
+from __future__ import annotations
+
+import os
+from pathlib import Path
+
+import duckdb
+
+from governed_analytics_agent.streaming import CREATE_TABLE_DUCKDB
+
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+RAW_DIR = PROJECT_ROOT / "data" / "raw"
+
+# 12-factor config: the warehouse path is read from the environment, with a
+# sensible default inside the project. Override with WAREHOUSE_DB=/some/path.
+DB_PATH = Path(os.environ.get("WAREHOUSE_DB", PROJECT_ROOT / "data" / "warehouse.duckdb"))
+
+# table -> columns we want to keep as raw text (VARCHAR) instead of inferred
+RAW_AS_TEXT = {
+    "customers": ["signup_date"],
+    "orders": ["order_date"],
+}
+
+
+def load_table(con: duckdb.DuckDBPyConnection, name: str) -> int:
+    csv_path = RAW_DIR / f"{name}.csv"
+    if not csv_path.exists():
+        raise FileNotFoundError(
+            f"Missing landing file: {csv_path} (run generate_raw_data.py first)"
+        )
+
+    # Build an optional types override (force some columns to VARCHAR)
+    overrides = RAW_AS_TEXT.get(name)
+    types_clause = ""
+    if overrides:
+        mapping = ", ".join(f"'{c}': 'VARCHAR'" for c in overrides)
+        types_clause = f", types = {{{mapping}}}"
+
+    con.execute(f"DROP TABLE IF EXISTS bronze.{name};")
+    con.execute(
+        f"CREATE TABLE bronze.{name} AS "
+        f"SELECT * FROM read_csv_auto('{csv_path.as_posix()}', header = true{types_clause});"
+    )
+    return con.execute(f"SELECT count(*) FROM bronze.{name};").fetchone()[0]
+
+
+def main() -> None:
+    DB_PATH.parent.mkdir(parents=True, exist_ok=True)
+    con = duckdb.connect(str(DB_PATH))
+    con.execute("CREATE SCHEMA IF NOT EXISTS bronze;")
+
+    print(f"Loading Bronze into {DB_PATH}")
+    for table in ["customers", "products", "stores", "orders", "order_items"]:
+        n = load_table(con, table)
+        print(f"  bronze.{table:<12} {n:>6} rows")
+
+    # Streaming landing table: created empty if absent, never truncated (live
+    # events accumulate across runs). Guarantees the near-real-time models can
+    # build even when no event has been streamed yet.
+    con.execute(CREATE_TABLE_DUCKDB)
+    n_events = con.execute("SELECT count(*) FROM bronze.order_events").fetchone()[0]
+    print(f"  bronze.order_events {n_events:>5} rows (streaming landing)")
+
+    con.close()
+    print("Bronze layer ready.")
+
+
+if __name__ == "__main__":
+    main()
+
+
+===== FILE: 20_native_catalog.md =====
+
+# Native MetricFlow catalog listings (MetricFlow 0.211.0 via dbt-metricflow 0.13.0, `mf` CLI)
+
+## $ mf list metrics
+```
+✔ 🌱 We've found 19 metrics.
+The list below shows metrics in the format of "metric_name: list of available dimensions"
+• active_customers: customer__city, customer__country, customer__is_repeat_customer, customer__last_order_date, customer__signup_date and 8 more
+• average_order_value: customer__city, customer__country, customer__is_repeat_customer, customer__last_order_date, customer__signup_date and 8 more
+• average_order_value_live: customer__city, customer__country, customer__is_repeat_customer, customer__last_order_date, customer__signup_date and 8 more
+• completed_revenue: customer__city, customer__country, customer__is_repeat_customer, customer__last_order_date, customer__signup_date and 8 more
+• cost: customer__city, customer__country, customer__is_repeat_customer, customer__last_order_date, customer__signup_date and 8 more
+• discount: customer__city, customer__country, customer__is_repeat_customer, customer__last_order_date, customer__signup_date and 8 more
+• gross_margin_rate: customer__city, customer__country, customer__is_repeat_customer, customer__last_order_date, customer__signup_date and 8 more
+• gross_profit: customer__city, customer__country, customer__is_repeat_customer, customer__last_order_date, customer__signup_date and 8 more
+• gross_profit_live: customer__city, customer__country, customer__is_repeat_customer, customer__last_order_date, customer__signup_date and 8 more
+• orders: customer__city, customer__country, customer__is_repeat_customer, customer__last_order_date, customer__signup_date and 8 more
+• orders_live: customer__city, customer__country, customer__is_repeat_customer, customer__last_order_date, customer__signup_date and 8 more
+• purchasing_customers: customer__city, customer__country, customer__is_repeat_customer, customer__last_order_date, customer__signup_date and 1 more
+• quantity_sold: customer__city, customer__country, customer__is_repeat_customer, customer__last_order_date, customer__signup_date and 8 more
+• repeat_customer_rate: customer__city, customer__country, customer__is_repeat_customer, customer__last_order_date, customer__signup_date and 1 more
+• repeat_customers: customer__city, customer__country, customer__is_repeat_customer, customer__last_order_date, customer__signup_date and 1 more
+• return_rate: customer__city, customer__country, customer__is_repeat_customer, customer__last_order_date, customer__signup_date and 8 more
+• returned_orders: customer__city, customer__country, customer__is_repeat_customer, customer__last_order_date, customer__signup_date and 8 more
+• revenue: customer__city, customer__country, customer__is_repeat_customer, customer__last_order_date, customer__signup_date and 8 more
+• revenue_live: customer__city, customer__country, customer__is_repeat_customer, customer__last_order_date, customer__signup_date and 8 more
+
+```
+## $ mf list dimensions --metrics active_customers
+```
+✔ 🌱 We've found 13 common dimensions for metrics ['active_customers'].
+• customer__city
+• customer__country
+• customer__is_repeat_customer
+• customer__last_order_date
+• customer__signup_date
+• metric_time
+• product__category
+• product__product_name
+• sales__channel
+• sales__order_date
+• sales__status
+• store__store_city
+• store__store_country
+
+```
+## $ mf list entities --metrics active_customers
+```
+✔ 🌱 We've found 5 common entities for metrics ['active_customers'].
+• customer
+• order
+• product
+• sales
+• store
+
+```
+## $ mf list dimensions --metrics average_order_value
+```
+✔ 🌱 We've found 13 common dimensions for metrics ['average_order_value'].
+• customer__city
+• customer__country
+• customer__is_repeat_customer
+• customer__last_order_date
+• customer__signup_date
+• metric_time
+• product__category
+• product__product_name
+• sales__channel
+• sales__order_date
+• sales__status
+• store__store_city
+• store__store_country
+
+```
+## $ mf list entities --metrics average_order_value
+```
+✔ 🌱 We've found 5 common entities for metrics ['average_order_value'].
+• customer
+• order
+• product
+• sales
+• store
+
+```
+## $ mf list dimensions --metrics average_order_value_live
+```
+✔ 🌱 We've found 13 common dimensions for metrics ['average_order_value_live'].
+• customer__city
+• customer__country
+• customer__is_repeat_customer
+• customer__last_order_date
+• customer__signup_date
+• metric_time
+• product__category
+• product__product_name
+• sales_live__channel
+• sales_live__event_ts
+• sales_live__status
+• store__store_city
+• store__store_country
+
+```
+## $ mf list entities --metrics average_order_value_live
+```
+✔ 🌱 We've found 5 common entities for metrics ['average_order_value_live'].
+• customer
+• order
+• product
+• sales_live
+• store
+
+```
+## $ mf list dimensions --metrics completed_revenue
+```
+✔ 🌱 We've found 13 common dimensions for metrics ['completed_revenue'].
+• customer__city
+• customer__country
+• customer__is_repeat_customer
+• customer__last_order_date
+• customer__signup_date
+• metric_time
+• product__category
+• product__product_name
+• sales__channel
+• sales__order_date
+• sales__status
+• store__store_city
+• store__store_country
+
+```
+## $ mf list entities --metrics completed_revenue
+```
+✔ 🌱 We've found 5 common entities for metrics ['completed_revenue'].
+• customer
+• order
+• product
+• sales
+• store
+
+```
+## $ mf list dimensions --metrics cost
+```
+✔ 🌱 We've found 13 common dimensions for metrics ['cost'].
+• customer__city
+• customer__country
+• customer__is_repeat_customer
+• customer__last_order_date
+• customer__signup_date
+• metric_time
+• product__category
+• product__product_name
+• sales__channel
+• sales__order_date
+• sales__status
+• store__store_city
+• store__store_country
+
+```
+## $ mf list entities --metrics cost
+```
+✔ 🌱 We've found 5 common entities for metrics ['cost'].
+• customer
+• order
+• product
+• sales
+• store
+
+```
+## $ mf list dimensions --metrics discount
+```
+✔ 🌱 We've found 13 common dimensions for metrics ['discount'].
+• customer__city
+• customer__country
+• customer__is_repeat_customer
+• customer__last_order_date
+• customer__signup_date
+• metric_time
+• product__category
+• product__product_name
+• sales__channel
+• sales__order_date
+• sales__status
+• store__store_city
+• store__store_country
+
+```
+## $ mf list entities --metrics discount
+```
+✔ 🌱 We've found 5 common entities for metrics ['discount'].
+• customer
+• order
+• product
+• sales
+• store
+
+```
+## $ mf list dimensions --metrics gross_margin_rate
+```
+✔ 🌱 We've found 13 common dimensions for metrics ['gross_margin_rate'].
+• customer__city
+• customer__country
+• customer__is_repeat_customer
+• customer__last_order_date
+• customer__signup_date
+• metric_time
+• product__category
+• product__product_name
+• sales__channel
+• sales__order_date
+• sales__status
+• store__store_city
+• store__store_country
+
+```
+## $ mf list entities --metrics gross_margin_rate
+```
+✔ 🌱 We've found 5 common entities for metrics ['gross_margin_rate'].
+• customer
+• order
+• product
+• sales
+• store
+
+```
+## $ mf list dimensions --metrics gross_profit
+```
+✔ 🌱 We've found 13 common dimensions for metrics ['gross_profit'].
+• customer__city
+• customer__country
+• customer__is_repeat_customer
+• customer__last_order_date
+• customer__signup_date
+• metric_time
+• product__category
+• product__product_name
+• sales__channel
+• sales__order_date
+• sales__status
+• store__store_city
+• store__store_country
+
+```
+## $ mf list entities --metrics gross_profit
+```
+✔ 🌱 We've found 5 common entities for metrics ['gross_profit'].
+• customer
+• order
+• product
+• sales
+• store
+
+```
+## $ mf list dimensions --metrics gross_profit_live
+```
+✔ 🌱 We've found 13 common dimensions for metrics ['gross_profit_live'].
+• customer__city
+• customer__country
+• customer__is_repeat_customer
+• customer__last_order_date
+• customer__signup_date
+• metric_time
+• product__category
+• product__product_name
+• sales_live__channel
+• sales_live__event_ts
+• sales_live__status
+• store__store_city
+• store__store_country
+
+```
+## $ mf list entities --metrics gross_profit_live
+```
+✔ 🌱 We've found 5 common entities for metrics ['gross_profit_live'].
+• customer
+• order
+• product
+• sales_live
+• store
+
+```
+## $ mf list dimensions --metrics orders
+```
+✔ 🌱 We've found 13 common dimensions for metrics ['orders'].
+• customer__city
+• customer__country
+• customer__is_repeat_customer
+• customer__last_order_date
+• customer__signup_date
+• metric_time
+• product__category
+• product__product_name
+• sales__channel
+• sales__order_date
+• sales__status
+• store__store_city
+• store__store_country
+
+```
+## $ mf list entities --metrics orders
+```
+✔ 🌱 We've found 5 common entities for metrics ['orders'].
+• customer
+• order
+• product
+• sales
+• store
+
+```
+## $ mf list dimensions --metrics orders_live
+```
+✔ 🌱 We've found 13 common dimensions for metrics ['orders_live'].
+• customer__city
+• customer__country
+• customer__is_repeat_customer
+• customer__last_order_date
+• customer__signup_date
+• metric_time
+• product__category
+• product__product_name
+• sales_live__channel
+• sales_live__event_ts
+• sales_live__status
+• store__store_city
+• store__store_country
+
+```
+## $ mf list entities --metrics orders_live
+```
+✔ 🌱 We've found 5 common entities for metrics ['orders_live'].
+• customer
+• order
+• product
+• sales_live
+• store
+
+```
+## $ mf list dimensions --metrics purchasing_customers
+```
+✔ 🌱 We've found 6 common dimensions for metrics ['purchasing_customers'].
+• customer__city
+• customer__country
+• customer__is_repeat_customer
+• customer__last_order_date
+• customer__signup_date
+• metric_time
+
+```
+## $ mf list entities --metrics purchasing_customers
+```
+✔ 🌱 We've found 1 common entities for metrics ['purchasing_customers'].
+• customer
+
+```
+## $ mf list dimensions --metrics quantity_sold
+```
+✔ 🌱 We've found 13 common dimensions for metrics ['quantity_sold'].
+• customer__city
+• customer__country
+• customer__is_repeat_customer
+• customer__last_order_date
+• customer__signup_date
+• metric_time
+• product__category
+• product__product_name
+• sales__channel
+• sales__order_date
+• sales__status
+• store__store_city
+• store__store_country
+
+```
+## $ mf list entities --metrics quantity_sold
+```
+✔ 🌱 We've found 5 common entities for metrics ['quantity_sold'].
+• customer
+• order
+• product
+• sales
+• store
+
+```
+## $ mf list dimensions --metrics repeat_customer_rate
+```
+✔ 🌱 We've found 6 common dimensions for metrics ['repeat_customer_rate'].
+• customer__city
+• customer__country
+• customer__is_repeat_customer
+• customer__last_order_date
+• customer__signup_date
+• metric_time
+
+```
+## $ mf list entities --metrics repeat_customer_rate
+```
+✔ 🌱 We've found 1 common entities for metrics ['repeat_customer_rate'].
+• customer
+
+```
+## $ mf list dimensions --metrics repeat_customers
+```
+✔ 🌱 We've found 6 common dimensions for metrics ['repeat_customers'].
+• customer__city
+• customer__country
+• customer__is_repeat_customer
+• customer__last_order_date
+• customer__signup_date
+• metric_time
+
+```
+## $ mf list entities --metrics repeat_customers
+```
+✔ 🌱 We've found 1 common entities for metrics ['repeat_customers'].
+• customer
+
+```
+## $ mf list dimensions --metrics return_rate
+```
+✔ 🌱 We've found 13 common dimensions for metrics ['return_rate'].
+• customer__city
+• customer__country
+• customer__is_repeat_customer
+• customer__last_order_date
+• customer__signup_date
+• metric_time
+• product__category
+• product__product_name
+• sales__channel
+• sales__order_date
+• sales__status
+• store__store_city
+• store__store_country
+
+```
+## $ mf list entities --metrics return_rate
+```
+✔ 🌱 We've found 5 common entities for metrics ['return_rate'].
+• customer
+• order
+• product
+• sales
+• store
+
+```
+## $ mf list dimensions --metrics returned_orders
+```
+✔ 🌱 We've found 13 common dimensions for metrics ['returned_orders'].
+• customer__city
+• customer__country
+• customer__is_repeat_customer
+• customer__last_order_date
+• customer__signup_date
+• metric_time
+• product__category
+• product__product_name
+• sales__channel
+• sales__order_date
+• sales__status
+• store__store_city
+• store__store_country
+
+```
+## $ mf list entities --metrics returned_orders
+```
+✔ 🌱 We've found 5 common entities for metrics ['returned_orders'].
+• customer
+• order
+• product
+• sales
+• store
+
+```
+## $ mf list dimensions --metrics revenue
+```
+✔ 🌱 We've found 13 common dimensions for metrics ['revenue'].
+• customer__city
+• customer__country
+• customer__is_repeat_customer
+• customer__last_order_date
+• customer__signup_date
+• metric_time
+• product__category
+• product__product_name
+• sales__channel
+• sales__order_date
+• sales__status
+• store__store_city
+• store__store_country
+
+```
+## $ mf list entities --metrics revenue
+```
+✔ 🌱 We've found 5 common entities for metrics ['revenue'].
+• customer
+• order
+• product
+• sales
+• store
+
+```
+## $ mf list dimensions --metrics revenue_live
+```
+✔ 🌱 We've found 13 common dimensions for metrics ['revenue_live'].
+• customer__city
+• customer__country
+• customer__is_repeat_customer
+• customer__last_order_date
+• customer__signup_date
+• metric_time
+• product__category
+• product__product_name
+• sales_live__channel
+• sales_live__event_ts
+• sales_live__status
+• store__store_city
+• store__store_country
+
+```
+## $ mf list entities --metrics revenue_live
+```
+✔ 🌱 We've found 5 common entities for metrics ['revenue_live'].
+• customer
+• order
+• product
+• sales_live
+• store
+
+```
+
+
+===== FILE: 30_warehouse_schema.md =====
+
+# Warehouse schema (DuckDB file built by the upstream pipeline; every relation and column)
+
+
+## bronze.customers (BASE TABLE)
+- customer_id: BIGINT
+- first_name: VARCHAR
+- last_name: VARCHAR
+- email: VARCHAR
+- country: VARCHAR
+- city: VARCHAR
+- signup_date: VARCHAR
+
+## bronze.order_events (BASE TABLE)
+- event_id: VARCHAR
+- order_id: BIGINT
+- order_item_id: BIGINT
+- customer_id: BIGINT
+- store_id: BIGINT
+- product_id: BIGINT
+- quantity: INTEGER
+- unit_price: DECIMAL(10,2)
+- channel: VARCHAR
+- status: VARCHAR
+- event_ts: TIMESTAMP
+
+## bronze.order_items (BASE TABLE)
+- order_item_id: BIGINT
+- order_id: BIGINT
+- product_id: BIGINT
+- quantity: BIGINT
+- unit_price: DOUBLE
+
+## bronze.orders (BASE TABLE)
+- order_id: BIGINT
+- customer_id: BIGINT
+- store_id: BIGINT
+- order_date: VARCHAR
+- channel: VARCHAR
+- status: VARCHAR
+
+## bronze.products (BASE TABLE)
+- product_id: BIGINT
+- product_name: VARCHAR
+- category: VARCHAR
+- unit_cost: DOUBLE
+- list_price: DOUBLE
+
+## bronze.stores (BASE TABLE)
+- store_id: BIGINT
+- store_name: VARCHAR
+- country: VARCHAR
+- city: VARCHAR
+
+## gold.dim_customers (BASE TABLE)
+- customer_id: BIGINT
+- first_name: VARCHAR
+- last_name: VARCHAR
+- full_name: VARCHAR
+- email: VARCHAR
+- country: VARCHAR
+- city: VARCHAR
+- signup_date: DATE
+
+## gold.dim_dates (BASE TABLE)
+- date_id: INTEGER
+- date_day: DATE
+- year: BIGINT
+- quarter: BIGINT
+- quarter_name: VARCHAR
+- month: BIGINT
+- month_name: VARCHAR
+- week_of_year: BIGINT
+- day_of_week: BIGINT
+- day_name: VARCHAR
+- is_weekend: BOOLEAN
+
+## gold.dim_products (BASE TABLE)
+- product_id: BIGINT
+- product_name: VARCHAR
+- category: VARCHAR
+- unit_cost: DECIMAL(10,2)
+- list_price: DECIMAL(10,2)
+- unit_margin: DECIMAL(10,2)
+- margin_rate: DOUBLE
+
+## gold.dim_stores (BASE TABLE)
+- store_id: BIGINT
+- store_name: VARCHAR
+- country: VARCHAR
+- city: VARCHAR
+
+## gold.fact_customer_orders (BASE TABLE)
+- customer_id: BIGINT
+- order_count: BIGINT
+- is_repeat_customer: BOOLEAN
+- last_order_date: DATE
+
+## gold.fact_sales (BASE TABLE)
+- sales_id: BIGINT
+- order_id: BIGINT
+- customer_id: BIGINT
+- product_id: BIGINT
+- store_id: BIGINT
+- order_date: DATE
+- date_id: INTEGER
+- channel: VARCHAR
+- status: VARCHAR
+- quantity: INTEGER
+- unit_price: DECIMAL(10,2)
+- unit_cost: DECIMAL(10,2)
+- revenue: DECIMAL(12,2)
+- cost_amount: DECIMAL(12,2)
+- profit: DECIMAL(12,2)
+- discount_amount: DECIMAL(12,2)
+- is_completed: BOOLEAN
+- is_returned: BOOLEAN
+- is_cancelled: BOOLEAN
+
+## gold.fact_sales_live (BASE TABLE)
+- event_id: VARCHAR
+- order_id: BIGINT
+- order_item_id: BIGINT
+- customer_id: BIGINT
+- product_id: BIGINT
+- store_id: BIGINT
+- event_ts: TIMESTAMP
+- event_date: DATE
+- date_id: INTEGER
+- channel: VARCHAR
+- status: VARCHAR
+- quantity: INTEGER
+- unit_price: DECIMAL(10,2)
+- unit_cost: DECIMAL(10,2)
+- revenue: DECIMAL(12,2)
+- cost_amount: DECIMAL(12,2)
+- profit: DECIMAL(12,2)
+- discount_amount: DECIMAL(12,2)
+- is_completed: BOOLEAN
+- is_returned: BOOLEAN
+- is_cancelled: BOOLEAN
+
+## gold.rt_freshness (VIEW)
+- last_event_ts: TIMESTAMP
+- as_of: TIMESTAMP WITH TIME ZONE
+- freshness_seconds: BIGINT
+- no_events_yet: BOOLEAN
+
+## silver.stg_customers (VIEW)
+- customer_id: BIGINT
+- first_name: VARCHAR
+- last_name: VARCHAR
+- email: VARCHAR
+- country: VARCHAR
+- city: VARCHAR
+- signup_date: DATE
+
+## silver.stg_order_events (VIEW)
+- event_id: VARCHAR
+- order_id: BIGINT
+- order_item_id: BIGINT
+- customer_id: BIGINT
+- store_id: BIGINT
+- product_id: BIGINT
+- quantity: INTEGER
+- unit_price: DECIMAL(10,2)
+- channel: VARCHAR
+- status: VARCHAR
+- event_ts: TIMESTAMP
+
+## silver.stg_order_items (VIEW)
+- order_item_id: BIGINT
+- order_id: BIGINT
+- product_id: BIGINT
+- quantity: INTEGER
+- unit_price: DECIMAL(10,2)
+
+## silver.stg_orders (VIEW)
+- order_id: BIGINT
+- customer_id: BIGINT
+- store_id: BIGINT
+- order_date: DATE
+- channel: VARCHAR
+- status: VARCHAR
+
+## silver.stg_products (VIEW)
+- product_id: BIGINT
+- product_name: VARCHAR
+- category: VARCHAR
+- unit_cost: DECIMAL(10,2)
+- list_price: DECIMAL(10,2)
+- unit_margin: DECIMAL(10,2)
+
+## silver.stg_stores (VIEW)
+- store_id: BIGINT
+- store_name: VARCHAR
+- country: VARCHAR
+- city: VARCHAR
+
+# Observed values of every VARCHAR or BOOLEAN column with at most 12 distinct values (row counts)
+
+- bronze.orders.channel: 'in_store'=872, 'online'=1328
+- bronze.orders.status: 'cancelled'=183, 'completed'=1801, 'returned'=216
+- bronze.products.category: 'Clothing'=28, 'Electronics'=22, 'Home'=21, 'Sports'=29
+- bronze.stores.store_name: 'Store Chrétien'=1, 'Store Devaux'=1, 'Store Gauthier-sur-Evrard'=1, 'Store Gomes'=1, 'Store Hoareaudan'=1, 'Store Labbéboeuf'=1, 'Store Ollivier-sur-Dupuy'=1, 'Store Perez'=1, 'Store Ribeiro'=1, 'Store Thibault'=1
+- bronze.stores.country: 'Belgium'=2, 'France'=2, 'Germany'=2, 'Italy'=2, 'Spain'=2
+- bronze.stores.city: 'Descamps-sur-David'=1, 'Duhamel'=1, 'Faivre-les-Bains'=1, 'Garnier-la-Forêt'=1, 'Gayboeuf'=1, 'Saint Jacqueline'=1, 'Saint Marcel'=1, 'Saint Marianne'=1, 'Saint Martine'=1, 'Saint Éricnec'=1
+- gold.dim_customers.country: 'Belgium'=99, 'France'=90, 'Germany'=105, 'Italy'=108, 'Spain'=98
+- gold.dim_dates.quarter_name: 'Q1'=271, 'Q2'=273, 'Q3'=276, 'Q4'=276
+- gold.dim_dates.month_name: 'April'=90, 'August'=93, 'December'=93, 'February'=85, 'January'=93, 'July'=93, 'June'=90, 'March'=93, 'May'=93, 'November'=90, 'October'=93, 'September'=90
+- gold.dim_dates.day_name: 'Friday'=156, 'Monday'=157, 'Saturday'=156, 'Sunday'=156, 'Thursday'=157, 'Tuesday'=157, 'Wednesday'=157
+- gold.dim_dates.is_weekend: False=784, True=312
+- gold.dim_products.category: 'Clothing'=28, 'Electronics'=22, 'Home'=21, 'Sports'=29
+- gold.dim_stores.store_name: 'Store Chrétien'=1, 'Store Devaux'=1, 'Store Gauthier-sur-Evrard'=1, 'Store Gomes'=1, 'Store Hoareaudan'=1, 'Store Labbéboeuf'=1, 'Store Ollivier-sur-Dupuy'=1, 'Store Perez'=1, 'Store Ribeiro'=1, 'Store Thibault'=1
+- gold.dim_stores.country: 'Belgium'=2, 'France'=2, 'Germany'=2, 'Italy'=2, 'Spain'=2
+- gold.dim_stores.city: 'Descamps-sur-David'=1, 'Duhamel'=1, 'Faivre-les-Bains'=1, 'Garnier-la-Forêt'=1, 'Gayboeuf'=1, 'Saint Jacqueline'=1, 'Saint Marcel'=1, 'Saint Marianne'=1, 'Saint Martine'=1, 'Saint Éricnec'=1
+- gold.fact_customer_orders.is_repeat_customer: False=23, True=471
+- gold.fact_sales.channel: 'in_store'=2181, 'online'=3345
+- gold.fact_sales.status: 'cancelled'=470, 'completed'=4512, 'returned'=544
+- gold.fact_sales.is_completed: False=1014, True=4512
+- gold.fact_sales.is_returned: False=4982, True=544
+- gold.fact_sales.is_cancelled: False=5056, True=470
+- gold.rt_freshness.no_events_yet: True=1
+- silver.stg_customers.country: 'Belgium'=99, 'France'=90, 'Germany'=105, 'Italy'=108, 'Spain'=98
+- silver.stg_orders.channel: 'in_store'=872, 'online'=1328
+- silver.stg_orders.status: 'cancelled'=183, 'completed'=1801, 'returned'=216
+- silver.stg_products.category: 'Clothing'=28, 'Electronics'=22, 'Home'=21, 'Sports'=29
+- silver.stg_stores.store_name: 'Store Chrétien'=1, 'Store Devaux'=1, 'Store Gauthier-sur-Evrard'=1, 'Store Gomes'=1, 'Store Hoareaudan'=1, 'Store Labbéboeuf'=1, 'Store Ollivier-sur-Dupuy'=1, 'Store Perez'=1, 'Store Ribeiro'=1, 'Store Thibault'=1
+- silver.stg_stores.country: 'Belgium'=2, 'France'=2, 'Germany'=2, 'Italy'=2, 'Spain'=2
+- silver.stg_stores.city: 'Descamps-sur-David'=1, 'Duhamel'=1, 'Faivre-les-Bains'=1, 'Garnier-la-Forêt'=1, 'Gayboeuf'=1, 'Saint Jacqueline'=1, 'Saint Marcel'=1, 'Saint Marianne'=1, 'Saint Martine'=1, 'Saint Éricnec'=1
+
+# Row counts
+
+- bronze.customers: 500 rows
+- bronze.order_events: 0 rows
+- bronze.order_items: 5526 rows
+- bronze.orders: 2200 rows
+- bronze.products: 100 rows
+- bronze.stores: 10 rows
+- gold.dim_customers: 500 rows
+- gold.dim_dates: 1096 rows
+- gold.dim_products: 100 rows
+- gold.dim_stores: 10 rows
+- gold.fact_customer_orders: 494 rows
+- gold.fact_sales: 5526 rows
+- gold.fact_sales_live: 0 rows
+- gold.rt_freshness: 1 rows
+- silver.stg_customers: 500 rows
+- silver.stg_order_events: 0 rows
+- silver.stg_order_items: 5526 rows
+- silver.stg_orders: 2200 rows
+- silver.stg_products: 100 rows
+- silver.stg_stores: 10 rows
+
+
+===== FILE: 40_raw_headers.md =====
+
+# Raw landing files (CSV headers; written by scripts/generate_raw_data.py, loaded into schema bronze)
+
+- data/raw/customers.csv: customer_id, first_name, last_name, email, country, city, signup_date
+- data/raw/order_items.csv: order_item_id, order_id, product_id, quantity, unit_price
+- data/raw/orders.csv: order_id, customer_id, store_id, order_date, channel, status
+- data/raw/products.csv: product_id, product_name, category, unit_cost, list_price
+- data/raw/stores.csv: store_id, store_name, country, city
