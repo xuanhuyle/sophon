@@ -182,4 +182,20 @@ Defaults: `eval_known_at` = 2026-10-06T00:00Z (after approvals); `eval_effective
 
 ## Amendments
 
-(none)
+Added after the freeze. The frozen bytes are `PROTOCOL.md` at `e0bf06f` (sha256 in `FREEZE_MANIFEST.txt`). No
+case, expectation, anchor or gate changed.
+
+1. **Replay environment.** The replay's child process gets `PATH` and a temporary `HOME` only. `uv`, `git` and
+   dbt need a `PATH`, and dbt and uv need a writable `HOME`. In every other respect this is the specified
+   `env -i`, with `python -I` and a temporary cwd.
+2. **`gate.py` skips `PROTOCOL.md`** when re-hashing `FREEZE_MANIFEST.txt`, because of these amendments. Every
+   other frozen file is re-hashed and matches.
+3. **Code written after the freeze, as planned:**
+   - `src/e31.py`, `src/fresh_verifier.py` and `src/gate.py`;
+   - `src/replay.py`;
+   - `tests/test_e31.py`;
+   - `src/diagnostic_trust_boundary.py`, a non-scored diagnostic required by the prompt's "security boundary"
+     note.
+4. **Reporting caveat found after the scored run:** in V10 the state `approved_lab_meaning` is `true`, because it
+   carries E3's view that an approval selects `R_CUSTOMER_COUNTRY` by id. The rewritten reading content is caught
+   separately, as UNTRUSTED_READING_CONTENT, and the status is NOT_VERIFIED. The flag was left unchanged.

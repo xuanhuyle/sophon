@@ -1,0 +1,679 @@
+[
+ {
+  "case_id": "T1_START_AFTER_EVAL_DATE",
+  "fresh_guards": null,
+  "fresh_native": null,
+  "fresh_reference": null,
+  "reasons": [
+   "REQUIREMENT_NOT_IN_FORCE"
+  ],
+  "states": {
+   "applicable_at_effective_date": false,
+   "approved_lab_meaning": true,
+   "candidate_agrees_with_fresh": null,
+   "fresh_reexecution_succeeded": null,
+   "fresh_reference_agreement": null,
+   "known_at_eval_time": true,
+   "lab_simulated_equivalence_used": false,
+   "technically_executable_candidate": true
+  },
+  "status": "REQUIREMENT_NOT_IN_FORCE"
+ },
+ {
+  "case_id": "T2_START_BOUNDARY_INCLUSIVE",
+  "fresh_guards": null,
+  "fresh_native": {
+   "2024": "310780.14",
+   "2025": "261972.06",
+   "2026": "155221.02"
+  },
+  "fresh_reference": {
+   "2024": "310780.14",
+   "2025": "261972.06",
+   "2026": "155221.02"
+  },
+  "reasons": [],
+  "states": {
+   "applicable_at_effective_date": true,
+   "approved_lab_meaning": true,
+   "candidate_agrees_with_fresh": true,
+   "fresh_reexecution_succeeded": true,
+   "fresh_reference_agreement": true,
+   "known_at_eval_time": true,
+   "lab_simulated_equivalence_used": false,
+   "technically_executable_candidate": true
+  },
+  "status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_FRESH_CHECKS"
+ },
+ {
+  "case_id": "T3_END_BOUNDARY_INCLUSIVE",
+  "fresh_guards": null,
+  "fresh_native": {
+   "2024": "310780.14",
+   "2025": "261972.06",
+   "2026": "155221.02"
+  },
+  "fresh_reference": {
+   "2024": "310780.14",
+   "2025": "261972.06",
+   "2026": "155221.02"
+  },
+  "reasons": [],
+  "states": {
+   "applicable_at_effective_date": true,
+   "approved_lab_meaning": true,
+   "candidate_agrees_with_fresh": true,
+   "fresh_reexecution_succeeded": true,
+   "fresh_reference_agreement": true,
+   "known_at_eval_time": true,
+   "lab_simulated_equivalence_used": false,
+   "technically_executable_candidate": true
+  },
+  "status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_FRESH_CHECKS"
+ },
+ {
+  "case_id": "T4_AFTER_END",
+  "fresh_guards": null,
+  "fresh_native": null,
+  "fresh_reference": null,
+  "reasons": [
+   "REQUIREMENT_NOT_IN_FORCE"
+  ],
+  "states": {
+   "applicable_at_effective_date": false,
+   "approved_lab_meaning": true,
+   "candidate_agrees_with_fresh": null,
+   "fresh_reexecution_succeeded": null,
+   "fresh_reference_agreement": null,
+   "known_at_eval_time": true,
+   "lab_simulated_equivalence_used": false,
+   "technically_executable_candidate": true
+  },
+  "status": "REQUIREMENT_NOT_IN_FORCE"
+ },
+ {
+  "case_id": "T5_SOURCE_NOT_YET_KNOWN",
+  "fresh_guards": null,
+  "fresh_native": null,
+  "fresh_reference": null,
+  "reasons": [
+   "INTERPRETATION_UNRESOLVED",
+   "SOURCE_NOT_YET_KNOWN"
+  ],
+  "states": {
+   "applicable_at_effective_date": true,
+   "approved_lab_meaning": false,
+   "candidate_agrees_with_fresh": null,
+   "fresh_reexecution_succeeded": null,
+   "fresh_reference_agreement": null,
+   "known_at_eval_time": false,
+   "lab_simulated_equivalence_used": false,
+   "technically_executable_candidate": true
+  },
+  "status": "NOT_KNOWN_AT_EVALUATION_TIME"
+ },
+ {
+  "case_id": "T6_APPROVAL_KNOWN_LATER",
+  "fresh_guards": null,
+  "fresh_native": null,
+  "fresh_reference": null,
+  "reasons": [
+   "INTERPRETATION_UNRESOLVED"
+  ],
+  "states": {
+   "applicable_at_effective_date": true,
+   "approved_lab_meaning": false,
+   "candidate_agrees_with_fresh": null,
+   "fresh_reexecution_succeeded": null,
+   "fresh_reference_agreement": null,
+   "known_at_eval_time": true,
+   "lab_simulated_equivalence_used": false,
+   "technically_executable_candidate": true
+  },
+  "status": "MEANING_UNRESOLVED"
+ },
+ {
+  "case_id": "T7A_RETROACTIVE_AS_KNOWN_BEFORE_OBSERVATION",
+  "fresh_guards": null,
+  "fresh_native": null,
+  "fresh_reference": null,
+  "reasons": [
+   "INTERPRETATION_UNRESOLVED",
+   "SOURCE_NOT_YET_KNOWN"
+  ],
+  "states": {
+   "applicable_at_effective_date": true,
+   "approved_lab_meaning": false,
+   "candidate_agrees_with_fresh": null,
+   "fresh_reexecution_succeeded": null,
+   "fresh_reference_agreement": null,
+   "known_at_eval_time": false,
+   "lab_simulated_equivalence_used": false,
+   "technically_executable_candidate": true
+  },
+  "status": "NOT_KNOWN_AT_EVALUATION_TIME"
+ },
+ {
+  "case_id": "T7B_RETROACTIVE_AS_KNOWN_AFTER_OBSERVATION",
+  "fresh_guards": null,
+  "fresh_native": {
+   "2024": "310780.14",
+   "2025": "261972.06",
+   "2026": "155221.02"
+  },
+  "fresh_reference": {
+   "2024": "310780.14",
+   "2025": "261972.06",
+   "2026": "155221.02"
+  },
+  "reasons": [],
+  "states": {
+   "applicable_at_effective_date": true,
+   "approved_lab_meaning": true,
+   "candidate_agrees_with_fresh": true,
+   "fresh_reexecution_succeeded": true,
+   "fresh_reference_agreement": true,
+   "known_at_eval_time": true,
+   "lab_simulated_equivalence_used": false,
+   "technically_executable_candidate": true
+  },
+  "status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_FRESH_CHECKS"
+ },
+ {
+  "case_id": "T8_APPROVAL_IN_FORCE_REQUIREMENT_ENDED",
+  "fresh_guards": null,
+  "fresh_native": null,
+  "fresh_reference": null,
+  "reasons": [
+   "REQUIREMENT_NOT_IN_FORCE"
+  ],
+  "states": {
+   "applicable_at_effective_date": false,
+   "approved_lab_meaning": true,
+   "candidate_agrees_with_fresh": null,
+   "fresh_reexecution_succeeded": null,
+   "fresh_reference_agreement": null,
+   "known_at_eval_time": true,
+   "lab_simulated_equivalence_used": false,
+   "technically_executable_candidate": true
+  },
+  "status": "REQUIREMENT_NOT_IN_FORCE"
+ },
+ {
+  "case_id": "T9_IN_FORCE_UNAUTHORIZED",
+  "fresh_guards": null,
+  "fresh_native": null,
+  "fresh_reference": null,
+  "reasons": [
+   "INTERPRETATION_UNRESOLVED"
+  ],
+  "states": {
+   "applicable_at_effective_date": true,
+   "approved_lab_meaning": false,
+   "candidate_agrees_with_fresh": null,
+   "fresh_reexecution_succeeded": null,
+   "fresh_reference_agreement": null,
+   "known_at_eval_time": true,
+   "lab_simulated_equivalence_used": false,
+   "technically_executable_candidate": true
+  },
+  "status": "MEANING_UNRESOLVED"
+ },
+ {
+  "case_id": "T10_CORRUPT_SOURCE_AND_NOT_IN_FORCE",
+  "fresh_guards": null,
+  "fresh_native": null,
+  "fresh_reference": null,
+  "reasons": [
+   "APPROVAL_SCOPE_MISMATCH",
+   "INTERPRETATION_UNRESOLVED",
+   "SOURCE_HASH_MISMATCH"
+  ],
+  "states": {
+   "applicable_at_effective_date": false,
+   "approved_lab_meaning": false,
+   "candidate_agrees_with_fresh": null,
+   "fresh_reexecution_succeeded": null,
+   "fresh_reference_agreement": null,
+   "known_at_eval_time": true,
+   "lab_simulated_equivalence_used": false,
+   "technically_executable_candidate": true
+  },
+  "status": "STRUCTURALLY_INVALID"
+ },
+ {
+  "case_id": "T11_MISSING_FACT_NOT_IN_FORCE",
+  "fresh_guards": null,
+  "fresh_native": null,
+  "fresh_reference": null,
+  "reasons": [
+   "REQUIRED_FACT_ABSENT",
+   "REQUIREMENT_NOT_IN_FORCE"
+  ],
+  "states": {
+   "applicable_at_effective_date": false,
+   "approved_lab_meaning": true,
+   "candidate_agrees_with_fresh": null,
+   "fresh_reexecution_succeeded": null,
+   "fresh_reference_agreement": null,
+   "known_at_eval_time": true,
+   "lab_simulated_equivalence_used": false,
+   "technically_executable_candidate": false
+  },
+  "status": "REQUIREMENT_NOT_IN_FORCE"
+ },
+ {
+  "case_id": "T12_S3_APPROVED_EQUIVALENCE_NOT_IN_FORCE",
+  "fresh_guards": null,
+  "fresh_native": null,
+  "fresh_reference": null,
+  "reasons": [
+   "REQUIREMENT_NOT_IN_FORCE"
+  ],
+  "states": {
+   "applicable_at_effective_date": false,
+   "approved_lab_meaning": true,
+   "candidate_agrees_with_fresh": null,
+   "fresh_reexecution_succeeded": null,
+   "fresh_reference_agreement": null,
+   "known_at_eval_time": true,
+   "lab_simulated_equivalence_used": true,
+   "technically_executable_candidate": true
+  },
+  "status": "REQUIREMENT_NOT_IN_FORCE"
+ },
+ {
+  "case_id": "V1_S1_DERIVED_CLEAN",
+  "fresh_guards": {
+   "exact_comparison": true,
+   "line_entity_unique": true,
+   "price_source_exact": true,
+   "quantity_positive": true,
+   "revenue_exact": true
+  },
+  "fresh_native": {
+   "2024": "1634542.08",
+   "2025": "1400232.75",
+   "2026": "752191.54"
+  },
+  "fresh_reference": {
+   "2024": "1634542.08",
+   "2025": "1400232.75",
+   "2026": "752191.54"
+  },
+  "reasons": [],
+  "states": {
+   "applicable_at_effective_date": true,
+   "approved_lab_meaning": true,
+   "candidate_agrees_with_fresh": true,
+   "fresh_reexecution_succeeded": true,
+   "fresh_reference_agreement": true,
+   "known_at_eval_time": true,
+   "lab_simulated_equivalence_used": false,
+   "technically_executable_candidate": true
+  },
+  "status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_FRESH_CHECKS"
+ },
+ {
+  "case_id": "V2_S2_CUSTOMER_CLEAN",
+  "fresh_guards": null,
+  "fresh_native": {
+   "2024": "310780.14",
+   "2025": "261972.06",
+   "2026": "155221.02"
+  },
+  "fresh_reference": {
+   "2024": "310780.14",
+   "2025": "261972.06",
+   "2026": "155221.02"
+  },
+  "reasons": [],
+  "states": {
+   "applicable_at_effective_date": true,
+   "approved_lab_meaning": true,
+   "candidate_agrees_with_fresh": true,
+   "fresh_reexecution_succeeded": true,
+   "fresh_reference_agreement": true,
+   "known_at_eval_time": true,
+   "lab_simulated_equivalence_used": false,
+   "technically_executable_candidate": true
+  },
+  "status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_FRESH_CHECKS"
+ },
+ {
+  "case_id": "V3_S3_EQUIVALENCE_CLEAN",
+  "fresh_guards": null,
+  "fresh_native": {
+   "2024": "97",
+   "2025": "98",
+   "2026": "42"
+  },
+  "fresh_reference": {
+   "2024": "97",
+   "2025": "98",
+   "2026": "42"
+  },
+  "reasons": [],
+  "states": {
+   "applicable_at_effective_date": true,
+   "approved_lab_meaning": true,
+   "candidate_agrees_with_fresh": true,
+   "fresh_reexecution_succeeded": true,
+   "fresh_reference_agreement": true,
+   "known_at_eval_time": true,
+   "lab_simulated_equivalence_used": true,
+   "technically_executable_candidate": true
+  },
+  "status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_FRESH_CHECKS"
+ },
+ {
+  "case_id": "V4_S4_STATUS_PROXY",
+  "fresh_guards": null,
+  "fresh_native": null,
+  "fresh_reference": null,
+  "reasons": [
+   "NOT_DESIGNATED_FOR_FACT",
+   "REQUIRED_FACT_ABSENT"
+  ],
+  "states": {
+   "applicable_at_effective_date": true,
+   "approved_lab_meaning": true,
+   "candidate_agrees_with_fresh": null,
+   "fresh_reexecution_succeeded": null,
+   "fresh_reference_agreement": null,
+   "known_at_eval_time": true,
+   "lab_simulated_equivalence_used": false,
+   "technically_executable_candidate": true
+  },
+  "status": "MISSING_REQUIRED_FACT"
+ },
+ {
+  "case_id": "V5_FORGED_PAIR_STORE_READING",
+  "fresh_guards": null,
+  "fresh_native": {
+   "2024": "310780.14",
+   "2025": "261972.06",
+   "2026": "155221.02"
+  },
+  "fresh_reference": {
+   "2024": "310780.14",
+   "2025": "261972.06",
+   "2026": "155221.02"
+  },
+  "reasons": [
+   "CANDIDATE_NATIVE_DISAGREES_WITH_FRESH",
+   "CANDIDATE_REFERENCE_DISAGREES_WITH_FRESH"
+  ],
+  "states": {
+   "applicable_at_effective_date": true,
+   "approved_lab_meaning": true,
+   "candidate_agrees_with_fresh": false,
+   "fresh_reexecution_succeeded": true,
+   "fresh_reference_agreement": true,
+   "known_at_eval_time": true,
+   "lab_simulated_equivalence_used": false,
+   "technically_executable_candidate": true
+  },
+  "status": "NOT_VERIFIED"
+ },
+ {
+  "case_id": "V5B_FORGED_PAIR_ONE_CENT",
+  "fresh_guards": null,
+  "fresh_native": {
+   "2024": "310780.14",
+   "2025": "261972.06",
+   "2026": "155221.02"
+  },
+  "fresh_reference": {
+   "2024": "310780.14",
+   "2025": "261972.06",
+   "2026": "155221.02"
+  },
+  "reasons": [
+   "CANDIDATE_NATIVE_DISAGREES_WITH_FRESH",
+   "CANDIDATE_REFERENCE_DISAGREES_WITH_FRESH"
+  ],
+  "states": {
+   "applicable_at_effective_date": true,
+   "approved_lab_meaning": true,
+   "candidate_agrees_with_fresh": false,
+   "fresh_reexecution_succeeded": true,
+   "fresh_reference_agreement": true,
+   "known_at_eval_time": true,
+   "lab_simulated_equivalence_used": false,
+   "technically_executable_candidate": true
+  },
+  "status": "NOT_VERIFIED"
+ },
+ {
+  "case_id": "V6_SINGLE_NATIVE_RECEIPT_TAMPERED",
+  "fresh_guards": null,
+  "fresh_native": null,
+  "fresh_reference": null,
+  "reasons": [
+   "NATIVE_ORACLE_MISMATCH"
+  ],
+  "states": {
+   "applicable_at_effective_date": true,
+   "approved_lab_meaning": true,
+   "candidate_agrees_with_fresh": null,
+   "fresh_reexecution_succeeded": null,
+   "fresh_reference_agreement": null,
+   "known_at_eval_time": true,
+   "lab_simulated_equivalence_used": false,
+   "technically_executable_candidate": true
+  },
+  "status": "NOT_VERIFIED"
+ },
+ {
+  "case_id": "V7A_CONSISTENT_WRONG_SEMANTIC_REVISION",
+  "fresh_guards": null,
+  "fresh_native": {
+   "2024": "310780.14",
+   "2025": "261972.06",
+   "2026": "155221.02"
+  },
+  "fresh_reference": {
+   "2024": "310780.14",
+   "2025": "261972.06",
+   "2026": "155221.02"
+  },
+  "reasons": [
+   "TRUST_ANCHOR_MISMATCH"
+  ],
+  "states": {
+   "applicable_at_effective_date": true,
+   "approved_lab_meaning": true,
+   "candidate_agrees_with_fresh": true,
+   "fresh_reexecution_succeeded": true,
+   "fresh_reference_agreement": true,
+   "known_at_eval_time": true,
+   "lab_simulated_equivalence_used": false,
+   "technically_executable_candidate": true
+  },
+  "status": "NOT_VERIFIED"
+ },
+ {
+  "case_id": "V7B_CONSISTENT_WRONG_RAW_DATA_HASH",
+  "fresh_guards": null,
+  "fresh_native": {
+   "2024": "310780.14",
+   "2025": "261972.06",
+   "2026": "155221.02"
+  },
+  "fresh_reference": {
+   "2024": "310780.14",
+   "2025": "261972.06",
+   "2026": "155221.02"
+  },
+  "reasons": [
+   "TRUST_ANCHOR_MISMATCH"
+  ],
+  "states": {
+   "applicable_at_effective_date": true,
+   "approved_lab_meaning": true,
+   "candidate_agrees_with_fresh": true,
+   "fresh_reexecution_succeeded": true,
+   "fresh_reference_agreement": true,
+   "known_at_eval_time": true,
+   "lab_simulated_equivalence_used": false,
+   "technically_executable_candidate": true
+  },
+  "status": "NOT_VERIFIED"
+ },
+ {
+  "case_id": "V7C_STALE_RECEIPT_REVISION_ONLY",
+  "fresh_guards": null,
+  "fresh_native": null,
+  "fresh_reference": null,
+  "reasons": [
+   "RECEIPT_REVISION_MISMATCH"
+  ],
+  "states": {
+   "applicable_at_effective_date": true,
+   "approved_lab_meaning": true,
+   "candidate_agrees_with_fresh": null,
+   "fresh_reexecution_succeeded": null,
+   "fresh_reference_agreement": null,
+   "known_at_eval_time": true,
+   "lab_simulated_equivalence_used": false,
+   "technically_executable_candidate": true
+  },
+  "status": "NOT_VERIFIED"
+ },
+ {
+  "case_id": "V8A_FRESH_RUNTIME_UNAVAILABLE",
+  "fresh_guards": null,
+  "fresh_native": null,
+  "fresh_reference": {
+   "2024": "310780.14",
+   "2025": "261972.06",
+   "2026": "155221.02"
+  },
+  "reasons": [
+   "FRESH_RUNTIME_UNAVAILABLE"
+  ],
+  "states": {
+   "applicable_at_effective_date": true,
+   "approved_lab_meaning": true,
+   "candidate_agrees_with_fresh": true,
+   "fresh_reexecution_succeeded": false,
+   "fresh_reference_agreement": false,
+   "known_at_eval_time": true,
+   "lab_simulated_equivalence_used": false,
+   "technically_executable_candidate": true
+  },
+  "status": "NOT_VERIFIED"
+ },
+ {
+  "case_id": "V8B_REFERENCE_CODE_UNTRUSTED",
+  "fresh_guards": null,
+  "fresh_native": {
+   "2024": "310780.14",
+   "2025": "261972.06",
+   "2026": "155221.02"
+  },
+  "fresh_reference": null,
+  "reasons": [
+   "FRESH_REFERENCE_UNAVAILABLE"
+  ],
+  "states": {
+   "applicable_at_effective_date": true,
+   "approved_lab_meaning": true,
+   "candidate_agrees_with_fresh": true,
+   "fresh_reexecution_succeeded": true,
+   "fresh_reference_agreement": false,
+   "known_at_eval_time": true,
+   "lab_simulated_equivalence_used": false,
+   "technically_executable_candidate": true
+  },
+  "status": "NOT_VERIFIED"
+ },
+ {
+  "case_id": "V9A_NEGATIVE_QUANTITY_FORGED_GUARDS_AND_AMOUNTS",
+  "fresh_guards": {
+   "exact_comparison": true,
+   "line_entity_unique": true,
+   "price_source_exact": true,
+   "quantity_positive": false,
+   "revenue_exact": true
+  },
+  "fresh_native": {
+   "2024": "1634542.08",
+   "2025": "1399083.79",
+   "2026": "752191.54"
+  },
+  "fresh_reference": {
+   "2024": "1634542.08",
+   "2025": "1400232.75",
+   "2026": "752191.54"
+  },
+  "reasons": [
+   "CANDIDATE_NATIVE_DISAGREES_WITH_FRESH",
+   "FRESH_GUARD_FAILED",
+   "FRESH_NATIVE_REFERENCE_MISMATCH"
+  ],
+  "states": {
+   "applicable_at_effective_date": true,
+   "approved_lab_meaning": true,
+   "candidate_agrees_with_fresh": false,
+   "fresh_reexecution_succeeded": true,
+   "fresh_reference_agreement": false,
+   "known_at_eval_time": true,
+   "lab_simulated_equivalence_used": false,
+   "technically_executable_candidate": true
+  },
+  "status": "NOT_VERIFIED"
+ },
+ {
+  "case_id": "V9B_NEGATIVE_QUANTITY_HONEST_RECEIPTS",
+  "fresh_guards": null,
+  "fresh_native": null,
+  "fresh_reference": null,
+  "reasons": [
+   "GUARD_FAILED",
+   "NATIVE_ORACLE_MISMATCH"
+  ],
+  "states": {
+   "applicable_at_effective_date": true,
+   "approved_lab_meaning": true,
+   "candidate_agrees_with_fresh": null,
+   "fresh_reexecution_succeeded": null,
+   "fresh_reference_agreement": null,
+   "known_at_eval_time": true,
+   "lab_simulated_equivalence_used": false,
+   "technically_executable_candidate": true
+  },
+  "status": "NOT_VERIFIED"
+ },
+ {
+  "case_id": "V10_APPROVED_READING_CONTENT_SWAPPED",
+  "fresh_guards": null,
+  "fresh_native": {
+   "2024": "310780.14",
+   "2025": "261972.06",
+   "2026": "155221.02"
+  },
+  "fresh_reference": {
+   "2024": "310780.14",
+   "2025": "261972.06",
+   "2026": "155221.02"
+  },
+  "reasons": [
+   "CANDIDATE_NATIVE_DISAGREES_WITH_FRESH",
+   "CANDIDATE_REFERENCE_DISAGREES_WITH_FRESH",
+   "UNTRUSTED_READING_CONTENT"
+  ],
+  "states": {
+   "applicable_at_effective_date": true,
+   "approved_lab_meaning": true,
+   "candidate_agrees_with_fresh": false,
+   "fresh_reexecution_succeeded": true,
+   "fresh_reference_agreement": true,
+   "known_at_eval_time": true,
+   "lab_simulated_equivalence_used": false,
+   "technically_executable_candidate": true
+  },
+  "status": "NOT_VERIFIED"
+ }
+]

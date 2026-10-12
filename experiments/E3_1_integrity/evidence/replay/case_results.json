@@ -1,0 +1,1519 @@
+[
+ {
+  "case_id": "T1_START_AFTER_EVAL_DATE",
+  "group": "T",
+  "status": "REQUIREMENT_NOT_IN_FORCE",
+  "reasons": [
+   "REQUIREMENT_NOT_IN_FORCE"
+  ],
+  "selected_reading": "R_CUSTOMER_COUNTRY",
+  "uncovered": [],
+  "states": {
+   "known_at_eval_time": true,
+   "applicable_at_effective_date": false,
+   "approved_lab_meaning": true,
+   "lab_simulated_equivalence_used": false,
+   "technically_executable_candidate": true,
+   "fresh_reexecution_succeeded": null,
+   "fresh_reference_agreement": null,
+   "candidate_agrees_with_fresh": null
+  },
+  "e3_old": {
+   "status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS",
+   "reasons": []
+  },
+  "fresh": null,
+  "trust_boundary": "Trusted: cases/TRUSTED_MANIFEST.json (anchors from E0's committed regen receipt and E3's frozen fixtures), the pinned upstream rebuilt by this verifier process, and code files whose sha256 match the manifest. Untrusted: the record's verification_request and every candidate receipt. Not covered: an adversary controlling the manifest, verifier/reference code, the pinned source or generator; genuineness of the raw data or of LAB_SIMULATED approvals.",
+  "check_failures": [],
+  "passed": true,
+  "expected_status": "REQUIREMENT_NOT_IN_FORCE"
+ },
+ {
+  "case_id": "T2_START_BOUNDARY_INCLUSIVE",
+  "group": "T",
+  "status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_FRESH_CHECKS",
+  "reasons": [],
+  "selected_reading": "R_CUSTOMER_COUNTRY",
+  "uncovered": [],
+  "states": {
+   "known_at_eval_time": true,
+   "applicable_at_effective_date": true,
+   "approved_lab_meaning": true,
+   "lab_simulated_equivalence_used": false,
+   "technically_executable_candidate": true,
+   "fresh_reexecution_succeeded": true,
+   "fresh_reference_agreement": true,
+   "candidate_agrees_with_fresh": true
+  },
+  "e3_old": {
+   "status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS",
+   "reasons": []
+  },
+  "fresh": {
+   "reading_key": "S2/R_CUSTOMER_COUNTRY",
+   "estate": "TRUSTED_REBUILD",
+   "anchor_checks": {
+    "request_semantic_manifest": true,
+    "request_raw_csv": true,
+    "receipt_semantic_manifest": true,
+    "receipt_raw_csv": true,
+    "oracle_raw_csv": true,
+    "governing_source": true
+   },
+   "reading_meaning": {
+    "candidate": "d202a53091de1b1f07d6d90305a3ab33dbf338495b2b90becc32a56df5bde909",
+    "trusted": "d202a53091de1b1f07d6d90305a3ab33dbf338495b2b90becc32a56df5bde909",
+    "fixture_matches_manifest": true
+   },
+   "fresh_native": {
+    "ok": true,
+    "exit_code": 0,
+    "by_period": {
+     "2025": "261972.06",
+     "2024": "310780.14",
+     "2026": "155221.02"
+    },
+    "error": null,
+    "semantic_manifest_sha256": "e8e9bfc7e1188bc3eb3f5ac551e8ed5350817af14a5471bdbcdfdca2bc01bd48"
+   },
+   "fresh_reference": {
+    "ok": true,
+    "by_period": {
+     "2024": "310780.14",
+     "2025": "261972.06",
+     "2026": "155221.02"
+    },
+    "error": null,
+    "code_sha256": "2bcfd2d27bd7ae80e4cbb3c3e36ecf07686d2a1e786583306fc443858d088d04"
+   },
+   "candidate_native_by_period": {
+    "2025": "261972.06",
+    "2024": "310780.14",
+    "2026": "155221.02"
+   },
+   "candidate_reference_by_period": {
+    "2024": "310780.14",
+    "2025": "261972.06",
+    "2026": "155221.02"
+   }
+  },
+  "trust_boundary": "Trusted: cases/TRUSTED_MANIFEST.json (anchors from E0's committed regen receipt and E3's frozen fixtures), the pinned upstream rebuilt by this verifier process, and code files whose sha256 match the manifest. Untrusted: the record's verification_request and every candidate receipt. Not covered: an adversary controlling the manifest, verifier/reference code, the pinned source or generator; genuineness of the raw data or of LAB_SIMULATED approvals.",
+  "check_failures": [],
+  "passed": true,
+  "expected_status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_FRESH_CHECKS"
+ },
+ {
+  "case_id": "T3_END_BOUNDARY_INCLUSIVE",
+  "group": "T",
+  "status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_FRESH_CHECKS",
+  "reasons": [],
+  "selected_reading": "R_CUSTOMER_COUNTRY",
+  "uncovered": [],
+  "states": {
+   "known_at_eval_time": true,
+   "applicable_at_effective_date": true,
+   "approved_lab_meaning": true,
+   "lab_simulated_equivalence_used": false,
+   "technically_executable_candidate": true,
+   "fresh_reexecution_succeeded": true,
+   "fresh_reference_agreement": true,
+   "candidate_agrees_with_fresh": true
+  },
+  "e3_old": {
+   "status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS",
+   "reasons": []
+  },
+  "fresh": {
+   "reading_key": "S2/R_CUSTOMER_COUNTRY",
+   "estate": "TRUSTED_REBUILD",
+   "anchor_checks": {
+    "request_semantic_manifest": true,
+    "request_raw_csv": true,
+    "receipt_semantic_manifest": true,
+    "receipt_raw_csv": true,
+    "oracle_raw_csv": true,
+    "governing_source": true
+   },
+   "reading_meaning": {
+    "candidate": "d202a53091de1b1f07d6d90305a3ab33dbf338495b2b90becc32a56df5bde909",
+    "trusted": "d202a53091de1b1f07d6d90305a3ab33dbf338495b2b90becc32a56df5bde909",
+    "fixture_matches_manifest": true
+   },
+   "fresh_native": {
+    "ok": true,
+    "exit_code": 0,
+    "by_period": {
+     "2025": "261972.06",
+     "2024": "310780.14",
+     "2026": "155221.02"
+    },
+    "error": null,
+    "semantic_manifest_sha256": "e8e9bfc7e1188bc3eb3f5ac551e8ed5350817af14a5471bdbcdfdca2bc01bd48"
+   },
+   "fresh_reference": {
+    "ok": true,
+    "by_period": {
+     "2024": "310780.14",
+     "2025": "261972.06",
+     "2026": "155221.02"
+    },
+    "error": null,
+    "code_sha256": "2bcfd2d27bd7ae80e4cbb3c3e36ecf07686d2a1e786583306fc443858d088d04"
+   },
+   "candidate_native_by_period": {
+    "2025": "261972.06",
+    "2024": "310780.14",
+    "2026": "155221.02"
+   },
+   "candidate_reference_by_period": {
+    "2024": "310780.14",
+    "2025": "261972.06",
+    "2026": "155221.02"
+   }
+  },
+  "trust_boundary": "Trusted: cases/TRUSTED_MANIFEST.json (anchors from E0's committed regen receipt and E3's frozen fixtures), the pinned upstream rebuilt by this verifier process, and code files whose sha256 match the manifest. Untrusted: the record's verification_request and every candidate receipt. Not covered: an adversary controlling the manifest, verifier/reference code, the pinned source or generator; genuineness of the raw data or of LAB_SIMULATED approvals.",
+  "check_failures": [],
+  "passed": true,
+  "expected_status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_FRESH_CHECKS"
+ },
+ {
+  "case_id": "T4_AFTER_END",
+  "group": "T",
+  "status": "REQUIREMENT_NOT_IN_FORCE",
+  "reasons": [
+   "REQUIREMENT_NOT_IN_FORCE"
+  ],
+  "selected_reading": "R_CUSTOMER_COUNTRY",
+  "uncovered": [],
+  "states": {
+   "known_at_eval_time": true,
+   "applicable_at_effective_date": false,
+   "approved_lab_meaning": true,
+   "lab_simulated_equivalence_used": false,
+   "technically_executable_candidate": true,
+   "fresh_reexecution_succeeded": null,
+   "fresh_reference_agreement": null,
+   "candidate_agrees_with_fresh": null
+  },
+  "e3_old": {
+   "status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS",
+   "reasons": []
+  },
+  "fresh": null,
+  "trust_boundary": "Trusted: cases/TRUSTED_MANIFEST.json (anchors from E0's committed regen receipt and E3's frozen fixtures), the pinned upstream rebuilt by this verifier process, and code files whose sha256 match the manifest. Untrusted: the record's verification_request and every candidate receipt. Not covered: an adversary controlling the manifest, verifier/reference code, the pinned source or generator; genuineness of the raw data or of LAB_SIMULATED approvals.",
+  "check_failures": [],
+  "passed": true,
+  "expected_status": "REQUIREMENT_NOT_IN_FORCE"
+ },
+ {
+  "case_id": "T5_SOURCE_NOT_YET_KNOWN",
+  "group": "T",
+  "status": "NOT_KNOWN_AT_EVALUATION_TIME",
+  "reasons": [
+   "INTERPRETATION_UNRESOLVED",
+   "SOURCE_NOT_YET_KNOWN"
+  ],
+  "selected_reading": null,
+  "uncovered": [],
+  "states": {
+   "known_at_eval_time": false,
+   "applicable_at_effective_date": true,
+   "approved_lab_meaning": false,
+   "lab_simulated_equivalence_used": false,
+   "technically_executable_candidate": true,
+   "fresh_reexecution_succeeded": null,
+   "fresh_reference_agreement": null,
+   "candidate_agrees_with_fresh": null
+  },
+  "e3_old": {
+   "status": "STRUCTURALLY_INVALID",
+   "reasons": [
+    "INTERPRETATION_UNRESOLVED",
+    "SOURCE_NOT_YET_KNOWN"
+   ]
+  },
+  "fresh": null,
+  "trust_boundary": "Trusted: cases/TRUSTED_MANIFEST.json (anchors from E0's committed regen receipt and E3's frozen fixtures), the pinned upstream rebuilt by this verifier process, and code files whose sha256 match the manifest. Untrusted: the record's verification_request and every candidate receipt. Not covered: an adversary controlling the manifest, verifier/reference code, the pinned source or generator; genuineness of the raw data or of LAB_SIMULATED approvals.",
+  "check_failures": [],
+  "passed": true,
+  "expected_status": "NOT_KNOWN_AT_EVALUATION_TIME"
+ },
+ {
+  "case_id": "T6_APPROVAL_KNOWN_LATER",
+  "group": "T",
+  "status": "MEANING_UNRESOLVED",
+  "reasons": [
+   "INTERPRETATION_UNRESOLVED"
+  ],
+  "selected_reading": null,
+  "uncovered": [],
+  "states": {
+   "known_at_eval_time": true,
+   "applicable_at_effective_date": true,
+   "approved_lab_meaning": false,
+   "lab_simulated_equivalence_used": false,
+   "technically_executable_candidate": true,
+   "fresh_reexecution_succeeded": null,
+   "fresh_reference_agreement": null,
+   "candidate_agrees_with_fresh": null
+  },
+  "e3_old": {
+   "status": "MEANING_UNRESOLVED",
+   "reasons": [
+    "INTERPRETATION_UNRESOLVED"
+   ]
+  },
+  "fresh": null,
+  "trust_boundary": "Trusted: cases/TRUSTED_MANIFEST.json (anchors from E0's committed regen receipt and E3's frozen fixtures), the pinned upstream rebuilt by this verifier process, and code files whose sha256 match the manifest. Untrusted: the record's verification_request and every candidate receipt. Not covered: an adversary controlling the manifest, verifier/reference code, the pinned source or generator; genuineness of the raw data or of LAB_SIMULATED approvals.",
+  "check_failures": [],
+  "passed": true,
+  "expected_status": "MEANING_UNRESOLVED"
+ },
+ {
+  "case_id": "T7A_RETROACTIVE_AS_KNOWN_BEFORE_OBSERVATION",
+  "group": "T",
+  "status": "NOT_KNOWN_AT_EVALUATION_TIME",
+  "reasons": [
+   "INTERPRETATION_UNRESOLVED",
+   "SOURCE_NOT_YET_KNOWN"
+  ],
+  "selected_reading": null,
+  "uncovered": [],
+  "states": {
+   "known_at_eval_time": false,
+   "applicable_at_effective_date": true,
+   "approved_lab_meaning": false,
+   "lab_simulated_equivalence_used": false,
+   "technically_executable_candidate": true,
+   "fresh_reexecution_succeeded": null,
+   "fresh_reference_agreement": null,
+   "candidate_agrees_with_fresh": null
+  },
+  "e3_old": {
+   "status": "STRUCTURALLY_INVALID",
+   "reasons": [
+    "INTERPRETATION_UNRESOLVED",
+    "SOURCE_NOT_YET_KNOWN"
+   ]
+  },
+  "fresh": null,
+  "trust_boundary": "Trusted: cases/TRUSTED_MANIFEST.json (anchors from E0's committed regen receipt and E3's frozen fixtures), the pinned upstream rebuilt by this verifier process, and code files whose sha256 match the manifest. Untrusted: the record's verification_request and every candidate receipt. Not covered: an adversary controlling the manifest, verifier/reference code, the pinned source or generator; genuineness of the raw data or of LAB_SIMULATED approvals.",
+  "check_failures": [],
+  "passed": true,
+  "expected_status": "NOT_KNOWN_AT_EVALUATION_TIME"
+ },
+ {
+  "case_id": "T7B_RETROACTIVE_AS_KNOWN_AFTER_OBSERVATION",
+  "group": "T",
+  "status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_FRESH_CHECKS",
+  "reasons": [],
+  "selected_reading": "R_CUSTOMER_COUNTRY",
+  "uncovered": [],
+  "states": {
+   "known_at_eval_time": true,
+   "applicable_at_effective_date": true,
+   "approved_lab_meaning": true,
+   "lab_simulated_equivalence_used": false,
+   "technically_executable_candidate": true,
+   "fresh_reexecution_succeeded": true,
+   "fresh_reference_agreement": true,
+   "candidate_agrees_with_fresh": true
+  },
+  "e3_old": {
+   "status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS",
+   "reasons": []
+  },
+  "fresh": {
+   "reading_key": "S2/R_CUSTOMER_COUNTRY",
+   "estate": "TRUSTED_REBUILD",
+   "anchor_checks": {
+    "request_semantic_manifest": true,
+    "request_raw_csv": true,
+    "receipt_semantic_manifest": true,
+    "receipt_raw_csv": true,
+    "oracle_raw_csv": true,
+    "governing_source": true
+   },
+   "reading_meaning": {
+    "candidate": "d202a53091de1b1f07d6d90305a3ab33dbf338495b2b90becc32a56df5bde909",
+    "trusted": "d202a53091de1b1f07d6d90305a3ab33dbf338495b2b90becc32a56df5bde909",
+    "fixture_matches_manifest": true
+   },
+   "fresh_native": {
+    "ok": true,
+    "exit_code": 0,
+    "by_period": {
+     "2025": "261972.06",
+     "2024": "310780.14",
+     "2026": "155221.02"
+    },
+    "error": null,
+    "semantic_manifest_sha256": "e8e9bfc7e1188bc3eb3f5ac551e8ed5350817af14a5471bdbcdfdca2bc01bd48"
+   },
+   "fresh_reference": {
+    "ok": true,
+    "by_period": {
+     "2024": "310780.14",
+     "2025": "261972.06",
+     "2026": "155221.02"
+    },
+    "error": null,
+    "code_sha256": "2bcfd2d27bd7ae80e4cbb3c3e36ecf07686d2a1e786583306fc443858d088d04"
+   },
+   "candidate_native_by_period": {
+    "2025": "261972.06",
+    "2024": "310780.14",
+    "2026": "155221.02"
+   },
+   "candidate_reference_by_period": {
+    "2024": "310780.14",
+    "2025": "261972.06",
+    "2026": "155221.02"
+   }
+  },
+  "trust_boundary": "Trusted: cases/TRUSTED_MANIFEST.json (anchors from E0's committed regen receipt and E3's frozen fixtures), the pinned upstream rebuilt by this verifier process, and code files whose sha256 match the manifest. Untrusted: the record's verification_request and every candidate receipt. Not covered: an adversary controlling the manifest, verifier/reference code, the pinned source or generator; genuineness of the raw data or of LAB_SIMULATED approvals.",
+  "check_failures": [],
+  "passed": true,
+  "expected_status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_FRESH_CHECKS"
+ },
+ {
+  "case_id": "T8_APPROVAL_IN_FORCE_REQUIREMENT_ENDED",
+  "group": "T",
+  "status": "REQUIREMENT_NOT_IN_FORCE",
+  "reasons": [
+   "REQUIREMENT_NOT_IN_FORCE"
+  ],
+  "selected_reading": "R_CUSTOMER_COUNTRY",
+  "uncovered": [],
+  "states": {
+   "known_at_eval_time": true,
+   "applicable_at_effective_date": false,
+   "approved_lab_meaning": true,
+   "lab_simulated_equivalence_used": false,
+   "technically_executable_candidate": true,
+   "fresh_reexecution_succeeded": null,
+   "fresh_reference_agreement": null,
+   "candidate_agrees_with_fresh": null
+  },
+  "e3_old": {
+   "status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS",
+   "reasons": []
+  },
+  "fresh": null,
+  "trust_boundary": "Trusted: cases/TRUSTED_MANIFEST.json (anchors from E0's committed regen receipt and E3's frozen fixtures), the pinned upstream rebuilt by this verifier process, and code files whose sha256 match the manifest. Untrusted: the record's verification_request and every candidate receipt. Not covered: an adversary controlling the manifest, verifier/reference code, the pinned source or generator; genuineness of the raw data or of LAB_SIMULATED approvals.",
+  "check_failures": [],
+  "passed": true,
+  "expected_status": "REQUIREMENT_NOT_IN_FORCE"
+ },
+ {
+  "case_id": "T9_IN_FORCE_UNAUTHORIZED",
+  "group": "T",
+  "status": "MEANING_UNRESOLVED",
+  "reasons": [
+   "INTERPRETATION_UNRESOLVED"
+  ],
+  "selected_reading": null,
+  "uncovered": [],
+  "states": {
+   "known_at_eval_time": true,
+   "applicable_at_effective_date": true,
+   "approved_lab_meaning": false,
+   "lab_simulated_equivalence_used": false,
+   "technically_executable_candidate": true,
+   "fresh_reexecution_succeeded": null,
+   "fresh_reference_agreement": null,
+   "candidate_agrees_with_fresh": null
+  },
+  "e3_old": {
+   "status": "MEANING_UNRESOLVED",
+   "reasons": [
+    "INTERPRETATION_UNRESOLVED"
+   ]
+  },
+  "fresh": null,
+  "trust_boundary": "Trusted: cases/TRUSTED_MANIFEST.json (anchors from E0's committed regen receipt and E3's frozen fixtures), the pinned upstream rebuilt by this verifier process, and code files whose sha256 match the manifest. Untrusted: the record's verification_request and every candidate receipt. Not covered: an adversary controlling the manifest, verifier/reference code, the pinned source or generator; genuineness of the raw data or of LAB_SIMULATED approvals.",
+  "check_failures": [],
+  "passed": true,
+  "expected_status": "MEANING_UNRESOLVED"
+ },
+ {
+  "case_id": "T10_CORRUPT_SOURCE_AND_NOT_IN_FORCE",
+  "group": "T",
+  "status": "STRUCTURALLY_INVALID",
+  "reasons": [
+   "APPROVAL_SCOPE_MISMATCH",
+   "INTERPRETATION_UNRESOLVED",
+   "SOURCE_HASH_MISMATCH"
+  ],
+  "selected_reading": null,
+  "uncovered": [],
+  "states": {
+   "known_at_eval_time": true,
+   "applicable_at_effective_date": false,
+   "approved_lab_meaning": false,
+   "lab_simulated_equivalence_used": false,
+   "technically_executable_candidate": true,
+   "fresh_reexecution_succeeded": null,
+   "fresh_reference_agreement": null,
+   "candidate_agrees_with_fresh": null
+  },
+  "e3_old": {
+   "status": "STRUCTURALLY_INVALID",
+   "reasons": [
+    "APPROVAL_SCOPE_MISMATCH",
+    "INTERPRETATION_UNRESOLVED",
+    "SOURCE_HASH_MISMATCH"
+   ]
+  },
+  "fresh": null,
+  "trust_boundary": "Trusted: cases/TRUSTED_MANIFEST.json (anchors from E0's committed regen receipt and E3's frozen fixtures), the pinned upstream rebuilt by this verifier process, and code files whose sha256 match the manifest. Untrusted: the record's verification_request and every candidate receipt. Not covered: an adversary controlling the manifest, verifier/reference code, the pinned source or generator; genuineness of the raw data or of LAB_SIMULATED approvals.",
+  "check_failures": [],
+  "passed": true,
+  "expected_status": "STRUCTURALLY_INVALID"
+ },
+ {
+  "case_id": "T11_MISSING_FACT_NOT_IN_FORCE",
+  "group": "T",
+  "status": "REQUIREMENT_NOT_IN_FORCE",
+  "reasons": [
+   "REQUIRED_FACT_ABSENT",
+   "REQUIREMENT_NOT_IN_FORCE"
+  ],
+  "selected_reading": "R_SINGLE",
+  "uncovered": [
+   "settled_by_processor"
+  ],
+  "states": {
+   "known_at_eval_time": true,
+   "applicable_at_effective_date": false,
+   "approved_lab_meaning": true,
+   "lab_simulated_equivalence_used": false,
+   "technically_executable_candidate": false,
+   "fresh_reexecution_succeeded": null,
+   "fresh_reference_agreement": null,
+   "candidate_agrees_with_fresh": null
+  },
+  "e3_old": {
+   "status": "MISSING_REQUIRED_FACT",
+   "reasons": [
+    "REQUIRED_FACT_ABSENT"
+   ]
+  },
+  "fresh": null,
+  "trust_boundary": "Trusted: cases/TRUSTED_MANIFEST.json (anchors from E0's committed regen receipt and E3's frozen fixtures), the pinned upstream rebuilt by this verifier process, and code files whose sha256 match the manifest. Untrusted: the record's verification_request and every candidate receipt. Not covered: an adversary controlling the manifest, verifier/reference code, the pinned source or generator; genuineness of the raw data or of LAB_SIMULATED approvals.",
+  "check_failures": [],
+  "passed": true,
+  "expected_status": "REQUIREMENT_NOT_IN_FORCE"
+ },
+ {
+  "case_id": "T12_S3_APPROVED_EQUIVALENCE_NOT_IN_FORCE",
+  "group": "T",
+  "status": "REQUIREMENT_NOT_IN_FORCE",
+  "reasons": [
+   "REQUIREMENT_NOT_IN_FORCE"
+  ],
+  "selected_reading": "R_SINGLE",
+  "uncovered": [],
+  "states": {
+   "known_at_eval_time": true,
+   "applicable_at_effective_date": false,
+   "approved_lab_meaning": true,
+   "lab_simulated_equivalence_used": true,
+   "technically_executable_candidate": true,
+   "fresh_reexecution_succeeded": null,
+   "fresh_reference_agreement": null,
+   "candidate_agrees_with_fresh": null
+  },
+  "e3_old": {
+   "status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS",
+   "reasons": []
+  },
+  "fresh": null,
+  "trust_boundary": "Trusted: cases/TRUSTED_MANIFEST.json (anchors from E0's committed regen receipt and E3's frozen fixtures), the pinned upstream rebuilt by this verifier process, and code files whose sha256 match the manifest. Untrusted: the record's verification_request and every candidate receipt. Not covered: an adversary controlling the manifest, verifier/reference code, the pinned source or generator; genuineness of the raw data or of LAB_SIMULATED approvals.",
+  "check_failures": [],
+  "passed": true,
+  "expected_status": "REQUIREMENT_NOT_IN_FORCE"
+ },
+ {
+  "case_id": "V1_S1_DERIVED_CLEAN",
+  "group": "V",
+  "status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_FRESH_CHECKS",
+  "reasons": [],
+  "selected_reading": "R_SINGLE",
+  "uncovered": [],
+  "states": {
+   "known_at_eval_time": true,
+   "applicable_at_effective_date": true,
+   "approved_lab_meaning": true,
+   "lab_simulated_equivalence_used": false,
+   "technically_executable_candidate": true,
+   "fresh_reexecution_succeeded": true,
+   "fresh_reference_agreement": true,
+   "candidate_agrees_with_fresh": true
+  },
+  "e3_old": {
+   "status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS",
+   "reasons": []
+  },
+  "fresh": {
+   "reading_key": "S1/R_SINGLE",
+   "estate": "TRUSTED_REBUILD",
+   "anchor_checks": {
+    "request_semantic_manifest": true,
+    "request_raw_csv": true,
+    "receipt_semantic_manifest": true,
+    "receipt_raw_csv": true,
+    "oracle_raw_csv": true,
+    "governing_source": true
+   },
+   "reading_meaning": {
+    "candidate": "cc1af11b1954bfd2bb7ad462d083b63933ffcb8ad9e25614cf33ea19381a47c6",
+    "trusted": "cc1af11b1954bfd2bb7ad462d083b63933ffcb8ad9e25614cf33ea19381a47c6",
+    "fixture_matches_manifest": true
+   },
+   "fresh_native": {
+    "ok": true,
+    "exit_code": 0,
+    "by_period": {
+     "2026": "752191.54",
+     "2025": "1400232.75",
+     "2024": "1634542.08"
+    },
+    "error": null,
+    "semantic_manifest_sha256": "e8e9bfc7e1188bc3eb3f5ac551e8ed5350817af14a5471bdbcdfdca2bc01bd48"
+   },
+   "fresh_reference": {
+    "ok": true,
+    "by_period": {
+     "2024": "1634542.08",
+     "2025": "1400232.75",
+     "2026": "752191.54"
+    },
+    "error": null,
+    "code_sha256": "a95cdfe158cd9e82709bc231e3ef42506765007abc79ed5e70ca8f2af5e8bbec"
+   },
+   "candidate_native_by_period": {
+    "2026": "752191.54",
+    "2025": "1400232.75",
+    "2024": "1634542.08"
+   },
+   "candidate_reference_by_period": {
+    "2024": "1634542.08",
+    "2025": "1400232.75",
+    "2026": "752191.54"
+   },
+   "fresh_guards": {
+    "ok": true,
+    "guards": {
+     "quantity_positive": true,
+     "revenue_exact": true,
+     "price_source_exact": true,
+     "line_entity_unique": true,
+     "exact_comparison": true
+    },
+    "error": null,
+    "min_quantity": 1
+   }
+  },
+  "trust_boundary": "Trusted: cases/TRUSTED_MANIFEST.json (anchors from E0's committed regen receipt and E3's frozen fixtures), the pinned upstream rebuilt by this verifier process, and code files whose sha256 match the manifest. Untrusted: the record's verification_request and every candidate receipt. Not covered: an adversary controlling the manifest, verifier/reference code, the pinned source or generator; genuineness of the raw data or of LAB_SIMULATED approvals.",
+  "check_failures": [],
+  "passed": true,
+  "expected_status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_FRESH_CHECKS"
+ },
+ {
+  "case_id": "V2_S2_CUSTOMER_CLEAN",
+  "group": "V",
+  "status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_FRESH_CHECKS",
+  "reasons": [],
+  "selected_reading": "R_CUSTOMER_COUNTRY",
+  "uncovered": [],
+  "states": {
+   "known_at_eval_time": true,
+   "applicable_at_effective_date": true,
+   "approved_lab_meaning": true,
+   "lab_simulated_equivalence_used": false,
+   "technically_executable_candidate": true,
+   "fresh_reexecution_succeeded": true,
+   "fresh_reference_agreement": true,
+   "candidate_agrees_with_fresh": true
+  },
+  "e3_old": {
+   "status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS",
+   "reasons": []
+  },
+  "fresh": {
+   "reading_key": "S2/R_CUSTOMER_COUNTRY",
+   "estate": "TRUSTED_REBUILD",
+   "anchor_checks": {
+    "request_semantic_manifest": true,
+    "request_raw_csv": true,
+    "receipt_semantic_manifest": true,
+    "receipt_raw_csv": true,
+    "oracle_raw_csv": true,
+    "governing_source": true
+   },
+   "reading_meaning": {
+    "candidate": "d202a53091de1b1f07d6d90305a3ab33dbf338495b2b90becc32a56df5bde909",
+    "trusted": "d202a53091de1b1f07d6d90305a3ab33dbf338495b2b90becc32a56df5bde909",
+    "fixture_matches_manifest": true
+   },
+   "fresh_native": {
+    "ok": true,
+    "exit_code": 0,
+    "by_period": {
+     "2025": "261972.06",
+     "2024": "310780.14",
+     "2026": "155221.02"
+    },
+    "error": null,
+    "semantic_manifest_sha256": "e8e9bfc7e1188bc3eb3f5ac551e8ed5350817af14a5471bdbcdfdca2bc01bd48"
+   },
+   "fresh_reference": {
+    "ok": true,
+    "by_period": {
+     "2024": "310780.14",
+     "2025": "261972.06",
+     "2026": "155221.02"
+    },
+    "error": null,
+    "code_sha256": "2bcfd2d27bd7ae80e4cbb3c3e36ecf07686d2a1e786583306fc443858d088d04"
+   },
+   "candidate_native_by_period": {
+    "2025": "261972.06",
+    "2024": "310780.14",
+    "2026": "155221.02"
+   },
+   "candidate_reference_by_period": {
+    "2024": "310780.14",
+    "2025": "261972.06",
+    "2026": "155221.02"
+   }
+  },
+  "trust_boundary": "Trusted: cases/TRUSTED_MANIFEST.json (anchors from E0's committed regen receipt and E3's frozen fixtures), the pinned upstream rebuilt by this verifier process, and code files whose sha256 match the manifest. Untrusted: the record's verification_request and every candidate receipt. Not covered: an adversary controlling the manifest, verifier/reference code, the pinned source or generator; genuineness of the raw data or of LAB_SIMULATED approvals.",
+  "check_failures": [],
+  "passed": true,
+  "expected_status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_FRESH_CHECKS"
+ },
+ {
+  "case_id": "V3_S3_EQUIVALENCE_CLEAN",
+  "group": "V",
+  "status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_FRESH_CHECKS",
+  "reasons": [],
+  "selected_reading": "R_SINGLE",
+  "uncovered": [],
+  "states": {
+   "known_at_eval_time": true,
+   "applicable_at_effective_date": true,
+   "approved_lab_meaning": true,
+   "lab_simulated_equivalence_used": true,
+   "technically_executable_candidate": true,
+   "fresh_reexecution_succeeded": true,
+   "fresh_reference_agreement": true,
+   "candidate_agrees_with_fresh": true
+  },
+  "e3_old": {
+   "status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS",
+   "reasons": []
+  },
+  "fresh": {
+   "reading_key": "S3/R_SINGLE",
+   "estate": "TRUSTED_REBUILD",
+   "anchor_checks": {
+    "request_semantic_manifest": true,
+    "request_raw_csv": true,
+    "receipt_semantic_manifest": true,
+    "receipt_raw_csv": true,
+    "oracle_raw_csv": true,
+    "governing_source": true
+   },
+   "reading_meaning": {
+    "candidate": "89099d9e1dd2eecebf82014111dc5cf084419e3f2596f5700e45f64ffaf3afaa",
+    "trusted": "89099d9e1dd2eecebf82014111dc5cf084419e3f2596f5700e45f64ffaf3afaa",
+    "fixture_matches_manifest": true
+   },
+   "fresh_native": {
+    "ok": true,
+    "exit_code": 0,
+    "by_period": {
+     "2026": "42",
+     "2024": "97",
+     "2025": "98"
+    },
+    "error": null,
+    "semantic_manifest_sha256": "e8e9bfc7e1188bc3eb3f5ac551e8ed5350817af14a5471bdbcdfdca2bc01bd48"
+   },
+   "fresh_reference": {
+    "ok": true,
+    "by_period": {
+     "2024": "97",
+     "2025": "98",
+     "2026": "42"
+    },
+    "error": null,
+    "code_sha256": "2bcfd2d27bd7ae80e4cbb3c3e36ecf07686d2a1e786583306fc443858d088d04"
+   },
+   "candidate_native_by_period": {
+    "2026": "42",
+    "2025": "98",
+    "2024": "97"
+   },
+   "candidate_reference_by_period": {
+    "2024": "97",
+    "2025": "98",
+    "2026": "42"
+   }
+  },
+  "trust_boundary": "Trusted: cases/TRUSTED_MANIFEST.json (anchors from E0's committed regen receipt and E3's frozen fixtures), the pinned upstream rebuilt by this verifier process, and code files whose sha256 match the manifest. Untrusted: the record's verification_request and every candidate receipt. Not covered: an adversary controlling the manifest, verifier/reference code, the pinned source or generator; genuineness of the raw data or of LAB_SIMULATED approvals.",
+  "check_failures": [],
+  "passed": true,
+  "expected_status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_FRESH_CHECKS"
+ },
+ {
+  "case_id": "V4_S4_STATUS_PROXY",
+  "group": "V",
+  "status": "MISSING_REQUIRED_FACT",
+  "reasons": [
+   "NOT_DESIGNATED_FOR_FACT",
+   "REQUIRED_FACT_ABSENT"
+  ],
+  "selected_reading": "R_SINGLE",
+  "uncovered": [
+   "settled_by_processor"
+  ],
+  "states": {
+   "known_at_eval_time": true,
+   "applicable_at_effective_date": true,
+   "approved_lab_meaning": true,
+   "lab_simulated_equivalence_used": false,
+   "technically_executable_candidate": true,
+   "fresh_reexecution_succeeded": null,
+   "fresh_reference_agreement": null,
+   "candidate_agrees_with_fresh": null
+  },
+  "e3_old": {
+   "status": "MISSING_REQUIRED_FACT",
+   "reasons": [
+    "NOT_DESIGNATED_FOR_FACT",
+    "REQUIRED_FACT_ABSENT"
+   ]
+  },
+  "fresh": null,
+  "trust_boundary": "Trusted: cases/TRUSTED_MANIFEST.json (anchors from E0's committed regen receipt and E3's frozen fixtures), the pinned upstream rebuilt by this verifier process, and code files whose sha256 match the manifest. Untrusted: the record's verification_request and every candidate receipt. Not covered: an adversary controlling the manifest, verifier/reference code, the pinned source or generator; genuineness of the raw data or of LAB_SIMULATED approvals.",
+  "check_failures": [],
+  "passed": true,
+  "expected_status": "MISSING_REQUIRED_FACT"
+ },
+ {
+  "case_id": "V5_FORGED_PAIR_STORE_READING",
+  "group": "V",
+  "status": "NOT_VERIFIED",
+  "reasons": [
+   "CANDIDATE_NATIVE_DISAGREES_WITH_FRESH",
+   "CANDIDATE_REFERENCE_DISAGREES_WITH_FRESH"
+  ],
+  "selected_reading": "R_CUSTOMER_COUNTRY",
+  "uncovered": [],
+  "states": {
+   "known_at_eval_time": true,
+   "applicable_at_effective_date": true,
+   "approved_lab_meaning": true,
+   "lab_simulated_equivalence_used": false,
+   "technically_executable_candidate": true,
+   "fresh_reexecution_succeeded": true,
+   "fresh_reference_agreement": true,
+   "candidate_agrees_with_fresh": false
+  },
+  "e3_old": {
+   "status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS",
+   "reasons": []
+  },
+  "fresh": {
+   "reading_key": "S2/R_CUSTOMER_COUNTRY",
+   "estate": "TRUSTED_REBUILD",
+   "anchor_checks": {
+    "request_semantic_manifest": true,
+    "request_raw_csv": true,
+    "receipt_semantic_manifest": true,
+    "receipt_raw_csv": true,
+    "oracle_raw_csv": true,
+    "governing_source": true
+   },
+   "reading_meaning": {
+    "candidate": "d202a53091de1b1f07d6d90305a3ab33dbf338495b2b90becc32a56df5bde909",
+    "trusted": "d202a53091de1b1f07d6d90305a3ab33dbf338495b2b90becc32a56df5bde909",
+    "fixture_matches_manifest": true
+   },
+   "fresh_native": {
+    "ok": true,
+    "exit_code": 0,
+    "by_period": {
+     "2025": "261972.06",
+     "2024": "310780.14",
+     "2026": "155221.02"
+    },
+    "error": null,
+    "semantic_manifest_sha256": "e8e9bfc7e1188bc3eb3f5ac551e8ed5350817af14a5471bdbcdfdca2bc01bd48"
+   },
+   "fresh_reference": {
+    "ok": true,
+    "by_period": {
+     "2024": "310780.14",
+     "2025": "261972.06",
+     "2026": "155221.02"
+    },
+    "error": null,
+    "code_sha256": "2bcfd2d27bd7ae80e4cbb3c3e36ecf07686d2a1e786583306fc443858d088d04"
+   },
+   "candidate_native_by_period": {
+    "2025": "288072.98",
+    "2024": "366057.38",
+    "2026": "138501.23"
+   },
+   "candidate_reference_by_period": {
+    "2024": "366057.38",
+    "2025": "288072.98",
+    "2026": "138501.23"
+   }
+  },
+  "trust_boundary": "Trusted: cases/TRUSTED_MANIFEST.json (anchors from E0's committed regen receipt and E3's frozen fixtures), the pinned upstream rebuilt by this verifier process, and code files whose sha256 match the manifest. Untrusted: the record's verification_request and every candidate receipt. Not covered: an adversary controlling the manifest, verifier/reference code, the pinned source or generator; genuineness of the raw data or of LAB_SIMULATED approvals.",
+  "check_failures": [],
+  "passed": true,
+  "expected_status": "NOT_VERIFIED"
+ },
+ {
+  "case_id": "V5B_FORGED_PAIR_ONE_CENT",
+  "group": "V",
+  "status": "NOT_VERIFIED",
+  "reasons": [
+   "CANDIDATE_NATIVE_DISAGREES_WITH_FRESH",
+   "CANDIDATE_REFERENCE_DISAGREES_WITH_FRESH"
+  ],
+  "selected_reading": "R_CUSTOMER_COUNTRY",
+  "uncovered": [],
+  "states": {
+   "known_at_eval_time": true,
+   "applicable_at_effective_date": true,
+   "approved_lab_meaning": true,
+   "lab_simulated_equivalence_used": false,
+   "technically_executable_candidate": true,
+   "fresh_reexecution_succeeded": true,
+   "fresh_reference_agreement": true,
+   "candidate_agrees_with_fresh": false
+  },
+  "e3_old": {
+   "status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS",
+   "reasons": []
+  },
+  "fresh": {
+   "reading_key": "S2/R_CUSTOMER_COUNTRY",
+   "estate": "TRUSTED_REBUILD",
+   "anchor_checks": {
+    "request_semantic_manifest": true,
+    "request_raw_csv": true,
+    "receipt_semantic_manifest": true,
+    "receipt_raw_csv": true,
+    "oracle_raw_csv": true,
+    "governing_source": true
+   },
+   "reading_meaning": {
+    "candidate": "d202a53091de1b1f07d6d90305a3ab33dbf338495b2b90becc32a56df5bde909",
+    "trusted": "d202a53091de1b1f07d6d90305a3ab33dbf338495b2b90becc32a56df5bde909",
+    "fixture_matches_manifest": true
+   },
+   "fresh_native": {
+    "ok": true,
+    "exit_code": 0,
+    "by_period": {
+     "2025": "261972.06",
+     "2024": "310780.14",
+     "2026": "155221.02"
+    },
+    "error": null,
+    "semantic_manifest_sha256": "e8e9bfc7e1188bc3eb3f5ac551e8ed5350817af14a5471bdbcdfdca2bc01bd48"
+   },
+   "fresh_reference": {
+    "ok": true,
+    "by_period": {
+     "2024": "310780.14",
+     "2025": "261972.06",
+     "2026": "155221.02"
+    },
+    "error": null,
+    "code_sha256": "2bcfd2d27bd7ae80e4cbb3c3e36ecf07686d2a1e786583306fc443858d088d04"
+   },
+   "candidate_native_by_period": {
+    "2025": "261972.07",
+    "2024": "310780.15",
+    "2026": "155221.03"
+   },
+   "candidate_reference_by_period": {
+    "2024": "310780.15",
+    "2025": "261972.07",
+    "2026": "155221.03"
+   }
+  },
+  "trust_boundary": "Trusted: cases/TRUSTED_MANIFEST.json (anchors from E0's committed regen receipt and E3's frozen fixtures), the pinned upstream rebuilt by this verifier process, and code files whose sha256 match the manifest. Untrusted: the record's verification_request and every candidate receipt. Not covered: an adversary controlling the manifest, verifier/reference code, the pinned source or generator; genuineness of the raw data or of LAB_SIMULATED approvals.",
+  "check_failures": [],
+  "passed": true,
+  "expected_status": "NOT_VERIFIED"
+ },
+ {
+  "case_id": "V6_SINGLE_NATIVE_RECEIPT_TAMPERED",
+  "group": "V",
+  "status": "NOT_VERIFIED",
+  "reasons": [
+   "NATIVE_ORACLE_MISMATCH"
+  ],
+  "selected_reading": "R_CUSTOMER_COUNTRY",
+  "uncovered": [],
+  "states": {
+   "known_at_eval_time": true,
+   "applicable_at_effective_date": true,
+   "approved_lab_meaning": true,
+   "lab_simulated_equivalence_used": false,
+   "technically_executable_candidate": true,
+   "fresh_reexecution_succeeded": null,
+   "fresh_reference_agreement": null,
+   "candidate_agrees_with_fresh": null
+  },
+  "e3_old": {
+   "status": "NOT_VERIFIED",
+   "reasons": [
+    "NATIVE_ORACLE_MISMATCH"
+   ]
+  },
+  "fresh": null,
+  "trust_boundary": "Trusted: cases/TRUSTED_MANIFEST.json (anchors from E0's committed regen receipt and E3's frozen fixtures), the pinned upstream rebuilt by this verifier process, and code files whose sha256 match the manifest. Untrusted: the record's verification_request and every candidate receipt. Not covered: an adversary controlling the manifest, verifier/reference code, the pinned source or generator; genuineness of the raw data or of LAB_SIMULATED approvals.",
+  "check_failures": [],
+  "passed": true,
+  "expected_status": "NOT_VERIFIED"
+ },
+ {
+  "case_id": "V7A_CONSISTENT_WRONG_SEMANTIC_REVISION",
+  "group": "V",
+  "status": "NOT_VERIFIED",
+  "reasons": [
+   "TRUST_ANCHOR_MISMATCH"
+  ],
+  "selected_reading": "R_CUSTOMER_COUNTRY",
+  "uncovered": [],
+  "states": {
+   "known_at_eval_time": true,
+   "applicable_at_effective_date": true,
+   "approved_lab_meaning": true,
+   "lab_simulated_equivalence_used": false,
+   "technically_executable_candidate": true,
+   "fresh_reexecution_succeeded": true,
+   "fresh_reference_agreement": true,
+   "candidate_agrees_with_fresh": true
+  },
+  "e3_old": {
+   "status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS",
+   "reasons": []
+  },
+  "fresh": {
+   "reading_key": "S2/R_CUSTOMER_COUNTRY",
+   "estate": "TRUSTED_REBUILD",
+   "anchor_checks": {
+    "request_semantic_manifest": false,
+    "request_raw_csv": true,
+    "receipt_semantic_manifest": false,
+    "receipt_raw_csv": true,
+    "oracle_raw_csv": true,
+    "governing_source": true
+   },
+   "reading_meaning": {
+    "candidate": "d202a53091de1b1f07d6d90305a3ab33dbf338495b2b90becc32a56df5bde909",
+    "trusted": "d202a53091de1b1f07d6d90305a3ab33dbf338495b2b90becc32a56df5bde909",
+    "fixture_matches_manifest": true
+   },
+   "fresh_native": {
+    "ok": true,
+    "exit_code": 0,
+    "by_period": {
+     "2025": "261972.06",
+     "2024": "310780.14",
+     "2026": "155221.02"
+    },
+    "error": null,
+    "semantic_manifest_sha256": "e8e9bfc7e1188bc3eb3f5ac551e8ed5350817af14a5471bdbcdfdca2bc01bd48"
+   },
+   "fresh_reference": {
+    "ok": true,
+    "by_period": {
+     "2024": "310780.14",
+     "2025": "261972.06",
+     "2026": "155221.02"
+    },
+    "error": null,
+    "code_sha256": "2bcfd2d27bd7ae80e4cbb3c3e36ecf07686d2a1e786583306fc443858d088d04"
+   },
+   "candidate_native_by_period": {
+    "2025": "261972.06",
+    "2024": "310780.14",
+    "2026": "155221.02"
+   },
+   "candidate_reference_by_period": {
+    "2024": "310780.14",
+    "2025": "261972.06",
+    "2026": "155221.02"
+   }
+  },
+  "trust_boundary": "Trusted: cases/TRUSTED_MANIFEST.json (anchors from E0's committed regen receipt and E3's frozen fixtures), the pinned upstream rebuilt by this verifier process, and code files whose sha256 match the manifest. Untrusted: the record's verification_request and every candidate receipt. Not covered: an adversary controlling the manifest, verifier/reference code, the pinned source or generator; genuineness of the raw data or of LAB_SIMULATED approvals.",
+  "check_failures": [],
+  "passed": true,
+  "expected_status": "NOT_VERIFIED"
+ },
+ {
+  "case_id": "V7B_CONSISTENT_WRONG_RAW_DATA_HASH",
+  "group": "V",
+  "status": "NOT_VERIFIED",
+  "reasons": [
+   "TRUST_ANCHOR_MISMATCH"
+  ],
+  "selected_reading": "R_CUSTOMER_COUNTRY",
+  "uncovered": [],
+  "states": {
+   "known_at_eval_time": true,
+   "applicable_at_effective_date": true,
+   "approved_lab_meaning": true,
+   "lab_simulated_equivalence_used": false,
+   "technically_executable_candidate": true,
+   "fresh_reexecution_succeeded": true,
+   "fresh_reference_agreement": true,
+   "candidate_agrees_with_fresh": true
+  },
+  "e3_old": {
+   "status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS",
+   "reasons": []
+  },
+  "fresh": {
+   "reading_key": "S2/R_CUSTOMER_COUNTRY",
+   "estate": "TRUSTED_REBUILD",
+   "anchor_checks": {
+    "request_semantic_manifest": true,
+    "request_raw_csv": false,
+    "receipt_semantic_manifest": true,
+    "receipt_raw_csv": false,
+    "oracle_raw_csv": false,
+    "governing_source": true
+   },
+   "reading_meaning": {
+    "candidate": "d202a53091de1b1f07d6d90305a3ab33dbf338495b2b90becc32a56df5bde909",
+    "trusted": "d202a53091de1b1f07d6d90305a3ab33dbf338495b2b90becc32a56df5bde909",
+    "fixture_matches_manifest": true
+   },
+   "fresh_native": {
+    "ok": true,
+    "exit_code": 0,
+    "by_period": {
+     "2025": "261972.06",
+     "2024": "310780.14",
+     "2026": "155221.02"
+    },
+    "error": null,
+    "semantic_manifest_sha256": "e8e9bfc7e1188bc3eb3f5ac551e8ed5350817af14a5471bdbcdfdca2bc01bd48"
+   },
+   "fresh_reference": {
+    "ok": true,
+    "by_period": {
+     "2024": "310780.14",
+     "2025": "261972.06",
+     "2026": "155221.02"
+    },
+    "error": null,
+    "code_sha256": "2bcfd2d27bd7ae80e4cbb3c3e36ecf07686d2a1e786583306fc443858d088d04"
+   },
+   "candidate_native_by_period": {
+    "2025": "261972.06",
+    "2024": "310780.14",
+    "2026": "155221.02"
+   },
+   "candidate_reference_by_period": {
+    "2024": "310780.14",
+    "2025": "261972.06",
+    "2026": "155221.02"
+   }
+  },
+  "trust_boundary": "Trusted: cases/TRUSTED_MANIFEST.json (anchors from E0's committed regen receipt and E3's frozen fixtures), the pinned upstream rebuilt by this verifier process, and code files whose sha256 match the manifest. Untrusted: the record's verification_request and every candidate receipt. Not covered: an adversary controlling the manifest, verifier/reference code, the pinned source or generator; genuineness of the raw data or of LAB_SIMULATED approvals.",
+  "check_failures": [],
+  "passed": true,
+  "expected_status": "NOT_VERIFIED"
+ },
+ {
+  "case_id": "V7C_STALE_RECEIPT_REVISION_ONLY",
+  "group": "V",
+  "status": "NOT_VERIFIED",
+  "reasons": [
+   "RECEIPT_REVISION_MISMATCH"
+  ],
+  "selected_reading": "R_CUSTOMER_COUNTRY",
+  "uncovered": [],
+  "states": {
+   "known_at_eval_time": true,
+   "applicable_at_effective_date": true,
+   "approved_lab_meaning": true,
+   "lab_simulated_equivalence_used": false,
+   "technically_executable_candidate": true,
+   "fresh_reexecution_succeeded": null,
+   "fresh_reference_agreement": null,
+   "candidate_agrees_with_fresh": null
+  },
+  "e3_old": {
+   "status": "NOT_VERIFIED",
+   "reasons": [
+    "RECEIPT_REVISION_MISMATCH"
+   ]
+  },
+  "fresh": null,
+  "trust_boundary": "Trusted: cases/TRUSTED_MANIFEST.json (anchors from E0's committed regen receipt and E3's frozen fixtures), the pinned upstream rebuilt by this verifier process, and code files whose sha256 match the manifest. Untrusted: the record's verification_request and every candidate receipt. Not covered: an adversary controlling the manifest, verifier/reference code, the pinned source or generator; genuineness of the raw data or of LAB_SIMULATED approvals.",
+  "check_failures": [],
+  "passed": true,
+  "expected_status": "NOT_VERIFIED"
+ },
+ {
+  "case_id": "V8A_FRESH_RUNTIME_UNAVAILABLE",
+  "group": "V",
+  "status": "NOT_VERIFIED",
+  "reasons": [
+   "FRESH_RUNTIME_UNAVAILABLE"
+  ],
+  "selected_reading": "R_CUSTOMER_COUNTRY",
+  "uncovered": [],
+  "states": {
+   "known_at_eval_time": true,
+   "applicable_at_effective_date": true,
+   "approved_lab_meaning": true,
+   "lab_simulated_equivalence_used": false,
+   "technically_executable_candidate": true,
+   "fresh_reexecution_succeeded": false,
+   "fresh_reference_agreement": false,
+   "candidate_agrees_with_fresh": true
+  },
+  "e3_old": {
+   "status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS",
+   "reasons": []
+  },
+  "fresh": {
+   "reading_key": "S2/R_CUSTOMER_COUNTRY",
+   "estate": "TRUSTED_REBUILD",
+   "anchor_checks": {
+    "request_semantic_manifest": true,
+    "request_raw_csv": true,
+    "receipt_semantic_manifest": true,
+    "receipt_raw_csv": true,
+    "oracle_raw_csv": true,
+    "governing_source": true
+   },
+   "reading_meaning": {
+    "candidate": "d202a53091de1b1f07d6d90305a3ab33dbf338495b2b90becc32a56df5bde909",
+    "trusted": "d202a53091de1b1f07d6d90305a3ab33dbf338495b2b90becc32a56df5bde909",
+    "fixture_matches_manifest": true
+   },
+   "fresh_native": {
+    "ok": false,
+    "exit_code": null,
+    "by_period": null,
+    "error": "IdentityError: mf path /nonexistent/E3_1_runtime_unavailable/mf is not the entry point installed by dbt-metricflow (/home/user/sophon-e31/experiments/E3_1_integrity/.upstream/.venv/bin/mf)",
+    "semantic_manifest_sha256": null
+   },
+   "fresh_reference": {
+    "ok": true,
+    "by_period": {
+     "2024": "310780.14",
+     "2025": "261972.06",
+     "2026": "155221.02"
+    },
+    "error": null,
+    "code_sha256": "2bcfd2d27bd7ae80e4cbb3c3e36ecf07686d2a1e786583306fc443858d088d04"
+   },
+   "candidate_native_by_period": {
+    "2025": "261972.06",
+    "2024": "310780.14",
+    "2026": "155221.02"
+   },
+   "candidate_reference_by_period": {
+    "2024": "310780.14",
+    "2025": "261972.06",
+    "2026": "155221.02"
+   }
+  },
+  "trust_boundary": "Trusted: cases/TRUSTED_MANIFEST.json (anchors from E0's committed regen receipt and E3's frozen fixtures), the pinned upstream rebuilt by this verifier process, and code files whose sha256 match the manifest. Untrusted: the record's verification_request and every candidate receipt. Not covered: an adversary controlling the manifest, verifier/reference code, the pinned source or generator; genuineness of the raw data or of LAB_SIMULATED approvals.",
+  "check_failures": [],
+  "passed": true,
+  "expected_status": "NOT_VERIFIED"
+ },
+ {
+  "case_id": "V8B_REFERENCE_CODE_UNTRUSTED",
+  "group": "V",
+  "status": "NOT_VERIFIED",
+  "reasons": [
+   "FRESH_REFERENCE_UNAVAILABLE"
+  ],
+  "selected_reading": "R_CUSTOMER_COUNTRY",
+  "uncovered": [],
+  "states": {
+   "known_at_eval_time": true,
+   "applicable_at_effective_date": true,
+   "approved_lab_meaning": true,
+   "lab_simulated_equivalence_used": false,
+   "technically_executable_candidate": true,
+   "fresh_reexecution_succeeded": true,
+   "fresh_reference_agreement": false,
+   "candidate_agrees_with_fresh": true
+  },
+  "e3_old": {
+   "status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS",
+   "reasons": []
+  },
+  "fresh": {
+   "reading_key": "S2/R_CUSTOMER_COUNTRY",
+   "estate": "TRUSTED_REBUILD",
+   "anchor_checks": {
+    "request_semantic_manifest": true,
+    "request_raw_csv": true,
+    "receipt_semantic_manifest": true,
+    "receipt_raw_csv": true,
+    "oracle_raw_csv": true,
+    "governing_source": true
+   },
+   "reading_meaning": {
+    "candidate": "d202a53091de1b1f07d6d90305a3ab33dbf338495b2b90becc32a56df5bde909",
+    "trusted": "d202a53091de1b1f07d6d90305a3ab33dbf338495b2b90becc32a56df5bde909",
+    "fixture_matches_manifest": true
+   },
+   "fresh_native": {
+    "ok": true,
+    "exit_code": 0,
+    "by_period": {
+     "2025": "261972.06",
+     "2024": "310780.14",
+     "2026": "155221.02"
+    },
+    "error": null,
+    "semantic_manifest_sha256": "e8e9bfc7e1188bc3eb3f5ac551e8ed5350817af14a5471bdbcdfdca2bc01bd48"
+   },
+   "fresh_reference": {
+    "ok": false,
+    "by_period": null,
+    "error": "PermissionError: reference code hash 804417df7e89 != trusted 2bcfd2d27bd7; not executed",
+    "code_sha256": "804417df7e8952738be7d54a75a91ae0b15fa150b42a694df295336db89c7abc"
+   },
+   "candidate_native_by_period": {
+    "2025": "261972.06",
+    "2024": "310780.14",
+    "2026": "155221.02"
+   },
+   "candidate_reference_by_period": {
+    "2024": "310780.14",
+    "2025": "261972.06",
+    "2026": "155221.02"
+   }
+  },
+  "trust_boundary": "Trusted: cases/TRUSTED_MANIFEST.json (anchors from E0's committed regen receipt and E3's frozen fixtures), the pinned upstream rebuilt by this verifier process, and code files whose sha256 match the manifest. Untrusted: the record's verification_request and every candidate receipt. Not covered: an adversary controlling the manifest, verifier/reference code, the pinned source or generator; genuineness of the raw data or of LAB_SIMULATED approvals.",
+  "check_failures": [],
+  "passed": true,
+  "expected_status": "NOT_VERIFIED"
+ },
+ {
+  "case_id": "V9A_NEGATIVE_QUANTITY_FORGED_GUARDS_AND_AMOUNTS",
+  "group": "V",
+  "status": "NOT_VERIFIED",
+  "reasons": [
+   "CANDIDATE_NATIVE_DISAGREES_WITH_FRESH",
+   "FRESH_GUARD_FAILED",
+   "FRESH_NATIVE_REFERENCE_MISMATCH"
+  ],
+  "selected_reading": "R_SINGLE",
+  "uncovered": [],
+  "states": {
+   "known_at_eval_time": true,
+   "applicable_at_effective_date": true,
+   "approved_lab_meaning": true,
+   "lab_simulated_equivalence_used": false,
+   "technically_executable_candidate": true,
+   "fresh_reexecution_succeeded": true,
+   "fresh_reference_agreement": false,
+   "candidate_agrees_with_fresh": false
+  },
+  "e3_old": {
+   "status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS",
+   "reasons": []
+  },
+  "fresh": {
+   "reading_key": "S1/R_SINGLE",
+   "estate": "CONTROL_NEGATIVE_QUANTITY",
+   "anchor_checks": {
+    "request_semantic_manifest": true,
+    "request_raw_csv": true,
+    "receipt_semantic_manifest": true,
+    "receipt_raw_csv": true,
+    "oracle_raw_csv": true,
+    "governing_source": true
+   },
+   "reading_meaning": {
+    "candidate": "cc1af11b1954bfd2bb7ad462d083b63933ffcb8ad9e25614cf33ea19381a47c6",
+    "trusted": "cc1af11b1954bfd2bb7ad462d083b63933ffcb8ad9e25614cf33ea19381a47c6",
+    "fixture_matches_manifest": true
+   },
+   "fresh_native": {
+    "ok": true,
+    "exit_code": 0,
+    "by_period": {
+     "2026": "752191.54",
+     "2025": "1399083.79",
+     "2024": "1634542.08"
+    },
+    "error": null,
+    "semantic_manifest_sha256": "e8e9bfc7e1188bc3eb3f5ac551e8ed5350817af14a5471bdbcdfdca2bc01bd48"
+   },
+   "fresh_reference": {
+    "ok": true,
+    "by_period": {
+     "2024": "1634542.08",
+     "2025": "1400232.75",
+     "2026": "752191.54"
+    },
+    "error": null,
+    "code_sha256": "a95cdfe158cd9e82709bc231e3ef42506765007abc79ed5e70ca8f2af5e8bbec"
+   },
+   "candidate_native_by_period": {
+    "2026": "752191.54",
+    "2025": "1400232.75",
+    "2024": "1634542.08"
+   },
+   "candidate_reference_by_period": {
+    "2024": "1634542.08",
+    "2025": "1400232.75",
+    "2026": "752191.54"
+   },
+   "fresh_guards": {
+    "ok": false,
+    "guards": {
+     "quantity_positive": false,
+     "revenue_exact": true,
+     "price_source_exact": true,
+     "line_entity_unique": true,
+     "exact_comparison": true
+    },
+    "error": null,
+    "min_quantity": -1
+   }
+  },
+  "trust_boundary": "Trusted: cases/TRUSTED_MANIFEST.json (anchors from E0's committed regen receipt and E3's frozen fixtures), the pinned upstream rebuilt by this verifier process, and code files whose sha256 match the manifest. Untrusted: the record's verification_request and every candidate receipt. Not covered: an adversary controlling the manifest, verifier/reference code, the pinned source or generator; genuineness of the raw data or of LAB_SIMULATED approvals.",
+  "check_failures": [],
+  "passed": true,
+  "expected_status": "NOT_VERIFIED"
+ },
+ {
+  "case_id": "V9B_NEGATIVE_QUANTITY_HONEST_RECEIPTS",
+  "group": "V",
+  "status": "NOT_VERIFIED",
+  "reasons": [
+   "GUARD_FAILED",
+   "NATIVE_ORACLE_MISMATCH"
+  ],
+  "selected_reading": "R_SINGLE",
+  "uncovered": [],
+  "states": {
+   "known_at_eval_time": true,
+   "applicable_at_effective_date": true,
+   "approved_lab_meaning": true,
+   "lab_simulated_equivalence_used": false,
+   "technically_executable_candidate": true,
+   "fresh_reexecution_succeeded": null,
+   "fresh_reference_agreement": null,
+   "candidate_agrees_with_fresh": null
+  },
+  "e3_old": {
+   "status": "NOT_VERIFIED",
+   "reasons": [
+    "GUARD_FAILED",
+    "NATIVE_ORACLE_MISMATCH"
+   ]
+  },
+  "fresh": null,
+  "trust_boundary": "Trusted: cases/TRUSTED_MANIFEST.json (anchors from E0's committed regen receipt and E3's frozen fixtures), the pinned upstream rebuilt by this verifier process, and code files whose sha256 match the manifest. Untrusted: the record's verification_request and every candidate receipt. Not covered: an adversary controlling the manifest, verifier/reference code, the pinned source or generator; genuineness of the raw data or of LAB_SIMULATED approvals.",
+  "check_failures": [],
+  "passed": true,
+  "expected_status": "NOT_VERIFIED"
+ },
+ {
+  "case_id": "V10_APPROVED_READING_CONTENT_SWAPPED",
+  "group": "V",
+  "status": "NOT_VERIFIED",
+  "reasons": [
+   "CANDIDATE_NATIVE_DISAGREES_WITH_FRESH",
+   "CANDIDATE_REFERENCE_DISAGREES_WITH_FRESH",
+   "UNTRUSTED_READING_CONTENT"
+  ],
+  "selected_reading": "R_CUSTOMER_COUNTRY",
+  "uncovered": [],
+  "states": {
+   "known_at_eval_time": true,
+   "applicable_at_effective_date": true,
+   "approved_lab_meaning": true,
+   "lab_simulated_equivalence_used": false,
+   "technically_executable_candidate": true,
+   "fresh_reexecution_succeeded": true,
+   "fresh_reference_agreement": true,
+   "candidate_agrees_with_fresh": false
+  },
+  "e3_old": {
+   "status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS",
+   "reasons": []
+  },
+  "fresh": {
+   "reading_key": "S2/R_CUSTOMER_COUNTRY",
+   "estate": "TRUSTED_REBUILD",
+   "anchor_checks": {
+    "request_semantic_manifest": true,
+    "request_raw_csv": true,
+    "receipt_semantic_manifest": true,
+    "receipt_raw_csv": true,
+    "oracle_raw_csv": true,
+    "governing_source": true
+   },
+   "reading_meaning": {
+    "candidate": "62f6aec1ad27e9b65af00d3c6a663551d16bbd77253f64a290db683b303d2b14",
+    "trusted": "d202a53091de1b1f07d6d90305a3ab33dbf338495b2b90becc32a56df5bde909",
+    "fixture_matches_manifest": true
+   },
+   "fresh_native": {
+    "ok": true,
+    "exit_code": 0,
+    "by_period": {
+     "2025": "261972.06",
+     "2024": "310780.14",
+     "2026": "155221.02"
+    },
+    "error": null,
+    "semantic_manifest_sha256": "e8e9bfc7e1188bc3eb3f5ac551e8ed5350817af14a5471bdbcdfdca2bc01bd48"
+   },
+   "fresh_reference": {
+    "ok": true,
+    "by_period": {
+     "2024": "310780.14",
+     "2025": "261972.06",
+     "2026": "155221.02"
+    },
+    "error": null,
+    "code_sha256": "2bcfd2d27bd7ae80e4cbb3c3e36ecf07686d2a1e786583306fc443858d088d04"
+   },
+   "candidate_native_by_period": {
+    "2025": "288072.98",
+    "2024": "366057.38",
+    "2026": "138501.23"
+   },
+   "candidate_reference_by_period": {
+    "2024": "366057.38",
+    "2025": "288072.98",
+    "2026": "138501.23"
+   }
+  },
+  "trust_boundary": "Trusted: cases/TRUSTED_MANIFEST.json (anchors from E0's committed regen receipt and E3's frozen fixtures), the pinned upstream rebuilt by this verifier process, and code files whose sha256 match the manifest. Untrusted: the record's verification_request and every candidate receipt. Not covered: an adversary controlling the manifest, verifier/reference code, the pinned source or generator; genuineness of the raw data or of LAB_SIMULATED approvals.",
+  "check_failures": [],
+  "passed": true,
+  "expected_status": "NOT_VERIFIED"
+ }
+]

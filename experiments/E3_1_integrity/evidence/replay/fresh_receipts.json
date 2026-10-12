@@ -1,0 +1,329 @@
+{
+ "native": [
+  {
+   "query": {
+    "group_by": [
+     "metric_time__year"
+    ],
+    "metric": "revenue",
+    "where": [
+     "{{ Dimension('sales__status') }} = 'completed'",
+     "{{ Dimension('customer__country') }} = 'France'"
+    ]
+   },
+   "estate": "TRUSTED_REBUILD",
+   "runtime": "AVAILABLE",
+   "ok": true,
+   "exit_code": 0,
+   "error": null,
+   "by_period": {
+    "2025": "261972.06",
+    "2024": "310780.14",
+    "2026": "155221.02"
+   },
+   "argv": [
+    "mf",
+    "query",
+    "--metrics",
+    "revenue",
+    "--group-by",
+    "metric_time__year",
+    "--where",
+    "{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('customer__country') }} = 'France'",
+    "--csv",
+    "<csv>"
+   ],
+   "mf_identity": {
+    "mf_path": "/home/user/sophon-e31/experiments/E3_1_integrity/.upstream/.venv/bin/mf",
+    "mf_sha256": "d18ba0bb21e1e99a9e03162118869eda29615e676894084f1eda1e325ce7c43e",
+    "record_entry": "../../../bin/mf",
+    "record_hash": "sha256=0YuguyHh6ZqeAxYhGIae2ilhXmdolAhPHtoeMlznxD4",
+    "distribution": "dbt_metricflow-0.13.0.dist-info",
+    "versions": {
+     "dbt-metricflow": "0.13.0",
+     "metricflow": "0.211.0",
+     "dbt-core": "1.11.11",
+     "dbt-duckdb": "1.10.1",
+     "dbt-semantic-interfaces": "0.9.0",
+     "duckdb": "1.5.4"
+    }
+   },
+   "semantic_manifest_sha256": "e8e9bfc7e1188bc3eb3f5ac551e8ed5350817af14a5471bdbcdfdca2bc01bd48",
+   "warehouse_sha256": "ac2c909318340dc015a86a020714dd5d9407b9f008a79c6e69866bd1f3a44ead",
+   "compiled_sql": "SELECT\n  metric_time__year\n  , SUM(revenue) AS revenue\nFROM (\n  SELECT\n    DATE_TRUNC('year', sales_src_10000.order_date) AS metric_time__year\n    , sales_src_10000.status AS sales__status\n    , customers_src_10000.country AS customer__country\n    , sales_src_10000.revenue AS revenue\n  FROM \"warehouse\".\"gold\".\"fact_sales\" sales_src_10000\n  LEFT OUTER JOIN\n    \"warehouse\".\"gold\".\"dim_customers\" customers_src_10000\n  ON\n    sales_src_10000.customer_id = customers_src_10000.customer_id\n) subq_5\nWHERE sales__status = 'completed' AND customer__country = 'France'\nGROUP BY\n  metric_time__year"
+  },
+  {
+   "query": {
+    "group_by": [
+     "metric_time__year"
+    ],
+    "metric": "revenue",
+    "where": [
+     "{{ Dimension('sales__status') }} = 'completed'",
+     "{{ Metric('revenue', group_by=['sales']) }} >= 100 * {{ Metric('quantity_sold', group_by=['sales']) }}"
+    ]
+   },
+   "estate": "TRUSTED_REBUILD",
+   "runtime": "AVAILABLE",
+   "ok": true,
+   "exit_code": 0,
+   "error": null,
+   "by_period": {
+    "2026": "752191.54",
+    "2025": "1400232.75",
+    "2024": "1634542.08"
+   },
+   "argv": [
+    "mf",
+    "query",
+    "--metrics",
+    "revenue",
+    "--group-by",
+    "metric_time__year",
+    "--where",
+    "{{ Dimension('sales__status') }} = 'completed' AND {{ Metric('revenue', group_by=['sales']) }} >= 100 * {{ Metric('quantity_sold', group_by=['sales']) }}",
+    "--csv",
+    "<csv>"
+   ],
+   "mf_identity": {
+    "mf_path": "/home/user/sophon-e31/experiments/E3_1_integrity/.upstream/.venv/bin/mf",
+    "mf_sha256": "d18ba0bb21e1e99a9e03162118869eda29615e676894084f1eda1e325ce7c43e",
+    "record_entry": "../../../bin/mf",
+    "record_hash": "sha256=0YuguyHh6ZqeAxYhGIae2ilhXmdolAhPHtoeMlznxD4",
+    "distribution": "dbt_metricflow-0.13.0.dist-info",
+    "versions": {
+     "dbt-metricflow": "0.13.0",
+     "metricflow": "0.211.0",
+     "dbt-core": "1.11.11",
+     "dbt-duckdb": "1.10.1",
+     "dbt-semantic-interfaces": "0.9.0",
+     "duckdb": "1.5.4"
+    }
+   },
+   "semantic_manifest_sha256": "e8e9bfc7e1188bc3eb3f5ac551e8ed5350817af14a5471bdbcdfdca2bc01bd48",
+   "warehouse_sha256": "ac2c909318340dc015a86a020714dd5d9407b9f008a79c6e69866bd1f3a44ead",
+   "compiled_sql": "WITH sma_10002_cte AS (\n  SELECT\n    DATE_TRUNC('year', order_date) AS metric_time__year\n    , sales_id AS sales\n    , status AS sales__status\n    , revenue AS __revenue\n    , quantity AS __quantity_sold\n  FROM \"warehouse\".\"gold\".\"fact_sales\" sales_src_10000\n)\n\nSELECT\n  metric_time__year AS metric_time__year\n  , SUM(revenue) AS revenue\nFROM (\n  SELECT\n    subq_9.metric_time__year AS metric_time__year\n    , subq_9.sales__status AS sales__status\n    , subq_15.sales__revenue AS sales__revenue\n    , subq_21.sales__quantity_sold AS sales__quantity_sold\n    , subq_9.__revenue AS revenue\n  FROM (\n    SELECT\n      metric_time__year\n      , sales\n      , sales__status\n      , __revenue\n    FROM sma_10002_cte\n  ) subq_9\n  LEFT OUTER JOIN (\n    SELECT\n      sales\n      , SUM(__revenue) AS sales__revenue\n    FROM sma_10002_cte\n    GROUP BY\n      sales\n  ) subq_15\n  ON\n    subq_9.sales = subq_15.sales\n  LEFT OUTER JOIN (\n    SELECT\n      sales\n      , SUM(__quantity_sold) AS sales__quantity_sold\n    FROM sma_10002_cte\n    GROUP BY\n      sales\n  ) subq_21\n  ON\n    subq_9.sales = subq_21.sales\n) subq_23\nWHERE sales__status = 'completed' AND sales__revenue >= 100 * sales__quantity_sold\nGROUP BY\n  metric_time__year"
+  },
+  {
+   "query": {
+    "group_by": [
+     "metric_time__year"
+    ],
+    "metric": "orders",
+    "where": [
+     "{{ Dimension('sales__channel') }} = 'online'",
+     "{{ Dimension('customer__country') }} = 'France'"
+    ]
+   },
+   "estate": "TRUSTED_REBUILD",
+   "runtime": "AVAILABLE",
+   "ok": true,
+   "exit_code": 0,
+   "error": null,
+   "by_period": {
+    "2026": "42",
+    "2024": "97",
+    "2025": "98"
+   },
+   "argv": [
+    "mf",
+    "query",
+    "--metrics",
+    "orders",
+    "--group-by",
+    "metric_time__year",
+    "--where",
+    "{{ Dimension('sales__channel') }} = 'online' AND {{ Dimension('customer__country') }} = 'France'",
+    "--csv",
+    "<csv>"
+   ],
+   "mf_identity": {
+    "mf_path": "/home/user/sophon-e31/experiments/E3_1_integrity/.upstream/.venv/bin/mf",
+    "mf_sha256": "d18ba0bb21e1e99a9e03162118869eda29615e676894084f1eda1e325ce7c43e",
+    "record_entry": "../../../bin/mf",
+    "record_hash": "sha256=0YuguyHh6ZqeAxYhGIae2ilhXmdolAhPHtoeMlznxD4",
+    "distribution": "dbt_metricflow-0.13.0.dist-info",
+    "versions": {
+     "dbt-metricflow": "0.13.0",
+     "metricflow": "0.211.0",
+     "dbt-core": "1.11.11",
+     "dbt-duckdb": "1.10.1",
+     "dbt-semantic-interfaces": "0.9.0",
+     "duckdb": "1.5.4"
+    }
+   },
+   "semantic_manifest_sha256": "e8e9bfc7e1188bc3eb3f5ac551e8ed5350817af14a5471bdbcdfdca2bc01bd48",
+   "warehouse_sha256": "ac2c909318340dc015a86a020714dd5d9407b9f008a79c6e69866bd1f3a44ead",
+   "compiled_sql": "SELECT\n  metric_time__year\n  , COUNT(DISTINCT orders) AS orders\nFROM (\n  SELECT\n    DATE_TRUNC('year', sales_src_10000.order_date) AS metric_time__year\n    , sales_src_10000.channel AS sales__channel\n    , customers_src_10000.country AS customer__country\n    , sales_src_10000.order_id AS orders\n  FROM \"warehouse\".\"gold\".\"fact_sales\" sales_src_10000\n  LEFT OUTER JOIN\n    \"warehouse\".\"gold\".\"dim_customers\" customers_src_10000\n  ON\n    sales_src_10000.customer_id = customers_src_10000.customer_id\n) subq_5\nWHERE sales__channel = 'online' AND customer__country = 'France'\nGROUP BY\n  metric_time__year"
+  },
+  {
+   "query": {
+    "group_by": [
+     "metric_time__year"
+    ],
+    "metric": "revenue",
+    "where": [
+     "{{ Dimension('sales__status') }} = 'completed'",
+     "{{ Dimension('customer__country') }} = 'France'"
+    ]
+   },
+   "estate": "TRUSTED_REBUILD",
+   "runtime": "UNAVAILABLE",
+   "ok": false,
+   "exit_code": null,
+   "error": "IdentityError: mf path /nonexistent/E3_1_runtime_unavailable/mf is not the entry point installed by dbt-metricflow (/home/user/sophon-e31/experiments/E3_1_integrity/.upstream/.venv/bin/mf)",
+   "by_period": null,
+   "argv": null,
+   "mf_identity": null,
+   "semantic_manifest_sha256": null,
+   "warehouse_sha256": null,
+   "compiled_sql": null
+  },
+  {
+   "query": {
+    "group_by": [
+     "metric_time__year"
+    ],
+    "metric": "revenue",
+    "where": [
+     "{{ Dimension('sales__status') }} = 'completed'",
+     "{{ Metric('revenue', group_by=['sales']) }} >= 100 * {{ Metric('quantity_sold', group_by=['sales']) }}"
+    ]
+   },
+   "estate": "CONTROL_NEGATIVE_QUANTITY",
+   "runtime": "AVAILABLE",
+   "ok": true,
+   "exit_code": 0,
+   "error": null,
+   "by_period": {
+    "2026": "752191.54",
+    "2025": "1399083.79",
+    "2024": "1634542.08"
+   },
+   "argv": [
+    "mf",
+    "query",
+    "--metrics",
+    "revenue",
+    "--group-by",
+    "metric_time__year",
+    "--where",
+    "{{ Dimension('sales__status') }} = 'completed' AND {{ Metric('revenue', group_by=['sales']) }} >= 100 * {{ Metric('quantity_sold', group_by=['sales']) }}",
+    "--csv",
+    "<csv>"
+   ],
+   "mf_identity": {
+    "mf_path": "/home/user/sophon-e31/experiments/E3_1_integrity/.upstream/.venv/bin/mf",
+    "mf_sha256": "d18ba0bb21e1e99a9e03162118869eda29615e676894084f1eda1e325ce7c43e",
+    "record_entry": "../../../bin/mf",
+    "record_hash": "sha256=0YuguyHh6ZqeAxYhGIae2ilhXmdolAhPHtoeMlznxD4",
+    "distribution": "dbt_metricflow-0.13.0.dist-info",
+    "versions": {
+     "dbt-metricflow": "0.13.0",
+     "metricflow": "0.211.0",
+     "dbt-core": "1.11.11",
+     "dbt-duckdb": "1.10.1",
+     "dbt-semantic-interfaces": "0.9.0",
+     "duckdb": "1.5.4"
+    }
+   },
+   "semantic_manifest_sha256": "e8e9bfc7e1188bc3eb3f5ac551e8ed5350817af14a5471bdbcdfdca2bc01bd48",
+   "warehouse_sha256": "870c856e53fe7e237e7b7c0a24fa0f41e8ae075f5991340fe92eff97116cf9bc",
+   "compiled_sql": "WITH sma_10002_cte AS (\n  SELECT\n    DATE_TRUNC('year', order_date) AS metric_time__year\n    , sales_id AS sales\n    , status AS sales__status\n    , revenue AS __revenue\n    , quantity AS __quantity_sold\n  FROM \"warehouse\".\"gold\".\"fact_sales\" sales_src_10000\n)\n\nSELECT\n  metric_time__year AS metric_time__year\n  , SUM(revenue) AS revenue\nFROM (\n  SELECT\n    subq_9.metric_time__year AS metric_time__year\n    , subq_9.sales__status AS sales__status\n    , subq_15.sales__revenue AS sales__revenue\n    , subq_21.sales__quantity_sold AS sales__quantity_sold\n    , subq_9.__revenue AS revenue\n  FROM (\n    SELECT\n      metric_time__year\n      , sales\n      , sales__status\n      , __revenue\n    FROM sma_10002_cte\n  ) subq_9\n  LEFT OUTER JOIN (\n    SELECT\n      sales\n      , SUM(__revenue) AS sales__revenue\n    FROM sma_10002_cte\n    GROUP BY\n      sales\n  ) subq_15\n  ON\n    subq_9.sales = subq_15.sales\n  LEFT OUTER JOIN (\n    SELECT\n      sales\n      , SUM(__quantity_sold) AS sales__quantity_sold\n    FROM sma_10002_cte\n    GROUP BY\n      sales\n  ) subq_21\n  ON\n    subq_9.sales = subq_21.sales\n) subq_23\nWHERE sales__status = 'completed' AND sales__revenue >= 100 * sales__quantity_sold\nGROUP BY\n  metric_time__year"
+  }
+ ],
+ "reference": [
+  {
+   "reading": "S2/R_CUSTOMER_COUNTRY",
+   "code_mode": "TRUSTED",
+   "ok": true,
+   "by_period": {
+    "2024": "310780.14",
+    "2025": "261972.06",
+    "2026": "155221.02"
+   },
+   "error": null,
+   "code_sha256": "2bcfd2d27bd7ae80e4cbb3c3e36ecf07686d2a1e786583306fc443858d088d04"
+  },
+  {
+   "reading": "S1/R_SINGLE",
+   "code_mode": "TRUSTED",
+   "ok": true,
+   "by_period": {
+    "2024": "1634542.08",
+    "2025": "1400232.75",
+    "2026": "752191.54"
+   },
+   "error": null,
+   "code_sha256": "a95cdfe158cd9e82709bc231e3ef42506765007abc79ed5e70ca8f2af5e8bbec"
+  },
+  {
+   "reading": "S3/R_SINGLE",
+   "code_mode": "TRUSTED",
+   "ok": true,
+   "by_period": {
+    "2024": "97",
+    "2025": "98",
+    "2026": "42"
+   },
+   "error": null,
+   "code_sha256": "2bcfd2d27bd7ae80e4cbb3c3e36ecf07686d2a1e786583306fc443858d088d04"
+  },
+  {
+   "reading": "S2/R_CUSTOMER_COUNTRY",
+   "code_mode": "TAMPERED",
+   "ok": false,
+   "by_period": null,
+   "error": "PermissionError: reference code hash 804417df7e89 != trusted 2bcfd2d27bd7; not executed",
+   "code_sha256": "804417df7e8952738be7d54a75a91ae0b15fa150b42a694df295336db89c7abc"
+  }
+ ],
+ "guards": [
+  {
+   "query": {
+    "group_by": [
+     "metric_time__year"
+    ],
+    "metric": "revenue",
+    "where": [
+     "{{ Dimension('sales__status') }} = 'completed'",
+     "{{ Metric('revenue', group_by=['sales']) }} >= 100 * {{ Metric('quantity_sold', group_by=['sales']) }}"
+    ]
+   },
+   "estate": "TRUSTED_REBUILD",
+   "ok": true,
+   "guards": {
+    "quantity_positive": true,
+    "revenue_exact": true,
+    "price_source_exact": true,
+    "line_entity_unique": true,
+    "exact_comparison": true
+   },
+   "error": null,
+   "min_quantity": 1
+  },
+  {
+   "query": {
+    "group_by": [
+     "metric_time__year"
+    ],
+    "metric": "revenue",
+    "where": [
+     "{{ Dimension('sales__status') }} = 'completed'",
+     "{{ Metric('revenue', group_by=['sales']) }} >= 100 * {{ Metric('quantity_sold', group_by=['sales']) }}"
+    ]
+   },
+   "estate": "CONTROL_NEGATIVE_QUANTITY",
+   "ok": false,
+   "guards": {
+    "quantity_positive": false,
+    "revenue_exact": true,
+    "price_source_exact": true,
+    "line_entity_unique": true,
+    "exact_comparison": true
+   },
+   "error": null,
+   "min_quantity": -1
+  }
+ ]
+}

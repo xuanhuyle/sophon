@@ -1,0 +1,29 @@
+{
+ "argv": [
+  "<python>",
+  "-I",
+  "src/e31.py",
+  "--upstream",
+  ".upstream",
+  "--out",
+  "<replay>"
+ ],
+ "env_keys": [
+  "HOME",
+  "PATH"
+ ],
+ "cwd": "fresh temporary directory",
+ "exit_code": 0,
+ "stdout_head": "build_ok=True 28/28 cases as frozen\nT1_START_AFTER_EVAL_DATE                           REQUIREMENT_NOT_IN_FORCE         old=VERIFIED_FOR_L REQUIREMENT_NOT_IN_FORCE\nT2_START_BOUNDARY_INCLUSIVE                        VERIFIED_FOR_LAB_ASSUMPTIONS_AND old=VERIFIED_FOR_L \nT3_END_BOUNDARY_INCLUSIVE                          VERIFIED_FOR_LAB_ASSUMPTIONS_AND old=VERIFIED_FOR_L \nT4_AFTER_END                ",
+ "stderr_tail": "",
+ "normalized_scored_sha256": "898b8482e2b6ebaca92289e1c6ea446324fe0265a1fec9dc8d8d2a0e658cd7ac",
+ "normalized_replay_sha256": "898b8482e2b6ebaca92289e1c6ea446324fe0265a1fec9dc8d8d2a0e658cd7ac",
+ "normalized_identical": true,
+ "independent_rebuild": {
+  "scored_run_id": "20261012T154929Z",
+  "replay_run_id": "20261012T155144Z",
+  "scored_warehouse_sha256": "51fce99e3f6dce47d0cbaff76764b459aa4855a91c5e5191e9d09cbd3097294b",
+  "replay_warehouse_sha256": "ac2c909318340dc015a86a020714dd5d9407b9f008a79c6e69866bd1f3a44ead",
+  "replay_build_ok": true
+ }
+}
