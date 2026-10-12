@@ -1,0 +1,804 @@
+{
+ "label": "LAB-authored reference constructed by the E2 orchestrator from the pinned upstream; not an independent adjudication.",
+ "upstream_commit": "312e97ad192dcef02f688e31edc0a08c6cf4345f",
+ "cases": {
+  "H1": {
+   "clause": "Report cash-collected revenue for each calendar year of order date: the value (quantity times unit price charged) of order lines belonging to completed orders for which the customer's payment has been received in full, as evidenced by a payment record.",
+   "stratum": "missing_fact_with_tempting_proxy",
+   "accepted_verdicts": [
+    "NOT_VERIFIABLE",
+    "PARTIAL_OR_UNKNOWN"
+   ],
+   "predicates": {
+    "amount": {
+     "anchors": [
+      "quantity times unit price",
+      "value"
+     ],
+     "kind": "bound",
+     "semantic": [
+      "revenue",
+      "completed_revenue"
+     ],
+     "physical": [
+      "gold.fact_sales.revenue",
+      "gold.fact_sales.quantity",
+      "gold.fact_sales.unit_price",
+      "silver.stg_order_items.quantity",
+      "silver.stg_order_items.unit_price",
+      "bronze.order_items.quantity",
+      "bronze.order_items.unit_price"
+     ]
+    },
+    "completed": {
+     "anchors": [
+      "completed"
+     ],
+     "kind": "bound",
+     "semantic": [
+      "sales__status",
+      "completed_revenue"
+     ],
+     "value": "completed",
+     "physical": [
+      "gold.fact_sales.status",
+      "gold.fact_sales.is_completed",
+      "silver.stg_orders.status",
+      "bronze.orders.status"
+     ]
+    },
+    "payment_received": {
+     "anchors": [
+      "payment",
+      "received in full",
+      "payment record"
+     ],
+     "kind": "not_found",
+     "accepted_classifications": [
+      "NOT_FOUND_IN_BOUNDED_ESTATE"
+     ],
+     "note": "No column in the estate records payment, collection or a payment record; order status is a lifecycle label generated at random (generate_raw_data.py STATUSES)."
+    },
+    "year": {
+     "anchors": [
+      "calendar year"
+     ],
+     "kind": "bound",
+     "semantic": [
+      "metric_time__year",
+      "metric_time",
+      "sales__order_date",
+      "sales__order_date__year"
+     ],
+     "physical": [
+      "gold.fact_sales.order_date",
+      "silver.stg_orders.order_date",
+      "bronze.orders.order_date"
+     ]
+    }
+   },
+   "traps": [
+    "status = 'completed' (or is_completed) offered as payment evidence",
+    "completed_revenue reported as cash-collected revenue"
+   ]
+  },
+  "H2": {
+   "clause": "For each calendar year of order date, report the gross profit (unit price charged minus the product's unit cost, multiplied by the units on the line) earned on completed orders of products in the Electronics category.",
+   "stratum": "representable_positive",
+   "accepted_verdicts": [
+    "VERIFIED_FOR_SPECIFIED_CHECKS"
+   ],
+   "accepted_metrics": [
+    "gross_profit"
+   ],
+   "canonical_query": {
+    "metric": "gross_profit",
+    "group_by": [
+     "metric_time__year"
+    ],
+    "where": [
+     "{{ Dimension('sales__status') }} = 'completed'",
+     "{{ Dimension('product__category') }} = 'Electronics'"
+    ]
+   },
+   "predicates": {
+    "gross_profit": {
+     "anchors": [
+      "gross profit"
+     ],
+     "kind": "bound",
+     "semantic": [
+      "gross_profit"
+     ],
+     "physical": [
+      "gold.fact_sales.profit",
+      "gold.fact_sales.unit_price",
+      "gold.fact_sales.unit_cost",
+      "gold.fact_sales.quantity",
+      "gold.dim_products.unit_cost",
+      "silver.stg_products.unit_cost",
+      "bronze.products.unit_cost",
+      "gold.fact_sales.revenue",
+      "gold.fact_sales.quantity",
+      "gold.fact_sales.unit_price",
+      "silver.stg_order_items.quantity",
+      "silver.stg_order_items.unit_price",
+      "bronze.order_items.quantity",
+      "bronze.order_items.unit_price"
+     ]
+    },
+    "electronics": {
+     "anchors": [
+      "electronics"
+     ],
+     "kind": "bound",
+     "semantic": [
+      "product__category"
+     ],
+     "value": "Electronics",
+     "physical": [
+      "gold.dim_products.category",
+      "silver.stg_products.category",
+      "bronze.products.category"
+     ]
+    },
+    "completed": {
+     "anchors": [
+      "completed"
+     ],
+     "kind": "bound",
+     "semantic": [
+      "sales__status",
+      "completed_revenue"
+     ],
+     "value": "completed",
+     "physical": [
+      "gold.fact_sales.status",
+      "gold.fact_sales.is_completed",
+      "silver.stg_orders.status",
+      "bronze.orders.status"
+     ]
+    },
+    "year": {
+     "anchors": [
+      "calendar year"
+     ],
+     "kind": "bound",
+     "semantic": [
+      "metric_time__year",
+      "metric_time",
+      "sales__order_date",
+      "sales__order_date__year"
+     ],
+     "physical": [
+      "gold.fact_sales.order_date",
+      "silver.stg_orders.order_date",
+      "bronze.orders.order_date"
+     ]
+    }
+   },
+   "traps": [
+    "gross_margin_rate (a ratio)",
+    "revenue or cost instead of profit",
+    "no category filter"
+   ],
+   "expected_by_year": {
+    "2024": "189330.77",
+    "2025": "164032.78",
+    "2026": "94006.03"
+   }
+  },
+  "H3": {
+   "clause": "Report, for each calendar year of order date, the revenue from completed orders that is attributable to the French market.",
+   "stratum": "semantic_ambiguity_requires_authority",
+   "accepted_verdicts": [
+    "REQUIRES_AUTHORIZED_INTERPRETATION"
+   ],
+   "predicates": {
+    "amount": {
+     "anchors": [
+      "revenue"
+     ],
+     "kind": "bound",
+     "semantic": [
+      "revenue",
+      "completed_revenue"
+     ],
+     "physical": [
+      "gold.fact_sales.revenue",
+      "gold.fact_sales.quantity",
+      "gold.fact_sales.unit_price",
+      "silver.stg_order_items.quantity",
+      "silver.stg_order_items.unit_price",
+      "bronze.order_items.quantity",
+      "bronze.order_items.unit_price"
+     ]
+    },
+    "completed": {
+     "anchors": [
+      "completed"
+     ],
+     "kind": "bound",
+     "semantic": [
+      "sales__status",
+      "completed_revenue"
+     ],
+     "value": "completed",
+     "physical": [
+      "gold.fact_sales.status",
+      "gold.fact_sales.is_completed",
+      "silver.stg_orders.status",
+      "bronze.orders.status"
+     ]
+    },
+    "french_market": {
+     "anchors": [
+      "french market",
+      "french"
+     ],
+     "kind": "unresolved",
+     "accepted_classifications": [
+      "UNRESOLVED_INTERPRETATION",
+      "NOT_ESTABLISHED_AUTHORITY"
+     ],
+     "reason_keywords_all": [
+      "customer",
+      "store"
+     ],
+     "note": "Customer country of residence (customer__country) and the country of the store the order is booked to (store__store_country) are both natively exposed and give materially different results; the clause does not say which."
+    },
+    "year": {
+     "anchors": [
+      "calendar year"
+     ],
+     "kind": "bound",
+     "semantic": [
+      "metric_time__year",
+      "metric_time",
+      "sales__order_date",
+      "sales__order_date__year"
+     ],
+     "physical": [
+      "gold.fact_sales.order_date",
+      "silver.stg_orders.order_date",
+      "bronze.orders.order_date"
+     ]
+    }
+   },
+   "traps": [
+    "customer__country chosen silently",
+    "store__store_country chosen silently"
+   ]
+  },
+  "H4": {
+   "clause": "For each calendar year of order date, report the total number of product units sold on orders booked to stores located in Germany, whatever the sales channel, excluding cancelled orders.",
+   "stratum": "misleading_near_match_representable",
+   "accepted_verdicts": [
+    "VERIFIED_FOR_SPECIFIED_CHECKS"
+   ],
+   "accepted_metrics": [
+    "quantity_sold"
+   ],
+   "canonical_query": {
+    "metric": "quantity_sold",
+    "group_by": [
+     "metric_time__year"
+    ],
+    "where": [
+     "{{ Dimension('sales__status') }} != 'cancelled'",
+     "{{ Dimension('store__store_country') }} = 'Germany'"
+    ]
+   },
+   "predicates": {
+    "units": {
+     "anchors": [
+      "number of product units",
+      "units"
+     ],
+     "kind": "bound",
+     "semantic": [
+      "quantity_sold"
+     ],
+     "physical": [
+      "gold.fact_sales.quantity",
+      "silver.stg_order_items.quantity",
+      "bronze.order_items.quantity"
+     ]
+    },
+    "not_cancelled": {
+     "anchors": [
+      "excluding cancelled orders",
+      "cancelled"
+     ],
+     "kind": "bound",
+     "semantic": [
+      "sales__status"
+     ],
+     "physical": [
+      "gold.fact_sales.status",
+      "gold.fact_sales.is_cancelled",
+      "silver.stg_orders.status",
+      "bronze.orders.status"
+     ]
+    },
+    "germany_stores": {
+     "anchors": [
+      "stores located in germany",
+      "germany"
+     ],
+     "kind": "bound",
+     "semantic": [
+      "store__store_country"
+     ],
+     "value": "Germany",
+     "physical": [
+      "gold.dim_stores.country",
+      "silver.stg_stores.country",
+      "bronze.stores.country"
+     ]
+    },
+    "year": {
+     "anchors": [
+      "calendar year"
+     ],
+     "kind": "bound",
+     "semantic": [
+      "metric_time__year",
+      "metric_time",
+      "sales__order_date",
+      "sales__order_date__year"
+     ],
+     "physical": [
+      "gold.fact_sales.order_date",
+      "silver.stg_orders.order_date",
+      "bronze.orders.order_date"
+     ]
+    }
+   },
+   "traps": [
+    "orders (distinct orders) instead of units",
+    "revenue instead of units",
+    "customer__country instead of store country",
+    "status = 'completed' instead of not cancelled"
+   ],
+   "expected_by_year": {
+    "2024": "1218",
+    "2025": "1192",
+    "2026": "534"
+   }
+  },
+  "H5": {
+   "clause": "Report, for each calendar year of order date, the revenue (quantity times unit price charged) from completed orders placed by customers whose registered e-mail address is on the gmail.com domain.",
+   "stratum": "source_present_not_natively_exposed",
+   "accepted_verdicts": [
+    "PARTIAL_OR_UNKNOWN",
+    "NOT_VERIFIABLE"
+   ],
+   "predicates": {
+    "amount": {
+     "anchors": [
+      "quantity times unit price",
+      "revenue"
+     ],
+     "kind": "bound",
+     "semantic": [
+      "revenue",
+      "completed_revenue"
+     ],
+     "physical": [
+      "gold.fact_sales.revenue",
+      "gold.fact_sales.quantity",
+      "gold.fact_sales.unit_price",
+      "silver.stg_order_items.quantity",
+      "silver.stg_order_items.unit_price",
+      "bronze.order_items.quantity",
+      "bronze.order_items.unit_price"
+     ]
+    },
+    "completed": {
+     "anchors": [
+      "completed"
+     ],
+     "kind": "bound",
+     "semantic": [
+      "sales__status",
+      "completed_revenue"
+     ],
+     "value": "completed",
+     "physical": [
+      "gold.fact_sales.status",
+      "gold.fact_sales.is_completed",
+      "silver.stg_orders.status",
+      "bronze.orders.status"
+     ]
+    },
+    "gmail": {
+     "anchors": [
+      "gmail.com",
+      "e-mail"
+     ],
+     "kind": "not_exposed",
+     "accepted_classifications": [
+      "PRESENT_IN_SOURCE_NOT_EXPOSED"
+     ],
+     "physical": [
+      "gold.dim_customers.email",
+      "silver.stg_customers.email",
+      "bronze.customers.email"
+     ],
+     "note": "email exists in bronze/silver/gold customers; no semantic dimension, entity or metric exposes it; Dimension('customer__email') is rejected natively."
+    },
+    "year": {
+     "anchors": [
+      "calendar year"
+     ],
+     "kind": "bound",
+     "semantic": [
+      "metric_time__year",
+      "metric_time",
+      "sales__order_date",
+      "sales__order_date__year"
+     ],
+     "physical": [
+      "gold.fact_sales.order_date",
+      "silver.stg_orders.order_date",
+      "bronze.orders.order_date"
+     ]
+    }
+   },
+   "traps": [
+    "claiming a native filter on customer email",
+    "Entity('customer') IN (ids looked up outside MetricFlow) presented as native"
+   ]
+  },
+  "H6": {
+   "clause": "Report, for each calendar year of order date, the number of distinct orders placed through the online channel by customers whose country of residence is France, regardless of order status.",
+   "stratum": "representable_positive",
+   "accepted_verdicts": [
+    "VERIFIED_FOR_SPECIFIED_CHECKS"
+   ],
+   "accepted_metrics": [
+    "orders"
+   ],
+   "canonical_query": {
+    "metric": "orders",
+    "group_by": [
+     "metric_time__year"
+    ],
+    "where": [
+     "{{ Dimension('sales__channel') }} = 'online'",
+     "{{ Dimension('customer__country') }} = 'France'"
+    ]
+   },
+   "predicates": {
+    "distinct_orders": {
+     "anchors": [
+      "number of distinct orders",
+      "distinct orders"
+     ],
+     "kind": "bound",
+     "semantic": [
+      "orders"
+     ],
+     "physical": [
+      "gold.fact_sales.order_id",
+      "silver.stg_orders.order_id",
+      "bronze.orders.order_id",
+      "silver.stg_order_items.order_id",
+      "bronze.order_items.order_id"
+     ]
+    },
+    "online": {
+     "anchors": [
+      "online channel",
+      "online"
+     ],
+     "kind": "bound",
+     "semantic": [
+      "sales__channel"
+     ],
+     "value": "online",
+     "physical": [
+      "gold.fact_sales.channel",
+      "silver.stg_orders.channel",
+      "bronze.orders.channel"
+     ]
+    },
+    "france_residence": {
+     "anchors": [
+      "country of residence is france",
+      "france"
+     ],
+     "kind": "bound",
+     "semantic": [
+      "customer__country"
+     ],
+     "value": "France",
+     "physical": [
+      "gold.dim_customers.country",
+      "silver.stg_customers.country",
+      "bronze.customers.country"
+     ]
+    },
+    "year": {
+     "anchors": [
+      "calendar year"
+     ],
+     "kind": "bound",
+     "semantic": [
+      "metric_time__year",
+      "metric_time",
+      "sales__order_date",
+      "sales__order_date__year"
+     ],
+     "physical": [
+      "gold.fact_sales.order_date",
+      "silver.stg_orders.order_date",
+      "bronze.orders.order_date"
+     ]
+    }
+   },
+   "traps": [
+    "store__store_country instead of customer country",
+    "a status filter despite 'regardless of order status'",
+    "revenue or active_customers instead of orders"
+   ],
+   "expected_by_year": {
+    "2024": "97",
+    "2025": "98",
+    "2026": "42"
+   }
+  }
+ },
+ "validation": {
+  "H2": {
+   "canonical_native_by_year": {
+    "2024": "189330.77",
+    "2025": "164032.78",
+    "2026": "94006.03"
+   },
+   "oracle_by_year": {
+    "2024": "189330.77",
+    "2025": "164032.78",
+    "2026": "94006.03"
+   },
+   "equal": true,
+   "native_exit": 0
+  },
+  "H4": {
+   "canonical_native_by_year": {
+    "2026": "534",
+    "2025": "1192",
+    "2024": "1218"
+   },
+   "oracle_by_year": {
+    "2024": "1218",
+    "2025": "1192",
+    "2026": "534"
+   },
+   "equal": true,
+   "native_exit": 0
+  },
+  "H6": {
+   "canonical_native_by_year": {
+    "2026": "42",
+    "2025": "98",
+    "2024": "97"
+   },
+   "oracle_by_year": {
+    "2024": "97",
+    "2025": "98",
+    "2026": "42"
+   },
+   "equal": true,
+   "native_exit": 0
+  },
+  "H5_email_dimension": {
+   "accepted": false,
+   "exit_code": 1,
+   "by_year": null
+  },
+  "H3_reading_customer": {
+   "accepted": true,
+   "exit_code": 0,
+   "by_year": {
+    "2026": "155221.02",
+    "2025": "261972.06",
+    "2024": "310780.14"
+   }
+  },
+  "H3_reading_store": {
+   "accepted": true,
+   "exit_code": 0,
+   "by_year": {
+    "2026": "138501.23",
+    "2025": "288072.98",
+    "2024": "366057.38"
+   }
+  },
+  "H1_payment_column_scan": {
+   "columns_scanned": 155,
+   "columns_naming_payment_settlement_collection": []
+  },
+  "diagnostics_oracle": {
+   "H3_reading_customer_country": {
+    "2024": "310780.14",
+    "2025": "261972.06",
+    "2026": "155221.02"
+   },
+   "H3_reading_store_country": {
+    "2024": "366057.38",
+    "2025": "288072.98",
+    "2026": "138501.23"
+   },
+   "H5_gmail_completed_revenue": {
+    "2024": "116797.06",
+    "2025": "100023.00",
+    "2026": "40280.98"
+   },
+   "H1_rejected_status_proxy": {
+    "2024": "1707052.80",
+    "2025": "1477833.96",
+    "2026": "792441.45"
+   }
+  },
+  "all_reference_checks_pass": true
+ },
+ "warehouse_columns": [
+  "bronze.customers.city",
+  "bronze.customers.country",
+  "bronze.customers.customer_id",
+  "bronze.customers.email",
+  "bronze.customers.first_name",
+  "bronze.customers.last_name",
+  "bronze.customers.signup_date",
+  "bronze.order_events.channel",
+  "bronze.order_events.customer_id",
+  "bronze.order_events.event_id",
+  "bronze.order_events.event_ts",
+  "bronze.order_events.order_id",
+  "bronze.order_events.order_item_id",
+  "bronze.order_events.product_id",
+  "bronze.order_events.quantity",
+  "bronze.order_events.status",
+  "bronze.order_events.store_id",
+  "bronze.order_events.unit_price",
+  "bronze.order_items.order_id",
+  "bronze.order_items.order_item_id",
+  "bronze.order_items.product_id",
+  "bronze.order_items.quantity",
+  "bronze.order_items.unit_price",
+  "bronze.orders.channel",
+  "bronze.orders.customer_id",
+  "bronze.orders.order_date",
+  "bronze.orders.order_id",
+  "bronze.orders.status",
+  "bronze.orders.store_id",
+  "bronze.products.category",
+  "bronze.products.list_price",
+  "bronze.products.product_id",
+  "bronze.products.product_name",
+  "bronze.products.unit_cost",
+  "bronze.stores.city",
+  "bronze.stores.country",
+  "bronze.stores.store_id",
+  "bronze.stores.store_name",
+  "gold.dim_customers.city",
+  "gold.dim_customers.country",
+  "gold.dim_customers.customer_id",
+  "gold.dim_customers.email",
+  "gold.dim_customers.first_name",
+  "gold.dim_customers.full_name",
+  "gold.dim_customers.last_name",
+  "gold.dim_customers.signup_date",
+  "gold.dim_dates.date_day",
+  "gold.dim_dates.date_id",
+  "gold.dim_dates.day_name",
+  "gold.dim_dates.day_of_week",
+  "gold.dim_dates.is_weekend",
+  "gold.dim_dates.month",
+  "gold.dim_dates.month_name",
+  "gold.dim_dates.quarter",
+  "gold.dim_dates.quarter_name",
+  "gold.dim_dates.week_of_year",
+  "gold.dim_dates.year",
+  "gold.dim_products.category",
+  "gold.dim_products.list_price",
+  "gold.dim_products.margin_rate",
+  "gold.dim_products.product_id",
+  "gold.dim_products.product_name",
+  "gold.dim_products.unit_cost",
+  "gold.dim_products.unit_margin",
+  "gold.dim_stores.city",
+  "gold.dim_stores.country",
+  "gold.dim_stores.store_id",
+  "gold.dim_stores.store_name",
+  "gold.fact_customer_orders.customer_id",
+  "gold.fact_customer_orders.is_repeat_customer",
+  "gold.fact_customer_orders.last_order_date",
+  "gold.fact_customer_orders.order_count",
+  "gold.fact_sales.channel",
+  "gold.fact_sales.cost_amount",
+  "gold.fact_sales.customer_id",
+  "gold.fact_sales.date_id",
+  "gold.fact_sales.discount_amount",
+  "gold.fact_sales.is_cancelled",
+  "gold.fact_sales.is_completed",
+  "gold.fact_sales.is_returned",
+  "gold.fact_sales.order_date",
+  "gold.fact_sales.order_id",
+  "gold.fact_sales.product_id",
+  "gold.fact_sales.profit",
+  "gold.fact_sales.quantity",
+  "gold.fact_sales.revenue",
+  "gold.fact_sales.sales_id",
+  "gold.fact_sales.status",
+  "gold.fact_sales.store_id",
+  "gold.fact_sales.unit_cost",
+  "gold.fact_sales.unit_price",
+  "gold.fact_sales_live.channel",
+  "gold.fact_sales_live.cost_amount",
+  "gold.fact_sales_live.customer_id",
+  "gold.fact_sales_live.date_id",
+  "gold.fact_sales_live.discount_amount",
+  "gold.fact_sales_live.event_date",
+  "gold.fact_sales_live.event_id",
+  "gold.fact_sales_live.event_ts",
+  "gold.fact_sales_live.is_cancelled",
+  "gold.fact_sales_live.is_completed",
+  "gold.fact_sales_live.is_returned",
+  "gold.fact_sales_live.order_id",
+  "gold.fact_sales_live.order_item_id",
+  "gold.fact_sales_live.product_id",
+  "gold.fact_sales_live.profit",
+  "gold.fact_sales_live.quantity",
+  "gold.fact_sales_live.revenue",
+  "gold.fact_sales_live.status",
+  "gold.fact_sales_live.store_id",
+  "gold.fact_sales_live.unit_cost",
+  "gold.fact_sales_live.unit_price",
+  "gold.rt_freshness.as_of",
+  "gold.rt_freshness.freshness_seconds",
+  "gold.rt_freshness.last_event_ts",
+  "gold.rt_freshness.no_events_yet",
+  "silver.stg_customers.city",
+  "silver.stg_customers.country",
+  "silver.stg_customers.customer_id",
+  "silver.stg_customers.email",
+  "silver.stg_customers.first_name",
+  "silver.stg_customers.last_name",
+  "silver.stg_customers.signup_date",
+  "silver.stg_order_events.channel",
+  "silver.stg_order_events.customer_id",
+  "silver.stg_order_events.event_id",
+  "silver.stg_order_events.event_ts",
+  "silver.stg_order_events.order_id",
+  "silver.stg_order_events.order_item_id",
+  "silver.stg_order_events.product_id",
+  "silver.stg_order_events.quantity",
+  "silver.stg_order_events.status",
+  "silver.stg_order_events.store_id",
+  "silver.stg_order_events.unit_price",
+  "silver.stg_order_items.order_id",
+  "silver.stg_order_items.order_item_id",
+  "silver.stg_order_items.product_id",
+  "silver.stg_order_items.quantity",
+  "silver.stg_order_items.unit_price",
+  "silver.stg_orders.channel",
+  "silver.stg_orders.customer_id",
+  "silver.stg_orders.order_date",
+  "silver.stg_orders.order_id",
+  "silver.stg_orders.status",
+  "silver.stg_orders.store_id",
+  "silver.stg_products.category",
+  "silver.stg_products.list_price",
+  "silver.stg_products.product_id",
+  "silver.stg_products.product_name",
+  "silver.stg_products.unit_cost",
+  "silver.stg_products.unit_margin",
+  "silver.stg_stores.city",
+  "silver.stg_stores.country",
+  "silver.stg_stores.store_id",
+  "silver.stg_stores.store_name"
+ ]
+}
