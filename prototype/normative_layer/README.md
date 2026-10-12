@@ -45,7 +45,7 @@ The response includes `execution_authorized: false`, `facts_provenance: SUPPLIED
 
 - `python -m unittest discover -s prototype/normative_layer -p 'test_*.py' -v`: **6 tests passed** on Python stdlib on Linux, October 12, 2026.
 - `python prototype/normative_layer/demo.py`: **both independent clients** reported EUR20.00 with contract v1, stayed at EUR20.00 with **unapproved v2**, then reported EUR40.00 under **LAB-approved v2** and the founder-review threshold. No client source changes.
-- **Windows/PowerShell not yet tested.** Tests demonstrate this tiny grammar-specific behavior only, not reliable real-world contractual interpretation.
+- **GitHub Actions passed on both Windows and Ubuntu (Python 3.11)**: six unit/integration tests and the full two-client demo. Results establish this tiny grammar-specific behavior only, not reliable real-world contractual interpretation.
 
 ## Next engineering step, driven by observed failure
 
