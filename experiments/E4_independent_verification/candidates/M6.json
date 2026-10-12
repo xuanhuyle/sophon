@@ -1,0 +1,26 @@
+{
+ "candidate_id": "M6",
+ "policy": "P2",
+ "change_of": "M2",
+ "patch": [
+  {
+   "op": "append",
+   "file": "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+   "text": "\n  - name: french_market_revenue\n    description: \"Refactored: revenue of completed orders whose customer country is France.\"\n    label: \"French market revenue (customer country)\"\n    type: simple\n    type_params:\n      measure: revenue\n    filter: \"{{ Dimension('customer__country') }} IN ('France') AND {{ Dimension('sales__status') }} IN ('completed')\"\n"
+  },
+  {
+   "op": "replace",
+   "file": "dbt/retail_dwh/models/marts/facts/fact_sales.sql",
+   "old": "-- Gold fact: one row per order line (the grain).",
+   "new": "-- Gold fact: one row per order line (the grain).\n-- (E4 M6: comment-only refactor; no behaviour change intended)"
+  }
+ ],
+ "query": {
+  "metric": "french_market_revenue",
+  "group_by": [
+   "metric_time__year"
+  ],
+  "where": []
+ },
+ "note": "harmless refactor of M2: reordered IN-filters, new label/description, comment-only dbt model edit"
+}

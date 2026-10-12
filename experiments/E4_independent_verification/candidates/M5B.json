@@ -1,0 +1,26 @@
+{
+ "candidate_id": "M5B",
+ "policy": "P2",
+ "change_of": "M2",
+ "patch": [
+  {
+   "op": "append",
+   "file": "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+   "text": "\n  - name: french_market_revenue\n    description: \"Completed revenue of customers in France.\"\n    label: \"French market revenue\"\n    type: simple\n    type_params:\n      measure: revenue\n    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('customer__country') }} = 'France'\"\n"
+  },
+  {
+   "op": "replace",
+   "file": "dbt/retail_dwh/models/staging/stg_customers.sql",
+   "old": "        when 'FR'          then 'France'\n        when 'FRA'         then 'France'\n",
+   "new": ""
+  }
+ ],
+ "query": {
+  "metric": "french_market_revenue",
+  "group_by": [
+   "metric_time__year"
+  ],
+  "where": []
+ },
+ "note": "WRONG dbt model: stg_customers drops the FR/FRA country aliases (dbt SQL mutation; metric unchanged)"
+}

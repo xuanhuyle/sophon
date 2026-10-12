@@ -1,0 +1,375 @@
+{
+ "variants": [
+  {
+   "variant_id": "M1",
+   "candidate": "M1",
+   "policy": "P1",
+   "snapshots": [
+    "PINNED",
+    "BOUNDARY"
+   ],
+   "context": {
+    "eval_known_at": "2026-10-06T00:00:00Z",
+    "eval_effective_at": "2026-06-30",
+    "record_patch": [],
+    "approvals": [
+     "AP_S1_READ"
+    ],
+    "record": "S1"
+   },
+   "candidate_claim": null,
+   "kind": "correct baseline P1 (derived)",
+   "expected": {
+    "status": "VERIFIED_FOR_LAB_CHECKS",
+    "reasons_include": []
+   }
+  },
+  {
+   "variant_id": "M2",
+   "candidate": "M2",
+   "policy": "P2",
+   "snapshots": [
+    "PINNED"
+   ],
+   "context": {
+    "eval_known_at": "2026-10-06T00:00:00Z",
+    "eval_effective_at": "2026-06-30",
+    "record_patch": [],
+    "approvals": [
+     "AP_S2_CUSTOMER"
+    ],
+    "record": "S2"
+   },
+   "candidate_claim": null,
+   "kind": "correct baseline P2 (native metric)",
+   "expected": {
+    "status": "VERIFIED_FOR_LAB_CHECKS",
+    "reasons_include": []
+   }
+  },
+  {
+   "variant_id": "M6B",
+   "candidate": "M6B",
+   "policy": "P1",
+   "snapshots": [
+    "PINNED",
+    "BOUNDARY"
+   ],
+   "context": {
+    "eval_known_at": "2026-10-06T00:00:00Z",
+    "eval_effective_at": "2026-06-30",
+    "record_patch": [],
+    "approvals": [
+     "AP_S1_READ"
+    ],
+    "record": "S1"
+   },
+   "candidate_claim": null,
+   "kind": "harmless alternative P1 (semantic YAML change)",
+   "expected": {
+    "status": "NO_MATERIAL_DRIFT_FOR_CHECKS",
+    "reasons_include": []
+   }
+  },
+  {
+   "variant_id": "M6",
+   "candidate": "M6",
+   "policy": "P2",
+   "snapshots": [
+    "PINNED"
+   ],
+   "context": {
+    "eval_known_at": "2026-10-06T00:00:00Z",
+    "eval_effective_at": "2026-06-30",
+    "record_patch": [],
+    "approvals": [
+     "AP_S2_CUSTOMER"
+    ],
+    "record": "S2"
+   },
+   "candidate_claim": null,
+   "kind": "harmless refactor P2 (YAML + dbt comment)",
+   "expected": {
+    "status": "NO_MATERIAL_DRIFT_FOR_CHECKS",
+    "reasons_include": []
+   }
+  },
+  {
+   "variant_id": "M3",
+   "candidate": "M3",
+   "policy": "P1",
+   "snapshots": [
+    "PINNED",
+    "BOUNDARY"
+   ],
+   "context": {
+    "eval_known_at": "2026-10-06T00:00:00Z",
+    "eval_effective_at": "2026-06-30",
+    "record_patch": [],
+    "approvals": [
+     "AP_S1_READ"
+    ],
+    "record": "S1"
+   },
+   "candidate_claim": null,
+   "kind": "wrong boundary, accidental agreement on PINNED",
+   "expected": {
+    "status": "NONCONFORMING_IMPLEMENTATION",
+    "reasons_include": [
+     "MEMBERSHIP_MISMATCH"
+    ],
+    "counterexample_ids": [
+     "2"
+    ],
+    "agrees_on_snapshot": "PINNED",
+    "differs_on_snapshot": "BOUNDARY",
+    "native_mutation": true
+   }
+  },
+  {
+   "variant_id": "M4",
+   "candidate": "M4",
+   "policy": "P1",
+   "snapshots": [
+    "PINNED",
+    "BOUNDARY"
+   ],
+   "context": {
+    "eval_known_at": "2026-10-06T00:00:00Z",
+    "eval_effective_at": "2026-06-30",
+    "record_patch": [],
+    "approvals": [
+     "AP_S1_READ"
+    ],
+    "record": "S1"
+   },
+   "candidate_claim": null,
+   "kind": "wrong status filter",
+   "expected": {
+    "status": "NONCONFORMING_IMPLEMENTATION",
+    "reasons_include": [
+     "MEMBERSHIP_MISMATCH"
+    ],
+    "native_mutation": true
+   }
+  },
+  {
+   "variant_id": "M5",
+   "candidate": "M5",
+   "policy": "P2",
+   "snapshots": [
+    "PINNED"
+   ],
+   "context": {
+    "eval_known_at": "2026-10-06T00:00:00Z",
+    "eval_effective_at": "2026-06-30",
+    "record_patch": [],
+    "approvals": [
+     "AP_S2_CUSTOMER"
+    ],
+    "record": "S2"
+   },
+   "candidate_claim": null,
+   "kind": "wrong customer/store binding",
+   "expected": {
+    "status": "NONCONFORMING_IMPLEMENTATION",
+    "reasons_include": [
+     "MEMBERSHIP_MISMATCH"
+    ],
+    "native_mutation": true
+   }
+  },
+  {
+   "variant_id": "M5B",
+   "candidate": "M5B",
+   "policy": "P2",
+   "snapshots": [
+    "PINNED"
+   ],
+   "context": {
+    "eval_known_at": "2026-10-06T00:00:00Z",
+    "eval_effective_at": "2026-06-30",
+    "record_patch": [],
+    "approvals": [
+     "AP_S2_CUSTOMER"
+    ],
+    "record": "S2"
+   },
+   "candidate_claim": null,
+   "kind": "wrong dbt staging model",
+   "expected": {
+    "status": "NONCONFORMING_IMPLEMENTATION",
+    "reasons_include": [
+     "MEMBERSHIP_MISMATCH"
+    ],
+    "native_mutation": true
+   }
+  },
+  {
+   "variant_id": "C1",
+   "candidate": "M2",
+   "policy": "P2",
+   "snapshots": [
+    "STALE"
+   ],
+   "context": {
+    "eval_known_at": "2026-10-06T00:00:00Z",
+    "eval_effective_at": "2026-06-30",
+    "record_patch": [],
+    "approvals": [
+     "AP_S2_CUSTOMER"
+    ],
+    "record": "S2"
+   },
+   "candidate_claim": null,
+   "kind": "unregistered/stale source snapshot",
+   "expected": {
+    "status": "NOT_VERIFIED",
+    "reasons_include": [
+     "SOURCE_SNAPSHOT_UNREGISTERED"
+    ]
+   }
+  },
+  {
+   "variant_id": "C2A",
+   "candidate": "M2",
+   "policy": "P2",
+   "snapshots": [
+    "PINNED"
+   ],
+   "context": {
+    "eval_known_at": "2026-10-06T00:00:00Z",
+    "eval_effective_at": "2026-06-30",
+    "record_patch": [],
+    "approvals": [],
+    "record": "S2"
+   },
+   "candidate_claim": null,
+   "kind": "approval absent; correct implementation",
+   "expected": {
+    "status": "NOT_VERIFIED",
+    "reasons_include": [
+     "APPROVAL_MISSING"
+    ]
+   }
+  },
+  {
+   "variant_id": "C2B",
+   "candidate": "M2",
+   "policy": "P2",
+   "snapshots": [
+    "PINNED"
+   ],
+   "context": {
+    "eval_known_at": "2026-10-06T00:00:00Z",
+    "eval_effective_at": "2026-06-30",
+    "record_patch": [
+     {
+      "op": "set",
+      "path": [
+       "governing_source",
+       "effective_from"
+      ],
+      "value": "2027-01-01"
+     }
+    ],
+    "approvals": [
+     "AP_S2_CUSTOMER"
+    ],
+    "record": "S2"
+   },
+   "candidate_claim": null,
+   "kind": "requirement not in force at the evaluated date",
+   "expected": {
+    "status": "NOT_APPLICABLE",
+    "reasons_include": [
+     "REQUIREMENT_NOT_IN_FORCE"
+    ]
+   }
+  },
+  {
+   "variant_id": "C3",
+   "candidate": "M5",
+   "policy": "P2",
+   "snapshots": [
+    "PINNED"
+   ],
+   "context": {
+    "eval_known_at": "2026-10-06T00:00:00Z",
+    "eval_effective_at": "2026-06-30",
+    "record_patch": [],
+    "approvals": [
+     "AP_S2_CUSTOMER"
+    ],
+    "record": "S2"
+   },
+   "candidate_claim": {
+    "by_year": {
+     "2024": "310780.14",
+     "2025": "261972.06",
+     "2026": "155221.02"
+    },
+    "status": "VERIFIED",
+    "note": "forged candidate receipt claiming the approved customer values"
+   },
+   "kind": "poisoned candidate claim on a wrong implementation",
+   "expected": {
+    "status": "NONCONFORMING_IMPLEMENTATION",
+    "reasons_include": [
+     "MEMBERSHIP_MISMATCH",
+     "CANDIDATE_CLAIM_CONTRADICTED"
+    ]
+   }
+  },
+  {
+   "variant_id": "C4",
+   "candidate": "C4",
+   "policy": "P2",
+   "snapshots": [
+    "PINNED"
+   ],
+   "context": {
+    "eval_known_at": "2026-10-06T00:00:00Z",
+    "eval_effective_at": "2026-06-30",
+    "record_patch": [],
+    "approvals": [
+     "AP_S2_CUSTOMER"
+    ],
+    "record": "S2"
+   },
+   "candidate_claim": null,
+   "kind": "candidate fails to execute natively",
+   "expected": {
+    "status": "NOT_VERIFIED",
+    "reasons_include": [
+     "EXECUTION_FAILURE"
+    ]
+   }
+  },
+  {
+   "variant_id": "C5",
+   "candidate": "M1",
+   "policy": "P1",
+   "snapshots": [
+    "NEGQTY"
+   ],
+   "context": {
+    "eval_known_at": "2026-10-06T00:00:00Z",
+    "eval_effective_at": "2026-06-30",
+    "record_patch": [],
+    "approvals": [
+     "AP_S1_READ"
+    ],
+    "record": "S1"
+   },
+   "candidate_claim": null,
+   "kind": "derived implementation on data violating its guard",
+   "expected": {
+    "status": "NOT_VERIFIED",
+    "reasons_include": [
+     "DATA_GUARD_FAILURE"
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,17 @@
+{
+ "candidate_id": "M1",
+ "policy": "P1",
+ "change_of": null,
+ "patch": [],
+ "query": {
+  "metric": "revenue",
+  "group_by": [
+   "metric_time__year"
+  ],
+  "where": [
+   "{{ Dimension('sales__status') }} = 'completed'",
+   "{{ Metric('revenue', group_by=['sales']) }} >= 100 * {{ Metric('quantity_sold', group_by=['sales']) }}"
+  ]
+ },
+ "note": "approved line-grain derivation on the pristine semantic layer (E3 S1 native query)"
+}

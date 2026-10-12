@@ -1,0 +1,26 @@
+{
+ "candidate_id": "M4",
+ "policy": "P1",
+ "change_of": "M6B",
+ "patch": [
+  {
+   "op": "replace",
+   "file": "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+   "old": "      - name: status\n        type: categorical\n    measures:\n      - name: revenue\n        description: \"Quantity x price charged.\"\n",
+   "new": "      - name: status\n        type: categorical\n      - name: unit_price\n        type: categorical\n        expr: unit_price\n    measures:\n      - name: revenue\n        description: \"Quantity x price charged.\"\n"
+  },
+  {
+   "op": "append",
+   "file": "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+   "text": "\n  - name: premium_completed_revenue\n    description: \"Non-cancelled revenue on lines with unit price at least 100.\"\n    label: \"Premium completed revenue\"\n    type: simple\n    type_params:\n      measure: revenue\n    filter: \"{{ Dimension('sales__status') }} != 'cancelled' AND {{ Dimension('sales__unit_price') }} >= 100\"\n"
+  }
+ ],
+ "query": {
+  "metric": "premium_completed_revenue",
+  "group_by": [
+   "metric_time__year"
+  ],
+  "where": []
+ },
+ "note": "WRONG status filter: != 'cancelled' instead of = 'completed' (native semantic YAML mutation)"
+}
