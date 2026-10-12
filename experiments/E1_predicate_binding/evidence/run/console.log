@@ -1,0 +1,216 @@
+{
+ "scored": {
+  "A": {
+   "case_status": "FULLY_OBSERVABLE_FOR_THIS_CALCULATION",
+   "verified_for_recorded_checks": true,
+   "predicates": {
+    "P_LINE_AMOUNT": "BOUND_AND_EXPOSED",
+    "P_STATUS_COMPLETED": "BOUND_AND_EXPOSED",
+    "P_YEAR_BY_ORDER_DATE": "BOUND_AND_EXPOSED"
+   },
+   "uncovered": [],
+   "metric_consistency_problems": []
+  },
+  "B1": {
+   "case_status": "PRESENT_IN_SOURCE_NOT_EXPOSED",
+   "verified_for_recorded_checks": false,
+   "predicates": {
+    "P_LINE_AMOUNT": "BOUND_AND_EXPOSED",
+    "P_STATUS_COMPLETED": "BOUND_AND_EXPOSED",
+    "P_YEAR_BY_ORDER_DATE": "BOUND_AND_EXPOSED",
+    "P_UNIT_PRICE_GE_100": "PRESENT_IN_SOURCE_NOT_EXPOSED"
+   },
+   "uncovered": [
+    "P_UNIT_PRICE_GE_100"
+   ],
+   "metric_consistency_problems": []
+  },
+  "B2": {
+   "case_status": "NOT_FOUND_IN_BOUNDED_ESTATE",
+   "verified_for_recorded_checks": false,
+   "predicates": {
+    "P_LINE_AMOUNT": "BOUND_AND_EXPOSED",
+    "P_STATUS_COMPLETED": "BOUND_AND_EXPOSED",
+    "P_YEAR_BY_ORDER_DATE": "BOUND_AND_EXPOSED",
+    "P_SETTLEMENT_CONFIRMED": "NOT_FOUND_IN_BOUNDED_ESTATE"
+   },
+   "uncovered": [
+    "P_SETTLEMENT_CONFIRMED"
+   ],
+   "metric_consistency_problems": []
+  }
+ },
+ "A_native": {
+  "2025": "1477833.96",
+  "2024": "1707052.80",
+  "2026": "792441.45"
+ },
+ "A_oracle": {
+  "2024": "1707052.80",
+  "2025": "1477833.96",
+  "2026": "792441.45"
+ },
+ "A_comparison": {
+  "equal": true,
+  "counterexamples": []
+ },
+ "B1_probe": {
+  "where": "{{ Dimension('sales__unit_price') }} >= 100.00",
+  "accepted": false,
+  "exit_code": 1,
+  "argv": [
+   "mf",
+   "query",
+   "--metrics",
+   "completed_revenue",
+   "--where",
+   "{{ Dimension('sales__unit_price') }} >= 100.00",
+   "--csv",
+   "<csv>"
+  ]
+ },
+ "B1_covered_native": {
+  "2025": "1477833.96",
+  "2024": "1707052.80",
+  "2026": "792441.45"
+ },
+ "adversarial": {
+  "M4a_remove_status_binding": {
+   "case_status": "INVALID_BINDING",
+   "verified_for_recorded_checks": false,
+   "predicates": {
+    "P_LINE_AMOUNT": "BOUND_AND_EXPOSED",
+    "P_STATUS_COMPLETED": "MISSING_BINDING",
+    "P_YEAR_BY_ORDER_DATE": "BOUND_AND_EXPOSED"
+   },
+   "uncovered": [
+    "P_STATUS_COMPLETED"
+   ],
+   "metric_consistency_problems": [
+    "metric filter \"{{ Dimension('sales__status') }} = 'completed'\" is not implied by a bound required predicate"
+   ]
+  },
+  "M4b_status_bound_to_channel": {
+   "case_status": "INVALID_BINDING",
+   "verified_for_recorded_checks": false,
+   "predicates": {
+    "P_LINE_AMOUNT": "BOUND_AND_EXPOSED",
+    "P_STATUS_COMPLETED": "NOT_AUTHORITATIVE_FOR_FACT",
+    "P_YEAR_BY_ORDER_DATE": "BOUND_AND_EXPOSED"
+   },
+   "uncovered": [
+    "P_STATUS_COMPLETED"
+   ],
+   "metric_consistency_problems": [
+    "metric filter \"{{ Dimension('sales__status') }} = 'completed'\" is not implied by a bound required predicate"
+   ]
+  },
+  "M4c_amount_bound_to_cost": {
+   "case_status": "INVALID_BINDING",
+   "verified_for_recorded_checks": false,
+   "predicates": {
+    "P_LINE_AMOUNT": "NOT_AUTHORITATIVE_FOR_FACT",
+    "P_STATUS_COMPLETED": "BOUND_AND_EXPOSED",
+    "P_YEAR_BY_ORDER_DATE": "BOUND_AND_EXPOSED"
+   },
+   "uncovered": [
+    "P_LINE_AMOUNT"
+   ],
+   "metric_consistency_problems": [
+    "metric input measure 'revenue' is not the measure of a bound line-amount predicate []"
+   ]
+  },
+  "M4d_status_semantic_physical_inconsistent": {
+   "case_status": "INVALID_BINDING",
+   "verified_for_recorded_checks": false,
+   "predicates": {
+    "P_LINE_AMOUNT": "BOUND_AND_EXPOSED",
+    "P_STATUS_COMPLETED": "INVALID_BINDING",
+    "P_YEAR_BY_ORDER_DATE": "BOUND_AND_EXPOSED"
+   },
+   "uncovered": [
+    "P_STATUS_COMPLETED"
+   ],
+   "metric_consistency_problems": [
+    "metric filter \"{{ Dimension('sales__status') }} = 'completed'\" is not implied by a bound required predicate"
+   ]
+  },
+  "M5_settlement_predicate_added_to_A": {
+   "case_status": "NOT_FOUND_IN_BOUNDED_ESTATE",
+   "verified_for_recorded_checks": false,
+   "predicates": {
+    "P_LINE_AMOUNT": "BOUND_AND_EXPOSED",
+    "P_STATUS_COMPLETED": "BOUND_AND_EXPOSED",
+    "P_YEAR_BY_ORDER_DATE": "BOUND_AND_EXPOSED",
+    "P_SETTLEMENT_CONFIRMED": "NOT_FOUND_IN_BOUNDED_ESTATE"
+   },
+   "uncovered": [
+    "P_SETTLEMENT_CONFIRMED"
+   ],
+   "metric_consistency_problems": []
+  },
+  "M6_proxy_status_as_settlement": {
+   "case_status": "UNVERIFIED",
+   "verified_for_recorded_checks": false,
+   "predicates": {
+    "P_LINE_AMOUNT": "BOUND_AND_EXPOSED",
+    "P_STATUS_COMPLETED": "BOUND_AND_EXPOSED",
+    "P_YEAR_BY_ORDER_DATE": "BOUND_AND_EXPOSED",
+    "P_SETTLEMENT_CONFIRMED": "NOT_AUTHORITATIVE_FOR_FACT"
+   },
+   "uncovered": [
+    "P_SETTLEMENT_CONFIRMED"
+   ],
+   "metric_consistency_problems": []
+  },
+  "M7_native_identity_drift": {
+   "case_status": "INVALID_BINDING",
+   "verified_for_recorded_checks": false,
+   "predicates": {
+    "P_LINE_AMOUNT": "BOUND_AND_EXPOSED",
+    "P_STATUS_COMPLETED": "BOUND_AND_EXPOSED",
+    "P_YEAR_BY_ORDER_DATE": "BOUND_AND_EXPOSED"
+   },
+   "uncovered": [],
+   "metric_consistency_problems": [
+    "metric filter \"{{ Dimension('sales__status') }} = 'returned'\" is not implied by a bound required predicate"
+   ]
+  },
+  "M8a_altered_native_amount": {
+   "comparison_rejects": true
+  },
+  "M8b_altered_oracle_input": {
+   "comparison_rejects": true,
+   "oracle_delta_equals_line_unit_price": true
+  },
+  "D10_stale_estate_fingerprint": {
+   "case_status": "INCONCLUSIVE",
+   "verified_for_recorded_checks": false,
+   "predicates": {
+    "P_LINE_AMOUNT": "BOUND_AND_EXPOSED",
+    "P_STATUS_COMPLETED": "BOUND_AND_EXPOSED",
+    "P_YEAR_BY_ORDER_DATE": "BOUND_AND_EXPOSED",
+    "P_SETTLEMENT_CONFIRMED": "NOT_FOUND_IN_BOUNDED_ESTATE"
+   },
+   "uncovered": [
+    "P_SETTLEMENT_CONFIRMED"
+   ],
+   "metric_consistency_problems": []
+  }
+ },
+ "M5_covered_equals_A": true,
+ "M7": {
+  "edits_applied": 1,
+  "drifted_native_by_year": {
+   "2024": "199946.94",
+   "2025": "240853.04",
+   "2026": "61881.95"
+  },
+  "drifted_native_differs_from_A_native": true
+ }
+}
+
+
+real	1m7.308s
+user	0m55.545s
+sys	0m4.916s
