@@ -1,0 +1,24 @@
+{
+ "candidate_id": "N3_P2_COLLATERAL",
+ "revision_id": null,
+ "compose": [
+  "BASELINE",
+  "GENERATED"
+ ],
+ "patch": [
+  {
+   "op": "replace",
+   "file": "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+   "old": "    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('customer__country') }} = 'France'\"\n",
+   "new": "    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('customer__country') }} = 'France' AND {{ Dimension('sales__unit_price') }} >= 120\"\n"
+  }
+ ],
+ "query": {
+  "metric": "french_market_revenue",
+  "group_by": [
+   "metric_time__year"
+  ],
+  "where": []
+ },
+ "provenance": "hand-written negative control: the generated proposal plus a collateral edit of the P2 metric (the amended threshold leaks into french_market_revenue)"
+}

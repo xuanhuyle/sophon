@@ -1,0 +1,51 @@
+{
+ "binding_id": "NB_E5_1",
+ "provenance": "LAB_AUTHORED from E4 candidates M6B (NO_MATERIAL_DRIFT_FOR_CHECKS) and M2 (VERIFIED_FOR_LAB_CHECKS); fixed before E5; not a separate LAB approval; not a fresh or blind mapping",
+ "metrics": {
+  "premium_completed_revenue": {
+   "implements_series": "LAB-REV-POLICY/S1",
+   "file": "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+   "predicate_atoms": [
+    "completed",
+    "unit_price_threshold"
+   ],
+   "description_template": "Completed revenue on lines with unit price at least {unit_price_threshold}."
+  },
+  "french_market_revenue": {
+   "implements_series": "LAB-REV-POLICY/S2",
+   "reading_id": "R_CUSTOMER_COUNTRY",
+   "file": "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+   "predicate_fact_kinds": [
+    "order_status_label",
+    "customer_country"
+   ]
+  }
+ },
+ "measure": {
+  "order_line_amount": "revenue"
+ },
+ "fact_kind_dimension": {
+  "order_status_label": "sales__status",
+  "order_line_charged_unit_price": "sales__unit_price",
+  "customer_country": "customer__country"
+ },
+ "dimension_unit": {
+  "sales__unit_price": "CURRENCY_PER_UNIT"
+ },
+ "literal_style": {
+  "order_status_label": "QUOTED_STRING",
+  "order_line_charged_unit_price": "PLAIN_DECIMAL"
+ },
+ "operator_sql": {
+  "EQ": "=",
+  "GE": ">=",
+  "GT": ">",
+  "LE": "<=",
+  "LT": "<"
+ },
+ "predicate_template": "{{ Dimension('<dimension>') }} <operator> <literal>",
+ "conjunction": " AND ",
+ "supported_delta_kinds": [
+  "PREDICATE_VALUE_CHANGE"
+ ]
+}

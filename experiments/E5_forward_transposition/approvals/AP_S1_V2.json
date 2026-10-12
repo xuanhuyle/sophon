@@ -1,0 +1,65 @@
+{
+ "approval_id": "AP_S1_V2",
+ "provenance": "LAB_SIMULATED",
+ "approver_role": "LAB_REVENUE_POLICY_OWNER",
+ "claim": {
+  "kind": "INTERPRETATION_CHOICE",
+  "series": "LAB-REV-POLICY/S1",
+  "version_id": "P1_v2",
+  "normalized_claim_sha256": "9fa3bd2e6017d41f4c53f7f3f03968912b7019dea932ec2f8f9cbaf5af9a42e7",
+  "normalized_claim": {
+   "series": "LAB-REV-POLICY/S1",
+   "clause_id": "S1",
+   "clause_version": 2,
+   "effective_from": "2025-01-01",
+   "effective_to": null,
+   "supersedes": {
+    "version_id": "P1_v1",
+    "for_order_dates_from": "2025-01-01"
+   },
+   "atoms": [
+    {
+     "atom_id": "amount",
+     "kind": "MEASURE",
+     "fact_kind": "order_line_amount",
+     "unit": "CURRENCY",
+     "aggregation": "SUM"
+    },
+    {
+     "atom_id": "completed",
+     "kind": "PREDICATE",
+     "fact_kind": "order_status_label",
+     "op": "EQ",
+     "value": "completed"
+    },
+    {
+     "atom_id": "unit_price_threshold",
+     "kind": "PREDICATE",
+     "fact_kind": "order_line_charged_unit_price",
+     "op": "GE",
+     "value": "120",
+     "unit": "CURRENCY_PER_UNIT",
+     "grain": "ORDER_LINE"
+    },
+    {
+     "atom_id": "year",
+     "kind": "GROUP_BY",
+     "fact_kind": "order_date",
+     "period": "CALENDAR_YEAR"
+    }
+   ]
+  }
+ },
+ "scope": {
+  "source_id": "LAB-REV-POLICY",
+  "document_id": "LAB-REV-POLICY-AMD-1",
+  "source_sha256": "de6ed7dc81dc66a8f85a81351ebeada29753dc498303deb194b5f8cc4e9a5c1b",
+  "clause_id": "S1",
+  "clause_version": 2
+ },
+ "known_at": "2026-10-10T10:00:00Z",
+ "effective_from": "2025-01-01",
+ "effective_to": null,
+ "authorizes": "the LAB meaning of [S1 v2] only; NOT a deployment authorization and NOT an implementation approval",
+ "note": "simulated role approval; no real person, signature or identity verification"
+}

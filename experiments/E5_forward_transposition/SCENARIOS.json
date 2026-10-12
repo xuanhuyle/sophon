@@ -1,0 +1,597 @@
+{
+ "label": "E5 scenarios. `expected` blocks are read only by the scorer (src/gate.py); the runner strips them.",
+ "contexts": {
+  "K_PRE": "2026-10-06T00:00:00Z",
+  "K_MID": "2026-10-09T12:00:00Z",
+  "K_POST": "2026-10-11T00:00:00Z"
+ },
+ "windows": {
+  "HIST": [
+   null,
+   "2025-01-01"
+  ],
+  "AMD": [
+   "2025-01-01",
+   null
+  ],
+  "ALL": [
+   null,
+   null
+  ]
+ },
+ "forbidden_state_values": [
+  "IMPLEMENTED",
+  "DEPLOYED",
+  "COMPLIANT",
+  "LEGALLY_COMPLIANT"
+ ],
+ "scenarios": [
+  {
+   "id": "F1",
+   "title": "before authority (pre-amendment knowledge time)",
+   "knowledge_at": "K_PRE",
+   "probe_dates": [
+    "2024-06-01",
+    "2025-06-01",
+    "2026-06-01"
+   ],
+   "expected": {
+    "version_state": {
+     "P1_v1": "LAB_APPROVED",
+     "P1_v2": "NOT_KNOWN"
+    },
+    "governing": {
+     "2024-06-01": "P1_v1",
+     "2025-06-01": "P1_v1",
+     "2026-06-01": "P1_v1"
+    }
+   },
+   "checks": [
+    {
+     "check_id": "F1.generated_vs_requested_v2",
+     "candidate": "GENERATED",
+     "requested_version": "P1_v2",
+     "window": "AMD",
+     "knowledge_at": "K_PRE",
+     "snapshots": [
+      "PINNED",
+      "BOUNDARY120"
+     ],
+     "expected": {
+      "status": "NOT_VERIFIED",
+      "reasons_include": [
+       "REQUIREMENT_VERSION_NOT_KNOWN"
+      ],
+      "native_executed_ok": true
+     }
+    },
+    {
+     "check_id": "F1.generated_vs_governing",
+     "candidate": "GENERATED",
+     "requested_version": "GOVERNING",
+     "window": "AMD",
+     "knowledge_at": "K_PRE",
+     "snapshots": [
+      "PINNED",
+      "BOUNDARY120"
+     ],
+     "expected": {
+      "status": "NONCONFORMING_IMPLEMENTATION",
+      "governing_version": "P1_v1"
+     }
+    }
+   ]
+  },
+  {
+   "id": "F1B",
+   "title": "amendment observed, approval not yet known (tighter subcase of F1)",
+   "knowledge_at": "K_MID",
+   "probe_dates": [
+    "2024-06-01",
+    "2025-06-01"
+   ],
+   "expected": {
+    "version_state": {
+     "P1_v1": "LAB_APPROVED",
+     "P1_v2": "NOT_APPROVED"
+    },
+    "governing": {
+     "2024-06-01": "P1_v1",
+     "2025-06-01": "P1_v1"
+    }
+   },
+   "checks": [
+    {
+     "check_id": "F1B.generated_vs_requested_v2",
+     "candidate": "GENERATED",
+     "requested_version": "P1_v2",
+     "window": "AMD",
+     "knowledge_at": "K_MID",
+     "snapshots": [
+      "PINNED",
+      "BOUNDARY120"
+     ],
+     "expected": {
+      "status": "NOT_VERIFIED",
+      "reasons_include": [
+       "REQUIREMENT_VERSION_NOT_APPROVED"
+      ],
+      "native_executed_ok": true
+     }
+    }
+   ]
+  },
+  {
+   "id": "F2",
+   "title": "after approval, before implementation: deployed baseline vs v2",
+   "knowledge_at": "K_POST",
+   "probe_dates": [
+    "2024-06-01",
+    "2024-12-31",
+    "2025-01-01",
+    "2026-06-01"
+   ],
+   "expected": {
+    "version_state": {
+     "P1_v1": "LAB_APPROVED",
+     "P1_v2": "LAB_APPROVED"
+    },
+    "governing": {
+     "2024-06-01": "P1_v1",
+     "2024-12-31": "P1_v1",
+     "2025-01-01": "P1_v2",
+     "2026-06-01": "P1_v2"
+    },
+    "lifecycle_before_proposal": "CHANGE_REQUIRED_NOT_PROPOSED"
+   },
+   "checks": [
+    {
+     "check_id": "F2.baseline_vs_governing",
+     "candidate": "BASELINE",
+     "requested_version": "GOVERNING",
+     "window": "AMD",
+     "knowledge_at": "K_POST",
+     "snapshots": [
+      "PINNED",
+      "BOUNDARY120"
+     ],
+     "expected": {
+      "status": "NONCONFORMING_IMPLEMENTATION",
+      "governing_version": "P1_v2",
+      "every_snapshot_mismatch": true,
+      "counterexample_band": [
+       "100",
+       "120"
+      ],
+      "counterexample_direction": "candidate_not_expected"
+     }
+    }
+   ]
+  },
+  {
+   "id": "F3",
+   "title": "generated change from the packet only",
+   "expected": {
+    "status": "PROPOSED_NOT_DEPLOYED",
+    "modified_metrics": [
+     "premium_completed_revenue"
+    ],
+    "not_affected_includes": [
+     "french_market_revenue"
+    ],
+    "delta": [
+     {
+      "atom_id": "unit_price_threshold",
+      "fact_kind": "order_line_charged_unit_price",
+      "op": "GE",
+      "from": "100",
+      "to": "120",
+      "unit": "CURRENCY_PER_UNIT"
+     }
+    ],
+    "patch_files": [
+     "dbt/retail_dwh/models/marts/semantic/_metrics.yml"
+    ],
+    "generated_stack_builds": true,
+    "compiled_sql_contains": "sales__unit_price >= 120",
+    "metric_name_set_unchanged": true,
+    "p2_block_unchanged_by_patch": true,
+    "no_repository_file_opened_by_transposer": true,
+    "patch_differs_from_every_frozen_candidate": true
+   }
+  },
+  {
+   "id": "F4",
+   "title": "independent verification of the generated revision",
+   "checks": [
+    {
+     "check_id": "F4.generated_vs_governing",
+     "candidate": "GENERATED",
+     "requested_version": "GOVERNING",
+     "window": "AMD",
+     "knowledge_at": "K_POST",
+     "snapshots": [
+      "PINNED",
+      "BOUNDARY120"
+     ],
+     "expected": {
+      "status": "VERIFIED_FOR_LAB_CHECKS",
+      "governing_version": "P1_v2"
+     }
+    }
+   ]
+  },
+  {
+   "id": "F5",
+   "title": "historical continuity via HISTORICAL_VERSION_ROUTING",
+   "routings": [
+    {
+     "routing_id": "F5.K_POST",
+     "knowledge_at": "K_POST",
+     "revision_registry": {
+      "P1_v1": "BASELINE",
+      "P1_v2": "GENERATED"
+     }
+    },
+    {
+     "routing_id": "F5.K_PRE",
+     "knowledge_at": "K_PRE",
+     "revision_registry": {
+      "P1_v1": "BASELINE",
+      "P1_v2": "GENERATED"
+     }
+    }
+   ],
+   "naive": {
+    "candidate": "GENERATED",
+    "window": "ALL",
+    "compare_to": "ROUTED@K_POST"
+   },
+   "expected": {
+    "F5.K_POST": {
+     "segments": [
+      {
+       "window": [
+        "2024-01-01",
+        "2025-01-01"
+       ],
+       "version": "P1_v1",
+       "revision": "BASELINE",
+       "status": "CONFORMS"
+      },
+      {
+       "window": [
+        "2025-01-01",
+        null
+       ],
+       "version": "P1_v2",
+       "revision": "GENERATED",
+       "status": "CONFORMS"
+      }
+     ],
+     "combined_equals_reference": "ROUTED@K_POST",
+     "pinned_2024_total": "1634542.08"
+    },
+    "F5.K_PRE": {
+     "segments": [
+      {
+       "window": [
+        "2024-01-01",
+        null
+       ],
+       "version": "P1_v1",
+       "revision": "BASELINE",
+       "status": "CONFORMS"
+      }
+     ],
+     "combined_equals_reference": "ROUTED@K_PRE",
+     "v2_absent": true
+    },
+    "naive_single_revision_rewrites_2024": true
+   }
+  },
+  {
+   "id": "F6",
+   "title": "untouched control P2",
+   "before": "BASELINE",
+   "after": "GENERATED",
+   "metric": "french_market_revenue",
+   "snapshots": [
+    "PINNED",
+    "BOUNDARY120"
+   ],
+   "expected": {
+    "status": "P2_UNCHANGED_VERIFIED",
+    "yaml_block_identical": true,
+    "manifest_node_identical": true,
+    "native_identical": true,
+    "after_conforms_to_P2_oracle": true
+   }
+  },
+  {
+   "id": "F7",
+   "title": "state honesty",
+   "expected": {
+    "state": "PROPOSED_VERIFIED_NOT_DEPLOYED",
+    "deployed": false,
+    "deployment_authorization": null,
+    "reviewer_decision": "PENDING",
+    "manifest_shas_recorded": true,
+    "forbidden_states_absent": true
+   }
+  },
+  {
+   "id": "F8",
+   "title": "independent fresh-process replay",
+   "expected": {
+    "exit_code": 0,
+    "normalized_identical": true
+   }
+  },
+  {
+   "id": "N1",
+   "title": "unauthorized or malformed amendment",
+   "controls": [
+    {
+     "control_id": "N1A_SOURCE_HASH_V1_MISMATCH",
+     "expected": {
+      "status": "BLOCKED",
+      "reasons_include": [
+       "SOURCE_HASH_MISMATCH"
+      ],
+      "patch": null
+     }
+    },
+    {
+     "control_id": "N1B_SOURCE_HASH_MISSING",
+     "expected": {
+      "status": "BLOCKED",
+      "reasons_include": [
+       "SOURCE_HASH_MISSING"
+      ],
+      "patch": null
+     }
+    },
+    {
+     "control_id": "N1C_APPROVAL_MISSING",
+     "expected": {
+      "status": "BLOCKED",
+      "reasons_include": [
+       "APPROVAL_MISSING"
+      ],
+      "patch": null
+     }
+    },
+    {
+     "control_id": "N1D_APPROVAL_MEANING_MISMATCH",
+     "expected": {
+      "status": "BLOCKED",
+      "reasons_include": [
+       "APPROVAL_MEANING_MISMATCH"
+      ],
+      "patch": null
+     }
+    },
+    {
+     "control_id": "N1E_APPROVER_NOT_AUTHORIZED",
+     "expected": {
+      "status": "BLOCKED",
+      "reasons_include": [
+       "APPROVER_NOT_AUTHORIZED"
+      ],
+      "patch": null
+     }
+    },
+    {
+     "control_id": "N1F_PREDECESSOR_MISMATCH",
+     "expected": {
+      "status": "BLOCKED",
+      "reasons_include": [
+       "PREDECESSOR_MISMATCH"
+      ],
+      "patch": null
+     }
+    },
+    {
+     "control_id": "N1G_VALUE_NOT_IN_SOURCE",
+     "expected": {
+      "status": "BLOCKED",
+      "reasons_include": [
+       "VALUE_NOT_GROUNDED_IN_SOURCE"
+      ],
+      "patch": null
+     }
+    },
+    {
+     "control_id": "N1H_UNIT_CHANGED",
+     "expected": {
+      "status": "UNRESOLVED",
+      "reasons_include": [
+       "UNIT_CHANGED"
+      ],
+      "patch": null
+     }
+    },
+    {
+     "control_id": "N1I_UNSUPPORTED_OPERATOR",
+     "expected": {
+      "status": "UNRESOLVED",
+      "reasons_include": [
+       "UNSUPPORTED_OPERATOR"
+      ],
+      "patch": null
+     }
+    },
+    {
+     "control_id": "N1J_BINDING_MISSING",
+     "expected": {
+      "status": "UNRESOLVED",
+      "reasons_include": [
+       "BINDING_MISSING"
+      ],
+      "patch": null
+     }
+    },
+    {
+     "control_id": "N1K_BASELINE_NOT_V1",
+     "expected": {
+      "status": "UNRESOLVED",
+      "reasons_include": [
+       "BASELINE_DOES_NOT_IMPLEMENT_PREDECESSOR"
+      ],
+      "patch": null
+     }
+    }
+   ]
+  },
+  {
+   "id": "N2",
+   "title": "wrong patches",
+   "checks": [
+    {
+     "check_id": "N2A",
+     "candidate": "N2A_GE119",
+     "requested_version": "GOVERNING",
+     "window": "AMD",
+     "knowledge_at": "K_POST",
+     "snapshots": [
+      "PINNED",
+      "BOUNDARY120"
+     ],
+     "expected": {
+      "status": "NONCONFORMING_IMPLEMENTATION",
+      "every_snapshot_mismatch": true,
+      "counterexample_band": [
+       "119",
+       "120"
+      ],
+      "counterexample_direction": "candidate_not_expected"
+     }
+    },
+    {
+     "check_id": "N2B",
+     "candidate": "N2B_GT120",
+     "requested_version": "GOVERNING",
+     "window": "AMD",
+     "knowledge_at": "K_POST",
+     "snapshots": [
+      "PINNED",
+      "BOUNDARY120"
+     ],
+     "expected": {
+      "status": "NONCONFORMING_IMPLEMENTATION",
+      "snapshot_status": {
+       "PINNED": "CONFORMS",
+       "BOUNDARY120": "MISMATCH"
+      },
+      "counterexample_ids_include": {
+       "BOUNDARY120": [
+        "22"
+       ]
+      }
+     }
+    },
+    {
+     "check_id": "N2C",
+     "candidate": "N2C_NONCANCELLED",
+     "requested_version": "GOVERNING",
+     "window": "AMD",
+     "knowledge_at": "K_POST",
+     "snapshots": [
+      "PINNED",
+      "BOUNDARY120"
+     ],
+     "expected": {
+      "status": "NONCONFORMING_IMPLEMENTATION",
+      "every_snapshot_mismatch": true,
+      "counterexample_status": "returned"
+     }
+    }
+   ]
+  },
+  {
+   "id": "N3",
+   "title": "P2 collateral mutation",
+   "before": "BASELINE",
+   "after": "N3_P2_COLLATERAL",
+   "metric": "french_market_revenue",
+   "snapshots": [
+    "PINNED",
+    "BOUNDARY120"
+   ],
+   "expected": {
+    "status": "P2_CHANGED_DETECTED",
+    "yaml_block_identical": false,
+    "manifest_node_identical": false,
+    "native_identical": false,
+    "after_conforms_to_P2_oracle": false,
+    "has_row_counterexample": true
+   }
+  },
+  {
+   "id": "N4",
+   "title": "proposal without deployment",
+   "cases": [
+    {
+     "case_id": "N4A",
+     "inputs": {
+      "proposal": true,
+      "verification": null,
+      "forged_claimed_state": null,
+      "deployment_authorization": null
+     },
+     "expected": {
+      "state": "PROPOSED_NOT_DEPLOYED"
+     }
+    },
+    {
+     "case_id": "N4B",
+     "inputs": {
+      "proposal": true,
+      "verification": null,
+      "forged_claimed_state": "DEPLOYED",
+      "deployment_authorization": null
+     },
+     "expected": {
+      "state": "PROPOSED_NOT_DEPLOYED",
+      "reasons_include": [
+       "CLAIM_WITHOUT_EVIDENCE"
+      ]
+     }
+    },
+    {
+     "case_id": "N4C",
+     "inputs": {
+      "proposal": true,
+      "verification": "F4",
+      "forged_claimed_state": null,
+      "deployment_authorization": null
+     },
+     "expected": {
+      "state": "PROPOSED_VERIFIED_NOT_DEPLOYED",
+      "reasons_include": [
+       "NO_DEPLOYMENT_RECEIPT"
+      ]
+     }
+    },
+    {
+     "case_id": "N4D",
+     "inputs": {
+      "proposal": true,
+      "verification": "F4",
+      "forged_claimed_state": null,
+      "deployment_authorization": {
+       "approval_id": "AP_S1_V2"
+      }
+     },
+     "expected": {
+      "state": "PROPOSED_VERIFIED_NOT_DEPLOYED",
+      "reasons_include": [
+       "DEPLOYMENT_AUTHORITY_NOT_RECOGNIZED"
+      ]
+     }
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,84 @@
+{
+ "ir_version": "E5-IR-0.1",
+ "version_id": "P1_v1",
+ "policy": "P1",
+ "series": "LAB-REV-POLICY/S1",
+ "provenance": "LAB_AUTHORED restatement of E3 record S1 (requirement atoms copied verbatim)",
+ "derived_from_e3": {
+  "record": "experiments/E3_formal_ir/cases/records/S1.json",
+  "record_sha256": "aa8f72be7807330dc5fbb2ec0b65f69b756d5c712c4bfba0eff8c26f09fcffe0",
+  "reading_id": "R_SINGLE",
+  "reading_meaning_sha256": "cc1af11b1954bfd2bb7ad462d083b63933ffcb8ad9e25614cf33ea19381a47c6"
+ },
+ "governing_source": {
+  "source_id": "LAB-REV-POLICY",
+  "document_id": "LAB-REV-POLICY",
+  "path": "experiments/E3_formal_ir/cases/sources/LAB_REVENUE_POLICY.md",
+  "content_sha256": "20263fa531d3b3c946f80a85fc863cd1d004b9b2b907f75de32faf100853a957",
+  "clause_id": "S1",
+  "clause_version": 1,
+  "observed_at": "2026-10-01T09:00:00Z",
+  "effective_from": "2024-01-01",
+  "effective_to": null
+ },
+ "supersedes": null,
+ "requirement": {
+  "text": "Report, for each calendar year of order date, the revenue from completed orders, counting only order lines whose charged unit price is at least 100.",
+  "atoms": [
+   {
+    "atom_id": "year",
+    "span": [
+     17,
+     44
+    ],
+    "text": "calendar year of order date",
+    "kind": "GROUP_BY",
+    "fact_kind": "order_date",
+    "period": "CALENDAR_YEAR"
+   },
+   {
+    "atom_id": "amount",
+    "span": [
+     50,
+     57
+    ],
+    "text": "revenue",
+    "kind": "MEASURE",
+    "fact_kind": "order_line_amount",
+    "aggregation": "SUM",
+    "unit": "CURRENCY"
+   },
+   {
+    "atom_id": "completed",
+    "span": [
+     63,
+     79
+    ],
+    "text": "completed orders",
+    "kind": "PREDICATE",
+    "fact_kind": "order_status_label",
+    "op": "EQ",
+    "value": "completed",
+    "unit": null
+   },
+   {
+    "atom_id": "unit_price_threshold",
+    "span": [
+     113,
+     147
+    ],
+    "text": "charged unit price is at least 100",
+    "kind": "PREDICATE",
+    "fact_kind": "order_line_charged_unit_price",
+    "op": "GE",
+    "value": "100",
+    "unit": "CURRENCY_PER_UNIT",
+    "grain": "ORDER_LINE"
+   }
+  ],
+  "population": "order lines of the pinned estate"
+ },
+ "approval_ids": [
+  "AP_S1_READ"
+ ]
+}

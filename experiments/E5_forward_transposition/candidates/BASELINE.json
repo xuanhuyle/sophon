@@ -1,0 +1,31 @@
+{
+ "candidate_id": "BASELINE",
+ "revision_id": "REV_P1_V1_BASELINE",
+ "compose": [],
+ "patch": [
+  {
+   "op": "replace",
+   "file": "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+   "old": "      - name: status\n        type: categorical\n    measures:\n      - name: revenue\n        description: \"Quantity x price charged.\"\n",
+   "new": "      - name: status\n        type: categorical\n      - name: unit_price\n        type: categorical\n        expr: unit_price\n    measures:\n      - name: revenue\n        description: \"Quantity x price charged.\"\n"
+  },
+  {
+   "op": "append",
+   "file": "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+   "text": "\n  - name: premium_completed_revenue\n    description: \"Completed revenue on lines with unit price at least 100.\"\n    label: \"Premium completed revenue\"\n    type: simple\n    type_params:\n      measure: revenue\n    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 100\"\n"
+  },
+  {
+   "op": "append",
+   "file": "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+   "text": "\n  - name: french_market_revenue\n    description: \"Completed revenue of customers in France.\"\n    label: \"French market revenue\"\n    type: simple\n    type_params:\n      measure: revenue\n    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('customer__country') }} = 'France'\"\n"
+  }
+ ],
+ "query": {
+  "metric": "premium_completed_revenue",
+  "group_by": [
+   "metric_time__year"
+  ],
+  "where": []
+ },
+ "provenance": "E4 candidates M6B (patch ops 1-2) + M2 (patch op 1), applied in that order to pinned upstream 312e97ad. Lab-added native metrics; not an organically maintained enterprise metric."
+}

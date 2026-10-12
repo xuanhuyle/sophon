@@ -1,0 +1,194 @@
+{
+ "label": "N1 packet mutations (inputs only; expected outcomes are in SCENARIOS.json)",
+ "base_packet": "TRANSPOSE_PACKET.json",
+ "controls": [
+  {
+   "control_id": "N1A_SOURCE_HASH_V1_MISMATCH",
+   "description": "v2 record declares the v1 document hash instead of the amendment's hash",
+   "ops": [
+    {
+     "op": "set",
+     "path": [
+      "requirement_versions",
+      "P1_v2",
+      "governing_source",
+      "content_sha256"
+     ],
+     "value": "20263fa531d3b3c946f80a85fc863cd1d004b9b2b907f75de32faf100853a957"
+    }
+   ],
+   "rehash_v2_approval": false
+  },
+  {
+   "control_id": "N1B_SOURCE_HASH_MISSING",
+   "description": "v2 record has no source hash",
+   "ops": [
+    {
+     "op": "set",
+     "path": [
+      "requirement_versions",
+      "P1_v2",
+      "governing_source",
+      "content_sha256"
+     ],
+     "value": null
+    }
+   ],
+   "rehash_v2_approval": false
+  },
+  {
+   "control_id": "N1C_APPROVAL_MISSING",
+   "description": "the v2 approval is absent",
+   "ops": [
+    {
+     "op": "delete",
+     "path": [
+      "approvals",
+      "AP_S1_V2"
+     ]
+    }
+   ],
+   "rehash_v2_approval": false
+  },
+  {
+   "control_id": "N1D_APPROVAL_MEANING_MISMATCH",
+   "description": "the v2 approval is bound to a different normalized claim (threshold 110)",
+   "ops": [
+    {
+     "op": "set",
+     "path": [
+      "approvals",
+      "AP_S1_V2",
+      "claim",
+      "normalized_claim_sha256"
+     ],
+     "value": "4afcca30f2ed169dc0691dbfc4821b5af96c3bd69a75da8b5c52c7b5ce8cecb8"
+    }
+   ],
+   "rehash_v2_approval": false
+  },
+  {
+   "control_id": "N1E_APPROVER_NOT_AUTHORIZED",
+   "description": "the v2 approval is issued by the proposer role",
+   "ops": [
+    {
+     "op": "set",
+     "path": [
+      "approvals",
+      "AP_S1_V2",
+      "approver_role"
+     ],
+     "value": "LLM_PROPOSER"
+    }
+   ],
+   "rehash_v2_approval": false
+  },
+  {
+   "control_id": "N1F_PREDECESSOR_MISMATCH",
+   "description": "v2 supersedes a v1 record whose hash differs from the packet's v1",
+   "ops": [
+    {
+     "op": "set",
+     "path": [
+      "requirement_versions",
+      "P1_v2",
+      "supersedes",
+      "ir_sha256"
+     ],
+     "value": "0000000000000000000000000000000000000000000000000000000000000000"
+    }
+   ],
+   "rehash_v2_approval": false
+  },
+  {
+   "control_id": "N1G_VALUE_NOT_IN_SOURCE",
+   "description": "v2 atom value 125 while the source clause says 120 (approval re-bound to the altered claim)",
+   "ops": [
+    {
+     "op": "set",
+     "path": [
+      "requirement_versions",
+      "P1_v2",
+      "requirement",
+      "atoms",
+      3,
+      "value"
+     ],
+     "value": "125"
+    }
+   ],
+   "rehash_v2_approval": true
+  },
+  {
+   "control_id": "N1H_UNIT_CHANGED",
+   "description": "v2 threshold unit changed to CURRENCY_PER_KG (approval re-bound to the altered claim)",
+   "ops": [
+    {
+     "op": "set",
+     "path": [
+      "requirement_versions",
+      "P1_v2",
+      "requirement",
+      "atoms",
+      3,
+      "unit"
+     ],
+     "value": "CURRENCY_PER_KG"
+    }
+   ],
+   "rehash_v2_approval": true
+  },
+  {
+   "control_id": "N1I_UNSUPPORTED_OPERATOR",
+   "description": "v2 threshold operator APPROX_GE (approval re-bound to the altered claim)",
+   "ops": [
+    {
+     "op": "set",
+     "path": [
+      "requirement_versions",
+      "P1_v2",
+      "requirement",
+      "atoms",
+      3,
+      "op"
+     ],
+     "value": "APPROX_GE"
+    }
+   ],
+   "rehash_v2_approval": true
+  },
+  {
+   "control_id": "N1J_BINDING_MISSING",
+   "description": "no native binding for the unit-price fact kind",
+   "ops": [
+    {
+     "op": "delete",
+     "path": [
+      "binding",
+      "fact_kind_dimension",
+      "order_line_charged_unit_price"
+     ]
+    }
+   ],
+   "rehash_v2_approval": false
+  },
+  {
+   "control_id": "N1K_BASELINE_NOT_V1",
+   "description": "the supplied baseline metric does not implement v1 (>= 110); file hash updated consistently",
+   "ops": [
+    {
+     "op": "replace_in_text",
+     "path": [
+      "native_baseline",
+      "files",
+      "dbt/retail_dwh/models/marts/semantic/_metrics.yml"
+     ],
+     "old": "}} >= 100\"",
+     "new": "}} >= 110\""
+    }
+   ],
+   "rehash_v2_approval": false,
+   "rehash_baseline_file": true
+  }
+ ]
+}
