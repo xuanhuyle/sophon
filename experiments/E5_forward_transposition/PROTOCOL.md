@@ -336,4 +336,31 @@ A PASS retires **only R6 for one controlled native field-threshold amendment**.
 
 ## Amendments
 
-(none yet)
+Added after the freeze. The frozen bytes are `PROTOCOL.md` at `2edac2b` (sha256 in `FREEZE_MANIFEST.txt`). No
+reference, scenario, expectation, packet, candidate, control or gate criterion changed.
+
+1. **Code written after the freeze, as planned:**
+   - `src/transposer.py` and `src/run_transposer.py` (isolated launcher);
+   - `src/authority.py`, `src/lifecycle.py`, `src/e4_adapter.py`;
+   - `src/run_e5.py` (runner), `src/gate.py`, `src/replay.py`, `src/extract_evidence.py`;
+   - `tests/test_e5.py`.
+2. **Development runs before the scored run (not scored).** The transposer was run once (`runs/try_transposer`)
+   and the full runner once (`runs/dev_run`) on the frozen inputs. So I saw outcomes before the scored run;
+   the expectations had already been frozen and pushed. The dev run exposed two **runner** bugs, fixed before
+   the scored run:
+   - **(a) Module shadowing.** E1's `src/oracle.py`, imported through E4 → E1-erratum, shadowed E5's
+     `src/oracle.py`. E5's oracle is now loaded by file path as `e5_oracle`.
+   - **(b) Row-order comparison.** The P2 native comparison compared the raw `mf` row order, but `mf` returns
+     rows without ORDER BY. That made F6 report a false change on PINNED. It now compares year totals and line
+     amounts order-insensitively.
+3. **Segment windows.** Routing segments that start at the earliest effective date (2024-01-01) are executed and
+   compared as open-start windows, because the frozen reference keys are open-start. The runner asserts that no
+   order date precedes 2024-01-01 in either snapshot.
+4. **Sensitivity check (non-scored; used in G1 as §7 states).** Three packet copies, each with the approval
+   re-bound to the altered claim:
+   - threshold `135`, with the amendment text and source hash changed accordingly;
+   - `120.00`, with the text unchanged (it normalizes to the same claim);
+   - `99.5`, with the text changed.
+5. **Interpreters.** The transposer runs on the system `/usr/bin/python3 -I` (3.13, stdlib only). The runner,
+   adapter and tests run on the pinned venv Python 3.11.
+6. **G9** also checks that no file outside `experiments/E5_forward_transposition/` differs from `d6fe13d`.
