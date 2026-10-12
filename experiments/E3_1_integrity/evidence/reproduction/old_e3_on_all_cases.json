@@ -1,0 +1,196 @@
+{
+ "T1_START_AFTER_EVAL_DATE": {
+  "status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS",
+  "reasons": [],
+  "selected_reading": "R_CUSTOMER_COUNTRY",
+  "old_expected_by_protocol": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS"
+ },
+ "T2_START_BOUNDARY_INCLUSIVE": {
+  "status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS",
+  "reasons": [],
+  "selected_reading": "R_CUSTOMER_COUNTRY",
+  "old_expected_by_protocol": null
+ },
+ "T3_END_BOUNDARY_INCLUSIVE": {
+  "status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS",
+  "reasons": [],
+  "selected_reading": "R_CUSTOMER_COUNTRY",
+  "old_expected_by_protocol": null
+ },
+ "T4_AFTER_END": {
+  "status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS",
+  "reasons": [],
+  "selected_reading": "R_CUSTOMER_COUNTRY",
+  "old_expected_by_protocol": null
+ },
+ "T5_SOURCE_NOT_YET_KNOWN": {
+  "status": "STRUCTURALLY_INVALID",
+  "reasons": [
+   "INTERPRETATION_UNRESOLVED",
+   "SOURCE_NOT_YET_KNOWN"
+  ],
+  "selected_reading": null,
+  "old_expected_by_protocol": null
+ },
+ "T6_APPROVAL_KNOWN_LATER": {
+  "status": "MEANING_UNRESOLVED",
+  "reasons": [
+   "INTERPRETATION_UNRESOLVED"
+  ],
+  "selected_reading": null,
+  "old_expected_by_protocol": null
+ },
+ "T7A_RETROACTIVE_AS_KNOWN_BEFORE_OBSERVATION": {
+  "status": "STRUCTURALLY_INVALID",
+  "reasons": [
+   "INTERPRETATION_UNRESOLVED",
+   "SOURCE_NOT_YET_KNOWN"
+  ],
+  "selected_reading": null,
+  "old_expected_by_protocol": null
+ },
+ "T7B_RETROACTIVE_AS_KNOWN_AFTER_OBSERVATION": {
+  "status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS",
+  "reasons": [],
+  "selected_reading": "R_CUSTOMER_COUNTRY",
+  "old_expected_by_protocol": null
+ },
+ "T8_APPROVAL_IN_FORCE_REQUIREMENT_ENDED": {
+  "status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS",
+  "reasons": [],
+  "selected_reading": "R_CUSTOMER_COUNTRY",
+  "old_expected_by_protocol": null
+ },
+ "T9_IN_FORCE_UNAUTHORIZED": {
+  "status": "MEANING_UNRESOLVED",
+  "reasons": [
+   "INTERPRETATION_UNRESOLVED"
+  ],
+  "selected_reading": null,
+  "old_expected_by_protocol": null
+ },
+ "T10_CORRUPT_SOURCE_AND_NOT_IN_FORCE": {
+  "status": "STRUCTURALLY_INVALID",
+  "reasons": [
+   "APPROVAL_SCOPE_MISMATCH",
+   "INTERPRETATION_UNRESOLVED",
+   "SOURCE_HASH_MISMATCH"
+  ],
+  "selected_reading": null,
+  "old_expected_by_protocol": null
+ },
+ "T11_MISSING_FACT_NOT_IN_FORCE": {
+  "status": "MISSING_REQUIRED_FACT",
+  "reasons": [
+   "REQUIRED_FACT_ABSENT"
+  ],
+  "selected_reading": "R_SINGLE",
+  "old_expected_by_protocol": null
+ },
+ "T12_S3_APPROVED_EQUIVALENCE_NOT_IN_FORCE": {
+  "status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS",
+  "reasons": [],
+  "selected_reading": "R_SINGLE",
+  "old_expected_by_protocol": null
+ },
+ "V1_S1_DERIVED_CLEAN": {
+  "status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS",
+  "reasons": [],
+  "selected_reading": "R_SINGLE",
+  "old_expected_by_protocol": null
+ },
+ "V2_S2_CUSTOMER_CLEAN": {
+  "status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS",
+  "reasons": [],
+  "selected_reading": "R_CUSTOMER_COUNTRY",
+  "old_expected_by_protocol": null
+ },
+ "V3_S3_EQUIVALENCE_CLEAN": {
+  "status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS",
+  "reasons": [],
+  "selected_reading": "R_SINGLE",
+  "old_expected_by_protocol": null
+ },
+ "V4_S4_STATUS_PROXY": {
+  "status": "MISSING_REQUIRED_FACT",
+  "reasons": [
+   "NOT_DESIGNATED_FOR_FACT",
+   "REQUIRED_FACT_ABSENT"
+  ],
+  "selected_reading": "R_SINGLE",
+  "old_expected_by_protocol": null
+ },
+ "V5_FORGED_PAIR_STORE_READING": {
+  "status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS",
+  "reasons": [],
+  "selected_reading": "R_CUSTOMER_COUNTRY",
+  "old_expected_by_protocol": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS"
+ },
+ "V5B_FORGED_PAIR_ONE_CENT": {
+  "status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS",
+  "reasons": [],
+  "selected_reading": "R_CUSTOMER_COUNTRY",
+  "old_expected_by_protocol": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS"
+ },
+ "V6_SINGLE_NATIVE_RECEIPT_TAMPERED": {
+  "status": "NOT_VERIFIED",
+  "reasons": [
+   "NATIVE_ORACLE_MISMATCH"
+  ],
+  "selected_reading": "R_CUSTOMER_COUNTRY",
+  "old_expected_by_protocol": "NOT_VERIFIED"
+ },
+ "V7A_CONSISTENT_WRONG_SEMANTIC_REVISION": {
+  "status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS",
+  "reasons": [],
+  "selected_reading": "R_CUSTOMER_COUNTRY",
+  "old_expected_by_protocol": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS"
+ },
+ "V7B_CONSISTENT_WRONG_RAW_DATA_HASH": {
+  "status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS",
+  "reasons": [],
+  "selected_reading": "R_CUSTOMER_COUNTRY",
+  "old_expected_by_protocol": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS"
+ },
+ "V7C_STALE_RECEIPT_REVISION_ONLY": {
+  "status": "NOT_VERIFIED",
+  "reasons": [
+   "RECEIPT_REVISION_MISMATCH"
+  ],
+  "selected_reading": "R_CUSTOMER_COUNTRY",
+  "old_expected_by_protocol": "NOT_VERIFIED"
+ },
+ "V8A_FRESH_RUNTIME_UNAVAILABLE": {
+  "status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS",
+  "reasons": [],
+  "selected_reading": "R_CUSTOMER_COUNTRY",
+  "old_expected_by_protocol": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS"
+ },
+ "V8B_REFERENCE_CODE_UNTRUSTED": {
+  "status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS",
+  "reasons": [],
+  "selected_reading": "R_CUSTOMER_COUNTRY",
+  "old_expected_by_protocol": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS"
+ },
+ "V9A_NEGATIVE_QUANTITY_FORGED_GUARDS_AND_AMOUNTS": {
+  "status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS",
+  "reasons": [],
+  "selected_reading": "R_SINGLE",
+  "old_expected_by_protocol": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS"
+ },
+ "V9B_NEGATIVE_QUANTITY_HONEST_RECEIPTS": {
+  "status": "NOT_VERIFIED",
+  "reasons": [
+   "GUARD_FAILED",
+   "NATIVE_ORACLE_MISMATCH"
+  ],
+  "selected_reading": "R_SINGLE",
+  "old_expected_by_protocol": "NOT_VERIFIED"
+ },
+ "V10_APPROVED_READING_CONTENT_SWAPPED": {
+  "status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS",
+  "reasons": [],
+  "selected_reading": "R_CUSTOMER_COUNTRY",
+  "old_expected_by_protocol": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS"
+ }
+}

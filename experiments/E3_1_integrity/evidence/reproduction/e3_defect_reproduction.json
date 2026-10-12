@@ -1,0 +1,193 @@
+{
+ "label": "Retrospective reproduction of E3 post-scoring defects with the UNMODIFIED E3 validator (experiments/E3_formal_ir/src) and E3's committed receipts, altered in memory only.",
+ "e3_last_commit_touching_dir": "5130518f2fa86281a8cd615bf7135d1dce5058e1",
+ "e3_src_sha256": {
+  "build_fixtures.py": "a43f597a0c2a14a947be5b16ca58d113898bb0018b9eaea9ea2a0e78265bea10",
+  "collect_evidence.py": "a7bef2f7315711f2dfce7db463f3ed540ce147b8e58312e5971a3d3aa9fa2f17",
+  "gate.py": "232041c8bd18d474acb85b25bfeabe47e594dc3f95729af77bbbc08bab6cac6c",
+  "models.py": "d31ad0d9647db121912f00ba869ace44940fdaa89118fc7e53d3c7e30a44e1b0",
+  "replay.py": "ccdf63731dce368de1bbc68e7c128ea8fd0280054d18ec5ad321cc1e6311a4e5",
+  "run_scenarios.py": "1d8fcb585d23870644221bb2e7f56079ae5cb1b46e695d3b042ad5bc7f85a6a3",
+  "untyped_baseline.py": "ca2942209080e40cc46ced66571d87e9fac3f2a376ab089776a670f603f86445",
+  "validator.py": "b07bcd4a7294d222b0b45987a50bbce0c4c94e821330c337345e737a5d1da879"
+ },
+ "F_TIME": {
+  "case": "T1_START_AFTER_EVAL_DATE",
+  "config": {
+   "case_id": "T1_START_AFTER_EVAL_DATE",
+   "group": "T",
+   "record": "S2",
+   "approvals": [
+    "AP_S2_CUSTOMER"
+   ],
+   "revocations": [],
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [
+    {
+     "op": "set",
+     "path": [
+      "governing_source",
+      "effective_from"
+     ],
+     "value": "2027-01-01"
+    }
+   ],
+   "candidate_ops": [],
+   "fresh_conditions": {
+    "estate": "TRUSTED_REBUILD",
+    "runtime": "AVAILABLE",
+    "reference_code": "TRUSTED"
+   },
+   "expected": {
+    "status": "REQUIREMENT_NOT_IN_FORCE",
+    "reasons_include": [
+     "REQUIREMENT_NOT_IN_FORCE"
+    ]
+   },
+   "old_e3_expected_status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS",
+   "note": "F-TIME configuration"
+  },
+  "old_e3": {
+   "status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS",
+   "reasons": [],
+   "selected_reading": "R_CUSTOMER_COUNTRY",
+   "evidence": {
+    "R_CUSTOMER_COUNTRY": {
+     "executed": true,
+     "native_equals_oracle": true,
+     "native_by_period": {
+      "2025": "261972.06",
+      "2024": "310780.14",
+      "2026": "155221.02"
+     },
+     "oracle_by_period": {
+      "2024": "310780.14",
+      "2025": "261972.06",
+      "2026": "155221.02"
+     },
+     "guards": null,
+     "reasons": []
+    },
+    "R_STORE_COUNTRY": {
+     "executed": true,
+     "native_equals_oracle": true,
+     "native_by_period": {
+      "2025": "288072.98",
+      "2024": "366057.38",
+      "2026": "138501.23"
+     },
+     "oracle_by_period": {
+      "2024": "366057.38",
+      "2025": "288072.98",
+      "2026": "138501.23"
+     },
+     "guards": null,
+     "reasons": []
+    }
+   }
+  },
+  "reproduced": true
+ },
+ "F_FORGE": {
+  "case": "V5_FORGED_PAIR_STORE_READING",
+  "config": {
+   "case_id": "V5_FORGED_PAIR_STORE_READING",
+   "group": "V",
+   "record": "S2",
+   "approvals": [
+    "AP_S2_CUSTOMER"
+   ],
+   "revocations": [],
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [],
+   "candidate_ops": [
+    {
+     "op": "replace_native_rows",
+     "receipt": "NR_S2_CUSTOMER",
+     "from_receipt": "NR_S2_STORE",
+     "rehash": true
+    },
+    {
+     "op": "replace_oracle_values",
+     "oracle": "OR_S2_CUSTOMER",
+     "from_oracle": "OR_S2_STORE"
+    }
+   ],
+   "fresh_conditions": {
+    "estate": "TRUSTED_REBUILD",
+    "runtime": "AVAILABLE",
+    "reference_code": "TRUSTED"
+   },
+   "expected": {
+    "status": "NOT_VERIFIED",
+    "reasons_include": [
+     "CANDIDATE_NATIVE_DISAGREES_WITH_FRESH",
+     "CANDIDATE_REFERENCE_DISAGREES_WITH_FRESH"
+    ],
+    "fresh_values": "S2/R_CUSTOMER_COUNTRY"
+   },
+   "old_e3_expected_status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS",
+   "note": "F-FORGE configuration (plausible wrong business reading)"
+  },
+  "old_e3": {
+   "status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS",
+   "reasons": [],
+   "selected_reading": "R_CUSTOMER_COUNTRY",
+   "evidence": {
+    "R_CUSTOMER_COUNTRY": {
+     "executed": true,
+     "native_equals_oracle": true,
+     "native_by_period": {
+      "2025": "288072.98",
+      "2024": "366057.38",
+      "2026": "138501.23"
+     },
+     "oracle_by_period": {
+      "2024": "366057.38",
+      "2025": "288072.98",
+      "2026": "138501.23"
+     },
+     "guards": null,
+     "reasons": []
+    },
+    "R_STORE_COUNTRY": {
+     "executed": true,
+     "native_equals_oracle": true,
+     "native_by_period": {
+      "2025": "288072.98",
+      "2024": "366057.38",
+      "2026": "138501.23"
+     },
+     "oracle_by_period": {
+      "2024": "366057.38",
+      "2025": "288072.98",
+      "2026": "138501.23"
+     },
+     "guards": null,
+     "reasons": []
+    }
+   }
+  },
+  "anti_vacuity": {
+   "forged_native_by_year": {
+    "2025": "288072.98",
+    "2024": "366057.38",
+    "2026": "138501.23"
+   },
+   "forged_oracle_by_year": {
+    "2024": "366057.38",
+    "2025": "288072.98",
+    "2026": "138501.23"
+   },
+   "forged_pair_self_consistent": true,
+   "forged_receipt_internal_hash_valid": true,
+   "forged_receipt_claims_customer_query": true,
+   "forged_differs_from_frozen_trusted_customer_oracle": true,
+   "forged_differs_from_E3_genuine_customer_native_run": true,
+   "forged_values_are_the_store_reading": true
+  },
+  "reproduced": true
+ }
+}

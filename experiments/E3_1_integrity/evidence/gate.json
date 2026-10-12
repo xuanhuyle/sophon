@@ -1,0 +1,39 @@
+{
+ "criteria": {
+  "G0": true,
+  "G1": true,
+  "G2": true,
+  "G3": true,
+  "G4": true,
+  "G5": true,
+  "G6": true
+ },
+ "verdict": "PASS_INTEGRITY_HARDENING",
+ "false_promotions": [],
+ "freeze_hash_mismatch": [],
+ "failing_cases": [],
+ "v5_fresh_customer_differs_from_forged": true,
+ "verified_cases": [
+  "T2_START_BOUNDARY_INCLUSIVE",
+  "T3_END_BOUNDARY_INCLUSIVE",
+  "T7B_RETROACTIVE_AS_KNOWN_AFTER_OBSERVATION",
+  "V1_S1_DERIVED_CLEAN",
+  "V2_S2_CUSTOMER_CLEAN",
+  "V3_S3_EQUIVALENCE_CLEAN"
+ ],
+ "old_e3_false_promotions_now_blocked": [
+  "T12_S3_APPROVED_EQUIVALENCE_NOT_IN_FORCE",
+  "T1_START_AFTER_EVAL_DATE",
+  "T4_AFTER_END",
+  "T8_APPROVAL_IN_FORCE_REQUIREMENT_ENDED",
+  "V10_APPROVED_READING_CONTENT_SWAPPED",
+  "V5B_FORGED_PAIR_ONE_CENT",
+  "V5_FORGED_PAIR_STORE_READING",
+  "V7A_CONSISTENT_WRONG_SEMANTIC_REVISION",
+  "V7B_CONSISTENT_WRONG_RAW_DATA_HASH",
+  "V8A_FRESH_RUNTIME_UNAVAILABLE",
+  "V8B_REFERENCE_CODE_UNTRUSTED",
+  "V9A_NEGATIVE_QUANTITY_FORGED_GUARDS_AND_AMOUNTS"
+ ],
+ "pytest_tail": "4 passed in 0.33s"
+}

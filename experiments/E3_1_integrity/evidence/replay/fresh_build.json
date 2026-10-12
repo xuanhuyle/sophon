@@ -1,0 +1,40 @@
+{
+ "regen_exit": 0,
+ "regen_stderr_tail": "",
+ "upstream_commit": "312e97ad192dcef02f688e31edc0a08c6cf4345f",
+ "upstream_clean": true,
+ "env_freeze_sha256": "db0a13e99f318c413caf84a108b6a95ef3d2167376f59285ce15e7b858586add",
+ "semantic_manifest_sha256": "e8e9bfc7e1188bc3eb3f5ac551e8ed5350817af14a5471bdbcdfdca2bc01bd48",
+ "raw_csv_sha256": {
+  "customers.csv": "e570cfec57af94cee3b974db5642fe0c276b495f83dd82e6af077dbb3784680d",
+  "order_items.csv": "513de0a77e90c7312a2935d47efcced60b6811a33de589e1a4fe63d2045e5f26",
+  "orders.csv": "be942a616a816158924f538b8f9cde29de773bc324411c5c6f7c83c980ec4f03",
+  "products.csv": "3783c0e35d83c571e8fc18bbafa98f59e217944288a92f590b6a15d4320c2311",
+  "stores.csv": "78d2cbff192a861f4f880bcc0c25ddc43df72bfecf8a3517abf18723109f8c44"
+ },
+ "warehouse_sha256": "ac2c909318340dc015a86a020714dd5d9407b9f008a79c6e69866bd1f3a44ead",
+ "anchor_checks": {
+  "upstream_commit": true,
+  "upstream_clean": true,
+  "env_freeze": true,
+  "semantic_manifest": true,
+  "raw_csv": true,
+  "code": {
+   "experiments/E1_expressibility_erratum/src/oracle_b1.py": true,
+   "experiments/E2_blind_discovery/src/e2_oracle.py": true,
+   "experiments/E1_expressibility_erratum/src/run_erratum.py": true,
+   "experiments/E3_formal_ir/src/validator.py": true,
+   "experiments/E3_formal_ir/src/models.py": true,
+   "experiments/E0_native_adapter/src/mf_adapter.py": true,
+   "experiments/E1_predicate_binding/src/evaluator.py": true
+  }
+ },
+ "ok": true,
+ "control_mutation": {
+  "set_quantity_minus_1": [
+   1,
+   2
+  ]
+ },
+ "run_id": "20261012T155144Z"
+}
