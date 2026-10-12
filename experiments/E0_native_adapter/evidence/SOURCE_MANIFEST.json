@@ -1,0 +1,59 @@
+{
+ "upstream": {
+  "url": "https://github.com/behramkorkut/Governed-Analytics-Agent",
+  "commit": "312e97ad192dcef02f688e31edc0a08c6cf4345f",
+  "commit_date": "2026-07-22T19:15:20+02:00",
+  "commit_author": "Behram Korkut",
+  "commit_subject": "docs: note de decision — MetricFlow vs Snowflake Semantic Views (arbitrage assume)",
+  "worktree_clean": true,
+  "licence_first_line": "MIT License"
+ },
+ "files_sha256": {
+  "LICENSE": "693fac3437ad055daa29c264a7a7dc731ae0d2663d0e3f03f603d5d5e70fb845",
+  "pyproject.toml": "0145efea5ad9788ef977f2eadd35e39849b3c17235114a69e83ff01c96f7798a",
+  "uv.lock": "abc1820911f261be5f76b6557476ee03d4bf8e882f635c9500591da6268741a9",
+  "requirements.txt": "246b7bb620bd7cb4a7df1c760d16df518aab25eb4007555907442316ed449dcc",
+  ".python-version": "49a506dd32096b010d75205acf3430c9ae6c40351888129499e5a5e487126c93",
+  "Makefile": "0341e0752d6092559806361c2d6e78cb87d3724a72971c0798019acd95634af2",
+  ".github/workflows/ci.yml": "0462507ac5f44b966a42074065ec055e67740b1caba3b678001cda05b6533c85",
+  "scripts/generate_raw_data.py": "a8ddfc678e34a2552e97cd727d2acbc45abb6beca120bc8fe2973edf5d48062e",
+  "scripts/load_bronze.py": "4ccdad33c50db5c5710538310a466c6bcaa96da938756bcf71fc1dbfefc6c264",
+  "dbt/retail_dwh/dbt_project.yml": "d9d0ebceac20d047e97192a1c7a4ba21e9b522f4db9cb5f3505c4a49a7a9ca75",
+  "dbt/retail_dwh/profiles.yml": "c570deb2d3901e33772451fa275a76f6d5737646754ef9f6007ed2ac1e212743",
+  "dbt/retail_dwh/macros/portability.sql": "17b4cad1258d8aa441b5f15c284df0972da318e1600e51df659e0d6cd1aacf7c",
+  "dbt/retail_dwh/macros/generate_schema_name.sql": "74d5fbaaa57ee255e7d8b564c93daa06a39e267bbf871d4697c6c644ba1b3239",
+  "dbt/retail_dwh/models/staging/_sources.yml": "98c70cfded6f00df8f503230df67774c5ce048cb86766f4422d93de5dc852b61",
+  "dbt/retail_dwh/models/staging/stg_orders.sql": "5c0bce686a49232220041c1151815ad3ebd42dc0b44e6dada979199eb269ec9b",
+  "dbt/retail_dwh/models/staging/stg_order_items.sql": "fbaa1430bfc774383612e6f251eda327828ebded76cc1cbe225a962ab731721e",
+  "dbt/retail_dwh/models/staging/stg_products.sql": "38b2793a3abb1504e7f0a8a69fe8447d935293f0df5b3a0976c3fcfc598f95f4",
+  "dbt/retail_dwh/models/marts/facts/fact_sales.sql": "720e1782274a39c977d32a6a563202d1c5176af0f271723497b84bc950db40b5",
+  "dbt/retail_dwh/models/marts/_marts.yml": "0ef4e54135b464a9ae9cb2f53d8818a5efbafd6f0ac84b053418d9e77e638da2",
+  "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml": "2dfb84d643e3192aff8b14f7ec585a1b594ea4859ab6f957aab5fabeb9d86d87",
+  "dbt/retail_dwh/models/marts/semantic/_metrics.yml": "0c9a4a1634daffa9aa962ae02cb50c58bba47982df272a2c7862152b7775b48c",
+  "dbt/retail_dwh/models/streaming/_semantic_live.yml": "59107026f56f6fa339bb6b82e157f7e4884ca49b435fc9b20a40f2bcb294181a",
+  "dbt/retail_dwh/models/_exposures.yml": "d3313ffa5dd7a9d8a5604d12f4c23103f38fe163a741272612712d5e463d350a",
+  "governed_analytics_agent/semantic_layer.py": "e95cda4a84c1fa6eb94c2a07524c9ee4ede4efa95a4777a9552390eb302dfa1c",
+  "governed_analytics_agent/catalog.py": "1f827a69ee391689de0c3a90b13f99b43cdbe007a7ba2b7936b60e647eaa8fc7",
+  "governed_analytics_agent/reporting.py": "8fb3c84955d6e4ffcfd9c6e05a4f4a2ead9c7f7a86ea062e89706880a9c5a7e7",
+  "governed_analytics_agent/config.py": "e2073cc5a0c652092fe2c1c6be591d3148d7495bc4341a04e94a65dc7a2ad700",
+  "streamlit_app.py": "4167f8632f0605f0adda664b374dcc8e80f910304f2a9d7e5e98d8a153942fb7"
+ },
+ "files_missing": [],
+ "runtime": {
+  "python": "3.11.17",
+  "executable_relative": ".venv/bin/python",
+  "platform": "Linux-6.18.44-fc-v114-x86_64-with-glibc2.39",
+  "packages": {
+   "dbt-core": "1.11.11",
+   "dbt-duckdb": "1.10.1",
+   "dbt-adapters": "1.24.5",
+   "dbt-metricflow": "0.13.0",
+   "metricflow": "0.211.0",
+   "dbt-semantic-interfaces": "0.9.0",
+   "duckdb": "1.5.4",
+   "sqlglot": "30.11.0",
+   "faker": "40.23.0",
+   "pandas": "2.3.3"
+  }
+ }
+}
