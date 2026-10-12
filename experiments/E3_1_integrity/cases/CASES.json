@@ -1,0 +1,1088 @@
+{
+ "eval_known_at_default": "2026-10-06T00:00:00Z",
+ "eval_effective_at_default": "2026-06-30",
+ "cases": [
+  {
+   "case_id": "T1_START_AFTER_EVAL_DATE",
+   "group": "T",
+   "record": "S2",
+   "approvals": [
+    "AP_S2_CUSTOMER"
+   ],
+   "revocations": [],
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [
+    {
+     "op": "set",
+     "path": [
+      "governing_source",
+      "effective_from"
+     ],
+     "value": "2027-01-01"
+    }
+   ],
+   "candidate_ops": [],
+   "fresh_conditions": {
+    "estate": "TRUSTED_REBUILD",
+    "runtime": "AVAILABLE",
+    "reference_code": "TRUSTED"
+   },
+   "expected": {
+    "status": "REQUIREMENT_NOT_IN_FORCE",
+    "reasons_include": [
+     "REQUIREMENT_NOT_IN_FORCE"
+    ]
+   },
+   "old_e3_expected_status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS",
+   "note": "F-TIME configuration"
+  },
+  {
+   "case_id": "T2_START_BOUNDARY_INCLUSIVE",
+   "group": "T",
+   "record": "S2",
+   "approvals": [
+    "AP_S2_CUSTOMER"
+   ],
+   "revocations": [],
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [
+    {
+     "op": "set",
+     "path": [
+      "governing_source",
+      "effective_from"
+     ],
+     "value": "2026-06-30"
+    }
+   ],
+   "candidate_ops": [],
+   "fresh_conditions": {
+    "estate": "TRUSTED_REBUILD",
+    "runtime": "AVAILABLE",
+    "reference_code": "TRUSTED"
+   },
+   "expected": {
+    "status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_FRESH_CHECKS",
+    "reasons_include": []
+   },
+   "old_e3_expected_status": null,
+   "note": ""
+  },
+  {
+   "case_id": "T3_END_BOUNDARY_INCLUSIVE",
+   "group": "T",
+   "record": "S2",
+   "approvals": [
+    "AP_S2_CUSTOMER"
+   ],
+   "revocations": [],
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [
+    {
+     "op": "set",
+     "path": [
+      "governing_source",
+      "effective_to"
+     ],
+     "value": "2026-06-30"
+    }
+   ],
+   "candidate_ops": [],
+   "fresh_conditions": {
+    "estate": "TRUSTED_REBUILD",
+    "runtime": "AVAILABLE",
+    "reference_code": "TRUSTED"
+   },
+   "expected": {
+    "status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_FRESH_CHECKS",
+    "reasons_include": []
+   },
+   "old_e3_expected_status": null,
+   "note": ""
+  },
+  {
+   "case_id": "T4_AFTER_END",
+   "group": "T",
+   "record": "S2",
+   "approvals": [
+    "AP_S2_CUSTOMER"
+   ],
+   "revocations": [],
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [
+    {
+     "op": "set",
+     "path": [
+      "governing_source",
+      "effective_to"
+     ],
+     "value": "2026-06-29"
+    }
+   ],
+   "candidate_ops": [],
+   "fresh_conditions": {
+    "estate": "TRUSTED_REBUILD",
+    "runtime": "AVAILABLE",
+    "reference_code": "TRUSTED"
+   },
+   "expected": {
+    "status": "REQUIREMENT_NOT_IN_FORCE",
+    "reasons_include": [
+     "REQUIREMENT_NOT_IN_FORCE"
+    ]
+   },
+   "old_e3_expected_status": null,
+   "note": ""
+  },
+  {
+   "case_id": "T5_SOURCE_NOT_YET_KNOWN",
+   "group": "T",
+   "record": "S2",
+   "approvals": [
+    "AP_S2_CUSTOMER"
+   ],
+   "revocations": [],
+   "eval_known_at": "2026-09-30T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [],
+   "candidate_ops": [],
+   "fresh_conditions": {
+    "estate": "TRUSTED_REBUILD",
+    "runtime": "AVAILABLE",
+    "reference_code": "TRUSTED"
+   },
+   "expected": {
+    "status": "NOT_KNOWN_AT_EVALUATION_TIME",
+    "reasons_include": [
+     "SOURCE_NOT_YET_KNOWN"
+    ]
+   },
+   "old_e3_expected_status": null,
+   "note": ""
+  },
+  {
+   "case_id": "T6_APPROVAL_KNOWN_LATER",
+   "group": "T",
+   "record": "S2",
+   "approvals": [
+    "AP_S2_FUTURE"
+   ],
+   "revocations": [],
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [],
+   "candidate_ops": [],
+   "fresh_conditions": {
+    "estate": "TRUSTED_REBUILD",
+    "runtime": "AVAILABLE",
+    "reference_code": "TRUSTED"
+   },
+   "expected": {
+    "status": "MEANING_UNRESOLVED",
+    "reasons_include": [
+     "INTERPRETATION_UNRESOLVED"
+    ],
+    "must_not_mention": [
+     "AP_S2_FUTURE"
+    ]
+   },
+   "old_e3_expected_status": null,
+   "note": ""
+  },
+  {
+   "case_id": "T7A_RETROACTIVE_AS_KNOWN_BEFORE_OBSERVATION",
+   "group": "T",
+   "record": "S2",
+   "approvals": [
+    "AP_S2_CUSTOMER"
+   ],
+   "revocations": [],
+   "eval_known_at": "2026-09-30T00:00:00Z",
+   "eval_effective_at": "2024-06-30",
+   "record_patch": [],
+   "candidate_ops": [],
+   "fresh_conditions": {
+    "estate": "TRUSTED_REBUILD",
+    "runtime": "AVAILABLE",
+    "reference_code": "TRUSTED"
+   },
+   "expected": {
+    "status": "NOT_KNOWN_AT_EVALUATION_TIME",
+    "reasons_include": [
+     "SOURCE_NOT_YET_KNOWN"
+    ]
+   },
+   "old_e3_expected_status": null,
+   "note": ""
+  },
+  {
+   "case_id": "T7B_RETROACTIVE_AS_KNOWN_AFTER_OBSERVATION",
+   "group": "T",
+   "record": "S2",
+   "approvals": [
+    "AP_S2_CUSTOMER"
+   ],
+   "revocations": [],
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "eval_effective_at": "2024-06-30",
+   "record_patch": [],
+   "candidate_ops": [],
+   "fresh_conditions": {
+    "estate": "TRUSTED_REBUILD",
+    "runtime": "AVAILABLE",
+    "reference_code": "TRUSTED"
+   },
+   "expected": {
+    "status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_FRESH_CHECKS",
+    "reasons_include": []
+   },
+   "old_e3_expected_status": null,
+   "note": ""
+  },
+  {
+   "case_id": "T8_APPROVAL_IN_FORCE_REQUIREMENT_ENDED",
+   "group": "T",
+   "record": "S2",
+   "approvals": [
+    "AP_S2_CUSTOMER"
+   ],
+   "revocations": [],
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [
+    {
+     "op": "set",
+     "path": [
+      "governing_source",
+      "effective_to"
+     ],
+     "value": "2025-12-31"
+    }
+   ],
+   "candidate_ops": [],
+   "fresh_conditions": {
+    "estate": "TRUSTED_REBUILD",
+    "runtime": "AVAILABLE",
+    "reference_code": "TRUSTED"
+   },
+   "expected": {
+    "status": "REQUIREMENT_NOT_IN_FORCE",
+    "reasons_include": [
+     "REQUIREMENT_NOT_IN_FORCE"
+    ]
+   },
+   "old_e3_expected_status": null,
+   "note": ""
+  },
+  {
+   "case_id": "T9_IN_FORCE_UNAUTHORIZED",
+   "group": "T",
+   "record": "S2",
+   "approvals": [],
+   "revocations": [],
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [],
+   "candidate_ops": [],
+   "fresh_conditions": {
+    "estate": "TRUSTED_REBUILD",
+    "runtime": "AVAILABLE",
+    "reference_code": "TRUSTED"
+   },
+   "expected": {
+    "status": "MEANING_UNRESOLVED",
+    "reasons_include": [
+     "INTERPRETATION_UNRESOLVED"
+    ]
+   },
+   "old_e3_expected_status": null,
+   "note": ""
+  },
+  {
+   "case_id": "T10_CORRUPT_SOURCE_AND_NOT_IN_FORCE",
+   "group": "T",
+   "record": "S2",
+   "approvals": [
+    "AP_S2_CUSTOMER"
+   ],
+   "revocations": [],
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [
+    {
+     "op": "set",
+     "path": [
+      "governing_source",
+      "effective_from"
+     ],
+     "value": "2027-01-01"
+    },
+    {
+     "op": "set",
+     "path": [
+      "governing_source",
+      "content_sha256"
+     ],
+     "value": "0000000000000000000000000000000000000000000000000000000000000000"
+    }
+   ],
+   "candidate_ops": [],
+   "fresh_conditions": {
+    "estate": "TRUSTED_REBUILD",
+    "runtime": "AVAILABLE",
+    "reference_code": "TRUSTED"
+   },
+   "expected": {
+    "status": "STRUCTURALLY_INVALID",
+    "reasons_include": [
+     "SOURCE_HASH_MISMATCH"
+    ]
+   },
+   "old_e3_expected_status": null,
+   "note": ""
+  },
+  {
+   "case_id": "T11_MISSING_FACT_NOT_IN_FORCE",
+   "group": "T",
+   "record": "S4",
+   "approvals": [
+    "AP_S4_READ"
+   ],
+   "revocations": [],
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [
+    {
+     "op": "set",
+     "path": [
+      "governing_source",
+      "effective_from"
+     ],
+     "value": "2027-01-01"
+    }
+   ],
+   "candidate_ops": [],
+   "fresh_conditions": {
+    "estate": "TRUSTED_REBUILD",
+    "runtime": "AVAILABLE",
+    "reference_code": "TRUSTED"
+   },
+   "expected": {
+    "status": "REQUIREMENT_NOT_IN_FORCE",
+    "reasons_include": [
+     "REQUIREMENT_NOT_IN_FORCE"
+    ],
+    "uncovered": [
+     "settled_by_processor"
+    ]
+   },
+   "old_e3_expected_status": null,
+   "note": ""
+  },
+  {
+   "case_id": "T12_S3_APPROVED_EQUIVALENCE_NOT_IN_FORCE",
+   "group": "T",
+   "record": "S3",
+   "approvals": [
+    "AP_S3_READ",
+    "AP_S3_EQ"
+   ],
+   "revocations": [],
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [
+    {
+     "op": "set",
+     "path": [
+      "governing_source",
+      "effective_from"
+     ],
+     "value": "2027-01-01"
+    }
+   ],
+   "candidate_ops": [],
+   "fresh_conditions": {
+    "estate": "TRUSTED_REBUILD",
+    "runtime": "AVAILABLE",
+    "reference_code": "TRUSTED"
+   },
+   "expected": {
+    "status": "REQUIREMENT_NOT_IN_FORCE",
+    "reasons_include": [
+     "REQUIREMENT_NOT_IN_FORCE"
+    ]
+   },
+   "old_e3_expected_status": null,
+   "note": ""
+  },
+  {
+   "case_id": "V1_S1_DERIVED_CLEAN",
+   "group": "V",
+   "record": "S1",
+   "approvals": [
+    "AP_S1_READ"
+   ],
+   "revocations": [],
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [],
+   "candidate_ops": [],
+   "fresh_conditions": {
+    "estate": "TRUSTED_REBUILD",
+    "runtime": "AVAILABLE",
+    "reference_code": "TRUSTED"
+   },
+   "expected": {
+    "status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_FRESH_CHECKS",
+    "reasons_include": [],
+    "fresh_values": "S1/R_SINGLE"
+   },
+   "old_e3_expected_status": null,
+   "note": ""
+  },
+  {
+   "case_id": "V2_S2_CUSTOMER_CLEAN",
+   "group": "V",
+   "record": "S2",
+   "approvals": [
+    "AP_S2_CUSTOMER"
+   ],
+   "revocations": [],
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [],
+   "candidate_ops": [],
+   "fresh_conditions": {
+    "estate": "TRUSTED_REBUILD",
+    "runtime": "AVAILABLE",
+    "reference_code": "TRUSTED"
+   },
+   "expected": {
+    "status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_FRESH_CHECKS",
+    "reasons_include": [],
+    "fresh_values": "S2/R_CUSTOMER_COUNTRY"
+   },
+   "old_e3_expected_status": null,
+   "note": ""
+  },
+  {
+   "case_id": "V3_S3_EQUIVALENCE_CLEAN",
+   "group": "V",
+   "record": "S3",
+   "approvals": [
+    "AP_S3_READ",
+    "AP_S3_EQ"
+   ],
+   "revocations": [],
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [],
+   "candidate_ops": [],
+   "fresh_conditions": {
+    "estate": "TRUSTED_REBUILD",
+    "runtime": "AVAILABLE",
+    "reference_code": "TRUSTED"
+   },
+   "expected": {
+    "status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_FRESH_CHECKS",
+    "reasons_include": [],
+    "fresh_values": "S3/R_SINGLE"
+   },
+   "old_e3_expected_status": null,
+   "note": ""
+  },
+  {
+   "case_id": "V4_S4_STATUS_PROXY",
+   "group": "V",
+   "record": "S4",
+   "approvals": [
+    "AP_S4_READ"
+   ],
+   "revocations": [],
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [
+    {
+     "op": "set",
+     "path": [
+      "interpretation",
+      "readings",
+      0,
+      "bindings",
+      "settled_by_processor"
+     ],
+     "value": {
+      "kind": "DIRECT",
+      "semantic_object": {
+       "type": "dimension",
+       "name": "sales__status"
+      },
+      "physical_lineage": [
+       "gold.fact_sales.status"
+      ],
+      "value_override": "completed"
+     }
+    },
+    {
+     "op": "set",
+     "path": [
+      "interpretation",
+      "readings",
+      0,
+      "native_query"
+     ],
+     "value": {
+      "metric": "revenue",
+      "group_by": [
+       "metric_time__year"
+      ],
+      "where": [
+       "{{ Dimension('sales__status') }} = 'completed'",
+       "{{ Dimension('sales__status') }} = 'completed'"
+      ]
+     }
+    },
+    {
+     "op": "set",
+     "path": [
+      "interpretation",
+      "readings",
+      0,
+      "native_receipt_id"
+     ],
+     "value": "NR_S4_PROXY"
+    },
+    {
+     "op": "set",
+     "path": [
+      "interpretation",
+      "readings",
+      0,
+      "oracle_id"
+     ],
+     "value": "OR_S4_PROXY"
+    }
+   ],
+   "candidate_ops": [],
+   "fresh_conditions": {
+    "estate": "TRUSTED_REBUILD",
+    "runtime": "AVAILABLE",
+    "reference_code": "TRUSTED"
+   },
+   "expected": {
+    "status": "MISSING_REQUIRED_FACT",
+    "reasons_include": [
+     "NOT_DESIGNATED_FOR_FACT"
+    ],
+    "uncovered": [
+     "settled_by_processor"
+    ]
+   },
+   "old_e3_expected_status": null,
+   "note": ""
+  },
+  {
+   "case_id": "V5_FORGED_PAIR_STORE_READING",
+   "group": "V",
+   "record": "S2",
+   "approvals": [
+    "AP_S2_CUSTOMER"
+   ],
+   "revocations": [],
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [],
+   "candidate_ops": [
+    {
+     "op": "replace_native_rows",
+     "receipt": "NR_S2_CUSTOMER",
+     "from_receipt": "NR_S2_STORE",
+     "rehash": true
+    },
+    {
+     "op": "replace_oracle_values",
+     "oracle": "OR_S2_CUSTOMER",
+     "from_oracle": "OR_S2_STORE"
+    }
+   ],
+   "fresh_conditions": {
+    "estate": "TRUSTED_REBUILD",
+    "runtime": "AVAILABLE",
+    "reference_code": "TRUSTED"
+   },
+   "expected": {
+    "status": "NOT_VERIFIED",
+    "reasons_include": [
+     "CANDIDATE_NATIVE_DISAGREES_WITH_FRESH",
+     "CANDIDATE_REFERENCE_DISAGREES_WITH_FRESH"
+    ],
+    "fresh_values": "S2/R_CUSTOMER_COUNTRY"
+   },
+   "old_e3_expected_status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS",
+   "note": "F-FORGE configuration (plausible wrong business reading)"
+  },
+  {
+   "case_id": "V5B_FORGED_PAIR_ONE_CENT",
+   "group": "V",
+   "record": "S2",
+   "approvals": [
+    "AP_S2_CUSTOMER"
+   ],
+   "revocations": [],
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [],
+   "candidate_ops": [
+    {
+     "op": "add_cent_native",
+     "receipt": "NR_S2_CUSTOMER",
+     "rehash": true
+    },
+    {
+     "op": "add_cent_oracle",
+     "oracle": "OR_S2_CUSTOMER"
+    }
+   ],
+   "fresh_conditions": {
+    "estate": "TRUSTED_REBUILD",
+    "runtime": "AVAILABLE",
+    "reference_code": "TRUSTED"
+   },
+   "expected": {
+    "status": "NOT_VERIFIED",
+    "reasons_include": [
+     "CANDIDATE_NATIVE_DISAGREES_WITH_FRESH",
+     "CANDIDATE_REFERENCE_DISAGREES_WITH_FRESH"
+    ]
+   },
+   "old_e3_expected_status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS",
+   "note": ""
+  },
+  {
+   "case_id": "V6_SINGLE_NATIVE_RECEIPT_TAMPERED",
+   "group": "V",
+   "record": "S2",
+   "approvals": [
+    "AP_S2_CUSTOMER"
+   ],
+   "revocations": [],
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [],
+   "candidate_ops": [
+    {
+     "op": "add_cent_native",
+     "receipt": "NR_S2_CUSTOMER",
+     "rehash": true
+    }
+   ],
+   "fresh_conditions": {
+    "estate": "TRUSTED_REBUILD",
+    "runtime": "AVAILABLE",
+    "reference_code": "TRUSTED"
+   },
+   "expected": {
+    "status": "NOT_VERIFIED",
+    "reasons_include": [
+     "NATIVE_ORACLE_MISMATCH"
+    ]
+   },
+   "old_e3_expected_status": "NOT_VERIFIED",
+   "note": ""
+  },
+  {
+   "case_id": "V7A_CONSISTENT_WRONG_SEMANTIC_REVISION",
+   "group": "V",
+   "record": "S2",
+   "approvals": [
+    "AP_S2_CUSTOMER"
+   ],
+   "revocations": [],
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [
+    {
+     "op": "set",
+     "path": [
+      "verification_request",
+      "semantic_manifest_sha256"
+     ],
+     "value": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+    }
+   ],
+   "candidate_ops": [
+    {
+     "op": "set_native_fingerprint",
+     "receipt": "NR_S2_CUSTOMER",
+     "field": "semantic_manifest_sha256",
+     "value": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+    }
+   ],
+   "fresh_conditions": {
+    "estate": "TRUSTED_REBUILD",
+    "runtime": "AVAILABLE",
+    "reference_code": "TRUSTED"
+   },
+   "expected": {
+    "status": "NOT_VERIFIED",
+    "reasons_include": [
+     "TRUST_ANCHOR_MISMATCH"
+    ]
+   },
+   "old_e3_expected_status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS",
+   "note": ""
+  },
+  {
+   "case_id": "V7B_CONSISTENT_WRONG_RAW_DATA_HASH",
+   "group": "V",
+   "record": "S2",
+   "approvals": [
+    "AP_S2_CUSTOMER"
+   ],
+   "revocations": [],
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [
+    {
+     "op": "set",
+     "path": [
+      "verification_request",
+      "raw_csv_sha256",
+      "orders.csv"
+     ],
+     "value": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+    }
+   ],
+   "candidate_ops": [
+    {
+     "op": "set_native_raw_csv_hash",
+     "receipt": "NR_S2_CUSTOMER",
+     "file": "orders.csv",
+     "value": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+    },
+    {
+     "op": "set_oracle_raw_csv_hash",
+     "oracle": "OR_S2_CUSTOMER",
+     "file": "orders.csv",
+     "value": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+    }
+   ],
+   "fresh_conditions": {
+    "estate": "TRUSTED_REBUILD",
+    "runtime": "AVAILABLE",
+    "reference_code": "TRUSTED"
+   },
+   "expected": {
+    "status": "NOT_VERIFIED",
+    "reasons_include": [
+     "TRUST_ANCHOR_MISMATCH"
+    ]
+   },
+   "old_e3_expected_status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS",
+   "note": ""
+  },
+  {
+   "case_id": "V7C_STALE_RECEIPT_REVISION_ONLY",
+   "group": "V",
+   "record": "S2",
+   "approvals": [
+    "AP_S2_CUSTOMER"
+   ],
+   "revocations": [],
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [],
+   "candidate_ops": [
+    {
+     "op": "set_native_fingerprint",
+     "receipt": "NR_S2_CUSTOMER",
+     "field": "semantic_manifest_sha256",
+     "value": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+    }
+   ],
+   "fresh_conditions": {
+    "estate": "TRUSTED_REBUILD",
+    "runtime": "AVAILABLE",
+    "reference_code": "TRUSTED"
+   },
+   "expected": {
+    "status": "NOT_VERIFIED",
+    "reasons_include": [
+     "RECEIPT_REVISION_MISMATCH"
+    ]
+   },
+   "old_e3_expected_status": "NOT_VERIFIED",
+   "note": ""
+  },
+  {
+   "case_id": "V8A_FRESH_RUNTIME_UNAVAILABLE",
+   "group": "V",
+   "record": "S2",
+   "approvals": [
+    "AP_S2_CUSTOMER"
+   ],
+   "revocations": [],
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [],
+   "candidate_ops": [],
+   "fresh_conditions": {
+    "estate": "TRUSTED_REBUILD",
+    "runtime": "UNAVAILABLE",
+    "reference_code": "TRUSTED"
+   },
+   "expected": {
+    "status": "NOT_VERIFIED",
+    "reasons_include": [
+     "FRESH_RUNTIME_UNAVAILABLE"
+    ]
+   },
+   "old_e3_expected_status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS",
+   "note": ""
+  },
+  {
+   "case_id": "V8B_REFERENCE_CODE_UNTRUSTED",
+   "group": "V",
+   "record": "S2",
+   "approvals": [
+    "AP_S2_CUSTOMER"
+   ],
+   "revocations": [],
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [],
+   "candidate_ops": [],
+   "fresh_conditions": {
+    "estate": "TRUSTED_REBUILD",
+    "runtime": "AVAILABLE",
+    "reference_code": "TAMPERED"
+   },
+   "expected": {
+    "status": "NOT_VERIFIED",
+    "reasons_include": [
+     "FRESH_REFERENCE_UNAVAILABLE"
+    ]
+   },
+   "old_e3_expected_status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS",
+   "note": ""
+  },
+  {
+   "case_id": "V9A_NEGATIVE_QUANTITY_FORGED_GUARDS_AND_AMOUNTS",
+   "group": "V",
+   "record": "S1",
+   "approvals": [
+    "AP_S1_READ"
+   ],
+   "revocations": [],
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [
+    {
+     "op": "set",
+     "path": [
+      "interpretation",
+      "readings",
+      0,
+      "native_receipt_id"
+     ],
+     "value": "NR_S1_NEGQTY"
+    },
+    {
+     "op": "set",
+     "path": [
+      "interpretation",
+      "readings",
+      0,
+      "bindings",
+      "unit_price_threshold",
+      "derivation",
+      "guard_receipt_id"
+     ],
+     "value": "GR_S1_NEGQTY"
+    }
+   ],
+   "candidate_ops": [
+    {
+     "op": "replace_native_rows",
+     "receipt": "NR_S1_NEGQTY",
+     "from_receipt": "NR_S1",
+     "rehash": true
+    },
+    {
+     "op": "force_guards_true",
+     "guard": "GR_S1_NEGQTY"
+    }
+   ],
+   "fresh_conditions": {
+    "estate": "CONTROL_NEGATIVE_QUANTITY",
+    "runtime": "AVAILABLE",
+    "reference_code": "TRUSTED"
+   },
+   "expected": {
+    "status": "NOT_VERIFIED",
+    "reasons_include": [
+     "FRESH_GUARD_FAILED"
+    ]
+   },
+   "old_e3_expected_status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS",
+   "note": "recorded amounts match the oracle; the data snapshot has q = -1 lines"
+  },
+  {
+   "case_id": "V9B_NEGATIVE_QUANTITY_HONEST_RECEIPTS",
+   "group": "V",
+   "record": "S1",
+   "approvals": [
+    "AP_S1_READ"
+   ],
+   "revocations": [],
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [
+    {
+     "op": "set",
+     "path": [
+      "interpretation",
+      "readings",
+      0,
+      "native_receipt_id"
+     ],
+     "value": "NR_S1_NEGQTY"
+    },
+    {
+     "op": "set",
+     "path": [
+      "interpretation",
+      "readings",
+      0,
+      "bindings",
+      "unit_price_threshold",
+      "derivation",
+      "guard_receipt_id"
+     ],
+     "value": "GR_S1_NEGQTY"
+    }
+   ],
+   "candidate_ops": [],
+   "fresh_conditions": {
+    "estate": "CONTROL_NEGATIVE_QUANTITY",
+    "runtime": "AVAILABLE",
+    "reference_code": "TRUSTED"
+   },
+   "expected": {
+    "status": "NOT_VERIFIED",
+    "reasons_include": [
+     "GUARD_FAILED"
+    ]
+   },
+   "old_e3_expected_status": "NOT_VERIFIED",
+   "note": ""
+  },
+  {
+   "case_id": "V10_APPROVED_READING_CONTENT_SWAPPED",
+   "group": "V",
+   "record": "S2",
+   "approvals": [
+    "AP_S2_CUSTOMER"
+   ],
+   "revocations": [],
+   "eval_known_at": "2026-10-06T00:00:00Z",
+   "eval_effective_at": "2026-06-30",
+   "record_patch": [
+    {
+     "op": "set",
+     "path": [
+      "interpretation",
+      "readings",
+      0,
+      "atom_fact_kinds",
+      "french_market"
+     ],
+     "value": "store_country_attribute"
+    },
+    {
+     "op": "set",
+     "path": [
+      "interpretation",
+      "readings",
+      0,
+      "bindings",
+      "french_market"
+     ],
+     "value": {
+      "kind": "DIRECT",
+      "semantic_object": {
+       "type": "dimension",
+       "name": "store__store_country"
+      },
+      "physical_lineage": [
+       "gold.dim_stores.country"
+      ]
+     }
+    },
+    {
+     "op": "set",
+     "path": [
+      "interpretation",
+      "readings",
+      0,
+      "native_query"
+     ],
+     "value": {
+      "metric": "revenue",
+      "group_by": [
+       "metric_time__year"
+      ],
+      "where": [
+       "{{ Dimension('sales__status') }} = 'completed'",
+       "{{ Dimension('store__store_country') }} = 'France'"
+      ]
+     }
+    }
+   ],
+   "candidate_ops": [
+    {
+     "op": "set_native_query",
+     "receipt": "NR_S2_CUSTOMER",
+     "value": {
+      "metric": "revenue",
+      "group_by": [
+       "metric_time__year"
+      ],
+      "where": [
+       "{{ Dimension('sales__status') }} = 'completed'",
+       "{{ Dimension('store__store_country') }} = 'France'"
+      ]
+     }
+    },
+    {
+     "op": "replace_native_rows",
+     "receipt": "NR_S2_CUSTOMER",
+     "from_receipt": "NR_S2_STORE",
+     "rehash": true
+    },
+    {
+     "op": "replace_oracle_values",
+     "oracle": "OR_S2_CUSTOMER",
+     "from_oracle": "OR_S2_STORE"
+    }
+   ],
+   "fresh_conditions": {
+    "estate": "TRUSTED_REBUILD",
+    "runtime": "AVAILABLE",
+    "reference_code": "TRUSTED"
+   },
+   "expected": {
+    "status": "NOT_VERIFIED",
+    "reasons_include": [
+     "UNTRUSTED_READING_CONTENT"
+    ]
+   },
+   "old_e3_expected_status": "VERIFIED_FOR_LAB_ASSUMPTIONS_AND_SPECIFIED_CHECKS",
+   "note": "approval selects R_CUSTOMER_COUNTRY by id; the reading's content was rewritten to the store reading"
+  }
+ ]
+}

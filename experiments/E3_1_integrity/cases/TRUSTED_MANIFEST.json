@@ -1,0 +1,80 @@
+{
+ "label": "TRUSTED ANCHORS for E3.1 (LAB trust model). Sources: E0 committed regen receipt and env freeze; E3 frozen fixtures; code files on this branch. Never read from candidate receipts.",
+ "upstream": {
+  "repo": "behramkorkut/Governed-Analytics-Agent",
+  "commit": "312e97ad192dcef02f688e31edc0a08c6cf4345f"
+ },
+ "env_freeze_sha256": "db0a13e99f318c413caf84a108b6a95ef3d2167376f59285ce15e7b858586add",
+ "semantic_manifest_sha256": "e8e9bfc7e1188bc3eb3f5ac551e8ed5350817af14a5471bdbcdfdca2bc01bd48",
+ "raw_csv_sha256": {
+  "customers.csv": "e570cfec57af94cee3b974db5642fe0c276b495f83dd82e6af077dbb3784680d",
+  "order_items.csv": "513de0a77e90c7312a2935d47efcced60b6811a33de589e1a4fe63d2045e5f26",
+  "orders.csv": "be942a616a816158924f538b8f9cde29de773bc324411c5c6f7c83c980ec4f03",
+  "products.csv": "3783c0e35d83c571e8fc18bbafa98f59e217944288a92f590b6a15d4320c2311",
+  "stores.csv": "78d2cbff192a861f4f880bcc0c25ddc43df72bfecf8a3517abf18723109f8c44"
+ },
+ "governing_source": {
+  "path": "experiments/E3_formal_ir/cases/sources/LAB_REVENUE_POLICY.md",
+  "sha256": "20263fa531d3b3c946f80a85fc863cd1d004b9b2b907f75de32faf100853a957"
+ },
+ "approved_reading_meaning_sha256": {
+  "S1/R_SINGLE": "cc1af11b1954bfd2bb7ad462d083b63933ffcb8ad9e25614cf33ea19381a47c6",
+  "S2/R_CUSTOMER_COUNTRY": "d202a53091de1b1f07d6d90305a3ab33dbf338495b2b90becc32a56df5bde909",
+  "S2/R_STORE_COUNTRY": "44b4bcfb55bb1d28b7820909697e25bdb58e06800ec046128ea155aee853177a",
+  "S3/R_SINGLE": "89099d9e1dd2eecebf82014111dc5cf084419e3f2596f5700e45f64ffaf3afaa",
+  "S4/R_SINGLE": "d0658bf1f36107717ceb1bbf275ae729ed907db6497c79d3a182bd86f6f53ec4"
+ },
+ "reference_functions": {
+  "S1/R_SINGLE": {
+   "code": "experiments/E1_expressibility_erratum/src/oracle_b1.py",
+   "call": "compute(raw)['by_year']"
+  },
+  "S2/R_CUSTOMER_COUNTRY": {
+   "code": "experiments/E2_blind_discovery/src/e2_oracle.py",
+   "call": "DIAGNOSTICS['H3_reading_customer_country'](raw)"
+  },
+  "S2/R_STORE_COUNTRY": {
+   "code": "experiments/E2_blind_discovery/src/e2_oracle.py",
+   "call": "DIAGNOSTICS['H3_reading_store_country'](raw)"
+  },
+  "S3/R_SINGLE": {
+   "code": "experiments/E2_blind_discovery/src/e2_oracle.py",
+   "call": "h6(raw)"
+  }
+ },
+ "guard_code": {
+  "code": "experiments/E1_expressibility_erratum/src/run_erratum.py",
+  "call": "guards(warehouse_lines(wh), csv_prices(raw), n, compiled_sql)"
+ },
+ "code_sha256": {
+  "experiments/E1_expressibility_erratum/src/oracle_b1.py": "a95cdfe158cd9e82709bc231e3ef42506765007abc79ed5e70ca8f2af5e8bbec",
+  "experiments/E2_blind_discovery/src/e2_oracle.py": "2bcfd2d27bd7ae80e4cbb3c3e36ecf07686d2a1e786583306fc443858d088d04",
+  "experiments/E1_expressibility_erratum/src/run_erratum.py": "99783a49f671ca8e98f760209d0cb436f8926a00e2a68e1e132c9a54a2b0a54c",
+  "experiments/E3_formal_ir/src/validator.py": "b07bcd4a7294d222b0b45987a50bbce0c4c94e821330c337345e737a5d1da879",
+  "experiments/E3_formal_ir/src/models.py": "d31ad0d9647db121912f00ba869ace44940fdaa89118fc7e53d3c7e30a44e1b0",
+  "experiments/E0_native_adapter/src/mf_adapter.py": "8a5f400b22a578f958c7c6823e43a3621ccec4ea1b7220be9342a4b140d8dbdb",
+  "experiments/E1_predicate_binding/src/evaluator.py": "14a083e41171721bc74bfad8604cb8cc7838af4a2acadb61d8035a78a5f89f01"
+ },
+ "expected_reference_values": {
+  "S1/R_SINGLE": {
+   "2024": "1634542.08",
+   "2025": "1400232.75",
+   "2026": "752191.54"
+  },
+  "S2/R_CUSTOMER_COUNTRY": {
+   "2024": "310780.14",
+   "2025": "261972.06",
+   "2026": "155221.02"
+  },
+  "S2/R_STORE_COUNTRY": {
+   "2024": "366057.38",
+   "2025": "288072.98",
+   "2026": "138501.23"
+  },
+  "S3/R_SINGLE": {
+   "2024": "97",
+   "2025": "98",
+   "2026": "42"
+  }
+ }
+}
