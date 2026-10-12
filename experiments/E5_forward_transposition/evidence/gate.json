@@ -1,0 +1,44 @@
+{
+ "verdict": "PASS_FORWARD_TRANSPOSITION_SIGNAL",
+ "criteria": {
+  "G0": true,
+  "G1": true,
+  "G2": true,
+  "G3": true,
+  "G4": true,
+  "G5": true,
+  "G6": true,
+  "G7": true,
+  "G8": true,
+  "G9": true,
+  "G10": true,
+  "G11": true
+ },
+ "scenario_failures": {},
+ "unsafe_conditions": {
+  "baseline_verified_for_v2": false,
+  "wrong_patch_verified": [],
+  "p2_collateral_undetected": false,
+  "n1_produced_patch": [],
+  "v2_verified_before_authority": [],
+  "future_leak_k_pre": false,
+  "v2_applied_to_2024": false,
+  "forbidden_states": []
+ },
+ "integrity": {
+  "freeze_hash_mismatch": [],
+  "prior_dirs_unchanged": true,
+  "files_changed_outside_e5": [],
+  "packet_sha_matches_frozen": true,
+  "reference_equals_frozen": true,
+  "transposer_opened_no_repository_file": true,
+  "transposer_source_has_no_answer_literal_or_reference_names": true
+ },
+ "sensitivity_non_scored": {
+  "threshold_135_reapproved": "{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 135",
+  "threshold_120.00_same_text": "{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 120",
+  "threshold_99.5_reapproved": "{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 99.5"
+ },
+ "sensitivity_ok": true,
+ "pytest_tail": "14 passed in 0.42s"
+}

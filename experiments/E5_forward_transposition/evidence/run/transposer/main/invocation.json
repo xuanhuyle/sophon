@@ -1,0 +1,44 @@
+{
+ "argv": [
+  "/usr/bin/python3",
+  "-I",
+  "launch.py"
+ ],
+ "launcher_runs": "transposer.py packet.json proposal.json",
+ "cwd": "fresh temporary directory containing only: launch.py, packet.json, transposer.py",
+ "env": {
+  "PATH": "/usr/bin:/bin",
+  "HOME": "<temporary dir>"
+ },
+ "python": "Python 3.13.16",
+ "transposer_sha256": "6f9bbc98c6db00334f2f43ae9ba13653f82a54748aede882405ef89676eb32ab",
+ "packet_sha256": "b82a0e8eaacebbb1e884e3dc8c334e5716ead92a555982329102b6d13261bc08",
+ "exit_code": 0,
+ "stdout": "{\"status\": \"PROPOSED_NOT_DEPLOYED\", \"reasons\": []}\n",
+ "stderr": "",
+ "wall_seconds": 0.054,
+ "opened_files": {
+  "isolated_dir": [
+   "packet.json",
+   "proposal.json",
+   "transposer.py"
+  ],
+  "python_runtime": [
+   "/usr/lib/python3.13/__pycache__/__future__.cpython-313.pyc",
+   "/usr/lib/python3.13/__pycache__/_weakrefset.cpython-313.pyc",
+   "/usr/lib/python3.13/__pycache__/copy.cpython-313.pyc",
+   "/usr/lib/python3.13/__pycache__/decimal.cpython-313.pyc",
+   "/usr/lib/python3.13/__pycache__/hashlib.cpython-313.pyc",
+   "/usr/lib/python3.13/__pycache__/numbers.cpython-313.pyc",
+   "/usr/lib/python3.13/__pycache__/pkgutil.cpython-313.pyc",
+   "/usr/lib/python3.13/__pycache__/typing.cpython-313.pyc",
+   "/usr/lib/python3.13/__pycache__/warnings.cpython-313.pyc",
+   "/usr/lib/python3.13/__pycache__/weakref.cpython-313.pyc"
+  ],
+  "repository": [],
+  "other": []
+ },
+ "no_repository_file_opened": true,
+ "model": null,
+ "paid_calls": 0
+}

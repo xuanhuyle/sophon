@@ -1,0 +1,7 @@
+# E5: pinned upstream, virtualenv, generated data, candidate stacks and warehouses are reproducible and never committed
+.upstream/
+runs/
+__pycache__/
+.pytest_cache/
+*.duckdb
+*.duckdb.wal

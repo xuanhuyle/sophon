@@ -1,0 +1,411 @@
+{
+ "packet_id": "E5_TRANSPOSE_PACKET_1",
+ "label": "ENGINEERED HOLD-OUT PACKET. Authored by the researcher who also set the E5 reference; it is not an independently authored unseen contract. It contains no oracle result, reference value, expected outcome or scoring data.",
+ "task": {
+  "policy": "P1",
+  "series": "LAB-REV-POLICY/S1",
+  "from_version": "P1_v1",
+  "to_version": "P1_v2"
+ },
+ "requirement_versions": {
+  "P1_v1": {
+   "ir_version": "E5-IR-0.1",
+   "version_id": "P1_v1",
+   "policy": "P1",
+   "series": "LAB-REV-POLICY/S1",
+   "provenance": "LAB_AUTHORED restatement of E3 record S1 (requirement atoms copied verbatim)",
+   "derived_from_e3": {
+    "record": "experiments/E3_formal_ir/cases/records/S1.json",
+    "record_sha256": "aa8f72be7807330dc5fbb2ec0b65f69b756d5c712c4bfba0eff8c26f09fcffe0",
+    "reading_id": "R_SINGLE",
+    "reading_meaning_sha256": "cc1af11b1954bfd2bb7ad462d083b63933ffcb8ad9e25614cf33ea19381a47c6"
+   },
+   "governing_source": {
+    "source_id": "LAB-REV-POLICY",
+    "document_id": "LAB-REV-POLICY",
+    "path": "experiments/E3_formal_ir/cases/sources/LAB_REVENUE_POLICY.md",
+    "content_sha256": "20263fa531d3b3c946f80a85fc863cd1d004b9b2b907f75de32faf100853a957",
+    "clause_id": "S1",
+    "clause_version": 1,
+    "observed_at": "2026-10-01T09:00:00Z",
+    "effective_from": "2024-01-01",
+    "effective_to": null
+   },
+   "supersedes": null,
+   "requirement": {
+    "text": "Report, for each calendar year of order date, the revenue from completed orders, counting only order lines whose charged unit price is at least 100.",
+    "atoms": [
+     {
+      "atom_id": "year",
+      "span": [
+       17,
+       44
+      ],
+      "text": "calendar year of order date",
+      "kind": "GROUP_BY",
+      "fact_kind": "order_date",
+      "period": "CALENDAR_YEAR"
+     },
+     {
+      "atom_id": "amount",
+      "span": [
+       50,
+       57
+      ],
+      "text": "revenue",
+      "kind": "MEASURE",
+      "fact_kind": "order_line_amount",
+      "aggregation": "SUM",
+      "unit": "CURRENCY"
+     },
+     {
+      "atom_id": "completed",
+      "span": [
+       63,
+       79
+      ],
+      "text": "completed orders",
+      "kind": "PREDICATE",
+      "fact_kind": "order_status_label",
+      "op": "EQ",
+      "value": "completed",
+      "unit": null
+     },
+     {
+      "atom_id": "unit_price_threshold",
+      "span": [
+       113,
+       147
+      ],
+      "text": "charged unit price is at least 100",
+      "kind": "PREDICATE",
+      "fact_kind": "order_line_charged_unit_price",
+      "op": "GE",
+      "value": "100",
+      "unit": "CURRENCY_PER_UNIT",
+      "grain": "ORDER_LINE"
+     }
+    ],
+    "population": "order lines of the pinned estate"
+   },
+   "approval_ids": [
+    "AP_S1_READ"
+   ]
+  },
+  "P1_v2": {
+   "ir_version": "E5-IR-0.1",
+   "version_id": "P1_v2",
+   "policy": "P1",
+   "series": "LAB-REV-POLICY/S1",
+   "provenance": "LAB_AUTHORED (E5 amendment; hypothetical retroactive amendment, not historical law)",
+   "derived_from_e3": null,
+   "governing_source": {
+    "source_id": "LAB-REV-POLICY",
+    "document_id": "LAB-REV-POLICY-AMD-1",
+    "path": "experiments/E5_forward_transposition/sources/LAB_REVENUE_POLICY_AMENDMENT_1.md",
+    "content_sha256": "de6ed7dc81dc66a8f85a81351ebeada29753dc498303deb194b5f8cc4e9a5c1b",
+    "clause_id": "S1",
+    "clause_version": 2,
+    "observed_at": "2026-10-09T09:00:00Z",
+    "effective_from": "2025-01-01",
+    "effective_to": null
+   },
+   "supersedes": {
+    "version_id": "P1_v1",
+    "ir_sha256": "16e13832caed10832e58b13f95e3ebfb5adfad213b88181290cbdd3e91088f4f",
+    "for_order_dates_from": "2025-01-01"
+   },
+   "requirement": {
+    "text": "Report, for each calendar year of order date, the revenue from completed orders, counting only order lines whose charged unit price is at least 120.",
+    "atoms": [
+     {
+      "atom_id": "year",
+      "span": [
+       17,
+       44
+      ],
+      "text": "calendar year of order date",
+      "kind": "GROUP_BY",
+      "fact_kind": "order_date",
+      "period": "CALENDAR_YEAR"
+     },
+     {
+      "atom_id": "amount",
+      "span": [
+       50,
+       57
+      ],
+      "text": "revenue",
+      "kind": "MEASURE",
+      "fact_kind": "order_line_amount",
+      "aggregation": "SUM",
+      "unit": "CURRENCY"
+     },
+     {
+      "atom_id": "completed",
+      "span": [
+       63,
+       79
+      ],
+      "text": "completed orders",
+      "kind": "PREDICATE",
+      "fact_kind": "order_status_label",
+      "op": "EQ",
+      "value": "completed",
+      "unit": null
+     },
+     {
+      "atom_id": "unit_price_threshold",
+      "span": [
+       113,
+       147
+      ],
+      "text": "charged unit price is at least 120",
+      "kind": "PREDICATE",
+      "fact_kind": "order_line_charged_unit_price",
+      "op": "GE",
+      "value": "120",
+      "unit": "CURRENCY_PER_UNIT",
+      "grain": "ORDER_LINE"
+     }
+    ],
+    "population": "order lines of the pinned estate"
+   },
+   "approval_ids": [
+    "AP_S1_V2"
+   ]
+  }
+ },
+ "source_documents": {
+  "LAB-REV-POLICY": {
+   "path": "experiments/E3_formal_ir/cases/sources/LAB_REVENUE_POLICY.md",
+   "text": "# LAB revenue reporting policy (LAB_AUTHORED for Sophon E3; not a real policy)\n\nEach clause is identified as [clause_id vVERSION]. Provenance: LAB_AUTHORED by the E3 orchestrator.\n\n[S1 v1] Report, for each calendar year of order date, the revenue from completed orders, counting only order lines whose charged unit price is at least 100.\n\n[S2 v1] Report, for each calendar year of order date, the revenue from completed orders that is attributable to the French market.\n\n[S3 v1] Report, for each calendar year of order date, the number of distinct orders placed through the online channel by customers whose country of residence is France, regardless of order status.\n\n[S4 v1] Report, for each calendar year of order date, the revenue from completed orders whose payment has been independently confirmed as settled by a payment processor.\n\n",
+   "sha256": "20263fa531d3b3c946f80a85fc863cd1d004b9b2b907f75de32faf100853a957"
+  },
+  "LAB-REV-POLICY-AMD-1": {
+   "path": "experiments/E5_forward_transposition/sources/LAB_REVENUE_POLICY_AMENDMENT_1.md",
+   "text": "# LAB revenue reporting policy — Amendment 1 (LAB_AUTHORED for Sophon E5; hypothetical, not a real policy)\n\nDocument: LAB-REV-POLICY-AMD-1. Series: LAB-REV-POLICY. Provenance: LAB_AUTHORED by the E5 orchestrator.\nSimulated observation time: 2026-10-09T09:00:00Z. All dates are hypothetical LAB times.\n\nThis amendment changes clause S1 of LAB-REV-POLICY (document sha256\n20263fa531d3b3c946f80a85fc863cd1d004b9b2b907f75de32faf100853a957, clause [S1 v1]). It is a hypothetical\nretroactive amendment: it is observed in 2026 but applies to order dates from 2025-01-01. It is not historical law.\n\n[S1 v2] Report, for each calendar year of order date, the revenue from completed orders, counting only order lines whose charged unit price is at least 120.\n\nApplicability. [S1 v2] applies to order dates on or after 2025-01-01. For those order dates it supersedes [S1 v1].\nFor order dates before 2025-01-01, [S1 v1] continues to apply. Only the unit-price threshold changes; the\ncompleted-status definition, the amount, the currency assumption, the meaning of charged unit price, the calendar\nyear of order date and the order-line grain are unchanged. No other clause of LAB-REV-POLICY is changed.\n",
+   "sha256": "de6ed7dc81dc66a8f85a81351ebeada29753dc498303deb194b5f8cc4e9a5c1b"
+  }
+ },
+ "approvals": {
+  "AP_S1_READ": {
+   "approval_id": "AP_S1_READ",
+   "provenance": "LAB_SIMULATED",
+   "approver_role": "LAB_REVENUE_POLICY_OWNER",
+   "claim": {
+    "kind": "INTERPRETATION_CHOICE",
+    "record_id": "S1",
+    "reading_id": "R_SINGLE"
+   },
+   "scope": {
+    "source_id": "LAB-REV-POLICY",
+    "source_sha256": "20263fa531d3b3c946f80a85fc863cd1d004b9b2b907f75de32faf100853a957",
+    "clause_id": "S1",
+    "clause_version": 1
+   },
+   "known_at": "2026-10-05T10:00:00Z",
+   "effective_from": "2024-01-01",
+   "effective_to": null
+  },
+  "AP_S1_V2": {
+   "approval_id": "AP_S1_V2",
+   "provenance": "LAB_SIMULATED",
+   "approver_role": "LAB_REVENUE_POLICY_OWNER",
+   "claim": {
+    "kind": "INTERPRETATION_CHOICE",
+    "series": "LAB-REV-POLICY/S1",
+    "version_id": "P1_v2",
+    "normalized_claim_sha256": "9fa3bd2e6017d41f4c53f7f3f03968912b7019dea932ec2f8f9cbaf5af9a42e7",
+    "normalized_claim": {
+     "series": "LAB-REV-POLICY/S1",
+     "clause_id": "S1",
+     "clause_version": 2,
+     "effective_from": "2025-01-01",
+     "effective_to": null,
+     "supersedes": {
+      "version_id": "P1_v1",
+      "for_order_dates_from": "2025-01-01"
+     },
+     "atoms": [
+      {
+       "atom_id": "amount",
+       "kind": "MEASURE",
+       "fact_kind": "order_line_amount",
+       "unit": "CURRENCY",
+       "aggregation": "SUM"
+      },
+      {
+       "atom_id": "completed",
+       "kind": "PREDICATE",
+       "fact_kind": "order_status_label",
+       "op": "EQ",
+       "value": "completed"
+      },
+      {
+       "atom_id": "unit_price_threshold",
+       "kind": "PREDICATE",
+       "fact_kind": "order_line_charged_unit_price",
+       "op": "GE",
+       "value": "120",
+       "unit": "CURRENCY_PER_UNIT",
+       "grain": "ORDER_LINE"
+      },
+      {
+       "atom_id": "year",
+       "kind": "GROUP_BY",
+       "fact_kind": "order_date",
+       "period": "CALENDAR_YEAR"
+      }
+     ]
+    }
+   },
+   "scope": {
+    "source_id": "LAB-REV-POLICY",
+    "document_id": "LAB-REV-POLICY-AMD-1",
+    "source_sha256": "de6ed7dc81dc66a8f85a81351ebeada29753dc498303deb194b5f8cc4e9a5c1b",
+    "clause_id": "S1",
+    "clause_version": 2
+   },
+   "known_at": "2026-10-10T10:00:00Z",
+   "effective_from": "2025-01-01",
+   "effective_to": null,
+   "authorizes": "the LAB meaning of [S1 v2] only; NOT a deployment authorization and NOT an implementation approval",
+   "note": "simulated role approval; no real person, signature or identity verification"
+  }
+ },
+ "authorized_roles": {
+  "LAB_REVENUE_POLICY_OWNER": {
+   "may_approve": [
+    "INTERPRETATION_CHOICE"
+   ],
+   "source_ids": [
+    "LAB-REV-POLICY"
+   ]
+  },
+  "never_approvers": [
+   "LLM_PROPOSER"
+  ]
+ },
+ "binding": {
+  "binding_id": "NB_E5_1",
+  "provenance": "LAB_AUTHORED from E4 candidates M6B (NO_MATERIAL_DRIFT_FOR_CHECKS) and M2 (VERIFIED_FOR_LAB_CHECKS); fixed before E5; not a separate LAB approval; not a fresh or blind mapping",
+  "metrics": {
+   "premium_completed_revenue": {
+    "implements_series": "LAB-REV-POLICY/S1",
+    "file": "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+    "predicate_atoms": [
+     "completed",
+     "unit_price_threshold"
+    ],
+    "description_template": "Completed revenue on lines with unit price at least {unit_price_threshold}."
+   },
+   "french_market_revenue": {
+    "implements_series": "LAB-REV-POLICY/S2",
+    "reading_id": "R_CUSTOMER_COUNTRY",
+    "file": "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+    "predicate_fact_kinds": [
+     "order_status_label",
+     "customer_country"
+    ]
+   }
+  },
+  "measure": {
+   "order_line_amount": "revenue"
+  },
+  "fact_kind_dimension": {
+   "order_status_label": "sales__status",
+   "order_line_charged_unit_price": "sales__unit_price",
+   "customer_country": "customer__country"
+  },
+  "dimension_unit": {
+   "sales__unit_price": "CURRENCY_PER_UNIT"
+  },
+  "literal_style": {
+   "order_status_label": "QUOTED_STRING",
+   "order_line_charged_unit_price": "PLAIN_DECIMAL"
+  },
+  "operator_sql": {
+   "EQ": "=",
+   "GE": ">=",
+   "GT": ">",
+   "LE": "<=",
+   "LT": "<"
+  },
+  "predicate_template": "{{ Dimension('<dimension>') }} <operator> <literal>",
+  "conjunction": " AND ",
+  "supported_delta_kinds": [
+   "PREDICATE_VALUE_CHANGE"
+  ]
+ },
+ "native_baseline": {
+  "revision_id": "REV_P1_V1_BASELINE",
+  "provenance": "E4 candidates M6B (patch ops 1-2) + M2 (patch op 1), applied in that order to pinned upstream 312e97ad. Lab-added native metrics; not an organically maintained enterprise metric.",
+  "upstream_commit": "312e97ad192dcef02f688e31edc0a08c6cf4345f",
+  "files": {
+   "dbt/retail_dwh/models/marts/semantic/_metrics.yml": "metrics:\n  # --- Simple metrics: one measure, surfaced as a business number -------\n  - name: revenue\n    description: \"Total sales revenue.\"\n    label: \"Revenue\"\n    type: simple\n    type_params:\n      measure: revenue\n\n  - name: cost\n    description: \"Total cost of goods sold.\"\n    label: \"Cost\"\n    type: simple\n    type_params:\n      measure: cost\n\n  - name: gross_profit\n    description: \"Revenue minus cost.\"\n    label: \"Gross profit\"\n    type: simple\n    type_params:\n      measure: gross_profit\n\n  - name: quantity_sold\n    description: \"Total units sold.\"\n    label: \"Quantity sold\"\n    type: simple\n    type_params:\n      measure: quantity_sold\n\n  - name: discount\n    description: \"Total discount granted.\"\n    label: \"Discount\"\n    type: simple\n    type_params:\n      measure: discount\n\n  - name: orders\n    description: \"Number of distinct orders.\"\n    label: \"Orders\"\n    type: simple\n    type_params:\n      measure: order_count\n\n  - name: active_customers\n    description: \"Distinct customers who placed at least one order.\"\n    label: \"Active customers\"\n    type: simple\n    type_params:\n      measure: customer_count\n\n  # --- Filtered simple metrics -----------------------------------------\n  - name: completed_revenue\n    description: \"Revenue from completed orders only.\"\n    label: \"Completed revenue\"\n    type: simple\n    type_params:\n      measure: revenue\n    filter: \"{{ Dimension('sales__status') }} = 'completed'\"\n\n  - name: returned_orders\n    description: \"Orders that were returned.\"\n    label: \"Returned orders\"\n    type: simple\n    type_params:\n      measure: order_count\n    filter: \"{{ Dimension('sales__status') }} = 'returned'\"\n\n  # --- Ratio metrics ----------------------------------------------------\n  - name: gross_margin_rate\n    description: \"Gross profit divided by revenue.\"\n    label: \"Gross margin rate\"\n    type: ratio\n    type_params:\n      numerator: gross_profit\n      denominator: revenue\n\n  - name: average_order_value\n    description: \"Revenue per order (AOV).\"\n    label: \"Average order value\"\n    type: ratio\n    type_params:\n      numerator: revenue\n      denominator: orders\n\n  # --- Derived metric: a formula over other metrics ---------------------\n  - name: return_rate\n    description: \"Share of orders that were returned, in percent.\"\n    label: \"Return rate (%)\"\n    type: derived\n    type_params:\n      expr: \"returned_orders / nullif(orders, 0) * 100\"\n      metrics:\n        - name: returned_orders\n        - name: orders\n\n  # --- Customer loyalty: repeat-purchase behaviour ----------------------\n  - name: purchasing_customers\n    description: \"Customers who have placed at least one order (loyalty denominator).\"\n    label: \"Purchasing customers\"\n    type: simple\n    type_params:\n      measure: purchasing_customer_count\n\n  - name: repeat_customers\n    description: \"Customers who ordered on more than one occasion.\"\n    label: \"Repeat customers\"\n    type: simple\n    type_params:\n      measure: purchasing_customer_count\n    filter: \"{{ Dimension('customer__is_repeat_customer') }} = true\"\n\n  - name: repeat_customer_rate\n    description: \"Share of purchasing customers who ordered more than once (0-1).\"\n    label: \"Repeat customer rate\"\n    type: ratio\n    type_params:\n      numerator: repeat_customers\n      denominator: purchasing_customers\n\n  - name: premium_completed_revenue\n    description: \"Completed revenue on lines with unit price at least 100.\"\n    label: \"Premium completed revenue\"\n    type: simple\n    type_params:\n      measure: revenue\n    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 100\"\n\n  - name: french_market_revenue\n    description: \"Completed revenue of customers in France.\"\n    label: \"French market revenue\"\n    type: simple\n    type_params:\n      measure: revenue\n    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('customer__country') }} = 'France'\"\n"
+  },
+  "file_sha256": {
+   "dbt/retail_dwh/models/marts/semantic/_metrics.yml": "1413cf0c4e0310ad265699ff2e4887821fcd8aaefbffd24035700f0efe61990c"
+  },
+  "semantic_manifest_sha256": "3532b0e66f9758055ec4e8fc2085e15226c87adecdd6c72ab2554afb4c7515bf",
+  "catalog": {
+   "metrics": [
+    "active_customers",
+    "average_order_value",
+    "average_order_value_live",
+    "completed_revenue",
+    "cost",
+    "discount",
+    "french_market_revenue",
+    "gross_margin_rate",
+    "gross_profit",
+    "gross_profit_live",
+    "orders",
+    "orders_live",
+    "premium_completed_revenue",
+    "purchasing_customers",
+    "quantity_sold",
+    "repeat_customer_rate",
+    "repeat_customers",
+    "return_rate",
+    "returned_orders",
+    "revenue",
+    "revenue_live"
+   ],
+   "dimensions": [
+    "customer__city",
+    "customer__country",
+    "customer__is_repeat_customer",
+    "customer__last_order_date",
+    "customer__signup_date",
+    "product__category",
+    "product__product_name",
+    "sales__channel",
+    "sales__order_date",
+    "sales__status",
+    "sales__unit_price",
+    "sales_live__channel",
+    "sales_live__event_ts",
+    "sales_live__status",
+    "store__store_city",
+    "store__store_country"
+   ]
+  }
+ },
+ "patch_constraints": {
+  "editable_files": [
+   "dbt/retail_dwh/models/marts/semantic/_metrics.yml"
+  ],
+  "edit_mode": "IN_PLACE_EXISTING_METRIC",
+  "anchor_must_be_unique": true,
+  "no_new_metrics": true,
+  "no_removed_metrics": true,
+  "forbidden": [
+   "dbt models (SQL)",
+   "semantic models",
+   "raw data",
+   "metrics other than the impacted one"
+  ]
+ }
+}

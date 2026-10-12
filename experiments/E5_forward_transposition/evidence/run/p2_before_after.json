@@ -1,0 +1,560 @@
+{
+ "F6": {
+  "status": "P2_UNCHANGED_VERIFIED",
+  "per_snapshot": {
+   "PINNED": {
+    "yaml_block_identical": true,
+    "yaml_after": {
+     "name": "french_market_revenue",
+     "description": "Completed revenue of customers in France.",
+     "label": "French market revenue",
+     "type": "simple",
+     "type_params": {
+      "measure": "revenue"
+     },
+     "filter": "{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('customer__country') }} = 'France'"
+    },
+    "manifest_node_identical": true,
+    "native_identical": true,
+    "before_by_year": {
+     "2026": "155221.02",
+     "2025": "261972.06",
+     "2024": "310780.14"
+    },
+    "after_by_year": {
+     "2025": "261972.06",
+     "2024": "310780.14",
+     "2026": "155221.02"
+    },
+    "after_vs_P2_oracle": {
+     "status": "CONFORMS",
+     "reasons": [],
+     "membership": {
+      "expected_not_in_candidate": 0,
+      "candidate_not_expected": 0,
+      "amount_differs": 0
+     },
+     "candidate_by_year": {
+      "2025": "261972.06",
+      "2024": "310780.14",
+      "2026": "155221.02"
+     },
+     "reference_by_year": {
+      "2024": "310780.14",
+      "2025": "261972.06",
+      "2026": "155221.02"
+     }
+    },
+    "counterexamples": []
+   },
+   "BOUNDARY120": {
+    "yaml_block_identical": true,
+    "yaml_after": {
+     "name": "french_market_revenue",
+     "description": "Completed revenue of customers in France.",
+     "label": "French market revenue",
+     "type": "simple",
+     "type_params": {
+      "measure": "revenue"
+     },
+     "filter": "{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('customer__country') }} = 'France'"
+    },
+    "manifest_node_identical": true,
+    "native_identical": true,
+    "before_by_year": {
+     "2026": "155221.02",
+     "2025": "262267.77",
+     "2024": "310780.14"
+    },
+    "after_by_year": {
+     "2026": "155221.02",
+     "2025": "262267.77",
+     "2024": "310780.14"
+    },
+    "after_vs_P2_oracle": {
+     "status": "CONFORMS",
+     "reasons": [],
+     "membership": {
+      "expected_not_in_candidate": 0,
+      "candidate_not_expected": 0,
+      "amount_differs": 0
+     },
+     "candidate_by_year": {
+      "2026": "155221.02",
+      "2025": "262267.77",
+      "2024": "310780.14"
+     },
+     "reference_by_year": {
+      "2024": "310780.14",
+      "2025": "262267.77",
+      "2026": "155221.02"
+     }
+    },
+    "counterexamples": []
+   }
+  },
+  "yaml_block_identical": true,
+  "manifest_node_identical": true,
+  "native_identical": true,
+  "after_conforms_to_P2_oracle": true,
+  "has_row_counterexample": false
+ },
+ "N3": {
+  "status": "P2_CHANGED_DETECTED",
+  "per_snapshot": {
+   "PINNED": {
+    "yaml_block_identical": false,
+    "yaml_after": {
+     "name": "french_market_revenue",
+     "description": "Completed revenue of customers in France.",
+     "label": "French market revenue",
+     "type": "simple",
+     "type_params": {
+      "measure": "revenue"
+     },
+     "filter": "{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('customer__country') }} = 'France' AND {{ Dimension('sales__unit_price') }} >= 120"
+    },
+    "manifest_node_identical": false,
+    "native_identical": false,
+    "before_by_year": {
+     "2026": "155221.02",
+     "2025": "261972.06",
+     "2024": "310780.14"
+    },
+    "after_by_year": {
+     "2025": "244220.96",
+     "2024": "294969.89",
+     "2026": "146856.83"
+    },
+    "after_vs_P2_oracle": {
+     "status": "MISMATCH",
+     "reasons": [
+      "TOTAL_MISMATCH",
+      "MEMBERSHIP_MISMATCH"
+     ],
+     "membership": {
+      "expected_not_in_candidate": 248,
+      "candidate_not_expected": 0,
+      "amount_differs": 0
+     },
+     "candidate_by_year": {
+      "2025": "244220.96",
+      "2024": "294969.89",
+      "2026": "146856.83"
+     },
+     "reference_by_year": {
+      "2024": "310780.14",
+      "2025": "261972.06",
+      "2026": "155221.02"
+     }
+    },
+    "counterexamples": [
+     {
+      "order_item_id": "2",
+      "order_id": "1",
+      "order_date": "2025-09-08",
+      "status_raw": "completed",
+      "status": "completed",
+      "quantity": 3,
+      "unit_price_raw": "44.06",
+      "customer_id": "41",
+      "customer_country_raw": "France",
+      "customer_country": "France",
+      "store_id": "7",
+      "store_country": "Germany",
+      "expected_included": true,
+      "expected_amount": "132.18",
+      "actual_native_included": false,
+      "actual_native_amount": null,
+      "lineage": {
+       "patch_diff_files": [
+        "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+        "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+        "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+        "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+        "dbt/retail_dwh/models/marts/semantic/_metrics.yml"
+       ],
+       "compiled_sql_sha256": "96244953507a2eb39143d07272166a3ccff3fd5cfd70e3e484a5a20f1fef29f8",
+       "candidate_query": {
+        "metric": "french_market_revenue",
+        "group_by": [
+         "metric_time__year"
+        ],
+        "where": []
+       }
+      }
+     },
+     {
+      "order_item_id": "3",
+      "order_id": "1",
+      "order_date": "2025-09-08",
+      "status_raw": "completed",
+      "status": "completed",
+      "quantity": 5,
+      "unit_price_raw": "99.25",
+      "customer_id": "41",
+      "customer_country_raw": "France",
+      "customer_country": "France",
+      "store_id": "7",
+      "store_country": "Germany",
+      "expected_included": true,
+      "expected_amount": "496.25",
+      "actual_native_included": false,
+      "actual_native_amount": null,
+      "lineage": {
+       "patch_diff_files": [
+        "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+        "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+        "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+        "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+        "dbt/retail_dwh/models/marts/semantic/_metrics.yml"
+       ],
+       "compiled_sql_sha256": "96244953507a2eb39143d07272166a3ccff3fd5cfd70e3e484a5a20f1fef29f8",
+       "candidate_query": {
+        "metric": "french_market_revenue",
+        "group_by": [
+         "metric_time__year"
+        ],
+        "where": []
+       }
+      }
+     },
+     {
+      "order_item_id": "22",
+      "order_id": "9",
+      "order_date": "2025-04-23",
+      "status_raw": "completed",
+      "status": "completed",
+      "quantity": 3,
+      "unit_price_raw": "77.36",
+      "customer_id": "294",
+      "customer_country_raw": "france",
+      "customer_country": "France",
+      "store_id": "6",
+      "store_country": "France",
+      "expected_included": true,
+      "expected_amount": "232.08",
+      "actual_native_included": false,
+      "actual_native_amount": null,
+      "lineage": {
+       "patch_diff_files": [
+        "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+        "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+        "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+        "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+        "dbt/retail_dwh/models/marts/semantic/_metrics.yml"
+       ],
+       "compiled_sql_sha256": "96244953507a2eb39143d07272166a3ccff3fd5cfd70e3e484a5a20f1fef29f8",
+       "candidate_query": {
+        "metric": "french_market_revenue",
+        "group_by": [
+         "metric_time__year"
+        ],
+        "where": []
+       }
+      }
+     },
+     {
+      "order_item_id": "95",
+      "order_id": "40",
+      "order_date": "2024-06-28",
+      "status_raw": "completed",
+      "status": "completed",
+      "quantity": 2,
+      "unit_price_raw": "43.86",
+      "customer_id": "346",
+      "customer_country_raw": "FR",
+      "customer_country": "France",
+      "store_id": "4",
+      "store_country": "Italy",
+      "expected_included": true,
+      "expected_amount": "87.72",
+      "actual_native_included": false,
+      "actual_native_amount": null,
+      "lineage": {
+       "patch_diff_files": [
+        "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+        "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+        "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+        "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+        "dbt/retail_dwh/models/marts/semantic/_metrics.yml"
+       ],
+       "compiled_sql_sha256": "96244953507a2eb39143d07272166a3ccff3fd5cfd70e3e484a5a20f1fef29f8",
+       "candidate_query": {
+        "metric": "french_market_revenue",
+        "group_by": [
+         "metric_time__year"
+        ],
+        "where": []
+       }
+      }
+     },
+     {
+      "order_item_id": "110",
+      "order_id": "45",
+      "order_date": "2024-06-02",
+      "status_raw": "completed",
+      "status": "completed",
+      "quantity": 5,
+      "unit_price_raw": "34.2",
+      "customer_id": "294",
+      "customer_country_raw": "france",
+      "customer_country": "France",
+      "store_id": "9",
+      "store_country": "Italy",
+      "expected_included": true,
+      "expected_amount": "171.00",
+      "actual_native_included": false,
+      "actual_native_amount": null,
+      "lineage": {
+       "patch_diff_files": [
+        "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+        "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+        "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+        "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+        "dbt/retail_dwh/models/marts/semantic/_metrics.yml"
+       ],
+       "compiled_sql_sha256": "96244953507a2eb39143d07272166a3ccff3fd5cfd70e3e484a5a20f1fef29f8",
+       "candidate_query": {
+        "metric": "french_market_revenue",
+        "group_by": [
+         "metric_time__year"
+        ],
+        "where": []
+       }
+      }
+     }
+    ]
+   },
+   "BOUNDARY120": {
+    "yaml_block_identical": false,
+    "yaml_after": {
+     "name": "french_market_revenue",
+     "description": "Completed revenue of customers in France.",
+     "label": "French market revenue",
+     "type": "simple",
+     "type_params": {
+      "measure": "revenue"
+     },
+     "filter": "{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('customer__country') }} = 'France' AND {{ Dimension('sales__unit_price') }} >= 120"
+    },
+    "manifest_node_identical": false,
+    "native_identical": false,
+    "before_by_year": {
+     "2026": "155221.02",
+     "2025": "262267.77",
+     "2024": "310780.14"
+    },
+    "after_by_year": {
+     "2026": "146856.83",
+     "2025": "244580.96",
+     "2024": "294969.89"
+    },
+    "after_vs_P2_oracle": {
+     "status": "MISMATCH",
+     "reasons": [
+      "TOTAL_MISMATCH",
+      "MEMBERSHIP_MISMATCH"
+     ],
+     "membership": {
+      "expected_not_in_candidate": 247,
+      "candidate_not_expected": 0,
+      "amount_differs": 0
+     },
+     "candidate_by_year": {
+      "2026": "146856.83",
+      "2025": "244580.96",
+      "2024": "294969.89"
+     },
+     "reference_by_year": {
+      "2024": "310780.14",
+      "2025": "262267.77",
+      "2026": "155221.02"
+     }
+    },
+    "counterexamples": [
+     {
+      "order_item_id": "2",
+      "order_id": "1",
+      "order_date": "2025-09-08",
+      "status_raw": "completed",
+      "status": "completed",
+      "quantity": 3,
+      "unit_price_raw": "99.99",
+      "customer_id": "41",
+      "customer_country_raw": "France",
+      "customer_country": "France",
+      "store_id": "7",
+      "store_country": "Germany",
+      "expected_included": true,
+      "expected_amount": "299.97",
+      "actual_native_included": false,
+      "actual_native_amount": null,
+      "lineage": {
+       "patch_diff_files": [
+        "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+        "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+        "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+        "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+        "dbt/retail_dwh/models/marts/semantic/_metrics.yml"
+       ],
+       "compiled_sql_sha256": "96244953507a2eb39143d07272166a3ccff3fd5cfd70e3e484a5a20f1fef29f8",
+       "candidate_query": {
+        "metric": "french_market_revenue",
+        "group_by": [
+         "metric_time__year"
+        ],
+        "where": []
+       }
+      }
+     },
+     {
+      "order_item_id": "3",
+      "order_id": "1",
+      "order_date": "2025-09-08",
+      "status_raw": "completed",
+      "status": "completed",
+      "quantity": 5,
+      "unit_price_raw": "99.25",
+      "customer_id": "41",
+      "customer_country_raw": "France",
+      "customer_country": "France",
+      "store_id": "7",
+      "store_country": "Germany",
+      "expected_included": true,
+      "expected_amount": "496.25",
+      "actual_native_included": false,
+      "actual_native_amount": null,
+      "lineage": {
+       "patch_diff_files": [
+        "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+        "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+        "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+        "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+        "dbt/retail_dwh/models/marts/semantic/_metrics.yml"
+       ],
+       "compiled_sql_sha256": "96244953507a2eb39143d07272166a3ccff3fd5cfd70e3e484a5a20f1fef29f8",
+       "candidate_query": {
+        "metric": "french_market_revenue",
+        "group_by": [
+         "metric_time__year"
+        ],
+        "where": []
+       }
+      }
+     },
+     {
+      "order_item_id": "95",
+      "order_id": "40",
+      "order_date": "2024-06-28",
+      "status_raw": "completed",
+      "status": "completed",
+      "quantity": 2,
+      "unit_price_raw": "43.86",
+      "customer_id": "346",
+      "customer_country_raw": "FR",
+      "customer_country": "France",
+      "store_id": "4",
+      "store_country": "Italy",
+      "expected_included": true,
+      "expected_amount": "87.72",
+      "actual_native_included": false,
+      "actual_native_amount": null,
+      "lineage": {
+       "patch_diff_files": [
+        "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+        "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+        "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+        "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+        "dbt/retail_dwh/models/marts/semantic/_metrics.yml"
+       ],
+       "compiled_sql_sha256": "96244953507a2eb39143d07272166a3ccff3fd5cfd70e3e484a5a20f1fef29f8",
+       "candidate_query": {
+        "metric": "french_market_revenue",
+        "group_by": [
+         "metric_time__year"
+        ],
+        "where": []
+       }
+      }
+     },
+     {
+      "order_item_id": "110",
+      "order_id": "45",
+      "order_date": "2024-06-02",
+      "status_raw": "completed",
+      "status": "completed",
+      "quantity": 5,
+      "unit_price_raw": "34.2",
+      "customer_id": "294",
+      "customer_country_raw": "france",
+      "customer_country": "France",
+      "store_id": "9",
+      "store_country": "Italy",
+      "expected_included": true,
+      "expected_amount": "171.00",
+      "actual_native_included": false,
+      "actual_native_amount": null,
+      "lineage": {
+       "patch_diff_files": [
+        "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+        "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+        "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+        "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+        "dbt/retail_dwh/models/marts/semantic/_metrics.yml"
+       ],
+       "compiled_sql_sha256": "96244953507a2eb39143d07272166a3ccff3fd5cfd70e3e484a5a20f1fef29f8",
+       "candidate_query": {
+        "metric": "french_market_revenue",
+        "group_by": [
+         "metric_time__year"
+        ],
+        "where": []
+       }
+      }
+     },
+     {
+      "order_item_id": "131",
+      "order_id": "51",
+      "order_date": "2024-09-07",
+      "status_raw": "completed",
+      "status": "completed",
+      "quantity": 2,
+      "unit_price_raw": "56.07",
+      "customer_id": "307",
+      "customer_country_raw": " France ",
+      "customer_country": "France",
+      "store_id": "1",
+      "store_country": "France",
+      "expected_included": true,
+      "expected_amount": "112.14",
+      "actual_native_included": false,
+      "actual_native_amount": null,
+      "lineage": {
+       "patch_diff_files": [
+        "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+        "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+        "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+        "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+        "dbt/retail_dwh/models/marts/semantic/_metrics.yml"
+       ],
+       "compiled_sql_sha256": "96244953507a2eb39143d07272166a3ccff3fd5cfd70e3e484a5a20f1fef29f8",
+       "candidate_query": {
+        "metric": "french_market_revenue",
+        "group_by": [
+         "metric_time__year"
+        ],
+        "where": []
+       }
+      }
+     }
+    ]
+   }
+  },
+  "yaml_block_identical": false,
+  "manifest_node_identical": false,
+  "native_identical": false,
+  "after_conforms_to_P2_oracle": false,
+  "has_row_counterexample": true
+ }
+}

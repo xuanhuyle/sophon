@@ -1,0 +1,183 @@
+{
+ "build": {
+  "ok": true,
+  "steps": {
+   "load_bronze": {
+    "exit_code": 0
+   },
+   "dbt_build": {
+    "exit_code": 0
+   },
+   "dbt_parse": {
+    "exit_code": 0
+   }
+  },
+  "semantic_manifest_sha256": "3532b0e66f9758055ec4e8fc2085e15226c87adecdd6c72ab2554afb4c7515bf",
+  "raw_csv_sha256": {
+   "customers.csv": "e570cfec57af94cee3b974db5642fe0c276b495f83dd82e6af077dbb3784680d",
+   "order_items.csv": "513de0a77e90c7312a2935d47efcced60b6811a33de589e1a4fe63d2045e5f26",
+   "orders.csv": "be942a616a816158924f538b8f9cde29de773bc324411c5c6f7c83c980ec4f03",
+   "products.csv": "3783c0e35d83c571e8fc18bbafa98f59e217944288a92f590b6a15d4320c2311",
+   "stores.csv": "78d2cbff192a861f4f880bcc0c25ddc43df72bfecf8a3517abf18723109f8c44"
+  },
+  "error": null
+ },
+ "queries": {
+  "p1_year": {
+   "ok": true,
+   "exit_code": 0,
+   "n_rows": 3,
+   "rows": [
+    {
+     "metric_time__year": "2025-01-01 00:00:00",
+     "premium_completed_revenue": "1400232.75"
+    },
+    {
+     "metric_time__year": "2024-01-01 00:00:00",
+     "premium_completed_revenue": "1634542.08"
+    },
+    {
+     "metric_time__year": "2026-01-01 00:00:00",
+     "premium_completed_revenue": "752191.54"
+    }
+   ],
+   "compiled_sql": "SELECT\n  metric_time__year\n  , SUM(premium_completed_revenue) AS premium_completed_revenue\nFROM (\n  SELECT\n    DATE_TRUNC('year', order_date) AS metric_time__year\n    , status AS sales__status\n    , unit_price AS sales__unit_price\n    , revenue AS premium_completed_revenue\n  FROM \"warehouse\".\"gold\".\"fact_sales\" sales_src_10000\n) subq_2\nWHERE sales__status = 'completed' AND sales__unit_price >= 100\nGROUP BY\n  metric_time__year",
+   "error": null
+  },
+  "p2_year": {
+   "ok": true,
+   "exit_code": 0,
+   "n_rows": 3,
+   "rows": [
+    {
+     "metric_time__year": "2026-01-01 00:00:00",
+     "french_market_revenue": "155221.02"
+    },
+    {
+     "metric_time__year": "2025-01-01 00:00:00",
+     "french_market_revenue": "261972.06"
+    },
+    {
+     "metric_time__year": "2024-01-01 00:00:00",
+     "french_market_revenue": "310780.14"
+    }
+   ],
+   "compiled_sql": "SELECT\n  metric_time__year\n  , SUM(french_market_revenue) AS french_market_revenue\nFROM (\n  SELECT\n    DATE_TRUNC('year', sales_src_10000.order_date) AS metric_time__year\n    , sales_src_10000.status AS sales__status\n    , customers_src_10000.country AS customer__country\n    , sales_src_10000.revenue AS french_market_revenue\n  FROM \"warehouse\".\"gold\".\"fact_sales\" sales_src_10000\n  LEFT OUTER JOIN\n    \"warehouse\".\"gold\".\"dim_customers\" customers_src_10000\n  ON\n    sales_src_10000.customer_id = customers_src_10000.customer_id\n) subq_5\nWHERE sales__status = 'completed' AND customer__country = 'France'\nGROUP BY\n  metric_time__year",
+   "error": null
+  },
+  "p1_line": {
+   "ok": true,
+   "exit_code": 0,
+   "n_rows": 3305,
+   "rows": null,
+   "compiled_sql": "SELECT\n  sales\n  , SUM(premium_completed_revenue) AS premium_completed_revenue\nFROM (\n  SELECT\n    sales_id AS sales\n    , status AS sales__status\n    , unit_price AS sales__unit_price\n    , revenue AS premium_completed_revenue\n  FROM \"warehouse\".\"gold\".\"fact_sales\" sales_src_10000\n) subq_2\nWHERE sales__status = 'completed' AND sales__unit_price >= 100\nGROUP BY\n  sales",
+   "error": null
+  },
+  "p1_year_ge2025": {
+   "ok": true,
+   "exit_code": 0,
+   "n_rows": 2,
+   "rows": [
+    {
+     "metric_time__year": "2025-01-01 00:00:00",
+     "premium_completed_revenue": "1400232.75"
+    },
+    {
+     "metric_time__year": "2026-01-01 00:00:00",
+     "premium_completed_revenue": "752191.54"
+    }
+   ],
+   "compiled_sql": "SELECT\n  metric_time__year\n  , SUM(premium_completed_revenue) AS premium_completed_revenue\nFROM (\n  SELECT\n    DATE_TRUNC('day', order_date) AS metric_time__day\n    , DATE_TRUNC('year', order_date) AS metric_time__year\n    , status AS sales__status\n    , unit_price AS sales__unit_price\n    , revenue AS premium_completed_revenue\n  FROM \"warehouse\".\"gold\".\"fact_sales\" sales_src_10000\n) subq_2\nWHERE (\n  sales__status = 'completed' AND sales__unit_price >= 100\n) AND (\n  metric_time__day >= '2025-01-01'\n)\nGROUP BY\n  metric_time__year",
+   "error": null
+  },
+  "p1_year_lt2025": {
+   "ok": true,
+   "exit_code": 0,
+   "n_rows": 1,
+   "rows": [
+    {
+     "metric_time__year": "2024-01-01 00:00:00",
+     "premium_completed_revenue": "1634542.08"
+    }
+   ],
+   "compiled_sql": "SELECT\n  metric_time__year\n  , SUM(premium_completed_revenue) AS premium_completed_revenue\nFROM (\n  SELECT\n    DATE_TRUNC('day', order_date) AS metric_time__day\n    , DATE_TRUNC('year', order_date) AS metric_time__year\n    , status AS sales__status\n    , unit_price AS sales__unit_price\n    , revenue AS premium_completed_revenue\n  FROM \"warehouse\".\"gold\".\"fact_sales\" sales_src_10000\n) subq_2\nWHERE (\n  sales__status = 'completed' AND sales__unit_price >= 100\n) AND (\n  metric_time__day < '2025-01-01'\n)\nGROUP BY\n  metric_time__year",
+   "error": null
+  },
+  "p1_line_ge2025": {
+   "ok": true,
+   "exit_code": 0,
+   "n_rows": 1903,
+   "rows": null,
+   "compiled_sql": "SELECT\n  sales\n  , SUM(premium_completed_revenue) AS premium_completed_revenue\nFROM (\n  SELECT\n    DATE_TRUNC('day', order_date) AS metric_time__day\n    , sales_id AS sales\n    , status AS sales__status\n    , unit_price AS sales__unit_price\n    , revenue AS premium_completed_revenue\n  FROM \"warehouse\".\"gold\".\"fact_sales\" sales_src_10000\n) subq_2\nWHERE (\n  sales__status = 'completed' AND sales__unit_price >= 100\n) AND (\n  metric_time__day >= '2025-01-01'\n)\nGROUP BY\n  sales",
+   "error": null
+  }
+ },
+ "manifest_metrics": [
+  "revenue_live",
+  "gross_profit_live",
+  "orders_live",
+  "average_order_value_live",
+  "revenue",
+  "cost",
+  "gross_profit",
+  "quantity_sold",
+  "discount",
+  "orders",
+  "active_customers",
+  "completed_revenue",
+  "returned_orders",
+  "gross_margin_rate",
+  "average_order_value",
+  "return_rate",
+  "purchasing_customers",
+  "repeat_customers",
+  "repeat_customer_rate",
+  "premium_completed_revenue",
+  "french_market_revenue"
+ ],
+ "manifest_p2_node": {
+  "name": "french_market_revenue",
+  "description": "Completed revenue of customers in France.",
+  "type": "simple",
+  "type_params": {
+   "measure": {
+    "name": "revenue",
+    "filter": null,
+    "alias": null,
+    "join_to_timespine": false,
+    "fill_nulls_with": null
+   },
+   "numerator": null,
+   "denominator": null,
+   "expr": null,
+   "window": null,
+   "grain_to_date": null,
+   "metrics": [],
+   "conversion_type_params": null,
+   "cumulative_type_params": null,
+   "input_measures": [
+    {
+     "name": "revenue",
+     "filter": null,
+     "alias": null,
+     "join_to_timespine": false,
+     "fill_nulls_with": null
+    }
+   ]
+  },
+  "filter": {
+   "where_filters": [
+    {
+     "where_sql_template": "{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('customer__country') }} = 'France'"
+    }
+   ]
+  },
+  "metadata": null,
+  "label": "French market revenue",
+  "config": {
+   "meta": {}
+  },
+  "time_granularity": null
+ },
+ "metrics_yaml": "metrics:\n  # --- Simple metrics: one measure, surfaced as a business number -------\n  - name: revenue\n    description: \"Total sales revenue.\"\n    label: \"Revenue\"\n    type: simple\n    type_params:\n      measure: revenue\n\n  - name: cost\n    description: \"Total cost of goods sold.\"\n    label: \"Cost\"\n    type: simple\n    type_params:\n      measure: cost\n\n  - name: gross_profit\n    description: \"Revenue minus cost.\"\n    label: \"Gross profit\"\n    type: simple\n    type_params:\n      measure: gross_profit\n\n  - name: quantity_sold\n    description: \"Total units sold.\"\n    label: \"Quantity sold\"\n    type: simple\n    type_params:\n      measure: quantity_sold\n\n  - name: discount\n    description: \"Total discount granted.\"\n    label: \"Discount\"\n    type: simple\n    type_params:\n      measure: discount\n\n  - name: orders\n    description: \"Number of distinct orders.\"\n    label: \"Orders\"\n    type: simple\n    type_params:\n      measure: order_count\n\n  - name: active_customers\n    description: \"Distinct customers who placed at least one order.\"\n    label: \"Active customers\"\n    type: simple\n    type_params:\n      measure: customer_count\n\n  # --- Filtered simple metrics -----------------------------------------\n  - name: completed_revenue\n    description: \"Revenue from completed orders only.\"\n    label: \"Completed revenue\"\n    type: simple\n    type_params:\n      measure: revenue\n    filter: \"{{ Dimension('sales__status') }} = 'completed'\"\n\n  - name: returned_orders\n    description: \"Orders that were returned.\"\n    label: \"Returned orders\"\n    type: simple\n    type_params:\n      measure: order_count\n    filter: \"{{ Dimension('sales__status') }} = 'returned'\"\n\n  # --- Ratio metrics ----------------------------------------------------\n  - name: gross_margin_rate\n    description: \"Gross profit divided by revenue.\"\n    label: \"Gross margin rate\"\n    type: ratio\n    type_params:\n      numerator: gross_profit\n      denominator: revenue\n\n  - name: average_order_value\n    description: \"Revenue per order (AOV).\"\n    label: \"Average order value\"\n    type: ratio\n    type_params:\n      numerator: revenue\n      denominator: orders\n\n  # --- Derived metric: a formula over other metrics ---------------------\n  - name: return_rate\n    description: \"Share of orders that were returned, in percent.\"\n    label: \"Return rate (%)\"\n    type: derived\n    type_params:\n      expr: \"returned_orders / nullif(orders, 0) * 100\"\n      metrics:\n        - name: returned_orders\n        - name: orders\n\n  # --- Customer loyalty: repeat-purchase behaviour ----------------------\n  - name: purchasing_customers\n    description: \"Customers who have placed at least one order (loyalty denominator).\"\n    label: \"Purchasing customers\"\n    type: simple\n    type_params:\n      measure: purchasing_customer_count\n\n  - name: repeat_customers\n    description: \"Customers who ordered on more than one occasion.\"\n    label: \"Repeat customers\"\n    type: simple\n    type_params:\n      measure: purchasing_customer_count\n    filter: \"{{ Dimension('customer__is_repeat_customer') }} = true\"\n\n  - name: repeat_customer_rate\n    description: \"Share of purchasing customers who ordered more than once (0-1).\"\n    label: \"Repeat customer rate\"\n    type: ratio\n    type_params:\n      numerator: repeat_customers\n      denominator: purchasing_customers\n\n  - name: premium_completed_revenue\n    description: \"Completed revenue on lines with unit price at least 100.\"\n    label: \"Premium completed revenue\"\n    type: simple\n    type_params:\n      measure: revenue\n    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 100\"\n\n  - name: french_market_revenue\n    description: \"Completed revenue of customers in France.\"\n    label: \"French market revenue\"\n    type: simple\n    type_params:\n      measure: revenue\n    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('customer__country') }} = 'France'\"\n"
+}

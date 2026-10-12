@@ -1,0 +1,730 @@
+{
+ "label": "E5 frozen reference (LAB). Oracle = src/oracle.py over raw CSVs. Hidden from the transposer.",
+ "registered_snapshots": {
+  "PINNED": {
+   "csv_sha256": {
+    "customers.csv": "e570cfec57af94cee3b974db5642fe0c276b495f83dd82e6af077dbb3784680d",
+    "order_items.csv": "513de0a77e90c7312a2935d47efcced60b6811a33de589e1a4fe63d2045e5f26",
+    "orders.csv": "be942a616a816158924f538b8f9cde29de773bc324411c5c6f7c83c980ec4f03",
+    "products.csv": "3783c0e35d83c571e8fc18bbafa98f59e217944288a92f590b6a15d4320c2311",
+    "stores.csv": "78d2cbff192a861f4f880bcc0c25ddc43df72bfecf8a3517abf18723109f8c44"
+   },
+   "edits": []
+  },
+  "BOUNDARY120": {
+   "csv_sha256": {
+    "customers.csv": "e570cfec57af94cee3b974db5642fe0c276b495f83dd82e6af077dbb3784680d",
+    "order_items.csv": "a4b81aa4c372a77bb74289915e9de5ddd7acee1212d9b5efca70d0a205027d08",
+    "orders.csv": "be942a616a816158924f538b8f9cde29de773bc324411c5c6f7c83c980ec4f03",
+    "products.csv": "3783c0e35d83c571e8fc18bbafa98f59e217944288a92f590b6a15d4320c2311",
+    "stores.csv": "78d2cbff192a861f4f880bcc0c25ddc43df72bfecf8a3517abf18723109f8c44"
+   },
+   "edits": [
+    {
+     "file": "order_items.csv",
+     "order_item_id": "2",
+     "order_id": "1",
+     "year": "2025",
+     "status": "completed",
+     "field": "unit_price",
+     "old": "44.06",
+     "new": "99.99"
+    },
+    {
+     "file": "order_items.csv",
+     "order_item_id": "15",
+     "order_id": "6",
+     "year": "2025",
+     "status": "completed",
+     "field": "unit_price",
+     "old": "65.97",
+     "new": "100.00"
+    },
+    {
+     "file": "order_items.csv",
+     "order_item_id": "21",
+     "order_id": "8",
+     "year": "2025",
+     "status": "completed",
+     "field": "unit_price",
+     "old": "12.97",
+     "new": "119.99"
+    },
+    {
+     "file": "order_items.csv",
+     "order_item_id": "22",
+     "order_id": "9",
+     "year": "2025",
+     "status": "completed",
+     "field": "unit_price",
+     "old": "77.36",
+     "new": "120.00"
+    },
+    {
+     "file": "order_items.csv",
+     "order_item_id": "27",
+     "order_id": "11",
+     "year": "2025",
+     "status": "completed",
+     "field": "unit_price",
+     "old": "74.72",
+     "new": "120.01"
+    },
+    {
+     "file": "order_items.csv",
+     "order_item_id": "58",
+     "order_id": "24",
+     "year": "2024",
+     "status": "completed",
+     "field": "unit_price",
+     "old": "74.17",
+     "new": "100.00"
+    },
+    {
+     "file": "order_items.csv",
+     "order_item_id": "60",
+     "order_id": "24",
+     "year": "2024",
+     "status": "completed",
+     "field": "unit_price",
+     "old": "37.28",
+     "new": "119.99"
+    },
+    {
+     "file": "order_items.csv",
+     "order_item_id": "19",
+     "order_id": "7",
+     "year": "2025",
+     "status": "returned",
+     "field": "unit_price",
+     "old": "68.23",
+     "new": "120.00"
+    },
+    {
+     "file": "order_items.csv",
+     "order_item_id": "11",
+     "order_id": "4",
+     "year": "2025",
+     "status": "cancelled",
+     "field": "unit_price",
+     "old": "63.19",
+     "new": "120.01"
+    },
+    {
+     "file": "order_items.csv",
+     "order_item_id": "9",
+     "order_id": "3",
+     "year": "2024",
+     "status": "returned",
+     "field": "unit_price",
+     "old": "73.07",
+     "new": "100.00"
+    }
+   ]
+  }
+ },
+ "versions": {
+  "P1v1": {
+   "version_id": "P1_v1",
+   "threshold": "100",
+   "effective_from": "2024-01-01"
+  },
+  "P1v2": {
+   "version_id": "P1_v2",
+   "threshold": "120",
+   "effective_from": "2025-01-01",
+   "supersedes_P1v1_from": "2025-01-01"
+  },
+  "P2": {
+   "record": "E3 S2",
+   "reading": "R_CUSTOMER_COUNTRY"
+  }
+ },
+ "reference_results": {
+  "P1v1|ALL@PINNED": {
+   "policy": "P1v1",
+   "window": [
+    null,
+    null
+   ],
+   "by_year": {
+    "2024": "1634542.08",
+    "2025": "1400232.75",
+    "2026": "752191.54"
+   },
+   "line_count": 3305,
+   "lines_sha256": "7150b4fee8651f0ef02c7c1f5f8ebe98d1b9c4cf8a395482d2932bf941ffed3d"
+  },
+  "P1v2|ALL@PINNED": {
+   "policy": "P1v2",
+   "window": [
+    null,
+    null
+   ],
+   "by_year": {
+    "2024": "1615473.58",
+    "2025": "1384728.90",
+    "2026": "746528.40"
+   },
+   "line_count": 3183,
+   "lines_sha256": "8ebc6b0c38028965bcba6052019f50637817ede2b475597d97d51b6bba9ffdfd"
+  },
+  "P1v1|<2025-01-01@PINNED": {
+   "policy": "P1v1",
+   "window": [
+    null,
+    "2025-01-01"
+   ],
+   "by_year": {
+    "2024": "1634542.08"
+   },
+   "line_count": 1402,
+   "lines_sha256": "aab3e12c3b0ad2ce88bd8c1007a5757316395c4b11bb05e40c2405d9b0e21141"
+  },
+  "P1v2|>=2025-01-01@PINNED": {
+   "policy": "P1v2",
+   "window": [
+    "2025-01-01",
+    null
+   ],
+   "by_year": {
+    "2025": "1384728.90",
+    "2026": "746528.40"
+   },
+   "line_count": 1834,
+   "lines_sha256": "8f19e5b69c38d4bb9852e411cba82b82cd5222c9d0cb19aebe3219011fe24b3c"
+  },
+  "P1v1|>=2025-01-01@PINNED": {
+   "policy": "P1v1",
+   "window": [
+    "2025-01-01",
+    null
+   ],
+   "by_year": {
+    "2025": "1400232.75",
+    "2026": "752191.54"
+   },
+   "line_count": 1903,
+   "lines_sha256": "f1c4127774b14a0f19423ac74f48e5416ad3d9d2bbe35da772f2d5fae76d9f79"
+  },
+  "P2|ALL@PINNED": {
+   "policy": "P2",
+   "window": [
+    null,
+    null
+   ],
+   "by_year": {
+    "2024": "310780.14",
+    "2025": "261972.06",
+    "2026": "155221.02"
+   },
+   "line_count": 840,
+   "lines_sha256": "60f5eb406d25d8953a872ce284737a895724a0e7e314730d9179248b12bde9a4"
+  },
+  "ROUTED@K_POST@PINNED": {
+   "segments": [
+    [
+     "P1v1",
+     null,
+     "2025-01-01"
+    ],
+    [
+     "P1v2",
+     "2025-01-01",
+     null
+    ]
+   ],
+   "by_year": {
+    "2024": "1634542.08",
+    "2025": "1384728.90",
+    "2026": "746528.40"
+   },
+   "line_count": 3236,
+   "lines_sha256": "fc6c8e4283d06d87713b2091fb45f6d6acb3b92b3ba7c880b4c19ea1148cb586"
+  },
+  "ROUTED@K_PRE@PINNED": {
+   "segments": [
+    [
+     "P1v1",
+     null,
+     null
+    ]
+   ],
+   "by_year": {
+    "2024": "1634542.08",
+    "2025": "1400232.75",
+    "2026": "752191.54"
+   },
+   "line_count": 3305,
+   "lines_sha256": "7150b4fee8651f0ef02c7c1f5f8ebe98d1b9c4cf8a395482d2932bf941ffed3d"
+  },
+  "P1v1|ALL@BOUNDARY120": {
+   "policy": "P1v1",
+   "window": [
+    null,
+    null
+   ],
+   "by_year": {
+    "2024": "1635322.04",
+    "2025": "1401292.74",
+    "2026": "752191.54"
+   },
+   "line_count": 3311,
+   "lines_sha256": "ba092bd538d336a9814bb52abbb94bb5b4abc54aa0d434b8e43dc2de206be3e5"
+  },
+  "P1v2|ALL@BOUNDARY120": {
+   "policy": "P1v2",
+   "window": [
+    null,
+    null
+   ],
+   "by_year": {
+    "2024": "1615473.58",
+    "2025": "1385328.92",
+    "2026": "746528.40"
+   },
+   "line_count": 3185,
+   "lines_sha256": "97a4f83a0c14b4808e08834b6d24b88b323e8b47b4b9ce0a715aea6242ac7328"
+  },
+  "P1v1|<2025-01-01@BOUNDARY120": {
+   "policy": "P1v1",
+   "window": [
+    null,
+    "2025-01-01"
+   ],
+   "by_year": {
+    "2024": "1635322.04"
+   },
+   "line_count": 1404,
+   "lines_sha256": "cdbfe4bdb6be5c80bc6204f25076fcabda64f4b86ee9bab8d497f204b7f57d7d"
+  },
+  "P1v2|>=2025-01-01@BOUNDARY120": {
+   "policy": "P1v2",
+   "window": [
+    "2025-01-01",
+    null
+   ],
+   "by_year": {
+    "2025": "1385328.92",
+    "2026": "746528.40"
+   },
+   "line_count": 1836,
+   "lines_sha256": "9e950670476728959a7949dd4febd726cda49e74e53ebc2533e1825f50efc972"
+  },
+  "P1v1|>=2025-01-01@BOUNDARY120": {
+   "policy": "P1v1",
+   "window": [
+    "2025-01-01",
+    null
+   ],
+   "by_year": {
+    "2025": "1401292.74",
+    "2026": "752191.54"
+   },
+   "line_count": 1907,
+   "lines_sha256": "292511b967db8af71e8966c93741eac80511d11d5bb41280c2ebc950ab4ebca1"
+  },
+  "P2|ALL@BOUNDARY120": {
+   "policy": "P2",
+   "window": [
+    null,
+    null
+   ],
+   "by_year": {
+    "2024": "310780.14",
+    "2025": "262267.77",
+    "2026": "155221.02"
+   },
+   "line_count": 840,
+   "lines_sha256": "8d55c77024bff03831a8d4ffe8c6676dcaf503c7dd9f619103b8a2a22f81c064"
+  },
+  "ROUTED@K_POST@BOUNDARY120": {
+   "segments": [
+    [
+     "P1v1",
+     null,
+     "2025-01-01"
+    ],
+    [
+     "P1v2",
+     "2025-01-01",
+     null
+    ]
+   ],
+   "by_year": {
+    "2024": "1635322.04",
+    "2025": "1385328.92",
+    "2026": "746528.40"
+   },
+   "line_count": 3240,
+   "lines_sha256": "2853d81c755eb2fce81076dc6de48757af8b4e322911ccc62b50e747498259f1"
+  },
+  "ROUTED@K_PRE@BOUNDARY120": {
+   "segments": [
+    [
+     "P1v1",
+     null,
+     null
+    ]
+   ],
+   "by_year": {
+    "2024": "1635322.04",
+    "2025": "1401292.74",
+    "2026": "752191.54"
+   },
+   "line_count": 3311,
+   "lines_sha256": "ba092bd538d336a9814bb52abbb94bb5b4abc54aa0d434b8e43dc2de206be3e5"
+  }
+ },
+ "discriminating_rows": {
+  "PINNED": {
+   "v1_vs_v2_completed_100_to_lt120_from_2025": {
+    "count": 69,
+    "first_ids": [
+     "169",
+     "170",
+     "171",
+     "379",
+     "438",
+     "454",
+     "492",
+     "675",
+     "690",
+     "699",
+     "860",
+     "1000"
+    ],
+    "facts": [
+     {
+      "order_item_id": "169",
+      "order_date": "2025-09-26",
+      "status": "completed",
+      "quantity": 4,
+      "unit_price": "112.62"
+     },
+     {
+      "order_item_id": "170",
+      "order_date": "2025-09-26",
+      "status": "completed",
+      "quantity": 2,
+      "unit_price": "110.28"
+     },
+     {
+      "order_item_id": "171",
+      "order_date": "2025-10-31",
+      "status": "completed",
+      "quantity": 1,
+      "unit_price": "112.22"
+     }
+    ]
+   },
+   "ge119_vs_ge120_completed_119_to_lt120_from_2025": {
+    "count": 10,
+    "first_ids": [
+     "454",
+     "690",
+     "1199",
+     "1690",
+     "2220",
+     "2586",
+     "2596",
+     "3218",
+     "4610",
+     "4828"
+    ],
+    "facts": [
+     {
+      "order_item_id": "454",
+      "order_date": "2025-11-02",
+      "status": "completed",
+      "quantity": 1,
+      "unit_price": "119.28"
+     },
+     {
+      "order_item_id": "690",
+      "order_date": "2025-05-04",
+      "status": "completed",
+      "quantity": 2,
+      "unit_price": "119.24"
+     },
+     {
+      "order_item_id": "1199",
+      "order_date": "2025-07-29",
+      "status": "completed",
+      "quantity": 3,
+      "unit_price": "119.24"
+     }
+    ]
+   },
+   "gt120_vs_ge120_completed_exactly_120_from_2025": {
+    "count": 0,
+    "first_ids": [],
+    "facts": []
+   },
+   "noncancelled_vs_completed_returned_ge120_from_2025": {
+    "count": 244,
+    "first_ids": [
+     "16",
+     "17",
+     "18",
+     "36",
+     "37",
+     "38",
+     "39",
+     "74",
+     "229",
+     "230",
+     "246",
+     "247"
+    ],
+    "facts": [
+     {
+      "order_item_id": "16",
+      "order_date": "2025-04-07",
+      "status": "returned",
+      "quantity": 3,
+      "unit_price": "630.92"
+     },
+     {
+      "order_item_id": "17",
+      "order_date": "2025-04-07",
+      "status": "returned",
+      "quantity": 5,
+      "unit_price": "474.37"
+     },
+     {
+      "order_item_id": "18",
+      "order_date": "2025-04-07",
+      "status": "returned",
+      "quantity": 3,
+      "unit_price": "415.42"
+     }
+    ]
+   },
+   "history_2024_completed_100_to_lt120": {
+    "count": 53,
+    "first_ids": [
+     "28",
+     "143",
+     "388",
+     "391",
+     "424",
+     "721",
+     "1092",
+     "1322",
+     "1429",
+     "1554",
+     "1627",
+     "1647"
+    ],
+    "facts": [
+     {
+      "order_item_id": "28",
+      "order_date": "2024-11-26",
+      "status": "completed",
+      "quantity": 5,
+      "unit_price": "110.28"
+     },
+     {
+      "order_item_id": "143",
+      "order_date": "2024-09-05",
+      "status": "completed",
+      "quantity": 5,
+      "unit_price": "110.28"
+     },
+     {
+      "order_item_id": "388",
+      "order_date": "2024-06-19",
+      "status": "completed",
+      "quantity": 4,
+      "unit_price": "112.22"
+     }
+    ]
+   }
+  },
+  "BOUNDARY120": {
+   "v1_vs_v2_completed_100_to_lt120_from_2025": {
+    "count": 71,
+    "first_ids": [
+     "15",
+     "21",
+     "169",
+     "170",
+     "171",
+     "379",
+     "438",
+     "454",
+     "492",
+     "675",
+     "690",
+     "699"
+    ],
+    "facts": [
+     {
+      "order_item_id": "15",
+      "order_date": "2025-07-29",
+      "status": "completed",
+      "quantity": 1,
+      "unit_price": "100.00"
+     },
+     {
+      "order_item_id": "21",
+      "order_date": "2025-06-04",
+      "status": "completed",
+      "quantity": 3,
+      "unit_price": "119.99"
+     },
+     {
+      "order_item_id": "169",
+      "order_date": "2025-09-26",
+      "status": "completed",
+      "quantity": 4,
+      "unit_price": "112.62"
+     }
+    ]
+   },
+   "ge119_vs_ge120_completed_119_to_lt120_from_2025": {
+    "count": 11,
+    "first_ids": [
+     "21",
+     "454",
+     "690",
+     "1199",
+     "1690",
+     "2220",
+     "2586",
+     "2596",
+     "3218",
+     "4610",
+     "4828"
+    ],
+    "facts": [
+     {
+      "order_item_id": "21",
+      "order_date": "2025-06-04",
+      "status": "completed",
+      "quantity": 3,
+      "unit_price": "119.99"
+     },
+     {
+      "order_item_id": "454",
+      "order_date": "2025-11-02",
+      "status": "completed",
+      "quantity": 1,
+      "unit_price": "119.28"
+     },
+     {
+      "order_item_id": "690",
+      "order_date": "2025-05-04",
+      "status": "completed",
+      "quantity": 2,
+      "unit_price": "119.24"
+     }
+    ]
+   },
+   "gt120_vs_ge120_completed_exactly_120_from_2025": {
+    "count": 1,
+    "first_ids": [
+     "22"
+    ],
+    "facts": [
+     {
+      "order_item_id": "22",
+      "order_date": "2025-04-23",
+      "status": "completed",
+      "quantity": 3,
+      "unit_price": "120.00"
+     }
+    ]
+   },
+   "noncancelled_vs_completed_returned_ge120_from_2025": {
+    "count": 245,
+    "first_ids": [
+     "16",
+     "17",
+     "18",
+     "19",
+     "36",
+     "37",
+     "38",
+     "39",
+     "74",
+     "229",
+     "230",
+     "246"
+    ],
+    "facts": [
+     {
+      "order_item_id": "16",
+      "order_date": "2025-04-07",
+      "status": "returned",
+      "quantity": 3,
+      "unit_price": "630.92"
+     },
+     {
+      "order_item_id": "17",
+      "order_date": "2025-04-07",
+      "status": "returned",
+      "quantity": 5,
+      "unit_price": "474.37"
+     },
+     {
+      "order_item_id": "18",
+      "order_date": "2025-04-07",
+      "status": "returned",
+      "quantity": 3,
+      "unit_price": "415.42"
+     }
+    ]
+   },
+   "history_2024_completed_100_to_lt120": {
+    "count": 55,
+    "first_ids": [
+     "28",
+     "58",
+     "60",
+     "143",
+     "388",
+     "391",
+     "424",
+     "721",
+     "1092",
+     "1322",
+     "1429",
+     "1554"
+    ],
+    "facts": [
+     {
+      "order_item_id": "28",
+      "order_date": "2024-11-26",
+      "status": "completed",
+      "quantity": 5,
+      "unit_price": "110.28"
+     },
+     {
+      "order_item_id": "58",
+      "order_date": "2024-05-20",
+      "status": "completed",
+      "quantity": 3,
+      "unit_price": "100.00"
+     },
+     {
+      "order_item_id": "60",
+      "order_date": "2024-05-20",
+      "status": "completed",
+      "quantity": 4,
+      "unit_price": "119.99"
+     }
+    ]
+   }
+  }
+ },
+ "cross_check_with_e4_frozen_reference": {
+  "P1v1|ALL@PINNED == E4 P1@PINNED": true,
+  "P2|ALL@PINNED == E4 P2@PINNED": true
+ },
+ "pristine_semantic_manifest_sha256": "e8e9bfc7e1188bc3eb3f5ac551e8ed5350817af14a5471bdbcdfdca2bc01bd48",
+ "baseline_semantic_manifest_sha256": "3532b0e66f9758055ec4e8fc2085e15226c87adecdd6c72ab2554afb4c7515bf",
+ "transpose_packet_sha256": "b82a0e8eaacebbb1e884e3dc8c334e5716ead92a555982329102b6d13261bc08",
+ "oracle_code_sha256": "23f9414812a2a161b8e3a833a0fd91e770612db0c65de198bfe4c8f2599b4d8f"
+}

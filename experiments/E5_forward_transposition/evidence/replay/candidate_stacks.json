@@ -1,0 +1,2294 @@
+{
+ "BASELINE__PINNED__qe465b735": {
+  "stack_id": "BASELINE__PINNED",
+  "upstream": "/home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/BASELINE__PINNED/upstream",
+  "patch_ops": 3,
+  "ok": true,
+  "diffs": [
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_semantic_models.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_semantic_models.yml\n@@ -34,6 +34,9 @@\n         type: categorical\n       - name: status\n         type: categorical\n+      - name: unit_price\n+        type: categorical\n+        expr: unit_price\n     measures:\n       - name: revenue\n         description: \"Quantity x price charged.\"\n"
+   },
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n@@ -117,3 +117,11 @@\n     type_params:\n       numerator: repeat_customers\n       denominator: purchasing_customers\n+\n+  - name: premium_completed_revenue\n+    description: \"Completed revenue on lines with unit price at least 100.\"\n+    label: \"Premium completed revenue\"\n+    type: simple\n+    type_params:\n+      measure: revenue\n+    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 100\"\n"
+   },
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n@@ -125,3 +125,11 @@\n     type_params:\n       measure: revenue\n     filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 100\"\n+\n+  - name: french_market_revenue\n+    description: \"Completed revenue of customers in France.\"\n+    label: \"French market revenue\"\n+    type: simple\n+    type_params:\n+      measure: revenue\n+    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('customer__country') }} = 'France'\"\n"
+   }
+  ],
+  "steps": {
+   "load_bronze": {
+    "exit_code": 0,
+    "tail": "Loading Bronze into /home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/BASELINE__PINNED/upstream/data/warehouse.duckdb\n  bronze.customers       500 rows\n  bronze.products        100 rows\n  bronze.stores           10 rows\n  bronze.orders         2200 rows\n  bronze.order_items    5526 rows\n  bronze.order_events     0 rows (streaming landing)\nBronze layer ready.\n"
+   },
+   "dbt_build": {
+    "exit_code": 0,
+    "tail": "SS unique_fact_sales_sales_id ....................................... [\u001b[32mPASS\u001b[0m in 0.06s]\n\u001b[0m18:34:41  79 of 81 START test relationships_fact_sales_live_store_id__store_id__ref_dim_stores_  [RUN]\n\u001b[0m18:34:41  80 of 81 START test relationships_fact_sales_store_id__store_id__ref_dim_stores_  [RUN]\n\u001b[0m18:34:41  81 of 81 START test unique_dim_stores_store_id ................................. [RUN]\n\u001b[0m18:34:41  79 of 81 PASS relationships_fact_sales_live_store_id__store_id__ref_dim_stores_  [\u001b[32mPASS\u001b[0m in 0.07s]\n\u001b[0m18:34:41  78 of 81 PASS not_null_dim_stores_store_id ..................................... [\u001b[32mPASS\u001b[0m in 0.07s]\n\u001b[0m18:34:41  80 of 81 PASS relationships_fact_sales_store_id__store_id__ref_dim_stores_ ..... [\u001b[32mPASS\u001b[0m in 0.07s]\n\u001b[0m18:34:41  81 of 81 PASS unique_dim_stores_store_id ....................................... [\u001b[32mPASS\u001b[0m in 0.05s]\n\u001b[0m18:34:41  \n\u001b[0m18:34:41  Finished running 2 exposures, 1 incremental model, 6 table models, 65 data tests, 7 view models in 0 hours 0 minutes and 2.18 seconds (2.18s).\n\u001b[0m18:34:41  \n\u001b[0m18:34:41  \u001b[32mCompleted successfully\u001b[0m\n\u001b[0m18:34:41  \n\u001b[0m18:34:41  Done. PASS=79 WARN=0 ERROR=0 SKIP=0 NO-OP=2 TOTAL=81\n"
+   },
+   "dbt_parse": {
+    "exit_code": 0,
+    "tail": "\u001b[0m18:34:43  Running with dbt=1.11.11\n\u001b[0m18:34:43  Registered adapter: duckdb=1.10.1\n\u001b[0m18:34:44  Performance info: /home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/BASELINE__PINNED/upstream/dbt/retail_dwh/target/perf_info.json\n"
+   }
+  },
+  "raw_csv_sha256": {
+   "customers.csv": "e570cfec57af94cee3b974db5642fe0c276b495f83dd82e6af077dbb3784680d",
+   "order_items.csv": "513de0a77e90c7312a2935d47efcced60b6811a33de589e1a4fe63d2045e5f26",
+   "orders.csv": "be942a616a816158924f538b8f9cde29de773bc324411c5c6f7c83c980ec4f03",
+   "products.csv": "3783c0e35d83c571e8fc18bbafa98f59e217944288a92f590b6a15d4320c2311",
+   "stores.csv": "78d2cbff192a861f4f880bcc0c25ddc43df72bfecf8a3517abf18723109f8c44"
+  },
+  "semantic_manifest_sha256": "3532b0e66f9758055ec4e8fc2085e15226c87adecdd6c72ab2554afb4c7515bf",
+  "warehouse": "/home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/BASELINE__PINNED/upstream/data/warehouse.duckdb",
+  "query": {
+   "group_by": [
+    "metric_time__year"
+   ],
+   "metric": "premium_completed_revenue",
+   "where": []
+  },
+  "exec_year": {
+   "ok": true,
+   "exit_code": 0,
+   "argv": [
+    "mf",
+    "query",
+    "--metrics",
+    "premium_completed_revenue",
+    "--group-by",
+    "metric_time__year",
+    "--csv",
+    "<csv>"
+   ],
+   "compiled_sql": "SELECT\n  metric_time__year\n  , SUM(premium_completed_revenue) AS premium_completed_revenue\nFROM (\n  SELECT\n    DATE_TRUNC('year', order_date) AS metric_time__year\n    , status AS sales__status\n    , unit_price AS sales__unit_price\n    , revenue AS premium_completed_revenue\n  FROM \"warehouse\".\"gold\".\"fact_sales\" sales_src_10000\n) subq_2\nWHERE sales__status = 'completed' AND sales__unit_price >= 100\nGROUP BY\n  metric_time__year",
+   "mf_identity": {
+    "mf_path": "/home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/BASELINE__PINNED/upstream/.venv/bin/mf",
+    "mf_sha256": "db25d2ee39e5ffb72352269cad6f058e776c8e853864f9d61f7587bc8c73c3d3",
+    "record_entry": "../../../bin/mf",
+    "record_hash": "sha256=2yXS7jnl_7cjUiacrW8FjndsjoU4ZPnWH3WHvIxzw9M",
+    "distribution": "dbt_metricflow-0.13.0.dist-info",
+    "versions": {
+     "dbt-metricflow": "0.13.0",
+     "metricflow": "0.211.0",
+     "dbt-core": "1.11.11",
+     "dbt-duckdb": "1.10.1",
+     "dbt-semantic-interfaces": "0.9.0",
+     "duckdb": "1.5.4"
+    }
+   },
+   "rows_sha256": "341be803a1c8c4635d3e1bfbb9df8048514a32cf80cde3a4918381500ac03f90",
+   "stdout_tail": null,
+   "error": null
+  },
+  "exec_line": {
+   "ok": true,
+   "exit_code": 0,
+   "argv": [
+    "mf",
+    "query",
+    "--metrics",
+    "premium_completed_revenue",
+    "--group-by",
+    "sales",
+    "--csv",
+    "<csv>"
+   ],
+   "rows_sha256": "0aaffbca81853bafd6605125ef7b75e5d599185d6d2548b5264a5bcea93626bb"
+  }
+ },
+ "BASELINE__PINNED__q747ba25c": {
+  "stack_id": "BASELINE__PINNED",
+  "upstream": "/home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/BASELINE__PINNED/upstream",
+  "patch_ops": 3,
+  "ok": true,
+  "diffs": [
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_semantic_models.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_semantic_models.yml\n@@ -34,6 +34,9 @@\n         type: categorical\n       - name: status\n         type: categorical\n+      - name: unit_price\n+        type: categorical\n+        expr: unit_price\n     measures:\n       - name: revenue\n         description: \"Quantity x price charged.\"\n"
+   },
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n@@ -117,3 +117,11 @@\n     type_params:\n       numerator: repeat_customers\n       denominator: purchasing_customers\n+\n+  - name: premium_completed_revenue\n+    description: \"Completed revenue on lines with unit price at least 100.\"\n+    label: \"Premium completed revenue\"\n+    type: simple\n+    type_params:\n+      measure: revenue\n+    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 100\"\n"
+   },
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n@@ -125,3 +125,11 @@\n     type_params:\n       measure: revenue\n     filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 100\"\n+\n+  - name: french_market_revenue\n+    description: \"Completed revenue of customers in France.\"\n+    label: \"French market revenue\"\n+    type: simple\n+    type_params:\n+      measure: revenue\n+    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('customer__country') }} = 'France'\"\n"
+   }
+  ],
+  "steps": {
+   "load_bronze": {
+    "exit_code": 0,
+    "tail": "Loading Bronze into /home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/BASELINE__PINNED/upstream/data/warehouse.duckdb\n  bronze.customers       500 rows\n  bronze.products        100 rows\n  bronze.stores           10 rows\n  bronze.orders         2200 rows\n  bronze.order_items    5526 rows\n  bronze.order_events     0 rows (streaming landing)\nBronze layer ready.\n"
+   },
+   "dbt_build": {
+    "exit_code": 0,
+    "tail": "SS unique_fact_sales_sales_id ....................................... [\u001b[32mPASS\u001b[0m in 0.06s]\n\u001b[0m18:34:41  79 of 81 START test relationships_fact_sales_live_store_id__store_id__ref_dim_stores_  [RUN]\n\u001b[0m18:34:41  80 of 81 START test relationships_fact_sales_store_id__store_id__ref_dim_stores_  [RUN]\n\u001b[0m18:34:41  81 of 81 START test unique_dim_stores_store_id ................................. [RUN]\n\u001b[0m18:34:41  79 of 81 PASS relationships_fact_sales_live_store_id__store_id__ref_dim_stores_  [\u001b[32mPASS\u001b[0m in 0.07s]\n\u001b[0m18:34:41  78 of 81 PASS not_null_dim_stores_store_id ..................................... [\u001b[32mPASS\u001b[0m in 0.07s]\n\u001b[0m18:34:41  80 of 81 PASS relationships_fact_sales_store_id__store_id__ref_dim_stores_ ..... [\u001b[32mPASS\u001b[0m in 0.07s]\n\u001b[0m18:34:41  81 of 81 PASS unique_dim_stores_store_id ....................................... [\u001b[32mPASS\u001b[0m in 0.05s]\n\u001b[0m18:34:41  \n\u001b[0m18:34:41  Finished running 2 exposures, 1 incremental model, 6 table models, 65 data tests, 7 view models in 0 hours 0 minutes and 2.18 seconds (2.18s).\n\u001b[0m18:34:41  \n\u001b[0m18:34:41  \u001b[32mCompleted successfully\u001b[0m\n\u001b[0m18:34:41  \n\u001b[0m18:34:41  Done. PASS=79 WARN=0 ERROR=0 SKIP=0 NO-OP=2 TOTAL=81\n"
+   },
+   "dbt_parse": {
+    "exit_code": 0,
+    "tail": "\u001b[0m18:34:43  Running with dbt=1.11.11\n\u001b[0m18:34:43  Registered adapter: duckdb=1.10.1\n\u001b[0m18:34:44  Performance info: /home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/BASELINE__PINNED/upstream/dbt/retail_dwh/target/perf_info.json\n"
+   }
+  },
+  "raw_csv_sha256": {
+   "customers.csv": "e570cfec57af94cee3b974db5642fe0c276b495f83dd82e6af077dbb3784680d",
+   "order_items.csv": "513de0a77e90c7312a2935d47efcced60b6811a33de589e1a4fe63d2045e5f26",
+   "orders.csv": "be942a616a816158924f538b8f9cde29de773bc324411c5c6f7c83c980ec4f03",
+   "products.csv": "3783c0e35d83c571e8fc18bbafa98f59e217944288a92f590b6a15d4320c2311",
+   "stores.csv": "78d2cbff192a861f4f880bcc0c25ddc43df72bfecf8a3517abf18723109f8c44"
+  },
+  "semantic_manifest_sha256": "3532b0e66f9758055ec4e8fc2085e15226c87adecdd6c72ab2554afb4c7515bf",
+  "warehouse": "/home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/BASELINE__PINNED/upstream/data/warehouse.duckdb",
+  "query": {
+   "group_by": [
+    "metric_time__year"
+   ],
+   "metric": "french_market_revenue",
+   "where": []
+  },
+  "exec_year": {
+   "ok": true,
+   "exit_code": 0,
+   "argv": [
+    "mf",
+    "query",
+    "--metrics",
+    "french_market_revenue",
+    "--group-by",
+    "metric_time__year",
+    "--csv",
+    "<csv>"
+   ],
+   "compiled_sql": "SELECT\n  metric_time__year\n  , SUM(french_market_revenue) AS french_market_revenue\nFROM (\n  SELECT\n    DATE_TRUNC('year', sales_src_10000.order_date) AS metric_time__year\n    , sales_src_10000.status AS sales__status\n    , customers_src_10000.country AS customer__country\n    , sales_src_10000.revenue AS french_market_revenue\n  FROM \"warehouse\".\"gold\".\"fact_sales\" sales_src_10000\n  LEFT OUTER JOIN\n    \"warehouse\".\"gold\".\"dim_customers\" customers_src_10000\n  ON\n    sales_src_10000.customer_id = customers_src_10000.customer_id\n) subq_5\nWHERE sales__status = 'completed' AND customer__country = 'France'\nGROUP BY\n  metric_time__year",
+   "mf_identity": {
+    "mf_path": "/home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/BASELINE__PINNED/upstream/.venv/bin/mf",
+    "mf_sha256": "db25d2ee39e5ffb72352269cad6f058e776c8e853864f9d61f7587bc8c73c3d3",
+    "record_entry": "../../../bin/mf",
+    "record_hash": "sha256=2yXS7jnl_7cjUiacrW8FjndsjoU4ZPnWH3WHvIxzw9M",
+    "distribution": "dbt_metricflow-0.13.0.dist-info",
+    "versions": {
+     "dbt-metricflow": "0.13.0",
+     "metricflow": "0.211.0",
+     "dbt-core": "1.11.11",
+     "dbt-duckdb": "1.10.1",
+     "dbt-semantic-interfaces": "0.9.0",
+     "duckdb": "1.5.4"
+    }
+   },
+   "rows_sha256": "88571bc65ebd7c14e8de65ce541e24871a101e5618af9a44b8cb203f0640fe64",
+   "stdout_tail": null,
+   "error": null
+  },
+  "exec_line": {
+   "ok": true,
+   "exit_code": 0,
+   "argv": [
+    "mf",
+    "query",
+    "--metrics",
+    "french_market_revenue",
+    "--group-by",
+    "sales",
+    "--csv",
+    "<csv>"
+   ],
+   "rows_sha256": "2560871ea7f2afd20678faa56aff75fe97093d5dc3c79cc87ded475288f68226"
+  }
+ },
+ "GENERATED__PINNED__q0eef35e3": {
+  "stack_id": "GENERATED__PINNED",
+  "upstream": "/home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/GENERATED__PINNED/upstream",
+  "patch_ops": 4,
+  "ok": true,
+  "diffs": [
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_semantic_models.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_semantic_models.yml\n@@ -34,6 +34,9 @@\n         type: categorical\n       - name: status\n         type: categorical\n+      - name: unit_price\n+        type: categorical\n+        expr: unit_price\n     measures:\n       - name: revenue\n         description: \"Quantity x price charged.\"\n"
+   },
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n@@ -117,3 +117,11 @@\n     type_params:\n       numerator: repeat_customers\n       denominator: purchasing_customers\n+\n+  - name: premium_completed_revenue\n+    description: \"Completed revenue on lines with unit price at least 100.\"\n+    label: \"Premium completed revenue\"\n+    type: simple\n+    type_params:\n+      measure: revenue\n+    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 100\"\n"
+   },
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n@@ -125,3 +125,11 @@\n     type_params:\n       measure: revenue\n     filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 100\"\n+\n+  - name: french_market_revenue\n+    description: \"Completed revenue of customers in France.\"\n+    label: \"French market revenue\"\n+    type: simple\n+    type_params:\n+      measure: revenue\n+    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('customer__country') }} = 'France'\"\n"
+   },
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n@@ -119,12 +119,12 @@\n       denominator: purchasing_customers\n \n   - name: premium_completed_revenue\n-    description: \"Completed revenue on lines with unit price at least 100.\"\n+    description: \"Completed revenue on lines with unit price at least 120.\"\n     label: \"Premium completed revenue\"\n     type: simple\n     type_params:\n       measure: revenue\n-    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 100\"\n+    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 120\"\n \n   - name: french_market_revenue\n     description: \"Completed revenue of customers in France.\"\n"
+   }
+  ],
+  "steps": {
+   "load_bronze": {
+    "exit_code": 0,
+    "tail": "Loading Bronze into /home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/GENERATED__PINNED/upstream/data/warehouse.duckdb\n  bronze.customers       500 rows\n  bronze.products        100 rows\n  bronze.stores           10 rows\n  bronze.orders         2200 rows\n  bronze.order_items    5526 rows\n  bronze.order_events     0 rows (streaming landing)\nBronze layer ready.\n"
+   },
+   "dbt_build": {
+    "exit_code": 0,
+    "tail": "ue ................................. [\u001b[32mPASS\u001b[0m in 0.07s]\n\u001b[0m18:35:14  80 of 81 START test relationships_fact_sales_live_store_id__store_id__ref_dim_stores_  [RUN]\n\u001b[0m18:35:14  77 of 81 PASS not_null_fact_sales_live_store_id ................................ [\u001b[32mPASS\u001b[0m in 0.06s]\n\u001b[0m18:35:14  81 of 81 START test unique_fact_sales_live_event_id ............................ [RUN]\n\u001b[0m18:35:14  78 of 81 PASS relationships_fact_sales_live_customer_id__customer_id__ref_dim_customers_  [\u001b[32mPASS\u001b[0m in 0.07s]\n\u001b[0m18:35:14  79 of 81 PASS relationships_fact_sales_live_product_id__product_id__ref_dim_products_  [\u001b[32mPASS\u001b[0m in 0.07s]\n\u001b[0m18:35:14  80 of 81 PASS relationships_fact_sales_live_store_id__store_id__ref_dim_stores_  [\u001b[32mPASS\u001b[0m in 0.05s]\n\u001b[0m18:35:14  81 of 81 PASS unique_fact_sales_live_event_id .................................. [\u001b[32mPASS\u001b[0m in 0.03s]\n\u001b[0m18:35:14  \n\u001b[0m18:35:14  Finished running 2 exposures, 1 incremental model, 6 table models, 65 data tests, 7 view models in 0 hours 0 minutes and 2.04 seconds (2.04s).\n\u001b[0m18:35:15  \n\u001b[0m18:35:15  \u001b[32mCompleted successfully\u001b[0m\n\u001b[0m18:35:15  \n\u001b[0m18:35:15  Done. PASS=79 WARN=0 ERROR=0 SKIP=0 NO-OP=2 TOTAL=81\n"
+   },
+   "dbt_parse": {
+    "exit_code": 0,
+    "tail": "\u001b[0m18:35:17  Running with dbt=1.11.11\n\u001b[0m18:35:17  Registered adapter: duckdb=1.10.1\n\u001b[0m18:35:17  Performance info: /home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/GENERATED__PINNED/upstream/dbt/retail_dwh/target/perf_info.json\n"
+   }
+  },
+  "raw_csv_sha256": {
+   "customers.csv": "e570cfec57af94cee3b974db5642fe0c276b495f83dd82e6af077dbb3784680d",
+   "order_items.csv": "513de0a77e90c7312a2935d47efcced60b6811a33de589e1a4fe63d2045e5f26",
+   "orders.csv": "be942a616a816158924f538b8f9cde29de773bc324411c5c6f7c83c980ec4f03",
+   "products.csv": "3783c0e35d83c571e8fc18bbafa98f59e217944288a92f590b6a15d4320c2311",
+   "stores.csv": "78d2cbff192a861f4f880bcc0c25ddc43df72bfecf8a3517abf18723109f8c44"
+  },
+  "semantic_manifest_sha256": "fd26cecdbb44ff2e0e8807db1ce0af4836a0b412c8ad29646aecbaddcf6ce265",
+  "warehouse": "/home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/GENERATED__PINNED/upstream/data/warehouse.duckdb",
+  "query": {
+   "group_by": [
+    "metric_time__year"
+   ],
+   "metric": "premium_completed_revenue",
+   "where": [
+    "{{ TimeDimension('metric_time', 'day') }} >= '2025-01-01'"
+   ]
+  },
+  "exec_year": {
+   "ok": true,
+   "exit_code": 0,
+   "argv": [
+    "mf",
+    "query",
+    "--metrics",
+    "premium_completed_revenue",
+    "--group-by",
+    "metric_time__year",
+    "--where",
+    "{{ TimeDimension('metric_time', 'day') }} >= '2025-01-01'",
+    "--csv",
+    "<csv>"
+   ],
+   "compiled_sql": "SELECT\n  metric_time__year\n  , SUM(premium_completed_revenue) AS premium_completed_revenue\nFROM (\n  SELECT\n    DATE_TRUNC('day', order_date) AS metric_time__day\n    , DATE_TRUNC('year', order_date) AS metric_time__year\n    , status AS sales__status\n    , unit_price AS sales__unit_price\n    , revenue AS premium_completed_revenue\n  FROM \"warehouse\".\"gold\".\"fact_sales\" sales_src_10000\n) subq_2\nWHERE (\n  sales__status = 'completed' AND sales__unit_price >= 120\n) AND (\n  metric_time__day >= '2025-01-01'\n)\nGROUP BY\n  metric_time__year",
+   "mf_identity": {
+    "mf_path": "/home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/GENERATED__PINNED/upstream/.venv/bin/mf",
+    "mf_sha256": "db25d2ee39e5ffb72352269cad6f058e776c8e853864f9d61f7587bc8c73c3d3",
+    "record_entry": "../../../bin/mf",
+    "record_hash": "sha256=2yXS7jnl_7cjUiacrW8FjndsjoU4ZPnWH3WHvIxzw9M",
+    "distribution": "dbt_metricflow-0.13.0.dist-info",
+    "versions": {
+     "dbt-metricflow": "0.13.0",
+     "metricflow": "0.211.0",
+     "dbt-core": "1.11.11",
+     "dbt-duckdb": "1.10.1",
+     "dbt-semantic-interfaces": "0.9.0",
+     "duckdb": "1.5.4"
+    }
+   },
+   "rows_sha256": "7ced7ede45ad82e4fd160f97170d4f482e636c2d56a6b932f045513df067bcd9",
+   "stdout_tail": null,
+   "error": null
+  },
+  "exec_line": {
+   "ok": true,
+   "exit_code": 0,
+   "argv": [
+    "mf",
+    "query",
+    "--metrics",
+    "premium_completed_revenue",
+    "--group-by",
+    "sales",
+    "--where",
+    "{{ TimeDimension('metric_time', 'day') }} >= '2025-01-01'",
+    "--csv",
+    "<csv>"
+   ],
+   "rows_sha256": "0f9a87d21d0e83fc8cde15854bb71efe504d35346a45fbc8b3dd50e71498afed"
+  }
+ },
+ "GENERATED__BOUNDARY120__q0eef35e3": {
+  "stack_id": "GENERATED__BOUNDARY120",
+  "upstream": "/home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/GENERATED__BOUNDARY120/upstream",
+  "patch_ops": 4,
+  "ok": true,
+  "diffs": [
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_semantic_models.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_semantic_models.yml\n@@ -34,6 +34,9 @@\n         type: categorical\n       - name: status\n         type: categorical\n+      - name: unit_price\n+        type: categorical\n+        expr: unit_price\n     measures:\n       - name: revenue\n         description: \"Quantity x price charged.\"\n"
+   },
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n@@ -117,3 +117,11 @@\n     type_params:\n       numerator: repeat_customers\n       denominator: purchasing_customers\n+\n+  - name: premium_completed_revenue\n+    description: \"Completed revenue on lines with unit price at least 100.\"\n+    label: \"Premium completed revenue\"\n+    type: simple\n+    type_params:\n+      measure: revenue\n+    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 100\"\n"
+   },
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n@@ -125,3 +125,11 @@\n     type_params:\n       measure: revenue\n     filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 100\"\n+\n+  - name: french_market_revenue\n+    description: \"Completed revenue of customers in France.\"\n+    label: \"French market revenue\"\n+    type: simple\n+    type_params:\n+      measure: revenue\n+    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('customer__country') }} = 'France'\"\n"
+   },
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n@@ -119,12 +119,12 @@\n       denominator: purchasing_customers\n \n   - name: premium_completed_revenue\n-    description: \"Completed revenue on lines with unit price at least 100.\"\n+    description: \"Completed revenue on lines with unit price at least 120.\"\n     label: \"Premium completed revenue\"\n     type: simple\n     type_params:\n       measure: revenue\n-    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 100\"\n+    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 120\"\n \n   - name: french_market_revenue\n     description: \"Completed revenue of customers in France.\"\n"
+   }
+  ],
+  "steps": {
+   "load_bronze": {
+    "exit_code": 0,
+    "tail": "Loading Bronze into /home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/GENERATED__BOUNDARY120/upstream/data/warehouse.duckdb\n  bronze.customers       500 rows\n  bronze.products        100 rows\n  bronze.stores           10 rows\n  bronze.orders         2200 rows\n  bronze.order_items    5526 rows\n  bronze.order_events     0 rows (streaming landing)\nBronze layer ready.\n"
+   },
+   "dbt_build": {
+    "exit_code": 0,
+    "tail": "ales_store_id ..................................... [\u001b[32mPASS\u001b[0m in 0.07s]\n\u001b[0m18:35:37  80 of 81 START test relationships_fact_sales_store_id__store_id__ref_dim_stores_  [RUN]\n\u001b[0m18:35:37  77 of 81 PASS relationships_fact_sales_customer_id__customer_id__ref_dim_customers_  [\u001b[32mPASS\u001b[0m in 0.09s]\n\u001b[0m18:35:37  78 of 81 PASS relationships_fact_sales_date_id__date_id__ref_dim_dates_ ........ [\u001b[32mPASS\u001b[0m in 0.06s]\n\u001b[0m18:35:37  81 of 81 START test unique_fact_sales_sales_id ................................. [RUN]\n\u001b[0m18:35:37  79 of 81 PASS relationships_fact_sales_product_id__product_id__ref_dim_products_  [\u001b[32mPASS\u001b[0m in 0.06s]\n\u001b[0m18:35:37  80 of 81 PASS relationships_fact_sales_store_id__store_id__ref_dim_stores_ ..... [\u001b[32mPASS\u001b[0m in 0.05s]\n\u001b[0m18:35:37  81 of 81 PASS unique_fact_sales_sales_id ....................................... [\u001b[32mPASS\u001b[0m in 0.02s]\n\u001b[0m18:35:37  \n\u001b[0m18:35:37  Finished running 2 exposures, 1 incremental model, 6 table models, 65 data tests, 7 view models in 0 hours 0 minutes and 2.07 seconds (2.07s).\n\u001b[0m18:35:37  \n\u001b[0m18:35:37  \u001b[32mCompleted successfully\u001b[0m\n\u001b[0m18:35:37  \n\u001b[0m18:35:37  Done. PASS=79 WARN=0 ERROR=0 SKIP=0 NO-OP=2 TOTAL=81\n"
+   },
+   "dbt_parse": {
+    "exit_code": 0,
+    "tail": "\u001b[0m18:35:39  Running with dbt=1.11.11\n\u001b[0m18:35:40  Registered adapter: duckdb=1.10.1\n\u001b[0m18:35:40  Performance info: /home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/GENERATED__BOUNDARY120/upstream/dbt/retail_dwh/target/perf_info.json\n"
+   }
+  },
+  "raw_csv_sha256": {
+   "customers.csv": "e570cfec57af94cee3b974db5642fe0c276b495f83dd82e6af077dbb3784680d",
+   "order_items.csv": "a4b81aa4c372a77bb74289915e9de5ddd7acee1212d9b5efca70d0a205027d08",
+   "orders.csv": "be942a616a816158924f538b8f9cde29de773bc324411c5c6f7c83c980ec4f03",
+   "products.csv": "3783c0e35d83c571e8fc18bbafa98f59e217944288a92f590b6a15d4320c2311",
+   "stores.csv": "78d2cbff192a861f4f880bcc0c25ddc43df72bfecf8a3517abf18723109f8c44"
+  },
+  "semantic_manifest_sha256": "fd26cecdbb44ff2e0e8807db1ce0af4836a0b412c8ad29646aecbaddcf6ce265",
+  "warehouse": "/home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/GENERATED__BOUNDARY120/upstream/data/warehouse.duckdb",
+  "query": {
+   "group_by": [
+    "metric_time__year"
+   ],
+   "metric": "premium_completed_revenue",
+   "where": [
+    "{{ TimeDimension('metric_time', 'day') }} >= '2025-01-01'"
+   ]
+  },
+  "exec_year": {
+   "ok": true,
+   "exit_code": 0,
+   "argv": [
+    "mf",
+    "query",
+    "--metrics",
+    "premium_completed_revenue",
+    "--group-by",
+    "metric_time__year",
+    "--where",
+    "{{ TimeDimension('metric_time', 'day') }} >= '2025-01-01'",
+    "--csv",
+    "<csv>"
+   ],
+   "compiled_sql": "SELECT\n  metric_time__year\n  , SUM(premium_completed_revenue) AS premium_completed_revenue\nFROM (\n  SELECT\n    DATE_TRUNC('day', order_date) AS metric_time__day\n    , DATE_TRUNC('year', order_date) AS metric_time__year\n    , status AS sales__status\n    , unit_price AS sales__unit_price\n    , revenue AS premium_completed_revenue\n  FROM \"warehouse\".\"gold\".\"fact_sales\" sales_src_10000\n) subq_2\nWHERE (\n  sales__status = 'completed' AND sales__unit_price >= 120\n) AND (\n  metric_time__day >= '2025-01-01'\n)\nGROUP BY\n  metric_time__year",
+   "mf_identity": {
+    "mf_path": "/home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/GENERATED__BOUNDARY120/upstream/.venv/bin/mf",
+    "mf_sha256": "db25d2ee39e5ffb72352269cad6f058e776c8e853864f9d61f7587bc8c73c3d3",
+    "record_entry": "../../../bin/mf",
+    "record_hash": "sha256=2yXS7jnl_7cjUiacrW8FjndsjoU4ZPnWH3WHvIxzw9M",
+    "distribution": "dbt_metricflow-0.13.0.dist-info",
+    "versions": {
+     "dbt-metricflow": "0.13.0",
+     "metricflow": "0.211.0",
+     "dbt-core": "1.11.11",
+     "dbt-duckdb": "1.10.1",
+     "dbt-semantic-interfaces": "0.9.0",
+     "duckdb": "1.5.4"
+    }
+   },
+   "rows_sha256": "f1b5bcd97dcc570145028a20d2758e1047407797de38aeacb80fdd1cad1ff045",
+   "stdout_tail": null,
+   "error": null
+  },
+  "exec_line": {
+   "ok": true,
+   "exit_code": 0,
+   "argv": [
+    "mf",
+    "query",
+    "--metrics",
+    "premium_completed_revenue",
+    "--group-by",
+    "sales",
+    "--where",
+    "{{ TimeDimension('metric_time', 'day') }} >= '2025-01-01'",
+    "--csv",
+    "<csv>"
+   ],
+   "rows_sha256": "ee509c533b84ad37e5af13f632a387fb71d25eea6bbffd7a92a15390e0425c84"
+  }
+ },
+ "BASELINE__PINNED__q0eef35e3": {
+  "stack_id": "BASELINE__PINNED",
+  "upstream": "/home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/BASELINE__PINNED/upstream",
+  "patch_ops": 3,
+  "ok": true,
+  "diffs": [
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_semantic_models.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_semantic_models.yml\n@@ -34,6 +34,9 @@\n         type: categorical\n       - name: status\n         type: categorical\n+      - name: unit_price\n+        type: categorical\n+        expr: unit_price\n     measures:\n       - name: revenue\n         description: \"Quantity x price charged.\"\n"
+   },
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n@@ -117,3 +117,11 @@\n     type_params:\n       numerator: repeat_customers\n       denominator: purchasing_customers\n+\n+  - name: premium_completed_revenue\n+    description: \"Completed revenue on lines with unit price at least 100.\"\n+    label: \"Premium completed revenue\"\n+    type: simple\n+    type_params:\n+      measure: revenue\n+    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 100\"\n"
+   },
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n@@ -125,3 +125,11 @@\n     type_params:\n       measure: revenue\n     filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 100\"\n+\n+  - name: french_market_revenue\n+    description: \"Completed revenue of customers in France.\"\n+    label: \"French market revenue\"\n+    type: simple\n+    type_params:\n+      measure: revenue\n+    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('customer__country') }} = 'France'\"\n"
+   }
+  ],
+  "steps": {
+   "load_bronze": {
+    "exit_code": 0,
+    "tail": "Loading Bronze into /home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/BASELINE__PINNED/upstream/data/warehouse.duckdb\n  bronze.customers       500 rows\n  bronze.products        100 rows\n  bronze.stores           10 rows\n  bronze.orders         2200 rows\n  bronze.order_items    5526 rows\n  bronze.order_events     0 rows (streaming landing)\nBronze layer ready.\n"
+   },
+   "dbt_build": {
+    "exit_code": 0,
+    "tail": "SS unique_fact_sales_sales_id ....................................... [\u001b[32mPASS\u001b[0m in 0.06s]\n\u001b[0m18:34:41  79 of 81 START test relationships_fact_sales_live_store_id__store_id__ref_dim_stores_  [RUN]\n\u001b[0m18:34:41  80 of 81 START test relationships_fact_sales_store_id__store_id__ref_dim_stores_  [RUN]\n\u001b[0m18:34:41  81 of 81 START test unique_dim_stores_store_id ................................. [RUN]\n\u001b[0m18:34:41  79 of 81 PASS relationships_fact_sales_live_store_id__store_id__ref_dim_stores_  [\u001b[32mPASS\u001b[0m in 0.07s]\n\u001b[0m18:34:41  78 of 81 PASS not_null_dim_stores_store_id ..................................... [\u001b[32mPASS\u001b[0m in 0.07s]\n\u001b[0m18:34:41  80 of 81 PASS relationships_fact_sales_store_id__store_id__ref_dim_stores_ ..... [\u001b[32mPASS\u001b[0m in 0.07s]\n\u001b[0m18:34:41  81 of 81 PASS unique_dim_stores_store_id ....................................... [\u001b[32mPASS\u001b[0m in 0.05s]\n\u001b[0m18:34:41  \n\u001b[0m18:34:41  Finished running 2 exposures, 1 incremental model, 6 table models, 65 data tests, 7 view models in 0 hours 0 minutes and 2.18 seconds (2.18s).\n\u001b[0m18:34:41  \n\u001b[0m18:34:41  \u001b[32mCompleted successfully\u001b[0m\n\u001b[0m18:34:41  \n\u001b[0m18:34:41  Done. PASS=79 WARN=0 ERROR=0 SKIP=0 NO-OP=2 TOTAL=81\n"
+   },
+   "dbt_parse": {
+    "exit_code": 0,
+    "tail": "\u001b[0m18:34:43  Running with dbt=1.11.11\n\u001b[0m18:34:43  Registered adapter: duckdb=1.10.1\n\u001b[0m18:34:44  Performance info: /home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/BASELINE__PINNED/upstream/dbt/retail_dwh/target/perf_info.json\n"
+   }
+  },
+  "raw_csv_sha256": {
+   "customers.csv": "e570cfec57af94cee3b974db5642fe0c276b495f83dd82e6af077dbb3784680d",
+   "order_items.csv": "513de0a77e90c7312a2935d47efcced60b6811a33de589e1a4fe63d2045e5f26",
+   "orders.csv": "be942a616a816158924f538b8f9cde29de773bc324411c5c6f7c83c980ec4f03",
+   "products.csv": "3783c0e35d83c571e8fc18bbafa98f59e217944288a92f590b6a15d4320c2311",
+   "stores.csv": "78d2cbff192a861f4f880bcc0c25ddc43df72bfecf8a3517abf18723109f8c44"
+  },
+  "semantic_manifest_sha256": "3532b0e66f9758055ec4e8fc2085e15226c87adecdd6c72ab2554afb4c7515bf",
+  "warehouse": "/home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/BASELINE__PINNED/upstream/data/warehouse.duckdb",
+  "query": {
+   "group_by": [
+    "metric_time__year"
+   ],
+   "metric": "premium_completed_revenue",
+   "where": [
+    "{{ TimeDimension('metric_time', 'day') }} >= '2025-01-01'"
+   ]
+  },
+  "exec_year": {
+   "ok": true,
+   "exit_code": 0,
+   "argv": [
+    "mf",
+    "query",
+    "--metrics",
+    "premium_completed_revenue",
+    "--group-by",
+    "metric_time__year",
+    "--where",
+    "{{ TimeDimension('metric_time', 'day') }} >= '2025-01-01'",
+    "--csv",
+    "<csv>"
+   ],
+   "compiled_sql": "SELECT\n  metric_time__year\n  , SUM(premium_completed_revenue) AS premium_completed_revenue\nFROM (\n  SELECT\n    DATE_TRUNC('day', order_date) AS metric_time__day\n    , DATE_TRUNC('year', order_date) AS metric_time__year\n    , status AS sales__status\n    , unit_price AS sales__unit_price\n    , revenue AS premium_completed_revenue\n  FROM \"warehouse\".\"gold\".\"fact_sales\" sales_src_10000\n) subq_2\nWHERE (\n  sales__status = 'completed' AND sales__unit_price >= 100\n) AND (\n  metric_time__day >= '2025-01-01'\n)\nGROUP BY\n  metric_time__year",
+   "mf_identity": {
+    "mf_path": "/home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/BASELINE__PINNED/upstream/.venv/bin/mf",
+    "mf_sha256": "db25d2ee39e5ffb72352269cad6f058e776c8e853864f9d61f7587bc8c73c3d3",
+    "record_entry": "../../../bin/mf",
+    "record_hash": "sha256=2yXS7jnl_7cjUiacrW8FjndsjoU4ZPnWH3WHvIxzw9M",
+    "distribution": "dbt_metricflow-0.13.0.dist-info",
+    "versions": {
+     "dbt-metricflow": "0.13.0",
+     "metricflow": "0.211.0",
+     "dbt-core": "1.11.11",
+     "dbt-duckdb": "1.10.1",
+     "dbt-semantic-interfaces": "0.9.0",
+     "duckdb": "1.5.4"
+    }
+   },
+   "rows_sha256": "c6fd76265187398a1e0bb04c6f5870c6efb14a1af1a4dedf251e4f18b9180b86",
+   "stdout_tail": null,
+   "error": null
+  },
+  "exec_line": {
+   "ok": true,
+   "exit_code": 0,
+   "argv": [
+    "mf",
+    "query",
+    "--metrics",
+    "premium_completed_revenue",
+    "--group-by",
+    "sales",
+    "--where",
+    "{{ TimeDimension('metric_time', 'day') }} >= '2025-01-01'",
+    "--csv",
+    "<csv>"
+   ],
+   "rows_sha256": "bc73eecd669b36799bb41d84711fa8c95a22cfb7569aa8a01aab797f99dd7dec"
+  }
+ },
+ "BASELINE__BOUNDARY120__q0eef35e3": {
+  "stack_id": "BASELINE__BOUNDARY120",
+  "upstream": "/home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/BASELINE__BOUNDARY120/upstream",
+  "patch_ops": 3,
+  "ok": true,
+  "diffs": [
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_semantic_models.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_semantic_models.yml\n@@ -34,6 +34,9 @@\n         type: categorical\n       - name: status\n         type: categorical\n+      - name: unit_price\n+        type: categorical\n+        expr: unit_price\n     measures:\n       - name: revenue\n         description: \"Quantity x price charged.\"\n"
+   },
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n@@ -117,3 +117,11 @@\n     type_params:\n       numerator: repeat_customers\n       denominator: purchasing_customers\n+\n+  - name: premium_completed_revenue\n+    description: \"Completed revenue on lines with unit price at least 100.\"\n+    label: \"Premium completed revenue\"\n+    type: simple\n+    type_params:\n+      measure: revenue\n+    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 100\"\n"
+   },
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n@@ -125,3 +125,11 @@\n     type_params:\n       measure: revenue\n     filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 100\"\n+\n+  - name: french_market_revenue\n+    description: \"Completed revenue of customers in France.\"\n+    label: \"French market revenue\"\n+    type: simple\n+    type_params:\n+      measure: revenue\n+    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('customer__country') }} = 'France'\"\n"
+   }
+  ],
+  "steps": {
+   "load_bronze": {
+    "exit_code": 0,
+    "tail": "Loading Bronze into /home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/BASELINE__BOUNDARY120/upstream/data/warehouse.duckdb\n  bronze.customers       500 rows\n  bronze.products        100 rows\n  bronze.stores           10 rows\n  bronze.orders         2200 rows\n  bronze.order_items    5526 rows\n  bronze.order_events     0 rows (streaming landing)\nBronze layer ready.\n"
+   },
+   "dbt_build": {
+    "exit_code": 0,
+    "tail": "RT test relationships_fact_sales_live_store_id__store_id__ref_dim_stores_  [RUN]\n\u001b[0m18:36:10  77 of 81 NO-OP exposure governed_dashboard ..................................... [\u001b[33mNO-OP\u001b[0m in 0.00s]\n\u001b[0m18:36:10  80 of 81 START test relationships_fact_sales_store_id__store_id__ref_dim_stores_  [RUN]\n\u001b[0m18:36:10  81 of 81 START test unique_dim_stores_store_id ................................. [RUN]\n\u001b[0m18:36:10  78 of 81 PASS not_null_dim_stores_store_id ..................................... [\u001b[32mPASS\u001b[0m in 0.07s]\n\u001b[0m18:36:10  79 of 81 PASS relationships_fact_sales_live_store_id__store_id__ref_dim_stores_  [\u001b[32mPASS\u001b[0m in 0.07s]\n\u001b[0m18:36:10  81 of 81 PASS unique_dim_stores_store_id ....................................... [\u001b[32mPASS\u001b[0m in 0.06s]\n\u001b[0m18:36:10  80 of 81 PASS relationships_fact_sales_store_id__store_id__ref_dim_stores_ ..... [\u001b[32mPASS\u001b[0m in 0.06s]\n\u001b[0m18:36:10  \n\u001b[0m18:36:10  Finished running 2 exposures, 1 incremental model, 6 table models, 65 data tests, 7 view models in 0 hours 0 minutes and 2.01 seconds (2.01s).\n\u001b[0m18:36:10  \n\u001b[0m18:36:10  \u001b[32mCompleted successfully\u001b[0m\n\u001b[0m18:36:10  \n\u001b[0m18:36:10  Done. PASS=79 WARN=0 ERROR=0 SKIP=0 NO-OP=2 TOTAL=81\n"
+   },
+   "dbt_parse": {
+    "exit_code": 0,
+    "tail": "\u001b[0m18:36:12  Running with dbt=1.11.11\n\u001b[0m18:36:13  Registered adapter: duckdb=1.10.1\n\u001b[0m18:36:13  Performance info: /home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/BASELINE__BOUNDARY120/upstream/dbt/retail_dwh/target/perf_info.json\n"
+   }
+  },
+  "raw_csv_sha256": {
+   "customers.csv": "e570cfec57af94cee3b974db5642fe0c276b495f83dd82e6af077dbb3784680d",
+   "order_items.csv": "a4b81aa4c372a77bb74289915e9de5ddd7acee1212d9b5efca70d0a205027d08",
+   "orders.csv": "be942a616a816158924f538b8f9cde29de773bc324411c5c6f7c83c980ec4f03",
+   "products.csv": "3783c0e35d83c571e8fc18bbafa98f59e217944288a92f590b6a15d4320c2311",
+   "stores.csv": "78d2cbff192a861f4f880bcc0c25ddc43df72bfecf8a3517abf18723109f8c44"
+  },
+  "semantic_manifest_sha256": "3532b0e66f9758055ec4e8fc2085e15226c87adecdd6c72ab2554afb4c7515bf",
+  "warehouse": "/home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/BASELINE__BOUNDARY120/upstream/data/warehouse.duckdb",
+  "query": {
+   "group_by": [
+    "metric_time__year"
+   ],
+   "metric": "premium_completed_revenue",
+   "where": [
+    "{{ TimeDimension('metric_time', 'day') }} >= '2025-01-01'"
+   ]
+  },
+  "exec_year": {
+   "ok": true,
+   "exit_code": 0,
+   "argv": [
+    "mf",
+    "query",
+    "--metrics",
+    "premium_completed_revenue",
+    "--group-by",
+    "metric_time__year",
+    "--where",
+    "{{ TimeDimension('metric_time', 'day') }} >= '2025-01-01'",
+    "--csv",
+    "<csv>"
+   ],
+   "compiled_sql": "SELECT\n  metric_time__year\n  , SUM(premium_completed_revenue) AS premium_completed_revenue\nFROM (\n  SELECT\n    DATE_TRUNC('day', order_date) AS metric_time__day\n    , DATE_TRUNC('year', order_date) AS metric_time__year\n    , status AS sales__status\n    , unit_price AS sales__unit_price\n    , revenue AS premium_completed_revenue\n  FROM \"warehouse\".\"gold\".\"fact_sales\" sales_src_10000\n) subq_2\nWHERE (\n  sales__status = 'completed' AND sales__unit_price >= 100\n) AND (\n  metric_time__day >= '2025-01-01'\n)\nGROUP BY\n  metric_time__year",
+   "mf_identity": {
+    "mf_path": "/home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/BASELINE__BOUNDARY120/upstream/.venv/bin/mf",
+    "mf_sha256": "db25d2ee39e5ffb72352269cad6f058e776c8e853864f9d61f7587bc8c73c3d3",
+    "record_entry": "../../../bin/mf",
+    "record_hash": "sha256=2yXS7jnl_7cjUiacrW8FjndsjoU4ZPnWH3WHvIxzw9M",
+    "distribution": "dbt_metricflow-0.13.0.dist-info",
+    "versions": {
+     "dbt-metricflow": "0.13.0",
+     "metricflow": "0.211.0",
+     "dbt-core": "1.11.11",
+     "dbt-duckdb": "1.10.1",
+     "dbt-semantic-interfaces": "0.9.0",
+     "duckdb": "1.5.4"
+    }
+   },
+   "rows_sha256": "a85d1e99b971de20e8c47895d7084411d4fb5a05daad374b907f89618ebbc965",
+   "stdout_tail": null,
+   "error": null
+  },
+  "exec_line": {
+   "ok": true,
+   "exit_code": 0,
+   "argv": [
+    "mf",
+    "query",
+    "--metrics",
+    "premium_completed_revenue",
+    "--group-by",
+    "sales",
+    "--where",
+    "{{ TimeDimension('metric_time', 'day') }} >= '2025-01-01'",
+    "--csv",
+    "<csv>"
+   ],
+   "rows_sha256": "0e5fd5a26540d665697a5a56ab64ec52708085b71fd58bcbb112ce1d25f63999"
+  }
+ },
+ "N2A_GE119__PINNED__q0eef35e3": {
+  "stack_id": "N2A_GE119__PINNED",
+  "upstream": "/home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/N2A_GE119__PINNED/upstream",
+  "patch_ops": 4,
+  "ok": true,
+  "diffs": [
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_semantic_models.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_semantic_models.yml\n@@ -34,6 +34,9 @@\n         type: categorical\n       - name: status\n         type: categorical\n+      - name: unit_price\n+        type: categorical\n+        expr: unit_price\n     measures:\n       - name: revenue\n         description: \"Quantity x price charged.\"\n"
+   },
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n@@ -117,3 +117,11 @@\n     type_params:\n       numerator: repeat_customers\n       denominator: purchasing_customers\n+\n+  - name: premium_completed_revenue\n+    description: \"Completed revenue on lines with unit price at least 100.\"\n+    label: \"Premium completed revenue\"\n+    type: simple\n+    type_params:\n+      measure: revenue\n+    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 100\"\n"
+   },
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n@@ -125,3 +125,11 @@\n     type_params:\n       measure: revenue\n     filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 100\"\n+\n+  - name: french_market_revenue\n+    description: \"Completed revenue of customers in France.\"\n+    label: \"French market revenue\"\n+    type: simple\n+    type_params:\n+      measure: revenue\n+    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('customer__country') }} = 'France'\"\n"
+   },
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n@@ -124,7 +124,7 @@\n     type: simple\n     type_params:\n       measure: revenue\n-    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 100\"\n+    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 119\"\n \n   - name: french_market_revenue\n     description: \"Completed revenue of customers in France.\"\n"
+   }
+  ],
+  "steps": {
+   "load_bronze": {
+    "exit_code": 0,
+    "tail": "Loading Bronze into /home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/N2A_GE119__PINNED/upstream/data/warehouse.duckdb\n  bronze.customers       500 rows\n  bronze.products        100 rows\n  bronze.stores           10 rows\n  bronze.orders         2200 rows\n  bronze.order_items    5526 rows\n  bronze.order_events     0 rows (streaming landing)\nBronze layer ready.\n"
+   },
+   "dbt_build": {
+    "exit_code": 0,
+    "tail": "ART test relationships_fact_sales_live_store_id__store_id__ref_dim_stores_  [RUN]\n\u001b[0m18:36:32  80 of 81 START test relationships_fact_sales_store_id__store_id__ref_dim_stores_  [RUN]\n\u001b[0m18:36:32  75 of 81 PASS unique_fact_sales_sales_id ....................................... [\u001b[32mPASS\u001b[0m in 0.07s]\n\u001b[0m18:36:32  81 of 81 START test unique_dim_stores_store_id ................................. [RUN]\n\u001b[0m18:36:32  78 of 81 PASS not_null_dim_stores_store_id ..................................... [\u001b[32mPASS\u001b[0m in 0.07s]\n\u001b[0m18:36:32  79 of 81 PASS relationships_fact_sales_live_store_id__store_id__ref_dim_stores_  [\u001b[32mPASS\u001b[0m in 0.07s]\n\u001b[0m18:36:32  80 of 81 PASS relationships_fact_sales_store_id__store_id__ref_dim_stores_ ..... [\u001b[32mPASS\u001b[0m in 0.06s]\n\u001b[0m18:36:32  81 of 81 PASS unique_dim_stores_store_id ....................................... [\u001b[32mPASS\u001b[0m in 0.04s]\n\u001b[0m18:36:32  \n\u001b[0m18:36:32  Finished running 2 exposures, 1 incremental model, 6 table models, 65 data tests, 7 view models in 0 hours 0 minutes and 2.18 seconds (2.18s).\n\u001b[0m18:36:32  \n\u001b[0m18:36:32  \u001b[32mCompleted successfully\u001b[0m\n\u001b[0m18:36:32  \n\u001b[0m18:36:32  Done. PASS=79 WARN=0 ERROR=0 SKIP=0 NO-OP=2 TOTAL=81\n"
+   },
+   "dbt_parse": {
+    "exit_code": 0,
+    "tail": "\u001b[0m18:36:34  Running with dbt=1.11.11\n\u001b[0m18:36:34  Registered adapter: duckdb=1.10.1\n\u001b[0m18:36:34  Performance info: /home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/N2A_GE119__PINNED/upstream/dbt/retail_dwh/target/perf_info.json\n"
+   }
+  },
+  "raw_csv_sha256": {
+   "customers.csv": "e570cfec57af94cee3b974db5642fe0c276b495f83dd82e6af077dbb3784680d",
+   "order_items.csv": "513de0a77e90c7312a2935d47efcced60b6811a33de589e1a4fe63d2045e5f26",
+   "orders.csv": "be942a616a816158924f538b8f9cde29de773bc324411c5c6f7c83c980ec4f03",
+   "products.csv": "3783c0e35d83c571e8fc18bbafa98f59e217944288a92f590b6a15d4320c2311",
+   "stores.csv": "78d2cbff192a861f4f880bcc0c25ddc43df72bfecf8a3517abf18723109f8c44"
+  },
+  "semantic_manifest_sha256": "212df5a65771bcebbf12f5818f213cf6d805197f93e355a7809e93b2e09057e4",
+  "warehouse": "/home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/N2A_GE119__PINNED/upstream/data/warehouse.duckdb",
+  "query": {
+   "group_by": [
+    "metric_time__year"
+   ],
+   "metric": "premium_completed_revenue",
+   "where": [
+    "{{ TimeDimension('metric_time', 'day') }} >= '2025-01-01'"
+   ]
+  },
+  "exec_year": {
+   "ok": true,
+   "exit_code": 0,
+   "argv": [
+    "mf",
+    "query",
+    "--metrics",
+    "premium_completed_revenue",
+    "--group-by",
+    "metric_time__year",
+    "--where",
+    "{{ TimeDimension('metric_time', 'day') }} >= '2025-01-01'",
+    "--csv",
+    "<csv>"
+   ],
+   "compiled_sql": "SELECT\n  metric_time__year\n  , SUM(premium_completed_revenue) AS premium_completed_revenue\nFROM (\n  SELECT\n    DATE_TRUNC('day', order_date) AS metric_time__day\n    , DATE_TRUNC('year', order_date) AS metric_time__year\n    , status AS sales__status\n    , unit_price AS sales__unit_price\n    , revenue AS premium_completed_revenue\n  FROM \"warehouse\".\"gold\".\"fact_sales\" sales_src_10000\n) subq_2\nWHERE (\n  sales__status = 'completed' AND sales__unit_price >= 119\n) AND (\n  metric_time__day >= '2025-01-01'\n)\nGROUP BY\n  metric_time__year",
+   "mf_identity": {
+    "mf_path": "/home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/N2A_GE119__PINNED/upstream/.venv/bin/mf",
+    "mf_sha256": "db25d2ee39e5ffb72352269cad6f058e776c8e853864f9d61f7587bc8c73c3d3",
+    "record_entry": "../../../bin/mf",
+    "record_hash": "sha256=2yXS7jnl_7cjUiacrW8FjndsjoU4ZPnWH3WHvIxzw9M",
+    "distribution": "dbt_metricflow-0.13.0.dist-info",
+    "versions": {
+     "dbt-metricflow": "0.13.0",
+     "metricflow": "0.211.0",
+     "dbt-core": "1.11.11",
+     "dbt-duckdb": "1.10.1",
+     "dbt-semantic-interfaces": "0.9.0",
+     "duckdb": "1.5.4"
+    }
+   },
+   "rows_sha256": "52992d60f248a5ee937fca0c7df4b5d7cb49d35df4e8152253bbb5c477958fdf",
+   "stdout_tail": null,
+   "error": null
+  },
+  "exec_line": {
+   "ok": true,
+   "exit_code": 0,
+   "argv": [
+    "mf",
+    "query",
+    "--metrics",
+    "premium_completed_revenue",
+    "--group-by",
+    "sales",
+    "--where",
+    "{{ TimeDimension('metric_time', 'day') }} >= '2025-01-01'",
+    "--csv",
+    "<csv>"
+   ],
+   "rows_sha256": "e83ddec9f8a7c746fcb25721017f6cdd7b745b8776a0cba9b63cc96b1be457c9"
+  }
+ },
+ "N2A_GE119__BOUNDARY120__q0eef35e3": {
+  "stack_id": "N2A_GE119__BOUNDARY120",
+  "upstream": "/home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/N2A_GE119__BOUNDARY120/upstream",
+  "patch_ops": 4,
+  "ok": true,
+  "diffs": [
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_semantic_models.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_semantic_models.yml\n@@ -34,6 +34,9 @@\n         type: categorical\n       - name: status\n         type: categorical\n+      - name: unit_price\n+        type: categorical\n+        expr: unit_price\n     measures:\n       - name: revenue\n         description: \"Quantity x price charged.\"\n"
+   },
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n@@ -117,3 +117,11 @@\n     type_params:\n       numerator: repeat_customers\n       denominator: purchasing_customers\n+\n+  - name: premium_completed_revenue\n+    description: \"Completed revenue on lines with unit price at least 100.\"\n+    label: \"Premium completed revenue\"\n+    type: simple\n+    type_params:\n+      measure: revenue\n+    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 100\"\n"
+   },
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n@@ -125,3 +125,11 @@\n     type_params:\n       measure: revenue\n     filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 100\"\n+\n+  - name: french_market_revenue\n+    description: \"Completed revenue of customers in France.\"\n+    label: \"French market revenue\"\n+    type: simple\n+    type_params:\n+      measure: revenue\n+    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('customer__country') }} = 'France'\"\n"
+   },
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n@@ -124,7 +124,7 @@\n     type: simple\n     type_params:\n       measure: revenue\n-    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 100\"\n+    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 119\"\n \n   - name: french_market_revenue\n     description: \"Completed revenue of customers in France.\"\n"
+   }
+  ],
+  "steps": {
+   "load_bronze": {
+    "exit_code": 0,
+    "tail": "Loading Bronze into /home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/N2A_GE119__BOUNDARY120/upstream/data/warehouse.duckdb\n  bronze.customers       500 rows\n  bronze.products        100 rows\n  bronze.stores           10 rows\n  bronze.orders         2200 rows\n  bronze.order_items    5526 rows\n  bronze.order_events     0 rows (streaming landing)\nBronze layer ready.\n"
+   },
+   "dbt_build": {
+    "exit_code": 0,
+    "tail": "RT test relationships_fact_sales_live_store_id__store_id__ref_dim_stores_  [RUN]\n\u001b[0m18:36:53  80 of 81 START test relationships_fact_sales_store_id__store_id__ref_dim_stores_  [RUN]\n\u001b[0m18:36:53  77 of 81 NO-OP exposure governed_dashboard ..................................... [\u001b[33mNO-OP\u001b[0m in 0.00s]\n\u001b[0m18:36:53  81 of 81 START test unique_dim_stores_store_id ................................. [RUN]\n\u001b[0m18:36:53  79 of 81 PASS relationships_fact_sales_live_store_id__store_id__ref_dim_stores_  [\u001b[32mPASS\u001b[0m in 0.06s]\n\u001b[0m18:36:53  78 of 81 PASS not_null_dim_stores_store_id ..................................... [\u001b[32mPASS\u001b[0m in 0.07s]\n\u001b[0m18:36:53  80 of 81 PASS relationships_fact_sales_store_id__store_id__ref_dim_stores_ ..... [\u001b[32mPASS\u001b[0m in 0.07s]\n\u001b[0m18:36:53  81 of 81 PASS unique_dim_stores_store_id ....................................... [\u001b[32mPASS\u001b[0m in 0.04s]\n\u001b[0m18:36:53  \n\u001b[0m18:36:53  Finished running 2 exposures, 1 incremental model, 6 table models, 65 data tests, 7 view models in 0 hours 0 minutes and 2.05 seconds (2.05s).\n\u001b[0m18:36:53  \n\u001b[0m18:36:53  \u001b[32mCompleted successfully\u001b[0m\n\u001b[0m18:36:53  \n\u001b[0m18:36:53  Done. PASS=79 WARN=0 ERROR=0 SKIP=0 NO-OP=2 TOTAL=81\n"
+   },
+   "dbt_parse": {
+    "exit_code": 0,
+    "tail": "\u001b[0m18:36:55  Running with dbt=1.11.11\n\u001b[0m18:36:55  Registered adapter: duckdb=1.10.1\n\u001b[0m18:36:56  Performance info: /home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/N2A_GE119__BOUNDARY120/upstream/dbt/retail_dwh/target/perf_info.json\n"
+   }
+  },
+  "raw_csv_sha256": {
+   "customers.csv": "e570cfec57af94cee3b974db5642fe0c276b495f83dd82e6af077dbb3784680d",
+   "order_items.csv": "a4b81aa4c372a77bb74289915e9de5ddd7acee1212d9b5efca70d0a205027d08",
+   "orders.csv": "be942a616a816158924f538b8f9cde29de773bc324411c5c6f7c83c980ec4f03",
+   "products.csv": "3783c0e35d83c571e8fc18bbafa98f59e217944288a92f590b6a15d4320c2311",
+   "stores.csv": "78d2cbff192a861f4f880bcc0c25ddc43df72bfecf8a3517abf18723109f8c44"
+  },
+  "semantic_manifest_sha256": "212df5a65771bcebbf12f5818f213cf6d805197f93e355a7809e93b2e09057e4",
+  "warehouse": "/home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/N2A_GE119__BOUNDARY120/upstream/data/warehouse.duckdb",
+  "query": {
+   "group_by": [
+    "metric_time__year"
+   ],
+   "metric": "premium_completed_revenue",
+   "where": [
+    "{{ TimeDimension('metric_time', 'day') }} >= '2025-01-01'"
+   ]
+  },
+  "exec_year": {
+   "ok": true,
+   "exit_code": 0,
+   "argv": [
+    "mf",
+    "query",
+    "--metrics",
+    "premium_completed_revenue",
+    "--group-by",
+    "metric_time__year",
+    "--where",
+    "{{ TimeDimension('metric_time', 'day') }} >= '2025-01-01'",
+    "--csv",
+    "<csv>"
+   ],
+   "compiled_sql": "SELECT\n  metric_time__year\n  , SUM(premium_completed_revenue) AS premium_completed_revenue\nFROM (\n  SELECT\n    DATE_TRUNC('day', order_date) AS metric_time__day\n    , DATE_TRUNC('year', order_date) AS metric_time__year\n    , status AS sales__status\n    , unit_price AS sales__unit_price\n    , revenue AS premium_completed_revenue\n  FROM \"warehouse\".\"gold\".\"fact_sales\" sales_src_10000\n) subq_2\nWHERE (\n  sales__status = 'completed' AND sales__unit_price >= 119\n) AND (\n  metric_time__day >= '2025-01-01'\n)\nGROUP BY\n  metric_time__year",
+   "mf_identity": {
+    "mf_path": "/home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/N2A_GE119__BOUNDARY120/upstream/.venv/bin/mf",
+    "mf_sha256": "db25d2ee39e5ffb72352269cad6f058e776c8e853864f9d61f7587bc8c73c3d3",
+    "record_entry": "../../../bin/mf",
+    "record_hash": "sha256=2yXS7jnl_7cjUiacrW8FjndsjoU4ZPnWH3WHvIxzw9M",
+    "distribution": "dbt_metricflow-0.13.0.dist-info",
+    "versions": {
+     "dbt-metricflow": "0.13.0",
+     "metricflow": "0.211.0",
+     "dbt-core": "1.11.11",
+     "dbt-duckdb": "1.10.1",
+     "dbt-semantic-interfaces": "0.9.0",
+     "duckdb": "1.5.4"
+    }
+   },
+   "rows_sha256": "0e3bd95f279b87d337f330188377890cd90c30cb0c50b814b184c0ab7a91d2b4",
+   "stdout_tail": null,
+   "error": null
+  },
+  "exec_line": {
+   "ok": true,
+   "exit_code": 0,
+   "argv": [
+    "mf",
+    "query",
+    "--metrics",
+    "premium_completed_revenue",
+    "--group-by",
+    "sales",
+    "--where",
+    "{{ TimeDimension('metric_time', 'day') }} >= '2025-01-01'",
+    "--csv",
+    "<csv>"
+   ],
+   "rows_sha256": "a256dee5bb4d86dd777a8b615043889b91081b250ba64cf31dd19674fb5e531b"
+  }
+ },
+ "N2B_GT120__PINNED__q0eef35e3": {
+  "stack_id": "N2B_GT120__PINNED",
+  "upstream": "/home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/N2B_GT120__PINNED/upstream",
+  "patch_ops": 4,
+  "ok": true,
+  "diffs": [
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_semantic_models.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_semantic_models.yml\n@@ -34,6 +34,9 @@\n         type: categorical\n       - name: status\n         type: categorical\n+      - name: unit_price\n+        type: categorical\n+        expr: unit_price\n     measures:\n       - name: revenue\n         description: \"Quantity x price charged.\"\n"
+   },
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n@@ -117,3 +117,11 @@\n     type_params:\n       numerator: repeat_customers\n       denominator: purchasing_customers\n+\n+  - name: premium_completed_revenue\n+    description: \"Completed revenue on lines with unit price at least 100.\"\n+    label: \"Premium completed revenue\"\n+    type: simple\n+    type_params:\n+      measure: revenue\n+    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 100\"\n"
+   },
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n@@ -125,3 +125,11 @@\n     type_params:\n       measure: revenue\n     filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 100\"\n+\n+  - name: french_market_revenue\n+    description: \"Completed revenue of customers in France.\"\n+    label: \"French market revenue\"\n+    type: simple\n+    type_params:\n+      measure: revenue\n+    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('customer__country') }} = 'France'\"\n"
+   },
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n@@ -124,7 +124,7 @@\n     type: simple\n     type_params:\n       measure: revenue\n-    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 100\"\n+    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} > 120\"\n \n   - name: french_market_revenue\n     description: \"Completed revenue of customers in France.\"\n"
+   }
+  ],
+  "steps": {
+   "load_bronze": {
+    "exit_code": 0,
+    "tail": "Loading Bronze into /home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/N2B_GT120__PINNED/upstream/data/warehouse.duckdb\n  bronze.customers       500 rows\n  bronze.products        100 rows\n  bronze.stores           10 rows\n  bronze.orders         2200 rows\n  bronze.order_items    5526 rows\n  bronze.order_events     0 rows (streaming landing)\nBronze layer ready.\n"
+   },
+   "dbt_build": {
+    "exit_code": 0,
+    "tail": "ue ................................. [\u001b[32mPASS\u001b[0m in 0.07s]\n\u001b[0m18:37:15  80 of 81 START test relationships_fact_sales_live_store_id__store_id__ref_dim_stores_  [RUN]\n\u001b[0m18:37:15  77 of 81 PASS not_null_fact_sales_live_store_id ................................ [\u001b[32mPASS\u001b[0m in 0.07s]\n\u001b[0m18:37:15  78 of 81 PASS relationships_fact_sales_live_customer_id__customer_id__ref_dim_customers_  [\u001b[32mPASS\u001b[0m in 0.06s]\n\u001b[0m18:37:15  79 of 81 PASS relationships_fact_sales_live_product_id__product_id__ref_dim_products_  [\u001b[32mPASS\u001b[0m in 0.06s]\n\u001b[0m18:37:15  81 of 81 START test unique_fact_sales_live_event_id ............................ [RUN]\n\u001b[0m18:37:15  80 of 81 PASS relationships_fact_sales_live_store_id__store_id__ref_dim_stores_  [\u001b[32mPASS\u001b[0m in 0.04s]\n\u001b[0m18:37:15  81 of 81 PASS unique_fact_sales_live_event_id .................................. [\u001b[32mPASS\u001b[0m in 0.03s]\n\u001b[0m18:37:15  \n\u001b[0m18:37:15  Finished running 2 exposures, 1 incremental model, 6 table models, 65 data tests, 7 view models in 0 hours 0 minutes and 2.23 seconds (2.23s).\n\u001b[0m18:37:15  \n\u001b[0m18:37:15  \u001b[32mCompleted successfully\u001b[0m\n\u001b[0m18:37:15  \n\u001b[0m18:37:15  Done. PASS=79 WARN=0 ERROR=0 SKIP=0 NO-OP=2 TOTAL=81\n"
+   },
+   "dbt_parse": {
+    "exit_code": 0,
+    "tail": "\u001b[0m18:37:17  Running with dbt=1.11.11\n\u001b[0m18:37:18  Registered adapter: duckdb=1.10.1\n\u001b[0m18:37:18  Performance info: /home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/N2B_GT120__PINNED/upstream/dbt/retail_dwh/target/perf_info.json\n"
+   }
+  },
+  "raw_csv_sha256": {
+   "customers.csv": "e570cfec57af94cee3b974db5642fe0c276b495f83dd82e6af077dbb3784680d",
+   "order_items.csv": "513de0a77e90c7312a2935d47efcced60b6811a33de589e1a4fe63d2045e5f26",
+   "orders.csv": "be942a616a816158924f538b8f9cde29de773bc324411c5c6f7c83c980ec4f03",
+   "products.csv": "3783c0e35d83c571e8fc18bbafa98f59e217944288a92f590b6a15d4320c2311",
+   "stores.csv": "78d2cbff192a861f4f880bcc0c25ddc43df72bfecf8a3517abf18723109f8c44"
+  },
+  "semantic_manifest_sha256": "61474134be4c14dd06419a9fe659fb6f911c6becf73351b3cfa9404eed06b744",
+  "warehouse": "/home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/N2B_GT120__PINNED/upstream/data/warehouse.duckdb",
+  "query": {
+   "group_by": [
+    "metric_time__year"
+   ],
+   "metric": "premium_completed_revenue",
+   "where": [
+    "{{ TimeDimension('metric_time', 'day') }} >= '2025-01-01'"
+   ]
+  },
+  "exec_year": {
+   "ok": true,
+   "exit_code": 0,
+   "argv": [
+    "mf",
+    "query",
+    "--metrics",
+    "premium_completed_revenue",
+    "--group-by",
+    "metric_time__year",
+    "--where",
+    "{{ TimeDimension('metric_time', 'day') }} >= '2025-01-01'",
+    "--csv",
+    "<csv>"
+   ],
+   "compiled_sql": "SELECT\n  metric_time__year\n  , SUM(premium_completed_revenue) AS premium_completed_revenue\nFROM (\n  SELECT\n    DATE_TRUNC('day', order_date) AS metric_time__day\n    , DATE_TRUNC('year', order_date) AS metric_time__year\n    , status AS sales__status\n    , unit_price AS sales__unit_price\n    , revenue AS premium_completed_revenue\n  FROM \"warehouse\".\"gold\".\"fact_sales\" sales_src_10000\n) subq_2\nWHERE (\n  sales__status = 'completed' AND sales__unit_price > 120\n) AND (\n  metric_time__day >= '2025-01-01'\n)\nGROUP BY\n  metric_time__year",
+   "mf_identity": {
+    "mf_path": "/home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/N2B_GT120__PINNED/upstream/.venv/bin/mf",
+    "mf_sha256": "db25d2ee39e5ffb72352269cad6f058e776c8e853864f9d61f7587bc8c73c3d3",
+    "record_entry": "../../../bin/mf",
+    "record_hash": "sha256=2yXS7jnl_7cjUiacrW8FjndsjoU4ZPnWH3WHvIxzw9M",
+    "distribution": "dbt_metricflow-0.13.0.dist-info",
+    "versions": {
+     "dbt-metricflow": "0.13.0",
+     "metricflow": "0.211.0",
+     "dbt-core": "1.11.11",
+     "dbt-duckdb": "1.10.1",
+     "dbt-semantic-interfaces": "0.9.0",
+     "duckdb": "1.5.4"
+    }
+   },
+   "rows_sha256": "7ced7ede45ad82e4fd160f97170d4f482e636c2d56a6b932f045513df067bcd9",
+   "stdout_tail": null,
+   "error": null
+  },
+  "exec_line": {
+   "ok": true,
+   "exit_code": 0,
+   "argv": [
+    "mf",
+    "query",
+    "--metrics",
+    "premium_completed_revenue",
+    "--group-by",
+    "sales",
+    "--where",
+    "{{ TimeDimension('metric_time', 'day') }} >= '2025-01-01'",
+    "--csv",
+    "<csv>"
+   ],
+   "rows_sha256": "0f9a87d21d0e83fc8cde15854bb71efe504d35346a45fbc8b3dd50e71498afed"
+  }
+ },
+ "N2B_GT120__BOUNDARY120__q0eef35e3": {
+  "stack_id": "N2B_GT120__BOUNDARY120",
+  "upstream": "/home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/N2B_GT120__BOUNDARY120/upstream",
+  "patch_ops": 4,
+  "ok": true,
+  "diffs": [
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_semantic_models.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_semantic_models.yml\n@@ -34,6 +34,9 @@\n         type: categorical\n       - name: status\n         type: categorical\n+      - name: unit_price\n+        type: categorical\n+        expr: unit_price\n     measures:\n       - name: revenue\n         description: \"Quantity x price charged.\"\n"
+   },
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n@@ -117,3 +117,11 @@\n     type_params:\n       numerator: repeat_customers\n       denominator: purchasing_customers\n+\n+  - name: premium_completed_revenue\n+    description: \"Completed revenue on lines with unit price at least 100.\"\n+    label: \"Premium completed revenue\"\n+    type: simple\n+    type_params:\n+      measure: revenue\n+    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 100\"\n"
+   },
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n@@ -125,3 +125,11 @@\n     type_params:\n       measure: revenue\n     filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 100\"\n+\n+  - name: french_market_revenue\n+    description: \"Completed revenue of customers in France.\"\n+    label: \"French market revenue\"\n+    type: simple\n+    type_params:\n+      measure: revenue\n+    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('customer__country') }} = 'France'\"\n"
+   },
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n@@ -124,7 +124,7 @@\n     type: simple\n     type_params:\n       measure: revenue\n-    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 100\"\n+    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} > 120\"\n \n   - name: french_market_revenue\n     description: \"Completed revenue of customers in France.\"\n"
+   }
+  ],
+  "steps": {
+   "load_bronze": {
+    "exit_code": 0,
+    "tail": "Loading Bronze into /home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/N2B_GT120__BOUNDARY120/upstream/data/warehouse.duckdb\n  bronze.customers       500 rows\n  bronze.products        100 rows\n  bronze.stores           10 rows\n  bronze.orders         2200 rows\n  bronze.order_items    5526 rows\n  bronze.order_events     0 rows (streaming landing)\nBronze layer ready.\n"
+   },
+   "dbt_build": {
+    "exit_code": 0,
+    "tail": "ART test relationships_fact_sales_live_store_id__store_id__ref_dim_stores_  [RUN]\n\u001b[0m18:37:37  80 of 81 START test relationships_fact_sales_store_id__store_id__ref_dim_stores_  [RUN]\n\u001b[0m18:37:38  75 of 81 PASS unique_fact_sales_sales_id ....................................... [\u001b[32mPASS\u001b[0m in 0.07s]\n\u001b[0m18:37:38  81 of 81 START test unique_dim_stores_store_id ................................. [RUN]\n\u001b[0m18:37:38  78 of 81 PASS not_null_dim_stores_store_id ..................................... [\u001b[32mPASS\u001b[0m in 0.06s]\n\u001b[0m18:37:38  79 of 81 PASS relationships_fact_sales_live_store_id__store_id__ref_dim_stores_  [\u001b[32mPASS\u001b[0m in 0.07s]\n\u001b[0m18:37:38  80 of 81 PASS relationships_fact_sales_store_id__store_id__ref_dim_stores_ ..... [\u001b[32mPASS\u001b[0m in 0.06s]\n\u001b[0m18:37:38  81 of 81 PASS unique_dim_stores_store_id ....................................... [\u001b[32mPASS\u001b[0m in 0.04s]\n\u001b[0m18:37:38  \n\u001b[0m18:37:38  Finished running 2 exposures, 1 incremental model, 6 table models, 65 data tests, 7 view models in 0 hours 0 minutes and 2.21 seconds (2.21s).\n\u001b[0m18:37:38  \n\u001b[0m18:37:38  \u001b[32mCompleted successfully\u001b[0m\n\u001b[0m18:37:38  \n\u001b[0m18:37:38  Done. PASS=79 WARN=0 ERROR=0 SKIP=0 NO-OP=2 TOTAL=81\n"
+   },
+   "dbt_parse": {
+    "exit_code": 0,
+    "tail": "\u001b[0m18:37:40  Running with dbt=1.11.11\n\u001b[0m18:37:40  Registered adapter: duckdb=1.10.1\n\u001b[0m18:37:40  Performance info: /home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/N2B_GT120__BOUNDARY120/upstream/dbt/retail_dwh/target/perf_info.json\n"
+   }
+  },
+  "raw_csv_sha256": {
+   "customers.csv": "e570cfec57af94cee3b974db5642fe0c276b495f83dd82e6af077dbb3784680d",
+   "order_items.csv": "a4b81aa4c372a77bb74289915e9de5ddd7acee1212d9b5efca70d0a205027d08",
+   "orders.csv": "be942a616a816158924f538b8f9cde29de773bc324411c5c6f7c83c980ec4f03",
+   "products.csv": "3783c0e35d83c571e8fc18bbafa98f59e217944288a92f590b6a15d4320c2311",
+   "stores.csv": "78d2cbff192a861f4f880bcc0c25ddc43df72bfecf8a3517abf18723109f8c44"
+  },
+  "semantic_manifest_sha256": "61474134be4c14dd06419a9fe659fb6f911c6becf73351b3cfa9404eed06b744",
+  "warehouse": "/home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/N2B_GT120__BOUNDARY120/upstream/data/warehouse.duckdb",
+  "query": {
+   "group_by": [
+    "metric_time__year"
+   ],
+   "metric": "premium_completed_revenue",
+   "where": [
+    "{{ TimeDimension('metric_time', 'day') }} >= '2025-01-01'"
+   ]
+  },
+  "exec_year": {
+   "ok": true,
+   "exit_code": 0,
+   "argv": [
+    "mf",
+    "query",
+    "--metrics",
+    "premium_completed_revenue",
+    "--group-by",
+    "metric_time__year",
+    "--where",
+    "{{ TimeDimension('metric_time', 'day') }} >= '2025-01-01'",
+    "--csv",
+    "<csv>"
+   ],
+   "compiled_sql": "SELECT\n  metric_time__year\n  , SUM(premium_completed_revenue) AS premium_completed_revenue\nFROM (\n  SELECT\n    DATE_TRUNC('day', order_date) AS metric_time__day\n    , DATE_TRUNC('year', order_date) AS metric_time__year\n    , status AS sales__status\n    , unit_price AS sales__unit_price\n    , revenue AS premium_completed_revenue\n  FROM \"warehouse\".\"gold\".\"fact_sales\" sales_src_10000\n) subq_2\nWHERE (\n  sales__status = 'completed' AND sales__unit_price > 120\n) AND (\n  metric_time__day >= '2025-01-01'\n)\nGROUP BY\n  metric_time__year",
+   "mf_identity": {
+    "mf_path": "/home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/N2B_GT120__BOUNDARY120/upstream/.venv/bin/mf",
+    "mf_sha256": "db25d2ee39e5ffb72352269cad6f058e776c8e853864f9d61f7587bc8c73c3d3",
+    "record_entry": "../../../bin/mf",
+    "record_hash": "sha256=2yXS7jnl_7cjUiacrW8FjndsjoU4ZPnWH3WHvIxzw9M",
+    "distribution": "dbt_metricflow-0.13.0.dist-info",
+    "versions": {
+     "dbt-metricflow": "0.13.0",
+     "metricflow": "0.211.0",
+     "dbt-core": "1.11.11",
+     "dbt-duckdb": "1.10.1",
+     "dbt-semantic-interfaces": "0.9.0",
+     "duckdb": "1.5.4"
+    }
+   },
+   "rows_sha256": "8bbc675544223d0c74d5fb6a63769a3deb215716a4fce1ad489669694e9ac715",
+   "stdout_tail": null,
+   "error": null
+  },
+  "exec_line": {
+   "ok": true,
+   "exit_code": 0,
+   "argv": [
+    "mf",
+    "query",
+    "--metrics",
+    "premium_completed_revenue",
+    "--group-by",
+    "sales",
+    "--where",
+    "{{ TimeDimension('metric_time', 'day') }} >= '2025-01-01'",
+    "--csv",
+    "<csv>"
+   ],
+   "rows_sha256": "fc6958e0491898151b7e85a99079c6c853f7f28b47aa1be7c5819b3315cb5f5c"
+  }
+ },
+ "N2C_NONCANCELLED__PINNED__q0eef35e3": {
+  "stack_id": "N2C_NONCANCELLED__PINNED",
+  "upstream": "/home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/N2C_NONCANCELLED__PINNED/upstream",
+  "patch_ops": 4,
+  "ok": true,
+  "diffs": [
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_semantic_models.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_semantic_models.yml\n@@ -34,6 +34,9 @@\n         type: categorical\n       - name: status\n         type: categorical\n+      - name: unit_price\n+        type: categorical\n+        expr: unit_price\n     measures:\n       - name: revenue\n         description: \"Quantity x price charged.\"\n"
+   },
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n@@ -117,3 +117,11 @@\n     type_params:\n       numerator: repeat_customers\n       denominator: purchasing_customers\n+\n+  - name: premium_completed_revenue\n+    description: \"Completed revenue on lines with unit price at least 100.\"\n+    label: \"Premium completed revenue\"\n+    type: simple\n+    type_params:\n+      measure: revenue\n+    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 100\"\n"
+   },
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n@@ -125,3 +125,11 @@\n     type_params:\n       measure: revenue\n     filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 100\"\n+\n+  - name: french_market_revenue\n+    description: \"Completed revenue of customers in France.\"\n+    label: \"French market revenue\"\n+    type: simple\n+    type_params:\n+      measure: revenue\n+    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('customer__country') }} = 'France'\"\n"
+   },
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n@@ -124,7 +124,7 @@\n     type: simple\n     type_params:\n       measure: revenue\n-    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 100\"\n+    filter: \"{{ Dimension('sales__status') }} != 'cancelled' AND {{ Dimension('sales__unit_price') }} >= 120\"\n \n   - name: french_market_revenue\n     description: \"Completed revenue of customers in France.\"\n"
+   }
+  ],
+  "steps": {
+   "load_bronze": {
+    "exit_code": 0,
+    "tail": "Loading Bronze into /home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/N2C_NONCANCELLED__PINNED/upstream/data/warehouse.duckdb\n  bronze.customers       500 rows\n  bronze.products        100 rows\n  bronze.stores           10 rows\n  bronze.orders         2200 rows\n  bronze.order_items    5526 rows\n  bronze.order_events     0 rows (streaming landing)\nBronze layer ready.\n"
+   },
+   "dbt_build": {
+    "exit_code": 0,
+    "tail": "ales_store_id ..................................... [\u001b[32mPASS\u001b[0m in 0.06s]\n\u001b[0m18:38:00  80 of 81 START test relationships_fact_sales_store_id__store_id__ref_dim_stores_  [RUN]\n\u001b[0m18:38:00  77 of 81 PASS relationships_fact_sales_customer_id__customer_id__ref_dim_customers_  [\u001b[32mPASS\u001b[0m in 0.07s]\n\u001b[0m18:38:00  81 of 81 START test unique_fact_sales_sales_id ................................. [RUN]\n\u001b[0m18:38:00  78 of 81 PASS relationships_fact_sales_date_id__date_id__ref_dim_dates_ ........ [\u001b[32mPASS\u001b[0m in 0.07s]\n\u001b[0m18:38:00  79 of 81 PASS relationships_fact_sales_product_id__product_id__ref_dim_products_  [\u001b[32mPASS\u001b[0m in 0.07s]\n\u001b[0m18:38:00  80 of 81 PASS relationships_fact_sales_store_id__store_id__ref_dim_stores_ ..... [\u001b[32mPASS\u001b[0m in 0.05s]\n\u001b[0m18:38:00  81 of 81 PASS unique_fact_sales_sales_id ....................................... [\u001b[32mPASS\u001b[0m in 0.04s]\n\u001b[0m18:38:00  \n\u001b[0m18:38:00  Finished running 2 exposures, 1 incremental model, 6 table models, 65 data tests, 7 view models in 0 hours 0 minutes and 2.14 seconds (2.14s).\n\u001b[0m18:38:00  \n\u001b[0m18:38:00  \u001b[32mCompleted successfully\u001b[0m\n\u001b[0m18:38:00  \n\u001b[0m18:38:00  Done. PASS=79 WARN=0 ERROR=0 SKIP=0 NO-OP=2 TOTAL=81\n"
+   },
+   "dbt_parse": {
+    "exit_code": 0,
+    "tail": "\u001b[0m18:38:02  Running with dbt=1.11.11\n\u001b[0m18:38:02  Registered adapter: duckdb=1.10.1\n\u001b[0m18:38:03  Performance info: /home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/N2C_NONCANCELLED__PINNED/upstream/dbt/retail_dwh/target/perf_info.json\n"
+   }
+  },
+  "raw_csv_sha256": {
+   "customers.csv": "e570cfec57af94cee3b974db5642fe0c276b495f83dd82e6af077dbb3784680d",
+   "order_items.csv": "513de0a77e90c7312a2935d47efcced60b6811a33de589e1a4fe63d2045e5f26",
+   "orders.csv": "be942a616a816158924f538b8f9cde29de773bc324411c5c6f7c83c980ec4f03",
+   "products.csv": "3783c0e35d83c571e8fc18bbafa98f59e217944288a92f590b6a15d4320c2311",
+   "stores.csv": "78d2cbff192a861f4f880bcc0c25ddc43df72bfecf8a3517abf18723109f8c44"
+  },
+  "semantic_manifest_sha256": "3745d6bfefa6ab68fa6613c03de5891db3b13e6c4a1dcf060bc1654aee5ac39b",
+  "warehouse": "/home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/N2C_NONCANCELLED__PINNED/upstream/data/warehouse.duckdb",
+  "query": {
+   "group_by": [
+    "metric_time__year"
+   ],
+   "metric": "premium_completed_revenue",
+   "where": [
+    "{{ TimeDimension('metric_time', 'day') }} >= '2025-01-01'"
+   ]
+  },
+  "exec_year": {
+   "ok": true,
+   "exit_code": 0,
+   "argv": [
+    "mf",
+    "query",
+    "--metrics",
+    "premium_completed_revenue",
+    "--group-by",
+    "metric_time__year",
+    "--where",
+    "{{ TimeDimension('metric_time', 'day') }} >= '2025-01-01'",
+    "--csv",
+    "<csv>"
+   ],
+   "compiled_sql": "SELECT\n  metric_time__year\n  , SUM(premium_completed_revenue) AS premium_completed_revenue\nFROM (\n  SELECT\n    DATE_TRUNC('day', order_date) AS metric_time__day\n    , DATE_TRUNC('year', order_date) AS metric_time__year\n    , status AS sales__status\n    , unit_price AS sales__unit_price\n    , revenue AS premium_completed_revenue\n  FROM \"warehouse\".\"gold\".\"fact_sales\" sales_src_10000\n) subq_2\nWHERE (\n  sales__status != 'cancelled' AND sales__unit_price >= 120\n) AND (\n  metric_time__day >= '2025-01-01'\n)\nGROUP BY\n  metric_time__year",
+   "mf_identity": {
+    "mf_path": "/home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/N2C_NONCANCELLED__PINNED/upstream/.venv/bin/mf",
+    "mf_sha256": "db25d2ee39e5ffb72352269cad6f058e776c8e853864f9d61f7587bc8c73c3d3",
+    "record_entry": "../../../bin/mf",
+    "record_hash": "sha256=2yXS7jnl_7cjUiacrW8FjndsjoU4ZPnWH3WHvIxzw9M",
+    "distribution": "dbt_metricflow-0.13.0.dist-info",
+    "versions": {
+     "dbt-metricflow": "0.13.0",
+     "metricflow": "0.211.0",
+     "dbt-core": "1.11.11",
+     "dbt-duckdb": "1.10.1",
+     "dbt-semantic-interfaces": "0.9.0",
+     "duckdb": "1.5.4"
+    }
+   },
+   "rows_sha256": "bcb146eb18467d9b9682dfaded9fde36788e3f0ae11b8a3e4f906cb5a5232ff5",
+   "stdout_tail": null,
+   "error": null
+  },
+  "exec_line": {
+   "ok": true,
+   "exit_code": 0,
+   "argv": [
+    "mf",
+    "query",
+    "--metrics",
+    "premium_completed_revenue",
+    "--group-by",
+    "sales",
+    "--where",
+    "{{ TimeDimension('metric_time', 'day') }} >= '2025-01-01'",
+    "--csv",
+    "<csv>"
+   ],
+   "rows_sha256": "f2e32b4f89f7f94459b88f183e73a7042bfd83dac7cbcd90de9d63f450c7d778"
+  }
+ },
+ "N2C_NONCANCELLED__BOUNDARY120__q0eef35e3": {
+  "stack_id": "N2C_NONCANCELLED__BOUNDARY120",
+  "upstream": "/home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/N2C_NONCANCELLED__BOUNDARY120/upstream",
+  "patch_ops": 4,
+  "ok": true,
+  "diffs": [
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_semantic_models.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_semantic_models.yml\n@@ -34,6 +34,9 @@\n         type: categorical\n       - name: status\n         type: categorical\n+      - name: unit_price\n+        type: categorical\n+        expr: unit_price\n     measures:\n       - name: revenue\n         description: \"Quantity x price charged.\"\n"
+   },
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n@@ -117,3 +117,11 @@\n     type_params:\n       numerator: repeat_customers\n       denominator: purchasing_customers\n+\n+  - name: premium_completed_revenue\n+    description: \"Completed revenue on lines with unit price at least 100.\"\n+    label: \"Premium completed revenue\"\n+    type: simple\n+    type_params:\n+      measure: revenue\n+    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 100\"\n"
+   },
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n@@ -125,3 +125,11 @@\n     type_params:\n       measure: revenue\n     filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 100\"\n+\n+  - name: french_market_revenue\n+    description: \"Completed revenue of customers in France.\"\n+    label: \"French market revenue\"\n+    type: simple\n+    type_params:\n+      measure: revenue\n+    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('customer__country') }} = 'France'\"\n"
+   },
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n@@ -124,7 +124,7 @@\n     type: simple\n     type_params:\n       measure: revenue\n-    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 100\"\n+    filter: \"{{ Dimension('sales__status') }} != 'cancelled' AND {{ Dimension('sales__unit_price') }} >= 120\"\n \n   - name: french_market_revenue\n     description: \"Completed revenue of customers in France.\"\n"
+   }
+  ],
+  "steps": {
+   "load_bronze": {
+    "exit_code": 0,
+    "tail": "Loading Bronze into /home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/N2C_NONCANCELLED__BOUNDARY120/upstream/data/warehouse.duckdb\n  bronze.customers       500 rows\n  bronze.products        100 rows\n  bronze.stores           10 rows\n  bronze.orders         2200 rows\n  bronze.order_items    5526 rows\n  bronze.order_events     0 rows (streaming landing)\nBronze layer ready.\n"
+   },
+   "dbt_build": {
+    "exit_code": 0,
+    "tail": "ales_store_id ..................................... [\u001b[32mPASS\u001b[0m in 0.08s]\n\u001b[0m18:38:22  80 of 81 START test relationships_fact_sales_store_id__store_id__ref_dim_stores_  [RUN]\n\u001b[0m18:38:22  78 of 81 PASS relationships_fact_sales_date_id__date_id__ref_dim_dates_ ........ [\u001b[32mPASS\u001b[0m in 0.08s]\n\u001b[0m18:38:22  79 of 81 PASS relationships_fact_sales_product_id__product_id__ref_dim_products_  [\u001b[32mPASS\u001b[0m in 0.08s]\n\u001b[0m18:38:22  77 of 81 PASS relationships_fact_sales_customer_id__customer_id__ref_dim_customers_  [\u001b[32mPASS\u001b[0m in 0.09s]\n\u001b[0m18:38:22  80 of 81 PASS relationships_fact_sales_store_id__store_id__ref_dim_stores_ ..... [\u001b[32mPASS\u001b[0m in 0.05s]\n\u001b[0m18:38:22  81 of 81 START test unique_fact_sales_sales_id ................................. [RUN]\n\u001b[0m18:38:22  81 of 81 PASS unique_fact_sales_sales_id ....................................... [\u001b[32mPASS\u001b[0m in 0.02s]\n\u001b[0m18:38:22  \n\u001b[0m18:38:22  Finished running 2 exposures, 1 incremental model, 6 table models, 65 data tests, 7 view models in 0 hours 0 minutes and 2.19 seconds (2.19s).\n\u001b[0m18:38:22  \n\u001b[0m18:38:22  \u001b[32mCompleted successfully\u001b[0m\n\u001b[0m18:38:22  \n\u001b[0m18:38:22  Done. PASS=79 WARN=0 ERROR=0 SKIP=0 NO-OP=2 TOTAL=81\n"
+   },
+   "dbt_parse": {
+    "exit_code": 0,
+    "tail": "\u001b[0m18:38:24  Running with dbt=1.11.11\n\u001b[0m18:38:25  Registered adapter: duckdb=1.10.1\n\u001b[0m18:38:25  Performance info: /home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/N2C_NONCANCELLED__BOUNDARY120/upstream/dbt/retail_dwh/target/perf_info.json\n"
+   }
+  },
+  "raw_csv_sha256": {
+   "customers.csv": "e570cfec57af94cee3b974db5642fe0c276b495f83dd82e6af077dbb3784680d",
+   "order_items.csv": "a4b81aa4c372a77bb74289915e9de5ddd7acee1212d9b5efca70d0a205027d08",
+   "orders.csv": "be942a616a816158924f538b8f9cde29de773bc324411c5c6f7c83c980ec4f03",
+   "products.csv": "3783c0e35d83c571e8fc18bbafa98f59e217944288a92f590b6a15d4320c2311",
+   "stores.csv": "78d2cbff192a861f4f880bcc0c25ddc43df72bfecf8a3517abf18723109f8c44"
+  },
+  "semantic_manifest_sha256": "3745d6bfefa6ab68fa6613c03de5891db3b13e6c4a1dcf060bc1654aee5ac39b",
+  "warehouse": "/home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/N2C_NONCANCELLED__BOUNDARY120/upstream/data/warehouse.duckdb",
+  "query": {
+   "group_by": [
+    "metric_time__year"
+   ],
+   "metric": "premium_completed_revenue",
+   "where": [
+    "{{ TimeDimension('metric_time', 'day') }} >= '2025-01-01'"
+   ]
+  },
+  "exec_year": {
+   "ok": true,
+   "exit_code": 0,
+   "argv": [
+    "mf",
+    "query",
+    "--metrics",
+    "premium_completed_revenue",
+    "--group-by",
+    "metric_time__year",
+    "--where",
+    "{{ TimeDimension('metric_time', 'day') }} >= '2025-01-01'",
+    "--csv",
+    "<csv>"
+   ],
+   "compiled_sql": "SELECT\n  metric_time__year\n  , SUM(premium_completed_revenue) AS premium_completed_revenue\nFROM (\n  SELECT\n    DATE_TRUNC('day', order_date) AS metric_time__day\n    , DATE_TRUNC('year', order_date) AS metric_time__year\n    , status AS sales__status\n    , unit_price AS sales__unit_price\n    , revenue AS premium_completed_revenue\n  FROM \"warehouse\".\"gold\".\"fact_sales\" sales_src_10000\n) subq_2\nWHERE (\n  sales__status != 'cancelled' AND sales__unit_price >= 120\n) AND (\n  metric_time__day >= '2025-01-01'\n)\nGROUP BY\n  metric_time__year",
+   "mf_identity": {
+    "mf_path": "/home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/N2C_NONCANCELLED__BOUNDARY120/upstream/.venv/bin/mf",
+    "mf_sha256": "db25d2ee39e5ffb72352269cad6f058e776c8e853864f9d61f7587bc8c73c3d3",
+    "record_entry": "../../../bin/mf",
+    "record_hash": "sha256=2yXS7jnl_7cjUiacrW8FjndsjoU4ZPnWH3WHvIxzw9M",
+    "distribution": "dbt_metricflow-0.13.0.dist-info",
+    "versions": {
+     "dbt-metricflow": "0.13.0",
+     "metricflow": "0.211.0",
+     "dbt-core": "1.11.11",
+     "dbt-duckdb": "1.10.1",
+     "dbt-semantic-interfaces": "0.9.0",
+     "duckdb": "1.5.4"
+    }
+   },
+   "rows_sha256": "8df07b1fd5b5a85a92e56d8a8a5c05a5ea677e5e2cc0bf8b1c452ca43cf3bfe3",
+   "stdout_tail": null,
+   "error": null
+  },
+  "exec_line": {
+   "ok": true,
+   "exit_code": 0,
+   "argv": [
+    "mf",
+    "query",
+    "--metrics",
+    "premium_completed_revenue",
+    "--group-by",
+    "sales",
+    "--where",
+    "{{ TimeDimension('metric_time', 'day') }} >= '2025-01-01'",
+    "--csv",
+    "<csv>"
+   ],
+   "rows_sha256": "a5c7b7ed042e70f7bed54bdf8c4ac7e48583ccaf94d9d7f432462f655a91867d"
+  }
+ },
+ "GENERATED__PINNED__qe465b735": {
+  "stack_id": "GENERATED__PINNED",
+  "upstream": "/home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/GENERATED__PINNED/upstream",
+  "patch_ops": 4,
+  "ok": true,
+  "diffs": [
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_semantic_models.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_semantic_models.yml\n@@ -34,6 +34,9 @@\n         type: categorical\n       - name: status\n         type: categorical\n+      - name: unit_price\n+        type: categorical\n+        expr: unit_price\n     measures:\n       - name: revenue\n         description: \"Quantity x price charged.\"\n"
+   },
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n@@ -117,3 +117,11 @@\n     type_params:\n       numerator: repeat_customers\n       denominator: purchasing_customers\n+\n+  - name: premium_completed_revenue\n+    description: \"Completed revenue on lines with unit price at least 100.\"\n+    label: \"Premium completed revenue\"\n+    type: simple\n+    type_params:\n+      measure: revenue\n+    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 100\"\n"
+   },
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n@@ -125,3 +125,11 @@\n     type_params:\n       measure: revenue\n     filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 100\"\n+\n+  - name: french_market_revenue\n+    description: \"Completed revenue of customers in France.\"\n+    label: \"French market revenue\"\n+    type: simple\n+    type_params:\n+      measure: revenue\n+    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('customer__country') }} = 'France'\"\n"
+   },
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n@@ -119,12 +119,12 @@\n       denominator: purchasing_customers\n \n   - name: premium_completed_revenue\n-    description: \"Completed revenue on lines with unit price at least 100.\"\n+    description: \"Completed revenue on lines with unit price at least 120.\"\n     label: \"Premium completed revenue\"\n     type: simple\n     type_params:\n       measure: revenue\n-    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 100\"\n+    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 120\"\n \n   - name: french_market_revenue\n     description: \"Completed revenue of customers in France.\"\n"
+   }
+  ],
+  "steps": {
+   "load_bronze": {
+    "exit_code": 0,
+    "tail": "Loading Bronze into /home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/GENERATED__PINNED/upstream/data/warehouse.duckdb\n  bronze.customers       500 rows\n  bronze.products        100 rows\n  bronze.stores           10 rows\n  bronze.orders         2200 rows\n  bronze.order_items    5526 rows\n  bronze.order_events     0 rows (streaming landing)\nBronze layer ready.\n"
+   },
+   "dbt_build": {
+    "exit_code": 0,
+    "tail": "ue ................................. [\u001b[32mPASS\u001b[0m in 0.07s]\n\u001b[0m18:35:14  80 of 81 START test relationships_fact_sales_live_store_id__store_id__ref_dim_stores_  [RUN]\n\u001b[0m18:35:14  77 of 81 PASS not_null_fact_sales_live_store_id ................................ [\u001b[32mPASS\u001b[0m in 0.06s]\n\u001b[0m18:35:14  81 of 81 START test unique_fact_sales_live_event_id ............................ [RUN]\n\u001b[0m18:35:14  78 of 81 PASS relationships_fact_sales_live_customer_id__customer_id__ref_dim_customers_  [\u001b[32mPASS\u001b[0m in 0.07s]\n\u001b[0m18:35:14  79 of 81 PASS relationships_fact_sales_live_product_id__product_id__ref_dim_products_  [\u001b[32mPASS\u001b[0m in 0.07s]\n\u001b[0m18:35:14  80 of 81 PASS relationships_fact_sales_live_store_id__store_id__ref_dim_stores_  [\u001b[32mPASS\u001b[0m in 0.05s]\n\u001b[0m18:35:14  81 of 81 PASS unique_fact_sales_live_event_id .................................. [\u001b[32mPASS\u001b[0m in 0.03s]\n\u001b[0m18:35:14  \n\u001b[0m18:35:14  Finished running 2 exposures, 1 incremental model, 6 table models, 65 data tests, 7 view models in 0 hours 0 minutes and 2.04 seconds (2.04s).\n\u001b[0m18:35:15  \n\u001b[0m18:35:15  \u001b[32mCompleted successfully\u001b[0m\n\u001b[0m18:35:15  \n\u001b[0m18:35:15  Done. PASS=79 WARN=0 ERROR=0 SKIP=0 NO-OP=2 TOTAL=81\n"
+   },
+   "dbt_parse": {
+    "exit_code": 0,
+    "tail": "\u001b[0m18:35:17  Running with dbt=1.11.11\n\u001b[0m18:35:17  Registered adapter: duckdb=1.10.1\n\u001b[0m18:35:17  Performance info: /home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/GENERATED__PINNED/upstream/dbt/retail_dwh/target/perf_info.json\n"
+   }
+  },
+  "raw_csv_sha256": {
+   "customers.csv": "e570cfec57af94cee3b974db5642fe0c276b495f83dd82e6af077dbb3784680d",
+   "order_items.csv": "513de0a77e90c7312a2935d47efcced60b6811a33de589e1a4fe63d2045e5f26",
+   "orders.csv": "be942a616a816158924f538b8f9cde29de773bc324411c5c6f7c83c980ec4f03",
+   "products.csv": "3783c0e35d83c571e8fc18bbafa98f59e217944288a92f590b6a15d4320c2311",
+   "stores.csv": "78d2cbff192a861f4f880bcc0c25ddc43df72bfecf8a3517abf18723109f8c44"
+  },
+  "semantic_manifest_sha256": "fd26cecdbb44ff2e0e8807db1ce0af4836a0b412c8ad29646aecbaddcf6ce265",
+  "warehouse": "/home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/GENERATED__PINNED/upstream/data/warehouse.duckdb",
+  "query": {
+   "group_by": [
+    "metric_time__year"
+   ],
+   "metric": "premium_completed_revenue",
+   "where": []
+  },
+  "exec_year": {
+   "ok": true,
+   "exit_code": 0,
+   "argv": [
+    "mf",
+    "query",
+    "--metrics",
+    "premium_completed_revenue",
+    "--group-by",
+    "metric_time__year",
+    "--csv",
+    "<csv>"
+   ],
+   "compiled_sql": "SELECT\n  metric_time__year\n  , SUM(premium_completed_revenue) AS premium_completed_revenue\nFROM (\n  SELECT\n    DATE_TRUNC('year', order_date) AS metric_time__year\n    , status AS sales__status\n    , unit_price AS sales__unit_price\n    , revenue AS premium_completed_revenue\n  FROM \"warehouse\".\"gold\".\"fact_sales\" sales_src_10000\n) subq_2\nWHERE sales__status = 'completed' AND sales__unit_price >= 120\nGROUP BY\n  metric_time__year",
+   "mf_identity": {
+    "mf_path": "/home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/GENERATED__PINNED/upstream/.venv/bin/mf",
+    "mf_sha256": "db25d2ee39e5ffb72352269cad6f058e776c8e853864f9d61f7587bc8c73c3d3",
+    "record_entry": "../../../bin/mf",
+    "record_hash": "sha256=2yXS7jnl_7cjUiacrW8FjndsjoU4ZPnWH3WHvIxzw9M",
+    "distribution": "dbt_metricflow-0.13.0.dist-info",
+    "versions": {
+     "dbt-metricflow": "0.13.0",
+     "metricflow": "0.211.0",
+     "dbt-core": "1.11.11",
+     "dbt-duckdb": "1.10.1",
+     "dbt-semantic-interfaces": "0.9.0",
+     "duckdb": "1.5.4"
+    }
+   },
+   "rows_sha256": "7182b37904f698d3ea65c5fc158c9027691bb3d8c31fa4bf4b742ca4af1da24e",
+   "stdout_tail": null,
+   "error": null
+  },
+  "exec_line": {
+   "ok": true,
+   "exit_code": 0,
+   "argv": [
+    "mf",
+    "query",
+    "--metrics",
+    "premium_completed_revenue",
+    "--group-by",
+    "sales",
+    "--csv",
+    "<csv>"
+   ],
+   "rows_sha256": "dac4a4910552962e0a1e3472ca5a6fbf7bdbd494823e89af6aad0a93960d8695"
+  }
+ },
+ "GENERATED__BOUNDARY120__qe465b735": {
+  "stack_id": "GENERATED__BOUNDARY120",
+  "upstream": "/home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/GENERATED__BOUNDARY120/upstream",
+  "patch_ops": 4,
+  "ok": true,
+  "diffs": [
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_semantic_models.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_semantic_models.yml\n@@ -34,6 +34,9 @@\n         type: categorical\n       - name: status\n         type: categorical\n+      - name: unit_price\n+        type: categorical\n+        expr: unit_price\n     measures:\n       - name: revenue\n         description: \"Quantity x price charged.\"\n"
+   },
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n@@ -117,3 +117,11 @@\n     type_params:\n       numerator: repeat_customers\n       denominator: purchasing_customers\n+\n+  - name: premium_completed_revenue\n+    description: \"Completed revenue on lines with unit price at least 100.\"\n+    label: \"Premium completed revenue\"\n+    type: simple\n+    type_params:\n+      measure: revenue\n+    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 100\"\n"
+   },
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n@@ -125,3 +125,11 @@\n     type_params:\n       measure: revenue\n     filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 100\"\n+\n+  - name: french_market_revenue\n+    description: \"Completed revenue of customers in France.\"\n+    label: \"French market revenue\"\n+    type: simple\n+    type_params:\n+      measure: revenue\n+    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('customer__country') }} = 'France'\"\n"
+   },
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n@@ -119,12 +119,12 @@\n       denominator: purchasing_customers\n \n   - name: premium_completed_revenue\n-    description: \"Completed revenue on lines with unit price at least 100.\"\n+    description: \"Completed revenue on lines with unit price at least 120.\"\n     label: \"Premium completed revenue\"\n     type: simple\n     type_params:\n       measure: revenue\n-    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 100\"\n+    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 120\"\n \n   - name: french_market_revenue\n     description: \"Completed revenue of customers in France.\"\n"
+   }
+  ],
+  "steps": {
+   "load_bronze": {
+    "exit_code": 0,
+    "tail": "Loading Bronze into /home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/GENERATED__BOUNDARY120/upstream/data/warehouse.duckdb\n  bronze.customers       500 rows\n  bronze.products        100 rows\n  bronze.stores           10 rows\n  bronze.orders         2200 rows\n  bronze.order_items    5526 rows\n  bronze.order_events     0 rows (streaming landing)\nBronze layer ready.\n"
+   },
+   "dbt_build": {
+    "exit_code": 0,
+    "tail": "ales_store_id ..................................... [\u001b[32mPASS\u001b[0m in 0.07s]\n\u001b[0m18:35:37  80 of 81 START test relationships_fact_sales_store_id__store_id__ref_dim_stores_  [RUN]\n\u001b[0m18:35:37  77 of 81 PASS relationships_fact_sales_customer_id__customer_id__ref_dim_customers_  [\u001b[32mPASS\u001b[0m in 0.09s]\n\u001b[0m18:35:37  78 of 81 PASS relationships_fact_sales_date_id__date_id__ref_dim_dates_ ........ [\u001b[32mPASS\u001b[0m in 0.06s]\n\u001b[0m18:35:37  81 of 81 START test unique_fact_sales_sales_id ................................. [RUN]\n\u001b[0m18:35:37  79 of 81 PASS relationships_fact_sales_product_id__product_id__ref_dim_products_  [\u001b[32mPASS\u001b[0m in 0.06s]\n\u001b[0m18:35:37  80 of 81 PASS relationships_fact_sales_store_id__store_id__ref_dim_stores_ ..... [\u001b[32mPASS\u001b[0m in 0.05s]\n\u001b[0m18:35:37  81 of 81 PASS unique_fact_sales_sales_id ....................................... [\u001b[32mPASS\u001b[0m in 0.02s]\n\u001b[0m18:35:37  \n\u001b[0m18:35:37  Finished running 2 exposures, 1 incremental model, 6 table models, 65 data tests, 7 view models in 0 hours 0 minutes and 2.07 seconds (2.07s).\n\u001b[0m18:35:37  \n\u001b[0m18:35:37  \u001b[32mCompleted successfully\u001b[0m\n\u001b[0m18:35:37  \n\u001b[0m18:35:37  Done. PASS=79 WARN=0 ERROR=0 SKIP=0 NO-OP=2 TOTAL=81\n"
+   },
+   "dbt_parse": {
+    "exit_code": 0,
+    "tail": "\u001b[0m18:35:39  Running with dbt=1.11.11\n\u001b[0m18:35:40  Registered adapter: duckdb=1.10.1\n\u001b[0m18:35:40  Performance info: /home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/GENERATED__BOUNDARY120/upstream/dbt/retail_dwh/target/perf_info.json\n"
+   }
+  },
+  "raw_csv_sha256": {
+   "customers.csv": "e570cfec57af94cee3b974db5642fe0c276b495f83dd82e6af077dbb3784680d",
+   "order_items.csv": "a4b81aa4c372a77bb74289915e9de5ddd7acee1212d9b5efca70d0a205027d08",
+   "orders.csv": "be942a616a816158924f538b8f9cde29de773bc324411c5c6f7c83c980ec4f03",
+   "products.csv": "3783c0e35d83c571e8fc18bbafa98f59e217944288a92f590b6a15d4320c2311",
+   "stores.csv": "78d2cbff192a861f4f880bcc0c25ddc43df72bfecf8a3517abf18723109f8c44"
+  },
+  "semantic_manifest_sha256": "fd26cecdbb44ff2e0e8807db1ce0af4836a0b412c8ad29646aecbaddcf6ce265",
+  "warehouse": "/home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/GENERATED__BOUNDARY120/upstream/data/warehouse.duckdb",
+  "query": {
+   "group_by": [
+    "metric_time__year"
+   ],
+   "metric": "premium_completed_revenue",
+   "where": []
+  },
+  "exec_year": {
+   "ok": true,
+   "exit_code": 0,
+   "argv": [
+    "mf",
+    "query",
+    "--metrics",
+    "premium_completed_revenue",
+    "--group-by",
+    "metric_time__year",
+    "--csv",
+    "<csv>"
+   ],
+   "compiled_sql": "SELECT\n  metric_time__year\n  , SUM(premium_completed_revenue) AS premium_completed_revenue\nFROM (\n  SELECT\n    DATE_TRUNC('year', order_date) AS metric_time__year\n    , status AS sales__status\n    , unit_price AS sales__unit_price\n    , revenue AS premium_completed_revenue\n  FROM \"warehouse\".\"gold\".\"fact_sales\" sales_src_10000\n) subq_2\nWHERE sales__status = 'completed' AND sales__unit_price >= 120\nGROUP BY\n  metric_time__year",
+   "mf_identity": {
+    "mf_path": "/home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/GENERATED__BOUNDARY120/upstream/.venv/bin/mf",
+    "mf_sha256": "db25d2ee39e5ffb72352269cad6f058e776c8e853864f9d61f7587bc8c73c3d3",
+    "record_entry": "../../../bin/mf",
+    "record_hash": "sha256=2yXS7jnl_7cjUiacrW8FjndsjoU4ZPnWH3WHvIxzw9M",
+    "distribution": "dbt_metricflow-0.13.0.dist-info",
+    "versions": {
+     "dbt-metricflow": "0.13.0",
+     "metricflow": "0.211.0",
+     "dbt-core": "1.11.11",
+     "dbt-duckdb": "1.10.1",
+     "dbt-semantic-interfaces": "0.9.0",
+     "duckdb": "1.5.4"
+    }
+   },
+   "rows_sha256": "476c9f968abee8bfada9d986ef4331ec7cfcd0d5ad481366e5f621705fb0e99c",
+   "stdout_tail": null,
+   "error": null
+  },
+  "exec_line": {
+   "ok": true,
+   "exit_code": 0,
+   "argv": [
+    "mf",
+    "query",
+    "--metrics",
+    "premium_completed_revenue",
+    "--group-by",
+    "sales",
+    "--csv",
+    "<csv>"
+   ],
+   "rows_sha256": "b546f815b8ec9bbcded291b4beb8c35c1f4dc9957967b6e087f44d698da71499"
+  }
+ },
+ "BASELINE__BOUNDARY120__qe465b735": {
+  "stack_id": "BASELINE__BOUNDARY120",
+  "upstream": "/home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/BASELINE__BOUNDARY120/upstream",
+  "patch_ops": 3,
+  "ok": true,
+  "diffs": [
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_semantic_models.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_semantic_models.yml\n@@ -34,6 +34,9 @@\n         type: categorical\n       - name: status\n         type: categorical\n+      - name: unit_price\n+        type: categorical\n+        expr: unit_price\n     measures:\n       - name: revenue\n         description: \"Quantity x price charged.\"\n"
+   },
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n@@ -117,3 +117,11 @@\n     type_params:\n       numerator: repeat_customers\n       denominator: purchasing_customers\n+\n+  - name: premium_completed_revenue\n+    description: \"Completed revenue on lines with unit price at least 100.\"\n+    label: \"Premium completed revenue\"\n+    type: simple\n+    type_params:\n+      measure: revenue\n+    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 100\"\n"
+   },
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n@@ -125,3 +125,11 @@\n     type_params:\n       measure: revenue\n     filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 100\"\n+\n+  - name: french_market_revenue\n+    description: \"Completed revenue of customers in France.\"\n+    label: \"French market revenue\"\n+    type: simple\n+    type_params:\n+      measure: revenue\n+    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('customer__country') }} = 'France'\"\n"
+   }
+  ],
+  "steps": {
+   "load_bronze": {
+    "exit_code": 0,
+    "tail": "Loading Bronze into /home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/BASELINE__BOUNDARY120/upstream/data/warehouse.duckdb\n  bronze.customers       500 rows\n  bronze.products        100 rows\n  bronze.stores           10 rows\n  bronze.orders         2200 rows\n  bronze.order_items    5526 rows\n  bronze.order_events     0 rows (streaming landing)\nBronze layer ready.\n"
+   },
+   "dbt_build": {
+    "exit_code": 0,
+    "tail": "RT test relationships_fact_sales_live_store_id__store_id__ref_dim_stores_  [RUN]\n\u001b[0m18:36:10  77 of 81 NO-OP exposure governed_dashboard ..................................... [\u001b[33mNO-OP\u001b[0m in 0.00s]\n\u001b[0m18:36:10  80 of 81 START test relationships_fact_sales_store_id__store_id__ref_dim_stores_  [RUN]\n\u001b[0m18:36:10  81 of 81 START test unique_dim_stores_store_id ................................. [RUN]\n\u001b[0m18:36:10  78 of 81 PASS not_null_dim_stores_store_id ..................................... [\u001b[32mPASS\u001b[0m in 0.07s]\n\u001b[0m18:36:10  79 of 81 PASS relationships_fact_sales_live_store_id__store_id__ref_dim_stores_  [\u001b[32mPASS\u001b[0m in 0.07s]\n\u001b[0m18:36:10  81 of 81 PASS unique_dim_stores_store_id ....................................... [\u001b[32mPASS\u001b[0m in 0.06s]\n\u001b[0m18:36:10  80 of 81 PASS relationships_fact_sales_store_id__store_id__ref_dim_stores_ ..... [\u001b[32mPASS\u001b[0m in 0.06s]\n\u001b[0m18:36:10  \n\u001b[0m18:36:10  Finished running 2 exposures, 1 incremental model, 6 table models, 65 data tests, 7 view models in 0 hours 0 minutes and 2.01 seconds (2.01s).\n\u001b[0m18:36:10  \n\u001b[0m18:36:10  \u001b[32mCompleted successfully\u001b[0m\n\u001b[0m18:36:10  \n\u001b[0m18:36:10  Done. PASS=79 WARN=0 ERROR=0 SKIP=0 NO-OP=2 TOTAL=81\n"
+   },
+   "dbt_parse": {
+    "exit_code": 0,
+    "tail": "\u001b[0m18:36:12  Running with dbt=1.11.11\n\u001b[0m18:36:13  Registered adapter: duckdb=1.10.1\n\u001b[0m18:36:13  Performance info: /home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/BASELINE__BOUNDARY120/upstream/dbt/retail_dwh/target/perf_info.json\n"
+   }
+  },
+  "raw_csv_sha256": {
+   "customers.csv": "e570cfec57af94cee3b974db5642fe0c276b495f83dd82e6af077dbb3784680d",
+   "order_items.csv": "a4b81aa4c372a77bb74289915e9de5ddd7acee1212d9b5efca70d0a205027d08",
+   "orders.csv": "be942a616a816158924f538b8f9cde29de773bc324411c5c6f7c83c980ec4f03",
+   "products.csv": "3783c0e35d83c571e8fc18bbafa98f59e217944288a92f590b6a15d4320c2311",
+   "stores.csv": "78d2cbff192a861f4f880bcc0c25ddc43df72bfecf8a3517abf18723109f8c44"
+  },
+  "semantic_manifest_sha256": "3532b0e66f9758055ec4e8fc2085e15226c87adecdd6c72ab2554afb4c7515bf",
+  "warehouse": "/home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/BASELINE__BOUNDARY120/upstream/data/warehouse.duckdb",
+  "query": {
+   "group_by": [
+    "metric_time__year"
+   ],
+   "metric": "premium_completed_revenue",
+   "where": []
+  },
+  "exec_year": {
+   "ok": true,
+   "exit_code": 0,
+   "argv": [
+    "mf",
+    "query",
+    "--metrics",
+    "premium_completed_revenue",
+    "--group-by",
+    "metric_time__year",
+    "--csv",
+    "<csv>"
+   ],
+   "compiled_sql": "SELECT\n  metric_time__year\n  , SUM(premium_completed_revenue) AS premium_completed_revenue\nFROM (\n  SELECT\n    DATE_TRUNC('year', order_date) AS metric_time__year\n    , status AS sales__status\n    , unit_price AS sales__unit_price\n    , revenue AS premium_completed_revenue\n  FROM \"warehouse\".\"gold\".\"fact_sales\" sales_src_10000\n) subq_2\nWHERE sales__status = 'completed' AND sales__unit_price >= 100\nGROUP BY\n  metric_time__year",
+   "mf_identity": {
+    "mf_path": "/home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/BASELINE__BOUNDARY120/upstream/.venv/bin/mf",
+    "mf_sha256": "db25d2ee39e5ffb72352269cad6f058e776c8e853864f9d61f7587bc8c73c3d3",
+    "record_entry": "../../../bin/mf",
+    "record_hash": "sha256=2yXS7jnl_7cjUiacrW8FjndsjoU4ZPnWH3WHvIxzw9M",
+    "distribution": "dbt_metricflow-0.13.0.dist-info",
+    "versions": {
+     "dbt-metricflow": "0.13.0",
+     "metricflow": "0.211.0",
+     "dbt-core": "1.11.11",
+     "dbt-duckdb": "1.10.1",
+     "dbt-semantic-interfaces": "0.9.0",
+     "duckdb": "1.5.4"
+    }
+   },
+   "rows_sha256": "5ee0a96f0edca4c17428917eba1085245eb8d52eccbd45ba27c4f63a496ee526",
+   "stdout_tail": null,
+   "error": null
+  },
+  "exec_line": {
+   "ok": true,
+   "exit_code": 0,
+   "argv": [
+    "mf",
+    "query",
+    "--metrics",
+    "premium_completed_revenue",
+    "--group-by",
+    "sales",
+    "--csv",
+    "<csv>"
+   ],
+   "rows_sha256": "1718dc5bf7d5c86e8e30ab39e0983a19d2b9adc9067f2a33669bf2b3c7718293"
+  }
+ },
+ "BASELINE__PINNED__q6d37861c": {
+  "stack_id": "BASELINE__PINNED",
+  "upstream": "/home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/BASELINE__PINNED/upstream",
+  "patch_ops": 3,
+  "ok": true,
+  "diffs": [
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_semantic_models.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_semantic_models.yml\n@@ -34,6 +34,9 @@\n         type: categorical\n       - name: status\n         type: categorical\n+      - name: unit_price\n+        type: categorical\n+        expr: unit_price\n     measures:\n       - name: revenue\n         description: \"Quantity x price charged.\"\n"
+   },
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n@@ -117,3 +117,11 @@\n     type_params:\n       numerator: repeat_customers\n       denominator: purchasing_customers\n+\n+  - name: premium_completed_revenue\n+    description: \"Completed revenue on lines with unit price at least 100.\"\n+    label: \"Premium completed revenue\"\n+    type: simple\n+    type_params:\n+      measure: revenue\n+    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 100\"\n"
+   },
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n@@ -125,3 +125,11 @@\n     type_params:\n       measure: revenue\n     filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 100\"\n+\n+  - name: french_market_revenue\n+    description: \"Completed revenue of customers in France.\"\n+    label: \"French market revenue\"\n+    type: simple\n+    type_params:\n+      measure: revenue\n+    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('customer__country') }} = 'France'\"\n"
+   }
+  ],
+  "steps": {
+   "load_bronze": {
+    "exit_code": 0,
+    "tail": "Loading Bronze into /home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/BASELINE__PINNED/upstream/data/warehouse.duckdb\n  bronze.customers       500 rows\n  bronze.products        100 rows\n  bronze.stores           10 rows\n  bronze.orders         2200 rows\n  bronze.order_items    5526 rows\n  bronze.order_events     0 rows (streaming landing)\nBronze layer ready.\n"
+   },
+   "dbt_build": {
+    "exit_code": 0,
+    "tail": "SS unique_fact_sales_sales_id ....................................... [\u001b[32mPASS\u001b[0m in 0.06s]\n\u001b[0m18:34:41  79 of 81 START test relationships_fact_sales_live_store_id__store_id__ref_dim_stores_  [RUN]\n\u001b[0m18:34:41  80 of 81 START test relationships_fact_sales_store_id__store_id__ref_dim_stores_  [RUN]\n\u001b[0m18:34:41  81 of 81 START test unique_dim_stores_store_id ................................. [RUN]\n\u001b[0m18:34:41  79 of 81 PASS relationships_fact_sales_live_store_id__store_id__ref_dim_stores_  [\u001b[32mPASS\u001b[0m in 0.07s]\n\u001b[0m18:34:41  78 of 81 PASS not_null_dim_stores_store_id ..................................... [\u001b[32mPASS\u001b[0m in 0.07s]\n\u001b[0m18:34:41  80 of 81 PASS relationships_fact_sales_store_id__store_id__ref_dim_stores_ ..... [\u001b[32mPASS\u001b[0m in 0.07s]\n\u001b[0m18:34:41  81 of 81 PASS unique_dim_stores_store_id ....................................... [\u001b[32mPASS\u001b[0m in 0.05s]\n\u001b[0m18:34:41  \n\u001b[0m18:34:41  Finished running 2 exposures, 1 incremental model, 6 table models, 65 data tests, 7 view models in 0 hours 0 minutes and 2.18 seconds (2.18s).\n\u001b[0m18:34:41  \n\u001b[0m18:34:41  \u001b[32mCompleted successfully\u001b[0m\n\u001b[0m18:34:41  \n\u001b[0m18:34:41  Done. PASS=79 WARN=0 ERROR=0 SKIP=0 NO-OP=2 TOTAL=81\n"
+   },
+   "dbt_parse": {
+    "exit_code": 0,
+    "tail": "\u001b[0m18:34:43  Running with dbt=1.11.11\n\u001b[0m18:34:43  Registered adapter: duckdb=1.10.1\n\u001b[0m18:34:44  Performance info: /home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/BASELINE__PINNED/upstream/dbt/retail_dwh/target/perf_info.json\n"
+   }
+  },
+  "raw_csv_sha256": {
+   "customers.csv": "e570cfec57af94cee3b974db5642fe0c276b495f83dd82e6af077dbb3784680d",
+   "order_items.csv": "513de0a77e90c7312a2935d47efcced60b6811a33de589e1a4fe63d2045e5f26",
+   "orders.csv": "be942a616a816158924f538b8f9cde29de773bc324411c5c6f7c83c980ec4f03",
+   "products.csv": "3783c0e35d83c571e8fc18bbafa98f59e217944288a92f590b6a15d4320c2311",
+   "stores.csv": "78d2cbff192a861f4f880bcc0c25ddc43df72bfecf8a3517abf18723109f8c44"
+  },
+  "semantic_manifest_sha256": "3532b0e66f9758055ec4e8fc2085e15226c87adecdd6c72ab2554afb4c7515bf",
+  "warehouse": "/home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/BASELINE__PINNED/upstream/data/warehouse.duckdb",
+  "query": {
+   "group_by": [
+    "metric_time__year"
+   ],
+   "metric": "premium_completed_revenue",
+   "where": [
+    "{{ TimeDimension('metric_time', 'day') }} < '2025-01-01'"
+   ]
+  },
+  "exec_year": {
+   "ok": true,
+   "exit_code": 0,
+   "argv": [
+    "mf",
+    "query",
+    "--metrics",
+    "premium_completed_revenue",
+    "--group-by",
+    "metric_time__year",
+    "--where",
+    "{{ TimeDimension('metric_time', 'day') }} < '2025-01-01'",
+    "--csv",
+    "<csv>"
+   ],
+   "compiled_sql": "SELECT\n  metric_time__year\n  , SUM(premium_completed_revenue) AS premium_completed_revenue\nFROM (\n  SELECT\n    DATE_TRUNC('day', order_date) AS metric_time__day\n    , DATE_TRUNC('year', order_date) AS metric_time__year\n    , status AS sales__status\n    , unit_price AS sales__unit_price\n    , revenue AS premium_completed_revenue\n  FROM \"warehouse\".\"gold\".\"fact_sales\" sales_src_10000\n) subq_2\nWHERE (\n  sales__status = 'completed' AND sales__unit_price >= 100\n) AND (\n  metric_time__day < '2025-01-01'\n)\nGROUP BY\n  metric_time__year",
+   "mf_identity": {
+    "mf_path": "/home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/BASELINE__PINNED/upstream/.venv/bin/mf",
+    "mf_sha256": "db25d2ee39e5ffb72352269cad6f058e776c8e853864f9d61f7587bc8c73c3d3",
+    "record_entry": "../../../bin/mf",
+    "record_hash": "sha256=2yXS7jnl_7cjUiacrW8FjndsjoU4ZPnWH3WHvIxzw9M",
+    "distribution": "dbt_metricflow-0.13.0.dist-info",
+    "versions": {
+     "dbt-metricflow": "0.13.0",
+     "metricflow": "0.211.0",
+     "dbt-core": "1.11.11",
+     "dbt-duckdb": "1.10.1",
+     "dbt-semantic-interfaces": "0.9.0",
+     "duckdb": "1.5.4"
+    }
+   },
+   "rows_sha256": "bd101930e14b71b26af4cb253b6d835a8a8c1f80abd42eb0794e108951586905",
+   "stdout_tail": null,
+   "error": null
+  },
+  "exec_line": {
+   "ok": true,
+   "exit_code": 0,
+   "argv": [
+    "mf",
+    "query",
+    "--metrics",
+    "premium_completed_revenue",
+    "--group-by",
+    "sales",
+    "--where",
+    "{{ TimeDimension('metric_time', 'day') }} < '2025-01-01'",
+    "--csv",
+    "<csv>"
+   ],
+   "rows_sha256": "a4a4b1cf113a9455d531ebf937806f9be1e32a8277f164dc7085fe20794167bc"
+  }
+ },
+ "BASELINE__BOUNDARY120__q6d37861c": {
+  "stack_id": "BASELINE__BOUNDARY120",
+  "upstream": "/home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/BASELINE__BOUNDARY120/upstream",
+  "patch_ops": 3,
+  "ok": true,
+  "diffs": [
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_semantic_models.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_semantic_models.yml\n@@ -34,6 +34,9 @@\n         type: categorical\n       - name: status\n         type: categorical\n+      - name: unit_price\n+        type: categorical\n+        expr: unit_price\n     measures:\n       - name: revenue\n         description: \"Quantity x price charged.\"\n"
+   },
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n@@ -117,3 +117,11 @@\n     type_params:\n       numerator: repeat_customers\n       denominator: purchasing_customers\n+\n+  - name: premium_completed_revenue\n+    description: \"Completed revenue on lines with unit price at least 100.\"\n+    label: \"Premium completed revenue\"\n+    type: simple\n+    type_params:\n+      measure: revenue\n+    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 100\"\n"
+   },
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n@@ -125,3 +125,11 @@\n     type_params:\n       measure: revenue\n     filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 100\"\n+\n+  - name: french_market_revenue\n+    description: \"Completed revenue of customers in France.\"\n+    label: \"French market revenue\"\n+    type: simple\n+    type_params:\n+      measure: revenue\n+    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('customer__country') }} = 'France'\"\n"
+   }
+  ],
+  "steps": {
+   "load_bronze": {
+    "exit_code": 0,
+    "tail": "Loading Bronze into /home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/BASELINE__BOUNDARY120/upstream/data/warehouse.duckdb\n  bronze.customers       500 rows\n  bronze.products        100 rows\n  bronze.stores           10 rows\n  bronze.orders         2200 rows\n  bronze.order_items    5526 rows\n  bronze.order_events     0 rows (streaming landing)\nBronze layer ready.\n"
+   },
+   "dbt_build": {
+    "exit_code": 0,
+    "tail": "RT test relationships_fact_sales_live_store_id__store_id__ref_dim_stores_  [RUN]\n\u001b[0m18:36:10  77 of 81 NO-OP exposure governed_dashboard ..................................... [\u001b[33mNO-OP\u001b[0m in 0.00s]\n\u001b[0m18:36:10  80 of 81 START test relationships_fact_sales_store_id__store_id__ref_dim_stores_  [RUN]\n\u001b[0m18:36:10  81 of 81 START test unique_dim_stores_store_id ................................. [RUN]\n\u001b[0m18:36:10  78 of 81 PASS not_null_dim_stores_store_id ..................................... [\u001b[32mPASS\u001b[0m in 0.07s]\n\u001b[0m18:36:10  79 of 81 PASS relationships_fact_sales_live_store_id__store_id__ref_dim_stores_  [\u001b[32mPASS\u001b[0m in 0.07s]\n\u001b[0m18:36:10  81 of 81 PASS unique_dim_stores_store_id ....................................... [\u001b[32mPASS\u001b[0m in 0.06s]\n\u001b[0m18:36:10  80 of 81 PASS relationships_fact_sales_store_id__store_id__ref_dim_stores_ ..... [\u001b[32mPASS\u001b[0m in 0.06s]\n\u001b[0m18:36:10  \n\u001b[0m18:36:10  Finished running 2 exposures, 1 incremental model, 6 table models, 65 data tests, 7 view models in 0 hours 0 minutes and 2.01 seconds (2.01s).\n\u001b[0m18:36:10  \n\u001b[0m18:36:10  \u001b[32mCompleted successfully\u001b[0m\n\u001b[0m18:36:10  \n\u001b[0m18:36:10  Done. PASS=79 WARN=0 ERROR=0 SKIP=0 NO-OP=2 TOTAL=81\n"
+   },
+   "dbt_parse": {
+    "exit_code": 0,
+    "tail": "\u001b[0m18:36:12  Running with dbt=1.11.11\n\u001b[0m18:36:13  Registered adapter: duckdb=1.10.1\n\u001b[0m18:36:13  Performance info: /home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/BASELINE__BOUNDARY120/upstream/dbt/retail_dwh/target/perf_info.json\n"
+   }
+  },
+  "raw_csv_sha256": {
+   "customers.csv": "e570cfec57af94cee3b974db5642fe0c276b495f83dd82e6af077dbb3784680d",
+   "order_items.csv": "a4b81aa4c372a77bb74289915e9de5ddd7acee1212d9b5efca70d0a205027d08",
+   "orders.csv": "be942a616a816158924f538b8f9cde29de773bc324411c5c6f7c83c980ec4f03",
+   "products.csv": "3783c0e35d83c571e8fc18bbafa98f59e217944288a92f590b6a15d4320c2311",
+   "stores.csv": "78d2cbff192a861f4f880bcc0c25ddc43df72bfecf8a3517abf18723109f8c44"
+  },
+  "semantic_manifest_sha256": "3532b0e66f9758055ec4e8fc2085e15226c87adecdd6c72ab2554afb4c7515bf",
+  "warehouse": "/home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/BASELINE__BOUNDARY120/upstream/data/warehouse.duckdb",
+  "query": {
+   "group_by": [
+    "metric_time__year"
+   ],
+   "metric": "premium_completed_revenue",
+   "where": [
+    "{{ TimeDimension('metric_time', 'day') }} < '2025-01-01'"
+   ]
+  },
+  "exec_year": {
+   "ok": true,
+   "exit_code": 0,
+   "argv": [
+    "mf",
+    "query",
+    "--metrics",
+    "premium_completed_revenue",
+    "--group-by",
+    "metric_time__year",
+    "--where",
+    "{{ TimeDimension('metric_time', 'day') }} < '2025-01-01'",
+    "--csv",
+    "<csv>"
+   ],
+   "compiled_sql": "SELECT\n  metric_time__year\n  , SUM(premium_completed_revenue) AS premium_completed_revenue\nFROM (\n  SELECT\n    DATE_TRUNC('day', order_date) AS metric_time__day\n    , DATE_TRUNC('year', order_date) AS metric_time__year\n    , status AS sales__status\n    , unit_price AS sales__unit_price\n    , revenue AS premium_completed_revenue\n  FROM \"warehouse\".\"gold\".\"fact_sales\" sales_src_10000\n) subq_2\nWHERE (\n  sales__status = 'completed' AND sales__unit_price >= 100\n) AND (\n  metric_time__day < '2025-01-01'\n)\nGROUP BY\n  metric_time__year",
+   "mf_identity": {
+    "mf_path": "/home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/BASELINE__BOUNDARY120/upstream/.venv/bin/mf",
+    "mf_sha256": "db25d2ee39e5ffb72352269cad6f058e776c8e853864f9d61f7587bc8c73c3d3",
+    "record_entry": "../../../bin/mf",
+    "record_hash": "sha256=2yXS7jnl_7cjUiacrW8FjndsjoU4ZPnWH3WHvIxzw9M",
+    "distribution": "dbt_metricflow-0.13.0.dist-info",
+    "versions": {
+     "dbt-metricflow": "0.13.0",
+     "metricflow": "0.211.0",
+     "dbt-core": "1.11.11",
+     "dbt-duckdb": "1.10.1",
+     "dbt-semantic-interfaces": "0.9.0",
+     "duckdb": "1.5.4"
+    }
+   },
+   "rows_sha256": "793f75dd7f2a1bf4d47d1deec5e435dfef72997dbf8a0c9e7c32adfdadad6103",
+   "stdout_tail": null,
+   "error": null
+  },
+  "exec_line": {
+   "ok": true,
+   "exit_code": 0,
+   "argv": [
+    "mf",
+    "query",
+    "--metrics",
+    "premium_completed_revenue",
+    "--group-by",
+    "sales",
+    "--where",
+    "{{ TimeDimension('metric_time', 'day') }} < '2025-01-01'",
+    "--csv",
+    "<csv>"
+   ],
+   "rows_sha256": "2e97695ceb84c3fc928120df3c4b871f8d64c468d921d4923b3edd78236e4e63"
+  }
+ },
+ "GENERATED__PINNED__q747ba25c": {
+  "stack_id": "GENERATED__PINNED",
+  "upstream": "/home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/GENERATED__PINNED/upstream",
+  "patch_ops": 4,
+  "ok": true,
+  "diffs": [
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_semantic_models.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_semantic_models.yml\n@@ -34,6 +34,9 @@\n         type: categorical\n       - name: status\n         type: categorical\n+      - name: unit_price\n+        type: categorical\n+        expr: unit_price\n     measures:\n       - name: revenue\n         description: \"Quantity x price charged.\"\n"
+   },
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n@@ -117,3 +117,11 @@\n     type_params:\n       numerator: repeat_customers\n       denominator: purchasing_customers\n+\n+  - name: premium_completed_revenue\n+    description: \"Completed revenue on lines with unit price at least 100.\"\n+    label: \"Premium completed revenue\"\n+    type: simple\n+    type_params:\n+      measure: revenue\n+    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 100\"\n"
+   },
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n@@ -125,3 +125,11 @@\n     type_params:\n       measure: revenue\n     filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 100\"\n+\n+  - name: french_market_revenue\n+    description: \"Completed revenue of customers in France.\"\n+    label: \"French market revenue\"\n+    type: simple\n+    type_params:\n+      measure: revenue\n+    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('customer__country') }} = 'France'\"\n"
+   },
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n@@ -119,12 +119,12 @@\n       denominator: purchasing_customers\n \n   - name: premium_completed_revenue\n-    description: \"Completed revenue on lines with unit price at least 100.\"\n+    description: \"Completed revenue on lines with unit price at least 120.\"\n     label: \"Premium completed revenue\"\n     type: simple\n     type_params:\n       measure: revenue\n-    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 100\"\n+    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 120\"\n \n   - name: french_market_revenue\n     description: \"Completed revenue of customers in France.\"\n"
+   }
+  ],
+  "steps": {
+   "load_bronze": {
+    "exit_code": 0,
+    "tail": "Loading Bronze into /home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/GENERATED__PINNED/upstream/data/warehouse.duckdb\n  bronze.customers       500 rows\n  bronze.products        100 rows\n  bronze.stores           10 rows\n  bronze.orders         2200 rows\n  bronze.order_items    5526 rows\n  bronze.order_events     0 rows (streaming landing)\nBronze layer ready.\n"
+   },
+   "dbt_build": {
+    "exit_code": 0,
+    "tail": "ue ................................. [\u001b[32mPASS\u001b[0m in 0.07s]\n\u001b[0m18:35:14  80 of 81 START test relationships_fact_sales_live_store_id__store_id__ref_dim_stores_  [RUN]\n\u001b[0m18:35:14  77 of 81 PASS not_null_fact_sales_live_store_id ................................ [\u001b[32mPASS\u001b[0m in 0.06s]\n\u001b[0m18:35:14  81 of 81 START test unique_fact_sales_live_event_id ............................ [RUN]\n\u001b[0m18:35:14  78 of 81 PASS relationships_fact_sales_live_customer_id__customer_id__ref_dim_customers_  [\u001b[32mPASS\u001b[0m in 0.07s]\n\u001b[0m18:35:14  79 of 81 PASS relationships_fact_sales_live_product_id__product_id__ref_dim_products_  [\u001b[32mPASS\u001b[0m in 0.07s]\n\u001b[0m18:35:14  80 of 81 PASS relationships_fact_sales_live_store_id__store_id__ref_dim_stores_  [\u001b[32mPASS\u001b[0m in 0.05s]\n\u001b[0m18:35:14  81 of 81 PASS unique_fact_sales_live_event_id .................................. [\u001b[32mPASS\u001b[0m in 0.03s]\n\u001b[0m18:35:14  \n\u001b[0m18:35:14  Finished running 2 exposures, 1 incremental model, 6 table models, 65 data tests, 7 view models in 0 hours 0 minutes and 2.04 seconds (2.04s).\n\u001b[0m18:35:15  \n\u001b[0m18:35:15  \u001b[32mCompleted successfully\u001b[0m\n\u001b[0m18:35:15  \n\u001b[0m18:35:15  Done. PASS=79 WARN=0 ERROR=0 SKIP=0 NO-OP=2 TOTAL=81\n"
+   },
+   "dbt_parse": {
+    "exit_code": 0,
+    "tail": "\u001b[0m18:35:17  Running with dbt=1.11.11\n\u001b[0m18:35:17  Registered adapter: duckdb=1.10.1\n\u001b[0m18:35:17  Performance info: /home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/GENERATED__PINNED/upstream/dbt/retail_dwh/target/perf_info.json\n"
+   }
+  },
+  "raw_csv_sha256": {
+   "customers.csv": "e570cfec57af94cee3b974db5642fe0c276b495f83dd82e6af077dbb3784680d",
+   "order_items.csv": "513de0a77e90c7312a2935d47efcced60b6811a33de589e1a4fe63d2045e5f26",
+   "orders.csv": "be942a616a816158924f538b8f9cde29de773bc324411c5c6f7c83c980ec4f03",
+   "products.csv": "3783c0e35d83c571e8fc18bbafa98f59e217944288a92f590b6a15d4320c2311",
+   "stores.csv": "78d2cbff192a861f4f880bcc0c25ddc43df72bfecf8a3517abf18723109f8c44"
+  },
+  "semantic_manifest_sha256": "fd26cecdbb44ff2e0e8807db1ce0af4836a0b412c8ad29646aecbaddcf6ce265",
+  "warehouse": "/home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/GENERATED__PINNED/upstream/data/warehouse.duckdb",
+  "query": {
+   "group_by": [
+    "metric_time__year"
+   ],
+   "metric": "french_market_revenue",
+   "where": []
+  },
+  "exec_year": {
+   "ok": true,
+   "exit_code": 0,
+   "argv": [
+    "mf",
+    "query",
+    "--metrics",
+    "french_market_revenue",
+    "--group-by",
+    "metric_time__year",
+    "--csv",
+    "<csv>"
+   ],
+   "compiled_sql": "SELECT\n  metric_time__year\n  , SUM(french_market_revenue) AS french_market_revenue\nFROM (\n  SELECT\n    DATE_TRUNC('year', sales_src_10000.order_date) AS metric_time__year\n    , sales_src_10000.status AS sales__status\n    , customers_src_10000.country AS customer__country\n    , sales_src_10000.revenue AS french_market_revenue\n  FROM \"warehouse\".\"gold\".\"fact_sales\" sales_src_10000\n  LEFT OUTER JOIN\n    \"warehouse\".\"gold\".\"dim_customers\" customers_src_10000\n  ON\n    sales_src_10000.customer_id = customers_src_10000.customer_id\n) subq_5\nWHERE sales__status = 'completed' AND customer__country = 'France'\nGROUP BY\n  metric_time__year",
+   "mf_identity": {
+    "mf_path": "/home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/GENERATED__PINNED/upstream/.venv/bin/mf",
+    "mf_sha256": "db25d2ee39e5ffb72352269cad6f058e776c8e853864f9d61f7587bc8c73c3d3",
+    "record_entry": "../../../bin/mf",
+    "record_hash": "sha256=2yXS7jnl_7cjUiacrW8FjndsjoU4ZPnWH3WHvIxzw9M",
+    "distribution": "dbt_metricflow-0.13.0.dist-info",
+    "versions": {
+     "dbt-metricflow": "0.13.0",
+     "metricflow": "0.211.0",
+     "dbt-core": "1.11.11",
+     "dbt-duckdb": "1.10.1",
+     "dbt-semantic-interfaces": "0.9.0",
+     "duckdb": "1.5.4"
+    }
+   },
+   "rows_sha256": "88571bc65ebd7c14e8de65ce541e24871a101e5618af9a44b8cb203f0640fe64",
+   "stdout_tail": null,
+   "error": null
+  },
+  "exec_line": {
+   "ok": true,
+   "exit_code": 0,
+   "argv": [
+    "mf",
+    "query",
+    "--metrics",
+    "french_market_revenue",
+    "--group-by",
+    "sales",
+    "--csv",
+    "<csv>"
+   ],
+   "rows_sha256": "ee3154f2ffbbd6353028b6aa34b13642690287584dced0324265bd0ff484589f"
+  }
+ },
+ "BASELINE__BOUNDARY120__q747ba25c": {
+  "stack_id": "BASELINE__BOUNDARY120",
+  "upstream": "/home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/BASELINE__BOUNDARY120/upstream",
+  "patch_ops": 3,
+  "ok": true,
+  "diffs": [
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_semantic_models.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_semantic_models.yml\n@@ -34,6 +34,9 @@\n         type: categorical\n       - name: status\n         type: categorical\n+      - name: unit_price\n+        type: categorical\n+        expr: unit_price\n     measures:\n       - name: revenue\n         description: \"Quantity x price charged.\"\n"
+   },
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n@@ -117,3 +117,11 @@\n     type_params:\n       numerator: repeat_customers\n       denominator: purchasing_customers\n+\n+  - name: premium_completed_revenue\n+    description: \"Completed revenue on lines with unit price at least 100.\"\n+    label: \"Premium completed revenue\"\n+    type: simple\n+    type_params:\n+      measure: revenue\n+    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 100\"\n"
+   },
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n@@ -125,3 +125,11 @@\n     type_params:\n       measure: revenue\n     filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 100\"\n+\n+  - name: french_market_revenue\n+    description: \"Completed revenue of customers in France.\"\n+    label: \"French market revenue\"\n+    type: simple\n+    type_params:\n+      measure: revenue\n+    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('customer__country') }} = 'France'\"\n"
+   }
+  ],
+  "steps": {
+   "load_bronze": {
+    "exit_code": 0,
+    "tail": "Loading Bronze into /home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/BASELINE__BOUNDARY120/upstream/data/warehouse.duckdb\n  bronze.customers       500 rows\n  bronze.products        100 rows\n  bronze.stores           10 rows\n  bronze.orders         2200 rows\n  bronze.order_items    5526 rows\n  bronze.order_events     0 rows (streaming landing)\nBronze layer ready.\n"
+   },
+   "dbt_build": {
+    "exit_code": 0,
+    "tail": "RT test relationships_fact_sales_live_store_id__store_id__ref_dim_stores_  [RUN]\n\u001b[0m18:36:10  77 of 81 NO-OP exposure governed_dashboard ..................................... [\u001b[33mNO-OP\u001b[0m in 0.00s]\n\u001b[0m18:36:10  80 of 81 START test relationships_fact_sales_store_id__store_id__ref_dim_stores_  [RUN]\n\u001b[0m18:36:10  81 of 81 START test unique_dim_stores_store_id ................................. [RUN]\n\u001b[0m18:36:10  78 of 81 PASS not_null_dim_stores_store_id ..................................... [\u001b[32mPASS\u001b[0m in 0.07s]\n\u001b[0m18:36:10  79 of 81 PASS relationships_fact_sales_live_store_id__store_id__ref_dim_stores_  [\u001b[32mPASS\u001b[0m in 0.07s]\n\u001b[0m18:36:10  81 of 81 PASS unique_dim_stores_store_id ....................................... [\u001b[32mPASS\u001b[0m in 0.06s]\n\u001b[0m18:36:10  80 of 81 PASS relationships_fact_sales_store_id__store_id__ref_dim_stores_ ..... [\u001b[32mPASS\u001b[0m in 0.06s]\n\u001b[0m18:36:10  \n\u001b[0m18:36:10  Finished running 2 exposures, 1 incremental model, 6 table models, 65 data tests, 7 view models in 0 hours 0 minutes and 2.01 seconds (2.01s).\n\u001b[0m18:36:10  \n\u001b[0m18:36:10  \u001b[32mCompleted successfully\u001b[0m\n\u001b[0m18:36:10  \n\u001b[0m18:36:10  Done. PASS=79 WARN=0 ERROR=0 SKIP=0 NO-OP=2 TOTAL=81\n"
+   },
+   "dbt_parse": {
+    "exit_code": 0,
+    "tail": "\u001b[0m18:36:12  Running with dbt=1.11.11\n\u001b[0m18:36:13  Registered adapter: duckdb=1.10.1\n\u001b[0m18:36:13  Performance info: /home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/BASELINE__BOUNDARY120/upstream/dbt/retail_dwh/target/perf_info.json\n"
+   }
+  },
+  "raw_csv_sha256": {
+   "customers.csv": "e570cfec57af94cee3b974db5642fe0c276b495f83dd82e6af077dbb3784680d",
+   "order_items.csv": "a4b81aa4c372a77bb74289915e9de5ddd7acee1212d9b5efca70d0a205027d08",
+   "orders.csv": "be942a616a816158924f538b8f9cde29de773bc324411c5c6f7c83c980ec4f03",
+   "products.csv": "3783c0e35d83c571e8fc18bbafa98f59e217944288a92f590b6a15d4320c2311",
+   "stores.csv": "78d2cbff192a861f4f880bcc0c25ddc43df72bfecf8a3517abf18723109f8c44"
+  },
+  "semantic_manifest_sha256": "3532b0e66f9758055ec4e8fc2085e15226c87adecdd6c72ab2554afb4c7515bf",
+  "warehouse": "/home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/BASELINE__BOUNDARY120/upstream/data/warehouse.duckdb",
+  "query": {
+   "group_by": [
+    "metric_time__year"
+   ],
+   "metric": "french_market_revenue",
+   "where": []
+  },
+  "exec_year": {
+   "ok": true,
+   "exit_code": 0,
+   "argv": [
+    "mf",
+    "query",
+    "--metrics",
+    "french_market_revenue",
+    "--group-by",
+    "metric_time__year",
+    "--csv",
+    "<csv>"
+   ],
+   "compiled_sql": "SELECT\n  metric_time__year\n  , SUM(french_market_revenue) AS french_market_revenue\nFROM (\n  SELECT\n    DATE_TRUNC('year', sales_src_10000.order_date) AS metric_time__year\n    , sales_src_10000.status AS sales__status\n    , customers_src_10000.country AS customer__country\n    , sales_src_10000.revenue AS french_market_revenue\n  FROM \"warehouse\".\"gold\".\"fact_sales\" sales_src_10000\n  LEFT OUTER JOIN\n    \"warehouse\".\"gold\".\"dim_customers\" customers_src_10000\n  ON\n    sales_src_10000.customer_id = customers_src_10000.customer_id\n) subq_5\nWHERE sales__status = 'completed' AND customer__country = 'France'\nGROUP BY\n  metric_time__year",
+   "mf_identity": {
+    "mf_path": "/home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/BASELINE__BOUNDARY120/upstream/.venv/bin/mf",
+    "mf_sha256": "db25d2ee39e5ffb72352269cad6f058e776c8e853864f9d61f7587bc8c73c3d3",
+    "record_entry": "../../../bin/mf",
+    "record_hash": "sha256=2yXS7jnl_7cjUiacrW8FjndsjoU4ZPnWH3WHvIxzw9M",
+    "distribution": "dbt_metricflow-0.13.0.dist-info",
+    "versions": {
+     "dbt-metricflow": "0.13.0",
+     "metricflow": "0.211.0",
+     "dbt-core": "1.11.11",
+     "dbt-duckdb": "1.10.1",
+     "dbt-semantic-interfaces": "0.9.0",
+     "duckdb": "1.5.4"
+    }
+   },
+   "rows_sha256": "e6fa98ea111a4907ba84693bf853bc5def3d1d91bdffc548dd9990956e235d2a",
+   "stdout_tail": null,
+   "error": null
+  },
+  "exec_line": {
+   "ok": true,
+   "exit_code": 0,
+   "argv": [
+    "mf",
+    "query",
+    "--metrics",
+    "french_market_revenue",
+    "--group-by",
+    "sales",
+    "--csv",
+    "<csv>"
+   ],
+   "rows_sha256": "85540bbfb6477c96fc80c8aa0d541b01c2a31a0081512559bfa8228487e15a36"
+  }
+ },
+ "GENERATED__BOUNDARY120__q747ba25c": {
+  "stack_id": "GENERATED__BOUNDARY120",
+  "upstream": "/home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/GENERATED__BOUNDARY120/upstream",
+  "patch_ops": 4,
+  "ok": true,
+  "diffs": [
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_semantic_models.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_semantic_models.yml\n@@ -34,6 +34,9 @@\n         type: categorical\n       - name: status\n         type: categorical\n+      - name: unit_price\n+        type: categorical\n+        expr: unit_price\n     measures:\n       - name: revenue\n         description: \"Quantity x price charged.\"\n"
+   },
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n@@ -117,3 +117,11 @@\n     type_params:\n       numerator: repeat_customers\n       denominator: purchasing_customers\n+\n+  - name: premium_completed_revenue\n+    description: \"Completed revenue on lines with unit price at least 100.\"\n+    label: \"Premium completed revenue\"\n+    type: simple\n+    type_params:\n+      measure: revenue\n+    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 100\"\n"
+   },
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n@@ -125,3 +125,11 @@\n     type_params:\n       measure: revenue\n     filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 100\"\n+\n+  - name: french_market_revenue\n+    description: \"Completed revenue of customers in France.\"\n+    label: \"French market revenue\"\n+    type: simple\n+    type_params:\n+      measure: revenue\n+    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('customer__country') }} = 'France'\"\n"
+   },
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n@@ -119,12 +119,12 @@\n       denominator: purchasing_customers\n \n   - name: premium_completed_revenue\n-    description: \"Completed revenue on lines with unit price at least 100.\"\n+    description: \"Completed revenue on lines with unit price at least 120.\"\n     label: \"Premium completed revenue\"\n     type: simple\n     type_params:\n       measure: revenue\n-    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 100\"\n+    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 120\"\n \n   - name: french_market_revenue\n     description: \"Completed revenue of customers in France.\"\n"
+   }
+  ],
+  "steps": {
+   "load_bronze": {
+    "exit_code": 0,
+    "tail": "Loading Bronze into /home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/GENERATED__BOUNDARY120/upstream/data/warehouse.duckdb\n  bronze.customers       500 rows\n  bronze.products        100 rows\n  bronze.stores           10 rows\n  bronze.orders         2200 rows\n  bronze.order_items    5526 rows\n  bronze.order_events     0 rows (streaming landing)\nBronze layer ready.\n"
+   },
+   "dbt_build": {
+    "exit_code": 0,
+    "tail": "ales_store_id ..................................... [\u001b[32mPASS\u001b[0m in 0.07s]\n\u001b[0m18:35:37  80 of 81 START test relationships_fact_sales_store_id__store_id__ref_dim_stores_  [RUN]\n\u001b[0m18:35:37  77 of 81 PASS relationships_fact_sales_customer_id__customer_id__ref_dim_customers_  [\u001b[32mPASS\u001b[0m in 0.09s]\n\u001b[0m18:35:37  78 of 81 PASS relationships_fact_sales_date_id__date_id__ref_dim_dates_ ........ [\u001b[32mPASS\u001b[0m in 0.06s]\n\u001b[0m18:35:37  81 of 81 START test unique_fact_sales_sales_id ................................. [RUN]\n\u001b[0m18:35:37  79 of 81 PASS relationships_fact_sales_product_id__product_id__ref_dim_products_  [\u001b[32mPASS\u001b[0m in 0.06s]\n\u001b[0m18:35:37  80 of 81 PASS relationships_fact_sales_store_id__store_id__ref_dim_stores_ ..... [\u001b[32mPASS\u001b[0m in 0.05s]\n\u001b[0m18:35:37  81 of 81 PASS unique_fact_sales_sales_id ....................................... [\u001b[32mPASS\u001b[0m in 0.02s]\n\u001b[0m18:35:37  \n\u001b[0m18:35:37  Finished running 2 exposures, 1 incremental model, 6 table models, 65 data tests, 7 view models in 0 hours 0 minutes and 2.07 seconds (2.07s).\n\u001b[0m18:35:37  \n\u001b[0m18:35:37  \u001b[32mCompleted successfully\u001b[0m\n\u001b[0m18:35:37  \n\u001b[0m18:35:37  Done. PASS=79 WARN=0 ERROR=0 SKIP=0 NO-OP=2 TOTAL=81\n"
+   },
+   "dbt_parse": {
+    "exit_code": 0,
+    "tail": "\u001b[0m18:35:39  Running with dbt=1.11.11\n\u001b[0m18:35:40  Registered adapter: duckdb=1.10.1\n\u001b[0m18:35:40  Performance info: /home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/GENERATED__BOUNDARY120/upstream/dbt/retail_dwh/target/perf_info.json\n"
+   }
+  },
+  "raw_csv_sha256": {
+   "customers.csv": "e570cfec57af94cee3b974db5642fe0c276b495f83dd82e6af077dbb3784680d",
+   "order_items.csv": "a4b81aa4c372a77bb74289915e9de5ddd7acee1212d9b5efca70d0a205027d08",
+   "orders.csv": "be942a616a816158924f538b8f9cde29de773bc324411c5c6f7c83c980ec4f03",
+   "products.csv": "3783c0e35d83c571e8fc18bbafa98f59e217944288a92f590b6a15d4320c2311",
+   "stores.csv": "78d2cbff192a861f4f880bcc0c25ddc43df72bfecf8a3517abf18723109f8c44"
+  },
+  "semantic_manifest_sha256": "fd26cecdbb44ff2e0e8807db1ce0af4836a0b412c8ad29646aecbaddcf6ce265",
+  "warehouse": "/home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/GENERATED__BOUNDARY120/upstream/data/warehouse.duckdb",
+  "query": {
+   "group_by": [
+    "metric_time__year"
+   ],
+   "metric": "french_market_revenue",
+   "where": []
+  },
+  "exec_year": {
+   "ok": true,
+   "exit_code": 0,
+   "argv": [
+    "mf",
+    "query",
+    "--metrics",
+    "french_market_revenue",
+    "--group-by",
+    "metric_time__year",
+    "--csv",
+    "<csv>"
+   ],
+   "compiled_sql": "SELECT\n  metric_time__year\n  , SUM(french_market_revenue) AS french_market_revenue\nFROM (\n  SELECT\n    DATE_TRUNC('year', sales_src_10000.order_date) AS metric_time__year\n    , sales_src_10000.status AS sales__status\n    , customers_src_10000.country AS customer__country\n    , sales_src_10000.revenue AS french_market_revenue\n  FROM \"warehouse\".\"gold\".\"fact_sales\" sales_src_10000\n  LEFT OUTER JOIN\n    \"warehouse\".\"gold\".\"dim_customers\" customers_src_10000\n  ON\n    sales_src_10000.customer_id = customers_src_10000.customer_id\n) subq_5\nWHERE sales__status = 'completed' AND customer__country = 'France'\nGROUP BY\n  metric_time__year",
+   "mf_identity": {
+    "mf_path": "/home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/GENERATED__BOUNDARY120/upstream/.venv/bin/mf",
+    "mf_sha256": "db25d2ee39e5ffb72352269cad6f058e776c8e853864f9d61f7587bc8c73c3d3",
+    "record_entry": "../../../bin/mf",
+    "record_hash": "sha256=2yXS7jnl_7cjUiacrW8FjndsjoU4ZPnWH3WHvIxzw9M",
+    "distribution": "dbt_metricflow-0.13.0.dist-info",
+    "versions": {
+     "dbt-metricflow": "0.13.0",
+     "metricflow": "0.211.0",
+     "dbt-core": "1.11.11",
+     "dbt-duckdb": "1.10.1",
+     "dbt-semantic-interfaces": "0.9.0",
+     "duckdb": "1.5.4"
+    }
+   },
+   "rows_sha256": "e6fa98ea111a4907ba84693bf853bc5def3d1d91bdffc548dd9990956e235d2a",
+   "stdout_tail": null,
+   "error": null
+  },
+  "exec_line": {
+   "ok": true,
+   "exit_code": 0,
+   "argv": [
+    "mf",
+    "query",
+    "--metrics",
+    "french_market_revenue",
+    "--group-by",
+    "sales",
+    "--csv",
+    "<csv>"
+   ],
+   "rows_sha256": "7d380cdfed57d7c8df688deaa7d03b6d7b6aceb5f6aeefe82847d599625e0716"
+  }
+ },
+ "N3_P2_COLLATERAL__PINNED__q747ba25c": {
+  "stack_id": "N3_P2_COLLATERAL__PINNED",
+  "upstream": "/home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/N3_P2_COLLATERAL__PINNED/upstream",
+  "patch_ops": 5,
+  "ok": true,
+  "diffs": [
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_semantic_models.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_semantic_models.yml\n@@ -34,6 +34,9 @@\n         type: categorical\n       - name: status\n         type: categorical\n+      - name: unit_price\n+        type: categorical\n+        expr: unit_price\n     measures:\n       - name: revenue\n         description: \"Quantity x price charged.\"\n"
+   },
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n@@ -117,3 +117,11 @@\n     type_params:\n       numerator: repeat_customers\n       denominator: purchasing_customers\n+\n+  - name: premium_completed_revenue\n+    description: \"Completed revenue on lines with unit price at least 100.\"\n+    label: \"Premium completed revenue\"\n+    type: simple\n+    type_params:\n+      measure: revenue\n+    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 100\"\n"
+   },
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n@@ -125,3 +125,11 @@\n     type_params:\n       measure: revenue\n     filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 100\"\n+\n+  - name: french_market_revenue\n+    description: \"Completed revenue of customers in France.\"\n+    label: \"French market revenue\"\n+    type: simple\n+    type_params:\n+      measure: revenue\n+    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('customer__country') }} = 'France'\"\n"
+   },
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n@@ -119,12 +119,12 @@\n       denominator: purchasing_customers\n \n   - name: premium_completed_revenue\n-    description: \"Completed revenue on lines with unit price at least 100.\"\n+    description: \"Completed revenue on lines with unit price at least 120.\"\n     label: \"Premium completed revenue\"\n     type: simple\n     type_params:\n       measure: revenue\n-    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 100\"\n+    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 120\"\n \n   - name: french_market_revenue\n     description: \"Completed revenue of customers in France.\"\n"
+   },
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n@@ -132,4 +132,4 @@\n     type: simple\n     type_params:\n       measure: revenue\n-    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('customer__country') }} = 'France'\"\n+    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('customer__country') }} = 'France' AND {{ Dimension('sales__unit_price') }} >= 120\"\n"
+   }
+  ],
+  "steps": {
+   "load_bronze": {
+    "exit_code": 0,
+    "tail": "Loading Bronze into /home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/N3_P2_COLLATERAL__PINNED/upstream/data/warehouse.duckdb\n  bronze.customers       500 rows\n  bronze.products        100 rows\n  bronze.stores           10 rows\n  bronze.orders         2200 rows\n  bronze.order_items    5526 rows\n  bronze.order_events     0 rows (streaming landing)\nBronze layer ready.\n"
+   },
+   "dbt_build": {
+    "exit_code": 0,
+    "tail": "ue ................................. [\u001b[32mPASS\u001b[0m in 0.07s]\n\u001b[0m18:40:20  77 of 81 PASS not_null_fact_sales_live_store_id ................................ [\u001b[32mPASS\u001b[0m in 0.07s]\n\u001b[0m18:40:20  80 of 81 START test relationships_fact_sales_live_store_id__store_id__ref_dim_stores_  [RUN]\n\u001b[0m18:40:20  78 of 81 PASS relationships_fact_sales_live_customer_id__customer_id__ref_dim_customers_  [\u001b[32mPASS\u001b[0m in 0.07s]\n\u001b[0m18:40:20  81 of 81 START test unique_fact_sales_live_event_id ............................ [RUN]\n\u001b[0m18:40:20  79 of 81 PASS relationships_fact_sales_live_product_id__product_id__ref_dim_products_  [\u001b[32mPASS\u001b[0m in 0.06s]\n\u001b[0m18:40:20  80 of 81 PASS relationships_fact_sales_live_store_id__store_id__ref_dim_stores_  [\u001b[32mPASS\u001b[0m in 0.04s]\n\u001b[0m18:40:20  81 of 81 PASS unique_fact_sales_live_event_id .................................. [\u001b[32mPASS\u001b[0m in 0.04s]\n\u001b[0m18:40:20  \n\u001b[0m18:40:20  Finished running 2 exposures, 1 incremental model, 6 table models, 65 data tests, 7 view models in 0 hours 0 minutes and 2.32 seconds (2.32s).\n\u001b[0m18:40:20  \n\u001b[0m18:40:20  \u001b[32mCompleted successfully\u001b[0m\n\u001b[0m18:40:20  \n\u001b[0m18:40:20  Done. PASS=79 WARN=0 ERROR=0 SKIP=0 NO-OP=2 TOTAL=81\n"
+   },
+   "dbt_parse": {
+    "exit_code": 0,
+    "tail": "\u001b[0m18:40:22  Running with dbt=1.11.11\n\u001b[0m18:40:22  Registered adapter: duckdb=1.10.1\n\u001b[0m18:40:22  Performance info: /home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/N3_P2_COLLATERAL__PINNED/upstream/dbt/retail_dwh/target/perf_info.json\n"
+   }
+  },
+  "raw_csv_sha256": {
+   "customers.csv": "e570cfec57af94cee3b974db5642fe0c276b495f83dd82e6af077dbb3784680d",
+   "order_items.csv": "513de0a77e90c7312a2935d47efcced60b6811a33de589e1a4fe63d2045e5f26",
+   "orders.csv": "be942a616a816158924f538b8f9cde29de773bc324411c5c6f7c83c980ec4f03",
+   "products.csv": "3783c0e35d83c571e8fc18bbafa98f59e217944288a92f590b6a15d4320c2311",
+   "stores.csv": "78d2cbff192a861f4f880bcc0c25ddc43df72bfecf8a3517abf18723109f8c44"
+  },
+  "semantic_manifest_sha256": "2173bf6084282618809389dbddb73b994b858a04f970ca41c49869ed97073957",
+  "warehouse": "/home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/N3_P2_COLLATERAL__PINNED/upstream/data/warehouse.duckdb",
+  "query": {
+   "group_by": [
+    "metric_time__year"
+   ],
+   "metric": "french_market_revenue",
+   "where": []
+  },
+  "exec_year": {
+   "ok": true,
+   "exit_code": 0,
+   "argv": [
+    "mf",
+    "query",
+    "--metrics",
+    "french_market_revenue",
+    "--group-by",
+    "metric_time__year",
+    "--csv",
+    "<csv>"
+   ],
+   "compiled_sql": "SELECT\n  metric_time__year\n  , SUM(french_market_revenue) AS french_market_revenue\nFROM (\n  SELECT\n    DATE_TRUNC('year', sales_src_10000.order_date) AS metric_time__year\n    , sales_src_10000.status AS sales__status\n    , sales_src_10000.unit_price AS sales__unit_price\n    , customers_src_10000.country AS customer__country\n    , sales_src_10000.revenue AS french_market_revenue\n  FROM \"warehouse\".\"gold\".\"fact_sales\" sales_src_10000\n  LEFT OUTER JOIN\n    \"warehouse\".\"gold\".\"dim_customers\" customers_src_10000\n  ON\n    sales_src_10000.customer_id = customers_src_10000.customer_id\n) subq_5\nWHERE sales__status = 'completed' AND customer__country = 'France' AND sales__unit_price >= 120\nGROUP BY\n  metric_time__year",
+   "mf_identity": {
+    "mf_path": "/home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/N3_P2_COLLATERAL__PINNED/upstream/.venv/bin/mf",
+    "mf_sha256": "db25d2ee39e5ffb72352269cad6f058e776c8e853864f9d61f7587bc8c73c3d3",
+    "record_entry": "../../../bin/mf",
+    "record_hash": "sha256=2yXS7jnl_7cjUiacrW8FjndsjoU4ZPnWH3WHvIxzw9M",
+    "distribution": "dbt_metricflow-0.13.0.dist-info",
+    "versions": {
+     "dbt-metricflow": "0.13.0",
+     "metricflow": "0.211.0",
+     "dbt-core": "1.11.11",
+     "dbt-duckdb": "1.10.1",
+     "dbt-semantic-interfaces": "0.9.0",
+     "duckdb": "1.5.4"
+    }
+   },
+   "rows_sha256": "62f25725381c564d591db7ffed5f1cfa276a6eaa389fb1f11a6b443e7deca4ef",
+   "stdout_tail": null,
+   "error": null
+  },
+  "exec_line": {
+   "ok": true,
+   "exit_code": 0,
+   "argv": [
+    "mf",
+    "query",
+    "--metrics",
+    "french_market_revenue",
+    "--group-by",
+    "sales",
+    "--csv",
+    "<csv>"
+   ],
+   "rows_sha256": "5396d082f6b65c100fcea0e191d146e2659ebde7e3a9bcfa1efced4dec1b338b"
+  }
+ },
+ "N3_P2_COLLATERAL__BOUNDARY120__q747ba25c": {
+  "stack_id": "N3_P2_COLLATERAL__BOUNDARY120",
+  "upstream": "/home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/N3_P2_COLLATERAL__BOUNDARY120/upstream",
+  "patch_ops": 5,
+  "ok": true,
+  "diffs": [
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_semantic_models.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_semantic_models.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_semantic_models.yml\n@@ -34,6 +34,9 @@\n         type: categorical\n       - name: status\n         type: categorical\n+      - name: unit_price\n+        type: categorical\n+        expr: unit_price\n     measures:\n       - name: revenue\n         description: \"Quantity x price charged.\"\n"
+   },
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n@@ -117,3 +117,11 @@\n     type_params:\n       numerator: repeat_customers\n       denominator: purchasing_customers\n+\n+  - name: premium_completed_revenue\n+    description: \"Completed revenue on lines with unit price at least 100.\"\n+    label: \"Premium completed revenue\"\n+    type: simple\n+    type_params:\n+      measure: revenue\n+    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 100\"\n"
+   },
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n@@ -125,3 +125,11 @@\n     type_params:\n       measure: revenue\n     filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 100\"\n+\n+  - name: french_market_revenue\n+    description: \"Completed revenue of customers in France.\"\n+    label: \"French market revenue\"\n+    type: simple\n+    type_params:\n+      measure: revenue\n+    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('customer__country') }} = 'France'\"\n"
+   },
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n@@ -119,12 +119,12 @@\n       denominator: purchasing_customers\n \n   - name: premium_completed_revenue\n-    description: \"Completed revenue on lines with unit price at least 100.\"\n+    description: \"Completed revenue on lines with unit price at least 120.\"\n     label: \"Premium completed revenue\"\n     type: simple\n     type_params:\n       measure: revenue\n-    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 100\"\n+    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 120\"\n \n   - name: french_market_revenue\n     description: \"Completed revenue of customers in France.\"\n"
+   },
+   {
+    "file": "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+    "unified_diff": "--- pristine/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n+++ candidate/dbt/retail_dwh/models/marts/semantic/_metrics.yml\n@@ -132,4 +132,4 @@\n     type: simple\n     type_params:\n       measure: revenue\n-    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('customer__country') }} = 'France'\"\n+    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('customer__country') }} = 'France' AND {{ Dimension('sales__unit_price') }} >= 120\"\n"
+   }
+  ],
+  "steps": {
+   "load_bronze": {
+    "exit_code": 0,
+    "tail": "Loading Bronze into /home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/N3_P2_COLLATERAL__BOUNDARY120/upstream/data/warehouse.duckdb\n  bronze.customers       500 rows\n  bronze.products        100 rows\n  bronze.stores           10 rows\n  bronze.orders         2200 rows\n  bronze.order_items    5526 rows\n  bronze.order_events     0 rows (streaming landing)\nBronze layer ready.\n"
+   },
+   "dbt_build": {
+    "exit_code": 0,
+    "tail": "_sales_sales_id ....................................... [\u001b[32mPASS\u001b[0m in 0.04s]\n\u001b[0m18:40:42  77 of 81 NO-OP exposure governed_dashboard ..................................... [\u001b[33mNO-OP\u001b[0m in 0.00s]\n\u001b[0m18:40:42  80 of 81 START test relationships_fact_sales_store_id__store_id__ref_dim_stores_  [RUN]\n\u001b[0m18:40:42  81 of 81 START test unique_dim_stores_store_id ................................. [RUN]\n\u001b[0m18:40:42  78 of 81 PASS not_null_dim_stores_store_id ..................................... [\u001b[32mPASS\u001b[0m in 0.06s]\n\u001b[0m18:40:42  79 of 81 PASS relationships_fact_sales_live_store_id__store_id__ref_dim_stores_  [\u001b[32mPASS\u001b[0m in 0.06s]\n\u001b[0m18:40:42  80 of 81 PASS relationships_fact_sales_store_id__store_id__ref_dim_stores_ ..... [\u001b[32mPASS\u001b[0m in 0.05s]\n\u001b[0m18:40:42  81 of 81 PASS unique_dim_stores_store_id ....................................... [\u001b[32mPASS\u001b[0m in 0.05s]\n\u001b[0m18:40:42  \n\u001b[0m18:40:42  Finished running 2 exposures, 1 incremental model, 6 table models, 65 data tests, 7 view models in 0 hours 0 minutes and 2.05 seconds (2.05s).\n\u001b[0m18:40:42  \n\u001b[0m18:40:42  \u001b[32mCompleted successfully\u001b[0m\n\u001b[0m18:40:42  \n\u001b[0m18:40:42  Done. PASS=79 WARN=0 ERROR=0 SKIP=0 NO-OP=2 TOTAL=81\n"
+   },
+   "dbt_parse": {
+    "exit_code": 0,
+    "tail": "\u001b[0m18:40:44  Running with dbt=1.11.11\n\u001b[0m18:40:44  Registered adapter: duckdb=1.10.1\n\u001b[0m18:40:44  Performance info: /home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/N3_P2_COLLATERAL__BOUNDARY120/upstream/dbt/retail_dwh/target/perf_info.json\n"
+   }
+  },
+  "raw_csv_sha256": {
+   "customers.csv": "e570cfec57af94cee3b974db5642fe0c276b495f83dd82e6af077dbb3784680d",
+   "order_items.csv": "a4b81aa4c372a77bb74289915e9de5ddd7acee1212d9b5efca70d0a205027d08",
+   "orders.csv": "be942a616a816158924f538b8f9cde29de773bc324411c5c6f7c83c980ec4f03",
+   "products.csv": "3783c0e35d83c571e8fc18bbafa98f59e217944288a92f590b6a15d4320c2311",
+   "stores.csv": "78d2cbff192a861f4f880bcc0c25ddc43df72bfecf8a3517abf18723109f8c44"
+  },
+  "semantic_manifest_sha256": "2173bf6084282618809389dbddb73b994b858a04f970ca41c49869ed97073957",
+  "warehouse": "/home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/N3_P2_COLLATERAL__BOUNDARY120/upstream/data/warehouse.duckdb",
+  "query": {
+   "group_by": [
+    "metric_time__year"
+   ],
+   "metric": "french_market_revenue",
+   "where": []
+  },
+  "exec_year": {
+   "ok": true,
+   "exit_code": 0,
+   "argv": [
+    "mf",
+    "query",
+    "--metrics",
+    "french_market_revenue",
+    "--group-by",
+    "metric_time__year",
+    "--csv",
+    "<csv>"
+   ],
+   "compiled_sql": "SELECT\n  metric_time__year\n  , SUM(french_market_revenue) AS french_market_revenue\nFROM (\n  SELECT\n    DATE_TRUNC('year', sales_src_10000.order_date) AS metric_time__year\n    , sales_src_10000.status AS sales__status\n    , sales_src_10000.unit_price AS sales__unit_price\n    , customers_src_10000.country AS customer__country\n    , sales_src_10000.revenue AS french_market_revenue\n  FROM \"warehouse\".\"gold\".\"fact_sales\" sales_src_10000\n  LEFT OUTER JOIN\n    \"warehouse\".\"gold\".\"dim_customers\" customers_src_10000\n  ON\n    sales_src_10000.customer_id = customers_src_10000.customer_id\n) subq_5\nWHERE sales__status = 'completed' AND customer__country = 'France' AND sales__unit_price >= 120\nGROUP BY\n  metric_time__year",
+   "mf_identity": {
+    "mf_path": "/home/user/sophon-e5/experiments/E5_forward_transposition/runs/e5_replay/stacks/N3_P2_COLLATERAL__BOUNDARY120/upstream/.venv/bin/mf",
+    "mf_sha256": "db25d2ee39e5ffb72352269cad6f058e776c8e853864f9d61f7587bc8c73c3d3",
+    "record_entry": "../../../bin/mf",
+    "record_hash": "sha256=2yXS7jnl_7cjUiacrW8FjndsjoU4ZPnWH3WHvIxzw9M",
+    "distribution": "dbt_metricflow-0.13.0.dist-info",
+    "versions": {
+     "dbt-metricflow": "0.13.0",
+     "metricflow": "0.211.0",
+     "dbt-core": "1.11.11",
+     "dbt-duckdb": "1.10.1",
+     "dbt-semantic-interfaces": "0.9.0",
+     "duckdb": "1.5.4"
+    }
+   },
+   "rows_sha256": "9ef7a6cbb52b74363588c042d9f72fc0ee00ec6d6218cae5172d1c9d26b31f36",
+   "stdout_tail": null,
+   "error": null
+  },
+  "exec_line": {
+   "ok": true,
+   "exit_code": 0,
+   "argv": [
+    "mf",
+    "query",
+    "--metrics",
+    "french_market_revenue",
+    "--group-by",
+    "sales",
+    "--csv",
+    "<csv>"
+   ],
+   "rows_sha256": "ee7fa08a001917598b43eb15fc9b6a0cdd5d0cd11012996f5d8323accac2c29d"
+  }
+ }
+}

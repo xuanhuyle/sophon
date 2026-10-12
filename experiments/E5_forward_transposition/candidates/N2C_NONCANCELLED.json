@@ -1,0 +1,23 @@
+{
+ "candidate_id": "N2C_NONCANCELLED",
+ "revision_id": null,
+ "compose": [
+  "BASELINE"
+ ],
+ "patch": [
+  {
+   "op": "replace",
+   "file": "dbt/retail_dwh/models/marts/semantic/_metrics.yml",
+   "old": "    filter: \"{{ Dimension('sales__status') }} = 'completed' AND {{ Dimension('sales__unit_price') }} >= 100\"\n",
+   "new": "    filter: \"{{ Dimension('sales__status') }} != 'cancelled' AND {{ Dimension('sales__unit_price') }} >= 120\"\n"
+  }
+ ],
+ "query": {
+  "metric": "premium_completed_revenue",
+  "group_by": [
+   "metric_time__year"
+  ],
+  "where": []
+ },
+ "provenance": "hand-written negative control (wrong P1 v2 implementation), applied on top of BASELINE"
+}
