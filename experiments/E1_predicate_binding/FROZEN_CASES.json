@@ -1,0 +1,228 @@
+{
+ "schema_note": "Plain JSON, no DSL. Predicates carry meaning; bindings carry where the lab says the meaning lives; the evaluator checks bindings against the live native catalog and warehouse. Statuses are never stored here.",
+ "policy_family": {
+  "id": "LAB-REV-1",
+  "provenance": "LAB_AUTHORED by the E1 experimenter on 2026-10-12. Not a real policy, contract or regulation. Interpretation and bindings supplied by the experimenter; approval is SIMULATED. No real authority, signature or customer.",
+  "observed_at": "2026-10-12",
+  "effective_from": "2024-01-01 (lab assumption; no amendment in E1)",
+  "clauses": {
+   "A": "Eligible revenue for calendar year Y equals the sum of order-line quantity times unit price, counting only lines belonging to orders whose normalized source order status equals the literal `completed`; use the source order date to assign year. No settlement or cash-collection condition is implied.",
+   "B1": "Eligible revenue follows A AND counts only order lines whose charged unit price is greater than or equal to 100.00.",
+   "B2": "Eligible revenue follows A AND each included order has independently recorded final payment settlement confirmation from a payment processor."
+  }
+ },
+ "target": {
+  "metric": "completed_revenue",
+  "grain": "year",
+  "upstream_commit": "312e97ad192dcef02f688e31edc0a08c6cf4345f",
+  "e0_reference": {
+   "branch": "experiment/e0-native-metricflow-2026-10-12",
+   "commit": "a84c855ab2fa75cf4697b4b2be28c5b1d055d727",
+   "semantic_manifest_sha256": "e8e9bfc7e1188bc3eb3f5ac551e8ed5350817af14a5471bdbcdfdca2bc01bd48",
+   "mf_entry_point_sha256": "a73c632ca9ebc756cd4e2943a272be7bc73b89a905420eb5733c81e410242ab0"
+  }
+ },
+ "bounded_estate": {
+  "definition": "SOURCE_INVENTORY.md section 1",
+  "estate_fingerprint": "af2fd0215120425aa71c3a2075d2057e227d8f0f50824403c06c899ce17b6566"
+ },
+ "authority_registry": {
+  "note": "LAB designation only (synthetic data). A field is authoritative for a fact kind only if listed here.",
+  "order_line_amount": [
+   "gold.fact_sales.revenue"
+  ],
+  "order_status_label": [
+   "gold.fact_sales.status"
+  ],
+  "order_date": [
+   "gold.fact_sales.order_date"
+  ],
+  "order_line_charged_unit_price": [
+   "gold.fact_sales.unit_price"
+  ],
+  "sales_channel": [
+   "gold.fact_sales.channel"
+  ],
+  "order_line_cost_amount": [
+   "gold.fact_sales.cost_amount"
+  ],
+  "payment_settlement_confirmation": []
+ },
+ "predicates": {
+  "P_LINE_AMOUNT": {
+   "kind": "measure_sum",
+   "fact_kind": "order_line_amount",
+   "text": "sum of order-line quantity times unit price"
+  },
+  "P_STATUS_COMPLETED": {
+   "kind": "categorical_equals",
+   "fact_kind": "order_status_label",
+   "value": "completed",
+   "text": "normalized source order status equals the literal completed"
+  },
+  "P_YEAR_BY_ORDER_DATE": {
+   "kind": "time_grain",
+   "fact_kind": "order_date",
+   "grain": "year",
+   "text": "assign calendar year by source order date"
+  },
+  "P_UNIT_PRICE_GE_100": {
+   "kind": "numeric_threshold",
+   "fact_kind": "order_line_charged_unit_price",
+   "op": ">=",
+   "value": "100.00",
+   "text": "charged unit price >= 100.00"
+  },
+  "P_SETTLEMENT_CONFIRMED": {
+   "kind": "external_fact_required",
+   "fact_kind": "payment_settlement_confirmation",
+   "text": "independently recorded final payment settlement confirmation from a payment processor"
+  }
+ },
+ "bindings": {
+  "B_LINE_AMOUNT": {
+   "semantic": {
+    "measure": "revenue",
+    "semantic_model": "sales"
+   },
+   "physical": "gold.fact_sales.revenue"
+  },
+  "B_STATUS": {
+   "semantic": {
+    "dimension": "sales__status"
+   },
+   "physical": "gold.fact_sales.status"
+  },
+  "B_YEAR": {
+   "semantic": {
+    "time_dimension": "sales__order_date"
+   },
+   "physical": "gold.fact_sales.order_date"
+  },
+  "B_UNIT_PRICE": {
+   "semantic": {
+    "dimension": "sales__unit_price"
+   },
+   "physical": "gold.fact_sales.unit_price"
+  },
+  "B_STATUS_AS_CHANNEL": {
+   "semantic": {
+    "dimension": "sales__channel"
+   },
+   "physical": "gold.fact_sales.channel"
+  },
+  "B_AMOUNT_AS_COST": {
+   "semantic": {
+    "measure": "cost",
+    "semantic_model": "sales"
+   },
+   "physical": "gold.fact_sales.cost_amount"
+  },
+  "B_STATUS_INCONSISTENT": {
+   "semantic": {
+    "dimension": "sales__channel"
+   },
+   "physical": "gold.fact_sales.status"
+  },
+  "B_SETTLEMENT_PROXY_STATUS": {
+   "semantic": {
+    "dimension": "sales__status"
+   },
+   "physical": "gold.fact_sales.status",
+   "proposed_value": "completed"
+  }
+ },
+ "cases": {
+  "A": {
+   "clause": "A",
+   "role": "scored positive",
+   "required": {
+    "P_LINE_AMOUNT": "B_LINE_AMOUNT",
+    "P_STATUS_COMPLETED": "B_STATUS",
+    "P_YEAR_BY_ORDER_DATE": "B_YEAR"
+   }
+  },
+  "B1": {
+   "clause": "B1",
+   "role": "scored negative control (present in source, not exposed)",
+   "required": {
+    "P_LINE_AMOUNT": "B_LINE_AMOUNT",
+    "P_STATUS_COMPLETED": "B_STATUS",
+    "P_YEAR_BY_ORDER_DATE": "B_YEAR",
+    "P_UNIT_PRICE_GE_100": "B_UNIT_PRICE"
+   }
+  },
+  "B2": {
+   "clause": "B2",
+   "role": "scored negative control (not found in bounded estate)",
+   "required": {
+    "P_LINE_AMOUNT": "B_LINE_AMOUNT",
+    "P_STATUS_COMPLETED": "B_STATUS",
+    "P_YEAR_BY_ORDER_DATE": "B_YEAR",
+    "P_SETTLEMENT_CONFIRMED": null
+   }
+  }
+ },
+ "adversarial": {
+  "M4a_remove_status_binding": {
+   "base": "A",
+   "set_binding": {
+    "P_STATUS_COMPLETED": null
+   }
+  },
+  "M4b_status_bound_to_channel": {
+   "base": "A",
+   "set_binding": {
+    "P_STATUS_COMPLETED": "B_STATUS_AS_CHANNEL"
+   }
+  },
+  "M4c_amount_bound_to_cost": {
+   "base": "A",
+   "set_binding": {
+    "P_LINE_AMOUNT": "B_AMOUNT_AS_COST"
+   }
+  },
+  "M4d_status_semantic_physical_inconsistent": {
+   "base": "A",
+   "set_binding": {
+    "P_STATUS_COMPLETED": "B_STATUS_INCONSISTENT"
+   }
+  },
+  "M5_settlement_predicate_added_to_A": {
+   "base": "A",
+   "add_required": {
+    "P_SETTLEMENT_CONFIRMED": null
+   }
+  },
+  "M6_proxy_status_as_settlement": {
+   "base": "B2",
+   "set_binding": {
+    "P_SETTLEMENT_CONFIRMED": "B_SETTLEMENT_PROXY_STATUS"
+   }
+  },
+  "M7_native_identity_drift": {
+   "base": "A",
+   "disposable_manifest_edit": {
+    "metric": "completed_revenue",
+    "filter_from": "{{ Dimension('sales__status') }} = 'completed'",
+    "filter_to": "{{ Dimension('sales__status') }} = 'returned'"
+   }
+  },
+  "M8a_altered_native_amount": {
+   "base": "A",
+   "alter_native_value": {
+    "year": "2025",
+    "delta": "0.01"
+   }
+  },
+  "M8b_altered_oracle_input": {
+   "base": "A",
+   "alter_raw_copy": "quantity of the first completed order line (lowest order_item_id) + 1"
+  },
+  "D10_stale_estate_fingerprint": {
+   "base": "B2",
+   "diagnostic": true,
+   "frozen_fingerprint_override": "0000000000000000000000000000000000000000000000000000000000000000"
+  }
+ }
+}

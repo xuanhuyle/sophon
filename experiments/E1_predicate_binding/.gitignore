@@ -1,0 +1,7 @@
+# E1: pinned upstream checkout, virtualenv, generated data, warehouse and scratch runs are reproducible and never committed
+.upstream/
+runs/
+__pycache__/
+.pytest_cache/
+*.duckdb
+*.duckdb.wal
