@@ -1,0 +1,28 @@
+name: Normative V0 walking skeleton
+
+on:
+  push:
+    paths:
+      - 'prototype/normative_layer/**'
+      - '.github/workflows/normative-v0.yml'
+  pull_request:
+    paths:
+      - 'prototype/normative_layer/**'
+      - '.github/workflows/normative-v0.yml'
+
+jobs:
+  unit-and-demo:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Contract-to-agent regression tests
+        run: python -m unittest discover -s prototype/normative_layer -p "test_*.py" -v
+      - name: End-to-end two-client amendment demo
+        run: python prototype/normative_layer/demo.py
