@@ -1,0 +1,7 @@
+# Erratum: pinned upstream, virtualenv, generated data, warehouse and disposable copies are reproducible and never committed
+.upstream/
+runs/
+__pycache__/
+.pytest_cache/
+*.duckdb
+*.duckdb.wal
