@@ -1,0 +1,89 @@
+{
+ "started_utc": "2026-10-12T09:03:29+00:00",
+ "finished_utc": "2026-10-12T09:04:04+00:00",
+ "G1": true,
+ "G2": {
+  "NW_exit_code": 0,
+  "NW_argv": [
+   "mf",
+   "query",
+   "--metrics",
+   "revenue",
+   "--group-by",
+   "metric_time__year",
+   "--where",
+   "{{ Metric('revenue', group_by=['sales']) }} >= 100 * {{ Metric('quantity_sold', group_by=['sales']) }} AND {{ Dimension('sales__status') }} = 'completed'",
+   "--csv",
+   "<csv>"
+  ],
+  "where_text_equals_E2": true,
+  "explain_exit_code": 0,
+  "sql_groups_metric_subqueries_by_sales_id": true,
+  "sql_has_threshold_comparison": true,
+  "ok": true
+ },
+ "G3": {
+  "native_NW": {
+   "2025": "1400232.75",
+   "2024": "1634542.08",
+   "2026": "752191.54"
+  },
+  "oracle": {
+   "2024": "1634542.08",
+   "2025": "1400232.75",
+   "2026": "752191.54"
+  },
+  "ok": true
+ },
+ "G4": {
+  "native_line_count": 3305,
+  "oracle_line_count": 3305,
+  "ids_equal": true,
+  "amounts_equal": true,
+  "only_native": [],
+  "only_oracle": [],
+  "ok": true
+ },
+ "G5": {
+  "quantity_positive": true,
+  "revenue_exact": true,
+  "price_source_exact": true,
+  "line_entity_unique": true,
+  "exact_comparison": true,
+  "csv_quantity_positive": true,
+  "ok": true
+ },
+ "G6": true,
+ "native_yearly": {
+  "N1": {
+   "2026": "944513.09",
+   "2025": "1866567.68",
+   "2024": "2083998.02"
+  },
+  "N2": {
+   "2025": "1477833.96",
+   "2024": "1707052.80",
+   "2026": "792441.45"
+  },
+  "NW": {
+   "2025": "1400232.75",
+   "2024": "1634542.08",
+   "2026": "752191.54"
+  },
+  "NV": {
+   "2025": "1400232.75",
+   "2024": "1634542.08",
+   "2026": "752191.54"
+  }
+ },
+ "capability": {
+  "classification": "NATIVELY_DERIVABLE_WITH_PROOF_AND_GUARDS",
+  "failed": []
+ },
+ "fingerprints_after": {
+  "semantic_manifest_sha256": "e8e9bfc7e1188bc3eb3f5ac551e8ed5350817af14a5471bdbcdfdca2bc01bd48",
+  "dbt_manifest_sha256": "2dc18ac43958f931e56ed58c3901e0b775b5cd14a0fe22c38247f593d05a4bb9",
+  "warehouse_sha256": "3d65717f746681d48d7f995fe0f3e5386734fafcee2f4ad50c73238e856236ad",
+  "warehouse_bytes": 3420160
+ }
+}

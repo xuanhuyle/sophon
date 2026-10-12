@@ -1,0 +1,39 @@
+{
+ "argv": [
+  "mf",
+  "query",
+  "--metrics",
+  "revenue",
+  "--group-by",
+  "metric_time__year",
+  "--where",
+  "{{ Metric('revenue', group_by=['sales']) }} >= 100 * {{ Metric('quantity_sold', group_by=['sales']) }} AND {{ Dimension('sales__status') }} = 'completed'",
+  "--explain"
+ ],
+ "cwd": "/home/user/sophon-erratum/experiments/E1_expressibility_erratum/.upstream/dbt/retail_dwh",
+ "env": {
+  "DBT_PROFILES_DIR": "/home/user/sophon-erratum/experiments/E1_expressibility_erratum/.upstream/dbt/retail_dwh",
+  "WAREHOUSE_DB": "/home/user/sophon-erratum/experiments/E1_expressibility_erratum/.upstream/data/warehouse.duckdb"
+ },
+ "exit_code": 0,
+ "elapsed_s": 3.307,
+ "stdout": "(see NW_compiled.sql)",
+ "stderr": "",
+ "stdout_sha256": "b1561c71d9d2d67d58305f20d1a2516ab683c1e213bcdf7e0a17b534d31481a2",
+ "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+ "mf_identity": {
+  "mf_path": "/home/user/sophon-erratum/experiments/E1_expressibility_erratum/.upstream/.venv/bin/mf",
+  "mf_sha256": "04cc2240488f2cc8537b256ba4711bf77ab540e0d250f38daaec2ce5fc10d62a",
+  "record_entry": "../../../bin/mf",
+  "record_hash": "sha256=BMwiQEiPLMhTeyVrpHEb93q1QODSUPONquws5fwQ1io",
+  "distribution": "dbt_metricflow-0.13.0.dist-info",
+  "versions": {
+   "dbt-metricflow": "0.13.0",
+   "metricflow": "0.211.0",
+   "dbt-core": "1.11.11",
+   "dbt-duckdb": "1.10.1",
+   "dbt-semantic-interfaces": "0.9.0",
+   "duckdb": "1.5.4"
+  }
+ }
+}

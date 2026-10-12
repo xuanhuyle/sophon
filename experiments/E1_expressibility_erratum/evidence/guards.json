@@ -1,0 +1,66 @@
+{
+ "quantity_positive": {
+  "ok": true,
+  "min_quantity": 1,
+  "nonpositive_ids": [],
+  "nonpositive_count": 0
+ },
+ "revenue_exact": {
+  "ok": true,
+  "mismatch_ids": [],
+  "mismatch_count": 0,
+  "rule": "Decimal(revenue) == quantity * Decimal(unit_price) for every fact_sales row"
+ },
+ "price_source_exact": {
+  "ok": true,
+  "mismatch_ids": [],
+  "mismatch_count": 0,
+  "source_max_decimals": 2
+ },
+ "line_entity_unique": {
+  "ok": true,
+  "fact_rows": 5526,
+  "distinct_sales_id": 5526,
+  "source_order_items": 5526
+ },
+ "exact_comparison": {
+  "ok": true,
+  "float_tokens_in_compiled_sql": [],
+  "column_types": {
+   "sales_id": "BIGINT",
+   "order_id": "BIGINT",
+   "customer_id": "BIGINT",
+   "product_id": "BIGINT",
+   "store_id": "BIGINT",
+   "order_date": "DATE",
+   "date_id": "INTEGER",
+   "channel": "VARCHAR",
+   "status": "VARCHAR",
+   "quantity": "INTEGER",
+   "unit_price": "DECIMAL(10,2)",
+   "unit_cost": "DECIMAL(10,2)",
+   "revenue": "DECIMAL(12,2)",
+   "cost_amount": "DECIMAL(12,2)",
+   "profit": "DECIMAL(12,2)",
+   "discount_amount": "DECIMAL(12,2)",
+   "is_completed": "BOOLEAN",
+   "is_returned": "BOOLEAN",
+   "is_cancelled": "BOOLEAN"
+  },
+  "duckdb_types_sum_revenue__100x_sum_quantity__comparison": [
+   "DECIMAL(38,2)",
+   "HUGEINT",
+   "BOOLEAN"
+  ]
+ },
+ "csv_facts": {
+  "order_items": 5526,
+  "min_quantity": 1,
+  "max_unit_price_decimals": 2,
+  "items_without_order": 0,
+  "items_without_product": 0,
+  "duplicate_item_ids": 0
+ },
+ "csv_quantity_positive": true,
+ "ok": true
+}
