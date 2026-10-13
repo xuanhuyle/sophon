@@ -32,3 +32,17 @@ jobs:
         run: python -m unittest discover -s prototype/jev_clause_router_v0 -p "test_*.py" -v
       - name: Five-clause adversarial and backward review demo (simulated)
         run: python prototype/jev_clause_router_v0/prototype.py --mode demo --output prototype/jev_clause_router_v0/ci_results.json
+
+      - name: Verify ignored dotenv loading in PowerShell (offline Windows only)
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          $env:TYPESAFE_API_KEY = ''
+          $env:ANTHROPIC_API_KEY = ''
+          Set-Content -LiteralPath .env -Value @('TYPESAFE_API_KEY=CI_DUMMY_NOT_A_SECRET', 'ANTHROPIC_API_KEY=CI_DUMMY_NOT_A_SECRET')
+          try {
+            powershell -NoProfile -ExecutionPolicy Bypass -File .\\prototype\\jev_clause_router_v0\\RUNBOOK_V1_LIVE.ps1 -Reviewer anthropic -PreflightOnly
+            if ($LASTEXITCODE -ne 0) { throw 'Offline PowerShell dotenv preflight failed.' }
+          } finally {
+            Remove-Item .env -ErrorAction SilentlyContinue
+          }
