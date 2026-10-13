@@ -19,8 +19,8 @@ class NativeContextGuard(unittest.TestCase):
         temp = tempfile.TemporaryDirectory()
         r = Path(temp.name)
         (r / ".claude").mkdir()
-        for name in ("PROJECT_STATE.json", "SOPHON_CHARTER.md", "CLAUDE.md", "AGENTS.md",
-                     ".claude/settings.json"):
+        for name in ("PROJECT_STATE.json", "SOPHON_CHARTER.md", "ENGINEERING_WORKFLOW.md",
+                     "CLAUDE.md", "AGENTS.md", ".claude/settings.json"):
             dest = r / name
             dest.parent.mkdir(parents=True, exist_ok=True)
             shutil.copyfile(ROOT / name, dest)
@@ -58,6 +58,37 @@ class NativeContextGuard(unittest.TestCase):
         _, errors = cg.read_and_check(r)
         self.assertTrue(any("frozen primary" in e for e in errors))
 
+
+    def test_missing_engineering_workflow_is_detected(self):
+        r = self.fixture()
+        (r / "ENGINEERING_WORKFLOW.md").unlink()
+        _, errors = cg.read_and_check(r)
+        self.assertTrue(any("ENGINEERING_WORKFLOW.md missing" in e for e in errors))
+
+    def test_workflow_state_binding_cannot_disappear(self):
+        r = self.fixture()
+        p = r / "PROJECT_STATE.json"
+        j = json.loads(p.read_text(encoding="utf-8"))
+        del j["engineering_workflow"]
+        p.write_text(json.dumps(j), encoding="utf-8")
+        _, errors = cg.read_and_check(r)
+        self.assertTrue(any("modus operandi" in e for e in errors))
+
+    def test_entry_instruction_must_link_to_workflow(self):
+        r = self.fixture()
+        p = r / "AGENTS.md"
+        p.write_text(p.read_text(encoding="utf-8").replace("ENGINEERING_WORKFLOW.md", "SOMETHING_ELSE.md"),
+                     encoding="utf-8")
+        _, errors = cg.read_and_check(r)
+        self.assertTrue(any("AGENTS.md must link to ENGINEERING_WORKFLOW.md" in e for e in errors))
+
+    def test_workflow_change_requires_state_update(self):
+        with patch.object(cg, "changed_files_since", return_value=["ENGINEERING_WORKFLOW.md"]):
+            self.assertTrue(cg.check_pr_state_update("abc"))
+        with patch.object(cg, "changed_files_since",
+                          return_value=["ENGINEERING_WORKFLOW.md", "PROJECT_STATE.json"]):
+            self.assertFalse(cg.check_pr_state_update("abc"))
+
     def test_native_hook_is_mandatory(self):
         r = self.fixture()
         p = r / ".claude" / "settings.json"
@@ -74,7 +105,8 @@ class NativeContextGuard(unittest.TestCase):
             result = cg.context(state)
         for token in ("adversarial_review", "backward_source_review", "provision_library",
                       "deterministic_reconciliation", "V3_structure_primary=INCONCLUSIVE",
-                      "V4", "NOT an LLM accuracy contest"):
+                      "V4", "NOT an LLM accuracy contest", "Human defines PROBLEM",
+                      "ENGINEERING_WORKFLOW.md", "ONE bounded", "KEEP / REVISE / STOP"):
             self.assertIn(token, result)
 
     def test_ci_result_change_requires_state_update(self):
