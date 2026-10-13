@@ -2,3 +2,8 @@ __pycache__/
 *.pyc
 evidence/sophon_ipsa/data/
 evidence/sophon_cases/data/
+
+# Local dotenv secrets (including nested project directories)
+.env
+.env.*
+!.env.example
