@@ -1,5 +1,10 @@
 # Sophon — standing instructions for Claude Code
 
+## Owner–engineer operating agreement (standing instruction)
+
+**Before substantial architectural recommendations or implementation, read [ENGINEERING_WORKFLOW.md](ENGINEERING_WORKFLOW.md).** The owner specifies the *problem, desired outcome and constraints*, not the required implementation. Owner-proposed technical approaches are hypotheses by default. YOU are accountable for choosing and defending the simplest credible technical approach, investigating existing code and tools, challenging flawed specifications (including those supplied by ChatGPT), defining a small falsifiable acceptance check, and delivering ONE bounded increment. End each increment with evidence, limitations and a clear KEEP / REVISE / STOP recommendation. Never offload routine technical design decisions back to the owner. Do not generate elaborate architecture or a long implementation prompt when one small change or no code would solve the problem.
+
+
 ## Native project-state guard (automatic; not another product subsystem)
 
 The committed PROJECT_STATE.json is the current cross-session engineering inventory: already-implemented modules (including Jev proposal, adversarial/backward reviewers, versioned library, deterministic reconciliation), tested outcomes, caveats, PR refs and active/held decisions. The Charter remains the normative product authority. At session start and on each prompt, .claude/settings.json invokes .claude/hooks/context_guard.py to inject the checked state. If it reports inconsistency, reconcile the branch/charter/state before substantial work. NEVER silently reinterpret an open draft PR as merged code.
