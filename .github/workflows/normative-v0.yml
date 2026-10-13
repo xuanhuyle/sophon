@@ -4,10 +4,12 @@ on:
   push:
     paths:
       - 'prototype/normative_layer/**'
+      - 'prototype/jev_clause_router_v0/**'
       - '.github/workflows/normative-v0.yml'
   pull_request:
     paths:
       - 'prototype/normative_layer/**'
+      - 'prototype/jev_clause_router_v0/**'
       - '.github/workflows/normative-v0.yml'
 
 jobs:
@@ -26,3 +28,7 @@ jobs:
         run: python -m unittest discover -s prototype/normative_layer -p "test_*.py" -v
       - name: End-to-end two-client amendment demo
         run: python prototype/normative_layer/demo.py
+      - name: Five-clause Jev router regression tests (offline only)
+        run: python -m unittest discover -s prototype/jev_clause_router_v0 -p "test_*.py" -v
+      - name: Five-clause adversarial and backward review demo (simulated)
+        run: python prototype/jev_clause_router_v0/prototype.py --mode demo --output prototype/jev_clause_router_v0/ci_results.json

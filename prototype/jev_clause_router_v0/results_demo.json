@@ -1,0 +1,414 @@
+{
+  "experiment": "SOPHON_JEV_CLAUSE_ROUTER_V0",
+  "corpus_id": "LAB-SLA-5",
+  "mode": "OFFLINE_HAND_AUTHORED_STUBS",
+  "corpus_sha256": "745802bc54061d621ef6bea21095bc3f07c27ec7d77b2a0a4a1b641cd968f801",
+  "results": [
+    {
+      "clause_id": "C1",
+      "source_sha256": "78638d59647712266e8d9f2d63f992b63771ac92146505c5ee3ca849507699c3",
+      "source_text": "The Supplier shall maintain Monthly Availability of at least 99.9%, calculated in accordance with Clause 2.",
+      "jev_proposal": {
+        "primary": "OBLIGATION",
+        "probabilities": {
+          "OBLIGATION": 0.94,
+          "PROHIBITION": 0.01,
+          "PERMISSION_RIGHT": 0.01,
+          "DEFINITION": 0.02,
+          "AUTHORITY": 0.01,
+          "OTHER": 0.01
+        },
+        "modifiers": {
+          "THRESHOLD": 0.97,
+          "EXCLUSION": 0.07,
+          "CONDITION": 0.12,
+          "DEADLINE": 0.03,
+          "CROSS_REFERENCE": 0.92
+        }
+      },
+      "adversarial_review": {
+        "verdict": "SUPPORTED",
+        "missing_modifiers": [],
+        "evidence_quotes": [
+          "shall maintain",
+          "at least 99.9%",
+          "Clause 2"
+        ],
+        "issues": [],
+        "missing_source_refs": []
+      },
+      "backward_review": {
+        "verdict": "SUPPORTED",
+        "missing_modifiers": [],
+        "evidence_quotes": [
+          "Monthly Availability",
+          "Clause 2"
+        ],
+        "issues": [],
+        "missing_source_refs": []
+      },
+      "suggested_transposition": {
+        "route": "DUTY_MONITOR_OR_SLA_CHECK",
+        "identified_modifiers": [
+          "THRESHOLD",
+          "CROSS_REFERENCE"
+        ],
+        "outputs": [
+          "candidate_structure",
+          "required_facts_and_sources",
+          "human_review_queue"
+        ],
+        "approval": "NOT_AUTHORIZED",
+        "routing_only": true
+      },
+      "disposition": "CANDIDATE_FOR_HUMAN_REVIEW",
+      "reasons": [
+        "No flagged contradiction in these two limited reviews; completeness not established"
+      ],
+      "runs": {
+        "jev": {
+          "source": "HAND_AUTHORED_STUB_NOT_JEV",
+          "model": "none"
+        },
+        "adversarial": {
+          "source": "HAND_AUTHORED_STUB_NOT_LLM",
+          "model": "none"
+        },
+        "backward": {
+          "source": "HAND_AUTHORED_STUB_NOT_LLM",
+          "model": "none"
+        }
+      }
+    },
+    {
+      "clause_id": "C2",
+      "source_sha256": "ca6a601d6d83ab5b1954bfebf954ecac2597646bfa3dce0939d63b8f272d0ae5",
+      "source_text": "Monthly Availability means the percentage of minutes during a calendar month when the Service is accessible, excluding Scheduled Maintenance up to four hours per month.",
+      "jev_proposal": {
+        "primary": "DEFINITION",
+        "probabilities": {
+          "OBLIGATION": 0.01,
+          "PROHIBITION": 0.01,
+          "PERMISSION_RIGHT": 0.01,
+          "DEFINITION": 0.94,
+          "AUTHORITY": 0.01,
+          "OTHER": 0.02
+        },
+        "modifiers": {
+          "THRESHOLD": 0.8,
+          "EXCLUSION": 0.91,
+          "CONDITION": 0.1,
+          "DEADLINE": 0.08,
+          "CROSS_REFERENCE": 0.04
+        }
+      },
+      "adversarial_review": {
+        "verdict": "SUPPORTED",
+        "missing_modifiers": [],
+        "evidence_quotes": [
+          "means the percentage",
+          "excluding Scheduled Maintenance"
+        ],
+        "issues": [],
+        "missing_source_refs": []
+      },
+      "backward_review": {
+        "verdict": "SUPPORTED",
+        "missing_modifiers": [],
+        "evidence_quotes": [
+          "up to four hours per month"
+        ],
+        "issues": [],
+        "missing_source_refs": []
+      },
+      "suggested_transposition": {
+        "route": "SHARED_SEMANTIC_DEFINITION_WITH_EXCLUSIONS",
+        "identified_modifiers": [
+          "THRESHOLD",
+          "EXCLUSION"
+        ],
+        "outputs": [
+          "candidate_structure",
+          "required_facts_and_sources",
+          "human_review_queue"
+        ],
+        "approval": "NOT_AUTHORIZED",
+        "routing_only": true
+      },
+      "disposition": "CANDIDATE_FOR_HUMAN_REVIEW",
+      "reasons": [
+        "No flagged contradiction in these two limited reviews; completeness not established"
+      ],
+      "runs": {
+        "jev": {
+          "source": "HAND_AUTHORED_STUB_NOT_JEV",
+          "model": "none"
+        },
+        "adversarial": {
+          "source": "HAND_AUTHORED_STUB_NOT_LLM",
+          "model": "none"
+        },
+        "backward": {
+          "source": "HAND_AUTHORED_STUB_NOT_LLM",
+          "model": "none"
+        }
+      }
+    },
+    {
+      "clause_id": "C3",
+      "source_sha256": "7681dfcf91e4b4514bf8e9035839e7065d904c8f953fec9456aba330708494a6",
+      "source_text": "If Monthly Availability is below 99.9%, the Customer may claim a service credit of 5% of the monthly subscription fee, provided that the Customer submits a written claim within 30 days after month-end.",
+      "jev_proposal": {
+        "primary": "PERMISSION_RIGHT",
+        "probabilities": {
+          "OBLIGATION": 0.02,
+          "PROHIBITION": 0.01,
+          "PERMISSION_RIGHT": 0.91,
+          "DEFINITION": 0.02,
+          "AUTHORITY": 0.02,
+          "OTHER": 0.02
+        },
+        "modifiers": {
+          "THRESHOLD": 0.94,
+          "EXCLUSION": 0.02,
+          "CONDITION": 0.96,
+          "DEADLINE": 0.18,
+          "CROSS_REFERENCE": 0.04
+        }
+      },
+      "adversarial_review": {
+        "verdict": "DISPUTED",
+        "missing_modifiers": [
+          "DEADLINE"
+        ],
+        "evidence_quotes": [
+          "within 30 days after month-end"
+        ],
+        "issues": [
+          "Jev proposal misses the time-limited claim condition: a 30-day deadline is not optional."
+        ],
+        "missing_source_refs": []
+      },
+      "backward_review": {
+        "verdict": "SUPPORTED_WITH_GAPS",
+        "missing_modifiers": [
+          "DEADLINE"
+        ],
+        "evidence_quotes": [
+          "may claim a service credit",
+          "within 30 days after month-end"
+        ],
+        "issues": [
+          "Prediction covers the right but does not fully cover the claim deadline."
+        ],
+        "missing_source_refs": []
+      },
+      "suggested_transposition": {
+        "route": "CONDITIONAL_ENTITLEMENT_OR_REMEDY_WORKFLOW",
+        "identified_modifiers": [
+          "THRESHOLD",
+          "CONDITION"
+        ],
+        "outputs": [
+          "candidate_structure",
+          "required_facts_and_sources",
+          "human_review_queue"
+        ],
+        "approval": "NOT_AUTHORIZED",
+        "routing_only": true
+      },
+      "disposition": "HOLD_UNRESOLVED",
+      "reasons": [
+        "JEV_MODIFIER_OMISSION: DEADLINE",
+        "REVIEW_DISPUTED",
+        "REVIEW_SUPPORTED_WITH_GAPS"
+      ],
+      "runs": {
+        "jev": {
+          "source": "HAND_AUTHORED_STUB_NOT_JEV",
+          "model": "none"
+        },
+        "adversarial": {
+          "source": "HAND_AUTHORED_STUB_NOT_LLM",
+          "model": "none"
+        },
+        "backward": {
+          "source": "HAND_AUTHORED_STUB_NOT_LLM",
+          "model": "none"
+        }
+      }
+    },
+    {
+      "clause_id": "C4",
+      "source_sha256": "97e9cca4cb49618ad100efc035ade9163931087c43d44d6a2914aa66c77d9f71",
+      "source_text": "The Supplier shall not disclose Customer Data to third parties except to subprocessors listed in Schedule A, unless the Customer has given prior written consent.",
+      "jev_proposal": {
+        "primary": "PROHIBITION",
+        "probabilities": {
+          "OBLIGATION": 0.01,
+          "PROHIBITION": 0.91,
+          "PERMISSION_RIGHT": 0.02,
+          "DEFINITION": 0.02,
+          "AUTHORITY": 0.01,
+          "OTHER": 0.03
+        },
+        "modifiers": {
+          "THRESHOLD": 0.01,
+          "EXCLUSION": 0.14,
+          "CONDITION": 0.87,
+          "DEADLINE": 0.02,
+          "CROSS_REFERENCE": 0.86
+        }
+      },
+      "adversarial_review": {
+        "verdict": "DISPUTED",
+        "missing_modifiers": [
+          "EXCLUSION"
+        ],
+        "evidence_quotes": [
+          "except to subprocessors listed in Schedule A",
+          "unless the Customer has given prior written consent"
+        ],
+        "issues": [
+          "The exception modifies the apparent blanket prohibition; the referenced Schedule A is unavailable."
+        ],
+        "missing_source_refs": [
+          "Schedule A"
+        ]
+      },
+      "backward_review": {
+        "verdict": "SUPPORTED_WITH_GAPS",
+        "missing_modifiers": [
+          "EXCLUSION"
+        ],
+        "evidence_quotes": [
+          "shall not disclose",
+          "Schedule A"
+        ],
+        "issues": [
+          "The prohibition is correctly found, but its exceptions cannot be evaluated from the clause alone."
+        ],
+        "missing_source_refs": [
+          "Schedule A"
+        ]
+      },
+      "suggested_transposition": {
+        "route": "ACTION_GUARD_WITH_POSSIBLE_EXCEPTIONS",
+        "identified_modifiers": [
+          "CONDITION",
+          "CROSS_REFERENCE"
+        ],
+        "outputs": [
+          "candidate_structure",
+          "required_facts_and_sources",
+          "human_review_queue"
+        ],
+        "approval": "NOT_AUTHORIZED",
+        "routing_only": true
+      },
+      "disposition": "HOLD_UNRESOLVED",
+      "reasons": [
+        "MISSING_DOCUMENT_OR_REFERENCE: Schedule A",
+        "JEV_MODIFIER_OMISSION: EXCLUSION",
+        "REVIEW_DISPUTED",
+        "REVIEW_SUPPORTED_WITH_GAPS"
+      ],
+      "runs": {
+        "jev": {
+          "source": "HAND_AUTHORED_STUB_NOT_JEV",
+          "model": "none"
+        },
+        "adversarial": {
+          "source": "HAND_AUTHORED_STUB_NOT_LLM",
+          "model": "none"
+        },
+        "backward": {
+          "source": "HAND_AUTHORED_STUB_NOT_LLM",
+          "model": "none"
+        }
+      }
+    },
+    {
+      "clause_id": "C5",
+      "source_sha256": "1a369cc3cd7f60ec504075304c4176739aee6073e35e408805c2a17396dff9ca",
+      "source_text": "Any service credit exceeding EUR 100 shall require prior written approval from the Finance Director before issuance.",
+      "jev_proposal": {
+        "primary": "AUTHORITY",
+        "probabilities": {
+          "OBLIGATION": 0.06,
+          "PROHIBITION": 0.01,
+          "PERMISSION_RIGHT": 0.01,
+          "DEFINITION": 0.01,
+          "AUTHORITY": 0.9,
+          "OTHER": 0.01
+        },
+        "modifiers": {
+          "THRESHOLD": 0.97,
+          "EXCLUSION": 0.02,
+          "CONDITION": 0.91,
+          "DEADLINE": 0.01,
+          "CROSS_REFERENCE": 0.02
+        }
+      },
+      "adversarial_review": {
+        "verdict": "SUPPORTED",
+        "missing_modifiers": [],
+        "evidence_quotes": [
+          "exceeding EUR 100",
+          "approval from the Finance Director"
+        ],
+        "issues": [],
+        "missing_source_refs": []
+      },
+      "backward_review": {
+        "verdict": "SUPPORTED",
+        "missing_modifiers": [],
+        "evidence_quotes": [
+          "prior written approval",
+          "before issuance"
+        ],
+        "issues": [],
+        "missing_source_refs": []
+      },
+      "suggested_transposition": {
+        "route": "THRESHOLD_APPROVAL_GATE",
+        "identified_modifiers": [
+          "THRESHOLD",
+          "CONDITION"
+        ],
+        "outputs": [
+          "candidate_structure",
+          "required_facts_and_sources",
+          "human_review_queue"
+        ],
+        "approval": "NOT_AUTHORIZED",
+        "routing_only": true
+      },
+      "disposition": "CANDIDATE_FOR_HUMAN_REVIEW",
+      "reasons": [
+        "No flagged contradiction in these two limited reviews; completeness not established"
+      ],
+      "runs": {
+        "jev": {
+          "source": "HAND_AUTHORED_STUB_NOT_JEV",
+          "model": "none"
+        },
+        "adversarial": {
+          "source": "HAND_AUTHORED_STUB_NOT_LLM",
+          "model": "none"
+        },
+        "backward": {
+          "source": "HAND_AUTHORED_STUB_NOT_LLM",
+          "model": "none"
+        }
+      }
+    }
+  ],
+  "limitations": [
+    "Not a legal/compliance determination",
+    "Classification is multi-dimensional; each clause can have several normative elements",
+    "Model agreement cannot prove semantic completeness or legal authority",
+    "No action is authorized; all transposition routes are proposals only"
+  ],
+  "generated_at_utc": "2026-10-13T08:47:29.521568+00:00"
+}

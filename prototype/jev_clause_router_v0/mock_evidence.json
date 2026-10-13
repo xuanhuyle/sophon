@@ -1,0 +1,33 @@
+{
+  "mode": "OFFLINE_FIXTURE_NO_MODEL_CALLS",
+  "note": "Illustrative scores and independent-role outputs were hand-authored to test orchestration. They are NOT Jev measurements and NOT LLM judgments.",
+  "jev": {
+    "C1": {"primary": "OBLIGATION", "probabilities": {"OBLIGATION": 0.94, "PROHIBITION": 0.01, "PERMISSION_RIGHT": 0.01, "DEFINITION": 0.02, "AUTHORITY": 0.01, "OTHER": 0.01}, "modifiers": {"THRESHOLD": 0.97, "EXCLUSION": 0.07, "CONDITION": 0.12, "DEADLINE": 0.03, "CROSS_REFERENCE": 0.92}},
+    "C2": {"primary": "DEFINITION", "probabilities": {"OBLIGATION": 0.01, "PROHIBITION": 0.01, "PERMISSION_RIGHT": 0.01, "DEFINITION": 0.94, "AUTHORITY": 0.01, "OTHER": 0.02}, "modifiers": {"THRESHOLD": 0.8, "EXCLUSION": 0.91, "CONDITION": 0.1, "DEADLINE": 0.08, "CROSS_REFERENCE": 0.04}},
+    "C3": {"primary": "PERMISSION_RIGHT", "probabilities": {"OBLIGATION": 0.02, "PROHIBITION": 0.01, "PERMISSION_RIGHT": 0.91, "DEFINITION": 0.02, "AUTHORITY": 0.02, "OTHER": 0.02}, "modifiers": {"THRESHOLD": 0.94, "EXCLUSION": 0.02, "CONDITION": 0.96, "DEADLINE": 0.18, "CROSS_REFERENCE": 0.04}},
+    "C4": {"primary": "PROHIBITION", "probabilities": {"OBLIGATION": 0.01, "PROHIBITION": 0.91, "PERMISSION_RIGHT": 0.02, "DEFINITION": 0.02, "AUTHORITY": 0.01, "OTHER": 0.03}, "modifiers": {"THRESHOLD": 0.01, "EXCLUSION": 0.14, "CONDITION": 0.87, "DEADLINE": 0.02, "CROSS_REFERENCE": 0.86}},
+    "C5": {"primary": "AUTHORITY", "probabilities": {"OBLIGATION": 0.06, "PROHIBITION": 0.01, "PERMISSION_RIGHT": 0.01, "DEFINITION": 0.01, "AUTHORITY": 0.90, "OTHER": 0.01}, "modifiers": {"THRESHOLD": 0.97, "EXCLUSION": 0.02, "CONDITION": 0.91, "DEADLINE": 0.01, "CROSS_REFERENCE": 0.02}}
+  },
+  "reviewers": {
+    "C1": {
+      "adversarial": {"verdict": "SUPPORTED", "missing_modifiers": [], "evidence_quotes": ["shall maintain", "at least 99.9%", "Clause 2"], "issues": [], "missing_source_refs": []},
+      "backward": {"verdict": "SUPPORTED", "missing_modifiers": [], "evidence_quotes": ["Monthly Availability", "Clause 2"], "issues": [], "missing_source_refs": []}
+    },
+    "C2": {
+      "adversarial": {"verdict": "SUPPORTED", "missing_modifiers": [], "evidence_quotes": ["means the percentage", "excluding Scheduled Maintenance"], "issues": [], "missing_source_refs": []},
+      "backward": {"verdict": "SUPPORTED", "missing_modifiers": [], "evidence_quotes": ["up to four hours per month"], "issues": [], "missing_source_refs": []}
+    },
+    "C3": {
+      "adversarial": {"verdict": "DISPUTED", "missing_modifiers": ["DEADLINE"], "evidence_quotes": ["within 30 days after month-end"], "issues": ["Jev proposal misses the time-limited claim condition: a 30-day deadline is not optional."], "missing_source_refs": []},
+      "backward": {"verdict": "SUPPORTED_WITH_GAPS", "missing_modifiers": ["DEADLINE"], "evidence_quotes": ["may claim a service credit", "within 30 days after month-end"], "issues": ["Prediction covers the right but does not fully cover the claim deadline."], "missing_source_refs": []}
+    },
+    "C4": {
+      "adversarial": {"verdict": "DISPUTED", "missing_modifiers": ["EXCLUSION"], "evidence_quotes": ["except to subprocessors listed in Schedule A", "unless the Customer has given prior written consent"], "issues": ["The exception modifies the apparent blanket prohibition; the referenced Schedule A is unavailable."], "missing_source_refs": ["Schedule A"]},
+      "backward": {"verdict": "SUPPORTED_WITH_GAPS", "missing_modifiers": ["EXCLUSION"], "evidence_quotes": ["shall not disclose", "Schedule A"], "issues": ["The prohibition is correctly found, but its exceptions cannot be evaluated from the clause alone."], "missing_source_refs": ["Schedule A"]}
+    },
+    "C5": {
+      "adversarial": {"verdict": "SUPPORTED", "missing_modifiers": [], "evidence_quotes": ["exceeding EUR 100", "approval from the Finance Director"], "issues": [], "missing_source_refs": []},
+      "backward": {"verdict": "SUPPORTED", "missing_modifiers": [], "evidence_quotes": ["prior written approval", "before issuance"], "issues": [], "missing_source_refs": []}
+    }
+  }
+}
