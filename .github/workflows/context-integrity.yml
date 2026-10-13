@@ -1,0 +1,32 @@
+name: Sophon context integrity
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  sophon-context-integrity:
+    name: sophon-context-integrity
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Verify charter/state, native hooks, and historical evidence markers
+        shell: bash
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          if [ -n "$BASE_SHA" ]; then
+            python3 .claude/hooks/context_guard.py check --diff-base "$BASE_SHA"
+          else
+            python3 .claude/hooks/context_guard.py check
+          fi
+      - name: Run context regression tests
+        run: python3 -m unittest discover -s tests -p 'test_context_guard.py' -v
