@@ -54,3 +54,16 @@ Feed a second independently authored contract **without changing application cod
 ## Charter boundary
 
 This prototype explores the owner's newer **normative semantic layer** hypothesis: a cross-agent source of governing context. It is a **proposed architectural expansion** beyond `SOPHON_CHARTER.md` v1.1's existing BI-semantic-layer-only integration boundary. The Charter on main is deliberately unchanged. The owner must explicitly ratify any permanent Charter change. E0–E5 research branches/PRs remain untouched.
+
+## Related classification/review experiment (NOT connected to the V0 service)
+
+The independent [five-clause Jev / adversarial / backward reviewer skeleton](../jev_clause_router_v0/README.md) lives alongside this service under `prototype/jev_clause_router_v0/`. It proposes *types and transposition routes*, not active normative interpretations or executable authorizations. Its offline fixture scores/reviews are **hand-authored**, not actual Jev or LLM measurements. It has its own tests and demo and **does not feed V0's `/documents` or `/assess` endpoints**.
+
+From the repository root:
+
+```powershell
+python -m unittest discover -s prototype/jev_clause_router_v0 -p "test_*.py" -v
+python prototype/jev_clause_router_v0/prototype.py --mode demo --output prototype/jev_clause_router_v0/results_local.json
+```
+
+The classifier can only become an untrusted proposal producer for Sophon's reviewed normative representation after a separately validated integration. Keep semantic-structure completeness and both governance-to-implementation / implementation-to-governance verification as distinct open problems.
