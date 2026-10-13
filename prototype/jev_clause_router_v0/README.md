@@ -2,6 +2,16 @@
 
 **Runnable orchestration skeleton, not a validated contractual interpreter.** Python 3.10+, standard library only. No database, no agent action, no production authorization. All five clauses in `clauses.json` are **fictional**. No private documents or real contractual promises are involved.
 
+## V1 (13 Oct 2026): live-evidence pilot — BLOCKED, no live run yet
+
+See **[V1_LIVE_RESULTS.md](V1_LIVE_RESULTS.md)**. V1 adds:
+- adapters checked against the official TypeSafe schema, with a hardened Anthropic/CLI reviewer path;
+- a blind single-LLM baseline (arm D) next to Jev alone (A), Jev+adversarial (B) and Jev+adversarial+backward (C);
+- a frozen external corpus of official GitHub SLA excerpts (`external_github_sla_2021.json`) and a provisional review matrix (`review_matrix.json`);
+- `--mode preflight` (no network), `--mode live` and offline `--mode replay`, plus `compare.py`.
+
+**Zero live Jev or reviewer calls have been made.** Run `RUNBOOK_V1_LIVE.ps1` from a terminal outside Claude Code. The V0 instructions below under "Run the real three-model sequence" are superseded for live runs: the default model is now `claude-opus-5-5`, and the live mode first runs the preflight and refuses on any blocker.
+
 ## Why this exists
 
 Investigate a narrow hypothesis: a *Jev proposal* provides a primary normative function and probabilities for independent modifiers; two separately invoked LLM reviewers examine the proposal from opposing positions; a deterministic controller decides whether to route a provisional transposition **for human review** or to **hold for an unresolved omission**.
