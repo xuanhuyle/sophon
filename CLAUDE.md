@@ -1,5 +1,12 @@
 # Sophon — standing instructions for Claude Code
 
+## Native project-state guard (automatic; not another product subsystem)
+
+The committed PROJECT_STATE.json is the current cross-session engineering inventory: already-implemented modules (including Jev proposal, adversarial/backward reviewers, versioned library, deterministic reconciliation), tested outcomes, caveats, PR refs and active/held decisions. The Charter remains the normative product authority. At session start and on each prompt, .claude/settings.json invokes .claude/hooks/context_guard.py to inject the checked state. If it reports inconsistency, reconcile the branch/charter/state before substantial work. NEVER silently reinterpret an open draft PR as merged code.
+
+Before suggesting new architecture or a next experiment, read relevant EXISTING implementation at its actual ref and last observed RESULTS, and state whether the work reuses/extends/replaces it. Update PROJECT_STATE.json in the same PR whenever new experiment results, product decisions or material architecture changes are recorded. Human review is a targeted independent validation mechanism after automated Jev/adversarial/backward/library triage, NOT a default 78-item manual queue. A model agreement is NOT independent semantic adjudication.
+
+
 **Read [SOPHON_CHARTER.md](SOPHON_CHARTER.md) in full before substantial work.** Charter **v1.2 (13 October 2026)** records the owner's current product decisions and supersedes narrower assertions in old prompts, reports and experiments.
 
 ## Product invariant — repeat before choosing an architecture
