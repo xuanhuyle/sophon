@@ -1,0 +1,33 @@
+{
+ "package_version": "v3-secondary-adjudication-package-1",
+ "status": "AWAITING_HUMAN_ADJUDICATION",
+ "label_status": "PROVISIONAL_AGENT_AUTHORED",
+ "frozen_results_modified": false,
+ "source_retrieval": {
+  "status": "BLOCKED_IN_BUILD_SESSION",
+  "detail": "CONNECT tunnel failed, response 403 for www.sec.gov, www.cloudflare.com, www.mongodb.com (environment network policy), last checked 2026-10-13T16:30:29Z"
+ },
+ "counts": {
+  "positives": 18,
+  "negatives": 275,
+  "neg_top3": 148,
+  "neg_top3_high": 27,
+  "neg_brier_only": 127,
+  "units": 78
+ },
+ "inputs_sha256": {
+  "data/records_heldout_secondary.json": "9478ee941c651bc8f8812017e79a900468b4fd0dee835869dbd575012da35d41",
+  "results/secondary_repaired_run.json": "907ff49e5cdd751e3f5926c5658f09e1d0c735607ebf691a53a3bed31584f842",
+  "data/source_manifest.json": "4739316bcfc02832a13b22ad5b0f91eb4d2caee1dc0f23b3f7843bea28cb9df9",
+  "labels.py": "c944ee6512a0e23d93e62e04689dbe44e7fbd67e32fd211307a1d9953fc7f982",
+  "predict.py": "0557530512d0781e5ceadf7151a3152cc759f32c710b552eee54d14add59b9e5",
+  "secondary.py": "012ad3c2222530e370376335d429bd79e7c6afa3dcf0610971471ba47a5a9e6b",
+  "RESULTS.md": "aca01064257b4887484e7add8d14abb0c51ba54c2fa0498530c7756b60d0e655",
+  "PROTOCOL.md": "1d8e3bbceadc27d61d3e69d2ed5a0b27741a86311f8a428948dfefab777ef0ed"
+ },
+ "outputs_sha256": {
+  "REVIEW_PACKAGE.md": "6afe21f1cc2d839bbdd288a135d158727579b3d49c4c7c3ab5afef6f2de097fb",
+  "review_units.csv": "179a389df42164941ade28e5978785cc7029a60b778d18a8ae98002a6a4a04d8",
+  "review_labels.csv": "d86d7f9e9a4ba4e275016e6e7e84d457d774e967fbfe7228740d3ef35d225a5a"
+ }
+}

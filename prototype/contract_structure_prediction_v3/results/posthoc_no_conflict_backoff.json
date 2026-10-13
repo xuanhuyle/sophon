@@ -1,0 +1,58 @@
+{
+ "status": "POST_HOC_DIAGNOSTIC_NOT_USED_FOR_DECISION",
+ "change": "CONFLICT threshold 0.5 -> 0.0 (no context-conflict backoff); everything else frozen",
+ "results": {
+  "primary_frozen": {
+   "FAMILY_SECTION_no_conflict_backoff": {
+    "hit3": 5.8,
+    "false_exp3": 12.2,
+    "brier": 0.2348,
+    "by_task": {
+     "SECTION": {
+      "targets": 5,
+      "hit1": 2.0,
+      "hit3": 3.8,
+      "false_expectations_top3": 8.2
+     },
+     "PROVISION": {
+      "targets": 4,
+      "hit1": 0.667,
+      "hit3": 2.0,
+      "false_expectations_top3": 4.0
+     }
+    }
+   },
+   "per_provision_case": {
+    "CA-MARKEL:Article 7": 0.0,
+    "CA-MARKEL:Article 1": 2.0
+   }
+  },
+  "secondary_repaired": {
+   "FAMILY_SECTION_no_conflict_backoff": {
+    "hit3": 11.8,
+    "false_exp3": 12.2,
+    "brier": 0.2328,
+    "by_task": {
+     "SECTION": {
+      "targets": 10,
+      "hit1": 4.0,
+      "hit3": 6.8,
+      "false_expectations_top3": 5.2
+     },
+     "PROVISION": {
+      "targets": 8,
+      "hit1": 2.167,
+      "hit3": 5.0,
+      "false_expectations_top3": 7.0
+     }
+    }
+   },
+   "per_provision_case": {
+    "CA-MARKEL:Article 7": 0.0,
+    "CA-MARKEL:Article 1": 2.0,
+    "CA-OLDDOMINION:Article 6": 2.0,
+    "CA-OLDDOMINION:Article 5": 1.0
+   }
+  }
+ }
+}
