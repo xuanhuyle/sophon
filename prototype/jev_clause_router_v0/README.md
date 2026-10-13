@@ -12,6 +12,32 @@ See **[V1_LIVE_RESULTS.md](V1_LIVE_RESULTS.md)**. V1 adds:
 
 **Zero live Jev or reviewer calls have been made.** Run `RUNBOOK_V1_LIVE.ps1` from a terminal outside Claude Code. The V0 instructions below under "Run the real three-model sequence" are superseded for live runs: the default model is now `claude-opus-5-5`, and the live mode first runs the preflight and refuses on any blocker.
 
+## Local API keys: repo-root `.env` (ignored by Git)
+
+From PowerShell in `C:\\Claude\\sophon`:
+
+```powershell
+Copy-Item .env.example .env
+notepad .env
+```
+
+Fill in your two real key values (no quotes required):
+
+```dotenv
+TYPESAFE_API_KEY=<your-local-jev-key>
+ANTHROPIC_API_KEY=<your-local-anthropic-key>
+```
+
+**Do not send this file to anyone or commit it.** `.gitignore` excludes `.env` and `.env.*` while allowing `.env.example` (no secrets) to be tracked. The file stores keys as **plaintext on your computer**, so restrict access to the machine and do not sync it to shared folders. If you prefer not to store keys on disk, leave `.env` absent; the runbook securely prompts for missing credentials.
+
+To verify Git ignores it (without printing values):
+
+```powershell
+git check-ignore -v .env
+```
+
+`RUNBOOK_V1_LIVE.ps1` reads ONLY `TYPESAFE_API_KEY` and `ANTHROPIC_API_KEY` as literal `KEY=VALUE` entries from the repository-root `.env`. Existing process environment variables take precedence; it never executes `.env` as PowerShell. A new terminal no longer requires re-entry if `.env` exists. Live provider calls still require the explicit `YES` confirmation.
+
 ## Why this exists
 
 Investigate a narrow hypothesis: a *Jev proposal* provides a primary normative function and probabilities for independent modifiers; two separately invoked LLM reviewers examine the proposal from opposing positions; a deterministic controller decides whether to route a provisional transposition **for human review** or to **hold for an unresolved omission**.
