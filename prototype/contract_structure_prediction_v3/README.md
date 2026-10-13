@@ -20,5 +20,6 @@ See [RESULTS.md](RESULTS.md).
 | `frozen/freeze_receipt.json` | Hashes of code, protocol and train data at freeze time. Four files were hashed as Windows CRLF working copies; `.gitattributes` pins them to CRLF on checkout, and `freeze_receipt_lf_normalized.json` (added post-freeze) gives platform-neutral hashes of the same content. |
 | `results/` | `dev_loo.json` (train-only), `heldout_run.json` (primary), `secondary_repaired_run.json`, `posthoc_no_conflict_backoff.json` (diagnostic only). |
 | `test_v3.py` | Offline tests with synthetic fixtures. They test plumbing, not predictive value. |
+| [`adjudication/`](adjudication/REVIEW_PACKAGE.md) | **Human-adjudication package for the 8 secondary heldout cases** (added after the results; `AWAITING_HUMAN_ADJUDICATION`). Frozen results unchanged. |
 
 The V2 post-run review for this branch is in [../jev_library_transfer_v2/V2_POSTRUN_REVIEW.md](../jev_library_transfer_v2/V2_POSTRUN_REVIEW.md).
