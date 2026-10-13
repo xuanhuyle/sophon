@@ -1,0 +1,40 @@
+{
+  "library_id": "JEV-V2-LEGAL-CONTEXT",
+  "version": 1,
+  "status": "PROVISIONAL",
+  "frozen_at_utc": "2026-10-13T12:30:00Z",
+  "scope": "Dimension 1 (legal context) is descriptive, source-anchored metadata only. No model call classified it; no jurisdiction was inferred from vendor headquarters, document language, URL or currency.",
+  "statuses": {
+    "UNKNOWN": "No evidence in the frozen packets.",
+    "MULTIPLE": "More than one evidenced value applies to different scopes.",
+    "CONFLICT": "Evidenced values contradict each other.",
+    "REFERENCED_SOURCE_UNAVAILABLE": "The packets point to an incorporated or master agreement that would answer the question but is not available.",
+    "EVIDENCED": "A verbatim anchor in a frozen packet states the value; still not a legal determination."
+  },
+  "distinctions": {
+    "governing_law": "The law chosen to govern the contract (may be subnational).",
+    "forum": "The court, tribunal or arbitration seat chosen for disputes; distinct from governing law.",
+    "mandatory_regulatory": "Mandatory rules or regulators that apply regardless of choice of law.",
+    "party_domicile": "Where the parties are established or served; never evidence of governing law by itself.",
+    "incorporated_master_agreement": "An agreement the document incorporates by reference, which may carry the governing-law and forum clauses."
+  },
+  "records": {
+    "LC-GH-SLA-2021": {
+      "document_id": "GH-SLA-2021",
+      "governing_law": {"status": "REFERENCED_SOURCE_UNAVAILABLE", "value": null, "evidence_anchor": null, "provenance": "The frozen SLA excerpts state no governing law. Capitalized terms are given meaning by the customer's applicable agreement, which is not in the packets (G1 context)."},
+      "forum": {"status": "UNKNOWN", "value": null, "evidence_anchor": null, "provenance": "No court, tribunal or arbitration clause in the frozen excerpts."},
+      "mandatory_regulatory": {"status": "UNKNOWN", "value": null, "evidence_anchor": null, "provenance": "Not addressed in the frozen excerpts."},
+      "party_domicile": {"status": "NOT_USED", "used_as_governing_law_evidence": false, "note": "Vendor headquarters and English-language drafting are not evidence of governing law."},
+      "incorporated_master_agreement": {"status": "REFERENCED_SOURCE_UNAVAILABLE", "reference": "Customer's applicable agreement with GitHub", "evidence_anchor": "Customer’s applicable agreement (which gives the meaning of capitalized terms not defined in the SLA)", "source_packet": "G1"}
+    },
+    "LC-GCS-SLA-20210624": {
+      "document_id": "GCS-SLA-20210624",
+      "governing_law": {"status": "REFERENCED_SOURCE_UNAVAILABLE", "value": null, "evidence_anchor": null, "provenance": "The archived SLA page states no governing law; undefined capitalized terms take their meaning from the Agreement, which is not available."},
+      "forum": {"status": "UNKNOWN", "value": null, "evidence_anchor": null, "provenance": "No court, tribunal or arbitration clause in the frozen excerpts."},
+      "mandatory_regulatory": {"status": "UNKNOWN", "value": null, "evidence_anchor": null, "provenance": "Not addressed in the frozen excerpts."},
+      "party_domicile": {"status": "NOT_USED", "used_as_governing_law_evidence": false, "note": "Vendor headquarters, cloud regions named in the SLO table and the .com URL are not evidence of governing law."},
+      "incorporated_master_agreement": {"status": "REFERENCED_SOURCE_UNAVAILABLE", "reference": "the Agreement (agreement under which Google provides Google Cloud Platform)", "evidence_anchor": "Capitalized terms used in this SLA, but not defined in this SLA, have the meaning set forth in the Agreement.", "source_packet": "B2"}
+    }
+  },
+  "lineage": [{"event": "BOOTSTRAP", "at_utc": "2026-10-13T12:30:00Z", "reason": "two document-level records with explicit unavailability; no inference"}]
+}

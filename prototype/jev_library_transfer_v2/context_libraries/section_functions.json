@@ -1,0 +1,28 @@
+{
+  "library_id": "JEV-V2-SECTION-FUNCTIONS",
+  "version": 1,
+  "status": "PROVISIONAL",
+  "frozen_at_utc": "2026-10-13T12:30:00Z",
+  "scope": "Dimension 3b: what a section DOES, classified from content as well as heading. Section LOCATION lives in section_registry.json and is a source-address registry, not a taxonomy. One section may perform several functions; a heading can be absent, generic or misleading; the same function can recur under different labels in different families.",
+  "functions": {
+    "DEFINITIONS": "Defines terms, formulas or quantities used elsewhere.",
+    "SERVICE_LEVELS": "States the committed service level, objective or target and how it is measured.",
+    "FEES_AND_PAYMENT": "States prices, invoicing or payment terms.",
+    "EXCLUSIONS": "Lists circumstances carved out of a metric, commitment or remedy.",
+    "SERVICE_CREDITS_AND_REMEDIES": "States the remedy for a service-level failure, its amount, form, limits and exclusivity.",
+    "CLAIM_PROCEDURE": "States how and when a remedy must be requested and what forfeits it.",
+    "TERM_AND_TERMINATION": "States duration, renewal and termination.",
+    "REPRESENTATIONS": "States warranties or representations.",
+    "COVENANTS": "States ongoing promises or restrictions.",
+    "GOVERNING_LAW": "States governing law and/or forum.",
+    "INTERPRETATION_AND_SCOPE": "States how terms are read, who the parties are for this document and which incorporated documents control undefined terms.",
+    "VERSION_AND_APPLICABILITY": "States which version applies to whom and from when.",
+    "OTHER_UNKNOWN": "No function can be assigned from the available evidence."
+  },
+  "rules": [
+    "A function label requires at least one content quote anchored in the frozen packets; a heading alone is not evidence.",
+    "Section location (heading, numbering, path, anchors) is recorded separately and never changes when a function label changes.",
+    "Function labels stay PROVISIONAL; they confer no legal meaning on the provisions inside the section."
+  ],
+  "lineage": [{"event": "BOOTSTRAP", "at_utc": "2026-10-13T12:30:00Z", "reason": "initial taxonomy seeded from the owner's examples plus INTERPRETATION_AND_SCOPE and VERSION_AND_APPLICABILITY observed in the frozen packets"}]
+}

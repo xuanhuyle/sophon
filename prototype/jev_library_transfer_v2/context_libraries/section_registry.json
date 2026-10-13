@@ -1,0 +1,129 @@
+{
+  "registry_id": "JEV-V2-SECTION-REGISTRY",
+  "version": 1,
+  "status": "PROVISIONAL",
+  "frozen_at_utc": "2026-10-13T12:30:00Z",
+  "scope": "Dimension 3a: source-address registry of sections actually observed in the frozen packets. Literal headings and numbering are preserved verbatim; HEADING_ABSENT / UNNUMBERED are recorded where the source has none. Partial excerpts are marked; no section is expanded beyond what the packets show.",
+  "documents": {
+    "GH-SLA-2021": {
+      "title": "GitHub Online Services SLA",
+      "version": "June 2021",
+      "source_sha256": "70f1cdcd11bcfa0bc22796ebdca27a61b8f24bbdb2fc5ad559dd643cccc6a2a8",
+      "source_url": "https://assets.ctfassets.net/8aevphvgewt8/7rEf04yu01oTt1cGyeXz03/f58072058dfb2f1fb25cb80b0b285890/GitHub.Online.Services.SLA_20210630_locked",
+      "contract_family_id": "SERVICE_LEVEL_AGREEMENT",
+      "legal_context_id": "LC-GH-SLA-2021",
+      "structure_note": "Numbered sections observed in the packets: 1, 2, 3. Section 1 contains a table whose rows are service groups and whose columns are Definitions / Uptime Calculation / Service Credits Calculation."
+    },
+    "GCS-SLA-20210624": {
+      "title": "Cloud Storage Service Level Agreement (SLA)",
+      "version": "Last modified: June 24, 2021 (archived)",
+      "source_sha256": "e5b91991e6e10399e981dcb97271355c9624478e3798fb3a96e6222d954d0314",
+      "source_url": "https://cloud.google.com/storage/sla-20210624",
+      "contract_family_id": "SERVICE_LEVEL_AGREEMENT",
+      "legal_context_id": "LC-GCS-SLA-20210624",
+      "structure_note": "No numbered sections. One HTML h1 title; four bold-paragraph sub-headings; opening text and SLO table have no heading. Definitions are an unordered list whose Financial Credit items contain tables."
+    }
+  },
+  "sections": {
+    "GH-SLA-2021/S1": {
+      "document_id": "GH-SLA-2021", "parent": null, "numbering": "Section 1", "heading": "Uptime Guarantee", "heading_style": "NUMBERED_HEADING",
+      "path": ["GitHub Online Services SLA", "Section 1 \"Uptime Guarantee\""],
+      "excerpt_coverage": "PARTIAL: only two table cells and two introductory sentences are in the packets",
+      "anchors": ["Section 1 \"Uptime Guarantee\""],
+      "functions": ["SERVICE_LEVELS", "DEFINITIONS", "SERVICE_CREDITS_AND_REMEDIES"],
+      "function_evidence": [
+        {"function": "SERVICE_LEVELS", "quote": "GitHub commits to maintain at least 99.9% Uptime for the applicable GitHub service."},
+        {"function": "DEFINITIONS", "quote": "“Downtime” is a period of time where either"},
+        {"function": "SERVICE_CREDITS_AND_REMEDIES", "quote": "Customer will be entitled to service credit to Customer’s account (“Service Credits”) based on the calculation below"}
+      ],
+      "cross_references": [{"name": "GitHub Status Page (Service Feature definitions)", "target_section_id": "UNRESOLVED_OUTSIDE_PACKET"}]
+    },
+    "GH-SLA-2021/S1/TABLE_ROW_CORE": {
+      "document_id": "GH-SLA-2021", "parent": "GH-SLA-2021/S1", "numbering": "UNNUMBERED", "heading": "HEADING_ABSENT", "heading_style": "TABLE_ROW",
+      "path": ["GitHub Online Services SLA", "Section 1 \"Uptime Guarantee\"", "table row: Issues, Pull Requests, Git Operations, API Requests (for Service Features only), Webhooks, Pages"],
+      "excerpt_coverage": "PARTIAL: the Definitions and Service Credits Calculation cells are packets; the Uptime Calculation cell is quoted in context",
+      "anchors": ["row covering Issues, Pull Requests, Git Operations, API Requests (for Service Features only), Webhooks, Pages"],
+      "functions": ["DEFINITIONS", "SERVICE_CREDITS_AND_REMEDIES"],
+      "function_evidence": [
+        {"function": "DEFINITIONS", "quote": "(total minutes in a calendar quarter - Downtime) / total minutes in a calendar quarter"},
+        {"function": "SERVICE_CREDITS_AND_REMEDIES", "quote": "A Service Credits claim may be based on either (not both) of the following calculations"}
+      ],
+      "cross_references": []
+    },
+    "GH-SLA-2021/S2": {
+      "document_id": "GH-SLA-2021", "parent": null, "numbering": "Section 2", "heading": "Exclusions", "heading_style": "NUMBERED_HEADING",
+      "path": ["GitHub Online Services SLA", "Section 2 \"Exclusions\""],
+      "excerpt_coverage": "ENTIRE_SECTION (per the frozen context)",
+      "anchors": ["Section 2 \"Exclusions\" (entire section)"],
+      "functions": ["EXCLUSIONS"],
+      "function_evidence": [{"function": "EXCLUSIONS", "quote": "Excluded from the Uptime Calculation are Service Feature failures resulting from"}],
+      "cross_references": [{"name": "Uptime Calculation (Section 1)", "target_section_id": "GH-SLA-2021/S1"}, {"name": "the Agreement", "target_section_id": "UNRESOLVED_OUTSIDE_PACKET"}]
+    },
+    "GH-SLA-2021/S3": {
+      "document_id": "GH-SLA-2021", "parent": null, "numbering": "Section 3", "heading": "Service Credits Redemption", "heading_style": "NUMBERED_HEADING",
+      "path": ["GitHub Online Services SLA", "Section 3 \"Service Credits Redemption\""],
+      "excerpt_coverage": "ENTIRE_SECTION (two paragraphs, per the frozen context)",
+      "anchors": ["Section 3 \"Service Credits Redemption\" (entire section, two paragraphs)"],
+      "functions": ["CLAIM_PROCEDURE", "SERVICE_CREDITS_AND_REMEDIES"],
+      "function_evidence": [
+        {"function": "CLAIM_PROCEDURE", "quote": "Customer may redeem Service Credits only upon written request to GitHub within thirty (30) days of the end of the calendar quarter"},
+        {"function": "SERVICE_CREDITS_AND_REMEDIES", "quote": "Service Credits are the sole and exclusive remedy for any failure by GitHub to meet any obligations in this SLA"}
+      ],
+      "cross_references": [{"name": "this SLA (Section 1 commitment)", "target_section_id": "GH-SLA-2021/S1"}, {"name": "Customer’s agreement with GitHub", "target_section_id": "UNRESOLVED_OUTSIDE_PACKET"}]
+    },
+    "GCS-SLA-20210624/PREAMBLE_SLO": {
+      "document_id": "GCS-SLA-20210624", "parent": null, "numbering": "UNNUMBERED", "heading": "HEADING_ABSENT", "heading_style": "NONE_OPENING_TEXT",
+      "path": ["Cloud Storage Service Level Agreement (SLA)", "(unheaded opening text and SLO table, before \"Definitions\")"],
+      "excerpt_coverage": "ENTIRE: opening paragraph, SLO table and the following paragraph are in packet B2 and its context",
+      "anchors": ["the unheaded opening paragraph and SLO table at the top of the document"],
+      "functions": ["SERVICE_LEVELS", "SERVICE_CREDITS_AND_REMEDIES", "INTERPRETATION_AND_SCOPE"],
+      "function_evidence": [
+        {"function": "SERVICE_LEVELS", "quote": "the Covered Service will provide a Monthly Uptime Percentage to Customer as follows"},
+        {"function": "SERVICE_CREDITS_AND_REMEDIES", "quote": "Customer will be eligible to receive the Financial Credits described below"},
+        {"function": "INTERPRETATION_AND_SCOPE", "quote": "Capitalized terms used in this SLA, but not defined in this SLA, have the meaning set forth in the Agreement."}
+      ],
+      "cross_references": [{"name": "Monthly Uptime Percentage (Definitions)", "target_section_id": "GCS-SLA-20210624/DEFINITIONS"}, {"name": "the Agreement", "target_section_id": "UNRESOLVED_OUTSIDE_PACKET"}]
+    },
+    "GCS-SLA-20210624/DEFINITIONS": {
+      "document_id": "GCS-SLA-20210624", "parent": null, "numbering": "UNNUMBERED", "heading": "Definitions", "heading_style": "BOLD_PARAGRAPH",
+      "path": ["Cloud Storage Service Level Agreement (SLA)", "Definitions"],
+      "excerpt_coverage": "ENTIRE: all seven list items are in packets B1 and B2 or quoted in their context",
+      "anchors": ["The following definitions apply to the SLA:"],
+      "functions": ["DEFINITIONS", "SERVICE_CREDITS_AND_REMEDIES"],
+      "function_evidence": [
+        {"function": "DEFINITIONS", "quote": "The following definitions apply to the SLA:"},
+        {"function": "SERVICE_CREDITS_AND_REMEDIES", "quote": "\"Financial Credit\" means the following for the Standard storage class in a multi-region or dual-region location of Cloud Storage:"}
+      ],
+      "note": "The credit schedules sit inside the Definitions list: the section performs a remedy function under a definitions heading.",
+      "cross_references": [{"name": "Documentation", "target_section_id": "UNRESOLVED_OUTSIDE_PACKET"}]
+    },
+    "GCS-SLA-20210624/CLAIM": {
+      "document_id": "GCS-SLA-20210624", "parent": null, "numbering": "UNNUMBERED", "heading": "Customer Must Request Financial Credit", "heading_style": "BOLD_PARAGRAPH",
+      "path": ["Cloud Storage Service Level Agreement (SLA)", "Customer Must Request Financial Credit"],
+      "excerpt_coverage": "ENTIRE (one paragraph)",
+      "anchors": ["Customer Must Request Financial Credit"],
+      "functions": ["CLAIM_PROCEDURE"],
+      "function_evidence": [{"function": "CLAIM_PROCEDURE", "quote": "Customer must notify Google technical support within 30 days from the time Customer becomes eligible to receive a Financial Credit"}],
+      "cross_references": [{"name": "Financial Credits described above (Definitions)", "target_section_id": "GCS-SLA-20210624/DEFINITIONS"}]
+    },
+    "GCS-SLA-20210624/MAX_CREDIT": {
+      "document_id": "GCS-SLA-20210624", "parent": null, "numbering": "UNNUMBERED", "heading": "Maximum Financial Credit", "heading_style": "BOLD_PARAGRAPH",
+      "path": ["Cloud Storage Service Level Agreement (SLA)", "Maximum Financial Credit"],
+      "excerpt_coverage": "ENTIRE (one paragraph)",
+      "anchors": ["Maximum Financial Credit"],
+      "functions": ["SERVICE_CREDITS_AND_REMEDIES"],
+      "function_evidence": [{"function": "SERVICE_CREDITS_AND_REMEDIES", "quote": "will not exceed 50% of the amount due by Customer for the applicable Covered Service for the applicable month"}],
+      "cross_references": [{"name": "Covered Service (Definitions)", "target_section_id": "GCS-SLA-20210624/DEFINITIONS"}]
+    },
+    "GCS-SLA-20210624/EXCLUSIONS": {
+      "document_id": "GCS-SLA-20210624", "parent": null, "numbering": "UNNUMBERED", "heading": "SLA Exclusions.", "heading_style": "BOLD_PARAGRAPH",
+      "path": ["Cloud Storage Service Level Agreement (SLA)", "SLA Exclusions."],
+      "excerpt_coverage": "ENTIRE (one paragraph)",
+      "anchors": ["SLA Exclusions."],
+      "functions": ["EXCLUSIONS"],
+      "function_evidence": [{"function": "EXCLUSIONS", "quote": "The SLA does not apply to any (a) features or Services designated pre-general availability"}],
+      "cross_references": [{"name": "the Agreement", "target_section_id": "UNRESOLVED_OUTSIDE_PACKET"}, {"name": "Admin Console", "target_section_id": "UNRESOLVED_OUTSIDE_PACKET"}, {"name": "Documentation", "target_section_id": "UNRESOLVED_OUTSIDE_PACKET"}]
+    }
+  },
+  "lineage": [{"event": "BOOTSTRAP", "at_utc": "2026-10-13T12:30:00Z", "reason": "sections observed in the frozen GitHub and Google packets; headings verbatim"}]
+}
