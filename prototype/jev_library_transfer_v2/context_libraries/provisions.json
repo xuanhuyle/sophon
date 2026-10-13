@@ -1,0 +1,335 @@
+{
+  "index_id": "JEV-V2-PROVISIONS",
+  "version": 1,
+  "status": "PROVISIONAL",
+  "frozen_at_utc": "2026-10-13T12:30:00Z",
+  "scope": "Per-provision context identity: (legal_context_id, contract_family_id, section path + functions, provision templates). Document-level fields are inherited, not re-classified per provision; overrides require anchored evidence and scope. Section classification never marks a provision compliant, equivalent or complete.",
+  "provisions": {
+    "G1": {
+      "document_id": "GH-SLA-2021",
+      "section_ids": [
+        "GH-SLA-2021/S1/TABLE_ROW_CORE"
+      ],
+      "literal_citation": "GitHub Online Services SLA (June 2021), Section 1 \"Uptime Guarantee\", table column \"Service Credits Calculation\", row Issues/Pull Requests/Git Operations/API Requests/Webhooks/Pages",
+      "inherited": {
+        "legal_context_id": "LC-GH-SLA-2021",
+        "contract_family_id": "SERVICE_LEVEL_AGREEMENT"
+      },
+      "inherited_definitions": [
+        {
+          "term": "Uptime",
+          "defined_in_section": "GH-SLA-2021/S1/TABLE_ROW_CORE",
+          "in_packet": false
+        },
+        {
+          "term": "Service Feature",
+          "defined_in_section": "UNRESOLVED_OUTSIDE_PACKET",
+          "in_packet": false
+        },
+        {
+          "term": "Service Credits",
+          "defined_in_section": "GH-SLA-2021/S1",
+          "in_packet": true
+        }
+      ],
+      "cross_section_refs": [
+        {
+          "name": "Section 3 redemption conditions (implicit; the excerpt does not cite Section 3)",
+          "target_section_id": "GH-SLA-2021/S3",
+          "quote": "A Service Credits claim"
+        },
+        {
+          "name": "Service Feature (GitHub Status Page)",
+          "target_section_id": "UNRESOLVED_OUTSIDE_PACKET",
+          "quote": "for a Service Feature"
+        }
+      ],
+      "unresolved_external_refs": [
+        "GitHub Status Page",
+        "Customer's applicable agreement"
+      ],
+      "overrides": {},
+      "excerpt_sha256": "c3f2428b316fd5363e99df67adf38ceac98a654ee6169ef366dbdc9dadb4f948"
+    },
+    "G2": {
+      "document_id": "GH-SLA-2021",
+      "section_ids": [
+        "GH-SLA-2021/S1/TABLE_ROW_CORE"
+      ],
+      "literal_citation": "GitHub Online Services SLA (June 2021), Section 1 \"Uptime Guarantee\", table column \"Definitions\", same row",
+      "inherited": {
+        "legal_context_id": "LC-GH-SLA-2021",
+        "contract_family_id": "SERVICE_LEVEL_AGREEMENT"
+      },
+      "inherited_definitions": [
+        {
+          "term": "Service Feature",
+          "defined_in_section": "UNRESOLVED_OUTSIDE_PACKET",
+          "in_packet": false
+        },
+        {
+          "term": "error rate",
+          "defined_in_section": "UNRESOLVED_OUTSIDE_PACKET",
+          "in_packet": false
+        }
+      ],
+      "cross_section_refs": [
+        {
+          "name": "Uptime Calculation (same row)",
+          "target_section_id": "GH-SLA-2021/S1/TABLE_ROW_CORE",
+          "quote": "(total minutes in a calendar quarter - Downtime) / total minutes in a calendar quarter"
+        }
+      ],
+      "unresolved_external_refs": [
+        "GitHub Status Page",
+        "GitHub's monitoring data"
+      ],
+      "overrides": {},
+      "excerpt_sha256": "1aa7930e7cbbd21fe2ba7c7bcd3de2df817645e460887b270e624145dc2bbfe5"
+    },
+    "G3": {
+      "document_id": "GH-SLA-2021",
+      "section_ids": [
+        "GH-SLA-2021/S2"
+      ],
+      "literal_citation": "GitHub Online Services SLA (June 2021), Section 2 \"Exclusions\" (entire section)",
+      "inherited": {
+        "legal_context_id": "LC-GH-SLA-2021",
+        "contract_family_id": "SERVICE_LEVEL_AGREEMENT"
+      },
+      "inherited_definitions": [
+        {
+          "term": "Uptime Calculation",
+          "defined_in_section": "GH-SLA-2021/S1/TABLE_ROW_CORE",
+          "in_packet": false
+        },
+        {
+          "term": "Service Feature",
+          "defined_in_section": "UNRESOLVED_OUTSIDE_PACKET",
+          "in_packet": false
+        }
+      ],
+      "cross_section_refs": [
+        {
+          "name": "Uptime Calculation (Section 1)",
+          "target_section_id": "GH-SLA-2021/S1",
+          "quote": "Excluded from the Uptime Calculation"
+        },
+        {
+          "name": "the Agreement",
+          "target_section_id": "UNRESOLVED_OUTSIDE_PACKET",
+          "quote": "violations of the Agreement"
+        }
+      ],
+      "unresolved_external_refs": [
+        "the Agreement (force majeure definition)"
+      ],
+      "overrides": {},
+      "excerpt_sha256": "086472d29dfbe4d2abbcc8e47dcd2cefe26cc121c3956ecb74b26f1fbc1ec6c3"
+    },
+    "G4": {
+      "document_id": "GH-SLA-2021",
+      "section_ids": [
+        "GH-SLA-2021/S3"
+      ],
+      "literal_citation": "GitHub Online Services SLA (June 2021), Section 3 \"Service Credits Redemption\" (entire section)",
+      "inherited": {
+        "legal_context_id": "LC-GH-SLA-2021",
+        "contract_family_id": "SERVICE_LEVEL_AGREEMENT"
+      },
+      "inherited_definitions": [
+        {
+          "term": "Service Credits",
+          "defined_in_section": "GH-SLA-2021/S1",
+          "in_packet": false
+        },
+        {
+          "term": "this SLA",
+          "defined_in_section": "GH-SLA-2021/S1",
+          "in_packet": false
+        }
+      ],
+      "cross_section_refs": [
+        {
+          "name": "this SLA (Section 1 commitment)",
+          "target_section_id": "GH-SLA-2021/S1",
+          "quote": "If GitHub does not meet this SLA"
+        },
+        {
+          "name": "Customer's agreement with GitHub",
+          "target_section_id": "UNRESOLVED_OUTSIDE_PACKET",
+          "quote": "termination of Customer’s agreement with GitHub"
+        }
+      ],
+      "unresolved_external_refs": [
+        "Customer's agreement with GitHub (term, termination, invoices)"
+      ],
+      "overrides": {},
+      "excerpt_sha256": "ccd642966ac4c0f62e039519081475e73107100ed15c76ed2a6b803e19a47530"
+    },
+    "B1": {
+      "document_id": "GCS-SLA-20210624",
+      "section_ids": [
+        "GCS-SLA-20210624/DEFINITIONS"
+      ],
+      "literal_citation": "Cloud Storage SLA (archived 2021-06-24), \"Definitions\" (unnumbered bold heading), list items 1, 3, 6 and 7",
+      "inherited": {
+        "legal_context_id": "LC-GCS-SLA-20210624",
+        "contract_family_id": "SERVICE_LEVEL_AGREEMENT"
+      },
+      "inherited_definitions": [
+        {
+          "term": "Covered Service",
+          "defined_in_section": "GCS-SLA-20210624/DEFINITIONS",
+          "in_packet": true
+        },
+        {
+          "term": "Project",
+          "defined_in_section": "UNRESOLVED_OUTSIDE_PACKET",
+          "in_packet": false
+        },
+        {
+          "term": "Documentation",
+          "defined_in_section": "UNRESOLVED_OUTSIDE_PACKET",
+          "in_packet": false
+        }
+      ],
+      "cross_section_refs": [
+        {
+          "name": "Back-off Requirements (same list)",
+          "target_section_id": "GCS-SLA-20210624/DEFINITIONS",
+          "quote": "conform to the Back-off Requirements"
+        },
+        {
+          "name": "Documentation",
+          "target_section_id": "UNRESOLVED_OUTSIDE_PACKET",
+          "quote": "conform to the Documentation"
+        },
+        {
+          "name": "calendar month basis per Project (opening text)",
+          "target_section_id": "GCS-SLA-20210624/PREAMBLE_SLO",
+          "quote": "determined on a calendar month basis per Project"
+        }
+      ],
+      "unresolved_external_refs": [
+        "the Agreement",
+        "Documentation",
+        "Application",
+        "Project"
+      ],
+      "overrides": {},
+      "excerpt_sha256": "c74f4c1f343c5cb0f6732315ba184e62449aeaeac0f1906dbe48914b2aee1ca8"
+    },
+    "B2": {
+      "document_id": "GCS-SLA-20210624",
+      "section_ids": [
+        "GCS-SLA-20210624/PREAMBLE_SLO",
+        "GCS-SLA-20210624/DEFINITIONS"
+      ],
+      "literal_citation": "Cloud Storage SLA (archived 2021-06-24), unheaded opening paragraph and SLO table; \"Definitions\" list items 4 and 5 (\"Financial Credit\" with three tables)",
+      "inherited": {
+        "legal_context_id": "LC-GCS-SLA-20210624",
+        "contract_family_id": "SERVICE_LEVEL_AGREEMENT"
+      },
+      "inherited_definitions": [
+        {
+          "term": "Monthly Uptime Percentage",
+          "defined_in_section": "GCS-SLA-20210624/DEFINITIONS",
+          "in_packet": false
+        },
+        {
+          "term": "Covered Service",
+          "defined_in_section": "GCS-SLA-20210624/DEFINITIONS",
+          "in_packet": true
+        },
+        {
+          "term": "Error Rate",
+          "defined_in_section": "GCS-SLA-20210624/DEFINITIONS",
+          "in_packet": false
+        }
+      ],
+      "cross_section_refs": [
+        {
+          "name": "Monthly Uptime Percentage (Definitions)",
+          "target_section_id": "GCS-SLA-20210624/DEFINITIONS",
+          "quote": "Monthly Uptime Percentage"
+        },
+        {
+          "name": "claim procedure (Customer must meet its obligations)",
+          "target_section_id": "GCS-SLA-20210624/CLAIM",
+          "quote": "if Customer meets its obligations under this SLA"
+        },
+        {
+          "name": "the Agreement",
+          "target_section_id": "UNRESOLVED_OUTSIDE_PACKET",
+          "quote": "have the meaning set forth in the Agreement"
+        }
+      ],
+      "unresolved_external_refs": [
+        "the Agreement",
+        "Project"
+      ],
+      "overrides": {},
+      "excerpt_sha256": "72df1f0ced9825548fd9b9a7ad09c81bb9f28b9f0bb25597a08e8adcd21a33ff"
+    },
+    "B3": {
+      "document_id": "GCS-SLA-20210624",
+      "section_ids": [
+        "GCS-SLA-20210624/CLAIM",
+        "GCS-SLA-20210624/MAX_CREDIT",
+        "GCS-SLA-20210624/EXCLUSIONS"
+      ],
+      "literal_citation": "Cloud Storage SLA (archived 2021-06-24), \"Customer Must Request Financial Credit\", \"Maximum Financial Credit\" and \"SLA Exclusions.\" (unnumbered bold headings, one paragraph each)",
+      "inherited": {
+        "legal_context_id": "LC-GCS-SLA-20210624",
+        "contract_family_id": "SERVICE_LEVEL_AGREEMENT"
+      },
+      "inherited_definitions": [
+        {
+          "term": "Financial Credit",
+          "defined_in_section": "GCS-SLA-20210624/DEFINITIONS",
+          "in_packet": false
+        },
+        {
+          "term": "Covered Service",
+          "defined_in_section": "GCS-SLA-20210624/DEFINITIONS",
+          "in_packet": false
+        },
+        {
+          "term": "SLO",
+          "defined_in_section": "GCS-SLA-20210624/PREAMBLE_SLO",
+          "in_packet": false
+        }
+      ],
+      "cross_section_refs": [
+        {
+          "name": "Financial Credits described above (Definitions)",
+          "target_section_id": "GCS-SLA-20210624/DEFINITIONS",
+          "quote": "Financial Credits described above"
+        },
+        {
+          "name": "the Agreement",
+          "target_section_id": "UNRESOLVED_OUTSIDE_PACKET",
+          "quote": "behaviors that violate the Agreement"
+        },
+        {
+          "name": "Admin Console",
+          "target_section_id": "UNRESOLVED_OUTSIDE_PACKET",
+          "quote": "quotas listed in the Admin Console"
+        },
+        {
+          "name": "Documentation",
+          "target_section_id": "UNRESOLVED_OUTSIDE_PACKET",
+          "quote": "in the associated Documentation"
+        }
+      ],
+      "unresolved_external_refs": [
+        "the Agreement",
+        "Documentation",
+        "Admin Console"
+      ],
+      "overrides": {},
+      "excerpt_sha256": "5fd249c77085b91a140fa0133c5b0023de54251856077523084f461593b33954"
+    }
+  }
+}

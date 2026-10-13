@@ -1,0 +1,99 @@
+{
+  "library_id": "JEV-V2-PROVISION-LIBRARY",
+  "version": 0,
+  "status": "PROVISIONAL",
+  "created_at_utc": "2026-10-13T12:25:00Z",
+  "purpose": "Bootstrap structure vocabulary for the COLD_B and WARM_RAW_A_B conditions. It is the V1 primary-function vocabulary expressed as generic templates with typed slots. No document, example or learned rule is included.",
+  "slot_types": {
+    "actor": "party that owes or performs the normative action",
+    "beneficiary": "party entitled to the outcome or remedy",
+    "normative_action": "what is required, permitted, prohibited or defined",
+    "object": "the service, feature, metric or thing the action concerns",
+    "trigger": "event or state that activates the provision",
+    "condition": "prerequisite or qualifier limiting when the provision applies",
+    "measurement_period": "window over which a metric or entitlement is measured or determined",
+    "measurement_granularity": "sampling unit inside the period",
+    "threshold": "numeric or percentage limit, band boundary or band value",
+    "calculation": "formula, numerator/denominator or aggregation rule",
+    "exception": "exclusion or carve-out narrowing the provision",
+    "deadline": "time limit for an action, and the event it runs from",
+    "remedy": "what is obtained when the trigger occurs, including its form",
+    "cap": "maximum amount or extent of a remedy",
+    "claim_condition": "procedural requirement to obtain the remedy",
+    "source_reference": "a defined term, document or section outside the packet needed to interpret the provision",
+    "required_fact": "external data or determination needed to apply the provision",
+    "uncertainty": "an ambiguity or unresolved interpretation the source leaves open"
+  },
+  "templates": {
+    "OBLIGATION": {
+      "id": "OBLIGATION", "version": 1, "status": "PROVISIONAL", "learned_from_source": false,
+      "definition": "A duty requiring some behavior, service level or deliverable from an identified party.",
+      "category_readings": ["OBLIGATION"],
+      "required_slots": ["actor", "normative_action", "object"],
+      "optional_slots": ["threshold", "measurement_period", "measurement_granularity", "calculation", "exception", "condition", "deadline", "source_reference", "uncertainty"],
+      "qualifiers": ["A duty may be qualified by exceptions and conditions stated elsewhere in the document."],
+      "structural_rules": [], "positive_examples": [], "counterexamples": [],
+      "known_limits": ["Generic bootstrap template; no source example."],
+      "source_references": [],
+      "lineage": [{"event": "BOOTSTRAP", "at_utc": "2026-10-13T12:25:00Z", "from_version": null, "reason": "V1 primary label OBLIGATION", "evidence": null}]
+    },
+    "PROHIBITION": {
+      "id": "PROHIBITION", "version": 1, "status": "PROVISIONAL", "learned_from_source": false,
+      "definition": "A restriction on an action, or an action forbidden unless an exception applies.",
+      "category_readings": ["PROHIBITION"],
+      "required_slots": ["actor", "normative_action", "object"],
+      "optional_slots": ["exception", "condition", "source_reference", "uncertainty"],
+      "qualifiers": [], "structural_rules": [], "positive_examples": [], "counterexamples": [],
+      "known_limits": ["Generic bootstrap template; no source example."],
+      "source_references": [],
+      "lineage": [{"event": "BOOTSTRAP", "at_utc": "2026-10-13T12:25:00Z", "from_version": null, "reason": "V1 primary label PROHIBITION", "evidence": null}]
+    },
+    "PERMISSION_RIGHT": {
+      "id": "PERMISSION_RIGHT", "version": 1, "status": "PROVISIONAL", "learned_from_source": false,
+      "definition": "A contractual permission, entitlement, claim or remedy available to a beneficiary when a trigger occurs.",
+      "category_readings": ["PERMISSION_RIGHT"],
+      "required_slots": ["beneficiary", "normative_action", "trigger"],
+      "optional_slots": ["condition", "threshold", "calculation", "measurement_period", "deadline", "remedy", "cap", "claim_condition", "exception", "source_reference", "uncertainty"],
+      "qualifiers": ["Entitlements are often conditioned on a procedure stated in another section."],
+      "structural_rules": [], "positive_examples": [], "counterexamples": [],
+      "known_limits": ["Generic bootstrap template; no source example."],
+      "source_references": [],
+      "lineage": [{"event": "BOOTSTRAP", "at_utc": "2026-10-13T12:25:00Z", "from_version": null, "reason": "V1 primary label PERMISSION_RIGHT", "evidence": null}]
+    },
+    "DEFINITION": {
+      "id": "DEFINITION", "version": 1, "status": "PROVISIONAL", "learned_from_source": false,
+      "definition": "A definition of a term, formula or quantity used in other provisions.",
+      "category_readings": ["DEFINITION"],
+      "required_slots": ["normative_action", "object"],
+      "optional_slots": ["calculation", "threshold", "measurement_period", "measurement_granularity", "trigger", "exception", "condition", "required_fact", "source_reference", "uncertainty"],
+      "qualifiers": ["A defined term's scope follows the defining text, not a heading."],
+      "structural_rules": [], "positive_examples": [], "counterexamples": [],
+      "known_limits": ["Generic bootstrap template; no source example."],
+      "source_references": [],
+      "lineage": [{"event": "BOOTSTRAP", "at_utc": "2026-10-13T12:25:00Z", "from_version": null, "reason": "V1 primary label DEFINITION", "evidence": null}]
+    },
+    "AUTHORITY": {
+      "id": "AUTHORITY", "version": 1, "status": "PROVISIONAL", "learned_from_source": false,
+      "definition": "A rule allocating approval or decision-making authority to a party.",
+      "category_readings": ["AUTHORITY"],
+      "required_slots": ["actor", "normative_action", "object"],
+      "optional_slots": ["threshold", "condition", "source_reference", "uncertainty"],
+      "qualifiers": [], "structural_rules": [], "positive_examples": [], "counterexamples": [],
+      "known_limits": ["Generic bootstrap template; no source example."],
+      "source_references": [],
+      "lineage": [{"event": "BOOTSTRAP", "at_utc": "2026-10-13T12:25:00Z", "from_version": null, "reason": "V1 primary label AUTHORITY", "evidence": null}]
+    },
+    "OTHER": {
+      "id": "OTHER", "version": 1, "status": "PROVISIONAL", "learned_from_source": false,
+      "definition": "Not one of the other structures, or no single leading normative function can be assigned.",
+      "category_readings": ["OTHER"],
+      "required_slots": [],
+      "optional_slots": ["normative_action", "object", "condition", "source_reference", "uncertainty"],
+      "qualifiers": [], "structural_rules": [], "positive_examples": [], "counterexamples": [],
+      "known_limits": ["Generic bootstrap template; no source example."],
+      "source_references": [],
+      "lineage": [{"event": "BOOTSTRAP", "at_utc": "2026-10-13T12:25:00Z", "from_version": null, "reason": "V1 primary label OTHER", "evidence": null}]
+    }
+  },
+  "lineage": [{"event": "BOOTSTRAP", "at_utc": "2026-10-13T12:25:00Z", "from_version": null, "reason": "six V1 primary labels as generic typed templates", "evidence": null}]
+}

@@ -1,0 +1,30 @@
+{
+  "library_id": "JEV-V2-CONTRACT-FAMILY",
+  "version": 1,
+  "status": "PROVISIONAL",
+  "frozen_at_utc": "2026-10-13T12:30:00Z",
+  "scope": "Dimension 2 (document / contract family). Descriptive and source-anchored; the two frozen documents are both vendor-published SLAs, so this library cannot evidence cross-family transfer. Families without examples are placeholders, not learned categories.",
+  "families": {
+    "SERVICE_LEVEL_AGREEMENT": {
+      "id": "SERVICE_LEVEL_AGREEMENT", "version": 1, "status": "PROVISIONAL",
+      "criteria": "A document, or an appendix to another agreement, whose primary content is a measurable service-level commitment, a metric definition, exclusions and a credit or remedy procedure.",
+      "typed_features": ["uptime_or_service_level_commitment", "metric_definitions", "exclusions", "service_credit_or_remedy", "claim_procedure", "incorporation_into_master_agreement"],
+      "examples": [
+        {"document_id": "GH-SLA-2021", "evidence_anchor": "GitHub Online Services SLA", "feature_evidence": ["GitHub commits to maintain at least 99.9% Uptime", "Service Credits Calculation", "Excluded from the Uptime Calculation"], "note": "Standard published terms; not a signed agreement."},
+        {"document_id": "GCS-SLA-20210624", "evidence_anchor": "Cloud Storage Service Level Agreement (SLA)", "feature_evidence": ["Monthly Uptime Percentage", "Financial Credits described below", "SLA Exclusions."], "note": "Archived published terms; explicitly not the current version; not a signed agreement."}
+      ],
+      "counterexamples": [
+        {"source": "GH-TERMS-UPDATES (packet G5 of the V1 corpus)", "reason": "A vendor change notice about which SLA version applies; it is not itself an agreement.", "evidence_anchor": "This June 2026 version of the GitHub SLA will apply to new customers and renewals"}
+      ],
+      "mixed_or_appended": "Both examples incorporate or are incorporated into a master agreement that is not available (see legal_context records). Treat the family as nested inside an unavailable parent agreement.",
+      "lineage": [{"event": "BOOTSTRAP", "at_utc": "2026-10-13T12:30:00Z", "reason": "two source-anchored examples and one counterexample from frozen packets"}]
+    },
+    "MASTER_SERVICES_AGREEMENT": {"id": "MASTER_SERVICES_AGREEMENT", "version": 1, "status": "PROVISIONAL", "criteria": "Framework agreement under which services are ordered and which carries governing law, liability and term provisions.", "typed_features": [], "examples": [], "counterexamples": [], "note": "PLACEHOLDER_NO_EVIDENCE: referenced by both SLAs as 'the Agreement' but unavailable."},
+    "FINANCING_AGREEMENT": {"id": "FINANCING_AGREEMENT", "version": 1, "status": "PROVISIONAL", "criteria": "Agreement whose primary content is lending, repayment, security and covenants.", "typed_features": [], "examples": [], "counterexamples": [], "note": "PLACEHOLDER_NO_EVIDENCE"},
+    "EMPLOYMENT_AGREEMENT": {"id": "EMPLOYMENT_AGREEMENT", "version": 1, "status": "PROVISIONAL", "criteria": "Agreement whose primary content is an employment relationship, remuneration and duties.", "typed_features": [], "examples": [], "counterexamples": [], "note": "PLACEHOLDER_NO_EVIDENCE"},
+    "LICENSING_AGREEMENT": {"id": "LICENSING_AGREEMENT", "version": 1, "status": "PROVISIONAL", "criteria": "Agreement whose primary content is a grant of rights to use intellectual property or software.", "typed_features": [], "examples": [], "counterexamples": [], "note": "PLACEHOLDER_NO_EVIDENCE"},
+    "DATA_PROCESSING_ADDENDUM": {"id": "DATA_PROCESSING_ADDENDUM", "version": 1, "status": "PROVISIONAL", "criteria": "Addendum governing personal-data processing roles, instructions and safeguards.", "typed_features": [], "examples": [], "counterexamples": [], "note": "PLACEHOLDER_NO_EVIDENCE"},
+    "OTHER_UNKNOWN": {"id": "OTHER_UNKNOWN", "version": 1, "status": "PROVISIONAL", "criteria": "No family can be assigned from the available evidence.", "typed_features": [], "examples": [], "counterexamples": [], "note": "Default when evidence is absent."}
+  },
+  "lineage": [{"event": "BOOTSTRAP", "at_utc": "2026-10-13T12:30:00Z", "reason": "initial family definitions; only SERVICE_LEVEL_AGREEMENT has evidence"}]
+}

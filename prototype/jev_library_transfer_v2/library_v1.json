@@ -1,0 +1,726 @@
+{
+  "library_id": "JEV-V2-PROVISION-LIBRARY",
+  "version": 1,
+  "status": "PROVISIONAL",
+  "created_at_utc": "2026-10-13T12:27:43.499004+00:00",
+  "purpose": "Bootstrap structure vocabulary for the COLD_B and WARM_RAW_A_B conditions. It is the V1 primary-function vocabulary expressed as generic templates with typed slots. No document, example or learned rule is included.",
+  "slot_types": {
+    "actor": "party that owes or performs the normative action",
+    "beneficiary": "party entitled to the outcome or remedy",
+    "normative_action": "what is required, permitted, prohibited or defined",
+    "object": "the service, feature, metric or thing the action concerns",
+    "trigger": "event or state that activates the provision",
+    "condition": "prerequisite or qualifier limiting when the provision applies",
+    "measurement_period": "window over which a metric or entitlement is measured or determined",
+    "measurement_granularity": "sampling unit inside the period",
+    "threshold": "numeric or percentage limit, band boundary or band value",
+    "calculation": "formula, numerator/denominator or aggregation rule",
+    "exception": "exclusion or carve-out narrowing the provision",
+    "deadline": "time limit for an action, and the event it runs from",
+    "remedy": "what is obtained when the trigger occurs, including its form",
+    "cap": "maximum amount or extent of a remedy",
+    "claim_condition": "procedural requirement to obtain the remedy",
+    "source_reference": "a defined term, document or section outside the packet needed to interpret the provision",
+    "required_fact": "external data or determination needed to apply the provision",
+    "uncertainty": "an ambiguity or unresolved interpretation the source leaves open"
+  },
+  "templates": {
+    "OBLIGATION": {
+      "id": "OBLIGATION",
+      "version": 1,
+      "status": "PROVISIONAL",
+      "learned_from_source": false,
+      "definition": "A duty requiring some behavior, service level or deliverable from an identified party.",
+      "category_readings": [
+        "OBLIGATION"
+      ],
+      "required_slots": [
+        "actor",
+        "normative_action",
+        "object"
+      ],
+      "optional_slots": [
+        "threshold",
+        "measurement_period",
+        "measurement_granularity",
+        "calculation",
+        "exception",
+        "condition",
+        "deadline",
+        "source_reference",
+        "uncertainty"
+      ],
+      "qualifiers": [
+        "A duty may be qualified by exceptions and conditions stated elsewhere in the document."
+      ],
+      "structural_rules": [],
+      "positive_examples": [],
+      "counterexamples": [],
+      "known_limits": [
+        "Generic bootstrap template; no source example."
+      ],
+      "source_references": [],
+      "lineage": [
+        {
+          "event": "BOOTSTRAP",
+          "at_utc": "2026-10-13T12:25:00Z",
+          "from_version": null,
+          "reason": "V1 primary label OBLIGATION",
+          "evidence": null
+        }
+      ]
+    },
+    "PROHIBITION": {
+      "id": "PROHIBITION",
+      "version": 1,
+      "status": "PROVISIONAL",
+      "learned_from_source": false,
+      "definition": "A restriction on an action, or an action forbidden unless an exception applies.",
+      "category_readings": [
+        "PROHIBITION"
+      ],
+      "required_slots": [
+        "actor",
+        "normative_action",
+        "object"
+      ],
+      "optional_slots": [
+        "exception",
+        "condition",
+        "source_reference",
+        "uncertainty"
+      ],
+      "qualifiers": [],
+      "structural_rules": [],
+      "positive_examples": [],
+      "counterexamples": [],
+      "known_limits": [
+        "Generic bootstrap template; no source example."
+      ],
+      "source_references": [],
+      "lineage": [
+        {
+          "event": "BOOTSTRAP",
+          "at_utc": "2026-10-13T12:25:00Z",
+          "from_version": null,
+          "reason": "V1 primary label PROHIBITION",
+          "evidence": null
+        }
+      ]
+    },
+    "PERMISSION_RIGHT": {
+      "id": "PERMISSION_RIGHT",
+      "version": 1,
+      "status": "PROVISIONAL",
+      "learned_from_source": false,
+      "definition": "A contractual permission, entitlement, claim or remedy available to a beneficiary when a trigger occurs.",
+      "category_readings": [
+        "PERMISSION_RIGHT"
+      ],
+      "required_slots": [
+        "beneficiary",
+        "normative_action",
+        "trigger"
+      ],
+      "optional_slots": [
+        "condition",
+        "threshold",
+        "calculation",
+        "measurement_period",
+        "deadline",
+        "remedy",
+        "cap",
+        "claim_condition",
+        "exception",
+        "source_reference",
+        "uncertainty"
+      ],
+      "qualifiers": [
+        "Entitlements are often conditioned on a procedure stated in another section."
+      ],
+      "structural_rules": [],
+      "positive_examples": [],
+      "counterexamples": [],
+      "known_limits": [
+        "Generic bootstrap template; no source example."
+      ],
+      "source_references": [],
+      "lineage": [
+        {
+          "event": "BOOTSTRAP",
+          "at_utc": "2026-10-13T12:25:00Z",
+          "from_version": null,
+          "reason": "V1 primary label PERMISSION_RIGHT",
+          "evidence": null
+        }
+      ]
+    },
+    "DEFINITION": {
+      "id": "DEFINITION",
+      "version": 1,
+      "status": "PROVISIONAL",
+      "learned_from_source": false,
+      "definition": "A definition of a term, formula or quantity used in other provisions.",
+      "category_readings": [
+        "DEFINITION"
+      ],
+      "required_slots": [
+        "normative_action",
+        "object"
+      ],
+      "optional_slots": [
+        "calculation",
+        "threshold",
+        "measurement_period",
+        "measurement_granularity",
+        "trigger",
+        "exception",
+        "condition",
+        "required_fact",
+        "source_reference",
+        "uncertainty"
+      ],
+      "qualifiers": [
+        "A defined term's scope follows the defining text, not a heading."
+      ],
+      "structural_rules": [],
+      "positive_examples": [],
+      "counterexamples": [],
+      "known_limits": [
+        "Generic bootstrap template; no source example."
+      ],
+      "source_references": [],
+      "lineage": [
+        {
+          "event": "BOOTSTRAP",
+          "at_utc": "2026-10-13T12:25:00Z",
+          "from_version": null,
+          "reason": "V1 primary label DEFINITION",
+          "evidence": null
+        }
+      ]
+    },
+    "AUTHORITY": {
+      "id": "AUTHORITY",
+      "version": 1,
+      "status": "PROVISIONAL",
+      "learned_from_source": false,
+      "definition": "A rule allocating approval or decision-making authority to a party.",
+      "category_readings": [
+        "AUTHORITY"
+      ],
+      "required_slots": [
+        "actor",
+        "normative_action",
+        "object"
+      ],
+      "optional_slots": [
+        "threshold",
+        "condition",
+        "source_reference",
+        "uncertainty"
+      ],
+      "qualifiers": [],
+      "structural_rules": [],
+      "positive_examples": [],
+      "counterexamples": [],
+      "known_limits": [
+        "Generic bootstrap template; no source example."
+      ],
+      "source_references": [],
+      "lineage": [
+        {
+          "event": "BOOTSTRAP",
+          "at_utc": "2026-10-13T12:25:00Z",
+          "from_version": null,
+          "reason": "V1 primary label AUTHORITY",
+          "evidence": null
+        }
+      ]
+    },
+    "OTHER": {
+      "id": "OTHER",
+      "version": 1,
+      "status": "PROVISIONAL",
+      "learned_from_source": false,
+      "definition": "Not one of the other structures, or no single leading normative function can be assigned.",
+      "category_readings": [
+        "OTHER"
+      ],
+      "required_slots": [],
+      "optional_slots": [
+        "normative_action",
+        "object",
+        "condition",
+        "source_reference",
+        "uncertainty"
+      ],
+      "qualifiers": [],
+      "structural_rules": [],
+      "positive_examples": [],
+      "counterexamples": [],
+      "known_limits": [
+        "Generic bootstrap template; no source example."
+      ],
+      "source_references": [],
+      "lineage": [
+        {
+          "event": "BOOTSTRAP",
+          "at_utc": "2026-10-13T12:25:00Z",
+          "from_version": null,
+          "reason": "V1 primary label OTHER",
+          "evidence": null
+        }
+      ]
+    },
+    "TIERED_SERVICE_CREDIT_SCHEDULE": {
+      "id": "TIERED_SERVICE_CREDIT_SCHEDULE",
+      "version": 1,
+      "status": "PROVISIONAL",
+      "learned_from_source": true,
+      "definition": "A schedule that maps bands of a measured service level to a remedy amount computed on a fee base over a measurement period.",
+      "category_readings": [
+        "DEFINITION",
+        "PERMISSION_RIGHT"
+      ],
+      "required_slots": [
+        "calculation",
+        "condition",
+        "measurement_period",
+        "threshold"
+      ],
+      "optional_slots": [
+        "deadline",
+        "exception",
+        "source_reference"
+      ],
+      "slot_definitions": {
+        "calculation": "formula, numerator/denominator or aggregation rule",
+        "condition": "prerequisite or qualifier limiting when the provision applies",
+        "measurement_period": "window over which a metric or entitlement is measured or determined",
+        "threshold": "numeric or percentage limit, band boundary or band value",
+        "deadline": "time limit for an action, and the event it runs from",
+        "exception": "exclusion or carve-out narrowing the provision",
+        "source_reference": "a defined term, document or section outside the packet needed to interpret the provision"
+      },
+      "qualifiers": [
+        "One provision may instantiate this and another template at once.",
+        "Literal values in examples are facts about their own document only."
+      ],
+      "structural_rules": [
+        "Each band is bounded by explicit comparatives; record whether each boundary is inclusive or exclusive and never assume the band values of another document.",
+        "The measurement period is a required element; it may differ between documents and must be read from the source, not assumed.",
+        "The remedy is computed on a stated fee base scoped to a service unit and a period; the base is part of the calculation, not a separate threshold.",
+        "When tiers are expressed as alternatives, only one tier can apply to a given measurement; record the exclusivity marker verbatim."
+      ],
+      "positive_examples": [
+        {
+          "packet_id": "G1",
+          "document_id": "GH-SLA-2021",
+          "excerpt_sha256": "c3f2428b316fd5363e99df67adf38ceac98a654ee6169ef366dbdc9dadb4f948",
+          "quotes": [
+            "10% of the amount Customer paid for a Service Feature in a calendar quarter",
+            "25% of the amount Customer paid for a Service Feature in a calendar quarter where the Uptime of that Service Feature was less than 99.0%",
+            "A Service Credits claim may be based on either (not both) of the following calculations",
+            "either (not both)",
+            "in a calendar quarter",
+            "less than or equal to 99.9%, but greater than 99.0%",
+            "where the Uptime for that Service Feature was less than or equal to 99.9%, but greater than 99.0%"
+          ],
+          "features": [
+            "FEE_BASE",
+            "MEASUREMENT_PERIOD",
+            "MUTUALLY_EXCLUSIVE_ALTERNATIVES",
+            "TIERED_THRESHOLD_BANDS"
+          ],
+          "jev_reading": "PERMISSION_RIGHT",
+          "jev_flags": [
+            "JEV_OPTION_ORDER_SENSITIVE: PERMISSION_RIGHT vs reversed DEFINITION"
+          ]
+        }
+      ],
+      "counterexamples": [
+        {
+          "packet_id": "G2",
+          "excerpt_sha256": "1aa7930e7cbbd21fe2ba7c7bcd3de2df817645e460887b270e624145dc2bbfe5",
+          "reason": "lacks signature features ['FEE_BASE']",
+          "jev_reading": "DEFINITION"
+        },
+        {
+          "packet_id": "G3",
+          "excerpt_sha256": "086472d29dfbe4d2abbcc8e47dcd2cefe26cc121c3956ecb74b26f1fbc1ec6c3",
+          "reason": "lacks signature features ['FEE_BASE', 'TIERED_THRESHOLD_BANDS']",
+          "jev_reading": "DEFINITION"
+        },
+        {
+          "packet_id": "G4",
+          "excerpt_sha256": "ccd642966ac4c0f62e039519081475e73107100ed15c76ed2a6b803e19a47530",
+          "reason": "lacks signature features ['FEE_BASE', 'TIERED_THRESHOLD_BANDS']",
+          "jev_reading": "PERMISSION_RIGHT"
+        }
+      ],
+      "known_limits": [
+        "Induced from a single vendor document; slot requirements reflect two reviewer passes and one Jev pass, not expert adjudication.",
+        "Category reading may be unstable where the provision both defines a calculation and confers an entitlement."
+      ],
+      "source_references": [
+        {
+          "document_id": "GH-SLA-2021",
+          "packet_id": "G1",
+          "excerpt_sha256": "c3f2428b316fd5363e99df67adf38ceac98a654ee6169ef366dbdc9dadb4f948"
+        }
+      ],
+      "lineage": [
+        {
+          "event": "DISCOVER",
+          "at_utc": "2026-10-13T12:27:43.499004+00:00",
+          "from_version": null,
+          "reason": "features ['FEE_BASE', 'TIERED_THRESHOLD_BANDS'] present in anchored reviewer quotes; Jev reading PERMISSION_RIGHT",
+          "evidence": {
+            "packet_id": "G1",
+            "document_id": "GH-SLA-2021",
+            "excerpt_sha256": "c3f2428b316fd5363e99df67adf38ceac98a654ee6169ef366dbdc9dadb4f948",
+            "source_sha256": "5833870a5518cf25df3ee4cf190c8c44c83905c6b5ae07af3f45c7bc0cc55234",
+            "jev_model": "jev-1.13.0",
+            "reviewer_models": {
+              "adversarial": "claude-opus-5-5",
+              "backward": "claude-opus-5-5"
+            },
+            "reviewer_valid": {
+              "adversarial": true,
+              "backward": true
+            },
+            "reviewer_issues_sha256": {
+              "adversarial": "1b495ffab32a8c950070d3307702f5fc1a62cd8c0cb057b23320d59efe020c06",
+              "backward": "2c43593f6583483232f9ee194e61ff01519c55c1de1b039f18329679c0b0532f"
+            },
+            "recording_sha256": "a562ccf87ba3e7ac8a2299ccbb231040e5ca24f91e53385a24b9c6a8fac48b43",
+            "provenance": "RECORDED_ACTUAL"
+          }
+        }
+      ]
+    },
+    "AVAILABILITY_METRIC_DEFINITION": {
+      "id": "AVAILABILITY_METRIC_DEFINITION",
+      "version": 1,
+      "status": "PROVISIONAL",
+      "learned_from_source": true,
+      "definition": "A definition of the availability or failure state used by a service-level calculation, with its triggers, thresholds and evaluation unit.",
+      "category_readings": [
+        "DEFINITION"
+      ],
+      "required_slots": [
+        "exception",
+        "measurement_granularity",
+        "normative_action",
+        "required_fact",
+        "threshold",
+        "trigger"
+      ],
+      "optional_slots": [
+        "condition",
+        "deadline",
+        "measurement_period",
+        "source_reference"
+      ],
+      "slot_definitions": {
+        "exception": "exclusion or carve-out narrowing the provision",
+        "measurement_granularity": "sampling unit inside the period (per minute, per hour, per sampling interval)",
+        "normative_action": "what is required, permitted, prohibited or defined",
+        "required_fact": "external data or determination needed to apply the provision",
+        "threshold": "numeric or percentage limit, band boundary or band value",
+        "trigger": "event or state that activates the provision",
+        "condition": "prerequisite or qualifier limiting when the provision applies",
+        "deadline": "time limit for an action, and the event it runs from",
+        "measurement_period": "window over which a metric or entitlement is measured or determined",
+        "source_reference": "a defined term, document or section outside the packet needed to interpret the provision"
+      },
+      "qualifiers": [
+        "One provision may instantiate this and another template at once.",
+        "Literal values in examples are facts about their own document only."
+      ],
+      "structural_rules": [
+        "A definition introduces a term used by other provisions; its scope follows the defining text, not the heading.",
+        "A rate threshold has a comparator, a value and an evaluation unit; all three must be sourced.",
+        "Alternative triggers are a disjunction; implementing only one trigger changes the metric.",
+        "Each band is bounded by explicit comparatives; record whether each boundary is inclusive or exclusive and never assume the band values of another document.",
+        "Enumerated items are individually scorable; a summary of the list is not evidence of each item.",
+        "The measurement period is a required element; it may differ between documents and must be read from the source, not assumed.",
+        "The sampling unit inside the period changes the metric value; it is a separate element from the period.",
+        "Who determines the triggering state is an external fact the customer may not observe."
+      ],
+      "positive_examples": [
+        {
+          "packet_id": "G2",
+          "document_id": "GH-SLA-2021",
+          "excerpt_sha256": "1aa7930e7cbbd21fe2ba7c7bcd3de2df817645e460887b270e624145dc2bbfe5",
+          "quotes": [
+            "(b) the Service was unavailable as determined by a combination of GitHub’s internal and external monitoring systems",
+            "(total minutes in a calendar quarter - Downtime) / total minutes in a calendar quarter",
+            "as determined by a combination of GitHub’s internal and external monitoring systems",
+            "either (a)",
+            "or (b) the Service was unavailable",
+            "the error rate exceeds five percent (5%) in a given minute for any Service Feature",
+            "“Downtime” is a period of time where",
+            "“Downtime” is a period of time where either (a)"
+          ],
+          "features": [
+            "DEFINED_TERM",
+            "DETERMINATION_AUTHORITY",
+            "DISJUNCTIVE_TRIGGERS",
+            "ENUMERATED_ITEMS",
+            "MEASUREMENT_GRANULARITY",
+            "MEASUREMENT_PERIOD",
+            "RATE_THRESHOLD",
+            "TIERED_THRESHOLD_BANDS"
+          ],
+          "jev_reading": "DEFINITION",
+          "jev_flags": []
+        }
+      ],
+      "counterexamples": [
+        {
+          "packet_id": "G1",
+          "excerpt_sha256": "c3f2428b316fd5363e99df67adf38ceac98a654ee6169ef366dbdc9dadb4f948",
+          "reason": "lacks signature features ['DEFINED_TERM', 'RATE_THRESHOLD']",
+          "jev_reading": "PERMISSION_RIGHT"
+        },
+        {
+          "packet_id": "G3",
+          "excerpt_sha256": "086472d29dfbe4d2abbcc8e47dcd2cefe26cc121c3956ecb74b26f1fbc1ec6c3",
+          "reason": "lacks signature features ['DEFINED_TERM', 'RATE_THRESHOLD']",
+          "jev_reading": "DEFINITION"
+        },
+        {
+          "packet_id": "G4",
+          "excerpt_sha256": "ccd642966ac4c0f62e039519081475e73107100ed15c76ed2a6b803e19a47530",
+          "reason": "lacks signature features ['DEFINED_TERM', 'RATE_THRESHOLD']",
+          "jev_reading": "PERMISSION_RIGHT"
+        }
+      ],
+      "known_limits": [
+        "Induced from a single vendor document; slot requirements reflect two reviewer passes and one Jev pass, not expert adjudication.",
+        "Category reading may be unstable where the provision both defines a calculation and confers an entitlement."
+      ],
+      "source_references": [
+        {
+          "document_id": "GH-SLA-2021",
+          "packet_id": "G2",
+          "excerpt_sha256": "1aa7930e7cbbd21fe2ba7c7bcd3de2df817645e460887b270e624145dc2bbfe5"
+        }
+      ],
+      "lineage": [
+        {
+          "event": "DISCOVER",
+          "at_utc": "2026-10-13T12:27:43.499004+00:00",
+          "from_version": null,
+          "reason": "features ['DEFINED_TERM', 'RATE_THRESHOLD'] present in anchored reviewer quotes; Jev reading DEFINITION",
+          "evidence": {
+            "packet_id": "G2",
+            "document_id": "GH-SLA-2021",
+            "excerpt_sha256": "1aa7930e7cbbd21fe2ba7c7bcd3de2df817645e460887b270e624145dc2bbfe5",
+            "source_sha256": "4ce7c700a5a5254f709455416dc4a642c1c2380bc61bce790a5003d8445f2415",
+            "jev_model": "jev-1.13.0",
+            "reviewer_models": {
+              "adversarial": "claude-opus-5-5",
+              "backward": "claude-opus-5-5"
+            },
+            "reviewer_valid": {
+              "adversarial": true,
+              "backward": true
+            },
+            "reviewer_issues_sha256": {
+              "adversarial": "83653984faedcb8a75d563fe86364e19887ca1790b75922ef4ffde2526c91ad3",
+              "backward": "03d6fcab668f21f04e443eb15a75655350e240dfb8af44a4211d8a069e9b8fb5"
+            },
+            "recording_sha256": "a562ccf87ba3e7ac8a2299ccbb231040e5ca24f91e53385a24b9c6a8fac48b43",
+            "provenance": "RECORDED_ACTUAL"
+          }
+        }
+      ]
+    },
+    "CREDIT_CLAIM_AND_REMEDY_PROCEDURE": {
+      "id": "CREDIT_CLAIM_AND_REMEDY_PROCEDURE",
+      "version": 1,
+      "status": "PROVISIONAL",
+      "learned_from_source": true,
+      "definition": "The procedure and limits for obtaining a service-level remedy: claim act, channel, deadline and its start event, prerequisites, cap, form, expiry and exclusivity.",
+      "category_readings": [
+        "PERMISSION_RIGHT"
+      ],
+      "required_slots": [
+        "cap",
+        "claim_condition",
+        "deadline",
+        "measurement_period",
+        "remedy"
+      ],
+      "optional_slots": [
+        "condition",
+        "exception",
+        "source_reference",
+        "threshold"
+      ],
+      "slot_definitions": {
+        "cap": "maximum amount or extent of a remedy",
+        "claim_condition": "procedural requirement to obtain the remedy (form, channel, prerequisites, loss of the right if not followed)",
+        "deadline": "time limit for an action, and the event it runs from",
+        "measurement_period": "window over which a metric or entitlement is measured or determined",
+        "remedy": "what is obtained when the trigger occurs, including its form",
+        "condition": "prerequisite or qualifier limiting when the provision applies",
+        "exception": "exclusion or carve-out narrowing the provision",
+        "source_reference": "a defined term, document or section outside the packet needed to interpret the provision",
+        "threshold": "numeric or percentage limit, band boundary or band value"
+      },
+      "qualifiers": [
+        "One provision may instantiate this and another template at once.",
+        "Literal values in examples are facts about their own document only."
+      ],
+      "structural_rules": [
+        "A cap limits the remedy per period or in aggregate; its unit may be time, money or a percentage.",
+        "A deadline has a length and a start event; both must be read from the source.",
+        "A prerequisite is a state that must hold before the remedy is owed.",
+        "An exclusivity statement limits other remedies; it is a remedy-scope element.",
+        "Remedies may lapse on an event; expiry is a deadline-type element.",
+        "The deadline's start event is a distinct element from its length.",
+        "The measurement period is a required element; it may differ between documents and must be read from the source, not assumed.",
+        "The remedy depends on a procedural act with a stated form and channel.",
+        "The remedy's form (credit, refund, cash) is an element distinct from its amount."
+      ],
+      "positive_examples": [
+        {
+          "packet_id": "G4",
+          "document_id": "GH-SLA-2021",
+          "excerpt_sha256": "ccd642966ac4c0f62e039519081475e73107100ed15c76ed2a6b803e19a47530",
+          "quotes": [
+            "Customer may redeem Service Credits only upon written request to GitHub",
+            "Customer may redeem Service Credits only upon written request to GitHub within thirty (30) days of the end of the calendar quarter",
+            "Service Credits are the sole and exclusive remedy for any failure by GitHub to meet any obligations in this SLA",
+            "are limited to a maximum of ninety (90) days of paid service per calendar quarter",
+            "cannot be exchanged into a cash amount",
+            "expire upon termination of Customer’s agreement with GitHub",
+            "require Customer to have paid any outstanding invoices",
+            "should be sent to GitHub Support",
+            "within thirty (30) days of the end of the calendar quarter"
+          ],
+          "features": [
+            "CAP",
+            "CLAIM_CONDITION",
+            "DEADLINE",
+            "DEADLINE_TRIGGER",
+            "EXCLUSIVE_REMEDY",
+            "EXPIRY",
+            "MEASUREMENT_PERIOD",
+            "PREREQUISITE",
+            "REMEDY_FORM_RESTRICTION"
+          ],
+          "jev_reading": "PERMISSION_RIGHT",
+          "jev_flags": []
+        }
+      ],
+      "counterexamples": [
+        {
+          "packet_id": "G1",
+          "excerpt_sha256": "c3f2428b316fd5363e99df67adf38ceac98a654ee6169ef366dbdc9dadb4f948",
+          "reason": "lacks signature features ['CLAIM_CONDITION', 'DEADLINE']",
+          "jev_reading": "PERMISSION_RIGHT"
+        },
+        {
+          "packet_id": "G2",
+          "excerpt_sha256": "1aa7930e7cbbd21fe2ba7c7bcd3de2df817645e460887b270e624145dc2bbfe5",
+          "reason": "lacks signature features ['CLAIM_CONDITION', 'DEADLINE']",
+          "jev_reading": "DEFINITION"
+        },
+        {
+          "packet_id": "G3",
+          "excerpt_sha256": "086472d29dfbe4d2abbcc8e47dcd2cefe26cc121c3956ecb74b26f1fbc1ec6c3",
+          "reason": "lacks signature features ['CLAIM_CONDITION', 'DEADLINE']",
+          "jev_reading": "DEFINITION"
+        }
+      ],
+      "known_limits": [
+        "Induced from a single vendor document; slot requirements reflect two reviewer passes and one Jev pass, not expert adjudication.",
+        "Category reading may be unstable where the provision both defines a calculation and confers an entitlement."
+      ],
+      "source_references": [
+        {
+          "document_id": "GH-SLA-2021",
+          "packet_id": "G4",
+          "excerpt_sha256": "ccd642966ac4c0f62e039519081475e73107100ed15c76ed2a6b803e19a47530"
+        }
+      ],
+      "lineage": [
+        {
+          "event": "DISCOVER",
+          "at_utc": "2026-10-13T12:27:43.499004+00:00",
+          "from_version": null,
+          "reason": "features ['CLAIM_CONDITION', 'DEADLINE'] present in anchored reviewer quotes; Jev reading PERMISSION_RIGHT",
+          "evidence": {
+            "packet_id": "G4",
+            "document_id": "GH-SLA-2021",
+            "excerpt_sha256": "ccd642966ac4c0f62e039519081475e73107100ed15c76ed2a6b803e19a47530",
+            "source_sha256": "cb5a00fa9b4895528a0072d7aa08255ffce1537029b1ea80da147b61d6dcbebb",
+            "jev_model": "jev-1.13.0",
+            "reviewer_models": {
+              "adversarial": "claude-opus-5-5",
+              "backward": "claude-opus-5-5"
+            },
+            "reviewer_valid": {
+              "adversarial": true,
+              "backward": true
+            },
+            "reviewer_issues_sha256": {
+              "adversarial": "839426f0729b181942ecf4a00f816be1449601f4b5ad643f3400bfe6f2ed8b1a",
+              "backward": "9083a6b4fdd8e26d5d6e415a1f8824f569780671c40027d543047e0a1467cba6"
+            },
+            "recording_sha256": "a562ccf87ba3e7ac8a2299ccbb231040e5ca24f91e53385a24b9c6a8fac48b43",
+            "provenance": "RECORDED_ACTUAL"
+          }
+        }
+      ]
+    }
+  },
+  "lineage": [
+    {
+      "event": "BOOTSTRAP",
+      "at_utc": "2026-10-13T12:25:00Z",
+      "from_version": null,
+      "reason": "six V1 primary labels as generic typed templates",
+      "evidence": null
+    },
+    {
+      "event": "DISCOVER",
+      "at_utc": "2026-10-13T12:27:43.499004+00:00",
+      "from_version": 0,
+      "reason": "deterministic induction from recorded G1-G4 provider outputs",
+      "evidence": {
+        "recording_sha256": "a562ccf87ba3e7ac8a2299ccbb231040e5ca24f91e53385a24b9c6a8fac48b43",
+        "events": 5
+      }
+    }
+  ],
+  "derived_from": {
+    "library_version": 0,
+    "library_sha256": "70f87607f44c388e854d934306a5b8fc283c9405ebed1366b6c6629c45e4393e",
+    "a_recording": {
+      "path": "C:\\Claude\\sophon\\prototype\\jev_clause_router_v0\\live_runs\\live_EXT_20261013T094923Z.json",
+      "sha256": "a562ccf87ba3e7ac8a2299ccbb231040e5ca24f91e53385a24b9c6a8fac48b43",
+      "corpus_sha256": "4023ee710fb3fc35a02de245eb6f685791fef15138d28b39b97aeb0c24c13cae",
+      "started_at_utc": "2026-10-13T09:51:47.856796+00:00",
+      "recipe": {
+        "jev_model_requested": "jev-latest",
+        "jev_order_check": true,
+        "reviewer_engine": "anthropic",
+        "adversarial_model": "claude-opus-5-5",
+        "backward_model": "claude-opus-5-5",
+        "baseline_model": "claude-opus-5-5",
+        "effort": "medium",
+        "routing_threshold": 0.5,
+        "near_tie": 0.02,
+        "jev_questions_sha256": "974cad49f4b36c2f94f80f3d9f998c7b696644516a281d5b3f8548697b8acd3c",
+        "jev_questions_structured_sha256": "014b98c084da04f7cb2381b45f6d6832714c5dbe8ac94b7a26d68940c15b9084"
+      }
+    },
+    "inducer": "transfer.py induce_library (deterministic, LAB_AUTHORED detectors)"
+  }
+}

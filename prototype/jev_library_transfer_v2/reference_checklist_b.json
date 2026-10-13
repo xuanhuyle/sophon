@@ -1,0 +1,84 @@
+{
+  "checklist_id": "JEV-V2-PROVISIONAL-REFERENCE-CHECKLIST-B",
+  "status": "PROVISIONAL_NOT_INDEPENDENT_ORACLE",
+  "sealed_from_model_prompts": true,
+  "corpus_id": "GOOGLE-GCS-SLA-20210624-EXT-3",
+  "frozen_at_utc": "2026-10-13T12:30:00Z",
+  "frozen_before_any_b_model_output": true,
+  "authored_by": "Implementing agent (Claude Code, claude-fable-5-1), 2026-10-13, BEFORE any Google provider output existed. Not an expert or legal adjudication. The author had read Contract A, the V1 recordings and the V2 inducer; development was not blind.",
+  "independence_warning": "The reviewers/blind model (claude-opus-5-5) and the checklist author are Claude-family models. Agreement is not independent confirmation. Use the checklist to make omissions and wrong transfers visible for human adjudication, not to certify correctness.",
+  "scoring_rubric": {
+    "recovered": "A material element is recovered when a condition's final extraction has a slot entry whose verbatim quote overlaps the element's anchor (normalized substring either way, at least 8 characters) AND whose slot name is in the element's acceptable_slots. Quote overlap without an acceptable slot is reported separately as anchor_only.",
+    "recall": "recovered / material elements per packet; counts only (n=3 packets), never rates generalized beyond this run.",
+    "wrong_transfer": "A slot entry whose value or quote contains a contamination marker (a Contract A literal that is not a fact about Contract B). Critical when the slot is in critical_slots.",
+    "unsupported_assertion": "Slot entries with quotes that are not verbatim substrings are rejected at validation and counted as field errors; they never reach scoring.",
+    "unmatched_reviewer_challenge": "An omitted_conditions item whose quote overlaps no checklist anchor. Needs human adjudication; it is NOT automatically a false challenge.",
+    "hold": "HOLD_UNRESOLVED is reported separately from recall and is not a quality score.",
+    "human_adjudication": "Every count is PENDING human review before any claim of interpretation accuracy."
+  },
+  "packets": {
+    "B1": {
+      "material_elements": [
+        {"id": "B1.E1", "description": "Monthly Uptime Percentage is 100% minus the average of Error Rates (formula).", "anchor": "100%, minus the average of Error Rates", "acceptable_slots": ["calculation", "normative_action", "object"], "novel": true, "critical": true},
+        {"id": "B1.E2", "description": "Error Rates are measured over each five-minute period (sampling unit).", "anchor": "measured over each five minute period", "acceptable_slots": ["measurement_granularity", "calculation", "measurement_period"], "novel": true, "critical": true},
+        {"id": "B1.E3", "description": "The averaging window is a monthly billing cycle.", "anchor": "during a monthly billing cycle", "acceptable_slots": ["measurement_period"], "novel": true, "critical": true},
+        {"id": "B1.E4", "description": "Error Rate numerator: Valid Requests with an HTTP status in the 500 range.", "anchor": "result in a response with an HTTP Status in the 500 range", "acceptable_slots": ["calculation", "trigger", "threshold", "condition"], "novel": true, "critical": true},
+        {"id": "B1.E5", "description": "Error Rate denominator: total Valid Requests during the applicable period.", "anchor": "divided by the total number of Valid Requests during the applicable period", "acceptable_slots": ["calculation", "measurement_period"], "novel": true, "critical": true},
+        {"id": "B1.E6", "description": "Valid Requests must conform to the Documentation and would normally return a non-error response.", "anchor": "conform to the Documentation, and that would normally result in a non-error response", "acceptable_slots": ["condition", "normative_action", "object", "source_reference"], "novel": false, "critical": false},
+        {"id": "B1.E7", "description": "Repeated identical requests do not count unless they conform to the Back-off Requirements (qualifier).", "anchor": "Repeated identical requests do not count towards the Error Rate unless they conform to the Back-off Requirements", "acceptable_slots": ["exception", "condition", "calculation"], "novel": true, "critical": false},
+        {"id": "B1.E8", "description": "Back-off parameters: minimum 1 second, exponential up to 32 seconds.", "anchor": "minimum back-off interval of 1 second", "acceptable_slots": ["threshold", "condition", "normative_action", "calculation"], "novel": true, "critical": false},
+        {"id": "B1.E9", "description": "Monthly Uptime Percentage is determined on a calendar month basis per Project (context).", "anchor": "determined on a calendar month basis per Project", "acceptable_slots": ["measurement_period", "object", "condition"], "novel": true, "critical": true}
+      ],
+      "contextual_dependencies": ["Covered Service means Cloud Storage (same Definitions list, in context).", "Application, Project, HTTP Status and Documentation are not defined in the packet."],
+      "deliberately_novel_details": ["Availability is an average of error rates sampled per five-minute period, not minutes of downtime; the comparable GitHub metric used a per-minute error-rate trigger and quarterly minutes.", "Back-off Requirements qualify which repeated requests count."],
+      "expected_unresolved_refs": ["Documentation", "Application", "Project", "the Agreement"],
+      "contamination_markers": ["calendar quarter", "quarter", "github", "service feature", "five percent", "given minute", "internal and external monitoring", "downtime", "total minutes"],
+      "critical_slots": ["threshold", "measurement_period", "measurement_granularity", "calculation", "deadline", "cap"]
+    },
+    "B2": {
+      "material_elements": [
+        {"id": "B2.E1", "description": "SLO tier: Standard class in multi-region or dual-region location >= 99.95%.", "anchor": ">= 99.95%", "acceptable_slots": ["threshold", "normative_action", "object"], "novel": true, "critical": true},
+        {"id": "B2.E2", "description": "SLO tier: Standard regional; Nearline/Coldline/Archive multi/dual-region >= 99.9%.", "anchor": "multi-region or dual-region location of Cloud Storage | >= 99.9%", "acceptable_slots": ["threshold", "normative_action", "object"], "novel": true, "critical": true},
+        {"id": "B2.E3", "description": "SLO tier: Nearline/Coldline/Archive regional; Durable Reduced Availability any location >= 99.0%.", "anchor": "Durable Reduced Availability storage class in any location of Cloud Storage | >= 99.0%", "acceptable_slots": ["threshold", "normative_action", "object"], "novel": true, "critical": true},
+        {"id": "B2.E4", "description": "There are three distinct Financial Credit schedules keyed by storage class and location.", "anchor": "\"Financial Credit\" means the following for the Nearline, Coldline, or Archive storage class in a regional location of Cloud Storage", "acceptable_slots": ["object", "condition", "remedy", "normative_action", "calculation"], "novel": true, "critical": false},
+        {"id": "B2.E5", "description": "Schedule A band: 99.0% – < 99.95% -> 10%.", "anchor": "99.0% – < 99.95% | 10%", "acceptable_slots": ["threshold", "remedy", "calculation"], "novel": true, "critical": true},
+        {"id": "B2.E6", "description": "Schedule A/B middle band: 95.0% – < 99.0% -> 25%.", "anchor": "95.0% – < 99.0% | 25%", "acceptable_slots": ["threshold", "remedy", "calculation"], "novel": true, "critical": true},
+        {"id": "B2.E7", "description": "Lowest band in every schedule: < 95.0% -> 50%.", "anchor": "< 95.0% | 50%", "acceptable_slots": ["threshold", "remedy", "calculation"], "novel": true, "critical": true},
+        {"id": "B2.E8", "description": "Schedule C top band starts at 98.0%: 98.0% – < 99.0% -> 10%.", "anchor": "98.0% – < 99.0% | 10%", "acceptable_slots": ["threshold", "remedy", "calculation"], "novel": true, "critical": true},
+        {"id": "B2.E9", "description": "Credit base: percentage of the monthly bill for the affected class, credited to future monthly bills.", "anchor": "credited to Customer's future monthly bills", "acceptable_slots": ["calculation", "remedy", "object"], "novel": true, "critical": true},
+        {"id": "B2.E10", "description": "Measurement and credit determined per calendar month per Project (context).", "anchor": "determined on a calendar month basis per Project", "acceptable_slots": ["measurement_period", "condition", "object"], "novel": true, "critical": true},
+        {"id": "B2.E11", "description": "Eligibility requires that Customer meets its obligations under this SLA (context).", "anchor": "if Customer meets its obligations under this SLA", "acceptable_slots": ["condition", "claim_condition", "trigger"], "novel": false, "critical": false},
+        {"id": "B2.E12", "description": "Trigger: Google does not meet the SLO.", "anchor": "If Google does not meet the SLO", "acceptable_slots": ["trigger", "condition"], "novel": false, "critical": false},
+        {"id": "B2.E13", "description": "Reseller/Partner substitution: references to Customer mean Partner or Reseller where the Agreement authorizes resale (context).", "anchor": "all references to Customer in this SLA mean Partner or Reseller", "acceptable_slots": ["beneficiary", "condition", "exception", "actor"], "novel": true, "critical": false}
+      ],
+      "contextual_dependencies": ["Monthly Uptime Percentage, Error Rate, Valid Requests and Covered Service are defined in the Definitions list (not in packet, except Covered Service in context).", "Claim procedure, maximum credit and exclusions are under later headings."],
+      "deliberately_novel_details": ["Three schedules with class/location-specific bands; a third 50% band; the lowest schedule's top band starts at 98.0%.", "Monthly, per Project, credited against future bills."],
+      "expected_unresolved_refs": ["the Agreement", "Project"],
+      "contamination_markers": ["calendar quarter", "quarter", "github", "service feature", "either (not both)", "amount customer paid", "ninety (90)", "thirty (30)", "written request", "downtime"],
+      "critical_slots": ["threshold", "measurement_period", "measurement_granularity", "calculation", "deadline", "cap"]
+    },
+    "B3": {
+      "material_elements": [
+        {"id": "B3.E1", "description": "Claim act and channel: Customer must notify Google technical support.", "anchor": "must notify Google technical support", "acceptable_slots": ["claim_condition", "normative_action", "condition", "actor"], "novel": false, "critical": false},
+        {"id": "B3.E2", "description": "Deadline: within 30 days from the time Customer becomes eligible (runs from eligibility, not period end).", "anchor": "within 30 days from the time Customer becomes eligible to receive a Financial Credit", "acceptable_slots": ["deadline", "claim_condition", "condition"], "novel": true, "critical": true},
+        {"id": "B3.E3", "description": "Consequence: failure to comply forfeits the right to the credit.", "anchor": "will forfeit Customer's right to receive a Financial Credit", "acceptable_slots": ["claim_condition", "condition", "exception", "remedy", "deadline"], "novel": true, "critical": false},
+        {"id": "B3.E4", "description": "Cap: aggregate credits in a single billing month will not exceed 50% of the amount due for the applicable Covered Service for the month.", "anchor": "will not exceed 50% of the amount due by Customer for the applicable Covered Service for the applicable month", "acceptable_slots": ["cap", "threshold", "calculation"], "novel": true, "critical": true},
+        {"id": "B3.E5", "description": "Remedy form: monetary credit applied to future use of the Service.", "anchor": "monetary credit applied to future use of the Service", "acceptable_slots": ["remedy", "normative_action"], "novel": false, "critical": false},
+        {"id": "B3.E6", "description": "Remedy timing: applied within 60 days after the credit was requested.", "anchor": "applied within 60 days after the Financial Credit was requested", "acceptable_slots": ["deadline", "remedy", "condition"], "novel": true, "critical": true},
+        {"id": "B3.E7", "description": "Exclusion (a): features or Services designated pre-general availability.", "anchor": "designated pre-general availability", "acceptable_slots": ["exception", "object", "condition"], "novel": true, "critical": false},
+        {"id": "B3.E8", "description": "Exclusion (b): features or Services excluded from the SLA in the Documentation.", "anchor": "excluded from the SLA (in the associated Documentation)", "acceptable_slots": ["exception", "source_reference", "condition"], "novel": true, "critical": false},
+        {"id": "B3.E9", "description": "Exclusion (c)(i): errors caused by factors outside Google's reasonable control.", "anchor": "caused by factors outside of Google's reasonable control", "acceptable_slots": ["exception", "condition"], "novel": false, "critical": false},
+        {"id": "B3.E10", "description": "Exclusion (c)(ii): errors from Customer's or third-party software or hardware.", "anchor": "resulted from Customer's software or hardware or third party software or hardware", "acceptable_slots": ["exception", "condition"], "novel": false, "critical": false},
+        {"id": "B3.E11", "description": "Exclusion (c)(iii): abuses or behaviors that violate the Agreement.", "anchor": "abuses or other behaviors that violate the Agreement", "acceptable_slots": ["exception", "condition", "source_reference"], "novel": false, "critical": false},
+        {"id": "B3.E12", "description": "Exclusion (c)(iv): errors resulting from quotas listed in the Admin Console.", "anchor": "resulted from quotas listed in the Admin Console", "acceptable_slots": ["exception", "condition", "source_reference", "required_fact"], "novel": true, "critical": false},
+        {"id": "B3.E13", "description": "Sole and exclusive remedy (context).", "anchor": "sole and exclusive remedy", "acceptable_slots": ["remedy", "exception", "condition"], "novel": false, "critical": false},
+        {"id": "B3.E14", "description": "Eligibility requires Customer to meet its obligations under this SLA (context).", "anchor": "if Customer meets its obligations under this SLA", "acceptable_slots": ["condition", "claim_condition", "trigger"], "novel": false, "critical": false}
+      ],
+      "contextual_dependencies": ["Financial Credit, Covered Service and Monthly Uptime Percentage are defined under Definitions (not in packet).", "'becomes eligible' depends on the SLO and the Financial Credit tables."],
+      "deliberately_novel_details": ["The claim deadline runs from the time Customer becomes eligible, not from the end of a measurement period; non-compliance forfeits the credit.", "The cap is a percentage of the amount due for the month, not days of service; credits are applied within a stated period after the request.", "Exclusions include pre-GA features, Documentation exclusions and Admin Console quotas."],
+      "expected_unresolved_refs": ["the Agreement", "Documentation", "Admin Console"],
+      "contamination_markers": ["calendar quarter", "quarter", "github", "service feature", "thirty (30)", "ninety (90)", "days of paid service", "written request", "exchanged into a cash", "outstanding invoices", "expire upon termination", "end of the calendar"],
+      "critical_slots": ["threshold", "measurement_period", "measurement_granularity", "calculation", "deadline", "cap"]
+    }
+  }
+}
