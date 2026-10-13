@@ -1,5 +1,12 @@
 # Agent instructions — Sophon
 
+## Cross-agent context contract
+
+Read PROJECT_STATE.json as the repository's versioned engineering-state inventory, after reading the governing SOPHON_CHARTER.md. It inventories existing implemented-but-not-validated Jev, adversarial/backward review, library and deterministic reconciliation, records actual evidence limitations and names the active and held experiments. Do not propose any of these established mechanisms as novel architecture. Verify referenced PR and code before using it; draft-PR code may not be in this checkout. This same state is auto-injected in Claude Code by .claude/settings.json and mechanically checked in CI. For Codex/ChatGPT, read PROJECT_STATE.json explicitly—those products do not execute Claude Code hooks.
+
+A new experiment result, product decision, or architecture change must update PROJECT_STATE.json in the same PR. Respect experimental chronology, frozen vs post-hoc results, independent counterexamples, and owner approval boundaries. Reviewer consensus is NOT independent validation; minimize human review through existing automated challenges and library comparison, but independently sample their agreement and escalate high-risk/unsupported cases.
+
+
 Before acting in this repository, read **[SOPHON_CHARTER.md](SOPHON_CHARTER.md) v1.2**; for Claude Code also read **[CLAUDE.md](CLAUDE.md)**.
 
 **Non-negotiable product invariant:** Sophon is a **normative semantic layer for governing documents**, analogous and complementary to an enterprise **BI semantic layer for data**. Humans, agents, BI and other workflows reuse the same **scoped, source-linked, versioned governing meaning**. **BI-first is the deliberate initial wedge**: inspect/reuse existing semantic work and check it against governing contracts with native tests. **Direct normative retrieval is the complementary path for agents not using BI**. BI is not a mandatory intermediary for all provisions, and it is unproven that most organizational agents depend on BI.
