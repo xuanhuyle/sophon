@@ -1,0 +1,126 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-10-13",
+  "charter": {
+    "path": "SOPHON_CHARTER.md",
+    "version": "1.2",
+    "origin": "Owner-approved clarification drafted in PR #15; included in this branch; not yet merged to main."
+  },
+  "identity": "Sophon is an organizational normative semantic layer: shared, source-grounded, versioned governing meaning, complementary to existing BI/data semantics and directly queryable by non-BI agents/humans.",
+  "product_wedge": "First integration wedge: independently check governing contract meaning against pre-existing, native BI semantic definitions; do not rebuild the data semantic layer.",
+  "core_capabilities": [
+    "TRANSPOSE",
+    "TRACE",
+    "VERIFY",
+    "AUDIT"
+  ],
+  "two_directions": [
+    "Governance-to-implementation impact and alignment",
+    "Independent implementation-to-governance recheck after system/semantic changes"
+  ],
+  "non_goals": [
+    "LLM accuracy leaderboard as a substitute for cumulative learning",
+    "Inventing a proprietary DSL as an MVP prerequisite",
+    "Rebuilding pre-existing BI semantic definitions",
+    "Presenting a source-grounded prediction as legal approval or deployed compliance",
+    "Rediscovering established components instead of reading their actual code"
+  ],
+  "established_components": [
+    {
+      "id": "primary_jev_proposal",
+      "status": "IMPLEMENTED_EXPERIMENTAL_NOT_SEMANTICALLY_VALIDATED",
+      "path": "prototype/jev_clause_router_v0/prototype.py",
+      "ref": "PR #14 and descendants",
+      "role": "Structured primary normative proposal"
+    },
+    {
+      "id": "adversarial_review",
+      "status": "IMPLEMENTED_EXPERIMENTAL_NOT_SEMANTICALLY_VALIDATED",
+      "path": "prototype/jev_clause_router_v0/prototype.py",
+      "ref": "PR #14 and descendants",
+      "role": "Independently invoked challenger; catches potential missing conditions, exemptions and competing interpretations"
+    },
+    {
+      "id": "backward_source_review",
+      "status": "IMPLEMENTED_EXPERIMENTAL_NOT_SEMANTICALLY_VALIDATED",
+      "path": "prototype/jev_clause_router_v0/prototype.py",
+      "ref": "PR #14 and descendants",
+      "role": "Independent source-to-proposed-structure evidence challenge"
+    },
+    {
+      "id": "provision_library",
+      "status": "IMPLEMENTED_EXPERIMENTAL_NOT_SEMANTICALLY_VALIDATED",
+      "path": "prototype/jev_library_transfer_v2/transfer.py",
+      "ref": "PR #16 and descendants",
+      "role": "Source-linked provisional archetypes and library-events induction"
+    },
+    {
+      "id": "deterministic_reconciliation",
+      "status": "IMPLEMENTED_EXPERIMENTAL_NOT_SEMANTICALLY_VALIDATED",
+      "path": "prototype/jev_library_transfer_v2/transfer.py",
+      "ref": "PR #16 and descendants",
+      "role": "Separate proposal/reviewer outputs, omissions, disputes, HOLD and human-review candidates"
+    },
+    {
+      "id": "structure_predictor",
+      "status": "IMPLEMENTED_EXPERIMENTAL_NOT_SEMANTICALLY_VALIDATED",
+      "path": "prototype/contract_structure_prediction_v3/predict.py",
+      "ref": "PR #17",
+      "role": "Offline masked section/provision structural priors and frozen scoring"
+    },
+    {
+      "id": "v3_adjudication_package",
+      "status": "PREPARED_PENDING_SOURCE_RETRIEVAL_AND_INDEPENDENT_REVIEW",
+      "path": "prototype/contract_structure_prediction_v3/adjudication/REVIEW_PACKAGE.md",
+      "ref": "PR #17 at b9d698c",
+      "role": "78-unit review package with frozen-vs-secondary evidence separation; no independent labels yet"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E5_semantic",
+      "status": "NARROW_LAB_SIGNAL",
+      "observation": "E5 PASS_FORWARD_TRANSPOSITION_SIGNAL on lab-authored policy/synthetic MetricFlow; reverse E6 not run.",
+      "ref": "PRs #4–#11"
+    },
+    {
+      "id": "V1_jev",
+      "status": "PROVIDER_RUN_NOT_DECISION_CLOSED",
+      "observation": "V1 provider run exists (reported 40 calls); preregistered DROP/SIMPLIFY/REUSE decision not formally applied.",
+      "ref": "PR #14 and PR #17 checkpoint"
+    },
+    {
+      "id": "V2_library",
+      "status": "NO_OBSERVED_INCREMENTAL_LIBRARY_VALUE_ON_V2_PROXY",
+      "observation": "COLD 35/36; WARM 34/36; RAW 36/36; BLIND 35/36. Ceiling invalidated +20pp criterion; omissions/slots scoring mismatch. Not a no-go for cumulative learning.",
+      "ref": "PR #16; prototype/jev_library_transfer_v2/V2_POSTRUN_REVIEW.md in PR #17"
+    },
+    {
+      "id": "V3_structure_primary",
+      "status": "INCONCLUSIVE",
+      "observation": "Frozen primary: two heldout segmentation failures; 14 offline tests and committed-record replay reported verified.",
+      "ref": "PR #17; prototype/contract_structure_prediction_v3/RESULTS.md"
+    },
+    {
+      "id": "V3_structure_secondary",
+      "status": "PROVISIONAL_UNADJUDICATED",
+      "observation": "Post-freeze repaired signal limited to provision within section: FAMILY_SECTION 3.09/8 vs FAMILY 0.36/8; no section gain, worse Brier than GLOBAL, law untestable; labels agent-authored, split nonchronological.",
+      "ref": "PR #17; prototype/contract_structure_prediction_v3/RESULTS.md"
+    }
+  ],
+  "current_work": {
+    "active": "V3: retrieve source snapshots, use EXISTING adversarial + backward + library checks to triage labels, then reserve blinded human validation for unresolved/high-risk cases and audit sample. Preserve frozen outputs.",
+    "blocked": "Source retrieval in Claude Code cloud returned proxy CONNECT 403 for sec.gov/cloudflare.com/mongodb.com; local fetch script exists but is not end-to-end verified on authentic downloads.",
+    "on_hold": "V4 sequential contract-by-contract learning prompt only; draft PR #18. Do not treat as executed.",
+    "horizon": "Predict reusable normative provision structures, conditional on evidenced law, contract family, ToC/section and observed provisions; test cumulative, auditable contract-by-contract improvement, not superiority to a pretrained LLM."
+  },
+  "working_rules": [
+    "Before recommending architecture, consult established_components and inspect referenced source on its ref; do not present existing Jev/adversarial/backward/library/reconciliation as new.",
+    "Distinguish DESIGNED, IMPLEMENTED, RUN, OBSERVED, VALIDATED; separate frozen primary from post-hoc secondary results.",
+    "For any new experiment/results or changed architecture, update this state in the SAME PR and cite evidence.",
+    "Check branch ancestry and relevant open PRs; components listed on unmerged PRs are not necessarily present in the current checkout.",
+    "Legal provenance, unknowns, known-at versus effective-at, adversarial counterexamples and independent audit are requirements, not add-ons.",
+    "Do not assume user approval for paid calls, merger of draft PRs or charter changes.",
+    "Treat LLM agreement as triage, not independently validated semantic truth; minimize human labor without hiding correlated errors."
+  ]
+}
