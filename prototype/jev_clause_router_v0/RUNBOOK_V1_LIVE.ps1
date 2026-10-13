@@ -1,0 +1,80 @@
+# Sophon JEV V1 live pilot - operator runbook.
+# Run in a NEW PowerShell window, NOT inside Claude Code (nested Claude Code reviewer calls are refused).
+# Sends 10 short excerpts (5 LAB + 5 public GitHub SLA) to TypeSafe and to Claude. No confidential text.
+#
+#   powershell -ExecutionPolicy Bypass -File .\RUNBOOK_V1_LIVE.ps1 -Reviewer anthropic
+#   powershell -ExecutionPolicy Bypass -File .\RUNBOOK_V1_LIVE.ps1 -Reviewer claude-cli   # Claude subscription login, no API key
+param(
+    [ValidateSet("anthropic", "claude-cli")] [string] $Reviewer = "anthropic",
+    [string] $Model = "claude-opus-5-5",
+    [switch] $PreflightOnly
+)
+$ErrorActionPreference = "Stop"
+Set-Location -Path $PSScriptRoot
+if ($env:CLAUDECODE) { throw "This shell is inside Claude Code. Open a new terminal and rerun." }
+
+# Load ignored repo-root .env if present. Prefer already-set process env variables.
+# Deliberately parse only these two key names as literal KEY=VALUE; never execute .env as code.
+$repoRoot = (Resolve-Path (Join-Path $PSScriptRoot "..\\..")).Path
+$dotenv = Join-Path $repoRoot ".env"
+if (Test-Path -LiteralPath $dotenv -PathType Leaf) {
+    foreach ($rawLine in [System.IO.File]::ReadAllLines($dotenv)) {
+        $line = $rawLine.Trim()
+        if (-not $line -or $line.StartsWith("#")) { continue }
+        $parts = $line -split "=", 2
+        if ($parts.Count -ne 2) { continue }
+        $key = $parts[0].Trim()
+        if ($key -notin @("TYPESAFE_API_KEY", "ANTHROPIC_API_KEY")) { continue }
+        $value = $parts[1].Trim()
+        if ($value.Length -ge 2 -and
+            (($value.StartsWith('"') -and $value.EndsWith('"')) -or
+             ($value.StartsWith("'") -and $value.EndsWith("'")))) {
+            $value = $value.Substring(1, $value.Length - 2)
+        }
+        if ($value -and -not [Environment]::GetEnvironmentVariable($key, "Process")) {
+            [Environment]::SetEnvironmentVariable($key, $value, "Process")
+        }
+    }
+}
+
+function Read-Secret([string] $Prompt) {
+    $secure = Read-Host $Prompt -AsSecureString
+    $bstr = [Runtime.InteropServices.Marshal]::SecureStringToBSTR($secure)
+    try { return [Runtime.InteropServices.Marshal]::PtrToStringBSTR($bstr) }
+    finally { [Runtime.InteropServices.Marshal]::ZeroFreeBSTR($bstr) }
+}
+if (-not $env:TYPESAFE_API_KEY) { $env:TYPESAFE_API_KEY = Read-Secret "TypeSafe API key (not echoed)" }
+if ($Reviewer -eq "anthropic" -and -not $env:ANTHROPIC_API_KEY) { $env:ANTHROPIC_API_KEY = Read-Secret "Anthropic API key (not echoed)" }
+
+$models = @("--adversarial-model", $Model, "--backward-model", $Model, "--baseline-model", $Model)
+
+# 1. Readiness check: no network calls, no secret values printed.
+python prototype.py --mode preflight --reviewer $Reviewer @models --clauses clauses.json --clauses external_github_sla_2021.json
+if ($LASTEXITCODE -ne 0) { throw "Preflight reported blockers; nothing was sent." }
+
+if ($PreflightOnly) {
+    Write-Host "Preflight successful; no provider calls made."
+    exit 0
+}
+
+# 2. Explicit authorization for the paid/quota calls.
+Write-Host "About to make 40 provider calls: 10 Jev (about USD 0.001) + 30 Claude ($Model; about USD 1.6 at API list price, or subscription quota via claude-cli)."
+if ((Read-Host "Type YES to proceed") -ne "YES") { throw "Not authorized; nothing was sent." }
+
+$stamp = (Get-Date).ToUniversalTime().ToString("yyyyMMddTHHmmssZ")
+New-Item -ItemType Directory -Force -Path "live_runs" | Out-Null
+foreach ($pair in @(@("LAB", "clauses.json"), @("EXT", "external_github_sla_2021.json"))) {
+    $tag, $corpus = $pair
+    $live = "live_runs/live_${tag}_$stamp.json"
+    python prototype.py --mode live --allow-external-calls --reviewer $Reviewer @models --clauses $corpus --output $live
+    if ($LASTEXITCODE -ne 0) { throw "Live run $tag failed; partial evidence (if any) is in $live. Do not rerun silently; record the failure." }
+    # 3. Offline replay from the stored raw outputs (zero network).
+    python prototype.py --mode replay --clauses $corpus --recorded $live --output "live_runs/replay_${tag}_$stamp.json"
+    if ($LASTEXITCODE -ne 0) { throw "Replay $tag failed." }
+}
+
+# 4. Mechanical A/B/C/D comparison against the frozen provisional matrix.
+python compare.py "live_runs/replay_LAB_$stamp.json" "live_runs/replay_EXT_$stamp.json" --json-out "live_runs/compare_$stamp.json" | Tee-Object -FilePath "live_runs/compare_$stamp.md"
+if ($LASTEXITCODE -ne 0) { throw "A/B/C/D comparison failed. Inspect the run artifacts; do not treat this run as complete." }
+Write-Host "Done. Inspect live_runs/*_$stamp.* for secrets/sensitive data before any commit; then fill in V1_LIVE_RESULTS.md section 'Live run'."
+Remove-Item Env:TYPESAFE_API_KEY -ErrorAction SilentlyContinue

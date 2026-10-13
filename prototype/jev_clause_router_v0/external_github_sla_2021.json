@@ -1,0 +1,110 @@
+{
+  "corpus_id": "GITHUB-SLA-EXT-5",
+  "status": "OFFICIAL_PUBLISHED_STANDARD_TERMS_EXCERPTS_NOT_A_SIGNED_CONTRACT",
+  "frozen_at_utc": "2026-10-13T09:40:00Z",
+  "frozen_before_any_model_output": true,
+  "applicability": "UNKNOWN. No customer agreement, order, acceptance or renewal date is known. These excerpts are not asserted to govern any customer. The June 2026 notice says the 2026 SLA applies to new customers and renewals from 1 June 2026; existing 2021 customers are not stated to switch automatically.",
+  "rights_note": "Short excerpts of publicly published GitHub terms, quoted for analysis with source URL and hashes. The full documents are not copied. Transcribed by the implementing agent from the vendor PDF as rendered by a PDF viewer (line wraps joined with single spaces, typographic quotes kept); the PDF is owner-restricted ('_locked') and its restrictions were not removed.",
+  "external_corpus_status": "EXTERNAL_CORPUS_PARTIAL",
+  "sources": [
+    {
+      "source_id": "GH-SLA-2021",
+      "title": "GitHub Online Services SLA",
+      "version": "June 2021",
+      "url": "https://assets.ctfassets.net/8aevphvgewt8/7rEf04yu01oTt1cGyeXz03/f58072058dfb2f1fb25cb80b0b285890/GitHub.Online.Services.SLA_20210630_locked",
+      "retrieved_at_utc": "2026-10-13T09:22:32Z",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 150170,
+      "sha256": "70f1cdcd11bcfa0bc22796ebdca27a61b8f24bbdb2fc5ad559dd643cccc6a2a8"
+    },
+    {
+      "source_id": "GH-TERMS-UPDATES",
+      "title": "GitHub Customer Terms - Updates to Customer Terms (section 'Updates June 2026')",
+      "version": "page as served 2026-10-13 (dynamic HTML; whole-page hash is not stable, rely on excerpt hash)",
+      "url": "https://github.com/customer-terms/updates",
+      "retrieved_at_utc": "2026-10-13T09:22:33Z",
+      "http_status": 200,
+      "content_type": "text/html",
+      "sha256": "f21ab77340115fb0c8f801c27a32710ab2ae06ab5035acf76e5b845db37f70e4"
+    }
+  ],
+  "blocked_sources": [
+    {
+      "source_id": "GH-SLA-2026",
+      "title": "GitHub Online Services SLA, June 2026 (current published terms)",
+      "url": "https://github.com/customer-terms/github-online-services-sla",
+      "attempts": [
+        {
+          "at_utc": "2026-10-13T09:1x (first fetch)",
+          "http_status": 500,
+          "note": "GitHub 'Server Error' page"
+        },
+        {
+          "at_utc": "2026-10-13T09:1x",
+          "variant": "?locale=en-US",
+          "http_status": 500
+        },
+        {
+          "at_utc": "2026-10-13T09:1x",
+          "variant": "Accept: application/pdf",
+          "http_status": 406
+        },
+        {
+          "at_utc": "2026-10-13T09:22:34Z",
+          "http_status": 500
+        }
+      ],
+      "status": "BLOCKED_HTTP_500",
+      "consequence": "No June 2026 SLA provision is in this corpus. The 2026 credit tiers quoted in V02_PUBLIC_SOURCE_GITHUB_SLA.md were NOT re-verified in this iteration."
+    }
+  ],
+  "resolvable_refs": [],
+  "clauses": [
+    {
+      "id": "G1",
+      "source_id": "GH-SLA-2021",
+      "structure": "credit tiers",
+      "text": "A Service Credits claim may be based on either (not both) of the following calculations: 10% of the amount Customer paid for a Service Feature in a calendar quarter where the Uptime for that Service Feature was less than or equal to 99.9%, but greater than 99.0%. OR 25% of the amount Customer paid for a Service Feature in a calendar quarter where the Uptime of that Service Feature was less than 99.0%.",
+      "context": "Document: GitHub Online Services SLA, Version: June 2021. Location: Section 1 \"Uptime Guarantee\", table column \"Service Credits Calculation\" for the row covering Issues, Pull Requests, Git Operations, API Requests (for Service Features only), Webhooks, Pages (the Actions and Packages rows say \"Same as above\"). Section 1 text before the table states: \"GitHub commits to maintain at least 99.9% Uptime for the applicable GitHub service.\" and \"If GitHub does not meet the SLA, Customer will be entitled to service credit to Customer’s account (“Service Credits”) based on the calculation below (“Service Credits Calculation”).\" NOT IN PACKET: the definition of each Service Feature (the SLA points to the GitHub Status Page on githubstatus.com); Customer’s applicable agreement (which gives the meaning of capitalized terms not defined in the SLA).",
+      "excerpt_sha256": "c3f2428b316fd5363e99df67adf38ceac98a654ee6169ef366dbdc9dadb4f948",
+      "context_sha256": "92ca281fa2a72a38c40d77b9b0b9a7eb0ffdd6390f3b91ea954e40c30830b3f4"
+    },
+    {
+      "id": "G2",
+      "source_id": "GH-SLA-2021",
+      "structure": "definition",
+      "text": "“Downtime” is a period of time where either (a) the error rate exceeds five percent (5%) in a given minute for any Service Feature or (b) the Service was unavailable as determined by a combination of GitHub’s internal and external monitoring systems.",
+      "context": "Document: GitHub Online Services SLA, Version: June 2021. Location: Section 1 \"Uptime Guarantee\", table column \"Definitions\" for the row covering Issues, Pull Requests, Git Operations, API Requests (for Service Features only), Webhooks, Pages. The same row's Uptime Calculation column reads: \"(total minutes in a calendar quarter - Downtime) / total minutes in a calendar quarter\". NOT IN PACKET: the definition of each Service Feature (GitHub Status Page on githubstatus.com); GitHub’s monitoring data.",
+      "excerpt_sha256": "1aa7930e7cbbd21fe2ba7c7bcd3de2df817645e460887b270e624145dc2bbfe5",
+      "context_sha256": "e56e8d2d35458e4ebc91d390458cdff9a772e01179b3e0c616ad5f62a2da8a6a"
+    },
+    {
+      "id": "G3",
+      "source_id": "GH-SLA-2021",
+      "structure": "exclusion",
+      "text": "Excluded from the Uptime Calculation are Service Feature failures resulting from (i) Customer’s acts, omissions, or misuse of the applicable GitHub service including violations of the Agreement; (ii) failure of Customer’s internet connectivity; (iii) factors outside GitHub’s reasonable control, including force majeure events; or (iv) Customer’s equipment, services, or other technology.",
+      "context": "Document: GitHub Online Services SLA, Version: June 2021. Location: Section 2 \"Exclusions\" (entire section). \"Uptime Calculation\" is the per-Service-Feature calculation described in Section 1. NOT IN PACKET: the Agreement (Customer’s agreement with GitHub), including any force majeure definition; the Section 1 calculation tables.",
+      "excerpt_sha256": "086472d29dfbe4d2abbcc8e47dcd2cefe26cc121c3956ecb74b26f1fbc1ec6c3",
+      "context_sha256": "67a4e530c13b945a48fbcabc90ef59cdbc7c84c4a420c380d6a8c4e6a9f8570f"
+    },
+    {
+      "id": "G4",
+      "source_id": "GH-SLA-2021",
+      "structure": "claims timing and redemption conditions",
+      "text": "If GitHub does not meet this SLA, Customer may redeem Service Credits only upon written request to GitHub within thirty (30) days of the end of the calendar quarter. Written requests for Service Credits redemption and GitHub Enterprise Cloud custom monthly or quarterly reports should be sent to GitHub Support.\n\nService Credits may take the form of a refund or credit to Customer’s account, cannot be exchanged into a cash amount, are limited to a maximum of ninety (90) days of paid service per calendar quarter, require Customer to have paid any outstanding invoices, and expire upon termination of Customer’s agreement with GitHub. Service Credits are the sole and exclusive remedy for any failure by GitHub to meet any obligations in this SLA.",
+      "context": "Document: GitHub Online Services SLA, Version: June 2021. Location: Section 3 \"Service Credits Redemption\" (entire section, two paragraphs). NOT IN PACKET: Customer’s agreement with GitHub (term, termination, invoices); the Section 1 credit calculation.",
+      "excerpt_sha256": "ccd642966ac4c0f62e039519081475e73107100ed15c76ed2a6b803e19a47530",
+      "context_sha256": "b70f9e3aadddfca42f5aaf64fe4c579fb98faddfafe05d27877c57da5cd3d0e6"
+    },
+    {
+      "id": "G5",
+      "source_id": "GH-TERMS-UPDATES",
+      "structure": "version / effectiveness",
+      "text": "This June 2026 version of the GitHub SLA will apply to new customers and renewals beginning 1 June 2026. If your agreement uses the 2021 GitHub SLA and you need a copy for your records, please contact us.",
+      "context": "Document: GitHub Customer Terms \"Updates to Customer Terms\" page, section \"Updates June 2026\", item \"GitHub Service Level Agreement\". This is an official change notice published by GitHub, not text of the SLA itself. Earlier sentences of the same item state that the GitHub SLA \"has been completely rewritten from the ground up\" and \"now largely mirrors the Microsoft SLA\". NOT IN PACKET: the June 2026 GitHub SLA text (its official URL returned HTTP 500 on 2026-10-13); the June 2021 GitHub SLA is a separate document; the customer’s agreement, order and renewal dates.",
+      "excerpt_sha256": "074d77810acab8edd47628942ef9c927a9346435cb166e752d600241e3c1eaf9",
+      "context_sha256": "2384c70077bfcd7f83302d0f8ae0972337d6abe52ceff012c036640c378ff491"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "mode": "PREFLIGHT_NO_NETWORK_CALLS",
+  "reviewer_engine": "anthropic",
+  "llm_model": "claude-opus-5-5",
+  "credentials_present": {
+    "TYPESAFE_API_KEY": false,
+    "ANTHROPIC_API_KEY": false
+  },
+  "inside_claude_code_session": true,
+  "plans": {
+    "LAB-SLA-5": {
+      "calls": {
+        "jev": 5,
+        "llm": 15,
+        "total": 20
+      },
+      "cost": {
+        "jev_input_tokens_est": 3408,
+        "jev_usd_est": 0.00014,
+        "llm_input_tokens_est": 6552,
+        "llm_output_tokens_assumed": 37500,
+        "llm_model": "claude-opus-5-5",
+        "llm_usd_est_api_list_price": 0.78,
+        "note": "Rough estimate from characters/4; Claude CLI under a subscription consumes plan quota instead."
+      }
+    },
+    "GITHUB-SLA-EXT-5": {
+      "calls": {
+        "jev": 5,
+        "llm": 15,
+        "total": 20
+      },
+      "cost": {
+        "jev_input_tokens_est": 4453,
+        "jev_usd_est": 0.00019,
+        "llm_input_tokens_est": 9672,
+        "llm_output_tokens_assumed": 37500,
+        "llm_model": "claude-opus-5-5",
+        "llm_usd_est_api_list_price": 0.79,
+        "note": "Rough estimate from characters/4; Claude CLI under a subscription consumes plan quota instead."
+      }
+    }
+  },
+  "blockers": [
+    "NO_TYPESAFE_API_KEY: Jev arms A/B/C cannot run",
+    "NO_ANTHROPIC_API_KEY: reviewer/baseline arms cannot run via the Messages API (a Claude Max subscription is not an API key)"
+  ],
+  "ready": false
+}

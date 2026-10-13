@@ -1,0 +1,176 @@
+{
+  "matrix_id": "JEV-V1-PROVISIONAL-REVIEW-MATRIX",
+  "status": "PROVISIONAL_WORKING_REFERENCE_NOT_AN_INDEPENDENT_ORACLE",
+  "authored_by": "Implementing agent (Claude Code, claude-opus-5-5), 2026-10-13, BEFORE any live Jev or reviewer output existed. Pending owner/expert human review.",
+  "independence_warning": "The author belongs to the same model family as the default reviewer/baseline model (claude-opus-5-5). Agreement between this matrix and those reviewers is therefore NOT independent confirmation; shared blind spots are likely. Use it to make disagreements visible, not to certify correctness.",
+  "frozen_at_utc": "2026-10-13T09:45:00Z",
+  "scoring_rules": {
+    "acceptable_primary": "An arm's primary label is scored acceptable if it is in this list (Arm D: its first primary_types entry).",
+    "required_modifiers": "Each one not detected by an arm is a MISSED material modifier.",
+    "contestable_modifiers": "Neither rewarded nor penalized: reasonable readers may disagree.",
+    "other_modifiers": "A detected modifier outside required+contestable is an UNSUPPORTED assertion.",
+    "material_conditions": "Anchors are exact substrings of the clause text. compare.py reports a mechanical AUTO_HINT when an arm quotes text overlapping an anchor; whether the arm actually understood the condition requires HUMAN_ADJUDICATION.",
+    "unresolved_dependencies": "explicit_in_text=true: the excerpt or packet names the missing item. explicit_in_text=false: an implicit dependency that the context pack deliberately does NOT call out; these are the most discriminating omissions.",
+    "holds": "A HOLD is not counted as correct. Coverage (candidate vs hold) is reported separately from errors."
+  },
+  "clauses": {
+    "C1": {
+      "corpus": "LAB-SLA-5",
+      "acceptable_primary": ["OBLIGATION"],
+      "required_modifiers": ["THRESHOLD", "CROSS_REFERENCE"],
+      "contestable_modifiers": ["DEADLINE", "CONDITION"],
+      "material_conditions": [
+        {"id": "C1.M1", "anchor": "at least 99.9%", "modifier": "THRESHOLD", "effect": "Inclusive lower bound of the service level.", "harm_if_missed": "SLA breach test uses the wrong boundary."},
+        {"id": "C1.M2", "anchor": "calculated in accordance with Clause 2", "modifier": "CROSS_REFERENCE", "effect": "The metric is only defined by another clause.", "harm_if_missed": "Availability computed with an ad hoc method (e.g. without the maintenance exclusion)."}
+      ],
+      "unresolved_dependencies": [],
+      "interpretation_concerns": ["LAB assumption carried over from V0: 'Clause 2' is C2. Nothing in the text proves that mapping."]
+    },
+    "C2": {
+      "corpus": "LAB-SLA-5",
+      "acceptable_primary": ["DEFINITION"],
+      "required_modifiers": ["EXCLUSION", "THRESHOLD"],
+      "contestable_modifiers": ["CONDITION", "DEADLINE", "CROSS_REFERENCE"],
+      "material_conditions": [
+        {"id": "C2.M1", "anchor": "excluding Scheduled Maintenance", "modifier": "EXCLUSION", "effect": "Maintenance minutes are removed from the measurement.", "harm_if_missed": "Availability understated; false breach and credit."},
+        {"id": "C2.M2", "anchor": "up to four hours per month", "modifier": "THRESHOLD", "effect": "Caps the maintenance exclusion.", "harm_if_missed": "Unlimited maintenance excluded; availability overstated; missed breach."},
+        {"id": "C2.M3", "anchor": "when the Service is accessible", "modifier": null, "effect": "'Accessible' is the measured property and is not defined.", "harm_if_missed": "Measurement method silently chosen by the implementer."}
+      ],
+      "unresolved_dependencies": [
+        {"ref": "Scheduled Maintenance", "explicit_in_text": true, "note": "Capitalized term with no definition in the packet (notice period, approval)."}
+      ],
+      "interpretation_concerns": []
+    },
+    "C3": {
+      "corpus": "LAB-SLA-5",
+      "acceptable_primary": ["PERMISSION_RIGHT"],
+      "required_modifiers": ["THRESHOLD", "CONDITION", "DEADLINE"],
+      "contestable_modifiers": ["CROSS_REFERENCE"],
+      "material_conditions": [
+        {"id": "C3.M1", "anchor": "below 99.9%", "modifier": "THRESHOLD", "effect": "Strict trigger, consistent with C1's inclusive 'at least'.", "harm_if_missed": "Credit at exactly 99.9%."},
+        {"id": "C3.M2", "anchor": "5% of the monthly subscription fee", "modifier": "THRESHOLD", "effect": "Credit amount and fee base.", "harm_if_missed": "Wrong credit amount or base."},
+        {"id": "C3.M3", "anchor": "provided that the Customer submits a written claim", "modifier": "CONDITION", "effect": "No credit without a written claim.", "harm_if_missed": "Credits treated as automatic."},
+        {"id": "C3.M4", "anchor": "within 30 days after month-end", "modifier": "DEADLINE", "effect": "Claim window.", "harm_if_missed": "Late claims honored or valid claims rejected."}
+      ],
+      "unresolved_dependencies": [
+        {"ref": "monthly subscription fee", "explicit_in_text": false, "note": "Amount comes from the order/invoice, not this packet."}
+      ],
+      "interpretation_concerns": []
+    },
+    "C4": {
+      "corpus": "LAB-SLA-5",
+      "acceptable_primary": ["PROHIBITION"],
+      "required_modifiers": ["EXCLUSION", "CROSS_REFERENCE"],
+      "contestable_modifiers": ["CONDITION"],
+      "material_conditions": [
+        {"id": "C4.M1", "anchor": "except to subprocessors listed in Schedule A", "modifier": "EXCLUSION", "effect": "Disclosure to listed subprocessors is allowed.", "harm_if_missed": "Legitimate processing blocked, or any 'subprocessor' treated as allowed."},
+        {"id": "C4.M2", "anchor": "unless the Customer has given prior written consent", "modifier": "EXCLUSION", "effect": "Second exception: prior written consent.", "harm_if_missed": "Consent-based disclosures blocked or consent form/timing ignored."},
+        {"id": "C4.M3", "anchor": "Schedule A", "modifier": "CROSS_REFERENCE", "effect": "The allowed-recipient list is in an absent schedule.", "harm_if_missed": "Guard implemented without the list."}
+      ],
+      "unresolved_dependencies": [
+        {"ref": "Schedule A", "explicit_in_text": true, "note": "Absent from the packet."}
+      ],
+      "interpretation_concerns": ["Scope ambiguity: whether 'unless ... consent' qualifies the whole prohibition or only disclosures outside Schedule A."]
+    },
+    "C5": {
+      "corpus": "LAB-SLA-5",
+      "acceptable_primary": ["AUTHORITY", "PROHIBITION"],
+      "required_modifiers": ["THRESHOLD", "CONDITION"],
+      "contestable_modifiers": ["DEADLINE"],
+      "material_conditions": [
+        {"id": "C5.M1", "anchor": "exceeding EUR 100", "modifier": "THRESHOLD", "effect": "Strictly above EUR 100; exactly EUR 100 is not covered.", "harm_if_missed": "Wrong approval gate."},
+        {"id": "C5.M2", "anchor": "prior written approval from the Finance Director", "modifier": "CONDITION", "effect": "Named approver, written form.", "harm_if_missed": "Approval by the wrong role or informal approval accepted."},
+        {"id": "C5.M3", "anchor": "before issuance", "modifier": "DEADLINE", "effect": "Approval must precede issuance.", "harm_if_missed": "Retroactive approval accepted."}
+      ],
+      "unresolved_dependencies": [],
+      "interpretation_concerns": ["Unclear whether EUR 100 applies per credit or in aggregate."]
+    },
+    "G1": {
+      "corpus": "GITHUB-SLA-EXT-5",
+      "acceptable_primary": ["PERMISSION_RIGHT", "DEFINITION"],
+      "required_modifiers": ["THRESHOLD", "CONDITION"],
+      "contestable_modifiers": ["CROSS_REFERENCE", "EXCLUSION", "DEADLINE"],
+      "material_conditions": [
+        {"id": "G1.M1", "anchor": "either (not both)", "modifier": "CONDITION", "effect": "Tiers are alternatives, not cumulative.", "harm_if_missed": "10% and 25% stacked."},
+        {"id": "G1.M2", "anchor": "less than or equal to 99.9%, but greater than 99.0%", "modifier": "THRESHOLD", "effect": "10% band, inclusive at 99.9%.", "harm_if_missed": "Wrong band; boundary case at exactly 99.9% decided silently."},
+        {"id": "G1.M3", "anchor": "less than 99.0%", "modifier": "THRESHOLD", "effect": "25% band.", "harm_if_missed": "Wrong credit percentage."},
+        {"id": "G1.M4", "anchor": "the amount Customer paid for a Service Feature in a calendar quarter", "modifier": "THRESHOLD", "effect": "Fee base is the amount paid for that Service Feature in the quarter, not the whole bill.", "harm_if_missed": "Credit computed on the wrong base."}
+      ],
+      "unresolved_dependencies": [
+        {"ref": "Section 3 redemption conditions", "explicit_in_text": false, "note": "Whether the credit is obtainable depends on Section 3 (written request within 30 days, paid invoices, 90-day cap). The excerpt does not reference Section 3."},
+        {"ref": "Service Feature", "explicit_in_text": true, "note": "Defined on the GitHub Status Page, not in the packet."}
+      ],
+      "interpretation_concerns": ["Boundary tension: 'at least 99.9%' commitment is met at exactly 99.9%, yet the 10% band literally includes 99.9%. UNRESOLVED, not a license to award or deny."]
+    },
+    "G2": {
+      "corpus": "GITHUB-SLA-EXT-5",
+      "acceptable_primary": ["DEFINITION"],
+      "required_modifiers": ["THRESHOLD", "CONDITION"],
+      "contestable_modifiers": ["CROSS_REFERENCE"],
+      "material_conditions": [
+        {"id": "G2.M1", "anchor": "exceeds five percent (5%) in a given minute", "modifier": "THRESHOLD", "effect": "Strictly above 5%, evaluated per minute.", "harm_if_missed": "Wrong granularity or boundary."},
+        {"id": "G2.M2", "anchor": "either (a)", "modifier": "CONDITION", "effect": "Two alternative triggers (disjunction).", "harm_if_missed": "Only one trigger implemented."},
+        {"id": "G2.M3", "anchor": "as determined by a combination of GitHub’s internal and external monitoring systems", "modifier": "CONDITION", "effect": "Trigger (b) is determined by supplier-controlled monitoring.", "harm_if_missed": "Customer's own monitoring treated as authoritative evidence."}
+      ],
+      "unresolved_dependencies": [
+        {"ref": "error rate (undefined for this row)", "explicit_in_text": false, "note": "The SLA defines 'Error Rate' only in the Packages row (per hour). Its meaning for this row is not given."},
+        {"ref": "GitHub’s internal and external monitoring systems", "explicit_in_text": true, "note": "Monitoring data is not available to the customer in the packet."}
+      ],
+      "interpretation_concerns": ["Uses both 'Service Feature' and 'the Service'."]
+    },
+    "G3": {
+      "corpus": "GITHUB-SLA-EXT-5",
+      "acceptable_primary": ["DEFINITION", "OTHER"],
+      "required_modifiers": ["EXCLUSION", "CROSS_REFERENCE"],
+      "contestable_modifiers": ["CONDITION"],
+      "material_conditions": [
+        {"id": "G3.M1", "anchor": "Customer’s acts, omissions, or misuse of the applicable GitHub service including violations of the Agreement", "modifier": "EXCLUSION", "effect": "Customer-caused failures excluded.", "harm_if_missed": "Customer-caused downtime credited."},
+        {"id": "G3.M2", "anchor": "failure of Customer’s internet connectivity", "modifier": "EXCLUSION", "effect": "Connectivity failures excluded.", "harm_if_missed": "Same."},
+        {"id": "G3.M3", "anchor": "factors outside GitHub’s reasonable control, including force majeure events", "modifier": "EXCLUSION", "effect": "Broad external-cause exclusion.", "harm_if_missed": "Force majeure downtime credited."},
+        {"id": "G3.M4", "anchor": "Customer’s equipment, services, or other technology", "modifier": "EXCLUSION", "effect": "Customer technology excluded.", "harm_if_missed": "Same."},
+        {"id": "G3.M5", "anchor": "resulting from", "modifier": "CONDITION", "effect": "Causation must be established per failure.", "harm_if_missed": "Exclusions applied without causal evidence, or never applied."}
+      ],
+      "unresolved_dependencies": [
+        {"ref": "the Agreement", "explicit_in_text": true, "note": "Not in packet; may define force majeure and violations."},
+        {"ref": "who attributes causation", "explicit_in_text": false, "note": "The clause does not say who determines that a failure resulted from an excluded cause."}
+      ],
+      "interpretation_concerns": []
+    },
+    "G4": {
+      "corpus": "GITHUB-SLA-EXT-5",
+      "acceptable_primary": ["PERMISSION_RIGHT"],
+      "required_modifiers": ["CONDITION", "DEADLINE", "THRESHOLD"],
+      "contestable_modifiers": ["EXCLUSION", "CROSS_REFERENCE"],
+      "material_conditions": [
+        {"id": "G4.M1", "anchor": "only upon written request to GitHub", "modifier": "CONDITION", "effect": "Written request is required.", "harm_if_missed": "Credits treated as automatic."},
+        {"id": "G4.M2", "anchor": "within thirty (30) days of the end of the calendar quarter", "modifier": "DEADLINE", "effect": "Claim window after quarter end.", "harm_if_missed": "Late claims accepted or valid ones missed."},
+        {"id": "G4.M3", "anchor": "should be sent to GitHub Support", "modifier": "CONDITION", "effect": "Channel ('should', weaker than 'must').", "harm_if_missed": "Wrong channel; or over-strict rejection."},
+        {"id": "G4.M4", "anchor": "cannot be exchanged into a cash amount", "modifier": "EXCLUSION", "effect": "No cash payout.", "harm_if_missed": "Cash refund promised."},
+        {"id": "G4.M5", "anchor": "limited to a maximum of ninety (90) days of paid service per calendar quarter", "modifier": "THRESHOLD", "effect": "Cap.", "harm_if_missed": "Credit above cap."},
+        {"id": "G4.M6", "anchor": "require Customer to have paid any outstanding invoices", "modifier": "CONDITION", "effect": "Prerequisite to redemption.", "harm_if_missed": "Credit issued while invoices are unpaid."},
+        {"id": "G4.M7", "anchor": "expire upon termination of Customer’s agreement with GitHub", "modifier": "DEADLINE", "effect": "Credits lapse on termination.", "harm_if_missed": "Credits honored after termination."},
+        {"id": "G4.M8", "anchor": "sole and exclusive remedy", "modifier": "EXCLUSION", "effect": "Excludes other remedies for SLA failures.", "harm_if_missed": "Other remedies assumed available."}
+      ],
+      "unresolved_dependencies": [
+        {"ref": "Customer’s agreement with GitHub", "explicit_in_text": true, "note": "Termination, invoices and term are outside the packet."}
+      ],
+      "interpretation_concerns": ["'should be sent' may be directory rather than mandatory."]
+    },
+    "G5": {
+      "corpus": "GITHUB-SLA-EXT-5",
+      "acceptable_primary": ["OTHER"],
+      "required_modifiers": ["CONDITION", "DEADLINE", "CROSS_REFERENCE"],
+      "contestable_modifiers": ["EXCLUSION"],
+      "material_conditions": [
+        {"id": "G5.M1", "anchor": "new customers and renewals", "modifier": "CONDITION", "effect": "Cohort condition: existing unrenewed customers are not stated to switch.", "harm_if_missed": "2026 tiers applied to an unrenewed 2021 customer."},
+        {"id": "G5.M2", "anchor": "beginning 1 June 2026", "modifier": "DEADLINE", "effect": "Effective date for that cohort, not a global switch date.", "harm_if_missed": "Version chosen by date alone."},
+        {"id": "G5.M3", "anchor": "If your agreement uses the 2021 GitHub SLA", "modifier": "CROSS_REFERENCE", "effect": "Applicable version depends on the customer's agreement.", "harm_if_missed": "Version applicability guessed."}
+      ],
+      "unresolved_dependencies": [
+        {"ref": "June 2026 version of the GitHub SLA", "explicit_in_text": true, "note": "Official text blocked (HTTP 500) during this iteration."},
+        {"ref": "your agreement", "explicit_in_text": true, "note": "Customer agreement and renewal date unknown."}
+      ],
+      "interpretation_concerns": ["This is a change notice, not contract text; it is evidence about applicability, not itself the governing provision."]
+    }
+  }
+}
