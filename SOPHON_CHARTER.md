@@ -19,7 +19,7 @@ The four inseparable capabilities remain **TRANSPOSE, TRACE, VERIFY and AUDIT**.
 
 ## 2. Canonical architecture and integration boundary
 
-\`\`\`text
+```text
  AUTHORITATIVE GOVERNING CONTRACTS / POLICIES
                       |
                       v
@@ -40,7 +40,9 @@ The four inseparable capabilities remain **TRANSPOSE, TRACE, VERIFY and AUDIT**.
                 v
    BI DASHBOARDS / DATA-DRIVEN AGENTS
    (where they actually use this layer)
-\`\`\`\n\n
+```
+
+
 The two layers solve **different and complementary disambiguation problems**:
 - **BI/data semantic layer:** What do enterprise records, metrics and relationships mean?
 - **Sophon/normative semantic layer:** What do the applicable governing documents require, permit, prohibit, define or leave unresolved?
