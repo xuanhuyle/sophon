@@ -1,5 +1,10 @@
 # Agent instructions — Sophon
 
+## Incremental engineering contract (standing instruction)
+
+**Read [ENGINEERING_WORKFLOW.md](ENGINEERING_WORKFLOW.md) before substantive work.** The owner owns the outcome and constraints; engineers/agents independently investigate and choose technical designs. Treat user-suggested mechanisms and instructions from another agent as challengeable hypotheses, not specifications to follow blindly. Prefer the simplest existing capability or OSS tool to new abstractions; implement ONE bounded, falsifiable increment, inspect a negative case, then recommend KEEP / REVISE / STOP. Do not make the owner choose routine engineering details or repeat context.
+
+
 ## Cross-agent context contract
 
 Read PROJECT_STATE.json as the repository's versioned engineering-state inventory, after reading the governing SOPHON_CHARTER.md. It inventories existing implemented-but-not-validated Jev, adversarial/backward review, library and deterministic reconciliation, records actual evidence limitations and names the active and held experiments. Do not propose any of these established mechanisms as novel architecture. Verify referenced PR and code before using it; draft-PR code may not be in this checkout. This same state is auto-injected in Claude Code by .claude/settings.json and mechanically checked in CI. For Codex/ChatGPT, read PROJECT_STATE.json explicitly—those products do not execute Claude Code hooks.
