@@ -5,6 +5,15 @@
 **Starting branch:** `prototype/normative-v02-candidate-intake-2026-10-12` (based on the V0 walking skeleton, PR #12).  
 **Destination:** code + executable demonstrations + regression tests + honest failure notes, committed on this branch, and a draft PR targeting `prototype/normative-layer-walking-skeleton-2026-10-12`. Do NOT merge.
 
+
+## OWNER-SOURCED EXTERNAL CORPUS — READ THIS FIRST (13 Oct 2026)
+
+The owner asked us to locate a **real public contract** and avoid repeating endless narrow tests. A genuine, independently authored corpus is now pinned at `prototype/normative_layer/V02_PUBLIC_SOURCE_GITHUB_SLA.md`. **Read that file in full before Step 1**. It selects GitHub's **actual published 2021 and June 2026 Online Services SLAs**, the official June 2026 change notice, and the governing general terms. The 2026 version applies to new and renewing customers from 1 June 2026; do not silently make it apply to all pre-existing contracts. Start with this corpus rather than browsing for a simpler one; record an access blocker if it cannot be obtained. Cloudflare R2 in the original example below is now only a fallback. The dossier's worked cases are provisional arithmetic interpretation expectations, not independent judicial ground truth.
+
+**Hard iteration boundary:** Deliver ONE integrated end-to-end implementation iteration using this corpus, including first failure, two consumers, version applicability and an explicit gap report. Then provide a **CONTINUE / NARROW / STOP** recommendation for the *reusable normative-layer mechanism*. A failed boundary case must not trigger an open-ended chain of fixture repairs and new gates. Do not optimize a test until it passes. Do not claim general contractual competence from one document family.
+
+---
+
 ## Mission — preserve the actual goal
 
 Sophon is intended to become a **shared normative semantic layer**. A company's authoritative governing documents (contracts, financing agreements, supplier agreements, properly adopted policies, amendments, and ultimately applicable law) are the source of commitments. The layer helps different workers, agents, and existing systems reuse authorized, time-scoped operational meaning instead of reinterpreting the entire corpus independently. It must preserve ambiguity, missing facts, provenance, authority, and evidence. It must support **both** governing-source → operational implementation and implementation/change → governing-source reconciliation. This is an exploratory expansion beyond the owner-approved Charter's existing BI semantic-layer boundary, NOT an already ratified Charter revision.
@@ -15,7 +24,7 @@ Build vertically. Follow the path: **real source clause → extraction proposal 
 
 Read in full:
 - `SOPHON_CHARTER.md`, `CLAUDE.md`, `AGENTS.md`.
-- `prototype/normative_layer/README.md`, `ARCHITECTURE_DECISION.md`, `sophon_v0.py`, `demo.py`, `support_agent.py`, `billing_agent.py`, `test_sophon_v0.py`, and `V02_NEXT.md`.
+- `prototype/normative_layer/README.md`, `ARCHITECTURE_DECISION.md`, `sophon_v0.py`, `demo.py`, `support_agent.py`, `billing_agent.py`, `test_sophon_v0.py`, `V02_NEXT.md`, and `V02_PUBLIC_SOURCE_GITHUB_SLA.md`.
 - The actual limitations and results of V0 / PR #12, and the limitations/decision of E5 / PR #11.
 - Rulebook `xuanhuyle/rulebook`, in particular Part II's false-confidence risk of ex-ante formalization, Part III's field/predicate fidelity caveat, and Part IV's nine steps and proposed comparison in IV.12, if network access permits. If inaccessible, record the limitation; do not invent results.
 
