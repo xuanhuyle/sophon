@@ -121,6 +121,13 @@
     "Check branch ancestry and relevant open PRs; components listed on unmerged PRs are not necessarily present in the current checkout.",
     "Legal provenance, unknowns, known-at versus effective-at, adversarial counterexamples and independent audit are requirements, not add-ons.",
     "Do not assume user approval for paid calls, merger of draft PRs or charter changes.",
-    "Treat LLM agreement as triage, not independently validated semantic truth; minimize human labor without hiding correlated errors."
-  ]
+    "Treat LLM agreement as triage, not independently validated semantic truth; minimize human labor without hiding correlated errors.",
+    "Mandatory development process: read ENGINEERING_WORKFLOW.md; human proposes the problem (technical concepts are hypotheses), engineering agents own independent choice of design, challenge needless complexity, implement one bounded, testable increment and make KEEP/REVISE/STOP recommendation without making the owner referee routine implementation choices."
+  ],
+  "engineering_workflow": {
+    "path": "ENGINEERING_WORKFLOW.md",
+    "version": "1.0",
+    "status": "OWNER_REQUESTED_ENGINEERING_OPERATING_PROCEDURE",
+    "rule": "Owner owns problem/outcome/constraints and material decisions; engineering agents independently choose/challenge design and simplest alternatives; implement one small falsifiable increment, verify actual results, then KEEP/REVISE/STOP."
+  }
 }
