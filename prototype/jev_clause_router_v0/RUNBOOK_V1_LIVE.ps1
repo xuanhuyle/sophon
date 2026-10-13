@@ -12,6 +12,30 @@ $ErrorActionPreference = "Stop"
 Set-Location -Path $PSScriptRoot
 if ($env:CLAUDECODE) { throw "This shell is inside Claude Code. Open a new terminal and rerun." }
 
+# Load ignored repo-root .env if present. Prefer already-set process env variables.
+# Deliberately parse only these two key names as literal KEY=VALUE; never execute .env as code.
+$repoRoot = (Resolve-Path (Join-Path $PSScriptRoot "..\\..")).Path
+$dotenv = Join-Path $repoRoot ".env"
+if (Test-Path -LiteralPath $dotenv -PathType Leaf) {
+    foreach ($rawLine in [System.IO.File]::ReadAllLines($dotenv)) {
+        $line = $rawLine.Trim()
+        if (-not $line -or $line.StartsWith("#")) { continue }
+        $parts = $line -split "=", 2
+        if ($parts.Count -ne 2) { continue }
+        $key = $parts[0].Trim()
+        if ($key -notin @("TYPESAFE_API_KEY", "ANTHROPIC_API_KEY")) { continue }
+        $value = $parts[1].Trim()
+        if ($value.Length -ge 2 -and
+            (($value.StartsWith('"') -and $value.EndsWith('"')) -or
+             ($value.StartsWith("'") -and $value.EndsWith("'")))) {
+            $value = $value.Substring(1, $value.Length - 2)
+        }
+        if ($value -and -not [Environment]::GetEnvironmentVariable($key, "Process")) {
+            [Environment]::SetEnvironmentVariable($key, $value, "Process")
+        }
+    }
+}
+
 function Read-Secret([string] $Prompt) {
     $secure = Read-Host $Prompt -AsSecureString
     $bstr = [Runtime.InteropServices.Marshal]::SecureStringToBSTR($secure)
@@ -45,5 +69,6 @@ foreach ($pair in @(@("LAB", "clauses.json"), @("EXT", "external_github_sla_2021
 
 # 4. Mechanical A/B/C/D comparison against the frozen provisional matrix.
 python compare.py "live_runs/replay_LAB_$stamp.json" "live_runs/replay_EXT_$stamp.json" --json-out "live_runs/compare_$stamp.json" | Tee-Object -FilePath "live_runs/compare_$stamp.md"
-Write-Host "Done. Commit live_runs/*_$stamp.* unchanged, then fill in V1_LIVE_RESULTS.md section 'Live run'."
+if ($LASTEXITCODE -ne 0) { throw "A/B/C/D comparison failed. Inspect the run artifacts; do not treat this run as complete." }
+Write-Host "Done. Inspect live_runs/*_$stamp.* for secrets/sensitive data before any commit; then fill in V1_LIVE_RESULTS.md section 'Live run'."
 Remove-Item Env:TYPESAFE_API_KEY -ErrorAction SilentlyContinue
