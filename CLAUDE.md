@@ -4,9 +4,9 @@
 
 ## Product invariant — repeat before choosing an architecture
 
-**Sophon is a shared normative semantic layer for governing documents.** It makes authoritative contractual, regulatory and policy meaning **source-grounded, versioned, applicable, reusable and inspectable** for humans and AI agents, including consumers of existing BI semantic layers. **The BI semantic layer disambiguates data; Sophon disambiguates governing requirements.** Their alignment is crucial where they intersect, but BI is **not** a mandatory bottleneck for all normative requirements.
+**Sophon is a shared normative semantic layer for governing documents.** It makes authoritative contractual, regulatory and policy meaning **source-grounded, versioned, applicable, reusable and inspectable** for humans and AI agents, including consumers of existing BI semantic layers. **The BI semantic layer disambiguates data; Sophon disambiguates governing requirements.** Sophon's **first practical wedge is a contract-to-existing-BI-semantic-layer compliance checker**, reusing definitions data teams have already built and verifying their meaning and native execution. BI is not a universal bottleneck: agents doing non-data work must be able to retrieve the same governing context **directly**.
 
-Preserve **TRANSPOSE / TRACE / VERIFY / AUDIT**, authority and approval provenance, effective-time vs known-at chronology, explicit uncertainty and independent auditability. Sophon is **not** defined by any one consumer: it is not a contract classifier, legal workflow tool, agent configuration manager, BI-only compliance checker or new authorization gateway.
+Preserve **TRANSPOSE / TRACE / VERIFY / AUDIT**, authority and approval provenance, effective-time vs known-at chronology, explicit uncertainty and independent auditability. Sophon is **not** defined by any one consumer: it is not a contract classifier, legal workflow tool, agent configuration manager, **only** a BI compliance checker, or a new authorization gateway.
 
 Jev, LLMs and reviewers are **replaceable proposers/challengers**, not authorities or proof of correctness. A model explanation is not an audit trail. A clause classification is not a successful transposition. Repeatedly reinterpreting a contract in each agent is not a shared normative layer.
 
@@ -19,7 +19,7 @@ Before implementing or recommending substantial work, write briefly:
 4. What can actually be verified, the independent oracle/baseline if correctness is claimed, and what remains unresolved.
 5. Which prior result this builds on and why it does **not** change the product thesis.
 
-**Do not default to BI-only integration, agent-only wiring, or an elaborate legal workflow because the latest experiment involved one of them.** A small solo-founder implementation with one governed concept and two real consumers is preferable to speculative general infrastructure, but do not invent an integration or disguise a fixture as native execution.
+**Implementation priority for a solo founder:** one real existing BI semantic metric checked against one external contractual definition, a real amendment and a reverse metric change, source-linked evidence and reproducible checks. Add a minimal read-only direct governing-context query for non-BI consumers; do **not** build a generalized agent control plane or multi-agent integration first. **Do not assume that most enterprise agents consume data through BI**: verify which actual agents do. Do not replace genuine native BI semantics with synthetic YAML or SQL-only fixtures.
 
 ## Experiment and implementation integrity
 
