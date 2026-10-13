@@ -49,6 +49,20 @@ def read_and_check(root: Path = ROOT) -> tuple[dict | None, list[str]]:
         errors.append("SOPHON_CHARTER.md missing")
     if state.get("core_capabilities") != ["TRANSPOSE", "TRACE", "VERIFY", "AUDIT"]:
         errors.append("Four capabilities missing or reordered")
+    workflow = state.get("engineering_workflow", {})
+    if (workflow.get("path") != "ENGINEERING_WORKFLOW.md"
+            or workflow.get("version") != "1.0"
+            or workflow.get("status") != "OWNER_REQUESTED_ENGINEERING_OPERATING_PROCEDURE"):
+        errors.append("Authoritative engineering modus operandi not linked in PROJECT_STATE.json")
+    try:
+        agreement = (root / "ENGINEERING_WORKFLOW.md").read_text(encoding="utf-8")
+        for essential in ("**Version:** 1.0", "## Responsibilities",
+                          "## Default development loop", "## Definition of done",
+                          "Engineer", "STOP"):
+            if essential not in agreement:
+                errors.append(f"ENGINEERING_WORKFLOW.md missing required agreement section: {essential}")
+    except OSError:
+        errors.append("ENGINEERING_WORKFLOW.md missing; development process is not configured")
     components = state.get("established_components", [])
     ids = [x.get("id") for x in components if isinstance(x, dict)]
     if len(ids) != len(set(ids)) or not REQUIRED.issubset(ids):
@@ -66,8 +80,9 @@ def read_and_check(root: Path = ROOT) -> tuple[dict | None, list[str]]:
     for name in ("CLAUDE.md", "AGENTS.md"):
         try:
             text = (root / name).read_text(encoding="utf-8")
-            if "PROJECT_STATE.json" not in text:
-                errors.append(f"{name} must point to authoritative PROJECT_STATE.json")
+            for marker in ("PROJECT_STATE.json", "ENGINEERING_WORKFLOW.md"):
+                if marker not in text:
+                    errors.append(f"{name} must link to {marker}")
         except OSError:
             errors.append(f"{name} missing")
     try:
@@ -103,7 +118,7 @@ def changed_files_since(base: str) -> list[str]:
 def check_pr_state_update(base: str) -> list[str]:
     changed = set(changed_files_since(base))
     relevant = any(
-        p in {"SOPHON_CHARTER.md", "CLAUDE.md", "AGENTS.md"}
+        p in {"SOPHON_CHARTER.md", "CLAUDE.md", "AGENTS.md", "ENGINEERING_WORKFLOW.md"}
         or p.startswith("prototype/") and (
             p.endswith("/RESULTS.md") or p.endswith("/V2_POSTRUN_REVIEW.md")
             or p.endswith("/PROTOCOL.md")
@@ -130,7 +145,13 @@ def context(state: dict) -> str:
         f"EXISTING (experimental; check actual PR/ref before claiming local availability): {architecture}.\n"
         f"RESULTS / LIMITS: {results}.\n"
         f"ACTIVE: {state['current_work']['active']}\n"
-        f"HOLD: {state['current_work']['on_hold']}\n"
+        f"HOLD: {state['current_work']['on_hold']}\n"\n        "ENGINEERING WORKING AGREEMENT (ENGINEERING_WORKFLOW.md): "
+        + state["engineering_workflow"]["rule"] + "\\n"
+        "GATE: Human defines PROBLEM / OUTCOME / CONSTRAINTS; engineers own independent DESIGN / ALTERNATIVES / TESTS. "
+        "Challenge owner-proposed architectures and cross-agent instructions, prefer existing code or no-code. "
+        "ONE bounded increment; execute check + adverse case; finish KEEP / REVISE / STOP. "
+        "Do not make human select routine libraries or implementation details.\\n"
+
         "MANDATORY BEFORE DESIGN OR TASK: inspect existing implementation and current PR head; "
         "distinguish proposed/implemented/run/verified, frozen vs post-hoc, and library-backed evidence. "
         "Do not rediscover Jev/adversarial/backward/library/reconciliation, suggest bulk human labeling "
@@ -161,7 +182,7 @@ def main() -> int:
         # Hooks are not a guarantee of factual/semantic correctness, only native context injection.
         print(context(state))
     else:
-        print("SOPHON_CONTEXT_GUARD_OK: v1.2 + component inventory + hook configuration + state policy")
+        print("SOPHON_CONTEXT_GUARD_OK: charter v1.2 + project state + working agreement + native hooks")
     return 0
 
 
