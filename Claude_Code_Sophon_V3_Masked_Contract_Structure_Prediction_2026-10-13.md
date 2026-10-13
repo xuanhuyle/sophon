@@ -30,20 +30,36 @@ A missing high-probability section means **SEARCH/REVIEW**, never "the agreement
 
 Unlike next-token prediction, **presence / multi-label and dependency prediction should be the default**, with sequential next-section prediction as a secondary diagnostic, because agreements can reorder their sections.
 
-## 1. Mandatory entry gate: V2 actual run and repo safety
+## 1. Mandatory entry gate: V2 actual run — owner-confirmed screenshot, RAW EVIDENCE LOCAL
 
-1. Read `git status --short --branch`, current remote/head and any local uncommitted changes; do not reset, clean, force-push, stash or discard anything. Preserve the owner's ignored `.env`, original V1 `live_runs/` and V2 `live_runs/`.
-2. Establish whether the owner **actually ran V2 on Google**, using the original local `prototype/jev_library_transfer_v2/live_runs/` raw output/receipts, timestamps, hashes and V2 score. **As of drafting, V2 PR #16 reports `READY_NOT_RUN`, zero Google provider calls, although its offline implementation and tests have landed at `1151c0ff`.**
-3. If V2 remains `READY_NOT_RUN`, **do not start a new paid trial or elaborate V3 implementation**. Report `BLOCKED_PENDING_V2`, the runbook path and next exact command (below) and STOP. This prevents running a new hypothesis while the preceding transfer mechanism's basic evidence has not been collected. The task prompt remains saved in PR #17 for when the gate clears.
-4. V2 operator command, run in a **NEW PowerShell window outside Claude Code** with credentials locally provisioned:
-   ```powershell
-   cd C:\Claude\sophon\prototype\jev_library_transfer_v2
-   powershell -ExecutionPolicy Bypass -File .\RUNBOOK_V2_TRANSFER.ps1 -Reviewer anthropic
-   ```
-   The runbook prints model call counts, approximate pricing and requires the user to type YES; **do not** run it inside Claude Code or call APIs for the user from this task.
-5. Once V2 live evidence exists, inspect provider validity, COLD / WARM_LIBRARY / WARM_RAW / BLIND outcomes, V2 `score_condition` and corpus/protocol limitations. **Do not equate anchor+slot overlap with semantic correctness**, do not count HOLD as correct and do not rely on V1's stale committed `BLOCKED_NO_LIVE_RUN` report. Summarize V2 verdict in a short evidence note: `OBSERVED / INFERRED / ASSUMED`, genuine calls, output validity, material slots/values checked and human-adjudication status. If this review reveals a fatal input contamination or scoring blocker, log it and STOP before extending the model.
+**Update at 2026-10-13 after the first prompt was saved:** The owner has now **run the V2 Google provider experiment**, shared a screenshot of its live/replay/score terminal output, and authorized the quoted call ceiling. The public PR #16 is **still at implementation head `1151c0f` and its committed result report still says `READY_NOT_RUN`** because the runbook left live artifacts local and did not update the repo. **Do not mistake that stale committed status for no live run.**
 
-**V2 outcome does not need to show Jev wins for this predictor idea to be worth testing**: predicting expected contractual structure is a distinct falsifiable mechanism. But proceed only after V2 evidence has been honestly processed.
+**OWNER SCREENSHOT — provisional machine report, NOT independently reviewed raw evidence:**
+
+- Recording shown: `prototype/jev_library_transfer_v2/live_runs/live_V2_20261013T130630Z.json`, locally ignored. Replayed/scored output tagged `GOOGLE-GCS-SLA-20210624-EXT-3`, `REPLAY_OF_RECORDED_PROVIDER_OUTPUTS`.
+- **30 logical provider calls**, **30 HTTP attempts**, **0 failed calls**; 9 Jev + 21 Claude `claude-opus-5-5` (as reported by operator screenshot). No new Contract A calls. Screenshot estimated Claude spend ~$0.82, not an exact invoice.
+- Frozen B checklist: 36 provisional, **agent-authored** material elements across B1 (9), B2 (13), B3 (14). The automated `score_condition` credits quote/anchor overlap and acceptable slot labels, not independently verified semantically correct interpretation.
+- **COLD_B:** B1 9/9, B2 12/13, B3 14/14 = **35/36**.
+- **WARM_LIBRARY_B:** B1 9/9, B2 11/13, B3 14/14 = **34/36**.
+- **WARM_RAW_A_B:** B1 9/9, B2 13/13, B3 14/14 = **36/36**.
+- **BLIND_LLM_B:** B1 9/9, B2 12/13, B3 14/14 = **35/36**.
+- **All 12 condition/packet decisions = `HOLD_UNRESOLVED`**, including those with full apparent slot coverage. Machine-reported critical wrong transfers = 0, but this is not independent evidence that no critical false interpretation exists.
+- **The preregistered `PROMISING_TRANSFER` rule did not pass**: warm vs cold was -1 of 36 elements (-2.8 percentage points); no warm-only gains vs cold or raw; the inexpensive blind LLM was at least as good on that proxy.
+- **Critical test-geometry lesson:** cold starts at 35/36; its maximum possible improvement is **1/36 = 2.8 pp**. Therefore a required 20-percentage-point gain was mathematically impossible on the realized baseline. The tiny dataset had a ceiling effect. This is **not evidence that context-conditioned next-section/next-provision prediction fails**, because V2 did not test that question.
+
+**What Claude Code must do FIRST, without rerunning providers:**
+
+1. `git status --short --branch`, inspect ignored local evidence, and ensure no local changes or keys are touched. Read this updated prompt, Charter v1.2 PR #15, V2 PR #16 and the older deferred V3 design.
+2. **Verify from the actual original local files**, not just this note, the SHA receipts, source hashes, model IDs, provider provenance, 30-call count, replay determinism, duplicate/partial output checks, and B1/B2/B3 COLD/WARM/RAW/BLIND per-element score. If the original local artifacts are missing or tampered with, record `BLOCKED_LOCAL_V2_EVIDENCE` and stop; do not regenerate a provider response or claim the screenshot proves exact semantic outcomes.
+3. Preserve original `V2_TRANSFER_RESULTS.md` as historical readiness evidence in the V2 branch; on this V3 branch produce an addendum `V2_POSTRUN_REVIEW.md` with screenshot vs verified-raw distinctions, provenance and a compact verified table. **Never commit the raw local recordings or secrets**.
+4. **Inspect why B2 underperforms warm**: identify which exact checklist facts/values the cold and raw arms included but warm missed; inspect template choice / Jev option-order flags and the two reviewers' source-grounded findings; test whether the failure is a library-template mismatch, Jev routing error, code reconciliation artifact or raw/review output normalization. Note that all 12 `HOLD_UNRESOLVED` dispositions make the candidate/hold outcome useless for distinguishing arms here.
+5. **Quality/adjudication gate:** Check a bounded sample of **at least 6 material facts** across B1–B3 including B2's missed fact(s), a real threshold/measurement-period/value, a critical exclusion/exception, and claim deadline; distinguish `QUOTE_ANCHORED` from `SEMANTICALLY_CORRECT` and `INDEPENDENT_HUMAN_REVIEWED`. This agent may perform a source-grounded preliminary audit but **must not pass off self-review as independent human adjudication**; identify exactly what human review remains and preserve existing frozen score without post-hoc adjustment.
+6. Record the scoped result **`NO_OBSERVED_INCREMENTAL_LIBRARY_VALUE_ON_V2_PROXY`**, not a global Jev/Sophon no-go. The favorable raw-A arm is a strong comparator but itself not legal correctness. Report input/output token and cost differences from real metadata, including the cheaper blind arm.
+7. **Proceed to the next masked-structure prediction pilot** only after those evidence/integrity checks pass. If V2 scoring proves unusable for semantic interpretation, explicitly note that limitation; the separate, strictly offline structural-prediction test can still proceed **provided its own heldout oracle, masking and baseline are credible**. Stop if local evidence integrity itself fails.
+
+**No additional V2 live calls. No new provider calls inside Claude Code.** The current PR #16 is draft/stacked; do not update or overwrite its original V2 artifacts without a separate user request.
+
+**The conditional-prediction experiment is now the next distinct mechanism to test**: can learned agreement-level context predict *which section/provision is likely*, rather than trying to improve a near-perfect quotation-matching baseline?
 
 ## 2. Prior art gate — limit to one page, don't build yet
 
@@ -94,10 +110,11 @@ Pre-register metrics *before* looking at heldout outcomes:
 1. Section-function **presence / retrieval**: top-1/top-3 hit rate on true masked section types and precision / false-alarm burden on suggested extra section types; macro summary by document family and heldout doc.
 2. Provision-structure **multi-label presence**: top-1/top-3 hit rate and ranking quality, including legitimate absence of common provision types. Don't force one exclusive primary type.
 3. Where enough decisions exist, **Brier score or log loss** on binary presence events for a fixed candidate universe, with smoothing and explicit abstention. With ~16 targets, report raw per-case scores and extreme uncertainty; avoid ungrounded calibration claims.
+   **Ceiling-effect guard informed by V2:** Use development/train documents only to check that the label vocabulary and target task are sufficiently discriminating; retain fixed top-k outputs, false expectations and a proper scoring rule. Do not use heldout results to redesign classes, targets or thresholds. If even GLOBAL_FREQ trivially hits nearly every heldout top-three, report `CEILING_EFFECT_UNINFORMATIVE` rather than claiming learned context is useless or adjusting the benchmark after seeing its outcomes.
 4. **Negative-control context test:** on a small fixed subset, replace the provided section family/function metadata with an explicit **wrong but plausible** label and check whether prior predictions become overconfident/irrecoverable; retain target text fully masked. This tests robustness of the *predictor*, not Jev's actual interpretation.
 5. Report costs, human labeling time, missing coverage, false expectations, wrong-law inferences, unknown-context backoffs and errors from incorrect agreement-section segmentation.
 
-**Provisional hurdle:** at least **3 additional correct top-3 masked targets across ≥2 different heldout documents** for FAMILY_SECTION over GLOBAL_FREQ, **without a substantial explosion in false expectations**, and at least one observable sensible backoff from incorrect/missing upstream metadata. This is an *illustrative feasibility gate*, not validated predictive performance. It must also compete reasonably with FAMILY-only: if family already explains the gain and sections add none, say so. If all laws are the same, **do not claim a law-layer benefit**. If no category distribution is meaningfully supported by the tiny training sample, record `INSUFFICIENT_DATA`, not a fabricated model success.
+**Provisional hurdle:** at least **3 additional correct top-3 masked targets across ≥2 different heldout documents** for FAMILY_SECTION over GLOBAL_FREQ, **without a substantial explosion in false expectations**, and at least one observable sensible backoff from incorrect/missing upstream metadata. This target is only meaningful if the GLOBAL_FREQ baseline has headroom: additionally report proper-score deltas and actual baseline rank changes, and never make a mathematically impossible success hurdle the sole decision rule. This is an *illustrative feasibility gate*, not validated predictive performance. It must also compete reasonably with FAMILY-only: if family already explains the gain and sections add none, say so. If all laws are the same, **do not claim a law-layer benefit**. If no category distribution is meaningfully supported by the tiny training sample, record `INSUFFICIENT_DATA`, not a fabricated model success.
 
 A positive result means **context priors contain some useful predictive signal**. It does NOT establish Jev extraction accuracy, learned transfer to interpretation, legal authority, missing-clause defect detection, independent model calibration, or value for downstream BI execution.
 
