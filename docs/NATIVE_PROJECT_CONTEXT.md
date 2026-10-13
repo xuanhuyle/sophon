@@ -37,3 +37,9 @@ To make the status check truly **merge-blocking**, the repository owner must add
 - Automated adversarial, backward and library reviewers are already implemented on historical experimental branches. Their semantic agreement is not independently validated and cannot completely replace independent human spot checking. Use them first for triage and focus the manual work on high-risk cases and a blinded agreement sample.
 - Snapshot recency is checked against committed content, *not live PR updates*: GitHub access may be blocked in the cloud. Refresh the state from the actual current PR heads before major decisions.
 - Changes here do not merge PR #15, #17 or #18. If the native-context PR (based on charter #15's head) is merged into main, PR #15's content is already included and #15 should be closed as superseded, not merged again.
+
+## Engineering modus operandi
+
+The versioned [ENGINEERING_WORKFLOW.md](../ENGINEERING_WORKFLOW.md) is a standing engineering agreement, distinct from the product charter. The owner defines problems and constraints, and ChatGPT/Claude Code own independent technical judgments and one observable increment at a time. CLAUDE.md and AGENTS.md reference it. The native hook injects a concise reminder at each prompt and CI checks that the agreement exists and stays linked. The effectiveness of this behavior must be tested with a fresh agent session; static CI cannot prove an agent will act independently.
+
+The GitHub file is the shared reference across sessions. ChatGPT conversations do not automatically execute Claude Code hooks: project-specific ChatGPT instructions should point here, and an assistant making a material Sophon recommendation must retrieve current repository state, workflow and evidence first.
