@@ -1,0 +1,1194 @@
+[
+  {
+    "corpus_id": "LAB-SLA-5",
+    "mode": "REPLAY_OF_RECORDED_PROVIDER_OUTPUTS",
+    "matrix_status": "PROVISIONAL_WORKING_REFERENCE_NOT_AN_INDEPENDENT_ORACLE",
+    "has_actual_provider_outputs": true,
+    "per_clause": [
+      {
+        "clause_id": "C1",
+        "provenance": {
+          "jev": "RECORDED_ACTUAL",
+          "adversarial": "RECORDED_ACTUAL",
+          "backward": "RECORDED_ACTUAL",
+          "blind": "RECORDED_ACTUAL"
+        },
+        "arms": {
+          "A_jev_only": {
+            "status": "RUN",
+            "provenance": "RECORDED_ACTUAL",
+            "disposition": "CANDIDATE_FOR_HUMAN_REVIEW",
+            "primary": "OBLIGATION",
+            "primary_acceptable": true,
+            "missed_required": [],
+            "unsupported": [],
+            "condition_anchor_hints": null,
+            "unresolved_refs": null,
+            "reasons": [
+              "No flagged contradiction; completeness and legal correctness NOT established"
+            ],
+            "human_adjudication": "PENDING"
+          },
+          "B_jev_adversarial": {
+            "status": "RUN",
+            "provenance": "RECORDED_ACTUAL",
+            "disposition": "HOLD_UNRESOLVED",
+            "primary": "OBLIGATION",
+            "primary_acceptable": true,
+            "missed_required": [],
+            "unsupported": [],
+            "condition_anchor_hints": {
+              "C1.M1": true,
+              "C1.M2": true
+            },
+            "unresolved_refs": [
+              "Clause 2",
+              "Monthly Availability"
+            ],
+            "reasons": [
+              "MISSING_DOCUMENT_OR_REFERENCE: Monthly Availability",
+              "REVIEW_SUPPORTED_WITH_GAPS_ADVERSARIAL"
+            ],
+            "human_adjudication": "PENDING"
+          },
+          "C_jev_adversarial_backward": {
+            "status": "RUN",
+            "provenance": "RECORDED_ACTUAL",
+            "disposition": "HOLD_UNRESOLVED",
+            "primary": "OBLIGATION",
+            "primary_acceptable": true,
+            "missed_required": [],
+            "unsupported": [],
+            "condition_anchor_hints": {
+              "C1.M1": true,
+              "C1.M2": true
+            },
+            "unresolved_refs": [
+              "Clause 2",
+              "Monthly Availability"
+            ],
+            "reasons": [
+              "MISSING_DOCUMENT_OR_REFERENCE: Monthly Availability",
+              "REVIEW_SUPPORTED_WITH_GAPS_ADVERSARIAL",
+              "REVIEW_SUPPORTED_WITH_GAPS_BACKWARD"
+            ],
+            "human_adjudication": "PENDING"
+          },
+          "D_blind_llm": {
+            "status": "RUN",
+            "disposition": "HOLD_UNRESOLVED",
+            "provenance": "RECORDED_ACTUAL",
+            "reasons": [
+              "BASELINE_INVALID: ValueError: invalid or unanchored baseline output"
+            ]
+          }
+        },
+        "reviewer_unique_findings": {
+          "adversarial_only": [],
+          "backward_only": [],
+          "both": []
+        }
+      },
+      {
+        "clause_id": "C2",
+        "provenance": {
+          "jev": "RECORDED_ACTUAL",
+          "adversarial": "RECORDED_ACTUAL",
+          "backward": "RECORDED_ACTUAL",
+          "blind": "RECORDED_ACTUAL"
+        },
+        "arms": {
+          "A_jev_only": {
+            "status": "RUN",
+            "provenance": "RECORDED_ACTUAL",
+            "disposition": "CANDIDATE_FOR_HUMAN_REVIEW",
+            "primary": "DEFINITION",
+            "primary_acceptable": true,
+            "missed_required": [],
+            "unsupported": [],
+            "condition_anchor_hints": null,
+            "unresolved_refs": null,
+            "reasons": [
+              "No flagged contradiction; completeness and legal correctness NOT established"
+            ],
+            "human_adjudication": "PENDING"
+          },
+          "B_jev_adversarial": {
+            "status": "RUN",
+            "provenance": "RECORDED_ACTUAL",
+            "disposition": "HOLD_UNRESOLVED",
+            "primary": "DEFINITION",
+            "primary_acceptable": true,
+            "missed_required": [],
+            "unsupported": [],
+            "condition_anchor_hints": {
+              "C2.M1": true,
+              "C2.M2": true,
+              "C2.M3": true
+            },
+            "unresolved_refs": [
+              "Scheduled Maintenance",
+              "Service"
+            ],
+            "reasons": [
+              "MISSING_DOCUMENT_OR_REFERENCE: Scheduled Maintenance",
+              "MISSING_DOCUMENT_OR_REFERENCE: Service",
+              "REVIEW_SUPPORTED_WITH_GAPS_ADVERSARIAL"
+            ],
+            "human_adjudication": "PENDING"
+          },
+          "C_jev_adversarial_backward": {
+            "status": "RUN",
+            "provenance": "RECORDED_ACTUAL",
+            "disposition": "HOLD_UNRESOLVED",
+            "primary": "DEFINITION",
+            "primary_acceptable": true,
+            "missed_required": [],
+            "unsupported": [],
+            "condition_anchor_hints": {
+              "C2.M1": true,
+              "C2.M2": true,
+              "C2.M3": true
+            },
+            "unresolved_refs": [
+              "Scheduled Maintenance",
+              "Service"
+            ],
+            "reasons": [
+              "MISSING_DOCUMENT_OR_REFERENCE: Scheduled Maintenance",
+              "MISSING_DOCUMENT_OR_REFERENCE: Service",
+              "REVIEW_SUPPORTED_WITH_GAPS_ADVERSARIAL",
+              "REVIEW_SUPPORTED_WITH_GAPS_BACKWARD"
+            ],
+            "human_adjudication": "PENDING"
+          },
+          "D_blind_llm": {
+            "status": "RUN",
+            "disposition": "HOLD_UNRESOLVED",
+            "provenance": "RECORDED_ACTUAL",
+            "reasons": [
+              "BASELINE_INVALID: ValueError: invalid or unanchored baseline output"
+            ]
+          }
+        },
+        "reviewer_unique_findings": {
+          "adversarial_only": [
+            "CROSS_REFERENCE"
+          ],
+          "backward_only": [],
+          "both": []
+        }
+      },
+      {
+        "clause_id": "C3",
+        "provenance": {
+          "jev": "RECORDED_ACTUAL",
+          "adversarial": "RECORDED_ACTUAL",
+          "backward": "RECORDED_ACTUAL",
+          "blind": "RECORDED_ACTUAL"
+        },
+        "arms": {
+          "A_jev_only": {
+            "status": "RUN",
+            "provenance": "RECORDED_ACTUAL",
+            "disposition": "CANDIDATE_FOR_HUMAN_REVIEW",
+            "primary": "PERMISSION_RIGHT",
+            "primary_acceptable": true,
+            "missed_required": [],
+            "unsupported": [
+              "EXCLUSION"
+            ],
+            "condition_anchor_hints": null,
+            "unresolved_refs": null,
+            "reasons": [
+              "No flagged contradiction; completeness and legal correctness NOT established"
+            ],
+            "human_adjudication": "PENDING"
+          },
+          "B_jev_adversarial": {
+            "status": "RUN",
+            "provenance": "RECORDED_ACTUAL",
+            "disposition": "HOLD_UNRESOLVED",
+            "primary": "PERMISSION_RIGHT",
+            "primary_acceptable": true,
+            "missed_required": [],
+            "unsupported": [
+              "EXCLUSION"
+            ],
+            "condition_anchor_hints": {
+              "C3.M1": true,
+              "C3.M2": true,
+              "C3.M3": true,
+              "C3.M4": true
+            },
+            "unresolved_refs": [
+              "Monthly Availability"
+            ],
+            "reasons": [
+              "MISSING_DOCUMENT_OR_REFERENCE: Monthly Availability",
+              "REVIEW_SUPPORTED_WITH_GAPS_ADVERSARIAL"
+            ],
+            "human_adjudication": "PENDING"
+          },
+          "C_jev_adversarial_backward": {
+            "status": "RUN",
+            "provenance": "RECORDED_ACTUAL",
+            "disposition": "HOLD_UNRESOLVED",
+            "primary": "PERMISSION_RIGHT",
+            "primary_acceptable": true,
+            "missed_required": [],
+            "unsupported": [
+              "EXCLUSION"
+            ],
+            "condition_anchor_hints": {
+              "C3.M1": true,
+              "C3.M2": true,
+              "C3.M3": true,
+              "C3.M4": true
+            },
+            "unresolved_refs": [
+              "Monthly Availability"
+            ],
+            "reasons": [
+              "MISSING_DOCUMENT_OR_REFERENCE: Monthly Availability",
+              "REVIEW_SUPPORTED_WITH_GAPS_ADVERSARIAL",
+              "REVIEW_SUPPORTED_WITH_GAPS_BACKWARD"
+            ],
+            "human_adjudication": "PENDING"
+          },
+          "D_blind_llm": {
+            "status": "RUN",
+            "disposition": "HOLD_UNRESOLVED",
+            "provenance": "RECORDED_ACTUAL",
+            "reasons": [
+              "BASELINE_INVALID: ValueError: invalid or unanchored baseline output"
+            ]
+          }
+        },
+        "reviewer_unique_findings": {
+          "adversarial_only": [],
+          "backward_only": [],
+          "both": []
+        }
+      },
+      {
+        "clause_id": "C4",
+        "provenance": {
+          "jev": "RECORDED_ACTUAL",
+          "adversarial": "RECORDED_ACTUAL",
+          "backward": "RECORDED_ACTUAL",
+          "blind": "RECORDED_ACTUAL"
+        },
+        "arms": {
+          "A_jev_only": {
+            "status": "RUN",
+            "provenance": "RECORDED_ACTUAL",
+            "disposition": "CANDIDATE_FOR_HUMAN_REVIEW",
+            "primary": "PROHIBITION",
+            "primary_acceptable": true,
+            "missed_required": [],
+            "unsupported": [
+              "DEADLINE"
+            ],
+            "condition_anchor_hints": null,
+            "unresolved_refs": null,
+            "reasons": [
+              "No flagged contradiction; completeness and legal correctness NOT established"
+            ],
+            "human_adjudication": "PENDING"
+          },
+          "B_jev_adversarial": {
+            "status": "RUN",
+            "provenance": "RECORDED_ACTUAL",
+            "disposition": "HOLD_UNRESOLVED",
+            "primary": "PROHIBITION",
+            "primary_acceptable": true,
+            "missed_required": [],
+            "unsupported": [
+              "DEADLINE"
+            ],
+            "condition_anchor_hints": {
+              "C4.M1": true,
+              "C4.M2": true,
+              "C4.M3": true
+            },
+            "unresolved_refs": [
+              "Schedule A"
+            ],
+            "reasons": [
+              "MISSING_DOCUMENT_OR_REFERENCE: Schedule A",
+              "REVIEW_SUPPORTED_WITH_GAPS_ADVERSARIAL"
+            ],
+            "human_adjudication": "PENDING"
+          },
+          "C_jev_adversarial_backward": {
+            "status": "RUN",
+            "provenance": "RECORDED_ACTUAL",
+            "disposition": "HOLD_UNRESOLVED",
+            "primary": "PROHIBITION",
+            "primary_acceptable": true,
+            "missed_required": [],
+            "unsupported": [
+              "DEADLINE"
+            ],
+            "condition_anchor_hints": {
+              "C4.M1": true,
+              "C4.M2": true,
+              "C4.M3": true
+            },
+            "unresolved_refs": [
+              "Schedule A"
+            ],
+            "reasons": [
+              "MISSING_DOCUMENT_OR_REFERENCE: Schedule A",
+              "REVIEW_SUPPORTED_WITH_GAPS_ADVERSARIAL",
+              "REVIEW_SUPPORTED_WITH_GAPS_BACKWARD"
+            ],
+            "human_adjudication": "PENDING"
+          },
+          "D_blind_llm": {
+            "status": "RUN",
+            "provenance": "RECORDED_ACTUAL",
+            "disposition": "HOLD_UNRESOLVED",
+            "primary": "PROHIBITION",
+            "primary_acceptable": true,
+            "missed_required": [],
+            "unsupported": [
+              "DEADLINE"
+            ],
+            "condition_anchor_hints": {
+              "C4.M1": true,
+              "C4.M2": true,
+              "C4.M3": true
+            },
+            "unresolved_refs": [
+              "Customer Data",
+              "Schedule A"
+            ],
+            "reasons": [
+              "MISSING_DOCUMENT_OR_REFERENCE: Customer Data",
+              "MISSING_DOCUMENT_OR_REFERENCE: Schedule A",
+              "BASELINE_REPORTS_INCOMPLETE_CONTEXT"
+            ],
+            "human_adjudication": "PENDING"
+          }
+        },
+        "reviewer_unique_findings": {
+          "adversarial_only": [],
+          "backward_only": [],
+          "both": []
+        }
+      },
+      {
+        "clause_id": "C5",
+        "provenance": {
+          "jev": "RECORDED_ACTUAL",
+          "adversarial": "RECORDED_ACTUAL",
+          "backward": "RECORDED_ACTUAL",
+          "blind": "RECORDED_ACTUAL"
+        },
+        "arms": {
+          "A_jev_only": {
+            "status": "RUN",
+            "provenance": "RECORDED_ACTUAL",
+            "disposition": "CANDIDATE_FOR_HUMAN_REVIEW",
+            "primary": "AUTHORITY",
+            "primary_acceptable": true,
+            "missed_required": [],
+            "unsupported": [
+              "EXCLUSION"
+            ],
+            "condition_anchor_hints": null,
+            "unresolved_refs": null,
+            "reasons": [
+              "No flagged contradiction; completeness and legal correctness NOT established"
+            ],
+            "human_adjudication": "PENDING"
+          },
+          "B_jev_adversarial": {
+            "status": "RUN",
+            "provenance": "RECORDED_ACTUAL",
+            "disposition": "HOLD_UNRESOLVED",
+            "primary": "AUTHORITY",
+            "primary_acceptable": true,
+            "missed_required": [],
+            "unsupported": [
+              "EXCLUSION"
+            ],
+            "condition_anchor_hints": {
+              "C5.M1": true,
+              "C5.M2": true,
+              "C5.M3": true
+            },
+            "unresolved_refs": [],
+            "reasons": [
+              "REVIEW_SUPPORTED_WITH_GAPS_ADVERSARIAL"
+            ],
+            "human_adjudication": "PENDING"
+          },
+          "C_jev_adversarial_backward": {
+            "status": "RUN",
+            "provenance": "RECORDED_ACTUAL",
+            "disposition": "HOLD_UNRESOLVED",
+            "primary": "AUTHORITY",
+            "primary_acceptable": true,
+            "missed_required": [],
+            "unsupported": [
+              "EXCLUSION"
+            ],
+            "condition_anchor_hints": {
+              "C5.M1": true,
+              "C5.M2": true,
+              "C5.M3": true
+            },
+            "unresolved_refs": [],
+            "reasons": [
+              "REVIEW_SUPPORTED_WITH_GAPS_ADVERSARIAL",
+              "REVIEW_SUPPORTED_WITH_GAPS_BACKWARD"
+            ],
+            "human_adjudication": "PENDING"
+          },
+          "D_blind_llm": {
+            "status": "RUN",
+            "disposition": "HOLD_UNRESOLVED",
+            "provenance": "RECORDED_ACTUAL",
+            "reasons": [
+              "BASELINE_INVALID: ValueError: invalid or unanchored baseline output"
+            ]
+          }
+        },
+        "reviewer_unique_findings": {
+          "adversarial_only": [
+            "DEADLINE"
+          ],
+          "backward_only": [],
+          "both": []
+        }
+      }
+    ],
+    "per_arm_totals": {
+      "A_jev_only": {
+        "run": 5,
+        "candidate": 5,
+        "hold": 0,
+        "not_run": 0,
+        "primary_acceptable": 5,
+        "missed_required": 0,
+        "unsupported": 3,
+        "candidate_with_missed_required": 0,
+        "hold_with_no_missed_required": 0
+      },
+      "B_jev_adversarial": {
+        "run": 5,
+        "candidate": 0,
+        "hold": 5,
+        "not_run": 0,
+        "primary_acceptable": 5,
+        "missed_required": 0,
+        "unsupported": 3,
+        "candidate_with_missed_required": 0,
+        "hold_with_no_missed_required": 5
+      },
+      "C_jev_adversarial_backward": {
+        "run": 5,
+        "candidate": 0,
+        "hold": 5,
+        "not_run": 0,
+        "primary_acceptable": 5,
+        "missed_required": 0,
+        "unsupported": 3,
+        "candidate_with_missed_required": 0,
+        "hold_with_no_missed_required": 5
+      },
+      "D_blind_llm": {
+        "run": 1,
+        "candidate": 0,
+        "hold": 5,
+        "not_run": 0,
+        "primary_acceptable": 1,
+        "missed_required": 0,
+        "unsupported": 1,
+        "candidate_with_missed_required": 0,
+        "hold_with_no_missed_required": 1
+      }
+    },
+    "overhead": {
+      "jev": {
+        "calls_attempted": 5,
+        "calls_ok": 5,
+        "input_tokens": 4351,
+        "output_tokens": 1232,
+        "latency_ms": 1500,
+        "reported_cost_usd": 0.0,
+        "models_reported": [
+          "jev-1.13.0"
+        ]
+      },
+      "adversarial": {
+        "calls_attempted": 5,
+        "calls_ok": 5,
+        "input_tokens": 3416,
+        "output_tokens": 4382,
+        "latency_ms": 48343,
+        "reported_cost_usd": 0.0,
+        "models_reported": [
+          "claude-opus-5-5"
+        ]
+      },
+      "backward": {
+        "calls_attempted": 5,
+        "calls_ok": 5,
+        "input_tokens": 3391,
+        "output_tokens": 4457,
+        "latency_ms": 44702,
+        "reported_cost_usd": 0.0,
+        "models_reported": [
+          "claude-opus-5-5"
+        ]
+      },
+      "blind": {
+        "calls_attempted": 5,
+        "calls_ok": 5,
+        "input_tokens": 3492,
+        "output_tokens": 4704,
+        "latency_ms": 49033,
+        "reported_cost_usd": 0.0,
+        "models_reported": [
+          "claude-opus-5-5"
+        ]
+      }
+    },
+    "caution": "5 clauses per corpus: report counts, not rates. Matrix is provisional and not independent."
+  },
+  {
+    "corpus_id": "GITHUB-SLA-EXT-5",
+    "mode": "REPLAY_OF_RECORDED_PROVIDER_OUTPUTS",
+    "matrix_status": "PROVISIONAL_WORKING_REFERENCE_NOT_AN_INDEPENDENT_ORACLE",
+    "has_actual_provider_outputs": true,
+    "per_clause": [
+      {
+        "clause_id": "G1",
+        "provenance": {
+          "jev": "RECORDED_ACTUAL",
+          "adversarial": "RECORDED_ACTUAL",
+          "backward": "RECORDED_ACTUAL",
+          "blind": "RECORDED_ACTUAL"
+        },
+        "arms": {
+          "A_jev_only": {
+            "status": "RUN",
+            "provenance": "RECORDED_ACTUAL",
+            "disposition": "HOLD_UNRESOLVED",
+            "primary": "PERMISSION_RIGHT",
+            "primary_acceptable": true,
+            "missed_required": [],
+            "unsupported": [],
+            "condition_anchor_hints": null,
+            "unresolved_refs": null,
+            "reasons": [
+              "JEV_OPTION_ORDER_SENSITIVE: PERMISSION_RIGHT vs reversed DEFINITION",
+              "UNCERTAIN_PRIMARY"
+            ],
+            "human_adjudication": "PENDING"
+          },
+          "B_jev_adversarial": {
+            "status": "RUN",
+            "provenance": "RECORDED_ACTUAL",
+            "disposition": "HOLD_UNRESOLVED",
+            "primary": "PERMISSION_RIGHT",
+            "primary_acceptable": true,
+            "missed_required": [],
+            "unsupported": [],
+            "condition_anchor_hints": {
+              "G1.M1": true,
+              "G1.M2": true,
+              "G1.M3": true,
+              "G1.M4": true
+            },
+            "unresolved_refs": [
+              "Service Feature",
+              "Uptime"
+            ],
+            "reasons": [
+              "JEV_OPTION_ORDER_SENSITIVE: PERMISSION_RIGHT vs reversed DEFINITION",
+              "UNCERTAIN_PRIMARY",
+              "MISSING_DOCUMENT_OR_REFERENCE: Service Feature",
+              "MISSING_DOCUMENT_OR_REFERENCE: Uptime",
+              "REVIEW_SUPPORTED_WITH_GAPS_ADVERSARIAL"
+            ],
+            "human_adjudication": "PENDING"
+          },
+          "C_jev_adversarial_backward": {
+            "status": "RUN",
+            "provenance": "RECORDED_ACTUAL",
+            "disposition": "HOLD_UNRESOLVED",
+            "primary": "PERMISSION_RIGHT",
+            "primary_acceptable": true,
+            "missed_required": [],
+            "unsupported": [],
+            "condition_anchor_hints": {
+              "G1.M1": true,
+              "G1.M2": true,
+              "G1.M3": true,
+              "G1.M4": true
+            },
+            "unresolved_refs": [
+              "Customer",
+              "Service Credits",
+              "Service Feature",
+              "Uptime"
+            ],
+            "reasons": [
+              "JEV_OPTION_ORDER_SENSITIVE: PERMISSION_RIGHT vs reversed DEFINITION",
+              "UNCERTAIN_PRIMARY",
+              "MISSING_DOCUMENT_OR_REFERENCE: Service Feature",
+              "MISSING_DOCUMENT_OR_REFERENCE: Uptime",
+              "REVIEW_SUPPORTED_WITH_GAPS_ADVERSARIAL",
+              "MISSING_DOCUMENT_OR_REFERENCE: Customer",
+              "MISSING_DOCUMENT_OR_REFERENCE: Service Credits",
+              "REVIEW_SUPPORTED_WITH_GAPS_BACKWARD"
+            ],
+            "human_adjudication": "PENDING"
+          },
+          "D_blind_llm": {
+            "status": "RUN",
+            "disposition": "HOLD_UNRESOLVED",
+            "provenance": "RECORDED_ACTUAL",
+            "reasons": [
+              "BASELINE_INVALID: ValueError: invalid or unanchored baseline output"
+            ]
+          }
+        },
+        "reviewer_unique_findings": {
+          "adversarial_only": [],
+          "backward_only": [],
+          "both": []
+        }
+      },
+      {
+        "clause_id": "G2",
+        "provenance": {
+          "jev": "RECORDED_ACTUAL",
+          "adversarial": "RECORDED_ACTUAL",
+          "backward": "RECORDED_ACTUAL",
+          "blind": "RECORDED_ACTUAL"
+        },
+        "arms": {
+          "A_jev_only": {
+            "status": "RUN",
+            "provenance": "RECORDED_ACTUAL",
+            "disposition": "CANDIDATE_FOR_HUMAN_REVIEW",
+            "primary": "DEFINITION",
+            "primary_acceptable": true,
+            "missed_required": [],
+            "unsupported": [
+              "DEADLINE"
+            ],
+            "condition_anchor_hints": null,
+            "unresolved_refs": null,
+            "reasons": [
+              "No flagged contradiction; completeness and legal correctness NOT established"
+            ],
+            "human_adjudication": "PENDING"
+          },
+          "B_jev_adversarial": {
+            "status": "RUN",
+            "provenance": "RECORDED_ACTUAL",
+            "disposition": "HOLD_UNRESOLVED",
+            "primary": "DEFINITION",
+            "primary_acceptable": true,
+            "missed_required": [],
+            "unsupported": [
+              "DEADLINE"
+            ],
+            "condition_anchor_hints": {
+              "G2.M1": true,
+              "G2.M2": true,
+              "G2.M3": true
+            },
+            "unresolved_refs": [
+              "GitHub\u2019s internal and external monitoring systems",
+              "Service",
+              "Service Feature"
+            ],
+            "reasons": [
+              "MISSING_DOCUMENT_OR_REFERENCE: GitHub\u2019s internal and external monitoring systems",
+              "MISSING_DOCUMENT_OR_REFERENCE: Service",
+              "MISSING_DOCUMENT_OR_REFERENCE: Service Feature",
+              "REVIEW_SUPPORTED_WITH_GAPS_ADVERSARIAL"
+            ],
+            "human_adjudication": "PENDING"
+          },
+          "C_jev_adversarial_backward": {
+            "status": "RUN",
+            "provenance": "RECORDED_ACTUAL",
+            "disposition": "HOLD_UNRESOLVED",
+            "primary": "DEFINITION",
+            "primary_acceptable": true,
+            "missed_required": [],
+            "unsupported": [
+              "DEADLINE"
+            ],
+            "condition_anchor_hints": {
+              "G2.M1": true,
+              "G2.M2": true,
+              "G2.M3": true
+            },
+            "unresolved_refs": [
+              "GitHub\u2019s internal and external monitoring systems",
+              "Service",
+              "Service Feature"
+            ],
+            "reasons": [
+              "MISSING_DOCUMENT_OR_REFERENCE: GitHub\u2019s internal and external monitoring systems",
+              "MISSING_DOCUMENT_OR_REFERENCE: Service",
+              "MISSING_DOCUMENT_OR_REFERENCE: Service Feature",
+              "REVIEW_SUPPORTED_WITH_GAPS_ADVERSARIAL",
+              "REVIEW_SUPPORTED_WITH_GAPS_BACKWARD"
+            ],
+            "human_adjudication": "PENDING"
+          },
+          "D_blind_llm": {
+            "status": "RUN",
+            "disposition": "HOLD_UNRESOLVED",
+            "provenance": "RECORDED_ACTUAL",
+            "reasons": [
+              "BASELINE_INVALID: ValueError: invalid or unanchored baseline output"
+            ]
+          }
+        },
+        "reviewer_unique_findings": {
+          "adversarial_only": [],
+          "backward_only": [],
+          "both": []
+        }
+      },
+      {
+        "clause_id": "G3",
+        "provenance": {
+          "jev": "RECORDED_ACTUAL",
+          "adversarial": "RECORDED_ACTUAL",
+          "backward": "RECORDED_ACTUAL",
+          "blind": "RECORDED_ACTUAL"
+        },
+        "arms": {
+          "A_jev_only": {
+            "status": "RUN",
+            "provenance": "RECORDED_ACTUAL",
+            "disposition": "CANDIDATE_FOR_HUMAN_REVIEW",
+            "primary": "DEFINITION",
+            "primary_acceptable": true,
+            "missed_required": [],
+            "unsupported": [],
+            "condition_anchor_hints": null,
+            "unresolved_refs": null,
+            "reasons": [
+              "No flagged contradiction; completeness and legal correctness NOT established"
+            ],
+            "human_adjudication": "PENDING"
+          },
+          "B_jev_adversarial": {
+            "status": "RUN",
+            "provenance": "RECORDED_ACTUAL",
+            "disposition": "HOLD_UNRESOLVED",
+            "primary": "DEFINITION",
+            "primary_acceptable": true,
+            "missed_required": [],
+            "unsupported": [],
+            "condition_anchor_hints": {
+              "G3.M1": true,
+              "G3.M2": false,
+              "G3.M3": true,
+              "G3.M4": true,
+              "G3.M5": true
+            },
+            "unresolved_refs": [
+              "Uptime Calculation",
+              "force majeure events",
+              "the Agreement"
+            ],
+            "reasons": [
+              "MISSING_DOCUMENT_OR_REFERENCE: Uptime Calculation",
+              "MISSING_DOCUMENT_OR_REFERENCE: force majeure events",
+              "MISSING_DOCUMENT_OR_REFERENCE: the Agreement",
+              "REVIEW_SUPPORTED_WITH_GAPS_ADVERSARIAL"
+            ],
+            "human_adjudication": "PENDING"
+          },
+          "C_jev_adversarial_backward": {
+            "status": "RUN",
+            "provenance": "RECORDED_ACTUAL",
+            "disposition": "HOLD_UNRESOLVED",
+            "primary": "DEFINITION",
+            "primary_acceptable": true,
+            "missed_required": [],
+            "unsupported": [],
+            "condition_anchor_hints": {
+              "G3.M1": true,
+              "G3.M2": true,
+              "G3.M3": true,
+              "G3.M4": true,
+              "G3.M5": true
+            },
+            "unresolved_refs": [
+              "Uptime Calculation",
+              "force majeure events",
+              "the Agreement"
+            ],
+            "reasons": [
+              "MISSING_DOCUMENT_OR_REFERENCE: Uptime Calculation",
+              "MISSING_DOCUMENT_OR_REFERENCE: force majeure events",
+              "MISSING_DOCUMENT_OR_REFERENCE: the Agreement",
+              "REVIEW_SUPPORTED_WITH_GAPS_ADVERSARIAL",
+              "REVIEW_SUPPORTED_WITH_GAPS_BACKWARD"
+            ],
+            "human_adjudication": "PENDING"
+          },
+          "D_blind_llm": {
+            "status": "RUN",
+            "disposition": "HOLD_UNRESOLVED",
+            "provenance": "RECORDED_ACTUAL",
+            "reasons": [
+              "BASELINE_INVALID: ValueError: invalid or unanchored baseline output"
+            ]
+          }
+        },
+        "reviewer_unique_findings": {
+          "adversarial_only": [],
+          "backward_only": [],
+          "both": []
+        }
+      },
+      {
+        "clause_id": "G4",
+        "provenance": {
+          "jev": "RECORDED_ACTUAL",
+          "adversarial": "RECORDED_ACTUAL",
+          "backward": "RECORDED_ACTUAL",
+          "blind": "RECORDED_ACTUAL"
+        },
+        "arms": {
+          "A_jev_only": {
+            "status": "RUN",
+            "provenance": "RECORDED_ACTUAL",
+            "disposition": "CANDIDATE_FOR_HUMAN_REVIEW",
+            "primary": "PERMISSION_RIGHT",
+            "primary_acceptable": true,
+            "missed_required": [],
+            "unsupported": [],
+            "condition_anchor_hints": null,
+            "unresolved_refs": null,
+            "reasons": [
+              "No flagged contradiction; completeness and legal correctness NOT established"
+            ],
+            "human_adjudication": "PENDING"
+          },
+          "B_jev_adversarial": {
+            "status": "RUN",
+            "provenance": "RECORDED_ACTUAL",
+            "disposition": "HOLD_UNRESOLVED",
+            "primary": "PERMISSION_RIGHT",
+            "primary_acceptable": true,
+            "missed_required": [],
+            "unsupported": [],
+            "condition_anchor_hints": {
+              "G4.M1": true,
+              "G4.M2": true,
+              "G4.M3": true,
+              "G4.M4": true,
+              "G4.M5": true,
+              "G4.M6": true,
+              "G4.M7": true,
+              "G4.M8": true
+            },
+            "unresolved_refs": [
+              "Customer\u2019s agreement with GitHub",
+              "GitHub Enterprise Cloud custom monthly or quarterly reports",
+              "GitHub Support",
+              "this SLA"
+            ],
+            "reasons": [
+              "MISSING_DOCUMENT_OR_REFERENCE: Customer\u2019s agreement with GitHub",
+              "MISSING_DOCUMENT_OR_REFERENCE: GitHub Enterprise Cloud custom monthly or quarterly reports",
+              "MISSING_DOCUMENT_OR_REFERENCE: GitHub Support",
+              "MISSING_DOCUMENT_OR_REFERENCE: this SLA",
+              "REVIEW_SUPPORTED_WITH_GAPS_ADVERSARIAL"
+            ],
+            "human_adjudication": "PENDING"
+          },
+          "C_jev_adversarial_backward": {
+            "status": "RUN",
+            "provenance": "RECORDED_ACTUAL",
+            "disposition": "HOLD_UNRESOLVED",
+            "primary": "PERMISSION_RIGHT",
+            "primary_acceptable": true,
+            "missed_required": [],
+            "unsupported": [],
+            "condition_anchor_hints": {
+              "G4.M1": true,
+              "G4.M2": true,
+              "G4.M3": true,
+              "G4.M4": true,
+              "G4.M5": true,
+              "G4.M6": true,
+              "G4.M7": true,
+              "G4.M8": true
+            },
+            "unresolved_refs": [
+              "Customer\u2019s agreement with GitHub",
+              "GitHub Enterprise Cloud custom monthly or quarterly reports",
+              "GitHub Support",
+              "this SLA"
+            ],
+            "reasons": [
+              "MISSING_DOCUMENT_OR_REFERENCE: Customer\u2019s agreement with GitHub",
+              "MISSING_DOCUMENT_OR_REFERENCE: GitHub Enterprise Cloud custom monthly or quarterly reports",
+              "MISSING_DOCUMENT_OR_REFERENCE: GitHub Support",
+              "MISSING_DOCUMENT_OR_REFERENCE: this SLA",
+              "REVIEW_SUPPORTED_WITH_GAPS_ADVERSARIAL",
+              "REVIEW_SUPPORTED_WITH_GAPS_BACKWARD"
+            ],
+            "human_adjudication": "PENDING"
+          },
+          "D_blind_llm": {
+            "status": "RUN",
+            "provenance": "RECORDED_ACTUAL",
+            "disposition": "HOLD_UNRESOLVED",
+            "primary": "PERMISSION_RIGHT",
+            "primary_acceptable": true,
+            "missed_required": [],
+            "unsupported": [],
+            "condition_anchor_hints": {
+              "G4.M1": true,
+              "G4.M2": true,
+              "G4.M3": true,
+              "G4.M4": true,
+              "G4.M5": true,
+              "G4.M6": true,
+              "G4.M7": true,
+              "G4.M8": true
+            },
+            "unresolved_refs": [
+              "Customer\u2019s agreement with GitHub",
+              "Service Credits",
+              "this SLA"
+            ],
+            "reasons": [
+              "MISSING_DOCUMENT_OR_REFERENCE: Customer\u2019s agreement with GitHub",
+              "MISSING_DOCUMENT_OR_REFERENCE: Service Credits",
+              "MISSING_DOCUMENT_OR_REFERENCE: this SLA",
+              "BASELINE_REPORTS_INCOMPLETE_CONTEXT"
+            ],
+            "human_adjudication": "PENDING"
+          }
+        },
+        "reviewer_unique_findings": {
+          "adversarial_only": [],
+          "backward_only": [],
+          "both": []
+        }
+      },
+      {
+        "clause_id": "G5",
+        "provenance": {
+          "jev": "RECORDED_ACTUAL",
+          "adversarial": "RECORDED_ACTUAL",
+          "backward": "RECORDED_ACTUAL",
+          "blind": "RECORDED_ACTUAL"
+        },
+        "arms": {
+          "A_jev_only": {
+            "status": "RUN",
+            "provenance": "RECORDED_ACTUAL",
+            "disposition": "CANDIDATE_FOR_HUMAN_REVIEW",
+            "primary": "OTHER",
+            "primary_acceptable": true,
+            "missed_required": [],
+            "unsupported": [],
+            "condition_anchor_hints": null,
+            "unresolved_refs": null,
+            "reasons": [
+              "No flagged contradiction; completeness and legal correctness NOT established"
+            ],
+            "human_adjudication": "PENDING"
+          },
+          "B_jev_adversarial": {
+            "status": "RUN",
+            "provenance": "RECORDED_ACTUAL",
+            "disposition": "HOLD_UNRESOLVED",
+            "primary": "OTHER",
+            "primary_acceptable": true,
+            "missed_required": [],
+            "unsupported": [],
+            "condition_anchor_hints": {
+              "G5.M1": true,
+              "G5.M2": true,
+              "G5.M3": true
+            },
+            "unresolved_refs": [
+              "2021 GitHub SLA",
+              "June 2026 version of the GitHub SLA"
+            ],
+            "reasons": [
+              "MISSING_DOCUMENT_OR_REFERENCE: 2021 GitHub SLA",
+              "MISSING_DOCUMENT_OR_REFERENCE: June 2026 version of the GitHub SLA",
+              "REVIEW_SUPPORTED_WITH_GAPS_ADVERSARIAL"
+            ],
+            "human_adjudication": "PENDING"
+          },
+          "C_jev_adversarial_backward": {
+            "status": "RUN",
+            "provenance": "RECORDED_ACTUAL",
+            "disposition": "HOLD_UNRESOLVED",
+            "primary": "OTHER",
+            "primary_acceptable": true,
+            "missed_required": [],
+            "unsupported": [],
+            "condition_anchor_hints": {
+              "G5.M1": true,
+              "G5.M2": true,
+              "G5.M3": true
+            },
+            "unresolved_refs": [
+              "2021 GitHub SLA",
+              "June 2026 version of the GitHub SLA",
+              "your agreement"
+            ],
+            "reasons": [
+              "MISSING_DOCUMENT_OR_REFERENCE: 2021 GitHub SLA",
+              "MISSING_DOCUMENT_OR_REFERENCE: June 2026 version of the GitHub SLA",
+              "REVIEW_SUPPORTED_WITH_GAPS_ADVERSARIAL",
+              "MISSING_DOCUMENT_OR_REFERENCE: your agreement",
+              "REVIEW_SUPPORTED_WITH_GAPS_BACKWARD"
+            ],
+            "human_adjudication": "PENDING"
+          },
+          "D_blind_llm": {
+            "status": "RUN",
+            "provenance": "RECORDED_ACTUAL",
+            "disposition": "HOLD_UNRESOLVED",
+            "primary": "OTHER",
+            "primary_acceptable": true,
+            "missed_required": [],
+            "unsupported": [],
+            "condition_anchor_hints": {
+              "G5.M1": true,
+              "G5.M2": true,
+              "G5.M3": true
+            },
+            "unresolved_refs": [
+              "2021 GitHub SLA",
+              "June 2026 version of the GitHub SLA",
+              "your agreement"
+            ],
+            "reasons": [
+              "MISSING_DOCUMENT_OR_REFERENCE: 2021 GitHub SLA",
+              "MISSING_DOCUMENT_OR_REFERENCE: June 2026 version of the GitHub SLA",
+              "MISSING_DOCUMENT_OR_REFERENCE: your agreement",
+              "BASELINE_REPORTS_INCOMPLETE_CONTEXT"
+            ],
+            "human_adjudication": "PENDING"
+          }
+        },
+        "reviewer_unique_findings": {
+          "adversarial_only": [],
+          "backward_only": [],
+          "both": []
+        }
+      }
+    ],
+    "per_arm_totals": {
+      "A_jev_only": {
+        "run": 5,
+        "candidate": 4,
+        "hold": 1,
+        "not_run": 0,
+        "primary_acceptable": 5,
+        "missed_required": 0,
+        "unsupported": 1,
+        "candidate_with_missed_required": 0,
+        "hold_with_no_missed_required": 1
+      },
+      "B_jev_adversarial": {
+        "run": 5,
+        "candidate": 0,
+        "hold": 5,
+        "not_run": 0,
+        "primary_acceptable": 5,
+        "missed_required": 0,
+        "unsupported": 1,
+        "candidate_with_missed_required": 0,
+        "hold_with_no_missed_required": 5
+      },
+      "C_jev_adversarial_backward": {
+        "run": 5,
+        "candidate": 0,
+        "hold": 5,
+        "not_run": 0,
+        "primary_acceptable": 5,
+        "missed_required": 0,
+        "unsupported": 1,
+        "candidate_with_missed_required": 0,
+        "hold_with_no_missed_required": 5
+      },
+      "D_blind_llm": {
+        "run": 2,
+        "candidate": 0,
+        "hold": 5,
+        "not_run": 0,
+        "primary_acceptable": 2,
+        "missed_required": 0,
+        "unsupported": 0,
+        "candidate_with_missed_required": 0,
+        "hold_with_no_missed_required": 2
+      }
+    },
+    "overhead": {
+      "jev": {
+        "calls_attempted": 5,
+        "calls_ok": 5,
+        "input_tokens": 5464,
+        "output_tokens": 1227,
+        "latency_ms": 1670,
+        "reported_cost_usd": 0.0,
+        "models_reported": [
+          "jev-1.13.0"
+        ]
+      },
+      "adversarial": {
+        "calls_attempted": 5,
+        "calls_ok": 5,
+        "input_tokens": 4995,
+        "output_tokens": 5731,
+        "latency_ms": 56876,
+        "reported_cost_usd": 0.0,
+        "models_reported": [
+          "claude-opus-5-5"
+        ]
+      },
+      "backward": {
+        "calls_attempted": 5,
+        "calls_ok": 5,
+        "input_tokens": 4970,
+        "output_tokens": 6197,
+        "latency_ms": 58500,
+        "reported_cost_usd": 0.0,
+        "models_reported": [
+          "claude-opus-5-5"
+        ]
+      },
+      "blind": {
+        "calls_attempted": 5,
+        "calls_ok": 5,
+        "input_tokens": 5022,
+        "output_tokens": 6768,
+        "latency_ms": 67266,
+        "reported_cost_usd": 0.0,
+        "models_reported": [
+          "claude-opus-5-5"
+        ]
+      }
+    },
+    "caution": "5 clauses per corpus: report counts, not rates. Matrix is provisional and not independent."
+  }
+]
