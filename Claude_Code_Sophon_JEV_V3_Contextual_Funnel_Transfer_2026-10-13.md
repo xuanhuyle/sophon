@@ -1,3 +1,7 @@
+> **DEFERRED — 13 October 2026.** This was the original broad V3 Jev-contextual-funnel design. The owner's newer, more fundamental hypothesis concerns **predicting the next likely agreement section/provision from learned contextual distributions**. **Execute [Claude_Code_Sophon_V3_Masked_Contract_Structure_Prediction_2026-10-13.md](Claude_Code_Sophon_V3_Masked_Contract_Structure_Prediction_2026-10-13.md) first**, after processing the actual V2 live results. Preserve this older V3 plan as historical rationale; do **not** execute it in parallel or incur its proposed 66-call budget without a new owner decision.
+
+---
+
 # Sophon / Jev V3 — Does a learned four-dimensional SOFT funnel reduce errors?
 
 **13 October 2026 — FOLLOW-ON TASK PROMPT; NOT EXECUTED.**
