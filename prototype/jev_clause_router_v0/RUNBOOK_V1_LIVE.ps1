@@ -6,7 +6,8 @@
 #   powershell -ExecutionPolicy Bypass -File .\RUNBOOK_V1_LIVE.ps1 -Reviewer claude-cli   # Claude subscription login, no API key
 param(
     [ValidateSet("anthropic", "claude-cli")] [string] $Reviewer = "anthropic",
-    [string] $Model = "claude-opus-5-5"
+    [string] $Model = "claude-opus-5-5",
+    [switch] $PreflightOnly
 )
 $ErrorActionPreference = "Stop"
 Set-Location -Path $PSScriptRoot
@@ -50,6 +51,11 @@ $models = @("--adversarial-model", $Model, "--backward-model", $Model, "--baseli
 # 1. Readiness check: no network calls, no secret values printed.
 python prototype.py --mode preflight --reviewer $Reviewer @models --clauses clauses.json --clauses external_github_sla_2021.json
 if ($LASTEXITCODE -ne 0) { throw "Preflight reported blockers; nothing was sent." }
+
+if ($PreflightOnly) {
+    Write-Host "Preflight successful; no provider calls made."
+    exit 0
+}
 
 # 2. Explicit authorization for the paid/quota calls.
 Write-Host "About to make 40 provider calls: 10 Jev (about USD 0.001) + 30 Claude ($Model; about USD 1.6 at API list price, or subscription quota via claude-cli)."
