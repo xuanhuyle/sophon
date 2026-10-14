@@ -1,5 +1,13 @@
 # Sophon PR #21 — smallest honest research-continuity safeguard
 
+> **STATUS: IMPLEMENTED ON PR #21 (not yet merged into main). DO NOT RE-EXECUTE THIS TASK.**
+> The existing context guard now validates the fixed classification + cumulative-library research target,
+> demands an `EXPERIMENT_ALIGNMENT.json` for new experiment directories, and rejects a direct-learning
+> claim scored only on heading/regex prediction. Regression: 27/27 tests passed in
+> [GitHub Actions run 38600392227](https://github.com/xuanhuyle/sophon/actions/runs/38600392227).
+> This validates declared scope, NOT model execution, independent legal truth, or semantic correctness.
+> Pending: owner review/merge and required-status-check branch protection.
+
 **Repository:** `xuanhuyle/sophon`  
 **Starting branch:** `guard/jev-lineage-continuity-2026-10-14` (existing draft PR #21)  
 **Expected HEAD:** use the latest verified commit on existing PR #21; do not create another PR or merge.  
