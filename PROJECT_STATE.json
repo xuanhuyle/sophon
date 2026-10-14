@@ -4,7 +4,7 @@
   "charter": {
     "path": "SOPHON_CHARTER.md",
     "version": "1.2",
-    "origin": "Owner-approved clarification drafted in PR #15; included in this branch; not yet merged to main."
+    "origin": "Owner-approved clarification drafted in PR #15; merged to main via PR #19 (squash eaf0c91, 2026-10-14). PR #15 closed as superseded."
   },
   "identity": "Sophon is an organizational normative semantic layer: shared, source-grounded, versioned governing meaning, complementary to existing BI/data semantics and directly queryable by non-BI agents/humans.",
   "product_wedge": "First integration wedge: independently check governing contract meaning against pre-existing, native BI semantic definitions; do not rebuild the data semantic layer.",
@@ -210,9 +210,9 @@
     "exclusions": "Do not mistake the solo-founder scenario for authorization to implement contract-to-agent configuration/propagation now. Do not substitute E0-E5 feasibility, commercial interviews, or another narrow lab demo for a discriminating cumulative-learning test. EDGAR-only transformer and autonomous machine-to-machine contracting are related exploratory ideas, not automatically Sophon roadmap commitments.",
     "engineering_discretion": "Engineer independently choose no-code analysis, reuse or a single smallest falsifiable experiment; do not assume V3's 78-item manual adjudication must be completed first. Do not initiate paid calls or code solely from this priority statement."
   },
-  "inventory_rules": "location: MAIN (on main and therefore here), THIS_BRANCH (added by this branch), OTHER_PR (only on an unmerged PR branch; NOT in this checkout). status: SPECIFIED_ONLY < PREPARED_NOT_RUN < IMPLEMENTED_NOT_RUN < IMPLEMENTED_AND_RUN < VERIFIED_WITHIN_SCOPE (preregistered checks passed within the stated lab scope). No status means semantically or legally validated. Verified against fetched PR heads on 2026-10-14; refresh pr_graph from live PRs before relying on it.",
+  "inventory_rules": "location: MAIN (on main and therefore here), THIS_BRANCH (added by the checked-out branch but not yet on main), OTHER_PR (only on an unmerged PR branch; NOT in this checkout). status: SPECIFIED_ONLY < PREPARED_NOT_RUN < IMPLEMENTED_NOT_RUN < IMPLEMENTED_AND_RUN < VERIFIED_WITHIN_SCOPE (preregistered checks passed within the stated lab scope). No status means semantically or legally validated. Verified against fetched PR heads on 2026-10-14; refresh pr_graph from live PRs before relying on it.",
   "pr_graph": {
-    "verified_at": "2026-10-14 from fetched branch heads; main head 1beb70a",
+    "verified_at": "2026-10-14 from fetched branch heads; main head eaf0c91 after the PR #19 squash merge",
     "dispositions": "DURABLE_BASELINE = belongs on main; SUPERSEDED = content included elsewhere; HISTORICAL_RESEARCH = immutable experiment record, reuse code by branching from it, do not merge wholesale; DEFERRED_HYPOTHESIS = specification only, unrun.",
     "prs": [
       {
@@ -273,11 +273,11 @@
       },
       {
         "pr": 15,
-        "state": "OPEN_DRAFT",
+        "state": "CLOSED_SUPERSEDED",
         "head": "f924267",
         "base": "main",
         "disposition": "SUPERSEDED",
-        "content": "charter v1.2; fully contained in #19"
+        "content": "charter v1.2; fully contained in #19; branch retained"
       },
       {
         "pr": 16,
@@ -305,11 +305,11 @@
       },
       {
         "pr": 19,
-        "state": "OPEN",
-        "head": "this branch",
+        "state": "MERGED",
+        "head": "74170cf (squash eaf0c91)",
         "base": "main",
         "disposition": "DURABLE_BASELINE",
-        "content": "charter v1.2 + workflow + this state + context guard; contains no prototype/experiment code"
+        "content": "charter v1.2 + workflow + this state + context guard; added no prototype/experiment code to main"
       }
     ]
   }
