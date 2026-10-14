@@ -2,7 +2,13 @@
 
 **Date:** 2026-10-14
 **Source of truth:** `main` at `f1d7688` (PR #21 merged); this task branch starts there.
-**Instruction to Claude Code:** independently challenge this task's assumptions. Prefer a smaller no-code answer if existing evidence settles feasibility. **Do not move to a next experiment automatically.**
+**Instruction to Claude Code:** independently challenge the engineering lead's recorded preflight in `RESEARCH_PREFLIGHT.md` before any code. Prefer a short no-code finding if the existing source evidence settles the question. **Do not move to a subsequent experiment automatically.**
+
+> **ENGINEERING LEAD PREFLIGHT NOW COMPLETED:** Read `RESEARCH_PREFLIGHT.md` at PR #22 HEAD before doing anything. Its scoped verdict is `BLOCKED_BY_NO_CLASSIFICATION_ORACLE_AND_HEADROOM` for a credible real-world accuracy claim on existing V1/V2 data. Do **not** reproduce that report as though it did not exist. Claude Code must *independently challenge* it against actual source/code and may produce a small, justified offline verification or a concise defect report, then STOP.
+>
+> **OWNER CONSTRAINT:** Sophon is **NOT trying to beat stronger LLMs**. We are testing whether a **fixed inexpensive model** develops narrow, auditable contractual expertise through accumulated source-linked library knowledge. The primary causal comparison is **the same frozen model and configuration** under COLD/FROZEN vs GROWING source-grounded library (optional RAW-PRECEDENT); stronger-model races are excluded from acceptance criteria.
+
+
 
 ## Independent engineering verdict — review BEFORE following this task
 
@@ -15,11 +21,11 @@
 4. **V2 did not measure what we claim:** its score was 35/36 cold, 34/36 warm, 36/36 raw on **slot/fact retrieval**, not normative-function classification; 12/12 had HOLD dispositions and a scorer failed to count real omitted-condition findings. The V2 warm/cold template menus also differed. There is no observed evidence that the library reduces true intrinsic classification errors.
 5. **Classification does not determine executable behavior by itself:** the same obligation label can mean deterministic formula, external event, subjective judgment, or unobservable data. The category is at most a first descriptor; later code-wise executability requires parties, object/action, preconditions, time, exceptions, references, observability and authority. Do NOT implement downstream executable routing now.
 
-**Required competent alternative:** compare the current Jev-based path with a **single existing LLM producing source-quoted structured normative functions + abstention** (and, where useful, a simple retrieval of prior source-backed cases). No Jev monopoly; no automatic need for 2–3 reviewer agents. Evaluate incremental error catch per extra reviewer against latency/cost and false holds. Prefer standard evidence/contradiction checking over a bespoke model or new DSL.
+**Required competent baseline:** **same fixed inexpensive model**, same decoding, same prompts/allowed evidence, and the same output normative-function inventory for FROZEN vs CUMULATIVE; optionally compare RAW-EXAMPLE memory to distinguish structure learning from simply retrieving precedent. A one-call source-quoting baseline using the **same model** is a cost/complexity control, NOT a competition with bigger/stronger LLMs. No Jev monopoly; no automatic 2–3 reviewer agents. Only retain extra checks that catch incremental errors per unit cost. Prefer standard evidence/contradiction checking over a bespoke model or DSL.
 
 **Independent measurement constraint:** the *best* available public legal benchmarks are not drop-in truth for our six normative-function labels. CUAD's expert labels describe topical clause types, and ContractNLI provides document-level entailment/contradiction/not-mentioned labels with supporting spans; they can provide existing source-rich examples or test subclaims but cannot be relabeled as our function-classification oracle. Metamorphic clause pairs (e.g. may↔must not, added exclusion) can test targeted invariance/changes but cannot certify real-world legal correctness. Without **any** independently validated semantic target (public expert labels when aligned, constrained verified examples, or a bounded one-time external review), claims about absolute accuracy or autonomous improvement are **BLOCKED**, not promising.
 
-**My recommended next incremental decision:** run the **OFFLINE HEADROOM/ORACLE preflight only** using existing V1/V2 authentic clauses and recorded outputs. Produce either (a) a small frozen, genuinely discriminating classification-error test with credible independent checking and a strong single-LLM baseline, or (b) `BLOCKED_BY_NO_CLASSIFICATION_ORACLE` and identify the smallest missing evidence. Do NOT build a third reviewer, issue provider calls, or assume a cumulative library has already been validated. If the smallest retrieval baseline suffices, **STOP architecture expansion**.
+**My recommended next incremental decision:** run the **OFFLINE HEADROOM/ORACLE preflight only** using existing V1/V2 authentic clauses and recorded outputs. Produce either (a) a small frozen, genuinely discriminating classification-error test with credible independent checking and a controlled same-fixed-inexpensive-model baseline, or (b) `BLOCKED_BY_NO_CLASSIFICATION_ORACLE` and identify the smallest missing evidence. Do NOT build a third reviewer, issue provider calls, or assume a cumulative library has already been validated. If the smallest retrieval baseline suffices, **STOP architecture expansion**.
 
 **Not a novelty claim:** these are engineering inferences based on inspected Sophon code/results and established legal NLP tasks (CUAD, ContractNLI), not a completed new experiment.
 
@@ -56,7 +62,7 @@ The test MUST have classification-error headroom. A benchmark on which a cold cl
 4. **Design ONE constant-proposal comparison** so that the only causal change is what the provisional library knows: no-library or frozen-library vs prior source-backed skeletons (and raw prior examples if useful). Control for different label inventories, different reviewer prompts, leakage of target material into the library, and chronology. Demonstrate what will count as an error avoided, a new error introduced, or justified abstention. **Preserve the option of using V1/V2 code, do not reinvent it.**
 5. Decide whether the test is **READY_FOR_A_LATER_SMALL_LIVE_PILOT** or **BLOCKED_BY_ORACLE_OR_HEADROOM**. If READY, freeze sources, examples, target relations, library versions, baseline, success/failure/inconclusive interpretation, next-call budget and any constraints on provenance. If BLOCKED, identify the exact missing information and recommend ONE low-cost remedy, such as a third genuinely held-out source with nontrivial category ambiguity. Do not invent labels to force READY.
 
-You may write ONE small offline fixture/checker for source hashes, controlled transformations, leakage/headroom diagnostics, and frozen protocol reproducibility if justified; otherwise report the no-code result. Avoid new architecture, a taxonomy DSL, new review agents, extensive synthetic corpora, or large harness frameworks. The source corpus is small and the authenticity/scope limits must be explicit.
+You may write ONE small offline fixture/checker for source hashes, controlled transformations, leakage/headroom diagnostics, and frozen protocol reproducibility if it resolves a specific preflight uncertainty; otherwise report the no-code result. Do not use a provider just to compare stronger LLMs. Avoid new architecture, a taxonomy DSL, new review agents, extensive synthetic corpora, or large harness frameworks. The source corpus is small and the authenticity/scope limits must be explicit.
 
 ## Mandatory mechanics
 
@@ -69,7 +75,7 @@ You may write ONE small offline fixture/checker for source hashes, controlled tr
 
 ### Acceptance criterion
 
-Produce a reviewable `RESEARCH_PREFLIGHT.md` on this branch with:
+Independently verify/challenge the existing `RESEARCH_PREFLIGHT.md` already committed to this branch; if defective, update it with grounded corrections, with:
 - a truthful V1/V2 reuse and provenance map;
 - one explicit classification-error/headroom evaluation proposal, or a specific BLOCKED verdict;
 - how source-grounded library content *would affect later classification* and how the comparison can detect errors in either direction;
