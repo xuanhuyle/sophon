@@ -187,9 +187,9 @@
     }
   ],
   "current_work": {
-    "active": "CURRENT TASK (PR #21): executable mechanism-continuity gate in the existing context guard/CI, not a new experiment. Research implementation lineage is V1 Jev classifier + independently invoked adversarial/backward + V2 evidence-linked skeleton library/reconciliation; the missing single increment is an independent library-based reviewer of Jev output within V2 (not started). No experiment or paid calls authorized.",
+    "active": "CURRENT TASK: enforce evidence-grounded continuity of research objective, actual call path and claims in existing context/CI guard (PR #21). Owner's Jev/reviewer/library architecture is a candidate, NOT a prescribed implementation. No new paid calls or experiment authorized.",
     "blocked": "Direct continuation on historical stacked PRs lacks the main-branch context guard; use a guarded clean branch from main and inspect historical refs, and stop when lineage cannot be verified.",
-    "on_hold": "V3 statistical heading predictor is a separate provisional hypothesis; V4 2024 EDGAR regex/statistical predictor ran under frozen protocol and STOPPED for its own textual-proxy task. Neither tested the Jev review loop. BI/full agent propagation/commercial validation/EDGAR transformer held.",
+    "on_hold": "V3/V4 statistical experiments remain separate and their results are valid only for their own proxies. The proposed third library reviewer is unimplemented and not automatically authorized as the next architecture. BI/full agent propagation/commercial validation/EDGAR transformer remain held.",
     "horizon": "Predict reusable normative provision structures, conditional on evidenced law, contract family, ToC/section and observed provisions; test cumulative, auditable contract-by-contract improvement, not superiority to a pretrained LLM."
   },
   "working_rules": [
@@ -201,7 +201,7 @@
     "Do not assume user approval for paid calls, merger of draft PRs or charter changes.",
     "Treat LLM agreement as triage, not independently validated semantic truth; minimize human labor without hiding correlated errors.",
     "Mandatory development process: read ENGINEERING_WORKFLOW.md; human proposes the problem (technical concepts are hypotheses), engineering agents own independent choice of design, challenge needless complexity, implement one bounded, testable increment and make KEEP/REVISE/STOP recommendation without making the owner referee routine implementation choices.",
-    "HARD CONTINUITY: for active Jev contractual-learning work, preserve the real Jev->adversarial+backward->library-review->source-anchored skeleton->reconciliation chain. A protocol that uses only heading or regex statistics is a separate mechanism, not the next Jev-loop increment. Require explicit mechanism coverage (planned vs ACTUALLY_EXECUTED) before accepting experiment claims."
+    "ENGINEERING AUTONOMY + HONEST LINEAGE: pin the research OUTCOME and the real V1/V2 reference implementation, not a mandatory multi-agent architecture. Before claiming a continuation, verify actual executed components and one explicitly reasoned method change; reject silent substitution (e.g., V4 regex run portrayed as Jev learning). Engineer may recommend a simpler design without owner approval for routine method choices; obtain owner approval for material goal pivot or paid calls."
   ],
   "engineering_workflow": {
     "path": "ENGINEERING_WORKFLOW.md",
@@ -213,7 +213,7 @@
   "research_priority": {
     "owner_stated": "Immediate research priority is cumulative, source-grounded contractual learning across successive contracts, NOT commercial demand validation or immediate deployment of a full downstream agent-configuration workflow.",
     "motivating_scenario": "A solo founder operates an AI-native company with multiple agents and receives new agreements/amendments. The same applicable, versioned contractual meaning should be reusable by those agents without re-interpreting everything from scratch. This is a north-star technical scenario, NOT a request to build the full automation pipeline next.",
-    "immediate_unknown": "Does adding a genuine independent library-based reviewer to the existing V2 Jev/adversarial/backward/skeleton pipeline produce grounded, actionable challenges or corrections, after which a later separate experiment can test contract-by-contract library revision? This is NOT the same as more heading/regex predictions.",
+    "immediate_unknown": "Can Sophon accumulate and use source-grounded, provisional contractual knowledge across successive real agreements to improve identifiable review or transposition outcomes? Jev classification plus adversarial/backward and a library-backed skeleton comparison is the owner's initial architectural HYPOTHESIS, not an engineering mandate. Assess simpler alternatives and measure each component's incremental contribution.",
     "established_starting_point": "V1 Jev classification, adversarial/backward source review and deterministic reconciliation are implemented/live-tested; V2 evidence-anchored provision skeleton induction and shared library-informed reviewers exist and were live-tested without incremental value on a ceiling proxy. A SEPARATE independent library reviewer is NOT implemented. Most complete implementation is PR #17 b9d698c, NOT main. V3 and V4 statistical predictors are separate experiments and do not establish Jev-loop outcomes. V4 authentic EDGAR frozen regex proxy run at PR #18 head 30f5b6d: STOP its own mechanism.",
     "exclusions": "Do not mistake the solo-founder scenario for authorization to implement contract-to-agent configuration/propagation now. Do not substitute E0-E5 feasibility, commercial interviews, or another narrow lab demo for a discriminating cumulative-learning test. EDGAR-only transformer and autonomous machine-to-machine contracting are related exploratory ideas, not automatically Sophon roadmap commitments.",
     "engineering_discretion": "Engineer independently choose no-code analysis, reuse or a single smallest falsifiable experiment; do not assume V3's 78-item manual adjudication must be completed first. Do not initiate paid calls or code solely from this priority statement."
@@ -339,7 +339,6 @@
   },
   "active_research_mechanism": {
     "id": "jev_source_grounded_provision_skeleton_loop",
-    "owner_reconfirmed": "2026-10-14",
     "primary_implementation": "PR #17 head b9d698c (V1 and V2 code); not on main",
     "parent_ref": {
       "pr": 17,
@@ -428,13 +427,24 @@
       "deterministic_reconciliation"
     ],
     "next_single_delta_step": "independent_library_based_review",
-    "next_single_delta": "Add and separately test the independent library-based review of a Jev proposal within the existing V2 review pipeline. Do not implement a new full sequential experiment in the same increment.",
+    "next_single_delta": "ENGINEERING RECOMMENDATION (not owner mandate): before committing to a third AI reviewer, assess the simplest independently checkable source-backed skeleton-difference operation reusing V2; choose one small testable delta based on existing code and results. The current change is only the continuity guard.",
     "separate_hypotheses_not_equivalent": [
       "V3 predicts heading-rule structure with conditional frequencies; zero Jev/reviewer calls.",
       "V4 predicts regex textual proxies with conditional frequencies and append-only events; zero Jev/reviewer calls."
     ],
-    "review_gate": "Before coding or running a new learning experiment, show the actual call path from authentic source through Jev, adversarial, backward and the planned library reviewer, skeleton induction and reconciliation; state which are actually exercised. If any step is absent, classify as a DIFFERENT_MECHANISM and do not call its result a test of this loop. Do not substitute generic LLM-vs-Sophon comparisons.",
-    "authorization": "Owner directs the problem and approves material mechanism replacement and paid calls; implement one small delta at a time. A new independent research hypothesis must be clearly segregated and owner-authorized, not silently inherit this lineage.",
-    "enforcement": "Checked by .claude/hooks/context_guard.py (hook + CI): this object is fingerprint-pinned in the guard; every prototype/, experiments/ or viability/ directory needs MECHANISM.json (CONTINUES_ACTIVE_LINEAGE or SEPARATE_MECHANISM); continuation claims are checked by static name-based call reachability from the declared runner to the entry_points above, and RUN claims against committed step receipts (RECEIPT_CONSISTENT at best: provider authenticity is not verifiable offline). Changing this pin in the same PR as experiment files fails. Limits: GitHub main is not branch-protected, so the check is advisory until required; historical PRs #16-#18 predate the guard; static reachability can be satisfied by dead or role-swapped calls."
+    "review_gate": "Require (a) unchanged owner goal or explicitly noted change, (b) reference implementation and actual mechanisms invoked, (c) a single engineering-selected delta plus rejected simpler alternative, (d) falsifiable output and honest evidence limits. Reject FALSE claims of running Jev/reviewers when only regex/counts ran, but do not prohibit justified replacement of an implementation method. Architectural proposals are hypotheses.",
+    "authorization": "Owner approves material change to desired outcome, constraints, paid calls and deployment. Engineering lead may recommend an alternative implementation, with stated evidence and mechanism delta; must not silently label a different experiment as proving the original loop.",
+    "enforcement": "Checked by .claude/hooks/context_guard.py (hook + CI): this object is fingerprint-pinned in the guard; every prototype/, experiments/ or viability/ directory needs MECHANISM.json (CONTINUES_ACTIVE_LINEAGE or SEPARATE_MECHANISM); continuation claims are checked by static name-based call reachability from the declared runner to the entry_points above, and RUN claims against committed step receipts (RECEIPT_CONSISTENT at best: provider authenticity is not verifiable offline). Changing this pin in the same PR as experiment files fails. Limits: GitHub main is not branch-protected, so the check is advisory until required; historical PRs #16-#18 predate the guard; static reachability can be satisfied by dead or role-swapped calls.",
+    "owner_discussed_as_hypothesis": "2026-10-14: owner suggested Jev classification + adversarial/backward/library review + evolving skeletons as an engineering HYPOTHESIS, not an implementation mandate.",
+    "engineering_status": "UNVALIDATED_COMPOSITE_DESIGN: V1/V2 components exist in part; independent third reviewer not built; Jev's unique necessity, two LLM reviewers' incremental value, and autonomous skeleton learning have not been established.",
+    "architectural_challenges": [
+      "Jev single dominant class may misrepresent composite provisions; classify candidate functions and explicit uncertainty.",
+      "Adversarial and backward reviews may overlap; test whether second role finds additional independently checkable omissions before always paying for it.",
+      "Library-based review may be a deterministic evidence-backed skeleton comparison rather than a third model/agent; retrieve only relevant patterns and compare.",
+      "A first-contract skeleton is provisional and cannot impose required terms on later agreements; retain exceptions, counterexamples, scope and source anchors.",
+      "V2 inducer uses LAB_AUTHORED detectors and source snippets; source citations alone are not autonomous semantic learning or legal correctness.",
+      "V2 near-ceiling proxy cannot settle the mechanism; choose a discriminating downstream mistake/correction with independent check."
+    ],
+    "proposed_steps_not_requirements": true
   }
 }
