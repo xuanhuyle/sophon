@@ -4,7 +4,7 @@ This is **development infrastructure**, not a Sophon product feature and not an 
 
 ## Authority and what loads
 
-1. SOPHON_CHARTER.md v1.2 is the authoritative product definition. This branch includes it from charter PR #15.
+1. SOPHON_CHARTER.md v1.2 is the authoritative product definition. It reached main through PR #19 (squash `eaf0c91`), which contained charter PR #15; #15 is closed as superseded.
 2. PROJECT_STATE.json is a compact, machine-checked engineering snapshot: existing code, refs, observed results, limitations, current/held experiments and evidence links. Do not promote this snapshot into legal authority.
 3. CLAUDE.md and AGENTS.md point to the same state. Claude Code loads its instructions; Codex reads AGENTS.md; GitHub-connected ChatGPT must retrieve the repository files explicitly.
 4. Shared .claude/settings.json installs **SessionStart and UserPromptSubmit** command hooks. They validate charter/state and inject the same engineering context automatically (also after a session resume/compaction, provided the hooks run). Works in single-repository Claude Code cloud sessions and supported local sessions when the project folder is trusted. Uses installed Python as the only dependency; no network or provider calls.
@@ -19,11 +19,11 @@ This is **development infrastructure**, not a Sophon product feature and not an 
 |---|---|---|
 | Guard logic and regression tests | VERIFIED locally | `check` OK; 20 unit tests pass (Python 3.13, Linux). GitHub CI is reported separately on the PR. |
 | Exact `.claude/settings.json` command runs and emits context | VERIFIED (interpreter substituted) | `test_settings_hook_injects_context` runs the committed command against a fixture repo, replacing only `python` with the test interpreter. Whether `python` resolves on a given host is NOT verified generally (absent by default on macOS and some Linux images; Windows may resolve a Store stub). |
-| Hook fires in a fresh Claude Code session | OBSERVED once | One single-repository Claude Code cloud session (claude.ai/code) started on this branch at `44bfaf0`: harness reported `SessionStart:startup hook success` and `UserPromptSubmit hook success` with the injected text. |
+| Hook fires in a fresh Claude Code session | OBSERVED once | One single-repository Claude Code cloud session (claude.ai/code) started on the PR #19 branch at `44bfaf0` (before the merge): harness reported `SessionStart:startup hook success` and `UserPromptSubmit hook success` with the injected text. |
 | Local CLI (Windows/macOS/Linux), Claude Code Mobile, resume/compaction, live failure path | NOT_VERIFIED | No such session exercised. Multi-repository cloud sessions do not load project hooks (documented by Claude Code). |
 | Agent actually follows the context | NOT_VERIFIED | Injection is not compliance. |
 
-**Smoke test (about one minute, no code changes):** start a *fresh* Claude Code session on this branch, single repository, and send as the first prompt: `Without using tools, quote verbatim the line beginning "Branch:" and the line beginning "PR GRAPH" from any SOPHON NATIVE PROJECT CONTEXT you received; otherwise answer NONE.` PASS = both lines appear and the date matches `PROJECT_STATE.json` `updated_at`. NONE = hook did not load; run `/hooks` to see whether it is registered, then try `python .claude/hooks/context_guard.py hook` in that shell. To exercise the failure path, temporarily rename `pr_graph` in a scratch branch and expect `SOPHON_CONTEXT_GUARD_FAILED` in the next turn's context, not a blocked prompt.
+**Smoke test (about one minute, no code changes):** start a *fresh* Claude Code session on `main` (or any branch containing this guard), single repository, and send as the first prompt: `Without using tools, quote verbatim the line beginning "Branch:" and the line beginning "PR GRAPH" from any SOPHON NATIVE PROJECT CONTEXT you received; otherwise answer NONE.` PASS = both lines appear and the date matches `PROJECT_STATE.json` `updated_at`. NONE = hook did not load; run `/hooks` to see whether it is registered, then try `python .claude/hooks/context_guard.py hook` in that shell. To exercise the failure path, temporarily rename `pr_graph` in a scratch branch and expect `SOPHON_CONTEXT_GUARD_FAILED` in the next turn's context, not a blocked prompt.
 
 ## CI and regressions
 
@@ -50,7 +50,7 @@ To make the status check truly **merge-blocking**, the repository owner must add
 
 - Automated adversarial, backward and library reviewers are already implemented on historical experimental branches. Their semantic agreement is not independently validated and cannot completely replace independent human spot checking. Use them first for triage and focus the manual work on high-risk cases and a blinded agreement sample.
 - Snapshot recency is checked against committed content, *not live PR updates*: GitHub access may be blocked in the cloud. Refresh the state from the actual current PR heads before major decisions.
-- Changes here do not merge PR #15, #17 or #18. If the native-context PR (based on charter #15's head) is merged into main, PR #15's content is already included and #15 should be closed as superseded, not merged again.
+- PR #19 was squash-merged to main as `eaf0c91` on 14 October 2026, and PR #15 was closed as superseded. Draft research branches such as #17 and #18 do not inherit main automatically: merge or cherry-pick main into a branch before relying on this guard there.
 
 ## Engineering modus operandi
 
