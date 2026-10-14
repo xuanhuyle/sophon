@@ -328,6 +328,7 @@ def main() -> int:
         raise RuntimeError("Call budget exceeded")
     if not args.output:
         cli.error("--output under ignored live_runs/ is required for live mode")
+    args.output = args.output.resolve()  # relative paths must pass the live_runs/ guard below
     if args.output.exists():
         cli.error("Refusing to overwrite a provider recording")
     if HERE / "live_runs" not in args.output.parents:
