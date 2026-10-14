@@ -59,6 +59,15 @@ CASES = (
      (("THRESHOLD", "will not exceed 50%"),)),
     ("B3c", "B3", "The SLA does not apply to any", "",
      (("EXCLUSION", "The SLA does not apply to any"),)),
+    # Full multi-function packets are the headroom-targeted probes, not just easy atomics.
+    ("B2whole", "B2", "During the Term of the agreement", "",
+     (("OBLIGATION", "the Covered Service will provide a Monthly Uptime Percentage"),
+      ("DEFINITION", '"Financial Credit" means'))),
+    ("B3whole", "B3", "In order to receive any of the Financial Credits described above", "",
+     (("OBLIGATION", "Customer must notify Google technical support"),
+      ("DEADLINE", "within 30 days"),
+      ("THRESHOLD", "will not exceed 50%"),
+      ("EXCLUSION", "The SLA does not apply to any"))),
 )
 ARMS = ("COLD", "LEARNED")
 
@@ -312,7 +321,7 @@ def main() -> int:
         return 0
     if args.confirm_paid_calls != "YES" or not os.environ.get("TYPESAFE_API_KEY"):
         cli.error("Provider calls require TYPESAFE_API_KEY plus explicit --confirm-paid-calls YES")
-    if len(plan["pairs"]) * 2 > 16:
+    if len(plan["pairs"]) * 2 > 20:
         raise RuntimeError("Call budget exceeded")
     if not args.output:
         cli.error("--output under ignored live_runs/ is required for live mode")
