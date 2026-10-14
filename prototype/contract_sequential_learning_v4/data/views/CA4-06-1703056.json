@@ -1,0 +1,965 @@
+{
+ "doc_id": "CA4-06-1703056",
+ "family": "CREDIT_AGREEMENT",
+ "role": "EVAL",
+ "sequence_index": 6,
+ "file_date": "2024-05-24",
+ "accession": "0000950142-24-001403",
+ "raw_sha256": "9b3365c4b4e95dfb5f9959f79b18ed1fe7609abdab2b7a89611d7912bd55f4ef",
+ "label_rules": "labels-v1-2026-10-13",
+ "sections": [
+  {
+   "path": "Article 1",
+   "heading": "Definitions",
+   "functions": [
+    "DEFINITIONS"
+   ],
+   "subunits": [
+    {
+     "path": "Section 1.01",
+     "num": "1.01",
+     "heading": "Defined Terms",
+     "provision_type": "DEFINED_TERMS",
+     "body_located": true
+    },
+    {
+     "path": "Section 1.02",
+     "num": "1.02",
+     "heading": "Terms Generally",
+     "provision_type": "INTERPRETATION",
+     "body_located": true
+    },
+    {
+     "path": "Section 1.03",
+     "num": "1.03",
+     "heading": "Effectuation of Transactions",
+     "provision_type": "OTHER",
+     "body_located": true
+    },
+    {
+     "path": "Section 1.04",
+     "num": "1.04",
+     "heading": "Exchange Rates; Currency Equivalents",
+     "provision_type": "OTHER",
+     "body_located": true
+    },
+    {
+     "path": "Section 1.05",
+     "num": "1.05",
+     "heading": "Additional Alternate Currencies for Loans",
+     "provision_type": "OTHER",
+     "body_located": true
+    },
+    {
+     "path": "Section 1.06",
+     "num": "1.06",
+     "heading": "Change of Currency",
+     "provision_type": "OTHER",
+     "body_located": true
+    },
+    {
+     "path": "Section 1.07",
+     "num": "1.07",
+     "heading": "Timing of Payment or Performance",
+     "provision_type": "OTHER",
+     "body_located": true
+    },
+    {
+     "path": "Section 1.08",
+     "num": "1.08",
+     "heading": "Times of Day",
+     "provision_type": "OTHER",
+     "body_located": true
+    },
+    {
+     "path": "Section 1.09",
+     "num": "1.09",
+     "heading": "Co-Borrowers; The Administrative Borrower",
+     "provision_type": "OTHER",
+     "body_located": true
+    }
+   ]
+  },
+  {
+   "path": "Article 2",
+   "heading": "The Credits",
+   "functions": [
+    "CREDIT_FACILITIES"
+   ],
+   "subunits": [
+    {
+     "path": "Section 2.01",
+     "num": "2.01",
+     "heading": "Commitments",
+     "provision_type": "COMMITMENTS_BORROWINGS",
+     "body_located": true
+    },
+    {
+     "path": "Section 2.02",
+     "num": "2.02",
+     "heading": "Loans and Borrowings",
+     "provision_type": "COMMITMENTS_BORROWINGS",
+     "body_located": true
+    },
+    {
+     "path": "Section 2.03",
+     "num": "2.03",
+     "heading": "Requests for Borrowings",
+     "provision_type": "COMMITMENTS_BORROWINGS",
+     "body_located": true
+    },
+    {
+     "path": "Section 2.04",
+     "num": "2.04",
+     "heading": "Swingline Loans",
+     "provision_type": "OTHER",
+     "body_located": true
+    },
+    {
+     "path": "Section 2.05",
+     "num": "2.05",
+     "heading": "Letters of Credit",
+     "provision_type": "LETTERS_OF_CREDIT",
+     "body_located": true
+    },
+    {
+     "path": "Section 2.06",
+     "num": "2.06",
+     "heading": "Funding of Borrowings",
+     "provision_type": "COMMITMENTS_BORROWINGS",
+     "body_located": true
+    },
+    {
+     "path": "Section 2.07",
+     "num": "2.07",
+     "heading": "Interest Elections",
+     "provision_type": "COMMITMENTS_BORROWINGS",
+     "body_located": true
+    },
+    {
+     "path": "Section 2.08",
+     "num": "2.08",
+     "heading": "Termination and Reduction of Commitments",
+     "provision_type": "COMMITMENTS_BORROWINGS",
+     "body_located": true
+    },
+    {
+     "path": "Section 2.09",
+     "num": "2.09",
+     "heading": "Repayment of Loans; Evidence of Debt",
+     "provision_type": "REPAYMENT_PREPAYMENT",
+     "body_located": true
+    },
+    {
+     "path": "Section 2.10",
+     "num": "2.10",
+     "heading": "Repayment of Term Loans and Revolving Facility Loans",
+     "provision_type": "REPAYMENT_PREPAYMENT",
+     "body_located": true
+    },
+    {
+     "path": "Section 2.11",
+     "num": "2.11",
+     "heading": "Prepayment of Loans",
+     "provision_type": "REPAYMENT_PREPAYMENT",
+     "body_located": true
+    },
+    {
+     "path": "Section 2.12",
+     "num": "2.12",
+     "heading": "Fees",
+     "provision_type": "FEES_INTEREST",
+     "body_located": true
+    },
+    {
+     "path": "Section 2.13",
+     "num": "2.13",
+     "heading": "Interest",
+     "provision_type": "FEES_INTEREST",
+     "body_located": true
+    },
+    {
+     "path": "Section 2.14",
+     "num": "2.14",
+     "heading": "Alternate Rate of Interest",
+     "provision_type": "BENCHMARK_RATES",
+     "body_located": true
+    },
+    {
+     "path": "Section 2.15",
+     "num": "2.15",
+     "heading": "Increased Costs",
+     "provision_type": "INCREASED_COSTS_ILLEGALITY",
+     "body_located": true
+    },
+    {
+     "path": "Section 2.16",
+     "num": "2.16",
+     "heading": "Break Funding Payments",
+     "provision_type": "INCREASED_COSTS_ILLEGALITY",
+     "body_located": true
+    },
+    {
+     "path": "Section 2.17",
+     "num": "2.17",
+     "heading": "Taxes",
+     "provision_type": "TAXES",
+     "body_located": true
+    },
+    {
+     "path": "Section 2.18",
+     "num": "2.18",
+     "heading": "Payments Generally; Pro Rata Treatment; Sharing of Set-offs",
+     "provision_type": "PAYMENTS_SHARING",
+     "body_located": true
+    },
+    {
+     "path": "Section 2.19",
+     "num": "2.19",
+     "heading": "Mitigation Obligations; Replacement of Lenders",
+     "provision_type": "MITIGATION_REPLACEMENT",
+     "body_located": true
+    },
+    {
+     "path": "Section 2.20",
+     "num": "2.20",
+     "heading": "Illegality",
+     "provision_type": "INCREASED_COSTS_ILLEGALITY",
+     "body_located": true
+    },
+    {
+     "path": "Section 2.21",
+     "num": "2.21",
+     "heading": "Incremental Commitments",
+     "provision_type": "COMMITMENTS_BORROWINGS",
+     "body_located": true
+    },
+    {
+     "path": "Section 2.22",
+     "num": "2.22",
+     "heading": "Defaulting Lender",
+     "provision_type": "DEFAULTING_LENDERS",
+     "body_located": true
+    }
+   ]
+  },
+  {
+   "path": "Article 3",
+   "heading": "Representations and Warranties",
+   "functions": [
+    "REPRESENTATIONS"
+   ],
+   "subunits": [
+    {
+     "path": "Section 3.01",
+     "num": "3.01",
+     "heading": "Organization; Powers",
+     "provision_type": "EXISTENCE_ORGANIZATION",
+     "body_located": true
+    },
+    {
+     "path": "Section 3.02",
+     "num": "3.02",
+     "heading": "Authorization",
+     "provision_type": "AUTHORIZATION_ENFORCEABILITY",
+     "body_located": true
+    },
+    {
+     "path": "Section 3.03",
+     "num": "3.03",
+     "heading": "Enforceability",
+     "provision_type": "AUTHORIZATION_ENFORCEABILITY",
+     "body_located": true
+    },
+    {
+     "path": "Section 3.04",
+     "num": "3.04",
+     "heading": "Governmental Approvals",
+     "provision_type": "AUTHORIZATION_ENFORCEABILITY",
+     "body_located": true
+    },
+    {
+     "path": "Section 3.05",
+     "num": "3.05",
+     "heading": "Financial Statements",
+     "provision_type": "FINANCIAL_REPORTING",
+     "body_located": true
+    },
+    {
+     "path": "Section 3.06",
+     "num": "3.06",
+     "heading": "No Material Adverse Effect",
+     "provision_type": "FINANCIAL_CONDITION_NO_MAC",
+     "body_located": true
+    },
+    {
+     "path": "Section 3.07",
+     "num": "3.07",
+     "heading": "Title to Properties; Possession Under Leases",
+     "provision_type": "OTHER",
+     "body_located": true
+    },
+    {
+     "path": "Section 3.08",
+     "num": "3.08",
+     "heading": "Subsidiaries",
+     "provision_type": "SUBSIDIARIES",
+     "body_located": true
+    },
+    {
+     "path": "Section 3.09",
+     "num": "3.09",
+     "heading": "Litigation; Compliance with Laws",
+     "provision_type": "LITIGATION",
+     "body_located": true
+    },
+    {
+     "path": "Section 3.10",
+     "num": "3.10",
+     "heading": "Federal Reserve Regulations",
+     "provision_type": "MARGIN_REGULATIONS",
+     "body_located": true
+    },
+    {
+     "path": "Section 3.11",
+     "num": "3.11",
+     "heading": "Investment Company Act",
+     "provision_type": "INVESTMENT_COMPANY",
+     "body_located": true
+    },
+    {
+     "path": "Section 3.12",
+     "num": "3.12",
+     "heading": "Use of Proceeds",
+     "provision_type": "USE_OF_PROCEEDS",
+     "body_located": true
+    },
+    {
+     "path": "Section 3.13",
+     "num": "3.13",
+     "heading": "Tax Returns",
+     "provision_type": "OTHER",
+     "body_located": true
+    },
+    {
+     "path": "Section 3.14",
+     "num": "3.14",
+     "heading": "No Material Misstatements",
+     "provision_type": "OTHER",
+     "body_located": true
+    },
+    {
+     "path": "Section 3.15",
+     "num": "3.15",
+     "heading": "Employee Benefit Plans",
+     "provision_type": "OTHER",
+     "body_located": true
+    },
+    {
+     "path": "Section 3.16",
+     "num": "3.16",
+     "heading": "Environmental Matters",
+     "provision_type": "ENVIRONMENTAL",
+     "body_located": true
+    },
+    {
+     "path": "Section 3.17",
+     "num": "3.17",
+     "heading": "Security Documents",
+     "provision_type": "OTHER",
+     "body_located": true
+    },
+    {
+     "path": "Section 3.18",
+     "num": "3.18",
+     "heading": "Location of Real Property",
+     "provision_type": "OTHER",
+     "body_located": true
+    },
+    {
+     "path": "Section 3.19",
+     "num": "3.19",
+     "heading": "Solvency",
+     "provision_type": "OTHER",
+     "body_located": true
+    },
+    {
+     "path": "Section 3.20",
+     "num": "3.20",
+     "heading": "Labor Matters",
+     "provision_type": "OTHER",
+     "body_located": true
+    },
+    {
+     "path": "Section 3.21",
+     "num": "3.21",
+     "heading": "Insurance",
+     "provision_type": "MAINTENANCE_INSURANCE",
+     "body_located": true
+    },
+    {
+     "path": "Section 3.22",
+     "num": "3.22",
+     "heading": "No Default",
+     "provision_type": "NO_DEFAULT",
+     "body_located": true
+    },
+    {
+     "path": "Section 3.23",
+     "num": "3.23",
+     "heading": "Intellectual Property; Licenses, Etc",
+     "provision_type": "OTHER",
+     "body_located": true
+    },
+    {
+     "path": "Section 3.24",
+     "num": "3.24",
+     "heading": "Senior Debt",
+     "provision_type": "OTHER",
+     "body_located": true
+    },
+    {
+     "path": "Section 3.25",
+     "num": "3.25",
+     "heading": "USA PATRIOT Act; OFAC",
+     "provision_type": "SANCTIONS_AML",
+     "body_located": true
+    },
+    {
+     "path": "Section 3.26",
+     "num": "3.26",
+     "heading": "Foreign Corrupt Practices Act",
+     "provision_type": "OTHER",
+     "body_located": true
+    }
+   ]
+  },
+  {
+   "path": "Article 4",
+   "heading": "Conditions of Lending",
+   "functions": [
+    "CONDITIONS_PRECEDENT"
+   ],
+   "subunits": [
+    {
+     "path": "Section 4.01",
+     "num": "4.01",
+     "heading": "All Credit Events",
+     "provision_type": "OTHER",
+     "body_located": true
+    }
+   ]
+  },
+  {
+   "path": "Article 5",
+   "heading": "Affirmative Covenants",
+   "functions": [
+    "AFFIRMATIVE_COVENANTS"
+   ],
+   "subunits": [
+    {
+     "path": "Section 5.01",
+     "num": "5.01",
+     "heading": "Existence; Business and Properties",
+     "provision_type": "EXISTENCE_ORGANIZATION",
+     "body_located": true
+    },
+    {
+     "path": "Section 5.02",
+     "num": "5.02",
+     "heading": "Insurance",
+     "provision_type": "MAINTENANCE_INSURANCE",
+     "body_located": true
+    },
+    {
+     "path": "Section 5.03",
+     "num": "5.03",
+     "heading": "Taxes",
+     "provision_type": "TAXES",
+     "body_located": true
+    },
+    {
+     "path": "Section 5.04",
+     "num": "5.04",
+     "heading": "Financial Statements, Reports, etc",
+     "provision_type": "FINANCIAL_REPORTING",
+     "body_located": true
+    },
+    {
+     "path": "Section 5.05",
+     "num": "5.05",
+     "heading": "Litigation and Other Notices",
+     "provision_type": "LITIGATION",
+     "body_located": true
+    },
+    {
+     "path": "Section 5.06",
+     "num": "5.06",
+     "heading": "Compliance with Laws",
+     "provision_type": "COMPLIANCE_WITH_LAWS",
+     "body_located": true
+    },
+    {
+     "path": "Section 5.07",
+     "num": "5.07",
+     "heading": "Maintaining Records; Access to Properties and Inspections",
+     "provision_type": "BOOKS_INSPECTION",
+     "body_located": true
+    },
+    {
+     "path": "Section 5.08",
+     "num": "5.08",
+     "heading": "Use of Proceeds",
+     "provision_type": "USE_OF_PROCEEDS",
+     "body_located": true
+    },
+    {
+     "path": "Section 5.09",
+     "num": "5.09",
+     "heading": "Compliance with Environmental Laws",
+     "provision_type": "ENVIRONMENTAL",
+     "body_located": true
+    },
+    {
+     "path": "Section 5.10",
+     "num": "5.10",
+     "heading": "Further Assurances; Additional Security",
+     "provision_type": "OTHER",
+     "body_located": true
+    },
+    {
+     "path": "Section 5.11",
+     "num": "5.11",
+     "heading": "Rating",
+     "provision_type": "OTHER",
+     "body_located": true
+    },
+    {
+     "path": "Section 5.12",
+     "num": "5.12",
+     "heading": "Post-Closing",
+     "provision_type": "OTHER",
+     "body_located": true
+    }
+   ]
+  },
+  {
+   "path": "Article 6",
+   "heading": "Negative Covenants",
+   "functions": [
+    "NEGATIVE_COVENANTS"
+   ],
+   "subunits": [
+    {
+     "path": "Section 6.01",
+     "num": "6.01",
+     "heading": "Indebtedness",
+     "provision_type": "INDEBTEDNESS",
+     "body_located": true
+    },
+    {
+     "path": "Section 6.02",
+     "num": "6.02",
+     "heading": "Liens",
+     "provision_type": "LIENS",
+     "body_located": true
+    },
+    {
+     "path": "Section 6.03",
+     "num": "6.03",
+     "heading": "Sale and Lease-Back Transactions",
+     "provision_type": "OTHER",
+     "body_located": true
+    },
+    {
+     "path": "Section 6.04",
+     "num": "6.04",
+     "heading": "Investments, Loans and Advances",
+     "provision_type": "OTHER",
+     "body_located": true
+    },
+    {
+     "path": "Section 6.05",
+     "num": "6.05",
+     "heading": "Mergers, Consolidations, Sales of Assets and Acquisitions",
+     "provision_type": "FUNDAMENTAL_CHANGES",
+     "body_located": true
+    },
+    {
+     "path": "Section 6.06",
+     "num": "6.06",
+     "heading": "Dividends and Distributions",
+     "provision_type": "OTHER",
+     "body_located": true
+    },
+    {
+     "path": "Section 6.07",
+     "num": "6.07",
+     "heading": "Transactions with Affiliates",
+     "provision_type": "AFFILIATE_TRANSACTIONS",
+     "body_located": true
+    },
+    {
+     "path": "Section 6.08",
+     "num": "6.08",
+     "heading": "Business of the Borrower and the Subsidiaries",
+     "provision_type": "SUBSIDIARIES",
+     "body_located": true
+    },
+    {
+     "path": "Section 6.09",
+     "num": "6.09",
+     "heading": "Limitation on Payments and Modifications of Indebtedness; Modifications of Certificate of Incorporation,",
+     "provision_type": "FINANCIAL_RATIO_COVENANT",
+     "body_located": true
+    },
+    {
+     "path": "Section 6.10",
+     "num": "6.10",
+     "heading": "Fiscal Year",
+     "provision_type": "OTHER",
+     "body_located": true
+    },
+    {
+     "path": "Section 6.11",
+     "num": "6.11",
+     "heading": "Financial Covenant",
+     "provision_type": "OTHER",
+     "body_located": true
+    }
+   ]
+  },
+  {
+   "path": "Article 7",
+   "heading": "Events of Default",
+   "functions": [
+    "EVENTS_OF_DEFAULT"
+   ],
+   "subunits": [
+    {
+     "path": "Section 7.01",
+     "num": "7.01",
+     "heading": "Events of Default",
+     "provision_type": "EVENTS_OF_DEFAULT_LIST",
+     "body_located": true
+    },
+    {
+     "path": "Section 7.02",
+     "num": "7.02",
+     "heading": "Treatment of Certain Payments",
+     "provision_type": "OTHER",
+     "body_located": true
+    },
+    {
+     "path": "Section 7.03",
+     "num": "7.03",
+     "heading": "Right to Cure",
+     "provision_type": "OTHER",
+     "body_located": true
+    }
+   ]
+  },
+  {
+   "path": "Article 8",
+   "heading": "The Agents",
+   "functions": [
+    "OTHER"
+   ],
+   "subunits": [
+    {
+     "path": "Section 8.01",
+     "num": "8.01",
+     "heading": "Appointment",
+     "provision_type": "OTHER",
+     "body_located": true
+    },
+    {
+     "path": "Section 8.02",
+     "num": "8.02",
+     "heading": "Delegation of Duties",
+     "provision_type": "AGENT_PROVISIONS",
+     "body_located": true
+    },
+    {
+     "path": "Section 8.03",
+     "num": "8.03",
+     "heading": "Exculpatory Provisions",
+     "provision_type": "OTHER",
+     "body_located": true
+    },
+    {
+     "path": "Section 8.04",
+     "num": "8.04",
+     "heading": "Reliance by Agents",
+     "provision_type": "AGENT_PROVISIONS",
+     "body_located": true
+    },
+    {
+     "path": "Section 8.05",
+     "num": "8.05",
+     "heading": "Notice of Default",
+     "provision_type": "NOTICE_OF_EVENTS",
+     "body_located": true
+    },
+    {
+     "path": "Section 8.06",
+     "num": "8.06",
+     "heading": "Non-Reliance on Agents and Other Lenders",
+     "provision_type": "AGENT_PROVISIONS",
+     "body_located": true
+    },
+    {
+     "path": "Section 8.07",
+     "num": "8.07",
+     "heading": "Indemnification",
+     "provision_type": "EXPENSES_INDEMNITY",
+     "body_located": true
+    },
+    {
+     "path": "Section 8.08",
+     "num": "8.08",
+     "heading": "Agent in Its Individual Capacity",
+     "provision_type": "AGENT_PROVISIONS",
+     "body_located": true
+    },
+    {
+     "path": "Section 8.09",
+     "num": "8.09",
+     "heading": "Successor Administrative Agent",
+     "provision_type": "AGENT_PROVISIONS",
+     "body_located": true
+    },
+    {
+     "path": "Section 8.10",
+     "num": "8.10",
+     "heading": "Arrangers, Syndication Agents and Documentation Agents",
+     "provision_type": "AGENT_PROVISIONS",
+     "body_located": true
+    },
+    {
+     "path": "Section 8.11",
+     "num": "8.11",
+     "heading": "Security Documents and Collateral Agent",
+     "provision_type": "AGENT_PROVISIONS",
+     "body_located": true
+    },
+    {
+     "path": "Section 8.12",
+     "num": "8.12",
+     "heading": "Right to Realize on Collateral and Enforce Guarantees",
+     "provision_type": "GUARANTEE_TERMS",
+     "body_located": true
+    },
+    {
+     "path": "Section 8.13",
+     "num": "8.13",
+     "heading": "Withholding Tax",
+     "provision_type": "OTHER",
+     "body_located": true
+    },
+    {
+     "path": "Section 8.14",
+     "num": "8.14",
+     "heading": "Certain ERISA Matters",
+     "provision_type": "ERISA",
+     "body_located": true
+    }
+   ]
+  },
+  {
+   "path": "Article 9",
+   "heading": "Miscellaneous",
+   "functions": [
+    "MISCELLANEOUS"
+   ],
+   "subunits": [
+    {
+     "path": "Section 9.01",
+     "num": "9.01",
+     "heading": "Notices; Communications",
+     "provision_type": "OTHER",
+     "body_located": true
+    },
+    {
+     "path": "Section 9.02",
+     "num": "9.02",
+     "heading": "Survival of Agreement",
+     "provision_type": "SURVIVAL",
+     "body_located": true
+    },
+    {
+     "path": "Section 9.03",
+     "num": "9.03",
+     "heading": "Binding Effect",
+     "provision_type": "AUTHORIZATION_ENFORCEABILITY",
+     "body_located": true
+    },
+    {
+     "path": "Section 9.04",
+     "num": "9.04",
+     "heading": "Successors and Assigns",
+     "provision_type": "SUCCESSORS_ASSIGNS",
+     "body_located": true
+    },
+    {
+     "path": "Section 9.05",
+     "num": "9.05",
+     "heading": "Expenses; Indemnity",
+     "provision_type": "EXPENSES_INDEMNITY",
+     "body_located": true
+    },
+    {
+     "path": "Section 9.06",
+     "num": "9.06",
+     "heading": "Right of Set-off",
+     "provision_type": "SETOFF",
+     "body_located": true
+    },
+    {
+     "path": "Section 9.07",
+     "num": "9.07",
+     "heading": "Applicable Law",
+     "provision_type": "OTHER",
+     "body_located": true
+    },
+    {
+     "path": "Section 9.08",
+     "num": "9.08",
+     "heading": "Waivers; Amendment",
+     "provision_type": "WAIVERS_AMENDMENTS",
+     "body_located": true
+    },
+    {
+     "path": "Section 9.09",
+     "num": "9.09",
+     "heading": "Interest Rate Limitation",
+     "provision_type": "INTEREST_RATE_LIMITATION",
+     "body_located": true
+    },
+    {
+     "path": "Section 9.10",
+     "num": "9.10",
+     "heading": "Entire Agreement",
+     "provision_type": "OTHER",
+     "body_located": true
+    },
+    {
+     "path": "Section 9.11",
+     "num": "9.11",
+     "heading": "WAIVER OF JURY TRIAL",
+     "provision_type": "JURY_TRIAL_WAIVER",
+     "body_located": true
+    },
+    {
+     "path": "Section 9.12",
+     "num": "9.12",
+     "heading": "Severability",
+     "provision_type": "SEVERABILITY",
+     "body_located": true
+    },
+    {
+     "path": "Section 9.13",
+     "num": "9.13",
+     "heading": "Counterparts",
+     "provision_type": "COUNTERPARTS_INTEGRATION",
+     "body_located": true
+    },
+    {
+     "path": "Section 9.14",
+     "num": "9.14",
+     "heading": "Headings",
+     "provision_type": "INTERPRETATION",
+     "body_located": true
+    },
+    {
+     "path": "Section 9.15",
+     "num": "9.15",
+     "heading": "Jurisdiction; Consent to Service of Process",
+     "provision_type": "GOVERNING_LAW_JURISDICTION",
+     "body_located": true
+    },
+    {
+     "path": "Section 9.16",
+     "num": "9.16",
+     "heading": "Confidentiality",
+     "provision_type": "CONFIDENTIALITY",
+     "body_located": true
+    },
+    {
+     "path": "Section 9.17",
+     "num": "9.17",
+     "heading": "Platform; Borrower Materials",
+     "provision_type": "OTHER",
+     "body_located": true
+    },
+    {
+     "path": "Section 9.18",
+     "num": "9.18",
+     "heading": "Release of Liens and Guarantees",
+     "provision_type": "GUARANTEE_TERMS",
+     "body_located": true
+    },
+    {
+     "path": "Section 9.19",
+     "num": "9.19",
+     "heading": "Judgment Currency",
+     "provision_type": "JUDGMENT_CURRENCY",
+     "body_located": true
+    },
+    {
+     "path": "Section 9.20",
+     "num": "9.20",
+     "heading": "USA PATRIOT Act Notice",
+     "provision_type": "SANCTIONS_AML",
+     "body_located": true
+    },
+    {
+     "path": "Section 9.21",
+     "num": "9.21",
+     "heading": "Affiliate Lenders",
+     "provision_type": "OTHER",
+     "body_located": true
+    },
+    {
+     "path": "Section 9.22",
+     "num": "9.22",
+     "heading": "Agency of the Borrower for the Loan Parties",
+     "provision_type": "OTHER",
+     "body_located": true
+    },
+    {
+     "path": "Section 9.23",
+     "num": "9.23",
+     "heading": "No Liability of the Issuing Banks",
+     "provision_type": "OTHER",
+     "body_located": true
+    },
+    {
+     "path": "Section 9.24",
+     "num": "9.24",
+     "heading": "Acknowledgment and Consent to Bail-In of Affected Financial Institutions",
+     "provision_type": "BAIL_IN_QFC",
+     "body_located": true
+    },
+    {
+     "path": "Section 9.25",
+     "num": "9.25",
+     "heading": "Acknowledgment Regarding Any Supported QFCs",
+     "provision_type": "BAIL_IN_QFC",
+     "body_located": true
+    },
+    {
+     "path": "Section 9.26",
+     "num": "9.26",
+     "heading": "Sixteenth Amended and Restated Credit Agreement; Effectiveness of Amendment and Restatement",
+     "provision_type": "AMEND_RESTATE_EXISTING",
+     "body_located": true
+    }
+   ]
+  }
+ ],
+ "governing_law": {
+  "value": "STATE_OF_NEW_YORK",
+  "evidence_section_paths": []
+ }
+}

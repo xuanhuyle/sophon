@@ -1,0 +1,1250 @@
+{
+ "doc_id": "CA4-06-1703056",
+ "step": 6,
+ "model_version": "v4-seq-1",
+ "library_digest": {
+  "FROZEN_SEED": "9a06750a261077e4a28988805d6a5d5b538a3e441dd009221dcb9baa9b08fdb8",
+  "CUMULATIVE": "0b7578c3703ec038cb5ab794c2c750beb70a9529d8e52ce3883aaa96ba72d8a2",
+  "SIMPLE_COUNTS": "0b7578c3703ec038cb5ab794c2c750beb70a9529d8e52ce3883aaa96ba72d8a2",
+  "PRECEDENT": "0b7578c3703ec038cb5ab794c2c750beb70a9529d8e52ce3883aaa96ba72d8a2"
+ },
+ "library_version": {
+  "FROZEN_SEED": 2,
+  "CUMULATIVE": 5,
+  "SIMPLE_COUNTS": 5,
+  "PRECEDENT": 5
+ },
+ "targets": [
+  {
+   "target": {
+    "path": "Section 3.25",
+    "num": "3.25",
+    "article_path": "Article 3",
+    "article_function": "REPRESENTATIONS",
+    "ordinal": 24
+   },
+   "context": {
+    "family": "CREDIT_AGREEMENT",
+    "law": "STATE_OF_NEW_YORK",
+    "section_function": "REPRESENTATIONS",
+    "ordinal": 24,
+    "observed": [
+     "AUTHORIZATION_ENFORCEABILITY",
+     "ENVIRONMENTAL",
+     "EXISTENCE_ORGANIZATION",
+     "FINANCIAL_CONDITION_NO_MAC",
+     "FINANCIAL_REPORTING",
+     "INVESTMENT_COMPANY",
+     "LITIGATION",
+     "MAINTENANCE_INSURANCE",
+     "MARGIN_REGULATIONS",
+     "NO_DEFAULT",
+     "SUBSIDIARIES",
+     "USE_OF_PROCEEDS"
+    ],
+    "candidates": [
+     "ACCOUNTING_TERMS",
+     "AFFILIATE_TRANSACTIONS",
+     "AGENT_PROVISIONS",
+     "AMEND_RESTATE_EXISTING",
+     "BAIL_IN_QFC",
+     "BENCHMARK_RATES",
+     "BOOKS_INSPECTION",
+     "COMMITMENTS_BORROWINGS",
+     "COMMITMENT_CHANGES",
+     "COMPLIANCE_WITH_LAWS",
+     "CONDITIONS_EFFECTIVENESS",
+     "CONFIDENTIALITY",
+     "COUNTERPARTS_INTEGRATION",
+     "DEFAULTING_LENDERS",
+     "DEFINED_TERMS",
+     "ERISA",
+     "ERRONEOUS_PAYMENTS",
+     "EVENTS_OF_DEFAULT_LIST",
+     "EXPENSES_INDEMNITY",
+     "FEES_INTEREST",
+     "FINANCIAL_RATIO_COVENANT",
+     "FULL_DISCLOSURE",
+     "FUNDAMENTAL_CHANGES",
+     "GOVERNING_LAW_JURISDICTION",
+     "GUARANTEE_TERMS",
+     "INCREASED_COSTS_ILLEGALITY",
+     "INDEBTEDNESS",
+     "INTEREST_RATE_LIMITATION",
+     "INTERPRETATION",
+     "JUDGMENT_CURRENCY",
+     "JURY_TRIAL_WAIVER",
+     "LETTERS_OF_CREDIT",
+     "LIENS",
+     "MITIGATION_REPLACEMENT",
+     "NOTICES_COMMUNICATIONS",
+     "NOTICE_OF_EVENTS",
+     "NO_FIDUCIARY_DUTY",
+     "PARI_PASSU",
+     "PAYMENTS_SHARING",
+     "PAYMENT_OF_OBLIGATIONS",
+     "REPAYMENT_PREPAYMENT",
+     "SANCTIONS_AML",
+     "SETOFF",
+     "SEVERABILITY",
+     "SUCCESSORS_ASSIGNS",
+     "SURVIVAL",
+     "TAXES",
+     "WAIVERS_AMENDMENTS"
+    ]
+   },
+   "arms": {
+    "FROZEN_SEED": {
+     "features": {
+      "EXCEPTION": 0.5413,
+      "PROVISO": 0.183,
+      "QUANT_THRESHOLD": 0.0116,
+      "CROSS_REFERENCE": 0.1622,
+      "INLINE_DEFINITION": 0.0019
+     },
+     "type_ranked": [
+      "BAIL_IN_QFC",
+      "COMPLIANCE_WITH_LAWS",
+      "ERISA",
+      "FULL_DISCLOSURE",
+      "SANCTIONS_AML"
+     ],
+     "xref": {
+      "ACCOUNTING_TERMS": 0.0026,
+      "AGENT_PROVISIONS": 0.0036,
+      "BAIL_IN_QFC": 0.0026,
+      "BENCHMARK_RATES": 0.0047,
+      "COMMITMENTS_BORROWINGS": 0.0181,
+      "COMMITMENT_CHANGES": 0.014,
+      "CONDITIONS_EFFECTIVENESS": 0.0119,
+      "CONFIDENTIALITY": 0.0016,
+      "COUNTERPARTS_INTEGRATION": 0.0016,
+      "DEFAULTING_LENDERS": 0.0109,
+      "ENVIRONMENTAL": 0.0016,
+      "ERRONEOUS_PAYMENTS": 0.0016,
+      "EVENTS_OF_DEFAULT_LIST": 0.0036,
+      "EXISTENCE_ORGANIZATION": 0.0047,
+      "EXPENSES_INDEMNITY": 0.0057,
+      "FEES_INTEREST": 0.0109,
+      "FINANCIAL_CONDITION_NO_MAC": 0.0109,
+      "FINANCIAL_RATIO_COVENANT": 0.0098,
+      "FINANCIAL_REPORTING": 0.0109,
+      "FUNDAMENTAL_CHANGES": 0.0036,
+      "GOVERNING_LAW_JURISDICTION": 0.0016,
+      "GUARANTEE_TERMS": 0.0047,
+      "INCREASED_COSTS_ILLEGALITY": 0.015,
+      "INDEBTEDNESS": 0.0047,
+      "INTEREST_RATE_LIMITATION": 0.0016,
+      "LETTERS_OF_CREDIT": 0.0181,
+      "LIENS": 0.0036,
+      "LITIGATION": 0.0016,
+      "MAINTENANCE_INSURANCE": 0.0016,
+      "MITIGATION_REPLACEMENT": 0.0047,
+      "NOTICES_COMMUNICATIONS": 0.0026,
+      "NOTICE_OF_EVENTS": 0.0026,
+      "OTHER": 0.0295,
+      "PAYMENTS_SHARING": 0.0088,
+      "PAYMENT_OF_OBLIGATIONS": 0.0016,
+      "REPAYMENT_PREPAYMENT": 0.0109,
+      "SETOFF": 0.0016,
+      "SUBSIDIARIES": 0.0744,
+      "SUCCESSORS_ASSIGNS": 0.0786,
+      "TAXES": 0.0119,
+      "WAIVERS_AMENDMENTS": 0.0078
+     },
+     "support": {
+      "EXCEPTION": {
+       "top_type": "BAIL_IN_QFC",
+       "n_type_function": 2,
+       "supporting_events": []
+      },
+      "PROVISO": {
+       "top_type": "BAIL_IN_QFC",
+       "n_type_function": 2,
+       "supporting_events": []
+      },
+      "QUANT_THRESHOLD": {
+       "top_type": "BAIL_IN_QFC",
+       "n_type_function": 2,
+       "supporting_events": []
+      },
+      "CROSS_REFERENCE": {
+       "top_type": "BAIL_IN_QFC",
+       "n_type_function": 2,
+       "supporting_events": []
+      },
+      "INLINE_DEFINITION": {
+       "top_type": "BAIL_IN_QFC",
+       "n_type_function": 2,
+       "supporting_events": []
+      }
+     },
+     "type_fallback_path": [
+      "GLOBAL",
+      "FAMILY",
+      "FAMILY_SECTION"
+     ]
+    },
+    "CUMULATIVE": {
+     "features": {
+      "EXCEPTION": 0.4798,
+      "PROVISO": 0.0441,
+      "QUANT_THRESHOLD": 0.0204,
+      "CROSS_REFERENCE": 0.0911,
+      "INLINE_DEFINITION": 0.0052
+     },
+     "type_ranked": [
+      "ERISA",
+      "SANCTIONS_AML",
+      "TAXES",
+      "LIENS",
+      "LETTERS_OF_CREDIT"
+     ],
+     "xref": {
+      "ACCOUNTING_TERMS": 0.0004,
+      "AFFILIATE_TRANSACTIONS": 0.0004,
+      "AGENT_PROVISIONS": 0.0009,
+      "BAIL_IN_QFC": 0.0006,
+      "BENCHMARK_RATES": 0.002,
+      "COMMITMENTS_BORROWINGS": 0.005,
+      "COMMITMENT_CHANGES": 0.0037,
+      "CONDITIONS_EFFECTIVENESS": 0.0032,
+      "CONFIDENTIALITY": 0.0003,
+      "COUNTERPARTS_INTEGRATION": 0.0003,
+      "DEFAULTING_LENDERS": 0.0026,
+      "ENVIRONMENTAL": 0.0003,
+      "ERRONEOUS_PAYMENTS": 0.0004,
+      "EVENTS_OF_DEFAULT_LIST": 0.0018,
+      "EXISTENCE_ORGANIZATION": 0.0009,
+      "EXPENSES_INDEMNITY": 0.0013,
+      "FEES_INTEREST": 0.0257,
+      "FINANCIAL_CONDITION_NO_MAC": 0.0028,
+      "FINANCIAL_RATIO_COVENANT": 0.0037,
+      "FINANCIAL_REPORTING": 0.0033,
+      "FUNDAMENTAL_CHANGES": 0.0016,
+      "GOVERNING_LAW_JURISDICTION": 0.0004,
+      "GUARANTEE_TERMS": 0.0252,
+      "INCREASED_COSTS_ILLEGALITY": 0.004,
+      "INDEBTEDNESS": 0.0023,
+      "INTEREST_RATE_LIMITATION": 0.0004,
+      "INTERPRETATION": 0.0004,
+      "LETTERS_OF_CREDIT": 0.0057,
+      "LIENS": 0.0025,
+      "LITIGATION": 0.0003,
+      "MAINTENANCE_INSURANCE": 0.0003,
+      "MITIGATION_REPLACEMENT": 0.0015,
+      "NOTICES_COMMUNICATIONS": 0.0013,
+      "NOTICE_OF_EVENTS": 0.0006,
+      "OTHER": 0.0356,
+      "PAYMENTS_SHARING": 0.003,
+      "PAYMENT_OF_OBLIGATIONS": 0.0003,
+      "REPAYMENT_PREPAYMENT": 0.003,
+      "SETOFF": 0.0006,
+      "SUBSIDIARIES": 0.0016,
+      "SUCCESSORS_ASSIGNS": 0.0932,
+      "SURVIVAL": 0.0003,
+      "TAXES": 0.004,
+      "WAIVERS_AMENDMENTS": 0.003
+     },
+     "support": {
+      "EXCEPTION": {
+       "top_type": "ERISA",
+       "n_type_function": 4,
+       "supporting_events": [
+        "CA4-02-1539838:Section 7.10",
+        "CA4-04-1792789:Section 3.10"
+       ]
+      },
+      "PROVISO": {
+       "top_type": "ERISA",
+       "n_type_function": 4,
+       "supporting_events": []
+      },
+      "QUANT_THRESHOLD": {
+       "top_type": "ERISA",
+       "n_type_function": 4,
+       "supporting_events": []
+      },
+      "CROSS_REFERENCE": {
+       "top_type": "ERISA",
+       "n_type_function": 4,
+       "supporting_events": []
+      },
+      "INLINE_DEFINITION": {
+       "top_type": "ERISA",
+       "n_type_function": 4,
+       "supporting_events": []
+      }
+     },
+     "type_fallback_path": [
+      "GLOBAL",
+      "FAMILY",
+      "FAMILY_SECTION"
+     ]
+    },
+    "SIMPLE_COUNTS": {
+     "features": {
+      "EXCEPTION": 0.5217,
+      "PROVISO": 0.0993,
+      "QUANT_THRESHOLD": 0.0428,
+      "CROSS_REFERENCE": 0.1677,
+      "INLINE_DEFINITION": 0.0141
+     },
+     "type_ranked": [
+      "BENCHMARK_RATES",
+      "BOOKS_INSPECTION",
+      "COMMITMENT_CHANGES",
+      "DEFAULTING_LENDERS",
+      "DEFINED_TERMS"
+     ],
+     "xref": {},
+     "support": {
+      "n_function": 73
+     }
+    },
+    "PRECEDENT": {
+     "features": {
+      "EXCEPTION": 0.1,
+      "PROVISO": 0.1,
+      "QUANT_THRESHOLD": 0.1,
+      "CROSS_REFERENCE": 0.1,
+      "INLINE_DEFINITION": 0.1
+     },
+     "type_ranked": [
+      "OTHER"
+     ],
+     "xref": {},
+     "precedent": "CA4-05-1062231:Section 3.17"
+    }
+   }
+  },
+  {
+   "target": {
+    "path": "Section 3.02",
+    "num": "3.02",
+    "article_path": "Article 3",
+    "article_function": "REPRESENTATIONS",
+    "ordinal": 1
+   },
+   "context": {
+    "family": "CREDIT_AGREEMENT",
+    "law": "STATE_OF_NEW_YORK",
+    "section_function": "REPRESENTATIONS",
+    "ordinal": 1,
+    "observed": [
+     "AUTHORIZATION_ENFORCEABILITY",
+     "ENVIRONMENTAL",
+     "EXISTENCE_ORGANIZATION",
+     "FINANCIAL_CONDITION_NO_MAC",
+     "FINANCIAL_REPORTING",
+     "INVESTMENT_COMPANY",
+     "LITIGATION",
+     "MAINTENANCE_INSURANCE",
+     "MARGIN_REGULATIONS",
+     "NO_DEFAULT",
+     "SANCTIONS_AML",
+     "SUBSIDIARIES",
+     "USE_OF_PROCEEDS"
+    ],
+    "candidates": [
+     "ACCOUNTING_TERMS",
+     "AFFILIATE_TRANSACTIONS",
+     "AGENT_PROVISIONS",
+     "AMEND_RESTATE_EXISTING",
+     "BAIL_IN_QFC",
+     "BENCHMARK_RATES",
+     "BOOKS_INSPECTION",
+     "COMMITMENTS_BORROWINGS",
+     "COMMITMENT_CHANGES",
+     "COMPLIANCE_WITH_LAWS",
+     "CONDITIONS_EFFECTIVENESS",
+     "CONFIDENTIALITY",
+     "COUNTERPARTS_INTEGRATION",
+     "DEFAULTING_LENDERS",
+     "DEFINED_TERMS",
+     "ERISA",
+     "ERRONEOUS_PAYMENTS",
+     "EVENTS_OF_DEFAULT_LIST",
+     "EXPENSES_INDEMNITY",
+     "FEES_INTEREST",
+     "FINANCIAL_RATIO_COVENANT",
+     "FULL_DISCLOSURE",
+     "FUNDAMENTAL_CHANGES",
+     "GOVERNING_LAW_JURISDICTION",
+     "GUARANTEE_TERMS",
+     "INCREASED_COSTS_ILLEGALITY",
+     "INDEBTEDNESS",
+     "INTEREST_RATE_LIMITATION",
+     "INTERPRETATION",
+     "JUDGMENT_CURRENCY",
+     "JURY_TRIAL_WAIVER",
+     "LETTERS_OF_CREDIT",
+     "LIENS",
+     "MITIGATION_REPLACEMENT",
+     "NOTICES_COMMUNICATIONS",
+     "NOTICE_OF_EVENTS",
+     "NO_FIDUCIARY_DUTY",
+     "PARI_PASSU",
+     "PAYMENTS_SHARING",
+     "PAYMENT_OF_OBLIGATIONS",
+     "REPAYMENT_PREPAYMENT",
+     "SETOFF",
+     "SEVERABILITY",
+     "SUCCESSORS_ASSIGNS",
+     "SURVIVAL",
+     "TAXES",
+     "WAIVERS_AMENDMENTS"
+    ]
+   },
+   "arms": {
+    "FROZEN_SEED": {
+     "features": {
+      "EXCEPTION": 0.5413,
+      "PROVISO": 0.183,
+      "QUANT_THRESHOLD": 0.0116,
+      "CROSS_REFERENCE": 0.1622,
+      "INLINE_DEFINITION": 0.0019
+     },
+     "type_ranked": [
+      "BAIL_IN_QFC",
+      "COMPLIANCE_WITH_LAWS",
+      "ERISA",
+      "FULL_DISCLOSURE",
+      "TAXES"
+     ],
+     "xref": {
+      "ACCOUNTING_TERMS": 0.0026,
+      "AGENT_PROVISIONS": 0.0036,
+      "BAIL_IN_QFC": 0.0026,
+      "BENCHMARK_RATES": 0.0047,
+      "COMMITMENTS_BORROWINGS": 0.0181,
+      "COMMITMENT_CHANGES": 0.014,
+      "CONDITIONS_EFFECTIVENESS": 0.0119,
+      "CONFIDENTIALITY": 0.0016,
+      "COUNTERPARTS_INTEGRATION": 0.0016,
+      "DEFAULTING_LENDERS": 0.0109,
+      "ENVIRONMENTAL": 0.0016,
+      "ERRONEOUS_PAYMENTS": 0.0016,
+      "EVENTS_OF_DEFAULT_LIST": 0.0036,
+      "EXISTENCE_ORGANIZATION": 0.0047,
+      "EXPENSES_INDEMNITY": 0.0057,
+      "FEES_INTEREST": 0.0109,
+      "FINANCIAL_CONDITION_NO_MAC": 0.0109,
+      "FINANCIAL_RATIO_COVENANT": 0.0098,
+      "FINANCIAL_REPORTING": 0.0109,
+      "FUNDAMENTAL_CHANGES": 0.0036,
+      "GOVERNING_LAW_JURISDICTION": 0.0016,
+      "GUARANTEE_TERMS": 0.0047,
+      "INCREASED_COSTS_ILLEGALITY": 0.015,
+      "INDEBTEDNESS": 0.0047,
+      "INTEREST_RATE_LIMITATION": 0.0016,
+      "LETTERS_OF_CREDIT": 0.0181,
+      "LIENS": 0.0036,
+      "LITIGATION": 0.0016,
+      "MAINTENANCE_INSURANCE": 0.0016,
+      "MITIGATION_REPLACEMENT": 0.0047,
+      "NOTICES_COMMUNICATIONS": 0.0026,
+      "NOTICE_OF_EVENTS": 0.0026,
+      "OTHER": 0.0295,
+      "PAYMENTS_SHARING": 0.0088,
+      "PAYMENT_OF_OBLIGATIONS": 0.0016,
+      "REPAYMENT_PREPAYMENT": 0.0109,
+      "SETOFF": 0.0016,
+      "SUBSIDIARIES": 0.0744,
+      "SUCCESSORS_ASSIGNS": 0.0786,
+      "TAXES": 0.0119,
+      "WAIVERS_AMENDMENTS": 0.0078
+     },
+     "support": {
+      "EXCEPTION": {
+       "top_type": "BAIL_IN_QFC",
+       "n_type_function": 2,
+       "supporting_events": []
+      },
+      "PROVISO": {
+       "top_type": "BAIL_IN_QFC",
+       "n_type_function": 2,
+       "supporting_events": []
+      },
+      "QUANT_THRESHOLD": {
+       "top_type": "BAIL_IN_QFC",
+       "n_type_function": 2,
+       "supporting_events": []
+      },
+      "CROSS_REFERENCE": {
+       "top_type": "BAIL_IN_QFC",
+       "n_type_function": 2,
+       "supporting_events": []
+      },
+      "INLINE_DEFINITION": {
+       "top_type": "BAIL_IN_QFC",
+       "n_type_function": 2,
+       "supporting_events": []
+      }
+     },
+     "type_fallback_path": [
+      "GLOBAL",
+      "FAMILY",
+      "FAMILY_SECTION"
+     ]
+    },
+    "CUMULATIVE": {
+     "features": {
+      "EXCEPTION": 0.7959,
+      "PROVISO": 0.1375,
+      "QUANT_THRESHOLD": 0.0909,
+      "CROSS_REFERENCE": 0.3906,
+      "INLINE_DEFINITION": 0.0061
+     },
+     "type_ranked": [
+      "ERISA",
+      "TAXES",
+      "LIENS",
+      "LETTERS_OF_CREDIT",
+      "BENCHMARK_RATES"
+     ],
+     "xref": {
+      "ACCOUNTING_TERMS": 0.0005,
+      "AFFILIATE_TRANSACTIONS": 0.0005,
+      "AGENT_PROVISIONS": 0.0012,
+      "BAIL_IN_QFC": 0.0008,
+      "BENCHMARK_RATES": 0.0025,
+      "COMMITMENTS_BORROWINGS": 0.0508,
+      "COMMITMENT_CHANGES": 0.0046,
+      "CONDITIONS_EFFECTIVENESS": 0.004,
+      "CONFIDENTIALITY": 0.0003,
+      "COUNTERPARTS_INTEGRATION": 0.0003,
+      "DEFAULTING_LENDERS": 0.0033,
+      "ENVIRONMENTAL": 0.0003,
+      "ERRONEOUS_PAYMENTS": 0.0005,
+      "EVENTS_OF_DEFAULT_LIST": 0.0023,
+      "EXISTENCE_ORGANIZATION": 0.0012,
+      "EXPENSES_INDEMNITY": 0.0016,
+      "FEES_INTEREST": 0.0274,
+      "FINANCIAL_CONDITION_NO_MAC": 0.048,
+      "FINANCIAL_RATIO_COVENANT": 0.0491,
+      "FINANCIAL_REPORTING": 0.0486,
+      "FUNDAMENTAL_CHANGES": 0.002,
+      "GOVERNING_LAW_JURISDICTION": 0.0005,
+      "GUARANTEE_TERMS": 0.0267,
+      "INCREASED_COSTS_ILLEGALITY": 0.0051,
+      "INDEBTEDNESS": 0.1362,
+      "INTEREST_RATE_LIMITATION": 0.0005,
+      "INTERPRETATION": 0.0005,
+      "LETTERS_OF_CREDIT": 0.0072,
+      "LIENS": 0.0476,
+      "LITIGATION": 0.0003,
+      "MAINTENANCE_INSURANCE": 0.0003,
+      "MITIGATION_REPLACEMENT": 0.0018,
+      "NOTICES_COMMUNICATIONS": 0.0016,
+      "NOTICE_OF_EVENTS": 0.0008,
+      "OTHER": 0.0399,
+      "PAYMENTS_SHARING": 0.0038,
+      "PAYMENT_OF_OBLIGATIONS": 0.0003,
+      "REPAYMENT_PREPAYMENT": 0.0038,
+      "SETOFF": 0.0008,
+      "SUBSIDIARIES": 0.0465,
+      "SUCCESSORS_ASSIGNS": 0.0974,
+      "SURVIVAL": 0.0003,
+      "TAXES": 0.0051,
+      "WAIVERS_AMENDMENTS": 0.0038
+     },
+     "support": {
+      "EXCEPTION": {
+       "top_type": "ERISA",
+       "n_type_function": 4,
+       "supporting_events": [
+        "CA4-02-1539838:Section 7.10",
+        "CA4-04-1792789:Section 3.10"
+       ]
+      },
+      "PROVISO": {
+       "top_type": "ERISA",
+       "n_type_function": 4,
+       "supporting_events": []
+      },
+      "QUANT_THRESHOLD": {
+       "top_type": "ERISA",
+       "n_type_function": 4,
+       "supporting_events": []
+      },
+      "CROSS_REFERENCE": {
+       "top_type": "ERISA",
+       "n_type_function": 4,
+       "supporting_events": []
+      },
+      "INLINE_DEFINITION": {
+       "top_type": "ERISA",
+       "n_type_function": 4,
+       "supporting_events": []
+      }
+     },
+     "type_fallback_path": [
+      "GLOBAL",
+      "FAMILY",
+      "FAMILY_SECTION"
+     ]
+    },
+    "SIMPLE_COUNTS": {
+     "features": {
+      "EXCEPTION": 0.5217,
+      "PROVISO": 0.0993,
+      "QUANT_THRESHOLD": 0.0428,
+      "CROSS_REFERENCE": 0.1677,
+      "INLINE_DEFINITION": 0.0141
+     },
+     "type_ranked": [
+      "BENCHMARK_RATES",
+      "BOOKS_INSPECTION",
+      "COMMITMENT_CHANGES",
+      "DEFAULTING_LENDERS",
+      "DEFINED_TERMS"
+     ],
+     "xref": {},
+     "support": {
+      "n_function": 73
+     }
+    },
+    "PRECEDENT": {
+     "features": {
+      "EXCEPTION": 0.1,
+      "PROVISO": 0.1,
+      "QUANT_THRESHOLD": 0.1,
+      "CROSS_REFERENCE": 0.1,
+      "INLINE_DEFINITION": 0.1
+     },
+     "type_ranked": [
+      "AUTHORIZATION_ENFORCEABILITY"
+     ],
+     "xref": {},
+     "precedent": "CA4-05-1062231:Section 3.02"
+    }
+   }
+  },
+  {
+   "target": {
+    "path": "Section 6.01",
+    "num": "6.01",
+    "article_path": "Article 6",
+    "article_function": "NEGATIVE_COVENANTS",
+    "ordinal": 0
+   },
+   "context": {
+    "family": "CREDIT_AGREEMENT",
+    "law": "STATE_OF_NEW_YORK",
+    "section_function": "NEGATIVE_COVENANTS",
+    "ordinal": 0,
+    "observed": [
+     "AFFILIATE_TRANSACTIONS",
+     "FINANCIAL_RATIO_COVENANT",
+     "FUNDAMENTAL_CHANGES",
+     "LIENS",
+     "SUBSIDIARIES"
+    ],
+    "candidates": [
+     "ACCOUNTING_TERMS",
+     "AGENT_PROVISIONS",
+     "AMEND_RESTATE_EXISTING",
+     "AUTHORIZATION_ENFORCEABILITY",
+     "BAIL_IN_QFC",
+     "BENCHMARK_RATES",
+     "BOOKS_INSPECTION",
+     "COMMITMENTS_BORROWINGS",
+     "COMMITMENT_CHANGES",
+     "COMPLIANCE_WITH_LAWS",
+     "CONDITIONS_EFFECTIVENESS",
+     "CONFIDENTIALITY",
+     "COUNTERPARTS_INTEGRATION",
+     "DEFAULTING_LENDERS",
+     "DEFINED_TERMS",
+     "ENVIRONMENTAL",
+     "ERISA",
+     "ERRONEOUS_PAYMENTS",
+     "EVENTS_OF_DEFAULT_LIST",
+     "EXISTENCE_ORGANIZATION",
+     "EXPENSES_INDEMNITY",
+     "FEES_INTEREST",
+     "FINANCIAL_CONDITION_NO_MAC",
+     "FINANCIAL_REPORTING",
+     "FULL_DISCLOSURE",
+     "GOVERNING_LAW_JURISDICTION",
+     "GUARANTEE_TERMS",
+     "INCREASED_COSTS_ILLEGALITY",
+     "INDEBTEDNESS",
+     "INTEREST_RATE_LIMITATION",
+     "INTERPRETATION",
+     "INVESTMENT_COMPANY",
+     "JUDGMENT_CURRENCY",
+     "JURY_TRIAL_WAIVER",
+     "LETTERS_OF_CREDIT",
+     "LITIGATION",
+     "MAINTENANCE_INSURANCE",
+     "MARGIN_REGULATIONS",
+     "MITIGATION_REPLACEMENT",
+     "NOTICES_COMMUNICATIONS",
+     "NOTICE_OF_EVENTS",
+     "NO_DEFAULT",
+     "NO_FIDUCIARY_DUTY",
+     "PARI_PASSU",
+     "PAYMENTS_SHARING",
+     "PAYMENT_OF_OBLIGATIONS",
+     "REPAYMENT_PREPAYMENT",
+     "SANCTIONS_AML",
+     "SETOFF",
+     "SEVERABILITY",
+     "SUCCESSORS_ASSIGNS",
+     "SURVIVAL",
+     "TAXES",
+     "USE_OF_PROCEEDS",
+     "WAIVERS_AMENDMENTS"
+    ]
+   },
+   "arms": {
+    "FROZEN_SEED": {
+     "features": {
+      "EXCEPTION": 0.5411,
+      "PROVISO": 0.5313,
+      "QUANT_THRESHOLD": 0.1541,
+      "CROSS_REFERENCE": 0.5054,
+      "INLINE_DEFINITION": 0.0038
+     },
+     "type_ranked": [
+      "SANCTIONS_AML",
+      "INDEBTEDNESS",
+      "ACCOUNTING_TERMS",
+      "AGENT_PROVISIONS",
+      "AUTHORIZATION_ENFORCEABILITY"
+     ],
+     "xref": {
+      "ACCOUNTING_TERMS": 0.0029,
+      "AGENT_PROVISIONS": 0.0041,
+      "BAIL_IN_QFC": 0.0029,
+      "BENCHMARK_RATES": 0.0053,
+      "COMMITMENTS_BORROWINGS": 0.0205,
+      "COMMITMENT_CHANGES": 0.0158,
+      "CONDITIONS_EFFECTIVENESS": 0.0135,
+      "CONFIDENTIALITY": 0.0018,
+      "COUNTERPARTS_INTEGRATION": 0.0018,
+      "DEFAULTING_LENDERS": 0.0123,
+      "ENVIRONMENTAL": 0.0018,
+      "ERRONEOUS_PAYMENTS": 0.0018,
+      "EVENTS_OF_DEFAULT_LIST": 0.0041,
+      "EXISTENCE_ORGANIZATION": 0.0053,
+      "EXPENSES_INDEMNITY": 0.0064,
+      "FEES_INTEREST": 0.0123,
+      "FINANCIAL_CONDITION_NO_MAC": 0.2035,
+      "FINANCIAL_RATIO_COVENANT": 0.1095,
+      "FINANCIAL_REPORTING": 0.2964,
+      "FUNDAMENTAL_CHANGES": 0.0041,
+      "GOVERNING_LAW_JURISDICTION": 0.0018,
+      "GUARANTEE_TERMS": 0.0053,
+      "INCREASED_COSTS_ILLEGALITY": 0.017,
+      "INDEBTEDNESS": 0.1036,
+      "INTEREST_RATE_LIMITATION": 0.0018,
+      "LETTERS_OF_CREDIT": 0.0205,
+      "LIENS": 0.0041,
+      "LITIGATION": 0.0018,
+      "MAINTENANCE_INSURANCE": 0.0018,
+      "MITIGATION_REPLACEMENT": 0.0053,
+      "NOTICES_COMMUNICATIONS": 0.0029,
+      "NOTICE_OF_EVENTS": 0.0029,
+      "OTHER": 0.1317,
+      "PAYMENTS_SHARING": 0.0099,
+      "PAYMENT_OF_OBLIGATIONS": 0.0018,
+      "REPAYMENT_PREPAYMENT": 0.0123,
+      "SETOFF": 0.0018,
+      "SUBSIDIARIES": 0.0088,
+      "SUCCESSORS_ASSIGNS": 0.0135,
+      "TAXES": 0.0135,
+      "WAIVERS_AMENDMENTS": 0.0088
+     },
+     "support": {
+      "EXCEPTION": {
+       "top_type": "SANCTIONS_AML",
+       "n_type_function": 2,
+       "supporting_events": []
+      },
+      "PROVISO": {
+       "top_type": "SANCTIONS_AML",
+       "n_type_function": 2,
+       "supporting_events": [
+        "CA4-01-1109354:Section 6.11"
+       ]
+      },
+      "QUANT_THRESHOLD": {
+       "top_type": "SANCTIONS_AML",
+       "n_type_function": 2,
+       "supporting_events": []
+      },
+      "CROSS_REFERENCE": {
+       "top_type": "SANCTIONS_AML",
+       "n_type_function": 2,
+       "supporting_events": []
+      },
+      "INLINE_DEFINITION": {
+       "top_type": "SANCTIONS_AML",
+       "n_type_function": 2,
+       "supporting_events": []
+      }
+     },
+     "type_fallback_path": [
+      "GLOBAL",
+      "FAMILY",
+      "FAMILY_SECTION"
+     ]
+    },
+    "CUMULATIVE": {
+     "features": {
+      "EXCEPTION": 0.5907,
+      "PROVISO": 0.3052,
+      "QUANT_THRESHOLD": 0.2444,
+      "CROSS_REFERENCE": 0.6125,
+      "INLINE_DEFINITION": 0.0017
+     },
+     "type_ranked": [
+      "INDEBTEDNESS",
+      "ERISA",
+      "EXISTENCE_ORGANIZATION",
+      "GUARANTEE_TERMS",
+      "SANCTIONS_AML"
+     ],
+     "xref": {
+      "ACCOUNTING_TERMS": 0.0006,
+      "AFFILIATE_TRANSACTIONS": 0.0006,
+      "AGENT_PROVISIONS": 0.0013,
+      "BAIL_IN_QFC": 0.0008,
+      "BENCHMARK_RATES": 0.0028,
+      "COMMITMENTS_BORROWINGS": 0.0071,
+      "COMMITMENT_CHANGES": 0.0052,
+      "CONDITIONS_EFFECTIVENESS": 0.0045,
+      "CONFIDENTIALITY": 0.0004,
+      "COUNTERPARTS_INTEGRATION": 0.0004,
+      "DEFAULTING_LENDERS": 0.0037,
+      "ENVIRONMENTAL": 0.0004,
+      "ERRONEOUS_PAYMENTS": 0.0006,
+      "EVENTS_OF_DEFAULT_LIST": 0.0025,
+      "EXISTENCE_ORGANIZATION": 0.0013,
+      "EXPENSES_INDEMNITY": 0.0018,
+      "FEES_INTEREST": 0.005,
+      "FINANCIAL_CONDITION_NO_MAC": 0.0698,
+      "FINANCIAL_RATIO_COVENANT": 0.1369,
+      "FINANCIAL_REPORTING": 0.0706,
+      "FUNDAMENTAL_CHANGES": 0.1248,
+      "GOVERNING_LAW_JURISDICTION": 0.0006,
+      "GUARANTEE_TERMS": 0.1359,
+      "INCREASED_COSTS_ILLEGALITY": 0.0057,
+      "INDEBTEDNESS": 0.0691,
+      "INTEREST_RATE_LIMITATION": 0.0006,
+      "INTERPRETATION": 0.0006,
+      "LETTERS_OF_CREDIT": 0.0081,
+      "LIENS": 0.1597,
+      "LITIGATION": 0.0004,
+      "MAINTENANCE_INSURANCE": 0.0004,
+      "MITIGATION_REPLACEMENT": 0.0021,
+      "NOTICES_COMMUNICATIONS": 0.0018,
+      "NOTICE_OF_EVENTS": 0.0008,
+      "OTHER": 0.241,
+      "PAYMENTS_SHARING": 0.0042,
+      "PAYMENT_OF_OBLIGATIONS": 0.0004,
+      "REPAYMENT_PREPAYMENT": 0.0042,
+      "SETOFF": 0.0008,
+      "SUBSIDIARIES": 0.0023,
+      "SUCCESSORS_ASSIGNS": 0.0062,
+      "SURVIVAL": 0.0004,
+      "TAXES": 0.0057,
+      "WAIVERS_AMENDMENTS": 0.0042
+     },
+     "support": {
+      "EXCEPTION": {
+       "top_type": "INDEBTEDNESS",
+       "n_type_function": 6,
+       "supporting_events": [
+        "CA4-01-1109354:Section 6.01",
+        "CA4-01-1109354:Section 6.09",
+        "CA4-05-1062231:Section 6.01",
+        "CA4-05-1062231:Section 6.07"
+       ]
+      },
+      "PROVISO": {
+       "top_type": "INDEBTEDNESS",
+       "n_type_function": 6,
+       "supporting_events": [
+        "CA4-01-1109354:Section 6.01",
+        "CA4-05-1062231:Section 6.01",
+        "CA4-05-1062231:Section 6.07"
+       ]
+      },
+      "QUANT_THRESHOLD": {
+       "top_type": "INDEBTEDNESS",
+       "n_type_function": 6,
+       "supporting_events": [
+        "CA4-01-1109354:Section 6.01",
+        "CA4-05-1062231:Section 6.01",
+        "CA4-05-1062231:Section 6.07"
+       ]
+      },
+      "CROSS_REFERENCE": {
+       "top_type": "INDEBTEDNESS",
+       "n_type_function": 6,
+       "supporting_events": [
+        "CA4-01-1109354:Section 6.01",
+        "CA4-01-1109354:Section 6.09",
+        "CA4-03-751364:Section 9.03",
+        "CA4-04-1792789:Section 6.01",
+        "CA4-05-1062231:Section 6.01"
+       ]
+      },
+      "INLINE_DEFINITION": {
+       "top_type": "INDEBTEDNESS",
+       "n_type_function": 6,
+       "supporting_events": []
+      }
+     },
+     "type_fallback_path": [
+      "GLOBAL",
+      "FAMILY",
+      "FAMILY_SECTION"
+     ]
+    },
+    "SIMPLE_COUNTS": {
+     "features": {
+      "EXCEPTION": 0.7039,
+      "PROVISO": 0.526,
+      "QUANT_THRESHOLD": 0.407,
+      "CROSS_REFERENCE": 0.5655,
+      "INLINE_DEFINITION": 0.0008
+     },
+     "type_ranked": [
+      "AUTHORIZATION_ENFORCEABILITY",
+      "BENCHMARK_RATES",
+      "BOOKS_INSPECTION",
+      "COMMITMENT_CHANGES",
+      "DEFAULTING_LENDERS"
+     ],
+     "xref": {},
+     "support": {
+      "n_function": 51
+     }
+    },
+    "PRECEDENT": {
+     "features": {
+      "EXCEPTION": 0.9,
+      "PROVISO": 0.9,
+      "QUANT_THRESHOLD": 0.9,
+      "CROSS_REFERENCE": 0.9,
+      "INLINE_DEFINITION": 0.1
+     },
+     "type_ranked": [
+      "INDEBTEDNESS"
+     ],
+     "xref": {
+      "GUARANTEE_TERMS": 0.9,
+      "LIENS": 0.9,
+      "OTHER": 0.9
+     },
+     "precedent": "CA4-05-1062231:Section 6.01"
+    }
+   }
+  },
+  {
+   "target": {
+    "path": "Section 5.11",
+    "num": "5.11",
+    "article_path": "Article 5",
+    "article_function": "AFFIRMATIVE_COVENANTS",
+    "ordinal": 10
+   },
+   "context": {
+    "family": "CREDIT_AGREEMENT",
+    "law": "STATE_OF_NEW_YORK",
+    "section_function": "AFFIRMATIVE_COVENANTS",
+    "ordinal": 10,
+    "observed": [
+     "BOOKS_INSPECTION",
+     "COMPLIANCE_WITH_LAWS",
+     "ENVIRONMENTAL",
+     "EXISTENCE_ORGANIZATION",
+     "FINANCIAL_REPORTING",
+     "LITIGATION",
+     "MAINTENANCE_INSURANCE",
+     "TAXES",
+     "USE_OF_PROCEEDS"
+    ],
+    "candidates": [
+     "ACCOUNTING_TERMS",
+     "AFFILIATE_TRANSACTIONS",
+     "AGENT_PROVISIONS",
+     "AMEND_RESTATE_EXISTING",
+     "AUTHORIZATION_ENFORCEABILITY",
+     "BAIL_IN_QFC",
+     "BENCHMARK_RATES",
+     "COMMITMENTS_BORROWINGS",
+     "COMMITMENT_CHANGES",
+     "CONDITIONS_EFFECTIVENESS",
+     "CONFIDENTIALITY",
+     "COUNTERPARTS_INTEGRATION",
+     "DEFAULTING_LENDERS",
+     "DEFINED_TERMS",
+     "ERISA",
+     "ERRONEOUS_PAYMENTS",
+     "EVENTS_OF_DEFAULT_LIST",
+     "EXPENSES_INDEMNITY",
+     "FEES_INTEREST",
+     "FINANCIAL_CONDITION_NO_MAC",
+     "FINANCIAL_RATIO_COVENANT",
+     "FULL_DISCLOSURE",
+     "FUNDAMENTAL_CHANGES",
+     "GOVERNING_LAW_JURISDICTION",
+     "GUARANTEE_TERMS",
+     "INCREASED_COSTS_ILLEGALITY",
+     "INDEBTEDNESS",
+     "INTEREST_RATE_LIMITATION",
+     "INTERPRETATION",
+     "INVESTMENT_COMPANY",
+     "JUDGMENT_CURRENCY",
+     "JURY_TRIAL_WAIVER",
+     "LETTERS_OF_CREDIT",
+     "LIENS",
+     "MARGIN_REGULATIONS",
+     "MITIGATION_REPLACEMENT",
+     "NOTICES_COMMUNICATIONS",
+     "NOTICE_OF_EVENTS",
+     "NO_DEFAULT",
+     "NO_FIDUCIARY_DUTY",
+     "PARI_PASSU",
+     "PAYMENTS_SHARING",
+     "PAYMENT_OF_OBLIGATIONS",
+     "REPAYMENT_PREPAYMENT",
+     "SANCTIONS_AML",
+     "SETOFF",
+     "SEVERABILITY",
+     "SUBSIDIARIES",
+     "SUCCESSORS_ASSIGNS",
+     "SURVIVAL",
+     "WAIVERS_AMENDMENTS"
+    ]
+   },
+   "arms": {
+    "FROZEN_SEED": {
+     "features": {
+      "EXCEPTION": 0.2095,
+      "PROVISO": 0.107,
+      "QUANT_THRESHOLD": 0.0502,
+      "CROSS_REFERENCE": 0.077,
+      "INLINE_DEFINITION": 0.0029
+     },
+     "type_ranked": [
+      "NOTICE_OF_EVENTS",
+      "ERISA",
+      "SUBSIDIARIES",
+      "GUARANTEE_TERMS",
+      "SANCTIONS_AML"
+     ],
+     "xref": {
+      "ACCOUNTING_TERMS": 0.0032,
+      "AGENT_PROVISIONS": 0.0044,
+      "BAIL_IN_QFC": 0.0032,
+      "BENCHMARK_RATES": 0.0057,
+      "COMMITMENTS_BORROWINGS": 0.0221,
+      "COMMITMENT_CHANGES": 0.017,
+      "CONDITIONS_EFFECTIVENESS": 0.0145,
+      "CONFIDENTIALITY": 0.0019,
+      "COUNTERPARTS_INTEGRATION": 0.0019,
+      "DEFAULTING_LENDERS": 0.0132,
+      "ENVIRONMENTAL": 0.0019,
+      "ERRONEOUS_PAYMENTS": 0.0019,
+      "EVENTS_OF_DEFAULT_LIST": 0.0044,
+      "EXISTENCE_ORGANIZATION": 0.0057,
+      "EXPENSES_INDEMNITY": 0.0069,
+      "FEES_INTEREST": 0.0132,
+      "FINANCIAL_CONDITION_NO_MAC": 0.0777,
+      "FINANCIAL_RATIO_COVENANT": 0.012,
+      "FINANCIAL_REPORTING": 0.0132,
+      "FUNDAMENTAL_CHANGES": 0.0044,
+      "GOVERNING_LAW_JURISDICTION": 0.0019,
+      "GUARANTEE_TERMS": 0.0057,
+      "INCREASED_COSTS_ILLEGALITY": 0.0183,
+      "INDEBTEDNESS": 0.0057,
+      "INTEREST_RATE_LIMITATION": 0.0019,
+      "LETTERS_OF_CREDIT": 0.0221,
+      "LIENS": 0.0044,
+      "LITIGATION": 0.0663,
+      "MAINTENANCE_INSURANCE": 0.0019,
+      "MITIGATION_REPLACEMENT": 0.0057,
+      "NOTICES_COMMUNICATIONS": 0.0032,
+      "NOTICE_OF_EVENTS": 0.0032,
+      "OTHER": 0.1004,
+      "PAYMENTS_SHARING": 0.0107,
+      "PAYMENT_OF_OBLIGATIONS": 0.0019,
+      "REPAYMENT_PREPAYMENT": 0.0132,
+      "SETOFF": 0.0019,
+      "SUBSIDIARIES": 0.0739,
+      "SUCCESSORS_ASSIGNS": 0.0145,
+      "TAXES": 0.0145,
+      "WAIVERS_AMENDMENTS": 0.0095
+     },
+     "support": {
+      "EXCEPTION": {
+       "top_type": "NOTICE_OF_EVENTS",
+       "n_type_function": 2,
+       "supporting_events": []
+      },
+      "PROVISO": {
+       "top_type": "NOTICE_OF_EVENTS",
+       "n_type_function": 2,
+       "supporting_events": []
+      },
+      "QUANT_THRESHOLD": {
+       "top_type": "NOTICE_OF_EVENTS",
+       "n_type_function": 2,
+       "supporting_events": []
+      },
+      "CROSS_REFERENCE": {
+       "top_type": "NOTICE_OF_EVENTS",
+       "n_type_function": 2,
+       "supporting_events": []
+      },
+      "INLINE_DEFINITION": {
+       "top_type": "NOTICE_OF_EVENTS",
+       "n_type_function": 2,
+       "supporting_events": []
+      }
+     },
+     "type_fallback_path": [
+      "GLOBAL",
+      "FAMILY",
+      "FAMILY_SECTION"
+     ]
+    },
+    "CUMULATIVE": {
+     "features": {
+      "EXCEPTION": 0.3393,
+      "PROVISO": 0.3119,
+      "QUANT_THRESHOLD": 0.1057,
+      "CROSS_REFERENCE": 0.1976,
+      "INLINE_DEFINITION": 0.0819
+     },
+     "type_ranked": [
+      "NOTICE_OF_EVENTS",
+      "ERISA",
+      "GUARANTEE_TERMS",
+      "SUBSIDIARIES",
+      "LETTERS_OF_CREDIT"
+     ],
+     "xref": {
+      "ACCOUNTING_TERMS": 0.0006,
+      "AFFILIATE_TRANSACTIONS": 0.0006,
+      "AGENT_PROVISIONS": 0.0013,
+      "BAIL_IN_QFC": 0.0008,
+      "BENCHMARK_RATES": 0.0027,
+      "COMMITMENTS_BORROWINGS": 0.0229,
+      "COMMITMENT_CHANGES": 0.0211,
+      "CONDITIONS_EFFECTIVENESS": 0.0204,
+      "CONFIDENTIALITY": 0.0003,
+      "COUNTERPARTS_INTEGRATION": 0.0003,
+      "DEFAULTING_LENDERS": 0.0036,
+      "ENVIRONMENTAL": 0.0003,
+      "ERRONEOUS_PAYMENTS": 0.0006,
+      "EVENTS_OF_DEFAULT_LIST": 0.0186,
+      "EXISTENCE_ORGANIZATION": 0.0013,
+      "EXPENSES_INDEMNITY": 0.0017,
+      "FEES_INTEREST": 0.0047,
+      "FINANCIAL_CONDITION_NO_MAC": 0.0199,
+      "FINANCIAL_RATIO_COVENANT": 0.0372,
+      "FINANCIAL_REPORTING": 0.0206,
+      "FUNDAMENTAL_CHANGES": 0.0183,
+      "GOVERNING_LAW_JURISDICTION": 0.0167,
+      "GUARANTEE_TERMS": 0.0363,
+      "INCREASED_COSTS_ILLEGALITY": 0.0054,
+      "INDEBTEDNESS": 0.0192,
+      "INTEREST_RATE_LIMITATION": 0.0006,
+      "INTERPRETATION": 0.0006,
+      "LETTERS_OF_CREDIT": 0.0239,
+      "LIENS": 0.0195,
+      "LITIGATION": 0.0003,
+      "MAINTENANCE_INSURANCE": 0.0003,
+      "MITIGATION_REPLACEMENT": 0.002,
+      "NOTICES_COMMUNICATIONS": 0.0017,
+      "NOTICE_OF_EVENTS": 0.0008,
+      "OTHER": 0.0826,
+      "PAYMENTS_SHARING": 0.004,
+      "PAYMENT_OF_OBLIGATIONS": 0.0003,
+      "REPAYMENT_PREPAYMENT": 0.0202,
+      "SETOFF": 0.0008,
+      "SUBSIDIARIES": 0.0344,
+      "SUCCESSORS_ASSIGNS": 0.022,
+      "SURVIVAL": 0.0003,
+      "TAXES": 0.0216,
+      "WAIVERS_AMENDMENTS": 0.004
+     },
+     "support": {
+      "EXCEPTION": {
+       "top_type": "NOTICE_OF_EVENTS",
+       "n_type_function": 4,
+       "supporting_events": []
+      },
+      "PROVISO": {
+       "top_type": "NOTICE_OF_EVENTS",
+       "n_type_function": 4,
+       "supporting_events": []
+      },
+      "QUANT_THRESHOLD": {
+       "top_type": "NOTICE_OF_EVENTS",
+       "n_type_function": 4,
+       "supporting_events": []
+      },
+      "CROSS_REFERENCE": {
+       "top_type": "NOTICE_OF_EVENTS",
+       "n_type_function": 4,
+       "supporting_events": []
+      },
+      "INLINE_DEFINITION": {
+       "top_type": "NOTICE_OF_EVENTS",
+       "n_type_function": 4,
+       "supporting_events": []
+      }
+     },
+     "type_fallback_path": [
+      "GLOBAL",
+      "FAMILY",
+      "FAMILY_SECTION"
+     ]
+    },
+    "SIMPLE_COUNTS": {
+     "features": {
+      "EXCEPTION": 0.4862,
+      "PROVISO": 0.3131,
+      "QUANT_THRESHOLD": 0.0333,
+      "CROSS_REFERENCE": 0.2217,
+      "INLINE_DEFINITION": 0.0161
+     },
+     "type_ranked": [
+      "AUTHORIZATION_ENFORCEABILITY",
+      "BENCHMARK_RATES",
+      "COMMITMENT_CHANGES",
+      "DEFAULTING_LENDERS",
+      "DEFINED_TERMS"
+     ],
+     "xref": {},
+     "support": {
+      "n_function": 64
+     }
+    },
+    "PRECEDENT": {
+     "features": {
+      "EXCEPTION": 0.9,
+      "PROVISO": 0.1,
+      "QUANT_THRESHOLD": 0.9,
+      "CROSS_REFERENCE": 0.1,
+      "INLINE_DEFINITION": 0.1
+     },
+     "type_ranked": [
+      "OTHER"
+     ],
+     "xref": {},
+     "precedent": "CA4-05-1062231:Section 5.11"
+    }
+   }
+  }
+ ]
+}
