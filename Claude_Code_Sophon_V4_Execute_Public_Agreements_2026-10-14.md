@@ -1,0 +1,33 @@
+# Sophon V4 — Execute on actual public agreements, not an annotation benchmark
+
+**Owner direction (2026-10-14): stop re-designing the experiment around ContractNLI.** Use actual publicly filed contractual agreements. The earlier Phase-0 ContractNLI reports remain historical research notes, **not** the execution plan. Do not make another design-review loop.
+
+**Repository:** `xuanhuyle/sophon`  
+**Starting branch:** `experiment/jev-v4-sequential-provision-learning-2026-10-13` (existing draft PR #18)  
+**Expected starting head when dispatched:** `d178d71cd80c5e48c890468ffd00fac89030c15d`  
+**Target branch:** none. Do not merge or open another PR.
+
+## Outcome, not mechanism
+
+Using a chronological stream of **complete, authentic, publicly filed credit agreements**, determine whether Sophon can **accumulate, revise and reuse source-grounded knowledge of provision structure, conditions, exceptions, definitions and dependencies**, so that its *pre-observation review hypotheses* for later unfamiliar agreements improve through experience.
+
+The motivating scenario is an AI-native founder receiving agreements. The output here is an **upstream, provisional normative-knowledge library and reproducible evidence**, not an implemented BI/agent integration, legal determination, amendment-only state ledger, a better LLM, or business validation.
+
+**No LLM-versus-Sophon contest.** Keep the learning system/components constant; vary the knowledge it has retained. Do not treat a static trained LLM or a packaged benchmark as the object to beat.
+
+## Use the implementation and protocol we already have
+
+1. Read the current charter v1.2, state and workflow **from `origin/main`**, not stale copies on this branch. Read original `Claude_Code_Sophon_V4_Sequential_Contract_Learning_2026-10-13.md`, V2/V3 actual code/results at PR #17, and prior Phase-0 notes. Keep frozen historical records intact.
+2. **Select one authentic contract family: SEC EDGAR credit agreements.** Source directly from SEC filings where possible, recording exact URL/accession, full source, publisher, filing date, text checksum and provenance. The only acceptable mirror is a verifiable copy of a specific public SEC-filed agreement, with exact filing identity; never substitute ContractNLI/CUAD/MAUD labels, synthetic agreements or harvested clause snippets. If the cloud cannot access SEC, use previously downloaded full authentic sources with independently verifiable filing identifiers, or document a precise `BLOCKED_SOURCE_ACCESS`; do not invent authenticity or spend the day on egress workarounds.
+3. **Reuse**, don't replace: V3 corpus/section extraction, structural predictor/test harness and its known segmentation caveats; V2 evidence-anchoring and append-only event conventions. V3-seen documents may be used to improve plumbing only, **not** to score allegedly unseen learning. No new ontology, DSL, transformer, agent swarm or framework.
+4. Execute the originally scoped smallest *prequential* increment, not a new multi-phase project: aim for **two distinct seed agreements followed by six newly sourced evaluation agreements**, preferably independent issuers/templates. Select document sequence and target *positions* by a rule that does not inspect their hidden contents or success labels. For each evaluation contract select a small number of substantive provision-in-section review targets; avoid merely predicting a generic section heading. Verify actual available denominators honestly rather than hand-picking easier examples.
+5. **Freeze before reveal.** Commit `PROTOCOL.md`, source manifest with hashes, selection/masking rules, controls, metrics and replay instructions **before** processing held-out provision bodies. If an existing frozen V4 protocol already meets this need, reuse it; avoid rewriting it. Record any deviations. A pilot on seed documents can check code mechanics, never count it as evidence.
+6. **Sequential loop:** for contract k, use only allowed visible context and knowledge L(k-1); record and hash predictions of likely provision functions, expected conditions/exceptions/definitions/cross-references and cited earlier evidence; compare frozen-after-seed library versus updating library and a **simple updating counts/precedents control** (same observed prior agreements). Reveal the current actual text only after all predictions for k are sealed, verify source anchors and record genuine counterexamples, append a versioned update for the next agreement. Never treat predicted provisions as enforceable terms.
+7. **Scoring integrity:** mechanical checks can verify exact source spans, literal definitions/cross-references and chronology. *They cannot independently certify semantic labels or legal correctness.* Where substantive semantic interpretation is scored without independent adjudication, label the result **PROVISIONAL_AGENT_AUTHORED**, report case-level evidence and create a very small blind review packet instead of claiming VERIFIED. Guard against duplicate templates, future leakage, overly broad target masks, confidence without support, and a ceiling baseline. Any gain solely explained by counts/precedent copying must be reported as such.
+8. **Keep scope bounded:** no paid API calls or model training unless a separate explicit owner approval and cost cap are obtained; prefer an offline, deterministic first run using the V3 machinery. Do not require human mass-labeling, LLM comparison, an EDGAR-only foundation model, a full contract-to-agent workflow, or deployment.
+9. If authentic data can be accessed and a source-backed test can genuinely fail, implement and **run one** bounded offline sequence after its freeze. Save raw predictions before reveal, exact source identifiers, per-contract outcomes, failures, cost, and a KEEP / REVISE / STOP verdict on this branch. If no meaningful semantic target or independent validation is possible, say so explicitly, report the narrow structural evidence you can honestly test, and **STOP** rather than fabricate a success.
+10. Push changes to the **existing PR #18**. Do not modify `main`, close PRs or open another PR. The branch may not yet have `PROJECT_STATE.json` because it predates the main governance merge; include an experiment-state handoff rather than dragging the entire governance migration into this increment.
+
+## End condition
+
+Report concrete agreements/accessions used, what was *actually* learned after each agreement, frozen vs growing vs simple updating outcomes, source/evaluation limitations, commit SHA, and one proposed next action. No additional investigation or architecture work once that report exists. **Then STOP.**
