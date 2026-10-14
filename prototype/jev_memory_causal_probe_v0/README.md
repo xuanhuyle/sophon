@@ -4,6 +4,8 @@
 
 **This is a REAL causal intervention on the classifier input**, not another architecture sketch. Ten literal source excerpts (including two full compound-function passages), 16 source-anchored positive function/modifier checks, **20 Jev calls total** (10 COLD + 10 LEARNED), one source-backed previously induced library (G1/G2/G4), no Claude, no reviewer, no trained models or stronger-model competition. The two arms differ **only** in one `state.prior_provision_skeletons` field. The input context, function definitions, per-label Noul questions, model and call parameters are held constant. We allow multiple functions simultaneously.
 
+**Sub-provision categorization is NOT implemented yet.** The ten excerpts are split by explicit, *hand-selected* start/end markers (`CASES` in `probe.py`), and each excerpt receives a set of independent yes/no normative-function questions. The model does **not** find sub-provision boundaries itself and does **not** assign each detected function to a verbatim internal span. Two full mixed-function passages test whether multiple function flags can coexist, not true sub-provision extraction. **Do not report this probe as automated sub-provision parsing or categorization.** That capability is a separate next increment whose value should be decided after observing this source-memory intervention.
+
 **Not established:** this is a single A→B library exposure, **not multiple demonstrated learning updates**; the annotations are narrow literal-positive probes selected by engineering judgment (NOT independent expert legal labels), and there is no certified negative-function oracle. Source-linked quotes do not make legal interpretations authoritative. A change in scores may reveal sensitivity to memory, but is **not proof of absolute legal correctness or successive contract expertise**. Even a flat result cannot refute all library learning. All source files, model adapters and preliminary library structures are historical on unmerged PR #17; the new code uses `git show` at a pinned full commit and fails if that history is missing.
 
 ### Already runnable offline, with no credentials
@@ -13,7 +15,7 @@ python prototype/jev_memory_causal_probe_v0/probe.py preflight
 python -m unittest discover -s prototype/jev_memory_causal_probe_v0 -p 'test_*.py' -v
 ```
 
-The preflight **loads and validates authentic historical source hashes**, the three provisional GitHub source-linked skeletons, all sixteen frozen positive probes, and constructs/verifies all 16 paired requests. It makes **zero network/provider calls**.
+The preflight **loads and validates authentic historical source hashes**, the three provisional GitHub source-linked skeletons, all sixteen frozen positive probes, and constructs/verifies all 20 paired requests. It makes **zero network/provider calls**.
 
 ### Optional real Jev call run — requires separate explicit paid-call authorization
 
