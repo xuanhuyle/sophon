@@ -284,6 +284,49 @@ def score(plan: dict, recording: dict) -> dict:
             "per_case": report}
 
 
+def resolve_typesafe_key() -> str | None:
+    """Read an existing local .env without exporting or printing any secrets.
+
+    Only two explicit project-relative locations are eligible; a Claude cloud
+    checkout cannot access a file that exists solely on the user's Windows PC.
+    A process environment variable always takes priority. No new dependency.
+    """
+    existing = os.environ.get("TYPESAFE_API_KEY", "").strip()
+    if existing:
+        return existing
+    for env_file in (ROOT / ".env", HERE / ".env"):
+        if not env_file.is_file():
+            continue
+        # Read only the specifically approved provider credential.
+        # Do not report file contents or any parsed key in logs/errors.
+        try:
+            lines = env_file.read_text(encoding="utf-8-sig").splitlines()
+        except OSError as exc:
+            raise RuntimeError(f"Could not read {env_file.name}; check local file permissions") from None
+        for line in lines:
+            stripped = line.strip()
+            if not stripped or stripped.startswith("#"):
+                continue
+            if stripped.startswith("export "):
+                stripped = stripped[7:].lstrip()
+            name, sep, rhs = stripped.partition("=")
+            if not sep or name.strip() != "TYPESAFE_API_KEY":
+                continue
+            value = rhs.strip()
+            if not value:
+                continue
+            if value[0] in ("'", '"'):
+                end = value.find(value[0], 1)
+                if end == -1 or value[end + 1:].strip() not in ("",) and not value[end + 1:].strip().startswith("#"):
+                    raise RuntimeError(f"Malformed TYPESAFE_API_KEY assignment in {env_file.name}")
+                value = value[1:end]
+            else:
+                value = value.split(" #", 1)[0].rstrip()
+            if value:
+                return value
+    return None
+
+
 def call_jev(req: dict, key: str) -> dict:
     data = json.dumps(req, ensure_ascii=False).encode("utf-8")
     http = urllib.request.Request(JEV_URL, data=data, method="POST",
@@ -322,8 +365,13 @@ def main() -> int:
         if args.output:
             args.output.write_text(json.dumps(output, indent=2) + "\n", encoding="utf-8")
         return 0
-    if args.confirm_paid_calls != "YES" or not os.environ.get("TYPESAFE_API_KEY"):
-        cli.error("Provider calls require TYPESAFE_API_KEY plus explicit --confirm-paid-calls YES")
+    if args.confirm_paid_calls != "YES":
+        cli.error("Provider calls require explicit --confirm-paid-calls YES")
+    key = resolve_typesafe_key()
+    if not key:
+        cli.error("TYPESAFE_API_KEY not found in this process or the project .env. "
+                  "A local Windows .env is not visible in a separate Claude cloud container. "
+                  "Use your local checkout or configure the cloud environment secret.")
     if len(plan["pairs"]) * 2 > 20:
         raise RuntimeError("Call budget exceeded")
     if not args.output:
@@ -340,7 +388,7 @@ def main() -> int:
         for pair in plan["pairs"]:
             for arm in ARMS:
                 req = pair["requests"][arm]
-                result = call_jev(req, os.environ["TYPESAFE_API_KEY"])
+                result = call_jev(req, key)
                 recording["records"].append({"case_id": pair["case"]["id"], "arm": arm,
                     "request_sha256": pair["request_hashes"][arm], "provenance": "ACTUAL_PROVIDER",
                     "raw_response": result})
