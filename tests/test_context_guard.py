@@ -262,9 +262,9 @@ class ResearchAlignmentGuard(unittest.TestCase):
         self.assertEqual(cg.check_experiment_alignment(component, self.state()), [])
 
     def test_missing_alignment_is_rejected_for_new_experiment_directory(self):
-        with tempfile.TemporaryDirectory() as tmp, \\
+        with tempfile.TemporaryDirectory() as tmp, \
                 patch.object(cg, "changed_files_since",
-                             return_value=["prototype/v5/predict.py", "prototype/v5/PROTOCOL.md"]), \\
+                             return_value=["prototype/v5/predict.py", "prototype/v5/PROTOCOL.md"]), \
                 patch.object(cg.subprocess, "run", return_value=type("Result", (), {"returncode": 1})()):
             root = Path(tmp)
             (root / "prototype/v5").mkdir(parents=True)
@@ -272,9 +272,9 @@ class ResearchAlignmentGuard(unittest.TestCase):
         self.assertTrue(any("must include valid EXPERIMENT_ALIGNMENT.json" in e for e in errors), errors)
 
     def test_new_experiment_with_false_claim_fails_before_run(self):
-        with tempfile.TemporaryDirectory() as tmp, \\
+        with tempfile.TemporaryDirectory() as tmp, \
                 patch.object(cg, "changed_files_since",
-                             return_value=["prototype/v5/PROTOCOL.md"]), \\
+                             return_value=["prototype/v5/PROTOCOL.md"]), \
                 patch.object(cg.subprocess, "run", return_value=type("Result", (), {"returncode": 1})()):
             root = Path(tmp)
             folder = root / "prototype/v5"
@@ -289,7 +289,7 @@ class ResearchAlignmentGuard(unittest.TestCase):
         after = json.loads(json.dumps(before))
         after["research_contract"]["learning_claim"] = "silently changed goal"
         with patch.object(cg, "changed_files_since",
-                          return_value=["PROJECT_STATE.json", "prototype/v5/PROTOCOL.md"]), \\
+                          return_value=["PROJECT_STATE.json", "prototype/v5/PROTOCOL.md"]), \
                 patch.object(cg.subprocess, "run",
                              return_value=type("Result", (), {
                                  "returncode": 0, "stdout": json.dumps(before)})()):
