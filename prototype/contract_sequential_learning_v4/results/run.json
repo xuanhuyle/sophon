@@ -1,0 +1,2546 @@
+{
+ "model_version": "v4-seq-1",
+ "provider_calls": 0,
+ "seeds": [
+  "CA4-01-1109354",
+  "CA4-02-1539838"
+ ],
+ "sequence": [
+  "CA4-03-751364",
+  "CA4-04-1792789",
+  "CA4-05-1062231",
+  "CA4-06-1703056",
+  "CA4-07-1771514",
+  "CA4-08-821002"
+ ],
+ "chain": [
+  {
+   "step": 3,
+   "doc_id": "CA4-03-751364",
+   "prev": "GENESIS",
+   "predictions_sha256": "86d4a65535401d1ca570afbe9c0c8667ac48f84bded7a857a0166d38700aa2d2",
+   "entry_sha256": "6f1be6e10ca62350ff7fe2b13656b4f4b75e3ed334824e6785634b47dfe82251"
+  },
+  {
+   "step": 4,
+   "doc_id": "CA4-04-1792789",
+   "prev": "6f1be6e10ca62350ff7fe2b13656b4f4b75e3ed334824e6785634b47dfe82251",
+   "predictions_sha256": "2fbf46e3d0d42d40699f676a2745300d2efe0766268be248ffd58da0a064e9b1",
+   "entry_sha256": "8845a0e0c9befdab202a2d6a1a992abce3707d1c4b72477c3dd9e8bfd72d36ec"
+  },
+  {
+   "step": 5,
+   "doc_id": "CA4-05-1062231",
+   "prev": "8845a0e0c9befdab202a2d6a1a992abce3707d1c4b72477c3dd9e8bfd72d36ec",
+   "predictions_sha256": "44aeb026b334e063f86148270aee250219f869c149109844c95c683abcbc435e",
+   "entry_sha256": "a7a439993fc03d0a298f0d8ef87334f6c873765b30ae9740cb27ba50952c6b7d"
+  },
+  {
+   "step": 6,
+   "doc_id": "CA4-06-1703056",
+   "prev": "a7a439993fc03d0a298f0d8ef87334f6c873765b30ae9740cb27ba50952c6b7d",
+   "predictions_sha256": "5e985b6172d679fa5fcb4c68536140906c22273bb645670e2e855a4972fd1346",
+   "entry_sha256": "214f645d78cdc85324c323f247754172e19fabe305e411bc1adc51363b52db81"
+  },
+  {
+   "step": 7,
+   "doc_id": "CA4-07-1771514",
+   "prev": "214f645d78cdc85324c323f247754172e19fabe305e411bc1adc51363b52db81",
+   "predictions_sha256": "05e53356fa9a95b9444a8ee9db7c82177da48b9d2e9c8e50c65b0c797d506fd1",
+   "entry_sha256": "348edfa63a79578a5b79f2b9103b804496c0f6f15b714ffb0d96b39519633cfb"
+  },
+  {
+   "step": 8,
+   "doc_id": "CA4-08-821002",
+   "prev": "348edfa63a79578a5b79f2b9103b804496c0f6f15b714ffb0d96b39519633cfb",
+   "predictions_sha256": "3dd41cc4bbacbff115b8e51e8db40a92ec25ba6d0561c76b134326b8c392628b",
+   "entry_sha256": "58796ccc4b6cdb5bc1102da9023f05a01a6f17475f516e64ffff9f859320a932"
+  }
+ ],
+ "hidden_access_order": [
+  "CA4-01-1109354",
+  "CA4-02-1539838",
+  "CA4-03-751364",
+  "CA4-04-1792789",
+  "CA4-05-1062231",
+  "CA4-06-1703056",
+  "CA4-07-1771514",
+  "CA4-08-821002"
+ ],
+ "per_doc": [
+  {
+   "doc_id": "CA4-03-751364",
+   "step": 3,
+   "n_targets": 4,
+   "rows": [
+    {
+     "target": "Section 9.01",
+     "true_type": "FINANCIAL_RATIO_COVENANT",
+     "true_features": {
+      "EXCEPTION": false,
+      "PROVISO": true,
+      "QUANT_THRESHOLD": true,
+      "CROSS_REFERENCE": false,
+      "INLINE_DEFINITION": false
+     },
+     "true_xref_types": [],
+     "anchors": {
+      "EXCEPTION": null,
+      "PROVISO": {
+       "start": 157,
+       "end": 175,
+       "match_sha256": "e2bf5fabbb35d188a70d3d5a586d46e9f93d9e65e97869fbc1f1793bd691c7d7"
+      },
+      "QUANT_THRESHOLD": {
+       "start": 131,
+       "end": 143,
+       "match_sha256": "311152a5f0311bdaf78e5e0d1805899d06a1c3d26cc5918473f43671db9dc9d6"
+      },
+      "CROSS_REFERENCE": null,
+      "INLINE_DEFINITION": null
+     },
+     "body_sha256": "669b942a68e862844d5ffeff18fe541d443f3eef55f8e34d0e9f83bd3f4f314f",
+     "scores": {
+      "FROZEN_SEED": {
+       "feature_brier": {
+        "EXCEPTION": 0.31393609,
+        "PROVISO": 0.21252099999999996,
+        "QUANT_THRESHOLD": 0.398161,
+        "CROSS_REFERENCE": 0.026308840000000003,
+        "INLINE_DEFINITION": 5.759999999999999e-06
+       },
+       "brier": 0.1902,
+       "type_hit3": true,
+       "xref_recall3": null,
+       "xref_false3": 3
+      },
+      "CUMULATIVE": {
+       "feature_brier": {
+        "EXCEPTION": 0.31393609,
+        "PROVISO": 0.21252099999999996,
+        "QUANT_THRESHOLD": 0.398161,
+        "CROSS_REFERENCE": 0.026308840000000003,
+        "INLINE_DEFINITION": 5.759999999999999e-06
+       },
+       "brier": 0.1902,
+       "type_hit3": true,
+       "xref_recall3": null,
+       "xref_false3": 3
+      },
+      "SIMPLE_COUNTS": {
+       "feature_brier": {
+        "EXCEPTION": 0.594441,
+        "PROVISO": 0.25633968999999995,
+        "QUANT_THRESHOLD": 0.32547025,
+        "CROSS_REFERENCE": 0.29953729,
+        "INLINE_DEFINITION": 1.96e-06
+       },
+       "brier": 0.2952,
+       "type_hit3": false,
+       "xref_recall3": null,
+       "xref_false3": 0
+      },
+      "PRECEDENT": {
+       "feature_brier": {
+        "EXCEPTION": 0.010000000000000002,
+        "PROVISO": 0.81,
+        "QUANT_THRESHOLD": 0.009999999999999995,
+        "CROSS_REFERENCE": 0.010000000000000002,
+        "INLINE_DEFINITION": 0.010000000000000002
+       },
+       "brier": 0.17,
+       "type_hit3": false,
+       "xref_recall3": null,
+       "xref_false3": 0
+      }
+     }
+    },
+    {
+     "target": "Section 7.13",
+     "true_type": "OTHER",
+     "true_features": {
+      "EXCEPTION": false,
+      "PROVISO": false,
+      "QUANT_THRESHOLD": false,
+      "CROSS_REFERENCE": false,
+      "INLINE_DEFINITION": false
+     },
+     "true_xref_types": [],
+     "anchors": {
+      "EXCEPTION": null,
+      "PROVISO": null,
+      "QUANT_THRESHOLD": null,
+      "CROSS_REFERENCE": null,
+      "INLINE_DEFINITION": null
+     },
+     "body_sha256": "b4e7d9206119b0b642605724f6b8f7f6549fe21b92c26e375bbb2296be273e23",
+     "scores": {
+      "FROZEN_SEED": {
+       "feature_brier": {
+        "EXCEPTION": 0.44863203999999995,
+        "PROVISO": 0.11580409,
+        "QUANT_THRESHOLD": 0.00023716,
+        "CROSS_REFERENCE": 0.12744899999999998,
+        "INLINE_DEFINITION": 6.25e-06
+       },
+       "brier": 0.1384,
+       "type_hit3": null,
+       "xref_recall3": null,
+       "xref_false3": 3
+      },
+      "CUMULATIVE": {
+       "feature_brier": {
+        "EXCEPTION": 0.44863203999999995,
+        "PROVISO": 0.11580409,
+        "QUANT_THRESHOLD": 0.00023716,
+        "CROSS_REFERENCE": 0.12744899999999998,
+        "INLINE_DEFINITION": 6.25e-06
+       },
+       "brier": 0.1384,
+       "type_hit3": null,
+       "xref_recall3": null,
+       "xref_false3": 3
+      },
+      "SIMPLE_COUNTS": {
+       "feature_brier": {
+        "EXCEPTION": 0.39175081,
+        "PROVISO": 0.11235904,
+        "QUANT_THRESHOLD": 4.096e-05,
+        "CROSS_REFERENCE": 0.046655999999999996,
+        "INLINE_DEFINITION": 1.21e-06
+       },
+       "brier": 0.1102,
+       "type_hit3": null,
+       "xref_recall3": null,
+       "xref_false3": 0
+      },
+      "PRECEDENT": {
+       "feature_brier": {
+        "EXCEPTION": 0.010000000000000002,
+        "PROVISO": 0.010000000000000002,
+        "QUANT_THRESHOLD": 0.010000000000000002,
+        "CROSS_REFERENCE": 0.010000000000000002,
+        "INLINE_DEFINITION": 0.010000000000000002
+       },
+       "brier": 0.01,
+       "type_hit3": null,
+       "xref_recall3": null,
+       "xref_false3": 0
+      }
+     }
+    },
+    {
+     "target": "Section 9.02",
+     "true_type": "OTHER",
+     "true_features": {
+      "EXCEPTION": true,
+      "PROVISO": false,
+      "QUANT_THRESHOLD": false,
+      "CROSS_REFERENCE": true,
+      "INLINE_DEFINITION": false
+     },
+     "true_xref_types": [
+      "EVENTS_OF_DEFAULT_LIST",
+      "OTHER"
+     ],
+     "anchors": {
+      "EXCEPTION": {
+       "start": 135,
+       "end": 145,
+       "match_sha256": "53dd72d04e71d4a1f3f2e955dc754c631ffda1a9f9ea7fb0a7f8915411a9bbd1"
+      },
+      "PROVISO": null,
+      "QUANT_THRESHOLD": null,
+      "CROSS_REFERENCE": {
+       "start": 320,
+       "end": 332
+      },
+      "INLINE_DEFINITION": null
+     },
+     "body_sha256": "65f4f1428355dd5c13b654ef4edeaeee73fa9d05268f82e53804beec418ac791",
+     "scores": {
+      "FROZEN_SEED": {
+       "feature_brier": {
+        "EXCEPTION": 0.17322244,
+        "PROVISO": 0.30404196,
+        "QUANT_THRESHOLD": 0.02307361,
+        "CROSS_REFERENCE": 0.3627652900000001,
+        "INLINE_DEFINITION": 1.3690000000000001e-05
+       },
+       "brier": 0.1726,
+       "type_hit3": null,
+       "xref_recall3": 0.5,
+       "xref_false3": 2
+      },
+      "CUMULATIVE": {
+       "feature_brier": {
+        "EXCEPTION": 0.17322244,
+        "PROVISO": 0.30404196,
+        "QUANT_THRESHOLD": 0.02307361,
+        "CROSS_REFERENCE": 0.3627652900000001,
+        "INLINE_DEFINITION": 1.3690000000000001e-05
+       },
+       "brier": 0.1726,
+       "type_hit3": null,
+       "xref_recall3": 0.5,
+       "xref_false3": 2
+      },
+      "SIMPLE_COUNTS": {
+       "feature_brier": {
+        "EXCEPTION": 0.052440999999999995,
+        "PROVISO": 0.24373969000000004,
+        "QUANT_THRESHOLD": 0.18447025,
+        "CROSS_REFERENCE": 0.20493729,
+        "INLINE_DEFINITION": 1.96e-06
+       },
+       "brier": 0.1371,
+       "type_hit3": null,
+       "xref_recall3": 0.0,
+       "xref_false3": 0
+      },
+      "PRECEDENT": {
+       "feature_brier": {
+        "EXCEPTION": 0.009999999999999995,
+        "PROVISO": 0.81,
+        "QUANT_THRESHOLD": 0.81,
+        "CROSS_REFERENCE": 0.81,
+        "INLINE_DEFINITION": 0.010000000000000002
+       },
+       "brier": 0.49,
+       "type_hit3": null,
+       "xref_recall3": 0.0,
+       "xref_false3": 0
+      }
+     }
+    },
+    {
+     "target": "Section 9.08",
+     "true_type": "OTHER",
+     "true_features": {
+      "EXCEPTION": false,
+      "PROVISO": false,
+      "QUANT_THRESHOLD": false,
+      "CROSS_REFERENCE": false,
+      "INLINE_DEFINITION": false
+     },
+     "true_xref_types": [],
+     "anchors": {
+      "EXCEPTION": null,
+      "PROVISO": null,
+      "QUANT_THRESHOLD": null,
+      "CROSS_REFERENCE": null,
+      "INLINE_DEFINITION": null
+     },
+     "body_sha256": "81035e62245892d74e10965a7abfc348d0afaf68fdd1f0ba873634c14fc98e1d",
+     "scores": {
+      "FROZEN_SEED": {
+       "feature_brier": {
+        "EXCEPTION": 0.34082244,
+        "PROVISO": 0.30404196,
+        "QUANT_THRESHOLD": 0.02307361,
+        "CROSS_REFERENCE": 0.15816529,
+        "INLINE_DEFINITION": 1.3690000000000001e-05
+       },
+       "brier": 0.1652,
+       "type_hit3": null,
+       "xref_recall3": null,
+       "xref_false3": 3
+      },
+      "CUMULATIVE": {
+       "feature_brier": {
+        "EXCEPTION": 0.34082244,
+        "PROVISO": 0.30404196,
+        "QUANT_THRESHOLD": 0.02307361,
+        "CROSS_REFERENCE": 0.15816529,
+        "INLINE_DEFINITION": 1.3690000000000001e-05
+       },
+       "brier": 0.1652,
+       "type_hit3": null,
+       "xref_recall3": null,
+       "xref_false3": 3
+      },
+      "SIMPLE_COUNTS": {
+       "feature_brier": {
+        "EXCEPTION": 0.594441,
+        "PROVISO": 0.24373969000000004,
+        "QUANT_THRESHOLD": 0.18447025,
+        "CROSS_REFERENCE": 0.29953729,
+        "INLINE_DEFINITION": 1.96e-06
+       },
+       "brier": 0.2644,
+       "type_hit3": null,
+       "xref_recall3": null,
+       "xref_false3": 0
+      },
+      "PRECEDENT": {
+       "feature_brier": {
+        "EXCEPTION": 0.81,
+        "PROVISO": 0.010000000000000002,
+        "QUANT_THRESHOLD": 0.010000000000000002,
+        "CROSS_REFERENCE": 0.81,
+        "INLINE_DEFINITION": 0.010000000000000002
+       },
+       "brier": 0.33,
+       "type_hit3": null,
+       "xref_recall3": null,
+       "xref_false3": 3
+      }
+     }
+    }
+   ],
+   "mean_brier": {
+    "FROZEN_SEED": 0.1666,
+    "CUMULATIVE": 0.1666,
+    "SIMPLE_COUNTS": 0.2017,
+    "PRECEDENT": 0.25
+   }
+  },
+  {
+   "doc_id": "CA4-04-1792789",
+   "step": 4,
+   "n_targets": 4,
+   "rows": [
+    {
+     "target": "Section 5.05",
+     "true_type": "MAINTENANCE_INSURANCE",
+     "true_features": {
+      "EXCEPTION": true,
+      "PROVISO": false,
+      "QUANT_THRESHOLD": false,
+      "CROSS_REFERENCE": false,
+      "INLINE_DEFINITION": false
+     },
+     "true_xref_types": [],
+     "anchors": {
+      "EXCEPTION": {
+       "start": 235,
+       "end": 241,
+       "match_sha256": "b11279547bc49510a81a764a59dc2eaba8cd004d95878e3a284fd27427042553"
+      },
+      "PROVISO": null,
+      "QUANT_THRESHOLD": null,
+      "CROSS_REFERENCE": null,
+      "INLINE_DEFINITION": null
+     },
+     "body_sha256": "e14be9362945ef2c5f95dc5011860e222dd7df657cb8143722e60b16c7669194",
+     "scores": {
+      "FROZEN_SEED": {
+       "feature_brier": {
+        "EXCEPTION": 0.5018305599999999,
+        "PROVISO": 0.07246864,
+        "QUANT_THRESHOLD": 0.00064516,
+        "CROSS_REFERENCE": 0.06360484,
+        "INLINE_DEFINITION": 1.7639999999999997e-05
+       },
+       "brier": 0.1277,
+       "type_hit3": true,
+       "xref_recall3": null,
+       "xref_false3": 3
+      },
+      "CUMULATIVE": {
+       "feature_brier": {
+        "EXCEPTION": 0.801025,
+        "PROVISO": 0.06081156000000001,
+        "QUANT_THRESHOLD": 0.001444,
+        "CROSS_REFERENCE": 0.006593439999999999,
+        "INLINE_DEFINITION": 5.759999999999999e-06
+       },
+       "brier": 0.174,
+       "type_hit3": true,
+       "xref_recall3": null,
+       "xref_false3": 3
+      },
+      "SIMPLE_COUNTS": {
+       "feature_brier": {
+        "EXCEPTION": 0.30074256,
+        "PROVISO": 0.08444836000000001,
+        "QUANT_THRESHOLD": 0.0008702499999999999,
+        "CROSS_REFERENCE": 0.03621409,
+        "INLINE_DEFINITION": 0.0007344099999999999
+       },
+       "brier": 0.0846,
+       "type_hit3": false,
+       "xref_recall3": null,
+       "xref_false3": 0
+      },
+      "PRECEDENT": {
+       "feature_brier": {
+        "EXCEPTION": 0.81,
+        "PROVISO": 0.81,
+        "QUANT_THRESHOLD": 0.010000000000000002,
+        "CROSS_REFERENCE": 0.010000000000000002,
+        "INLINE_DEFINITION": 0.010000000000000002
+       },
+       "brier": 0.33,
+       "type_hit3": false,
+       "xref_recall3": null,
+       "xref_false3": 0
+      }
+     }
+    },
+    {
+     "target": "Section 3.10",
+     "true_type": "ERISA",
+     "true_features": {
+      "EXCEPTION": true,
+      "PROVISO": false,
+      "QUANT_THRESHOLD": false,
+      "CROSS_REFERENCE": false,
+      "INLINE_DEFINITION": false
+     },
+     "true_xref_types": [],
+     "anchors": {
+      "EXCEPTION": {
+       "start": 251,
+       "end": 257,
+       "match_sha256": "b11279547bc49510a81a764a59dc2eaba8cd004d95878e3a284fd27427042553"
+      },
+      "PROVISO": null,
+      "QUANT_THRESHOLD": null,
+      "CROSS_REFERENCE": null,
+      "INLINE_DEFINITION": null
+     },
+     "body_sha256": "07eeabe2a5b7bcd2afad9844a9b485d313d7345778ecf0029a8a4902728d1833",
+     "scores": {
+      "FROZEN_SEED": {
+       "feature_brier": {
+        "EXCEPTION": 0.23755876000000006,
+        "PROVISO": 0.011859209999999999,
+        "QUANT_THRESHOLD": 0.00793881,
+        "CROSS_REFERENCE": 0.08844676,
+        "INLINE_DEFINITION": 5.759999999999999e-06
+       },
+       "brier": 0.0692,
+       "type_hit3": true,
+       "xref_recall3": null,
+       "xref_false3": 3
+      },
+      "CUMULATIVE": {
+       "feature_brier": {
+        "EXCEPTION": 0.23136099999999998,
+        "PROVISO": 0.01687401,
+        "QUANT_THRESHOLD": 0.007586409999999999,
+        "CROSS_REFERENCE": 0.09966648999999998,
+        "INLINE_DEFINITION": 0.00042436000000000004
+       },
+       "brier": 0.0712,
+       "type_hit3": true,
+       "xref_recall3": null,
+       "xref_false3": 3
+      },
+      "SIMPLE_COUNTS": {
+       "feature_brier": {
+        "EXCEPTION": 0.18896408999999997,
+        "PROVISO": 0.011750559999999998,
+        "QUANT_THRESHOLD": 0.00288369,
+        "CROSS_REFERENCE": 0.04435236000000001,
+        "INLINE_DEFINITION": 0.0006969599999999999
+       },
+       "brier": 0.0497,
+       "type_hit3": false,
+       "xref_recall3": null,
+       "xref_false3": 0
+      },
+      "PRECEDENT": {
+       "feature_brier": {
+        "EXCEPTION": 0.009999999999999995,
+        "PROVISO": 0.010000000000000002,
+        "QUANT_THRESHOLD": 0.010000000000000002,
+        "CROSS_REFERENCE": 0.81,
+        "INLINE_DEFINITION": 0.010000000000000002
+       },
+       "brier": 0.17,
+       "type_hit3": false,
+       "xref_recall3": null,
+       "xref_false3": 1
+      }
+     }
+    },
+    {
+     "target": "Section 5.01",
+     "true_type": "FINANCIAL_REPORTING",
+     "true_features": {
+      "EXCEPTION": true,
+      "PROVISO": true,
+      "QUANT_THRESHOLD": false,
+      "CROSS_REFERENCE": true,
+      "INLINE_DEFINITION": false
+     },
+     "true_xref_types": [
+      "FINANCIAL_CONDITION_NO_MAC",
+      "OTHER"
+     ],
+     "anchors": {
+      "EXCEPTION": {
+       "start": 544,
+       "end": 554,
+       "match_sha256": "53dd72d04e71d4a1f3f2e955dc754c631ffda1a9f9ea7fb0a7f8915411a9bbd1"
+      },
+      "PROVISO": {
+       "start": 3108,
+       "end": 3121,
+       "match_sha256": "d5201236a8320664f0bdef3b6e559767277acb6de9a70dbe5ba14a4409776b1a"
+      },
+      "QUANT_THRESHOLD": null,
+      "CROSS_REFERENCE": {
+       "start": 2350,
+       "end": 2361
+      },
+      "INLINE_DEFINITION": null
+     },
+     "body_sha256": "a485f6db28a4e752b7e04ed875288d261724cc146f26ca352235a2ecafc55224",
+     "scores": {
+      "FROZEN_SEED": {
+       "feature_brier": {
+        "EXCEPTION": 0.12709225000000002,
+        "PROVISO": 0.30780303999999997,
+        "QUANT_THRESHOLD": 0.00064516,
+        "CROSS_REFERENCE": 0.15673681000000003,
+        "INLINE_DEFINITION": 1.7639999999999997e-05
+       },
+       "brier": 0.1185,
+       "type_hit3": true,
+       "xref_recall3": 1.0,
+       "xref_false3": 1
+      },
+      "CUMULATIVE": {
+       "feature_brier": {
+        "EXCEPTION": 0.3147209999999999,
+        "PROVISO": 0.34082244,
+        "QUANT_THRESHOLD": 0.0016728099999999998,
+        "CROSS_REFERENCE": 0.3458616100000001,
+        "INLINE_DEFINITION": 1.0889999999999999e-05
+       },
+       "brier": 0.2006,
+       "type_hit3": true,
+       "xref_recall3": 1.0,
+       "xref_false3": 1
+      },
+      "SIMPLE_COUNTS": {
+       "feature_brier": {
+        "EXCEPTION": 0.30074256,
+        "PROVISO": 0.5032483600000001,
+        "QUANT_THRESHOLD": 0.0008702499999999999,
+        "CROSS_REFERENCE": 0.6556140899999999,
+        "INLINE_DEFINITION": 0.0007344099999999999
+       },
+       "brier": 0.2922,
+       "type_hit3": false,
+       "xref_recall3": 0.0,
+       "xref_false3": 0
+      },
+      "PRECEDENT": {
+       "feature_brier": {
+        "EXCEPTION": 0.009999999999999995,
+        "PROVISO": 0.81,
+        "QUANT_THRESHOLD": 0.010000000000000002,
+        "CROSS_REFERENCE": 0.009999999999999995,
+        "INLINE_DEFINITION": 0.010000000000000002
+       },
+       "brier": 0.17,
+       "type_hit3": false,
+       "xref_recall3": 0.0,
+       "xref_false3": 1
+      }
+     }
+    },
+    {
+     "target": "Section 6.08",
+     "true_type": "OTHER",
+     "true_features": {
+      "EXCEPTION": false,
+      "PROVISO": true,
+      "QUANT_THRESHOLD": true,
+      "CROSS_REFERENCE": true,
+      "INLINE_DEFINITION": false
+     },
+     "true_xref_types": [
+      "FINANCIAL_REPORTING"
+     ],
+     "anchors": {
+      "EXCEPTION": null,
+      "PROVISO": {
+       "start": 311,
+       "end": 324,
+       "match_sha256": "d5201236a8320664f0bdef3b6e559767277acb6de9a70dbe5ba14a4409776b1a"
+      },
+      "QUANT_THRESHOLD": {
+       "start": 146,
+       "end": 158,
+       "match_sha256": "5e672deca688d427e134a22e434e9955b79437864344030e4ec03f302cbe4509"
+      },
+      "CROSS_REFERENCE": {
+       "start": 287,
+       "end": 298
+      },
+      "INLINE_DEFINITION": null
+     },
+     "body_sha256": "29b53bcfbcfd674af908d678dbe9451ecd5d1261d76fac6688ba9489f5963878",
+     "scores": {
+      "FROZEN_SEED": {
+       "feature_brier": {
+        "EXCEPTION": 0.27092025,
+        "PROVISO": 0.20757136,
+        "QUANT_THRESHOLD": 0.40411448999999994,
+        "CROSS_REFERENCE": 0.75325041,
+        "INLINE_DEFINITION": 6.25e-06
+       },
+       "brier": 0.3272,
+       "type_hit3": null,
+       "xref_recall3": 0.0,
+       "xref_false3": 3
+      },
+      "CUMULATIVE": {
+       "feature_brier": {
+        "EXCEPTION": 0.27457600000000004,
+        "PROVISO": 0.32798529,
+        "QUANT_THRESHOLD": 0.37051569,
+        "CROSS_REFERENCE": 0.51825601,
+        "INLINE_DEFINITION": 2.209e-05
+       },
+       "brier": 0.2983,
+       "type_hit3": null,
+       "xref_recall3": 0.0,
+       "xref_false3": 3
+      },
+      "SIMPLE_COUNTS": {
+       "feature_brier": {
+        "EXCEPTION": 0.41486481000000003,
+        "PROVISO": 0.37761025000000004,
+        "QUANT_THRESHOLD": 0.4662158400000001,
+        "CROSS_REFERENCE": 0.268324,
+        "INLINE_DEFINITION": 3.24e-06
+       },
+       "brier": 0.3054,
+       "type_hit3": null,
+       "xref_recall3": 0.0,
+       "xref_false3": 0
+      },
+      "PRECEDENT": {
+       "feature_brier": {
+        "EXCEPTION": 0.010000000000000002,
+        "PROVISO": 0.81,
+        "QUANT_THRESHOLD": 0.81,
+        "CROSS_REFERENCE": 0.81,
+        "INLINE_DEFINITION": 0.010000000000000002
+       },
+       "brier": 0.49,
+       "type_hit3": null,
+       "xref_recall3": 0.0,
+       "xref_false3": 0
+      }
+     }
+    }
+   ],
+   "mean_brier": {
+    "FROZEN_SEED": 0.1606,
+    "CUMULATIVE": 0.186,
+    "SIMPLE_COUNTS": 0.183,
+    "PRECEDENT": 0.29
+   }
+  },
+  {
+   "doc_id": "CA4-05-1062231",
+   "step": 5,
+   "n_targets": 4,
+   "rows": [
+    {
+     "target": "Section 3.13",
+     "true_type": "OTHER",
+     "true_features": {
+      "EXCEPTION": true,
+      "PROVISO": false,
+      "QUANT_THRESHOLD": false,
+      "CROSS_REFERENCE": true,
+      "INLINE_DEFINITION": false
+     },
+     "true_xref_types": [
+      "LIENS"
+     ],
+     "anchors": {
+      "EXCEPTION": {
+       "start": 1198,
+       "end": 1204,
+       "match_sha256": "b11279547bc49510a81a764a59dc2eaba8cd004d95878e3a284fd27427042553"
+      },
+      "PROVISO": null,
+      "QUANT_THRESHOLD": null,
+      "CROSS_REFERENCE": {
+       "start": 1246,
+       "end": 1258
+      },
+      "INLINE_DEFINITION": null
+     },
+     "body_sha256": "09ff64c2deeefa47a00a3bf032ceaccc222672a7ec0667ee6dd9e540b570d982",
+     "scores": {
+      "FROZEN_SEED": {
+       "feature_brier": {
+        "EXCEPTION": 0.25745476000000006,
+        "PROVISO": 0.04384836,
+        "QUANT_THRESHOLD": 0.016537959999999997,
+        "CROSS_REFERENCE": 0.3724660900000001,
+        "INLINE_DEFINITION": 6.25e-06
+       },
+       "brier": 0.1381,
+       "type_hit3": null,
+       "xref_recall3": 0.0,
+       "xref_false3": 3
+      },
+      "CUMULATIVE": {
+       "feature_brier": {
+        "EXCEPTION": 0.22496049000000004,
+        "PROVISO": 0.05130225,
+        "QUANT_THRESHOLD": 0.016332839999999998,
+        "CROSS_REFERENCE": 0.31427236,
+        "INLINE_DEFINITION": 0.0010758400000000002
+       },
+       "brier": 0.1216,
+       "type_hit3": null,
+       "xref_recall3": 0.0,
+       "xref_false3": 3
+      },
+      "SIMPLE_COUNTS": {
+       "feature_brier": {
+        "EXCEPTION": 0.19864848999999998,
+        "PROVISO": 0.012365439999999998,
+        "QUANT_THRESHOLD": 0.0030691599999999996,
+        "CROSS_REFERENCE": 0.6681427600000001,
+        "INLINE_DEFINITION": 0.00033856
+       },
+       "brier": 0.1765,
+       "type_hit3": null,
+       "xref_recall3": 0.0,
+       "xref_false3": 0
+      },
+      "PRECEDENT": {
+       "feature_brier": {
+        "EXCEPTION": 0.81,
+        "PROVISO": 0.010000000000000002,
+        "QUANT_THRESHOLD": 0.010000000000000002,
+        "CROSS_REFERENCE": 0.81,
+        "INLINE_DEFINITION": 0.010000000000000002
+       },
+       "brier": 0.33,
+       "type_hit3": null,
+       "xref_recall3": 0.0,
+       "xref_false3": 0
+      }
+     }
+    },
+    {
+     "target": "Section 6.04",
+     "true_type": "GUARANTEE_TERMS",
+     "true_features": {
+      "EXCEPTION": true,
+      "PROVISO": true,
+      "QUANT_THRESHOLD": true,
+      "CROSS_REFERENCE": true,
+      "INLINE_DEFINITION": false
+     },
+     "true_xref_types": [
+      "FUNDAMENTAL_CHANGES",
+      "INDEBTEDNESS",
+      "LIENS",
+      "OTHER"
+     ],
+     "anchors": {
+      "EXCEPTION": {
+       "start": 96,
+       "end": 106,
+       "match_sha256": "53dd72d04e71d4a1f3f2e955dc754c631ffda1a9f9ea7fb0a7f8915411a9bbd1"
+      },
+      "PROVISO": {
+       "start": 1196,
+       "end": 1209,
+       "match_sha256": "d5201236a8320664f0bdef3b6e559767277acb6de9a70dbe5ba14a4409776b1a"
+      },
+      "QUANT_THRESHOLD": {
+       "start": 1296,
+       "end": 1298,
+       "match_sha256": "4879e9c95387ed71c784881c6e1039027bef7552cfb5bae503e59995d2686bf2"
+      },
+      "CROSS_REFERENCE": {
+       "start": 5694,
+       "end": 5706
+      },
+      "INLINE_DEFINITION": null
+     },
+     "body_sha256": "f9244112a8da21dea0eabc6b649e0ea3078f2ef58c464e1b7fe7cea2af4f89eb",
+     "scores": {
+      "FROZEN_SEED": {
+       "feature_brier": {
+        "EXCEPTION": 0.22391823999999996,
+        "PROVISO": 0.21827583999999994,
+        "QUANT_THRESHOLD": 0.74046025,
+        "CROSS_REFERENCE": 0.41473600000000005,
+        "INLINE_DEFINITION": 1.156e-05
+       },
+       "brier": 0.3195,
+       "type_hit3": false,
+       "xref_recall3": 0.25,
+       "xref_false3": 2
+      },
+      "CUMULATIVE": {
+       "feature_brier": {
+        "EXCEPTION": 0.3912502499999999,
+        "PROVISO": 0.6129324100000001,
+        "QUANT_THRESHOLD": 0.9475075600000001,
+        "CROSS_REFERENCE": 0.49154121000000006,
+        "INLINE_DEFINITION": 5.759999999999999e-06
+       },
+       "brier": 0.4886,
+       "type_hit3": false,
+       "xref_recall3": 0.75,
+       "xref_false3": 0
+      },
+      "SIMPLE_COUNTS": {
+       "feature_brier": {
+        "EXCEPTION": 0.12974403999999998,
+        "PROVISO": 0.32103556,
+        "QUANT_THRESHOLD": 0.41744521,
+        "CROSS_REFERENCE": 0.19342403999999996,
+        "INLINE_DEFINITION": 1.4399999999999998e-06
+       },
+       "brier": 0.2123,
+       "type_hit3": false,
+       "xref_recall3": 0.0,
+       "xref_false3": 0
+      },
+      "PRECEDENT": {
+       "feature_brier": {
+        "EXCEPTION": 0.009999999999999995,
+        "PROVISO": 0.009999999999999995,
+        "QUANT_THRESHOLD": 0.009999999999999995,
+        "CROSS_REFERENCE": 0.009999999999999995,
+        "INLINE_DEFINITION": 0.010000000000000002
+       },
+       "brier": 0.01,
+       "type_hit3": false,
+       "xref_recall3": 0.0,
+       "xref_false3": 2
+      }
+     }
+    },
+    {
+     "target": "Section 6.10",
+     "true_type": "FINANCIAL_RATIO_COVENANT",
+     "true_features": {
+      "EXCEPTION": true,
+      "PROVISO": true,
+      "QUANT_THRESHOLD": true,
+      "CROSS_REFERENCE": false,
+      "INLINE_DEFINITION": false
+     },
+     "true_xref_types": [],
+     "anchors": {
+      "EXCEPTION": {
+       "start": 2780,
+       "end": 2795,
+       "match_sha256": "f3385458cbf26f9615805e172aac694449bb4b8ebb0912b53dafa607f5e47bf8"
+      },
+      "PROVISO": {
+       "start": 719,
+       "end": 737,
+       "match_sha256": "e2bf5fabbb35d188a70d3d5a586d46e9f93d9e65e97869fbc1f1793bd691c7d7"
+      },
+      "QUANT_THRESHOLD": {
+       "start": 397,
+       "end": 409,
+       "match_sha256": "880f7a50c742e9509afe073c54c98fb6dbc9381dea6742c7cec17c2eda341be4"
+      },
+      "CROSS_REFERENCE": null,
+      "INLINE_DEFINITION": null
+     },
+     "body_sha256": "64ad5e3d5bcca8c13d5470341c56b0c4c0479f21481c10c697c7bc5184f4b709",
+     "scores": {
+      "FROZEN_SEED": {
+       "feature_brier": {
+        "EXCEPTION": 0.19088160999999995,
+        "PROVISO": 0.20738916000000002,
+        "QUANT_THRESHOLD": 0.72692676,
+        "CROSS_REFERENCE": 0.14638276,
+        "INLINE_DEFINITION": 1.296e-05
+       },
+       "brier": 0.2543,
+       "type_hit3": false,
+       "xref_recall3": null,
+       "xref_false3": 3
+      },
+      "CUMULATIVE": {
+       "feature_brier": {
+        "EXCEPTION": 0.3912502499999999,
+        "PROVISO": 0.6129324100000001,
+        "QUANT_THRESHOLD": 0.9475075600000001,
+        "CROSS_REFERENCE": 0.08934121,
+        "INLINE_DEFINITION": 5.759999999999999e-06
+       },
+       "brier": 0.4082,
+       "type_hit3": false,
+       "xref_recall3": null,
+       "xref_false3": 3
+      },
+      "SIMPLE_COUNTS": {
+       "feature_brier": {
+        "EXCEPTION": 0.12974403999999998,
+        "PROVISO": 0.32103556,
+        "QUANT_THRESHOLD": 0.41744521,
+        "CROSS_REFERENCE": 0.31382404,
+        "INLINE_DEFINITION": 1.4399999999999998e-06
+       },
+       "brier": 0.2364,
+       "type_hit3": false,
+       "xref_recall3": null,
+       "xref_false3": 0
+      },
+      "PRECEDENT": {
+       "feature_brier": {
+        "EXCEPTION": 0.81,
+        "PROVISO": 0.009999999999999995,
+        "QUANT_THRESHOLD": 0.009999999999999995,
+        "CROSS_REFERENCE": 0.81,
+        "INLINE_DEFINITION": 0.010000000000000002
+       },
+       "brier": 0.33,
+       "type_hit3": false,
+       "xref_recall3": null,
+       "xref_false3": 1
+      }
+     }
+    },
+    {
+     "target": "Section 5.05",
+     "true_type": "MAINTENANCE_INSURANCE",
+     "true_features": {
+      "EXCEPTION": false,
+      "PROVISO": false,
+      "QUANT_THRESHOLD": false,
+      "CROSS_REFERENCE": false,
+      "INLINE_DEFINITION": false
+     },
+     "true_xref_types": [],
+     "anchors": {
+      "EXCEPTION": null,
+      "PROVISO": null,
+      "QUANT_THRESHOLD": null,
+      "CROSS_REFERENCE": null,
+      "INLINE_DEFINITION": null
+     },
+     "body_sha256": "47d6cfe906af85b4bb17dcaf8598ee467ab42fa85202f541993b377e1ee9f870",
+     "scores": {
+      "FROZEN_SEED": {
+       "feature_brier": {
+        "EXCEPTION": 0.10778088999999999,
+        "PROVISO": 0.04545424,
+        "QUANT_THRESHOLD": 0.00094864,
+        "CROSS_REFERENCE": 0.009741689999999999,
+        "INLINE_DEFINITION": 7.2900000000000005e-06
+       },
+       "brier": 0.0328,
+       "type_hit3": true,
+       "xref_recall3": null,
+       "xref_false3": 3
+      },
+      "CUMULATIVE": {
+       "feature_brier": {
+        "EXCEPTION": 0.14891881,
+        "PROVISO": 0.09443329000000002,
+        "QUANT_THRESHOLD": 0.00929296,
+        "CROSS_REFERENCE": 0.03378244,
+        "INLINE_DEFINITION": 0.005944410000000001
+       },
+       "brier": 0.0585,
+       "type_hit3": true,
+       "xref_recall3": null,
+       "xref_false3": 3
+      },
+      "SIMPLE_COUNTS": {
+       "feature_brier": {
+        "EXCEPTION": 0.23251684000000003,
+        "PROVISO": 0.10259208999999998,
+        "QUANT_THRESHOLD": 0.0005152900000000001,
+        "CROSS_REFERENCE": 0.05004169000000001,
+        "INLINE_DEFINITION": 0.00042025000000000005
+       },
+       "brier": 0.0772,
+       "type_hit3": false,
+       "xref_recall3": null,
+       "xref_false3": 0
+      },
+      "PRECEDENT": {
+       "feature_brier": {
+        "EXCEPTION": 0.81,
+        "PROVISO": 0.010000000000000002,
+        "QUANT_THRESHOLD": 0.010000000000000002,
+        "CROSS_REFERENCE": 0.010000000000000002,
+        "INLINE_DEFINITION": 0.010000000000000002
+       },
+       "brier": 0.17,
+       "type_hit3": true,
+       "xref_recall3": null,
+       "xref_false3": 0
+      }
+     }
+    }
+   ],
+   "mean_brier": {
+    "FROZEN_SEED": 0.1862,
+    "CUMULATIVE": 0.2692,
+    "SIMPLE_COUNTS": 0.1756,
+    "PRECEDENT": 0.21
+   }
+  },
+  {
+   "doc_id": "CA4-06-1703056",
+   "step": 6,
+   "n_targets": 4,
+   "rows": [
+    {
+     "target": "Section 3.25",
+     "true_type": "SANCTIONS_AML",
+     "true_features": {
+      "EXCEPTION": false,
+      "PROVISO": false,
+      "QUANT_THRESHOLD": false,
+      "CROSS_REFERENCE": false,
+      "INLINE_DEFINITION": false
+     },
+     "true_xref_types": [],
+     "anchors": {
+      "EXCEPTION": null,
+      "PROVISO": null,
+      "QUANT_THRESHOLD": null,
+      "CROSS_REFERENCE": null,
+      "INLINE_DEFINITION": null
+     },
+     "body_sha256": "4d5912eec28b1edb4872e80bec9d80ebb33a7edc6edbf6b1709f8848b6964282",
+     "scores": {
+      "FROZEN_SEED": {
+       "feature_brier": {
+        "EXCEPTION": 0.29300569,
+        "PROVISO": 0.033489,
+        "QUANT_THRESHOLD": 0.00013455999999999999,
+        "CROSS_REFERENCE": 0.026308840000000003,
+        "INLINE_DEFINITION": 3.61e-06
+       },
+       "brier": 0.0706,
+       "type_hit3": false,
+       "xref_recall3": null,
+       "xref_false3": 3
+      },
+      "CUMULATIVE": {
+       "feature_brier": {
+        "EXCEPTION": 0.23020804,
+        "PROVISO": 0.00194481,
+        "QUANT_THRESHOLD": 0.00041616000000000005,
+        "CROSS_REFERENCE": 0.00829921,
+        "INLINE_DEFINITION": 2.704e-05
+       },
+       "brier": 0.0482,
+       "type_hit3": true,
+       "xref_recall3": null,
+       "xref_false3": 3
+      },
+      "SIMPLE_COUNTS": {
+       "feature_brier": {
+        "EXCEPTION": 0.27217089000000005,
+        "PROVISO": 0.00986049,
+        "QUANT_THRESHOLD": 0.0018318399999999997,
+        "CROSS_REFERENCE": 0.028123289999999995,
+        "INLINE_DEFINITION": 0.00019881
+       },
+       "brier": 0.0624,
+       "type_hit3": false,
+       "xref_recall3": null,
+       "xref_false3": 0
+      },
+      "PRECEDENT": {
+       "feature_brier": {
+        "EXCEPTION": 0.010000000000000002,
+        "PROVISO": 0.010000000000000002,
+        "QUANT_THRESHOLD": 0.010000000000000002,
+        "CROSS_REFERENCE": 0.010000000000000002,
+        "INLINE_DEFINITION": 0.010000000000000002
+       },
+       "brier": 0.01,
+       "type_hit3": false,
+       "xref_recall3": null,
+       "xref_false3": 0
+      }
+     }
+    },
+    {
+     "target": "Section 3.02",
+     "true_type": "AUTHORIZATION_ENFORCEABILITY",
+     "true_features": {
+      "EXCEPTION": true,
+      "PROVISO": false,
+      "QUANT_THRESHOLD": false,
+      "CROSS_REFERENCE": false,
+      "INLINE_DEFINITION": false
+     },
+     "true_xref_types": [],
+     "anchors": {
+      "EXCEPTION": {
+       "start": 2005,
+       "end": 2015,
+       "match_sha256": "53dd72d04e71d4a1f3f2e955dc754c631ffda1a9f9ea7fb0a7f8915411a9bbd1"
+      },
+      "PROVISO": null,
+      "QUANT_THRESHOLD": null,
+      "CROSS_REFERENCE": null,
+      "INLINE_DEFINITION": null
+     },
+     "body_sha256": "08877960d68bb6a2107dfc8d6cfd0dba4559b2d94f505ae2c876ae29aee69ace",
+     "scores": {
+      "FROZEN_SEED": {
+       "feature_brier": {
+        "EXCEPTION": 0.21040569,
+        "PROVISO": 0.033489,
+        "QUANT_THRESHOLD": 0.00013455999999999999,
+        "CROSS_REFERENCE": 0.026308840000000003,
+        "INLINE_DEFINITION": 3.61e-06
+       },
+       "brier": 0.0541,
+       "type_hit3": false,
+       "xref_recall3": null,
+       "xref_false3": 3
+      },
+      "CUMULATIVE": {
+       "feature_brier": {
+        "EXCEPTION": 0.04165680999999998,
+        "PROVISO": 0.018906250000000003,
+        "QUANT_THRESHOLD": 0.008262809999999999,
+        "CROSS_REFERENCE": 0.15256836000000001,
+        "INLINE_DEFINITION": 3.7210000000000005e-05
+       },
+       "brier": 0.0443,
+       "type_hit3": false,
+       "xref_recall3": null,
+       "xref_false3": 3
+      },
+      "SIMPLE_COUNTS": {
+       "feature_brier": {
+        "EXCEPTION": 0.22877088999999995,
+        "PROVISO": 0.00986049,
+        "QUANT_THRESHOLD": 0.0018318399999999997,
+        "CROSS_REFERENCE": 0.028123289999999995,
+        "INLINE_DEFINITION": 0.00019881
+       },
+       "brier": 0.0538,
+       "type_hit3": false,
+       "xref_recall3": null,
+       "xref_false3": 0
+      },
+      "PRECEDENT": {
+       "feature_brier": {
+        "EXCEPTION": 0.81,
+        "PROVISO": 0.010000000000000002,
+        "QUANT_THRESHOLD": 0.010000000000000002,
+        "CROSS_REFERENCE": 0.010000000000000002,
+        "INLINE_DEFINITION": 0.010000000000000002
+       },
+       "brier": 0.17,
+       "type_hit3": true,
+       "xref_recall3": null,
+       "xref_false3": 0
+      }
+     }
+    },
+    {
+     "target": "Section 6.01",
+     "true_type": "INDEBTEDNESS",
+     "true_features": {
+      "EXCEPTION": true,
+      "PROVISO": true,
+      "QUANT_THRESHOLD": true,
+      "CROSS_REFERENCE": true,
+      "INLINE_DEFINITION": false
+     },
+     "true_xref_types": [
+      "COMMITMENTS_BORROWINGS",
+      "LIENS",
+      "OTHER"
+     ],
+     "anchors": {
+      "EXCEPTION": {
+       "start": 59,
+       "end": 65,
+       "match_sha256": "b11279547bc49510a81a764a59dc2eaba8cd004d95878e3a284fd27427042553"
+      },
+      "PROVISO": {
+       "start": 131,
+       "end": 146,
+       "match_sha256": "8ae30b5de82aa1a72863c078cdd4503e922960927e803d9331eefe42a5e3dd2d"
+      },
+      "QUANT_THRESHOLD": {
+       "start": 232,
+       "end": 234,
+       "match_sha256": "4879e9c95387ed71c784881c6e1039027bef7552cfb5bae503e59995d2686bf2"
+      },
+      "CROSS_REFERENCE": {
+       "start": 572,
+       "end": 584
+      },
+      "INLINE_DEFINITION": null
+     },
+     "body_sha256": "3f59b215b8d1b4816dde54f9511917e1e5fd630a5e14844efa25b78058c85d55",
+     "scores": {
+      "FROZEN_SEED": {
+       "feature_brier": {
+        "EXCEPTION": 0.21058920999999997,
+        "PROVISO": 0.21967969,
+        "QUANT_THRESHOLD": 0.71554681,
+        "CROSS_REFERENCE": 0.24462916000000004,
+        "INLINE_DEFINITION": 1.444e-05
+       },
+       "brier": 0.2781,
+       "type_hit3": true,
+       "xref_recall3": 0.333,
+       "xref_false3": 2
+      },
+      "CUMULATIVE": {
+       "feature_brier": {
+        "EXCEPTION": 0.16752649,
+        "PROVISO": 0.48274703999999996,
+        "QUANT_THRESHOLD": 0.5709313600000001,
+        "CROSS_REFERENCE": 0.15015624999999996,
+        "INLINE_DEFINITION": 2.89e-06
+       },
+       "brier": 0.2743,
+       "type_hit3": true,
+       "xref_recall3": 0.667,
+       "xref_false3": 1
+      },
+      "SIMPLE_COUNTS": {
+       "feature_brier": {
+        "EXCEPTION": 0.08767521000000002,
+        "PROVISO": 0.224676,
+        "QUANT_THRESHOLD": 0.351649,
+        "CROSS_REFERENCE": 0.18879025,
+        "INLINE_DEFINITION": 6.4e-07
+       },
+       "brier": 0.1706,
+       "type_hit3": false,
+       "xref_recall3": 0.0,
+       "xref_false3": 0
+      },
+      "PRECEDENT": {
+       "feature_brier": {
+        "EXCEPTION": 0.009999999999999995,
+        "PROVISO": 0.009999999999999995,
+        "QUANT_THRESHOLD": 0.009999999999999995,
+        "CROSS_REFERENCE": 0.009999999999999995,
+        "INLINE_DEFINITION": 0.010000000000000002
+       },
+       "brier": 0.01,
+       "type_hit3": true,
+       "xref_recall3": 0.667,
+       "xref_false3": 1
+      }
+     }
+    },
+    {
+     "target": "Section 5.11",
+     "true_type": "OTHER",
+     "true_features": {
+      "EXCEPTION": false,
+      "PROVISO": false,
+      "QUANT_THRESHOLD": false,
+      "CROSS_REFERENCE": false,
+      "INLINE_DEFINITION": false
+     },
+     "true_xref_types": [],
+     "anchors": {
+      "EXCEPTION": null,
+      "PROVISO": null,
+      "QUANT_THRESHOLD": null,
+      "CROSS_REFERENCE": null,
+      "INLINE_DEFINITION": null
+     },
+     "body_sha256": "74f50737361b3d46f882afefcd5ce76f53a123c8fe51f2401d2f71afebf48ea6",
+     "scores": {
+      "FROZEN_SEED": {
+       "feature_brier": {
+        "EXCEPTION": 0.04389025,
+        "PROVISO": 0.011448999999999999,
+        "QUANT_THRESHOLD": 0.0025200400000000003,
+        "CROSS_REFERENCE": 0.005929,
+        "INLINE_DEFINITION": 8.409999999999999e-06
+       },
+       "brier": 0.0128,
+       "type_hit3": null,
+       "xref_recall3": null,
+       "xref_false3": 3
+      },
+      "CUMULATIVE": {
+       "feature_brier": {
+        "EXCEPTION": 0.11512449,
+        "PROVISO": 0.09728161,
+        "QUANT_THRESHOLD": 0.01117249,
+        "CROSS_REFERENCE": 0.03904576,
+        "INLINE_DEFINITION": 0.00670761
+       },
+       "brier": 0.0539,
+       "type_hit3": null,
+       "xref_recall3": null,
+       "xref_false3": 3
+      },
+      "SIMPLE_COUNTS": {
+       "feature_brier": {
+        "EXCEPTION": 0.23639044,
+        "PROVISO": 0.09803160999999999,
+        "QUANT_THRESHOLD": 0.0011088900000000002,
+        "CROSS_REFERENCE": 0.04915089,
+        "INLINE_DEFINITION": 0.00025921
+       },
+       "brier": 0.077,
+       "type_hit3": null,
+       "xref_recall3": null,
+       "xref_false3": 0
+      },
+      "PRECEDENT": {
+       "feature_brier": {
+        "EXCEPTION": 0.81,
+        "PROVISO": 0.010000000000000002,
+        "QUANT_THRESHOLD": 0.81,
+        "CROSS_REFERENCE": 0.010000000000000002,
+        "INLINE_DEFINITION": 0.010000000000000002
+       },
+       "brier": 0.33,
+       "type_hit3": null,
+       "xref_recall3": null,
+       "xref_false3": 0
+      }
+     }
+    }
+   ],
+   "mean_brier": {
+    "FROZEN_SEED": 0.1039,
+    "CUMULATIVE": 0.1052,
+    "SIMPLE_COUNTS": 0.091,
+    "PRECEDENT": 0.13
+   }
+  },
+  {
+   "doc_id": "CA4-07-1771514",
+   "step": 7,
+   "n_targets": 4,
+   "rows": [
+    {
+     "target": "Section 7.07",
+     "true_type": "BOOKS_INSPECTION",
+     "true_features": {
+      "EXCEPTION": false,
+      "PROVISO": false,
+      "QUANT_THRESHOLD": false,
+      "CROSS_REFERENCE": false,
+      "INLINE_DEFINITION": false
+     },
+     "true_xref_types": [],
+     "anchors": {
+      "EXCEPTION": null,
+      "PROVISO": null,
+      "QUANT_THRESHOLD": null,
+      "CROSS_REFERENCE": null,
+      "INLINE_DEFINITION": null
+     },
+     "body_sha256": "f0c57d1f18d41124c8eca97a7221ea3c370ed8cdf2e79b500b2c4ddd937cfd5f",
+     "scores": {
+      "FROZEN_SEED": {
+       "feature_brier": {
+        "EXCEPTION": 0.9333492099999999,
+        "PROVISO": 0.4052595600000001,
+        "QUANT_THRESHOLD": 0.00023716,
+        "CROSS_REFERENCE": 0.12744899999999998,
+        "INLINE_DEFINITION": 6.25e-06
+       },
+       "brier": 0.2933,
+       "type_hit3": true,
+       "xref_recall3": null,
+       "xref_false3": 3
+      },
+      "CUMULATIVE": {
+       "feature_brier": {
+        "EXCEPTION": 0.59675625,
+        "PROVISO": 0.27185795999999995,
+        "QUANT_THRESHOLD": 0.00394384,
+        "CROSS_REFERENCE": 0.097344,
+        "INLINE_DEFINITION": 0.00367236
+       },
+       "brier": 0.1947,
+       "type_hit3": true,
+       "xref_recall3": null,
+       "xref_false3": 3
+      },
+      "SIMPLE_COUNTS": {
+       "feature_brier": {
+        "EXCEPTION": 0.25160256000000003,
+        "PROVISO": 0.10004569000000002,
+        "QUANT_THRESHOLD": 0.00292681,
+        "CROSS_REFERENCE": 0.06360484,
+        "INLINE_DEFINITION": 0.00070225
+       },
+       "brier": 0.0838,
+       "type_hit3": true,
+       "xref_recall3": null,
+       "xref_false3": 0
+      },
+      "PRECEDENT": {
+       "feature_brier": {
+        "EXCEPTION": 0.010000000000000002,
+        "PROVISO": 0.010000000000000002,
+        "QUANT_THRESHOLD": 0.010000000000000002,
+        "CROSS_REFERENCE": 0.010000000000000002,
+        "INLINE_DEFINITION": 0.010000000000000002
+       },
+       "brier": 0.01,
+       "type_hit3": true,
+       "xref_recall3": null,
+       "xref_false3": 0
+      }
+     }
+    },
+    {
+     "target": "Section 7.08",
+     "true_type": "USE_OF_PROCEEDS",
+     "true_features": {
+      "EXCEPTION": false,
+      "PROVISO": false,
+      "QUANT_THRESHOLD": false,
+      "CROSS_REFERENCE": false,
+      "INLINE_DEFINITION": false
+     },
+     "true_xref_types": [],
+     "anchors": {
+      "EXCEPTION": null,
+      "PROVISO": null,
+      "QUANT_THRESHOLD": null,
+      "CROSS_REFERENCE": null,
+      "INLINE_DEFINITION": null
+     },
+     "body_sha256": "8370dd3fb850920340d65451f29dccfd685733f4e16d5b786a6decd5a4506c60",
+     "scores": {
+      "FROZEN_SEED": {
+       "feature_brier": {
+        "EXCEPTION": 0.44863203999999995,
+        "PROVISO": 0.11580409,
+        "QUANT_THRESHOLD": 0.00023716,
+        "CROSS_REFERENCE": 0.12744899999999998,
+        "INLINE_DEFINITION": 6.25e-06
+       },
+       "brier": 0.1384,
+       "type_hit3": false,
+       "xref_recall3": null,
+       "xref_false3": 3
+      },
+      "CUMULATIVE": {
+       "feature_brier": {
+        "EXCEPTION": 0.50438404,
+        "PROVISO": 0.17363889000000002,
+        "QUANT_THRESHOLD": 0.005055209999999999,
+        "CROSS_REFERENCE": 0.12411529,
+        "INLINE_DEFINITION": 0.00467856
+       },
+       "brier": 0.1624,
+       "type_hit3": false,
+       "xref_recall3": null,
+       "xref_false3": 3
+      },
+      "SIMPLE_COUNTS": {
+       "feature_brier": {
+        "EXCEPTION": 0.25160256000000003,
+        "PROVISO": 0.10004569000000002,
+        "QUANT_THRESHOLD": 0.00292681,
+        "CROSS_REFERENCE": 0.06360484,
+        "INLINE_DEFINITION": 0.00070225
+       },
+       "brier": 0.0838,
+       "type_hit3": false,
+       "xref_recall3": null,
+       "xref_false3": 0
+      },
+      "PRECEDENT": {
+       "feature_brier": {
+        "EXCEPTION": 0.010000000000000002,
+        "PROVISO": 0.010000000000000002,
+        "QUANT_THRESHOLD": 0.010000000000000002,
+        "CROSS_REFERENCE": 0.81,
+        "INLINE_DEFINITION": 0.010000000000000002
+       },
+       "brier": 0.17,
+       "type_hit3": true,
+       "xref_recall3": null,
+       "xref_false3": 1
+      }
+     }
+    },
+    {
+     "target": "Section 7.13",
+     "true_type": "OTHER",
+     "true_features": {
+      "EXCEPTION": false,
+      "PROVISO": false,
+      "QUANT_THRESHOLD": false,
+      "CROSS_REFERENCE": false,
+      "INLINE_DEFINITION": false
+     },
+     "true_xref_types": [],
+     "anchors": {
+      "EXCEPTION": null,
+      "PROVISO": null,
+      "QUANT_THRESHOLD": null,
+      "CROSS_REFERENCE": null,
+      "INLINE_DEFINITION": null
+     },
+     "body_sha256": "12338d4309f78a4241567cc871dbf1c76f903456e5ade6142682578b700e0fd0",
+     "scores": {
+      "FROZEN_SEED": {
+       "feature_brier": {
+        "EXCEPTION": 0.44863203999999995,
+        "PROVISO": 0.11580409,
+        "QUANT_THRESHOLD": 0.00023716,
+        "CROSS_REFERENCE": 0.12744899999999998,
+        "INLINE_DEFINITION": 6.25e-06
+       },
+       "brier": 0.1384,
+       "type_hit3": null,
+       "xref_recall3": null,
+       "xref_false3": 3
+      },
+      "CUMULATIVE": {
+       "feature_brier": {
+        "EXCEPTION": 0.51108201,
+        "PROVISO": 0.17639999999999997,
+        "QUANT_THRESHOLD": 0.005169610000000001,
+        "CROSS_REFERENCE": 0.12687844,
+        "INLINE_DEFINITION": 0.004774809999999999
+       },
+       "brier": 0.1649,
+       "type_hit3": null,
+       "xref_recall3": null,
+       "xref_false3": 3
+      },
+      "SIMPLE_COUNTS": {
+       "feature_brier": {
+        "EXCEPTION": 0.25160256000000003,
+        "PROVISO": 0.10004569000000002,
+        "QUANT_THRESHOLD": 0.00292681,
+        "CROSS_REFERENCE": 0.06360484,
+        "INLINE_DEFINITION": 0.00070225
+       },
+       "brier": 0.0838,
+       "type_hit3": null,
+       "xref_recall3": null,
+       "xref_false3": 0
+      },
+      "PRECEDENT": {
+       "feature_brier": {
+        "EXCEPTION": 0.010000000000000002,
+        "PROVISO": 0.010000000000000002,
+        "QUANT_THRESHOLD": 0.010000000000000002,
+        "CROSS_REFERENCE": 0.010000000000000002,
+        "INLINE_DEFINITION": 0.010000000000000002
+       },
+       "brier": 0.01,
+       "type_hit3": null,
+       "xref_recall3": null,
+       "xref_false3": 0
+      }
+     }
+    },
+    {
+     "target": "Section 10.09",
+     "true_type": "OTHER",
+     "true_features": {
+      "EXCEPTION": true,
+      "PROVISO": true,
+      "QUANT_THRESHOLD": false,
+      "CROSS_REFERENCE": true,
+      "INLINE_DEFINITION": false
+     },
+     "true_xref_types": [
+      "PAYMENTS_SHARING",
+      "SETOFF"
+     ],
+     "anchors": {
+      "EXCEPTION": {
+       "start": 793,
+       "end": 808,
+       "match_sha256": "f3385458cbf26f9615805e172aac694449bb4b8ebb0912b53dafa607f5e47bf8"
+      },
+      "PROVISO": {
+       "start": 1260,
+       "end": 1273,
+       "match_sha256": "d5201236a8320664f0bdef3b6e559767277acb6de9a70dbe5ba14a4409776b1a"
+      },
+      "QUANT_THRESHOLD": null,
+      "CROSS_REFERENCE": {
+       "start": 1729,
+       "end": 1741
+      },
+      "INLINE_DEFINITION": null
+     },
+     "body_sha256": "ed7c82b522fc0d1f4a5c8ec01b25464422bb571a4968afcbaeb87a13e91df2a3",
+     "scores": {
+      "FROZEN_SEED": {
+       "feature_brier": {
+        "EXCEPTION": 0.05317636000000001,
+        "PROVISO": 0.4367888100000001,
+        "QUANT_THRESHOLD": 0.00262144,
+        "CROSS_REFERENCE": 0.19545241000000005,
+        "INLINE_DEFINITION": 2.401e-05
+       },
+       "brier": 0.1376,
+       "type_hit3": null,
+       "xref_recall3": 0.0,
+       "xref_false3": 3
+      },
+      "CUMULATIVE": {
+       "feature_brier": {
+        "EXCEPTION": 0.10936248999999999,
+        "PROVISO": 0.63648484,
+        "QUANT_THRESHOLD": 0.00427716,
+        "CROSS_REFERENCE": 0.30470400000000003,
+        "INLINE_DEFINITION": 0.00013689
+       },
+       "brier": 0.211,
+       "type_hit3": null,
+       "xref_recall3": 0.0,
+       "xref_false3": 3
+      },
+      "SIMPLE_COUNTS": {
+       "feature_brier": {
+        "EXCEPTION": 0.044605440000000024,
+        "PROVISO": 0.44275716,
+        "QUANT_THRESHOLD": 0.03916441,
+        "CROSS_REFERENCE": 0.08196769,
+        "INLINE_DEFINITION": 0.0042250000000000005
+       },
+       "brier": 0.1225,
+       "type_hit3": null,
+       "xref_recall3": 0.0,
+       "xref_false3": 0
+      },
+      "PRECEDENT": {
+       "feature_brier": {
+        "EXCEPTION": 0.009999999999999995,
+        "PROVISO": 0.009999999999999995,
+        "QUANT_THRESHOLD": 0.010000000000000002,
+        "CROSS_REFERENCE": 0.009999999999999995,
+        "INLINE_DEFINITION": 0.010000000000000002
+       },
+       "brier": 0.01,
+       "type_hit3": null,
+       "xref_recall3": 0.0,
+       "xref_false3": 2
+      }
+     }
+    }
+   ],
+   "mean_brier": {
+    "FROZEN_SEED": 0.1769,
+    "CUMULATIVE": 0.1832,
+    "SIMPLE_COUNTS": 0.0935,
+    "PRECEDENT": 0.05
+   }
+  },
+  {
+   "doc_id": "CA4-08-821002",
+   "step": 8,
+   "n_targets": 4,
+   "rows": [
+    {
+     "target": "Section 6.06",
+     "true_type": "OTHER",
+     "true_features": {
+      "EXCEPTION": true,
+      "PROVISO": false,
+      "QUANT_THRESHOLD": false,
+      "CROSS_REFERENCE": false,
+      "INLINE_DEFINITION": false
+     },
+     "true_xref_types": [],
+     "anchors": {
+      "EXCEPTION": {
+       "start": 462,
+       "end": 468,
+       "match_sha256": "b11279547bc49510a81a764a59dc2eaba8cd004d95878e3a284fd27427042553"
+      },
+      "PROVISO": null,
+      "QUANT_THRESHOLD": null,
+      "CROSS_REFERENCE": null,
+      "INLINE_DEFINITION": null
+     },
+     "body_sha256": "39f2f9fdcac04b894570cb7e08391dc927b983129a661df2b8abff6c902e5ffd",
+     "scores": {
+      "FROZEN_SEED": {
+       "feature_brier": {
+        "EXCEPTION": 0.19088160999999995,
+        "PROVISO": 0.29658915999999996,
+        "QUANT_THRESHOLD": 0.02172676,
+        "CROSS_REFERENCE": 0.14638276,
+        "INLINE_DEFINITION": 1.296e-05
+       },
+       "brier": 0.1311,
+       "type_hit3": null,
+       "xref_recall3": null,
+       "xref_false3": 3
+      },
+      "CUMULATIVE": {
+       "feature_brier": {
+        "EXCEPTION": 0.3887522499999999,
+        "PROVISO": 0.040602250000000006,
+        "QUANT_THRESHOLD": 0.00028223999999999995,
+        "CROSS_REFERENCE": 0.08538084000000001,
+        "INLINE_DEFINITION": 1.96e-06
+       },
+       "brier": 0.103,
+       "type_hit3": null,
+       "xref_recall3": null,
+       "xref_false3": 3
+      },
+      "SIMPLE_COUNTS": {
+       "feature_brier": {
+        "EXCEPTION": 0.08584900000000002,
+        "PROVISO": 0.29041321000000003,
+        "QUANT_THRESHOLD": 0.17073424,
+        "CROSS_REFERENCE": 0.33767720999999995,
+        "INLINE_DEFINITION": 3.5999999999999994e-07
+       },
+       "brier": 0.1769,
+       "type_hit3": null,
+       "xref_recall3": null,
+       "xref_false3": 0
+      },
+      "PRECEDENT": {
+       "feature_brier": {
+        "EXCEPTION": 0.81,
+        "PROVISO": 0.010000000000000002,
+        "QUANT_THRESHOLD": 0.010000000000000002,
+        "CROSS_REFERENCE": 0.010000000000000002,
+        "INLINE_DEFINITION": 0.010000000000000002
+       },
+       "brier": 0.17,
+       "type_hit3": null,
+       "xref_recall3": null,
+       "xref_false3": 0
+      }
+     }
+    },
+    {
+     "target": "Section 6.05",
+     "true_type": "OTHER",
+     "true_features": {
+      "EXCEPTION": true,
+      "PROVISO": true,
+      "QUANT_THRESHOLD": true,
+      "CROSS_REFERENCE": true,
+      "INLINE_DEFINITION": false
+     },
+     "true_xref_types": [
+      "FINANCIAL_REPORTING",
+      "GUARANTEE_TERMS",
+      "INDEBTEDNESS",
+      "LIENS",
+      "OTHER",
+      "REPAYMENT_PREPAYMENT"
+     ],
+     "anchors": {
+      "EXCEPTION": {
+       "start": 427,
+       "end": 437,
+       "match_sha256": "53dd72d04e71d4a1f3f2e955dc754c631ffda1a9f9ea7fb0a7f8915411a9bbd1"
+      },
+      "PROVISO": {
+       "start": 1136,
+       "end": 1149,
+       "match_sha256": "d5201236a8320664f0bdef3b6e559767277acb6de9a70dbe5ba14a4409776b1a"
+      },
+      "QUANT_THRESHOLD": {
+       "start": 2702,
+       "end": 2704,
+       "match_sha256": "c1b43b36df09f0bf0e0612b54e90e47df2e8722dd90821b3b0613dc8a4f7d5f4"
+      },
+      "CROSS_REFERENCE": {
+       "start": 510,
+       "end": 522
+      },
+      "INLINE_DEFINITION": null
+     },
+     "body_sha256": "5d8a4e17f19ec6e2ebf5071bf6fa3cd69e24c6a38005b0b1f3fc5de81ae36900",
+     "scores": {
+      "FROZEN_SEED": {
+       "feature_brier": {
+        "EXCEPTION": 0.19088160999999995,
+        "PROVISO": 0.20738916000000002,
+        "QUANT_THRESHOLD": 0.72692676,
+        "CROSS_REFERENCE": 0.38118275999999995,
+        "INLINE_DEFINITION": 1.296e-05
+       },
+       "brier": 0.3013,
+       "type_hit3": null,
+       "xref_recall3": 0.333,
+       "xref_false3": 1
+      },
+      "CUMULATIVE": {
+       "feature_brier": {
+        "EXCEPTION": 0.3887522499999999,
+        "PROVISO": 0.6376022499999999,
+        "QUANT_THRESHOLD": 0.9666822399999999,
+        "CROSS_REFERENCE": 0.50098084,
+        "INLINE_DEFINITION": 1.96e-06
+       },
+       "brier": 0.4988,
+       "type_hit3": null,
+       "xref_recall3": 0.333,
+       "xref_false3": 1
+      },
+      "SIMPLE_COUNTS": {
+       "feature_brier": {
+        "EXCEPTION": 0.08584900000000002,
+        "PROVISO": 0.21261320999999997,
+        "QUANT_THRESHOLD": 0.34433424,
+        "CROSS_REFERENCE": 0.17547721000000005,
+        "INLINE_DEFINITION": 3.5999999999999994e-07
+       },
+       "brier": 0.1637,
+       "type_hit3": null,
+       "xref_recall3": 0.0,
+       "xref_false3": 0
+      },
+      "PRECEDENT": {
+       "feature_brier": {
+        "EXCEPTION": 0.81,
+        "PROVISO": 0.81,
+        "QUANT_THRESHOLD": 0.81,
+        "CROSS_REFERENCE": 0.81,
+        "INLINE_DEFINITION": 0.010000000000000002
+       },
+       "brier": 0.65,
+       "type_hit3": null,
+       "xref_recall3": 0.0,
+       "xref_false3": 0
+      }
+     }
+    },
+    {
+     "target": "Section 5.10",
+     "true_type": "OTHER",
+     "true_features": {
+      "EXCEPTION": true,
+      "PROVISO": true,
+      "QUANT_THRESHOLD": true,
+      "CROSS_REFERENCE": false,
+      "INLINE_DEFINITION": false
+     },
+     "true_xref_types": [],
+     "anchors": {
+      "EXCEPTION": {
+       "start": 2776,
+       "end": 2786,
+       "match_sha256": "53dd72d04e71d4a1f3f2e955dc754c631ffda1a9f9ea7fb0a7f8915411a9bbd1"
+      },
+      "PROVISO": {
+       "start": 504,
+       "end": 517,
+       "match_sha256": "d5201236a8320664f0bdef3b6e559767277acb6de9a70dbe5ba14a4409776b1a"
+      },
+      "QUANT_THRESHOLD": {
+       "start": 617,
+       "end": 619,
+       "match_sha256": "ee0afb030fe0274152779b8ca6788588440baf31aeb1fab592ee377f4211fa9b"
+      },
+      "CROSS_REFERENCE": null,
+      "INLINE_DEFINITION": null
+     },
+     "body_sha256": "2aa12e4ecdb4e7f7028535ad40ba37dc665c5c483b45ff197706e6f928f32e59",
+     "scores": {
+      "FROZEN_SEED": {
+       "feature_brier": {
+        "EXCEPTION": 0.394384,
+        "PROVISO": 0.52722121,
+        "QUANT_THRESHOLD": 0.9379922500000001,
+        "CROSS_REFERENCE": 0.01132096,
+        "INLINE_DEFINITION": 4.409999999999999e-06
+       },
+       "brier": 0.3742,
+       "type_hit3": null,
+       "xref_recall3": null,
+       "xref_false3": 3
+      },
+      "CUMULATIVE": {
+       "feature_brier": {
+        "EXCEPTION": 0.15358561,
+        "PROVISO": 0.23020804,
+        "QUANT_THRESHOLD": 0.81234169,
+        "CROSS_REFERENCE": 0.054756000000000006,
+        "INLINE_DEFINITION": 0.0050268100000000005
+       },
+       "brier": 0.2512,
+       "type_hit3": null,
+       "xref_recall3": null,
+       "xref_false3": 3
+      },
+      "SIMPLE_COUNTS": {
+       "feature_brier": {
+        "EXCEPTION": 0.29354724000000004,
+        "PROVISO": 0.51380224,
+        "QUANT_THRESHOLD": 0.8717956899999999,
+        "CROSS_REFERENCE": 0.05812921000000001,
+        "INLINE_DEFINITION": 0.00048399999999999995
+       },
+       "brier": 0.3476,
+       "type_hit3": null,
+       "xref_recall3": null,
+       "xref_false3": 0
+      },
+      "PRECEDENT": {
+       "feature_brier": {
+        "EXCEPTION": 0.81,
+        "PROVISO": 0.81,
+        "QUANT_THRESHOLD": 0.81,
+        "CROSS_REFERENCE": 0.010000000000000002,
+        "INLINE_DEFINITION": 0.010000000000000002
+       },
+       "brier": 0.49,
+       "type_hit3": null,
+       "xref_recall3": null,
+       "xref_false3": 0
+      }
+     }
+    },
+    {
+     "target": "Section 6.11",
+     "true_type": "OTHER",
+     "true_features": {
+      "EXCEPTION": false,
+      "PROVISO": true,
+      "QUANT_THRESHOLD": false,
+      "CROSS_REFERENCE": false,
+      "INLINE_DEFINITION": false
+     },
+     "true_xref_types": [],
+     "anchors": {
+      "EXCEPTION": null,
+      "PROVISO": {
+       "start": 138,
+       "end": 151,
+       "match_sha256": "d5201236a8320664f0bdef3b6e559767277acb6de9a70dbe5ba14a4409776b1a"
+      },
+      "QUANT_THRESHOLD": null,
+      "CROSS_REFERENCE": null,
+      "INLINE_DEFINITION": null
+     },
+     "body_sha256": "d2b202189157ab33d0b298a67e8870882f8f76f20fb6ce0884e558f38adf6f6a",
+     "scores": {
+      "FROZEN_SEED": {
+       "feature_brier": {
+        "EXCEPTION": 0.31708161000000007,
+        "PROVISO": 0.20738916000000002,
+        "QUANT_THRESHOLD": 0.02172676,
+        "CROSS_REFERENCE": 0.14638276,
+        "INLINE_DEFINITION": 1.296e-05
+       },
+       "brier": 0.1385,
+       "type_hit3": null,
+       "xref_recall3": null,
+       "xref_false3": 3
+      },
+      "CUMULATIVE": {
+       "feature_brier": {
+        "EXCEPTION": 0.14175225,
+        "PROVISO": 0.6376022499999999,
+        "QUANT_THRESHOLD": 0.00028223999999999995,
+        "CROSS_REFERENCE": 0.08538084000000001,
+        "INLINE_DEFINITION": 1.96e-06
+       },
+       "brier": 0.173,
+       "type_hit3": null,
+       "xref_recall3": null,
+       "xref_false3": 3
+      },
+      "SIMPLE_COUNTS": {
+       "feature_brier": {
+        "EXCEPTION": 0.49984899999999993,
+        "PROVISO": 0.21261320999999997,
+        "QUANT_THRESHOLD": 0.17073424,
+        "CROSS_REFERENCE": 0.33767720999999995,
+        "INLINE_DEFINITION": 3.5999999999999994e-07
+       },
+       "brier": 0.2442,
+       "type_hit3": null,
+       "xref_recall3": null,
+       "xref_false3": 0
+      },
+      "PRECEDENT": {
+       "feature_brier": {
+        "EXCEPTION": 0.81,
+        "PROVISO": 0.81,
+        "QUANT_THRESHOLD": 0.010000000000000002,
+        "CROSS_REFERENCE": 0.010000000000000002,
+        "INLINE_DEFINITION": 0.010000000000000002
+       },
+       "brier": 0.33,
+       "type_hit3": null,
+       "xref_recall3": null,
+       "xref_false3": 0
+      }
+     }
+    }
+   ],
+   "mean_brier": {
+    "FROZEN_SEED": 0.2363,
+    "CUMULATIVE": 0.2565,
+    "SIMPLE_COUNTS": 0.2331,
+    "PRECEDENT": 0.41
+   }
+  }
+ ],
+ "learned_after_each_agreement": [
+  {
+   "after_doc": "CA4-03-751364",
+   "step": 3,
+   "observe_events_added": 121,
+   "new_provision_types": [
+    "AMEND_RESTATE_EXISTING"
+   ],
+   "new_dependency_edges": [
+    "BAIL_IN_QFC->FINANCIAL_RATIO_COVENANT",
+    "BAIL_IN_QFC->LETTERS_OF_CREDIT",
+    "BAIL_IN_QFC->OTHER",
+    "BAIL_IN_QFC->SUCCESSORS_ASSIGNS",
+    "BAIL_IN_QFC->SURVIVAL",
+    "BAIL_IN_QFC->TAXES",
+    "BAIL_IN_QFC->WAIVERS_AMENDMENTS",
+    "CONFIDENTIALITY->OTHER",
+    "DEFAULTING_LENDERS->LETTERS_OF_CREDIT",
+    "DEFAULTING_LENDERS->PAYMENTS_SHARING",
+    "ERRONEOUS_PAYMENTS->SUCCESSORS_ASSIGNS",
+    "EXISTENCE_ORGANIZATION->OTHER",
+    "EXPENSES_INDEMNITY->EVENTS_OF_DEFAULT_LIST",
+    "EXPENSES_INDEMNITY->TAXES",
+    "FEES_INTEREST->COMMITMENT_CHANGES",
+    "FUNDAMENTAL_CHANGES->GUARANTEE_TERMS",
+    "INCREASED_COSTS_ILLEGALITY->OTHER",
+    "INTEREST_RATE_LIMITATION->OTHER",
+    "LETTERS_OF_CREDIT->EVENTS_OF_DEFAULT_LIST",
+    "LETTERS_OF_CREDIT->WAIVERS_AMENDMENTS",
+    "LIENS->FINANCIAL_RATIO_COVENANT",
+    "NOTICES_COMMUNICATIONS->OTHER",
+    "OTHER->AFFILIATE_TRANSACTIONS",
+    "OTHER->AGENT_PROVISIONS",
+    "OTHER->EXPENSES_INDEMNITY",
+    "OTHER->FEES_INTEREST",
+    "OTHER->FINANCIAL_REPORTING",
+    "OTHER->INTEREST_RATE_LIMITATION",
+    "OTHER->TAXES",
+    "PAYMENTS_SHARING->DEFAULTING_LENDERS",
+    "PAYMENTS_SHARING->FEES_INTEREST",
+    "PAYMENTS_SHARING->PAYMENTS_SHARING",
+    "PAYMENTS_SHARING->REPAYMENT_PREPAYMENT",
+    "REPAYMENT_PREPAYMENT->OTHER",
+    "REPAYMENT_PREPAYMENT->PAYMENTS_SHARING",
+    "SETOFF->OTHER",
+    "SETOFF->PAYMENTS_SHARING",
+    "SUCCESSORS_ASSIGNS->GUARANTEE_TERMS",
+    "SUCCESSORS_ASSIGNS->SETOFF",
+    "SURVIVAL->COMMITMENT_CHANGES",
+    "SURVIVAL->GOVERNING_LAW_JURISDICTION",
+    "WAIVERS_AMENDMENTS->EVENTS_OF_DEFAULT_LIST",
+    "WAIVERS_AMENDMENTS->FINANCIAL_RATIO_COVENANT",
+    "WAIVERS_AMENDMENTS->GUARANTEE_TERMS",
+    "WAIVERS_AMENDMENTS->LETTERS_OF_CREDIT"
+   ],
+   "counterexamples_logged": 0,
+   "library_version": 3,
+   "library_digest": "14f272ba9a7111ea38ee9cc01031edced6eda814bcaa24e22288adc55c349591"
+  },
+  {
+   "after_doc": "CA4-04-1792789",
+   "step": 4,
+   "observe_events_added": 82,
+   "new_provision_types": [],
+   "new_dependency_edges": [
+    "AFFILIATE_TRANSACTIONS->INDEBTEDNESS",
+    "AFFILIATE_TRANSACTIONS->LIENS",
+    "AUTHORIZATION_ENFORCEABILITY->CONDITIONS_EFFECTIVENESS",
+    "FINANCIAL_CONDITION_NO_MAC->FINANCIAL_REPORTING",
+    "INDEBTEDNESS->GUARANTEE_TERMS",
+    "INDEBTEDNESS->LIENS",
+    "LETTERS_OF_CREDIT->BENCHMARK_RATES",
+    "LETTERS_OF_CREDIT->FINANCIAL_CONDITION_NO_MAC",
+    "LETTERS_OF_CREDIT->FINANCIAL_REPORTING",
+    "LETTERS_OF_CREDIT->GUARANTEE_TERMS",
+    "LIENS->COMMITMENTS_BORROWINGS",
+    "OTHER->FINANCIAL_CONDITION_NO_MAC",
+    "SUBSIDIARIES->INDEBTEDNESS",
+    "SUBSIDIARIES->LIENS"
+   ],
+   "counterexamples_logged": 1,
+   "library_version": 4,
+   "library_digest": "153fe0b99c433e3ba8a8a68ab97ca3244da1e2f8f1f2caf2ef5b3aeee5ea0e86"
+  },
+  {
+   "after_doc": "CA4-05-1062231",
+   "step": 5,
+   "observe_events_added": 101,
+   "new_provision_types": [],
+   "new_dependency_edges": [
+    "BENCHMARK_RATES->BENCHMARK_RATES",
+    "BENCHMARK_RATES->COMMITMENTS_BORROWINGS",
+    "COMMITMENTS_BORROWINGS->MITIGATION_REPLACEMENT",
+    "CONDITIONS_EFFECTIVENESS->FINANCIAL_CONDITION_NO_MAC",
+    "COUNTERPARTS_INTEGRATION->NOTICES_COMMUNICATIONS",
+    "DEFINED_TERMS->INDEBTEDNESS",
+    "DEFINED_TERMS->LIENS",
+    "FINANCIAL_RATIO_COVENANT->FINANCIAL_REPORTING",
+    "FINANCIAL_RATIO_COVENANT->INTERPRETATION",
+    "FINANCIAL_RATIO_COVENANT->OTHER",
+    "FINANCIAL_RATIO_COVENANT->SUCCESSORS_ASSIGNS",
+    "GOVERNING_LAW_JURISDICTION->NOTICES_COMMUNICATIONS",
+    "GUARANTEE_TERMS->FUNDAMENTAL_CHANGES",
+    "GUARANTEE_TERMS->INDEBTEDNESS",
+    "GUARANTEE_TERMS->LIENS",
+    "MITIGATION_REPLACEMENT->REPAYMENT_PREPAYMENT",
+    "OTHER->BAIL_IN_QFC",
+    "OTHER->BENCHMARK_RATES",
+    "OTHER->EXISTENCE_ORGANIZATION",
+    "OTHER->FUNDAMENTAL_CHANGES",
+    "OTHER->GUARANTEE_TERMS",
+    "OTHER->INTERPRETATION",
+    "OTHER->NOTICES_COMMUNICATIONS",
+    "OTHER->NOTICE_OF_EVENTS",
+    "REPAYMENT_PREPAYMENT->FINANCIAL_REPORTING",
+    "REPAYMENT_PREPAYMENT->INDEBTEDNESS",
+    "REPAYMENT_PREPAYMENT->LIENS",
+    "REPAYMENT_PREPAYMENT->MITIGATION_REPLACEMENT",
+    "SUBSIDIARIES->GUARANTEE_TERMS",
+    "SUCCESSORS_ASSIGNS->FUNDAMENTAL_CHANGES",
+    "SUCCESSORS_ASSIGNS->NOTICES_COMMUNICATIONS",
+    "SURVIVAL->LETTERS_OF_CREDIT",
+    "WAIVERS_AMENDMENTS->CONDITIONS_EFFECTIVENESS"
+   ],
+   "counterexamples_logged": 2,
+   "library_version": 5,
+   "library_digest": "0b7578c3703ec038cb5ab794c2c750beb70a9529d8e52ce3883aaa96ba72d8a2"
+  },
+  {
+   "after_doc": "CA4-06-1703056",
+   "step": 6,
+   "observe_events_added": 124,
+   "new_provision_types": [],
+   "new_dependency_edges": [
+    "AFFILIATE_TRANSACTIONS->FUNDAMENTAL_CHANGES",
+    "AGENT_PROVISIONS->EVENTS_OF_DEFAULT_LIST",
+    "AGENT_PROVISIONS->GUARANTEE_TERMS",
+    "AGENT_PROVISIONS->INDEBTEDNESS",
+    "AGENT_PROVISIONS->LIENS",
+    "AGENT_PROVISIONS->WAIVERS_AMENDMENTS",
+    "BENCHMARK_RATES->INCREASED_COSTS_ILLEGALITY",
+    "COMMITMENTS_BORROWINGS->EVENTS_OF_DEFAULT_LIST",
+    "COMMITMENTS_BORROWINGS->PAYMENTS_SHARING",
+    "COMMITMENTS_BORROWINGS->SUCCESSORS_ASSIGNS",
+    "COMMITMENTS_BORROWINGS->WAIVERS_AMENDMENTS",
+    "CONFIDENTIALITY->SUCCESSORS_ASSIGNS",
+    "COUNTERPARTS_INTEGRATION->AUTHORIZATION_ENFORCEABILITY",
+    "DEFINED_TERMS->JUDGMENT_CURRENCY",
+    "ENVIRONMENTAL->TAXES",
+    "EXPENSES_INDEMNITY->INCREASED_COSTS_ILLEGALITY",
+    "FEES_INTEREST->REPAYMENT_PREPAYMENT",
+    "FINANCIAL_RATIO_COVENANT->FUNDAMENTAL_CHANGES",
+    "FINANCIAL_RATIO_COVENANT->INDEBTEDNESS",
+    "FINANCIAL_REPORTING->AGENT_PROVISIONS",
+    "FINANCIAL_REPORTING->BENCHMARK_RATES",
+    "FINANCIAL_REPORTING->COMMITMENTS_BORROWINGS",
+    "FINANCIAL_REPORTING->DEFINED_TERMS",
+    "FINANCIAL_REPORTING->EVENTS_OF_DEFAULT_LIST",
+    "FINANCIAL_REPORTING->EXPENSES_INDEMNITY",
+    "FINANCIAL_REPORTING->FEES_INTEREST",
+    "FINANCIAL_REPORTING->FUNDAMENTAL_CHANGES",
+    "FINANCIAL_REPORTING->INDEBTEDNESS",
+    "FINANCIAL_REPORTING->INTEREST_RATE_LIMITATION",
+    "FINANCIAL_REPORTING->JUDGMENT_CURRENCY",
+    "FINANCIAL_REPORTING->LETTERS_OF_CREDIT",
+    "FINANCIAL_REPORTING->LIENS",
+    "FINANCIAL_REPORTING->MITIGATION_REPLACEMENT",
+    "FINANCIAL_REPORTING->REPAYMENT_PREPAYMENT",
+    "FINANCIAL_REPORTING->SANCTIONS_AML",
+    "FINANCIAL_REPORTING->SUCCESSORS_ASSIGNS",
+    "FINANCIAL_REPORTING->WAIVERS_AMENDMENTS",
+    "FUNDAMENTAL_CHANGES->OTHER",
+    "GOVERNING_LAW_JURISDICTION->OTHER",
+    "INCREASED_COSTS_ILLEGALITY->DEFAULTING_LENDERS",
+    "INCREASED_COSTS_ILLEGALITY->ENVIRONMENTAL",
+    "INCREASED_COSTS_ILLEGALITY->EVENTS_OF_DEFAULT_LIST",
+    "INCREASED_COSTS_ILLEGALITY->FEES_INTEREST",
+    "INCREASED_COSTS_ILLEGALITY->FINANCIAL_RATIO_COVENANT",
+    "INCREASED_COSTS_ILLEGALITY->FINANCIAL_REPORTING",
+    "INCREASED_COSTS_ILLEGALITY->INCREASED_COSTS_ILLEGALITY",
+    "INCREASED_COSTS_ILLEGALITY->INTEREST_RATE_LIMITATION",
+    "INCREASED_COSTS_ILLEGALITY->LETTERS_OF_CREDIT",
+    "INCREASED_COSTS_ILLEGALITY->MAINTENANCE_INSURANCE",
+    "INCREASED_COSTS_ILLEGALITY->SANCTIONS_AML",
+    "INCREASED_COSTS_ILLEGALITY->SUCCESSORS_ASSIGNS",
+    "INCREASED_COSTS_ILLEGALITY->TAXES",
+    "INCREASED_COSTS_ILLEGALITY->WAIVERS_AMENDMENTS",
+    "INDEBTEDNESS->COMMITMENTS_BORROWINGS",
+    "INTERPRETATION->DEFINED_TERMS",
+    "LIENS->EVENTS_OF_DEFAULT_LIST",
+    "LIENS->OTHER",
+    "LIENS->TAXES",
+    "LITIGATION->ENVIRONMENTAL",
+    "OTHER->CONFIDENTIALITY",
+    "OTHER->MAINTENANCE_INSURANCE",
+    "OTHER->MITIGATION_REPLACEMENT",
+    "REPAYMENT_PREPAYMENT->REPAYMENT_PREPAYMENT",
+    "REPAYMENT_PREPAYMENT->WAIVERS_AMENDMENTS",
+    "SUCCESSORS_ASSIGNS->EVENTS_OF_DEFAULT_LIST",
+    "TAXES->AGENT_PROVISIONS",
+    "USE_OF_PROCEEDS->USE_OF_PROCEEDS",
+    "WAIVERS_AMENDMENTS->COMMITMENTS_BORROWINGS",
+    "WAIVERS_AMENDMENTS->INDEBTEDNESS",
+    "WAIVERS_AMENDMENTS->REPAYMENT_PREPAYMENT"
+   ],
+   "counterexamples_logged": 0,
+   "library_version": 6,
+   "library_digest": "2364fff66c04cfe5422f78ba652f24d4ec6f63ac8692776401fbe0c92a3d367e"
+  },
+  {
+   "after_doc": "CA4-07-1771514",
+   "step": 7,
+   "observe_events_added": 120,
+   "new_provision_types": [],
+   "new_dependency_edges": [
+    "AFFILIATE_TRANSACTIONS->FINANCIAL_RATIO_COVENANT",
+    "AUTHORIZATION_ENFORCEABILITY->WAIVERS_AMENDMENTS",
+    "BAIL_IN_QFC->FINANCIAL_REPORTING",
+    "BAIL_IN_QFC->GUARANTEE_TERMS",
+    "BAIL_IN_QFC->NOTICES_COMMUNICATIONS",
+    "FINANCIAL_RATIO_COVENANT->EVENTS_OF_DEFAULT_LIST",
+    "FUNDAMENTAL_CHANGES->FINANCIAL_RATIO_COVENANT",
+    "OTHER->SETOFF",
+    "OTHER->USE_OF_PROCEEDS",
+    "SUCCESSORS_ASSIGNS->SURVIVAL",
+    "SURVIVAL->COMMITMENTS_BORROWINGS"
+   ],
+   "counterexamples_logged": 0,
+   "library_version": 7,
+   "library_digest": "3356414b0ea648b54cd7a2c44e666896992803affda79e59a8f879ad2935272f"
+  },
+  {
+   "after_doc": "CA4-08-821002",
+   "step": 8,
+   "observe_events_added": 139,
+   "new_provision_types": [],
+   "new_dependency_edges": [
+    "AFFILIATE_TRANSACTIONS->GUARANTEE_TERMS",
+    "AGENT_PROVISIONS->NOTICE_OF_EVENTS",
+    "AGENT_PROVISIONS->SUCCESSORS_ASSIGNS",
+    "AGENT_PROVISIONS->TAXES",
+    "AUTHORIZATION_ENFORCEABILITY->EXPENSES_INDEMNITY",
+    "AUTHORIZATION_ENFORCEABILITY->OTHER",
+    "BOOKS_INSPECTION->OTHER",
+    "CONDITIONS_EFFECTIVENESS->COUNTERPARTS_INTEGRATION",
+    "CONDITIONS_EFFECTIVENESS->MAINTENANCE_INSURANCE",
+    "COUNTERPARTS_INTEGRATION->OTHER",
+    "DEFINED_TERMS->CONFIDENTIALITY",
+    "DEFINED_TERMS->COUNTERPARTS_INTEGRATION",
+    "DEFINED_TERMS->SUBSIDIARIES",
+    "DEFINED_TERMS->USE_OF_PROCEEDS",
+    "EXPENSES_INDEMNITY->OTHER",
+    "EXPENSES_INDEMNITY->PAYMENTS_SHARING",
+    "FINANCIAL_REPORTING->CONDITIONS_EFFECTIVENESS",
+    "FINANCIAL_REPORTING->FINANCIAL_REPORTING",
+    "FINANCIAL_REPORTING->SUBSIDIARIES",
+    "FINANCIAL_REPORTING->TAXES",
+    "FUNDAMENTAL_CHANGES->CONDITIONS_EFFECTIVENESS",
+    "FUNDAMENTAL_CHANGES->REPAYMENT_PREPAYMENT",
+    "FUNDAMENTAL_CHANGES->SUBSIDIARIES",
+    "INCREASED_COSTS_ILLEGALITY->COMMITMENTS_BORROWINGS",
+    "INDEBTEDNESS->FUNDAMENTAL_CHANGES",
+    "LETTERS_OF_CREDIT->USE_OF_PROCEEDS",
+    "NOTICE_OF_EVENTS->LIENS",
+    "REPAYMENT_PREPAYMENT->BENCHMARK_RATES",
+    "SUBSIDIARIES->CONDITIONS_EFFECTIVENESS",
+    "SUBSIDIARIES->WAIVERS_AMENDMENTS",
+    "TAXES->TAXES",
+    "WAIVERS_AMENDMENTS->FINANCIAL_REPORTING",
+    "WAIVERS_AMENDMENTS->LIENS",
+    "WAIVERS_AMENDMENTS->SUBSIDIARIES"
+   ],
+   "counterexamples_logged": 2,
+   "library_version": 8,
+   "library_digest": "578425132229a4812763a07d13835b9a37bc64251bcddc69d3cb7c5ba1486e8b"
+  }
+ ],
+ "counterexamples": [
+  {
+   "event": "COUNTEREXAMPLE",
+   "id": "CA4-04-1792789:Section 5.05:EXCEPTION",
+   "known_at_step": 4,
+   "feature": "EXCEPTION",
+   "predicted_p": 0.105,
+   "observed": true,
+   "provision_type": "MAINTENANCE_INSURANCE",
+   "article_function": "AFFIRMATIVE_COVENANTS",
+   "anchor": {
+    "start": 235,
+    "end": 241,
+    "match_sha256": "b11279547bc49510a81a764a59dc2eaba8cd004d95878e3a284fd27427042553"
+   },
+   "body_sha256": "e14be9362945ef2c5f95dc5011860e222dd7df657cb8143722e60b16c7669194"
+  },
+  {
+   "event": "COUNTEREXAMPLE",
+   "id": "CA4-05-1062231:Section 6.04:QUANT_THRESHOLD",
+   "known_at_step": 5,
+   "feature": "QUANT_THRESHOLD",
+   "predicted_p": 0.0266,
+   "observed": true,
+   "provision_type": "GUARANTEE_TERMS",
+   "article_function": "NEGATIVE_COVENANTS",
+   "anchor": {
+    "start": 1296,
+    "end": 1298,
+    "match_sha256": "4879e9c95387ed71c784881c6e1039027bef7552cfb5bae503e59995d2686bf2"
+   },
+   "body_sha256": "f9244112a8da21dea0eabc6b649e0ea3078f2ef58c464e1b7fe7cea2af4f89eb"
+  },
+  {
+   "event": "COUNTEREXAMPLE",
+   "id": "CA4-05-1062231:Section 6.10:QUANT_THRESHOLD",
+   "known_at_step": 5,
+   "feature": "QUANT_THRESHOLD",
+   "predicted_p": 0.0266,
+   "observed": true,
+   "provision_type": "FINANCIAL_RATIO_COVENANT",
+   "article_function": "NEGATIVE_COVENANTS",
+   "anchor": {
+    "start": 397,
+    "end": 409,
+    "match_sha256": "880f7a50c742e9509afe073c54c98fb6dbc9381dea6742c7cec17c2eda341be4"
+   },
+   "body_sha256": "64ad5e3d5bcca8c13d5470341c56b0c4c0479f21481c10c697c7bc5184f4b709"
+  },
+  {
+   "event": "COUNTEREXAMPLE",
+   "id": "CA4-08-821002:Section 6.05:QUANT_THRESHOLD",
+   "known_at_step": 8,
+   "feature": "QUANT_THRESHOLD",
+   "predicted_p": 0.0168,
+   "observed": true,
+   "provision_type": "OTHER",
+   "article_function": "NEGATIVE_COVENANTS",
+   "anchor": {
+    "start": 2702,
+    "end": 2704,
+    "match_sha256": "c1b43b36df09f0bf0e0612b54e90e47df2e8722dd90821b3b0613dc8a4f7d5f4"
+   },
+   "body_sha256": "5d8a4e17f19ec6e2ebf5071bf6fa3cd69e24c6a38005b0b1f3fc5de81ae36900"
+  },
+  {
+   "event": "COUNTEREXAMPLE",
+   "id": "CA4-08-821002:Section 5.10:QUANT_THRESHOLD",
+   "known_at_step": 8,
+   "feature": "QUANT_THRESHOLD",
+   "predicted_p": 0.0987,
+   "observed": true,
+   "provision_type": "OTHER",
+   "article_function": "AFFIRMATIVE_COVENANTS",
+   "anchor": {
+    "start": 617,
+    "end": 619,
+    "match_sha256": "ee0afb030fe0274152779b8ca6788588440baf31aeb1fab592ee377f4211fa9b"
+   },
+   "body_sha256": "2aa12e4ecdb4e7f7028535ad40ba37dc665c5c483b45ff197706e6f928f32e59"
+  }
+ ],
+ "summary": {
+  "n_docs": 6,
+  "n_targets": 24,
+  "arms": {
+   "FROZEN_SEED": {
+    "mean_brier_all_features": 0.1718,
+    "mean_brier_primary": 0.2147,
+    "per_feature_brier": {
+     "EXCEPTION": 0.2887,
+     "PROVISO": 0.1942,
+     "QUANT_THRESHOLD": 0.1989,
+     "CROSS_REFERENCE": 0.1769,
+     "INLINE_DEFINITION": 0.0
+    },
+    "type_hit3": "7/12",
+    "xref_recall3_mean": 0.302
+   },
+   "CUMULATIVE": {
+    "mean_brier_all_features": 0.1945,
+    "mean_brier_primary": 0.2427,
+    "per_feature_brier": {
+     "EXCEPTION": 0.3085,
+     "PROVISO": 0.2692,
+     "QUANT_THRESHOLD": 0.214,
+     "CROSS_REFERENCE": 0.1793,
+     "INLINE_DEFINITION": 0.0014
+    },
+    "type_hit3": "8/12",
+    "xref_recall3_mean": 0.406
+   },
+   "SIMPLE_COUNTS": {
+    "mean_brier_all_features": 0.163,
+    "mean_brier_primary": 0.2036,
+    "per_feature_brier": {
+     "EXCEPTION": 0.2549,
+     "PROVISO": 0.2044,
+     "QUANT_THRESHOLD": 0.1652,
+     "CROSS_REFERENCE": 0.1899,
+     "INLINE_DEFINITION": 0.0004
+    },
+    "type_hit3": "1/12",
+    "xref_recall3_mean": 0.0
+   },
+   "PRECEDENT": {
+    "mean_brier_all_features": 0.2233,
+    "mean_brier_primary": 0.2767,
+    "per_feature_brier": {
+     "EXCEPTION": 0.3767,
+     "PROVISO": 0.2767,
+     "QUANT_THRESHOLD": 0.1767,
+     "CROSS_REFERENCE": 0.2767,
+     "INLINE_DEFINITION": 0.01
+    },
+    "type_hit3": "5/12",
+    "xref_recall3_mean": 0.083
+   }
+  },
+  "observed_feature_rates": {
+   "EXCEPTION": 0.542,
+   "PROVISO": 0.417,
+   "QUANT_THRESHOLD": 0.292,
+   "CROSS_REFERENCE": 0.333,
+   "INLINE_DEFINITION": 0.0
+  },
+  "ceiling_features": [
+   "INLINE_DEFINITION"
+  ],
+  "primary_features": [
+   "EXCEPTION",
+   "PROVISO",
+   "QUANT_THRESHOLD",
+   "CROSS_REFERENCE"
+  ]
+ },
+ "decision": {
+  "verdict": "STOP: NO_OBSERVED_CUMULATIVE_GAIN",
+  "qualifiers": [],
+  "checks": {
+   "cum_beats_frozen_docs": 0,
+   "cum_beats_simple_docs": 1,
+   "cum_beats_precedent_docs": 4,
+   "simple_beats_frozen_docs": 4,
+   "gain_vs_frozen": -0.028,
+   "gain_vs_simple": -0.0391,
+   "n_docs": 6,
+   "need_docs": 4
+  }
+ }
+}
