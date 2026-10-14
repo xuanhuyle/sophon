@@ -1,0 +1,316 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-10-14",
+  "charter": {
+    "path": "SOPHON_CHARTER.md",
+    "version": "1.2",
+    "origin": "Owner-approved clarification drafted in PR #15; included in this branch; not yet merged to main."
+  },
+  "identity": "Sophon is an organizational normative semantic layer: shared, source-grounded, versioned governing meaning, complementary to existing BI/data semantics and directly queryable by non-BI agents/humans.",
+  "product_wedge": "First integration wedge: independently check governing contract meaning against pre-existing, native BI semantic definitions; do not rebuild the data semantic layer.",
+  "core_capabilities": [
+    "TRANSPOSE",
+    "TRACE",
+    "VERIFY",
+    "AUDIT"
+  ],
+  "two_directions": [
+    "Governance-to-implementation impact and alignment",
+    "Independent implementation-to-governance recheck after system/semantic changes"
+  ],
+  "non_goals": [
+    "LLM accuracy leaderboard as a substitute for cumulative learning",
+    "Inventing a proprietary DSL as an MVP prerequisite",
+    "Rebuilding pre-existing BI semantic definitions",
+    "Presenting a source-grounded prediction as legal approval or deployed compliance",
+    "Rediscovering established components instead of reading their actual code"
+  ],
+  "established_components": [
+    {
+      "id": "control_plane_investigation_2026_09",
+      "location": "MAIN",
+      "status": "IMPLEMENTED_AND_RUN",
+      "path": "lab/run_lab.py",
+      "ref": "main (PR #1 merged as c02544a, plus direct commits)",
+      "role": "Historical Sept-2026 control-plane/authority-ledger audit, IPSA corpus study, Jev and market-discovery assessments (README historical sections, docs/).",
+      "does_not_prove": "Concerns the superseded agent control-plane framing; not evidence for or against the v1.2 normative-layer charter."
+    },
+    {
+      "id": "public_data_alignment_reviewer",
+      "location": "OTHER_PR",
+      "status": "IMPLEMENTED_AND_RUN",
+      "path": "viability/public_nyc/audit.py; alignment/agent.py",
+      "ref": "PR #2 head d57328c (branch codex/alignment-review-agent, base main)",
+      "role": "Read-only governing-source vs existing-dbt reviewer. Jaffle Shop synthetic agreement: 9/9 integration gate. NYC TLC: independently authored Databricks/dbt project + official TLC sources + 3,475,226 real records; found 39.27% record loss from a non-unique staging key and a DECIMAL(10,0) precision mismatch (simulated, no Databricks run).",
+      "does_not_prove": "Interpretation done interactively by the conversational assistant, not blinded or independently adjudicated; autonomous model path never live-tested; no live BI platform; public dataset definitions, not a signed contract; no precision/recall."
+    },
+    {
+      "id": "governance_integrity_kernel",
+      "location": "OTHER_PR",
+      "status": "IMPLEMENTED_AND_RUN",
+      "path": "experiments/governance_integrity/src/sophon.py",
+      "ref": "PR #3 head 1c2a657 (base main)",
+      "role": "Hash-chained executable-check link store over native Publicodes (French social-contribution rules), A/B vs same model with free-form notes. Reusable by-products: Publicodes adapter, legi-data snapshot builder, sealed-input/transcript-audit harness.",
+      "does_not_prove": "Verdict STOP_KERNEL is valid but narrow (one model, n=1 per cell, 11 tasks); does not show provenance stores are useless generally, nor anything about BI layers or agents."
+    },
+    {
+      "id": "native_bi_validation_harness",
+      "location": "OTHER_PR",
+      "status": "VERIFIED_WITHIN_SCOPE",
+      "path": "experiments/E0_native_adapter ... experiments/E5_forward_transposition",
+      "ref": "PRs #4->#5->#6->#7->#8->#9->#10->#11 (stacked; top #11 head 8277cd8)",
+      "role": "Genuine dbt-core + MetricFlow `mf` executions on the pre-existing public metric completed_revenue (behramkorkut/Governed-Analytics-Agent@312e97ad, synthetic data): binding/observability, blind discovery, typed IR + approval/temporal guards, independent native verification of mutated stacks, one approved amendment -> one native metric edit.",
+      "does_not_prove": "Limited, author-designed feasibility tests with LAB-authored policy, synthetic data and one field-threshold delta; reverse reconciliation (E6) not run; not generality, real contracts, production BI or incremental value over competent data-team tests."
+    },
+    {
+      "id": "normative_layer_v0",
+      "location": "OTHER_PR",
+      "status": "IMPLEMENTED_AND_RUN",
+      "path": "prototype/normative_layer/sophon_v0.py",
+      "ref": "PR #12 head 3b801ea (base main); carried into #13->#14->#16->#17",
+      "role": "Direct read-only normative query skeleton: stdlib HTTP + SQLite, versioned source-linked rules, simulated approval, amendment and as-known queries; two different client programs share /assess. 6 tests re-run OK 2026-10-14.",
+      "does_not_prove": "Two-sentence grammar parser, LAB_SIMULATED unauthenticated approval, caller-supplied facts, no real agent or deployment. Branch prototype/normative-v02-candidate-intake-2026-10-12 (no PR; base of #13) adds specs only, no code."
+    },
+    {
+      "id": "primary_jev_proposal",
+      "location": "OTHER_PR",
+      "status": "IMPLEMENTED_AND_RUN",
+      "path": "prototype/jev_clause_router_v0/prototype.py",
+      "ref": "PR #13 (mock skeleton) and PR #14 head 3423576 (live adapters); carried into #16, #17",
+      "role": "Structured primary normative proposal",
+      "does_not_prove": "V1 recorded 40 provider calls on 10 clauses against an agent-authored review matrix; Not independently semantically validated; reviewer/model agreement is triage, not truth."
+    },
+    {
+      "id": "adversarial_review",
+      "location": "OTHER_PR",
+      "status": "IMPLEMENTED_AND_RUN",
+      "path": "prototype/jev_clause_router_v0/prototype.py",
+      "ref": "PR #13 (mock skeleton) and PR #14 head 3423576 (live adapters); carried into #16, #17",
+      "role": "Independently invoked challenger; catches potential missing conditions, exemptions and competing interpretations",
+      "does_not_prove": "V1 recorded 40 provider calls on 10 clauses against an agent-authored review matrix; Not independently semantically validated; reviewer/model agreement is triage, not truth."
+    },
+    {
+      "id": "backward_source_review",
+      "location": "OTHER_PR",
+      "status": "IMPLEMENTED_AND_RUN",
+      "path": "prototype/jev_clause_router_v0/prototype.py",
+      "ref": "PR #13 (mock skeleton) and PR #14 head 3423576 (live adapters); carried into #16, #17",
+      "role": "Independent source-to-proposed-structure evidence challenge",
+      "does_not_prove": "V1 recorded 40 provider calls on 10 clauses against an agent-authored review matrix; Not independently semantically validated; reviewer/model agreement is triage, not truth."
+    },
+    {
+      "id": "provision_library",
+      "location": "OTHER_PR",
+      "status": "IMPLEMENTED_AND_RUN",
+      "path": "prototype/jev_library_transfer_v2/transfer.py",
+      "ref": "PR #16 head 1151c0f; carried into #17",
+      "role": "Source-linked provisional archetypes and library-events induction",
+      "does_not_prove": "V2 showed no incremental library value on a near-ceiling 36-element proxy; Not independently semantically validated; reviewer/model agreement is triage, not truth."
+    },
+    {
+      "id": "deterministic_reconciliation",
+      "location": "OTHER_PR",
+      "status": "IMPLEMENTED_AND_RUN",
+      "path": "prototype/jev_library_transfer_v2/transfer.py",
+      "ref": "PR #16 head 1151c0f; carried into #17",
+      "role": "Separate proposal/reviewer outputs, omissions, disputes, HOLD and human-review candidates",
+      "does_not_prove": "V2 showed no incremental library value on a near-ceiling 36-element proxy; Not independently semantically validated; reviewer/model agreement is triage, not truth."
+    },
+    {
+      "id": "structure_predictor",
+      "location": "OTHER_PR",
+      "status": "IMPLEMENTED_AND_RUN",
+      "path": "prototype/contract_structure_prediction_v3/predict.py",
+      "ref": "PR #17 head b9d698c",
+      "role": "Offline masked section/provision structural priors and frozen scoring",
+      "does_not_prove": "Offline heading-label priors on 4 heldout documents with agent-authored labels; frozen primary INCONCLUSIVE; no extraction or interpretation accuracy."
+    },
+    {
+      "id": "v3_adjudication_package",
+      "location": "OTHER_PR",
+      "status": "PREPARED_NOT_RUN",
+      "path": "prototype/contract_structure_prediction_v3/adjudication/REVIEW_PACKAGE.md",
+      "ref": "PR #17 head b9d698c",
+      "role": "78-unit review package with frozen-vs-secondary evidence separation; no independent labels yet",
+      "does_not_prove": "No independent labels exist; source passages were BLOCKED (CONNECT 403) when it was built."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E0_E5_native_bi",
+      "status": "LIMITED_AUTHOR_DESIGNED_FEASIBILITY_SIGNAL",
+      "observation": "E0 PASS_NATIVE_RUNTIME; E1 PASS_KNOWN_BINDING, corrected by erratum CONFIRMED_E1_ERRATUM (B1 natively derivable via line-grain metric filter); E2 PARTIAL_DISCOVERY_SIGNAL (4/6, 0 false VERIFIED); E3 PASS_IR_GUARD_VALUE (54/54, post-hoc gap in RESULTS §6) hardened by E3.1 PASS_INTEGRITY_HARDENING; E4 PASS_INDEPENDENT_VERIFICATION_SIGNAL; E5 PASS_FORWARD_TRANSPOSITION_SIGNAL for one field-threshold amendment. Reverse E6 not run. Mechanism feasibility only.",
+      "ref": "PRs #4-#11; experiments/*/DECISION.md on each branch"
+    },
+    {
+      "id": "public_nyc_alignment",
+      "status": "EXPLORATORY_REAL_DATA_FINDING_NOT_BLINDED",
+      "observation": "Frozen-scope review of an independently authored dbt project on real TLC records found record loss (39.27%) and a target-type precision mismatch; 22 existing dbt tests passed. Single interactive reviewer; no accuracy estimate.",
+      "ref": "PR #2; viability/public_nyc/README.md"
+    },
+    {
+      "id": "governance_integrity_publicodes",
+      "status": "STOP_KERNEL_NARROW_VALID",
+      "observation": "Persistent hash-chained link store did not change maintenance, reverse-check or as-of audit outcomes vs free-form notes on two authentic successive legal changes; mapping frozen before runs. Scoped to that kernel-as-differentiator, not a Sophon-wide NO-GO.",
+      "ref": "PR #3; experiments/governance_integrity/DECISION.md"
+    },
+    {
+      "id": "V1_jev",
+      "status": "PROVIDER_RUN_NOT_DECISION_CLOSED",
+      "observation": "Chronology: PR #14's V1_LIVE_RESULTS.md (committed 0a6ecbc, 11:31 +0200) records BLOCKED_NO_LIVE_RUN with 0 calls in that session; it is unchanged and stale but historically accurate. An owner-local run at 09:49-09:54Z (11:49-11:54 +0200) recorded 40 ACTUAL_PROVIDER steps (10 Jev jev-1.13.0 + 30 claude-opus-5-5 adversarial/backward/blind) on LAB-SLA-5 and GITHUB-SLA-EXT-5. Those live_runs files are committed only in checkpoint 26902c6 on the PR #17 branch, not on PR #14. Provider-side authenticity is not independently verifiable; review matrix is agent-authored; blind arm G1-G3 schema-invalid; preregistered REUSE/SIMPLIFY/DROP decision never applied.",
+      "ref": "PR #14 (blocked record); PR #17 branch prototype/jev_clause_router_v0/live_runs/ (later run)"
+    },
+    {
+      "id": "V2_library",
+      "status": "NO_OBSERVED_INCREMENTAL_LIBRARY_VALUE_ON_V2_PROXY",
+      "observation": "V2_TRANSFER_RESULTS.md at 1151c0f is READY_NOT_RUN (historical). Later owner-local run 13:06-13:18Z: 30 ACTUAL_PROVIDER calls; raw outputs git-ignored, SHA receipts committed. COLD 35/36; WARM 34/36; RAW 36/36; BLIND 35/36. Ceiling invalidated +20pp criterion; omissions/slots scoring mismatch. Not a no-go for cumulative learning.",
+      "ref": "PR #16; prototype/jev_library_transfer_v2/V2_POSTRUN_REVIEW.md in PR #17"
+    },
+    {
+      "id": "V3_structure_primary",
+      "status": "INCONCLUSIVE",
+      "observation": "Frozen primary: two heldout segmentation failures; 14 offline tests and committed-record replay reported verified.",
+      "ref": "PR #17; prototype/contract_structure_prediction_v3/RESULTS.md"
+    },
+    {
+      "id": "V3_structure_secondary",
+      "status": "PROVISIONAL_UNADJUDICATED",
+      "observation": "Post-freeze repaired signal limited to provision within section: FAMILY_SECTION 3.09/8 vs FAMILY 0.36/8; no section gain, worse Brier than GLOBAL, law untestable; labels agent-authored, split nonchronological.",
+      "ref": "PR #17; prototype/contract_structure_prediction_v3/RESULTS.md"
+    }
+  ],
+  "current_work": {
+    "active": "Owner research focus: independently investigate whether source-grounded contractual provision knowledge can accumulate and transfer contract-by-contract. Choose the smallest discriminating next test from V1-V3 evidence; no new implementation or experiment has been authorized.",
+    "blocked": "V3 source-grounded label adjudication remains unfinished; cloud source retrieval previously had CONNECT 403. This is a V3-specific limitation, not an automatic gate on all cumulative-learning research.",
+    "on_hold": "V4 sequential contract-learning specification PR #18 remains UNRUN. V3 manual 78-unit review is not an automatic priority. BI expansion, full contract-to-agent propagation, EDGAR transformer training, and commercial validation are not the immediate increment.",
+    "horizon": "Predict reusable normative provision structures, conditional on evidenced law, contract family, ToC/section and observed provisions; test cumulative, auditable contract-by-contract improvement, not superiority to a pretrained LLM."
+  },
+  "working_rules": [
+    "Before recommending architecture, consult established_components and inspect referenced source on its ref; do not present existing Jev/adversarial/backward/library/reconciliation as new.",
+    "Distinguish DESIGNED, IMPLEMENTED, RUN, OBSERVED, VALIDATED; separate frozen primary from post-hoc secondary results.",
+    "For any new experiment/results or changed architecture, update this state in the SAME PR and cite evidence.",
+    "Check branch ancestry and relevant open PRs; components listed on unmerged PRs are not necessarily present in the current checkout.",
+    "Legal provenance, unknowns, known-at versus effective-at, adversarial counterexamples and independent audit are requirements, not add-ons.",
+    "Do not assume user approval for paid calls, merger of draft PRs or charter changes.",
+    "Treat LLM agreement as triage, not independently validated semantic truth; minimize human labor without hiding correlated errors.",
+    "Mandatory development process: read ENGINEERING_WORKFLOW.md; human proposes the problem (technical concepts are hypotheses), engineering agents own independent choice of design, challenge needless complexity, implement one bounded, testable increment and make KEEP/REVISE/STOP recommendation without making the owner referee routine implementation choices."
+  ],
+  "engineering_workflow": {
+    "path": "ENGINEERING_WORKFLOW.md",
+    "version": "1.0",
+    "status": "OWNER_REQUESTED_ENGINEERING_OPERATING_PROCEDURE",
+    "idea_screening_gate": "Before initiating research or development on an attractive new idea, apply ENGINEERING_WORKFLOW.md Idea-screening gate: reconcile current code/results and prior art; distinguish outcome from mechanism and charter scope; compare a competent baseline under blind, independently valid tests; preregister stop rules; preserve failures; authorize only one minimal increment.",
+    "rule": "Owner owns problem/outcome/constraints and material decisions; engineering agents independently choose/challenge design and simplest alternatives; implement one small falsifiable increment, verify actual results, then KEEP/REVISE/STOP."
+  },
+  "research_priority": {
+    "owner_stated": "Immediate research priority is cumulative, source-grounded contractual learning across successive contracts, NOT commercial demand validation or immediate deployment of a full downstream agent-configuration workflow.",
+    "motivating_scenario": "A solo founder operates an AI-native company with multiple agents and receives new agreements/amendments. The same applicable, versioned contractual meaning should be reusable by those agents without re-interpreting everything from scratch. This is a north-star technical scenario, NOT a request to build the full automation pipeline next.",
+    "immediate_unknown": "Can a persistent, provisional, evidence-linked library of contractual provision structures improve later contract interpretation/prediction, omission detection or human-review burden against a competent frozen/no-library and raw-prior-examples baseline, with independently checked unseen cases?",
+    "established_starting_point": "V1 Jev + independently invoked adversarial/backward reviewers + deterministic reconciliation; V2 provisional provision library (no observed incremental lift on its near-ceiling proxy); V3 contextual heading-label predictions (frozen INCONCLUSIVE, repaired secondary provisional); V4 sequential learning only specified, not run. All of this code is on the PR #17 branch (b9d698c), not on this branch or main; branch from #17 and bring this guard/state across rather than redesigning.",
+    "exclusions": "Do not mistake the solo-founder scenario for authorization to implement contract-to-agent configuration/propagation now. Do not substitute E0-E5 feasibility, commercial interviews, or another narrow lab demo for a discriminating cumulative-learning test. EDGAR-only transformer and autonomous machine-to-machine contracting are related exploratory ideas, not automatically Sophon roadmap commitments.",
+    "engineering_discretion": "Engineer independently choose no-code analysis, reuse or a single smallest falsifiable experiment; do not assume V3's 78-item manual adjudication must be completed first. Do not initiate paid calls or code solely from this priority statement."
+  },
+  "inventory_rules": "location: MAIN (on main and therefore here), THIS_BRANCH (added by this branch), OTHER_PR (only on an unmerged PR branch; NOT in this checkout). status: SPECIFIED_ONLY < PREPARED_NOT_RUN < IMPLEMENTED_NOT_RUN < IMPLEMENTED_AND_RUN < VERIFIED_WITHIN_SCOPE (preregistered checks passed within the stated lab scope). No status means semantically or legally validated. Verified against fetched PR heads on 2026-10-14; refresh pr_graph from live PRs before relying on it.",
+  "pr_graph": {
+    "verified_at": "2026-10-14 from fetched branch heads; main head 1beb70a",
+    "dispositions": "DURABLE_BASELINE = belongs on main; SUPERSEDED = content included elsewhere; HISTORICAL_RESEARCH = immutable experiment record, reuse code by branching from it, do not merge wholesale; DEFERRED_HYPOTHESIS = specification only, unrun.",
+    "prs": [
+      {
+        "pr": 1,
+        "state": "MERGED",
+        "head": "5010469 (merge c02544a)",
+        "base": "main",
+        "disposition": "DURABLE_BASELINE",
+        "content": "Jev impact + market discovery studies"
+      },
+      {
+        "pr": 2,
+        "state": "OPEN_DRAFT",
+        "head": "d57328c",
+        "base": "main",
+        "disposition": "HISTORICAL_RESEARCH",
+        "content": "public_data_alignment_reviewer"
+      },
+      {
+        "pr": 3,
+        "state": "OPEN_DRAFT",
+        "head": "1c2a657",
+        "base": "main",
+        "disposition": "HISTORICAL_RESEARCH",
+        "content": "governance_integrity_kernel, STOP_KERNEL"
+      },
+      {
+        "pr": "4-11",
+        "state": "OPEN_DRAFT_STACK",
+        "head": "#11 8277cd8",
+        "base": "#4 on main",
+        "disposition": "HISTORICAL_RESEARCH",
+        "content": "E0, E1, E2, E1 erratum (#7), E3, E3.1, E4, E5"
+      },
+      {
+        "pr": 12,
+        "state": "OPEN_DRAFT",
+        "head": "3b801ea",
+        "base": "main",
+        "disposition": "HISTORICAL_RESEARCH",
+        "content": "normative_layer_v0; base of the Jev stack"
+      },
+      {
+        "pr": 13,
+        "state": "OPEN_DRAFT",
+        "head": "e0f7466",
+        "base": "prototype/normative-v02-candidate-intake-2026-10-12 (no PR; specs only, on top of #12)",
+        "disposition": "HISTORICAL_RESEARCH",
+        "content": "Jev + adversarial/backward routing skeleton"
+      },
+      {
+        "pr": 14,
+        "state": "OPEN_DRAFT",
+        "head": "3423576",
+        "base": "#13",
+        "disposition": "HISTORICAL_RESEARCH",
+        "content": "V1 live adapters; title says BLOCKED, later run is on #17 branch"
+      },
+      {
+        "pr": 15,
+        "state": "OPEN_DRAFT",
+        "head": "f924267",
+        "base": "main",
+        "disposition": "SUPERSEDED",
+        "content": "charter v1.2; fully contained in #19"
+      },
+      {
+        "pr": 16,
+        "state": "OPEN_DRAFT",
+        "head": "1151c0f",
+        "base": "#14",
+        "disposition": "HISTORICAL_RESEARCH",
+        "content": "V2 library + reconciliation"
+      },
+      {
+        "pr": 17,
+        "state": "OPEN_DRAFT",
+        "head": "b9d698c",
+        "base": "#16",
+        "disposition": "HISTORICAL_RESEARCH",
+        "content": "V2 post-run review, V1 live_runs, V3 predictor + adjudication package; most complete code branch for cumulative-learning work"
+      },
+      {
+        "pr": 18,
+        "state": "OPEN_DRAFT",
+        "head": "5b75e64",
+        "base": "#17 at 26902c6 (lacks b9d698c adjudication commit)",
+        "disposition": "DEFERRED_HYPOTHESIS",
+        "content": "V4 prompt only; no V4 run"
+      },
+      {
+        "pr": 19,
+        "state": "OPEN",
+        "head": "this branch",
+        "base": "main",
+        "disposition": "DURABLE_BASELINE",
+        "content": "charter v1.2 + workflow + this state + context guard; contains no prototype/experiment code"
+      }
+    ]
+  }
+}

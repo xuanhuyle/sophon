@@ -1,134 +1,147 @@
 # SOPHON CHARTER
 
-**Version:** 1.1 — 12 October 2026  
-**Status:** Owner-approved strategic clarification of the product direction in v1.0. Binding project instructions for assistants and contributors; technical feasibility, operational value, competitive differentiation and commercial prospects remain **unproven** unless demonstrated.
+**Version:** 1.2 — 13 October 2026  
+**Status:** Owner-approved clarification of the normative semantic-layer thesis (v1.2). Binding project instructions for assistants and contributors; technical feasibility, operational value, competitive differentiation and commercial prospects remain **unproven** unless demonstrated.
 
 ## 1. Mission
 
-**Sophon is AI-native enterprise governance infrastructure.**
+**Sophon is a normative semantic layer for organizations.** Just as an enterprise BI semantic layer resolves the meaning of data for human and machine consumers, Sophon makes the meaning of governing documents **shared, versioned, source-grounded, reusable and inspectable** across humans, AI agents, BI and operational workflows.
 
-Its purpose is to maintain a **persistent, traceable, verifiable and auditable relationship** between an organization's authoritative governing requirements and the **existing semantic layer** through which its data systems are understood and consumed.
+The source of governing meaning may be a contract, amendment, regulation, approved policy or authoritative decision. Sophon does not create legal authority by interpreting a document. It preserves which source governs, its scope and dates, the interpretation's status, explicit qualifications and unresolved questions. Different customers, contracts, dates or jurisdictions may require **different applicable meanings**; sharing a normative layer does not flatten genuine differences.
 
-The objective is not to invent a smarter LLM or outperform the best coding agent at one-off document review. A powerful LLM can propose interpretations, discover discrepancies and generate changes **inside** Sophon. It is a replaceable reasoning component, not the competing product that Sophon must beat in reasoning accuracy.
+**The product is the shared normative layer and its ongoing reconciliation, not any one AI model or agent configuration. The preferred first engineering/product wedge is compliance checking of pre-existing enterprise BI semantic definitions against independently governing contractual commitments.** This intentionally leverages semantic work already performed by data teams in Databricks, Snowflake, dbt or BI tooling instead of rebuilding their definitions. A second, complementary access path exposes the same governing meaning directly to agents and humans who do not use BI. These are two consumption/integration paths for one layer, not two separate products. Legal-workflow automation, standalone clause classification and generalized agent configuration are not product definitions. LLMs and Jev can propose and challenge interpretations; neither their agreement nor a plausible explanation makes a proposal authoritative.
 
-The infrastructure should continue functioning when the model, prompt, chat session or operator changes.
+The four inseparable capabilities remain **TRANSPOSE, TRACE, VERIFY and AUDIT**. A model, chat session, prompt, contributor or consumer should be replaceable without losing the organization's recorded governing meaning or evidence history.
 
-**Product proposition, not proven product value:** enterprises may benefit from making governing-to-semantic alignment a continuous organizational capability, rather than relying on occasional analyses and informal institutional memory. Sophon's sellable result, if validated, is a **completed, controlled and auditable governance transition**—not merely an LLM answer, a policy-to-metric link, a dashboard or a new collection of features. Whether customers lack that end-to-end outcome, whether Sophon can deliver it reliably, and whether they will choose it over existing solutions remain to be demonstrated.
+**Value and demand remain hypotheses.** Customers may benefit from reliable, repeated transitions from changed governing meaning to the semantics actually used by people and software, with less manual reconciliation and stronger audit evidence. Whether Sophon can provide that outcome reliably, whether organizations need it, and whether they would choose it over configured incumbent tools are **not proven**. A valuable product need not invent a proprietary reasoning primitive; an outcome gap must be measured rather than inferred from absent vendor features or startup analogies.
 
-**Competitive framing:** Sophon need not invent a capability unavailable from Claude Code, Git, dbt, Snowflake, Databricks or governance products. A valuable software product can integrate existing components into an outcome organizations would rather buy than assemble and operate. Conversely, the theoretical ability of incumbents to build that workflow is not evidence customers will pay for Sophon; some already may have satisfactory solutions. **An outcome gap is a hypothesis requiring direct evidence, not a gap inferred from feature lists or startup analogies.**
+**Initial operating constraint:** design feasible small slices for a solo founder using existing tools, adapters and a narrow corpus. Do not require a universal legal ontology, a new DSL, every enterprise integration or automated authorization as a prerequisite. Narrow experiments do not narrow the product thesis.
 
 ## 2. Canonical architecture and integration boundary
 
 ```text
-    AUTHORITATIVE GOVERNING CORPUS
-    Regulations | contracts | approved organizational policies
-    Amendments | authoritative interpretations | decisions
-                        |
-                        v
-                      SOPHON
-       TRANSPOSE | TRACE | VERIFY | AUDIT
-                        |
-                        v
-             EXISTING SEMANTIC LAYER
-    Business terms | metrics | semantic relationships
-    Definitions | relevant business logic | versions
-                        |
-                       ↕
-               EXISTING DATA SYSTEMS
-    Warehouses | lakehouses | operational data sources
-                        |
-                        v
-          DOWNSTREAM BI / AI CONSUMERS
+ AUTHORITATIVE GOVERNING CONTRACTS / POLICIES
+                      |
+                      v
+      SOPHON — NORMATIVE SEMANTIC LAYER
+      Source-backed definitions, conditions,
+      exceptions, scope, dates, evidence
+                 /                 \
+                /                   \
+  (A) CONTRACT ↔ BI ALIGNMENT     (B) DIRECT GOVERNING CONTEXT
+       Compliance checking             API / retrieval
+       and impact analysis                   |
+                |                            v
+                v                    NON-BI AGENTS / HUMANS
+   EXISTING DATA/BI SEMANTIC LAYER     Sales, procurement, support
+   Databricks | dbt | Snowflake        and other workflows
+   Existing metrics and definitions
+                |
+                v
+   BI DASHBOARDS / DATA-DRIVEN AGENTS
+   (where they actually use this layer)
 ```
 
-This diagram represents **logical governance relationships**, not a promise that every system's physical dataflow follows those arrows literally. A semantic layer typically queries/models source data; it does not necessarily write back to operational databases.
 
-**Non-negotiable product design decision:** Sophon's transposition and verification for data-governed business meaning operate **through the organization's existing semantic layer**, which is connected to its underlying data systems and serves downstream consumers. Sophon should capitalize on semantic definitions already developed and maintained by data teams (e.g. actual dbt/MetricFlow semantic objects, or Snowflake/Databricks-native equivalents).
+The two layers solve **different and complementary disambiguation problems**:
+- **BI/data semantic layer:** What do enterprise records, metrics and relationships mean?
+- **Sophon/normative semantic layer:** What do the applicable governing documents require, permit, prohibit, define or leave unresolved?
+- **Their intersection:** Do the business semantics, calculations or decisions used by a consumer align with the applicable governing meaning?
 
-**System-of-record boundary:** the contracting/legal/business authority retains ownership of its governing source and approvals; the data team and native platform retain ownership of executable semantic definitions, tests and deployment. Sophon owns the durable **cross-system reconciliation workflow and its relationship/evidence state**, subject to enterprise permissions. It should link to, not silently replace, systems of record. It may preserve independently verifiable snapshots/receipts as required for auditability. A workflow may be embedded as a native-platform extension rather than installed as a competing universal governance suite.
+**BI-first engineering rationale:** The organization's existing semantic layer is already the product of substantive data-team disambiguation. Sophon should inspect and reuse it as-is, mapping governing contract terms to real metrics, dimensions and calculations, comparing intended contractual semantics with compiled/native semantic behavior, exposing discrepancies with source evidence, and proposing reviewed corrections. This **compliance/alignment checker is the initial wedge**; avoid rebuilding existing BI definitions or claiming control over the data stack. Bidirectional checking must cover both contractual amendments and independent semantic-layer revisions.
 
-- Do **not** redefine Sophon as a standalone policy engine, authorization gateway, new warehouse, replacement semantic layer, or a collection of direct modifications to arbitrary applications.
-- Do **not** treat generic dbt transformation SQL, Publicodes, a text description or a fabricated YAML file as proof that an enterprise semantic-layer integration works.
-- The semantic layer's **coverage has limits**: it does not necessarily encode approvals, human discretion, physical actions or an AI agent's runtime conduct. Explicitly distinguish **governed semantic outputs** from **verified downstream behavior**; never claim the latter merely because the former tests pass.
-- Ambiguous, partially represented or non-representable governing requirements must be explicitly tracked as **UNRESOLVED / PARTIALLY_OBSERVABLE / OUT_OF_SCOPE** rather than marked compliant.
-- If evidence shows the proposed boundary cannot support an important workflow, surface the architectural trade-off for the owner to decide. Do not silently introduce direct application-level enforcement as though it had always been the thesis.
+**Direct-access extension:** Some agents act without relying on BI metrics. They should be able to retrieve Sophon's applicable governing concepts, qualifications and links directly, with appropriate permissions and traceability. This is **not** a requirement to deploy a universal policy engine, build an agent orchestration platform or automatically reconfigure every agent.
+
+**Explicit hypothesis, not a fact:** Data-driven enterprise agents may often draw meaning from existing BI/semantic infrastructure, but this varies across organizations. Many agents use application APIs, direct SQL, RAG and other tools. Verify which agents actually use the semantic layer before claiming coverage, propagation or market opportunity.
+
+**Correction to v1.1:** The existing executable BI semantic layer is the **preferred initial integration and verification surface**, not Sophon's universal integration boundary or the only way to consume normative meaning. Some requirements concern approvals, communications or actions that BI cannot represent. Preserve common source-backed meaning across whichever surfaces are genuinely connected.
+
+**One meaning, two access paths:** register source-backed governing concepts and determinations once. First, link relevant terms to **existing BI semantic objects and native calculations**, providing a compliance finding and actionable impact evidence; BI consumers can continue using the organization's established semantic layer. Second, allow non-BI agents and humans to query the **same scoped, versioned normative records** directly. Additional capability/configuration bindings are optional later integrations, not MVP prerequisites. Every actual binding identifies system, version, customer/scope, responsible owner and verification limits. Never let separately prompted agents silently invent diverging governing meaning.
+
+**System-of-record boundaries:** legal/contractual authorities own source documents and approved interpretations. Data/platform teams own executable BI definitions; application and agent owners own their deployments and runtime controls. Sophon owns the **durable normative representation and cross-system relationships/evidence**, subject to permission and approval. It should not silently replace any source of authority, BI semantic layer, agent runtime, warehouse or operational system.
+
+**Integration discipline:**
+- **Prefer a read-only BI compliance check first:** inspect native semantic definitions, identify potential contract/metric mismatch, run native compile/query/data-backed checks where permitted, record contrary evidence and propose—but do not silently deploy—fixes. SQL snippets, fabricated YAML and passing hashes alone do not prove semantic alignment.
+- **For direct-access agents, start with a versioned read/query API** that returns applicable source-grounded requirements, qualifications and uncertainty. Only pursue native configuration/guard interfaces when a concrete action-control use case warrants it. A retrieved rule or updated prompt does **not** prove enforcement.
+- For human consumers, provide scoped, source-linked meaning and qualifications; do not invent binding legal advice, permissions or approvals.
+- Track non-expressible and unobservable requirements as **UNRESOLVED / PARTIALLY_OBSERVABLE / OUT_OF_SCOPE**. Differentiate interpretation, authorized deployment and observed runtime conduct.
+- New integrations may be proposed, but must not quietly convert Sophon into a generic legal chatbot, a replacement BI layer, a universal policy gateway or an agent-management product.
+
+**Two-sided maintenance:** governing-source changes trigger impact assessment of linked interpretations and implementations; changes to BI metrics, agent configurations and other linked implementations trigger checks against still-applicable governing meaning. Changes should not be pushed without appropriate authorization.
 
 ## 3. The four inseparable capabilities
 
-### TRANSPOSE — requirements to semantic implementation
+### TRANSPOSE — governing meaning to consumable semantics
 
-Detect a new governing document, amendment, approved interpretation or policy decision; resolve which provisions are applicable and effective; discover affected **existing semantic definitions**; propose the necessary semantic-layer change; and demonstrate effects using that layer's native query/compile interface and underlying data.
+Ingest and version a governing source; identify applicable provisions, definitions, conditions, exceptions and cross-references; propose a **shared structured normative representation** with exact source anchors, dates, authority status, uncertainty and qualification. **First use it to check existing BI semantic definitions against external contractual meaning** and propose scoped corrections without rebuilding the semantic layer. Make that same normative meaning directly queryable by non-BI agents and humans. Optional downstream agent configuration comes later if an actual interface and risk case justify it.
 
-Sophon can propose a change autonomously, but an LLM proposal is **not** a binding legal interpretation or an authorized production deployment. Preserve human approvals and who has authority to grant them; never invent authorization.
+The interpretation and mapping may be AI-proposed. **Proposal is not legal approval, deployment or demonstrated compliance.** A source may be insufficient to produce safe executable instructions; hold the unresolved part and preserve everything known.
 
-### TRACE — durable relationships
+### TRACE — durable source-to-consumer relationships
 
-Keep persistent, versioned, inspectable links between:
-1. precise governing source/provision and authority/provenance;
-2. temporal applicability (publication/observation versus effective dates);
-3. interpretation, decision, approval or unresolved question;
-4. actual semantic object and revision, with known dependencies;
-5. proposed/accepted implementation changes, verification checks, evidence and downstream consumption **where actually observable**.
+Keep persistent, versioned and inspectable connections between:
+1. exact governing provision, document revision, authority and provenance;
+2. known-at/publication dates and effective/applicability dates, including supersession;
+3. structured normative meaning, accepted interpretations, conflicting claims and open questions;
+4. impacted BI semantic identities, agent capabilities, workflow settings and human-facing representations **where actually mapped**;
+5. proposed, approved and implemented revisions, relevant data/decisions, tests and downstream consumption **where actually observable**.
 
-Maintain these relationships when **either side changes**. Avoid stale assurances and unnecessary propagation to unaffected objects. A mapping suggested by an LLM is not necessarily a verified relationship.
+A predicted mapping is not a verified binding. Preserve historical versions, selective impact analysis and unaffected consumers, without demanding that every consumer be integrated.
 
-### VERIFY — independently check alignment in both directions
+### VERIFY — independently challenge alignment in both directions
 
-- **Governing → semantic:** a new or amended requirement triggers impact analysis, proposed transposition, and revalidation.
-- **Semantic → governing:** a changed metric, business rule, relationship or model triggers checking against still-applicable requirements.
-- Test actual compiled/executed semantic behavior and relevant data when possible; distinguish implementation defects, data violations, harmless/equivalent refactors, ambiguous meaning, incomplete evidence and unknown coverage.
-- A passed hash, a passing existing dbt test or a plausible LLM explanation **does not** by itself prove substantive compliance.
+- **Governance → implementations:** changes to a contract, policy or authoritative decision trigger impact analysis and revalidation of affected bindings, logic and configurations.
+- **Implementations → governance:** independent changes in a BI semantic definition, agent setting or operational workflow trigger reassessment against the still-applicable approved meaning.
+- For BI, inspect actual native query/compile behavior and underlying data when possible. For agents, distinguish configuration tests, action-gate tests and observed behavior; do not imply one from another. For human-facing outputs, verify cited source/version and explicit qualifications rather than pretending to enforce human conduct.
+- Separate semantic errors, omitted exceptions, wrong binding, missing facts, harmless changes, data noncompliance, unsupported coverage and uncertain legal interpretation. Use independent oracles and counterexamples where correctness is claimed.
+- A model's explanation, another model's assent, a content hash or green CI is **not** independent substantive verification.
 
-### AUDIT — reproducible, historical evidence
+### AUDIT — reconstructable process and history
 
-An independent reviewer must be able to reconstruct **what requirement was in force, what the organization knew at the time, what was implemented, who approved what (if anyone), which checks ran on which data and what remained unverified**, without the original LLM conversation.
+An independent reviewer must be able to reconstruct the governing document and version, the applicable scope and knowledge-time, what interpretation was proposed or approved, what each model actually output, which consumers were linked, what was deployed, what tests/observations ran and what remained unknown—**without trusting an LLM's retrospective explanation or the original chat session**.
 
-Preserve original evidence or an independently retrievable immutable reference, semantic version, source/interpretation provenance, execution receipts, outcomes, missing evidence and approvals. Hashing verifies integrity against a trusted anchor; it is not proof of correctness or authorization.
+Preserve original evidence or independently retrievable immutable references, prompts/model versions and raw outcomes when relevant, deterministic reconciliation rules, authorized approvals, execution receipts, counterexamples and missing evidence. Integrity evidence is not correctness evidence.
 
-**These states are distinct and must not be conflated:** PROPOSED, APPROVED (by genuine authority), IMPLEMENTED, LINKED/TRACEABLE, VERIFIED_FOR_RECORDED_CHECKS, and NOT_VERIFIED/UNKNOWN.
+Keep the states distinct: **PROPOSED; APPROVED_BY_AUTHORITY; CONFIGURED/DEPLOYED; LINKED/TRACEABLE; VERIFIED_FOR_SPECIFIED_CHECKS; UNVERIFIED/UNKNOWN**. Do not turn a held decision into a false claim of compliance.
 
 ## 4. Smallest meaningful working product
 
-A minimal vertical slice should demonstrate the **complete lifecycle**, not only a sophisticated analysis:
+**Initial proof: contract-to-existing-BI-semantic-layer checker, not a universal agent platform.** A feasible solo-founder vertical slice is:
 
-1. Register an authoritative-or-explicitly-lab-authored requirement with correct source, observed/publication and effective dates.
-2. Link it to a real **pre-existing executable** semantic definition and its data-backed metric.
-3. Accept an amendment, retain the old version and generate a proposed change **to that semantic layer**; keep approval/deployment distinct from proposal.
-4. Re-execute independent semantic checks and record their results and applicable limits.
-5. Introduce a semantic-originated change and show reverse governance reassessment plus a harmless/no-op control.
-6. End the original model process, then reconstruct as-of state and evidence through an independent process; catch tampering, missing approvals and future-information leakage.
-7. Account explicitly for policies outside the layer's observable scope.
+1. Register **one** real authorized-for-use governing contract/policy (or openly labelled LAB_AUTHORED terms) with exact text, source, scope, known-at and effective dates.
+2. Produce a source-anchored normative interpretation of **one substantive contractual business definition** with conditions/exceptions, authority status and explicit uncertainty.
+3. Read **one real, pre-existing executable BI semantic definition** via its native interface (e.g. dbt/MetricFlow or Databricks/Snowflake-native equivalent). Do not fabricate the metric to match the contract.
+4. Check semantic correspondence and **actual native behavior or data** where accessible. Show a material mismatch and a no-op/aligned control, with independent evidence. Report **PASS_FOR_DEFINED_CHECKS / MISMATCH / UNRESOLVED / UNOBSERVABLE** rather than universal compliance.
+5. Introduce one contractual amendment **and** one independently introduced semantic-definition change; reassess only impacted relationships, propose (not silently deploy) necessary corrections, and preserve the old versions.
+6. Expose the **same scoped normative meaning** through one minimal read-only API/query for a non-BI agent or human, confirming that access is not mediated by the BI layer. This tests accessibility, not agent action enforcement.
+7. Restart the interpreter/model process; reconstruct as-of contractual applicability, mappings, raw proposals, checks, failures, approval status and evidence without relying on the model's retrospective explanation.
 
-Reusing Git, SQL/SQLite, content hashes, metadata catalogs and an off-the-shelf LLM is encouraged. Novel algorithms, proprietary DSLs, orchestration and production features are **not prerequisites** for a working slice.
+**Stage 1 success (§5):** a native existing BI semantic object can be compared with a distinct governing source, change impact is traceable and reproducible in both directions, and the governing context is independently retrievable directly. **Not proven:** legal correctness beyond independent scored checks, generalized autonomous contractual transposition, that most agents rely on BI, real-world runtime agent compliance, or buyer demand.
 
-An artificial but faithfully labelled policy and a working real semantic layer can establish **engineering feasibility**. Such a test cannot establish authentic legal interpretation accuracy, enterprise-wide coverage, operator behavior, customer value or competitive differentiation.
+**Solo-founder limit:** one contract, one real BI metric, one simple direct query and one amendment. Reuse existing semantic tools, Git, SQLite and typed JSON. Do not require arbitrary agent adapters, a proprietary DSL or a large legal/agent workflow system. If access to a native semantic runtime is unavailable, log a blocker rather than claiming success with SQL-only substitutes.
 
 ## 4A. Product logic: the customer's outcome gap, not a feature gap
 
-**Atomic unit of value: one governed transition.** A governing requirement or an existing semantic implementation changes. Sophon carries it from detection to an explicitly dispositioned, source-grounded outcome:
+**Atomic unit of product value: a governed change assessed against existing BI meaning, with source-to-semantic evidence and direct governing context available to non-BI consumers.** A governing source, approved interpretation or linked implementation changes. Sophon maintains a shared normative meaning, identifies impacted bindings and records an accountable disposition:
 
-1. **Intake:** identify the changed governing source (or semantic object), source owner, publication/observation and effective dates.
-2. **Scope:** identify relevant existing semantic definitions and dependencies, unaffected objects, incomplete coverage and questions requiring authoritative interpretation.
-3. **Decision:** propose interpretations and semantic-layer changes, recording whether an authorized person approved, rejected or left them unresolved.
-4. **Implementation:** use the native semantic stack and the customer's deployment/review process to propose or apply only authorized changes.
-5. **Verification:** independently run bounded semantic calculations/tests on identified data; retain counterexamples, uncertainty and verification limits.
-6. **Closure and history:** record what was implemented, what remains blocked, who is accountable and exactly what an independent auditor can reconstruct at either historical knowledge-time or effective-time.
+1. **Intake and applicability:** source authority, revisions, publication/observation time, effective time, contract/customer/jurisdiction scope and conflicts.
+2. **Interpretation:** source-grounded structured meaning, missing facts, exceptions and review/approval status; disagreements are recorded, not averaged into certainty.
+3. **Impact:** trace which BI definitions, agent capabilities, workflows or human-facing views depend on the affected meaning; mark unlinked or unobservable consumers honestly.
+4. **Change:** propose native adjustments for impacted integrations; record who accepted/rejected them; execute only within explicit existing permissions.
+5. **Verification:** independently inspect bounded behavior or semantics on each connected surface; retain counterexamples and limits, without claiming to control unintegrated systems.
+6. **Closure and history:** persist deployed/blocked/unchanged outcomes, accountable owner, verified checks, unresolved issues and reconstructable as-of evidence.
 
-**Closure is not automatic compliance certification.** A transition may close as *implemented and verified for specified checks*, *correctly unchanged*, *rejected*, or *blocked/unresolved with an accountable owner*. A proposed patch is not a deployment, and a verified semantic definition is not proof of downstream operational behavior. Do not force every event to an apparently successful "compliant" result.
+**A correctly unresolved transition is not compliance certification.** An LLM proposal does not imply legal authority. A BI test does not demonstrate agent conduct, and a configured agent does not prove it followed its instructions. A traceable but incorrect interpretation remains incorrect.
 
-**What customers would buy (hypothesis):** faster and more complete implementation of authoritative changes, lower cross-functional coordination effort, fewer missed or unjustified semantic impacts, and cheaper reconstruction of trusted evidence. The infrastructure is valuable insofar as it repeatedly delivers those outcomes. A passive policy graph or audit database alone is not a sufficient product positioning.
+**Hypothesized buyer outcome:** fewer manual reinterpretations across consumers, faster and less error-prone contractual/policy changes, lower coordination effort, less semantic drift and cheaper independent audit. Demonstrate it against a **competent alternative**: configured BI semantic governance, existing catalogs/lineage, Git/CI, legal operations, agent policy infrastructure and LLM tools. An LLM-only answer is not an adequate competitor for the end-to-end system, and documentation alone is not a complete product.
 
-**Build with incumbents rather than against an imaginary feature vacuum.** Native semantic catalogs, lineage, Git/CI, policy/data contracts, access controls, approval systems and high-quality LLMs are available components. Existing enterprise platforms may already solve much of the complete workflow. Sophon's differentiation is **not** presumed because it connects those components: it must demonstrate reduced customer work, time, risk or integration burden compared with a realistic configured incumbent or internal implementation. Being a vendor-neutral integration layer is a possible benefit only where customers actually face heterogeneity or cross-system ownership issues.
-
-**Competitive red lines:** do not claim a proprietary reasoning kernel, cryptographic hash, simple agent wrapper, or policy-to-metric link as a moat. Do not dismiss Snowflake, Databricks, dbt, Collibra/Atlan or internal workflows based only on missing marketing features. Equally, do not declare NO-GO solely because a platform *could* implement the outcome. Investigate **what customers still do manually, how reliably they do it, and whether they would switch or buy**.
-
-**Poetic and analogous startups are inspiration, not evidence.** Their emergence in existing software categories illustrates that end-to-end execution may matter more than a unique underlying primitive. It does *not* validate Sophon's demand, performance, funding prospects or competitive advantage.
+**No presumed moat:** hashing, a policy graph, Jev classification or model agreement are not differentiators by themselves. Native products might already solve much of the work; an integrated outcome gap is a **testable hypothesis**. Poetic and analogous startups are inspiration, not customer evidence.
 
 ## 5. Four different questions and evidence standards
 
 | Stage | Question | What evidence permits us to conclude |
 |---|---|---|
-| 1. Infrastructure feasibility | Does the actual governance-to-existing-semantic-layer lifecycle work, persist and audit independently? | Reproducible working code, real native semantic execution, correct change/history/integrity tests |
+| 1. Infrastructure feasibility | Can shared governing meaning be created, consumed by two different real surfaces, changed and independently reconstructed? | Reproducible native integrations, scoped shared meaning, real BI/agent checks as applicable, correct change/history/integrity tests |
 | 2. Reliability and scope | Does the mechanism remain correct across challenging, unseen, authentic changes and known unknowns? | Independent oracles, correct chronology, adversarial controls, measured errors and missing coverage |
 | 3. Operational usefulness | Does it solve a real recurring organizational governance problem with tolerable maintenance? | Real usage and observed operational results; not just a compelling demo |
 | 4. Adoption / business | Do teams repeatedly choose, rely on and potentially pay for it rather than alternatives? | Actual customer behavior and economics, not customer interviews alone |
@@ -139,23 +152,20 @@ Conventional alternatives (Git/CI, dbt tests, catalogs, policy-as-code, data con
 
 ## 5A. Market-entry hypotheses and measurable differentiation
 
-The charter's scope is enterprise governance expressed and tested **through existing semantic layers**. The **first customer segment, governing domain, buyer and specific platform are not yet owner-approved commitments**. Choose them based on validated operational outcomes, not a generic assertion that "trusted AI data" is in demand.
+**The product scope is a normative semantic layer for governing documents, with an explicit BI-first compliance-checking entry point and a direct-access path for non-BI agents.** The initial customer size, vertical, source of authority and buyer are not established. The early technical integration focus on an existing BI semantic layer is **intentional**, because that organization may already have done the difficult data-semantic work. A solo founder signing contractual commitments and configuring agents remains a useful **product-design scenario**, not a proven customer segment or a mandate to build only for startups.
 
-A strong initial wedge is more likely where:
+The primary wedge hypothesis is a **contractual KPI or commercial definition conflicting with an already-maintained BI semantic metric**. Contract and semantic revisions should trigger independent, documented reassessment. Potential initial clauses include:
+- customer SLAs and service-credit definitions shared by BI, support and billing;
+- commercial terms, remuneration or contractual KPI calculations that intersect an existing BI semantic layer;
+- requirements that cannot be represented as BI metrics but can be served through Sophon's scoped direct governing-context API (a complementary extension, not an initial generalized enforcement product).
 
-- authoritative business requirements are genuinely maintained **outside** the semantic implementation (e.g. a separately approved commercial or finance policy, contractual schedule or amended regulatory calculation);
-- changes recur and impose identifiable material risk, elapsed time or coordination effort;
-- the relevant obligation is observably representable and testable through existing semantic definitions, without pretending to verify every operational consequence;
-- distinct accountable teams own the authoritative interpretation and the semantic implementation;
-- incumbent tools are available but a demonstrable **last-mile workflow problem** remains.
+Telecom is a plausible discovery area given founder experience, **not** a product boundary. An entirely internal metric definition already maintained correctly in one system may provide little normative-layer value. Conversely, an obligation that cannot be tested through BI may still be in scope if another genuine, verifiable consumer binding exists.
 
-**Candidate, not decision:** commercial/wholesale agreements, partner remuneration, revenue sharing, contractual KPI calculations, or finance-controlled metrics. Telecom is a plausible discovery beachhead given the founder's experience; none is a proven buyer, mandatory vertical or established product-market fit. A policy whose semantic definition is itself the only authoritative source may have little additional value for Sophon; test the actual cross-system boundary.
+For engineering feasibility, clearly labelled lab terms are acceptable; never present self-authored fixtures as independent legal or customer evidence. For operational usefulness and business value, obtain permission to examine real before/after workflows: how a document change arrived, which interpretations diverged, who updated which consumers, whether the change took effect, what errors remained and which evidence survived.
 
-Before choosing a wedge, observe at least one real **before/after** customer workflow and ask: which amendment arrived, who noticed, how was its impact identified, which changes and approvals happened, what evidence survived, what went wrong, and what do existing tools already do? Obtain customer permission and handle contractual materials appropriately. For technical feasibility, a clearly labelled lab policy remains acceptable; it must not be portrayed as market evidence.
+**Measure the BI-first outcome:** time and human effort to map a contractual definition onto existing semantic objects, discover substantive mismatches, distinguish harmless changes, propose fixes and reproduce the audit; track missed conditions, false positives, coverage and abstention. Separately measure direct governing-context API usefulness to agents outside the BI stack, and verify rather than assume actual data-agent reliance on BI. Compare against the customer's real process and credible native-tool setups rather than an intentionally weak chat-only baseline.
 
-**Measure the result, not the architecture:** elapsed amendment-to-reviewed-change time; time to verified implementation; human review/integration effort; missed material impacts and false alerts; proportion with owner-approved interpretation; coverage accurately reported as unverified/out-of-scope; time and effort to reproduce the audit; cost of operating the full workflow. Measure baseline customer practice and a realistic incumbent/configuration alternative, not a deliberately weak LLM-only control.
-
-**Commercial kill conditions (hypotheses to test):** buyers already achieve the complete outcome at acceptable cost and risk; the valuable obligations cannot be tested through the semantic layer; changes are too rare to justify ongoing infrastructure; approvals/authority cannot be obtained or integrated; or adoption requires replacing too many existing systems. Explicit evidence of these should reduce enthusiasm even if the technical demonstration succeeds.
+**Commercial failure conditions:** the supposed gap is already solved adequately; meaningful requirements cannot be bound reliably in the proposed initial integrations; heterogeneity is too low to justify a shared layer; the semantic source is not authoritative or interpretable in context; integration, approval or maintenance costs exceed observed gains; or buyers do not adopt it. These are hypotheses to investigate, not a predetermined NO-GO.
 
 ## 6. Prior results: preserve boundaries of inference
 
@@ -167,33 +177,33 @@ Historical reports, decision files and rejected hypotheses must remain accessibl
 
 ## 7. How assistants and contributors must prevent conceptual drift
 
-**Before** any substantial recommendation, experiment, code change or Claude Code task:
+**Mandatory invariant before substantial advice, design, code or Claude Code prompts:**
 
-1. **Anchor:** read this charter, the most recent relevant experimental decision(s) and existing implementation. State which stage in §5 is being tested.
-2. **Specify:** name the concrete uncertainty, smallest end-to-end capability/counterexample, real/synthetic authority, the semantic runtime to use, and what result would count as success/failure/inconclusive.
-3. **Check alignment:** verify that all FOUR capabilities (§3) and the semantic-layer boundary (§2) are respected, even when the immediate experiment tests only one thin part.
-4. **Execute and audit:** keep cases and reference oracles independent when correctness is at issue. Enforce **monotonic decision-time chronology across all persistent agent state**; isolate future evidence. Keep unscored diagnostics separate from blinded evaluations. Preserve first-run outcomes, costs, failures and correction history.
-5. **Conclude narrowly:** label OBSERVED / INFERRED / ASSUMED. State exactly which of the four validation stages changed. Never present a narrow negative experiment as a product-wide kill or a simple technical demo as a validated business.
-6. **Check the end-to-end outcome:** if claiming product differentiation, compare the actual governed-transition workflow, including approvals, maintenance and evidence retrieval, against the customer's real practice and appropriately configured alternatives. Technical feature-parity is neither automatic success nor automatic failure.
+> Sophon is a **shared normative semantic layer for governing documents**. **Its initial engineering wedge is to leverage and check existing BI/data semantic definitions against authoritative contracts**, rather than rebuilding data-team semantics. Data-driven agents/humans may use BI; non-BI agents/humans can retrieve the same governing context directly. Preserve **TRANSPOSE / TRACE / VERIFY / AUDIT**, source authority, scope, chronology, uncertainty and reconstructable evidence. Verify actual BI consumption rather than assuming it.
 
-### Anti-drift checklist — stop and surface a conflict if a plan:
+**Required task-entry check:**
+1. State the governing-source input, the proposed shared normative artifact, the real consumer/interface under test and the relevant validation stage (§5). If the task isolates one component, label it upstream or partial.
+2. Name the smallest falsifiable uncertainty, authentic vs lab provenance, the current baseline, and the success/failure/inconclusive criteria. For claims about BI, name the **native semantic runtime and data**; for agent claims, name the real configuration/enforcement boundary.
+3. Show how evidence and versioned links would survive the model/chat session, and what an independent reviewer can check. Use independent correctness oracles when scoring interpretations; keep formatting validity, semantic accuracy, safety holds and actual deployment separate.
+4. Preserve first-run outputs, contrary historical results, costs and correction histories. Enforce monotonic knowledge-time chronology across persistent state and do not leak future evidence into earlier decisions.
+5. Conclude **OBSERVED / INFERRED / ASSUMED**, limited to the stage and integrated surfaces actually tested; don't generalize a negative Jev, Publicodes, MetricFlow or agent-adapter experiment to the entire product.
+6. For differentiation claims, measure the **full governed-change outcome** against realistic internal or incumbent solutions, not a one-off LLM answer.
 
-- Reframes the core goal as **outperforming an LLM** or inventing a new technical primitive.
-- Substitutes direct control of arbitrary downstream applications for governance **through the existing semantic layer**.
-- Equates a one-off policy-vs-SQL comparison with persistent traceability and auditability.
-- Calls hashes, Git diffs, model-produced text or CI output substantive verification without inspecting their meaning.
-- Promotes unapproved interpretations, inferred bindings or missing evidence to authoritative, complete or verified.
-- Treats missing customer interviews as a prerequisite for testing technical feasibility, or regards customer interviews alone as business validation.
-- Silently changes the product thesis in response to a benchmark outside its scope.
-- Reduces the product to a generic AI governance dashboard, policy graph, a one-off LLM comparison or a standalone semantic catalog without an operational transition.
-- Assumes a competitive moat because no vendor mentions a feature, or declares the opportunity dead because an incumbent could assemble the same features.
-- Treats an impressive startup in an adjacent crowded market (e.g. Poetic) as proof of Sophon's demand.
-- Commits the owner to a specific sector, buyer, deployment model, or contract-only domain without evidence and explicit owner approval.
+**Anti-drift stops — explicitly surface a conflict if a plan:**
+- Redefines Sophon as merely an LLM/contract classifier, autonomous lawyer, agent configuration tool, passive audit graph or replacement data semantic layer. **A BI compliance checker is an intentional first wedge, but not the full normative-layer mission.**
+- Fails to prioritize reuse of **existing BI semantic definitions** for the initial checker, treats BI as mandatory for every governing provision, or assumes most agents use BI without inspecting actual data flows.
+- Lets every agent independently reinterpret the governing corpus instead of reusing one scoped, versioned meaning; or assumes updating prompts guarantees agent behavior.
+- Focuses only on Jev versus LLM accuracy, reviewer abstention or syntactic validity while forgetting persistent meaning, cross-consumer use, traceability and verification.
+- Conflates model-generated interpretation with authorized meaning, a semantic patch with deployment, a passed test with legal correctness, or a configured agent with observed compliance.
+- Adds direct application-level enforcement, a proprietary DSL, broad integrations or a legal-operations platform as default architecture without evidence and a scoped design decision.
+- Rewrites product direction because of a narrow experimental result or an appealing startup analogy; erases contrary evidence; assumes an incumbent's theoretical capability alone settles customer demand.
+- Converts a **BI-first technical wedge** into a permanent BI-only product boundary, or selects enterprise-only, startup-only, telecom-only or a single platform as a proven commercial segment.
 
 ### Change history
 
-- **v1.0 — 11 October 2026:** Owner-defined purpose, integration boundary, four capabilities, infrastructure evidence standard and safeguards against conceptual drift.
-- **v1.1 — 12 October 2026 (explicit owner request):** Reframed value around the full governed-change outcome rather than a missing technical feature; clarified existing systems of record, incumbent complement/substitution risk, measurable customer outcomes and candidate initial wedges. Preserves v1.0 architecture and every historical negative result; **does not** claim demand, differentiation or a specific vertical has been validated.
+- **v1.0 — 11 October 2026:** Owner-defined governance purpose, semantic-layer integration boundary, four capabilities and evidence safeguards.
+- **v1.1 — 12 October 2026 (owner request):** Governed-change outcome, systems-of-record discipline, alternatives and measurable customer value. BI remained the mandatory integration boundary.
+- **v1.2 — 13 October 2026 (owner clarifications, revised while PR #15 remained draft):** Sophon is the **normative semantic layer**, with an intentional **BI-first contract/metric compliance-checking wedge** that reuses data-team semantics, plus a **direct source-backed query path** for non-data agents. BI is preferred for the first integration, not a required intermediary for every governing requirement. The assumption that most organizational agents use BI is unverified and must be tested. Solo-founder feasibility, history and four capabilities retained.
 
 ### Authority and changes to this charter
 
