@@ -420,13 +420,6 @@
         "receipt_role": null
       }
     ],
-    "continuation_requires_invoked": [
-      "jev_classification",
-      "adversarial_challenge",
-      "backward_source_challenge",
-      "deterministic_reconciliation"
-    ],
-    "next_single_delta_step": "independent_library_based_review",
     "next_single_delta": "ENGINEERING RECOMMENDATION (not owner mandate): before committing to a third AI reviewer, assess the simplest independently checkable source-backed skeleton-difference operation reusing V2; choose one small testable delta based on existing code and results. The current change is only the continuity guard.",
     "separate_hypotheses_not_equivalent": [
       "V3 predicts heading-rule structure with conditional frequencies; zero Jev/reviewer calls.",
@@ -434,7 +427,7 @@
     ],
     "review_gate": "Require (a) unchanged owner goal or explicitly noted change, (b) reference implementation and actual mechanisms invoked, (c) a single engineering-selected delta plus rejected simpler alternative, (d) falsifiable output and honest evidence limits. Reject FALSE claims of running Jev/reviewers when only regex/counts ran, but do not prohibit justified replacement of an implementation method. Architectural proposals are hypotheses.",
     "authorization": "Owner approves material change to desired outcome, constraints, paid calls and deployment. Engineering lead may recommend an alternative implementation, with stated evidence and mechanism delta; must not silently label a different experiment as proving the original loop.",
-    "enforcement": "Checked by .claude/hooks/context_guard.py (hook + CI): this object is fingerprint-pinned in the guard; every prototype/, experiments/ or viability/ directory needs MECHANISM.json (CONTINUES_ACTIVE_LINEAGE or SEPARATE_MECHANISM); continuation claims are checked by static name-based call reachability from the declared runner to the entry_points above, and RUN claims against committed step receipts (RECEIPT_CONSISTENT at best: provider authenticity is not verifiable offline). Changing this pin in the same PR as experiment files fails. Limits: GitHub main is not branch-protected, so the check is advisory until required; historical PRs #16-#18 predate the guard; static reachability can be satisfied by dead or role-swapped calls.",
+    "enforcement": "NOT YET IMPLEMENTED. PR #21 draft is preparing a minimal evidence/claim-continuity guard. Its existing initial rigid AST/fingerprint implementation was rejected and reverted as architecture by accretion. Existing main context hook is an inventory reminder, not proof that a run exercised Jev/reviewers. Human engineering review remains necessary. main is not branch-protected.",
     "owner_discussed_as_hypothesis": "2026-10-14: owner suggested Jev classification + adversarial/backward/library review + evolving skeletons as an engineering HYPOTHESIS, not an implementation mandate.",
     "engineering_status": "UNVALIDATED_COMPOSITE_DESIGN: V1/V2 components exist in part; independent third reviewer not built; Jev's unique necessity, two LLM reviewers' incremental value, and autonomous skeleton learning have not been established.",
     "architectural_challenges": [
@@ -445,6 +438,7 @@
       "V2 inducer uses LAB_AUTHORED detectors and source snippets; source citations alone are not autonomous semantic learning or legal correctness.",
       "V2 near-ceiling proxy cannot settle the mechanism; choose a discriminating downstream mistake/correction with independent check."
     ],
-    "proposed_steps_not_requirements": true
+    "proposed_steps_not_requirements": true,
+    "intended_chain_is": "OWNER_PROPOSED_ARCHITECTURAL_HYPOTHESIS_WITH_EXISTING_CODE_STATUS, not a required execution topology"
   }
 }
