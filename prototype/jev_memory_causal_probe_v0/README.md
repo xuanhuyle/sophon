@@ -28,7 +28,7 @@ python prototype/jev_memory_causal_probe_v0/probe.py live --confirm-paid-calls Y
 python prototype/jev_memory_causal_probe_v0/probe.py score --recorded prototype/jev_memory_causal_probe_v0/live_runs/run_001.json
 ```
 
-The live command refuses without the explicit confirmation flag and key, refuses overwriting existing recordings, never silently retries or falls back to fixture data, and caps at 20 API requests. Its recorded raw model/version and request hashes enable offline re-scoring. Local `live_runs/` recordings are gitignored; only share redacted summary/sha receipts if desired.
+The live command refuses without the explicit confirmation flag and key; the key is loaded automatically from the process environment or an existing .env at the repository root (or next to probe.py), without displaying it. A .env on your Windows machine does not automatically exist in Claude Code's cloud container. Never commit or paste the .env. The live command refuses overwriting existing recordings, never silently retries or falls back to fixture data, and caps at 20 API requests. Its recorded raw model/version and request hashes enable offline re-scoring. Local `live_runs/` recordings are gitignored; only share redacted summary/sha receipts if desired.
 
 ### Decision after real run
 
