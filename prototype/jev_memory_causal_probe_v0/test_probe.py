@@ -97,7 +97,7 @@ class CausalMemoryProbeTests(unittest.TestCase):
     def test_existing_root_dotenv_loaded_only_when_no_process_key(self):
         with tempfile.TemporaryDirectory() as folder:
             root = Path(folder)
-            (root / ".env").write_text("# Local only\\nexport TYPESAFE_API_KEY = 'secret-from-dotenv' # comment\\n", encoding="utf-8")
+            (root / ".env").write_text("# Local only\nexport TYPESAFE_API_KEY = 'secret-from-dotenv' # comment\n", encoding="utf-8")
             with patch.object(probe, "ROOT", root), \
                  patch.dict(os.environ, {"TYPESAFE_API_KEY": ""}, clear=False):
                 self.assertEqual(probe.resolve_typesafe_key(), "secret-from-dotenv")
@@ -112,13 +112,13 @@ class CausalMemoryProbeTests(unittest.TestCase):
                  patch.object(probe, "HERE", root), \
                  patch.dict(os.environ, {"TYPESAFE_API_KEY": ""}, clear=False):
                 self.assertIsNone(probe.resolve_typesafe_key())
-                (root / ".env").write_text("\\ufeffTYPESAFE_API_KEY=\"some-value\"\\n", encoding="utf-8")
+                (root / ".env").write_text("\ufeffTYPESAFE_API_KEY=\"some-value\"\n", encoding="utf-8")
                 self.assertEqual(probe.resolve_typesafe_key(), "some-value")
 
     def test_live_with_confirm_and_local_dotenv_uses_authorized_credentials(self):
         with tempfile.TemporaryDirectory() as folder:
             root = Path(folder)
-            (root / ".env").write_text("TYPESAFE_API_KEY=dummy-key\\n", encoding="utf-8")
+            (root / ".env").write_text("TYPESAFE_API_KEY=dummy-key\n", encoding="utf-8")
             # Use pre-flight check and mock the provider so this remains network-free.
             with patch.object(probe, "ROOT", root), \
                  patch.dict(os.environ, {"TYPESAFE_API_KEY": ""}, clear=False):
