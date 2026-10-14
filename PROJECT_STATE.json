@@ -109,9 +109,9 @@
     }
   ],
   "current_work": {
-    "active": "V3: retrieve source snapshots, use EXISTING adversarial + backward + library checks to triage labels, then reserve blinded human validation for unresolved/high-risk cases and audit sample. Preserve frozen outputs.",
-    "blocked": "Source retrieval in Claude Code cloud returned proxy CONNECT 403 for sec.gov/cloudflare.com/mongodb.com; local fetch script exists but is not end-to-end verified on authentic downloads.",
-    "on_hold": "V4 sequential contract-by-contract learning prompt only; draft PR #18. Do not treat as executed.",
+    "active": "Owner research focus: independently investigate whether source-grounded contractual provision knowledge can accumulate and transfer contract-by-contract. Choose the smallest discriminating next test from V1-V3 evidence; no new implementation or experiment has been authorized.",
+    "blocked": "V3 source-grounded label adjudication remains unfinished; cloud source retrieval previously had CONNECT 403. This is a V3-specific limitation, not an automatic gate on all cumulative-learning research.",
+    "on_hold": "V4 sequential contract-learning specification PR #18 remains UNRUN. V3 manual 78-unit review is not an automatic priority. BI expansion, full contract-to-agent propagation, EDGAR transformer training, and commercial validation are not the immediate increment.",
     "horizon": "Predict reusable normative provision structures, conditional on evidenced law, contract family, ToC/section and observed provisions; test cumulative, auditable contract-by-contract improvement, not superiority to a pretrained LLM."
   },
   "working_rules": [
@@ -130,5 +130,13 @@
     "status": "OWNER_REQUESTED_ENGINEERING_OPERATING_PROCEDURE",
     "idea_screening_gate": "Before initiating research or development on an attractive new idea, apply ENGINEERING_WORKFLOW.md Idea-screening gate: reconcile current code/results and prior art; distinguish outcome from mechanism and charter scope; compare a competent baseline under blind, independently valid tests; preregister stop rules; preserve failures; authorize only one minimal increment.",
     "rule": "Owner owns problem/outcome/constraints and material decisions; engineering agents independently choose/challenge design and simplest alternatives; implement one small falsifiable increment, verify actual results, then KEEP/REVISE/STOP."
+  },
+  "research_priority": {
+    "owner_stated": "Immediate research priority is cumulative, source-grounded contractual learning across successive contracts, NOT commercial demand validation or immediate deployment of a full downstream agent-configuration workflow.",
+    "motivating_scenario": "A solo founder operates an AI-native company with multiple agents and receives new agreements/amendments. The same applicable, versioned contractual meaning should be reusable by those agents without re-interpreting everything from scratch. This is a north-star technical scenario, NOT a request to build the full automation pipeline next.",
+    "immediate_unknown": "Can a persistent, provisional, evidence-linked library of contractual provision structures improve later contract interpretation/prediction, omission detection or human-review burden against a competent frozen/no-library and raw-prior-examples baseline, with independently checked unseen cases?",
+    "established_starting_point": "V1 Jev + independently invoked adversarial/backward reviewers + deterministic reconciliation; V2 provisional provision library (no observed incremental lift on its near-ceiling proxy); V3 contextual heading-label predictions (frozen INCONCLUSIVE, repaired secondary provisional); V4 sequential learning only specified, not run. Inspect actual PR/code and results rather than redesign.",
+    "exclusions": "Do not mistake the solo-founder scenario for authorization to implement contract-to-agent configuration/propagation now. Do not substitute E0-E5 feasibility, commercial interviews, or another narrow lab demo for a discriminating cumulative-learning test. EDGAR-only transformer and autonomous machine-to-machine contracting are related exploratory ideas, not automatically Sophon roadmap commitments.",
+    "engineering_discretion": "Engineer independently choose no-code analysis, reuse or a single smallest falsifiable experiment; do not assume V3's 78-item manual adjudication must be completed first. Do not initiate paid calls or code solely from this priority statement."
   }
 }
