@@ -177,12 +177,19 @@
       "status": "PROVISIONAL_UNADJUDICATED",
       "observation": "Post-freeze repaired signal limited to provision within section: FAMILY_SECTION 3.09/8 vs FAMILY 0.36/8; no section gain, worse Brier than GLOBAL, law untestable; labels agent-authored, split nonchronological.",
       "ref": "PR #17; prototype/contract_structure_prediction_v3/RESULTS.md"
+    },
+    {
+      "id": "V4_regex_structural_proxy",
+      "status": "STOP_NO_OBSERVED_CUMULATIVE_GAIN_SCOPED",
+      "ref": "PR #18 head 30f5b6d; prototype/contract_sequential_learning_v4/RESULTS.md",
+      "observation": "Frozen run: 2 seed + 6 evaluated 2024 SEC EDGAR credit agreements; 24 masked provisions; Brier SIMPLE_COUNTS 0.2036, FROZEN 0.2147, CUMULATIVE 0.2427; replay identical; zero Jev or reviewer provider calls.",
+      "does_not_prove": "No result about Jev classification/adversarial/backward/library reviewer or semantic learning; only regex textual-feature and heading-rule statistical predictor."
     }
   ],
   "current_work": {
-    "active": "Owner research focus: independently investigate whether source-grounded contractual provision knowledge can accumulate and transfer contract-by-contract. Choose the smallest discriminating next test from V1-V3 evidence; no new implementation or experiment has been authorized.",
-    "blocked": "V3 source-grounded label adjudication remains unfinished; cloud source retrieval previously had CONNECT 403. This is a V3-specific limitation, not an automatic gate on all cumulative-learning research.",
-    "on_hold": "V4 sequential contract-learning specification PR #18 remains UNRUN. V3 manual 78-unit review is not an automatic priority. BI expansion, full contract-to-agent propagation, EDGAR transformer training, and commercial validation are not the immediate increment.",
+    "active": "CURRENT TASK: introduce an enforceable mechanism-continuity gate, not a new experiment. Research implementation lineage is V1 Jev classifier + independently invoked adversarial/backward + V2 evidence-linked skeleton library/reconciliation; the missing single increment is an independent library-based reviewer of Jev output within V2. No experiment or paid calls authorized.",
+    "blocked": "Direct continuation on historical stacked PRs lacks the main-branch context guard; use a guarded clean branch from main and inspect historical refs, and stop when lineage cannot be verified.",
+    "on_hold": "V3 statistical heading predictor is a separate provisional hypothesis; V4 2024 EDGAR regex/statistical predictor ran under frozen protocol and STOPPED for its own textual-proxy task. Neither tested the Jev review loop. BI/full agent propagation/commercial validation/EDGAR transformer held.",
     "horizon": "Predict reusable normative provision structures, conditional on evidenced law, contract family, ToC/section and observed provisions; test cumulative, auditable contract-by-contract improvement, not superiority to a pretrained LLM."
   },
   "working_rules": [
@@ -193,7 +200,8 @@
     "Legal provenance, unknowns, known-at versus effective-at, adversarial counterexamples and independent audit are requirements, not add-ons.",
     "Do not assume user approval for paid calls, merger of draft PRs or charter changes.",
     "Treat LLM agreement as triage, not independently validated semantic truth; minimize human labor without hiding correlated errors.",
-    "Mandatory development process: read ENGINEERING_WORKFLOW.md; human proposes the problem (technical concepts are hypotheses), engineering agents own independent choice of design, challenge needless complexity, implement one bounded, testable increment and make KEEP/REVISE/STOP recommendation without making the owner referee routine implementation choices."
+    "Mandatory development process: read ENGINEERING_WORKFLOW.md; human proposes the problem (technical concepts are hypotheses), engineering agents own independent choice of design, challenge needless complexity, implement one bounded, testable increment and make KEEP/REVISE/STOP recommendation without making the owner referee routine implementation choices.",
+    "HARD CONTINUITY: for active Jev contractual-learning work, preserve the real Jev->adversarial+backward->library-review->source-anchored skeleton->reconciliation chain. A protocol that uses only heading or regex statistics is a separate mechanism, not the next Jev-loop increment. Require explicit mechanism coverage (planned vs ACTUALLY_EXECUTED) before accepting experiment claims."
   ],
   "engineering_workflow": {
     "path": "ENGINEERING_WORKFLOW.md",
@@ -205,14 +213,14 @@
   "research_priority": {
     "owner_stated": "Immediate research priority is cumulative, source-grounded contractual learning across successive contracts, NOT commercial demand validation or immediate deployment of a full downstream agent-configuration workflow.",
     "motivating_scenario": "A solo founder operates an AI-native company with multiple agents and receives new agreements/amendments. The same applicable, versioned contractual meaning should be reusable by those agents without re-interpreting everything from scratch. This is a north-star technical scenario, NOT a request to build the full automation pipeline next.",
-    "immediate_unknown": "Can a persistent, provisional, evidence-linked library of contractual provision structures improve later contract interpretation/prediction, omission detection or human-review burden against a competent frozen/no-library and raw-prior-examples baseline, with independently checked unseen cases?",
-    "established_starting_point": "V1 Jev + independently invoked adversarial/backward reviewers + deterministic reconciliation; V2 provisional provision library (no observed incremental lift on its near-ceiling proxy); V3 contextual heading-label predictions (frozen INCONCLUSIVE, repaired secondary provisional); V4 sequential learning only specified, not run. All of this code is on the PR #17 branch (b9d698c), not on this branch or main; branch from #17 and bring this guard/state across rather than redesigning.",
+    "immediate_unknown": "Does adding a genuine independent library-based reviewer to the existing V2 Jev/adversarial/backward/skeleton pipeline produce grounded, actionable challenges or corrections, after which a later separate experiment can test contract-by-contract library revision? This is NOT the same as more heading/regex predictions.",
+    "established_starting_point": "V1 Jev classification, adversarial/backward source review and deterministic reconciliation are implemented/live-tested; V2 evidence-anchored provision skeleton induction and shared library-informed reviewers exist and were live-tested without incremental value on a ceiling proxy. A SEPARATE independent library reviewer is NOT implemented. Most complete implementation is PR #17 b9d698c, NOT main. V3 and V4 statistical predictors are separate experiments and do not establish Jev-loop outcomes. V4 authentic EDGAR frozen regex proxy run at PR #18 head 30f5b6d: STOP its own mechanism.",
     "exclusions": "Do not mistake the solo-founder scenario for authorization to implement contract-to-agent configuration/propagation now. Do not substitute E0-E5 feasibility, commercial interviews, or another narrow lab demo for a discriminating cumulative-learning test. EDGAR-only transformer and autonomous machine-to-machine contracting are related exploratory ideas, not automatically Sophon roadmap commitments.",
     "engineering_discretion": "Engineer independently choose no-code analysis, reuse or a single smallest falsifiable experiment; do not assume V3's 78-item manual adjudication must be completed first. Do not initiate paid calls or code solely from this priority statement."
   },
   "inventory_rules": "location: MAIN (on main and therefore here), THIS_BRANCH (added by the checked-out branch but not yet on main), OTHER_PR (only on an unmerged PR branch; NOT in this checkout). status: SPECIFIED_ONLY < PREPARED_NOT_RUN < IMPLEMENTED_NOT_RUN < IMPLEMENTED_AND_RUN < VERIFIED_WITHIN_SCOPE (preregistered checks passed within the stated lab scope). No status means semantically or legally validated. Verified against fetched PR heads on 2026-10-14; refresh pr_graph from live PRs before relying on it.",
   "pr_graph": {
-    "verified_at": "2026-10-14 from fetched branch heads; main head eaf0c91 after the PR #19 squash merge",
+    "verified_at": "2026-10-14 (reviewed live PR #18 at 30f5b6d and main 77c8ba1)",
     "dispositions": "DURABLE_BASELINE = belongs on main; SUPERSEDED = content included elsewhere; HISTORICAL_RESEARCH = immutable experiment record, reuse code by branching from it, do not merge wholesale; DEFERRED_HYPOTHESIS = specification only, unrun.",
     "prs": [
       {
@@ -298,10 +306,10 @@
       {
         "pr": 18,
         "state": "OPEN_DRAFT",
-        "head": "5b75e64",
+        "head": "30f5b6d",
         "base": "#17 at 26902c6 (lacks b9d698c adjudication commit)",
-        "disposition": "DEFERRED_HYPOTHESIS",
-        "content": "V4 prompt only; no V4 run"
+        "disposition": "STOPPED_SEPARATE_STATISTICAL_PROXY",
+        "content": "V4 frozen run on authentic EDGAR agreements; zero Jev/adversarial/backward/library reviewer calls, regex textual proxies: STOP_NO_OBSERVED_CUMULATIVE_GAIN (not a test of V2 Jev loop)"
       },
       {
         "pr": 19,
@@ -310,7 +318,71 @@
         "base": "main",
         "disposition": "DURABLE_BASELINE",
         "content": "charter v1.2 + workflow + this state + context guard; added no prototype/experiment code to main"
+      },
+      {
+        "pr": 20,
+        "state": "MERGED",
+        "head": "f389f2e (squash 77c8ba1)",
+        "base": "main",
+        "disposition": "DURABLE_BASELINE",
+        "content": "Context/state refresh, guard regression tests; no prototype changes"
       }
     ]
+  },
+  "active_research_mechanism": {
+    "id": "jev_source_grounded_provision_skeleton_loop",
+    "owner_reconfirmed": "2026-10-14",
+    "primary_implementation": "PR #17 head b9d698c (V1 and V2 code); not on main",
+    "intended_chain": [
+      {
+        "step": "jev_classification",
+        "component": "primary_jev_proposal",
+        "state": "IMPLEMENTED_RUN",
+        "source": "prototype/jev_clause_router_v0/prototype.py"
+      },
+      {
+        "step": "adversarial_challenge",
+        "component": "adversarial_review",
+        "state": "IMPLEMENTED_RUN",
+        "source": "prototype/jev_clause_router_v0/prototype.py"
+      },
+      {
+        "step": "backward_source_challenge",
+        "component": "backward_source_review",
+        "state": "IMPLEMENTED_RUN",
+        "source": "prototype/jev_clause_router_v0/prototype.py"
+      },
+      {
+        "step": "independent_library_based_review",
+        "component": "provision_library",
+        "state": "NOT_IMPLEMENTED_AS_SEPARATE_REVIEWER",
+        "source": "prototype/jev_library_transfer_v2/transfer.py"
+      },
+      {
+        "step": "evidence_anchored_skeleton_induction",
+        "component": "provision_library",
+        "state": "IMPLEMENTED_PROVISIONAL_ONE_CONTRACT",
+        "source": "prototype/jev_library_transfer_v2/transfer.py"
+      },
+      {
+        "step": "deterministic_reconciliation",
+        "component": "deterministic_reconciliation",
+        "state": "IMPLEMENTED_RUN",
+        "source": "prototype/jev_library_transfer_v2/transfer.py"
+      },
+      {
+        "step": "retain_revise_transfer_to_later_contracts",
+        "component": "provision_library",
+        "state": "PARTIALLY_TESTED_V2_NO_OBSERVED_LIFT",
+        "source": "prototype/jev_library_transfer_v2/transfer.py"
+      }
+    ],
+    "next_single_delta": "Add and separately test the independent library-based review of a Jev proposal within the existing V2 review pipeline. Do not implement a new full sequential experiment in the same increment.",
+    "separate_hypotheses_not_equivalent": [
+      "V3 predicts heading-rule structure with conditional frequencies; zero Jev/reviewer calls.",
+      "V4 predicts regex textual proxies with conditional frequencies and append-only events; zero Jev/reviewer calls."
+    ],
+    "review_gate": "Before coding or running a new learning experiment, show the actual call path from authentic source through Jev, adversarial, backward and the planned library reviewer, skeleton induction and reconciliation; state which are actually exercised. If any step is absent, classify as a DIFFERENT_MECHANISM and do not call its result a test of this loop. Do not substitute generic LLM-vs-Sophon comparisons.",
+    "authorization": "Owner directs the problem and approves material mechanism replacement and paid calls; implement one small delta at a time. A new independent research hypothesis must be clearly segregated and owner-authorized, not silently inherit this lineage."
   }
 }
