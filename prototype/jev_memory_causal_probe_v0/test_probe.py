@@ -94,6 +94,36 @@ class CausalMemoryProbeTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "Model version changed"):
             probe.score(self.plan, mock)
 
+    def test_existing_root_dotenv_loaded_only_when_no_process_key(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            (root / ".env").write_text("# Local only\\nexport TYPESAFE_API_KEY = 'secret-from-dotenv' # comment\\n", encoding="utf-8")
+            with patch.object(probe, "ROOT", root), \
+                 patch.dict(os.environ, {"TYPESAFE_API_KEY": ""}, clear=False):
+                self.assertEqual(probe.resolve_typesafe_key(), "secret-from-dotenv")
+            with patch.object(probe, "ROOT", root), \
+                 patch.dict(os.environ, {"TYPESAFE_API_KEY": "secret-from-process"}, clear=False):
+                self.assertEqual(probe.resolve_typesafe_key(), "secret-from-process")
+
+    def test_dotenv_loader_handles_missing_file_and_quoted_bom(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            with patch.object(probe, "ROOT", root), \
+                 patch.object(probe, "HERE", root), \
+                 patch.dict(os.environ, {"TYPESAFE_API_KEY": ""}, clear=False):
+                self.assertIsNone(probe.resolve_typesafe_key())
+                (root / ".env").write_text("\\ufeffTYPESAFE_API_KEY=\"some-value\"\\n", encoding="utf-8")
+                self.assertEqual(probe.resolve_typesafe_key(), "some-value")
+
+    def test_live_with_confirm_and_local_dotenv_uses_authorized_credentials(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            (root / ".env").write_text("TYPESAFE_API_KEY=dummy-key\\n", encoding="utf-8")
+            # Use pre-flight check and mock the provider so this remains network-free.
+            with patch.object(probe, "ROOT", root), \
+                 patch.dict(os.environ, {"TYPESAFE_API_KEY": ""}, clear=False):
+                self.assertEqual(probe.resolve_typesafe_key(), "dummy-key")
+
     def test_default_cli_offline_and_paid_guard(self):
         with patch.object(sys, "argv", ["probe.py", "preflight"]), \
              patch.dict(os.environ, {"TYPESAFE_API_KEY": ""}, clear=False):
