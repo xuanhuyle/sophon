@@ -1,0 +1,288 @@
+{
+ "ref": "b9d698c78c4e7390555e2d73c2568cabe9be0b67",
+ "provider_calls": 0,
+ "v1_fixed_label_jev": {
+  "packets": 10,
+  "all_actual_provider": true,
+  "models_reported": [
+   "jev-1.13.0"
+  ],
+  "primary_in_matrix_acceptable_list": "10/10",
+  "matrix_packets_accepting_more_than_one_primary": [
+   "C5",
+   "G1",
+   "G3"
+  ],
+  "option_order_flips": {
+   "G1": [
+    "PERMISSION_RIGHT",
+    "DEFINITION"
+   ]
+  },
+  "primary_probability_below_0_9": {
+   "C5": 0.85,
+   "G1": 0.56,
+   "G5": 0.8
+  },
+  "modifier_yes_at_0_5_of_10": {
+   "THRESHOLD": 7,
+   "EXCLUSION": 8,
+   "CONDITION": 9,
+   "DEADLINE": 9,
+   "CROSS_REFERENCE": 9
+  },
+  "modifier_yes_total": "42/50",
+  "per_packet": {
+   "G1": {
+    "provenance": "ACTUAL_PROVIDER",
+    "model_reported": "jev-1.13.0",
+    "primary": "PERMISSION_RIGHT",
+    "primary_p": 0.56,
+    "reversed": "DEFINITION",
+    "modifiers_p": {
+     "THRESHOLD": 0.99,
+     "EXCLUSION": 0.77,
+     "CONDITION": 0.98,
+     "DEADLINE": 0.93,
+     "CROSS_REFERENCE": 0.94
+    }
+   },
+   "G2": {
+    "provenance": "ACTUAL_PROVIDER",
+    "model_reported": "jev-1.13.0",
+    "primary": "DEFINITION",
+    "primary_p": 1.0,
+    "reversed": "DEFINITION",
+    "modifiers_p": {
+     "THRESHOLD": 0.99,
+     "EXCLUSION": 0.45,
+     "CONDITION": 0.89,
+     "DEADLINE": 0.96,
+     "CROSS_REFERENCE": 0.95
+    }
+   },
+   "G3": {
+    "provenance": "ACTUAL_PROVIDER",
+    "model_reported": "jev-1.13.0",
+    "primary": "DEFINITION",
+    "primary_p": 1.0,
+    "reversed": "DEFINITION",
+    "modifiers_p": {
+     "THRESHOLD": 0.03,
+     "EXCLUSION": 0.98,
+     "CONDITION": 0.9,
+     "DEADLINE": 0.05,
+     "CROSS_REFERENCE": 0.97
+    }
+   },
+   "G4": {
+    "provenance": "ACTUAL_PROVIDER",
+    "model_reported": "jev-1.13.0",
+    "primary": "PERMISSION_RIGHT",
+    "primary_p": 0.99,
+    "reversed": "PERMISSION_RIGHT",
+    "modifiers_p": {
+     "THRESHOLD": 0.99,
+     "EXCLUSION": 0.88,
+     "CONDITION": 0.99,
+     "DEADLINE": 0.99,
+     "CROSS_REFERENCE": 0.95
+    }
+   },
+   "G5": {
+    "provenance": "ACTUAL_PROVIDER",
+    "model_reported": "jev-1.13.0",
+    "primary": "OTHER",
+    "primary_p": 0.8,
+    "reversed": "OTHER",
+    "modifiers_p": {
+     "THRESHOLD": 0.25,
+     "EXCLUSION": 0.63,
+     "CONDITION": 0.96,
+     "DEADLINE": 0.97,
+     "CROSS_REFERENCE": 0.89
+    }
+   },
+   "C1": {
+    "provenance": "ACTUAL_PROVIDER",
+    "model_reported": "jev-1.13.0",
+    "primary": "OBLIGATION",
+    "primary_p": 1.0,
+    "reversed": "OBLIGATION",
+    "modifiers_p": {
+     "THRESHOLD": 0.99,
+     "EXCLUSION": 0.14,
+     "CONDITION": 0.27,
+     "DEADLINE": 0.94,
+     "CROSS_REFERENCE": 0.98
+    }
+   },
+   "C2": {
+    "provenance": "ACTUAL_PROVIDER",
+    "model_reported": "jev-1.13.0",
+    "primary": "DEFINITION",
+    "primary_p": 1.0,
+    "reversed": "DEFINITION",
+    "modifiers_p": {
+     "THRESHOLD": 0.99,
+     "EXCLUSION": 0.98,
+     "CONDITION": 0.88,
+     "DEADLINE": 0.93,
+     "CROSS_REFERENCE": 0.64
+    }
+   },
+   "C3": {
+    "provenance": "ACTUAL_PROVIDER",
+    "model_reported": "jev-1.13.0",
+    "primary": "PERMISSION_RIGHT",
+    "primary_p": 0.99,
+    "reversed": "PERMISSION_RIGHT",
+    "modifiers_p": {
+     "THRESHOLD": 0.99,
+     "EXCLUSION": 0.64,
+     "CONDITION": 0.99,
+     "DEADLINE": 0.99,
+     "CROSS_REFERENCE": 0.7
+    }
+   },
+   "C4": {
+    "provenance": "ACTUAL_PROVIDER",
+    "model_reported": "jev-1.13.0",
+    "primary": "PROHIBITION",
+    "primary_p": 1.0,
+    "reversed": "PROHIBITION",
+    "modifiers_p": {
+     "THRESHOLD": 0.03,
+     "EXCLUSION": 0.98,
+     "CONDITION": 0.97,
+     "DEADLINE": 0.64,
+     "CROSS_REFERENCE": 0.97
+    }
+   },
+   "C5": {
+    "provenance": "ACTUAL_PROVIDER",
+    "model_reported": "jev-1.13.0",
+    "primary": "AUTHORITY",
+    "primary_p": 0.85,
+    "reversed": "AUTHORITY",
+    "modifiers_p": {
+     "THRESHOLD": 0.99,
+     "EXCLUSION": 0.55,
+     "CONDITION": 0.97,
+     "DEADLINE": 0.56,
+     "CROSS_REFERENCE": 0.3
+    }
+   }
+  }
+ },
+ "v2": {
+  "per_packet": {
+   "B1": {
+    "cold_options": [
+     "AUTHORITY",
+     "DEFINITION",
+     "NO_TEMPLATE",
+     "OBLIGATION",
+     "OTHER",
+     "PERMISSION_RIGHT",
+     "PROHIBITION"
+    ],
+    "warm_options": [
+     "AUTHORITY",
+     "AVAILABILITY_METRIC_DEFINITION",
+     "CREDIT_CLAIM_AND_REMEDY_PROCEDURE",
+     "DEFINITION",
+     "NO_TEMPLATE",
+     "OBLIGATION",
+     "OTHER",
+     "PERMISSION_RIGHT",
+     "PROHIBITION",
+     "TIERED_SERVICE_CREDIT_SCHEDULE"
+    ],
+    "warm_state_keys": [
+     "clause",
+     "context"
+    ],
+    "warm_contains_any_positive_example_quote": false,
+    "warm_contains_any_structural_rule": false,
+    "warm_contains_any_counterexample_reason": false
+   },
+   "B2": {
+    "cold_options": [
+     "AUTHORITY",
+     "DEFINITION",
+     "NO_TEMPLATE",
+     "OBLIGATION",
+     "OTHER",
+     "PERMISSION_RIGHT",
+     "PROHIBITION"
+    ],
+    "warm_options": [
+     "AUTHORITY",
+     "AVAILABILITY_METRIC_DEFINITION",
+     "CREDIT_CLAIM_AND_REMEDY_PROCEDURE",
+     "DEFINITION",
+     "NO_TEMPLATE",
+     "OBLIGATION",
+     "OTHER",
+     "PERMISSION_RIGHT",
+     "PROHIBITION",
+     "TIERED_SERVICE_CREDIT_SCHEDULE"
+    ],
+    "warm_state_keys": [
+     "clause",
+     "context"
+    ],
+    "warm_contains_any_positive_example_quote": false,
+    "warm_contains_any_structural_rule": false,
+    "warm_contains_any_counterexample_reason": false
+   },
+   "B3": {
+    "cold_options": [
+     "AUTHORITY",
+     "DEFINITION",
+     "NO_TEMPLATE",
+     "OBLIGATION",
+     "OTHER",
+     "PERMISSION_RIGHT",
+     "PROHIBITION"
+    ],
+    "warm_options": [
+     "AUTHORITY",
+     "AVAILABILITY_METRIC_DEFINITION",
+     "CREDIT_CLAIM_AND_REMEDY_PROCEDURE",
+     "DEFINITION",
+     "NO_TEMPLATE",
+     "OBLIGATION",
+     "OTHER",
+     "PERMISSION_RIGHT",
+     "PROHIBITION",
+     "TIERED_SERVICE_CREDIT_SCHEDULE"
+    ],
+    "warm_state_keys": [
+     "clause",
+     "context"
+    ],
+    "warm_contains_any_positive_example_quote": false,
+    "warm_contains_any_structural_rule": false,
+    "warm_contains_any_counterexample_reason": false
+   }
+  },
+  "learned_template_category_readings": {
+   "TIERED_SERVICE_CREDIT_SCHEDULE": [
+    "DEFINITION",
+    "PERMISSION_RIGHT"
+   ],
+   "AVAILABILITY_METRIC_DEFINITION": [
+    "DEFINITION"
+   ],
+   "CREDIT_CLAIM_AND_REMEDY_PROCEDURE": [
+    "PERMISSION_RIGHT"
+   ]
+  },
+  "tiered_readings_contain_cold_b2_label_DEFINITION": true,
+  "raw_live_runs_gitignored_at_ref": true,
+  "raw_live_runs_present_in_ref": false,
+  "raw_live_runs_ignored_by_current_checkout": false
+ }
+}
