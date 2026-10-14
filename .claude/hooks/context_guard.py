@@ -4,10 +4,13 @@
 Claude Code: automatically runs via committed .claude/settings.json at session start
 and before every user turn. GitHub CI: python .claude/hooks/context_guard.py check
 Optional PR drift check: ... check --diff-base <base-commit-sha>.
+Mechanism declaration template for experiment directories: ... template
 """
 from __future__ import annotations
 
 import argparse
+import ast
+import hashlib
 import json
 import re
 import subprocess
@@ -27,6 +30,30 @@ REQUIRED = {
 STATUSES = {"SPECIFIED_ONLY", "PREPARED_NOT_RUN", "IMPLEMENTED_NOT_RUN",
             "IMPLEMENTED_AND_RUN", "VERIFIED_WITHIN_SCOPE"}
 LOCATIONS = {"MAIN", "THIS_BRANCH", "OTHER_PR"}
+
+# sha256 of PROJECT_STATE.json active_research_mechanism (canonical JSON). Change it only in an
+# owner-reviewed PR that touches no experiment directory; that PR is the visible pivot record.
+LINEAGE_FINGERPRINT = "98b870e915018f0708574e0114a6e617c874d053fdbffa6745616cef84f44992"
+EXPERIMENT_TOPS = ("prototype", "experiments", "viability")
+RECORD_FILE = re.compile(r"(PROTOCOL|RESULTS|DECISION|POSTRUN_REVIEW)\.md$")
+STAGES = ("PLANNING", "PLUMBING_ONLY", "RUN")
+MECHANISM_TEMPLATE = {
+    "relation": "CONTINUES_ACTIVE_LINEAGE  (or SEPARATE_MECHANISM with hypothesis + not_a_test_of)",
+    "lineage_id": "jev_source_grounded_provision_skeleton_loop",
+    "parent_ref": {"pr": 17, "branch": "experiment/jev-v3-context-funnel-2026-10-13", "head": "b9d698c"},
+    "delta_step": "independent_library_based_review",
+    "single_delta": "what new capability this increment adds",
+    "preserved_steps": ["every other intended_chain step"],
+    "runner": "prototype/<dir>/<file>.py::<function the run starts from>",
+    "invoked": {"<required step>": {"status": "PLANNED | INVOKED", "entry_point": "<pinned path::symbol>"}},
+    "stage": "PLANNING | PLUMBING_ONLY | RUN",
+    "provider_calls": 0,
+    "delta_receipt_role": "<steps key the new reviewer writes in run records>",
+    "run_receipts": [{"path": "prototype/<dir>/<record>.json", "sha256": "<hex>"}],
+    "execution_verification": "RUN only: RECEIPT_CONSISTENT | UNVERIFIED",
+    "claims": "what a pass/fail can legitimately support",
+    "cannot_prove": "what it cannot show",
+}
 
 
 def component_paths(path: str) -> list[str]:
@@ -135,7 +162,244 @@ def read_and_check(root: Path = ROOT) -> tuple[dict | None, list[str]]:
     if (not state.get("working_rules") or not state.get("current_work")
             or not state.get("research_priority", {}).get("owner_stated")):
         errors.append("State must record current work and explicit guardrails")
+    errors += check_lineage_pin(state, set(ids))
     return state, errors
+
+
+def lineage_fingerprint(pin) -> str:
+    canon = json.dumps(pin, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
+    return hashlib.sha256(canon.encode("utf-8")).hexdigest()
+
+
+def check_lineage_pin(state: dict, component_ids: set) -> list[str]:
+    pin = state.get("active_research_mechanism")
+    if not isinstance(pin, dict):
+        return ["active_research_mechanism lineage pin missing/malformed in PROJECT_STATE.json; "
+                "do not continue research from memory or an older branch"]
+    errors = []
+    chain = pin.get("intended_chain") if isinstance(pin.get("intended_chain"), list) else []
+    steps = [s.get("step") for s in chain if isinstance(s, dict)]
+    ref = pin.get("parent_ref") if isinstance(pin.get("parent_ref"), dict) else {}
+    if (not pin.get("id") or len(steps) != len(chain) or len(set(steps)) != len(steps)
+            or not set(pin.get("continuation_requires_invoked") or [None]) <= set(steps)
+            or pin.get("next_single_delta_step") not in steps
+            or not all(ref.get(k) for k in ("pr", "branch", "head"))
+            or any(s.get("component") not in component_ids or not isinstance(s.get("entry_points"), list)
+                   for s in chain if isinstance(s, dict))):
+        errors.append("active_research_mechanism is malformed: needs id, parent_ref{pr,branch,head}, "
+                      "unique intended_chain steps with known components and entry_points, "
+                      "continuation_requires_invoked and next_single_delta_step")
+    fp = lineage_fingerprint(pin)
+    if fp != LINEAGE_FINGERPRINT:
+        errors.append(f"active_research_mechanism changed (fingerprint {fp[:12]}, guard pins {LINEAGE_FINGERPRINT[:12]}). "
+                      "A lineage change needs an owner-reviewed PR touching no experiment directory that also "
+                      "updates LINEAGE_FINGERPRINT in .claude/hooks/context_guard.py")
+    return errors
+
+
+def experiment_dirs(root: Path, extra: set[str] = frozenset()) -> list[str]:
+    dirs = set(extra)
+    for top in EXPERIMENT_TOPS:
+        if (root / top).is_dir():
+            dirs |= {f"{top}/{d.name}" for d in (root / top).iterdir() if d.is_dir()}
+    return sorted(dirs)
+
+
+def pinned_dirs(pin: dict) -> set[str]:
+    """Directories holding the lineage's own pinned implementation (imported parent code, not new experiments)."""
+    return {str(Path(e.split("::")[0]).parent) for s in pin.get("intended_chain", []) if isinstance(s, dict)
+            for e in s.get("entry_points") or []}
+
+
+def _read(path: Path) -> str:
+    try:
+        return path.read_text(encoding="utf-8")
+    except (OSError, UnicodeDecodeError):
+        return ""
+
+
+def _index(paths: list[Path]) -> tuple[dict, dict]:
+    """Function definitions by name, and per-file `from x import name [as alias]` bindings."""
+    defs: dict[str, list[tuple[Path, ast.AST]]] = {}
+    imports: dict[Path, dict[str, str]] = {}
+    for path in paths:
+        try:
+            tree = ast.parse(_read(path))
+        except SyntaxError:
+            continue
+        imports[path] = {a.asname or a.name: a.name for n in ast.walk(tree)
+                         if isinstance(n, ast.ImportFrom) for a in n.names}
+        for node in ast.walk(tree):
+            if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)):
+                defs.setdefault(node.name, []).append((path, node))
+    return defs, imports
+
+
+def reachable(defs: dict, imports: dict, start: tuple[Path, str]) -> set[tuple[Path, str]]:
+    """Static call closure from one function. Bare calls resolve in the same file or via `from x import`;
+    `obj.f()` resolves to any indexed f. Over-approximates; never proof of execution."""
+    seen: set[tuple[Path, str]] = set()
+    todo = [start]
+    while todo:
+        key = todo.pop()
+        if key in seen:
+            continue
+        seen.add(key)
+        for path, node in defs.get(key[1], []):
+            if path != key[0]:
+                continue
+            for call in ast.walk(node):
+                f = getattr(call, "func", None) if isinstance(call, ast.Call) else None
+                if isinstance(f, ast.Attribute):
+                    todo += [(q, f.attr) for q, _ in defs.get(f.attr, [])]
+                elif isinstance(f, ast.Name):
+                    local = [(q, f.id) for q, _ in defs.get(f.id, []) if q == path]
+                    name = imports.get(path, {}).get(f.id)
+                    todo += local or ([(q, name) for q, _ in defs.get(name, [])] if name else [])
+    return seen
+
+
+def _role_steps(obj) -> list[dict]:
+    if isinstance(obj, dict):
+        out = [obj["steps"]] if isinstance(obj.get("steps"), dict) else []
+        return out + [s for v in obj.values() for s in _role_steps(v)]
+    if isinstance(obj, list):
+        return [s for v in obj for s in _role_steps(v)]
+    return []
+
+
+def receipt_status(root: Path, exp: str, decl: dict, roles: list[str]) -> tuple[str, str]:
+    receipts = decl.get("run_receipts")
+    if not isinstance(receipts, list) or not receipts:
+        return "UNVERIFIED", "no run_receipts declared"
+    for r in receipts:
+        if not isinstance(r, dict):
+            return "UNVERIFIED", "run_receipts entries must be {path, sha256}"
+        path = root / str(r.get("path", ""))
+        if not str(r.get("path", "")).startswith(exp + "/") or not path.is_file():
+            return "UNVERIFIED", f"receipt {r.get('path')} is not committed inside {exp}"
+        if hashlib.sha256(path.read_bytes()).hexdigest() != r.get("sha256"):
+            return "UNVERIFIED", f"receipt {r.get('path')} sha256 mismatch"
+        try:
+            record = json.loads(_read(path))
+        except json.JSONDecodeError:
+            return "UNVERIFIED", f"receipt {r.get('path')} is not a JSON run record (hash-only receipts are not execution evidence)"
+        if not any(all((s.get(role) or {}).get("provenance") == "ACTUAL_PROVIDER" and (s.get(role) or {}).get("raw_response")
+                       for role in roles) for s in _role_steps(record)):
+            return "UNVERIFIED", f"receipt {r.get('path')} has no record with ACTUAL_PROVIDER raw_response for roles {roles}"
+    return "RECEIPT_CONSISTENT", ""
+
+
+def check_mechanism(root: Path, exp: str, pin: dict) -> list[str]:
+    """Check one experiment directory's MECHANISM.json against the pin and the actual source."""
+    tag = f"{exp}/MECHANISM.json"
+    try:
+        decl = json.loads((root / tag).read_text(encoding="utf-8"))
+    except OSError:
+        return [f"{tag} missing: declare CONTINUES_ACTIVE_LINEAGE or SEPARATE_MECHANISM (context_guard.py template)"]
+    except json.JSONDecodeError as e:
+        return [f"{tag} invalid JSON: {e}"]
+    if not isinstance(decl, dict):
+        return [f"{tag} must be an object"]
+    errors = [f"{tag}: '{k}' required" for k in ("claims", "cannot_prove") if not decl.get(k)]
+    stage, calls = decl.get("stage"), decl.get("provider_calls")
+    if stage not in STAGES:
+        errors.append(f"{tag}: stage must be one of {STAGES}")
+    if not isinstance(calls, int) or isinstance(calls, bool) or calls < 0:
+        errors.append(f"{tag}: provider_calls must be a non-negative integer")
+    records = sorted(p for p in (root / exp).rglob("*.md") if RECORD_FILE.search(p.name))
+    results = [p for p in records if not p.name.endswith("PROTOCOL.md")]
+    if stage == "PLANNING" and (results or calls or decl.get("run_receipts")):
+        errors.append(f"{tag}: PLANNING may not carry results/decisions, provider calls or receipts")
+    relation = decl.get("relation")
+    if relation == "SEPARATE_MECHANISM":
+        if not decl.get("hypothesis") or decl.get("not_a_test_of") != pin.get("id"):
+            errors.append(f"{tag}: SEPARATE_MECHANISM needs a hypothesis and not_a_test_of = {pin.get('id')}")
+        errors += [f"{p.relative_to(root)} must state SEPARATE_MECHANISM; it is not a test of {pin.get('id')}"
+                   for p in records if "SEPARATE_MECHANISM" not in _read(p)]
+        return errors
+    if relation != "CONTINUES_ACTIVE_LINEAGE":
+        return errors + [f"{tag}: relation must be CONTINUES_ACTIVE_LINEAGE or SEPARATE_MECHANISM"]
+
+    chain = {s["step"]: s for s in pin["intended_chain"]}
+    delta = pin["next_single_delta_step"]
+    ref, parent = pin["parent_ref"], decl.get("parent_ref") if isinstance(decl.get("parent_ref"), dict) else {}
+    if decl.get("lineage_id") != pin["id"]:
+        errors.append(f"{tag}: lineage_id must be the pinned {pin['id']}")
+    if parent.get("pr") != ref["pr"] or str(parent.get("head", ""))[:7] != str(ref["head"])[:7]:
+        errors.append(f"{tag}: parent_ref must be PR #{ref['pr']} head {ref['head']} (the pinned implementation, not a prompt)")
+    if decl.get("delta_step") != delta or not decl.get("single_delta"):
+        errors.append(f"{tag}: the single delta must be the pinned next step '{delta}' with a single_delta description; "
+                      "another delta needs an owner-reviewed pin change first")
+    if sorted(decl.get("preserved_steps") or []) != sorted(set(chain) - {delta}):
+        errors.append(f"{tag}: preserved_steps must list every other pinned step")
+
+    invoked = decl.get("invoked") if isinstance(decl.get("invoked"), dict) else {}
+    expected = "PLANNED" if stage == "PLANNING" else "INVOKED"
+    exp_py = sorted((root / exp).rglob("*.py"))
+    pinned = {e for s in chain.values() for e in s["entry_points"]}
+    defs, imports = _index(exp_py + [root / p for p in sorted({e.split("::")[0] for e in pinned}) if (root / p).is_file()])
+    errors += [f"{exp}: defines {n}() which shadows a pinned entry point; import the real code instead"
+               for n in sorted({e.split("::")[1] for e in pinned})
+               if any(path in exp_py for path, _ in defs.get(n, []))]
+    seen: set[tuple[Path, str]] = set()
+    if stage != "PLANNING":
+        rpath, _, rfunc = str(decl.get("runner", "")).partition("::")
+        if not rpath.startswith(exp + "/") or not any(p == root / rpath for p, _ in defs.get(rfunc, [])):
+            errors.append(f"{tag}: runner {decl.get('runner')!r} is not a function defined in {exp}")
+        else:
+            seen = reachable(defs, imports, (root / rpath, rfunc))
+    for step in pin["continuation_requires_invoked"] + [delta]:
+        entry = invoked.get(step) if isinstance(invoked.get(step), dict) else {}
+        status, point = entry.get("status"), str(entry.get("entry_point", ""))
+        path, _, sym = point.partition("::")
+        if status != expected:
+            errors.append(f"{tag}: {step} must be {expected} at stage {stage}, declared {status!r}")
+            continue
+        if step == delta:
+            if not path.startswith(exp + "/") or not sym:
+                errors.append(f"{tag}: {step} is new code and must live in {exp}")
+        elif point not in chain[step]["entry_points"]:
+            errors.append(f"{tag}: {step} entry_point {point!r} is not a pinned real entry point "
+                          f"{chain[step]['entry_points']}; a name or a mock is not an invocation")
+            continue
+        if stage == "PLANNING":
+            continue
+        if not any(p == root / path for p, _ in defs.get(sym, [])):
+            errors.append(f"{tag}: {step} entry {point} is not defined in this checkout")
+        elif (root / path, sym) not in seen:
+            errors.append(f"{tag}: {step} entry {point} is not reachable from runner {decl.get('runner')}")
+
+    if stage == "PLUMBING_ONLY":
+        if calls or decl.get("run_receipts"):
+            errors.append(f"{tag}: PLUMBING_ONLY must record 0 provider calls and no run receipts")
+        errors += [f"{p.relative_to(root)} must state PLUMBING_ONLY (no Jev/reviewer execution shown)"
+                   for p in results if "PLUMBING_ONLY" not in _read(p)]
+    if stage == "RUN":
+        roles = [chain[s]["receipt_role"] for s in pin["continuation_requires_invoked"] if chain[s].get("receipt_role")]
+        roles.append(str(decl.get("delta_receipt_role") or "<undeclared delta_receipt_role>"))
+        verdict, why = receipt_status(root, exp, decl, roles)
+        claimed = decl.get("execution_verification")
+        if not calls:
+            errors.append(f"{tag}: RUN must record its provider_calls")
+        if claimed not in ("RECEIPT_CONSISTENT", "UNVERIFIED"):
+            errors.append(f"{tag}: RUN needs execution_verification RECEIPT_CONSISTENT or UNVERIFIED")
+        elif claimed == "RECEIPT_CONSISTENT" and verdict != claimed:
+            errors.append(f"{tag}: claims RECEIPT_CONSISTENT Jev/reviewer execution but {why}")
+        elif claimed == "UNVERIFIED":
+            errors += [f"{p.relative_to(root)} must state EXECUTION_UNVERIFIED" for p in results
+                       if "EXECUTION_UNVERIFIED" not in _read(p)]
+    return errors
+
+
+def check_experiments(root: Path, state: dict, extra: set[str] = frozenset()) -> list[str]:
+    dirs = experiment_dirs(root, extra)
+    pin = state.get("active_research_mechanism")
+    if not dirs:
+        return []
+    if check_lineage_pin(state, {x.get("id") for x in state.get("established_components", []) if isinstance(x, dict)}):
+        return [f"Experiment directories {dirs} cannot be checked without a valid lineage pin"]
+    return [e for d in dirs if d not in pinned_dirs(pin) for e in check_mechanism(root, d, pin)]
 
 
 def git_output(*args: str) -> str:
@@ -147,9 +411,9 @@ def git_output(*args: str) -> str:
         return "UNKNOWN"
 
 
-def changed_files_since(base: str) -> list[str]:
+def changed_files_since(base: str, diff_filter: str = "ACMRT") -> list[str]:
     r = subprocess.run(["git", "-C", str(ROOT), "diff", "--name-only",
-                        "--diff-filter=ACMRT", base, "HEAD"],
+                        f"--diff-filter={diff_filter}", base, "HEAD"],
                        capture_output=True, text=True, timeout=20, check=False)
     if r.returncode:
         raise RuntimeError(f"Cannot compare base {base}: {r.stderr.strip()}")
@@ -168,6 +432,52 @@ def check_pr_state_update(base: str) -> list[str]:
     if relevant and "PROJECT_STATE.json" not in changed:
         return ["Charter, instructions or experimental protocol/results changed without updating PROJECT_STATE.json in the same PR"]
     return []
+
+
+def base_state(base: str) -> dict:
+    r = subprocess.run(["git", "-C", str(ROOT), "show", f"{base}:PROJECT_STATE.json"],
+                       capture_output=True, text=True, timeout=20, check=False)
+    try:
+        return json.loads(r.stdout) if r.returncode == 0 else {}
+    except json.JSONDecodeError:
+        return {}
+
+
+def new_record_dirs(base: str) -> set[str]:
+    """Directories of newly added experiment records outside prototype/experiments/viability."""
+    return {str(Path(p).parent) for p in changed_files_since(base, "A")
+            if RECORD_FILE.search(Path(p).name) and not p.startswith(tuple(t + "/" for t in EXPERIMENT_TOPS))}
+
+
+def check_lineage_pivot(base: str, state: dict, dirs: list[str]) -> list[str]:
+    """A PR may change the pinned lineage/priority OR experiment files, never both (no self-authorized pivot)."""
+    old = base_state(base)
+    moved = [k for k in ("active_research_mechanism", "research_priority") if old.get(k) != state.get(k)]
+    touched = sorted({d for p in changed_files_since(base) for d in dirs if p.startswith(d + "/")})
+    errors = []
+    if moved and touched:
+        errors.append(f"{moved} changed in the same PR as experiment directories {touched}: land the owner-reviewed "
+                      "lineage change on main first, then start the experiment on a new branch")
+    pin = state.get("active_research_mechanism") if isinstance(state.get("active_research_mechanism"), dict) else {}
+    errors += [f"{p}: pinned implementation directories keep historical records only; put new protocol/results in a "
+               "new declared experiment directory" for p in changed_files_since(base)
+               if RECORD_FILE.search(Path(p).name) and any(p.startswith(d + "/") for d in pinned_dirs(pin))]
+    return errors
+
+
+def lineage_context(pin: dict) -> str:
+    ref = pin["parent_ref"]
+    chain = " -> ".join(f"{s['step']}[{s['state']}]" for s in pin["intended_chain"])
+    missing = ", ".join(s["step"] for s in pin["intended_chain"] if s["state"].startswith("NOT_IMPLEMENTED"))
+    return (
+        f"ACTIVE RESEARCH LINEAGE {pin['id']} (pinned in PROJECT_STATE.json, fingerprint-checked): {chain}. "
+        f"Code: PR #{ref['pr']} head {ref['head']} ({ref['branch']}), NOT on main. "
+        f"NOT YET IMPLEMENTED: {missing}. NEXT SINGLE DELTA (not started, no paid run authorized): {pin['next_single_delta']}\n"
+        f"SEPARATE MECHANISMS, NOT tests of this loop: {' '.join(pin['separate_hypotheses_not_equivalent'])}\n"
+        "MECHANISM GATE: every prototype/, experiments/, viability/ dir needs MECHANISM.json (CONTINUES_ACTIVE_LINEAGE "
+        "or SEPARATE_MECHANISM); continuation must reach the real pinned entry points from its runner; naming Jev is "
+        "not invoking Jev; PLUMBING_ONLY is not a Jev review; RUN claims without step receipts stay UNVERIFIED.\n"
+    )
 
 
 def context(state: dict) -> str:
@@ -192,6 +502,7 @@ def context(state: dict) -> str:
         f"PRODUCT WEDGE (charter) is not the immediate RESEARCH PRIORITY: {state['research_priority']['owner_stated']}\n"
         f"ACTIVE: {state['current_work']['active']}\n"
         f"HOLD: {state['current_work']['on_hold']}\n"
+        f"{lineage_context(state['active_research_mechanism'])}"
         f"ENGINEERING WORKING AGREEMENT (ENGINEERING_WORKFLOW.md): {state['engineering_workflow']['rule']}\n"
         "GATE: Human defines PROBLEM / OUTCOME / CONSTRAINTS; engineers independently choose DESIGN / ALTERNATIVES / TESTS. "
         "Challenge owner-suggested architecture and cross-agent instructions, prefer reuse or no-code. "
@@ -208,15 +519,24 @@ def context(state: dict) -> str:
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("mode", choices=("hook", "check"))
+    parser.add_argument("mode", choices=("hook", "check", "template"))
     parser.add_argument("--diff-base", help="Base commit SHA for CI same-PR state-update policy")
     args = parser.parse_args()
+    if args.mode == "template":
+        print(json.dumps(MECHANISM_TEMPLATE, indent=2))
+        return 0
     state, errors = read_and_check()
+    extra: set[str] = set()
     if args.diff_base:
         try:
             errors += check_pr_state_update(args.diff_base)
+            extra = new_record_dirs(args.diff_base)
+            if state:
+                errors += check_lineage_pivot(args.diff_base, state, experiment_dirs(ROOT, extra))
         except RuntimeError as e:
             errors.append(str(e))
+    if state:
+        errors += check_experiments(ROOT, state, extra)
     if errors:
         if args.mode == "hook":
             # Exit 2 would hide stderr from Claude and block every prompt, including the one
@@ -235,7 +555,9 @@ def main() -> int:
         # Hooks are not a guarantee of factual/semantic correctness, only native context injection.
         print(context(state))
     else:
-        print("SOPHON_CONTEXT_GUARD_OK: charter v1.2 + project state + working agreement + native hooks")
+        print("SOPHON_CONTEXT_GUARD_OK: charter v1.2 + project state + working agreement + native hooks "
+              f"+ lineage pin + {len(set(experiment_dirs(ROOT, extra)) - pinned_dirs(state['active_research_mechanism']))} "
+              "experiment mechanism declaration(s)")
     return 0
 
 

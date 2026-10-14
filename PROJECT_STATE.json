@@ -187,7 +187,7 @@
     }
   ],
   "current_work": {
-    "active": "CURRENT TASK: introduce an enforceable mechanism-continuity gate, not a new experiment. Research implementation lineage is V1 Jev classifier + independently invoked adversarial/backward + V2 evidence-linked skeleton library/reconciliation; the missing single increment is an independent library-based reviewer of Jev output within V2. No experiment or paid calls authorized.",
+    "active": "CURRENT TASK (PR #21): executable mechanism-continuity gate in the existing context guard/CI, not a new experiment. Research implementation lineage is V1 Jev classifier + independently invoked adversarial/backward + V2 evidence-linked skeleton library/reconciliation; the missing single increment is an independent library-based reviewer of Jev output within V2 (not started). No experiment or paid calls authorized.",
     "blocked": "Direct continuation on historical stacked PRs lacks the main-branch context guard; use a guarded clean branch from main and inspect historical refs, and stop when lineage cannot be verified.",
     "on_hold": "V3 statistical heading predictor is a separate provisional hypothesis; V4 2024 EDGAR regex/statistical predictor ran under frozen protocol and STOPPED for its own textual-proxy task. Neither tested the Jev review loop. BI/full agent propagation/commercial validation/EDGAR transformer held.",
     "horizon": "Predict reusable normative provision structures, conditional on evidenced law, contract family, ToC/section and observed provisions; test cumulative, auditable contract-by-contract improvement, not superiority to a pretrained LLM."
@@ -326,6 +326,14 @@
         "base": "main",
         "disposition": "DURABLE_BASELINE",
         "content": "Context/state refresh, guard regression tests; no prototype changes"
+      },
+      {
+        "pr": 21,
+        "state": "OPEN_DRAFT",
+        "head": "guard/jev-lineage-continuity-2026-10-14 (this branch)",
+        "base": "main",
+        "disposition": "DURABLE_BASELINE",
+        "content": "Lineage pin + executable mechanism-continuity gate in the existing context guard/CI; no prototype or provider changes"
       }
     ]
   },
@@ -333,56 +341,100 @@
     "id": "jev_source_grounded_provision_skeleton_loop",
     "owner_reconfirmed": "2026-10-14",
     "primary_implementation": "PR #17 head b9d698c (V1 and V2 code); not on main",
+    "parent_ref": {
+      "pr": 17,
+      "branch": "experiment/jev-v3-context-funnel-2026-10-13",
+      "head": "b9d698c"
+    },
     "intended_chain": [
       {
         "step": "jev_classification",
         "component": "primary_jev_proposal",
         "state": "IMPLEMENTED_RUN",
-        "source": "prototype/jev_clause_router_v0/prototype.py"
+        "source": "prototype/jev_clause_router_v0/prototype.py",
+        "entry_points": [
+          "prototype/jev_clause_router_v0/prototype.py::call_jev",
+          "prototype/jev_clause_router_v0/prototype.py::jev_live",
+          "prototype/jev_library_transfer_v2/transfer.py::call_jev_v2"
+        ],
+        "receipt_role": "jev"
       },
       {
         "step": "adversarial_challenge",
         "component": "adversarial_review",
         "state": "IMPLEMENTED_RUN",
-        "source": "prototype/jev_clause_router_v0/prototype.py"
+        "source": "prototype/jev_clause_router_v0/prototype.py",
+        "entry_points": [
+          "prototype/jev_clause_router_v0/prototype.py::reviewer_prompt",
+          "prototype/jev_library_transfer_v2/transfer.py::reviewer_prompt_v2"
+        ],
+        "receipt_role": "adversarial"
       },
       {
         "step": "backward_source_challenge",
         "component": "backward_source_review",
         "state": "IMPLEMENTED_RUN",
-        "source": "prototype/jev_clause_router_v0/prototype.py"
+        "source": "prototype/jev_clause_router_v0/prototype.py",
+        "entry_points": [
+          "prototype/jev_clause_router_v0/prototype.py::reviewer_prompt",
+          "prototype/jev_library_transfer_v2/transfer.py::reviewer_prompt_v2"
+        ],
+        "receipt_role": "backward"
       },
       {
         "step": "independent_library_based_review",
         "component": "provision_library",
         "state": "NOT_IMPLEMENTED_AS_SEPARATE_REVIEWER",
-        "source": "prototype/jev_library_transfer_v2/transfer.py"
+        "source": "prototype/jev_library_transfer_v2/transfer.py",
+        "entry_points": [],
+        "receipt_role": null
       },
       {
         "step": "evidence_anchored_skeleton_induction",
         "component": "provision_library",
         "state": "IMPLEMENTED_PROVISIONAL_ONE_CONTRACT",
-        "source": "prototype/jev_library_transfer_v2/transfer.py"
+        "source": "prototype/jev_library_transfer_v2/transfer.py",
+        "entry_points": [
+          "prototype/jev_library_transfer_v2/transfer.py::induce_library"
+        ],
+        "receipt_role": null
       },
       {
         "step": "deterministic_reconciliation",
         "component": "deterministic_reconciliation",
         "state": "IMPLEMENTED_RUN",
-        "source": "prototype/jev_library_transfer_v2/transfer.py"
+        "source": "prototype/jev_library_transfer_v2/transfer.py",
+        "entry_points": [
+          "prototype/jev_library_transfer_v2/transfer.py::reconcile",
+          "prototype/jev_clause_router_v0/prototype.py::verdict_for"
+        ],
+        "receipt_role": null
       },
       {
         "step": "retain_revise_transfer_to_later_contracts",
         "component": "provision_library",
         "state": "PARTIALLY_TESTED_V2_NO_OBSERVED_LIFT",
-        "source": "prototype/jev_library_transfer_v2/transfer.py"
+        "source": "prototype/jev_library_transfer_v2/transfer.py",
+        "entry_points": [
+          "prototype/jev_library_transfer_v2/transfer.py::induce_library"
+        ],
+        "receipt_role": null
       }
     ],
+    "continuation_requires_invoked": [
+      "jev_classification",
+      "adversarial_challenge",
+      "backward_source_challenge",
+      "deterministic_reconciliation"
+    ],
+    "next_single_delta_step": "independent_library_based_review",
     "next_single_delta": "Add and separately test the independent library-based review of a Jev proposal within the existing V2 review pipeline. Do not implement a new full sequential experiment in the same increment.",
     "separate_hypotheses_not_equivalent": [
       "V3 predicts heading-rule structure with conditional frequencies; zero Jev/reviewer calls.",
       "V4 predicts regex textual proxies with conditional frequencies and append-only events; zero Jev/reviewer calls."
     ],
     "review_gate": "Before coding or running a new learning experiment, show the actual call path from authentic source through Jev, adversarial, backward and the planned library reviewer, skeleton induction and reconciliation; state which are actually exercised. If any step is absent, classify as a DIFFERENT_MECHANISM and do not call its result a test of this loop. Do not substitute generic LLM-vs-Sophon comparisons.",
-    "authorization": "Owner directs the problem and approves material mechanism replacement and paid calls; implement one small delta at a time. A new independent research hypothesis must be clearly segregated and owner-authorized, not silently inherit this lineage."
+    "authorization": "Owner directs the problem and approves material mechanism replacement and paid calls; implement one small delta at a time. A new independent research hypothesis must be clearly segregated and owner-authorized, not silently inherit this lineage.",
+    "enforcement": "Checked by .claude/hooks/context_guard.py (hook + CI): this object is fingerprint-pinned in the guard; every prototype/, experiments/ or viability/ directory needs MECHANISM.json (CONTINUES_ACTIVE_LINEAGE or SEPARATE_MECHANISM); continuation claims are checked by static name-based call reachability from the declared runner to the entry_points above, and RUN claims against committed step receipts (RECEIPT_CONSISTENT at best: provider authenticity is not verifiable offline). Changing this pin in the same PR as experiment files fails. Limits: GitHub main is not branch-protected, so the check is advisory until required; historical PRs #16-#18 predate the guard; static reachability can be satisfied by dead or role-swapped calls."
   }
 }
