@@ -133,3 +133,17 @@ A later valid test, frozen here as a design and **not authorized**, needs all of
 No stronger model, no reviewers and no new architecture.
 
 **KEEP** the `BLOCKED` verdict. **REVISE** the next step to: headroom screen → interface fix → comparison. **STOP** any further code toward a library pilot on the V1/V2 material.
+
+---
+
+## Engineering lead decision after review — actual implementation (2026-10-14)
+
+The preceding Claude Code headroom audit correctly established that V1/V2 do not prove library-driven classification improvement, but its **proposed STOP if fewer than 5/20 cold answers are unstable is REJECTED**. Order sensitivity and low confidence are NOT ground-truth classification errors; confidently wrong labels can exist. No such arbitrary stop threshold controls this work.
+
+One factual correction: V2's warm Jev request *did* receive the newly learned template names, their shortened definitions, and required-slot lists inside the `Choice` criteria. It did **not** receive prior-example verbatim quotes, detailed structural rules, or counterexample reasons. Therefore V2 had **PARTIAL AND CONFOUNDED** memory exposure, not zero library input. The V2 fixed-choice question was also structurally incapable of multi-function labels.
+
+**Action executed, not proposed:** `prototype/jev_memory_causal_probe_v0/probe.py` now builds paired, *identical-question*, multi-Noul requests for a cheap Jev classifier on **8 unchanged authentic Google SLA subspans** (10 preselected verbatim-positive function/modifier anchors). Cold vs learned arm changes only one provision-skeleton memory field; the memory is sourced from the three provisional GitHub 2021 SLA V2 templates (historical immutable ref). No reviewers, no stronger models, no training infrastructure, and no contract rewriting. The script validates historic source digests, memory example provenance and exact arm parity; score mode refuses inconsistent requests, absent/fixture provider outputs, or model-version drift. `preflight` and the offline negative-case tests run in GitHub CI. **No provider calls or classification-improvement observations have occurred.**
+
+**Interpretation fence:** the 10 positive probes are transparent source-anchored engineering judgments, *not* independent legal-semantic labels. Positive-anchor gains/losses are a limited behavioral proxy, not absolute accuracy. A and B are only one library-transfer step, not proof of a self-improving accumulated expert library. This first probe tests whether the model's decisions respond usefully or harmfully to genuinely source-linked prior skeletons while the model and normative-function questions remain frozen. An all-correct cold result is INCONCLUSIVE about improvement, not a blanket kill.
+
+**Next gated action:** optional 16-call Jev live run (8 clauses × 2 arms), with explicit paid-call approval, credential and confirmation. It is **not authorized or run merely by committing this code**. Evaluate actual evidence before choosing another increment. The broader lack of an independent oracle remains.
