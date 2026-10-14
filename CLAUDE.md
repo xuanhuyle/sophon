@@ -31,6 +31,8 @@ Before implementing or recommending substantial work, write briefly:
 4. What can actually be verified, the independent oracle/baseline if correctness is claimed, and what remains unresolved.
 5. Which prior result this builds on and why it does **not** change the product thesis.
 
+**Product wedge vs immediate research priority:** the BI-first wedge below is the charter's *product* entry point; the owner's immediate *research* priority is cumulative, source-grounded contractual learning across successive agreements (PROJECT_STATE.json `research_priority`). Neither displaces the other; do not treat the wedge as a mandate to abandon that research or to start commercial validation.
+
 **Implementation priority for a solo founder:** one real existing BI semantic metric checked against one external contractual definition, a real amendment and a reverse metric change, source-linked evidence and reproducible checks. Add a minimal read-only direct governing-context query for non-BI consumers; do **not** build a generalized agent control plane or multi-agent integration first. **Do not assume that most enterprise agents consume data through BI**: verify which actual agents do. Do not replace genuine native BI semantics with synthetic YAML or SQL-only fixtures.
 
 ## Experiment and implementation integrity

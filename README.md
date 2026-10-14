@@ -1,6 +1,8 @@
 > **CURRENT SOPHON PRODUCT DIRECTION (charter v1.2, 13 October 2026):** Read [SOPHON_CHARTER.md](SOPHON_CHARTER.md) before new work. **Sophon is a shared normative semantic layer for governing contracts/policies. Its initial practical wedge is checking authoritative contractual definitions against an organization's *existing* BI semantic layer**, reusing rather than rebuilding data-team semantics (e.g. Databricks, Snowflake or dbt). **Agents outside BI can query the same scoped governing context directly.** Whether data-driven agents actually depend on BI must be verified, not assumed. Keep **TRANSPOSE / TRACE / VERIFY / AUDIT**, known-at/effective-at applicability, provenance and independent auditability. No runtime integration, product demand or commercial moat is presumed proven. The historical control-plane investigation below is not the current charter; retain its scoped negative evidence.
 
-# Sophon: architecture investigation
+> **Where the work lives (verified 14 October 2026).** `main` holds the charter history, task prompts and the historical September investigation below (with its own audit/lab scripts); **it contains none of the October prototype or experiment code.** That code lives on unmerged, often stacked draft PRs: public-data dbt alignment reviewer (#2), Publicodes governance-integrity kernel with its narrow, valid `STOP_KERNEL` (#3), E0–E5 native MetricFlow feasibility chain (#4–#11, limited author-designed tests), direct normative-layer walking skeleton (#12), and Jev proposal + adversarial/backward reviewers, provision library, reconciliation and V3 structure predictor (#13 → #14 → #16 → #17). V4 (#18) is a specification only. **The immediate research priority is cumulative, source-grounded contractual learning across successive agreements**, distinct from the charter's BI-first product wedge and from commercial validation. [PROJECT_STATE.json](PROJECT_STATE.json) is the evidence- and ref-qualified index (status, location, what each result does not prove, PR graph); verify live PR heads before relying on it.
+
+# Sophon: architecture investigation (historical, 21 September 2026)
 
 An independent look at whether "Sophon", a control layer that lets AI agents act under written policy and widen
 their autonomy as people resolve uncertainty, has a viable architecture. Done on 21 September 2026 from the packet in
@@ -79,7 +81,7 @@ URLs and the SHA-256 each matched.
 | `lab/` | Two architectures over the 48 lab cases, 20 probes, runner; `lab/ledger/owner_acts.json` is the real ledger and is empty |
 | `results/` | Everything the scripts above produced |
 
-## Status
+## Status (of the September investigation)
 
 Committed and pushed to `main`. No policy has been adopted and no settlement recorded; every authority used in the
 lab is fixture authority held in memory by fictitious principals.

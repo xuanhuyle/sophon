@@ -11,6 +11,20 @@ This is **development infrastructure**, not a Sophon product feature and not an 
 
 **This does not magically synchronize GitHub with ChatGPT conversations, other repos, or branches that have not integrated these commits.** It does not guarantee an AI will follow the context, and it cannot algorithmically determine whether a proposed architecture is a redundant reinvention. It does make the right facts automatically available in Claude Code and exposes mechanical contradictions in CI.
 
+**On an inconsistent state** the hook still exits 0 and injects `SOPHON_CONTEXT_GUARD_FAILED` plus each error as context, so the agent sees it and can repair the state. (Until 14 October 2026 it exited 2; Claude Code then shows stderr to the user only and blocks every prompt, including the one asking for the repair.) The `check` mode used by CI still exits 1.
+
+## Verification status (14 October 2026)
+
+| Item | Status | Evidence |
+|---|---|---|
+| Guard logic and regression tests | VERIFIED locally | `check` OK; 20 unit tests pass (Python 3.13, Linux). GitHub CI is reported separately on the PR. |
+| Exact `.claude/settings.json` command runs and emits context | VERIFIED (interpreter substituted) | `test_settings_hook_injects_context` runs the committed command against a fixture repo, replacing only `python` with the test interpreter. Whether `python` resolves on a given host is NOT verified generally (absent by default on macOS and some Linux images; Windows may resolve a Store stub). |
+| Hook fires in a fresh Claude Code session | OBSERVED once | One single-repository Claude Code cloud session (claude.ai/code) started on this branch at `44bfaf0`: harness reported `SessionStart:startup hook success` and `UserPromptSubmit hook success` with the injected text. |
+| Local CLI (Windows/macOS/Linux), Claude Code Mobile, resume/compaction, live failure path | NOT_VERIFIED | No such session exercised. Multi-repository cloud sessions do not load project hooks (documented by Claude Code). |
+| Agent actually follows the context | NOT_VERIFIED | Injection is not compliance. |
+
+**Smoke test (about one minute, no code changes):** start a *fresh* Claude Code session on this branch, single repository, and send as the first prompt: `Without using tools, quote verbatim the line beginning "Branch:" and the line beginning "PR GRAPH" from any SOPHON NATIVE PROJECT CONTEXT you received; otherwise answer NONE.` PASS = both lines appear and the date matches `PROJECT_STATE.json` `updated_at`. NONE = hook did not load; run `/hooks` to see whether it is registered, then try `python .claude/hooks/context_guard.py hook` in that shell. To exercise the failure path, temporarily rename `pr_graph` in a scratch branch and expect `SOPHON_CONTEXT_GUARD_FAILED` in the next turn's context, not a blocked prompt.
+
 ## CI and regressions
 
 Run locally or in Claude Code:
@@ -18,9 +32,9 @@ Run locally or in Claude Code:
     python .claude/hooks/context_guard.py check
     python -m unittest discover -s tests -p test_context_guard.py -v
 
-The always-triggered GitHub workflow named Sophon context integrity runs both. For PRs that change the charter, CLAUDE.md/AGENTS.md or a prototype protocol/results report, CI also requires PROJECT_STATE.json to change in the same PR. (Normal implementation-only edits don't require a state change.)
+The always-triggered GitHub workflow named Sophon context integrity runs both. For PRs that change the charter, CLAUDE.md/AGENTS.md or a protocol/results/decision report under `prototype/`, `experiments/` or `viability/`, CI also requires PROJECT_STATE.json to change in the same PR. (Normal implementation-only edits don't require a state change.)
 
-Checks specifically prevent accidentally erasing the established Jev/adversarial/backward/library/reconciliation inventory, rewriting the frozen V3 primary as a success, using a v1.1 charter with a v1.2 state, removing the native session hooks, or recording a new formal experiment result without updating the snapshot.
+Checks specifically prevent accidentally erasing the established inventory (including the earlier public-data reviewer, Publicodes kernel, E0–E5 harness and normative-layer skeleton), a component without `location`/`does_not_prove`, an `OTHER_PR` component whose code is actually present here (or a local one whose code is absent), a PR referenced but missing from `pr_graph`, rewriting the frozen V3 primary as a success, using a v1.1 charter with a v1.2 state, removing the native session hooks, or recording a new formal experiment result without updating the snapshot.
 
 To make the status check truly **merge-blocking**, the repository owner must add its job name, sophon-context-integrity, as a required status check under GitHub Settings > Rules > Rulesets / branch protection for main. CI checks alone report failures but do not block merges without that repository setting.
 

@@ -20,11 +20,24 @@ REQUIRED = {
     "primary_jev_proposal", "adversarial_review", "backward_source_review",
     "provision_library", "deterministic_reconciliation", "structure_predictor",
     "v3_adjudication_package",
+    # Earlier lines of work a fresh agent must be able to locate (PRs #1-#12).
+    "control_plane_investigation_2026_09", "public_data_alignment_reviewer",
+    "governance_integrity_kernel", "native_bi_validation_harness", "normative_layer_v0",
 }
-REVIEW_STATUSES = {
-    "IMPLEMENTED_EXPERIMENTAL_NOT_SEMANTICALLY_VALIDATED",
-    "PREPARED_PENDING_SOURCE_RETRIEVAL_AND_INDEPENDENT_REVIEW",
-}
+STATUSES = {"SPECIFIED_ONLY", "PREPARED_NOT_RUN", "IMPLEMENTED_NOT_RUN",
+            "IMPLEMENTED_AND_RUN", "VERIFIED_WITHIN_SCOPE"}
+LOCATIONS = {"MAIN", "THIS_BRANCH", "OTHER_PR"}
+
+
+def component_paths(path: str) -> list[str]:
+    return [p.strip() for part in path.split(";") for p in part.split(" ... ") if p.strip()]
+
+
+def pr_numbers(text: str) -> set[int]:
+    nums: set[int] = set()
+    for a, b in re.findall(r"#(\d+)(?:\s*[-–]\s*#?(\d+))?", text):
+        nums.update(range(int(a), int(b or a) + 1))
+    return nums
 
 
 def read_and_check(root: Path = ROOT) -> tuple[dict | None, list[str]]:
@@ -68,10 +81,37 @@ def read_and_check(root: Path = ROOT) -> tuple[dict | None, list[str]]:
     if len(ids) != len(set(ids)) or not REQUIRED.issubset(ids):
         errors.append("Established implementation inventory missing or duplicated")
     for x in components:
-        if not isinstance(x, dict) or x.get("status") not in REVIEW_STATUSES:
-            errors.append("Component has unrecognized / absent implementation status")
-        if not x.get("path") or not x.get("ref") or not x.get("role"):
-            errors.append("Component inventory must include source path, PR ref and role")
+        if not isinstance(x, dict):
+            errors.append("Component entry must be an object")
+            continue
+        cid = x.get("id")
+        if x.get("status") not in STATUSES:
+            errors.append(f"Component {cid} has unrecognized / absent status")
+        if x.get("location") not in LOCATIONS:
+            errors.append(f"Component {cid} has unrecognized / absent location")
+        if not all(x.get(k) for k in ("path", "ref", "role", "does_not_prove")):
+            errors.append(f"Component {cid} must include path, ref, role and does_not_prove")
+            continue
+        # Mechanical guard against confusing draft-PR code with this checkout.
+        for rel in component_paths(x["path"]):
+            exists = (root / rel).exists()
+            if x.get("location") in ("MAIN", "THIS_BRANCH") and not exists:
+                errors.append(f"Component {cid} claims {x['location']} but {rel} is absent here")
+            if x.get("location") == "OTHER_PR" and exists:
+                errors.append(f"Component {cid} claims OTHER_PR but {rel} exists here; update its location")
+    pr_graph = state.get("pr_graph") if isinstance(state.get("pr_graph"), dict) else {}
+    graph = pr_graph.get("prs") if isinstance(pr_graph.get("prs"), list) else []
+    indexed: set[int] = set()
+    for entry in graph:
+        if not isinstance(entry, dict) or not entry.get("disposition") or not entry.get("head"):
+            errors.append("pr_graph entries need pr, head and disposition")
+            continue
+        indexed |= pr_numbers(f"#{entry.get('pr')}")
+    if not graph or not pr_graph.get("verified_at"):
+        errors.append("pr_graph missing: record where unmerged work lives and when it was verified")
+    referenced = pr_numbers(json.dumps([components, state.get("evidence", [])], ensure_ascii=False))
+    if referenced - indexed:
+        errors.append(f"PRs referenced but absent from pr_graph: {sorted(referenced - indexed)}")
     ev = {x.get("id"): x for x in state.get("evidence", []) if isinstance(x, dict)}
     if ev.get("V3_structure_primary", {}).get("status") != "INCONCLUSIVE":
         errors.append("V3 frozen primary must remain INCONCLUSIVE (historical evidence)")
@@ -92,7 +132,8 @@ def read_and_check(root: Path = ROOT) -> tuple[dict | None, list[str]]:
             errors.append("Native Claude Code session and turn hooks missing")
     except (OSError, json.JSONDecodeError):
         errors.append(".claude/settings.json missing/invalid")
-    if not state.get("working_rules") or not state.get("current_work"):
+    if (not state.get("working_rules") or not state.get("current_work")
+            or not state.get("research_priority", {}).get("owner_stated")):
         errors.append("State must record current work and explicit guardrails")
     return state, errors
 
@@ -119,9 +160,8 @@ def check_pr_state_update(base: str) -> list[str]:
     changed = set(changed_files_since(base))
     relevant = any(
         p in {"SOPHON_CHARTER.md", "CLAUDE.md", "AGENTS.md", "ENGINEERING_WORKFLOW.md"}
-        or p.startswith("prototype/") and (
-            p.endswith("/RESULTS.md") or p.endswith("/V2_POSTRUN_REVIEW.md")
-            or p.endswith("/PROTOCOL.md")
+        or p.startswith(("prototype/", "experiments/", "viability/")) and (
+            p.endswith(("/RESULTS.md", "/DECISION.md", "/PROTOCOL.md", "/V2_POSTRUN_REVIEW.md"))
         )
         for p in changed
     )
@@ -134,16 +174,22 @@ def context(state: dict) -> str:
     branch = git_output("branch", "--show-current")
     if branch == "UNKNOWN" or not branch:
         branch = git_output("rev-parse", "--short", "HEAD")
-    architecture = ", ".join(x["id"] for x in state["established_components"])
+    by_location: dict[str, list[str]] = {}
+    for x in state["established_components"]:
+        by_location.setdefault(x["location"], []).append(f"{x['id']}[{x['status']}]")
+    architecture = "; ".join(f"{k}: {', '.join(v)}" for k, v in sorted(by_location.items()))
     results = " | ".join(f"{x['id']}={x['status']}" for x in state["evidence"])
+    prs = ", ".join(f"#{x['pr']} {x['disposition']}" for x in state["pr_graph"]["prs"])
     return (
         "SOPHON NATIVE PROJECT CONTEXT — CHECKED AUTOMATICALLY\n"
         f"Branch: {branch}; charter: v1.2; authoritative snapshot: PROJECT_STATE.json ({state['updated_at']}).\n"
         "Sophon is a normative semantic layer, NOT an LLM accuracy contest. "
         "TRANSPOSE / TRACE / VERIFY / AUDIT; independent checks in BOTH directions; "
         "BI-semantic checker wedge + direct non-BI access.\n"
-        f"EXISTING (experimental; check actual PR/ref before claiming local availability): {architecture}.\n"
+        f"EXISTING by location (OTHER_PR = unmerged branch, NOT in this checkout; refs and limits in PROJECT_STATE.json): {architecture}.\n"
         f"RESULTS / LIMITS: {results}.\n"
+        f"PR GRAPH (verified {state['pr_graph']['verified_at']}; most is unmerged and stacked): {prs}.\n"
+        f"PRODUCT WEDGE (charter) is not the immediate RESEARCH PRIORITY: {state['research_priority']['owner_stated']}\n"
         f"ACTIVE: {state['current_work']['active']}\n"
         f"HOLD: {state['current_work']['on_hold']}\n"
         f"ENGINEERING WORKING AGREEMENT (ENGINEERING_WORKFLOW.md): {state['engineering_workflow']['rule']}\n"
@@ -172,10 +218,18 @@ def main() -> int:
         except RuntimeError as e:
             errors.append(str(e))
     if errors:
+        if args.mode == "hook":
+            # Exit 2 would hide stderr from Claude and block every prompt, including the one
+            # asking to repair the state. Surface the failure as context instead; CI still fails.
+            print("SOPHON_CONTEXT_GUARD_FAILED — PROJECT_STATE.json/charter are inconsistent on this branch. "
+                  "Reconcile them before substantial work; do not rely on the state until `check` passes.")
+            for e in errors:
+                print("SOPHON_CONTEXT_GUARD_ERROR: " + e)
+            return 0
         for e in errors:
             print("SOPHON_CONTEXT_GUARD_ERROR: " + e, file=sys.stderr)
         print("Reconcile the authoritative state/charter on this branch before substantial work.", file=sys.stderr)
-        return 2 if args.mode == "hook" else 1
+        return 1
     if args.mode == "hook":
         # SessionStart and UserPromptSubmit accept plain stdout as additional context.
         # Hooks are not a guarantee of factual/semantic correctness, only native context injection.
