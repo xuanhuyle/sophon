@@ -200,6 +200,7 @@ def build(model: str = "jev-latest") -> dict:
                       "request_hashes": {"COLD": digest(cold), "LEARNED": digest(warm)}})
     return {"research_goal": "PROVISION_NATURE_CUMULATIVE_LEARNING_V1",
             "scope": "FIRST_CROSS_AGREEMENT_MEMORY_EFFECT_ONLY",
+            "unit_of_analysis": "MANUALLY_CURATED_SOURCE_EXCERPTS_NOT_AUTOMATIC_SUBPROVISION_SEGMENTATION",
             "reference_commit": REF, "library_sha256": digest(memory),
             "questions_sha256": digest(questions()), "model_requested": model,
             "pairs": pairs, "source_linked_library": memory,
@@ -234,7 +235,7 @@ def score(plan: dict, recording: dict) -> dict:
     indexed = {(r["case_id"], r["arm"]): r for r in records}
     if len(indexed) != len(records):
         raise ValueError("Duplicate case/arm records")
-    errors_avoided, errors_added, stable_hit = [], [], []
+    newly_passed, newly_lost, stable_hit = [], [], []
     models = set()
     report = []
     for pair in plan["pairs"]:
@@ -261,9 +262,9 @@ def score(plan: dict, recording: dict) -> dict:
             passed.setdefault(name, []).append(row)
             marker = f"{case['id']}:{name}"
             if warm and not cold:
-                errors_avoided.append(marker)
+                newly_passed.append(marker)
             elif cold and not warm:
-                errors_added.append(marker)
+                newly_lost.append(marker)
             elif warm and cold:
                 stable_hit.append(marker)
         report.append({"id": case["id"], "source_packet_id": case["source_packet_id"],
@@ -272,12 +273,14 @@ def score(plan: dict, recording: dict) -> dict:
     if len(models) != 1:
         raise ValueError("Model version changed between arms")
     return {"evaluation": "LIMITED_PREDECLARED_POSITIVE_SOURCE_QUOTES_NOT_LEGAL_GOLD",
+            "automatic_subprovision_segmentation": False,
+            "span_to_function_localization": False,
             "reported_model": next(iter(models)), "total_cases": len(report),
             "number_of_positive_probes": plan["frozen_positive_probes_count"],
-            "newly_passed_positive_probes": errors_avoided,
-            "lost_positive_probes": errors_added,
+            "newly_passed_positive_probes": newly_passed,
+            "lost_positive_probes": newly_lost,
             "passed_in_both": stable_hit,
-            "warning": "Unannotated labels are not negatives. Probe changes are not independent legal-accuracy gains.",
+            "warning": "Manually curated excerpts with whole-excerpt multi-label decisions, NOT automatic sub-provision identification or span-to-function mapping. Unannotated labels are not negatives. Probe changes are not independent legal-accuracy gains.",
             "per_case": report}
 
 
