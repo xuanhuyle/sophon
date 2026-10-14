@@ -1,70 +1,56 @@
-# Sophon — implement a real experiment-lineage continuity gate (ONE increment)
+# Sophon — engineering-accountability + experiment-continuity gate (ONE increment)
 
-**Date:** 2026-10-14  
 **Repository:** `xuanhuyle/sophon`  
-**Starting branch:** `guard/jev-lineage-continuity-2026-10-14`  
-**Starting HEAD:** resolve latest on this branch (the owner-reconfirmed `PROJECT_STATE.json` commit is `ab377211`)  
-**Target:** a single PR from this branch to `main`; no merge without review  
-**This is a PROCESS FIX ONLY:** No new experiment, no new scorer, no change to V1–V4 frozen code, no paid model/API calls.
+**Starting branch:** `guard/jev-lineage-continuity-2026-10-14` (draft PR #21)  
+**Expected starting head:** `d9de5f3` before this task-file update; fetch current HEAD first  
+**Target:** update **existing PR #21** against main, do not create a new PR or merge.  
+**Scope:** implement ONE light, executable check in the existing context guard and CI, with regression tests. No Jev/live contract experiment; zero paid calls.
 
-## Why this is needed (verified, not speculative)
+## First principles (owner and engineer roles)
 
-Current `main` v1.2 has `ENGINEERING_WORKFLOW.md`, `PROJECT_STATE.json`, `.claude/hooks/context_guard.py` and one context-integrity workflow. Its hook injects a list of existing components and instructions; **it does NOT reject a new 'cumulative Jev learning' experiment that never imports/runs Jev or either reviewer**. Indeed V3 statistical heading prediction and V4 regex/textual-proxy prediction diverged from the intended pipeline without being flagged. V4's frozen STOP is valid **for its own proxy only**.
+The owner fixes Sophon's **problem and outcome**: can a persistent, source-grounded, provisional library of contractual knowledge improve later real-contract analysis, and eventually supply a normative semantic layer? Owner's V1/V2 design—Jev classification → adversarial/backward challenge → proposed library-based check → source-anchored provision skeletons → reconciliation/retention—is an **architectural hypothesis**. It is NOT a requirement to build three AI reviewer agents, use Jev forever, or assume a single source document establishes a universal skeleton.
 
-The owner reconfirmed the experiment lineage:
+Engineering lead must independently test alternatives, identify redundant agents/components, compare against the smallest honest alternative, and choose an increment. Claude Code must challenge engineering specifications if they overbuild. Changing *methods* with a defensible reason is legitimate; silently changing the *research question* or claiming that a new proxy tested the old mechanism is not.
 
-1. Jev classifies each provision (existing V1 adapter).
-2. Separate adversarial reviewer challenges it (existing).
-3. Separate backward/source reviewer checks required evidence (existing).
-4. A genuinely **independent** library-based review evaluates the candidate against source-backed provision skeletons (**NOT implemented as a third review mechanism in V2**: V2 passed the learned library as shared context to Jev and the first two reviewers).
-5. Deterministic reconciliation retains disagreements and scope/unknowns (existing).
-6. Learn source-anchored semantic skeletons (conditions, exceptions, dependencies, definitions; provisional unless independently verified), preserve support/counterexamples, and revise as additional agreements arrive (partly implemented V2).
+Verified real lineage:
+- V1: Jev + separately called adversarial/backward LLM reviewers + reconciliation (actual provider recordings, 10 clauses; no independent semantic oracle).
+- V2: source-linked templates and provisional skeleton induction from GitHub SLA, shared as context with Jev and BOTH reviewers for Google SLA; **no independent library-based third reviewer**. Library inducer uses LAB_AUTHORED detectors. V2 35/36 cold, 34/36 learned-library, 36/36 raw-example, near-ceiling proxy. A schema-scoping/scoring artifact excluded correct content in omitted_conditions. This is NOT a global conclusion.
+- V3: offline heading/context statistical predictor, distinct method and unadjudicated results.
+- V4: frozen authentic SEC EDGAR run on regex/heading textual proxies (mean Brier cumulative 0.2427 vs frozen 0.2147 vs counts 0.2036; 0 Jev/LLM reviewer calls). Valid STOP **for that predictor**, NOT evidence about the V1/V2 Jev architecture.
 
-The agreed **next SINGLE delta after this guard task** is to add/test step 4 within the existing V2 pipeline. The owner has NOT yet authorized another paid run. Do not implement it here.
+Read current `SOPHON_CHARTER.md`, `PROJECT_STATE.json` (including `active_research_mechanism` and its **candidate-not-mandate** status), `ENGINEERING_WORKFLOW.md`, existing `.claude/hooks/context_guard.py`, `.github/workflows/context-integrity.yml`, `tests/test_context_guard.py`, and real V1/V2 code/results on PR #17 and V4 evidence on PR #18. Main holds governance but not those experimental implementations.
 
-`PROJECT_STATE.json.active_research_mechanism` on this branch pins that lineage, real code refs, missing component, and V4 limitation. Consult the actual V1/V2 code on current PR #17, V3/V4 results on #17/#18, the current charter and workflow. Never assume experimental code lives on `main`.
+## Failure mode to prevent
 
-## REQUIRED change (scope is the existing guard, not another governance layer)
+The current hook injects a *component inventory* but does not demand evidence that an experiment actually exercises the declared mechanism or assesses the same outcome. As a result, V3/V4 were repeatedly promoted as incremental Jev-learning work although they ran an entirely different, regex/statistical mechanism.
 
-Implement the **smallest viable executable check** using the existing `.claude/hooks/context_guard.py`, CI workflow and existing `tests/test_context_guard.py`:
+**Build a narrow enforceable gate that checks research/claim continuity, not architecture obedience.** Before accepting a substantively new/revised experimental runner, protocol or result, the PR must explicitly distinguish:
+1. **Research objective** (invariant, unless owner authorizes a material pivot).
+2. **Existing implementation and evidence ref** (including unmerged PR head).
+3. **Single engineering-chosen change** and credible simpler alternative rejected.
+4. **Planned vs actually exercised mechanisms** with exact code and run-receipt paths—source extraction, Jev classification, adversarial/backward calls, library query/skeleton comparison, reconciliation, etc. Distinguish NOT_IMPLEMENTED, MOCK, RECORDED, ACTUAL_PROVIDER and NOT_RUN.
+5. **Allowed claim** and explicitly untested parts. No claim of "Jev-system learning validated" when the actual method is only heading/regex predictions.
 
-1. **At session/prompt entry:** clearly inject the pinned `active_research_mechanism` chain, its existing V2 code ref, the *not-yet-implemented* independent library reviewer, the next single delta, and an explicit warning that V3/V4 statistical experiments are **separate**. Read from `PROJECT_STATE.json` rather than duplicating prose in multiple files. If the pin is deleted, malformed or silently changed while claiming the same research lineage, the context check MUST fail.
+Prefer expanding the current context-check and test machinery, with one tiny per-experiment declaration if necessary; do not create an agent framework, separate manifest registry or a documentation ceremony. Ensure historical V1–V4 files need not be retroactively relabeled. Minor bugfixes/docs must not be blocked.
 
-2. **At new prototype experiment entry / PR check:** a new or materially changed experiment protocol/runner/results under `prototype/` that purports to advance the active Jev provision-learning work must include a *small, machine-checkable mechanism declaration* naming:
-   - parent implementation **source ref** (`PR #17`, actual branch/head; not only the prompt);
-   - single new capability/delta and explicitly preserved mechanisms;
-   - which paths/functions are actually invoked (versus merely referenced, mocked, proposed or absent);
-   - expected method and separate actual run provenance/status, including whether real Jev and reviewer calls happened;
-   - scope of legitimate claims and what it cannot prove.
+**Important:** static scanners cannot prove an imported method was invoked, and author-written declarations are not execution evidence. If receipts/traces cannot confirm provider calls and independent verification, classify the claim **UNVERIFIED/PLUMBING_ONLY**, never as tested/verified. Do not implement a placebo green check that simply searches for words such as "Jev" or "adversarial" in a document.
 
-   Check what is **truthfully attestable** by reading actual source code and recorded run receipts, not only declaration text. Be honest about limits of static checks: a string naming Jev is NOT evidence of invoking Jev. At minimum an automated negative regression must reject a *V4-shaped regex/count-only* experiment mislabeled as the Jev review-loop increment. Ensure a genuine zero-provider-call plumbing fixture is allowed only when clearly labeled *PLUMBING_ONLY*, not as proof that Jev review ran.
+## Required tests (offline)
 
-3. **Changing mechanisms must be conspicuous:** distinct experimental hypotheses remain possible, but MUST be called `SEPARATE_MECHANISM`, must not be presented as continuing the Jev loop, and must not silently revise the active research focus. An actual pivot of the active owner-confirmed lineage requires separate explicit owner authorization reflected in a reviewed canonical `main` state change **before** a replacement experiment begins. A PR must not self-authorize its own pivot by setting a Boolean.
+- Missing/malformed/tampered owner-goal and lineage/claim boundaries are detected.
+- Session/user-prompt hook tells the coding agent the V1/V2 real status and the three unproven assumptions: necessity of Jev, necessity of multiple reviewers, and autonomous skeleton learning.
+- **NEGATIVE:** V4-shaped regex/count-only runner or protocol falsely claiming to have exercised Jev + adversarial/backward reviewer + evolving skeleton library fails.
+- **POSITIVE:** same regex/count-only work is allowed to be recorded as a `SEPARATE_MECHANISM` with claims restricted to its proxy (assuming an explicitly distinct research question; cannot silently replace current goal).
+- **POSITIVE:** a declared V2-derived single-delta library check can be planned without provider calls if labeled `PLANNED/PLUMBING_ONLY` rather than evaluated.
+- **NEGATIVE:** results claiming live Jev/reviewer success without corresponding execution receipts are rejected or flagged as UNVERIFIED; do not silently pass as verified.
+- Existing regression suite stays green; run a genuine fail-closed example and show the result.
 
-4. **Keep CI practical.** No new agent/plugin/framework, enterprise governance architecture, full-blown manifest registry or onerous procedure for minor docs/bugfixes. Reuse existing `check_pr_state_update` machinery and `.github/workflows/context-integrity.yml` where possible. There must be no required network calls or model calls in tests. The PR check should be FAIL-CLOSED for substantive experiment claims but not freeze all ordinary development. Record any enforcement limitation clearly.
+## Deliverable / boundaries
 
-5. **Test both sides.** Add regression tests for:
-   - missing / tampered active lineage pin;
-   - prompt/context displaying the EXACT Jev+adversarial+backward+library/skeleton lineage with the missing third reviewer clearly marked;
-   - an invented V4 statistical runner claiming to exercise the Jev loop is REJECTED;
-   - a properly labeled **separate** structural-prediction experiment is not confused with the Jev loop;
-   - a valid single-delta V2-lineage task passes at the *planning* stage without pretending providers were invoked;
-   - a result claiming Jev reviewers ran but lacking supporting execution receipts is rejected or explicitly **UNVERIFIED**, NEVER treated as verified.
+Commit only the existing guard/CI and tests plus justified minimal state amendments on this PR. Preserve frozen historical V1–V4 results. No new research architecture, no experimental implementation, no model calls, no network dependency inside guard/tests, no PR merge. End with pass/fail observations, actual enforcement limits, SHA, and STOP.
 
-6. Existing `tests/test_context_guard.py` must remain green. Preserve all V1–V4 frozen data and historical branch topology. `PROJECT_STATE.json` already records V4's scoped STOP; correct only demonstrably wrong factual details. Avoid further repo housekeeping unrelated to this gate.
+`main` currently has no enforced branch protection. A green status check by itself is not an absolute merge gate; record this limitation. Claude Code does not control organization admin policy, and the historical PR stack predates the guard.
 
-## Important operational caveat
+**Engineering discretion is explicit:** if the full test matrix cannot be honestly enforced without large, brittle machinery, choose the *smallest robust check* and document exactly what remains a human review responsibility. Do not pretend an unverified claim has been mechanically proved.
 
-Historical PRs #16–#18 **predate** the main guard and may not execute it on their own bases. Do NOT claim the new guard retroactively controls those branches. For future Jev incremental implementation, start a CLEAN branch from guarded main and import/reuse the relevant code from PR #17 intentionally, with no uncontrolled merge/rebase of old experiments. The new gate should fail when running in a checkout that lacks the authoritative state; fail clearly rather than continue from an older memory.
-
-GitHub `main` is currently **not protected**; a passing GitHub Action without required-check enforcement is not an absolute gate. Report this residual risk; don't claim it is resolved unless enforcement is demonstrably configured. The active GitHub App may lack permission to set branch-protection rules. Do not spend time inventing workarounds.
-
-## Definition of done
-
-- ONE focused reviewable PR/branch; do not open more.
-- Evidence: offline tests pass plus one intentional fail-closed example (V4 false-continuity case).
-- Verify the GitHub Actions check if access permits.
-- Summarize exactly what is prevented, what remains possible, and the next single increment (not executed).
-- No Jev provider calls, no new contractual experiment, no model training, no extra roadmap.
-
-After committing/pushing the guard implementation, **STOP** and send the commit SHA and one recommendation for review/merge. Challenge this task if there is a significantly simpler way to achieve the *same enforceable* outcome; do not substitute a prose-only checklist or lengthy process document for a working gate.
+No subsequent experiment begins automatically. The next engineering decision should ask whether an ordinary source-backed skeleton-difference checker is more useful than adding a third LLM reviewer, using V2 artifacts; do not implement either in this task.
