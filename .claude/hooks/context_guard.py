@@ -27,6 +27,10 @@ REQUIRED = {
 STATUSES = {"SPECIFIED_ONLY", "PREPARED_NOT_RUN", "IMPLEMENTED_NOT_RUN",
             "IMPLEMENTED_AND_RUN", "VERIFIED_WITHIN_SCOPE"}
 LOCATIONS = {"MAIN", "THIS_BRANCH", "OTHER_PR"}
+ACTIVE_GOAL = "PROVISION_NATURE_CUMULATIVE_LEARNING_V1"
+ACTIVE_TARGET = "INTRINSIC_NORMATIVE_CLASSIFICATION_ERROR"
+ACTIVE_COMPARISON = "GROWING_LIBRARY_VS_FROZEN_OR_COLD"
+EXPERIMENT_ROOTS = ("prototype", "experiments", "viability")
 
 
 def component_paths(path: str) -> list[str]:
@@ -135,6 +139,12 @@ def read_and_check(root: Path = ROOT) -> tuple[dict | None, list[str]]:
     if (not state.get("working_rules") or not state.get("current_work")
             or not state.get("research_priority", {}).get("owner_stated")):
         errors.append("State must record current work and explicit guardrails")
+    contract = state.get("research_contract") or {}
+    if (contract.get("goal_id") != ACTIVE_GOAL or
+            contract.get("primary_target") != ACTIVE_TARGET or
+            contract.get("comparison") != ACTIVE_COMPARISON or
+            not contract.get("learning_claim")):
+        errors.append("Missing/changed active classification + cumulative-library research contract; reconcile before experiments")
     return state, errors
 
 
@@ -170,6 +180,88 @@ def check_pr_state_update(base: str) -> list[str]:
     return []
 
 
+def check_experiment_alignment(declaration: dict, state: dict) -> list[str]:
+    """Validate an experiment's stated target and claim scope; NOT semantic proof."""
+    errors = []
+    goal = state["research_contract"]
+    required = ("relation", "goal_id", "implementation_ref", "single_delta",
+                "measured_target", "library_comparison", "stage", "claim_limit")
+    for key in required:
+        if not isinstance(declaration.get(key), str) or not declaration[key].strip():
+            errors.append(f"EXPERIMENT_ALIGNMENT.json: required nonempty {key}")
+    relation = declaration.get("relation")
+    if relation not in ("DIRECT_GOAL_TEST", "COMPONENT_ONLY", "SEPARATE_HYPOTHESIS"):
+        errors.append("EXPERIMENT_ALIGNMENT.json: invalid relation")
+    if declaration.get("goal_id") != goal["goal_id"]:
+        errors.append("EXPERIMENT_ALIGNMENT.json: goal_id differs from approved research goal")
+    if declaration.get("stage") not in ("PLANNED", "RUN_RECORDED"):
+        errors.append("EXPERIMENT_ALIGNMENT.json: stage must be PLANNED or RUN_RECORDED")
+    if relation == "DIRECT_GOAL_TEST":
+        if declaration.get("measured_target") != goal["primary_target"]:
+            errors.append("DIRECT_GOAL_TEST must measure actual intrinsic normative CLASSIFICATION ERRORS (not heading/regex proxies)")
+        if declaration.get("library_comparison") != goal["comparison"]:
+            errors.append("DIRECT_GOAL_TEST must compare evolving source-grounded library against frozen/cold controls")
+    elif relation == "SEPARATE_HYPOTHESIS":
+        if declaration.get("claim_limit") != "NOT_EVIDENCE_FOR_ACTIVE_GOAL":
+            errors.append("SEPARATE_HYPOTHESIS must explicitly disclaim evidence for active goal")
+    elif relation == "COMPONENT_ONLY" and declaration.get("claim_limit") != "COMPONENT_ONLY_NOT_END_TO_END":
+        errors.append("COMPONENT_ONLY must not claim end-to-end learning")
+    return errors
+
+
+def check_pr_experiment_alignment(base: str, state: dict, root: Path = ROOT) -> list[str]:
+    """New experimental code/protocols get a scope declaration. Existing historical dirs are exempt."""
+    changed = changed_files_since(base)
+    dirs = set()
+    for path in changed:
+        parts = Path(path).parts
+        if len(parts) >= 3 and parts[0] in EXPERIMENT_ROOTS and (
+                path.endswith(".py") or parts[-1] in ("PROTOCOL.md", "RESULTS.md", "DECISION.md")):
+            dirs.add("/".join(parts[:2]))
+    errors = []
+    for directory in sorted(dirs):
+        exists_at_base = subprocess.run(
+            ["git", "-C", str(root), "cat-file", "-e", f"{base}:{directory}"],
+            capture_output=True, timeout=10, check=False).returncode == 0
+        if exists_at_base:
+            continue
+        path = root / directory / "EXPERIMENT_ALIGNMENT.json"
+        try:
+            declaration = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, ValueError) as exc:
+            errors.append(f"{directory}: new experiment must include valid EXPERIMENT_ALIGNMENT.json: {exc}")
+            continue
+        if not isinstance(declaration, dict):
+            errors.append(f"{directory}: EXPERIMENT_ALIGNMENT.json must be a JSON object")
+            continue
+        errors += [f"{directory}: {e}" for e in check_experiment_alignment(declaration, state)]
+        if declaration.get("stage") == "RUN_RECORDED":
+            evidence = declaration.get("evidence_path")
+            if not isinstance(evidence, str) or not evidence.startswith(directory + "/") or not (
+                    root / evidence).is_file():
+                errors.append(f"{directory}: RUN_RECORDED needs an existing in-directory evidence_path; "
+                              "execution and correctness remain subject to independent review")
+    return errors
+
+
+def check_pr_goal_drift(base: str, state: dict) -> list[str]:
+    """Do not silently change the owner goal in the same PR that adds experiment code."""
+    r = subprocess.run(["git", "-C", str(ROOT), "show", f"{base}:PROJECT_STATE.json"],
+                       capture_output=True, text=True, timeout=10, check=False)
+    if r.returncode:
+        return ["Cannot verify historical research goal at PR base"]
+    try:
+        previous = json.loads(r.stdout)
+    except ValueError:
+        return ["Invalid research state at PR base"]
+    if (previous.get("research_contract") and
+            previous["research_contract"] != state.get("research_contract") and
+            any(p.startswith(tuple(t + "/" for t in EXPERIMENT_ROOTS))
+                for p in changed_files_since(base))):
+        return ["Research goal changed in the SAME PR as experimental work; separate and review the goal change first"]
+    return []
+
+
 def context(state: dict) -> str:
     branch = git_output("branch", "--show-current")
     if branch == "UNKNOWN" or not branch:
@@ -190,6 +282,16 @@ def context(state: dict) -> str:
         f"RESULTS / LIMITS: {results}.\n"
         f"PR GRAPH (verified {state['pr_graph']['verified_at']}; most is unmerged and stacked): {prs}.\n"
         f"PRODUCT WEDGE (charter) is not the immediate RESEARCH PRIORITY: {state['research_priority']['owner_stated']}\n"
+        f"NON-NEGOTIABLE RESEARCH TARGET ({state['research_contract']['goal_id']}): "
+        "categorize intrinsic normative provision nature AND reduce future classification errors "
+        "through a source-anchored, cumulatively revised skeleton library in a narrow contract family. "
+        "Later executability is NOT this increment. Jev/reviewer topology is a challengeable hypothesis. "
+        "A regex/heading-only predictor DOES NOT test this goal.\n"
+        "NEW EXPERIMENT PR GATE: include <experiment>/EXPERIMENT_ALIGNMENT.json with "
+        "goal_id, relation, implementation_ref, single_delta, measured_target, library_comparison, "
+        "stage, claim_limit. DIRECT_GOAL_TEST requires classification-error target and growing-vs-frozen "
+        "library comparison; separate hypotheses must disclaim evidence for this goal. "
+        "CI verifies scope declarations, NOT scientific correctness.\n"
         f"ACTIVE: {state['current_work']['active']}\n"
         f"HOLD: {state['current_work']['on_hold']}\n"
         f"ENGINEERING WORKING AGREEMENT (ENGINEERING_WORKFLOW.md): {state['engineering_workflow']['rule']}\n"
@@ -215,6 +317,9 @@ def main() -> int:
     if args.diff_base:
         try:
             errors += check_pr_state_update(args.diff_base)
+            if state:
+                errors += check_pr_goal_drift(args.diff_base, state)
+                errors += check_pr_experiment_alignment(args.diff_base, state)
         except RuntimeError as e:
             errors.append(str(e))
     if errors:

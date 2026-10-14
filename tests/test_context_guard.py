@@ -209,5 +209,93 @@ class NativeContextGuard(unittest.TestCase):
             self.assertTrue(cg.check_pr_state_update("abc"))
 
 
+class ResearchAlignmentGuard(unittest.TestCase):
+    """Regression: the old V4 regex proxy must not masquerade as library-assisted classification."""
+
+    def state(self):
+        return json.loads((ROOT / "PROJECT_STATE.json").read_text(encoding="utf-8"))
+
+    def declaration(self, **changes):
+        fields = {
+            "relation": "DIRECT_GOAL_TEST",
+            "goal_id": cg.ACTIVE_GOAL,
+            "implementation_ref": "PR #17 b9d698c",
+            "single_delta": "Use earlier source-anchored skeletons to challenge later classifications",
+            "measured_target": cg.ACTIVE_TARGET,
+            "library_comparison": cg.ACTIVE_COMPARISON,
+            "stage": "PLANNED",
+            "claim_limit": "NO_RESULT_YET",
+        }
+        fields.update(changes)
+        return fields
+
+    def test_classification_plus_cumulative_library_is_the_active_goal(self):
+        state, errors = cg.read_and_check(ROOT)
+        self.assertEqual(errors, [])
+        with patch.object(cg, "git_output", return_value="feature"):
+            context = cg.context(state)
+        self.assertIn("NON-NEGOTIABLE RESEARCH TARGET", context)
+        self.assertIn("reduce future classification errors", context)
+        self.assertIn("regex/heading-only predictor DOES NOT test this goal", context)
+
+    def test_v4_regex_proxy_cannot_claim_to_test_classification_learning(self):
+        false_v4 = self.declaration(
+            measured_target="REGEX_TEXT_FEATURE_BRIER",
+            library_comparison="CUMULATIVE_COUNTS_VS_SEED")
+        errors = cg.check_experiment_alignment(false_v4, self.state())
+        self.assertTrue(any("CLASSIFICATION ERRORS" in e for e in errors), errors)
+        self.assertTrue(any("frozen/cold" in e for e in errors), errors)
+
+    def test_v4_separate_hypothesis_is_not_classification_evidence(self):
+        separate = self.declaration(
+            relation="SEPARATE_HYPOTHESIS",
+            measured_target="REGEX_TEXT_FEATURE_BRIER",
+            library_comparison="CUMULATIVE_COUNTS_VS_SEED",
+            claim_limit="NOT_EVIDENCE_FOR_ACTIVE_GOAL")
+        self.assertEqual(cg.check_experiment_alignment(separate, self.state()), [])
+
+    def test_planned_one_delta_classification_library_comparison_is_allowed(self):
+        self.assertEqual(cg.check_experiment_alignment(self.declaration(), self.state()), [])
+        component = self.declaration(
+            relation="COMPONENT_ONLY", measured_target="PROVISION_SKELETON_ANCHORING",
+            claim_limit="COMPONENT_ONLY_NOT_END_TO_END")
+        self.assertEqual(cg.check_experiment_alignment(component, self.state()), [])
+
+    def test_missing_alignment_is_rejected_for_new_experiment_directory(self):
+        with tempfile.TemporaryDirectory() as tmp, \
+                patch.object(cg, "changed_files_since",
+                             return_value=["prototype/v5/predict.py", "prototype/v5/PROTOCOL.md"]), \
+                patch.object(cg.subprocess, "run", return_value=type("Result", (), {"returncode": 1})()):
+            root = Path(tmp)
+            (root / "prototype/v5").mkdir(parents=True)
+            errors = cg.check_pr_experiment_alignment("base", self.state(), root)
+        self.assertTrue(any("must include valid EXPERIMENT_ALIGNMENT.json" in e for e in errors), errors)
+
+    def test_new_experiment_with_false_claim_fails_before_run(self):
+        with tempfile.TemporaryDirectory() as tmp, \
+                patch.object(cg, "changed_files_since",
+                             return_value=["prototype/v5/PROTOCOL.md"]), \
+                patch.object(cg.subprocess, "run", return_value=type("Result", (), {"returncode": 1})()):
+            root = Path(tmp)
+            folder = root / "prototype/v5"
+            folder.mkdir(parents=True)
+            false_v4 = self.declaration(measured_target="REGEX_TEXT_FEATURE_BRIER")
+            (folder / "EXPERIMENT_ALIGNMENT.json").write_text(json.dumps(false_v4), encoding="utf-8")
+            errors = cg.check_pr_experiment_alignment("base", self.state(), root)
+        self.assertTrue(any("CLASSIFICATION ERRORS" in e for e in errors), errors)
+
+    def test_goal_cannot_change_with_experiment_in_same_pr(self):
+        before = self.state()
+        after = json.loads(json.dumps(before))
+        after["research_contract"]["learning_claim"] = "silently changed goal"
+        with patch.object(cg, "changed_files_since",
+                          return_value=["PROJECT_STATE.json", "prototype/v5/PROTOCOL.md"]), \
+                patch.object(cg.subprocess, "run",
+                             return_value=type("Result", (), {
+                                 "returncode": 0, "stdout": json.dumps(before)})()):
+            errors = cg.check_pr_goal_drift("base", after)
+        self.assertTrue(any("SAME PR" in e for e in errors), errors)
+
+
 if __name__ == "__main__":
     unittest.main()

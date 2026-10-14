@@ -177,13 +177,20 @@
       "status": "PROVISIONAL_UNADJUDICATED",
       "observation": "Post-freeze repaired signal limited to provision within section: FAMILY_SECTION 3.09/8 vs FAMILY 0.36/8; no section gain, worse Brier than GLOBAL, law untestable; labels agent-authored, split nonchronological.",
       "ref": "PR #17; prototype/contract_structure_prediction_v3/RESULTS.md"
+    },
+    {
+      "id": "V4_regex_structural_proxy",
+      "status": "STOP_NO_OBSERVED_CUMULATIVE_GAIN_SCOPED",
+      "ref": "PR #18 head 30f5b6d; prototype/contract_sequential_learning_v4/RESULTS.md",
+      "observation": "Frozen run: 2 seed + 6 evaluated 2024 SEC EDGAR credit agreements; 24 masked provisions; Brier SIMPLE_COUNTS 0.2036, FROZEN 0.2147, CUMULATIVE 0.2427; replay identical; zero Jev or reviewer provider calls.",
+      "does_not_prove": "No result about Jev classification/adversarial/backward/library reviewer or semantic learning; only regex textual-feature and heading-rule statistical predictor."
     }
   ],
   "current_work": {
-    "active": "Owner research focus: independently investigate whether source-grounded contractual provision knowledge can accumulate and transfer contract-by-contract. Choose the smallest discriminating next test from V1-V3 evidence; no new implementation or experiment has been authorized.",
-    "blocked": "V3 source-grounded label adjudication remains unfinished; cloud source retrieval previously had CONNECT 403. This is a V3-specific limitation, not an automatic gate on all cumulative-learning research.",
-    "on_hold": "V4 sequential contract-learning specification PR #18 remains UNRUN. V3 manual 78-unit review is not an automatic priority. BI expansion, full contract-to-agent propagation, EDGAR transformer training, and commercial validation are not the immediate increment.",
-    "horizon": "Predict reusable normative provision structures, conditional on evidenced law, contract family, ToC/section and observed provisions; test cumulative, auditable contract-by-contract improvement, not superiority to a pretrained LLM."
+    "active": "PR #21 research-continuity guard IMPLEMENTED AND TESTED (27/27 at commit 32b1186); awaiting owner-reviewed merge and branch required-status-check protection. RESEARCH GOAL UNCHANGED: intrinsic provision classification with cumulative source-grounded skeleton library to reduce later error, with automated challenges; no new experiment authorized in this guard PR.",
+    "blocked": "Direct continuation on historical stacked PRs lacks the main-branch context guard; use a guarded clean branch from main and inspect historical refs, and stop when lineage cannot be verified.",
+    "on_hold": "V3/V4 heading and regex statistics as replacement for the normative classifier, standalone next-provision prediction, executability implementation, downstream BI/agent propagation and new training architectures are ON HOLD. **Library learning is NOT on hold**: it is integral to present classifier accuracy/specialization. V4 STOP valid only for its separate textual-proxy task.",
+    "horizon": "CURRENT research: establish whether source-backed, successively revised skeletons improve the next provision's categorical decision/abstention, not merely increase memory size. LATER: use classification as input to distinct executability and BI/agent transposition tests."
   },
   "working_rules": [
     "Before recommending architecture, consult established_components and inspect referenced source on its ref; do not present existing Jev/adversarial/backward/library/reconciliation as new.",
@@ -193,7 +200,9 @@
     "Legal provenance, unknowns, known-at versus effective-at, adversarial counterexamples and independent audit are requirements, not add-ons.",
     "Do not assume user approval for paid calls, merger of draft PRs or charter changes.",
     "Treat LLM agreement as triage, not independently validated semantic truth; minimize human labor without hiding correlated errors.",
-    "Mandatory development process: read ENGINEERING_WORKFLOW.md; human proposes the problem (technical concepts are hypotheses), engineering agents own independent choice of design, challenge needless complexity, implement one bounded, testable increment and make KEEP/REVISE/STOP recommendation without making the owner referee routine implementation choices."
+    "Mandatory development process: read ENGINEERING_WORKFLOW.md; human proposes the problem (technical concepts are hypotheses), engineering agents own independent choice of design, challenge needless complexity, implement one bounded, testable increment and make KEEP/REVISE/STOP recommendation without making the owner referee routine implementation choices.",
+    "ENGINEERING AUTONOMY + HONEST LINEAGE: pin the research OUTCOME and the real V1/V2 reference implementation, not a mandatory multi-agent architecture. Before claiming a continuation, verify actual executed components and one explicitly reasoned method change; reject silent substitution (e.g., V4 regex run portrayed as Jev learning). Engineer may recommend a simpler design without owner approval for routine method choices; obtain owner approval for material goal pivot or paid calls.",
+    "OWNER-INTEGRATED RESEARCH TARGET 2026-10-14: reliable automatic intrinsic normative classification and CUMULATIVE source-grounded skeleton-library learning are coupled: library exists to REDUCE later classification errors and build narrow contract-family expertise. Later code-wise executability is distinct/out of scope. Do not split learning away from classification, substitute headings/regex prediction, or demand a fixed three-agent architecture."
   ],
   "engineering_workflow": {
     "path": "ENGINEERING_WORKFLOW.md",
@@ -203,16 +212,16 @@
     "rule": "Owner owns problem/outcome/constraints and material decisions; engineering agents independently choose/challenge design and simplest alternatives; implement one small falsifiable increment, verify actual results, then KEEP/REVISE/STOP."
   },
   "research_priority": {
-    "owner_stated": "Immediate research priority is cumulative, source-grounded contractual learning across successive contracts, NOT commercial demand validation or immediate deployment of a full downstream agent-configuration workflow.",
-    "motivating_scenario": "A solo founder operates an AI-native company with multiple agents and receives new agreements/amendments. The same applicable, versioned contractual meaning should be reusable by those agents without re-interpreting everything from scratch. This is a north-star technical scenario, NOT a request to build the full automation pipeline next.",
-    "immediate_unknown": "Can a persistent, provisional, evidence-linked library of contractual provision structures improve later contract interpretation/prediction, omission detection or human-review burden against a competent frozen/no-library and raw-prior-examples baseline, with independently checked unseen cases?",
-    "established_starting_point": "V1 Jev + independently invoked adversarial/backward reviewers + deterministic reconciliation; V2 provisional provision library (no observed incremental lift on its near-ceiling proxy); V3 contextual heading-label predictions (frozen INCONCLUSIVE, repaired secondary provisional); V4 sequential learning only specified, not run. All of this code is on the PR #17 branch (b9d698c), not on this branch or main; branch from #17 and bring this guard/state across rather than redesigning.",
-    "exclusions": "Do not mistake the solo-founder scenario for authorization to implement contract-to-agent configuration/propagation now. Do not substitute E0-E5 feasibility, commercial interviews, or another narrow lab demo for a discriminating cumulative-learning test. EDGAR-only transformer and autonomous machine-to-machine contracting are related exploratory ideas, not automatically Sophon roadmap commitments.",
+    "owner_stated": "OWNER-RECONFIRMED INTEGRATED RESEARCH GOAL (2026-10-14): automatically and reliably categorize each real provision's intrinsic normative nature WITHOUT routine human-expert review; use a persistent, source-anchored provision-SKELETON LIBRARY that learns from successive contracts and counterexamples to REDUCE SUBSEQUENT CLASSIFICATION ERRORS and accumulate narrow expertise in a defined contract family. Intrinsic classification is the present output; classification-informed code-wise executability is LATER and out of scope.",
+    "motivating_scenario": "Sophon first categorizes the intrinsic normative function of each actual provision and its modifiers; repeated work within one suitably narrow contract family should accumulate specialized understanding rather than reclassify each new contract from scratch. A maintained provisional skeleton library must participate in classification/challenge, not merely store data or predict section headings. The classification can eventually guide a separate assessment of how or whether a provision could be represented in code, but no such implementation is authorized now.",
+    "immediate_unknown": "Does cumulative source-grounded knowledge (provisional archetypes, required/optional elements, conditional/exclusion structure, exceptions, cross-references, positive and negative examples and corrections) reduce materially wrong or overconfident intrinsic-nature categorizations on later unseen provisions, relative to the same classifier/checkers with frozen/no library and raw precedent examples? Can automatic checks expose and abstain on conflicts without requiring a legal expert for each clause? This is classification-error reduction VIA cumulative learning, one indivisible research question. Empirical effect unproven.",
+    "established_starting_point": "Start from PR #17 V1 true Jev classification (original PRIMARIES and MODIFIERS, live runs) + independent adversarial/backward reviewers and deterministic reconciliation. V2 induces provisional source-linked template skeletons but uses the library as context, not a separate independent review. V2 near-ceiling proxy showed no measurable gain. V3/V4 are DISTINCT offline statistical prediction hypotheses; V4 frozen STOP only applies to its regex/textual proxy (PR #18 30f5b6d), not categorical review correctness.",
+    "exclusions": "NOT: immediate code generation/executability, BI adapter integration, generalized contract drafting, next-provision/heading prediction, token or regex feature prediction, broad cross-domain ontology, or a mandated three-agent reviewer topology. Do NOT defer contract-by-contract skeleton learning: it is CENTRAL to today's classification-error-reduction objective. Do not claim model agreement or a library entry is independent legal correctness.",
     "engineering_discretion": "Engineer independently choose no-code analysis, reuse or a single smallest falsifiable experiment; do not assume V3's 78-item manual adjudication must be completed first. Do not initiate paid calls or code solely from this priority statement."
   },
   "inventory_rules": "location: MAIN (on main and therefore here), THIS_BRANCH (added by the checked-out branch but not yet on main), OTHER_PR (only on an unmerged PR branch; NOT in this checkout). status: SPECIFIED_ONLY < PREPARED_NOT_RUN < IMPLEMENTED_NOT_RUN < IMPLEMENTED_AND_RUN < VERIFIED_WITHIN_SCOPE (preregistered checks passed within the stated lab scope). No status means semantically or legally validated. Verified against fetched PR heads on 2026-10-14; refresh pr_graph from live PRs before relying on it.",
   "pr_graph": {
-    "verified_at": "2026-10-14 from fetched branch heads; main head eaf0c91 after the PR #19 squash merge",
+    "verified_at": "2026-10-14 (reviewed live PR #18 at 30f5b6d and main 77c8ba1)",
     "dispositions": "DURABLE_BASELINE = belongs on main; SUPERSEDED = content included elsewhere; HISTORICAL_RESEARCH = immutable experiment record, reuse code by branching from it, do not merge wholesale; DEFERRED_HYPOTHESIS = specification only, unrun.",
     "prs": [
       {
@@ -298,10 +307,10 @@
       {
         "pr": 18,
         "state": "OPEN_DRAFT",
-        "head": "5b75e64",
+        "head": "30f5b6d",
         "base": "#17 at 26902c6 (lacks b9d698c adjudication commit)",
-        "disposition": "DEFERRED_HYPOTHESIS",
-        "content": "V4 prompt only; no V4 run"
+        "disposition": "STOPPED_SEPARATE_STATISTICAL_PROXY",
+        "content": "V4 frozen run on authentic EDGAR agreements; zero Jev/adversarial/backward/library reviewer calls, regex textual proxies: STOP_NO_OBSERVED_CUMULATIVE_GAIN (not a test of V2 Jev loop)"
       },
       {
         "pr": 19,
@@ -310,7 +319,139 @@
         "base": "main",
         "disposition": "DURABLE_BASELINE",
         "content": "charter v1.2 + workflow + this state + context guard; added no prototype/experiment code to main"
+      },
+      {
+        "pr": 20,
+        "state": "MERGED",
+        "head": "f389f2e (squash 77c8ba1)",
+        "base": "main",
+        "disposition": "DURABLE_BASELINE",
+        "content": "Context/state refresh, guard regression tests; no prototype changes"
+      },
+      {
+        "pr": 21,
+        "state": "OPEN_DRAFT",
+        "head": "guard/jev-lineage-continuity-2026-10-14 (this branch)",
+        "base": "main",
+        "disposition": "DURABLE_BASELINE",
+        "content": "Lineage pin + executable mechanism-continuity gate in the existing context guard/CI; no prototype or provider changes"
       }
     ]
+  },
+  "active_research_mechanism": {
+    "id": "jev_source_grounded_provision_skeleton_loop",
+    "primary_implementation": "PR #17 head b9d698c (V1 and V2 code); not on main",
+    "parent_ref": {
+      "pr": 17,
+      "branch": "experiment/jev-v3-context-funnel-2026-10-13",
+      "head": "b9d698c"
+    },
+    "intended_chain": [
+      {
+        "step": "jev_classification",
+        "component": "primary_jev_proposal",
+        "state": "IMPLEMENTED_RUN",
+        "source": "prototype/jev_clause_router_v0/prototype.py",
+        "entry_points": [
+          "prototype/jev_clause_router_v0/prototype.py::call_jev",
+          "prototype/jev_clause_router_v0/prototype.py::jev_live",
+          "prototype/jev_library_transfer_v2/transfer.py::call_jev_v2"
+        ],
+        "receipt_role": "jev"
+      },
+      {
+        "step": "adversarial_challenge",
+        "component": "adversarial_review",
+        "state": "IMPLEMENTED_RUN",
+        "source": "prototype/jev_clause_router_v0/prototype.py",
+        "entry_points": [
+          "prototype/jev_clause_router_v0/prototype.py::reviewer_prompt",
+          "prototype/jev_library_transfer_v2/transfer.py::reviewer_prompt_v2"
+        ],
+        "receipt_role": "adversarial"
+      },
+      {
+        "step": "backward_source_challenge",
+        "component": "backward_source_review",
+        "state": "IMPLEMENTED_RUN",
+        "source": "prototype/jev_clause_router_v0/prototype.py",
+        "entry_points": [
+          "prototype/jev_clause_router_v0/prototype.py::reviewer_prompt",
+          "prototype/jev_library_transfer_v2/transfer.py::reviewer_prompt_v2"
+        ],
+        "receipt_role": "backward"
+      },
+      {
+        "step": "independent_library_based_review",
+        "component": "provision_library",
+        "state": "NOT_IMPLEMENTED_AS_SEPARATE_REVIEWER",
+        "source": "prototype/jev_library_transfer_v2/transfer.py",
+        "entry_points": [],
+        "receipt_role": null
+      },
+      {
+        "step": "evidence_anchored_skeleton_induction",
+        "component": "provision_library",
+        "state": "IMPLEMENTED_PROVISIONAL_ONE_CONTRACT",
+        "source": "prototype/jev_library_transfer_v2/transfer.py",
+        "entry_points": [
+          "prototype/jev_library_transfer_v2/transfer.py::induce_library"
+        ],
+        "receipt_role": null
+      },
+      {
+        "step": "deterministic_reconciliation",
+        "component": "deterministic_reconciliation",
+        "state": "IMPLEMENTED_RUN",
+        "source": "prototype/jev_library_transfer_v2/transfer.py",
+        "entry_points": [
+          "prototype/jev_library_transfer_v2/transfer.py::reconcile",
+          "prototype/jev_clause_router_v0/prototype.py::verdict_for"
+        ],
+        "receipt_role": null
+      },
+      {
+        "step": "retain_revise_transfer_to_later_contracts",
+        "component": "provision_library",
+        "state": "PARTIALLY_TESTED_V2_NO_OBSERVED_LIFT",
+        "source": "prototype/jev_library_transfer_v2/transfer.py",
+        "entry_points": [
+          "prototype/jev_library_transfer_v2/transfer.py::induce_library"
+        ],
+        "receipt_role": null
+      }
+    ],
+    "next_single_delta": "ENGINEERING NEXT QUESTION (not authorization): isolate ONE test of whether source-grounded V2 skeleton knowledge catches/corrects an actual V1/V2 intrinsic-classification error or triggers justified abstention on an unseen provision, versus the SAME classifier/checkers without accumulated library. Inspect existing V2 memory mechanism first; do not automatically add a third model reviewer. Incrementally demonstrate update-after-counterexample without rewriting the pipeline.",
+    "separate_hypotheses_not_equivalent": [
+      "V3 predicts heading-rule structure with conditional frequencies; zero Jev/reviewer calls.",
+      "V4 predicts regex textual proxies with conditional frequencies and append-only events; zero Jev/reviewer calls."
+    ],
+    "review_gate": "Any experiment claiming progress must test the CURRENT INTEGRATED QUESTION (classification-error reduction USING accumulating source-grounded library) or explicitly declare a narrower isolated subcomponent and the untested full loop. Show true Jev/reviewer or alternative invoked paths; report source-anchored skeleton version, what was learned from previous agreements, how memory changed classification/review, independent challenge/abstention, and what the accuracy evidence actually verifies. A regex/heading-only predictor cannot count as a test of this question.",
+    "authorization": "Owner approves material change to desired outcome, constraints, paid calls and deployment. Engineering lead may recommend an alternative implementation, with stated evidence and mechanism delta; must not silently label a different experiment as proving the original loop.",
+    "enforcement": "IMPLEMENTED ON DRAFT PR #21 (not merged): existing .claude/hooks/context_guard.py now pins structured research_contract, injects its classification+learning target on every Claude Code session/prompt, requires EXPERIMENT_ALIGNMENT.json for new prototype/experiment/viability directories, rejects new DIRECT_GOAL_TEST with regex/heading metric or missing growing-vs-frozen library comparison, requires explicit separate/component claim limitations, and rejects a goal change in the same PR as experiment work. Tests: 27/27 passed (GitHub Actions run 38600392227). LIMITS: declaration values can be false; CI cannot prove semantic correctness or whether provider calls really occurred; existing historical directories exempt. Not effective on main until approved merge; main unprotected, so passing checks can be bypassed at merge.",
+    "owner_discussed_as_hypothesis": "2026-10-14 FINAL INTEGRATED OWNER RESTATEMENT: classify intrinsic normative nature, with machine-only adversarial/backward/library checking, while a provisional source-grounded skeleton library learns across successive agreements to DECREASE classification errors and build NARROW expertise. Executability comes later. The proposed multi-agent topology is a challengeable design; the functional presence and measurable value of accumulating library knowledge is CENTRAL to the research objective.",
+    "engineering_status": "V1 Jev classifier and independently called adversarial/backward reviewers exist; V2 library gives context, NOT separate third reviewer. No independent proof of semantic correctness. Three distinct reviewers are unproven for incremental accuracy; test only grounded classification/abstention effects before adding complexity.",
+    "architectural_challenges": [
+      "Baseline V1 Jev single dominant function may under-represent compound provisions; consider multiple supported normative functions and cautious abstention, independently of executability.",
+      "V2 provisional archetypes are real reusable structures but did NOT demonstrate error reduction on its near-ceiling SLA proxy; avoid recycling 35/36 baselines or treating more stored facts as learning success.",
+      "Feedback-loop risk: a wrong first-contract skeleton can propagate classification bias across the family; require source citations, counterexamples, revision/supersession and disagreement/abstention.",
+      "Classifying the intrinsic nature and assessing code executability are separate stages. This experiment must not implement executability logic.",
+      "Source-aware adversarial/backward checks can be correlated; compare whether they detect additional actual errors, not model agreement alone.",
+      "A library-based check can be a deterministic source-grounded archetype mismatch rather than a third LLM; engineer decides smallest justified method, not a prescribed reviewer count.",
+      "Retain family/jurisdiction/applicability boundaries: a skeleton is provisional expectation, not mandatory provisions or legal authority.",
+      "Without a trustworthy external semantic oracle, automated contradiction and controlled mutation tests assess robustness and error discovery, NOT guaranteed legal accuracy."
+    ],
+    "proposed_steps_not_requirements": true,
+    "intended_chain_is": "OWNER_PROPOSED_ARCHITECTURAL_HYPOTHESIS_WITH_EXISTING_CODE_STATUS, not a required execution topology"
+  },
+  "research_contract": {
+    "goal_id": "PROVISION_NATURE_CUMULATIVE_LEARNING_V1",
+    "scope": "Narrow contractual family; classify each provision's intrinsic normative function and significant modifiers.",
+    "learning_claim": "Source-anchored provisional skeleton library is updated over successive agreements to reduce later classification errors, not merely store examples.",
+    "primary_target": "INTRINSIC_NORMATIVE_CLASSIFICATION_ERROR",
+    "comparison": "GROWING_LIBRARY_VS_FROZEN_OR_COLD",
+    "required_safety": "Source support, contradictions, uncertainty, and abstention without routine expert adjudication. Reviewer agreement is not legal ground truth.",
+    "deferred": "Executability and code generation, BI/agent propagation, next-provision/heading/regex prediction as substitutes.",
+    "engineering_discretion": "Jev and the number of reviewers are technical hypotheses; favor the smallest independently testable alternative."
   }
 }
