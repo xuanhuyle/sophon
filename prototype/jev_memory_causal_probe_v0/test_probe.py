@@ -17,8 +17,8 @@ class CausalMemoryProbeTests(unittest.TestCase):
         cls.plan = probe.build("jev-latest")
 
     def test_source_grounded_real_contract_cases(self):
-        self.assertEqual(len(self.plan["pairs"]), 8)
-        self.assertEqual(self.plan["frozen_positive_probes_count"], 10)
+        self.assertEqual(len(self.plan["pairs"]), 10)
+        self.assertEqual(self.plan["frozen_positive_probes_count"], 16)
         self.assertEqual(len(self.plan["source_linked_library"]), 3)
         self.assertEqual({x["case"]["document_id"] for x in self.plan["pairs"]},
                          {"GCS-SLA-20210624"})
