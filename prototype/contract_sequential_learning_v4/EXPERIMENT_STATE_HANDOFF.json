@@ -1,0 +1,22 @@
+{
+  "purpose": "Experiment-state handoff for PROJECT_STATE.json on main (this branch predates it; not merged here).",
+  "date": "2026-10-14",
+  "pr": 18,
+  "branch": "experiment/jev-v4-sequential-provision-learning-2026-10-13",
+  "component": {
+    "id": "v4_sequential_learning_harness",
+    "location": "OTHER_PR",
+    "status": "IMPLEMENTED_NOT_RUN",
+    "path": "prototype/contract_sequential_learning_v4/v4_sequential.py; v4_corpus.py",
+    "role": "Frozen prequential test on authentic 2024 EDGAR credit agreements: FROZEN_SEED vs CUMULATIVE vs SIMPLE_COUNTS vs PRECEDENT; sealed hash-chained predictions, append-only source-anchored library events, replay, blind review packet. Reuses V3 extract/labels/predict unchanged (CONFLICT backoff disabled).",
+    "does_not_prove": "Nothing yet: not run on authentic agreements. Tests use synthetic fixtures only."
+  },
+  "evidence": {
+    "id": "V4_sequential_edgar",
+    "status": "BLOCKED_SOURCE_ACCESS",
+    "observation": "Cloud egress denies CONNECT to www.sec.gov / efts.sec.gov / data.sec.gov (403, 2026-10-14). Protocol frozen before any V4 agreement was selected or read; 0 provider calls.",
+    "ref": "prototype/contract_sequential_learning_v4/RESULTS.md"
+  },
+  "historical_notes": "PHASE0_DECISION.md (ContractNLI proposal) is superseded by owner direction 2026-10-14 and retained as a historical research note.",
+  "next_action": "Owner runs RUNBOOK_V4.ps1 locally with SEC_USER_AGENT set, or allows www.sec.gov and efts.sec.gov in the cloud environment."
+}
