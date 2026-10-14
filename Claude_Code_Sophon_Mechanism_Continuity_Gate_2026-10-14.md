@@ -2,7 +2,7 @@
 
 **Repository:** `xuanhuyle/sophon`  
 **Starting branch:** `guard/jev-lineage-continuity-2026-10-14` (existing draft PR #21)  
-**Expected HEAD:** resolve current head after `5954549`; do not create another PR or merge.  
+**Expected HEAD:** use the latest verified commit on existing PR #21; do not create another PR or merge.  
 **Goal:** prevent another *false claim of experimental continuity*, without making the owner's architectural ideas mandatory.
 
 ## Engineering correction and scope
