@@ -4,6 +4,27 @@
 **Source of truth:** `main` at `f1d7688` (PR #21 merged); this task branch starts there.
 **Instruction to Claude Code:** independently challenge this task's assumptions. Prefer a smaller no-code answer if existing evidence settles feasibility. **Do not move to a next experiment automatically.**
 
+## Independent engineering verdict — review BEFORE following this task
+
+**Decision: NO-GO for the proposed Jev + adversarial + backward + third library-reviewer architecture as a claim of reliable, expert-free legal classification. CONDITIONAL GO for ONE small evaluation of whether source-grounded memory helps a simpler source-citing normative-function classifier.** The owner owns the objective, NOT the model composition; the task below is subject to this engineering conclusion.
+
+**Reasons rooted in actual implementation/results:**
+1. **Wrong unit of classification:** V1 forces one dominant type (OBLIGATION / PROHIBITION / PERMISSION_RIGHT / DEFINITION / AUTHORITY / OTHER) plus five modifiers. A single provision can express multiple duties, rights, exceptions and definitions. Forcing one label can be structurally wrong even when Jev returns high confidence. Before another run, separate per-span normative functions from a coarse provision-level summary and permit unresolved references/abstention. Do this by *evaluating outputs*, not building a new universal legal ontology.
+2. **Wrong causal assumption:** adverse/backward prompts to similar LLMs, with a shared Jev proposal, are NOT independent semantic validators. Adding a third library-using LLM risks three correlated votes plus template anchoring. Show a distinct additional detected error before paying for another reviewer.
+3. **No autonomous correctness signal:** source snippets, model agreement and self-inducted templates can all be consistently wrong. Updating memory from the model's own predictions without an external truth or falsifying signal can *increase* future error. `PROVISIONAL` and source citation are not correctness certifications. Test negative/contradictory precedents, reject/self-correction behavior and library rollback; do not assert autonomous error reduction by counting stored examples.
+4. **V2 did not measure what we claim:** its score was 35/36 cold, 34/36 warm, 36/36 raw on **slot/fact retrieval**, not normative-function classification; 12/12 had HOLD dispositions and a scorer failed to count real omitted-condition findings. The V2 warm/cold template menus also differed. There is no observed evidence that the library reduces true intrinsic classification errors.
+5. **Classification does not determine executable behavior by itself:** the same obligation label can mean deterministic formula, external event, subjective judgment, or unobservable data. The category is at most a first descriptor; later code-wise executability requires parties, object/action, preconditions, time, exceptions, references, observability and authority. Do NOT implement downstream executable routing now.
+
+**Required competent alternative:** compare the current Jev-based path with a **single existing LLM producing source-quoted structured normative functions + abstention** (and, where useful, a simple retrieval of prior source-backed cases). No Jev monopoly; no automatic need for 2–3 reviewer agents. Evaluate incremental error catch per extra reviewer against latency/cost and false holds. Prefer standard evidence/contradiction checking over a bespoke model or new DSL.
+
+**Independent measurement constraint:** the *best* available public legal benchmarks are not drop-in truth for our six normative-function labels. CUAD's expert labels describe topical clause types, and ContractNLI provides document-level entailment/contradiction/not-mentioned labels with supporting spans; they can provide existing source-rich examples or test subclaims but cannot be relabeled as our function-classification oracle. Metamorphic clause pairs (e.g. may↔must not, added exclusion) can test targeted invariance/changes but cannot certify real-world legal correctness. Without **any** independently validated semantic target (public expert labels when aligned, constrained verified examples, or a bounded one-time external review), claims about absolute accuracy or autonomous improvement are **BLOCKED**, not promising.
+
+**My recommended next incremental decision:** run the **OFFLINE HEADROOM/ORACLE preflight only** using existing V1/V2 authentic clauses and recorded outputs. Produce either (a) a small frozen, genuinely discriminating classification-error test with credible independent checking and a strong single-LLM baseline, or (b) `BLOCKED_BY_NO_CLASSIFICATION_ORACLE` and identify the smallest missing evidence. Do NOT build a third reviewer, issue provider calls, or assume a cumulative library has already been validated. If the smallest retrieval baseline suffices, **STOP architecture expansion**.
+
+**Not a novelty claim:** these are engineering inferences based on inspected Sophon code/results and established legal NLP tasks (CUAD, ContractNLI), not a completed new experiment.
+
+---
+
 ## Owner-established research objective (DO NOT REINTERPRET)
 
 Determine automatically the *intrinsic normative nature of each contractual provision*, with source-grounded, complementary machine checks and defensible abstention. A persistent **versioned provision-skeleton library must learn from successive contracts/counterexamples and reduce future classification errors**, developing narrow contract-family expertise. This is ONE coupled goal.
