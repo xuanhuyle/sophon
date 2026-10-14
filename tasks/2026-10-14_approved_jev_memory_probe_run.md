@@ -13,7 +13,9 @@
 
 ## Run this exact bounded sequence in the user's local authorized environment
 
-The user previously ran real Jev calls locally; do not assume Claude Code's remote session has `TYPESAFE_API_KEY`. Never search the user's whole machine for keys, print the key, upload it to GitHub, or put credentials in chat/logs. Use a local PowerShell session where the key is *already* configured. If the key is not present, **STOP with `BLOCKED_NO_TYPESAFE_KEY` and provide the local command for the user**, rather than a fake execution.
+**Credential fix (2026-10-14):** the owner has already provided API credentials in a local `.env` file. `probe.py live` now reads `TYPESAFE_API_KEY` automatically from the existing process environment, or `<repo-root>/.env`, or `prototype/jev_memory_causal_probe_v0/.env` in that order **only after** the explicit paid-call confirmation. No `python-dotenv` package or manual PowerShell export is necessary. These `.env` files are gitignored and the key is never printed. Do **not** ask for it again.
+
+**Location boundary:** a Claude Code cloud container has a different filesystem from the owner's Windows machine. It cannot see the owner's local `.env` unless the file is actually present there. Run the following from the owner's local PowerShell in the repository checkout, where `.env` already exists; alternatively the user can configure `TYPESAFE_API_KEY` as a cloud-environment secret. Do not copy the .env into the Git repository, chat, PR, or CI. If neither the environment nor either existing eligible `.env` in the current runtime has the key, report `BLOCKED_NO_TYPESAFE_KEY_IN_THIS_RUNTIME`; do not conduct searches for secrets.
 
 ```powershell
 cd C:\Claude\sophon
@@ -24,7 +26,9 @@ python prototype/jev_memory_causal_probe_v0/probe.py preflight
 python -m unittest discover -s prototype/jev_memory_causal_probe_v0 -p 'test_*.py' -v
 
 # The user has already authorized up to 20 calls. Do not run this twice.
-if (-not $env:TYPESAFE_API_KEY) { throw "BLOCKED_NO_TYPESAFE_KEY (configure it privately in this shell)" }
+# No environment-variable export required; probe.py safely reads the existing .env.
+# This check shows existence ONLY, not the secret's contents:
+Write-Host "Local repo .env exists: $(Test-Path .\.env)"
 $record = "prototype/jev_memory_causal_probe_v0/live_runs/jev_memory_20261014_approved_001.json"
 if (Test-Path $record) { throw "Record already exists; do not rerun without checking it" }
 python prototype/jev_memory_causal_probe_v0/probe.py live --confirm-paid-calls YES --output $record
