@@ -1,25 +1,30 @@
 # Jev memory probe v0 — live run status
 
-**Status: `BLOCKED_NO_TYPESAFE_KEY`. 0 of 20 authorized Jev calls made. No results exist.**
+**Status: `BLOCKED_NETWORK_POLICY_DENIES_API_TYPESAFE_AI`. 0 of 20 authorized Jev calls made. No results exist.**
 
-The owner authorized 20 Jev calls (10 cases × COLD/LEARNED) on 2026-10-14 (`tasks/2026-10-14_approved_jev_memory_probe_run.md`). The execution attempt ran in Claude Code's remote cloud container, which has no `TYPESAFE_API_KEY`. Per the task, no machine-wide key search was made. Nothing was substituted, mocked or replayed in its place. No recording file exists.
+The owner has authorized 20 Jev calls (10 cases × COLD/LEARNED; `tasks/2026-10-14_approved_jev_memory_probe_run.md`). No classification result exists, so there is **no evidence that the library improved, degraded or left unchanged the measured behaviour**.
 
-## Verified offline before the attempt
+## Attempt 2 — Claude Code cloud session, 2026-10-15
 
-- `probe.py preflight`: `READY_FOR_OPTIONAL_PROVIDER_RUN_NOT_LEGAL_ORACLE`
-  - 10 cases, 20 planned calls, 16 positive probes, model requested `jev-latest`
-  - `plan_sha256` `e52eb9e007bb0bf5c04f597cd0ff86ac9efad361e33ed5c4c75cc4189fd9989e`
-  - `questions_sha256` `eebc825204636d4cacfcdf99375f474cb70c41c5b644a16abafb70858a30ef08`
-  - `library_sha256` `bc8086d73116ba9460f3c0cca10a6ed011b69878368402dae56574780518fc45`
-- Unit tests: 8/8 pass.
-- `live` without a key refuses before any network call (exit 2), and no recording file is created.
+| Check | Result |
+|---|---|
+| `TYPESAFE_API_KEY` in the process environment | **Present**: 108 characters. The value was never displayed. No `.env` file is used in this runtime. |
+| `probe.py preflight` | `READY_FOR_OPTIONAL_PROVIDER_RUN_NOT_LEGAL_ORACLE`: 10 cases, 20 planned calls, 16 positive probes. Hashes below. |
+| Probe unit tests / context guard | Pass / `SOPHON_CONTEXT_GUARD_OK` |
+| Existing recording `live_runs/jev_memory_20261014_approved_001.json` | None. |
+| Reachability of `api.typesafe.ai:443` | **Denied.** The environment's egress proxy answered `403 Forbidden` to `CONNECT`, and the proxy logged a policy denial (10:56:26Z). The check was a tunnel request only: no HTTP request reached the API and nothing was billed. |
 
-## Defect fixed before any paid call
+**Why `live` was not started.** The first request could not reach the API. Starting `live` would only have created an empty `INCOMPLETE` recording. Under the runbook's no-repeat rule, that file would then block the real run. No provider call, retry or fallback was attempted.
 
-The runbook's relative `--output` path was **rejected** by the `live_runs/` guard. The guard compared an absolute directory with relative path parents, so it errored before any call. `probe.py` now resolves `--output` first. The guard itself is unchanged. The plan hash is unchanged.
+**Unblock.** Add `api.typesafe.ai` to the cloud environment's **Allowed domains** under Network access (keep "Allow package managers" ticked), or choose a broader access level. Then run the two runbook commands once in a new session. The local Windows PowerShell fallback in the runbook also remains valid.
 
-## To run (unchanged budget: exactly 20 calls, once)
+Frozen plan (unchanged since attempt 1):
+- `plan_sha256` `e52eb9e007bb0bf5c04f597cd0ff86ac9efad361e33ed5c4c75cc4189fd9989e`
+- `questions_sha256` `eebc825204636d4cacfcdf99375f474cb70c41c5b644a16abafb70858a30ef08`
+- `library_sha256` `bc8086d73116ba9460f3c0cca10a6ed011b69878368402dae56574780518fc45`
 
-Run it in the owner's local PowerShell, where the key is already set, using the command block in `tasks/2026-10-14_approved_jev_memory_probe_run.md`. Alternatively, add `TYPESAFE_API_KEY` as a secret in the cloud environment settings and start a new session.
+## Attempt 1 — 2026-10-14
 
-Whatever the outcome, results must be reported as `MANUALLY_CURATED_SOURCE_EXCERPTS`, `MULTI_LABEL_PER_EXCERPT` and `AUTOMATIC_SUBPROVISION_SEGMENTATION_NOT_IMPLEMENTED`, not as legal accuracy.
+`BLOCKED_NO_TYPESAFE_KEY`: the key was absent from the container, and 0 calls were made. In the same session, a relative `--output` path was found to be rejected by the `live_runs/` guard. `probe.py` now resolves the path before the check.
+
+Whenever results do exist, they must be reported as `MANUALLY_CURATED_SOURCE_EXCERPTS`, `MULTI_LABEL_PER_EXCERPT` and `AUTOMATIC_SUBPROVISION_SEGMENTATION_NOT_IMPLEMENTED`, not as legal accuracy.
