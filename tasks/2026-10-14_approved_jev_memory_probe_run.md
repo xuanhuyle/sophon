@@ -11,7 +11,35 @@
 - The 16 source-quoted positive probes are engineering-selected, not independent legal-function truth. Probabilities and quote anchors do not validate entire legal interpretations.
 - Same Jev model, same questions, same source/context. **Only** `prior_provision_skeletons` differs between COLD and LEARNED. Neither the model nor the taxonomy may be changed mid-run.
 
-## Run this exact bounded sequence in the user's local authorized environment
+## Run in the UPDATED Claude Code cloud environment (preferred as of 2026-10-15)
+
+The owner reports having configured the TypeSafe API credential in the Claude Code cloud environment. **Start a NEW cloud session attached to that UPDATED environment**: editing an environment does not necessarily inject new secrets into an already-running container. Do not assume the credential is accessible merely because it was saved in settings.
+
+Verify only **presence**, NEVER the credential's value:
+
+```bash
+git fetch origin
+git switch research/classification-library-headroom-2026-10-14
+git pull --ff-only
+python -c "import os; print('TYPESAFE_API_KEY available:', bool(os.environ.get('TYPESAFE_API_KEY')))"
+python prototype/jev_memory_causal_probe_v0/probe.py preflight
+python -m unittest discover -s prototype/jev_memory_causal_probe_v0 -p 'test_*.py' -v
+```
+
+If key presence is false, check whether the setting was saved under **environment variables** (the Python client needs `TYPESAFE_API_KEY`), rather than only a Network secret or a configuration on a different cloud environment. Report a blocker rather than querying/printing secrets; do not attempt a paid call yet. The API hostname `api.typesafe.ai` must be reachable. A cloud Network secret not surfaced to the process as `TYPESAFE_API_KEY` is insufficient for this existing Python client.
+
+If key is present, preflight and tests pass, and there is no existing `prototype/jev_memory_causal_probe_v0/live_runs/jev_memory_20261014_approved_001.json`, **perform the owner's already-authorized 20-call experiment once**:
+
+```bash
+python prototype/jev_memory_causal_probe_v0/probe.py live --confirm-paid-calls YES --output prototype/jev_memory_causal_probe_v0/live_runs/jev_memory_20261014_approved_001.json
+python prototype/jev_memory_causal_probe_v0/probe.py score --recorded prototype/jev_memory_causal_probe_v0/live_runs/jev_memory_20261014_approved_001.json
+```
+
+If a recording exists, inspect its non-secret metadata and progress first; **never repeat paid calls** or discard a partial recording without permission. The script checkpoints responses after each successful call. Follow reporting and STOP rules below.
+
+## Local Windows PowerShell fallback
+
+
 
 **Credential fix (2026-10-14):** the owner has already provided API credentials in a local `.env` file. `probe.py live` now reads `TYPESAFE_API_KEY` automatically from the existing process environment, or `<repo-root>/.env`, or `prototype/jev_memory_causal_probe_v0/.env` in that order **only after** the explicit paid-call confirmation. No `python-dotenv` package or manual PowerShell export is necessary. These `.env` files are gitignored and the key is never printed. Do **not** ask for it again.
 
