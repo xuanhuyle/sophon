@@ -1,0 +1,667 @@
+{
+  "mode": "interactive_agent_review_replay",
+  "engine": "DuckDB 1.5.5",
+  "live_databricks": false,
+  "queries": {
+    "source_scope": {
+      "sql": "\n        select count(*) as raw_records,\n               count(*) filter(where VendorID is null) as missing_vendor,\n               count(*) filter(where tpep_pickup_datetime >= timestamp '2025-01-01'\n                 and tpep_pickup_datetime < timestamp '2025-02-01') as january_pickups,\n               min(tpep_pickup_datetime) as earliest_pickup,\n               max(tpep_pickup_datetime) as latest_pickup\n        from bronze.yellow_tripdata_raw",
+      "columns": [
+        "raw_records",
+        "missing_vendor",
+        "january_pickups",
+        "earliest_pickup",
+        "latest_pickup"
+      ],
+      "rows": [
+        [
+          3475226,
+          0,
+          3475204,
+          "2024-12-31 20:47:55",
+          "2025-02-01 00:00:44"
+        ]
+      ],
+      "seconds": 0.054,
+      "result_sha256": "7be7ba43b6c0582654ffc086fa8d07aa239b93ba81aa119008222d6e8ec4aec2"
+    },
+    "key_collision_summary": {
+      "sql": "\n        with buckets as (\n          select VendorID, tpep_pickup_datetime, count(*) as records,\n            count(distinct struct_pack(dropoff := tpep_dropoff_datetime,\n                pickup_zone := PULocationID, dropoff_zone := DOLocationID,\n                distance := trip_distance, fare := fare_amount,\n                total := total_amount, method := payment_type)) as content_variants\n          from bronze.yellow_tripdata_raw where VendorID is not null group by 1,2\n        )\n        select sum(records) as eligible_records, count(*) as surviving_keys,\n               sum(records-1) as records_discarded,\n               count(*) filter(where records>1) as colliding_keys,\n               count(*) filter(where content_variants>1) as keys_with_different_trip_content,\n               sum(content_variants-1) as distinct_content_variants_discarded_at_least,\n               max(records) as max_records_per_key\n        from buckets",
+      "columns": [
+        "eligible_records",
+        "surviving_keys",
+        "records_discarded",
+        "colliding_keys",
+        "keys_with_different_trip_content",
+        "distinct_content_variants_discarded_at_least",
+        "max_records_per_key"
+      ],
+      "rows": [
+        [
+          3475226,
+          2110427,
+          1364799,
+          850717,
+          850717,
+          1364799,
+          17
+        ]
+      ],
+      "seconds": 2.238,
+      "result_sha256": "a0091420b4dbb7d61beedc6b83d99d4d0d3f4457c9726adcfb644f88a4cf7cf3"
+    },
+    "exact_duplicate_summary": {
+      "sql": "\n        select (select count(*) from bronze.yellow_tripdata_raw) as raw_records,\n               count(*) as byte_value_distinct_rows\n        from (select distinct * from bronze.yellow_tripdata_raw)",
+      "columns": [
+        "raw_records",
+        "byte_value_distinct_rows"
+      ],
+      "rows": [
+        [
+          3475226,
+          3475226
+        ]
+      ],
+      "seconds": 1.331,
+      "result_sha256": "ea93e975e1d8b7e91e85577884d781c6c09fc5d6cd13a9be56782fdc0a3a090f"
+    },
+    "collision_examples": {
+      "sql": "\n        with collision as (\n          select VendorID, tpep_pickup_datetime, count(*) as n\n          from bronze.yellow_tripdata_raw\n          where VendorID is not null\n            and tpep_pickup_datetime >= timestamp '2025-01-05'\n            and tpep_pickup_datetime < timestamp '2025-02-01'\n          group by 1,2 having count(*) > 1\n          order by n desc, VendorID, tpep_pickup_datetime limit 1\n        )\n        select t.VendorID, t.tpep_pickup_datetime, t.tpep_dropoff_datetime,\n               t.PULocationID, t.DOLocationID, t.trip_distance, t.fare_amount,\n               t.total_amount, t.payment_type, t.cbd_congestion_fee\n        from bronze.yellow_tripdata_raw t join collision c using(VendorID,tpep_pickup_datetime)\n        order by tpep_dropoff_datetime, PULocationID, DOLocationID, total_amount limit 10",
+      "columns": [
+        "VendorID",
+        "tpep_pickup_datetime",
+        "tpep_dropoff_datetime",
+        "PULocationID",
+        "DOLocationID",
+        "trip_distance",
+        "fare_amount",
+        "total_amount",
+        "payment_type",
+        "cbd_congestion_fee"
+      ],
+      "rows": [
+        [
+          2,
+          "2025-01-23 22:11:00",
+          "2025-01-23 22:19:00",
+          140,
+          75,
+          2.47,
+          13.61,
+          17.61,
+          0,
+          0.0
+        ],
+        [
+          2,
+          "2025-01-23 22:11:00",
+          "2025-01-23 22:19:00",
+          164,
+          230,
+          1.36,
+          -4.75,
+          4.32,
+          0,
+          0.75
+        ],
+        [
+          2,
+          "2025-01-23 22:11:00",
+          "2025-01-23 22:20:24",
+          233,
+          236,
+          2.23,
+          14.92,
+          19.67,
+          0,
+          0.75
+        ],
+        [
+          2,
+          "2025-01-23 22:11:00",
+          "2025-01-23 22:21:00",
+          114,
+          234,
+          1.58,
+          11.17,
+          15.92,
+          0,
+          0.75
+        ],
+        [
+          2,
+          "2025-01-23 22:11:00",
+          "2025-01-23 22:22:00",
+          97,
+          62,
+          2.09,
+          13.07,
+          17.48,
+          0,
+          0.0
+        ],
+        [
+          2,
+          "2025-01-23 22:11:00",
+          "2025-01-23 22:22:00",
+          107,
+          161,
+          1.77,
+          13.41,
+          18.16,
+          0,
+          0.75
+        ],
+        [
+          2,
+          "2025-01-23 22:11:00",
+          "2025-01-23 22:22:00",
+          230,
+          90,
+          1.61,
+          21.94,
+          26.69,
+          0,
+          0.75
+        ],
+        [
+          2,
+          "2025-01-23 22:11:00",
+          "2025-01-23 22:22:46",
+          186,
+          170,
+          1.4,
+          12.1,
+          22.31,
+          1,
+          0.75
+        ],
+        [
+          2,
+          "2025-01-23 22:11:00",
+          "2025-01-23 22:23:36",
+          137,
+          261,
+          5.08,
+          22.76,
+          27.51,
+          0,
+          0.75
+        ],
+        [
+          2,
+          "2025-01-23 22:11:00",
+          "2025-01-23 22:23:38",
+          230,
+          164,
+          1.24,
+          -4.75,
+          3.77,
+          0,
+          0.75
+        ]
+      ],
+      "seconds": 0.398,
+      "result_sha256": "9d1eb22a2101d1ded6377cc372ffe05dbf063cd9596ad5d3cc42732208fd4494"
+    },
+    "cbd_fee_distribution": {
+      "sql": "\n        select case when tpep_pickup_datetime < timestamp '2025-01-05'\n                    then 'before_start' else 'on_or_after_start' end as period,\n               cbd_congestion_fee, count(*) as records\n        from bronze.yellow_tripdata_raw\n        where tpep_pickup_datetime >= timestamp '2025-01-01'\n          and tpep_pickup_datetime < timestamp '2025-02-01'\n        group by 1,2 order by 1,2",
+      "columns": [
+        "period",
+        "cbd_congestion_fee",
+        "records"
+      ],
+      "rows": [
+        [
+          "before_start",
+          0.0,
+          363673
+        ],
+        [
+          "before_start",
+          0.75,
+          401
+        ],
+        [
+          "on_or_after_start",
+          -0.75,
+          6553
+        ],
+        [
+          "on_or_after_start",
+          0.0,
+          858484
+        ],
+        [
+          "on_or_after_start",
+          0.75,
+          2246093
+        ]
+      ],
+      "seconds": 0.057,
+      "result_sha256": "a936eadbf96338725ae1f69aeb64aaedb4eabf746930c2edfd46b68bcf57ad75"
+    },
+    "numeric_default_contrast": {
+      "sql": "\n        select typeof(cast(0.75 as numeric)) as local_numeric_type,\n               cast(0.75 as numeric) as local_result,\n               typeof(cast(0.75 as decimal(10,0))) as documented_target_type,\n               cast(0.75 as decimal(10,0)) as simulated_target_result",
+      "columns": [
+        "local_numeric_type",
+        "local_result",
+        "documented_target_type",
+        "simulated_target_result"
+      ],
+      "rows": [
+        [
+          "DECIMAL(18,3)",
+          "0.750",
+          "DECIMAL(10,0)",
+          "1"
+        ]
+      ],
+      "seconds": 0.002,
+      "result_sha256": "d8e63665af267b9ec9c102779e89bb64a2d22a7b38c0f7f7c91f850f12d3e6f6"
+    },
+    "raw_cbd_precision_exposure": {
+      "sql": "\n        select cbd_congestion_fee, count(*) as records,\n               cast(cbd_congestion_fee as decimal(10,0)) as target_type_simulation,\n               sum(cast(cbd_congestion_fee as decimal(18,2))) as raw_sum,\n               sum(cast(cbd_congestion_fee as decimal(10,0))) as simulated_sum\n        from bronze.yellow_tripdata_raw\n        group by 1,3 order by 1",
+      "columns": [
+        "cbd_congestion_fee",
+        "records",
+        "target_type_simulation",
+        "raw_sum",
+        "simulated_sum"
+      ],
+      "rows": [
+        [
+          -0.75,
+          6553,
+          "-1",
+          "-4914.75",
+          "-6553"
+        ],
+        [
+          0.0,
+          1222178,
+          "0",
+          "0.00",
+          "0"
+        ],
+        [
+          0.75,
+          2246495,
+          "1",
+          "1684871.25",
+          "2246495"
+        ]
+      ],
+      "seconds": 0.106,
+      "result_sha256": "c90b8d8c8c2a5574d2e9704891ca89f22bc9f3a006cb453ea2068deeaa8f5b6f"
+    },
+    "local_model_cardinality": {
+      "sql": "\n        select 'yellow_staging' as relation, count(*) as records from silver.stg_yellow_tripdata\n        union all select 'yellow_fact', count(*) from silver.fact_trips where service_type='Yellow'\n        union all select 'yellow_mart_represented_trips', sum(total_monthly_trips)\n          from gold.dm_monthly_zone_revenue where service_type='Yellow'",
+      "columns": [
+        "relation",
+        "records"
+      ],
+      "rows": [
+        [
+          "yellow_staging",
+          2110427
+        ],
+        [
+          "yellow_fact",
+          2110427
+        ],
+        [
+          "yellow_mart_represented_trips",
+          2110427
+        ]
+      ],
+      "seconds": 0.201,
+      "result_sha256": "91a5f67375ff41036335b10acf42aeef0e924dd348500c8ced31654593e1cb5d"
+    },
+    "local_fact_cbd_precision_exposure": {
+      "sql": "\n        select cbd_congestion_fee, count(*) as records,\n               sum(cbd_congestion_fee) as local_fact_sum,\n               sum(cast(cbd_congestion_fee as decimal(10,0))) as simulated_target_sum\n        from silver.fact_trips where service_type='Yellow'\n        group by 1 order by 1",
+      "columns": [
+        "cbd_congestion_fee",
+        "records",
+        "local_fact_sum",
+        "simulated_target_sum"
+      ],
+      "rows": [
+        [
+          "-0.750",
+          3325,
+          "-2493.750",
+          "-3325"
+        ],
+        [
+          "0.000",
+          773632,
+          "0.000",
+          "0"
+        ],
+        [
+          "0.750",
+          1333470,
+          "1000102.500",
+          "1333470"
+        ]
+      ],
+      "seconds": 0.028,
+      "result_sha256": "c02f27594d6cefb63eb43ca887fe6d8debfc57e255c62e581615a5db2e011a64"
+    },
+    "cash_tip_observability": {
+      "sql": "\n        select payment_type, count(*) as records,\n               count(*) filter(where tip_amount is null) as missing_tip_values,\n               sum(cast(tip_amount as decimal(18,2))) as recorded_tip_total\n        from bronze.yellow_tripdata_raw group by 1 order by 1",
+      "columns": [
+        "payment_type",
+        "records",
+        "missing_tip_values",
+        "recorded_tip_total"
+      ],
+      "rows": [
+        [
+          0,
+          540149,
+          0,
+          "244338.01"
+        ],
+        [
+          1,
+          2444393,
+          0,
+          "10036855.92"
+        ],
+        [
+          2,
+          390429,
+          0,
+          "1059.48"
+        ],
+        [
+          3,
+          23773,
+          0,
+          "400.95"
+        ],
+        [
+          4,
+          76481,
+          0,
+          "3363.99"
+        ],
+        [
+          5,
+          1,
+          0,
+          "0.00"
+        ]
+      ],
+      "seconds": 0.08,
+      "result_sha256": "0b2f893cbfe4bd259da8c0fb146343860d51437e51e5768e803ae1b13a722044"
+    },
+    "mart_cbd_reconciliation": {
+      "sql": "\n        select (select sum(cbd_congestion_fee) from silver.fact_trips\n                where service_type='Yellow') as fact_cbd,\n               (select sum(revenue_monthly_cbd_congestion_fee) from gold.dm_monthly_zone_revenue\n                where service_type='Yellow') as mart_cbd,\n               (select sum(total_amount) from silver.fact_trips\n                where service_type='Yellow') as fact_recorded_charges,\n               (select sum(revenue_monthly_total_amount) from gold.dm_monthly_zone_revenue\n                where service_type='Yellow') as mart_recorded_charges",
+      "columns": [
+        "fact_cbd",
+        "mart_cbd",
+        "fact_recorded_charges",
+        "mart_recorded_charges"
+      ],
+      "rows": [
+        [
+          "997608.750",
+          "997608.750",
+          "54629640.410",
+          "54629640.410"
+        ]
+      ],
+      "seconds": 0.027,
+      "result_sha256": "944d647de6495ace4e08475e0190000e7a978f6ae5b0230a89e9cf8517f46eb0"
+    },
+    "pre_start_charge_followup": {
+      "sql": "\n        select count(*) as charged_pre_start_pickups,\n               count(*) filter(where tpep_dropoff_datetime >= timestamp '2025-01-05')\n                 as dropoffs_on_or_after_start,\n               count(*) filter(where tpep_dropoff_datetime < timestamp '2025-01-05')\n                 as dropoffs_before_start,\n               min(tpep_pickup_datetime) as earliest_pickup,\n               max(tpep_dropoff_datetime) as latest_dropoff\n        from bronze.yellow_tripdata_raw\n        where tpep_pickup_datetime >= timestamp '2025-01-01'\n          and tpep_pickup_datetime < timestamp '2025-01-05'\n          and cbd_congestion_fee > 0",
+      "columns": [
+        "charged_pre_start_pickups",
+        "dropoffs_on_or_after_start",
+        "dropoffs_before_start",
+        "earliest_pickup",
+        "latest_dropoff"
+      ],
+      "rows": [
+        [
+          401,
+          397,
+          4,
+          "2025-01-04 21:58:34",
+          "2025-01-05 00:50:37"
+        ]
+      ],
+      "seconds": 0.006,
+      "result_sha256": "a3ae9e48582e3e8c602e38176885f913b56fdb8cf04be7147b79340105292918"
+    }
+  },
+  "lineage": {
+    "model.nyc_taxi_databricks_dbt.stg_yellow_tripdata": {
+      "name": "stg_yellow_tripdata",
+      "resource_type": "model",
+      "depends_on": [
+        "source.nyc_taxi_databricks_dbt.staging.yellow_tripdata_raw"
+      ],
+      "original_file_path": "models/staging/stg_yellow_tripdata.sql",
+      "relation_name": "\"prod\".\"silver\".\"stg_yellow_tripdata\""
+    },
+    "model.nyc_taxi_databricks_dbt.stg_green_tripdata": {
+      "name": "stg_green_tripdata",
+      "resource_type": "model",
+      "depends_on": [
+        "source.nyc_taxi_databricks_dbt.staging.green_tripdata_raw"
+      ],
+      "original_file_path": "models/staging/stg_green_tripdata.sql",
+      "relation_name": "\"prod\".\"silver\".\"stg_green_tripdata\""
+    },
+    "model.nyc_taxi_databricks_dbt.fact_trips": {
+      "name": "fact_trips",
+      "resource_type": "model",
+      "depends_on": [
+        "model.nyc_taxi_databricks_dbt.stg_green_tripdata",
+        "model.nyc_taxi_databricks_dbt.stg_yellow_tripdata"
+      ],
+      "original_file_path": "models/core/fact_trips.sql",
+      "relation_name": "\"prod\".\"silver\".\"fact_trips\""
+    },
+    "model.nyc_taxi_databricks_dbt.dm_monthly_zone_revenue": {
+      "name": "dm_monthly_zone_revenue",
+      "resource_type": "model",
+      "depends_on": [
+        "model.nyc_taxi_databricks_dbt.fact_trips",
+        "model.nyc_taxi_databricks_dbt.dim_zones"
+      ],
+      "original_file_path": "models/core/dm_monthly_zone_revenue.sql",
+      "relation_name": "\"prod\".\"gold\".\"dm_monthly_zone_revenue\""
+    },
+    "model.nyc_taxi_databricks_dbt.dim_zones": {
+      "name": "dim_zones",
+      "resource_type": "model",
+      "depends_on": [
+        "seed.nyc_taxi_databricks_dbt.taxi_zone_lookup"
+      ],
+      "original_file_path": "models/core/dim_zones.sql",
+      "relation_name": "\"prod\".\"silver\".\"dim_zones\""
+    },
+    "seed.nyc_taxi_databricks_dbt.taxi_zone_lookup": {
+      "name": "taxi_zone_lookup",
+      "resource_type": "seed",
+      "depends_on": [],
+      "original_file_path": "seeds/taxi_zone_lookup.csv",
+      "relation_name": "\"prod\".\"silver\".\"taxi_zone_lookup\""
+    }
+  },
+  "dbt_results": [
+    {
+      "unique_id": "model.nyc_taxi_databricks_dbt.stg_yellow_tripdata",
+      "status": "success",
+      "failures": null,
+      "message": "OK"
+    },
+    {
+      "unique_id": "model.nyc_taxi_databricks_dbt.stg_green_tripdata",
+      "status": "success",
+      "failures": null,
+      "message": "OK"
+    },
+    {
+      "unique_id": "seed.nyc_taxi_databricks_dbt.taxi_zone_lookup",
+      "status": "success",
+      "failures": null,
+      "message": "CREATE 265"
+    },
+    {
+      "unique_id": "test.nyc_taxi_databricks_dbt.not_null_stg_yellow_tripdata_pickup_datetime.140d66ac44",
+      "status": "pass",
+      "failures": 0,
+      "message": null
+    },
+    {
+      "unique_id": "test.nyc_taxi_databricks_dbt.accepted_values_stg_yellow_tripdata_payment_type___var_payment_type_values_.0cede56c1a",
+      "status": "pass",
+      "failures": 0,
+      "message": null
+    },
+    {
+      "unique_id": "test.nyc_taxi_databricks_dbt.not_null_stg_yellow_tripdata_tripid.099802d91c",
+      "status": "pass",
+      "failures": 0,
+      "message": null
+    },
+    {
+      "unique_id": "test.nyc_taxi_databricks_dbt.accepted_values_stg_green_tripdata_payment_type___var_payment_type_values_.420849fc19",
+      "status": "pass",
+      "failures": 0,
+      "message": null
+    },
+    {
+      "unique_id": "test.nyc_taxi_databricks_dbt.not_null_stg_green_tripdata_pickup_datetime.4c4eb3b86e",
+      "status": "pass",
+      "failures": 0,
+      "message": null
+    },
+    {
+      "unique_id": "test.nyc_taxi_databricks_dbt.not_null_stg_green_tripdata_tripid.3e149d002b",
+      "status": "pass",
+      "failures": 0,
+      "message": null
+    },
+    {
+      "unique_id": "test.nyc_taxi_databricks_dbt.unique_stg_green_tripdata_tripid.d46e7e4182",
+      "status": "pass",
+      "failures": 0,
+      "message": null
+    },
+    {
+      "unique_id": "test.nyc_taxi_databricks_dbt.not_null_taxi_zone_lookup_LocationID.681670029a",
+      "status": "pass",
+      "failures": 0,
+      "message": null
+    },
+    {
+      "unique_id": "test.nyc_taxi_databricks_dbt.relationships_stg_green_tripdata_dropoff_locationid__LocationID__ref_taxi_zone_lookup_.1123e72def",
+      "status": "pass",
+      "failures": 0,
+      "message": null
+    },
+    {
+      "unique_id": "test.nyc_taxi_databricks_dbt.relationships_stg_green_tripdata_pickup_locationid__LocationID__ref_taxi_zone_lookup_.14c5037e66",
+      "status": "pass",
+      "failures": 0,
+      "message": null
+    },
+    {
+      "unique_id": "test.nyc_taxi_databricks_dbt.relationships_stg_yellow_tripdata_dropoff_locationid__LocationID__ref_taxi_zone_lookup_.959ca7ed7a",
+      "status": "pass",
+      "failures": 0,
+      "message": null
+    },
+    {
+      "unique_id": "test.nyc_taxi_databricks_dbt.relationships_stg_yellow_tripdata_pickup_locationid__LocationID__ref_taxi_zone_lookup_.0dc4802421",
+      "status": "pass",
+      "failures": 0,
+      "message": null
+    },
+    {
+      "unique_id": "test.nyc_taxi_databricks_dbt.unique_taxi_zone_lookup_LocationID.7117f203c8",
+      "status": "pass",
+      "failures": 0,
+      "message": null
+    },
+    {
+      "unique_id": "model.nyc_taxi_databricks_dbt.dim_zones",
+      "status": "success",
+      "failures": null,
+      "message": "OK"
+    },
+    {
+      "unique_id": "test.nyc_taxi_databricks_dbt.not_null_dim_zones_locationid.f30f9e4485",
+      "status": "pass",
+      "failures": 0,
+      "message": null
+    },
+    {
+      "unique_id": "test.nyc_taxi_databricks_dbt.unique_dim_zones_locationid.1048f5fa5f",
+      "status": "pass",
+      "failures": 0,
+      "message": null
+    },
+    {
+      "unique_id": "test.nyc_taxi_databricks_dbt.unique_stg_yellow_tripdata_tripid.7a6ae70c82",
+      "status": "pass",
+      "failures": 0,
+      "message": null
+    },
+    {
+      "unique_id": "model.nyc_taxi_databricks_dbt.fact_trips",
+      "status": "success",
+      "failures": null,
+      "message": "OK"
+    },
+    {
+      "unique_id": "test.nyc_taxi_databricks_dbt.not_null_fact_trips_tripid.05211a69b8",
+      "status": "pass",
+      "failures": 0,
+      "message": null
+    },
+    {
+      "unique_id": "test.nyc_taxi_databricks_dbt.unique_fact_trips_tripid.77e4d1dd79",
+      "status": "pass",
+      "failures": 0,
+      "message": null
+    },
+    {
+      "unique_id": "model.nyc_taxi_databricks_dbt.dm_monthly_zone_revenue",
+      "status": "success",
+      "failures": null,
+      "message": "OK"
+    },
+    {
+      "unique_id": "test.nyc_taxi_databricks_dbt.not_null_dm_monthly_zone_revenue_pickup_borough.0487dee0c6",
+      "status": "pass",
+      "failures": 0,
+      "message": null
+    },
+    {
+      "unique_id": "test.nyc_taxi_databricks_dbt.not_null_dm_monthly_zone_revenue_pickup_zone.a6fdf7a13a",
+      "status": "pass",
+      "failures": 0,
+      "message": null
+    },
+    {
+      "unique_id": "test.nyc_taxi_databricks_dbt.not_null_dm_monthly_zone_revenue_revenue_month.eb3be65b7c",
+      "status": "pass",
+      "failures": 0,
+      "message": null
+    },
+    {
+      "unique_id": "test.nyc_taxi_databricks_dbt.not_null_dm_monthly_zone_revenue_service_type.09cacad0a6",
+      "status": "pass",
+      "failures": 0,
+      "message": null
+    }
+  ]
+}

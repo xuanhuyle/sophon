@@ -1,0 +1,70 @@
+[0m19:45:17  Running with dbt=1.12.5
+[0m19:45:18  Registered adapter: duckdb=1.11.0
+[0m19:45:18  Unable to do partial parsing because profile has changed
+[0m19:45:20  [[33mWARNING[0m]: Argument node in the yaml for macro generate_schema_name has an invalid type.
+[0m19:45:20  Found 5 models, 1 seed, 22 data tests, 2 sources, 640 macros
+[0m19:45:20  
+[0m19:45:20  Concurrency: 2 threads (target='dev')
+[0m19:45:20  
+[0m19:45:21  1 of 28 START sql view model silver.stg_green_tripdata ......................... [RUN]
+[0m19:45:21  2 of 28 START sql view model silver.stg_yellow_tripdata ........................ [RUN]
+[0m19:45:21  2 of 28 OK created sql view model silver.stg_yellow_tripdata ................... [[32mOK[0m in 0.12s]
+[0m19:45:21  3 of 28 START seed file silver.taxi_zone_lookup ................................ [RUN]
+[0m19:45:21  1 of 28 OK created sql view model silver.stg_green_tripdata .................... [[32mOK[0m in 0.13s]
+[0m19:45:21  4 of 28 START test accepted_values_stg_yellow_tripdata_payment_type___var_payment_type_values_  [RUN]
+[0m19:45:21  3 of 28 OK loaded seed file silver.taxi_zone_lookup ............................ [[32mCREATE 265[0m in 0.10s]
+[0m19:45:21  5 of 28 START test not_null_stg_yellow_tripdata_pickup_datetime ................ [RUN]
+[0m19:45:21  5 of 28 PASS not_null_stg_yellow_tripdata_pickup_datetime ...................... [[32mPASS[0m in 0.04s]
+[0m19:45:21  6 of 28 START test not_null_stg_yellow_tripdata_tripid ......................... [RUN]
+[0m19:45:22  4 of 28 PASS accepted_values_stg_yellow_tripdata_payment_type___var_payment_type_values_  [[32mPASS[0m in 0.92s]
+[0m19:45:22  7 of 28 START test unique_stg_yellow_tripdata_tripid ........................... [RUN]
+[0m19:45:22  6 of 28 PASS not_null_stg_yellow_tripdata_tripid ............................... [[32mPASS[0m in 1.15s]
+[0m19:45:22  8 of 28 START test accepted_values_stg_green_tripdata_payment_type___var_payment_type_values_  [RUN]
+[0m19:45:22  8 of 28 PASS accepted_values_stg_green_tripdata_payment_type___var_payment_type_values_  [[32mPASS[0m in 0.03s]
+[0m19:45:22  9 of 28 START test not_null_stg_green_tripdata_pickup_datetime ................. [RUN]
+[0m19:45:22  9 of 28 PASS not_null_stg_green_tripdata_pickup_datetime ....................... [[32mPASS[0m in 0.03s]
+[0m19:45:22  10 of 28 START test not_null_stg_green_tripdata_tripid ......................... [RUN]
+[0m19:45:22  10 of 28 PASS not_null_stg_green_tripdata_tripid ............................... [[32mPASS[0m in 0.03s]
+[0m19:45:22  11 of 28 START test unique_stg_green_tripdata_tripid ........................... [RUN]
+[0m19:45:22  11 of 28 PASS unique_stg_green_tripdata_tripid ................................. [[32mPASS[0m in 0.06s]
+[0m19:45:22  12 of 28 START test not_null_taxi_zone_lookup_LocationID ....................... [RUN]
+[0m19:45:22  12 of 28 PASS not_null_taxi_zone_lookup_LocationID ............................. [[32mPASS[0m in 0.02s]
+[0m19:45:22  13 of 28 START test relationships_stg_green_tripdata_dropoff_locationid__LocationID__ref_taxi_zone_lookup_  [RUN]
+[0m19:45:22  13 of 28 PASS relationships_stg_green_tripdata_dropoff_locationid__LocationID__ref_taxi_zone_lookup_  [[32mPASS[0m in 0.03s]
+[0m19:45:22  14 of 28 START test relationships_stg_green_tripdata_pickup_locationid__LocationID__ref_taxi_zone_lookup_  [RUN]
+[0m19:45:22  14 of 28 PASS relationships_stg_green_tripdata_pickup_locationid__LocationID__ref_taxi_zone_lookup_  [[32mPASS[0m in 0.03s]
+[0m19:45:22  15 of 28 START test relationships_stg_yellow_tripdata_dropoff_locationid__LocationID__ref_taxi_zone_lookup_  [RUN]
+[0m19:45:23  15 of 28 PASS relationships_stg_yellow_tripdata_dropoff_locationid__LocationID__ref_taxi_zone_lookup_  [[32mPASS[0m in 0.58s]
+[0m19:45:23  16 of 28 START test relationships_stg_yellow_tripdata_pickup_locationid__LocationID__ref_taxi_zone_lookup_  [RUN]
+[0m19:45:23  16 of 28 PASS relationships_stg_yellow_tripdata_pickup_locationid__LocationID__ref_taxi_zone_lookup_  [[32mPASS[0m in 0.63s]
+[0m19:45:23  17 of 28 START test unique_taxi_zone_lookup_LocationID ......................... [RUN]
+[0m19:45:23  17 of 28 PASS unique_taxi_zone_lookup_LocationID ............................... [[32mPASS[0m in 0.04s]
+[0m19:45:23  18 of 28 START sql table model silver.dim_zones ................................ [RUN]
+[0m19:45:23  18 of 28 OK created sql table model silver.dim_zones ........................... [[32mOK[0m in 0.07s]
+[0m19:45:23  19 of 28 START test not_null_dim_zones_locationid .............................. [RUN]
+[0m19:45:24  19 of 28 PASS not_null_dim_zones_locationid .................................... [[32mPASS[0m in 0.02s]
+[0m19:45:24  20 of 28 START test unique_dim_zones_locationid ................................ [RUN]
+[0m19:45:24  20 of 28 PASS unique_dim_zones_locationid ...................................... [[32mPASS[0m in 0.02s]
+[0m19:45:25  7 of 28 PASS unique_stg_yellow_tripdata_tripid ................................. [[32mPASS[0m in 3.80s]
+[0m19:45:25  21 of 28 START sql incremental model silver.fact_trips ......................... [RUN]
+[0m19:45:30  21 of 28 OK created sql incremental model silver.fact_trips .................... [[32mOK[0m in 4.97s]
+[0m19:45:30  22 of 28 START test not_null_fact_trips_tripid ................................. [RUN]
+[0m19:45:30  23 of 28 START test unique_fact_trips_tripid ................................... [RUN]
+[0m19:45:30  22 of 28 PASS not_null_fact_trips_tripid ....................................... [[32mPASS[0m in 0.05s]
+[0m19:45:31  23 of 28 PASS unique_fact_trips_tripid ......................................... [[32mPASS[0m in 0.53s]
+[0m19:45:31  24 of 28 START sql table model gold.dm_monthly_zone_revenue .................... [RUN]
+[0m19:45:31  24 of 28 OK created sql table model gold.dm_monthly_zone_revenue ............... [[32mOK[0m in 0.32s]
+[0m19:45:31  25 of 28 START test not_null_dm_monthly_zone_revenue_pickup_borough ............ [RUN]
+[0m19:45:31  26 of 28 START test not_null_dm_monthly_zone_revenue_pickup_zone ............... [RUN]
+[0m19:45:31  25 of 28 PASS not_null_dm_monthly_zone_revenue_pickup_borough .................. [[32mPASS[0m in 0.04s]
+[0m19:45:31  27 of 28 START test not_null_dm_monthly_zone_revenue_revenue_month ............. [RUN]
+[0m19:45:31  26 of 28 PASS not_null_dm_monthly_zone_revenue_pickup_zone ..................... [[32mPASS[0m in 0.05s]
+[0m19:45:31  28 of 28 START test not_null_dm_monthly_zone_revenue_service_type .............. [RUN]
+[0m19:45:31  27 of 28 PASS not_null_dm_monthly_zone_revenue_revenue_month ................... [[32mPASS[0m in 0.03s]
+[0m19:45:31  28 of 28 PASS not_null_dm_monthly_zone_revenue_service_type .................... [[32mPASS[0m in 0.03s]
+[0m19:45:31  
+[0m19:45:31  Finished running 1 incremental model, 1 seed, 2 table models, 22 data tests, 2 view models in 0 hours 0 minutes and 10.97 seconds (10.97s).
+[0m19:45:31  
+[0m19:45:31  [32mCompleted successfully[0m
+[0m19:45:31  
+[0m19:45:31  Done. PASS=28 WARN=0 ERROR=0 SKIP=0 NO-OP=0 REUSED=0 TOTAL=28

@@ -1,0 +1,216 @@
+{
+  "mode": "local_consumer_simulation_with_explicit_semantic_binding",
+  "protocol_sha256": "fbb348694c90866ddce4832b0127bc271130c119cd8039233c4f93b600d4338e",
+  "event": {
+    "id": "tlc.cbd_rate",
+    "source_node": "source.nyc_taxi_databricks_dbt.staging.yellow_tripdata_raw",
+    "field": "cbd_congestion_fee",
+    "source": {
+      "url": "https://portal.311.nyc.gov/article/?kanumber=KA-03612",
+      "bytes": 230115,
+      "sha256": "43e7679b4fc13c640524ba07759af82b984bbdc80a537655d6fc781b104eda0c"
+    },
+    "effective_date_source": {
+      "url": "https://www.nyc.gov/assets/tlc/downloads/pdf/data_dictionary_trip_records_yellow.pdf",
+      "bytes": 148556,
+      "sha256": "b9e9f0ecfa6bd9cc847283379173fd764fe1ab76d2fa143329f541cb1f479993"
+    },
+    "interpretation": "For eligible yellow-taxi per-trip charges, the stated rate is USD 0.75. The dictionary dates this fee to 2025-01-05. A trip may straddle the start time; pickup date alone cannot determine applicability.",
+    "review_findings": [
+      "Bare numeric has zero scale on documented Databricks semantics; fractional fee representation requires review."
+    ],
+    "applicability_limits": "No complete route, enrollment, exemption or correction evidence; no row-level legal clearance.",
+    "binding_origin": "conversational_reviewer; explicitly supplied to propagation mechanism"
+  },
+  "before": {
+    "monthly_bi_consumer": {
+      "consumer": "monthly_bi_consumer",
+      "target": "model.nyc_taxi_databricks_dbt.dm_monthly_zone_revenue",
+      "dependency_code_sha256": "f2c24a136d81d9183b11c980ef78244a7141e1ad9e5b61d3c28688b631050f03",
+      "scope": "yellow service only",
+      "governing_context": [
+        {
+          "id": "tlc.record_semantics",
+          "source_node": "source.nyc_taxi_databricks_dbt.staging.yellow_tripdata_raw",
+          "source": {
+            "url": "https://www.nyc.gov/assets/tlc/downloads/pdf/data_dictionary_trip_records_yellow.pdf",
+            "bytes": 148556,
+            "sha256": "b9e9f0ecfa6bd9cc847283379173fd764fe1ab76d2fa143329f541cb1f479993"
+          },
+          "interpretation": "Provider identity is not trip identity; recorded totals exclude cash tips.",
+          "review_findings": [
+            "Unsupported deduplication key discards distinct records.",
+            "Cash-tip completeness must not be inferred."
+          ],
+          "binding_origin": "conversational_reviewer; not machine-certified authority"
+        }
+      ],
+      "alignment_status": "REVIEW_REQUIRED",
+      "context_id": "74107295cfd04a8e86d9d2f6933fb917d76b51277b60647029bceb404c9605c5"
+    },
+    "trip_review_consumer": {
+      "consumer": "trip_review_consumer",
+      "target": "model.nyc_taxi_databricks_dbt.fact_trips",
+      "dependency_code_sha256": "df1a2c72625b9d936f5743645bb742de592a562cbab287485b809acaa6983688",
+      "scope": "yellow service only",
+      "governing_context": [
+        {
+          "id": "tlc.record_semantics",
+          "source_node": "source.nyc_taxi_databricks_dbt.staging.yellow_tripdata_raw",
+          "source": {
+            "url": "https://www.nyc.gov/assets/tlc/downloads/pdf/data_dictionary_trip_records_yellow.pdf",
+            "bytes": 148556,
+            "sha256": "b9e9f0ecfa6bd9cc847283379173fd764fe1ab76d2fa143329f541cb1f479993"
+          },
+          "interpretation": "Provider identity is not trip identity; recorded totals exclude cash tips.",
+          "review_findings": [
+            "Unsupported deduplication key discards distinct records.",
+            "Cash-tip completeness must not be inferred."
+          ],
+          "binding_origin": "conversational_reviewer; not machine-certified authority"
+        }
+      ],
+      "alignment_status": "REVIEW_REQUIRED",
+      "context_id": "2d57e435c87716e26a81814121dc413bfe310927fdcc851d3c50de4f9392c3c0"
+    },
+    "zone_reference_consumer": {
+      "consumer": "zone_reference_consumer",
+      "target": "model.nyc_taxi_databricks_dbt.dim_zones",
+      "dependency_code_sha256": "4aec42613d09367384444c44c60787ccdf8ea079d16cd9a16c75a907370533f4",
+      "scope": "yellow service only",
+      "governing_context": [],
+      "alignment_status": "OUTSIDE_REVIEW_SCOPE",
+      "context_id": "4c58e8797fe7b2199bfb24fdc00e2ebafcb93392bcc2c2390e4113ca90a30ddf"
+    }
+  },
+  "after": {
+    "monthly_bi_consumer": {
+      "consumer": "monthly_bi_consumer",
+      "target": "model.nyc_taxi_databricks_dbt.dm_monthly_zone_revenue",
+      "dependency_code_sha256": "f2c24a136d81d9183b11c980ef78244a7141e1ad9e5b61d3c28688b631050f03",
+      "scope": "yellow service only",
+      "governing_context": [
+        {
+          "id": "tlc.record_semantics",
+          "source_node": "source.nyc_taxi_databricks_dbt.staging.yellow_tripdata_raw",
+          "source": {
+            "url": "https://www.nyc.gov/assets/tlc/downloads/pdf/data_dictionary_trip_records_yellow.pdf",
+            "bytes": 148556,
+            "sha256": "b9e9f0ecfa6bd9cc847283379173fd764fe1ab76d2fa143329f541cb1f479993"
+          },
+          "interpretation": "Provider identity is not trip identity; recorded totals exclude cash tips.",
+          "review_findings": [
+            "Unsupported deduplication key discards distinct records.",
+            "Cash-tip completeness must not be inferred."
+          ],
+          "binding_origin": "conversational_reviewer; not machine-certified authority"
+        },
+        {
+          "id": "tlc.cbd_rate",
+          "source_node": "source.nyc_taxi_databricks_dbt.staging.yellow_tripdata_raw",
+          "field": "cbd_congestion_fee",
+          "source": {
+            "url": "https://portal.311.nyc.gov/article/?kanumber=KA-03612",
+            "bytes": 230115,
+            "sha256": "43e7679b4fc13c640524ba07759af82b984bbdc80a537655d6fc781b104eda0c"
+          },
+          "effective_date_source": {
+            "url": "https://www.nyc.gov/assets/tlc/downloads/pdf/data_dictionary_trip_records_yellow.pdf",
+            "bytes": 148556,
+            "sha256": "b9e9f0ecfa6bd9cc847283379173fd764fe1ab76d2fa143329f541cb1f479993"
+          },
+          "interpretation": "For eligible yellow-taxi per-trip charges, the stated rate is USD 0.75. The dictionary dates this fee to 2025-01-05. A trip may straddle the start time; pickup date alone cannot determine applicability.",
+          "review_findings": [
+            "Bare numeric has zero scale on documented Databricks semantics; fractional fee representation requires review."
+          ],
+          "applicability_limits": "No complete route, enrollment, exemption or correction evidence; no row-level legal clearance.",
+          "binding_origin": "conversational_reviewer; explicitly supplied to propagation mechanism"
+        }
+      ],
+      "alignment_status": "REVIEW_REQUIRED",
+      "context_id": "c322e01ee8767208888830df59af09b24fbf67d3d0d064ef88c30e5fe479e282"
+    },
+    "trip_review_consumer": {
+      "consumer": "trip_review_consumer",
+      "target": "model.nyc_taxi_databricks_dbt.fact_trips",
+      "dependency_code_sha256": "df1a2c72625b9d936f5743645bb742de592a562cbab287485b809acaa6983688",
+      "scope": "yellow service only",
+      "governing_context": [
+        {
+          "id": "tlc.record_semantics",
+          "source_node": "source.nyc_taxi_databricks_dbt.staging.yellow_tripdata_raw",
+          "source": {
+            "url": "https://www.nyc.gov/assets/tlc/downloads/pdf/data_dictionary_trip_records_yellow.pdf",
+            "bytes": 148556,
+            "sha256": "b9e9f0ecfa6bd9cc847283379173fd764fe1ab76d2fa143329f541cb1f479993"
+          },
+          "interpretation": "Provider identity is not trip identity; recorded totals exclude cash tips.",
+          "review_findings": [
+            "Unsupported deduplication key discards distinct records.",
+            "Cash-tip completeness must not be inferred."
+          ],
+          "binding_origin": "conversational_reviewer; not machine-certified authority"
+        },
+        {
+          "id": "tlc.cbd_rate",
+          "source_node": "source.nyc_taxi_databricks_dbt.staging.yellow_tripdata_raw",
+          "field": "cbd_congestion_fee",
+          "source": {
+            "url": "https://portal.311.nyc.gov/article/?kanumber=KA-03612",
+            "bytes": 230115,
+            "sha256": "43e7679b4fc13c640524ba07759af82b984bbdc80a537655d6fc781b104eda0c"
+          },
+          "effective_date_source": {
+            "url": "https://www.nyc.gov/assets/tlc/downloads/pdf/data_dictionary_trip_records_yellow.pdf",
+            "bytes": 148556,
+            "sha256": "b9e9f0ecfa6bd9cc847283379173fd764fe1ab76d2fa143329f541cb1f479993"
+          },
+          "interpretation": "For eligible yellow-taxi per-trip charges, the stated rate is USD 0.75. The dictionary dates this fee to 2025-01-05. A trip may straddle the start time; pickup date alone cannot determine applicability.",
+          "review_findings": [
+            "Bare numeric has zero scale on documented Databricks semantics; fractional fee representation requires review."
+          ],
+          "applicability_limits": "No complete route, enrollment, exemption or correction evidence; no row-level legal clearance.",
+          "binding_origin": "conversational_reviewer; explicitly supplied to propagation mechanism"
+        }
+      ],
+      "alignment_status": "REVIEW_REQUIRED",
+      "context_id": "1ecf9fcfbd031559b90ffe65525fc3f4fce368bc476907d2eec834ee923826b6"
+    },
+    "zone_reference_consumer": {
+      "consumer": "zone_reference_consumer",
+      "target": "model.nyc_taxi_databricks_dbt.dim_zones",
+      "dependency_code_sha256": "4aec42613d09367384444c44c60787ccdf8ea079d16cd9a16c75a907370533f4",
+      "scope": "yellow service only",
+      "governing_context": [],
+      "alignment_status": "OUTSIDE_REVIEW_SCOPE",
+      "context_id": "4c58e8797fe7b2199bfb24fdc00e2ebafcb93392bcc2c2390e4113ca90a30ddf"
+    }
+  },
+  "receipts": [
+    {
+      "consumer": "monthly_bi_consumer",
+      "old_context_rejected_as_stale": true,
+      "replacement_context_current": true,
+      "alignment_status": "REVIEW_REQUIRED"
+    },
+    {
+      "consumer": "trip_review_consumer",
+      "old_context_rejected_as_stale": true,
+      "replacement_context_current": true,
+      "alignment_status": "REVIEW_REQUIRED"
+    },
+    {
+      "consumer": "zone_reference_consumer",
+      "old_context_rejected_as_stale": false,
+      "replacement_context_current": true,
+      "alignment_status": "OUTSIDE_REVIEW_SCOPE"
+    }
+  ],
+  "checks": {
+    "both_dependent_contexts_invalidated": true,
+    "unrelated_context_unchanged": true,
+    "repeat_event_idempotent": true,
+    "fresh_contexts_retain_unresolved_findings": true
+  },
+  "limits": "No actual downstream agent, BI integration, unattended watcher or independent semantic extraction test."
+}

@@ -1,0 +1,176 @@
+{
+  "repository": "https://github.com/bISTP/nyc-taxi-databricks-dbt.git",
+  "commit": "b79ecaefb12ae4a7e42314a3a2cee9645d401791",
+  "upstream_files": {
+    ".gitignore": "0652b87c8a739f099bd6adc5f23cca84d6bdd1c9715c88ed0746749b8c7b4e7b",
+    "README.md": "3d8a7a206431bdaff1709a80a5a1373182296e0a3bd8419684c7651c03484f75",
+    "analyses/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "assets/images/architecture-dark.png": "57207cffeba1af8e860859a4fd2ba09cb7440e2bd3d16e23d801fff0ca1b944a",
+    "assets/images/architecture-full-dark.png": "2a94da10242d09f32ca7bda99bec620b74b5e84e04ce7572a68b50767fcbcd65",
+    "assets/images/architecture-full.png": "9b79485f19abc4bab9d5ec78046ccfcd26aab91cb22ea053653a1ac3e4408682",
+    "assets/images/architecture.png": "0af9dffb34b16692175e08e6715dbbd03e1e02838151e6174c61131959bdca05",
+    "assets/images/dbt-dag-prod.png": "f181adf570f426be939a07af46b6542d73bf186b081833f8af028add3e76f09b",
+    "assets/images/dbt-dag.png": "2aadbe6be85f75ef16c9fa8bc7a5d3f5c7ca7908ccfb88aecf27a1aaae4b1e55",
+    "assets/images/test.txt": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "dbt_project.yml": "86ae3f79415c9567b9b31757a440b7e776d5171dd645f8ea473db06cf5565f23",
+    "macros/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "macros/generate_schema_name.sql": "2c9f21b826d12421dfbae43d1cc0e443c5be574d659104aa84f6ad4a102b82fb",
+    "macros/get_payment_type_description.sql": "eb74c9279128c923f952c1ce1fc3f9d33b85926e9132ff04884fd920bdb4d26e",
+    "macros/macros_properties.yml": "608d9049e09d0c3578e410ea7a53318c63e3788e5f6c2223b05a0d1ece2fa134",
+    "models/core/dim_zones.sql": "6787e5e6c0c56adb06d86caf3d695da10a2d64eca3e5145c28bf10d51c43af69",
+    "models/core/dm_monthly_zone_revenue.sql": "d51304e563c385a511856fc2c6df1f80e9217bf98f229ebf410e325b27260873",
+    "models/core/fact_trips.sql": "4a11e13239e0da05257e0f77a420e4a1039dde802c306371732879bec69e2e0f",
+    "models/core/schema.yml": "9b14f5d9a5c7cd75cf064425386e69ad8008d93586a1b9d1d56c7ffd499df11e",
+    "models/staging/schema.yml": "15ab37afa7a4694e8b9e3a8ee869786c5a5d8c6f02ea42560b67ab9b7b004a73",
+    "models/staging/stg_green_tripdata.sql": "dc63b81ea5e1ae3b4a557e4a02f4051a1667a6ab51b08392b9a91e78be80f8af",
+    "models/staging/stg_yellow_tripdata.sql": "ae13f8bfad02dd052411b275ea6004841d787e621bb90d3f21da378923a2e300",
+    "package-lock.yml": "618ba6972a278bb38feb3aaa8171e17dcb4e8a29e6876dc7c0361eef85c599a1",
+    "packages.yml": "c2e6bc307f3819bf4db6931e85b2535b4ffeed8d5b23cb44cc0d19b0fad9838e",
+    "seeds/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "seeds/seeds_properties.yml": "481b53acdb121aaa5bb01dffe141b927a312fbcbd8ee5af7edc2bab3c489d0d9",
+    "seeds/taxi_zone_lookup.csv": "ebefaf40f32e446589efdce69201d215d41adf94f51ee13e3a15c4b261cebf44",
+    "snapshots/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tests/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "protocol_sha256": "983e0640b3e357c9c26604fd3f6b1fcc3e4fe75c75306199b94cb94b72e3dd4e",
+  "inputs": {
+    "yellow_tripdata_2025-01.parquet": {
+      "url": "https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2025-01.parquet",
+      "bytes": 59158238,
+      "sha256": "9af277e4c0d3f9deb30644da822981e1e7df6af58313170fd3aa8a474485488a"
+    },
+    "green_tripdata_2025-01.parquet": {
+      "url": "https://d37ci6vzurychx.cloudfront.net/trip-data/green_tripdata_2025-01.parquet",
+      "bytes": 1178451,
+      "sha256": "84f3a121667157efcbf012c3566a6065df6f8e0312c678cb2f29cd72cc9c0f10"
+    },
+    "yellow_dictionary.pdf": {
+      "url": "https://www.nyc.gov/assets/tlc/downloads/pdf/data_dictionary_trip_records_yellow.pdf",
+      "bytes": 148556,
+      "sha256": "b9e9f0ecfa6bd9cc847283379173fd764fe1ab76d2fa143329f541cb1f479993"
+    },
+    "trip_records.html": {
+      "url": "https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page",
+      "bytes": 143860,
+      "sha256": "34cc37df0ef2f8f5e41ae38c75cf3e111b4754a6dcff8164c83c8b2c18546c8f"
+    },
+    "congestion_program.html": {
+      "url": "https://portal.311.nyc.gov/article/?kanumber=KA-03612",
+      "bytes": 230115,
+      "sha256": "43e7679b4fc13c640524ba07759af82b984bbdc80a537655d6fc781b104eda0c"
+    },
+    "databricks_decimal.html": {
+      "url": "https://docs.databricks.com/aws/en/sql/language-manual/data-types/decimal-type",
+      "bytes": 37284,
+      "sha256": "0d711374db146b8f6364513dfb1e176abe2c7a2fc053889a73e4ef0326dbbef7"
+    }
+  },
+  "engine": "DuckDB 1.5.5",
+  "live_databricks": false,
+  "adaptations": [
+    "Local DuckDB profile instead of Databricks connection.",
+    "January only; both services loaded; yellow-only rule audit.",
+    "Full refresh with is_test_run=false.",
+    "Upstream model SQL, YAML and macros remain unchanged.",
+    "Native temporary database storage; completed database copied into runtime artifacts after close."
+  ],
+  "commands": [
+    {
+      "argv": [
+        "/workspace/scratch/b808e33161ce/sophon-viability-env/bin/dbt",
+        "deps",
+        "--profiles-dir",
+        "/workspace/scratch/b808e33161ce/sophon-repo/viability/runs/public_nyc/project"
+      ],
+      "returncode": 0,
+      "log": "viability/public_nyc/evidence/dbt_0.log"
+    },
+    {
+      "argv": [
+        "/workspace/scratch/b808e33161ce/sophon-viability-env/bin/dbt",
+        "build",
+        "--full-refresh",
+        "--vars",
+        "{\"is_test_run\": false}",
+        "--profiles-dir",
+        "/workspace/scratch/b808e33161ce/sophon-repo/viability/runs/public_nyc/project"
+      ],
+      "returncode": 2,
+      "log": "viability/public_nyc/evidence/dbt_1.log"
+    },
+    {
+      "returncode": 0,
+      "log": "viability/public_nyc/evidence/dbt_local_disk.log",
+      "command": "dbt build --full-refresh --vars {is_test_run:false} using native temporary database"
+    }
+  ],
+  "copied_upstream_files_unchanged": {
+    ".gitignore": true,
+    "README.md": true,
+    "analyses/.gitkeep": true,
+    "dbt_project.yml": true,
+    "macros/.gitkeep": true,
+    "macros/generate_schema_name.sql": true,
+    "macros/get_payment_type_description.sql": true,
+    "macros/macros_properties.yml": true,
+    "models/core/dim_zones.sql": true,
+    "models/core/dm_monthly_zone_revenue.sql": true,
+    "models/core/fact_trips.sql": true,
+    "models/core/schema.yml": true,
+    "models/staging/schema.yml": true,
+    "models/staging/stg_green_tripdata.sql": true,
+    "models/staging/stg_yellow_tripdata.sql": true,
+    "package-lock.yml": true,
+    "packages.yml": true,
+    "seeds/.gitkeep": true,
+    "seeds/seeds_properties.yml": true,
+    "seeds/taxi_zone_lookup.csv": true,
+    "snapshots/.gitkeep": true,
+    "tests/.gitkeep": true
+  },
+  "execution_notes": [
+    "Initial workspace-hosted DuckDB and explicit-checkpoint retry failed on replay of a stale schema-creation WAL. Retained failed logs. A copy of the checkpointed database on native /tmp storage ran successfully. Source input fingerprints are separately verified in audit receipts. This is an environment recovery, not an upstream-model change."
+  ],
+  "raw_input_verification": {
+    "yellow": {
+      "stored_sql": "SELECT count(*), sum(hash(t)), bit_xor(hash(t)) FROM bronze.yellow_tripdata_raw t",
+      "source_sql": "SELECT count(*), sum(hash(t)), bit_xor(hash(t)) FROM read_parquet(?) t",
+      "columns": [
+        "rows",
+        "row_hash_sum",
+        "row_hash_xor"
+      ],
+      "stored": [
+        3475226,
+        32050290583523607574062076,
+        4911702599505396874
+      ],
+      "source": [
+        3475226,
+        32050290583523607574062076,
+        4911702599505396874
+      ],
+      "equal": true
+    },
+    "green": {
+      "stored_sql": "SELECT count(*), sum(hash(t)), bit_xor(hash(t)) FROM bronze.green_tripdata_raw t",
+      "source_sql": "SELECT count(*), sum(hash(t)), bit_xor(hash(t)) FROM read_parquet(?) t",
+      "columns": [
+        "rows",
+        "row_hash_sum",
+        "row_hash_xor"
+      ],
+      "stored": [
+        48326,
+        445449127486753468937132,
+        9058723431053985086
+      ],
+      "source": [
+        48326,
+        445449127486753468937132,
+        9058723431053985086
+      ],
+      "equal": true
+    }
+  }
+}

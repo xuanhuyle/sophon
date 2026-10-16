@@ -1,0 +1,317 @@
+{
+  "schema_version": 1,
+  "scope": "Draft-consistency review of the lab interpretation table against the fictional expense policy. The table describes proposed implementation choices; it is not adopted agent authority. Report material semantic gaps and unsupported implementation choices, not missing documentation of every runtime capability.",
+  "as_of": "2026-09-28",
+  "source_completeness": "Only the draft policy is designated as reference; no ratified adoption, interpretation or amendment is supplied.",
+  "documents": [
+    {
+      "id": "policy",
+      "role": "governing",
+      "authority_status": "draft",
+      "version": "repository-c02544a",
+      "path": "evidence/sophon_solo/draft_policy.md",
+      "format": "text",
+      "sha256": "ebee78addf435659fb7e36afc1e9ea0a6a72d4b747dee599b142ddf10fd0a04b"
+    },
+    {
+      "id": "reading",
+      "role": "operational",
+      "version": "repository-c02544a",
+      "path": "lab/READING.md",
+      "format": "text",
+      "sha256": "dee53beee0bf891be9bd2e249f43e00868110f4ed403799cfd413b4f9dfe4900"
+    }
+  ],
+  "segments": [
+    {
+      "id": "policy:L1",
+      "document_id": "policy",
+      "location": "line 1",
+      "role": "governing",
+      "text": "# Sophon Lab expense policy — DRAFT, NOT ADOPTED"
+    },
+    {
+      "id": "policy:L3",
+      "document_id": "policy",
+      "location": "line 3",
+      "role": "governing",
+      "text": "This fictional organization is a test sandbox. Its policy has **no authority** until the experiment owner explicitly adopts a version and an effective date. IPSA is used only as inspiration for adversarial case shapes; IPSA rules and past decisions do not govern this organization."
+    },
+    {
+      "id": "policy:L5",
+      "document_id": "policy",
+      "location": "line 5",
+      "role": "governing",
+      "text": "1. Reimbursement requires a documented company purpose and supporting evidence. An employee may not approve their own expense."
+    },
+    {
+      "id": "policy:L6",
+      "document_id": "policy",
+      "location": "line 6",
+      "role": "governing",
+      "text": "2. Hotel costs for necessary business travel should be **reasonable** for the destination and circumstances. A manager must approve travel."
+    },
+    {
+      "id": "policy:L7",
+      "document_id": "policy",
+      "location": "line 7",
+      "role": "governing",
+      "text": "3. Meeting refreshments should be **modest** and serve a legitimate work purpose. Alcohol and tips are not reimbursable. Meals celebrating a team achievement require case-specific approval by the policy owner."
+    },
+    {
+      "id": "policy:L8",
+      "document_id": "policy",
+      "location": "line 8",
+      "role": "governing",
+      "text": "4. Equipment should be obtained through the shared IT catalogue **where practicable**. A different supplier requires documented unavailability or business necessity."
+    },
+    {
+      "id": "policy:L9",
+      "document_id": "policy",
+      "location": "line 9",
+      "role": "governing",
+      "text": "5. Claims exceeding £1,000 require Finance approval; claims exceeding £5,000 require CFO approval. These are strict lower bounds: £1,000 itself does not trigger the first threshold."
+    },
+    {
+      "id": "policy:L10",
+      "document_id": "policy",
+      "location": "line 10",
+      "role": "governing",
+      "text": "6. Only the policy owner can create a bounded exception or change the policy. A case-specific approval identifies the beneficiary, action, amount or cap, purpose and effective period. It does not authorize later similar claims."
+    },
+    {
+      "id": "policy:L11",
+      "document_id": "policy",
+      "location": "line 11",
+      "role": "governing",
+      "text": "7. An interpretation of an open term, a new constraint, a relaxation, a one-off exception and a source amendment are different acts. The system must display their different effects for review; the actor must have power to perform the chosen act."
+    },
+    {
+      "id": "policy:L12",
+      "document_id": "policy",
+      "location": "line 12",
+      "role": "governing",
+      "text": "8. A newly ratified interpretation applies from its declared effective time. An amendment must identify whether earlier interpretations survive; unresolved dependencies suspend automatic clearance until reviewed. An earlier payment decision alone never ratifies a prospective interpretation."
+    },
+    {
+      "id": "policy:L14",
+      "document_id": "policy",
+      "location": "line 14",
+      "role": "governing",
+      "text": "## Open issues requiring a real sandbox-owner settlement"
+    },
+    {
+      "id": "policy:L16",
+      "document_id": "policy",
+      "location": "line 16",
+      "role": "governing",
+      "text": "- What operational bounds, if any, define a reasonable hotel price by location, event and season?"
+    },
+    {
+      "id": "policy:L17",
+      "document_id": "policy",
+      "location": "line 17",
+      "role": "governing",
+      "text": "- What makes refreshments modest? Does a restaurant meal after a work session count?"
+    },
+    {
+      "id": "policy:L18",
+      "document_id": "policy",
+      "location": "line 18",
+      "role": "governing",
+      "text": "- What evidence demonstrates that the IT catalogue is impracticable?"
+    },
+    {
+      "id": "policy:L19",
+      "document_id": "policy",
+      "location": "line 19",
+      "role": "governing",
+      "text": "- Who has delegated authority to approve a specific exception, beyond the owner?"
+    },
+    {
+      "id": "policy:L21",
+      "document_id": "policy",
+      "location": "line 21",
+      "role": "governing",
+      "text": "The owner may choose to retain semantic review rather than impose a threshold. The exercise must not optimize for a target clearance rate by inventing permissions."
+    },
+    {
+      "id": "reading:L1",
+      "document_id": "reading",
+      "location": "line 1",
+      "role": "operational",
+      "text": "# How the lab reads `evidence/sophon_solo/draft_policy.md`"
+    },
+    {
+      "id": "reading:L3",
+      "document_id": "reading",
+      "location": "line 3",
+      "role": "operational",
+      "text": "The draft is **unadopted**. Nothing here has authority. This table is the reading both arms implement so that they"
+    },
+    {
+      "id": "reading:L4",
+      "document_id": "reading",
+      "location": "line 4",
+      "role": "operational",
+      "text": "can be compared; every row is a choice the sandbox owner must confirm or change at adoption"
+    },
+    {
+      "id": "reading:L5",
+      "document_id": "reading",
+      "location": "line 5",
+      "role": "operational",
+      "text": "(see `docs/OWNER_REQUEST.md`). Even \"bright-line\" clauses need a disposition, and choosing it is an interpretive act."
+    },
+    {
+      "id": "reading:L7",
+      "document_id": "reading",
+      "location": "line 7",
+      "role": "operational",
+      "text": "| # | Clause | Reading | If not met |"
+    },
+    {
+      "id": "reading:L8",
+      "document_id": "reading",
+      "location": "line 8",
+      "role": "operational",
+      "text": "|---|---|---|---|"
+    },
+    {
+      "id": "reading:L9",
+      "document_id": "reading",
+      "location": "line 9",
+      "role": "operational",
+      "text": "| R0 | (none) | **The draft never says what *is* reimbursable**, only what is required or excluded. Whether \"meets every clause\" is sufficient for payment is a closure rule the owner must state (`ALL_CLAUSES_SATISFIED`), or else nothing clears without an explicit grant (`SAFE_HARBORS_ONLY`). | `REQUEST_AUTHORITY` |"
+    },
+    {
+      "id": "reading:L10",
+      "document_id": "reading",
+      "location": "line 10",
+      "role": "operational",
+      "text": "| R1 | 1 | Purpose is documented (non-empty). | `REQUEST_FACT` |"
+    },
+    {
+      "id": "reading:L11",
+      "document_id": "reading",
+      "location": "line 11",
+      "role": "operational",
+      "text": "| R2 | 1 | Supporting evidence: `receipt_present == yes`. Blank or anything else is *not* yes. | `REQUEST_FACT` |"
+    },
+    {
+      "id": "reading:L12",
+      "document_id": "reading",
+      "location": "line 12",
+      "role": "operational",
+      "text": "| R3 | 1 | No self-approval: `approver != claimant`. | `BLOCK` (as submitted) |"
+    },
+    {
+      "id": "reading:L13",
+      "document_id": "reading",
+      "location": "line 13",
+      "role": "operational",
+      "text": "| R4 | 2 | Travel (hotel, travel) needs `manager_approved == yes`. | `REQUEST_AUTHORITY` |"
+    },
+    {
+      "id": "reading:L14",
+      "document_id": "reading",
+      "location": "line 14",
+      "role": "operational",
+      "text": "| R4x | 1–2 | **Unlisted ambiguity.** The draft requires manager approval only for *travel*. Whether meals and equipment need it is open term `approval.scope`. It only matters when `manager_approved != yes`. | `SEMANTIC_REVIEW` until settled |"
+    },
+    {
+      "id": "reading:L15",
+      "document_id": "reading",
+      "location": "line 15",
+      "role": "operational",
+      "text": "| R5 | 5 | Amount is a finite positive number; `> 1000` needs Finance approval; `> 5000` needs CFO approval. Thresholds are changeable only by `RELAX_CONSTRAINT` / `ADD_CONSTRAINT`. | `REQUEST_FACT` / `REQUEST_AUTHORITY` |"
+    },
+    {
+      "id": "reading:L16",
+      "document_id": "reading",
+      "location": "line 16",
+      "role": "operational",
+      "text": "| R6 | 3 | Alcohol or tip component `> 0` makes the claim, **at the exact amount submitted**, non-reimbursable. A net resubmission is a different action. | `BLOCK` (as submitted) |"
+    },
+    {
+      "id": "reading:L17",
+      "document_id": "reading",
+      "location": "line 17",
+      "role": "operational",
+      "text": "| R7 | 3 | Purpose \"Team celebration\" needs a case-specific owner approval (`CASE_EXCEPTION`). | `REQUEST_AUTHORITY` |"
+    },
+    {
+      "id": "reading:L18",
+      "document_id": "reading",
+      "location": "line 18",
+      "role": "operational",
+      "text": "| R8 | 2 | Hotel: open term `hotel.reasonable`. | `SEMANTIC_REVIEW` until settled |"
+    },
+    {
+      "id": "reading:L19",
+      "document_id": "reading",
+      "location": "line 19",
+      "role": "operational",
+      "text": "| R9 | 3 | Meal (not a celebration): open term `meal.modest`. | `SEMANTIC_REVIEW` until settled |"
+    },
+    {
+      "id": "reading:L20",
+      "document_id": "reading",
+      "location": "line 20",
+      "role": "operational",
+      "text": "| R10 | 4 | Equipment from a non-catalogue supplier: if the catalogue lacks the item, unavailability must be documented (`REQUEST_FACT` otherwise). If the catalogue *has* the item, \"business necessity\" is open term `equipment.necessity`. A de-minimis exemption is a **relaxation**, not an interpretation. | `SEMANTIC_REVIEW` until settled |"
+    },
+    {
+      "id": "reading:L21",
+      "document_id": "reading",
+      "location": "line 21",
+      "role": "operational",
+      "text": "| R11 | 6 | `requested_exception == yes` needs a matching `CASE_EXCEPTION`. | `REQUEST_AUTHORITY` |"
+    },
+    {
+      "id": "reading:L22",
+      "document_id": "reading",
+      "location": "line 22",
+      "role": "operational",
+      "text": "| R12 | — | Rail/taxi: the draft has **no clause** about transport alternatives or late working, although `cases.csv` carries `transport_alternative_available` and `after_2200_work`. Those columns are therefore unused. | — |"
+    },
+    {
+      "id": "reading:L23",
+      "document_id": "reading",
+      "location": "line 23",
+      "role": "operational",
+      "text": "| R13 | 8 | **Unlisted ambiguity.** \"Applies from its declared effective time\" does not say whether that means expenses *incurred* or decisions *made* after it. The lab takes the conservative reading: a settlement must be in force at both times. | `SEMANTIC_REVIEW` |"
+    },
+    {
+      "id": "reading:L24",
+      "document_id": "reading",
+      "location": "line 24",
+      "role": "operational",
+      "text": "| R14 | — | Any category outside {hotel, meal, equipment, travel} is outside the adopted surface. | `REQUEST_AUTHORITY` |"
+    },
+    {
+      "id": "reading:L26",
+      "document_id": "reading",
+      "location": "line 26",
+      "role": "operational",
+      "text": "Three of these (R0, R4x, R13) are not in the draft's own list of open issues. The draft also pre-digests facts that"
+    },
+    {
+      "id": "reading:L27",
+      "document_id": "reading",
+      "location": "line 27",
+      "role": "operational",
+      "text": "are judgments in real life: whether a meal was a \"team celebration\" or a \"work planning meeting\" is exactly the"
+    },
+    {
+      "id": "reading:L28",
+      "document_id": "reading",
+      "location": "line 28",
+      "role": "operational",
+      "text": "kind of question the Aquarone review turned on, and here it arrives as a clean column."
+    }
+  ],
+  "reviewer_prompt_sha256": "4ef3a32cb349ac4829ade23d0b9c8688b6a43c4893883736a8e52229803e6357",
+  "response_schema_sha256": "7f2020425fb70689060712f6dc590ea8be1f8794559a92c6cfaf60c979abb713",
+  "packet_id": "9af31851dab4dbcf8537b25e46a184ecf83f29823097b0f273c8bf54fbafb93b"
+}
