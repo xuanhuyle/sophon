@@ -1,0 +1,117 @@
+{
+  "evaluation": "ENGINEERING_PRELABELS_NOT_LEGAL_GOLD",
+  "model": "jev-1.13.0",
+  "calls_recorded": 6,
+  "candidate_reproducible_disagreements": [],
+  "decision": "STOP_DATASET_AT_CEILING",
+  "per_case": [
+    {
+      "case_id": "MS1",
+      "function": "OBLIGATION",
+      "frozen_label": "YES",
+      "yes_probabilities": [
+        0.74,
+        0.73
+      ],
+      "verdict": "AGREES_BOTH_REPEATS",
+      "all_label_probabilities": [
+        {
+          "OBLIGATION": 0.74,
+          "PROHIBITION": 0.61,
+          "PERMISSION_RIGHT": 0.74,
+          "DEFINITION": 0.21,
+          "AUTHORITY": 0.13,
+          "CONDITION": 0.95,
+          "EXCLUSION": 0.53,
+          "THRESHOLD": 0.95,
+          "DEADLINE": 0.55,
+          "CROSS_REFERENCE": 0.45
+        },
+        {
+          "OBLIGATION": 0.73,
+          "PROHIBITION": 0.62,
+          "PERMISSION_RIGHT": 0.71,
+          "DEFINITION": 0.22,
+          "AUTHORITY": 0.12,
+          "CONDITION": 0.96,
+          "EXCLUSION": 0.48,
+          "THRESHOLD": 0.94,
+          "DEADLINE": 0.61,
+          "CROSS_REFERENCE": 0.5
+        }
+      ]
+    },
+    {
+      "case_id": "MS2",
+      "function": "PROHIBITION",
+      "frozen_label": "YES",
+      "yes_probabilities": [
+        0.9,
+        0.9
+      ],
+      "verdict": "AGREES_BOTH_REPEATS",
+      "all_label_probabilities": [
+        {
+          "OBLIGATION": 0.07,
+          "PROHIBITION": 0.9,
+          "PERMISSION_RIGHT": 0.79,
+          "DEFINITION": 0.12,
+          "AUTHORITY": 0.06,
+          "CONDITION": 0.42,
+          "EXCLUSION": 0.52,
+          "THRESHOLD": 0.05,
+          "DEADLINE": 0.03,
+          "CROSS_REFERENCE": 0.65
+        },
+        {
+          "OBLIGATION": 0.06,
+          "PROHIBITION": 0.9,
+          "PERMISSION_RIGHT": 0.78,
+          "DEFINITION": 0.14,
+          "AUTHORITY": 0.05,
+          "CONDITION": 0.41,
+          "EXCLUSION": 0.53,
+          "THRESHOLD": 0.05,
+          "DEADLINE": 0.03,
+          "CROSS_REFERENCE": 0.64
+        }
+      ]
+    },
+    {
+      "case_id": "MS3",
+      "function": "PROHIBITION",
+      "frozen_label": "NO",
+      "yes_probabilities": [
+        0.07,
+        0.07
+      ],
+      "verdict": "AGREES_BOTH_REPEATS",
+      "all_label_probabilities": [
+        {
+          "OBLIGATION": 0.02,
+          "PROHIBITION": 0.07,
+          "PERMISSION_RIGHT": 0.14,
+          "DEFINITION": 0.08,
+          "AUTHORITY": 0.05,
+          "CONDITION": 0.94,
+          "EXCLUSION": 0.99,
+          "THRESHOLD": 0.04,
+          "DEADLINE": 0.02,
+          "CROSS_REFERENCE": 0.55
+        },
+        {
+          "OBLIGATION": 0.02,
+          "PROHIBITION": 0.07,
+          "PERMISSION_RIGHT": 0.17,
+          "DEFINITION": 0.08,
+          "AUTHORITY": 0.04,
+          "CONDITION": 0.94,
+          "EXCLUSION": 0.98,
+          "THRESHOLD": 0.04,
+          "DEADLINE": 0.02,
+          "CROSS_REFERENCE": 0.52
+        }
+      ]
+    }
+  ]
+}
