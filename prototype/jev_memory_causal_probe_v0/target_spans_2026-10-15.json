@@ -1,0 +1,15 @@
+{
+  "purpose": "Exact source spans for TARGET_VALIDITY_2026-10-15.md. A quote matching its offsets does NOT validate any interpretation.",
+  "source": {"ref": "b9d698c78c4e7390555e2d73c2568cabe9be0b67", "path": "prototype/jev_library_transfer_v2/google_storage_sla_20210624.json"},
+  "units": [
+    {"id": "U1", "packet": "B3", "field": "text", "start": 0, "end": 38, "quote": "Customer Must Request Financial Credit"},
+    {"id": "U2", "packet": "B3", "field": "text", "start": 40, "end": 104, "quote": "In order to receive any of the Financial Credits described above"},
+    {"id": "U3", "packet": "B3", "field": "text", "start": 106, "end": 151, "quote": "Customer must notify Google technical support"},
+    {"id": "U4", "packet": "B3", "field": "text", "start": 152, "end": 236, "quote": "within 30 days from the time Customer becomes eligible to receive a Financial Credit"},
+    {"id": "U5", "packet": "B3", "field": "text", "start": 238, "end": 338, "quote": "Failure to comply with this requirement will forfeit Customer's right to receive a Financial Credit."},
+    {"id": "U6", "packet": "B2", "field": "text", "start": 142, "end": 225, "quote": "the Covered Service will provide a Monthly Uptime Percentage to Customer as follows"},
+    {"id": "U7", "packet": "B3", "field": "context", "start": 540, "end": 664, "quote": "if Customer meets its obligations under this SLA, Customer will be eligible to receive the Financial Credits described below"},
+    {"id": "U8", "packet": "B3", "field": "context", "start": 767, "end": 862, "quote": "This SLA states Customer's sole and exclusive remedy for any failure by Google to meet the SLO."}
+  ],
+  "contested_probes_bracketed_for_interpretation_only": [["B3a", "OBLIGATION"], ["B3whole", "OBLIGATION"]]
+}

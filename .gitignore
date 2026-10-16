@@ -2,3 +2,9 @@ __pycache__/
 *.pyc
 evidence/sophon_ipsa/data/
 evidence/sophon_cases/data/
+prototype/jev_memory_causal_probe_v0/live_runs/
+
+# Never commit local API credentials
+.env
+.env.*
+!.env.example

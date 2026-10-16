@@ -30,3 +30,7 @@ jobs:
           fi
       - name: Run context regression tests
         run: python3 -m unittest discover -s tests -p 'test_context_guard.py' -v
+      - name: Verify Jev memory-probe frozen source and offline tests
+        run: |
+          python3 prototype/jev_memory_causal_probe_v0/probe.py preflight
+          python3 -m unittest discover -s prototype/jev_memory_causal_probe_v0 -p 'test_*.py' -v

@@ -1,0 +1,521 @@
+{
+  "evaluation": "LIMITED_PREDECLARED_POSITIVE_SOURCE_QUOTES_NOT_LEGAL_GOLD",
+  "automatic_subprovision_segmentation": false,
+  "span_to_function_localization": false,
+  "reported_model": "jev-1.13.0",
+  "total_cases": 10,
+  "number_of_positive_probes": 16,
+  "newly_passed_positive_probes": [],
+  "lost_positive_probes": [
+    "B3whole:OBLIGATION"
+  ],
+  "passed_in_both": [
+    "B1a:DEFINITION",
+    "B1a:OBLIGATION",
+    "B1b:DEFINITION",
+    "B1c:DEFINITION",
+    "B2a:OBLIGATION",
+    "B2b:DEFINITION",
+    "B3a:DEADLINE",
+    "B3b:THRESHOLD",
+    "B3c:EXCLUSION",
+    "B2whole:OBLIGATION",
+    "B2whole:DEFINITION",
+    "B3whole:DEADLINE",
+    "B3whole:THRESHOLD",
+    "B3whole:EXCLUSION"
+  ],
+  "warning": "Manually curated excerpts with whole-excerpt multi-label decisions, NOT automatic sub-provision identification or span-to-function mapping. Unannotated labels are not negatives. Probe changes are not independent legal-accuracy gains.",
+  "per_case": [
+    {
+      "id": "B1a",
+      "source_packet_id": "B1",
+      "source_packet_sha256": "c74f4c1f343c5cb0f6732315ba184e62449aeaeac0f1906dbe48914b2aee1ca8",
+      "positive_probes": {
+        "DEFINITION": [
+          {
+            "label": "DEFINITION",
+            "verbatim_quote": "\"Back-off Requirements\" means",
+            "cold_yes_probability": 0.98,
+            "learned_yes_probability": 0.96,
+            "cold_probe_pass": true,
+            "learned_probe_pass": true
+          }
+        ],
+        "OBLIGATION": [
+          {
+            "label": "OBLIGATION",
+            "verbatim_quote": "Application is responsible for waiting",
+            "cold_yes_probability": 0.65,
+            "learned_yes_probability": 0.65,
+            "cold_probe_pass": true,
+            "learned_probe_pass": true
+          }
+        ]
+      },
+      "all_label_probabilities": {
+        "COLD": {
+          "OBLIGATION": 0.65,
+          "PROHIBITION": 0.21,
+          "PERMISSION_RIGHT": 0.07,
+          "DEFINITION": 0.98,
+          "AUTHORITY": 0.03,
+          "CONDITION": 0.87,
+          "EXCLUSION": 0.04,
+          "THRESHOLD": 0.98,
+          "DEADLINE": 0.9,
+          "CROSS_REFERENCE": 0.77
+        },
+        "LEARNED": {
+          "OBLIGATION": 0.65,
+          "PROHIBITION": 0.28,
+          "PERMISSION_RIGHT": 0.03,
+          "DEFINITION": 0.96,
+          "AUTHORITY": 0.04,
+          "CONDITION": 0.84,
+          "EXCLUSION": 0.04,
+          "THRESHOLD": 0.96,
+          "DEADLINE": 0.69,
+          "CROSS_REFERENCE": 0.77
+        }
+      }
+    },
+    {
+      "id": "B1b",
+      "source_packet_id": "B1",
+      "source_packet_sha256": "c74f4c1f343c5cb0f6732315ba184e62449aeaeac0f1906dbe48914b2aee1ca8",
+      "positive_probes": {
+        "DEFINITION": [
+          {
+            "label": "DEFINITION",
+            "verbatim_quote": "\"Error Rate\" means",
+            "cold_yes_probability": 0.99,
+            "learned_yes_probability": 0.98,
+            "cold_probe_pass": true,
+            "learned_probe_pass": true
+          }
+        ]
+      },
+      "all_label_probabilities": {
+        "COLD": {
+          "OBLIGATION": 0.05,
+          "PROHIBITION": 0.07,
+          "PERMISSION_RIGHT": 0.04,
+          "DEFINITION": 0.99,
+          "AUTHORITY": 0.02,
+          "CONDITION": 0.68,
+          "EXCLUSION": 0.9,
+          "THRESHOLD": 0.11,
+          "DEADLINE": 0.03,
+          "CROSS_REFERENCE": 0.88
+        },
+        "LEARNED": {
+          "OBLIGATION": 0.05,
+          "PROHIBITION": 0.09,
+          "PERMISSION_RIGHT": 0.02,
+          "DEFINITION": 0.98,
+          "AUTHORITY": 0.02,
+          "CONDITION": 0.6,
+          "EXCLUSION": 0.91,
+          "THRESHOLD": 0.09,
+          "DEADLINE": 0.03,
+          "CROSS_REFERENCE": 0.9
+        }
+      }
+    },
+    {
+      "id": "B1c",
+      "source_packet_id": "B1",
+      "source_packet_sha256": "c74f4c1f343c5cb0f6732315ba184e62449aeaeac0f1906dbe48914b2aee1ca8",
+      "positive_probes": {
+        "DEFINITION": [
+          {
+            "label": "DEFINITION",
+            "verbatim_quote": "\"Monthly Uptime Percentage\" means",
+            "cold_yes_probability": 0.99,
+            "learned_yes_probability": 0.98,
+            "cold_probe_pass": true,
+            "learned_probe_pass": true
+          }
+        ]
+      },
+      "all_label_probabilities": {
+        "COLD": {
+          "OBLIGATION": 0.09,
+          "PROHIBITION": 0.02,
+          "PERMISSION_RIGHT": 0.05,
+          "DEFINITION": 0.99,
+          "AUTHORITY": 0.01,
+          "CONDITION": 0.08,
+          "EXCLUSION": 0.04,
+          "THRESHOLD": 0.43,
+          "DEADLINE": 0.03,
+          "CROSS_REFERENCE": 0.82
+        },
+        "LEARNED": {
+          "OBLIGATION": 0.07,
+          "PROHIBITION": 0.02,
+          "PERMISSION_RIGHT": 0.03,
+          "DEFINITION": 0.98,
+          "AUTHORITY": 0.02,
+          "CONDITION": 0.07,
+          "EXCLUSION": 0.05,
+          "THRESHOLD": 0.41,
+          "DEADLINE": 0.03,
+          "CROSS_REFERENCE": 0.8
+        }
+      }
+    },
+    {
+      "id": "B2a",
+      "source_packet_id": "B2",
+      "source_packet_sha256": "72df1f0ced9825548fd9b9a7ad09c81bb9f28b9f0bb25597a08e8adcd21a33ff",
+      "positive_probes": {
+        "OBLIGATION": [
+          {
+            "label": "OBLIGATION",
+            "verbatim_quote": "the Covered Service will provide a Monthly Uptime Percentage",
+            "cold_yes_probability": 0.87,
+            "learned_yes_probability": 0.86,
+            "cold_probe_pass": true,
+            "learned_probe_pass": true
+          }
+        ]
+      },
+      "all_label_probabilities": {
+        "COLD": {
+          "OBLIGATION": 0.87,
+          "PROHIBITION": 0.03,
+          "PERMISSION_RIGHT": 0.2,
+          "DEFINITION": 0.84,
+          "AUTHORITY": 0.04,
+          "CONDITION": 0.76,
+          "EXCLUSION": 0.07,
+          "THRESHOLD": 0.15,
+          "DEADLINE": 0.05,
+          "CROSS_REFERENCE": 0.88
+        },
+        "LEARNED": {
+          "OBLIGATION": 0.86,
+          "PROHIBITION": 0.03,
+          "PERMISSION_RIGHT": 0.13,
+          "DEFINITION": 0.76,
+          "AUTHORITY": 0.05,
+          "CONDITION": 0.66,
+          "EXCLUSION": 0.07,
+          "THRESHOLD": 0.14,
+          "DEADLINE": 0.04,
+          "CROSS_REFERENCE": 0.88
+        }
+      }
+    },
+    {
+      "id": "B2b",
+      "source_packet_id": "B2",
+      "source_packet_sha256": "72df1f0ced9825548fd9b9a7ad09c81bb9f28b9f0bb25597a08e8adcd21a33ff",
+      "positive_probes": {
+        "DEFINITION": [
+          {
+            "label": "DEFINITION",
+            "verbatim_quote": "\"Financial Credit\" means",
+            "cold_yes_probability": 0.92,
+            "learned_yes_probability": 0.91,
+            "cold_probe_pass": true,
+            "learned_probe_pass": true
+          }
+        ]
+      },
+      "all_label_probabilities": {
+        "COLD": {
+          "OBLIGATION": 0.08,
+          "PROHIBITION": 0.02,
+          "PERMISSION_RIGHT": 0.25,
+          "DEFINITION": 0.92,
+          "AUTHORITY": 0.03,
+          "CONDITION": 0.7,
+          "EXCLUSION": 0.37,
+          "THRESHOLD": 0.07,
+          "DEADLINE": 0.04,
+          "CROSS_REFERENCE": 0.74
+        },
+        "LEARNED": {
+          "OBLIGATION": 0.09,
+          "PROHIBITION": 0.03,
+          "PERMISSION_RIGHT": 0.18,
+          "DEFINITION": 0.91,
+          "AUTHORITY": 0.05,
+          "CONDITION": 0.52,
+          "EXCLUSION": 0.19,
+          "THRESHOLD": 0.06,
+          "DEADLINE": 0.05,
+          "CROSS_REFERENCE": 0.72
+        }
+      }
+    },
+    {
+      "id": "B3a",
+      "source_packet_id": "B3",
+      "source_packet_sha256": "5fd249c77085b91a140fa0133c5b0023de54251856077523084f461593b33954",
+      "positive_probes": {
+        "OBLIGATION": [
+          {
+            "label": "OBLIGATION",
+            "verbatim_quote": "Customer must notify Google technical support",
+            "cold_yes_probability": 0.26,
+            "learned_yes_probability": 0.28,
+            "cold_probe_pass": false,
+            "learned_probe_pass": false
+          }
+        ],
+        "DEADLINE": [
+          {
+            "label": "DEADLINE",
+            "verbatim_quote": "within 30 days",
+            "cold_yes_probability": 0.98,
+            "learned_yes_probability": 0.98,
+            "cold_probe_pass": true,
+            "learned_probe_pass": true
+          }
+        ]
+      },
+      "all_label_probabilities": {
+        "COLD": {
+          "OBLIGATION": 0.26,
+          "PROHIBITION": 0.28,
+          "PERMISSION_RIGHT": 0.73,
+          "DEFINITION": 0.69,
+          "AUTHORITY": 0.05,
+          "CONDITION": 0.98,
+          "EXCLUSION": 0.17,
+          "THRESHOLD": 0.96,
+          "DEADLINE": 0.98,
+          "CROSS_REFERENCE": 0.6
+        },
+        "LEARNED": {
+          "OBLIGATION": 0.28,
+          "PROHIBITION": 0.26,
+          "PERMISSION_RIGHT": 0.72,
+          "DEFINITION": 0.74,
+          "AUTHORITY": 0.08,
+          "CONDITION": 0.98,
+          "EXCLUSION": 0.16,
+          "THRESHOLD": 0.92,
+          "DEADLINE": 0.98,
+          "CROSS_REFERENCE": 0.74
+        }
+      }
+    },
+    {
+      "id": "B3b",
+      "source_packet_id": "B3",
+      "source_packet_sha256": "5fd249c77085b91a140fa0133c5b0023de54251856077523084f461593b33954",
+      "positive_probes": {
+        "THRESHOLD": [
+          {
+            "label": "THRESHOLD",
+            "verbatim_quote": "will not exceed 50%",
+            "cold_yes_probability": 0.99,
+            "learned_yes_probability": 0.99,
+            "cold_probe_pass": true,
+            "learned_probe_pass": true
+          }
+        ]
+      },
+      "all_label_probabilities": {
+        "COLD": {
+          "OBLIGATION": 0.59,
+          "PROHIBITION": 0.46,
+          "PERMISSION_RIGHT": 0.63,
+          "DEFINITION": 0.82,
+          "AUTHORITY": 0.07,
+          "CONDITION": 0.74,
+          "EXCLUSION": 0.12,
+          "THRESHOLD": 0.99,
+          "DEADLINE": 0.92,
+          "CROSS_REFERENCE": 0.77
+        },
+        "LEARNED": {
+          "OBLIGATION": 0.47,
+          "PROHIBITION": 0.52,
+          "PERMISSION_RIGHT": 0.61,
+          "DEFINITION": 0.72,
+          "AUTHORITY": 0.09,
+          "CONDITION": 0.57,
+          "EXCLUSION": 0.12,
+          "THRESHOLD": 0.99,
+          "DEADLINE": 0.85,
+          "CROSS_REFERENCE": 0.83
+        }
+      }
+    },
+    {
+      "id": "B3c",
+      "source_packet_id": "B3",
+      "source_packet_sha256": "5fd249c77085b91a140fa0133c5b0023de54251856077523084f461593b33954",
+      "positive_probes": {
+        "EXCLUSION": [
+          {
+            "label": "EXCLUSION",
+            "verbatim_quote": "The SLA does not apply to any",
+            "cold_yes_probability": 0.99,
+            "learned_yes_probability": 0.99,
+            "cold_probe_pass": true,
+            "learned_probe_pass": true
+          }
+        ]
+      },
+      "all_label_probabilities": {
+        "COLD": {
+          "OBLIGATION": 0.03,
+          "PROHIBITION": 0.07,
+          "PERMISSION_RIGHT": 0.11,
+          "DEFINITION": 0.11,
+          "AUTHORITY": 0.04,
+          "CONDITION": 0.93,
+          "EXCLUSION": 0.99,
+          "THRESHOLD": 0.09,
+          "DEADLINE": 0.04,
+          "CROSS_REFERENCE": 0.92
+        },
+        "LEARNED": {
+          "OBLIGATION": 0.04,
+          "PROHIBITION": 0.1,
+          "PERMISSION_RIGHT": 0.07,
+          "DEFINITION": 0.09,
+          "AUTHORITY": 0.05,
+          "CONDITION": 0.93,
+          "EXCLUSION": 0.99,
+          "THRESHOLD": 0.04,
+          "DEADLINE": 0.05,
+          "CROSS_REFERENCE": 0.93
+        }
+      }
+    },
+    {
+      "id": "B2whole",
+      "source_packet_id": "B2",
+      "source_packet_sha256": "72df1f0ced9825548fd9b9a7ad09c81bb9f28b9f0bb25597a08e8adcd21a33ff",
+      "positive_probes": {
+        "OBLIGATION": [
+          {
+            "label": "OBLIGATION",
+            "verbatim_quote": "the Covered Service will provide a Monthly Uptime Percentage",
+            "cold_yes_probability": 0.91,
+            "learned_yes_probability": 0.92,
+            "cold_probe_pass": true,
+            "learned_probe_pass": true
+          }
+        ],
+        "DEFINITION": [
+          {
+            "label": "DEFINITION",
+            "verbatim_quote": "\"Financial Credit\" means",
+            "cold_yes_probability": 0.97,
+            "learned_yes_probability": 0.97,
+            "cold_probe_pass": true,
+            "learned_probe_pass": true
+          }
+        ]
+      },
+      "all_label_probabilities": {
+        "COLD": {
+          "OBLIGATION": 0.91,
+          "PROHIBITION": 0.03,
+          "PERMISSION_RIGHT": 0.81,
+          "DEFINITION": 0.97,
+          "AUTHORITY": 0.03,
+          "CONDITION": 0.84,
+          "EXCLUSION": 0.25,
+          "THRESHOLD": 0.98,
+          "DEADLINE": 0.05,
+          "CROSS_REFERENCE": 0.88
+        },
+        "LEARNED": {
+          "OBLIGATION": 0.92,
+          "PROHIBITION": 0.04,
+          "PERMISSION_RIGHT": 0.82,
+          "DEFINITION": 0.97,
+          "AUTHORITY": 0.08,
+          "CONDITION": 0.82,
+          "EXCLUSION": 0.27,
+          "THRESHOLD": 0.98,
+          "DEADLINE": 0.06,
+          "CROSS_REFERENCE": 0.9
+        }
+      }
+    },
+    {
+      "id": "B3whole",
+      "source_packet_id": "B3",
+      "source_packet_sha256": "5fd249c77085b91a140fa0133c5b0023de54251856077523084f461593b33954",
+      "positive_probes": {
+        "OBLIGATION": [
+          {
+            "label": "OBLIGATION",
+            "verbatim_quote": "Customer must notify Google technical support",
+            "cold_yes_probability": 0.51,
+            "learned_yes_probability": 0.34,
+            "cold_probe_pass": true,
+            "learned_probe_pass": false
+          }
+        ],
+        "DEADLINE": [
+          {
+            "label": "DEADLINE",
+            "verbatim_quote": "within 30 days",
+            "cold_yes_probability": 0.98,
+            "learned_yes_probability": 0.98,
+            "cold_probe_pass": true,
+            "learned_probe_pass": true
+          }
+        ],
+        "THRESHOLD": [
+          {
+            "label": "THRESHOLD",
+            "verbatim_quote": "will not exceed 50%",
+            "cold_yes_probability": 0.98,
+            "learned_yes_probability": 0.98,
+            "cold_probe_pass": true,
+            "learned_probe_pass": true
+          }
+        ],
+        "EXCLUSION": [
+          {
+            "label": "EXCLUSION",
+            "verbatim_quote": "The SLA does not apply to any",
+            "cold_yes_probability": 0.96,
+            "learned_yes_probability": 0.97,
+            "cold_probe_pass": true,
+            "learned_probe_pass": true
+          }
+        ]
+      },
+      "all_label_probabilities": {
+        "COLD": {
+          "OBLIGATION": 0.51,
+          "PROHIBITION": 0.34,
+          "PERMISSION_RIGHT": 0.89,
+          "DEFINITION": 0.83,
+          "AUTHORITY": 0.1,
+          "CONDITION": 0.98,
+          "EXCLUSION": 0.96,
+          "THRESHOLD": 0.98,
+          "DEADLINE": 0.98,
+          "CROSS_REFERENCE": 0.81
+        },
+        "LEARNED": {
+          "OBLIGATION": 0.34,
+          "PROHIBITION": 0.38,
+          "PERMISSION_RIGHT": 0.89,
+          "DEFINITION": 0.85,
+          "AUTHORITY": 0.12,
+          "CONDITION": 0.98,
+          "EXCLUSION": 0.97,
+          "THRESHOLD": 0.98,
+          "DEADLINE": 0.98,
+          "CROSS_REFERENCE": 0.86
+        }
+      }
+    }
+  ]
+}
