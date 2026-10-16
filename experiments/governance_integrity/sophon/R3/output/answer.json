@@ -1,0 +1,300 @@
+{
+ "task": "R3",
+ "commit": "9bb43d710094d8f572c64997ce991c8d395c5753",
+ "label": "MISMATCH",
+ "confidence": "high",
+ "rationale": "Not a refactor: in G2 the four DROM rate rules were written inside the body of the private rule `DROM . seconde période` and publicodes silently dropped them (parsed rules 1258 -> 1262 after the move to `DROM . avec`), so before the commit an auto-entrepreneur in the DROM paid the full metropolitan rates (engine: BNC 231 €/mois, BIC 212, vente 123, CIPAV 1 452 €/an at 01/10/2024) and after it pays the reduced DROM rates (36 / 36 / 21 / 852). The reduction itself is what D756-5 v.LEGIARTI000034726710 (in force since 2017-05-12, Décret n°2017-972 du 9 mai 2017) requires (1/6 or 1/3, 1/2, 2/3 of the base rates, rounded up to 0,1 %), and for BIC services and vente the new constants equal D756-5 x D613-4 v.LEGIARTI000049624068 (in force 2024-07-01..2025-05-01) (3,6/10,6/14,2 and 2,1/6,2/8,2: 9 VERIFIED sophon checks). But for BNC and CIPAV the commit hard-codes 3,6/10,6/14,1 and 7,1/10,6/14,2, i.e. fractions of the superseded rates 21,1/21,2 % (D613-4 v.LEGIARTI000046714712 (in force 2022-12-10..2024-06-01; text available in store snapshot S0, not in S5)); the version in force at the decision date gives 23,1/23,2 % hence 3,9/11,6/15,4 and 7,8/11,6/15,5. The library already applies 23,1/23,2 in metropole since 07/2024, and the new DROM rules override that with date-less constants, so after the change the engine computes values the text in force does not support (8 FAILED checks, L0133-L0136, L0139-L0142). Caveat on the exact expected numbers: D756-5 still cites the pre-2020 numbering (D. 131-6-1, L. 133-6-8) and distinguishes 1/6 vs 1/3 by L. 611-1 2°, which are outside the bounded set; under any reading of the bounded texts, 3,6 % for BNC at 01/10/2024 cannot be derived from a rate table in force.",
+ "evidence": [
+  {
+   "kind": "diff_excerpt",
+   "article": "D756-5",
+   "article_version_id": "LEGIARTI000034726710",
+   "quote_or_values": "exonérations.publicodes: the four DROM rate rules (`service BIC` -> renamed `taux service BIC`, `taux service BNC`, `taux vente restauration hébergement`, `taux CIPAV`, each with `remplace: cotisations et contributions . cotisations . <x> . taux`) move from the BODY of the private rule `DROM . seconde période` (indent 6, before) to `DROM . avec` (indent 4, after); the misspelt duplicate key `references:` is merged into `références:`; dirigeant.publicodes: blank lines only. Engine `build`: parsed_rule_count 1258 (G2, before) -> 1262 (after); `list --prefix 'dirigeant . auto-entrepreneur . DROM'`: 1 name before (the 4 rate rules are not parsed at all), 5 after."
+  },
+  {
+   "kind": "article_quote",
+   "article": "D756-5",
+   "article_version_id": "LEGIARTI000034726710",
+   "quote_or_values": "le taux mentionné au premier alinéa de l'article L. 133-6-8 correspond, après arrondi au dixième de pour cent supérieur, à une fraction des taux prévus par l'article D. 131-6-1 fixée à : a) 1/6 pour les travailleurs indépendants mentionnés au 2° de l'article L. 611-1 et 1/3 dans les autres cas, jusqu'à la fin du septième trimestre civil qui suit celui au cours duquel intervient la date d'effet de l'affiliation ; b) 1/2 pour la période qui court entre la fin de la période mentionnée au a et la fin de la troisième année civile d'activité ; c) 2/3 à compter de la quatrième année civile d'activité."
+  },
+  {
+   "kind": "article_quote",
+   "article": "D756-5",
+   "article_version_id": "LEGIARTI000034726710",
+   "quote_or_values": "après arrondi au dixième de pour cent supérieur, à une fraction des taux prévus par l'article D. 131-6-1"
+  },
+  {
+   "kind": "article_quote",
+   "article": "D613-4",
+   "article_version_id": "LEGIARTI000049624068",
+   "quote_or_values": "e) Travailleurs indépendants relevant à la fois de l'article L. 631-1 et du régime prévu à l' article 102 ter du code général des impôts 10 000 euros 34 % 6 600 euros 23,1 %  [in force 2024-07-01..2025-05-01]"
+  },
+  {
+   "kind": "article_quote",
+   "article": "D613-4",
+   "article_version_id": "LEGIARTI000049624068",
+   "quote_or_values": "b) Travailleurs indépendants affiliés à la section professionnelle mentionnée au 11° de l'article R. 641-1 35 076 euros 34 % 23 150 euros 23,2 %"
+  },
+  {
+   "kind": "article_quote",
+   "article": "D613-4",
+   "article_version_id": "LEGIARTI000049624068",
+   "quote_or_values": "d) Travailleurs indépendants appartenant à la catégorie mentionnée au 2° du 1 de l'article 50-0 du code général des impôt 46 300 euros 50 % 23 150 euros 21,2 %"
+  },
+  {
+   "kind": "article_quote",
+   "article": "D613-4",
+   "article_version_id": "LEGIARTI000049624068",
+   "quote_or_values": "a) Travailleurs indépendants appartenant à la catégorie mentionnée au 1° du 1 de l' article 50-0 du code général des impôts 79 828 euros 71 % 23 150 euros 12,3 %"
+  },
+  {
+   "kind": "article_quote",
+   "article": "D613-4",
+   "article_version_id": "LEGIARTI000046714712",
+   "quote_or_values": "e) Travailleurs indépendants relevant à la fois de l'article L. 631-1 et du régime prévu à l'article 102 ter du code général des impôts 10 000 euros 34 % 6 600 euros 21,1 %  [superseded version, in force 2022-12-10..2024-06-01; text from store snapshot S0 (legi-data 2.360.0); S5 carries only the id/dates of this version]"
+  },
+  {
+   "kind": "article_quote",
+   "article": "D613-4",
+   "article_version_id": "LEGIARTI000046714712",
+   "quote_or_values": "b) Travailleurs indépendants affiliés à la section professionnelle mentionnée au 11° de l'article R. 641-1 35 076 euros 34 % 23 150 euros 21,2 %  [same superseded version]"
+  },
+  {
+   "kind": "article_quote",
+   "article": "L613-7",
+   "article_version_id": "LEGIARTI000048683570",
+   "quote_or_values": "Un taux global différent peut être fixé par décret pour les périodes au cours desquelles le travailleur indépendant est éligible à une exonération de cotisations et de contributions de sécurité sociale."
+  },
+  {
+   "kind": "article_quote",
+   "article": "D756-5",
+   "article_version_id": "LEGIARTI000034726710",
+   "quote_or_values": "II. – L'exonération prévue au I est calculée sur le chiffre d'affaires ou les recettes dans la limite du seuil fixé par les articles 50-0 et 102 ter du code général des impôts.  [II: CA cap of the reduction -- not implemented before or after; pre-existing gap]"
+  },
+  {
+   "kind": "engine_before_after",
+   "article": "D756-5",
+   "article_version_id": "LEGIARTI000034726710",
+   "quote_or_values": "rule `dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC` ; case DROM_BNC_P1_05-2024 (AE DROM, CA 1 000 €/mois, P1: trimestres civils=4 trimestre civil, années civiles=1 année civile) ; date 01/05/2024 ; BEFORE (G2) = 211.0 €/mois (full rate 21.1 %) ; AFTER (G2+commit) = 36 €/mois (rate 3.6 %) ; disposable proposal = 36 €/mois"
+  },
+  {
+   "kind": "engine_before_after",
+   "article": "D756-5",
+   "article_version_id": "LEGIARTI000034726710",
+   "quote_or_values": "rule `dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC` ; case DROM_BNC_P1_10-2024 (AE DROM, CA 1 000 €/mois, P1: trimestres civils=4 trimestre civil, années civiles=1 année civile) ; date 01/10/2024 ; BEFORE (G2) = 231 €/mois (full rate 23.1 %) ; AFTER (G2+commit) = 36 €/mois (rate 3.6 %) ; disposable proposal = 39 €/mois"
+  },
+  {
+   "kind": "engine_before_after",
+   "article": "D756-5",
+   "article_version_id": "LEGIARTI000034726710",
+   "quote_or_values": "rule `dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC` ; case DROM_BNC_P2_05-2024 (AE DROM, CA 1 000 €/mois, P2: trimestres civils=10 trimestre civil, années civiles=3 année civile) ; date 01/05/2024 ; BEFORE (G2) = 211.0 €/mois (full rate 21.1 %) ; AFTER (G2+commit) = 106 €/mois (rate 10.6 %) ; disposable proposal = 106 €/mois"
+  },
+  {
+   "kind": "engine_before_after",
+   "article": "D756-5",
+   "article_version_id": "LEGIARTI000034726710",
+   "quote_or_values": "rule `dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC` ; case DROM_BNC_P2_10-2024 (AE DROM, CA 1 000 €/mois, P2: trimestres civils=10 trimestre civil, années civiles=3 année civile) ; date 01/10/2024 ; BEFORE (G2) = 231 €/mois (full rate 23.1 %) ; AFTER (G2+commit) = 106 €/mois (rate 10.6 %) ; disposable proposal = 116 €/mois"
+  },
+  {
+   "kind": "engine_before_after",
+   "article": "D756-5",
+   "article_version_id": "LEGIARTI000034726710",
+   "quote_or_values": "rule `dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC` ; case DROM_BNC_P3_05-2024 (AE DROM, CA 1 000 €/mois, P3: trimestres civils=20 trimestre civil, années civiles=5 année civile) ; date 01/05/2024 ; BEFORE (G2) = 211.0 €/mois (full rate 21.1 %) ; AFTER (G2+commit) = 141 €/mois (rate 14.1 %) ; disposable proposal = 141 €/mois"
+  },
+  {
+   "kind": "engine_before_after",
+   "article": "D756-5",
+   "article_version_id": "LEGIARTI000034726710",
+   "quote_or_values": "rule `dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC` ; case DROM_BNC_P3_10-2024 (AE DROM, CA 1 000 €/mois, P3: trimestres civils=20 trimestre civil, années civiles=5 année civile) ; date 01/10/2024 ; BEFORE (G2) = 231 €/mois (full rate 23.1 %) ; AFTER (G2+commit) = 141 €/mois (rate 14.1 %) ; disposable proposal = 154 €/mois"
+  },
+  {
+   "kind": "engine_before_after",
+   "article": "D756-5",
+   "article_version_id": "LEGIARTI000034726710",
+   "quote_or_values": "rule `dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV` ; case DROM_CIPAV_P1_05-2024 (AE DROM, CA 1 000 €/mois, P1: trimestres civils=4 trimestre civil, années civiles=1 année civile) ; date 01/05/2024 ; BEFORE (G2) = 1452 €/an (full rate 21.2 %) ; AFTER (G2+commit) = 852 €/an (rate 7.1 %) ; disposable proposal = 852 €/an"
+  },
+  {
+   "kind": "engine_before_after",
+   "article": "D756-5",
+   "article_version_id": "LEGIARTI000034726710",
+   "quote_or_values": "rule `dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV` ; case DROM_CIPAV_P1_10-2024 (AE DROM, CA 1 000 €/mois, P1: trimestres civils=4 trimestre civil, années civiles=1 année civile) ; date 01/10/2024 ; BEFORE (G2) = 1452 €/an (full rate 23.2 %) ; AFTER (G2+commit) = 852 €/an (rate 7.1 %) ; disposable proposal = 936 €/an"
+  },
+  {
+   "kind": "engine_before_after",
+   "article": "D756-5",
+   "article_version_id": "LEGIARTI000034726710",
+   "quote_or_values": "rule `dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV` ; case DROM_CIPAV_P2_05-2024 (AE DROM, CA 1 000 €/mois, P2: trimestres civils=10 trimestre civil, années civiles=3 année civile) ; date 01/05/2024 ; BEFORE (G2) = 1452 €/an (full rate 21.2 %) ; AFTER (G2+commit) = 1272 €/an (rate 10.6 %) ; disposable proposal = 1272 €/an"
+  },
+  {
+   "kind": "engine_before_after",
+   "article": "D756-5",
+   "article_version_id": "LEGIARTI000034726710",
+   "quote_or_values": "rule `dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV` ; case DROM_CIPAV_P2_10-2024 (AE DROM, CA 1 000 €/mois, P2: trimestres civils=10 trimestre civil, années civiles=3 année civile) ; date 01/10/2024 ; BEFORE (G2) = 1452 €/an (full rate 23.2 %) ; AFTER (G2+commit) = 1272 €/an (rate 10.6 %) ; disposable proposal = 1392 €/an"
+  },
+  {
+   "kind": "engine_before_after",
+   "article": "D756-5",
+   "article_version_id": "LEGIARTI000034726710",
+   "quote_or_values": "rule `dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV` ; case DROM_CIPAV_P3_05-2024 (AE DROM, CA 1 000 €/mois, P3: trimestres civils=20 trimestre civil, années civiles=5 année civile) ; date 01/05/2024 ; BEFORE (G2) = 1452 €/an (full rate 21.2 %) ; AFTER (G2+commit) = 1704 €/an (rate 14.2 %) ; disposable proposal = 1704 €/an"
+  },
+  {
+   "kind": "engine_before_after",
+   "article": "D756-5",
+   "article_version_id": "LEGIARTI000034726710",
+   "quote_or_values": "rule `dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV` ; case DROM_CIPAV_P3_10-2024 (AE DROM, CA 1 000 €/mois, P3: trimestres civils=20 trimestre civil, années civiles=5 année civile) ; date 01/10/2024 ; BEFORE (G2) = 1452 €/an (full rate 23.2 %) ; AFTER (G2+commit) = 1704 €/an (rate 14.2 %) ; disposable proposal = 1860 €/an"
+  },
+  {
+   "kind": "engine_before_after",
+   "article": "D756-5",
+   "article_version_id": "LEGIARTI000034726710",
+   "quote_or_values": "rule `dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC` ; case DROM_BIC_P1_10-2024 (AE DROM, CA 1 000 €/mois, P1: trimestres civils=4 trimestre civil, années civiles=1 année civile) ; date 01/10/2024 ; BEFORE (G2) = 212 €/mois (full rate 21.2 %) ; AFTER (G2+commit) = 36 €/mois (rate 3.6 %) ; disposable proposal = 36 €/mois"
+  },
+  {
+   "kind": "engine_before_after",
+   "article": "D756-5",
+   "article_version_id": "LEGIARTI000034726710",
+   "quote_or_values": "rule `dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC` ; case DROM_BIC_P2_10-2024 (AE DROM, CA 1 000 €/mois, P2: trimestres civils=10 trimestre civil, années civiles=3 année civile) ; date 01/10/2024 ; BEFORE (G2) = 212 €/mois (full rate 21.2 %) ; AFTER (G2+commit) = 106 €/mois (rate 10.6 %) ; disposable proposal = 106 €/mois"
+  },
+  {
+   "kind": "engine_before_after",
+   "article": "D756-5",
+   "article_version_id": "LEGIARTI000034726710",
+   "quote_or_values": "rule `dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC` ; case DROM_BIC_P3_10-2024 (AE DROM, CA 1 000 €/mois, P3: trimestres civils=20 trimestre civil, années civiles=5 année civile) ; date 01/10/2024 ; BEFORE (G2) = 212 €/mois (full rate 21.2 %) ; AFTER (G2+commit) = 142 €/mois (rate 14.2 %) ; disposable proposal = 142 €/mois"
+  },
+  {
+   "kind": "engine_before_after",
+   "article": "D756-5",
+   "article_version_id": "LEGIARTI000034726710",
+   "quote_or_values": "rule `dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement` ; case DROM_VENTE_P1_10-2024 (AE DROM, CA 1 000 €/mois, P1: trimestres civils=4 trimestre civil, années civiles=1 année civile) ; date 01/10/2024 ; BEFORE (G2) = 123 €/mois (full rate 12.3 %) ; AFTER (G2+commit) = 21 €/mois (rate 2.1 %) ; disposable proposal = 21 €/mois"
+  },
+  {
+   "kind": "engine_before_after",
+   "article": "D756-5",
+   "article_version_id": "LEGIARTI000034726710",
+   "quote_or_values": "rule `dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement` ; case DROM_VENTE_P2_10-2024 (AE DROM, CA 1 000 €/mois, P2: trimestres civils=10 trimestre civil, années civiles=3 année civile) ; date 01/10/2024 ; BEFORE (G2) = 123 €/mois (full rate 12.3 %) ; AFTER (G2+commit) = 62 €/mois (rate 6.2 %) ; disposable proposal = 62 €/mois"
+  },
+  {
+   "kind": "engine_before_after",
+   "article": "D756-5",
+   "article_version_id": "LEGIARTI000034726710",
+   "quote_or_values": "rule `dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement` ; case DROM_VENTE_P3_10-2024 (AE DROM, CA 1 000 €/mois, P3: trimestres civils=20 trimestre civil, années civiles=5 année civile) ; date 01/10/2024 ; BEFORE (G2) = 123 €/mois (full rate 12.3 %) ; AFTER (G2+commit) = 82.0 €/mois (rate 8.2 %) ; disposable proposal = 82.0 €/mois"
+  },
+  {
+   "kind": "engine_before_after",
+   "article": "D613-4",
+   "article_version_id": "LEGIARTI000049624068",
+   "quote_or_values": "metropolitan controls (outre-mer: non), 01/10/2024, identical before/after: METRO_BNC_P1_10-2024: 231 €/mois -> 231 €/mois; METRO_CIPAV_P1_10-2024: 1452 €/an -> 1452 €/an; METRO_BIC_P1_10-2024: 212 €/mois -> 212 €/mois; METRO_VENTE_P1_10-2024: 123 €/mois -> 123 €/mois -- the library already applies D613-4 v.LEGIARTI000049624068 (BNC 23,1 / CIPAV 23,2 since 07/2024) in metropole; the new DROM constants override it."
+  },
+  {
+   "kind": "engine_before_after",
+   "article": "D756-5",
+   "article_version_id": "LEGIARTI000034726710",
+   "quote_or_values": "situation used for the BNC checks (others differ only by nature/réglementée/service ou vente and the durée overrides): {\"salarié\": \"non\", \"entreprise . catégorie juridique\": \"'EI'\", \"entreprise . catégorie juridique . EI . auto-entrepreneur\": \"oui\", \"dirigeant . auto-entrepreneur\": \"oui\", \"dirigeant . auto-entrepreneur . chiffre d'affaires\": \"1000 €/mois\", \"entreprise . date de création\": \"01/01/2021\", \"dirigeant . exonérations . ACRE\": \"non\", \"établissement . commune . département . outre-mer\": \"oui\", \"entreprise . activité . nature\": \"'libérale'\", \"date\": \"01/10/2024\", \"entreprise . durée d'activité . trimestres civils\": \"4 trimestre civil\", \"entreprise . durée d'activité . années civiles\": \"1 année civile\", \"entreprise . durée d'activité\": \"300 jour\"}"
+  }
+ ],
+ "expected_values_if_mismatch": [
+  {
+   "rule": "dirigeant . auto-entrepreneur . DROM . taux service BNC",
+   "date": "01/10/2024",
+   "found": 3.6,
+   "expected": 3.9,
+   "derivation": "D756-5 v.LEGIARTI000034726710 (in force since 2017-05-12, Décret n°2017-972 du 9 mai 2017) a) 1/6 x D613-4 v.LEGIARTI000049624068 (in force 2024-07-01..2025-05-01) e) BNC 23,1 % = 3,85 -> 'arrondi au dixième de pour cent supérieur' = 3,9 %. Engine after: `dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC` = 36 €/mois on 1 000 €/mois (expected 39). The 3,6 % is 1/6 x 21,1 % (D613-4 v.LEGIARTI000046714712 (in force 2022-12-10..2024-06-01; text available in store snapshot S0, not in S5)), correct only for dates before 2024-07-01 (engine 05/2024: 36 = aligned)."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . DROM . taux service BNC",
+   "date": "01/10/2024",
+   "found": 10.6,
+   "expected": 11.6,
+   "derivation": "D756-5 v.LEGIARTI000034726710 (in force since 2017-05-12, Décret n°2017-972 du 9 mai 2017) b) 1/2 x 23,1 = 11,55 -> 11,6 %. Engine after: 106 €/mois (expected 116)."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . DROM . taux service BNC",
+   "date": "01/10/2024",
+   "found": 14.1,
+   "expected": 15.4,
+   "derivation": "D756-5 v.LEGIARTI000034726710 (in force since 2017-05-12, Décret n°2017-972 du 9 mai 2017) c) 2/3 x 23,1 = 15,4 %. Engine after: 141 €/mois (expected 154)."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . DROM . taux CIPAV",
+   "date": "01/10/2024",
+   "found": 7.1,
+   "expected": 7.8,
+   "derivation": "D756-5 v.LEGIARTI000034726710 (in force since 2017-05-12, Décret n°2017-972 du 9 mai 2017) a) '1/3 dans les autres cas' x D613-4 v.LEGIARTI000049624068 (in force 2024-07-01..2025-05-01) b) CIPAV 23,2 % = 7,733 -> 7,8 %. Engine after: `dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV` = 852 €/an on 12 000 €/an (expected 936). 7,1 % = 1/3 x 21,2 % (superseded version)."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . DROM . taux CIPAV",
+   "date": "01/10/2024",
+   "found": 10.6,
+   "expected": 11.6,
+   "derivation": "D756-5 v.LEGIARTI000034726710 (in force since 2017-05-12, Décret n°2017-972 du 9 mai 2017) b) 1/2 x 23,2 = 11,6 %. Engine after: 1 272 €/an (expected 1 392)."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . DROM . taux CIPAV",
+   "date": "01/10/2024",
+   "found": 14.2,
+   "expected": 15.5,
+   "derivation": "D756-5 v.LEGIARTI000034726710 (in force since 2017-05-12, Décret n°2017-972 du 9 mai 2017) c) 2/3 x 23,2 = 15,467 -> 15,5 %. Engine after: 1 704 €/an (expected 1 860)."
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC",
+   "date": "01/10/2024",
+   "found": 231,
+   "expected": 39,
+   "derivation": "BEFORE the commit (G2) the DROM reduction was not applied at all: 231 €/mois = full 23,1 %; D756-5 a) requires 1/6 (3,9 % = 39). The commit fixes the omission but with the superseded base rate (36)."
+  }
+ ],
+ "outside_bounded_set": [
+  "L611-1 CSS (which travailleurs indépendants are '2°' -> 1/6, and 'autres cas' -> 1/3 in D756-5 a); the library's and URSSAF's reading '1/3 = CIPAV / libéral réglementé' is adopted but cannot be verified here)",
+  "Recodification decree (2020) renumbering D131-6-1 -> D613-4 and L133-6-8 -> L613-7: D756-5 still cites the old numbers; the current D131-6-1 (ACRE) contains no rate table",
+  "L751-1 CSS (list of the collectivités = DROM; library key `établissement . commune . département . outre-mer`)",
+  "CGI articles 50-0 and 102 ter (micro thresholds for the D756-5 II cap)",
+  "URSSAF guide 'Taux auto-entrepreneur dans les Drom' (PDF) and autoentrepreneur.urssaf.fr page cited by the rule `dirigeant . auto-entrepreneur . DROM`",
+  "Text of D613-4 versions LEGIARTI000046714712 (2022-12-10..2024-06-01) and LEGIARTI000049623867 (2024-06-01..2024-07-01): not in S5 (ids/dates only); the 21,1 / 21,2 % quotes come from the store's S0/S1 snapshots",
+  "D613-4 versions LEGIARTI000049624097 (2025-01-01) and LEGIARTI000049624125 (2026-01-01): announced by id only, no text -> no DROM values derivable for those dates (abstain)"
+ ],
+ "approval": "none recorded",
+ "notes": "Decision date 2024-10-19; law S5 (legi-data 2.385.0) is textually identical to S4/S3 for all 12 articles (dump diff: header only); rules pin G2 = 3a4091ae1caf (2024-10-10), the commit (authored 2024-10-03, committed 2024-10-11) is applied forward on a copy (work/proposals/R3/after; `patch -p1 -l`). Period overrides used because `durée d'activité` follows the wall clock: P1 = 4 trimestres civils / 1 année civile (première période: trimestres civils <= 8), P2 = 10 / 3 (seconde période: années civiles <= 3), P3 = 20 / 5. The maintainers' own fixture confirms the before-state: existing_tests snapshot 'DROM 1..4' at the G2 pin shows `service BNC . taux: 23`, `service BIC . taux: 21`, `vente . taux: 12` (full rates) and the commit rewrites 116 lines of that snapshot. Disposable proposal (work/proposals/R3/proposal, script work/scripts/apply_proposal_R3.py, diff CHANGES_proposal.diff): add `date >= 07/2024` variations to `taux service BNC` (3,9/11,6/15,4) and `taux CIPAV` (7,8/11,6/15,5); build OK (1262 rules); engine at 01/10/2024: BNC 39/116/154 €/mois, CIPAV 936/1392/1860 €/an; 05/2024 and metropole unchanged. Pre-existing gaps unchanged by the commit: D756-5 II CA cap (L0144 INFERRED), D613-4 c) meublés de tourisme 6 %, D613-6 répartition shares (v.LEGIARTI000049625264), D613-4/D613-6 versions dated 2025-01-01 and 2026-01-01 announced by id only (abstain), CIPAV ACRE leak, D632-1 2024 floor, L613-7 minimum-contribution option. Sophon: snapshots S5, G2, G2post_R3 registered; revalidate S5/G2 counts {\"BROKEN\": 42, \"REASSESS_LAW_CHANGED\": 36, \"REASSESS_RULE_CHANGED\": 11, \"RULE_CHANGED_CHECK_STILL_PASSES\": 10, \"STILL_VERIFIED\": 10, \"UNVERIFIED_NO_CHECK\": 10}; S5/G2post_R3 {\"BROKEN\": 33, \"REASSESS_LAW_CHANGED\": 36, \"REASSESS_RULE_CHANGED\": 11, \"RULE_CHANGED_CHECK_STILL_PASSES\": 19, \"STILL_VERIFIED\": 10, \"UNVERIFIED_NO_CHECK\": 10} (the 9 T0 DROM links on G0 pass again after the commit because they expected the 05/2024 values); 26 new links L0120-L0145 (4 FAILED before, 9+3 VERIFIED after on BIC/vente/pre-07-2024 bases, 8 FAILED after on BNC/CIPAV >= 07/2024, 2 INFERRED); verify-store: 145 links, no problems. Approval: none recorded anywhere in the corpus.",
+ "sophon_reports": [
+  "work/sophon/reports/R3_asof_D613-4_2024-10-19.json",
+  "work/sophon/reports/R3_asof_D756-5_2024-10-19.json",
+  "work/sophon/reports/R3_evidence.json",
+  "work/sophon/reports/R3_evidence.md",
+  "work/sophon/reports/R3_report_cmd.json",
+  "work/sophon/reports/R3_revalidate_S5_G2.json",
+  "work/sophon/reports/R3_revalidate_S5_G2.md",
+  "work/sophon/reports/R3_revalidate_S5_G2_cmd.json",
+  "work/sophon/reports/R3_revalidate_S5_G2post_R3.json",
+  "work/sophon/reports/R3_revalidate_S5_G2post_R3.md",
+  "work/sophon/reports/R3_revalidate_S5_G2post_R3_cmd.json",
+  "work/sophon/reports/R3_verify-store.json"
+ ],
+ "sophon_links": [
+  "L0120",
+  "L0121",
+  "L0122",
+  "L0123",
+  "L0124",
+  "L0125",
+  "L0126",
+  "L0127",
+  "L0128",
+  "L0129",
+  "L0130",
+  "L0131",
+  "L0132",
+  "L0133",
+  "L0134",
+  "L0135",
+  "L0136",
+  "L0137",
+  "L0138",
+  "L0139",
+  "L0140",
+  "L0141",
+  "L0142",
+  "L0143",
+  "L0144",
+  "L0145"
+ ],
+ "self_reported_tool_calls": 24
+}

@@ -1,0 +1,1151 @@
+{
+ "as_of": "2026-03-31",
+ "question": {
+  "rule": null,
+  "article": "D633-3"
+ },
+ "generated_at": "2026-10-11T18:42:52+00:00",
+ "links": [
+  {
+   "link_id": "L0049",
+   "recorded_at": "2026-10-11T16:47:23+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . indépendant . cotisations et contributions . retraite de base",
+   "rules_snapshot": "G0",
+   "rule_file": "règles/dirigeant/indépendant.publicodes",
+   "rule_file_sha256": "7ab4795e7a7dcf44baf8a092e6f1c968d08be2a98100a0c0639f38efd47fbf23",
+   "article": "D633-3",
+   "article_id": "LEGIARTI000041967101",
+   "article_dateDebut": "2020-05-25",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "970038062755a04f22a9ce6d2064fb34ac0465983188a60a4887e63f344a8632",
+   "law_snapshot": "S0",
+   "quote": "Le taux des cotisations assises sur le revenu d'activité dans la limite du plafond est fixé à 17,15 %",
+   "claim": "r = 9 000 €/an ≤ PSS: (17,15 % + 0,60 %) × 9 000 = 1 597,5 → 1 598 €/an.",
+   "check": {
+    "rule": "dirigeant . indépendant . cotisations et contributions . retraite de base",
+    "situation": {
+     "date": "01/07/2024",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "non",
+     "entreprise . activité . nature": "'commerciale'",
+     "entreprise . imposition": "'IR'",
+     "dirigeant . indépendant . revenu professionnel": "9000 €/an",
+     "entreprise . date de création": "01/01/2021"
+    },
+    "expect": 1598.0,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 1598,
+    "expected": 1598.0,
+    "unit": "€/an",
+    "missing_variables": [
+     "établissement . commune . département",
+     "établissement . commune . département . outre-mer",
+     "dirigeant . indépendant . cotisations et contributions . exonérations . pension invalidité",
+     "entreprise . activités",
+     "entreprise . activités . commerciale",
+     "entreprise . activités . artisanale",
+     "entreprise . activités . libérale",
+     "entreprise . activités . agricole",
+     "dirigeant . indépendant . conjoint collaborateur",
+     "entreprise . imposition . régime",
+     "entreprise . imposition . régime . micro-entreprise",
+     "dirigeant . indépendant . cotisations facultatives"
+    ],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0050",
+   "recorded_at": "2026-10-11T16:47:25+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . indépendant . cotisations et contributions . retraite de base",
+   "rules_snapshot": "G0",
+   "rule_file": "règles/dirigeant/indépendant.publicodes",
+   "rule_file_sha256": "7ab4795e7a7dcf44baf8a092e6f1c968d08be2a98100a0c0639f38efd47fbf23",
+   "article": "D633-3",
+   "article_id": "LEGIARTI000041967101",
+   "article_dateDebut": "2020-05-25",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "970038062755a04f22a9ce6d2064fb34ac0465983188a60a4887e63f344a8632",
+   "law_snapshot": "S0",
+   "quote": "Le taux des cotisations assises sur la totalité du revenu d'activité est fixé à 0,60 %",
+   "claim": "r = 60 000 €/an > PSS: 17,15 % × 46 368 + 0,60 % × 60 000 = 8 312 €/an.",
+   "check": {
+    "rule": "dirigeant . indépendant . cotisations et contributions . retraite de base",
+    "situation": {
+     "date": "01/07/2024",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "non",
+     "entreprise . activité . nature": "'commerciale'",
+     "entreprise . imposition": "'IR'",
+     "dirigeant . indépendant . revenu professionnel": "60000 €/an",
+     "entreprise . date de création": "01/01/2021"
+    },
+    "expect": 8312.0,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 8312,
+    "expected": 8312.0,
+    "unit": "€/an",
+    "missing_variables": [
+     "établissement . commune . département",
+     "établissement . commune . département . outre-mer",
+     "dirigeant . indépendant . cotisations et contributions . exonérations . pension invalidité",
+     "entreprise . activités",
+     "entreprise . activités . commerciale",
+     "entreprise . activités . artisanale",
+     "entreprise . activités . libérale",
+     "entreprise . activités . agricole",
+     "dirigeant . indépendant . conjoint collaborateur",
+     "entreprise . imposition . régime",
+     "entreprise . imposition . régime . micro-entreprise",
+     "dirigeant . indépendant . cotisations facultatives"
+    ],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0051",
+   "recorded_at": "2026-10-11T16:47:26+00:00",
+   "status": "INFERRED",
+   "rule": "dirigeant . indépendant . cotisations et contributions . retraite de base . taux",
+   "rules_snapshot": "G0",
+   "rule_file": "règles/dirigeant/indépendant.publicodes",
+   "rule_file_sha256": "7ab4795e7a7dcf44baf8a092e6f1c968d08be2a98100a0c0639f38efd47fbf23",
+   "article": "D633-3",
+   "article_id": "LEGIARTI000041967101",
+   "article_dateDebut": "2020-05-25",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "970038062755a04f22a9ce6d2064fb34ac0465983188a60a4887e63f344a8632",
+   "law_snapshot": "S0",
+   "quote": "Le taux des cotisations assises sur le revenu d'activité dans la limite du plafond est fixé à 17,15 %",
+   "claim": "Library single first-tranche rate 17,75 % = 17,15 % (I) + 0,60 % (II); the 0,6 % second tranche carries II above the PSS.",
+   "check": null,
+   "check_result": null,
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0075",
+   "recorded_at": "2026-10-11T17:28:18+00:00",
+   "status": "FAILED",
+   "rule": "dirigeant . indépendant . cotisations et contributions . retraite de base . taux",
+   "rules_snapshot": "G1",
+   "rule_file": "règles/dirigeant/indépendant.publicodes",
+   "rule_file_sha256": "7ab4795e7a7dcf44baf8a092e6f1c968d08be2a98100a0c0639f38efd47fbf23",
+   "article": "D633-3",
+   "article_id": "LEGIARTI000049904636",
+   "article_dateDebut": "2024-07-07",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "213e2f468cd7a4c7275534461193b371839d877f212a217cf9a9517e9349389e",
+   "law_snapshot": "S3",
+   "quote": "Le taux des cotisations assises sur la totalité de l'assiette de cotisations est fixé à 0,72 %",
+   "claim": "D633-3 LEGIARTI000049904636 (in force 2024-07-07, Décret n°2024-688 art. 3): G1 still 17,75 % (17,15 + 0,60) at 01/12/2024; text requires 0,72 % on the whole base -> 17,87 %. Expected to FAIL.",
+   "check": {
+    "rule": "dirigeant . indépendant . cotisations et contributions . retraite de base . taux",
+    "situation": {
+     "dirigeant . régime social": "'indépendant'",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . imposition": "'IR'",
+     "entreprise . activité . nature": "'commerciale'",
+     "dirigeant . indépendant . revenu professionnel": "40000 €/an",
+     "date": "01/12/2024"
+    },
+    "expect": 17.87,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": false,
+    "observed": 17.75,
+    "expected": 17.87,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": "observed != expected"
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0100",
+   "recorded_at": "2026-10-11T17:28:52+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . indépendant . cotisations et contributions . retraite de base . taux",
+   "rules_snapshot": "P_T1b",
+   "rule_file": "règles/dirigeant/indépendant.publicodes",
+   "rule_file_sha256": "d3734880afd8b9713583803802a4b912af52824f882b99bc91f7b7b287c25372",
+   "article": "D633-3",
+   "article_id": "LEGIARTI000049904636",
+   "article_dateDebut": "2024-07-07",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "213e2f468cd7a4c7275534461193b371839d877f212a217cf9a9517e9349389e",
+   "law_snapshot": "S3",
+   "quote": "Le taux des cotisations assises sur l'assiette de cotisations dans la limite du plafond est fixé à 17,15 %",
+   "claim": "D633-3 LEGIARTI000049904636 (in force 2024-07-07, Décret n°2024-688 art. 3): first tranche (within PSS) = 17,15 % + 0,72 % on the whole base = 17,87 % (was 17,15 + 0,60 = 17,75).",
+   "check": {
+    "rule": "dirigeant . indépendant . cotisations et contributions . retraite de base . taux",
+    "situation": {
+     "dirigeant . régime social": "'indépendant'",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . imposition": "'IR'",
+     "entreprise . activité . nature": "'commerciale'",
+     "dirigeant . indépendant . revenu professionnel": "40000 €/an",
+     "date": "01/12/2024"
+    },
+    "expect": 17.87,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 17.87,
+    "expected": 17.87,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0101",
+   "recorded_at": "2026-10-11T17:28:53+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . indépendant . cotisations et contributions . retraite de base . taux déplafonné",
+   "rules_snapshot": "P_T1b",
+   "rule_file": "règles/dirigeant/indépendant.publicodes",
+   "rule_file_sha256": "d3734880afd8b9713583803802a4b912af52824f882b99bc91f7b7b287c25372",
+   "article": "D633-3",
+   "article_id": "LEGIARTI000049904636",
+   "article_dateDebut": "2024-07-07",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "213e2f468cd7a4c7275534461193b371839d877f212a217cf9a9517e9349389e",
+   "law_snapshot": "S3",
+   "quote": "Le taux des cotisations assises sur la totalité de l'assiette de cotisations est fixé à 0,72 %",
+   "claim": "D633-3 LEGIARTI000049904636 (in force 2024-07-07, Décret n°2024-688 art. 3): rate on the whole base above the PSS: 0,72 % (was 0,60 %).",
+   "check": {
+    "rule": "dirigeant . indépendant . cotisations et contributions . retraite de base . taux déplafonné",
+    "situation": {
+     "dirigeant . régime social": "'indépendant'",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . imposition": "'IR'",
+     "entreprise . activité . nature": "'commerciale'",
+     "dirigeant . indépendant . revenu professionnel": "40000 €/an",
+     "date": "01/12/2024"
+    },
+    "expect": 0.72,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 0.72,
+    "expected": 0.72,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0102",
+   "recorded_at": "2026-10-11T17:28:55+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . indépendant . cotisations et contributions . retraite de base",
+   "rules_snapshot": "P_T1b",
+   "rule_file": "règles/dirigeant/indépendant.publicodes",
+   "rule_file_sha256": "d3734880afd8b9713583803802a4b912af52824f882b99bc91f7b7b287c25372",
+   "article": "D633-3",
+   "article_id": "LEGIARTI000049904636",
+   "article_dateDebut": "2024-07-07",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "213e2f468cd7a4c7275534461193b371839d877f212a217cf9a9517e9349389e",
+   "law_snapshot": "S3",
+   "quote": "Le taux des cotisations assises sur l'assiette de cotisations dans la limite du plafond est fixé à 17,15 %",
+   "claim": "D633-3 LEGIARTI000049904636 (in force 2024-07-07, Décret n°2024-688 art. 3): trader: 29 600 x 17,87 % = 5 289,52 -> 5 290 €/an (rounded) [conditional on the PLACEHOLDER pre-abattement line = revenu professionnel + cotisations facultatives déductibles; which income lines enter the base is NOT settled by the texts]",
+   "check": {
+    "rule": "dirigeant . indépendant . cotisations et contributions . retraite de base",
+    "situation": {
+     "dirigeant . régime social": "'indépendant'",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . imposition": "'IR'",
+     "entreprise . activité . nature": "'commerciale'",
+     "dirigeant . indépendant . revenu professionnel": "40000 €/an",
+     "date": "01/12/2024"
+    },
+    "expect": 5290.0,
+    "tolerance": 0.6
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 5290,
+    "expected": 5290.0,
+    "unit": "€/an",
+    "missing_variables": [
+     "établissement . commune . département",
+     "établissement . commune . département . outre-mer",
+     "entreprise . date de création",
+     "dirigeant . indépendant . cotisations et contributions . exonérations . pension invalidité",
+     "entreprise . activités",
+     "entreprise . activités . commerciale",
+     "entreprise . activités . artisanale",
+     "entreprise . activités . libérale",
+     "entreprise . imposition . IR . type de bénéfices",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur",
+     "entreprise . activités . agricole",
+     "dirigeant . indépendant . conjoint collaborateur"
+    ],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0103",
+   "recorded_at": "2026-10-11T17:28:56+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . indépendant . cotisations et contributions . retraite de base . taux",
+   "rules_snapshot": "P_T1b",
+   "rule_file": "règles/dirigeant/indépendant.publicodes",
+   "rule_file_sha256": "d3734880afd8b9713583803802a4b912af52824f882b99bc91f7b7b287c25372",
+   "article": "D633-3",
+   "article_id": "LEGIARTI000049904636",
+   "article_dateDebut": "2024-07-07",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "213e2f468cd7a4c7275534461193b371839d877f212a217cf9a9517e9349389e",
+   "law_snapshot": "S3",
+   "quote": "Le taux des cotisations assises sur l'assiette de cotisations dans la limite du plafond est fixé à 17,15 %",
+   "claim": "D633-3 LEGIARTI000049904636 (in force 2024-07-07, Décret n°2024-688 art. 3): before 07/07/2024 the rule keeps 17,75 % (01/06/2024).",
+   "check": {
+    "rule": "dirigeant . indépendant . cotisations et contributions . retraite de base . taux",
+    "situation": {
+     "dirigeant . régime social": "'indépendant'",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . imposition": "'IR'",
+     "entreprise . activité . nature": "'commerciale'",
+     "dirigeant . indépendant . revenu professionnel": "40000 €/an",
+     "date": "01/06/2024"
+    },
+    "expect": 17.75,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 17.75,
+    "expected": 17.75,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0146",
+   "recorded_at": "2026-10-11T18:40:05+00:00",
+   "status": "VERIFIED",
+   "rule": "indépendant . cotisations et contributions . cotisations . retraite de base . tranche 1 . taux",
+   "rules_snapshot": "G4pre_R4",
+   "rule_file": "règles/indépendant/cotisations-et-contributions/cotisations/cotisations.publicodes",
+   "rule_file_sha256": "e1189bfa782076535c6607e12ec25dee8847266b1a6282b50b50f0f554fcd321",
+   "article": "D633-3",
+   "article_id": "LEGIARTI000049904636",
+   "article_dateDebut": "2024-07-07",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "213e2f468cd7a4c7275534461193b371839d877f212a217cf9a9517e9349389e",
+   "law_snapshot": "S9",
+   "quote": "Le taux des cotisations assises sur l'assiette de cotisations dans la limite du plafond est fixé à 17,15 %.",
+   "claim": "D633-3 v.LEGIARTI000049904636 (in force 2024-07-07; nota: applies to periods from 2025-01-01) I: 17,15 % on the assiette within the plafond. BEFORE the commit `tranche 1 . taux` = 17,15 % for artisans/commerçants/PLNR at 01/07/2025 (textual rate).",
+   "check": {
+    "rule": "indépendant . cotisations et contributions . cotisations . retraite de base . tranche 1 . taux",
+    "situation": {
+     "entreprise . imposition": "'IR'",
+     "entreprise . date de création": "01/01/2020",
+     "établissement . commune . département . outre-mer": "non",
+     "situation personnelle . RSA": "non",
+     "situation personnelle . domiciliation fiscale à l'étranger": "non",
+     "entreprise . activité . saisonnière": "non",
+     "indépendant . conjoint collaborateur": "non",
+     "indépendant . cotisations et contributions . cotisations . exonérations . pension invalidité": "non",
+     "entreprise . activité": "'commerciale'",
+     "entreprise . activité . commerciale . débit de tabac": "non",
+     "date": "01/07/2025",
+     "indépendant . cotisations et contributions . assiette sociale": "60000 €/an"
+    },
+    "expect": 17.15,
+    "tolerance": 1e-06
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 17.15,
+    "expected": 17.15,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0147",
+   "recorded_at": "2026-10-11T18:40:06+00:00",
+   "status": "VERIFIED",
+   "rule": "indépendant . cotisations et contributions . cotisations . retraite de base . tranche 2 . taux",
+   "rules_snapshot": "G4pre_R4",
+   "rule_file": "règles/indépendant/cotisations-et-contributions/cotisations/cotisations.publicodes",
+   "rule_file_sha256": "e1189bfa782076535c6607e12ec25dee8847266b1a6282b50b50f0f554fcd321",
+   "article": "D633-3",
+   "article_id": "LEGIARTI000049904636",
+   "article_dateDebut": "2024-07-07",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "213e2f468cd7a4c7275534461193b371839d877f212a217cf9a9517e9349389e",
+   "law_snapshot": "S9",
+   "quote": "Le taux des cotisations assises sur la totalité de l'assiette de cotisations est fixé à 0,72 %.",
+   "claim": "D633-3 v.LEGIARTI000049904636 (in force 2024-07-07; nota: applies to periods from 2025-01-01) II: 0,72 % on the totality of the assiette. BEFORE the commit `tranche 2 . taux` = 0,72 % (après réforme = date >= 01/2025) (textual rate).",
+   "check": {
+    "rule": "indépendant . cotisations et contributions . cotisations . retraite de base . tranche 2 . taux",
+    "situation": {
+     "entreprise . imposition": "'IR'",
+     "entreprise . date de création": "01/01/2020",
+     "établissement . commune . département . outre-mer": "non",
+     "situation personnelle . RSA": "non",
+     "situation personnelle . domiciliation fiscale à l'étranger": "non",
+     "entreprise . activité . saisonnière": "non",
+     "indépendant . conjoint collaborateur": "non",
+     "indépendant . cotisations et contributions . cotisations . exonérations . pension invalidité": "non",
+     "entreprise . activité": "'commerciale'",
+     "entreprise . activité . commerciale . débit de tabac": "non",
+     "date": "01/07/2025",
+     "indépendant . cotisations et contributions . assiette sociale": "60000 €/an"
+    },
+    "expect": 0.72,
+    "tolerance": 1e-06
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 0.72,
+    "expected": 0.72,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0148",
+   "recorded_at": "2026-10-11T18:40:07+00:00",
+   "status": "VERIFIED",
+   "rule": "indépendant . cotisations et contributions . cotisations . retraite de base",
+   "rules_snapshot": "G4pre_R4",
+   "rule_file": "règles/indépendant/cotisations-et-contributions/cotisations/cotisations.publicodes",
+   "rule_file_sha256": "e1189bfa782076535c6607e12ec25dee8847266b1a6282b50b50f0f554fcd321",
+   "article": "D633-3",
+   "article_id": "LEGIARTI000049904636",
+   "article_dateDebut": "2024-07-07",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "213e2f468cd7a4c7275534461193b371839d877f212a217cf9a9517e9349389e",
+   "law_snapshot": "S9",
+   "quote": "Le taux des cotisations assises sur l'assiette de cotisations dans la limite du plafond est fixé à 17,15 %.",
+   "claim": "D633-3 v.LEGIARTI000049904636 (in force 2024-07-07; nota: applies to periods from 2025-01-01) I+II on assiette 60 000 (> PSS 2025 = 47 100): 17,15 % x 47 100 = 8 077,65 + 0,72 % x 60 000 = 432 -> 8 509,65 -> 8 510 €/an. BEFORE: tranche 1 (8 078) + tranche 2 (432) = 8 510 (aligned).",
+   "check": {
+    "rule": "indépendant . cotisations et contributions . cotisations . retraite de base",
+    "situation": {
+     "entreprise . imposition": "'IR'",
+     "entreprise . date de création": "01/01/2020",
+     "établissement . commune . département . outre-mer": "non",
+     "situation personnelle . RSA": "non",
+     "situation personnelle . domiciliation fiscale à l'étranger": "non",
+     "entreprise . activité . saisonnière": "non",
+     "indépendant . conjoint collaborateur": "non",
+     "indépendant . cotisations et contributions . cotisations . exonérations . pension invalidité": "non",
+     "entreprise . activité": "'commerciale'",
+     "entreprise . activité . commerciale . débit de tabac": "non",
+     "date": "01/07/2025",
+     "indépendant . cotisations et contributions . assiette sociale": "60000 €/an"
+    },
+    "expect": 8510.0,
+    "tolerance": 1.0
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 8510,
+    "expected": 8510.0,
+    "unit": "€/an",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0149",
+   "recorded_at": "2026-10-11T18:40:08+00:00",
+   "status": "VERIFIED",
+   "rule": "indépendant . cotisations et contributions . cotisations . retraite de base",
+   "rules_snapshot": "G4pre_R4",
+   "rule_file": "règles/indépendant/cotisations-et-contributions/cotisations/cotisations.publicodes",
+   "rule_file_sha256": "e1189bfa782076535c6607e12ec25dee8847266b1a6282b50b50f0f554fcd321",
+   "article": "D633-3",
+   "article_id": "LEGIARTI000049904636",
+   "article_dateDebut": "2024-07-07",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "213e2f468cd7a4c7275534461193b371839d877f212a217cf9a9517e9349389e",
+   "law_snapshot": "S9",
+   "quote": "Le taux des cotisations assises sur la totalité de l'assiette de cotisations est fixé à 0,72 %.",
+   "claim": "D633-3 v.LEGIARTI000049904636 (in force 2024-07-07; nota: applies to periods from 2025-01-01) on assiette 20 000 (<= PSS): (17,15 + 0,72) % x 20 000 = 3 574 €/an. BEFORE: 3 430 + 144 = 3 574 (aligned).",
+   "check": {
+    "rule": "indépendant . cotisations et contributions . cotisations . retraite de base",
+    "situation": {
+     "entreprise . imposition": "'IR'",
+     "entreprise . date de création": "01/01/2020",
+     "établissement . commune . département . outre-mer": "non",
+     "situation personnelle . RSA": "non",
+     "situation personnelle . domiciliation fiscale à l'étranger": "non",
+     "entreprise . activité . saisonnière": "non",
+     "indépendant . conjoint collaborateur": "non",
+     "indépendant . cotisations et contributions . cotisations . exonérations . pension invalidité": "non",
+     "entreprise . activité": "'commerciale'",
+     "entreprise . activité . commerciale . débit de tabac": "non",
+     "date": "01/07/2025",
+     "indépendant . cotisations et contributions . assiette sociale": "20000 €/an"
+    },
+    "expect": 3574.0,
+    "tolerance": 1.0
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 3574,
+    "expected": 3574.0,
+    "unit": "€/an",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0150",
+   "recorded_at": "2026-10-11T18:40:09+00:00",
+   "status": "VERIFIED",
+   "rule": "indépendant . cotisations et contributions . cotisations . retraite de base",
+   "rules_snapshot": "G4pre_R4",
+   "rule_file": "règles/indépendant/cotisations-et-contributions/cotisations/cotisations.publicodes",
+   "rule_file_sha256": "e1189bfa782076535c6607e12ec25dee8847266b1a6282b50b50f0f554fcd321",
+   "article": "D633-3",
+   "article_id": "LEGIARTI000049904636",
+   "article_dateDebut": "2024-07-07",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "213e2f468cd7a4c7275534461193b371839d877f212a217cf9a9517e9349389e",
+   "law_snapshot": "S9",
+   "quote": "Le taux des cotisations assises sur l'assiette de cotisations dans la limite du plafond est fixé à 17,15 %.",
+   "claim": "D633-3 v.LEGIARTI000049904636 (in force 2024-07-07; nota: applies to periods from 2025-01-01) on assiette 250 000: 8 077,65 + 0,72 % x 250 000 (1 800, uncapped per II 'totalité de l'assiette') = 9 877,65 -> 9 878 €/an. BEFORE: 8 078 + 1 800 = 9 878 (aligned).",
+   "check": {
+    "rule": "indépendant . cotisations et contributions . cotisations . retraite de base",
+    "situation": {
+     "entreprise . imposition": "'IR'",
+     "entreprise . date de création": "01/01/2020",
+     "établissement . commune . département . outre-mer": "non",
+     "situation personnelle . RSA": "non",
+     "situation personnelle . domiciliation fiscale à l'étranger": "non",
+     "entreprise . activité . saisonnière": "non",
+     "indépendant . conjoint collaborateur": "non",
+     "indépendant . cotisations et contributions . cotisations . exonérations . pension invalidité": "non",
+     "entreprise . activité": "'commerciale'",
+     "entreprise . activité . commerciale . débit de tabac": "non",
+     "date": "01/07/2025",
+     "indépendant . cotisations et contributions . assiette sociale": "250000 €/an"
+    },
+    "expect": 9878.0,
+    "tolerance": 1.0
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 9878,
+    "expected": 9878.0,
+    "unit": "€/an",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0151",
+   "recorded_at": "2026-10-11T18:40:09+00:00",
+   "status": "VERIFIED",
+   "rule": "indépendant . cotisations et contributions . cotisations . retraite de base . taux T1",
+   "rules_snapshot": "G4post_R4",
+   "rule_file": "règles/indépendant/cotisations-et-contributions/cotisations/cotisations.publicodes",
+   "rule_file_sha256": "a13cb906fc021c8de138cf5a8cd56fa675241e21dae521507c8aa7c5e9582538",
+   "article": "D633-3",
+   "article_id": "LEGIARTI000049904636",
+   "article_dateDebut": "2024-07-07",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "213e2f468cd7a4c7275534461193b371839d877f212a217cf9a9517e9349389e",
+   "law_snapshot": "S9",
+   "quote": "Le taux des cotisations assises sur l'assiette de cotisations dans la limite du plafond est fixé à 17,15 %.",
+   "claim": "D633-3 v.LEGIARTI000049904636 (in force 2024-07-07; nota: applies to periods from 2025-01-01): the text states 17,15 % (I) within the plafond and 0,72 % (II) on the whole assiette; AFTER the commit `taux T1` = 17,87 % = 17,15 + 0,72 applied to the part <= PSS, i.e. the two textual rates folded together (Urssaf presentation, not a rate written in the text). The commit replaces the CSS decomposition (T1 on the capped base + T2 on the WHOLE base) by the Urssaf presentation (T1' = 17,15 + 0,72 = 17,87 % on the part <= PSS, T2 = 0,72 % on the part above PSS only); the two are algebraically identical for every assiette: 17,15 x min(A,P) + 0,72 x A = 17,87 x min(A,P) + 0,72 x max(A-P,0).",
+   "check": {
+    "rule": "indépendant . cotisations et contributions . cotisations . retraite de base . taux T1",
+    "situation": {
+     "entreprise . imposition": "'IR'",
+     "entreprise . date de création": "01/01/2020",
+     "établissement . commune . département . outre-mer": "non",
+     "situation personnelle . RSA": "non",
+     "situation personnelle . domiciliation fiscale à l'étranger": "non",
+     "entreprise . activité . saisonnière": "non",
+     "indépendant . conjoint collaborateur": "non",
+     "indépendant . cotisations et contributions . cotisations . exonérations . pension invalidité": "non",
+     "entreprise . activité": "'commerciale'",
+     "entreprise . activité . commerciale . débit de tabac": "non",
+     "date": "01/07/2025",
+     "indépendant . cotisations et contributions . assiette sociale": "60000 €/an"
+    },
+    "expect": 17.87,
+    "tolerance": 1e-06
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 17.87,
+    "expected": 17.87,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0152",
+   "recorded_at": "2026-10-11T18:40:10+00:00",
+   "status": "VERIFIED",
+   "rule": "indépendant . cotisations et contributions . cotisations . retraite de base . taux T2",
+   "rules_snapshot": "G4post_R4",
+   "rule_file": "règles/indépendant/cotisations-et-contributions/cotisations/cotisations.publicodes",
+   "rule_file_sha256": "a13cb906fc021c8de138cf5a8cd56fa675241e21dae521507c8aa7c5e9582538",
+   "article": "D633-3",
+   "article_id": "LEGIARTI000049904636",
+   "article_dateDebut": "2024-07-07",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "213e2f468cd7a4c7275534461193b371839d877f212a217cf9a9517e9349389e",
+   "law_snapshot": "S9",
+   "quote": "Le taux des cotisations assises sur la totalité de l'assiette de cotisations est fixé à 0,72 %.",
+   "claim": "D633-3 v.LEGIARTI000049904636 (in force 2024-07-07; nota: applies to periods from 2025-01-01) II: 0,72 %. AFTER the commit `taux T2` = 0,72 % but applied by the barème to the part of the assiette ABOVE the PSS only (the 0,72 % on the part <= PSS is carried by taux T1).",
+   "check": {
+    "rule": "indépendant . cotisations et contributions . cotisations . retraite de base . taux T2",
+    "situation": {
+     "entreprise . imposition": "'IR'",
+     "entreprise . date de création": "01/01/2020",
+     "établissement . commune . département . outre-mer": "non",
+     "situation personnelle . RSA": "non",
+     "situation personnelle . domiciliation fiscale à l'étranger": "non",
+     "entreprise . activité . saisonnière": "non",
+     "indépendant . conjoint collaborateur": "non",
+     "indépendant . cotisations et contributions . cotisations . exonérations . pension invalidité": "non",
+     "entreprise . activité": "'commerciale'",
+     "entreprise . activité . commerciale . débit de tabac": "non",
+     "date": "01/07/2025",
+     "indépendant . cotisations et contributions . assiette sociale": "60000 €/an"
+    },
+    "expect": 0.72,
+    "tolerance": 1e-06
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 0.72,
+    "expected": 0.72,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0153",
+   "recorded_at": "2026-10-11T18:40:11+00:00",
+   "status": "VERIFIED",
+   "rule": "indépendant . cotisations et contributions . cotisations . retraite de base",
+   "rules_snapshot": "G4post_R4",
+   "rule_file": "règles/indépendant/cotisations-et-contributions/cotisations/cotisations.publicodes",
+   "rule_file_sha256": "a13cb906fc021c8de138cf5a8cd56fa675241e21dae521507c8aa7c5e9582538",
+   "article": "D633-3",
+   "article_id": "LEGIARTI000049904636",
+   "article_dateDebut": "2024-07-07",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "213e2f468cd7a4c7275534461193b371839d877f212a217cf9a9517e9349389e",
+   "law_snapshot": "S9",
+   "quote": "Le taux des cotisations assises sur l'assiette de cotisations dans la limite du plafond est fixé à 17,15 %.",
+   "claim": "D633-3 v.LEGIARTI000049904636 (in force 2024-07-07; nota: applies to periods from 2025-01-01) I+II on assiette 60 000: expected 8 510 €/an (see pre link). AFTER: barème 17,87 % x 47 100 (8 416,77) + 0,72 % x 12 900 (92,88) = 8 509,65 -> 8 510 (aligned, identical to BEFORE).",
+   "check": {
+    "rule": "indépendant . cotisations et contributions . cotisations . retraite de base",
+    "situation": {
+     "entreprise . imposition": "'IR'",
+     "entreprise . date de création": "01/01/2020",
+     "établissement . commune . département . outre-mer": "non",
+     "situation personnelle . RSA": "non",
+     "situation personnelle . domiciliation fiscale à l'étranger": "non",
+     "entreprise . activité . saisonnière": "non",
+     "indépendant . conjoint collaborateur": "non",
+     "indépendant . cotisations et contributions . cotisations . exonérations . pension invalidité": "non",
+     "entreprise . activité": "'commerciale'",
+     "entreprise . activité . commerciale . débit de tabac": "non",
+     "date": "01/07/2025",
+     "indépendant . cotisations et contributions . assiette sociale": "60000 €/an"
+    },
+    "expect": 8510.0,
+    "tolerance": 1.0
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 8510,
+    "expected": 8510.0,
+    "unit": "€/an",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0154",
+   "recorded_at": "2026-10-11T18:40:12+00:00",
+   "status": "VERIFIED",
+   "rule": "indépendant . cotisations et contributions . cotisations . retraite de base",
+   "rules_snapshot": "G4post_R4",
+   "rule_file": "règles/indépendant/cotisations-et-contributions/cotisations/cotisations.publicodes",
+   "rule_file_sha256": "a13cb906fc021c8de138cf5a8cd56fa675241e21dae521507c8aa7c5e9582538",
+   "article": "D633-3",
+   "article_id": "LEGIARTI000049904636",
+   "article_dateDebut": "2024-07-07",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "213e2f468cd7a4c7275534461193b371839d877f212a217cf9a9517e9349389e",
+   "law_snapshot": "S9",
+   "quote": "Le taux des cotisations assises sur la totalité de l'assiette de cotisations est fixé à 0,72 %.",
+   "claim": "D633-3 v.LEGIARTI000049904636 (in force 2024-07-07; nota: applies to periods from 2025-01-01) on assiette 20 000: 3 574 €/an expected; AFTER 17,87 % x 20 000 = 3 574 (aligned, identical to BEFORE).",
+   "check": {
+    "rule": "indépendant . cotisations et contributions . cotisations . retraite de base",
+    "situation": {
+     "entreprise . imposition": "'IR'",
+     "entreprise . date de création": "01/01/2020",
+     "établissement . commune . département . outre-mer": "non",
+     "situation personnelle . RSA": "non",
+     "situation personnelle . domiciliation fiscale à l'étranger": "non",
+     "entreprise . activité . saisonnière": "non",
+     "indépendant . conjoint collaborateur": "non",
+     "indépendant . cotisations et contributions . cotisations . exonérations . pension invalidité": "non",
+     "entreprise . activité": "'commerciale'",
+     "entreprise . activité . commerciale . débit de tabac": "non",
+     "date": "01/07/2025",
+     "indépendant . cotisations et contributions . assiette sociale": "20000 €/an"
+    },
+    "expect": 3574.0,
+    "tolerance": 1.0
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 3574,
+    "expected": 3574.0,
+    "unit": "€/an",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0155",
+   "recorded_at": "2026-10-11T18:40:13+00:00",
+   "status": "VERIFIED",
+   "rule": "indépendant . cotisations et contributions . cotisations . retraite de base",
+   "rules_snapshot": "G4post_R4",
+   "rule_file": "règles/indépendant/cotisations-et-contributions/cotisations/cotisations.publicodes",
+   "rule_file_sha256": "a13cb906fc021c8de138cf5a8cd56fa675241e21dae521507c8aa7c5e9582538",
+   "article": "D633-3",
+   "article_id": "LEGIARTI000049904636",
+   "article_dateDebut": "2024-07-07",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "213e2f468cd7a4c7275534461193b371839d877f212a217cf9a9517e9349389e",
+   "law_snapshot": "S9",
+   "quote": "Le taux des cotisations assises sur l'assiette de cotisations dans la limite du plafond est fixé à 17,15 %.",
+   "claim": "D633-3 v.LEGIARTI000049904636 (in force 2024-07-07; nota: applies to periods from 2025-01-01) on assiette 250 000: 9 878 €/an expected; AFTER 8 416,77 + 0,72 % x 202 900 (1 460,88) = 9 877,65 -> 9 878 (aligned, identical to BEFORE).",
+   "check": {
+    "rule": "indépendant . cotisations et contributions . cotisations . retraite de base",
+    "situation": {
+     "entreprise . imposition": "'IR'",
+     "entreprise . date de création": "01/01/2020",
+     "établissement . commune . département . outre-mer": "non",
+     "situation personnelle . RSA": "non",
+     "situation personnelle . domiciliation fiscale à l'étranger": "non",
+     "entreprise . activité . saisonnière": "non",
+     "indépendant . conjoint collaborateur": "non",
+     "indépendant . cotisations et contributions . cotisations . exonérations . pension invalidité": "non",
+     "entreprise . activité": "'commerciale'",
+     "entreprise . activité . commerciale . débit de tabac": "non",
+     "date": "01/07/2025",
+     "indépendant . cotisations et contributions . assiette sociale": "250000 €/an"
+    },
+    "expect": 9878.0,
+    "tolerance": 1.0
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 9878,
+    "expected": 9878.0,
+    "unit": "€/an",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0156",
+   "recorded_at": "2026-10-11T18:40:14+00:00",
+   "status": "VERIFIED",
+   "rule": "indépendant . cotisations et contributions . cotisations . retraite de base",
+   "rules_snapshot": "G4post_R4",
+   "rule_file": "règles/indépendant/cotisations-et-contributions/cotisations/cotisations.publicodes",
+   "rule_file_sha256": "a13cb906fc021c8de138cf5a8cd56fa675241e21dae521507c8aa7c5e9582538",
+   "article": "D633-3",
+   "article_id": "LEGIARTI000049904636",
+   "article_dateDebut": "2024-07-07",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "213e2f468cd7a4c7275534461193b371839d877f212a217cf9a9517e9349389e",
+   "law_snapshot": "S9",
+   "quote": "Le taux des cotisations assises sur l'assiette de cotisations dans la limite du plafond est fixé à 17,15 %.",
+   "claim": "D633-3 v.LEGIARTI000049904636 (in force 2024-07-07; nota: applies to periods from 2025-01-01) on assiette exactly = PSS 2025 (47 100, PLNR): 17,15 % + 0,72 % = 17,87 % x 47 100 = 8 416,77 -> 8 417 €/an; AFTER 8 417 (aligned, identical to BEFORE).",
+   "check": {
+    "rule": "indépendant . cotisations et contributions . cotisations . retraite de base",
+    "situation": {
+     "entreprise . imposition": "'IR'",
+     "entreprise . date de création": "01/01/2020",
+     "établissement . commune . département . outre-mer": "non",
+     "situation personnelle . RSA": "non",
+     "situation personnelle . domiciliation fiscale à l'étranger": "non",
+     "entreprise . activité . saisonnière": "non",
+     "indépendant . conjoint collaborateur": "non",
+     "indépendant . cotisations et contributions . cotisations . exonérations . pension invalidité": "non",
+     "entreprise . activité": "'libérale'",
+     "entreprise . activité . libérale . réglementée": "non",
+     "date": "01/07/2025",
+     "indépendant . cotisations et contributions . assiette sociale": "47100 €/an"
+    },
+    "expect": 8417.0,
+    "tolerance": 1.0
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 8417,
+    "expected": 8417.0,
+    "unit": "€/an",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0157",
+   "recorded_at": "2026-10-11T18:40:15+00:00",
+   "status": "VERIFIED",
+   "rule": "indépendant . cotisations et contributions . cotisations . retraite de base",
+   "rules_snapshot": "G4post_R4",
+   "rule_file": "règles/indépendant/cotisations-et-contributions/cotisations/cotisations.publicodes",
+   "rule_file_sha256": "a13cb906fc021c8de138cf5a8cd56fa675241e21dae521507c8aa7c5e9582538",
+   "article": "D633-3",
+   "article_id": "LEGIARTI000049904636",
+   "article_dateDebut": "2024-07-07",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "213e2f468cd7a4c7275534461193b371839d877f212a217cf9a9517e9349389e",
+   "law_snapshot": "S9",
+   "quote": "Le taux des cotisations assises sur l'assiette de cotisations dans la limite du plafond est fixé à 17,15 %.",
+   "claim": "D633-3 v.LEGIARTI000049904636 (in force 2024-07-07; nota: applies to periods from 2025-01-01) with the débit de tabac deduction (10 000) on 60 000: assiette 50 000 -> 8 077,65 + 0,72 % x 50 000 (360) = 8 437,65 -> 8 438 €/an; AFTER 8 438 (aligned, identical to BEFORE).",
+   "check": {
+    "rule": "indépendant . cotisations et contributions . cotisations . retraite de base",
+    "situation": {
+     "entreprise . imposition": "'IR'",
+     "entreprise . date de création": "01/01/2020",
+     "établissement . commune . département . outre-mer": "non",
+     "situation personnelle . RSA": "non",
+     "situation personnelle . domiciliation fiscale à l'étranger": "non",
+     "entreprise . activité . saisonnière": "non",
+     "indépendant . conjoint collaborateur": "non",
+     "indépendant . cotisations et contributions . cotisations . exonérations . pension invalidité": "non",
+     "entreprise . activité": "'commerciale'",
+     "entreprise . activité . commerciale . débit de tabac": "oui",
+     "date": "01/07/2025",
+     "indépendant . cotisations et contributions . assiette sociale": "60000 €/an",
+     "indépendant . cotisations et contributions . déduction tabac": "10000 €/an"
+    },
+    "expect": 8438.0,
+    "tolerance": 1.0
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 8438,
+    "expected": 8438.0,
+    "unit": "€/an",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0158",
+   "recorded_at": "2026-10-11T18:40:15+00:00",
+   "status": "VERIFIED",
+   "rule": "indépendant . cotisations et contributions . cotisations . retraite de base",
+   "rules_snapshot": "G4post_R4",
+   "rule_file": "règles/indépendant/cotisations-et-contributions/cotisations/cotisations.publicodes",
+   "rule_file_sha256": "a13cb906fc021c8de138cf5a8cd56fa675241e21dae521507c8aa7c5e9582538",
+   "article": "D633-3",
+   "article_id": "LEGIARTI000049904636",
+   "article_dateDebut": "2024-07-07",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "213e2f468cd7a4c7275534461193b371839d877f212a217cf9a9517e9349389e",
+   "law_snapshot": "S9",
+   "quote": "Le taux des cotisations assises sur la totalité de l'assiette de cotisations est fixé à 0,72 %.",
+   "claim": "D633-3 v.LEGIARTI000049904636 (in force 2024-07-07; nota: applies to periods from 2025-01-01) on assiette 4 000 raised to the library's assiette minimale (450 h x SMIC 11,88 = 5 346; floor itself from D633-2, outside the bounded set): 17,87 % x 5 346 = 955,33 -> 955 €/an; AFTER 955 = BEFORE 955 (aligned). NOTE: the derived `revenu cotisé` (R351-9/R634-1, outside the set) drops from 5 569 to 5 344 and `trimestres` from 3 to 2.",
+   "check": {
+    "rule": "indépendant . cotisations et contributions . cotisations . retraite de base",
+    "situation": {
+     "entreprise . imposition": "'IR'",
+     "entreprise . date de création": "01/01/2020",
+     "établissement . commune . département . outre-mer": "non",
+     "situation personnelle . RSA": "non",
+     "situation personnelle . domiciliation fiscale à l'étranger": "non",
+     "entreprise . activité . saisonnière": "non",
+     "indépendant . conjoint collaborateur": "non",
+     "indépendant . cotisations et contributions . cotisations . exonérations . pension invalidité": "non",
+     "entreprise . activité": "'commerciale'",
+     "entreprise . activité . commerciale . débit de tabac": "non",
+     "date": "01/07/2025",
+     "indépendant . cotisations et contributions . assiette sociale": "4000 €/an"
+    },
+    "expect": 955.0,
+    "tolerance": 1.0
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 955,
+    "expected": 955.0,
+    "unit": "€/an",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0159",
+   "recorded_at": "2026-10-11T18:40:16+00:00",
+   "status": "UNKNOWN",
+   "rule": "indépendant . cotisations et contributions . cotisations . retraite de base",
+   "rules_snapshot": "G4post_R4",
+   "rule_file": "règles/indépendant/cotisations-et-contributions/cotisations/cotisations.publicodes",
+   "rule_file_sha256": "a13cb906fc021c8de138cf5a8cd56fa675241e21dae521507c8aa7c5e9582538",
+   "article": "D633-3",
+   "article_id": "LEGIARTI000049904636",
+   "article_dateDebut": "2024-07-07",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "213e2f468cd7a4c7275534461193b371839d877f212a217cf9a9517e9349389e",
+   "law_snapshot": "S9",
+   "quote": "Le taux des cotisations assises sur l'assiette de cotisations dans la limite du plafond est fixé à 17,15 %.",
+   "claim": "At 01/07/2024 the library applies 17,75 %/0,60 % (après réforme = non). The D633-3 version in force then (LEGIARTI000041967101, 2020-05-25..2024-07-07) has no text in snapshot S9 (only the current version's text is included), so no expected value can be derived: ABSTAIN. Engine: BEFORE 4 082 (3 944 + 138, two roundings) vs AFTER 4 083 (one rounding of 17,75 % x 23 000 = 4 082,5): a 1 € rounding-path difference; same at 4 000 (930 -> 931) and 6 900 (1 224 -> 1 225). Not assessable against the bounded text.",
+   "check": null,
+   "check_result": null,
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  }
+ ],
+ "article_versions_known": [
+  {
+   "law_snapshot": "S0",
+   "published": "2024-05-25T23:36:37.034Z",
+   "article": "D633-3",
+   "id": "LEGIARTI000041967101",
+   "etat": "VIGUEUR",
+   "dateDebut": "2020-05-25",
+   "dateFin": "2999-01-01",
+   "in_force_on_date": true,
+   "text_sha256": "970038062755a04f22a9ce6d2064fb34ac0465983188a60a4887e63f344a8632"
+  },
+  {
+   "law_snapshot": "S1",
+   "published": "2024-06-01T23:22:24.265Z",
+   "article": "D633-3",
+   "id": "LEGIARTI000041967101",
+   "etat": "VIGUEUR",
+   "dateDebut": "2020-05-25",
+   "dateFin": "2999-01-01",
+   "in_force_on_date": true,
+   "text_sha256": "970038062755a04f22a9ce6d2064fb34ac0465983188a60a4887e63f344a8632"
+  },
+  {
+   "law_snapshot": "S3",
+   "published": "2024-07-17T15:37:04.165Z",
+   "article": "D633-3",
+   "id": "LEGIARTI000049904636",
+   "etat": "VIGUEUR",
+   "dateDebut": "2024-07-07",
+   "dateFin": "2999-01-01",
+   "in_force_on_date": true,
+   "text_sha256": "213e2f468cd7a4c7275534461193b371839d877f212a217cf9a9517e9349389e"
+  },
+  {
+   "law_snapshot": "S4",
+   "published": "2024-09-01T16:15:14.642Z",
+   "article": "D633-3",
+   "id": "LEGIARTI000049904636",
+   "etat": "VIGUEUR",
+   "dateDebut": "2024-07-07",
+   "dateFin": "2999-01-01",
+   "in_force_on_date": true,
+   "text_sha256": "213e2f468cd7a4c7275534461193b371839d877f212a217cf9a9517e9349389e"
+  },
+  {
+   "law_snapshot": "S5",
+   "published": "2024-10-19T15:24:13.712Z",
+   "article": "D633-3",
+   "id": "LEGIARTI000049904636",
+   "etat": "VIGUEUR",
+   "dateDebut": "2024-07-07",
+   "dateFin": "2999-01-01",
+   "in_force_on_date": true,
+   "text_sha256": "213e2f468cd7a4c7275534461193b371839d877f212a217cf9a9517e9349389e"
+  },
+  {
+   "law_snapshot": "S9",
+   "published": "2026-03-31T16:18:17.431Z",
+   "article": "D633-3",
+   "id": "LEGIARTI000049904636",
+   "etat": "VIGUEUR",
+   "dateDebut": "2024-07-07",
+   "dateFin": "2999-01-01",
+   "in_force_on_date": true,
+   "text_sha256": "213e2f468cd7a4c7275534461193b371839d877f212a217cf9a9517e9349389e"
+  }
+ ],
+ "rules_snapshots_known": [
+  {
+   "snapshot": "G0",
+   "commit": "d9242882f96bda5b4418b7c1c3ff46b0e2a1c5ce",
+   "committed": "2024-05-15 09:38:43 +0200"
+  },
+  {
+   "snapshot": "G1",
+   "commit": "2a0e452617fc33b955096f4bb7f7f305ec0670ad",
+   "committed": "2024-07-16 21:29:59 +0200"
+  },
+  {
+   "snapshot": "G1post_R2",
+   "commit": "1932d654cf7a81dbac73df88487fc70553e52a19",
+   "committed": "2024-09-02 12:25:29 +0200"
+  },
+  {
+   "snapshot": "G1pre_R1",
+   "commit": null,
+   "committed": null
+  },
+  {
+   "snapshot": "G2",
+   "commit": "3a4091ae1cafdd4572bfd10d6352fd04db8da419",
+   "committed": "2024-10-10 16:37:41 +0200"
+  },
+  {
+   "snapshot": "G2post_R3",
+   "commit": "9bb43d710094d8f572c64997ce991c8d395c5753",
+   "committed": "2024-10-11 09:34:14 +0200"
+  },
+  {
+   "snapshot": "G4",
+   "commit": "a61b72947fec1e1383e07b3278424593dc296ba2",
+   "committed": "2026-03-03 09:30:36 +0100"
+  },
+  {
+   "snapshot": "G4post_R4",
+   "commit": "d3e0cfe0f12dcade20d5d1ea8bc51fee609bbc06",
+   "committed": "2026-03-30 16:00:14 +0200"
+  },
+  {
+   "snapshot": "G4pre_R4",
+   "commit": "d3e0cfe0f12dcade20d5d1ea8bc51fee609bbc06",
+   "committed": "2026-03-30 16:00:14 +0200"
+  },
+  {
+   "snapshot": "P_T1a",
+   "commit": null,
+   "committed": null
+  },
+  {
+   "snapshot": "P_T1b",
+   "commit": "2a0e452617fc33b955096f4bb7f7f305ec0670ad",
+   "committed": "2024-07-16 21:29:59 +0200"
+  }
+ ],
+ "approvals": [
+  "none recorded"
+ ],
+ "limits": [
+  "Only what was recorded in this store is reported; absence of a record is reported as absence, not inferred.",
+  "Snapshot publish dates are when the governing text was captured, not when it entered into force; both are listed.",
+  "A matching hash shows the preserved text is unchanged; it does not show the interpretation is correct or that anyone authorised it."
+ ]
+}

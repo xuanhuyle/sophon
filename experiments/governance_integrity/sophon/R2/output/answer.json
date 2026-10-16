@@ -1,0 +1,216 @@
+{
+ "task": "R2",
+ "commit": "1932d654cf7a81dbac73df88487fc70553e52a19",
+ "label": "HARMLESS_REFACTOR",
+ "confidence": "high",
+ "rationale": "Commit 1932d654cf7a ('docs(auto-entrepreneur): Rend publique la règle taux ACRE des auto-entrepreneurs', 2024-09-02 12:25:29 +0200) deletes exactly one line in one file of the rule library: the attribute `privé: oui` of the rule `dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux ACRE` (modele-social/règles/dirigeant/auto-entrepreneur/exonérations.publicodes). `privé` is a publicodes visibility attribute (whether a rule may be referenced/evaluated/set from outside its namespace and shown in the documentation); it is not part of any formula, unit, default, threshold or applicability. Engine proof on a disposable AFTER tree (copy of G1 + the forward patch): build 641 raw rules on both sides; every value of every public rule is identical before and after (197 (situation, rule) pairs over 31 situations covering AE BNC/BIC/vente/CIPAV with and without ACRE at 01/09/2024, DROM, indépendant and salarié cases; 0 differences); the only observable change is exposure: the parsed-rule list grows from 1220 to 1227 names (`taux ACRE` and its six `avec` children become listed) and `taux ACRE` becomes evaluable (BEFORE: engine error \"n'est pas accessible\"; AFTER: 50 % for an AE created 01/03/2024 at 180 days with ACRE, null otherwise) with the same internal value it already contributed to the public rates (BNC 10.6 % / 106 €/mois with ACRE on both sides). sophon revalidate S4/G1 and S4/G1post_R2 give identical per-link results for all 113 pre-existing links. Law snapshot S4 (legi-data 2.384.0) is identical to S3 for all 12 bounded articles (same version ids and texts), so nothing on the law side changed either. This is documentation/metadata only: HARMLESS_REFACTOR. The 50 % ACRE value now exposed rests on a decree article outside the bounded set (L613-7 I only delegates it: 'fixé par décret') and the pre-existing misalignment of the AE rates with D613-4 v.LEGIARTI000049624068 (23,1 % BNC / 23,2 % CIPAV in force since 2024-07-01; library 21,1 / 21,2) exists identically on both sides; both are reported below, not as the label of this change.",
+ "evidence": [
+  {
+   "kind": "diff_excerpt",
+   "article": null,
+   "article_version_id": null,
+   "quote_or_values": "inputs/diffs/R2_1932d654cf7a/diff.patch: 1 file changed, 1 deletion(-): modele-social/règles/dirigeant/auto-entrepreneur/exonérations.publicodes @@ -62,7 +62,6 @@ under `dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux ACRE:` the line `-  privé: oui` is removed; the rule keeps `applicable si: dirigeant . exonérations . ACRE`, `unité: '%'`, its `variations` (grilles 25/50/90 % and 25/75/90 % for creations before 04/2019 and 04/2020, else 50 % while `entreprise . durée d'activité < 1 an`) and its `avec` children (CIPAV, prestation de service, service BIC, service BNC, vente restauration hébergement, notification). File sha256 BEFORE 34a39fe9b3ba... AFTER dcf5e0c265af...; `diff -r` of the two trees shows only this line. Note: the hunk context is re-indented (2 spaces) relative to G1 (4 spaces), so the commit's parent is a reformatted descendant of G1; applied with `patch -l` (whitespace-insensitive), context verified."
+  },
+  {
+   "kind": "engine_before_after",
+   "article": null,
+   "article_version_id": null,
+   "quote_or_values": "`build`: raw_rule_count 641 both; parsed_rule_count 1220 (BEFORE, G1) -> 1227 (AFTER). `list`: names only in AFTER = ['dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux ACRE', 'dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux ACRE . CIPAV', 'dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux ACRE . notification calcul ACRE annuel', 'dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux ACRE . prestation de service', 'dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux ACRE . service BIC', 'dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux ACRE . service BNC', 'dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux ACRE . vente restauration hébergement']; names only in BEFORE = []. These rules existed before (they already replaced the public rates via `remplace`) but were hidden by `privé: oui`; no other name changes."
+  },
+  {
+   "kind": "engine_before_after",
+   "article": null,
+   "article_version_id": null,
+   "quote_or_values": "Rule `dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux ACRE`, situation {\"salarié\": \"non\", \"entreprise . catégorie juridique\": \"'EI'\", \"entreprise . catégorie juridique . EI . auto-entrepreneur\": \"oui\", \"dirigeant . auto-entrepreneur\": \"oui\", \"dirigeant . auto-entrepreneur . chiffre d'affaires\": \"1000 €/mois\", \"établissement . commune . département . outre-mer\": \"non\", \"dirigeant . exonérations . ACRE\": \"oui\", \"date\": \"01/09/2024\", \"entreprise . activité . nature\": \"'libérale'\", \"entreprise . date de création\": \"01/03/2024\", \"entreprise . durée d'activité\": \"180 jour\"}: BEFORE -> ERROR: La règle \"dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux ACRE\" n'est pas accessible depuis \"$EVALUATION\". ; AFTER -> 50 %. Same rule, created 01/03/2023 / 500 jour / ACRE oui: AFTER -> null; ACRE non (created 01/03/2024, 180 jour): AFTER -> null; created 01/01/2018 or 01/06/2019 with 400 jour: AFTER -> null (dirigeant . exonérations . ACRE evaluates non applicable on both sides). All 20 probes: AE_BNC_ACRE_cre2018_400j_TAUXACRE@01/09/2024: BEFORE ERROR: La règle \"dirigeant . auto-entrepreneur . cotisations... | AFTER null || AE_BIC_ACRE_cre2018_400j_TAUXACRE@01/09/2024: BEFORE ERROR: La règle \"dirigeant . auto-entrepreneur . cotisations... | AFTER null || AE_VENTE_ACRE_cre2018_400j_TAUXACRE@01/09/2024: BEFORE ERROR: La règle \"dirigeant . auto-entrepreneur . cotisations... | AFTER null || AE_CIPAV_ACRE_cre2018_400j_TAUXACRE@01/09/2024: BEFORE ERROR: La règle \"dirigeant . auto-entrepreneur . cotisations... | AFTER null ..."
+  },
+  {
+   "kind": "engine_before_after",
+   "article": "D131-6-1",
+   "article_version_id": "LEGIARTI000036475110",
+   "quote_or_values": "Public rules, BEFORE = AFTER: AE_BNC_ACRE_cre2024_180j@01/09/2024: taux service BNC 10.6 % / 10.6 %; cotisations 106 €/mois / 106 €/mois; revenu net 10704 €/an / 10704 €/an. AE_BNC_ACRE_cre2023_500j@01/09/2024: taux service BNC 21.1 % / 21.1 % (reduction stops after 12 months). AE_BNC_noACRE_cre2024_180j@01/09/2024: 21.1 % / 21.1 %. AE_VENTE_ACRE_cre2024_180j: taux vente 6.2 % / 6.2 %; AE_BIC_ACRE_cre2024_180j: taux service BIC 21.2 % / 21.2 % (ACRE sub-rule `service BIC` copies the full rate: pre-existing); AE_CIPAV_ACRE_cre2024_180j: cotisations CIPAV . taux 12.1 % / 12.1 %, cotisations 1452 €/an / 1452 €/an. Regression set cases_R1 (11 situations: salarié ATMP, AE BNC/BIC/vente/CIPAV/DROM, indépendant base/ACRE/trader at 01/07/2024 and 01/12/2024): tables identical = True. Total pairs compared 197, differences 0."
+  },
+  {
+   "kind": "article_quote",
+   "article": "L613-7",
+   "article_version_id": "LEGIARTI000048683570",
+   "quote_or_values": "Un taux global différent peut être fixé par décret pour les périodes au cours desquelles le travailleur indépendant est éligible à une exonération de cotisations et de contributions de sécurité sociale  (in force 2023-12-28..) -> the ACRE-period global rate of micro-entrepreneurs is delegated to a decree whose article is not in the bounded set; the library's 50 % (now exposed as `taux ACRE`) is therefore recorded as an engine value, not as a text value: sophon link attempt on G1 = None:REJECTED (the store refused it: 'taux ACRE' is not a parsed rule of snapshot G1 because private rules are not listed; nothing written) and L0114:VERIFIED (G1post_R2: observed 50)."
+  },
+  {
+   "kind": "article_quote",
+   "article": "D131-6-1",
+   "article_version_id": "LEGIARTI000036475110",
+   "quote_or_values": "est de douze mois à compter soit de la date d'effet d'affiliation de l'assuré  (in force 2018-01-01..) -> 12-month duration: library applies the reduction at 180 days (taux service BNC 10.6 = arrondi(50 % x 21.1)) and not at 500 days (21.1): links L0115:VERIFIED and L0116:VERIFIED. D131-6-1 II (formula E/0,25 PSS x (PSS-R)) concerns the non-micro regime and gives no micro rate."
+  },
+  {
+   "kind": "article_quote",
+   "article": "D613-4",
+   "article_version_id": "LEGIARTI000049624068",
+   "quote_or_values": "10 000 euros 34 % 6 600 euros 23,1 %  and  35 076 euros 34 % 23 150 euros 23,2 %  (in force 2024-07-01..2025-05-01) -> library AFTER still computes taux service BNC 21.1 and cotisations CIPAV . taux 21.2 at 01/09/2024: links L0117:FAILED, L0118:FAILED (FAILED = pre-existing gap, identical to G1 links L0113 of R1); 46 300 euros 50 % 23 150 euros 21,2 % -> service BIC . taux 21.2: L0119:VERIFIED (aligned)."
+  },
+  {
+   "kind": "engine_before_after",
+   "article": null,
+   "article_version_id": null,
+   "quote_or_values": "sophon revalidate --law-snapshot S4 --rules-snapshot G1 vs G1post_R2: counts {\"BROKEN\": 29, \"REASSESS_LAW_CHANGED\": 36, \"REASSESS_RULE_CHANGED\": 10, \"RULE_CHANGED_CHECK_STILL_PASSES\": 15, \"STILL_VERIFIED\": 12, \"UNVERIFIED_NO_CHECK\": 11} on both; per-link rows identical after removing the snapshot id = True; articles_without_any_link = []; articles_changed vs stored links = ['D613-4', 'D613-6', 'D621-2', 'D633-3'] (inherited from the T0/T1a links on older versions, not from this event). Law S3 -> S4 dump diff: header only (identical = True)."
+  }
+ ],
+ "expected_values_if_mismatch": [],
+ "pre_existing_gaps_not_caused_by_this_commit": [
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC",
+   "date": "01/09/2024",
+   "found": 21.1,
+   "text_value": 23.1,
+   "article": "D613-4",
+   "article_version_id": "LEGIARTI000049624068",
+   "quote": "10 000 euros 34 % 6 600 euros 23,1 %",
+   "status": "identical before and after; link FAILED on G1post_R2 (and on G1 in R1)"
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV . taux",
+   "date": "01/09/2024",
+   "found": 21.2,
+   "text_value": 23.2,
+   "article": "D613-4",
+   "article_version_id": "LEGIARTI000049624068",
+   "quote": "35 076 euros 34 % 23 150 euros 23,2 %",
+   "status": "identical before and after; link FAILED on G1post_R2"
+  },
+  {
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux ACRE . CIPAV",
+   "date": "01/09/2024",
+   "found": 12.1,
+   "text_value": null,
+   "article": null,
+   "article_version_id": null,
+   "quote": null,
+   "status": "CIPAV AE created >= 01/04/2020 is charged 12.1 % even with ACRE = non (1452 €/an on 12 000 €/an) on both sides; the ACRE-period rate is outside the bounded set, so no expected value is asserted"
+  },
+  {
+   "note": "Other open items carried from T0/T1a/T1b/R1 (D613-6 v.LEGIARTI000049625264 shares, D632-1 2024 floor, meublés de tourisme 6 %, L613-7 minimum-contribution option, D756-5 II cap, 2024 unified base lines) are untouched by this commit; see work/README.md."
+  }
+ ],
+ "outside_bounded_set": [
+  "The decree article fixing the reduced global rate of ACRE-eligible micro-entrepreneurs (L613-7 I: 'Un taux global différent peut être fixé par décret ...'); D131-6-1 as given sets only the 12-month duration and the exemption formula of the non-micro regime. The library's 50 % (and the older 25/50/90 % and 25/75/90 % grids) cite URSSAF FAQ and service-public.fr pages, also outside the set. No value from these sources is asserted here.",
+  "L131-6-4 (conditions and beneficiaries of the ACRE), referenced by D131-6-1 I/II, is not in the bounded set; the library's applicability rule `dirigeant . exonérations . ACRE` is therefore not checked against text.",
+  "The semantics of `privé: oui` are engine documentation (publicodes), not law; they were established by running the engine (list 1220 -> 1227 names; evaluate error before / value after)."
+ ],
+ "approval": "none recorded",
+ "notes": "AFTER tree = copy of G1 + forward application of the commit's hunk with GNU `patch -p1 -l` (the hunk is re-indented relative to G1; context verified by patch, `.orig` removed), at work/proposals/R2/after (meta.json), registered in sophon as rules snapshot G1post_R2 (first registration happened on the unpatched copy by mistake and was overwritten by re-registering the patched tree before any link referenced it; the snapshot file now has parsed_rule_count 1227 and the patched file hash). BEFORE = G1 itself (the commit's real parent is a later, reformatted descendant of G1 not available here; the only règles-level difference carried by this commit is the deleted line). Decision date 2024-09-02; law S4 unchanged vs S3. Approvals: none recorded anywhere in the corpus. verify-store: ok=True, problems=[], links_checked=119.",
+ "sophon_reports": [
+  "work/sophon/reports/R2_asof_D131-6-1_2024-09-02.json",
+  "work/sophon/reports/R2_asof_D613-4_2024-09-02.json",
+  "work/sophon/reports/R2_asof_L613-7_2024-09-02.json",
+  "work/sophon/reports/R2_evidence.json",
+  "work/sophon/reports/R2_evidence.md",
+  "work/sophon/reports/R2_report_cmd.json",
+  "work/sophon/reports/R2_revalidate_S4_G1.json",
+  "work/sophon/reports/R2_revalidate_S4_G1.md",
+  "work/sophon/reports/R2_revalidate_S4_G1_cmd.json",
+  "work/sophon/reports/R2_revalidate_S4_G1post_R2.json",
+  "work/sophon/reports/R2_revalidate_S4_G1post_R2.md",
+  "work/sophon/reports/R2_revalidate_S4_G1post_R2_cmd.json",
+  "work/sophon/reports/R2_verify-store.json"
+ ],
+ "sophon_links_added": [
+  {
+   "tag": "R2-G1-L613-7-tauxACRE",
+   "id": null,
+   "status": "REJECTED",
+   "article": "L613-7",
+   "article_id": "LEGIARTI000048683570",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux ACRE",
+   "rules_snapshot": "G1",
+   "check_rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux ACRE",
+   "date": "01/09/2024",
+   "expected": "50",
+   "observed": null,
+   "error": null
+  },
+  {
+   "tag": "R2-G1post_R2-L613-7-tauxACRE",
+   "id": "L0114",
+   "status": "VERIFIED",
+   "article": "L613-7",
+   "article_id": "LEGIARTI000048683570",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux ACRE",
+   "rules_snapshot": "G1post_R2",
+   "check_rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux ACRE",
+   "date": "01/09/2024",
+   "expected": 50.0,
+   "observed": 50,
+   "error": null
+  },
+  {
+   "tag": "R2-G1post_R2-D131-6-1-dans-les-12-mois",
+   "id": "L0115",
+   "status": "VERIFIED",
+   "article": "D131-6-1",
+   "article_id": "LEGIARTI000036475110",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux ACRE",
+   "rules_snapshot": "G1post_R2",
+   "check_rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC",
+   "date": "01/09/2024",
+   "expected": 10.6,
+   "observed": 10.6,
+   "error": null
+  },
+  {
+   "tag": "R2-G1post_R2-D131-6-1-apres-12-mois",
+   "id": "L0116",
+   "status": "VERIFIED",
+   "article": "D131-6-1",
+   "article_id": "LEGIARTI000036475110",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux ACRE",
+   "rules_snapshot": "G1post_R2",
+   "check_rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC",
+   "date": "01/09/2024",
+   "expected": 21.1,
+   "observed": 21.1,
+   "error": null
+  },
+  {
+   "tag": "R2-G1post_R2-D613-4-BNC",
+   "id": "L0117",
+   "status": "FAILED",
+   "article": "D613-4",
+   "article_id": "LEGIARTI000049624068",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC",
+   "rules_snapshot": "G1post_R2",
+   "check_rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC",
+   "date": "01/09/2024",
+   "expected": 23.1,
+   "observed": 21.1,
+   "error": null
+  },
+  {
+   "tag": "R2-G1post_R2-D613-4-CIPAV",
+   "id": "L0118",
+   "status": "FAILED",
+   "article": "D613-4",
+   "article_id": "LEGIARTI000049624068",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV . taux",
+   "rules_snapshot": "G1post_R2",
+   "check_rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV . taux",
+   "date": "01/09/2024",
+   "expected": 23.2,
+   "observed": 21.2,
+   "error": null
+  },
+  {
+   "tag": "R2-G1post_R2-D613-4-BIC",
+   "id": "L0119",
+   "status": "VERIFIED",
+   "article": "D613-4",
+   "article_id": "LEGIARTI000049624068",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . taux",
+   "rules_snapshot": "G1post_R2",
+   "check_rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . taux",
+   "date": "01/09/2024",
+   "expected": 21.2,
+   "observed": 21.2,
+   "error": null
+  }
+ ],
+ "self_reported_tool_calls": 24
+}

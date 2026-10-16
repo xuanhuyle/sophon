@@ -1,0 +1,2406 @@
+{
+ "snapshot": "G4post_R5",
+ "recorded_at": "2026-10-11T18:51:13+00:00",
+ "rules_dirs": [
+  "/tmp/claude-0/-home-user-sophon/980382c3-789d-515f-926e-c8bdd3dd6b4b/scratchpad/runs/B/R5/inputs/diffs/R5_c14ee26d0c67/context_tree_after/modele-ti/règles",
+  "/tmp/claude-0/-home-user-sophon/980382c3-789d-515f-926e-c8bdd3dd6b4b/scratchpad/runs/B/R5/inputs/diffs/R5_c14ee26d0c67/context_tree_after/modele-commun/règles"
+ ],
+ "meta": {
+  "commit": "c14ee26d0c67bab90354db32ff1f51879ea3c5e8",
+  "committed": "2026-07-09 12:29:17 +0200",
+  "authored": "2026-07-06 13:53:31 +0200",
+  "author": "Alice Dahan",
+  "subject": "fix: n'applique pas de plancher ni de plafond à l'abattement sur l'assiette à Mayotte"
+ },
+ "engine_build": {
+  "raw_rule_count": 298,
+  "parsed_rule_count": 460,
+  "error": null
+ },
+ "parsed_names_sha256": "35a2c7a54c9a64808de36f807dc73df9470d34c0200e8ec08ab5abdb9a5dea17",
+ "files": {
+  "règles/entreprise/activité.publicodes": "5fa4460e1d58bdfbb68ff4c7612c7217b14d5b13247c33552d1d37a404d64cc9",
+  "règles/entreprise/cessation-activité.publicodes": "2e30d70a0dd407d7c95c3b8c93ca901df3e81625b5e4aca9ccdacf5338ac3bf9",
+  "règles/entreprise/chiffre-d'affaires.publicodes": "2683f2bccae67d02df5c908242b224bf4ccb46f57178fba816b7803cb7f53b79",
+  "règles/entreprise/durée-activité.publicodes": "31795f530577e20a617d0d2bcc2b3df8c057527a10473b82c9d23d165ead50f5",
+  "règles/entreprise/entreprise.publicodes": "c29d2d2f8db0bdb6f6aa7456abc331a2b3533d34f00052cc17ca01ef6412fdd2",
+  "règles/entreprise/imposition.publicodes": "1a05d6dd4039c44ce893760953a48c12fd8ffa0221dd872b954afdf7537fb967",
+  "règles/indépendant/conjoint-collaborateur.publicodes": "426ae72f632c82634a8b7b055aa0a467c17aac5c515cb27a2e0f85d1394fee6d",
+  "règles/indépendant/cotisations-et-contributions/CSG-CRDS.publicodes": "944584b20f68171bffae3e08d4448e61b58987458ec87176d7f15adb3da7250a",
+  "règles/indépendant/cotisations-et-contributions/assiette-minimale.publicodes": "1d903ffede0384aa13eb6f940fe6b1ef3cc9fe3c66d580fa2f5b73f4a9e16042",
+  "règles/indépendant/cotisations-et-contributions/cotisations/conjoint-collaborateur.publicodes": "e1503514b77241954c4f8470ae6060e8cdf632a9170e2619d0ae7e29c1f80289",
+  "règles/indépendant/cotisations-et-contributions/cotisations/cotisations.publicodes": "5c33293fc1d97b2e6eff1e54baa6ce25a3826fbb8741f2ba80a292a51aef8c93",
+  "règles/indépendant/cotisations-et-contributions/cotisations/début-activité.publicodes": "9336778ba55604a78421f43f51cd270fdbc45a0b88b901c52254dcf8e8637fe0",
+  "règles/indépendant/cotisations-et-contributions/cotisations/exonérations/24-mois-Mayotte.publicodes": "adfc22275bc01c16de2e98bd3b82998ee75228f5ac67c0a9ec5a66f084c3d49b",
+  "règles/indépendant/cotisations-et-contributions/cotisations/exonérations/Acre.publicodes": "0e3a93f16f8b35a08afdd528893f7fa17e8b391846e08f3a0d622f15a0cd3f47",
+  "règles/indépendant/cotisations-et-contributions/cotisations/exonérations/drom.publicodes": "fc162bc1737d58b960d21b319f3c9045f17a59f272a22a11f6a6b44069172679",
+  "règles/indépendant/cotisations-et-contributions/cotisations/exonérations/exonérations.publicodes": "ed4d91fd9f5c0279c9a9d9a66fcc04025aa37571ce0ba3d7d2ea52382bb24e66",
+  "règles/indépendant/cotisations-et-contributions/cotisations/exonérations/invalidité.publicodes": "bf0418118426d909b9942dad35bc532bbbd2c511dcae8842b9ed8a15b6417787",
+  "règles/indépendant/cotisations-et-contributions/cotisations/exonérations/âge.publicodes": "b6376c06e6cd609a4507d2c6204a72044d59953cdfcb6f8eee347dc3e6ddcbea",
+  "règles/indépendant/cotisations-et-contributions/cotisations-et-contributions.publicodes": "84adc483d799e8425886a663e26c5585f2961d6a169b739dc16dc61428c8d243",
+  "règles/indépendant/cotisations-et-contributions/cotisations-facultatives.publicodes": "e192d74436a11bad5277c736300b577b6b043b136c21a52e2cc3719e5148fd94",
+  "règles/indépendant/cotisations-et-contributions/déduction-tabac.publicodes": "571556b2a3c3452808ed21cb563196b6d69a28cf82ec685f1690d05fda1e1f04",
+  "règles/indépendant/indépendant.publicodes": "0c07ce68770a0986a4a37ed105d8d62a029f653b8aa2a8c56eba25c7e5302961",
+  "règles/indépendant/profession-libérale.publicodes": "102881dc301975f6139e1e723c9d453d355616d30eda23dd197e3449371492e2",
+  "règles/indépendant/professions-libérales/CARCDSF.publicodes": "9b454e62aabdff8e0aa25588d9d3d69d2fe56f31e2d15a43b819c958ad973dce",
+  "règles/indépendant/professions-libérales/CARMF.publicodes": "df3d8f3c9dc0d51d4329d75cbe8bf11dcabf3cae54693aef23e0db53840efb24",
+  "règles/indépendant/professions-libérales/CARPIMKO.publicodes": "79ba9e9b582ebd6ac424fb8a3ef78874885a7dfedeac233d50847742f239448a",
+  "règles/indépendant/professions-libérales/CAVEC.publicodes": "e4716d3441c776ee574d59d20834ff1b8ae6e7de793e01bfe3981aa7ff479dba",
+  "règles/indépendant/professions-libérales/CAVP.publicodes": "263e89e1b6cfdf1bd019bf13503d80bb3bd044835a5a350e10bf97ef8cc76e8f",
+  "règles/indépendant/professions-libérales/CNAVPL.publicodes": "f5f5dc107de4dc19a8c35880278468f5c6d438fe04e4df767e9a7db42e3ea10a",
+  "règles/indépendant/professions-libérales/CNBF.publicodes": "941c47ca3318e215e214e4b36e6dfa4d896b100bee48d0383a8b8244833b4f46",
+  "règles/indépendant/professions-libérales/Cipav.publicodes": "38b533566847f4f1093eaadd2b09e320fe69eac1dcdc23173905d3f1815e1878",
+  "règles/indépendant/professions-libérales/PAMC.publicodes": "4ca293c7ed401ea30ccd9c19b27cd678d6a9888686171bbfb4c54d66330f1258",
+  "règles/indépendant/revenus/dividendes.publicodes": "26e53e1cce56c92033f3999f9423e3a5cfcdd672be25b7611f1cee0e84c33bbd",
+  "règles/indépendant/revenus/revenus-remplacement.publicodes": "0540a37ea81756260fa88a725772f99019d37cad53964eb977222d41e9cad2d8",
+  "règles/indépendant/revenus/revenus-étrangers.publicodes": "1b4a404a35a03260e856bf5b4f23516039774f7dee623d5dc70ba6ae09bdc0bd",
+  "règles/indépendant/revenus/rémunération.publicodes": "9ec21c9d97c55fa0bf4f7a559f61b76fa9605ffed80117def818a105fd30c747",
+  "règles/protection-sociale/invalidité-décès.publicodes": "4c0a16bb7fd9ddb4c3aba3ffe731653462be776375be8f48694530ba16b8e1fc",
+  "règles/protection-sociale/maladie.publicodes": "fd61f327d97c1076e0a9eee4d0a2c35c7d1ff7b45463940d70eccffc29dc7c36",
+  "règles/protection-sociale/protection-sociale.publicodes": "e5b8de1e1ed8498d53c51cb4674957132ca4576e291b335da7eb51f527e7f8b6",
+  "règles/protection-sociale/retraite-base.publicodes": "ed2244171af9968d5f1fa6c5a067af06847d5f47fdde5a2b7d9c166642f123db",
+  "règles/protection-sociale/retraite-complémentaire.publicodes": "3b1994af40fe3364ed9c3173801aef37203d526b9460addcafb285c22cdc0120",
+  "règles/établissement.publicodes": "959c6724c3161efcfc8f0b1caf7a660386b264e3281d6edff775d56ed943958a",
+  "règles/base.publicodes": "390050abc2f45c19772440085f81517abcaec781ade6077c0d0e0874a20540b3",
+  "règles/entreprise/catégorie-juridique.publicodes": "f95e6f2bf01682b96e7cbbd3b99df5513e06d8d6c31d521e733c03ef1e8fe95d",
+  "règles/entreprise/établissement.publicodes": "4de5b2995197bbe7597f8ea8f2ae84bf6f0e1f0ac43e9e487bee7f502e630a0d",
+  "règles/impôt/barème-standard.publicodes": "550dda590a45d837e3336049f431002612433946304e5d196dbe66ff28313bfa",
+  "règles/impôt/foyer-fiscal.publicodes": "7de61de1b2e72cd0466656c1d6f53ab6fd28a70a3be3ae98e996d60624fc469f",
+  "règles/impôt/impôt.publicodes": "bc4804567ab9c52643cd7dd743f54c8725c2177af826aba4b8c263a02802b2c7",
+  "règles/impôt/taux-neutre.publicodes": "c6c73c802b0c5ab014afbe55ef881f419773e65ab2097ae6f9511e6f436c5a21",
+  "règles/paramètres.publicodes": "675bf363636e28d3d033e0939f5304e1770d8cbdcc416ea6d7fe44ee32d4ed01",
+  "règles/période.publicodes": "356c410054310787d3468916325c8e2e62a97a62ff721f0c808aca96104306dd",
+  "règles/situation-personnelle.publicodes": "cd45e37e58ced53eb722a92037718bc4d693b1dfbfb034d3b2cee8c34ed681fa"
+ },
+ "rules": {
+  "entreprise . activité": {
+   "file": "règles/entreprise/activité.publicodes",
+   "references": {
+    "Vérifier la nature de son activité": "https://bpifrance-creation.fr/encyclopedie/trouver-proteger-tester-son-idee/verifiertester-son-idee/verifier-nature-son-activite",
+    "Comment déterminer la nature de l’activité d’une entreprise ?": "https://entreprendre.service-public.fr/vosdroits/F32887/personnalisation/resultat",
+    "Spécifiquement pour les auto-entrepreneurs": "https://www.shine.fr/blog/categorie-activite-auto-entrepreneur"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "f8f3994d3ed2edd4c41e75e27541aef3bfbc6b3fac626669188192889a97b1bc"
+  },
+  "entreprise . activité . principale": {
+   "file": "règles/entreprise/activité.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "2af08b0bf6180f71d93453bbbe8e3d59922f9c43017bbe9497f6d26845097d7e"
+  },
+  "entreprise . activité . revenus mixtes": {
+   "file": "règles/entreprise/activité.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "7cbe8cb2b670aa70a68f7abc76a9c100ec3d7e235a22c7f9da9c93974b6bd37d"
+  },
+  "entreprise . activité . saisonnière": {
+   "file": "règles/entreprise/activité.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "ad59ee7f6507838f9ca7cd7fe28343f1bd0494f4f207785be770bcb79d2fec0b"
+  },
+  "entreprise . en cessation d'activité": {
+   "file": "règles/entreprise/cessation-activité.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "bbb534d0ee1d0bcd482508fe47c8952610e62bfbdceaf54d28e69a636f2dade5"
+  },
+  "entreprise . date de cessation": {
+   "file": "règles/entreprise/cessation-activité.publicodes",
+   "references": {
+    "Comment réaliser votre cessation d’activité en tant que travailleur indépendant ?": "https://www.urssaf.fr/accueil/services/services-independants/realiser-cessation-activite.html"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "ed50746cbe00e9f7fa87c1c82258f9b2d4e5027d8578430b8aa197fe5638cd26"
+  },
+  "entreprise . date de cessation . invalide": {
+   "file": "règles/entreprise/cessation-activité.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "d6dc6206bf975ee93374cebe667879d6f25429dbfc1399d92efb06be37d4dee5"
+  },
+  "entreprise . radiée": {
+   "file": "règles/entreprise/cessation-activité.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "a3c37c52c5ad209f322881a3479b60cf0f8a2e2ace38b7aa38ccc2613201bc63"
+  },
+  "entreprise . radiée cette année": {
+   "file": "règles/entreprise/cessation-activité.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "453576da8cb92998091e7c1d0e120a8500e8f50eeca0e405b057815955a8019a"
+  },
+  "entreprise . chiffre d'affaires": {
+   "file": "règles/entreprise/chiffre-d'affaires.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "6b3132845b54fc31a48bef321502367c6d4613ec015056c097a8825335974cad"
+  },
+  "entreprise . chiffre d'affaires . proportions": {
+   "file": "règles/entreprise/chiffre-d'affaires.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "5cd8bf39cf5c85dd6accc795d8d43e7668c560ef2bf1558f5c1dfdabf0209aaf"
+  },
+  "entreprise . chiffre d'affaires . vente restauration hébergement": {
+   "file": "règles/entreprise/chiffre-d'affaires.publicodes",
+   "references": {
+    "Bénéfices industriels et commerciaux (BIC) : régime réel d’imposition": "https://entreprendre.service-public.gouv.fr/vosdroits/F32919",
+    "Achat/vente de biens": "https://www.impots.gouv.fr/portail/professionnel/achatvente-de-biens"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "c4229d87aa496bcfb845fcaebcccea1f419a8773151fef29644a67557a31ce0e"
+  },
+  "entreprise . chiffre d'affaires . service BIC": {
+   "file": "règles/entreprise/chiffre-d'affaires.publicodes",
+   "references": {
+    "Bénéfices industriels et commerciaux (BIC) : régime réel d’imposition": "https://entreprendre.service-public.gouv.fr/vosdroits/F32919"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "f912a043496d39e04082432cb1dc394f71bc14bd8875e51568c84356731c725d"
+  },
+  "entreprise . chiffre d'affaires . service BNC": {
+   "file": "règles/entreprise/chiffre-d'affaires.publicodes",
+   "references": {
+    "Liste des professions libérales": "https://bpifrance-creation.fr/encyclopedie/trouver-proteger-tester-son-idee/verifiertester-son-idee/liste-professions-liberales"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "14f3610443411876e6a6e48b86337917ffdb1f2535392d3c318a3cd47ac3eeda"
+  },
+  "entreprise . chiffre d'affaires . service": {
+   "file": "règles/entreprise/chiffre-d'affaires.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "202af1b18889cc5dd980937136527fa985adc0e66f99706d38a3dab4c290ac21"
+  },
+  "entreprise . chiffre d'affaires . seuil micro-fiscal": {
+   "file": "règles/entreprise/chiffre-d'affaires.publicodes",
+   "references": {
+    "Impôt sur le revenu : BIC, BNC, comment ça marche ? - Quel régime d’imposition concerne les BIC et les BNC ?": "https://www.economie.gouv.fr/entreprises/gerer-sa-fiscalite-et-ses-impots/limpot-sur-les-benefices-ir-et/impot-sur-le-revenu-bic#quel-r-gime-d-imposition-concern_2"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "93d8d8fc9b25378725b089c7891e3ea4d3acf330cc20e3e85b62e180c3661511"
+  },
+  "entreprise . chiffre d'affaires . seuil micro-fiscal . dépassé": {
+   "file": "règles/entreprise/chiffre-d'affaires.publicodes",
+   "references": {
+    "Article 50-0 du Code général des impôts": "https://www.legifrance.gouv.fr/affichCode.do?idSectionTA=LEGISCTA000006199553&cidTexte=LEGITEXT000006069577",
+    "Article 102 ter du Code général des impôts": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000036426856/2025-12-20"
+   },
+   "legiarti_ids": [
+    "LEGIARTI000036426856"
+   ],
+   "body_sha256": "9842a2f018fecf457b8b1a7f8bf0af0111541f9edd7e2ce715008cbf18990785"
+  },
+  "entreprise . chiffre d'affaires . seuil micro-fiscal . dépassé . alerte": {
+   "file": "règles/entreprise/chiffre-d'affaires.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "a27295b88a5df2d521ff5b9914717909d537650afaa6295a5bcebb72b3fa67c3"
+  },
+  "entreprise . date de création": {
+   "file": "règles/entreprise/durée-activité.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "fc3cb5f86288fb2d87726257870408ce0284f03abb859e7032c87dc89773f413"
+  },
+  "entreprise . date de création . contrôle date future": {
+   "file": "règles/entreprise/durée-activité.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "5a13dea30852c42430038eadb78d4a69edd8696ef4e22eab12c8782e89ff619e"
+  },
+  "entreprise . date de création . contrôle date passée": {
+   "file": "règles/entreprise/durée-activité.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "bf01962e57faeb4e258a924f228bdc88f9623883345918a02b1cad12aa4779be"
+  },
+  "entreprise . créée cette année": {
+   "file": "règles/entreprise/durée-activité.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "70c41c63c54ead480abedb169504dc084348bb4e035238bf756b95d3d1b7c235"
+  },
+  "entreprise . durée d'activité": {
+   "file": "règles/entreprise/durée-activité.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "68fd7d3a4fe0e230799dbebc65f0219c988af76a0acfa149d47417856844cabb"
+  },
+  "entreprise . durée d'activité cette année": {
+   "file": "règles/entreprise/durée-activité.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "ff9dadabd36374ed81fcb431c4590b719ca22de6b00519e0249f8188fa0a8cec"
+  },
+  "entreprise . prorata temporis": {
+   "file": "règles/entreprise/durée-activité.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "1565e030c7b391a2a010c5a6341bcb5e8fe12fc25c05e0e18fed4641511277db"
+  },
+  "entreprise . durée d'activité . en fin d'année": {
+   "file": "règles/entreprise/durée-activité.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "f30adab026834ea6bd24dc6f8ecd9ada1c268de3f0ca0afce640f82205503576"
+  },
+  "entreprise . durée d'activité . en début d'année": {
+   "file": "règles/entreprise/durée-activité.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "a49e0b57b0f7703cd0235ec4507df2df0f3fbcf9ee86cc605dd9d4326d28b8f9"
+  },
+  "entreprise . EI": {
+   "file": "règles/entreprise/entreprise.publicodes",
+   "references": {
+    "Tout ce que vous devez savoir sur l’entreprise individuelle": "https://www.urssaf.fr/accueil/choisir-forme-juridique/creer-entreprise-individuelle.html",
+    "Entrepreneur individuel (EI) : ce qu’il faut savoir": "https://entreprendre.service-public.gouv.fr/vosdroits/F37396",
+    "Entrepreneur individuel": "https://bpifrance-creation.fr/encyclopedie/structures-juridiques/entreprendre-seul/entrepreneur-individuel"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "15ae6aae17d1fa516005199273c52d3a4b6ef22b43c1c6f3d7cef17c18eb7ed5"
+  },
+  "entreprise . charges": {
+   "file": "règles/entreprise/entreprise.publicodes",
+   "references": {
+    "Charges déductibles ou non du résultat fiscal d’une entreprise": "https://www.service-public.fr/professionnels-entreprises/vosdroits/F31973"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "daa097c274b16e1b53d667d28d12780e79daf6c64b0c3ab4d4e533eb4e5459bc"
+  },
+  "entreprise . résultat fiscal": {
+   "file": "règles/entreprise/entreprise.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "7b1ca443939402213b03874704e317cc62fa8aafeb02d9ef281d9c03d9ebccae"
+  },
+  "entreprise . imposition . IR . information sur le report de déficit": {
+   "file": "règles/entreprise/imposition.publicodes",
+   "references": {
+    "bofip": "https://bofip.impots.gouv.fr/bofip/2003-PGP.html/identifiant%3DBOI-BIC-DEF-20-10-20170301"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "9b94275c46c25fd88bd8558bf8cd667e188c9e79d4a95b07bbb57151de63e20c"
+  },
+  "entreprise . imposition . IR . régime micro-fiscal": {
+   "file": "règles/entreprise/imposition.publicodes",
+   "references": {
+    "Régime fiscal de la micro-entreprise": "https://entreprendre.service-public.fr/vosdroits/F23267",
+    "Micro-entreprise, régime réel et régime de la déclaration contrôlée : les 3 régimes d’imposition des entreprises": "https://www.economie.gouv.fr/entreprises/changement-regime-imposition",
+    "Tout ce qu’il faut savoir sur le régime micro": "https://www.indy.fr/guide/creation-entreprise/etapes/regime-fiscal/micro/"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "f1c00fdb864be5de385f50fb561726df15ac05f9f35791e6f00ba83fb2d4f010"
+  },
+  "entreprise . imposition . IR . régime micro-fiscal . revenu abattu": {
+   "file": "règles/entreprise/imposition.publicodes",
+   "references": {
+    "Impôt sur le revenu : BIC, BNC, comment ça marche ? - Comment déterminer le bénéfice imposable ?": "https://www.economie.gouv.fr/entreprises/gerer-sa-fiscalite-et-ses-impots/limpot-sur-les-benefices-ir-et/impot-sur-le-revenu-bic#comment-d-terminer-le-b-n-fice-i_3"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "b54b9188fe30185d7c8d778e53eb3f0aa1c55e41de354b97aff31a71e8d91128"
+  },
+  "indépendant . conjoint collaborateur": {
+   "file": "règles/indépendant/conjoint-collaborateur.publicodes",
+   "references": {
+    "Travailler avec votre conjoint - Conjoint collaborateur": "https://www.urssaf.fr/accueil/independant/gerer-developper-activite/travailler-avec-conjoint.html#ancre-conjoint-collaborateur",
+    "Conjoint collaborateur": "https://secu-independants.fr/cotisations/conjoint/conjoint-collaborateur/",
+    "Situations particulières": "https://www.cnavpl.fr/situations-particulieres/"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "d12861bd4e1f3853599996df00b9cc3e0647c7ba41bec5edcded09f099c4cdaf"
+  },
+  "indépendant . conjoint collaborateur . choix assiette": {
+   "file": "règles/indépendant/conjoint-collaborateur.publicodes",
+   "references": {
+    "Article L662-1 du Code de la sécurité sociale": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048683471",
+    "Article D633-19-2 du Code de la sécurité sociale": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000041966711",
+    "Article D642-5-2 du Code de la sécurité sociale": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000041966458",
+    "Article R662-1 du Code de la sécurité sociale": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000038785217"
+   },
+   "legiarti_ids": [
+    "LEGIARTI000038785217",
+    "LEGIARTI000041966458",
+    "LEGIARTI000041966711",
+    "LEGIARTI000048683471"
+   ],
+   "body_sha256": "117a99347a3d736f15670431720f8e9c98ac74aeb2e35c4f2fab1fa036963daa"
+  },
+  "indépendant . conjoint collaborateur . assiette retraite et invalidité-décès": {
+   "file": "règles/indépendant/conjoint-collaborateur.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "d97cb8ab167bfaa6c6046fad8777a280897a5988314a7fc5dd8371a0f4d2ca06"
+  },
+  "indépendant . cotisations et contributions . CSG-CRDS": {
+   "file": "règles/indépendant/cotisations-et-contributions/CSG-CRDS.publicodes",
+   "references": {
+    "CSG-CRDS": "https://www.urssaf.fr/accueil/independant/comprendre-payer-cotisations/vos-cotisations.html#ancre-csg-crds",
+    "Les indemnités journalières et l’impôt": "https://www.ameli.fr/assure/remboursements/indemnites-journalieres-maladie-maternite-paternite/arret-maladie-salarie#text_125047",
+    "CSG et CRDS sur les revenus d'activité et de remplacement": "https://www.service-public.fr/particuliers/vosdroits/F2971",
+    "Article 154 quiquies du Code Général des Impôts": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000038836652/"
+   },
+   "legiarti_ids": [
+    "LEGIARTI000038836652"
+   ],
+   "body_sha256": "4b671c1b2420f85289c09201ba2018cbf22bdaf71428c98793e19b760577022f"
+  },
+  "indépendant . assiette minimale": {
+   "file": "règles/indépendant/cotisations-et-contributions/assiette-minimale.publicodes",
+   "references": {
+    "Artisan, commerçant et profession libérale non réglementée - Vos cotisations minimales": "https://www.urssaf.fr/accueil/outils-documentation/taux-baremes/taux-cotisations-ac-plnr.html#ancre-vos-cotisations-minimales"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "d6e7b393eec4d69882ae24fb4d7d49bbf5c5909f040c617d1ddc79fbdc7e1625"
+  },
+  "indépendant . assiette minimale . maladie": {
+   "file": "règles/indépendant/cotisations-et-contributions/assiette-minimale.publicodes",
+   "references": {
+    "Artisan, commerçant et profession libérale non réglementée - Vos cotisations minimales": "https://www.urssaf.fr/accueil/outils-documentation/taux-baremes/taux-cotisations-ac-plnr.html#ancre-vos-cotisations-minimales"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "291a5e8311d74141aafee0fc4d3606eda75d1034df131c53dfa1dc4f0b36eb32"
+  },
+  "indépendant . assiette minimale . indemnités journalières": {
+   "file": "règles/indépendant/cotisations-et-contributions/assiette-minimale.publicodes",
+   "references": {
+    "Artisan, commerçant et profession libérale non réglementée - Vos cotisations minimales": "https://www.urssaf.fr/accueil/outils-documentation/taux-baremes/taux-cotisations-ac-plnr.html#ancre-vos-cotisations-minimales"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "2f6491c8bbc55c70845229e76b5c03ad453f1648b2cbc30736690a8143f37837"
+  },
+  "indépendant . assiette minimale . retraite": {
+   "file": "règles/indépendant/cotisations-et-contributions/assiette-minimale.publicodes",
+   "references": {
+    "Artisan, commerçant et profession libérale non réglementée - Vos cotisations minimales": "https://www.urssaf.fr/accueil/outils-documentation/taux-baremes/taux-cotisations-ac-plnr.html#ancre-vos-cotisations-minimales"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "babe47a0ca666e9c5227ca8521604080856c13a48d0861abfc7a20d18edeb6b3"
+  },
+  "indépendant . assiette minimale . invalidité et décès": {
+   "file": "règles/indépendant/cotisations-et-contributions/assiette-minimale.publicodes",
+   "references": {
+    "Artisan, commerçant et profession libérale non réglementée - Vos cotisations minimales": "https://www.urssaf.fr/accueil/outils-documentation/taux-baremes/taux-cotisations-ac-plnr.html#ancre-vos-cotisations-minimales",
+    "Article D632-1 du Code de la sécurité sociale": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000041966755"
+   },
+   "legiarti_ids": [
+    "LEGIARTI000041966755"
+   ],
+   "body_sha256": "d40d363b243e7ae888760b3542c1598409cd248fcf70512824f6df032a19b4a0"
+  },
+  "indépendant . assiette minimale . invalidité et décès Cipav": {
+   "file": "règles/indépendant/cotisations-et-contributions/assiette-minimale.publicodes",
+   "references": {
+    "Profession libérale réglementée relevant de la Cipav - Vos cotisations minimales": "https://www.urssaf.fr/accueil/outils-documentation/taux-baremes/taux-cotisations-plr-cipav.html#ancre-vos-cotisations-minimales"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "1762ef56202d1c9362f05ebbc62047f7c19732957fd17f8513cbd5fa6257c05b"
+  },
+  "indépendant . cotisations et contributions . cotisations . conjoint collaborateur": {
+   "file": "règles/indépendant/cotisations-et-contributions/cotisations/conjoint-collaborateur.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "12b76d05d9e7d76e1ae716d19dd624452126baa4e219b1745874b2170c1721b1"
+  },
+  "indépendant . cotisations et contributions . cotisations . conjoint collaborateur . indemnités journalières": {
+   "file": "règles/indépendant/cotisations-et-contributions/cotisations/conjoint-collaborateur.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "b9b3bb6b28d30f783198c8c54e89104d8c3bf7c05c90cd8e8b1b831bc114471e"
+  },
+  "indépendant . cotisations et contributions . cotisations . conjoint collaborateur . retraite de base": {
+   "file": "règles/indépendant/cotisations-et-contributions/cotisations/conjoint-collaborateur.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "06dce1f9e6a78ec0fabbc735e3016acbd6ba47569a8a05ea7bfd2bd014ccd789"
+  },
+  "indépendant . cotisations et contributions . cotisations . conjoint collaborateur . retraite complémentaire": {
+   "file": "règles/indépendant/cotisations-et-contributions/cotisations/conjoint-collaborateur.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "3aa83f99d268ea19f2c3703c0e067787c7d893bef16ccbb0d089e18fb752b9e7"
+  },
+  "indépendant . cotisations et contributions . cotisations . conjoint collaborateur . invalidité et décès": {
+   "file": "règles/indépendant/cotisations-et-contributions/cotisations/conjoint-collaborateur.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "0eeb7924a43cb1568ba42925ac485187bbe738158bfe041613735b4cf7e34dc0"
+  },
+  "indépendant . cotisations et contributions . cotisations": {
+   "file": "règles/indépendant/cotisations-et-contributions/cotisations/cotisations.publicodes",
+   "references": {
+    "Taux de cotisations - Artisan, commerçant et profession libérale non réglementée": "https://www.urssaf.fr/accueil/outils-documentation/taux-baremes/taux-cotisations-ac-plnr.html",
+    "Taux de cotisations - Professions libérales réglementées hors Cipav": "https://www.urssaf.fr/accueil/outils-documentation/taux-baremes/taux-cotisations-plr-hors-cipav.html",
+    "Taux de cotisations - Profession libérale réglementée relevant de la Cipav": "https://www.urssaf.fr/accueil/outils-documentation/taux-baremes/taux-cotisations-plr-cipav.html",
+    "Taux de cotisations - Praticien ou auxiliaire médical": "https://www.urssaf.fr/accueil/outils-documentation/taux-baremes/taux-cotisations-pam.html"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "5c3b1279e3b6a4472dfc4c20cbe3c53584b4f1a11f9e2300e9776ce34d3e4a37"
+  },
+  "indépendant . cotisations et contributions . cotisations . maladie-maternité avant abattements": {
+   "file": "règles/indépendant/cotisations-et-contributions/cotisations/cotisations.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "9d34f064c548c682044117fdc7da074030dfdb589d41afcde09814fa3dfcfb4d"
+  },
+  "indépendant . cotisations et contributions . cotisations . maladie-maternité": {
+   "file": "règles/indépendant/cotisations-et-contributions/cotisations/cotisations.publicodes",
+   "references": {
+    "Cotisations maladie": "https://www.urssaf.fr/accueil/independant/comprendre-payer-cotisations/vos-cotisations.html#ancre-cotisations-maladie",
+    "Article D621-1 du Code de la sécurité sociale": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049904610",
+    "Article D621-2 du Code de la sécurité sociale": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049904592"
+   },
+   "legiarti_ids": [
+    "LEGIARTI000049904592",
+    "LEGIARTI000049904610"
+   ],
+   "body_sha256": "e4ba2dc8101ba5a77240b3f226a699cf948b7a787f12d75ebb36d90333b45dea"
+  },
+  "indépendant . cotisations et contributions . cotisations . maladie-maternité . domiciliation fiscale étranger": {
+   "file": "règles/indépendant/cotisations-et-contributions/cotisations/cotisations.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "1abcc9d0cf0a53a3ee9e597742380a171e832f91aa4183a746ae2f62dbafd9d5"
+  },
+  "indépendant . cotisations et contributions . cotisations . indemnités journalières": {
+   "file": "règles/indépendant/cotisations-et-contributions/cotisations/cotisations.publicodes",
+   "references": {
+    "Cotisations maladie": "https://www.urssaf.fr/accueil/independant/comprendre-payer-cotisations/vos-cotisations.html#ancre-cotisations-maladie",
+    "Cotisations minimales": "https://www.secu-independants.fr/cotisations/calcul-des-cotisations/cotisations-minimales/",
+    "Article D621-3 du Code de la sécurité sociale": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049904537"
+   },
+   "legiarti_ids": [
+    "LEGIARTI000049904537"
+   ],
+   "body_sha256": "7c71b2e5faba9ae6cb5c923b9d4a5da92baa294d9c51e541b0e7cbcb56012f6d"
+  },
+  "indépendant . cotisations et contributions . cotisations . allocations familiales avant abattements": {
+   "file": "règles/indépendant/cotisations-et-contributions/cotisations/cotisations.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "33cfbd1521cfb47d246beab616465c2765da4135d81e90d2b3fe3bda5ec1e5cd"
+  },
+  "indépendant . cotisations et contributions . cotisations . allocations familiales": {
+   "file": "règles/indépendant/cotisations-et-contributions/cotisations/cotisations.publicodes",
+   "references": {
+    "Allocations familiales": "https://www.urssaf.fr/accueil/independant/comprendre-payer-cotisations/vos-cotisations.html#ancre-allocations-familiales",
+    "Article D613-1 du Code de la sécurité sociale": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000041966324",
+    "Taux de cotisations - Travailleur indépendant à Mayotte": "https://www.urssaf.fr/accueil/outils-documentation/taux-baremes/taux-cotisations-ti-mayotte.html",
+    "Article 28-5 de l’ordonnance n°96-1122": "https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000025018568"
+   },
+   "legiarti_ids": [
+    "LEGIARTI000025018568",
+    "LEGIARTI000041966324"
+   ],
+   "body_sha256": "e32d8c6c0339bc49363bde965a42522647ae8f093b4c7c5502074d2668bac121"
+  },
+  "indépendant . cotisations et contributions . cotisations . assiette retraite et invalidité-décès": {
+   "file": "règles/indépendant/cotisations-et-contributions/cotisations/cotisations.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "a765909f83715e6a93408b4b5ddc2566b258a46d6ba2b3a0867ced1d61a364d2"
+  },
+  "indépendant . cotisations et contributions . cotisations . retraite de base": {
+   "file": "règles/indépendant/cotisations-et-contributions/cotisations/cotisations.publicodes",
+   "references": {
+    "Retraite de base": "https://www.urssaf.fr/accueil/independant/comprendre-payer-cotisations/vos-cotisations.html#ancre-retraite-de-base",
+    "Cotisations minimales": "https://www.secu-independants.fr/cotisations/calcul-des-cotisations/cotisations-minimales/",
+    "Article D633-2 du Code de la sécurité sociale": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048838330",
+    "Taux de cotisations - Travailleur indépendant à Mayotte": "https://www.urssaf.fr/accueil/outils-documentation/taux-baremes/taux-cotisations-ti-mayotte.html",
+    "Article 28-2 de l’ordonnance n°96-1122": "https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000025018560",
+    "Guide de l’assurance vieillesse des professions libérales (2025)": "https://www.cnavpl.fr/wp-content/uploads/2025/07/Guide-2025.pdf#page=23",
+    "Article D633-3 du Code de la sécurité sociale": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049904636"
+   },
+   "legiarti_ids": [
+    "LEGIARTI000025018560",
+    "LEGIARTI000048838330",
+    "LEGIARTI000049904636"
+   ],
+   "body_sha256": "d9a11ab037bbb8a66530cf7cb8ce36f91209c057387d52d1400c3cad1afd5ca6"
+  },
+  "indépendant . cotisations et contributions . cotisations . retraite complémentaire": {
+   "file": "règles/indépendant/cotisations-et-contributions/cotisations/cotisations.publicodes",
+   "references": {
+    "Retraite complémentaire": "https://www.urssaf.fr/accueil/independant/comprendre-payer-cotisations/vos-cotisations.html#ancre-retraite-complementaire",
+    "Article D635-7 du Code de la sécurité sociale": "www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000041966498",
+    "Taux de cotisations - Travailleur indépendant à Mayotte": "https://www.urssaf.fr/accueil/outils-documentation/taux-baremes/taux-cotisations-ti-mayotte.html",
+    "Article 23-5 de l’ordonnance 2002-411": "https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000043983136"
+   },
+   "legiarti_ids": [
+    "LEGIARTI000041966498",
+    "LEGIARTI000043983136"
+   ],
+   "body_sha256": "14af223e0e1c4a9e3b2a3ff867c49524c081eae177ff7ed37e92f62dba9c896c"
+  },
+  "indépendant . cotisations et contributions . cotisations . PCV": {
+   "file": "règles/indépendant/cotisations-et-contributions/cotisations/cotisations.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "49a137ee5d8496a3bab1c45e894286ddc617b60fd07419b2b83bf452d5046129"
+  },
+  "indépendant . cotisations et contributions . cotisations . invalidité et décès": {
+   "file": "règles/indépendant/cotisations-et-contributions/cotisations/cotisations.publicodes",
+   "references": {
+    "Invalidité-décès": "https://www.urssaf.fr/accueil/independant/comprendre-payer-cotisations/vos-cotisations.html#ancre-invalidite-deces",
+    "Cotisations minimales": "https://www.secu-independants.fr/cotisations/calcul-des-cotisations/cotisations-minimales/",
+    "Article D632-1 du Code de la sécurité sociale": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000041966755",
+    "Article D632-2 du Code de la sécurité sociale": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000036471466",
+    "Taux de cotisations - Travailleur indépendant à Mayotte": "https://www.urssaf.fr/accueil/outils-documentation/taux-baremes/taux-cotisations-ti-mayotte.html",
+    "Article 23-5 de l’ordonnance 2002-411": "https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000043983136"
+   },
+   "legiarti_ids": [
+    "LEGIARTI000036471466",
+    "LEGIARTI000041966755",
+    "LEGIARTI000043983136"
+   ],
+   "body_sha256": "8578e72942c1d879fe6eb9c09f764e681cedd6113dbab689868a2ce182401a37"
+  },
+  "indépendant . cotisations et contributions . cotisations . maladie-maternité-invalidité-décès-autonomie": {
+   "file": "règles/indépendant/cotisations-et-contributions/cotisations/cotisations.publicodes",
+   "references": {
+    "Article 28-3 de l’ordonnance n°96-1122": "https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000044405008"
+   },
+   "legiarti_ids": [
+    "LEGIARTI000044405008"
+   ],
+   "body_sha256": "bf855ec4795cd8b3792e3af846af055399cff3dfbd105f7ff97ef69547059042"
+  },
+  "indépendant . cotisations et contributions . cotisations . maladie-maternité et autonomie": {
+   "file": "règles/indépendant/cotisations-et-contributions/cotisations/cotisations.publicodes",
+   "references": {
+    "Taux de cotisations - Travailleur indépendant à Mayotte": "https://www.urssaf.fr/accueil/outils-documentation/taux-baremes/taux-cotisations-ti-mayotte.html",
+    "Article 28-4 de l’ordonnance n°96-1122": "https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000044405006",
+    "Décret n° 2019-632 du 24 juin 2019 modifiant le décret n° 2011-2085 du 30 décembre 2011": "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000038677832"
+   },
+   "legiarti_ids": [
+    "LEGIARTI000044405006"
+   ],
+   "body_sha256": "47ec3455ac7e95f64ecd75afb66b63c1aa817591ce89bddc00ba0d93c5cfa628"
+  },
+  "indépendant . cotisations et contributions . début activité": {
+   "file": "règles/indépendant/cotisations-et-contributions/cotisations/début-activité.publicodes",
+   "references": {
+    "Indépendant : Comment sont calculées vos cotisations ?": "https://www.urssaf.fr/accueil/independant/comprendre-payer-cotisations/comprendre-vos-cotisations.html#ancre-le-calcul-vos-cotisations",
+    "Article R131-2-1 du Code de la sécurité sociale": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000038750307",
+    "Article D131-1 du Code de la sécurité sociale": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000038786941",
+    "Article R613-17 du Code de la sécurité sociale": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000038750258"
+   },
+   "legiarti_ids": [
+    "LEGIARTI000038750258",
+    "LEGIARTI000038750307",
+    "LEGIARTI000038786941"
+   ],
+   "body_sha256": "ba3647efb085b1383250ea9af63ad31d8bcb503535a260196fb1ee0cc2e8269b"
+  },
+  "indépendant . cotisations et contributions . cotisations . exonérations . Mayotte 24 mois": {
+   "file": "règles/indépendant/cotisations-et-contributions/cotisations/exonérations/24-mois-Mayotte.publicodes",
+   "references": {
+    "Article 28-8 de l'ordonnance n°96-1122": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000025023112"
+   },
+   "legiarti_ids": [
+    "LEGIARTI000025023112"
+   ],
+   "body_sha256": "80b1c52385d70929b35aa8475ed52dcd93142a48bdd72b906cc5fdbed41af2a9"
+  },
+  "indépendant . cotisations et contributions . cotisations . exonérations . Acre": {
+   "file": "règles/indépendant/cotisations-et-contributions/cotisations/exonérations/Acre.publicodes",
+   "references": {
+    "Acre : nouvelles règles et démarches à partir du 1er janvier 2026": "https://www.urssaf.fr/accueil/actualites/acre-nouvelles-regles-demarches.html",
+    "L’Acre : une aide pour favoriser les créations et reprises d’entreprises": "https://www.urssaf.fr/accueil/exoneration-acre-createur.html",
+    "Aide à la création ou à la reprise d’une entreprise": "https://www.service-public.gouv.fr/particuliers/vosdroits/F11677",
+    "Acre : aide aux créateurs et repreneurs d’entreprise (ex Accre)": "https://bpifrance-creation.fr/encyclopedie/aides-a-creation-a-reprise-dentreprise/aides-sociales-financieres/acre-aide-aux"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "bfe69ca57977cd3296b24df911b86a0566d408e183e48068e8f5b3decb37c934"
+  },
+  "indépendant . cotisations et contributions . cotisations . exonérations . Acre . prorata sur l'année": {
+   "file": "règles/indépendant/cotisations-et-contributions/cotisations/exonérations/Acre.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "0b8c3c85c38afff75d4e40af59a49e1c2b030296ad9201dc78e36a0abd31deb6"
+  },
+  "indépendant . cotisations et contributions . cotisations . exonérations . Acre . exonération maximale": {
+   "file": "règles/indépendant/cotisations-et-contributions/cotisations/exonérations/Acre.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "9dff7316a7c86b4c771a28190abee9c9ca3a03b8e422eaf4c9c81e79651d9856"
+  },
+  "indépendant . cotisations et contributions . cotisations . exonérations . Acre . exonération": {
+   "file": "règles/indépendant/cotisations-et-contributions/cotisations/exonérations/Acre.publicodes",
+   "references": {
+    "Article D131-6-1 du Code de la sécurité sociale": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000036475110"
+   },
+   "legiarti_ids": [
+    "LEGIARTI000036475110"
+   ],
+   "body_sha256": "49c5ea347f28adc180bf85cd5d2659ba81fced45168ac2fcdb31439d4f571d3b"
+  },
+  "indépendant . cotisations et contributions . cotisations . exonérations . DROM": {
+   "file": "règles/indépendant/cotisations-et-contributions/cotisations/exonérations/drom.publicodes",
+   "references": {
+    "Exonérations de début d'activité": "https://www.urssaf.fr/portail/home/taux-et-baremes/taux-de-cotisations/travailleurs-independants-en-out/debut-dactivite--cotisations-et.html",
+    "Exonérations et abattements en régime de croisière": "https://www.urssaf.fr/portail/home/taux-et-baremes/taux-de-cotisations/travailleurs-independants-en-out/exonerations-et-abattements-en-r.html"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "01a5682a02f57d52d54da5e4040e826b7c7c98d806249f28d00421bc510071ba"
+  },
+  "indépendant . cotisations et contributions . cotisations . exonérations": {
+   "file": "règles/indépendant/cotisations-et-contributions/cotisations/exonérations/exonérations.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  "indépendant . cotisations et contributions . cotisations . exonérations . cumul Acre et invalidité": {
+   "file": "règles/indépendant/cotisations-et-contributions/cotisations/exonérations/exonérations.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "76371795bf8c4030e0349737413a5822cde1763766a68c49090b121e59dd352a"
+  },
+  "indépendant . cotisations et contributions . cotisations . exonérations . Mayotte": {
+   "file": "règles/indépendant/cotisations-et-contributions/cotisations/exonérations/exonérations.publicodes",
+   "references": {
+    "Reprise du recouvrement des cotisations pour les travailleurs indépendants à Mayotte": "https://www.cssm.fr/uploads//Formulaires/6584-Depl-TI-Mayotte%2006_08_2024%20web.pdf",
+    "Taux de cotisations - Travailleur indépendant à Mayotte": "https://www.urssaf.fr/accueil/outils-documentation/taux-baremes/taux-cotisations-ti-mayotte.html",
+    "Taux de cotisations - Artisan, commerçant et profession libérale non réglementée - Début d’activité": "https://www.urssaf.fr/accueil/outils-documentation/taux-baremes/taux-cotisations-ac-plnr.html#ancre-debut-d-activite",
+    "Taux de cotisations - Profession libérale réglementée relevant de la Cipav - Début d’activité": "https://www.urssaf.fr/accueil/outils-documentation/taux-baremes/taux-cotisations-plr-cipav.html#ancre-debut-d-activite",
+    "Taux de cotisations - Profession libérale réglementée hors Cipav - Début d’activité": "https://www.urssaf.fr/accueil/outils-documentation/taux-baremes/taux-cotisations-plr-hors-cipav.html#ancre-debut-d-activite"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "93fefccf635686caa73d641c72f828dbcb5652649a85a132047e527ce4af8c3c"
+  },
+  "indépendant . cotisations et contributions . cotisations . exonérations . invalidité": {
+   "file": "règles/indépendant/cotisations-et-contributions/cotisations/exonérations/invalidité.publicodes",
+   "references": {
+    "Travailleurs indépendants : artisans et commerçants - Votre assurance invalidité (2017)": "https://www.secu-independants.fr/fileadmin/mediatheque/Espace_telechargement/Protection_sociale/Depliant_assur_invalidite.pdf#page=8",
+    "Article D621-4 du Code de la sécurité sociale": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000043656758",
+    "Article D635-2 du Code de la sécurité sociale": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000041966510",
+    "Article L642-3 du Code de la sécurité sociale": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000033745702"
+   },
+   "legiarti_ids": [
+    "LEGIARTI000033745702",
+    "LEGIARTI000041966510",
+    "LEGIARTI000043656758"
+   ],
+   "body_sha256": "34ac2e83c775172c84e66a32b38a24fe25fbc0913bc0649a50ef8d7a711eda85"
+  },
+  "indépendant . cotisations et contributions . cotisations . exonérations . invalidité . durée": {
+   "file": "règles/indépendant/cotisations-et-contributions/cotisations/exonérations/invalidité.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "16a984efe5b7af2508891d97dc5911c0139b0c4bc4f4461e0686db40186bf3f8"
+  },
+  "indépendant . cotisations et contributions . cotisations . exonérations . invalidité . prorata sur l'année": {
+   "file": "règles/indépendant/cotisations-et-contributions/cotisations/exonérations/invalidité.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "e66937e9f1c3f2715748abd9223b9cd1410586e216224a9584e95f98ed0c5aa0"
+  },
+  "indépendant . cotisations et contributions . cotisations . exonérations . invalidité . exonération": {
+   "file": "règles/indépendant/cotisations-et-contributions/cotisations/exonérations/invalidité.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "f6cbf4a8e2328dfc85b251b498ee8e3ff5f395734c11cdbbf1d6bdd3a4fd81f2"
+  },
+  "indépendant . cotisations et contributions . cotisations . exonérations . âge": {
+   "file": "règles/indépendant/cotisations-et-contributions/cotisations/exonérations/âge.publicodes",
+   "references": {
+    "Article 4.6 des statuts de la Cipav": "https://www.lacipav.fr/sites/default/files/2025-09/Statuts%20CIPAV_doc%20VF%20Septembre%2020250923.pdf#page=19"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "a95519d9c8f161592da2cde66e3c5a7f3bf7fe7c18a70c6218851f9f65354a18"
+  },
+  "indépendant . cotisations et contributions": {
+   "file": "règles/indépendant/cotisations-et-contributions/cotisations-et-contributions.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "95adc948f7bc417cf0674b2c8dca8ac809794e5d9e02641740f23676f2c4aba2"
+  },
+  "indépendant . cotisations et contributions . avec dividendes": {
+   "file": "règles/indépendant/cotisations-et-contributions/cotisations-et-contributions.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "6068daf22786d78707db0c3fa16cd5128444557e95c5fc7282230c94628294f8"
+  },
+  "indépendant . cotisations et contributions . contributions spéciales": {
+   "file": "règles/indépendant/cotisations-et-contributions/cotisations-et-contributions.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "eb032cfc2bc7d15c1e7ea186210aacab0a3446308180fded648c1ce71001f9c0"
+  },
+  "indépendant . cotisations et contributions . formation professionnelle": {
+   "file": "règles/indépendant/cotisations-et-contributions/cotisations-et-contributions.publicodes",
+   "references": {
+    "Contribution à la formation professionnelle (CFP)": "https://www.urssaf.fr/accueil/independant/comprendre-payer-cotisations/vos-cotisations.html#ancre-formation-professionnelle",
+    "Contribution à la formation professionnelle (CFP) des entrepreneurs individuels": "https://entreprendre.service-public.fr/vosdroits/F23459",
+    "Cotisations minimales": "https://www.secu-independants.fr/cotisations/calcul-des-cotisations/cotisations-minimales/",
+    "Article L6331-48 du Code du travail": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000044056633"
+   },
+   "legiarti_ids": [
+    "LEGIARTI000044056633"
+   ],
+   "body_sha256": "ce7ecb9bd365fe5d08af8416b95c40ea667de71497d14081e2451b383d11a95e"
+  },
+  "indépendant . cotisations et contributions . après réforme": {
+   "file": "règles/indépendant/cotisations-et-contributions/cotisations-et-contributions.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "779cb212d28590f6f9b5e28e2bbb67ac761d91ecbb628b07b7288e9b6eb1caa8"
+  },
+  "indépendant . cotisations et contributions . assiette CSG-CRDS": {
+   "file": "règles/indépendant/cotisations-et-contributions/cotisations-et-contributions.publicodes",
+   "references": {
+    "Réforme de l’assiette sociale et du barème des cotisations sociales": "https://www.urssaf.fr/accueil/independant/comprendre-payer-cotisations/reforme-cotisations-independants.html",
+    "Article L136-3 du Code de la sécurité sociale": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000051284498",
+    "Article D136-5 du Code de la sécurité sociale": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049899286"
+   },
+   "legiarti_ids": [
+    "LEGIARTI000049899286",
+    "LEGIARTI000051284498"
+   ],
+   "body_sha256": "1531d021d842ae621a904e5bf5cdab14d00238dd03dd956c1bd51f330d6eb3c2"
+  },
+  "indépendant . cotisations et contributions . assiette sociale": {
+   "file": "règles/indépendant/cotisations-et-contributions/cotisations-et-contributions.publicodes",
+   "references": {
+    "Réforme de l’assiette sociale et du barème des cotisations sociales": "https://www.urssaf.fr/accueil/independant/comprendre-payer-cotisations/reforme-cotisations-independants.html",
+    "Article L131-6 du Code de la sécurité sociale": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048683707",
+    "Article L3312-4 du Code du travail": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000037075048",
+    "Article L3324-5 du Code du travail": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000038589722",
+    "Article L3332-27 du Code du travail": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000037075039"
+   },
+   "legiarti_ids": [
+    "LEGIARTI000037075039",
+    "LEGIARTI000037075048",
+    "LEGIARTI000038589722",
+    "LEGIARTI000048683707"
+   ],
+   "body_sha256": "9cd9f88397df98847a67e05129407e4bd1cd48cc39fdba8f8f2bdcf143a33729"
+  },
+  "indépendant . cotisations et contributions . assiette sociale après déduction tabac": {
+   "file": "règles/indépendant/cotisations-et-contributions/cotisations-et-contributions.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "0a41a3a998c105780036fbcf256083b00c99c750e7dd30484f16417b7aaa6f67"
+  },
+  "indépendant . cotisations et contributions . cotisations facultatives": {
+   "file": "règles/indépendant/cotisations-et-contributions/cotisations-facultatives.publicodes",
+   "references": {
+    "Comment fonctionne le plan d’épargne retraite (PER) individuel ?": "https://www.economie.gouv.fr/particuliers/gerer-mon-argent/gerer-mon-budget-et-mon-epargne/comment-fonctionne-le-plan-depargne-retraite-individuel"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "744a6d9b50360ed03c768b53cb3f7e9412f07c8701420eaed87826078f0d3944"
+  },
+  "indépendant . cotisations et contributions . cotisations facultatives . montant": {
+   "file": "règles/indépendant/cotisations-et-contributions/cotisations-facultatives.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "8ca091c295688ba0cc49f4f2470c4e114429ef81dbe2d56cc5555935b6398e2d"
+  },
+  "indépendant . cotisations et contributions . cotisations facultatives . déductibles": {
+   "file": "règles/indépendant/cotisations-et-contributions/cotisations-facultatives.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "c65d1756cce1f302183aa08b60c9d1323c9df7cacd780ddbcb5cbc514bc1c0f5"
+  },
+  "indépendant . cotisations et contributions . cotisations facultatives . non déductibles": {
+   "file": "règles/indépendant/cotisations-et-contributions/cotisations-facultatives.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "d9259796fb1b541073e5dd62542059858e026a13cc86191f903398000b956fd9"
+  },
+  "indépendant . cotisations et contributions . cotisations facultatives . retraite": {
+   "file": "règles/indépendant/cotisations-et-contributions/cotisations-facultatives.publicodes",
+   "references": {
+    "Plan d'épargne retraite (PER) - PER individuel": "https://www.service-public.gouv.fr/particuliers/vosdroits/F36526/0",
+    "Comment fonctionne le plan d’épargne retraite (PER) individuel ?": "https://www.economie.gouv.fr/particuliers/gerer-mon-argent/gerer-mon-budget-et-mon-epargne/comment-fonctionne-le-plan-depargne-retraite-individuel",
+    "Article 154 bis du Code général des impôts": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000020675349/2010-04-01"
+   },
+   "legiarti_ids": [
+    "LEGIARTI000020675349"
+   ],
+   "body_sha256": "9e6af1444393a34492d2495d10bcc9357147ac48ef354d3ff10eb7cc29119aef"
+  },
+  "indépendant . cotisations et contributions . cotisations facultatives . retraite . plafond déductible": {
+   "file": "règles/indépendant/cotisations-et-contributions/cotisations-facultatives.publicodes",
+   "references": {
+    "Article 154 bis du Code général des impôts": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000020675349/2010-04-01",
+    "Calcul du plafond de déduction de l'épargne retraite pour les non-salariés": "https://bofip.impots.gouv.fr/bofip/1124-PGP.html/identifiant=BOI-IR-BASE-20-50-20-20170711#Pour_les_non-salaries_212",
+    "Les principes de fonctionnement des contrats Madelin - Limites de déduction des primes d’épargne retraite": "https://www.legifiscal.fr/impots-personnels/impot-revenu/deduction-des-contrats-madelin-retraite.html#toc-regle-de-plafonnement"
+   },
+   "legiarti_ids": [
+    "LEGIARTI000020675349"
+   ],
+   "body_sha256": "a235b6247589f313ab9f710e15166c8d2bb142873daf27e01dee8d3cf35b4625"
+  },
+  "indépendant . cotisations et contributions . cotisations facultatives . prévoyance": {
+   "file": "règles/indépendant/cotisations-et-contributions/cotisations-facultatives.publicodes",
+   "references": {
+    "Article 154 bis du Code général des impôts": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000020675349/2010-04-01"
+   },
+   "legiarti_ids": [
+    "LEGIARTI000020675349"
+   ],
+   "body_sha256": "adccd26e845125b6fcc5bfe750a3a395af3b3c7f530146f9e358ffe014b46e5d"
+  },
+  "indépendant . cotisations et contributions . cotisations facultatives . prévoyance . plafond déductible": {
+   "file": "règles/indépendant/cotisations-et-contributions/cotisations-facultatives.publicodes",
+   "references": {
+    "Article 154 bis du Code général des impôts": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000020675349/2010-04-01"
+   },
+   "legiarti_ids": [
+    "LEGIARTI000020675349"
+   ],
+   "body_sha256": "8347b5fe40e672c5e919e5882f6a77876c96d69ce8dcb97a8252a9eaf2f6a6fe"
+  },
+  "indépendant . cotisations et contributions . déduction tabac": {
+   "file": "règles/indépendant/cotisations-et-contributions/déduction-tabac.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "d12fe3b57722065c8ef6153f220b4800e8c9a214ed581e0d0559a0dace18b9e2"
+  },
+  "indépendant": {
+   "file": "règles/indépendant/indépendant.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "715e2dc6ae7df5c183174008a716d9f78a7c1bc5d74403bc5a32253989979fdb"
+  },
+  "indépendant . revenu professionnel": {
+   "file": "règles/indépendant/indépendant.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "ee8bcafe55d9d37608a8c001793c6b5cd0058eed83ceee9aa7e2e34849ed5cf3"
+  },
+  "indépendant . revenu brut": {
+   "file": "règles/indépendant/indépendant.publicodes",
+   "references": {
+    "Réforme de l’assiette sociale et du barème des cotisations sociales": "https://www.urssaf.fr/accueil/independant/comprendre-payer-cotisations/reforme-cotisations-independants.html"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "3b6e7f5d76b030f651d44aa552a73090206b63771d993711b59e86f13dcae02e"
+  },
+  "indépendant . PASS proratisé": {
+   "file": "règles/indépendant/indépendant.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "ffc17c1fac41fad7854a1a0663e54b7480f254d25348b9b5a672e8d1a33bc14c"
+  },
+  "indépendant . PASS proratisé . métropole": {
+   "file": "règles/indépendant/indépendant.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "0cfbed42ee7d8f116337fc8126ced90590df16ca12d26aaa72f01b74526e324d"
+  },
+  "indépendant . profession libérale": {
+   "file": "règles/indépendant/profession-libérale.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "2a53b98ba82fee409f38ad3c42009ea0734f5079b3181b946102a10ea386208a"
+  },
+  "indépendant . profession libérale . non réglementée": {
+   "file": "règles/indépendant/profession-libérale.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "f6af78f7407b0116b09f65384c1001b5c1076878611176a7364c0fd86b023351"
+  },
+  "indépendant . profession libérale . non réglementée . option régime général": {
+   "file": "règles/indépendant/profession-libérale.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "49dd113d2159a1a5bc7980eef22def359dfb9ab8bd618071a5b0fa6a116d498c"
+  },
+  "indépendant . profession libérale . non réglementée . Cipav": {
+   "file": "règles/indépendant/profession-libérale.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "dcb4ff09d1c2ef9327ee3709fdbd7bcdfca47f4f2efb0f0438044a7eb1960bf3"
+  },
+  "indépendant . profession libérale . non réglementée . taux spécifique retraite complémentaire": {
+   "file": "règles/indépendant/profession-libérale.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "43cf9ce423fd62aea8985ea5d0ee299363cfd6eba03c3fcc316d944be5ec98e1"
+  },
+  "indépendant . profession libérale . réglementée": {
+   "file": "règles/indépendant/profession-libérale.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "cf9ea14d0a346b1801e05cd2642cadc9c99916a6aa6d3e6a5a54f9befdfdb9bf"
+  },
+  "indépendant . profession libérale . réglementée . métier": {
+   "file": "règles/indépendant/profession-libérale.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "3c2413ae306483ee87c0ed978779d3b61c171b39ed113d83282e72a253a3175c"
+  },
+  "indépendant . profession libérale . réglementée . métier . rattaché Cipav": {
+   "file": "règles/indépendant/profession-libérale.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "0bf4a2622536f90c1c999b231db06864470ba887dc20959e774e736046e1a8dd"
+  },
+  "indépendant . profession libérale . réglementée . métier . santé": {
+   "file": "règles/indépendant/profession-libérale.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "cdc45249743f318d4d9e78030cef117aebc0573798f85ee80d7e0574a32c2a6f"
+  },
+  "indépendant . profession libérale . réglementée . métier . juridique": {
+   "file": "règles/indépendant/profession-libérale.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "990196c4a98f9d6d553032f72ef55f798788847efd93ee7ab9efeb257e8f38cf"
+  },
+  "indépendant . profession libérale . réglementée . métier . expert-comptable": {
+   "file": "règles/indépendant/profession-libérale.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "ffc23fe7980bdc2eefc3839f4a27dc44a19ca405d556b1a8a33ded81e4043c51"
+  },
+  "indépendant . profession libérale . cotisations caisse de retraite": {
+   "file": "règles/indépendant/profession-libérale.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "74635e92edccd5e8e48cc498eaa1418b635787375924d58b14268bb9f93536f8"
+  },
+  "indépendant . profession libérale . réglementée . CARCDSF": {
+   "file": "règles/indépendant/professions-libérales/CARCDSF.publicodes",
+   "references": {
+    "Site de la CARCDSF": "https://www.carcdsf.fr"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "a542e532372c7a7daec95c40ebbba40798b2fd574431c4b07ec4911c88c92f14"
+  },
+  "indépendant . profession libérale . réglementée . CARCDSF . retraite complémentaire": {
+   "file": "règles/indépendant/professions-libérales/CARCDSF.publicodes",
+   "references": {
+    "Montant des cotisations CARCDSF": "https://www.carcdsf.fr/cotisations-du-praticien/montant-des-cotisations",
+    "Récapitulatif des cotisations maximales 2025": "https://www.carcdsf.fr/images/pdf/2025/Recap-cot_forf_debactivite.pdf",
+    "Guide de l’assurance vieillesse des professions libérales (2025)": "https://www.cnavpl.fr/wp-content/uploads/2025/07/Guide-2025.pdf#page=50"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "87f2346f0bccd20c7cf8c198bca91829ffafe22e279a6cd5e7839d81dfa35546"
+  },
+  "indépendant . profession libérale . réglementée . CARCDSF . retraite complémentaire . cotisation forfaitaire . réduction applicable": {
+   "file": "règles/indépendant/professions-libérales/CARCDSF.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "32611016add5780c910b07a9d74114436e27f7f7c9bea49c703da3fc51d7a249"
+  },
+  "indépendant . profession libérale . réglementée . CARCDSF . retraite complémentaire . cotisation forfaitaire . taux réduction": {
+   "file": "règles/indépendant/professions-libérales/CARCDSF.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "676aef529f0ff6bb88a7028a1fd23b6ad3af5d7596b010030086a8e127fb4ab7"
+  },
+  "indépendant . profession libérale . réglementée . CARCDSF . invalidité et décès": {
+   "file": "règles/indépendant/professions-libérales/CARCDSF.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "17cb7d58ccec7136347a8af15bdb70a9a6eed0dab50cea677bf7b679c43e5a76"
+  },
+  "indépendant . profession libérale . réglementée . CARCDSF . PCV": {
+   "file": "règles/indépendant/professions-libérales/CARCDSF.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "d13f618bc05e0039c8a7d290230172073f7b742a9db39c4aeac05d6f6075b91b"
+  },
+  "indépendant . profession libérale . réglementée . CARCDSF . chirurgien-dentiste": {
+   "file": "règles/indépendant/professions-libérales/CARCDSF.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "f95e6554f8faf0843a6b80d9e888059dc4e9fdc129cfec45346b265211cb7430"
+  },
+  "indépendant . profession libérale . réglementée . CARCDSF . chirurgien-dentiste . RID": {
+   "file": "règles/indépendant/professions-libérales/CARCDSF.publicodes",
+   "references": {
+    "Montant des cotisations CARCDSF": "https://www.carcdsf.fr/cotisations-du-praticien/montant-des-cotisations",
+    "Récapitulatif des cotisations maximales 2025": "https://www.carcdsf.fr/images/pdf/2025/Recap-cot_forf_debactivite.pdf"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "30eeae3393d9a3254fe40796432688d2b76ed80a13b1c46c24718371c91755d1"
+  },
+  "indépendant . profession libérale . réglementée . CARCDSF . chirurgien-dentiste . PCV": {
+   "file": "règles/indépendant/professions-libérales/CARCDSF.publicodes",
+   "references": {
+    "Montant des cotisations CARCDSF": "https://www.carcdsf.fr/cotisations-du-praticien/montant-des-cotisations",
+    "Récapitulatif des cotisations maximales 2025": "https://www.carcdsf.fr/images/pdf/2025/Recap-cot_forf_debactivite.pdf"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "27163773a436415e47205f57af93de1200d612d5288e165548e176fa326af3ea"
+  },
+  "indépendant . profession libérale . réglementée . CARCDSF . chirurgien-dentiste . exonération PCV": {
+   "file": "règles/indépendant/professions-libérales/CARCDSF.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "7f7213ecd7edb07ca2d0492a356e068ba005c0da2c19d61ab812d5bcbea45356"
+  },
+  "indépendant . profession libérale . réglementée . CARCDSF . chirurgien-dentiste . prix d'une consultation": {
+   "file": "règles/indépendant/professions-libérales/CARCDSF.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "b6ef6d71fdf5d15a2a773c472169e93a514968b9d57aff8210e8e8c82e3ae1f4"
+  },
+  "indépendant . profession libérale . réglementée . CARCDSF . sage-femme": {
+   "file": "règles/indépendant/professions-libérales/CARCDSF.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "004999cf07ebf7124b28174e040f4f587eb9bfd701f6a2e3dd986c7555df6e40"
+  },
+  "indépendant . profession libérale . réglementée . CARCDSF . sage-femme . RID": {
+   "file": "règles/indépendant/professions-libérales/CARCDSF.publicodes",
+   "references": {
+    "Montant des cotisations CARCDSF": "https://www.carcdsf.fr/cotisations-du-praticien/montant-des-cotisations",
+    "Récapitulatif des cotisations maximales 2025": "https://www.carcdsf.fr/images/pdf/2025/Recap-cot_forf_debactivite.pdf"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "99190d6ad89ed6204a4e8c11375da94714c69440595b1adcf6a8d6863c9a5102"
+  },
+  "indépendant . profession libérale . réglementée . CARCDSF . sage-femme . PCV": {
+   "file": "règles/indépendant/professions-libérales/CARCDSF.publicodes",
+   "references": {
+    "Montant des cotisations CARCDSF": "https://www.carcdsf.fr/cotisations-du-praticien/montant-des-cotisations",
+    "Récapitulatif des cotisations maximales 2025": "https://www.carcdsf.fr/images/pdf/2025/Recap-cot_forf_debactivite.pdf"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "29b0a84b44272c6b8b8501732250423f0bc8f8dba5be4e7bfdfc52b461afafb0"
+  },
+  "indépendant . profession libérale . réglementée . CARCDSF . sage-femme . exonération PCV": {
+   "file": "règles/indépendant/professions-libérales/CARCDSF.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "71689a6eeeb19e1c2993292739ea80743053790c40e051261368cd7467a86b10"
+  },
+  "indépendant . profession libérale . réglementée . CARMF": {
+   "file": "règles/indépendant/professions-libérales/CARMF.publicodes",
+   "references": {
+    "Site CARMF": "https://www.carmf.fr"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "9994a12e8c98b3f024c9fb280ffe6e088477a03aaefe657fc7643f3f2795d5c9"
+  },
+  "indépendant . profession libérale . réglementée . CARMF . participation CPAM retraite": {
+   "file": "règles/indépendant/professions-libérales/CARMF.publicodes",
+   "references": {
+    "Montant des cotisations": "http://www.carmf.fr/page.php?page=cdrom/coti/coti-cours.htm",
+    "Taux 2025": "https://www.carmf.fr/page.php?page=chiffrescles/stats/2025/taux2025.htm",
+    "Taux 2024": "https://www.carmf.fr/page.php?page=chiffrescles/stats/2024/taux2024.htm",
+    "Taux 2023": "https://www.carmf.fr/page.php?page=chiffrescles/stats/2023/taux2023.htm",
+    "Avenant 5 à la convention médical": "https://www.ameli.fr/sites/default/files/Documents/434342/document/avis_relatif_a_lavenant_ndeg_5_a_la_convention_nationale_organisant_les_rapports_entre_les_medecins_liberaux_et_lassurance_maladie.pdf"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "17e7b24d7b3480c412ffbb97b76b6d5dfcc09b1b3c812210b4298a6dcf79094b"
+  },
+  "indépendant . profession libérale . réglementée . CARMF . retraite complémentaire": {
+   "file": "règles/indépendant/professions-libérales/CARMF.publicodes",
+   "references": {
+    "Montant des cotisations": "http://www.carmf.fr/page.php?page=cdrom/coti/coti-cours.htm",
+    "Guide de l’assurance vieillesse des professions libérales (2025)": "https://www.cnavpl.fr/wp-content/uploads/2025/07/Guide-2025.pdf#page=45",
+    "Taux 2025": "https://www.carmf.fr/page.php?page=chiffrescles/stats/2025/taux2025.htm",
+    "Taux 2024": "https://www.carmf.fr/page.php?page=chiffrescles/stats/2024/taux2024.htm",
+    "Taux 2023": "https://www.carmf.fr/page.php?page=chiffrescles/stats/2023/taux2023.htm"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "78336fc8737ac4b99798875ecef10610242f964ebd0f956732b7ca71a4444ae5"
+  },
+  "indépendant . profession libérale . réglementée . CARMF . invalidité et décès": {
+   "file": "règles/indépendant/professions-libérales/CARMF.publicodes",
+   "references": {
+    "Montant des cotisations": "http://www.carmf.fr/page.php?page=cdrom/coti/coti-cours.htm",
+    "Détails des couvertures": "http://www.carmf.fr/page.php?page=cdrom/prev/prev-chiffre.htm",
+    "Taux 2026": "https://www.carmf.fr/page.php?page=chiffrescles/stats/2026/taux2026.htm",
+    "Taux 2025": "https://www.carmf.fr/page.php?page=chiffrescles/stats/2025/taux2025.htm",
+    "Taux 2024": "https://www.carmf.fr/page.php?page=chiffrescles/stats/2024/taux2024.htm",
+    "Taux 2023": "https://www.carmf.fr/page.php?page=chiffrescles/stats/2023/taux2023.htm"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "97c37a2729a806b62d9808c9c42c3caad6b82ffbf717d96d637086c6bdfd89ee"
+  },
+  "indépendant . profession libérale . réglementée . CARMF . en retraite": {
+   "file": "règles/indépendant/professions-libérales/CARMF.publicodes",
+   "references": {
+    "Régime invalidité-décès en cas de cumul retraite et activité libérale": "https://www.carmf.fr/page.php?page=cdrom/retr/retr-continuer.htm#:~:text=Si%20vous%20cumulez%20retraite%20et,%2C%20rente%20invalidit%C3%A9%2C%20capital%20d%C3%A9c%C3%A8s."
+   },
+   "legiarti_ids": [],
+   "body_sha256": "6c3a09a426d9ae948d88c37ef5c58733cf8f0d7ce95c24c3271a2706b12f5ac2"
+  },
+  "indépendant . profession libérale . réglementée . CARMF . PCV": {
+   "file": "règles/indépendant/professions-libérales/CARMF.publicodes",
+   "references": {
+    "Montant des cotisations": "http://www.carmf.fr/page.php?page=cdrom/coti/coti-cours.htm",
+    "Taux 2026": "https://www.carmf.fr/page.php?page=chiffrescles/stats/2026/taux2026.htm",
+    "Taux 2025": "https://www.carmf.fr/page.php?page=chiffrescles/stats/2025/taux2025.htm",
+    "Taux 2024": "https://www.carmf.fr/page.php?page=chiffrescles/stats/2024/taux2024.htm",
+    "Taux 2023": "https://www.carmf.fr/page.php?page=chiffrescles/stats/2023/taux2023.htm"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "b4858d48eb7190b6ce5a2abde666a29d51e12c1521e69b0807dfadcd1e2f03ef"
+  },
+  "indépendant . profession libérale . réglementée . CARPIMKO": {
+   "file": "règles/indépendant/professions-libérales/CARPIMKO.publicodes",
+   "references": {
+    "Site CARPIMKO": "https://www.carpimko.com"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "5537a7617891361243ff505f206ed335709b3da7e375abb2e7f2e93f39ee034f"
+  },
+  "indépendant . profession libérale . réglementée . CARPIMKO . retraite complémentaire": {
+   "file": "règles/indépendant/professions-libérales/CARPIMKO.publicodes",
+   "references": {
+    "Site CARPIMKO": "https://www.carpimko.com/je-suis-en-activite/mes-cotisations/mes-cotisations-sadaptent-a-mes-revenus",
+    "Guide de l’assurance vieillesse des professions libérales (2025)": "https://www.cnavpl.fr/wp-content/uploads/2025/07/Guide-2025.pdf#page=61"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "5e5d51a58c8b0e2049fbb53c4a510c3c0feed7c03c8123bb6c6717d7b4aac02f"
+  },
+  "indépendant . profession libérale . réglementée . CARPIMKO . invalidité et décès": {
+   "file": "règles/indépendant/professions-libérales/CARPIMKO.publicodes",
+   "references": {
+    "Site CARPIMKO": "https://www.carpimko.com/je-suis-en-activite/mes-cotisations/mes-cotisations-sadaptent-a-mes-revenus"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "68dc9b71ee33a6032a9246ec6e39d7aad7b11deb15a6e240857beda8c1add85f"
+  },
+  "indépendant . profession libérale . réglementée . CARPIMKO . PCV": {
+   "file": "règles/indépendant/professions-libérales/CARPIMKO.publicodes",
+   "references": {
+    "Taux Carpimko": "https://www.carpimko.com/je-suis-en-activite/mes-cotisations/mes-cotisations-sadaptent-a-mes-revenus"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "58f7e8eaecd08620ebcd7cf7b7c94893e691b675ff89a90b64f08095995c2b48"
+  },
+  "indépendant . profession libérale . réglementée . CAVEC": {
+   "file": "règles/indépendant/professions-libérales/CAVEC.publicodes",
+   "references": {
+    "Site CAVEC": "https://www.cavec.fr"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "72b3a66ecbcd68432f0254ca96e62f72bf0ca8b6033be2fcf0a3bd0327adb4d9"
+  },
+  "indépendant . profession libérale . réglementée . CAVEC . retraite complémentaire": {
+   "file": "règles/indépendant/professions-libérales/CAVEC.publicodes",
+   "references": {
+    "CAVEC: Vos cotisations retraite, prévoyance et options": "https://www.cavec.fr/votre-retraite/vos-cotisations/vos-cotisations-en-tant-que-liberal-tns/montant-de-vos-cotisations/vos-cotisations-retraite-prevoyance-et-options/",
+    "Guide de l’assurance vieillesse des professions libérales (2025)": "https://www.cnavpl.fr/wp-content/uploads/2025/07/Guide-2025.pdf#page=74"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "4018b8ae74902f4ff94f9f53526e5271fe3fdeb4cd44c09fa133dbdc2ef530dc"
+  },
+  "indépendant . profession libérale . réglementée . CAVEC . invalidité et décès": {
+   "file": "règles/indépendant/professions-libérales/CAVEC.publicodes",
+   "references": {
+    "CAVEC : Vos cotisations retraite, prévoyance et options": "https://www.cavec.fr/votre-retraite/vos-cotisations/vos-cotisations-en-tant-que-liberal-tns/montant-de-vos-cotisations/vos-cotisations-retraite-prevoyance-et-options/"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "e6ae5702699fe19ce2d8b57c6a261017aa479df66676b7ea0ca6b0675e3d2e30"
+  },
+  "indépendant . profession libérale . réglementée . CAVP": {
+   "file": "règles/indépendant/professions-libérales/CAVP.publicodes",
+   "references": {
+    "Site CAVP": "https://www.cavp.fr"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "26847ca94e99867207781810a3c9fe5cc101ed5fdfef3345a8a3bc9d34f598fe"
+  },
+  "indépendant . profession libérale . réglementée . CAVP . directeur non médecin": {
+   "file": "règles/indépendant/professions-libérales/CAVP.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "51dd63152046590748c6c4300f7648e978d8f70c1e787685c0f95f979e723aec"
+  },
+  "indépendant . profession libérale . réglementée . CAVP . demande reduction": {
+   "file": "règles/indépendant/professions-libérales/CAVP.publicodes",
+   "references": {
+    "Site CAVP": "https://www.cavp.fr/votre-profil/pharmacien-en-activite/vos-cotisations-regime-complementaire"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "a9cb87a6d52572be61065843501e9839ef426f13a2c7332345df7bb39b67febc"
+  },
+  "indépendant . profession libérale . réglementée . CAVP . cotisation de référence": {
+   "file": "règles/indépendant/professions-libérales/CAVP.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "4ce81883d1db52a6d7b2895370ba10f522ac1c47e5c545ea81022d0b14a380ba"
+  },
+  "indépendant . profession libérale . réglementée . CAVP . retraite complémentaire": {
+   "file": "règles/indépendant/professions-libérales/CAVP.publicodes",
+   "references": {
+    "Site CAVP": "https://www.cavp.fr/votre-profil/pharmacien-en-activite/vos-cotisations-regime-complementaire",
+    "Guide de l’assurance vieillesse des professions libérales (2025)": "https://www.cnavpl.fr/wp-content/uploads/2025/07/Guide-2025.pdf#page=55",
+    "Arrêté du 3 octobre 2019 portant approbation des modifications apportées aux statuts du régime d'assurance vieillesse complémentaire et aux statuts généraux de la section professionnelle des pharmaciens (CAVP)": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000039357705"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "0055e26dbd1ea03aa705b262e7679da42d80c9812949e9a3becb9368b8648637"
+  },
+  "indépendant . profession libérale . réglementée . CAVP . invalidité et décès": {
+   "file": "règles/indépendant/professions-libérales/CAVP.publicodes",
+   "references": {
+    "Site CAVP": "https://www.cavp.fr/votre-profil/pharmacien-en-activite/vos-cotisations"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "44425477fe3a9aec1c3a77f6951cab03772656e210ffc9dff967171a2e8aaca3"
+  },
+  "indépendant . profession libérale . réglementée . CAVP . PCV": {
+   "file": "règles/indépendant/professions-libérales/CAVP.publicodes",
+   "references": {
+    "Montant de la cotisation": "https://www.cavp.fr/votre-profil/pharmacien-en-activite/vos-cotisations-regime-des-prestations-complementaires-vieillesse",
+    "La retraite en claire": "https://www.la-retraite-en-clair.fr/parcours-professionnel-regimes-retraite/retraite-travailleurs-independants/retraite-complementaire-pharmaciens-cavp",
+    "Le montant de la cotisation": "https://www.cavp.fr/votre-profil/pharmacien-en-activite/vos-cotisations-regime-des-prestations-complementaires-vieillesse"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "bdc89a5dfc9df8d603768d2538dff6da1bee49ca007d0ca3a05856ea9de0b19d"
+  },
+  "indépendant . profession libérale . CNAVPL": {
+   "file": "règles/indépendant/professions-libérales/CNAVPL.publicodes",
+   "references": {
+    "Liste des caisses": "https://www.cnavpl.fr/regimes-complementaires-et-prevoyance/",
+    "Guide de l’assurance vieillesse des professions libérales (2025)": "https://www.cnavpl.fr/wp-content/uploads/2025/07/Guide-2025.pdf"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "5fced4140698311ecc3e1ae5b4ae6b058cbbce69fbdcf7e0bafc331ca8185974"
+  },
+  "indépendant . profession libérale . CNAVPL . hors Urssaf": {
+   "file": "règles/indépendant/professions-libérales/CNAVPL.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "8f6ed5321baaf2a582bf6f936c54977fc596acc6c706afdf7991476ae31dfb66"
+  },
+  "indépendant . profession libérale . CNAVPL . maladie": {
+   "file": "règles/indépendant/professions-libérales/CNAVPL.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "b28ae061dd2409ac750a2339f36c70e313f31111bf6e9a88caaf6cf70c841481"
+  },
+  "indépendant . profession libérale . CNAVPL . retraite de base": {
+   "file": "règles/indépendant/professions-libérales/CNAVPL.publicodes",
+   "references": {
+    "Guide de l’assurance vieillesse des professions libérales (2025)": "https://www.cnavpl.fr/wp-content/uploads/2025/07/Guide-2025.pdf#page=23",
+    "Article D642-3 du Code de la sécurité sociale": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049904651",
+    "Article 23-5 de l’ordonnance 2002-411": "https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000043983136"
+   },
+   "legiarti_ids": [
+    "LEGIARTI000043983136",
+    "LEGIARTI000049904651"
+   ],
+   "body_sha256": "25f4af6f2487299d94e5bb86de6496f11131b26d146d95f8327e9b3ad84fe33f"
+  },
+  "indépendant . profession libérale . CNAVPL . retraite complémentaire": {
+   "file": "règles/indépendant/professions-libérales/CNAVPL.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "5624c3f077f2a53e0613089df667a4ea12d6adebc7a1094644ca3a8257bbb9b0"
+  },
+  "indépendant . profession libérale . CNAVPL . invalidité et décès": {
+   "file": "règles/indépendant/professions-libérales/CNAVPL.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "0ee467779f24feaf22acdec5a6cda8bd5c3803066b188a3ab17524f3e2891c08"
+  },
+  "indépendant . profession libérale . CNAVPL . exonération incapacité": {
+   "file": "règles/indépendant/professions-libérales/CNAVPL.publicodes",
+   "references": {
+    "Guide de l’assurance vieillesse des professions libérales (2025)": "https://www.cnavpl.fr/wp-content/uploads/2025/07/Guide-2025.pdf#page=24"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "b2937d56bf51e45faf2faec1062f150bfdb7468a4d5266d349f5cabfad775976"
+  },
+  "indépendant . profession libérale . réglementée . CNBF": {
+   "file": "règles/indépendant/professions-libérales/CNBF.publicodes",
+   "references": {
+    "Site CNBF": "https://www.cnbf.fr"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "d2898f559e88e896a1f11fb1e09772def7a408126e2e98fc0690be7911ca7d32"
+  },
+  "indépendant . profession libérale . réglementée . CNBF . retraite de base": {
+   "file": "règles/indépendant/professions-libérales/CNBF.publicodes",
+   "references": {
+    "Barèmes": "https://www.cnbf.fr/medias/documents/?_sft_thematique-media=baremes",
+    "Barème 2026": "https://www.cnbf.fr/wp-content/uploads/2026/01/Bareme-CNBF-2026.01.01.pdf",
+    "Barème 2025": "https://www.cnbf.fr/wp-content/uploads/2025/02/Bareme-CNBF-2025-01.01_vDf-1.pdf",
+    "Barème 2024": "https://www.cnbf.fr/wp-content/uploads/2024/11/Bareme-CNBF-2024-01.20.pdf",
+    "Barème 2023": "https://www.cnbf.fr/wp-content/uploads/2024/11/Bareme-CNBF-2023-01.10.pdf"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "2311fa7c4661b0356d6d9b3ab8116020119758241b73c282e789fc2f9833fdae"
+  },
+  "indépendant . profession libérale . réglementée . CNBF . retraite complémentaire": {
+   "file": "règles/indépendant/professions-libérales/CNBF.publicodes",
+   "references": {
+    "Barèmes": "https://www.cnbf.fr/espace-documentaire/baremes/",
+    "Barème 2026": "https://www.cnbf.fr/wp-content/uploads/2026/01/Bareme-CNBF-2026.01.01.pdf",
+    "Barème 2025": "https://www.cnbf.fr/wp-content/uploads/2023/09/Bareme-CNBF-2025-01.09.pdf",
+    "Barème 2024": "https://www.cnbf.fr/wp-content/uploads/2023/09/Bareme-CNBF-2024-01.20.pdf",
+    "Barème 2023": "https://www.cnbf.fr/wp-content/uploads/2024/11/Bareme-CNBF-2023-01.10.pdf"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "5973aab037b42c388838fbf2f5245c9bab8f8ed3a9a10d4bbd46d8b14ce01018"
+  },
+  "indépendant . profession libérale . réglementée . CNBF . invalidité et décès": {
+   "file": "règles/indépendant/professions-libérales/CNBF.publicodes",
+   "references": {
+    "Barèmes": "https://www.cnbf.fr/espace-documentaire/baremes/",
+    "Barème 2026": "https://www.cnbf.fr/wp-content/uploads/2026/01/Bareme-CNBF-2026.01.01.pdf",
+    "Barème 2025": "https://www.cnbf.fr/wp-content/uploads/2023/09/Bareme-CNBF-2025-01.09.pdf",
+    "Barème 2024": "https://www.cnbf.fr/wp-content/uploads/2023/09/Bareme-CNBF-2024-01.20.pdf",
+    "Barème 2023": "https://www.cnbf.fr/wp-content/uploads/2023/01/Bareme-CNBF-2023-01.10.pdf"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "1512e649c0edaa75d2f074c5d5bf3686a17fd9387144c21f72db5c04bb00d890"
+  },
+  "indépendant . profession libérale . Cipav": {
+   "file": "règles/indépendant/professions-libérales/Cipav.publicodes",
+   "references": {
+    "Site de la Cipav": "https://www.lacipav.fr",
+    "LOI n° 2017-1836 du 30 décembre 2017 de financement de la sécurité sociale pour 2018 (chercher 'travailleurs indépendants créant leur activité')": "https://www.legifrance.gouv.fr/eli/loi/2017/12/30/CPAX1725580L/jo/texte#JORFARTI000036339157"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "759d7a09d6391d2b17d2cde1919106428f8dbace641e806b4a1441285aed05fc"
+  },
+  "indépendant . profession libérale . Cipav . retraite complémentaire": {
+   "file": "règles/indépendant/professions-libérales/Cipav.publicodes",
+   "references": {
+    "Guide de l’assurance vieillesse des professions libérales (2025)": "https://www.cnavpl.fr/wp-content/uploads/2025/07/Guide-2025.pdf#page=78",
+    "L’Urssaf prend en charge la collecte des cotisations Cipav à compter du 1er janvier 2023": "https://www.urssaf.fr/portail/home/independant/cipav/transfert-des-cotisations-cipav.html",
+    "Bases de calcul et taux des cotisations obligatoires des professions libérales réglementées relevant de la Cipav": "https://www.urssaf.fr/portail/home/taux-et-baremes/taux-de-cotisations/PL-relevant-Cipav/bases-calcul-PLR-relevant-Cipav.html#FilAriane",
+    "Article 2 du Décret n°79-262 du 21 mars 1979 relatif au régime d'assurance vieillesse complémentaire des architectes, agréés en architecture, ingénieurs, techniciens, experts et conseils": "https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000046875038"
+   },
+   "legiarti_ids": [
+    "LEGIARTI000046875038"
+   ],
+   "body_sha256": "16a8d9866187e7b43180b29ab1914612b50ae4e825dd8621889c210c48cfb890"
+  },
+  "indépendant . profession libérale . Cipav . invalidité et décès": {
+   "file": "règles/indépendant/professions-libérales/Cipav.publicodes",
+   "references": {
+    "L’Urssaf prend en charge la collecte des cotisations Cipav à compter du 1er janvier 2023": "https://www.urssaf.fr/portail/home/independant/cipav/transfert-des-cotisations-cipav.html"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "52efb2ba97700de6bc49fbca0657185ec25519083f3fdb2f7a7f90b861a12cc6"
+  },
+  "indépendant . profession libérale . réglementée . PAMC": {
+   "file": "règles/indépendant/professions-libérales/PAMC.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "214262ea22d32d904f1e3c747631219ed32a80205f9766ac618ee4f36ba3a918"
+  },
+  "indépendant . profession libérale . réglementée . PAMC . remplaçant": {
+   "file": "règles/indépendant/professions-libérales/PAMC.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "27fb546d94f7d9935b869245a58a46a49d3b84c320b849933444ab3a66518afb"
+  },
+  "indépendant . profession libérale . réglementée . PAMC . recettes activité conventionnée": {
+   "file": "règles/indépendant/professions-libérales/PAMC.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "984becedfade6d2bc0a3a42ccc6a9c449d382255f44a047ef3144587a3692640"
+  },
+  "indépendant . profession libérale . réglementée . PAMC . dépassements d'honoraire": {
+   "file": "règles/indépendant/professions-libérales/PAMC.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "ada259080c30ae68a48a9541fa871db6988d609471dad08fb7e4ad91e4bdae11"
+  },
+  "indépendant . profession libérale . réglementée . PAMC . assiette sociale conventionnée": {
+   "file": "règles/indépendant/professions-libérales/PAMC.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "a50f23be9a487899b048b5d525a9a5c8e5121ac0bd5d77428db863c7ba844936"
+  },
+  "indépendant . profession libérale . réglementée . PAMC . assiette participation CPAM": {
+   "file": "règles/indépendant/professions-libérales/PAMC.publicodes",
+   "references": {
+    "Les cotisations d’un médecin de secteur 1": "https://www.urssaf.fr/accueil/independant/praticien-auxiliaire-medical/cotisations-medecin-secteur-1.html#ancre-la-participation-de-la-cpam",
+    "Les cotisations d’un chirurgien-dentiste": "https://www.urssaf.fr/accueil/independant/praticien-auxiliaire-medical/cotisations-chirurgien-dentiste.html#ancre-la-participation-de-la-cpam",
+    "Article 51 de la convention nationale organisant les rapports entre les chirurgiens-dentistes libéraux et l’assurance maladie": "https://www.ameli.fr/sites/default/files/Documents/CONVENTION-NATIONALE-DENTAIRE-CONSOLIDEE-AVENANT2.pdf#page=63"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "b88bd86928d4842725437fabcf04f93a5990c39adbba7246ea85723bd2c2dc3d"
+  },
+  "indépendant . profession libérale . réglementée . PAMC . assiette autres revenus": {
+   "file": "règles/indépendant/professions-libérales/PAMC.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "43a0b38c34e466df5ac0df15a9902e6798860c033afe0818b6e002531c4667c5"
+  },
+  "indépendant . profession libérale . réglementée . PAMC . contribution maladie additionnelle": {
+   "file": "règles/indépendant/professions-libérales/PAMC.publicodes",
+   "references": {
+    "Taux de cotisations - Praticien ou auxiliaire médical": "https://www.urssaf.fr/accueil/outils-documentation/taux-baremes/taux-cotisations-pam.html"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "23deadae15c9ef2f3996b5765de16b1b797ebd49b3ab8d3cc4a6bfdf993e8d84"
+  },
+  "indépendant . profession libérale . réglementée . PAMC . CURPS": {
+   "file": "règles/indépendant/professions-libérales/PAMC.publicodes",
+   "references": {
+    "Taux de cotisations - Praticien ou auxiliaire médical": "https://www.urssaf.fr/accueil/outils-documentation/taux-baremes/taux-cotisations-pam.html"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "eea8b0c9c35dc51ef6e175b6a8965e9e9849340cf5b092c4db62281304696d8f"
+  },
+  "indépendant . profession libérale . réglementée . PAMC . PCV": {
+   "file": "règles/indépendant/professions-libérales/PAMC.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "6c5e898bbf8c06b0559d205e541bb8c2f3db6ceacaa354ff6eb9f1391d91c83e"
+  },
+  "indépendant . profession libérale . réglementée . PAMC . participation CPAM": {
+   "file": "règles/indépendant/professions-libérales/PAMC.publicodes",
+   "references": {
+    "Les cotisations d’un médecin de secteur 1": "https://www.urssaf.fr/accueil/independant/praticien-auxiliaire-medical/cotisations-medecin-secteur-1.html#ancre-la-participation-de-la-cpam",
+    "Les cotisations d’un chirurgien-dentiste": "https://www.urssaf.fr/accueil/independant/praticien-auxiliaire-medical/cotisations-chirurgien-dentiste.html#ancre-la-participation-de-la-cpam"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "2e7843e324c7ebe56f6855085f1167f707105875943295c69eda8da756431b05"
+  },
+  "indépendant . profession libérale . réglementée . PAMC . participation CPAM . maladie": {
+   "file": "règles/indépendant/professions-libérales/PAMC.publicodes",
+   "references": {
+    "Les cotisations d’un médecin de secteur 1": "https://www.urssaf.fr/accueil/independant/praticien-auxiliaire-medical/cotisations-medecin-secteur-1.html#ancre-la-participation-de-la-cpam",
+    "Les cotisations d’un chirurgien-dentiste": "https://www.urssaf.fr/accueil/independant/praticien-auxiliaire-medical/cotisations-chirurgien-dentiste.html#ancre-la-participation-de-la-cpam",
+    "Les exonérations d'un praticien ou auxiliaire médical - L’exonération domiciliation fiscale à l’étranger": "https://www.urssaf.fr/accueil/independant/praticien-auxiliaire-medical/exonerations.html#ancre-domiciliation-fiscale-a-l-etrang",
+    "Article 51 de la convention nationale organisant les rapports entre les chirurgiens-dentistes libéraux et l’assurance maladie": "https://www.ameli.fr/sites/default/files/Documents/CONVENTION-NATIONALE-DENTAIRE-CONSOLIDEE-AVENANT2.pdf#page=63"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "1c980eee57d242faca9a051927c35801cd20734ccb91cd98c8fd2a91098564ce"
+  },
+  "indépendant . profession libérale . réglementée . PAMC . participation CPAM . allocations familiales": {
+   "file": "règles/indépendant/professions-libérales/PAMC.publicodes",
+   "references": {
+    "Les cotisations d’un médecin de secteur 1": "https://www.urssaf.fr/accueil/independant/praticien-auxiliaire-medical/cotisations-medecin-secteur-1.html#ancre-la-participation-de-la-cpam"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "1616c3d7b7bb1c076a1995909e61097818b346498999a5a1d0d651fd30d5faa2"
+  },
+  "indépendant . dividendes": {
+   "file": "règles/indépendant/revenus/dividendes.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "94c90b688c81898021181c97ebe379450da693de52ac57a340a522c7cfa2673a"
+  },
+  "indépendant . dividendes . soumis à prélèvements sociaux": {
+   "file": "règles/indépendant/revenus/dividendes.publicodes",
+   "references": {
+    "Prélèvements sociaux (CSG, CRDS…) sur les revenus du patrimoine": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2329"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "4ac97b3cb0a510f2174607cc6474c33880af6afedb60c573289e142d841bf9b4"
+  },
+  "indépendant . dividendes . soumis à cotisations sociales": {
+   "file": "règles/indépendant/revenus/dividendes.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "3a3e872d0b07084585ad2df442d3cb30ddf531bb491c371bd6048491b66cf4f6"
+  },
+  "indépendant . dividendes . prélèvements sociaux": {
+   "file": "règles/indépendant/revenus/dividendes.publicodes",
+   "references": {
+    "Prélèvements sociaux (CSG, CRDS…) sur les revenus du patrimoine": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2329",
+    "Article L136-6 du Code de la sécurité sociale": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006173130/",
+    "Article L136-7 du Code de la sécurité sociale": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006173129/",
+    "Article L136-8 du Code de la sécurité sociale": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000051287395"
+   },
+   "legiarti_ids": [
+    "LEGIARTI000051287395"
+   ],
+   "body_sha256": "01add26d76df2c8213b324ceb341302eb2fce2dc3e7862bb1e53df907789d6f6"
+  },
+  "indépendant . dividendes . imposition": {
+   "file": "règles/indépendant/revenus/dividendes.publicodes",
+   "references": {
+    "Fiscalité des dividendes perçus par les associés": "https://entreprendre.service-public.gouv.fr/vosdroits/F32963",
+    "Les revenus mobiliers": "https://www.impots.gouv.fr/particulier/les-revenus-mobiliers"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "f666029a65d18eba857cb5adb59cbe3c33d30ae38dfb72cde4b7e623821691bb"
+  },
+  "indépendant . dividendes . PFU": {
+   "file": "règles/indépendant/revenus/dividendes.publicodes",
+   "references": {
+    "Fiscalité des dividendes perçus par les associés": "https://entreprendre.service-public.gouv.fr/vosdroits/F32963",
+    "Les revenus mobiliers": "https://www.impots.gouv.fr/particulier/les-revenus-mobiliers"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "bff2fbc50e15ba773970150d0a43b2af59f3c6a62c6a360b75f6d451d8f409b2"
+  },
+  "indépendant . dividendes . imposables": {
+   "file": "règles/indépendant/revenus/dividendes.publicodes",
+   "references": {
+    "Fiscalité des dividendes perçus par les associés": "https://entreprendre.service-public.gouv.fr/vosdroits/F32963",
+    "Les revenus mobiliers": "https://www.impots.gouv.fr/particulier/les-revenus-mobiliers",
+    "Article 158 du Code général des impôts": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000051765203"
+   },
+   "legiarti_ids": [
+    "LEGIARTI000051765203"
+   ],
+   "body_sha256": "4efd7f22b750f4498efb208172418fbdc32040ea8cfac0789eeebe6dfdc02e29"
+  },
+  "indépendant . revenus de remplacement": {
+   "file": "règles/indépendant/revenus/revenus-remplacement.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "c54b475a265f27e1e46990b229c7238a9076e43ec0c055c6c8a9d86cf9242fb8"
+  },
+  "indépendant . revenus de remplacement . bruts": {
+   "file": "règles/indépendant/revenus/revenus-remplacement.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "179993b0ead6d4d4b1f529fbc4467708415eb3c2cda35488e5fe1eff39144ba4"
+  },
+  "indépendant . revenus de remplacement . imposables": {
+   "file": "règles/indépendant/revenus/revenus-remplacement.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "4a8726e1e4ec7a0d2fe1b6440a73caf88d7f19d8f8cd3e35e22c1de0b31039a6"
+  },
+  "indépendant . revenus étrangers": {
+   "file": "règles/indépendant/revenus/revenus-étrangers.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "dedb9c83a020251ef5efa5fc152ecd059741a747474e7a1160e9ccd77b28b7f2"
+  },
+  "indépendant . revenus étrangers . montant": {
+   "file": "règles/indépendant/revenus/revenus-étrangers.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "879deefaefe0bd6f55ac67543cdb356fcd013cd5a6e2e2703fabc9118655fc06"
+  },
+  "indépendant . rémunération": {
+   "file": "règles/indépendant/revenus/rémunération.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "715e2dc6ae7df5c183174008a716d9f78a7c1bc5d74403bc5a32253989979fdb"
+  },
+  "indépendant . rémunération . brute": {
+   "file": "règles/indépendant/revenus/rémunération.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "b4dec7e7e36346e05709961100ac322396914013bbaf089f4b6496896596736d"
+  },
+  "indépendant . rémunération . nette": {
+   "file": "règles/indépendant/revenus/rémunération.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "4562c5d8e3d139ef6a9087a5211ba9c98a1f7136abd34905db7640658ace0373"
+  },
+  "indépendant . rémunération . nette . avec dividendes": {
+   "file": "règles/indépendant/revenus/rémunération.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "6de56f93f9427ebf7020eae7fa375b622d9f9acc90854ccb6765b9016fdb4c66"
+  },
+  "indépendant . rémunération . nette . imposable": {
+   "file": "règles/indépendant/revenus/rémunération.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "ec7e1ffd6f0e6c1be7fc69589923aa893465e2b888b7dc5aa9cbfddb694de69d"
+  },
+  "indépendant . rémunération . impôt": {
+   "file": "règles/indépendant/revenus/rémunération.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "4d046deec39797535b60d457f76c438fe60db2bfb7086b260e2ee3a1cb4688bb"
+  },
+  "indépendant . rémunération . impôt . avec dividendes": {
+   "file": "règles/indépendant/revenus/rémunération.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "8c6cbf339838536a341d1bf2302b2f4e29790784ffa657b12639b59c782b1b2a"
+  },
+  "indépendant . rémunération . nette . après impôt": {
+   "file": "règles/indépendant/revenus/rémunération.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "f38e8f0dee73163e4440bf319b0af74be23bcc5cac34014c7d1504a5175c5c18"
+  },
+  "protection sociale . invalidité et décès": {
+   "file": "règles/protection-sociale/invalidité-décès.publicodes",
+   "references": {
+    "capital décès (amelie.fr)": "https://www.ameli.fr/assure/remboursements/pensions-allocations-rentes/deces-proche-capital-deces",
+    "capital décès (salarié privé)": "https://www.service-public.fr/particuliers/vosdroits/F3005",
+    "pension invalidité": "https://www.service-public.fr/particuliers/vosdroits/F672"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "cd3410137a618faa941031497a943642240880b84d0a2e2949e5a88adf2e98c2"
+  },
+  "protection sociale . invalidité et décès . capital décès": {
+   "file": "règles/protection-sociale/invalidité-décès.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "0ec6d9fa76fd50662151191172e65f030efcbf33d2c7055bdd9444cffcdaeefd"
+  },
+  "protection sociale . invalidité et décès . capital décès . orphelin": {
+   "file": "règles/protection-sociale/invalidité-décès.publicodes",
+   "references": {
+    "Le capital orphelin pour les enfants des travailleurs indépendants": "https://www.ameli.fr/tarn/assure/remboursements/pensions-allocations-rentes/deces-proche-capital-deces#text_76987"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "c07b72cd1da4f2332afb2bc02ded50894c7b8f8fa06f52eb799d8bf560c99bc9"
+  },
+  "protection sociale . invalidité et décès . pension de reversion": {
+   "file": "règles/protection-sociale/invalidité-décès.publicodes",
+   "references": {
+    "Pension de réversion": "https://www.lassuranceretraite.fr/portail-info/home/actif/travailleur-independant/veuvage/pension-reversion-veuvage.html",
+    "Montants minimums de la pension de reversion": "https://www.legislation.cnav.fr/#/bareme?file_leaf_ref=retraite_reversion_montant_minimum_bar.aspx",
+    "Pension de réversion - Défunt ayant travaillé dans le privé": "https://www.service-public.fr/particuliers/vosdroits/F35774/0?idFicheParent=N378#0"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "c2c33210b9e85361f3fa58c26d32359c31e627e80078e3d8f6a7881aaa8b9f87"
+  },
+  "protection sociale . invalidité et décès . pension invalidité": {
+   "file": "règles/protection-sociale/invalidité-décès.publicodes",
+   "references": {
+    "Articles R341-4 à R341-6-1 du Code de la sécurité sociale": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006173390"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "d2eec4940081c7db8c8ff68d910e13bd960b26697e5d03aa10502144d5eeca5e"
+  },
+  "protection sociale . maladie": {
+   "file": "règles/protection-sociale/maladie.publicodes",
+   "references": {
+    "À quel organisme de sécurité sociale est-on rattaché pour l’assurance maladie ?": "https://www.service-public.fr/particuliers/vosdroits/F648",
+    "Ce qui est remboursé pour tout le monde": "https://www.ameli.fr/assure/remboursements/rembourse",
+    "Rapport d’activité de l’assurance maladie 2017 (PDF)": "https://assurance-maladie.ameli.fr/sites/default/files/ra-2017_agir-ensemble-proteger-chacun.pdf",
+    "Rapport OCDE sur l’espérance de vie dans les différents pays": "https://read.oecd-ilibrary.org/social-issues-migration-health/health-at-a-glance-europe-2018_health_glance_eur-2018-en#page89"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "984376fe8fe7d458e43d4c9067378f109dd3f4c750de8f5975bb3db4e65d3d07"
+  },
+  "protection sociale . maladie . arrêt maladie": {
+   "file": "règles/protection-sociale/maladie.publicodes",
+   "references": {
+    "Quelles indemnités journalières pour les artisans/commerçants": "https://www.ameli.fr/assure/remboursements/indemnites-journalieres/arret-maladie-artisans-commercants#text_124972",
+    "Quelles indemnités journalières pour les professions libérales": "https://www.ameli.fr/assure/remboursements/indemnites-journalieres/arret-maladie-profession-liberale#text_170670",
+    "Comment bénéficier d’indemnités liées à son ancien régime": "https://www.ameli.fr/assure/actualites/indemnites-maladie-et-maternite-du-nouveau-pour-certains-travailleurs-independants"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "e1e84a21d489355f572f15d9c93c8853455b94120166e3297e4eed4c779606dd"
+  },
+  "protection sociale . maladie . maternité paternité adoption": {
+   "file": "règles/protection-sociale/maladie.publicodes",
+   "references": {
+    "Les indemnités journalières forfaitaires maternité des travailleuses indépendantes": "https://www.ameli.fr/assure/remboursements/indemnites-journalieres/prestations-maternite-independantes-conjointes-collaboratric#text_125695",
+    "Paternité et accueil de l’enfant : les indemnités journalières pour les travailleurs indépendants": "https://www.ameli.fr/assure/remboursements/indemnites-journalieres/conge-paternite-accueil-enfant#text_114763",
+    "Les prestations maternité des travailleuses indépendantes et des conjointes collaboratrices": "https://www.ameli.fr/assure/remboursements/indemnites-journalieres/prestations-maternite-independantes-conjointes-collaboratric",
+    "Congé d’adoption : les indemnités journalières": "https://www.ameli.fr/assure/remboursements/indemnites-journalieres/conge-adoption",
+    "Simulateur maternité paternité adoption": "https://www.ameli.fr/assure/simulateur-maternite-paternite"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "184fdb1cc95100457dccd95ae488a2c379aa2e69b5719b8ce46c5b221f610f59"
+  },
+  "protection sociale": {
+   "file": "règles/protection-sociale/protection-sociale.publicodes",
+   "references": {
+    "securite-sociale.fr": "https://www.securite-sociale.fr/accueil"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "c229b08a366396ddb1f82e3cbce69e9e3d11c416d1d0648414f925a99dcc9dc1"
+  },
+  "protection sociale . retraite": {
+   "file": "règles/protection-sociale/protection-sociale.publicodes",
+   "references": {
+    "Panorama des régimes de retraites": "https://travail-emploi.gouv.fr/IMG/pdf/panorama_regimes_retraites_janvier-2024.pdf",
+    "Retraites de base et complémentaire dans le privé : quelles différences ?": "https://www.service-public.fr/particuliers/vosdroits/F12389",
+    "Régime de retraite des travailleurs indépendants": "https://entreprendre.service-public.fr/vosdroits/F33841"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "bbcc94447766eb634e23b0a367406260f4f0237c9e389f8d5b59bb0a11dca706"
+  },
+  "protection sociale . famille": {
+   "file": "règles/protection-sociale/protection-sociale.publicodes",
+   "references": {
+    "Quelles sont les missions de la branche Famille ?": "https://www.caf.fr/nous-connaitre/nos-missions",
+    "Allocations destinées aux familles": "https://www.service-public.fr/particuliers/vosdroits/N156",
+    "Tout savoir sur les Allocations familiales": "https://www.caf.fr/nous-connaitre/qui-sommes-nous"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "5ca8e0308563fff6586c6c76611e66c721b8283a930005cfdb760ac717e41212"
+  },
+  "protection sociale . formation": {
+   "file": "règles/protection-sociale/protection-sociale.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "b0f2f4b25314979e685eae4066225d1c6f3c2b3332d839ad6310a6b2e8684ebc"
+  },
+  "protection sociale . autres": {
+   "file": "règles/protection-sociale/protection-sociale.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "3f1cf48e7c87d5fe253ead3c0c06207b04d568dd454aef1fc2f6e4985b0eaf87"
+  },
+  "protection sociale . retraite . base": {
+   "file": "règles/protection-sociale/retraite-base.publicodes",
+   "references": {
+    "Assurance Retraite de la Sécurité sociale": "https://www.lassuranceretraite.fr/",
+    "Régime de retraite de l'entrepreneur individuel (EI)": "https://entreprendre.service-public.gouv.fr/vosdroits/F33841",
+    "Durée d’assurance pour le taux plein": "https://legislation.lassuranceretraite.fr/#/expose?file_leaf_ref=retraite_personnelle_taux_duree_assurance_pour_taux_plein_ex.aspx",
+    "Article L161-17-3 du Code de la sécurité sociale": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000028494794/",
+    "Montant de la retraite personnelle": "https://legislation.lassuranceretraite.fr/#/expose?file_leaf_ref=retraite_personnelle_montant_montant_ex.aspx"
+   },
+   "legiarti_ids": [
+    "LEGIARTI000028494794"
+   ],
+   "body_sha256": "821eb94b4157e1375a5ce81ca64692af641e0055ebba6b6bcfb2e8bdcf1aaf35"
+  },
+  "protection sociale . retraite . base . trimestres": {
+   "file": "règles/protection-sociale/retraite-base.publicodes",
+   "references": {
+    "Article R351-9 du Code de la sécurité sociale": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000028751530",
+    "Guide de l’assurance vieillesse des professions libérales (2025)": "https://www.cnavpl.fr/wp-content/uploads/2025/07/Guide-2025.pdf#page=26"
+   },
+   "legiarti_ids": [
+    "LEGIARTI000028751530"
+   ],
+   "body_sha256": "4ce2f832b2ad630155c86f18da419953457cefe1b31c529f44ce93d3cbbf7f21"
+  },
+  "protection sociale . retraite . base . revenu cotisé": {
+   "file": "règles/protection-sociale/retraite-base.publicodes",
+   "references": {
+    "Article R351-9 du Code de la sécurité sociale": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000028751530",
+    "Article R634-1 du Code de la sécurité sociale": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000038787378"
+   },
+   "legiarti_ids": [
+    "LEGIARTI000028751530",
+    "LEGIARTI000038787378"
+   ],
+   "body_sha256": "58599e99ee82083ebf50bc2293927b5c1215cf7435f4fbb670f425f6bfeeffe1"
+  },
+  "protection sociale . retraite . base . CNAVPL": {
+   "file": "règles/protection-sociale/retraite-base.publicodes",
+   "references": {
+    "Comprendre sa retraite - Pension du professionnel libéral - Montant de la pension": "https://www.cnavpl.fr/comprendre-sa-retraite/",
+    "Guide de l’assurance vieillesse des professions libérales (2025)": "https://www.cnavpl.fr/wp-content/uploads/2025/07/Guide-2025.pdf#page=27"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "a1a0dc4c58aa4e2bff393ee448817421929a996d510e2ceabc77e911c5d33adf"
+  },
+  "protection sociale . retraite . base . CNAVPL . points acquis": {
+   "file": "règles/protection-sociale/retraite-base.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "13fdea2613e81454ba9ef4b876dbd5cdf92aa6b364071b7418131738ceee6656"
+  },
+  "protection sociale . retraite . complémentaire": {
+   "file": "règles/protection-sociale/retraite-complémentaire.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "d9c40f48f5d1e36a03ccd002f61d12e26b7cff9333889f8188d3f8dccb819955"
+  },
+  "protection sociale . retraite . complémentaire . RCI": {
+   "file": "règles/protection-sociale/retraite-complémentaire.publicodes",
+   "references": {
+    "Retraite complémentaire des indépendants": "https://www.lassuranceretraite.fr/portail-info/hors-menu/annexe/travailleurs-independants/retraite-complementaire.html"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "6755bf51945ac42567d7929af597c6cb76cd270feaaf59667369f854d1e9c737"
+  },
+  "protection sociale . retraite . complémentaire . Cipav": {
+   "file": "règles/protection-sociale/retraite-complémentaire.publicodes",
+   "references": {
+    "Comment est calculée la retraite ?": "https://www.lacipav.fr/sites/default/files/2025-03/Comment%20est%20calcul%C3%A9e%20la%20retraite%20-%20Fiche%20pratique%20La%20Cipav%20Digital%202025.pdf"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "7a1bea8d9a968d7feba651638ab55ee467692f0075a67971763a64ff0547c7cf"
+  },
+  "établissement . commune": {
+   "file": "règles/établissement.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "be28c8a48c278efb4274ec3d874deade5cd7aec3b43d5ddccd57a48f94bba47e"
+  },
+  "établissement . ZFU": {
+   "file": "règles/établissement.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "0d54d8e95154f7a94036dba26c2aec1137c1221c4442e4e3d237d3c0aa223974"
+  },
+  "plafond sécurité sociale": {
+   "file": "règles/base.publicodes",
+   "references": {
+    "Plafonds de la Sécurité sociale": "https://www.urssaf.fr/accueil/outils-documentation/taux-baremes/plafonds-securite-sociale.html"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "24e92ee2645678d82d060168d3dc07f85af18f26933758fd905a1660fad73f13"
+  },
+  "SMIC": {
+   "file": "règles/base.publicodes",
+   "references": {
+    "Article 1 du Décret n° 2025-1228 du 17 décembre 2025 portant relèvement du salaire minimum de croissance": "https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000053044705",
+    "Article 1 du Décret n° 2024-951 du 23 octobre 2024 portant relèvement du salaire minimum de croissance": "https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000050393533",
+    "Article 1 du Décret n° 2023-1216 du 20 décembre 2023 portant relèvement du salaire minimum de croissance": "https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000048632880"
+   },
+   "legiarti_ids": [
+    "LEGIARTI000048632880",
+    "LEGIARTI000050393533",
+    "LEGIARTI000053044705"
+   ],
+   "body_sha256": "1c1a06f4100f617e06bd10e7e40314cf9df815713fdb5356a23149f15fac640e"
+  },
+  "SMIC . horaire": {
+   "file": "règles/base.publicodes",
+   "references": {
+    "Smic (salaire minimum de croissance)": "https://www.service-public.fr/particuliers/vosdroits/F2300",
+    "Arrêté du 26 avril 2023 relatif au relèvement du salaire minimum de croissance": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000047495817"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "eda756edc066f379fbe764c15ffdbc11916e10f599d94b170491240299ab5e34"
+  },
+  "durée légale du travail": {
+   "file": "règles/base.publicodes",
+   "references": {
+    "Code du travail numérique": "https://code.travail.gouv.fr/fiche-ministere-travail/la-duree-legale-du-travail"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "1a82ef188a45296d53d35856918a9e0eded2bdae929ecd42f38092f9a6a58a55"
+  },
+  "entreprise . catégorie juridique": {
+   "file": "règles/entreprise/catégorie-juridique.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "1aadeefb084335bb4a7320dec0ef25397d89ef2114b04d6a4978b85f1d803455"
+  },
+  "entreprise . catégorie juridique . EI": {
+   "file": "règles/entreprise/catégorie-juridique.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "403a21dde46bb5390a3ca3116ddef8e81721c85806d74ecb70d6d5a3793019c6"
+  },
+  "entreprise . catégorie juridique . SARL": {
+   "file": "règles/entreprise/catégorie-juridique.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "e0b0b5209b2540b9be7859e2d180fc79b11c77034f1f97cc4c1f05646196d456"
+  },
+  "entreprise . catégorie juridique . SAS": {
+   "file": "règles/entreprise/catégorie-juridique.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "5e210eebfcf821453f7f5aceb6c825974eed5761bc756d1903927d72af6fa31c"
+  },
+  "entreprise . catégorie juridique . SELARL": {
+   "file": "règles/entreprise/catégorie-juridique.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "bced55505b78ff7fba4e49e83d2271275121f7fcac333df19f5c3270788541b6"
+  },
+  "entreprise . catégorie juridique . SELAS": {
+   "file": "règles/entreprise/catégorie-juridique.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "20da55404a7bbfaa02c365ca0d6d093654c585e238f13fdd5d69ee33f7cfc73d"
+  },
+  "entreprise . catégorie juridique . association": {
+   "file": "règles/entreprise/catégorie-juridique.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "26df7a3a578f3b013eb6a483f3100785b729d7750eae3c472b02dcd28e7cb4fc"
+  },
+  "entreprise . catégorie juridique . autre": {
+   "file": "règles/entreprise/catégorie-juridique.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "0de6d04d9c7f37a62d6f4ef12c7fed9ad174e6dc78bfce657fe909cbfba96cbd"
+  },
+  "entreprise": {
+   "file": "règles/entreprise/entreprise.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  "entreprise . nom": {
+   "file": "règles/entreprise/entreprise.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "f501efcefe09218b4c998174ce9dc0b68bccb8dcb25a8f7aa058764667c2dd0e"
+  },
+  "entreprise . SIREN": {
+   "file": "règles/entreprise/entreprise.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "639da28c0af6132ac42fef3ea51fbd879f7fd2b77152bf3cfc89eb8a0fc0fa8b"
+  },
+  "entreprise . code catégorie juridique": {
+   "file": "règles/entreprise/entreprise.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "67360703060273d7dc1949a8db42827226b19e9e7cf2142929cedf6c0774e8b6"
+  },
+  "entreprise . imposition": {
+   "file": "règles/entreprise/imposition.publicodes",
+   "references": {
+    "Comment seront imposés mes bénéfices ?": "https://bpifrance-creation.fr/moment-de-vie/comment-seront-imposes-mes-benefices",
+    "Quelle imposition selon mon statut ?": "https://www.economie.gouv.fr/entreprises/impot-revenu-impot-societe-statut",
+    "Guide complet sur les types de résultats d’une entreprise": "https://www.impots.gouv.fr/professionnel/resultat-imposable-limpot-sur-le-revenu-ir-ou-limpot-sur-les-societes",
+    "Imposition des bénéfices": "https://bpifrance-creation.fr/encyclopedie/fiscalite-lentreprise/generalites/imposition-benefices"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "bb60d994d8749741831178fe1a2776b3e3520a2948fc300516451eb532776a49"
+  },
+  "entreprise . imposition . IR": {
+   "file": "règles/entreprise/imposition.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "39af207c9515135e424936ee8852ed840aea914b98e4cc326c2887be80bdb9b1"
+  },
+  "entreprise . imposition . IS": {
+   "file": "règles/entreprise/imposition.publicodes",
+   "references": {
+    "Impôt sur les sociétés : entreprises concernées et taux d’imposition": "https://entreprendre.service-public.fr/vosdroits/F23575",
+    "Comment choisir l’imposition sur le revenu ?": "https://entreprendre.service-public.fr/vosdroits/F31265",
+    "Quelles sont les entreprises soumises à l’impôt sur les sociétés (IS) ?": "https://bpifrance-creation.fr/encyclopedie/fiscalite-lentreprise/generalites/is-impot-societes",
+    "Comparaison IR/IS": "https://bpifrance-creation.fr/encyclopedie/fiscalite-lentreprise/generalites/imposition-benefices#:~:text=Principe%20de%20l%27imp%C3%B4t%20sur%20les%20soci%C3%A9t%C3%A9s,-Une%20distinction%20est&text=Les%20entreprises%20dont%20le%20chiffre,%2C%20et%2025%20%25%20au%20del%C3%A0."
+   },
+   "legiarti_ids": [],
+   "body_sha256": "246468b34baff7e70b9c6a6624af7dd7b6a9707d1ee0d4abfde2ff310b0c3135"
+  },
+  "entreprise . imposition . IR . type de bénéfices": {
+   "file": "règles/entreprise/imposition.publicodes",
+   "references": {
+    "Impôt sur le revenu : BIC, BNC, comment ça marche ?": "https://www.economie.gouv.fr/entreprises/impot-sur-revenu-bic-bnc"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "87d06b1961dd359da91845cbd7fabae024450a3fdd9f9a5ab338b66086ed9457"
+  },
+  "entreprise . imposition . IR . type de bénéfices . BNC": {
+   "file": "règles/entreprise/imposition.publicodes",
+   "references": {
+    "Bénéfices non commerciaux (BNC) : régimes fiscaux et déclarations": "https://entreprendre.service-public.fr/vosdroits/F32105"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "e3699930675ecbd40fde8098c909acce20272a275096c87f2c40e25e613b3a4e"
+  },
+  "entreprise . imposition . IR . type de bénéfices . BIC": {
+   "file": "règles/entreprise/imposition.publicodes",
+   "references": {
+    "Bénéfices non commerciaux (BIC) : régime fiscal et déclarations": "https://entreprendre.service-public.fr/vosdroits/F32919"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "efbccc1077f48991f89036171099cd9cbbebf400f93db121b4f4ffbc1b9ea0d7"
+  },
+  "entreprise . imposition . IR . type de bénéfices . BA": {
+   "file": "règles/entreprise/imposition.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "cc4a4989390c16fdf58ea9f4e823c6eb41752651cf372360e535ac8b9dec0b60"
+  },
+  "entreprise . imposition . IR . type de bénéfices . BA possible": {
+   "file": "règles/entreprise/imposition.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "0ae443d6a54c2b789e126217e36199ad8e4c197c6755198cc0bc4633a53f04f4"
+  },
+  "entreprise . imposition . IR . type de bénéfices . BIC et BNC possibles": {
+   "file": "règles/entreprise/imposition.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "0ae443d6a54c2b789e126217e36199ad8e4c197c6755198cc0bc4633a53f04f4"
+  },
+  "établissement": {
+   "file": "règles/entreprise/établissement.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  "établissement . SIRET": {
+   "file": "règles/entreprise/établissement.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "ec4db37433ec491fcf86763d47cd991e502890b0e62b05117b0534ccd92ada84"
+  },
+  "impôt . barème standard": {
+   "file": "règles/impôt/barème-standard.publicodes",
+   "references": {
+    "Impôt sur le revenu - Calcul de l'impôt": "https://www.service-public.fr/particuliers/vosdroits/F34328",
+    "Comment calculer votre impôt d'après le barème de l'impôt sur le revenu ?": "https://www.economie.gouv.fr/particuliers/gerer-mon-impot-sur-le-revenu/comment-calculer-votre-impot-dapres-le-bareme-de-limpot"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "0f5f8b3d910fd91c3b5bd38d0ed46d71fac9c2d61c3d4a3897ba8451160c9ab8"
+  },
+  "impôt . barème standard . revenu d'activité abattu": {
+   "file": "règles/impôt/barème-standard.publicodes",
+   "references": {
+    "Frais professionnels - forfait ou frais réels": "https://www.service-public.fr/particuliers/vosdroits/F1989",
+    "Code des impôts - Article 83": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000037985819/"
+   },
+   "legiarti_ids": [
+    "LEGIARTI000037985819"
+   ],
+   "body_sha256": "5a0336910bdd8b260259e0e9c6e013ae680ef4275c01387dae0de15490972f47"
+  },
+  "impôt . barème standard . revenu brut global": {
+   "file": "règles/impôt/barème-standard.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "ab5115f9ed4b9e7109fe507b45f96095f3e9144b7cdc540cc4411ac18bf4cf04"
+  },
+  "impôt . barème standard . revenu net global": {
+   "file": "règles/impôt/barème-standard.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "2cbbfcd209f31f9863c32aa7d88497d5159bf5690b4d39c1307bab03b8d0cf08"
+  },
+  "impôt . barème standard . revenu net imposable": {
+   "file": "règles/impôt/barème-standard.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "9f2ea39f7bdc9363e4ef14d9479fe8371dcc4423fad4273f9970aafe8e2e0a48"
+  },
+  "impôt . barème standard . quotient familial": {
+   "file": "règles/impôt/barème-standard.publicodes",
+   "references": {
+    "Quotient familial et impôt sur le revenu : comment ça marche ?": "https://www.economie.gouv.fr/particuliers/gerer-mon-impot-sur-le-revenu/quotient-familial-et-impot-sur-le-revenu-comment-ca#"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "d70323fd3a13f9264803830cce0fe7500671f9b3651d36f47334bf75c56d7ec6"
+  },
+  "impôt . barème standard . quotient familial . plafond avantage": {
+   "file": "règles/impôt/barème-standard.publicodes",
+   "references": {
+    "Calculer l’impôt net à payer": "https://www.service-public.fr/particuliers/vosdroits/F34328#fiche-item-aria-5",
+    "Article 197 du Code général des impôts": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000046860759",
+    "Bofip 2023": "https://bofip.impots.gouv.fr/bofip/2494-PGP.html/identifiant=BOI-IR-LIQ-20-20-20-20230626",
+    "Bofip 2022": "https://bofip.impots.gouv.fr/bofip/2494-PGP.html/identifiant=BOI-IR-LIQ-20-20-20-20220516#III._Niveau_du_plafonnement_16"
+   },
+   "legiarti_ids": [
+    "LEGIARTI000046860759"
+   ],
+   "body_sha256": "5f4997367210575ab9c1758c181822058d7f9f5ae7224d73845365f8e23a9bad"
+  },
+  "impôt . barème standard . impôt brut": {
+   "file": "règles/impôt/barème-standard.publicodes",
+   "references": {
+    "BOFIP": "https://bofip.impots.gouv.fr/bofip/2494-PGP.html/identifiant%3DBOI-IR-LIQ-20-20-20-20210330"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "a71f6b59ae76ce0657863f8417110d610f2bf981ef621f5ad3ae69d585bc4f0c"
+  },
+  "impôt . barème standard . impôt brut . par part": {
+   "file": "règles/impôt/barème-standard.publicodes",
+   "references": {
+    "Article 197 du Code général des impôts": "https://www.legifrance.gouv.fr/affichCodeArticle.do?cidTexte=LEGITEXT000006069577&idArticle=LEGIARTI000006308322",
+    "Comment calculer votre impôt d’après le barème de l’impôt sur le revenu ?": "https://www.economie.gouv.fr/particuliers/tranches-imposition-impot-revenu"
+   },
+   "legiarti_ids": [
+    "LEGIARTI000006308322"
+   ],
+   "body_sha256": "2634ed22f1faea54c6047db9cd8ee3e5dd39d36e1cbf4cbf71c54ddd1bd05b9d"
+  },
+  "impôt . barème standard . impôt brut . sans parts rattachées": {
+   "file": "règles/impôt/barème-standard.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "b8199b628c353b1eefcd92c8c62998ec70fb205a4818b0917c77cdc600d54634"
+  },
+  "impôt . barème standard . impôt net": {
+   "file": "règles/impôt/barème-standard.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "e8b76e2cfe38f38dd90089b0436609e23784caa9d6c98e4c6e6624fbf3d7dc0c"
+  },
+  "impôt . barème standard . impôt net . après plafonnement effets quotient familial": {
+   "file": "règles/impôt/barème-standard.publicodes",
+   "references": {
+    "BOFIP": "https://bofip.impots.gouv.fr/bofip/2494-PGP.html/identifiant%3DBOI-IR-LIQ-20-20-20-20210330"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "7ce2432cd4f5309038d6192ee80b4b044fb4578f97133e66c3bcf0702ad15305"
+  },
+  "impôt . barème standard . impôt net . après décote": {
+   "file": "règles/impôt/barème-standard.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "273833f4add6bf33dcc6d3da43d79515476a63b781d244d40c8db8b6369aa998"
+  },
+  "impôt . barème standard . décote": {
+   "file": "règles/impôt/barème-standard.publicodes",
+   "references": {
+    "Pouvez-vous bénéficier de la décote de l’impôt sur le revenu ?": "https://www.economie.gouv.fr/particuliers/decote-impot-revenu",
+    "Calculer l’impôt net à payer": "https://www.service-public.fr/particuliers/vosdroits/F34328#fiche-item-aria-5",
+    "Article 197 du Code général des impôts (I.4.a.)": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000042907517"
+   },
+   "legiarti_ids": [
+    "LEGIARTI000042907517"
+   ],
+   "body_sha256": "2a89b0608464b08edac44030ff6d197235b2557e56c6d8740e8cab6380992e8a"
+  },
+  "impôt . barème standard . CEHR": {
+   "file": "règles/impôt/barème-standard.publicodes",
+   "references": {
+    "contribution exceptionnelle sur les hauts revenus": "https://www.service-public.fr/particuliers/vosdroits/F31130",
+    "Article 223 sexies du Code général des impôts": "https://www.legifrance.gouv.fr/affichCode.do?idSectionTA=LEGISCTA000025049019&cidTexte=LEGITEXT000006069577",
+    "Bofip.impots.gouv.fr": "http://bofip.impots.gouv.fr/bofip/7804-PGP"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "6ac64dda61f1cfb1d69bf47c828911b9a0a2d4ec9b498cf437d431ae06413743"
+  },
+  "impôt . barème standard . taux effectif": {
+   "file": "règles/impôt/barème-standard.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "2bd811ffe872d0150af74258397c49318221bdbacfe776356405f89cd18582af"
+  },
+  "impôt . foyer fiscal": {
+   "file": "règles/impôt/foyer-fiscal.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "432776f37236f977e131e7ebd573796be4c294b5373099c3f2ef85e0afaefa32"
+  },
+  "impôt . foyer fiscal . autres revenus imposables": {
+   "file": "règles/impôt/foyer-fiscal.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "d2af992425b9a453961ce58b77c82a22928f2720ce05b66748770a8c19ec96a6"
+  },
+  "impôt . foyer fiscal . situation de famille": {
+   "file": "règles/impôt/foyer-fiscal.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "37457a87c9232d407091789c54c46d9a1994001e9a6863f811cb0baddf7564dd"
+  },
+  "impôt . foyer fiscal . situation de famille . question": {
+   "file": "règles/impôt/foyer-fiscal.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "42e07354881fd17fbc08232dc7ca7859a524a833d136dd366d3fd0148e969fb9"
+  },
+  "impôt . foyer fiscal . enfants à charge": {
+   "file": "règles/impôt/foyer-fiscal.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "4a7a81eeeefe45db26bf769425da6148a6d32a517383c4d846a3159f6c6d262f"
+  },
+  "impôt . foyer fiscal . parent isolé": {
+   "file": "règles/impôt/foyer-fiscal.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "58a08c3039fbef2ddfddc3c10625b7b34ed6e5b34aae5718ae389913695ddc5f"
+  },
+  "impôt . foyer fiscal . nombre de parts": {
+   "file": "règles/impôt/foyer-fiscal.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "6f24f227386a00372dfa5090b5fc8621ec97b31defcbf18126aa2154c1212735"
+  },
+  "impôt . foyer fiscal . nombre de parts . principales": {
+   "file": "règles/impôt/foyer-fiscal.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "abfd8c08a4c3aa58c9f6d2e0a3449f9468bb6f78ea351010eb1694fa26ac1525"
+  },
+  "impôt . foyer fiscal . nombre de parts . rattachées": {
+   "file": "règles/impôt/foyer-fiscal.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "2a28fa91215408a2d3f0576a69cb35793975f6f8c14fe3b3a51fd6fce97f1e5b"
+  },
+  "impôt . foyer fiscal . nombre de parts . majoration personne seule avec enfant": {
+   "file": "règles/impôt/foyer-fiscal.publicodes",
+   "references": {
+    "Bofip": "https://bofip.impots.gouv.fr/bofip/2028-PGP.html/identifiant=BOI-IR-LIQ-10-20-20-10-20140326#Majoration_pour_les_personn_22"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "22513b57c697093ba803555fda73dd3be71abc7353d357591d5ceeb0f8b1cea6"
+  },
+  "impôt . foyer fiscal . nombre de parts . majoration personne veuve avec enfant": {
+   "file": "règles/impôt/foyer-fiscal.publicodes",
+   "references": {
+    "Quotient familial d’une personne veuve": "https://www.service-public.fr/particuliers/vosdroits/F35127"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "c9a1df9f3b9053ff23cd72998168f71cf55e9f6e6afc25bc67c358ba3edab02f"
+  },
+  "impôt": {
+   "file": "règles/impôt/impôt.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "f8cd2a5a6550a619cdb872922b1e3dd440641b41114f0da94a459dd01511119b"
+  },
+  "impôt . montant": {
+   "file": "règles/impôt/impôt.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "897a40e51cd7dcc976e70a251573cc70f5ea6d59c6cbb96586d39e4fbfbcace7"
+  },
+  "impôt . taux d'imposition": {
+   "file": "règles/impôt/impôt.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "1548921ec7bbad4011d0d45ac3cbd93d0e6f47de72c8589860fe77d89c62f8e9"
+  },
+  "impôt . méthode de calcul": {
+   "file": "règles/impôt/impôt.publicodes",
+   "references": {
+    "Différence taux neutre / personnalisé": "https://www.impots.gouv.fr/particulier/questions/comment-gerer-mon-prelevement-la-source",
+    "Calcul du taux d’imposition": "https://www.economie.gouv.fr/files/files/ESPACE-EVENEMENTIEL/PAS/Fiche_de_calcul_taux_simplifiee.pdf"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "ebafda4e80cd96a3000174bf2f3042526c918a6911adbc514d6ecc0f4650f25f"
+  },
+  "impôt . taux personnalisé": {
+   "file": "règles/impôt/impôt.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "36a7f5430555f7ef4a25ee5f69ad7ea3582993d541f96c7cdd9bc7e1c9c0e364"
+  },
+  "impôt . taux neutre": {
+   "file": "règles/impôt/taux-neutre.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "d454cbe192c00ca0b9c20135e7a80e004c11ec9ac658011762019b91d2f9ca1e"
+  },
+  "impôt . taux neutre . barème métropole": {
+   "file": "règles/impôt/taux-neutre.publicodes",
+   "references": {
+    "BOFIP": "https://bofip.impots.gouv.fr/bofip/11255-PGP.html",
+    "Article 204 H du code des impôts": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000042907548/",
+    "Qu’est-ce que le taux neutre ?": "https://www.economie.gouv.fr/particuliers/modifier-gerer-taux-prelevement-source#qu-est-ce-que-le-taux-non-person_5"
+   },
+   "legiarti_ids": [
+    "LEGIARTI000042907548"
+   ],
+   "body_sha256": "d2d0fe504870bf9da3e89dff3d00f4cac791e353e7eeb4dc8cb7c719eee1e82c"
+  },
+  "impôt . taux neutre . barème Guadeloupe Réunion Martinique": {
+   "file": "règles/impôt/taux-neutre.publicodes",
+   "references": {
+    "Article 204 H du code des impôts": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000042907548/"
+   },
+   "legiarti_ids": [
+    "LEGIARTI000042907548"
+   ],
+   "body_sha256": "02e09273803c1883c770f971ad726422bc3d53616fb3aa2852726b309335d3b3"
+  },
+  "impôt . taux neutre . barème Guyane Mayotte": {
+   "file": "règles/impôt/taux-neutre.publicodes",
+   "references": {
+    "Article 204 H du code des impôts": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000042907548/"
+   },
+   "legiarti_ids": [
+    "LEGIARTI000042907548"
+   ],
+   "body_sha256": "b4309996fbf34371c7ac204f10cba09bff7c726fb66e5e13870dd64a973061da"
+  },
+  "paramètres": {
+   "file": "règles/paramètres.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  "paramètres . impôt": {
+   "file": "règles/paramètres.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  "paramètres . impôt . revenu imposable": {
+   "file": "règles/paramètres.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "db0c2ec17e1d3a20461750132e4ae2d3dbf52e1507a7de91064d8732d971620a"
+  },
+  "paramètres . impôt . revenu d'activité": {
+   "file": "règles/paramètres.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "75efc18ceda774274c96edf145fbc46d77cc58071e29acfd3c73708878628725"
+  },
+  "paramètres . impôt . taux neutre applicable": {
+   "file": "règles/paramètres.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "aefcd1ae83ff00be583272ad8fc65cb8a5745a8e4c874f0b84c64b559be45126"
+  },
+  "paramètres . impôt . foyer fiscal": {
+   "file": "règles/paramètres.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  "paramètres . impôt . foyer fiscal . situation de famille": {
+   "file": "règles/paramètres.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "67abcc1d914d7b986d2fc36719c212c6e16e0c89d8ae72329daa7fa800c859e8"
+  },
+  "date": {
+   "file": "règles/période.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "669a392b2f099e98403f41dc6bd0d60aba1f1316d2e67090a2aa6d332d67b12c"
+  },
+  "période": {
+   "file": "règles/période.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "715e2dc6ae7df5c183174008a716d9f78a7c1bc5d74403bc5a32253989979fdb"
+  },
+  "période . jours ouvrés moyen par mois": {
+   "file": "règles/période.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "67afd3f810ad39d9e0d973324926d5f1fcdc784591246955752f74be2cc9ae11"
+  },
+  "période . semaines par mois": {
+   "file": "règles/période.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "540c11bdafad23061e669de350217a20b58c8818701785c782a3cc85d2a0c30f"
+  },
+  "période . début d'année": {
+   "file": "règles/période.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "12cca72104573e842f7fc82be3764d00a6f9feb4456a54e23416f4c020feb20d"
+  },
+  "période . début d'année . N-1": {
+   "file": "règles/période.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "2c62ae8fa087c2600709e0598998dbf1b9fde017f0633aaa409b3cfaaffa82f0"
+  },
+  "période . fin d'année": {
+   "file": "règles/période.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "7ed0f69525ee6c1a6c5c59bba42e2e86cba47d85ad261b7aa5be5cbb7bed26b8"
+  },
+  "période . fin d'année . N-1": {
+   "file": "règles/période.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "ebebe6ec4a48c5218de422eb89958687fb9e5af5e8a64ab6845930b1d21b6595"
+  },
+  "période . durée depuis le début d'année": {
+   "file": "règles/période.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "bd16b6ea8ad1cd6b19395a6f5b3104b7db3caeed098b0f1729121c9a4a164074"
+  },
+  "situation personnelle": {
+   "file": "règles/situation-personnelle.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "678c166945e469f2b7e3995e3bc0e4ae226e6b4a71bacf4b56aa643f2d35fa98"
+  },
+  "situation personnelle . RSA": {
+   "file": "règles/situation-personnelle.publicodes",
+   "references": {},
+   "legiarti_ids": [],
+   "body_sha256": "468a7716a1f0160036b8bb1f291140a05c4a85f4e7870791971a7e6cf387f453"
+  },
+  "situation personnelle . domiciliation fiscale à l'étranger": {
+   "file": "règles/situation-personnelle.publicodes",
+   "references": {
+    "urssaf.fr": "https://www.urssaf.fr/portail/home/employeur/calculer-les-cotisations/les-taux-de-cotisations/la-csg-crds/qui-en-est-redevable.html"
+   },
+   "legiarti_ids": [],
+   "body_sha256": "4650a812362f712cd922eeba6a328bbccbcf0cc810ab6f2cbaaf2b4929df7493"
+  }
+ }
+}

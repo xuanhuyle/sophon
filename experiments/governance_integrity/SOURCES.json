@@ -1,0 +1,99 @@
+{
+  "_comment": "Origins of every external input used by the governance-integrity experiment. Snapshot dates are when this session fetched the artifact (2026-10-11). Hashes: git commit SHA-1 for repositories, SHA-256 of the npm tarball and the registry's SRI integrity string for packages, SHA-256 of file content for individual files. Nothing listed here was modified; copies placed under inputs/ are hashed again in inputs/MANIFEST.json.",
+  "fetched_on": "2026-10-11",
+  "network_limits": "Container egress reached github.com (git), raw.githubusercontent.com, registry.npmjs.org and pypi.org only. legifrance.gouv.fr, urssaf.fr, service-public.fr, data.gouv.fr, echanges.dila.gouv.fr, politique.pappers.fr, nyc.gov and web.archive.org were unreachable from both the container and the web-fetch tool.",
+  "repositories": [
+    {
+      "id": "mon-entreprise",
+      "url": "https://github.com/betagouv/mon-entreprise",
+      "role": "semantic implementation (Publicodes rule libraries modele-social, modele-ti) and its history",
+      "head_commit": "394bdd637ebc5135fd8ada9567829242b9bb9a2b",
+      "head_date": "2026-10-05T10:33:39+02:00",
+      "clone": "git clone --filter=blob:none (full commit history, 9632 commits)",
+      "license": "MIT (LICENSE: Copyright (c) 2018-2021 beta.gouv.fr)",
+      "pinned_commits": {
+        "8d04dbb650366c0bb4af0858a569049d845a7230": {"committed": "2024-07-17T14:48:20+02:00", "authored": "2024-07-10", "subject": "feat(auto-entrepreneur): met à jour les taux de cotisation des auto-entrepreneurs au 1er juillet 2024 #3010", "file_sha256_before": {"modele-social/règles/dirigeant/auto-entrepreneur/auto-entrepreneur.publicodes": "084a36bd557870ceaa899d81bc19ed136ced797e9e31d54f5c62e31862ddc247"}, "file_sha256_after": {"modele-social/règles/dirigeant/auto-entrepreneur/auto-entrepreneur.publicodes": "71942160ef676d8fd384802d196a308f24cf227870d54fb79f654d71012dcd56"}},
+        "1d2874c5eb0f5a26b913c72a83920504c42766c9": {"committed": "2024-08-01T15:01:55+02:00", "subject": "feat(auto-entrepreneur): Ajoute les taux de cotisation BNC pour 2025 et 2026", "file_sha256_after": {"modele-social/règles/dirigeant/auto-entrepreneur/auto-entrepreneur.publicodes": "67f2aa4b8b10e4a93c3e20ed62d9dcc66492490fc7fbe22a748790c1c87e748b"}},
+        "9bb43d710094d8f572c64997ce991c8d395c5753": {"committed": "2024-10-11T09:34:14+02:00", "subject": "fix: correction des taux auto-entrepreneur DROM"},
+        "2a0e45261": {"committed": "2024-07-16T21:29:59+02:00", "subject": "fix: met à jour les liens morts"},
+        "1932d654c": {"committed": "2024-09-02T12:25:29+02:00", "subject": "docs(auto-entrepreneur): Rend publique la règle taux ACRE des auto-entrepreneurs"},
+        "88cb2ce9660ba41bbc91ae6676a6ef96bb0281af": {"committed": "2026-01-08T12:12:20+01:00", "authored": "2026-01-05", "subject": "chore(auto-entrepreneur): mise à jour des taux de cotisation et de répartition", "file_sha256_after": {"modele-social/règles/dirigeant/auto-entrepreneur/cotisations-et-contributions.publicodes": "0f7d906aed7b87bb02cd3847ab11af0c6de026bd39b1116727511ffde904be7e"}},
+        "e9b4678a875b176ea20f5d598b2371a564a83eab": {"committed": "2026-03-26T15:03:14+01:00", "subject": "doc: ajoute la documentation de l'infrastructure Netlify", "role": "last first-parent master commit before the self-employed base reform was integrated on 2026-03-30; in-tree modele-social version 10.0.1"},
+        "4ad1f7e4d": {"committed": "2026-03-30T15:00:05+02:00", "authored": "2025-11-25", "subject": "feat(modele-ti): nouvelles règles pour la réforme des cotisations", "role": "PR #4101 commit as rebased onto master"},
+        "ff1c02dd1": {"committed": "2026-03-30T15:00:06+02:00", "subject": "feat(indépendant): réforme des barèmes de cotisation (cas général hors PLR)", "role": "PR #4119 commit as rebased onto master"},
+        "212c2dc07ef886449bc590e4d71c8ad24b161480": {"committed": "2026-03-30T16:00:15+02:00", "authored": "2026-03-05", "subject": "fix: corrige le calcul de l'Acre"},
+        "d3e0cfe0f": {"committed": "2026-03-30T16:00:14+02:00", "subject": "chore: remplace la formule de la retraite de base par celle de l'Urssaf"},
+        "c14ee26d0": {"committed": "2026-07-09T12:29:17+02:00", "subject": "fix: n'applique pas de plancher ni de plafond à l'abattement sur l'assiette à Mayotte"}
+      },
+      "github_pages_read_on_2026_10_11_via_web_fetch_html": {
+        "pull_4101": {"url": "https://github.com/betagouv/mon-entreprise/pull/4101", "title": "[Indépendants] Mettre à jour les assiettes CSG-CRDS et de cotisation des indépendants (hors PLR)", "opened": "2025-11-25", "merged": "2025-12-09", "merge_commit": "7890984930cca0c074378a29d2430d70b1a5bcdc", "head": "88e8cc526ee480c956d0b8ce3d9271c5f1fee7eb", "base": "feature/decoupage-modele-social", "approved_by": "JalilArfaoui (2025-12-08, engineering review)", "note": "api.github.com returned 403; metadata from HTML"},
+        "pull_4119": {"url": "https://github.com/betagouv/mon-entreprise/pull/4119", "title": "[Indépendants] Mettre à jour les taux de cotisation des indépendants (hors PLR)", "opened": "2025-12-02", "merged": "2025-12-09", "merge_commit": "e1eff66f6f8c02e4485f732ebfb37eaf4f3be354", "head": "1e025e8405a841124300f7605909348166ef05a6", "base": "feature/decoupage-modele-social", "approved_by": "none recorded on page (review comments only)"},
+        "pull_4173": {"url": "https://github.com/betagouv/mon-entreprise/pull/4173", "title": "fix(modele-ti): plafond déductible cotisation madelin prévoyance", "merged": "2025-12-22 (per #4101 comment)"},
+        "issue_4294": {"url": "https://github.com/betagouv/mon-entreprise/issues/4294", "title": "[TI][Réforme] Retours métier", "opened": "2026-01-30", "closed": "2026-03-20", "labels": ["Source : Urssaf 💁"], "linked_prs": ["#4367", "#4368", "#4369", "#4370", "#4371", "#4372", "#4376", "#4305 (unlinked)", "#4319 (unlinked)"]}
+      }
+    },
+    {
+      "id": "openfisca-france",
+      "url": "https://github.com/openfisca/openfisca-france",
+      "role": "independent oracle: a second organisation's dated encoding of the same legal parameters",
+      "head_commit": "16b2e69633e840fdf5f39b74f96dfd2382898dd5",
+      "head_date": "2026-10-01T13:12:48+02:00",
+      "license": "AGPL-3.0 (parameter files copied verbatim under inputs/oracle/ with notice; no code executed)",
+      "files_sha256": {
+        "openfisca_france/parameters/prelevements_sociaux/professions_liberales/auto_entrepreneur/cotisations_prestations/service.yaml": "d8622cec889f4f83c7df3c6c5970d82f2ff8af2d18400705866401cc5468dd4d",
+        "openfisca_france/parameters/prelevements_sociaux/professions_liberales/auto_entrepreneur/cotisations_prestations/cipav.yaml": "a9d5d54aff0404ec516ba2a561576641892e92fd214ac9fedd1877a14da8ecf9",
+        "openfisca_france/parameters/prelevements_sociaux/cotisations_taxes_independants_artisans_commercants/ret_ac/tous_independants/tout_salaire.yaml": "56b202d027635e76b567f63c8b11b8408f41e7f3b783e1d4a1b886079dad251d"
+      }
+    },
+    {
+      "id": "kina2711-green-sm-nyc",
+      "url": "https://github.com/kina2711/green-sm-nyc-mobility-intelligence",
+      "role": "candidate 1, rejected at the gate",
+      "head_commit": "a293b7e68c746be6091252d9e21a4c89f4a2fe3d",
+      "head_date": "2026-07-17T17:27:30+07:00",
+      "commits": 3,
+      "license": "MIT"
+    },
+    {
+      "id": "behramkorkut-governed-analytics-agent",
+      "url": "https://github.com/behramkorkut/Governed-Analytics-Agent",
+      "role": "candidate 2, rejected at the gate",
+      "head_commit": "312e97ad192dcef02f688e31edc0a08c6cf4345f",
+      "head_date": "2026-07-22T19:15:20+02:00",
+      "commits": 28,
+      "license": "MIT"
+    }
+  ],
+  "npm_packages": [
+    {"name": "modele-social", "version": "2.1.0", "published": "2024-04-05T22:07:10.902Z", "integrity": "sha512-3KRe8owffmXRES7zOT5GHh8EXvilhL3obXZpLJBmQVrmNmWT5S/kJth6kbxksKybqvZtluOsj+KFSQTdwlinUg==", "tarball": "https://registry.npmjs.org/modele-social/-/modele-social-2.1.0.tgz", "license": "MIT", "role": "pre-E1 semantic state"},
+    {"name": "modele-social", "version": "2.3.0", "published": "2024-08-08T14:08:11.557Z", "integrity": "sha512-3tSoNmzRVr+Ldl9UqEd+jNHfvCj3fDR/XyDdaRRBAJ+jI3c91mztCHDpMrvDTnv3GtzHIelAx1eJwBTOXtz4BQ==", "tarball": "https://registry.npmjs.org/modele-social/-/modele-social-2.3.0.tgz", "license": "MIT", "role": "first published version carrying the 2024-07 rates (maintainers' implementation, not gold)"},
+    {"name": "modele-social", "version": "2.4.0", "published": "2024-09-20T08:55:01.260Z", "integrity": "sha512-+xNPwb8SICOW3yfkplHOHGMbgUcaW4GyZpT9PlKYOw0K8+1xeYaafOBkRN+oltXM8FwwP1hoTqOxV+Foq9sW6Q==", "tarball": "https://registry.npmjs.org/modele-social/-/modele-social-2.4.0.tgz", "license": "MIT"},
+    {"name": "modele-social", "version": "10.0.0", "published": "2025-12-09T10:52:14.943Z", "integrity": "sha512-wwLefaJpFsojFLrfkA5cC6Jg8KUuSGjb3DK2yh5tgni4LVf05oWBOWQa48Y8XymAZSq1GaajMfCpyaNz6vjQZw==", "tarball": "https://registry.npmjs.org/modele-social/-/modele-social-10.0.0.tgz", "license": "MIT", "role": "pre-E2 and pre-E3 published state (BNC 2026 = 26.1 %; old self-employed base)"},
+    {"name": "modele-social", "version": "10.0.1", "published": "2026-04-26T20:47:02.825Z", "integrity": "sha512-Y5VAUZCZetxLURcW5mg3OkQLlePBIpaYtLtqeMnzh8DeSy5Cym5zyKg1DWkE2H0TES7GXxcORZRYT+huyBNTWw==", "tarball": "https://registry.npmjs.org/modele-social/-/modele-social-10.0.1.tgz", "license": "MIT", "role": "post-E2 published state (BNC 2026 = 25.6 %)"},
+    {"name": "modele-social", "version": "11.1.0", "published": "2026-07-16T10:41:58.898Z", "integrity": "sha512-O4I8F74iHrw3mTHHrpbFaCEA0T/5yZtGTnGLPj31xgdMSBkFrnM+I+q+DIMt4c/ZTpk/08t3MK5XneM9QmCNew==", "tarball": "https://registry.npmjs.org/modele-social/-/modele-social-11.1.0.tgz", "license": "MIT", "role": "latest at investigation"},
+    {"name": "modele-ti", "version": "0.1.0", "published": "2026-07-16T10:41:57.141Z", "integrity": "sha512-hgr466rDwG39lUnOMhBVrL2yhITqmOy/zf5pxQ27XSrXID+pU2wuwzFer8rqrQkWDS5IiIkAloT6BSoaKWQVqw==", "tarball": "https://registry.npmjs.org/modele-ti/-/modele-ti-0.1.0.tgz", "license": "MIT", "role": "post-E3 published state of the self-employed rules"},
+    {"name": "publicodes", "version": "1.10.4", "published": "2026-10-10T07:29:52.976Z", "integrity": "sha512-twj6iKNSYY4a03RqkYJ7q0TKOWZQVUraF715FTLLadgmX/nboPzB4Rdn2IuT3b5tFJnCrhQdh5rKYyS3lWp+vQ==", "tarball": "https://registry.npmjs.org/publicodes/-/publicodes-1.10.4.tgz", "license": "MIT", "role": "the rule engine (native semantic runtime)"},
+    {"name": "@socialgouv/legi-data", "version": "2.360.0", "published": "2024-05-25T23:36:37.034Z", "integrity": "sha512-BUSz20L4sDrE2oWhZapZ8i0Br6/jAtdjgUUo2+xgxNEszlZ2uZX8esGgwE2fPR7GoiyAOUtsolbDzxQVvRpnVg==", "tarball_sha256": "054b155ab2de56daed925c72767bee1e72c0e47b4e4fc34ac9f1f01aad0bdaf0", "license": "Apache-2.0 (code); LEGI public legal data (content)", "role": "governing corpus snapshot before Décret 2024-484"},
+    {"name": "@socialgouv/legi-data", "version": "2.361.0", "published": "2024-06-01T23:22:24.265Z", "integrity": "sha512-3XgClN7xUbdJ2jI1Pxf0PrqQid/Ae0IhZvZKq25lZVIVp4oYwJplXv05oZQSU3tp4tuciP3VdJW4i/KaPlp6zA==", "tarball_sha256": "0e1445e80c7615273fcf3ffa608a3743f50896e09196b239a148ee1f4deed0d4", "role": "first snapshot after Décret 2024-484 (JORF 2024-05-31)"},
+    {"name": "@socialgouv/legi-data", "version": "2.375.0", "published": "2024-07-01T23:35:27.300Z", "integrity": "sha512-s1f86F+DvAdnpVpHO+1WOtt4pLXyqGuZHsvFZOkIPddEUg2Nrzc9ZGlS5k8pFgOU50ADMQfe5GfVPS6RszYxNw==", "tarball_sha256": "d583d63381640b3495b445a3c4ab590a3b857a4fcaddd08cf8d39f8c9ea06bd8", "role": "last snapshot before Décret 2024-688 (JORF 2024-07-07)"},
+    {"name": "@socialgouv/legi-data", "version": "2.381.0", "published": "2024-07-17T15:37:04.165Z", "integrity": "sha512-QZDJcbPVgpZWvzIKrFGS3FJEmnRjPwhMvkSRZUiwgRrmvAujNRtTE6aeythjTNHecjZCFa6fvsXEmaaLz7CxIQ==", "tarball_sha256": "7110e70451a5fbc5bce170dc731e6a362c3b1d3fe2b9714299f88deff320a2da", "role": "first snapshot used after Décret 2024-688"},
+    {"name": "@socialgouv/legi-data", "version": "2.383.0", "published": "2024-08-01T15:27:07.136Z", "integrity": "sha512-wyTJ9Lg/50dQcGxakzteTjaqnPHX/0ns31ortU100IdnbXuuK5qDxfQIRjfl0zZCeTpgaWSJZtZv04ziIdsoag==", "tarball_sha256": "41665cab699cc50afb8e46381c62582036e10ab1f5f45a54fdb8d346d48b649a"},
+    {"name": "@socialgouv/legi-data", "version": "2.384.0", "published": "2024-09-01T16:15:14.642Z", "tarball_sha256": "120efa41008d4099a912f55ab9e93f07bc13e76332a0c983616c390e7407aa5d", "role": "governing snapshot before the DROM fix (reverse case); D613-4, D613-6, D756-5 identical to 2.385.0"},
+    {"name": "@socialgouv/legi-data", "version": "2.385.0", "published": "2024-10-19T15:24:13.712Z", "tarball_sha256": "9de77f7e64f847d424f4d4125dc880ef0fbb5f92ad7b959eb60d386730835c4a", "role": "governing snapshot after the DROM fix (reverse case)"},
+    {"name": "@socialgouv/legi-data", "version": "2.402.0", "published": "2025-01-01T16:51:11.740Z", "integrity": "sha512-y9q/uRFQYmbf8wMTQQEvbQj66uxDBdNrha9xuRnJLByLPTFHAMKv2FT0j9uCt4lfFb8EE1LJ+9Gxzb9kY4E7bQ==", "tarball_sha256": "917c229436365ca2bfd1d817d8db3e66b29a485b9e71b753f6f0890c1d38bf69"},
+    {"name": "@socialgouv/legi-data", "version": "2.464.0", "published": "2025-09-01T15:35:35.390Z", "integrity": "sha512-7wkoOY16n6qg4QxBrK+7QFljvy2LoYDXBE6dcK0t9tViYhzbxx5onpkaVFo8ZxZ3NSjIPyKTgySxVk6igSa3ew==", "tarball_sha256": "053cb6de3fcb03cb37e2c1766c3da4e2f5865796687c9c75be6f8333aab118c9"},
+    {"name": "@socialgouv/legi-data", "version": "2.469.0", "published": "2025-10-01T16:19:20.333Z", "integrity": "sha512-Z/6vK4y7sDS5FmBKOEjKYpjqfmX/3rzRSmUGW7vtjXeLvybIMezfQhbC+ZyVLBaSf5Fxe6rm7MbS9ez7XFFWog==", "tarball_sha256": "85fd96cb1fe88ac61da3a845c1e4e15ba2520f03844fbd8cb7dac026e3894f5b", "role": "pre-E2 governing snapshot (D613-4 2026 row still 26,1 %)"},
+    {"name": "@socialgouv/legi-data", "version": "2.489.0", "published": "2026-01-01T15:46:43.781Z", "integrity": "sha512-k+fEsSj07PpqcizJ/RPejH/3lCosfvJNEkO50CD3Axm8GKDvq+lKbz2Jn+s5PbYtUNoTk+9EbFErMOFz1rmvvA==", "tarball_sha256": "8ebe7b6a3e618c3e80db356f948341fd6d1b818c82ca0ca4312288219f73e62a", "role": "post-E2 governing snapshot (D613-4 LEGIARTI000052218738, 25,6 %)"},
+    {"name": "@socialgouv/legi-data", "version": "2.514.0", "published": "2026-03-31T16:18:17.431Z", "integrity": "sha512-gp3F1p1YsRhoHpdsDAhF9gi2X9xXJT0HaT8c5NXg32+Khg2PC+q1uBzdmcAainQR21pp2iggSlqizVAlp654RQ==", "tarball_sha256": "c068a18df5e9fbbcce2ed5b5b5ffb6f0ca40b7874f9d719ae8bfcba0569489de", "role": "snapshot at the end of the issue #4294 window (D131-6-1 new version LEGIARTI000053451315 in force 2026-01-01)"},
+    {"name": "@socialgouv/legi-data", "version": "2.572.0", "published": "latest at investigation", "integrity": "sha512-ruxqe65Stf5I41cEKW9cUepKd9QAtWlFEMgerU/0jQCejknQz2UHp5QQrFzJaRS93rxtnWPwOV+noYsKM9hX+A==", "tarball_sha256": "a39c6a2ec49efbc907628b3e34ca515536760d33c60e5cc39bc678c18615606c"}
+  ],
+  "legal_identifiers_used": {
+    "LEGITEXT000006073189": "Code de la sécurité sociale (consolidated)",
+    "JORFTEXT000049888566": "Décret n° 2024-688 du 5 juillet 2024 fixant les modalités de calcul des cotisations et contributions sociales des travailleurs indépendants (title from a web search snippet pointing at legifrance.gouv.fr/loda/id/JORFTEXT000049888566; the text itself was not retrievable). Its effects are observed as consolidated article versions in force 2024-07-07 (D136-5, D621-2, D633-3) and in LEGI modification links.",
+    "JORFTEXT000049620955": "Décret n° 2024-484 du 30 mai 2024 (named in LEGI lienModifications of D613-4; JORF 2024-05-31)",
+    "JORFTEXT000048668665": "LOI n° 2023-1250 du 26 décembre 2023 (LFSS 2024), art. 18 (named in LEGI lienModifications of L136-3)"
+  },
+  "web_search_snippets_not_used_as_evidence": [
+    "legifiscal.fr, lecoindesentrepreneurs.fr, compta-online.com, economie.gouv.fr, portail-autoentrepreneur.fr, cabinet-fabricekramer.com: secondary pages surfaced by search on 2026-10-11; none fetched; their figures were only used to decide what to verify in primary sources."
+  ]
+}

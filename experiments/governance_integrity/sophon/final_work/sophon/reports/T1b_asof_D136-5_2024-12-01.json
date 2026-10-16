@@ -1,0 +1,202 @@
+{
+ "as_of": "2024-12-01",
+ "question": {
+  "rule": null,
+  "article": "D136-5"
+ },
+ "generated_at": "2026-10-11T17:30:20+00:00",
+ "links": [
+  {
+   "link_id": "L0084",
+   "recorded_at": "2026-10-11T17:28:30+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . indépendant . assiette des cotisations . réforme assiette 2024 . abattement forfaitaire",
+   "rules_snapshot": "P_T1b",
+   "rule_file": "règles/dirigeant/indépendant.publicodes",
+   "rule_file_sha256": "d3734880afd8b9713583803802a4b912af52824f882b99bc91f7b7b287c25372",
+   "article": "D136-5",
+   "article_id": "LEGIARTI000049899286",
+   "article_dateDebut": "2024-07-07",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "8301fc2ae7e78de2d7d4ebbeeb1408a185a0c2ce6ffa89b00ed7059757ac5970",
+   "law_snapshot": "S3",
+   "quote": "Le montant plancher prévu au III de l'article L. 136-3 est fixé à 1,76 % de la valeur annuelle du plafond de la sécurité sociale",
+   "claim": "D136-5 LEGIARTI000049899286 (in force 2024-07-07, Décret n°2024-688 du 5 juillet 2024 art. 1): floor 1,76 % x PASS 46 368 = 816,0768 €/an binds when 26 % x 2 000 = 520 < floor.",
+   "check": {
+    "rule": "dirigeant . indépendant . assiette des cotisations . réforme assiette 2024 . abattement forfaitaire",
+    "situation": {
+     "dirigeant . régime social": "'indépendant'",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . imposition": "'IR'",
+     "entreprise . activité . nature": "'commerciale'",
+     "dirigeant . indépendant . revenu professionnel": "2000 €/an",
+     "date": "01/12/2024"
+    },
+    "expect": 816.0768,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 816.0768,
+    "expected": 816.0768,
+    "unit": "€/an",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0085",
+   "recorded_at": "2026-10-11T17:28:31+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . indépendant . assiette des cotisations . réforme assiette 2024 . abattement forfaitaire",
+   "rules_snapshot": "P_T1b",
+   "rule_file": "règles/dirigeant/indépendant.publicodes",
+   "rule_file_sha256": "d3734880afd8b9713583803802a4b912af52824f882b99bc91f7b7b287c25372",
+   "article": "D136-5",
+   "article_id": "LEGIARTI000049899286",
+   "article_dateDebut": "2024-07-07",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "8301fc2ae7e78de2d7d4ebbeeb1408a185a0c2ce6ffa89b00ed7059757ac5970",
+   "law_snapshot": "S3",
+   "quote": "Le montant plafond mentionné au III de l'article L. 136-3 est fixé à 130 % de la valeur annuelle du plafond de la sécurité sociale",
+   "claim": "D136-5 LEGIARTI000049899286 (in force 2024-07-07, Décret n°2024-688 du 5 juillet 2024 art. 1): ceiling 130 % x PASS 46 368 = 60 278,4 €/an binds when 26 % x 300 000 = 78 000 > ceiling.",
+   "check": {
+    "rule": "dirigeant . indépendant . assiette des cotisations . réforme assiette 2024 . abattement forfaitaire",
+    "situation": {
+     "dirigeant . régime social": "'indépendant'",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . imposition": "'IR'",
+     "entreprise . activité . nature": "'commerciale'",
+     "dirigeant . indépendant . revenu professionnel": "300000 €/an",
+     "date": "01/12/2024"
+    },
+    "expect": 60278.4,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 60278.4,
+    "expected": 60278.4,
+    "unit": "€/an",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0086",
+   "recorded_at": "2026-10-11T17:28:32+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . indépendant . assiette des cotisations . réforme assiette 2024 . plafond annuel",
+   "rules_snapshot": "P_T1b",
+   "rule_file": "règles/dirigeant/indépendant.publicodes",
+   "rule_file_sha256": "d3734880afd8b9713583803802a4b912af52824f882b99bc91f7b7b287c25372",
+   "article": "D136-5",
+   "article_id": "LEGIARTI000049899286",
+   "article_dateDebut": "2024-07-07",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "8301fc2ae7e78de2d7d4ebbeeb1408a185a0c2ce6ffa89b00ed7059757ac5970",
+   "law_snapshot": "S3",
+   "quote": "Le montant plancher prévu au III de l'article L. 136-3 est fixé à 1,76 % de la valeur annuelle du plafond de la sécurité sociale",
+   "claim": "D136-5 LEGIARTI000049899286 (in force 2024-07-07, Décret n°2024-688 du 5 juillet 2024 art. 1): valeur annuelle du plafond: library PSS 2024 3 864 €/mois = 46 368 €/an (PSS 2025 not in corpus: same value used at 2025 dates).",
+   "check": {
+    "rule": "dirigeant . indépendant . assiette des cotisations . réforme assiette 2024 . plafond annuel",
+    "situation": {
+     "dirigeant . régime social": "'indépendant'",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . imposition": "'IR'",
+     "entreprise . activité . nature": "'commerciale'",
+     "dirigeant . indépendant . revenu professionnel": "40000 €/an",
+     "date": "01/12/2024"
+    },
+    "expect": 46368.0,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 46368,
+    "expected": 46368.0,
+    "unit": "€/an",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0109",
+   "recorded_at": "2026-10-11T17:29:03+00:00",
+   "status": "INFERRED",
+   "rule": "dirigeant . indépendant . assiette des cotisations . réforme assiette 2024",
+   "rules_snapshot": "P_T1b",
+   "rule_file": "règles/dirigeant/indépendant.publicodes",
+   "rule_file_sha256": "d3734880afd8b9713583803802a4b912af52824f882b99bc91f7b7b287c25372",
+   "article": "D136-5",
+   "article_id": "LEGIARTI000049899286",
+   "article_dateDebut": "2024-07-07",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "8301fc2ae7e78de2d7d4ebbeeb1408a185a0c2ce6ffa89b00ed7059757ac5970",
+   "law_snapshot": "S3",
+   "quote": "Le montant plancher prévu au III de l'article L. 136-3 est fixé à 1,76 % de la valeur annuelle du plafond de la sécurité sociale",
+   "claim": "D136-5 LEGIARTI000049899286 (in force 2024-07-07, Décret n°2024-688 du 5 juillet 2024 art. 1): date gate: the rule is true from the consolidated in-force date of Décret n°2024-688 (2024-07-07); the application date to a given contribution year is not stated in the bounded texts -> flagged.",
+   "check": null,
+   "check_result": null,
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  }
+ ],
+ "article_versions_known": [
+  {
+   "law_snapshot": "S3",
+   "published": "2024-07-17T15:37:04.165Z",
+   "article": "D136-5",
+   "id": "LEGIARTI000049899286",
+   "etat": "VIGUEUR",
+   "dateDebut": "2024-07-07",
+   "dateFin": "2999-01-01",
+   "in_force_on_date": true,
+   "text_sha256": "8301fc2ae7e78de2d7d4ebbeeb1408a185a0c2ce6ffa89b00ed7059757ac5970"
+  }
+ ],
+ "rules_snapshots_known": [
+  {
+   "snapshot": "G0",
+   "commit": "d9242882f96bda5b4418b7c1c3ff46b0e2a1c5ce",
+   "committed": "2024-05-15 09:38:43 +0200"
+  },
+  {
+   "snapshot": "G1",
+   "commit": "2a0e452617fc33b955096f4bb7f7f305ec0670ad",
+   "committed": "2024-07-16 21:29:59 +0200"
+  },
+  {
+   "snapshot": "P_T1a",
+   "commit": null,
+   "committed": null
+  },
+  {
+   "snapshot": "P_T1b",
+   "commit": "2a0e452617fc33b955096f4bb7f7f305ec0670ad",
+   "committed": "2024-07-16 21:29:59 +0200"
+  }
+ ],
+ "approvals": [
+  "none recorded"
+ ],
+ "limits": [
+  "Only what was recorded in this store is reported; absence of a record is reported as absence, not inferred.",
+  "Snapshot publish dates are when the governing text was captured, not when it entered into force; both are listed.",
+  "A matching hash shows the preserved text is unchanged; it does not show the interpretation is correct or that anyone authorised it."
+ ]
+}

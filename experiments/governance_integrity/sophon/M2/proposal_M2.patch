@@ -1,0 +1,110 @@
+# unified diff: sealed pin G4_a61b72947fec -> work/proposals/M2/modele-social/règles (diff -ruN; exit 1)
+diff -ruN "/tmp/claude-0/-home-user-sophon/980382c3-789d-515f-926e-c8bdd3dd6b4b/scratchpad/runs/B/M2/inputs/rules/G4_a61b72947fec/modele-social/r\303\250gles/dirigeant/auto-entrepreneur/exon\303\251rations.publicodes" "/tmp/claude-0/-home-user-sophon/980382c3-789d-515f-926e-c8bdd3dd6b4b/scratchpad/runs/B/M2/work/proposals/M2/modele-social/r\303\250gles/dirigeant/auto-entrepreneur/exon\303\251rations.publicodes"
+--- "/tmp/claude-0/-home-user-sophon/980382c3-789d-515f-926e-c8bdd3dd6b4b/scratchpad/runs/B/M2/inputs/rules/G4_a61b72947fec/modele-social/r\303\250gles/dirigeant/auto-entrepreneur/exon\303\251rations.publicodes"	2026-03-03 08:30:36.000000000 +0000
++++ "/tmp/claude-0/-home-user-sophon/980382c3-789d-515f-926e-c8bdd3dd6b4b/scratchpad/runs/B/M2/work/proposals/M2/modele-social/r\303\250gles/dirigeant/auto-entrepreneur/exon\303\251rations.publicodes"	2026-10-11 20:03:24.322226758 +0000
+@@ -47,7 +47,7 @@
+           alors:
+             variations:
+               - si: date >= 01/2026
+-                alors: 4.4%
++                alors: 4.3%
+               - si: date >= 01/2025
+                 alors: 4.1%
+               - si: date >= 07/2024
+@@ -57,7 +57,7 @@
+           alors:
+             variations:
+               - si: date >= 01/2026
+-                alors: 13.1%
++                alors: 12.8%
+               - si: date >= 01/2025
+                 alors: 12.3%
+               - si: date >= 07/2024
+@@ -66,7 +66,7 @@
+         - sinon:
+             variations:
+               - si: date >= 01/2026
+-                alors: 17.4%
++                alors: 17.1%
+               - si: date >= 01/2025
+                 alors: 16.4%
+               - si: date >= 07/2024
+diff -ruN "/tmp/claude-0/-home-user-sophon/980382c3-789d-515f-926e-c8bdd3dd6b4b/scratchpad/runs/B/M2/inputs/rules/G4_a61b72947fec/modele-social/r\303\250gles/dirigeant/exon\303\251rations/ACRE.publicodes" "/tmp/claude-0/-home-user-sophon/980382c3-789d-515f-926e-c8bdd3dd6b4b/scratchpad/runs/B/M2/work/proposals/M2/modele-social/r\303\250gles/dirigeant/exon\303\251rations/ACRE.publicodes"
+--- "/tmp/claude-0/-home-user-sophon/980382c3-789d-515f-926e-c8bdd3dd6b4b/scratchpad/runs/B/M2/inputs/rules/G4_a61b72947fec/modele-social/r\303\250gles/dirigeant/exon\303\251rations/ACRE.publicodes"	2026-03-03 08:30:36.000000000 +0000
++++ "/tmp/claude-0/-home-user-sophon/980382c3-789d-515f-926e-c8bdd3dd6b4b/scratchpad/runs/B/M2/work/proposals/M2/modele-social/r\303\250gles/dirigeant/exon\303\251rations/ACRE.publicodes"	2026-10-11 20:03:24.322075098 +0000
+@@ -49,8 +49,17 @@
+     cotisation s’appelait ACCRE était soumise à conditions et n’était pas
+     automatique : il fallait en faire la demande.
+ 
++    - Décret n° 2026-69 du 6 février 2026 (D131-6-1 version LEGIARTI000053451315, créations et reprises à
++    compter du 1er janvier 2026) : la durée reste de douze mois (I) ; l'exonération des indépendants hors
++    micro-social est ramenée au quart des cotisations (II, voir la règle
++    `dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . taux`), « sans préjudice des
++    dispositions de l'article L. 131-6-5 » (texte non disponible ici) ; la demande mentionnée au II de
++    l'article L. 131-6-4 « est introduite au plus tard le soixantième jour qui suit la date d'ouverture de
++    l'activité » (IV) — ce délai n'est pas modélisé. Le taux micro-social de l'Acre relève d'un autre article.
++
+   références:
+     'L’Acre : une aide pour favoriser les créations et reprises d’entreprises': https://www.urssaf.fr/accueil/exoneration-acre-createur.html
++    Article D131-6-1 du code de la sécurité sociale: https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000053451315
+     Aide à la création ou à la reprise d’une entreprise: https://www.service-public.fr/particuliers/vosdroits/F11677
+     # BPI ONLY
+     'Acre : aide aux créateurs et repreneurs d’entreprise': https://bpifrance-creation.fr/encyclopedie/aides-a-creation-a-reprise-dentreprise/aides-sociales-financieres/acre-aide-aux
+diff -ruN "/tmp/claude-0/-home-user-sophon/980382c3-789d-515f-926e-c8bdd3dd6b4b/scratchpad/runs/B/M2/inputs/rules/G4_a61b72947fec/modele-social/r\303\250gles/dirigeant/exon\303\251rations.publicodes" "/tmp/claude-0/-home-user-sophon/980382c3-789d-515f-926e-c8bdd3dd6b4b/scratchpad/runs/B/M2/work/proposals/M2/modele-social/r\303\250gles/dirigeant/exon\303\251rations.publicodes"
+--- "/tmp/claude-0/-home-user-sophon/980382c3-789d-515f-926e-c8bdd3dd6b4b/scratchpad/runs/B/M2/inputs/rules/G4_a61b72947fec/modele-social/r\303\250gles/dirigeant/exon\303\251rations.publicodes"	2026-03-03 08:30:36.000000000 +0000
++++ "/tmp/claude-0/-home-user-sophon/980382c3-789d-515f-926e-c8bdd3dd6b4b/scratchpad/runs/B/M2/work/proposals/M2/modele-social/r\303\250gles/dirigeant/exon\303\251rations.publicodes"	2026-10-11 20:03:24.321637918 +0000
+@@ -160,6 +160,7 @@
+   valeur: oui
+   références:
+     'L’Acre pour les indépendants: quel avantages ?': https://www.urssaf.fr/portail/home/independant/je-beneficie-dexonerations/accre/quels-avantages/travailleurs-independants-ne-rel.html
++    Article D131-6-1 du code de la sécurité sociale: https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000053451315
+ 
+   avec:
+     allocations familiales:
+@@ -234,14 +235,38 @@
+   valeur: (1 an - entreprise . durée d'activité . en début d'année) / 1 an
+ 
+ dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . taux:
+-  taux progressif:
+-    assiette: assiette des cotisations
+-    multiplicateur: PSS proratisé
+-    tranches:
+-      - taux: 100%
+-        plafond: 75%
+-      - taux: 0%
+-        plafond: 100%
++  variations:
++    - si: entreprise . date de création >= 01/01/2026
++      alors:
++        taux progressif:
++          assiette: assiette des cotisations
++          multiplicateur: PSS proratisé
++          tranches:
++            - taux: 25%
++              plafond: 75%
++            - taux: 0%
++              plafond: 100%
++    - sinon:
++        taux progressif:
++          assiette: assiette des cotisations
++          multiplicateur: PSS proratisé
++          tranches:
++            - taux: 100%
++              plafond: 75%
++            - taux: 0%
++              plafond: 100%
++  note: |
++    D131-6-1 II (version LEGIARTI000053451315, en vigueur au 1er janvier 2026, décret n° 2026-69 du 6 février 2026,
++    art. 1 ; nota : s'applique aux créations et reprises d'entreprise intervenant à compter du 1er janvier 2026) :
++    « l'exonération [...] correspond au quart du montant total des cotisations » jusqu'à 3/4 du PSS, puis
++    « Montant de l'exonération = 0,25 E/0,25 PSS×(PSS−R) » (soit 25 % décroissant linéairement jusqu'à 0 au PSS).
++    Pour les créations antérieures au 1er janvier 2026 l'ancienne rédaction (LEGIARTI000036475110 : exonération
++    totale jusqu'à 3/4 du PSS, puis E/0,25 PSS × (PSS-R)) reste appliquée.
++    Limite connue (préexistante) : le taux est appliqué aux cotisations dues au revenu R alors que le texte
++    l'applique à E, cotisations dues pour un revenu égal à 3/4 du PSS.
++  références:
++    Article D131-6-1 du code de la sécurité sociale (créations à compter du 01/01/2026): https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000053451315
++    Article D131-6-1 du code de la sécurité sociale (créations avant le 01/01/2026): https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000036475110/2018-01-01
+ 
+ dirigeant . indépendant . cotisations et contributions . exonérations . ZFU . taux:
+   variations:

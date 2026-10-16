@@ -1,0 +1,529 @@
+[
+ {
+  "id": "T1b-P01",
+  "rule": "dirigeant . indépendant . assiette des cotisations . réforme assiette 2024 . abattement forfaitaire",
+  "article": "L136-3",
+  "quote": "fait l'objet d'un abattement de 26 %",
+  "claim": "L136-3 LEGIARTI000048683641 (in force 2023-12-28): abattement = 26 % x 40 000 = 10 400 €/an (within floor/ceiling).",
+  "note": "T1b",
+  "check": {
+   "rule": "dirigeant . indépendant . assiette des cotisations . réforme assiette 2024 . abattement forfaitaire",
+   "situation": {
+    "dirigeant . régime social": "'indépendant'",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . imposition": "'IR'",
+    "entreprise . activité . nature": "'commerciale'",
+    "dirigeant . indépendant . revenu professionnel": "40000 €/an",
+    "date": "01/12/2024"
+   },
+   "expect": 10400,
+   "tolerance": 0.001
+  }
+ },
+ {
+  "id": "T1b-P02",
+  "rule": "dirigeant . indépendant . assiette des cotisations . réforme assiette 2024 . abattement forfaitaire",
+  "article": "D136-5",
+  "quote": "Le montant plancher prévu au III de l'article L. 136-3 est fixé à 1,76 % de la valeur annuelle du plafond de la sécurité sociale",
+  "claim": "D136-5 LEGIARTI000049899286 (in force 2024-07-07, Décret n°2024-688 du 5 juillet 2024 art. 1): floor 1,76 % x PASS 46 368 = 816,0768 €/an binds when 26 % x 2 000 = 520 < floor.",
+  "note": "T1b",
+  "check": {
+   "rule": "dirigeant . indépendant . assiette des cotisations . réforme assiette 2024 . abattement forfaitaire",
+   "situation": {
+    "dirigeant . régime social": "'indépendant'",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . imposition": "'IR'",
+    "entreprise . activité . nature": "'commerciale'",
+    "dirigeant . indépendant . revenu professionnel": "2000 €/an",
+    "date": "01/12/2024"
+   },
+   "expect": 816.0768,
+   "tolerance": 0.001
+  }
+ },
+ {
+  "id": "T1b-P03",
+  "rule": "dirigeant . indépendant . assiette des cotisations . réforme assiette 2024 . abattement forfaitaire",
+  "article": "D136-5",
+  "quote": "Le montant plafond mentionné au III de l'article L. 136-3 est fixé à 130 % de la valeur annuelle du plafond de la sécurité sociale",
+  "claim": "D136-5 LEGIARTI000049899286 (in force 2024-07-07, Décret n°2024-688 du 5 juillet 2024 art. 1): ceiling 130 % x PASS 46 368 = 60 278,4 €/an binds when 26 % x 300 000 = 78 000 > ceiling.",
+  "note": "T1b",
+  "check": {
+   "rule": "dirigeant . indépendant . assiette des cotisations . réforme assiette 2024 . abattement forfaitaire",
+   "situation": {
+    "dirigeant . régime social": "'indépendant'",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . imposition": "'IR'",
+    "entreprise . activité . nature": "'commerciale'",
+    "dirigeant . indépendant . revenu professionnel": "300000 €/an",
+    "date": "01/12/2024"
+   },
+   "expect": 60278.4,
+   "tolerance": 0.001
+  }
+ },
+ {
+  "id": "T1b-P04",
+  "rule": "dirigeant . indépendant . assiette des cotisations . réforme assiette 2024 . plafond annuel",
+  "article": "D136-5",
+  "quote": "Le montant plancher prévu au III de l'article L. 136-3 est fixé à 1,76 % de la valeur annuelle du plafond de la sécurité sociale",
+  "claim": "D136-5 LEGIARTI000049899286 (in force 2024-07-07, Décret n°2024-688 du 5 juillet 2024 art. 1): valeur annuelle du plafond: library PSS 2024 3 864 €/mois = 46 368 €/an (PSS 2025 not in corpus: same value used at 2025 dates).",
+  "note": "T1b",
+  "check": {
+   "rule": "dirigeant . indépendant . assiette des cotisations . réforme assiette 2024 . plafond annuel",
+   "situation": {
+    "dirigeant . régime social": "'indépendant'",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . imposition": "'IR'",
+    "entreprise . activité . nature": "'commerciale'",
+    "dirigeant . indépendant . revenu professionnel": "40000 €/an",
+    "date": "01/12/2024"
+   },
+   "expect": 46368,
+   "tolerance": 0.001
+  }
+ },
+ {
+  "id": "T1b-P05",
+  "rule": "dirigeant . indépendant . assiette des cotisations",
+  "article": "L131-6",
+  "quote": "sont assises sur l'assiette définie à l'article L. 136-3",
+  "claim": "L131-6 LEGIARTI000048683707 (in force 2023-12-28): unified base for contributions = 40 000 - 10 400 = 29 600 €/an [conditional on the PLACEHOLDER pre-abattement line = revenu professionnel + cotisations facultatives déductibles; which income lines enter the base is NOT settled by the texts]",
+  "note": "T1b",
+  "check": {
+   "rule": "dirigeant . indépendant . assiette des cotisations",
+   "situation": {
+    "dirigeant . régime social": "'indépendant'",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . imposition": "'IR'",
+    "entreprise . activité . nature": "'commerciale'",
+    "dirigeant . indépendant . revenu professionnel": "40000 €/an",
+    "date": "01/12/2024"
+   },
+   "expect": 29600,
+   "tolerance": 0.001
+  }
+ },
+ {
+  "id": "T1b-P06",
+  "rule": "dirigeant . indépendant . cotisations et contributions . CSG-CRDS . assiette",
+  "article": "L136-3",
+  "quote": "fait l'objet d'un abattement de 26 %",
+  "claim": "L136-3 LEGIARTI000048683641 (in force 2023-12-28): CSG-CRDS assessed on the same abated base: 29 600 €/an (G1 added the contributions back: 52 788) [conditional on the PLACEHOLDER pre-abattement line = revenu professionnel + cotisations facultatives déductibles; which income lines enter the base is NOT settled by the texts]",
+  "note": "T1b",
+  "check": {
+   "rule": "dirigeant . indépendant . cotisations et contributions . CSG-CRDS . assiette",
+   "situation": {
+    "dirigeant . régime social": "'indépendant'",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . imposition": "'IR'",
+    "entreprise . activité . nature": "'commerciale'",
+    "dirigeant . indépendant . revenu professionnel": "40000 €/an",
+    "date": "01/12/2024"
+   },
+   "expect": 29600,
+   "tolerance": 0.001
+  }
+ },
+ {
+  "id": "T1b-P07",
+  "rule": "dirigeant . indépendant . assiette des cotisations",
+  "article": "L131-6",
+  "quote": "sont assises sur l'assiette définie à l'article L. 136-3",
+  "claim": "L131-6 LEGIARTI000048683707 (in force 2023-12-28): before the decree's in-force date (01/06/2024) the base is unchanged: 40 000 €/an.",
+  "note": "T1b",
+  "check": {
+   "rule": "dirigeant . indépendant . assiette des cotisations",
+   "situation": {
+    "dirigeant . régime social": "'indépendant'",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . imposition": "'IR'",
+    "entreprise . activité . nature": "'commerciale'",
+    "dirigeant . indépendant . revenu professionnel": "40000 €/an",
+    "date": "01/06/2024"
+   },
+   "expect": 40000,
+   "tolerance": 0.001
+  }
+ },
+ {
+  "id": "T1b-P08",
+  "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+  "article": "D621-2",
+  "quote": "inférieur à 20 % de la valeur annuelle du plafond mentionné au premier alinéa de l'article L. 241-3, le taux est nul",
+  "claim": "D621-2 LEGIARTI000049904592 (in force 2024-07-07, Décret n°2024-688 art. 2): assiette 10 % PASS (4 636,8) -> rate 0 %.",
+  "note": "T1b",
+  "check": {
+   "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+   "situation": {
+    "dirigeant . régime social": "'indépendant'",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . imposition": "'IR'",
+    "entreprise . activité . nature": "'commerciale'",
+    "dirigeant . indépendant . revenu professionnel": "40000 €/an",
+    "date": "01/12/2024",
+    "dirigeant . indépendant . assiette des cotisations": "4636.8 €/an"
+   },
+   "expect": 0,
+   "tolerance": 0.001
+  }
+ },
+ {
+  "id": "T1b-P09",
+  "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+  "article": "D621-2",
+  "quote": "T1 est égal à 1,5 %",
+  "claim": "D621-2 LEGIARTI000049904592 (in force 2024-07-07, Décret n°2024-688 art. 2): assiette 40 % PASS (18 547,2) -> T1 = 1,5 %.",
+  "note": "T1b",
+  "check": {
+   "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+   "situation": {
+    "dirigeant . régime social": "'indépendant'",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . imposition": "'IR'",
+    "entreprise . activité . nature": "'commerciale'",
+    "dirigeant . indépendant . revenu professionnel": "40000 €/an",
+    "date": "01/12/2024",
+    "dirigeant . indépendant . assiette des cotisations": "18547.2 €/an"
+   },
+   "expect": 1.5,
+   "tolerance": 0.001
+  }
+ },
+ {
+  "id": "T1b-P10",
+  "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+  "article": "D621-2",
+  "quote": "T2 est égal à 4 %",
+  "claim": "D621-2 LEGIARTI000049904592 (in force 2024-07-07, Décret n°2024-688 art. 2): assiette 60 % PASS (27 820,8) -> T2 = 4 %.",
+  "note": "T1b",
+  "check": {
+   "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+   "situation": {
+    "dirigeant . régime social": "'indépendant'",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . imposition": "'IR'",
+    "entreprise . activité . nature": "'commerciale'",
+    "dirigeant . indépendant . revenu professionnel": "40000 €/an",
+    "date": "01/12/2024",
+    "dirigeant . indépendant . assiette des cotisations": "27820.8 €/an"
+   },
+   "expect": 4,
+   "tolerance": 0.001
+  }
+ },
+ {
+  "id": "T1b-P11",
+  "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+  "article": "D621-2",
+  "quote": "T3 est égal à 6,5 %",
+  "claim": "D621-2 LEGIARTI000049904592 (in force 2024-07-07, Décret n°2024-688 art. 2): assiette 110 % PASS (51 004,8) -> T3 = 6,5 %.",
+  "note": "T1b",
+  "check": {
+   "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+   "situation": {
+    "dirigeant . régime social": "'indépendant'",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . imposition": "'IR'",
+    "entreprise . activité . nature": "'commerciale'",
+    "dirigeant . indépendant . revenu professionnel": "40000 €/an",
+    "date": "01/12/2024",
+    "dirigeant . indépendant . assiette des cotisations": "51004.8 €/an"
+   },
+   "expect": 6.5,
+   "tolerance": 0.001
+  }
+ },
+ {
+  "id": "T1b-P12",
+  "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+  "article": "D621-2",
+  "quote": "T4 est égal à 7,7 %",
+  "claim": "D621-2 LEGIARTI000049904592 (in force 2024-07-07, Décret n°2024-688 art. 2): assiette 200 % PASS (92 736) -> T4 = 7,7 %.",
+  "note": "T1b",
+  "check": {
+   "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+   "situation": {
+    "dirigeant . régime social": "'indépendant'",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . imposition": "'IR'",
+    "entreprise . activité . nature": "'commerciale'",
+    "dirigeant . indépendant . revenu professionnel": "40000 €/an",
+    "date": "01/12/2024",
+    "dirigeant . indépendant . assiette des cotisations": "92736 €/an"
+   },
+   "expect": 7.7,
+   "tolerance": 0.001
+  }
+ },
+ {
+  "id": "T1b-P13",
+  "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+  "article": "D621-2",
+  "quote": "T5 est égal à 8,5 %",
+  "claim": "D621-2 LEGIARTI000049904592 (in force 2024-07-07, Décret n°2024-688 art. 2): assiette 300 % PASS (139 104) -> T5 = 8,5 %.",
+  "note": "T1b",
+  "check": {
+   "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+   "situation": {
+    "dirigeant . régime social": "'indépendant'",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . imposition": "'IR'",
+    "entreprise . activité . nature": "'commerciale'",
+    "dirigeant . indépendant . revenu professionnel": "40000 €/an",
+    "date": "01/12/2024",
+    "dirigeant . indépendant . assiette des cotisations": "139104 €/an"
+   },
+   "expect": 8.5,
+   "tolerance": 0.001
+  }
+ },
+ {
+  "id": "T1b-P14",
+  "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+  "article": "D621-2",
+  "quote": "Taux = { (T3-T2) × [a-(0,6 × PSS)]/ (0,5 × PSS) } + T2",
+  "claim": "D621-2 LEGIARTI000049904592 (in force 2024-07-07, Décret n°2024-688 art. 2): 4° formula at 50 % PASS (23 184): (4-1,5) x 0,5 + 1,5 = 2,75 % ; at 150 % PASS: (7,7-6,5) x (0,4/0,9) + 6,5 = 7,033 -> 7,03 (rule rounds to 2 decimals).",
+  "note": "T1b",
+  "check": {
+   "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+   "situation": {
+    "dirigeant . régime social": "'indépendant'",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . imposition": "'IR'",
+    "entreprise . activité . nature": "'commerciale'",
+    "dirigeant . indépendant . revenu professionnel": "40000 €/an",
+    "date": "01/12/2024",
+    "dirigeant . indépendant . assiette des cotisations": "23184 €/an"
+   },
+   "expect": 2.75,
+   "tolerance": 0.001
+  }
+ },
+ {
+  "id": "T1b-P15",
+  "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+  "article": "D621-2",
+  "quote": "T4 est égal à 7,7 %",
+  "claim": "D621-2 LEGIARTI000049904592 (in force 2024-07-07, Décret n°2024-688 art. 2): 5° formula at 150 % PASS (69 552): 6,5 + 1,2 x 0,4/0,9 = 7,0333 ; rule rounds to 7,03.",
+  "note": "T1b",
+  "check": {
+   "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+   "situation": {
+    "dirigeant . régime social": "'indépendant'",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . imposition": "'IR'",
+    "entreprise . activité . nature": "'commerciale'",
+    "dirigeant . indépendant . revenu professionnel": "40000 €/an",
+    "date": "01/12/2024",
+    "dirigeant . indépendant . assiette des cotisations": "69552 €/an"
+   },
+   "expect": 7.0333,
+   "tolerance": 0.01
+  }
+ },
+ {
+  "id": "T1b-P16",
+  "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+  "article": "D621-2",
+  "quote": "a est l'assiette, telle que définie à l'article L. 131-6",
+  "claim": "D621-2 LEGIARTI000049904592 (in force 2024-07-07, Décret n°2024-688 art. 2): 'a' is the L131-6 base: trader base 29 600 = 63,84 % PASS -> 4 + 2,5 x (0,6384-0,6)/0,5 = 4,19 % [conditional on the PLACEHOLDER pre-abattement line = revenu professionnel + cotisations facultatives déductibles; which income lines enter the base is NOT settled by the texts]",
+  "note": "T1b",
+  "check": {
+   "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+   "situation": {
+    "dirigeant . régime social": "'indépendant'",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . imposition": "'IR'",
+    "entreprise . activité . nature": "'commerciale'",
+    "dirigeant . indépendant . revenu professionnel": "40000 €/an",
+    "date": "01/12/2024"
+   },
+   "expect": 4.19,
+   "tolerance": 0.001
+  }
+ },
+ {
+  "id": "T1b-P17",
+  "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+  "article": "D621-2",
+  "quote": "fait l'objet d'une réduction lorsque le montant annuel de leur assiette de cotisations est inférieur à trois fois la valeur annuelle du plafond",
+  "claim": "D621-2 LEGIARTI000049904592 (in force 2024-07-07, Décret n°2024-688 art. 2): ABSTENTION: above 300 % PASS the text ends the reduction and the base rate (L621-3 I / D621-1) applies; D621-1 is not in the bounded set. The proposal's 8,5 % above 300 % is the mechanical extension of the last tranche, not a transposed value.",
+  "note": "T1b",
+  "status": "UNKNOWN"
+ },
+ {
+  "id": "T1b-P18",
+  "rule": "dirigeant . indépendant . cotisations et contributions . retraite de base . taux",
+  "article": "D633-3",
+  "quote": "Le taux des cotisations assises sur l'assiette de cotisations dans la limite du plafond est fixé à 17,15 %",
+  "claim": "D633-3 LEGIARTI000049904636 (in force 2024-07-07, Décret n°2024-688 art. 3): first tranche (within PSS) = 17,15 % + 0,72 % on the whole base = 17,87 % (was 17,15 + 0,60 = 17,75).",
+  "note": "T1b",
+  "check": {
+   "rule": "dirigeant . indépendant . cotisations et contributions . retraite de base . taux",
+   "situation": {
+    "dirigeant . régime social": "'indépendant'",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . imposition": "'IR'",
+    "entreprise . activité . nature": "'commerciale'",
+    "dirigeant . indépendant . revenu professionnel": "40000 €/an",
+    "date": "01/12/2024"
+   },
+   "expect": 17.87,
+   "tolerance": 0.001
+  }
+ },
+ {
+  "id": "T1b-P19",
+  "rule": "dirigeant . indépendant . cotisations et contributions . retraite de base . taux déplafonné",
+  "article": "D633-3",
+  "quote": "Le taux des cotisations assises sur la totalité de l'assiette de cotisations est fixé à 0,72 %",
+  "claim": "D633-3 LEGIARTI000049904636 (in force 2024-07-07, Décret n°2024-688 art. 3): rate on the whole base above the PSS: 0,72 % (was 0,60 %).",
+  "note": "T1b",
+  "check": {
+   "rule": "dirigeant . indépendant . cotisations et contributions . retraite de base . taux déplafonné",
+   "situation": {
+    "dirigeant . régime social": "'indépendant'",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . imposition": "'IR'",
+    "entreprise . activité . nature": "'commerciale'",
+    "dirigeant . indépendant . revenu professionnel": "40000 €/an",
+    "date": "01/12/2024"
+   },
+   "expect": 0.72,
+   "tolerance": 0.001
+  }
+ },
+ {
+  "id": "T1b-P20",
+  "rule": "dirigeant . indépendant . cotisations et contributions . retraite de base",
+  "article": "D633-3",
+  "quote": "Le taux des cotisations assises sur l'assiette de cotisations dans la limite du plafond est fixé à 17,15 %",
+  "claim": "D633-3 LEGIARTI000049904636 (in force 2024-07-07, Décret n°2024-688 art. 3): trader: 29 600 x 17,87 % = 5 289,52 -> 5 290 €/an (rounded) [conditional on the PLACEHOLDER pre-abattement line = revenu professionnel + cotisations facultatives déductibles; which income lines enter the base is NOT settled by the texts]",
+  "note": "T1b",
+  "check": {
+   "rule": "dirigeant . indépendant . cotisations et contributions . retraite de base",
+   "situation": {
+    "dirigeant . régime social": "'indépendant'",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . imposition": "'IR'",
+    "entreprise . activité . nature": "'commerciale'",
+    "dirigeant . indépendant . revenu professionnel": "40000 €/an",
+    "date": "01/12/2024"
+   },
+   "expect": 5290,
+   "tolerance": 0.6
+  }
+ },
+ {
+  "id": "T1b-P21",
+  "rule": "dirigeant . indépendant . cotisations et contributions . retraite de base . taux",
+  "article": "D633-3",
+  "quote": "Le taux des cotisations assises sur l'assiette de cotisations dans la limite du plafond est fixé à 17,15 %",
+  "claim": "D633-3 LEGIARTI000049904636 (in force 2024-07-07, Décret n°2024-688 art. 3): before 07/07/2024 the rule keeps 17,75 % (01/06/2024).",
+  "note": "T1b",
+  "check": {
+   "rule": "dirigeant . indépendant . cotisations et contributions . retraite de base . taux",
+   "situation": {
+    "dirigeant . régime social": "'indépendant'",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . imposition": "'IR'",
+    "entreprise . activité . nature": "'commerciale'",
+    "dirigeant . indépendant . revenu professionnel": "40000 €/an",
+    "date": "01/06/2024"
+   },
+   "expect": 17.75,
+   "tolerance": 0.001
+  }
+ },
+ {
+  "id": "T1b-P22",
+  "rule": "dirigeant . indépendant . assiette des cotisations . réforme assiette 2024 . assiette avant abattement",
+  "article": "L136-3",
+  "quote": "sur le montant, hors plus-values et moins-values de long terme, des produits tirés de ces mêmes activités, diminué du montant des charges que l'acquisition de ces produits nécessitent",
+  "claim": "L136-3 LEGIARTI000048683641 (in force 2023-12-28): ABSTENTION (PLACEHOLDER): the texts do not settle which income lines enter the base (treatment of compulsory contributions, Madelin contributions, spouse contributions); the rule reuses the library's existing line pending a text.",
+  "note": "T1b",
+  "status": "UNKNOWN"
+ },
+ {
+  "id": "T1b-P23",
+  "rule": "dirigeant . indépendant . assiette des cotisations . réforme assiette 2024 . assiette avant abattement",
+  "article": "L131-6",
+  "quote": "En sont toutefois déduites les sommes mentionnées aux articles L. 3312-4, L. 3324-5 et L. 3332-27 du code du travail",
+  "claim": "L131-6 LEGIARTI000048683707 (in force 2023-12-28): NOT transposed: deductions of épargne salariale sums (L. 3312-4, L. 3324-5, L. 3332-27 code du travail) and the inclusion of revenus de remplacement - no rule/input exists for them.",
+  "note": "T1b",
+  "status": "UNKNOWN"
+ },
+ {
+  "id": "T1b-P24",
+  "rule": "dirigeant . indépendant . cotisations et contributions . retraite complémentaire",
+  "article": "L131-6",
+  "quote": "sont assises sur l'assiette définie à l'article L. 136-3",
+  "claim": "L131-6 LEGIARTI000048683707 (in force 2023-12-28): base change only (7 %/8 % rates not in the bounded set): trader 29 600 x 7 % = 2 072 €/an [conditional on the PLACEHOLDER pre-abattement line = revenu professionnel + cotisations facultatives déductibles; which income lines enter the base is NOT settled by the texts]",
+  "note": "T1b",
+  "check": {
+   "rule": "dirigeant . indépendant . cotisations et contributions . retraite complémentaire",
+   "situation": {
+    "dirigeant . régime social": "'indépendant'",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . imposition": "'IR'",
+    "entreprise . activité . nature": "'commerciale'",
+    "dirigeant . indépendant . revenu professionnel": "40000 €/an",
+    "date": "01/12/2024"
+   },
+   "expect": 2072,
+   "tolerance": 0.6
+  }
+ },
+ {
+  "id": "T1b-P25",
+  "rule": "dirigeant . indépendant . cotisations et contributions . invalidité et décès",
+  "article": "L131-6",
+  "quote": "sont assises sur l'assiette définie à l'article L. 136-3",
+  "claim": "L131-6 LEGIARTI000048683707 (in force 2023-12-28): base change only (1,3 % not in the bounded set): 29 600 x 1,3 % = 384,8 -> 385 €/an [conditional on the PLACEHOLDER pre-abattement line = revenu professionnel + cotisations facultatives déductibles; which income lines enter the base is NOT settled by the texts]",
+  "note": "T1b",
+  "check": {
+   "rule": "dirigeant . indépendant . cotisations et contributions . invalidité et décès",
+   "situation": {
+    "dirigeant . régime social": "'indépendant'",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . imposition": "'IR'",
+    "entreprise . activité . nature": "'commerciale'",
+    "dirigeant . indépendant . revenu professionnel": "40000 €/an",
+    "date": "01/12/2024"
+   },
+   "expect": 385,
+   "tolerance": 0.6
+  }
+ },
+ {
+  "id": "T1b-P26",
+  "rule": "dirigeant . indépendant . cotisations et contributions . indemnités journalières maladie",
+  "article": "L131-6",
+  "quote": "sont assises sur l'assiette définie à l'article L. 136-3",
+  "claim": "L131-6 LEGIARTI000048683707 (in force 2023-12-28): base change only (0,5 % not in the bounded set): 29 600 x 0,5 % = 148 €/an [conditional on the PLACEHOLDER pre-abattement line = revenu professionnel + cotisations facultatives déductibles; which income lines enter the base is NOT settled by the texts]",
+  "note": "T1b",
+  "check": {
+   "rule": "dirigeant . indépendant . cotisations et contributions . indemnités journalières maladie",
+   "situation": {
+    "dirigeant . régime social": "'indépendant'",
+    "entreprise . catégorie juridique": "'EI'",
+    "entreprise . imposition": "'IR'",
+    "entreprise . activité . nature": "'commerciale'",
+    "dirigeant . indépendant . revenu professionnel": "40000 €/an",
+    "date": "01/12/2024"
+   },
+   "expect": 148,
+   "tolerance": 0.6
+  }
+ },
+ {
+  "id": "T1b-P27",
+  "rule": "dirigeant . indépendant . assiette des cotisations . réforme assiette 2024",
+  "article": "D136-5",
+  "quote": "Le montant plancher prévu au III de l'article L. 136-3 est fixé à 1,76 % de la valeur annuelle du plafond de la sécurité sociale",
+  "claim": "D136-5 LEGIARTI000049899286 (in force 2024-07-07, Décret n°2024-688 du 5 juillet 2024 art. 1): date gate: the rule is true from the consolidated in-force date of Décret n°2024-688 (2024-07-07); the application date to a given contribution year is not stated in the bounded texts -> flagged.",
+  "note": "T1b",
+  "status": "INFERRED"
+ }
+]

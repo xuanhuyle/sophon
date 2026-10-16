@@ -1,0 +1,813 @@
+{
+ "as_of": "2024-12-01",
+ "question": {
+  "rule": null,
+  "article": "D621-2"
+ },
+ "generated_at": "2026-10-11T17:30:20+00:00",
+ "links": [
+  {
+   "link_id": "L0041",
+   "recorded_at": "2026-10-11T16:47:13+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+   "rules_snapshot": "G0",
+   "rule_file": "règles/dirigeant/indépendant.publicodes",
+   "rule_file_sha256": "7ab4795e7a7dcf44baf8a092e6f1c968d08be2a98100a0c0639f38efd47fbf23",
+   "article": "D621-2",
+   "article_id": "LEGIARTI000046714747",
+   "article_dateDebut": "2022-12-10",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "a9423a943a2ed96db2eb7dfb1a10ca79c39f3da130db06410039f62244f87af6",
+   "law_snapshot": "S0",
+   "quote": "Lorsque le montant annuel de leur revenu d'activité est inférieur à 40 % de la valeur annuelle du plafond mentionné au premier alinéa de l'article L. 241-3, le taux prévu au I est égal à 0,50 %",
+   "claim": "r = 9 000 €/an < 40 % PSS → maladie rate 0,50 %.",
+   "check": {
+    "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+    "situation": {
+     "date": "01/07/2024",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "non",
+     "entreprise . activité . nature": "'commerciale'",
+     "entreprise . imposition": "'IR'",
+     "dirigeant . indépendant . revenu professionnel": "9000 €/an",
+     "entreprise . date de création": "01/01/2021"
+    },
+    "expect": 0.5,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 0.5,
+    "expected": 0.5,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0042",
+   "recorded_at": "2026-10-11T16:47:14+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+   "rules_snapshot": "G0",
+   "rule_file": "règles/dirigeant/indépendant.publicodes",
+   "rule_file_sha256": "7ab4795e7a7dcf44baf8a092e6f1c968d08be2a98100a0c0639f38efd47fbf23",
+   "article": "D621-2",
+   "article_id": "LEGIARTI000046714747",
+   "article_dateDebut": "2022-12-10",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "a9423a943a2ed96db2eb7dfb1a10ca79c39f3da130db06410039f62244f87af6",
+   "law_snapshot": "S0",
+   "quote": "Taux = { [(T2-T1)/ (0,2 × PSS)] × [r-(0,4 × PSS)] } + T1 Où : -T2 est égal à 4,5 % ; -T1 est égal à 0,5 %",
+   "claim": "r = 50 % PSS (23 184 €/an) → (4,5−0,5)/0,2 × 0,1 + 0,5 = 2,5 %.",
+   "check": {
+    "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+    "situation": {
+     "date": "01/07/2024",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "non",
+     "entreprise . activité . nature": "'commerciale'",
+     "entreprise . imposition": "'IR'",
+     "dirigeant . indépendant . revenu professionnel": "23184 €/an",
+     "entreprise . date de création": "01/01/2021"
+    },
+    "expect": 2.5,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 2.5,
+    "expected": 2.5,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0043",
+   "recorded_at": "2026-10-11T16:47:16+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+   "rules_snapshot": "G0",
+   "rule_file": "règles/dirigeant/indépendant.publicodes",
+   "rule_file_sha256": "7ab4795e7a7dcf44baf8a092e6f1c968d08be2a98100a0c0639f38efd47fbf23",
+   "article": "D621-2",
+   "article_id": "LEGIARTI000046714747",
+   "article_dateDebut": "2022-12-10",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "a9423a943a2ed96db2eb7dfb1a10ca79c39f3da130db06410039f62244f87af6",
+   "law_snapshot": "S0",
+   "quote": "Taux = { [(T2-T1)/ (0,2 × PSS)] × [r-(0,4 × PSS)] } + T1 Où : -T2 est égal à 4,5 % ; -T1 est égal à 0,5 %",
+   "claim": "r = 60 % PSS (27 821 €/an) → T2 = 4,5 %.",
+   "check": {
+    "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+    "situation": {
+     "date": "01/07/2024",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "non",
+     "entreprise . activité . nature": "'commerciale'",
+     "entreprise . imposition": "'IR'",
+     "dirigeant . indépendant . revenu professionnel": "27821 €/an",
+     "entreprise . date de création": "01/01/2021"
+    },
+    "expect": 4.5,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 4.5,
+    "expected": 4.5,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0044",
+   "recorded_at": "2026-10-11T16:47:17+00:00",
+   "status": "INFERRED",
+   "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+   "rules_snapshot": "G0",
+   "rule_file": "règles/dirigeant/indépendant.publicodes",
+   "rule_file_sha256": "7ab4795e7a7dcf44baf8a092e6f1c968d08be2a98100a0c0639f38efd47fbf23",
+   "article": "D621-2",
+   "article_id": "LEGIARTI000046714747",
+   "article_dateDebut": "2022-12-10",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "a9423a943a2ed96db2eb7dfb1a10ca79c39f3da130db06410039f62244f87af6",
+   "law_snapshot": "S0",
+   "quote": "Taux = { [(T3-T2)/ (0,5 × PSS)] × [r-(0,6 × PSS)] } + T2 Où : -T3 est égal au taux de cotisation fixé au I de l'article D. 621-1",
+   "claim": "60–110 % PSS: linear from 4,5 % to T3 (rate of D621-1, outside the bounded set); library uses T3 = 7,20 % (observed 5,99 % at 87,5 % PSS, 7,2 % above 110 %).",
+   "check": null,
+   "check_result": null,
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0045",
+   "recorded_at": "2026-10-11T16:47:17+00:00",
+   "status": "UNKNOWN",
+   "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+   "rules_snapshot": "G0",
+   "rule_file": "règles/dirigeant/indépendant.publicodes",
+   "rule_file_sha256": "7ab4795e7a7dcf44baf8a092e6f1c968d08be2a98100a0c0639f38efd47fbf23",
+   "article": "D621-2",
+   "article_id": "LEGIARTI000046714747",
+   "article_dateDebut": "2022-12-10",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "a9423a943a2ed96db2eb7dfb1a10ca79c39f3da130db06410039f62244f87af6",
+   "law_snapshot": "S0",
+   "quote": "fait l'objet d'une réduction lorsque le montant annuel de leur revenu d'activité est inférieur à 110 % de la valeur annuelle du plafond mentionné au premier alinéa de l'article L. 241-3",
+   "claim": "No reduction above 110 % PSS: engine gives the full rate 7,20 % at 60 000 €/an; the full rate itself (D621-1) is outside the bounded set.",
+   "check": null,
+   "check_result": null,
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0076",
+   "recorded_at": "2026-10-11T17:28:20+00:00",
+   "status": "FAILED",
+   "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+   "rules_snapshot": "G1",
+   "rule_file": "règles/dirigeant/indépendant.publicodes",
+   "rule_file_sha256": "7ab4795e7a7dcf44baf8a092e6f1c968d08be2a98100a0c0639f38efd47fbf23",
+   "article": "D621-2",
+   "article_id": "LEGIARTI000049904592",
+   "article_dateDebut": "2024-07-07",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "2121165661639094356eef2aec96c32be8be68ecb0add88ce6529b2d7a61d327",
+   "law_snapshot": "S3",
+   "quote": "T2 est égal à 4 %",
+   "claim": "D621-2 LEGIARTI000049904592 (in force 2024-07-07, Décret n°2024-688 art. 2): G1 gives 4,5 % at 60 % PASS; text T2 = 4 %. Expected to FAIL.",
+   "check": {
+    "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+    "situation": {
+     "dirigeant . régime social": "'indépendant'",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . imposition": "'IR'",
+     "entreprise . activité . nature": "'commerciale'",
+     "dirigeant . indépendant . revenu professionnel": "40000 €/an",
+     "date": "01/12/2024",
+     "dirigeant . indépendant . assiette des cotisations": "27820.8 €/an"
+    },
+    "expect": 4.0,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": false,
+    "observed": 4.5,
+    "expected": 4.0,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": "observed != expected"
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0077",
+   "recorded_at": "2026-10-11T17:28:22+00:00",
+   "status": "FAILED",
+   "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+   "rules_snapshot": "G1",
+   "rule_file": "règles/dirigeant/indépendant.publicodes",
+   "rule_file_sha256": "7ab4795e7a7dcf44baf8a092e6f1c968d08be2a98100a0c0639f38efd47fbf23",
+   "article": "D621-2",
+   "article_id": "LEGIARTI000049904592",
+   "article_dateDebut": "2024-07-07",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "2121165661639094356eef2aec96c32be8be68ecb0add88ce6529b2d7a61d327",
+   "law_snapshot": "S3",
+   "quote": "inférieur à 20 % de la valeur annuelle du plafond mentionné au premier alinéa de l'article L. 241-3, le taux est nul",
+   "claim": "D621-2 LEGIARTI000049904592 (in force 2024-07-07, Décret n°2024-688 art. 2): G1 gives 0,5 % below 20 % PASS; text: taux nul. Expected to FAIL.",
+   "check": {
+    "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+    "situation": {
+     "dirigeant . régime social": "'indépendant'",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . imposition": "'IR'",
+     "entreprise . activité . nature": "'commerciale'",
+     "dirigeant . indépendant . revenu professionnel": "40000 €/an",
+     "date": "01/12/2024",
+     "dirigeant . indépendant . assiette des cotisations": "4636.8 €/an"
+    },
+    "expect": 0.0,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": false,
+    "observed": 0.5,
+    "expected": 0.0,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": "observed != expected"
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0080",
+   "recorded_at": "2026-10-11T17:28:24+00:00",
+   "status": "UNKNOWN",
+   "rule": "dirigeant . indépendant . assiette minimale . maladie",
+   "rules_snapshot": "G1",
+   "rule_file": "règles/dirigeant/indépendant.publicodes",
+   "rule_file_sha256": "7ab4795e7a7dcf44baf8a092e6f1c968d08be2a98100a0c0639f38efd47fbf23",
+   "article": "D621-2",
+   "article_id": "LEGIARTI000049904592",
+   "article_dateDebut": "2024-07-07",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "2121165661639094356eef2aec96c32be8be68ecb0add88ce6529b2d7a61d327",
+   "law_snapshot": "S3",
+   "quote": "inférieur à 20 % de la valeur annuelle du plafond mentionné au premier alinéa de l'article L. 241-3, le taux est nul",
+   "claim": "D621-2 LEGIARTI000049904592 (in force 2024-07-07, Décret n°2024-688 art. 2): NEEDS_REVIEW: the 40 % PASS floor of the maladie/IJ base comes from an article outside the set; the new 0 % rate below 20 % PASS interacts with it. No value proposed.",
+   "check": null,
+   "check_result": null,
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0082",
+   "recorded_at": "2026-10-11T17:28:27+00:00",
+   "status": "FAILED",
+   "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+   "rules_snapshot": "G1",
+   "rule_file": "règles/dirigeant/indépendant.publicodes",
+   "rule_file_sha256": "7ab4795e7a7dcf44baf8a092e6f1c968d08be2a98100a0c0639f38efd47fbf23",
+   "article": "D621-2",
+   "article_id": "LEGIARTI000049904592",
+   "article_dateDebut": "2024-07-07",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "2121165661639094356eef2aec96c32be8be68ecb0add88ce6529b2d7a61d327",
+   "law_snapshot": "S3",
+   "quote": "a est l'assiette, telle que définie à l'article L. 131-6",
+   "claim": "D621-2 LEGIARTI000049904592 (in force 2024-07-07, Décret n°2024-688 art. 2): G1 rate at the trader's base: 5,92 % on 40 000 (old formula, old base); text requires 4,19 % on the abated base [conditional on the PLACEHOLDER pre-abattement line = revenu professionnel + cotisations facultatives déductibles; which income lines enter the base is NOT settled by the texts]. Expected to FAIL.",
+   "check": {
+    "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+    "situation": {
+     "dirigeant . régime social": "'indépendant'",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . imposition": "'IR'",
+     "entreprise . activité . nature": "'commerciale'",
+     "dirigeant . indépendant . revenu professionnel": "40000 €/an",
+     "date": "01/12/2024"
+    },
+    "expect": 4.19,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": false,
+    "observed": 5.92,
+    "expected": 4.19,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": "observed != expected"
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0090",
+   "recorded_at": "2026-10-11T17:28:38+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+   "rules_snapshot": "P_T1b",
+   "rule_file": "règles/dirigeant/indépendant.publicodes",
+   "rule_file_sha256": "d3734880afd8b9713583803802a4b912af52824f882b99bc91f7b7b287c25372",
+   "article": "D621-2",
+   "article_id": "LEGIARTI000049904592",
+   "article_dateDebut": "2024-07-07",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "2121165661639094356eef2aec96c32be8be68ecb0add88ce6529b2d7a61d327",
+   "law_snapshot": "S3",
+   "quote": "inférieur à 20 % de la valeur annuelle du plafond mentionné au premier alinéa de l'article L. 241-3, le taux est nul",
+   "claim": "D621-2 LEGIARTI000049904592 (in force 2024-07-07, Décret n°2024-688 art. 2): assiette 10 % PASS (4 636,8) -> rate 0 %.",
+   "check": {
+    "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+    "situation": {
+     "dirigeant . régime social": "'indépendant'",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . imposition": "'IR'",
+     "entreprise . activité . nature": "'commerciale'",
+     "dirigeant . indépendant . revenu professionnel": "40000 €/an",
+     "date": "01/12/2024",
+     "dirigeant . indépendant . assiette des cotisations": "4636.8 €/an"
+    },
+    "expect": 0.0,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 0,
+    "expected": 0.0,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0091",
+   "recorded_at": "2026-10-11T17:28:40+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+   "rules_snapshot": "P_T1b",
+   "rule_file": "règles/dirigeant/indépendant.publicodes",
+   "rule_file_sha256": "d3734880afd8b9713583803802a4b912af52824f882b99bc91f7b7b287c25372",
+   "article": "D621-2",
+   "article_id": "LEGIARTI000049904592",
+   "article_dateDebut": "2024-07-07",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "2121165661639094356eef2aec96c32be8be68ecb0add88ce6529b2d7a61d327",
+   "law_snapshot": "S3",
+   "quote": "T1 est égal à 1,5 %",
+   "claim": "D621-2 LEGIARTI000049904592 (in force 2024-07-07, Décret n°2024-688 art. 2): assiette 40 % PASS (18 547,2) -> T1 = 1,5 %.",
+   "check": {
+    "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+    "situation": {
+     "dirigeant . régime social": "'indépendant'",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . imposition": "'IR'",
+     "entreprise . activité . nature": "'commerciale'",
+     "dirigeant . indépendant . revenu professionnel": "40000 €/an",
+     "date": "01/12/2024",
+     "dirigeant . indépendant . assiette des cotisations": "18547.2 €/an"
+    },
+    "expect": 1.5,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 1.5,
+    "expected": 1.5,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0092",
+   "recorded_at": "2026-10-11T17:28:41+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+   "rules_snapshot": "P_T1b",
+   "rule_file": "règles/dirigeant/indépendant.publicodes",
+   "rule_file_sha256": "d3734880afd8b9713583803802a4b912af52824f882b99bc91f7b7b287c25372",
+   "article": "D621-2",
+   "article_id": "LEGIARTI000049904592",
+   "article_dateDebut": "2024-07-07",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "2121165661639094356eef2aec96c32be8be68ecb0add88ce6529b2d7a61d327",
+   "law_snapshot": "S3",
+   "quote": "T2 est égal à 4 %",
+   "claim": "D621-2 LEGIARTI000049904592 (in force 2024-07-07, Décret n°2024-688 art. 2): assiette 60 % PASS (27 820,8) -> T2 = 4 %.",
+   "check": {
+    "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+    "situation": {
+     "dirigeant . régime social": "'indépendant'",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . imposition": "'IR'",
+     "entreprise . activité . nature": "'commerciale'",
+     "dirigeant . indépendant . revenu professionnel": "40000 €/an",
+     "date": "01/12/2024",
+     "dirigeant . indépendant . assiette des cotisations": "27820.8 €/an"
+    },
+    "expect": 4.0,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 4,
+    "expected": 4.0,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0093",
+   "recorded_at": "2026-10-11T17:28:42+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+   "rules_snapshot": "P_T1b",
+   "rule_file": "règles/dirigeant/indépendant.publicodes",
+   "rule_file_sha256": "d3734880afd8b9713583803802a4b912af52824f882b99bc91f7b7b287c25372",
+   "article": "D621-2",
+   "article_id": "LEGIARTI000049904592",
+   "article_dateDebut": "2024-07-07",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "2121165661639094356eef2aec96c32be8be68ecb0add88ce6529b2d7a61d327",
+   "law_snapshot": "S3",
+   "quote": "T3 est égal à 6,5 %",
+   "claim": "D621-2 LEGIARTI000049904592 (in force 2024-07-07, Décret n°2024-688 art. 2): assiette 110 % PASS (51 004,8) -> T3 = 6,5 %.",
+   "check": {
+    "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+    "situation": {
+     "dirigeant . régime social": "'indépendant'",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . imposition": "'IR'",
+     "entreprise . activité . nature": "'commerciale'",
+     "dirigeant . indépendant . revenu professionnel": "40000 €/an",
+     "date": "01/12/2024",
+     "dirigeant . indépendant . assiette des cotisations": "51004.8 €/an"
+    },
+    "expect": 6.5,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 6.5,
+    "expected": 6.5,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0094",
+   "recorded_at": "2026-10-11T17:28:44+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+   "rules_snapshot": "P_T1b",
+   "rule_file": "règles/dirigeant/indépendant.publicodes",
+   "rule_file_sha256": "d3734880afd8b9713583803802a4b912af52824f882b99bc91f7b7b287c25372",
+   "article": "D621-2",
+   "article_id": "LEGIARTI000049904592",
+   "article_dateDebut": "2024-07-07",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "2121165661639094356eef2aec96c32be8be68ecb0add88ce6529b2d7a61d327",
+   "law_snapshot": "S3",
+   "quote": "T4 est égal à 7,7 %",
+   "claim": "D621-2 LEGIARTI000049904592 (in force 2024-07-07, Décret n°2024-688 art. 2): assiette 200 % PASS (92 736) -> T4 = 7,7 %.",
+   "check": {
+    "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+    "situation": {
+     "dirigeant . régime social": "'indépendant'",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . imposition": "'IR'",
+     "entreprise . activité . nature": "'commerciale'",
+     "dirigeant . indépendant . revenu professionnel": "40000 €/an",
+     "date": "01/12/2024",
+     "dirigeant . indépendant . assiette des cotisations": "92736 €/an"
+    },
+    "expect": 7.7,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 7.7,
+    "expected": 7.7,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0095",
+   "recorded_at": "2026-10-11T17:28:45+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+   "rules_snapshot": "P_T1b",
+   "rule_file": "règles/dirigeant/indépendant.publicodes",
+   "rule_file_sha256": "d3734880afd8b9713583803802a4b912af52824f882b99bc91f7b7b287c25372",
+   "article": "D621-2",
+   "article_id": "LEGIARTI000049904592",
+   "article_dateDebut": "2024-07-07",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "2121165661639094356eef2aec96c32be8be68ecb0add88ce6529b2d7a61d327",
+   "law_snapshot": "S3",
+   "quote": "T5 est égal à 8,5 %",
+   "claim": "D621-2 LEGIARTI000049904592 (in force 2024-07-07, Décret n°2024-688 art. 2): assiette 300 % PASS (139 104) -> T5 = 8,5 %.",
+   "check": {
+    "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+    "situation": {
+     "dirigeant . régime social": "'indépendant'",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . imposition": "'IR'",
+     "entreprise . activité . nature": "'commerciale'",
+     "dirigeant . indépendant . revenu professionnel": "40000 €/an",
+     "date": "01/12/2024",
+     "dirigeant . indépendant . assiette des cotisations": "139104 €/an"
+    },
+    "expect": 8.5,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 8.5,
+    "expected": 8.5,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0096",
+   "recorded_at": "2026-10-11T17:28:47+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+   "rules_snapshot": "P_T1b",
+   "rule_file": "règles/dirigeant/indépendant.publicodes",
+   "rule_file_sha256": "d3734880afd8b9713583803802a4b912af52824f882b99bc91f7b7b287c25372",
+   "article": "D621-2",
+   "article_id": "LEGIARTI000049904592",
+   "article_dateDebut": "2024-07-07",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "2121165661639094356eef2aec96c32be8be68ecb0add88ce6529b2d7a61d327",
+   "law_snapshot": "S3",
+   "quote": "Taux = { (T3-T2) × [a-(0,6 × PSS)]/ (0,5 × PSS) } + T2",
+   "claim": "D621-2 LEGIARTI000049904592 (in force 2024-07-07, Décret n°2024-688 art. 2): 4° formula at 50 % PASS (23 184): (4-1,5) x 0,5 + 1,5 = 2,75 % ; at 150 % PASS: (7,7-6,5) x (0,4/0,9) + 6,5 = 7,033 -> 7,03 (rule rounds to 2 decimals).",
+   "check": {
+    "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+    "situation": {
+     "dirigeant . régime social": "'indépendant'",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . imposition": "'IR'",
+     "entreprise . activité . nature": "'commerciale'",
+     "dirigeant . indépendant . revenu professionnel": "40000 €/an",
+     "date": "01/12/2024",
+     "dirigeant . indépendant . assiette des cotisations": "23184 €/an"
+    },
+    "expect": 2.75,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 2.75,
+    "expected": 2.75,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0097",
+   "recorded_at": "2026-10-11T17:28:48+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+   "rules_snapshot": "P_T1b",
+   "rule_file": "règles/dirigeant/indépendant.publicodes",
+   "rule_file_sha256": "d3734880afd8b9713583803802a4b912af52824f882b99bc91f7b7b287c25372",
+   "article": "D621-2",
+   "article_id": "LEGIARTI000049904592",
+   "article_dateDebut": "2024-07-07",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "2121165661639094356eef2aec96c32be8be68ecb0add88ce6529b2d7a61d327",
+   "law_snapshot": "S3",
+   "quote": "T4 est égal à 7,7 %",
+   "claim": "D621-2 LEGIARTI000049904592 (in force 2024-07-07, Décret n°2024-688 art. 2): 5° formula at 150 % PASS (69 552): 6,5 + 1,2 x 0,4/0,9 = 7,0333 ; rule rounds to 7,03.",
+   "check": {
+    "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+    "situation": {
+     "dirigeant . régime social": "'indépendant'",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . imposition": "'IR'",
+     "entreprise . activité . nature": "'commerciale'",
+     "dirigeant . indépendant . revenu professionnel": "40000 €/an",
+     "date": "01/12/2024",
+     "dirigeant . indépendant . assiette des cotisations": "69552 €/an"
+    },
+    "expect": 7.0333,
+    "tolerance": 0.01
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 7.03,
+    "expected": 7.0333,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0098",
+   "recorded_at": "2026-10-11T17:28:50+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+   "rules_snapshot": "P_T1b",
+   "rule_file": "règles/dirigeant/indépendant.publicodes",
+   "rule_file_sha256": "d3734880afd8b9713583803802a4b912af52824f882b99bc91f7b7b287c25372",
+   "article": "D621-2",
+   "article_id": "LEGIARTI000049904592",
+   "article_dateDebut": "2024-07-07",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "2121165661639094356eef2aec96c32be8be68ecb0add88ce6529b2d7a61d327",
+   "law_snapshot": "S3",
+   "quote": "a est l'assiette, telle que définie à l'article L. 131-6",
+   "claim": "D621-2 LEGIARTI000049904592 (in force 2024-07-07, Décret n°2024-688 art. 2): 'a' is the L131-6 base: trader base 29 600 = 63,84 % PASS -> 4 + 2,5 x (0,6384-0,6)/0,5 = 4,19 % [conditional on the PLACEHOLDER pre-abattement line = revenu professionnel + cotisations facultatives déductibles; which income lines enter the base is NOT settled by the texts]",
+   "check": {
+    "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+    "situation": {
+     "dirigeant . régime social": "'indépendant'",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . imposition": "'IR'",
+     "entreprise . activité . nature": "'commerciale'",
+     "dirigeant . indépendant . revenu professionnel": "40000 €/an",
+     "date": "01/12/2024"
+    },
+    "expect": 4.19,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 4.19,
+    "expected": 4.19,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0099",
+   "recorded_at": "2026-10-11T17:28:50+00:00",
+   "status": "UNKNOWN",
+   "rule": "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+   "rules_snapshot": "P_T1b",
+   "rule_file": "règles/dirigeant/indépendant.publicodes",
+   "rule_file_sha256": "d3734880afd8b9713583803802a4b912af52824f882b99bc91f7b7b287c25372",
+   "article": "D621-2",
+   "article_id": "LEGIARTI000049904592",
+   "article_dateDebut": "2024-07-07",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "2121165661639094356eef2aec96c32be8be68ecb0add88ce6529b2d7a61d327",
+   "law_snapshot": "S3",
+   "quote": "fait l'objet d'une réduction lorsque le montant annuel de leur assiette de cotisations est inférieur à trois fois la valeur annuelle du plafond",
+   "claim": "D621-2 LEGIARTI000049904592 (in force 2024-07-07, Décret n°2024-688 art. 2): ABSTENTION: above 300 % PASS the text ends the reduction and the base rate (L621-3 I / D621-1) applies; D621-1 is not in the bounded set. The proposal's 8,5 % above 300 % is the mechanical extension of the last tranche, not a transposed value.",
+   "check": null,
+   "check_result": null,
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  }
+ ],
+ "article_versions_known": [
+  {
+   "law_snapshot": "S0",
+   "published": "2024-05-25T23:36:37.034Z",
+   "article": "D621-2",
+   "id": "LEGIARTI000046714747",
+   "etat": "VIGUEUR",
+   "dateDebut": "2022-12-10",
+   "dateFin": "2999-01-01",
+   "in_force_on_date": true,
+   "text_sha256": "a9423a943a2ed96db2eb7dfb1a10ca79c39f3da130db06410039f62244f87af6"
+  },
+  {
+   "law_snapshot": "S1",
+   "published": "2024-06-01T23:22:24.265Z",
+   "article": "D621-2",
+   "id": "LEGIARTI000046714747",
+   "etat": "VIGUEUR",
+   "dateDebut": "2022-12-10",
+   "dateFin": "2999-01-01",
+   "in_force_on_date": true,
+   "text_sha256": "a9423a943a2ed96db2eb7dfb1a10ca79c39f3da130db06410039f62244f87af6"
+  },
+  {
+   "law_snapshot": "S3",
+   "published": "2024-07-17T15:37:04.165Z",
+   "article": "D621-2",
+   "id": "LEGIARTI000049904592",
+   "etat": "VIGUEUR",
+   "dateDebut": "2024-07-07",
+   "dateFin": "2999-01-01",
+   "in_force_on_date": true,
+   "text_sha256": "2121165661639094356eef2aec96c32be8be68ecb0add88ce6529b2d7a61d327"
+  }
+ ],
+ "rules_snapshots_known": [
+  {
+   "snapshot": "G0",
+   "commit": "d9242882f96bda5b4418b7c1c3ff46b0e2a1c5ce",
+   "committed": "2024-05-15 09:38:43 +0200"
+  },
+  {
+   "snapshot": "G1",
+   "commit": "2a0e452617fc33b955096f4bb7f7f305ec0670ad",
+   "committed": "2024-07-16 21:29:59 +0200"
+  },
+  {
+   "snapshot": "P_T1a",
+   "commit": null,
+   "committed": null
+  },
+  {
+   "snapshot": "P_T1b",
+   "commit": "2a0e452617fc33b955096f4bb7f7f305ec0670ad",
+   "committed": "2024-07-16 21:29:59 +0200"
+  }
+ ],
+ "approvals": [
+  "none recorded"
+ ],
+ "limits": [
+  "Only what was recorded in this store is reported; absence of a record is reported as absence, not inferred.",
+  "Snapshot publish dates are when the governing text was captured, not when it entered into force; both are listed.",
+  "A matching hash shows the preserved text is unchanged; it does not show the interpretation is correct or that anyone authorised it."
+ ]
+}

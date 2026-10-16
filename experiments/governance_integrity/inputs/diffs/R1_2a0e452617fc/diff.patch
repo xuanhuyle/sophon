@@ -1,0 +1,23 @@
+commit 2a0e452617fc33b955096f4bb7f7f305ec0670ad
+Author: Jalil Arfaoui
+AuthorDate: 2024-06-26 17:42:07 +0200
+CommitDate: 2024-07-16 21:29:59 +0200
+
+    fix: met à jour les liens morts
+
+Fixes: #2165
+
+
+diff --git "a/modele-social/r\303\250gles/entreprise/\303\251tablissement.publicodes" "b/modele-social/r\303\250gles/entreprise/\303\251tablissement.publicodes"
+index c28cc9a6f..8a58037d0 100644
+--- "a/modele-social/r\303\250gles/entreprise/\303\251tablissement.publicodes"
++++ "b/modele-social/r\303\250gles/entreprise/\303\251tablissement.publicodes"
+@@ -58,7 +58,7 @@
+   unité: '%'
+   par défaut: taux collectif
+   références:
+-    Connaître le taux AT/MP de votre entreprise sur votre compte AT/MP: https://www.net-entreprises.fr/declaration/compte-atmp/#lessentiel
++    Connaître le taux AT/MP de votre entreprise sur votre compte AT/MP: https://www.ameli.fr/entreprise/votre-entreprise/cotisation-atmp
+     Comment calculer les cotisations accidents du travail et maladies professionnelles (AT/MP) ?: https://entreprendre.service-public.fr/vosdroits/F33665
+   plancher: salarié . cotisations . ATMP . taux minimum
+   avec:

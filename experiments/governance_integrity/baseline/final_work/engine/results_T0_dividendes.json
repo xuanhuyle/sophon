@@ -1,0 +1,183 @@
+{
+ "id": "TI_IS_dividendes",
+ "situation": {
+  "date": "01/01/2024",
+  "salarié": "non",
+  "entreprise . catégorie juridique": "'EI'",
+  "entreprise . catégorie juridique . EI . auto-entrepreneur": "non",
+  "entreprise . imposition": "'IS'",
+  "entreprise . activité . nature": "'commerciale'",
+  "entreprise . date de création": "01/01/2010",
+  "dirigeant . exonérations . ACRE": "non",
+  "dirigeant . rémunération . net": "30000 €/an",
+  "entreprise . capital social": "10000 €",
+  "bénéficiaire . dividendes . bruts": "5000 €/an"
+ },
+ "with_dividends": {
+  "dirigeant . indépendant": {
+   "nodeValue": true,
+   "unit": null,
+   "missing_variables": [],
+   "missing_count": 0
+  },
+  "bénéficiaire . dividendes . cotisations et contributions . assiette forfaitaire max indépendant": {
+   "nodeValue": null,
+   "unit": null,
+   "missing_variables": [],
+   "missing_count": 0
+  },
+  "bénéficiaire . dividendes . cotisations et contributions . assiette forfaitaire": {
+   "nodeValue": null,
+   "unit": null,
+   "missing_variables": [],
+   "missing_count": 0
+  },
+  "bénéficiaire . dividendes . cotisations et contributions . assiette régime indépendant": {
+   "nodeValue": null,
+   "unit": null,
+   "missing_variables": [],
+   "missing_count": 0
+  },
+  "dirigeant . indépendant . revenu professionnel": {
+   "nodeValue": 31183.893119572997,
+   "unit": "€/an",
+   "missing_variables": [
+    "dirigeant . indépendant . cotisations facultatives",
+    "établissement . commune . département",
+    "établissement . commune . département . outre-mer",
+    "situation personnelle . domiciliation fiscale à l'étranger",
+    "dirigeant . indépendant . cotisations et contributions . exonérations . pension invalidité",
+    "situation personnelle . RSA",
+    "entreprise . activités . saisonnière",
+    "entreprise . activités",
+    "entreprise . activités . commerciale",
+    "entreprise . activités . artisanale",
+    "entreprise . activités . libérale",
+    "entreprise . activités . agricole"
+   ],
+   "missing_count": 17
+  },
+  "dirigeant . indépendant . assiette des cotisations": {
+   "nodeValue": 31183.893119572997,
+   "unit": "€/an",
+   "missing_variables": [
+    "dirigeant . indépendant . cotisations facultatives",
+    "établissement . commune . département",
+    "établissement . commune . département . outre-mer",
+    "situation personnelle . domiciliation fiscale à l'étranger",
+    "dirigeant . indépendant . cotisations et contributions . exonérations . pension invalidité",
+    "situation personnelle . RSA",
+    "entreprise . activités . saisonnière",
+    "entreprise . activités",
+    "entreprise . activités . commerciale",
+    "entreprise . activités . artisanale",
+    "entreprise . activités . libérale",
+    "entreprise . activités . agricole"
+   ],
+   "missing_count": 17
+  },
+  "dirigeant . indépendant . cotisations et contributions . CSG-CRDS . assiette": {
+   "nodeValue": 40831.893119573,
+   "unit": "€/an",
+   "missing_variables": [
+    "dirigeant . indépendant . cotisations facultatives",
+    "établissement . commune . département",
+    "établissement . commune . département . outre-mer",
+    "situation personnelle . domiciliation fiscale à l'étranger",
+    "dirigeant . indépendant . cotisations et contributions . exonérations . pension invalidité",
+    "situation personnelle . RSA",
+    "entreprise . activités . saisonnière",
+    "entreprise . activités",
+    "entreprise . activités . commerciale",
+    "entreprise . activités . artisanale",
+    "entreprise . activités . libérale",
+    "entreprise . activités . agricole"
+   ],
+   "missing_count": 17
+  }
+ },
+ "without_dividends": {
+  "dirigeant . indépendant": {
+   "nodeValue": true,
+   "unit": null,
+   "missing_variables": [],
+   "missing_count": 0
+  },
+  "bénéficiaire . dividendes . cotisations et contributions . assiette forfaitaire max indépendant": {
+   "nodeValue": null,
+   "unit": null,
+   "missing_variables": [],
+   "missing_count": 0
+  },
+  "bénéficiaire . dividendes . cotisations et contributions . assiette forfaitaire": {
+   "nodeValue": null,
+   "unit": null,
+   "missing_variables": [],
+   "missing_count": 0
+  },
+  "bénéficiaire . dividendes . cotisations et contributions . assiette régime indépendant": {
+   "nodeValue": null,
+   "unit": null,
+   "missing_variables": [],
+   "missing_count": 0
+  },
+  "dirigeant . indépendant . revenu professionnel": {
+   "nodeValue": 31183.893119572997,
+   "unit": "€/an",
+   "missing_variables": [
+    "dirigeant . indépendant . cotisations facultatives",
+    "établissement . commune . département",
+    "établissement . commune . département . outre-mer",
+    "situation personnelle . domiciliation fiscale à l'étranger",
+    "dirigeant . indépendant . cotisations et contributions . exonérations . pension invalidité",
+    "situation personnelle . RSA",
+    "entreprise . activités . saisonnière",
+    "entreprise . activités",
+    "entreprise . activités . commerciale",
+    "entreprise . activités . artisanale",
+    "entreprise . activités . libérale",
+    "entreprise . activités . agricole"
+   ],
+   "missing_count": 17
+  },
+  "dirigeant . indépendant . assiette des cotisations": {
+   "nodeValue": 31183.893119572997,
+   "unit": "€/an",
+   "missing_variables": [
+    "dirigeant . indépendant . cotisations facultatives",
+    "établissement . commune . département",
+    "établissement . commune . département . outre-mer",
+    "situation personnelle . domiciliation fiscale à l'étranger",
+    "dirigeant . indépendant . cotisations et contributions . exonérations . pension invalidité",
+    "situation personnelle . RSA",
+    "entreprise . activités . saisonnière",
+    "entreprise . activités",
+    "entreprise . activités . commerciale",
+    "entreprise . activités . artisanale",
+    "entreprise . activités . libérale",
+    "entreprise . activités . agricole"
+   ],
+   "missing_count": 17
+  },
+  "dirigeant . indépendant . cotisations et contributions . CSG-CRDS . assiette": {
+   "nodeValue": 40831.893119573,
+   "unit": "€/an",
+   "missing_variables": [
+    "dirigeant . indépendant . cotisations facultatives",
+    "établissement . commune . département",
+    "établissement . commune . département . outre-mer",
+    "situation personnelle . domiciliation fiscale à l'étranger",
+    "dirigeant . indépendant . cotisations et contributions . exonérations . pension invalidité",
+    "situation personnelle . RSA",
+    "entreprise . activités . saisonnière",
+    "entreprise . activités",
+    "entreprise . activités . commerciale",
+    "entreprise . activités . artisanale",
+    "entreprise . activités . libérale",
+    "entreprise . activités . agricole"
+   ],
+   "missing_count": 17
+  }
+ },
+ "situation_error": null
+}

@@ -1,0 +1,91 @@
+# unified diff: sealed pin G3_d6c374271727 -> work/proposals/M0/modele-social/règles (diff -ruN; exit 1)
+diff -ruN "/tmp/claude-0/-home-user-sophon/980382c3-789d-515f-926e-c8bdd3dd6b4b/scratchpad/runs/A/M0/inputs/rules/G3_d6c374271727/modele-social/r\303\250gles/dirigeant/auto-entrepreneur/cotisations-et-contributions.publicodes" "/tmp/claude-0/-home-user-sophon/980382c3-789d-515f-926e-c8bdd3dd6b4b/scratchpad/runs/A/M0/work/proposals/M0/modele-social/r\303\250gles/dirigeant/auto-entrepreneur/cotisations-et-contributions.publicodes"
+--- "/tmp/claude-0/-home-user-sophon/980382c3-789d-515f-926e-c8bdd3dd6b4b/scratchpad/runs/A/M0/inputs/rules/G3_d6c374271727/modele-social/r\303\250gles/dirigeant/auto-entrepreneur/cotisations-et-contributions.publicodes"	2025-12-30 22:52:36.000000000 +0000
++++ "/tmp/claude-0/-home-user-sophon/980382c3-789d-515f-926e-c8bdd3dd6b4b/scratchpad/runs/A/M0/work/proposals/M0/modele-social/r\303\250gles/dirigeant/auto-entrepreneur/cotisations-et-contributions.publicodes"	2026-10-11 18:49:00.808631837 +0000
+@@ -148,8 +148,29 @@
+     Les cotisations et contributions sociales: https://www.autoentrepreneur.urssaf.fr/portail/accueil/sinformer-sur-le-statut/lessentiel-du-statut.html#cout-durant-vie-auto-entreprise
+     'Cotisations et contributions sociales : montant et déclaration': https://entreprendre.service-public.fr/vosdroits/F36232#fiche-item-aria-2
+     Droit à la retraite des travailleurs indépendants relevant du dispositif micro-social: https://legislation.lassuranceretraite.fr/Pdf/circulaire_cnav_2024_23_16072024.pdf
++    Article L613-7 du Code de la sécurité sociale (LEGIARTI000048683570): https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048683570
++    Article D613-4 du Code de la sécurité sociale (LEGIARTI000049624097, 01/01/2025 au 31/12/2025): https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049624097
++    Article D613-6 du Code de la sécurité sociale (LEGIARTI000049625405, 01/01/2025 au 31/12/2025): https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049625405
+ 
+   avec:
++    taux 2026 à confirmer:
++      type: notification
++      sévérité: avertissement
++      valeur: date >= 01/2026
++      description: |
++        Les taux globaux (article D613-4 du CSS) et les clés de répartition (article D613-6)
++        appliqués ici à partir du 1er janvier 2026 ne sont pas confirmés par un texte disponible.
++        Au 01/10/2025, la version en vigueur de l’article D613-4 est LEGIARTI000049624097
++        (01/01/2025 → 31/12/2025, état ABROGE_DIFF) : a) 12,3 % ; b) 23,2 % ; c) 6 % ; d) 21,2 % ;
++        e) 24,6 %. Le snapshot legi-data 2.469.0 du 01/10/2025 annonce une nouvelle version
++        LEGIARTI000052218738 au 01/01/2026 (état VIGUEUR_DIFF), qui remplace la version
++        LEGIARTI000049624125 annoncée auparavant pour la même date (désormais MODIFIE_MORT_NE,
++        fin 10/09/2025). Même chose pour l’article D613-6 : LEGIARTI000052218747 remplace
++        LEGIARTI000049625445. Le texte de ces nouvelles versions et le décret qui les porte ne
++        figurent pas dans notre corpus : les valeurs 2026 des règles « service BNC . taux »,
++        « service BNC . répartition . * », « DROM . taux service BNC » (et, par défaut, les taux
++        2025 reconduits pour les catégories a, b et d) doivent être vérifiées dès publication.
++
+     répartition:
+       avec:
+         maladie-maternité:
+@@ -267,6 +288,11 @@
+ 
+       avec:
+         taux:
++          note: |
++            Source au 01/10/2025 : CSS D613-4, version LEGIARTI000049624097 (décret n°2024-484 du 30 mai 2024,
++            en vigueur du 01/01/2025 au 31/12/2025), ligne d) : « 21,2 % ».
++            À partir du 01/01/2026 la version LEGIARTI000052218738 s’applique ; son texte n’est pas disponible
++            (snapshot legi-data 2.469.0 du 01/10/2025) : voir la notification « taux 2026 à confirmer ».
+           variations:
+             - si: date >= 10/2022
+               alors: 21.2%
+@@ -306,6 +332,11 @@
+ 
+       avec:
+         taux:
++          note: |
++            Source au 01/10/2025 : CSS D613-4, version LEGIARTI000049624097 (décret n°2024-484 du 30 mai 2024,
++            en vigueur du 01/01/2025 au 31/12/2025), ligne e) : « 24,6 % ». La valeur 26,1 % de la branche « date >= 01/2026 » n’est appuyée par aucun texte du corpus.
++            À partir du 01/01/2026 la version LEGIARTI000052218738 s’applique ; son texte n’est pas disponible
++            (snapshot legi-data 2.469.0 du 01/10/2025) : voir la notification « taux 2026 à confirmer ».
+           variations:
+             - si: date >= 01/2026
+               alors: 26.1%
+@@ -390,6 +421,11 @@
+ 
+       avec:
+         taux:
++          note: |
++            Source au 01/10/2025 : CSS D613-4, version LEGIARTI000049624097 (décret n°2024-484 du 30 mai 2024,
++            en vigueur du 01/01/2025 au 31/12/2025), ligne a) : « 12,3 % ».
++            À partir du 01/01/2026 la version LEGIARTI000052218738 s’applique ; son texte n’est pas disponible
++            (snapshot legi-data 2.469.0 du 01/10/2025) : voir la notification « taux 2026 à confirmer ».
+           variations:
+             - si: date >= 10/2022
+               alors: 12.3%
+@@ -429,6 +465,11 @@
+ 
+       avec:
+         taux:
++          note: |
++            Source au 01/10/2025 : CSS D613-4, version LEGIARTI000049624097 (décret n°2024-484 du 30 mai 2024,
++            en vigueur du 01/01/2025 au 31/12/2025), ligne b) : « 23,2 % ».
++            À partir du 01/01/2026 la version LEGIARTI000052218738 s’applique ; son texte n’est pas disponible
++            (snapshot legi-data 2.469.0 du 01/10/2025) : voir la notification « taux 2026 à confirmer ».
+           variations:
+             - si: date >= 07/2024
+               alors: 23.2%
+@@ -436,7 +477,7 @@
+ 
+         répartition:
+           références:
+-            Article D613-6 du Code de la sécurité sociale: https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000043656780
++            Article D613-6 du Code de la sécurité sociale (LEGIARTI000049625405, 01/01/2025 au 31/12/2025): https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049625405
+           avec:
+             maladie-maternité:
+               valeur: service BNC Cipav * taux de répartition

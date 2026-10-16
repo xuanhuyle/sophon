@@ -1,0 +1,444 @@
+[
+ {
+  "id": "AE_BNC_clean_noACRE",
+  "situation": {
+   "date": "01/07/2024",
+   "salarié": "non",
+   "entreprise . catégorie juridique": "'EI'",
+   "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+   "dirigeant . auto-entrepreneur": "oui",
+   "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+   "établissement . commune . département . outre-mer": "non",
+   "entreprise . activités . revenus mixtes": "non",
+   "entreprise . activité . nature": "'libérale'",
+   "entreprise . date de création": "01/01/2019",
+   "dirigeant . exonérations . ACRE": "non"
+  },
+  "rules": [
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BIC",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux vente restauration hébergement",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV . taux",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "dirigeant . auto-entrepreneur . cotisations et contributions",
+   "dirigeant . exonérations . ACRE",
+   "dirigeant . auto-entrepreneur . affiliation CIPAV"
+  ]
+ },
+ {
+  "id": "AE_CIPAV_clean_noACRE",
+  "situation": {
+   "date": "01/07/2024",
+   "salarié": "non",
+   "entreprise . catégorie juridique": "'EI'",
+   "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+   "dirigeant . auto-entrepreneur": "oui",
+   "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+   "établissement . commune . département . outre-mer": "non",
+   "entreprise . activités . revenus mixtes": "non",
+   "entreprise . activité . nature": "'libérale'",
+   "entreprise . activité . nature . libérale . réglementée": "oui",
+   "entreprise . date de création": "01/01/2019",
+   "dirigeant . exonérations . ACRE": "non"
+  },
+  "rules": [
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BIC",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux vente restauration hébergement",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV . taux",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "dirigeant . auto-entrepreneur . cotisations et contributions",
+   "dirigeant . exonérations . ACRE",
+   "dirigeant . auto-entrepreneur . affiliation CIPAV"
+  ]
+ },
+ {
+  "id": "AE_CIPAV_ACRE_non_created_2022",
+  "situation": {
+   "date": "01/07/2024",
+   "salarié": "non",
+   "entreprise . catégorie juridique": "'EI'",
+   "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+   "dirigeant . auto-entrepreneur": "oui",
+   "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+   "établissement . commune . département . outre-mer": "non",
+   "entreprise . activités . revenus mixtes": "non",
+   "entreprise . activité . nature": "'libérale'",
+   "entreprise . activité . nature . libérale . réglementée": "oui",
+   "entreprise . date de création": "01/01/2022",
+   "dirigeant . exonérations . ACRE": "non"
+  },
+  "rules": [
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BIC",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux vente restauration hébergement",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV . taux",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "dirigeant . auto-entrepreneur . cotisations et contributions",
+   "dirigeant . exonérations . ACRE",
+   "dirigeant . auto-entrepreneur . affiliation CIPAV"
+  ]
+ },
+ {
+  "id": "AE_VENTE_clean_noACRE",
+  "situation": {
+   "date": "01/07/2024",
+   "salarié": "non",
+   "entreprise . catégorie juridique": "'EI'",
+   "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+   "dirigeant . auto-entrepreneur": "oui",
+   "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+   "établissement . commune . département . outre-mer": "non",
+   "entreprise . activités . revenus mixtes": "non",
+   "entreprise . activité . nature": "'commerciale'",
+   "entreprise . activités . service ou vente": "'vente'",
+   "entreprise . date de création": "01/01/2019",
+   "dirigeant . exonérations . ACRE": "non"
+  },
+  "rules": [
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BIC",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux vente restauration hébergement",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV . taux",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "dirigeant . auto-entrepreneur . cotisations et contributions",
+   "dirigeant . exonérations . ACRE",
+   "dirigeant . auto-entrepreneur . affiliation CIPAV"
+  ]
+ },
+ {
+  "id": "AE_SBIC_clean_noACRE",
+  "situation": {
+   "date": "01/07/2024",
+   "salarié": "non",
+   "entreprise . catégorie juridique": "'EI'",
+   "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+   "dirigeant . auto-entrepreneur": "oui",
+   "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+   "établissement . commune . département . outre-mer": "non",
+   "entreprise . activités . revenus mixtes": "non",
+   "entreprise . activité . nature": "'artisanale'",
+   "entreprise . activités . service ou vente": "'service'",
+   "entreprise . date de création": "01/01/2019",
+   "dirigeant . exonérations . ACRE": "non"
+  },
+  "rules": [
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BIC",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux vente restauration hébergement",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV . taux",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "dirigeant . auto-entrepreneur . cotisations et contributions",
+   "dirigeant . exonérations . ACRE",
+   "dirigeant . auto-entrepreneur . affiliation CIPAV"
+  ]
+ },
+ {
+  "id": "AE_BNC_ACRE_6mois",
+  "situation": {
+   "date": "01/07/2024",
+   "salarié": "non",
+   "entreprise . catégorie juridique": "'EI'",
+   "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+   "dirigeant . auto-entrepreneur": "oui",
+   "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+   "établissement . commune . département . outre-mer": "non",
+   "entreprise . activités . revenus mixtes": "non",
+   "entreprise . activité . nature": "'libérale'",
+   "entreprise . date de création": "01/01/2024",
+   "entreprise . durée d'activité": "6 mois",
+   "dirigeant . exonérations . ACRE": "oui"
+  },
+  "rules": [
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BIC",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux vente restauration hébergement",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV . taux",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "dirigeant . auto-entrepreneur . cotisations et contributions",
+   "dirigeant . exonérations . ACRE",
+   "dirigeant . auto-entrepreneur . affiliation CIPAV"
+  ]
+ },
+ {
+  "id": "AE_CIPAV_ACRE_6mois",
+  "situation": {
+   "date": "01/07/2024",
+   "salarié": "non",
+   "entreprise . catégorie juridique": "'EI'",
+   "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+   "dirigeant . auto-entrepreneur": "oui",
+   "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+   "établissement . commune . département . outre-mer": "non",
+   "entreprise . activités . revenus mixtes": "non",
+   "entreprise . activité . nature": "'libérale'",
+   "entreprise . activité . nature . libérale . réglementée": "oui",
+   "entreprise . date de création": "01/01/2024",
+   "entreprise . durée d'activité": "6 mois",
+   "dirigeant . exonérations . ACRE": "oui"
+  },
+  "rules": [
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BIC",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux vente restauration hébergement",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV . taux",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "dirigeant . auto-entrepreneur . cotisations et contributions",
+   "dirigeant . exonérations . ACRE",
+   "dirigeant . auto-entrepreneur . affiliation CIPAV"
+  ]
+ },
+ {
+  "id": "AE_VENTE_ACRE_6mois",
+  "situation": {
+   "date": "01/07/2024",
+   "salarié": "non",
+   "entreprise . catégorie juridique": "'EI'",
+   "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+   "dirigeant . auto-entrepreneur": "oui",
+   "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+   "établissement . commune . département . outre-mer": "non",
+   "entreprise . activités . revenus mixtes": "non",
+   "entreprise . activité . nature": "'commerciale'",
+   "entreprise . activités . service ou vente": "'vente'",
+   "entreprise . date de création": "01/01/2024",
+   "entreprise . durée d'activité": "6 mois",
+   "dirigeant . exonérations . ACRE": "oui"
+  },
+  "rules": [
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BIC",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux vente restauration hébergement",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV . taux",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "dirigeant . auto-entrepreneur . cotisations et contributions",
+   "dirigeant . exonérations . ACRE",
+   "dirigeant . auto-entrepreneur . affiliation CIPAV"
+  ]
+ },
+ {
+  "id": "AE_SBIC_ACRE_6mois",
+  "situation": {
+   "date": "01/07/2024",
+   "salarié": "non",
+   "entreprise . catégorie juridique": "'EI'",
+   "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+   "dirigeant . auto-entrepreneur": "oui",
+   "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+   "établissement . commune . département . outre-mer": "non",
+   "entreprise . activités . revenus mixtes": "non",
+   "entreprise . activité . nature": "'artisanale'",
+   "entreprise . activités . service ou vente": "'service'",
+   "entreprise . date de création": "01/01/2024",
+   "entreprise . durée d'activité": "6 mois",
+   "dirigeant . exonérations . ACRE": "oui"
+  },
+  "rules": [
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BIC",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux vente restauration hébergement",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV . taux",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "dirigeant . auto-entrepreneur . cotisations et contributions",
+   "dirigeant . exonérations . ACRE",
+   "dirigeant . auto-entrepreneur . affiliation CIPAV"
+  ]
+ },
+ {
+  "id": "AE_BNC_ACRE_13mois",
+  "situation": {
+   "date": "01/07/2024",
+   "salarié": "non",
+   "entreprise . catégorie juridique": "'EI'",
+   "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+   "dirigeant . auto-entrepreneur": "oui",
+   "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+   "établissement . commune . département . outre-mer": "non",
+   "entreprise . activités . revenus mixtes": "non",
+   "entreprise . activité . nature": "'libérale'",
+   "entreprise . date de création": "01/01/2024",
+   "entreprise . durée d'activité": "13 mois",
+   "dirigeant . exonérations . ACRE": "oui"
+  },
+  "rules": [
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BIC",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux vente restauration hébergement",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV . taux",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "dirigeant . auto-entrepreneur . cotisations et contributions",
+   "dirigeant . exonérations . ACRE",
+   "dirigeant . auto-entrepreneur . affiliation CIPAV"
+  ]
+ },
+ {
+  "id": "AE_BNC_ACRE_created_2019-06_dur_18m",
+  "situation": {
+   "date": "01/12/2020",
+   "salarié": "non",
+   "entreprise . catégorie juridique": "'EI'",
+   "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+   "dirigeant . auto-entrepreneur": "oui",
+   "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+   "établissement . commune . département . outre-mer": "non",
+   "entreprise . activités . revenus mixtes": "non",
+   "entreprise . activité . nature": "'libérale'",
+   "entreprise . date de création": "01/06/2019",
+   "entreprise . durée d'activité": "18 mois",
+   "dirigeant . exonérations . ACRE": "oui"
+  },
+  "rules": [
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BIC",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux vente restauration hébergement",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV . taux",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "dirigeant . auto-entrepreneur . cotisations et contributions",
+   "dirigeant . exonérations . ACRE",
+   "dirigeant . auto-entrepreneur . affiliation CIPAV"
+  ]
+ },
+ {
+  "id": "AE_DROM_Q8_BNC_clean",
+  "situation": {
+   "date": "01/07/2024",
+   "salarié": "non",
+   "entreprise . catégorie juridique": "'EI'",
+   "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+   "dirigeant . auto-entrepreneur": "oui",
+   "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+   "établissement . commune . département . outre-mer": "oui",
+   "entreprise . activités . revenus mixtes": "non",
+   "entreprise . activité . nature": "'libérale'",
+   "entreprise . date de création": "01/01/2019",
+   "dirigeant . exonérations . ACRE": "non",
+   "entreprise . durée d'activité . trimestres civils": "8",
+   "entreprise . durée d'activité . années civiles": "2"
+  },
+  "rules": [
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BIC",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux vente restauration hébergement",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV . taux",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "dirigeant . auto-entrepreneur . cotisations et contributions",
+   "dirigeant . exonérations . ACRE",
+   "dirigeant . auto-entrepreneur . affiliation CIPAV"
+  ]
+ },
+ {
+  "id": "AE_DROM_Q9_Y3_BNC_clean",
+  "situation": {
+   "date": "01/07/2024",
+   "salarié": "non",
+   "entreprise . catégorie juridique": "'EI'",
+   "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+   "dirigeant . auto-entrepreneur": "oui",
+   "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+   "établissement . commune . département . outre-mer": "oui",
+   "entreprise . activités . revenus mixtes": "non",
+   "entreprise . activité . nature": "'libérale'",
+   "entreprise . date de création": "01/01/2019",
+   "dirigeant . exonérations . ACRE": "non",
+   "entreprise . durée d'activité . trimestres civils": "9",
+   "entreprise . durée d'activité . années civiles": "3"
+  },
+  "rules": [
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BIC",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux vente restauration hébergement",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV . taux",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "dirigeant . auto-entrepreneur . cotisations et contributions",
+   "dirigeant . exonérations . ACRE",
+   "dirigeant . auto-entrepreneur . affiliation CIPAV"
+  ]
+ },
+ {
+  "id": "AE_DROM_Q9_Y4_BNC_clean",
+  "situation": {
+   "date": "01/07/2024",
+   "salarié": "non",
+   "entreprise . catégorie juridique": "'EI'",
+   "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+   "dirigeant . auto-entrepreneur": "oui",
+   "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+   "établissement . commune . département . outre-mer": "oui",
+   "entreprise . activités . revenus mixtes": "non",
+   "entreprise . activité . nature": "'libérale'",
+   "entreprise . date de création": "01/01/2019",
+   "dirigeant . exonérations . ACRE": "non",
+   "entreprise . durée d'activité . trimestres civils": "9",
+   "entreprise . durée d'activité . années civiles": "4"
+  },
+  "rules": [
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BIC",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux vente restauration hébergement",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV . taux",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "dirigeant . auto-entrepreneur . cotisations et contributions",
+   "dirigeant . exonérations . ACRE",
+   "dirigeant . auto-entrepreneur . affiliation CIPAV"
+  ]
+ },
+ {
+  "id": "AE_DROM_Q4_CIPAV_clean",
+  "situation": {
+   "date": "01/07/2024",
+   "salarié": "non",
+   "entreprise . catégorie juridique": "'EI'",
+   "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+   "dirigeant . auto-entrepreneur": "oui",
+   "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+   "établissement . commune . département . outre-mer": "oui",
+   "entreprise . activités . revenus mixtes": "non",
+   "entreprise . activité . nature": "'libérale'",
+   "entreprise . activité . nature . libérale . réglementée": "oui",
+   "entreprise . date de création": "01/01/2019",
+   "dirigeant . exonérations . ACRE": "non",
+   "entreprise . durée d'activité . trimestres civils": "4",
+   "entreprise . durée d'activité . années civiles": "1"
+  },
+  "rules": [
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BIC",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux vente restauration hébergement",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV . taux",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "dirigeant . auto-entrepreneur . cotisations et contributions",
+   "dirigeant . exonérations . ACRE",
+   "dirigeant . auto-entrepreneur . affiliation CIPAV"
+  ]
+ },
+ {
+  "id": "AE_DROM_Q4_VENTE_ACRE_oui_overridden",
+  "situation": {
+   "date": "01/07/2024",
+   "salarié": "non",
+   "entreprise . catégorie juridique": "'EI'",
+   "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+   "dirigeant . auto-entrepreneur": "oui",
+   "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+   "établissement . commune . département . outre-mer": "oui",
+   "entreprise . activités . revenus mixtes": "non",
+   "entreprise . activité . nature": "'commerciale'",
+   "entreprise . activités . service ou vente": "'vente'",
+   "entreprise . date de création": "01/01/2024",
+   "entreprise . durée d'activité": "6 mois",
+   "dirigeant . exonérations . ACRE": "oui",
+   "entreprise . durée d'activité . trimestres civils": "2",
+   "entreprise . durée d'activité . années civiles": "1"
+  },
+  "rules": [
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BIC",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux vente restauration hébergement",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV . taux",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "dirigeant . auto-entrepreneur . cotisations et contributions",
+   "dirigeant . exonérations . ACRE",
+   "dirigeant . auto-entrepreneur . affiliation CIPAV"
+  ]
+ }
+]

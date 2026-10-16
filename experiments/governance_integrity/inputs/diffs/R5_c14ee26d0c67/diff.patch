@@ -1,0 +1,28 @@
+commit c14ee26d0c67bab90354db32ff1f51879ea3c5e8
+Author: Alice Dahan
+AuthorDate: 2026-07-06 13:53:31 +0200
+CommitDate: 2026-07-09 12:29:17 +0200
+
+    fix: n'applique pas de plancher ni de plafond à l'abattement sur l'assiette à Mayotte
+
+
+
+diff --git "a/modele-ti/r\303\250gles/ind\303\251pendant/cotisations-et-contributions/cotisations-et-contributions.publicodes" "b/modele-ti/r\303\250gles/ind\303\251pendant/cotisations-et-contributions/cotisations-et-contributions.publicodes"
+index ddfb376de..a8fb57f40 100644
+--- "a/modele-ti/r\303\250gles/ind\303\251pendant/cotisations-et-contributions/cotisations-et-contributions.publicodes"
++++ "b/modele-ti/r\303\250gles/ind\303\251pendant/cotisations-et-contributions/cotisations-et-contributions.publicodes"
+@@ -108,8 +108,12 @@ indépendant . cotisations et contributions . assiette CSG-CRDS:
+   avec:
+     abattement:
+       valeur: 26% * revenu brut
+-      plancher: 1.76% * plafond sécurité sociale . annuel
+-      plafond: 130% * plafond sécurité sociale . annuel
++      plancher:
++        non applicable si: établissement . commune . département . outre-mer . Mayotte
++        valeur: 1.76% * plafond sécurité sociale . annuel
++      plafond:
++        non applicable si: établissement . commune . département . outre-mer . Mayotte
++        valeur: 130% * plafond sécurité sociale . annuel
+       arrondi: oui
+ 
+   références:

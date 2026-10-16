@@ -1,0 +1,4189 @@
+{
+ "protocol_sha256": "c87df4b773045f3bc98b2874a219c99e844e6ad37f1e93dbb8e346dddbacb43e",
+ "built_at_note": "built from inputs/law and inputs/rules only; no maintainer patch and no solver output was read",
+ "requirement_count": 170,
+ "t4_question1_requirement": "REQ158",
+ "t4_question1_index": 157,
+ "openfisca_checks": {
+  "count": 20,
+  "agree": 20,
+  "disagree": []
+ },
+ "requirements": [
+  {
+   "article": "D613-4",
+   "version_id": "LEGIARTI000046714712",
+   "etat": "VIGUEUR",
+   "in_force_from": "2022-12-10",
+   "in_force_to": "2999-01-01",
+   "item": "global rate, category a",
+   "value": 12.3,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S0"
+   ],
+   "quote": " l'article 50-0 du code général des impôts 79 828 euros 71 % 23 150 euros 12,3 %",
+   "status": "DETERMINISTIC",
+   "req_id": "REQ001",
+   "openfisca_value_pct": 12.3,
+   "openfisca_agrees": true
+  },
+  {
+   "article": "D613-4",
+   "version_id": "LEGIARTI000046714712",
+   "etat": "VIGUEUR",
+   "in_force_from": "2022-12-10",
+   "in_force_to": "2999-01-01",
+   "item": "global rate, category b",
+   "value": 21.2,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S0"
+   ],
+   "quote": "le mentionnée au 11° de l'article R. 641-1 35 076 euros 34 % 23 150 euros 21,2 %",
+   "status": "DETERMINISTIC",
+   "req_id": "REQ002",
+   "openfisca_value_pct": 21.2,
+   "openfisca_agrees": true
+  },
+  {
+   "article": "D613-4",
+   "version_id": "LEGIARTI000046714712",
+   "etat": "VIGUEUR",
+   "in_force_from": "2022-12-10",
+   "in_force_to": "2999-01-01",
+   "item": "global rate, category d",
+   "value": 21.2,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S0"
+   ],
+   "quote": "e l'article 50-0 du code général des impôt 46 300 euros 50 % 23 150 euros 21,2 %",
+   "status": "DETERMINISTIC",
+   "req_id": "REQ003",
+   "openfisca_value_pct": 21.2,
+   "openfisca_agrees": true
+  },
+  {
+   "article": "D613-4",
+   "version_id": "LEGIARTI000046714712",
+   "etat": "VIGUEUR",
+   "in_force_from": "2022-12-10",
+   "in_force_to": "2999-01-01",
+   "item": "global rate, category e",
+   "value": 21.1,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S0"
+   ],
+   "quote": "'article 102 ter du code général des impôts 10 000 euros 34 % 6 600 euros 21,1 %",
+   "status": "DETERMINISTIC",
+   "req_id": "REQ004",
+   "openfisca_value_pct": 21.1,
+   "openfisca_agrees": true
+  },
+  {
+   "article": "D613-4",
+   "version_id": "LEGIARTI000049623867",
+   "etat": "ABROGE_DIFF",
+   "in_force_from": "2024-06-01",
+   "in_force_to": "2024-07-01",
+   "item": "global rate, category a",
+   "value": 12.3,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S1",
+    "S2"
+   ],
+   "quote": "l' article 50-0 du code général des impôts 79 828 euros 71 % 23 150 euros 12,3 %",
+   "status": "DETERMINISTIC",
+   "req_id": "REQ005",
+   "openfisca_value_pct": 12.3,
+   "openfisca_agrees": true
+  },
+  {
+   "article": "D613-4",
+   "version_id": "LEGIARTI000049623867",
+   "etat": "ABROGE_DIFF",
+   "in_force_from": "2024-06-01",
+   "in_force_to": "2024-07-01",
+   "item": "global rate, category b",
+   "value": 21.2,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S1",
+    "S2"
+   ],
+   "quote": "le mentionnée au 11° de l'article R. 641-1 35 076 euros 34 % 23 150 euros 21,2 %",
+   "status": "DETERMINISTIC",
+   "req_id": "REQ006",
+   "openfisca_value_pct": 21.2,
+   "openfisca_agrees": true
+  },
+  {
+   "article": "D613-4",
+   "version_id": "LEGIARTI000049623867",
+   "etat": "ABROGE_DIFF",
+   "in_force_from": "2024-06-01",
+   "in_force_to": "2024-07-01",
+   "item": "global rate, category d",
+   "value": 21.2,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S1",
+    "S2"
+   ],
+   "quote": "e l'article 50-0 du code général des impôt 46 300 euros 50 % 23 150 euros 21,2 %",
+   "status": "DETERMINISTIC",
+   "req_id": "REQ007",
+   "openfisca_value_pct": 21.2,
+   "openfisca_agrees": true
+  },
+  {
+   "article": "D613-4",
+   "version_id": "LEGIARTI000049623867",
+   "etat": "ABROGE_DIFF",
+   "in_force_from": "2024-06-01",
+   "in_force_to": "2024-07-01",
+   "item": "global rate, category e",
+   "value": 21.1,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S1",
+    "S2"
+   ],
+   "quote": " article 102 ter du code général des impôts 10 000 euros 34 % 6 600 euros 21,1 %",
+   "status": "DETERMINISTIC",
+   "req_id": "REQ008",
+   "openfisca_value_pct": 21.1,
+   "openfisca_agrees": true
+  },
+  {
+   "article": "D613-4",
+   "version_id": "LEGIARTI000049624068",
+   "etat": "VIGUEUR_DIFF",
+   "in_force_from": "2024-07-01",
+   "in_force_to": "2025-05-01",
+   "item": "global rate, category a",
+   "value": 12.3,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S3",
+    "S4",
+    "S5"
+   ],
+   "quote": "l' article 50-0 du code général des impôts 79 828 euros 71 % 23 150 euros 12,3 %",
+   "status": "DETERMINISTIC",
+   "req_id": "REQ009",
+   "openfisca_value_pct": 12.3,
+   "openfisca_agrees": true
+  },
+  {
+   "article": "D613-4",
+   "version_id": "LEGIARTI000049624068",
+   "etat": "VIGUEUR_DIFF",
+   "in_force_from": "2024-07-01",
+   "in_force_to": "2025-05-01",
+   "item": "global rate, category b",
+   "value": 23.2,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S3",
+    "S4",
+    "S5"
+   ],
+   "quote": "le mentionnée au 11° de l'article R. 641-1 35 076 euros 34 % 23 150 euros 23,2 %",
+   "status": "DETERMINISTIC",
+   "req_id": "REQ010",
+   "openfisca_value_pct": 23.2,
+   "openfisca_agrees": true
+  },
+  {
+   "article": "D613-4",
+   "version_id": "LEGIARTI000049624068",
+   "etat": "VIGUEUR_DIFF",
+   "in_force_from": "2024-07-01",
+   "in_force_to": "2025-05-01",
+   "item": "global rate, category d",
+   "value": 21.2,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S3",
+    "S4",
+    "S5"
+   ],
+   "quote": "e l'article 50-0 du code général des impôt 46 300 euros 50 % 23 150 euros 21,2 %",
+   "status": "DETERMINISTIC",
+   "req_id": "REQ011",
+   "openfisca_value_pct": 21.2,
+   "openfisca_agrees": true
+  },
+  {
+   "article": "D613-4",
+   "version_id": "LEGIARTI000049624068",
+   "etat": "VIGUEUR_DIFF",
+   "in_force_from": "2024-07-01",
+   "in_force_to": "2025-05-01",
+   "item": "global rate, category e",
+   "value": 23.1,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S3",
+    "S4",
+    "S5"
+   ],
+   "quote": " article 102 ter du code général des impôts 10 000 euros 34 % 6 600 euros 23,1 %",
+   "status": "DETERMINISTIC",
+   "req_id": "REQ012",
+   "openfisca_value_pct": 23.1,
+   "openfisca_agrees": true
+  },
+  {
+   "article": "D613-4",
+   "version_id": "LEGIARTI000049624097",
+   "etat": "ABROGE_DIFF",
+   "in_force_from": "2025-01-01",
+   "in_force_to": "2026-01-01",
+   "item": "global rate, category a",
+   "value": 12.3,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S6",
+    "S7"
+   ],
+   "quote": "l' article 50-0 du code général des impôts 79 828 euros 71 % 23 150 euros 12,3 %",
+   "status": "DETERMINISTIC",
+   "req_id": "REQ013",
+   "openfisca_value_pct": 12.3,
+   "openfisca_agrees": true
+  },
+  {
+   "article": "D613-4",
+   "version_id": "LEGIARTI000049624097",
+   "etat": "ABROGE_DIFF",
+   "in_force_from": "2025-01-01",
+   "in_force_to": "2026-01-01",
+   "item": "global rate, category b",
+   "value": 23.2,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S6",
+    "S7"
+   ],
+   "quote": "le mentionnée au 11° de l'article R. 641-1 35 076 euros 34 % 23 150 euros 23,2 %",
+   "status": "DETERMINISTIC",
+   "req_id": "REQ014",
+   "openfisca_value_pct": 23.2,
+   "openfisca_agrees": true
+  },
+  {
+   "article": "D613-4",
+   "version_id": "LEGIARTI000049624097",
+   "etat": "ABROGE_DIFF",
+   "in_force_from": "2025-01-01",
+   "in_force_to": "2026-01-01",
+   "item": "global rate, category d",
+   "value": 21.2,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S6",
+    "S7"
+   ],
+   "quote": "e l'article 50-0 du code général des impôt 46 300 euros 50 % 23 150 euros 21,2 %",
+   "status": "DETERMINISTIC",
+   "req_id": "REQ015",
+   "openfisca_value_pct": 21.2,
+   "openfisca_agrees": true
+  },
+  {
+   "article": "D613-4",
+   "version_id": "LEGIARTI000049624097",
+   "etat": "ABROGE_DIFF",
+   "in_force_from": "2025-01-01",
+   "in_force_to": "2026-01-01",
+   "item": "global rate, category e",
+   "value": 24.6,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S6",
+    "S7"
+   ],
+   "quote": " article 102 ter du code général des impôts 10 000 euros 34 % 6 600 euros 24,6 %",
+   "status": "DETERMINISTIC",
+   "req_id": "REQ016",
+   "openfisca_value_pct": 24.6,
+   "openfisca_agrees": true
+  },
+  {
+   "article": "D613-4",
+   "version_id": "LEGIARTI000052218738",
+   "etat": "VIGUEUR",
+   "in_force_from": "2026-01-01",
+   "in_force_to": "2999-01-01",
+   "item": "global rate, category a",
+   "value": 12.3,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S8",
+    "S9",
+    "S10"
+   ],
+   "quote": " l'article 50-0 du code général des impôts 89 776 euros 71 % 26 035 euros 12,3 %",
+   "status": "DETERMINISTIC",
+   "req_id": "REQ017",
+   "openfisca_value_pct": 12.3,
+   "openfisca_agrees": true
+  },
+  {
+   "article": "D613-4",
+   "version_id": "LEGIARTI000052218738",
+   "etat": "VIGUEUR",
+   "in_force_from": "2026-01-01",
+   "in_force_to": "2999-01-01",
+   "item": "global rate, category b",
+   "value": 23.2,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S8",
+    "S9",
+    "S10"
+   ],
+   "quote": "le mentionnée au 11° de l'article R. 641-1 42 586 euros 34 % 28 107 euros 23,2 %",
+   "status": "DETERMINISTIC",
+   "req_id": "REQ018",
+   "openfisca_value_pct": 23.2,
+   "openfisca_agrees": true
+  },
+  {
+   "article": "D613-4",
+   "version_id": "LEGIARTI000052218738",
+   "etat": "VIGUEUR",
+   "in_force_from": "2026-01-01",
+   "in_force_to": "2999-01-01",
+   "item": "global rate, category d",
+   "value": 21.2,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S8",
+    "S9",
+    "S10"
+   ],
+   "quote": "e l'article 50-0 du code général des impôt 52 070 euros 50 % 26 035 euros 21,2 %",
+   "status": "DETERMINISTIC",
+   "req_id": "REQ019",
+   "openfisca_value_pct": 21.2,
+   "openfisca_agrees": true
+  },
+  {
+   "article": "D613-4",
+   "version_id": "LEGIARTI000052218738",
+   "etat": "VIGUEUR",
+   "in_force_from": "2026-01-01",
+   "in_force_to": "2999-01-01",
+   "item": "global rate, category e",
+   "value": 25.6,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S8",
+    "S9",
+    "S10"
+   ],
+   "quote": "article 102 ter du code général des impôts 23 609 euros 34 % 15 582 euros 25,6 %",
+   "status": "DETERMINISTIC",
+   "req_id": "REQ020",
+   "openfisca_value_pct": 25.6,
+   "openfisca_agrees": true
+  },
+  {
+   "article": "D613-4",
+   "version_id": "LEGIARTI000049624068",
+   "etat": "VIGUEUR_DIFF (announced, text not in snapshot)",
+   "in_force_from": "2024-07-01",
+   "in_force_to": "2025-05-01",
+   "item": "announced future version visible in S1 by id and date only",
+   "value": null,
+   "unit": null,
+   "visible_in_snapshots": [],
+   "status": "TEXT_NOT_IN_CORPUS_AT_DATE",
+   "req_id": "REQ021"
+  },
+  {
+   "article": "D613-4",
+   "version_id": "LEGIARTI000049624097",
+   "etat": "VIGUEUR_DIFF (announced, text not in snapshot)",
+   "in_force_from": "2025-01-01",
+   "in_force_to": "2026-01-01",
+   "item": "announced future version visible in S1 by id and date only",
+   "value": null,
+   "unit": null,
+   "visible_in_snapshots": [],
+   "status": "TEXT_NOT_IN_CORPUS_AT_DATE",
+   "req_id": "REQ022"
+  },
+  {
+   "article": "D613-4",
+   "version_id": "LEGIARTI000049624125",
+   "etat": "VIGUEUR_DIFF (announced, text not in snapshot)",
+   "in_force_from": "2026-01-01",
+   "in_force_to": "2999-01-01",
+   "item": "announced future version visible in S1 by id and date only",
+   "value": null,
+   "unit": null,
+   "visible_in_snapshots": [],
+   "status": "TEXT_NOT_IN_CORPUS_AT_DATE",
+   "req_id": "REQ023"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000046714699",
+   "etat": "VIGUEUR",
+   "in_force_from": "2022-12-10",
+   "in_force_to": "2999-01-01",
+   "item": "répartition a et d: Cotisation d'assurance maladie-maternité",
+   "value": 8.9,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S0"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ024"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000046714699",
+   "etat": "VIGUEUR",
+   "in_force_from": "2022-12-10",
+   "in_force_to": "2999-01-01",
+   "item": "répartition a et d: Cotisation d'assurance invalidité-décès",
+   "value": 3.1,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S0"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ025"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000046714699",
+   "etat": "VIGUEUR",
+   "in_force_from": "2022-12-10",
+   "in_force_to": "2999-01-01",
+   "item": "répartition a et d: Cotisation d'assurance vieillesse de base mentionnée aux I et II de l'article D. 633-3",
+   "value": 41.8,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S0"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ026"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000046714699",
+   "etat": "VIGUEUR",
+   "in_force_from": "2022-12-10",
+   "in_force_to": "2999-01-01",
+   "item": "répartition a et d: Cotisation d'assurance vieillesse complémentaire",
+   "value": 16.5,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S0"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ027"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000046714699",
+   "etat": "VIGUEUR",
+   "in_force_from": "2022-12-10",
+   "in_force_to": "2999-01-01",
+   "item": "répartition a et d: Contribution sociale généralisée et contribution pour le remboursement de la dette sociale",
+   "value": 29.7,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S0"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ028"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000046714699",
+   "etat": "VIGUEUR",
+   "in_force_from": "2022-12-10",
+   "in_force_to": "2999-01-01",
+   "item": "répartition b: Cotisation d'assurance maladie-maternité mentionnée au premier alinéa de l'article L. 621-2",
+   "value": 8.1,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S0"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ029"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000046714699",
+   "etat": "VIGUEUR",
+   "in_force_from": "2022-12-10",
+   "in_force_to": "2999-01-01",
+   "item": "répartition b: Cotisation de prestations maladie en espèces mentionnée au dernier alinéa de l'article L. 621-2",
+   "value": 0.95,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S0"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ030"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000046714699",
+   "etat": "VIGUEUR",
+   "in_force_from": "2022-12-10",
+   "in_force_to": "2999-01-01",
+   "item": "répartition b: Cotisation d'assurance invalidité-décès",
+   "value": 2.6,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S0"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ031"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000046714699",
+   "etat": "VIGUEUR",
+   "in_force_from": "2022-12-10",
+   "in_force_to": "2999-01-01",
+   "item": "répartition b: Cotisation d'assurance vieillesse de base mentionnée au 1° de l'article D. 642-3",
+   "value": 26.0,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S0"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ032"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000046714699",
+   "etat": "VIGUEUR",
+   "in_force_from": "2022-12-10",
+   "in_force_to": "2999-01-01",
+   "item": "répartition b: Cotisation d'assurance vieillesse de base mentionnée au 2° de l'article D. 642-3",
+   "value": 5.3,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S0"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ033"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000046714699",
+   "etat": "VIGUEUR",
+   "in_force_from": "2022-12-10",
+   "in_force_to": "2999-01-01",
+   "item": "répartition b: Cotisation d'assurance vieillesse complémentaire",
+   "value": 20.75,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S0"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ034"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000046714699",
+   "etat": "VIGUEUR",
+   "in_force_from": "2022-12-10",
+   "in_force_to": "2999-01-01",
+   "item": "répartition b: Contribution sociale généralisée et contribution pour le remboursement de la dette sociale",
+   "value": 36.3,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S0"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ035"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000046714699",
+   "etat": "VIGUEUR",
+   "in_force_from": "2022-12-10",
+   "in_force_to": "2999-01-01",
+   "item": "répartition c: Cotisation d'assurance maladie-maternité",
+   "value": 4.9,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S0"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ036"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000046714699",
+   "etat": "VIGUEUR",
+   "in_force_from": "2022-12-10",
+   "in_force_to": "2999-01-01",
+   "item": "répartition c: Cotisation d'assurance invalidité-décès",
+   "value": 3.5,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S0"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ037"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000046714699",
+   "etat": "VIGUEUR",
+   "in_force_from": "2022-12-10",
+   "in_force_to": "2999-01-01",
+   "item": "répartition c: Cotisations d'assurance vieillesse de base mentionnées aux I et II de l'article D. 633-3 du code de la sécurité sociale",
+   "value": 48.3,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S0"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ038"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000046714699",
+   "etat": "VIGUEUR",
+   "in_force_from": "2022-12-10",
+   "in_force_to": "2999-01-01",
+   "item": "répartition c: Cotisation d'assurance vieillesse complémentaire",
+   "value": 15.1,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S0"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ039"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000046714699",
+   "etat": "VIGUEUR",
+   "in_force_from": "2022-12-10",
+   "in_force_to": "2999-01-01",
+   "item": "répartition c: Contribution sociale généralisée et contribution pour le remboursement de la dette sociale",
+   "value": 28.2,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S0"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ040"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000046714699",
+   "etat": "VIGUEUR",
+   "in_force_from": "2022-12-10",
+   "in_force_to": "2999-01-01",
+   "item": "répartition e: Cotisation d'assurance maladie maternité",
+   "value": 3.9,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S0"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ041"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000046714699",
+   "etat": "VIGUEUR",
+   "in_force_from": "2022-12-10",
+   "in_force_to": "2999-01-01",
+   "item": "répartition e: Cotisation d'assurance invalidité-décès",
+   "value": 4.1,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S0"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ042"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000046714699",
+   "etat": "VIGUEUR",
+   "in_force_from": "2022-12-10",
+   "in_force_to": "2999-01-01",
+   "item": "répartition e: Cotisations d'assurance vieillesse de base mentionnées aux I et II de l'article D. 633-3 du code de la sécurité sociale",
+   "value": 55.5,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S0"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ043"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000046714699",
+   "etat": "VIGUEUR",
+   "in_force_from": "2022-12-10",
+   "in_force_to": "2999-01-01",
+   "item": "répartition e: Contribution sociale généralisée et contribution pour le remboursement de la dette sociale",
+   "value": 36.5,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S0"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ044"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000049623885",
+   "etat": "ABROGE_DIFF",
+   "in_force_from": "2024-06-01",
+   "in_force_to": "2024-07-01",
+   "item": "répartition a et d: Cotisation d'assurance maladie-maternité",
+   "value": 8.9,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S1",
+    "S2"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ045"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000049623885",
+   "etat": "ABROGE_DIFF",
+   "in_force_from": "2024-06-01",
+   "in_force_to": "2024-07-01",
+   "item": "répartition a et d: Cotisation d'assurance invalidité-décès",
+   "value": 3.1,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S1",
+    "S2"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ046"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000049623885",
+   "etat": "ABROGE_DIFF",
+   "in_force_from": "2024-06-01",
+   "in_force_to": "2024-07-01",
+   "item": "répartition a et d: Cotisation d'assurance vieillesse de base mentionnée aux I et II de l'article D. 633-3",
+   "value": 41.8,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S1",
+    "S2"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ047"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000049623885",
+   "etat": "ABROGE_DIFF",
+   "in_force_from": "2024-06-01",
+   "in_force_to": "2024-07-01",
+   "item": "répartition a et d: Cotisation d'assurance vieillesse complémentaire",
+   "value": 16.5,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S1",
+    "S2"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ048"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000049623885",
+   "etat": "ABROGE_DIFF",
+   "in_force_from": "2024-06-01",
+   "in_force_to": "2024-07-01",
+   "item": "répartition a et d: Contribution sociale généralisée et contribution pour le remboursement de la dette sociale",
+   "value": 29.7,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S1",
+    "S2"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ049"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000049623885",
+   "etat": "ABROGE_DIFF",
+   "in_force_from": "2024-06-01",
+   "in_force_to": "2024-07-01",
+   "item": "répartition b: Cotisation d'assurance maladie-maternité mentionnée au premier alinéa de l'article L. 621-2",
+   "value": 8.1,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S1",
+    "S2"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ050"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000049623885",
+   "etat": "ABROGE_DIFF",
+   "in_force_from": "2024-06-01",
+   "in_force_to": "2024-07-01",
+   "item": "répartition b: Cotisation de prestations maladie en espèces mentionnée au dernier alinéa de l'article L. 621-2",
+   "value": 0.95,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S1",
+    "S2"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ051"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000049623885",
+   "etat": "ABROGE_DIFF",
+   "in_force_from": "2024-06-01",
+   "in_force_to": "2024-07-01",
+   "item": "répartition b: Cotisation d'assurance invalidité-décès",
+   "value": 2.6,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S1",
+    "S2"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ052"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000049623885",
+   "etat": "ABROGE_DIFF",
+   "in_force_from": "2024-06-01",
+   "in_force_to": "2024-07-01",
+   "item": "répartition b: Cotisation d'assurance vieillesse de base mentionnée au 1° de l'article D. 642-3",
+   "value": 26.0,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S1",
+    "S2"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ053"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000049623885",
+   "etat": "ABROGE_DIFF",
+   "in_force_from": "2024-06-01",
+   "in_force_to": "2024-07-01",
+   "item": "répartition b: Cotisation d'assurance vieillesse de base mentionnée au 2° de l'article D. 642-3",
+   "value": 5.3,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S1",
+    "S2"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ054"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000049623885",
+   "etat": "ABROGE_DIFF",
+   "in_force_from": "2024-06-01",
+   "in_force_to": "2024-07-01",
+   "item": "répartition b: Cotisation d'assurance vieillesse complémentaire",
+   "value": 20.75,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S1",
+    "S2"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ055"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000049623885",
+   "etat": "ABROGE_DIFF",
+   "in_force_from": "2024-06-01",
+   "in_force_to": "2024-07-01",
+   "item": "répartition b: Contribution sociale généralisée et contribution pour le remboursement de la dette sociale",
+   "value": 36.3,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S1",
+    "S2"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ056"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000049623885",
+   "etat": "ABROGE_DIFF",
+   "in_force_from": "2024-06-01",
+   "in_force_to": "2024-07-01",
+   "item": "répartition c: Cotisation d'assurance maladie-maternité",
+   "value": 4.9,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S1",
+    "S2"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ057"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000049623885",
+   "etat": "ABROGE_DIFF",
+   "in_force_from": "2024-06-01",
+   "in_force_to": "2024-07-01",
+   "item": "répartition c: Cotisation d'assurance invalidité-décès",
+   "value": 3.5,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S1",
+    "S2"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ058"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000049623885",
+   "etat": "ABROGE_DIFF",
+   "in_force_from": "2024-06-01",
+   "in_force_to": "2024-07-01",
+   "item": "répartition c: Cotisations d'assurance vieillesse de base mentionnées aux I et II de l'article D. 633-3 du code de la sécurité sociale",
+   "value": 48.3,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S1",
+    "S2"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ059"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000049623885",
+   "etat": "ABROGE_DIFF",
+   "in_force_from": "2024-06-01",
+   "in_force_to": "2024-07-01",
+   "item": "répartition c: Cotisation d'assurance vieillesse complémentaire",
+   "value": 15.1,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S1",
+    "S2"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ060"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000049623885",
+   "etat": "ABROGE_DIFF",
+   "in_force_from": "2024-06-01",
+   "in_force_to": "2024-07-01",
+   "item": "répartition c: Contribution sociale généralisée et contribution pour le remboursement de la dette sociale",
+   "value": 28.2,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S1",
+    "S2"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ061"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000049623885",
+   "etat": "ABROGE_DIFF",
+   "in_force_from": "2024-06-01",
+   "in_force_to": "2024-07-01",
+   "item": "répartition e: Cotisation d'assurance maladie maternité",
+   "value": 3.9,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S1",
+    "S2"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ062"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000049623885",
+   "etat": "ABROGE_DIFF",
+   "in_force_from": "2024-06-01",
+   "in_force_to": "2024-07-01",
+   "item": "répartition e: Cotisation d'assurance invalidité-décès",
+   "value": 4.1,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S1",
+    "S2"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ063"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000049623885",
+   "etat": "ABROGE_DIFF",
+   "in_force_from": "2024-06-01",
+   "in_force_to": "2024-07-01",
+   "item": "répartition e: Cotisations d'assurance vieillesse de base mentionnées aux I et II de l'article D. 633-3 du code de la sécurité sociale",
+   "value": 55.5,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S1",
+    "S2"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ064"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000049623885",
+   "etat": "ABROGE_DIFF",
+   "in_force_from": "2024-06-01",
+   "in_force_to": "2024-07-01",
+   "item": "répartition e: Contribution sociale généralisée et contribution pour le remboursement de la dette sociale",
+   "value": 36.5,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S1",
+    "S2"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ065"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000049625264",
+   "etat": "ABROGE_DIFF",
+   "in_force_from": "2024-07-01",
+   "in_force_to": "2025-01-01",
+   "item": "répartition a et d: Cotisation d'assurance maladie-maternité",
+   "value": 8.9,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S3",
+    "S4",
+    "S5"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ066"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000049625264",
+   "etat": "ABROGE_DIFF",
+   "in_force_from": "2024-07-01",
+   "in_force_to": "2025-01-01",
+   "item": "répartition a et d: Cotisation d'assurance invalidité-décès",
+   "value": 3.1,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S3",
+    "S4",
+    "S5"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ067"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000049625264",
+   "etat": "ABROGE_DIFF",
+   "in_force_from": "2024-07-01",
+   "in_force_to": "2025-01-01",
+   "item": "répartition a et d: Cotisation d'assurance vieillesse de base mentionnée aux I et II de l'article D. 633-3",
+   "value": 41.8,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S3",
+    "S4",
+    "S5"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ068"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000049625264",
+   "etat": "ABROGE_DIFF",
+   "in_force_from": "2024-07-01",
+   "in_force_to": "2025-01-01",
+   "item": "répartition a et d: Cotisation d'assurance vieillesse complémentaire",
+   "value": 16.5,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S3",
+    "S4",
+    "S5"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ069"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000049625264",
+   "etat": "ABROGE_DIFF",
+   "in_force_from": "2024-07-01",
+   "in_force_to": "2025-01-01",
+   "item": "répartition a et d: Contribution sociale généralisée et contribution pour le remboursement de la dette sociale",
+   "value": 29.7,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S3",
+    "S4",
+    "S5"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ070"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000049625264",
+   "etat": "ABROGE_DIFF",
+   "in_force_from": "2024-07-01",
+   "in_force_to": "2025-01-01",
+   "item": "répartition b: Cotisation d'assurance maladie maternité mentionnée au premier alinéa de l'article L. 621-1",
+   "value": 9.3,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S3",
+    "S4",
+    "S5"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ071"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000049625264",
+   "etat": "ABROGE_DIFF",
+   "in_force_from": "2024-07-01",
+   "in_force_to": "2025-01-01",
+   "item": "répartition b: Cotisation de prestations maladie en espèces mentionnée au dernier alinéa de l'article L. 621-2",
+   "value": 0.9,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S3",
+    "S4",
+    "S5"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ072"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000049625264",
+   "etat": "ABROGE_DIFF",
+   "in_force_from": "2024-07-01",
+   "in_force_to": "2025-01-01",
+   "item": "répartition b: Cotisation d'assurance invalidité décès",
+   "value": 1.4,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S3",
+    "S4",
+    "S5"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ073"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000049625264",
+   "etat": "ABROGE_DIFF",
+   "in_force_from": "2024-07-01",
+   "in_force_to": "2025-01-01",
+   "item": "répartition b: Cotisation d'assurance vieillesse de base mentionnée au 1° de l'article D. 642-3",
+   "value": 23.45,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S3",
+    "S4",
+    "S5"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ074"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000049625264",
+   "etat": "ABROGE_DIFF",
+   "in_force_from": "2024-07-01",
+   "in_force_to": "2025-01-01",
+   "item": "répartition b: Cotisation d'assurance vieillesse de base mentionnée au 2° de l'article D. 642-3",
+   "value": 5.35,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S3",
+    "S4",
+    "S5"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ075"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000049625264",
+   "etat": "ABROGE_DIFF",
+   "in_force_from": "2024-07-01",
+   "in_force_to": "2025-01-01",
+   "item": "répartition b: Cotisation d'assurance vieillesse complémentaire",
+   "value": 25.6,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S3",
+    "S4",
+    "S5"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ076"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000049625264",
+   "etat": "ABROGE_DIFF",
+   "in_force_from": "2024-07-01",
+   "in_force_to": "2025-01-01",
+   "item": "répartition b: Contribution sociale généralisée et contribution pour le remboursement de la dette sociale",
+   "value": 34.0,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S3",
+    "S4",
+    "S5"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ077"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000049625264",
+   "etat": "ABROGE_DIFF",
+   "in_force_from": "2024-07-01",
+   "in_force_to": "2025-01-01",
+   "item": "répartition c: Cotisation d'assurance maladie-maternité",
+   "value": 4.9,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S3",
+    "S4",
+    "S5"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ078"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000049625264",
+   "etat": "ABROGE_DIFF",
+   "in_force_from": "2024-07-01",
+   "in_force_to": "2025-01-01",
+   "item": "répartition c: Cotisation d'assurance invalidité-décès",
+   "value": 3.5,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S3",
+    "S4",
+    "S5"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ079"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000049625264",
+   "etat": "ABROGE_DIFF",
+   "in_force_from": "2024-07-01",
+   "in_force_to": "2025-01-01",
+   "item": "répartition c: Cotisations d'assurance vieillesse de base mentionnées aux I et II de l'article D. 633-3 du code de la sécurité sociale",
+   "value": 48.3,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S3",
+    "S4",
+    "S5"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ080"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000049625264",
+   "etat": "ABROGE_DIFF",
+   "in_force_from": "2024-07-01",
+   "in_force_to": "2025-01-01",
+   "item": "répartition c: Cotisation d'assurance vieillesse complémentaire",
+   "value": 15.1,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S3",
+    "S4",
+    "S5"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ081"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000049625264",
+   "etat": "ABROGE_DIFF",
+   "in_force_from": "2024-07-01",
+   "in_force_to": "2025-01-01",
+   "item": "répartition c: Contribution sociale généralisée et contribution pour le remboursement de la dette sociale",
+   "value": 28.2,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S3",
+    "S4",
+    "S5"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ082"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000049625264",
+   "etat": "ABROGE_DIFF",
+   "in_force_from": "2024-07-01",
+   "in_force_to": "2025-01-01",
+   "item": "répartition e: Cotisation d'assurance maladie maternité",
+   "value": 3.6,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S3",
+    "S4",
+    "S5"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ083"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000049625264",
+   "etat": "ABROGE_DIFF",
+   "in_force_from": "2024-07-01",
+   "in_force_to": "2025-01-01",
+   "item": "répartition e: Cotisation d'assurance invalidité décès",
+   "value": 3.7,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S3",
+    "S4",
+    "S5"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ084"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000049625264",
+   "etat": "ABROGE_DIFF",
+   "in_force_from": "2024-07-01",
+   "in_force_to": "2025-01-01",
+   "item": "répartition e: Cotisations d'assurance vieillesse de base mentionnées aux I et II de l'article D. 633-3 du code de la sécurité sociale",
+   "value": 50.75,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S3",
+    "S4",
+    "S5"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ085"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000049625264",
+   "etat": "ABROGE_DIFF",
+   "in_force_from": "2024-07-01",
+   "in_force_to": "2025-01-01",
+   "item": "répartition e: Cotisation d'assurance vieillesse complémentaire",
+   "value": 7.85,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S3",
+    "S4",
+    "S5"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ086"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000049625264",
+   "etat": "ABROGE_DIFF",
+   "in_force_from": "2024-07-01",
+   "in_force_to": "2025-01-01",
+   "item": "répartition e: Contribution sociale généralisée et contribution pour le remboursement de la dette sociale",
+   "value": 34.1,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S3",
+    "S4",
+    "S5"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ087"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000049625405",
+   "etat": "ABROGE_DIFF",
+   "in_force_from": "2025-01-01",
+   "in_force_to": "2026-01-01",
+   "item": "répartition a et d: Cotisation d'assurance maladie-maternité",
+   "value": 8.9,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S6",
+    "S7"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ088"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000049625405",
+   "etat": "ABROGE_DIFF",
+   "in_force_from": "2025-01-01",
+   "in_force_to": "2026-01-01",
+   "item": "répartition a et d: Cotisation d'assurance invalidité-décès",
+   "value": 3.1,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S6",
+    "S7"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ089"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000049625405",
+   "etat": "ABROGE_DIFF",
+   "in_force_from": "2025-01-01",
+   "in_force_to": "2026-01-01",
+   "item": "répartition a et d: Cotisation d'assurance vieillesse de base mentionnée aux I et II de l'article D. 633-3",
+   "value": 41.8,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S6",
+    "S7"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ090"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000049625405",
+   "etat": "ABROGE_DIFF",
+   "in_force_from": "2025-01-01",
+   "in_force_to": "2026-01-01",
+   "item": "répartition a et d: Cotisation d'assurance vieillesse complémentaire",
+   "value": 16.5,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S6",
+    "S7"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ091"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000049625405",
+   "etat": "ABROGE_DIFF",
+   "in_force_from": "2025-01-01",
+   "in_force_to": "2026-01-01",
+   "item": "répartition a et d: Contribution sociale généralisée et contribution pour le remboursement de la dette sociale",
+   "value": 29.7,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S6",
+    "S7"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ092"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000049625405",
+   "etat": "ABROGE_DIFF",
+   "in_force_from": "2025-01-01",
+   "in_force_to": "2026-01-01",
+   "item": "répartition b: Cotisation d'assurance maladie maternité mentionnée au premier alinéa de l'article L. 621-1",
+   "value": 9.3,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S6",
+    "S7"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ093"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000049625405",
+   "etat": "ABROGE_DIFF",
+   "in_force_from": "2025-01-01",
+   "in_force_to": "2026-01-01",
+   "item": "répartition b: Cotisation de prestations maladie en espèces mentionnée au dernier alinéa de l'article L. 621-2",
+   "value": 0.9,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S6",
+    "S7"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ094"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000049625405",
+   "etat": "ABROGE_DIFF",
+   "in_force_from": "2025-01-01",
+   "in_force_to": "2026-01-01",
+   "item": "répartition b: Cotisation d'assurance invalidité décès",
+   "value": 1.4,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S6",
+    "S7"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ095"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000049625405",
+   "etat": "ABROGE_DIFF",
+   "in_force_from": "2025-01-01",
+   "in_force_to": "2026-01-01",
+   "item": "répartition b: Cotisation d'assurance vieillesse de base mentionnée au 1° de l'article D. 642-3",
+   "value": 23.45,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S6",
+    "S7"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ096"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000049625405",
+   "etat": "ABROGE_DIFF",
+   "in_force_from": "2025-01-01",
+   "in_force_to": "2026-01-01",
+   "item": "répartition b: Cotisation d'assurance vieillesse de base mentionnée au 2° de l'article D. 642-3",
+   "value": 5.35,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S6",
+    "S7"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ097"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000049625405",
+   "etat": "ABROGE_DIFF",
+   "in_force_from": "2025-01-01",
+   "in_force_to": "2026-01-01",
+   "item": "répartition b: Cotisation d'assurance vieillesse complémentaire",
+   "value": 25.6,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S6",
+    "S7"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ098"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000049625405",
+   "etat": "ABROGE_DIFF",
+   "in_force_from": "2025-01-01",
+   "in_force_to": "2026-01-01",
+   "item": "répartition b: Contribution sociale généralisée et contribution pour le remboursement de la dette sociale",
+   "value": 34.0,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S6",
+    "S7"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ099"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000049625405",
+   "etat": "ABROGE_DIFF",
+   "in_force_from": "2025-01-01",
+   "in_force_to": "2026-01-01",
+   "item": "répartition c: Cotisation d'assurance maladie-maternité",
+   "value": 4.9,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S6",
+    "S7"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ100"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000049625405",
+   "etat": "ABROGE_DIFF",
+   "in_force_from": "2025-01-01",
+   "in_force_to": "2026-01-01",
+   "item": "répartition c: Cotisation d'assurance invalidité-décès",
+   "value": 3.5,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S6",
+    "S7"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ101"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000049625405",
+   "etat": "ABROGE_DIFF",
+   "in_force_from": "2025-01-01",
+   "in_force_to": "2026-01-01",
+   "item": "répartition c: Cotisations d'assurance vieillesse de base mentionnées aux I et II de l'article D. 633-3 du code de la sécurité sociale",
+   "value": 48.3,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S6",
+    "S7"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ102"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000049625405",
+   "etat": "ABROGE_DIFF",
+   "in_force_from": "2025-01-01",
+   "in_force_to": "2026-01-01",
+   "item": "répartition c: Cotisation d'assurance vieillesse complémentaire",
+   "value": 15.1,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S6",
+    "S7"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ103"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000049625405",
+   "etat": "ABROGE_DIFF",
+   "in_force_from": "2025-01-01",
+   "in_force_to": "2026-01-01",
+   "item": "répartition c: Contribution sociale généralisée et contribution pour le remboursement de la dette sociale",
+   "value": 28.2,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S6",
+    "S7"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ104"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000049625405",
+   "etat": "ABROGE_DIFF",
+   "in_force_from": "2025-01-01",
+   "in_force_to": "2026-01-01",
+   "item": "répartition e: Cotisation d'assurance maladie maternité",
+   "value": 3.4,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S6",
+    "S7"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ105"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000049625405",
+   "etat": "ABROGE_DIFF",
+   "in_force_from": "2025-01-01",
+   "in_force_to": "2026-01-01",
+   "item": "répartition e: Cotisation d'assurance invalidité-décès",
+   "value": 3.5,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S6",
+    "S7"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ106"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000049625405",
+   "etat": "ABROGE_DIFF",
+   "in_force_from": "2025-01-01",
+   "in_force_to": "2026-01-01",
+   "item": "répartition e: Cotisations d'assurance vieillesse de base mentionnées aux I et II de l'article D. 633-3 du code de la sécurité sociale",
+   "value": 47.6,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S6",
+    "S7"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ107"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000049625405",
+   "etat": "ABROGE_DIFF",
+   "in_force_from": "2025-01-01",
+   "in_force_to": "2026-01-01",
+   "item": "répartition e: Cotisation d'assurance vieillesse complémentaire",
+   "value": 13.0,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S6",
+    "S7"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ108"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000049625405",
+   "etat": "ABROGE_DIFF",
+   "in_force_from": "2025-01-01",
+   "in_force_to": "2026-01-01",
+   "item": "répartition e: Contribution sociale généralisée et contribution pour le remboursement de la dette sociale",
+   "value": 32.5,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S6",
+    "S7"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ109"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000052218747",
+   "etat": "VIGUEUR",
+   "in_force_from": "2026-01-01",
+   "in_force_to": "2999-01-01",
+   "item": "répartition a et d: Cotisation d'assurance maladie-maternité mentionnée à l'article L. 621-1",
+   "value": 8.8,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S8",
+    "S9",
+    "S10"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ110"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000052218747",
+   "etat": "VIGUEUR",
+   "in_force_from": "2026-01-01",
+   "in_force_to": "2999-01-01",
+   "item": "répartition a et d: Cotisation de prestations maladie en espèces mentionnée à l'article L. 621-2",
+   "value": 1.25,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S8",
+    "S9",
+    "S10"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ111"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000052218747",
+   "etat": "VIGUEUR",
+   "in_force_from": "2026-01-01",
+   "in_force_to": "2999-01-01",
+   "item": "répartition a et d: Cotisation d'assurance invalidité-décès mentionnée à l'article L. 632-1",
+   "value": 3.15,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S8",
+    "S9",
+    "S10"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ112"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000052218747",
+   "etat": "VIGUEUR",
+   "in_force_from": "2026-01-01",
+   "in_force_to": "2999-01-01",
+   "item": "répartition a et d: Cotisation d'assurance vieillesse de base mentionnée à l'article D. 633-3",
+   "value": 43.45,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S8",
+    "S9",
+    "S10"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ113"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000052218747",
+   "etat": "VIGUEUR",
+   "in_force_from": "2026-01-01",
+   "in_force_to": "2999-01-01",
+   "item": "répartition a et d: Cotisation d'assurance vieillesse complémentaire mentionnée à l'article L. 635-1",
+   "value": 19.75,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S8",
+    "S9",
+    "S10"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ114"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000052218747",
+   "etat": "VIGUEUR",
+   "in_force_from": "2026-01-01",
+   "in_force_to": "2999-01-01",
+   "item": "répartition a et d: Contribution sociale généralisée et contribution pour le remboursement de la dette sociale mentionnées à l'article L. 136-3",
+   "value": 23.6,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S8",
+    "S9",
+    "S10"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ115"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000052218747",
+   "etat": "VIGUEUR",
+   "in_force_from": "2026-01-01",
+   "in_force_to": "2999-01-01",
+   "item": "répartition b: Cotisation d'assurance maladie maternité mentionnée à l'article L. 621-1",
+   "value": 10.6,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S8",
+    "S9",
+    "S10"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ116"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000052218747",
+   "etat": "VIGUEUR",
+   "in_force_from": "2026-01-01",
+   "in_force_to": "2999-01-01",
+   "item": "répartition b: Cotisation de prestations maladie en espèces mentionnée à l'article L. 621-2",
+   "value": 0.8,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S8",
+    "S9",
+    "S10"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ117"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000052218747",
+   "etat": "VIGUEUR",
+   "in_force_from": "2026-01-01",
+   "in_force_to": "2999-01-01",
+   "item": "répartition b: Cotisation d'assurance invalidité décès mentionnée à l'article L. 644-2",
+   "value": 1.4,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S8",
+    "S9",
+    "S10"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ118"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000052218747",
+   "etat": "VIGUEUR",
+   "in_force_from": "2026-01-01",
+   "in_force_to": "2999-01-01",
+   "item": "répartition b: Cotisation d'assurance vieillesse de base mentionnée au 1° de l'article D. 642-3",
+   "value": 24.3,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S8",
+    "S9",
+    "S10"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ119"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000052218747",
+   "etat": "VIGUEUR",
+   "in_force_from": "2026-01-01",
+   "in_force_to": "2999-01-01",
+   "item": "répartition b: Cotisation d'assurance vieillesse de base mentionnée au 2° de l'article D. 642-3",
+   "value": 5.2,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S8",
+    "S9",
+    "S10"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ120"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000052218747",
+   "etat": "VIGUEUR",
+   "in_force_from": "2026-01-01",
+   "in_force_to": "2999-01-01",
+   "item": "répartition b: Cotisation d'assurance vieillesse complémentaire mentionnée à l'article L. 644-1",
+   "value": 30.7,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S8",
+    "S9",
+    "S10"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ121"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000052218747",
+   "etat": "VIGUEUR",
+   "in_force_from": "2026-01-01",
+   "in_force_to": "2999-01-01",
+   "item": "répartition b: Contribution sociale généralisée et contribution pour le remboursement de la dette sociale mentionnées à l'article L. 136-3",
+   "value": 27.0,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S8",
+    "S9",
+    "S10"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ122"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000052218747",
+   "etat": "VIGUEUR",
+   "in_force_from": "2026-01-01",
+   "in_force_to": "2999-01-01",
+   "item": "répartition c: Cotisation d'assurance maladie-maternité mentionnée à l'article L. 621-1",
+   "value": 0.0,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S8",
+    "S9",
+    "S10"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ123"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000052218747",
+   "etat": "VIGUEUR",
+   "in_force_from": "2026-01-01",
+   "in_force_to": "2999-01-01",
+   "item": "répartition c: Cotisation de prestations maladie en espèces mentionnée à l'article L. 621-2",
+   "value": 5.1,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S8",
+    "S9",
+    "S10"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ124"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000052218747",
+   "etat": "VIGUEUR",
+   "in_force_from": "2026-01-01",
+   "in_force_to": "2999-01-01",
+   "item": "répartition c: Cotisation d'assurance invalidité-décès mentionnée à l'article L. 632-1",
+   "value": 3.8,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S8",
+    "S9",
+    "S10"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ125"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000052218747",
+   "etat": "VIGUEUR",
+   "in_force_from": "2026-01-01",
+   "in_force_to": "2999-01-01",
+   "item": "répartition c: Cotisations d'assurance vieillesse de base mentionnées à l'article D. 633-3 du code de la sécurité sociale",
+   "value": 50.2,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S8",
+    "S9",
+    "S10"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ126"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000052218747",
+   "etat": "VIGUEUR",
+   "in_force_from": "2026-01-01",
+   "in_force_to": "2999-01-01",
+   "item": "répartition c: Cotisation d'assurance vieillesse complémentaire mentionnée à l'article L. 635-1",
+   "value": 18.6,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S8",
+    "S9",
+    "S10"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ127"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000052218747",
+   "etat": "VIGUEUR",
+   "in_force_from": "2026-01-01",
+   "in_force_to": "2999-01-01",
+   "item": "répartition c: Contribution sociale généralisée et contribution pour le remboursement de la dette sociale mentionnées à l'article L. 136-3",
+   "value": 22.3,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S8",
+    "S9",
+    "S10"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ128"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000052218747",
+   "etat": "VIGUEUR",
+   "in_force_from": "2026-01-01",
+   "in_force_to": "2999-01-01",
+   "item": "répartition e: Cotisation d'assurance maladie maternité mentionnée à l'article L. 621-1",
+   "value": 2.6,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S8",
+    "S9",
+    "S10"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ129"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000052218747",
+   "etat": "VIGUEUR",
+   "in_force_from": "2026-01-01",
+   "in_force_to": "2999-01-01",
+   "item": "répartition e: Cotisation de prestations maladie en espèces mentionnée à l'article L. 621-2",
+   "value": 1.5,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S8",
+    "S9",
+    "S10"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ130"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000052218747",
+   "etat": "VIGUEUR",
+   "in_force_from": "2026-01-01",
+   "in_force_to": "2999-01-01",
+   "item": "répartition e: Cotisation d'assurance invalidité-décès mentionnées à l'article L. 632-1",
+   "value": 3.3,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S8",
+    "S9",
+    "S10"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ131"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000052218747",
+   "etat": "VIGUEUR",
+   "in_force_from": "2026-01-01",
+   "in_force_to": "2999-01-01",
+   "item": "répartition e: Cotisations d'assurance vieillesse de base mentionnées à l'article D. 633-3 du code de la sécurité sociale",
+   "value": 46.4,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S8",
+    "S9",
+    "S10"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ132"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000052218747",
+   "etat": "VIGUEUR",
+   "in_force_from": "2026-01-01",
+   "in_force_to": "2999-01-01",
+   "item": "répartition e: Cotisation d'assurance vieillesse complémentaire mentionnée à l'article L. 635-1",
+   "value": 21.0,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S8",
+    "S9",
+    "S10"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ133"
+  },
+  {
+   "article": "D613-6",
+   "version_id": "LEGIARTI000052218747",
+   "etat": "VIGUEUR",
+   "in_force_from": "2026-01-01",
+   "in_force_to": "2999-01-01",
+   "item": "répartition e: Contribution sociale généralisée et contribution pour le remboursement de la dette sociale mentionnées à l'article L. 136-3",
+   "value": 25.2,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S8",
+    "S9",
+    "S10"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "the rule library has one 'maladie-maternité' line; where the law splits maladie-maternité and prestations en espèces, the model line is scored against their sum (INFERRED mapping)",
+   "req_id": "REQ134"
+  },
+  {
+   "article": "D136-5",
+   "version_id": "LEGIARTI000049899286",
+   "in_force_from": "2024-07-07",
+   "item": "abattement floor, % of annual PASS",
+   "value": 1.76,
+   "unit": "% PASS",
+   "visible_in_snapshots": [
+    "S3",
+    "S4",
+    "S5",
+    "S6",
+    "S7",
+    "S8",
+    "S9",
+    "S10"
+   ],
+   "status": "DETERMINISTIC",
+   "quote": "fixé à 1,76 % de la valeur annuelle du plafond",
+   "req_id": "REQ135"
+  },
+  {
+   "article": "D136-5",
+   "version_id": "LEGIARTI000049899286",
+   "in_force_from": "2024-07-07",
+   "item": "abattement ceiling, % of annual PASS",
+   "value": 130.0,
+   "unit": "% PASS",
+   "visible_in_snapshots": [
+    "S3",
+    "S4",
+    "S5",
+    "S6",
+    "S7",
+    "S8",
+    "S9",
+    "S10"
+   ],
+   "status": "DETERMINISTIC",
+   "quote": "fixé à 130 % de la valeur annuelle du plafond",
+   "req_id": "REQ136"
+  },
+  {
+   "article": "L136-3",
+   "version_id": "LEGIARTI000048683641",
+   "in_force_from": "2023-12-28",
+   "item": "III: flat abattement on the base",
+   "value": 26.0,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S0",
+    "S1",
+    "S2",
+    "S3",
+    "S4",
+    "S5"
+   ],
+   "status": "DETERMINISTIC",
+   "quote": "abattement de 26 %",
+   "req_id": "REQ137"
+  },
+  {
+   "article": "L136-3",
+   "version_id": "LEGIARTI000051284498",
+   "in_force_from": "2025-02-28",
+   "item": "III: flat abattement on the base",
+   "value": 26.0,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S6",
+    "S7",
+    "S8",
+    "S9",
+    "S10"
+   ],
+   "status": "DETERMINISTIC",
+   "quote": "abattement de 26 %",
+   "req_id": "REQ138"
+  },
+  {
+   "article": "D621-2",
+   "version_id": "LEGIARTI000046714747",
+   "in_force_from": "2022-12-10",
+   "item": "maladie reduced-rate constant T2",
+   "value": 4.5,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S0",
+    "S1",
+    "S2"
+   ],
+   "status": "DETERMINISTIC",
+   "quote": "T2 est égal à 4,5 %",
+   "req_id": "REQ139"
+  },
+  {
+   "article": "D621-2",
+   "version_id": "LEGIARTI000046714747",
+   "in_force_from": "2022-12-10",
+   "item": "maladie reduced-rate constant T1",
+   "value": 0.5,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S0",
+    "S1",
+    "S2"
+   ],
+   "status": "DETERMINISTIC",
+   "quote": "T1 est égal à 0,5 %",
+   "req_id": "REQ140"
+  },
+  {
+   "article": "D621-2",
+   "version_id": "LEGIARTI000046714747",
+   "in_force_from": "2022-12-10",
+   "item": "maladie reduced-rate constant T2",
+   "value": 4.5,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S0",
+    "S1",
+    "S2"
+   ],
+   "status": "DETERMINISTIC",
+   "quote": "T2 est égal à 4,5 %",
+   "req_id": "REQ141"
+  },
+  {
+   "article": "D621-2",
+   "version_id": "LEGIARTI000046714747",
+   "in_force_from": "2022-12-10",
+   "item": "maladie reduced-rate thresholds (% PASS)",
+   "value": [
+    40.0,
+    60.0,
+    110.0
+   ],
+   "unit": "% PASS",
+   "visible_in_snapshots": [
+    "S0",
+    "S1",
+    "S2"
+   ],
+   "status": "DETERMINISTIC",
+   "req_id": "REQ142"
+  },
+  {
+   "article": "D621-2",
+   "version_id": "LEGIARTI000049904592",
+   "in_force_from": "2024-07-07",
+   "item": "maladie reduced-rate constant T1",
+   "value": 1.5,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S3",
+    "S4",
+    "S5",
+    "S6",
+    "S7",
+    "S8",
+    "S9",
+    "S10"
+   ],
+   "status": "DETERMINISTIC",
+   "quote": "T1 est égal à 1,5 %",
+   "req_id": "REQ143"
+  },
+  {
+   "article": "D621-2",
+   "version_id": "LEGIARTI000049904592",
+   "in_force_from": "2024-07-07",
+   "item": "maladie reduced-rate constant T2",
+   "value": 4.0,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S3",
+    "S4",
+    "S5",
+    "S6",
+    "S7",
+    "S8",
+    "S9",
+    "S10"
+   ],
+   "status": "DETERMINISTIC",
+   "quote": "T2 est égal à 4 %",
+   "req_id": "REQ144"
+  },
+  {
+   "article": "D621-2",
+   "version_id": "LEGIARTI000049904592",
+   "in_force_from": "2024-07-07",
+   "item": "maladie reduced-rate constant T1",
+   "value": 1.5,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S3",
+    "S4",
+    "S5",
+    "S6",
+    "S7",
+    "S8",
+    "S9",
+    "S10"
+   ],
+   "status": "DETERMINISTIC",
+   "quote": "T1 est égal à 1,5 %",
+   "req_id": "REQ145"
+  },
+  {
+   "article": "D621-2",
+   "version_id": "LEGIARTI000049904592",
+   "in_force_from": "2024-07-07",
+   "item": "maladie reduced-rate constant T3",
+   "value": 6.5,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S3",
+    "S4",
+    "S5",
+    "S6",
+    "S7",
+    "S8",
+    "S9",
+    "S10"
+   ],
+   "status": "DETERMINISTIC",
+   "quote": "T3 est égal à 6,5 %",
+   "req_id": "REQ146"
+  },
+  {
+   "article": "D621-2",
+   "version_id": "LEGIARTI000049904592",
+   "in_force_from": "2024-07-07",
+   "item": "maladie reduced-rate constant T2",
+   "value": 4.0,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S3",
+    "S4",
+    "S5",
+    "S6",
+    "S7",
+    "S8",
+    "S9",
+    "S10"
+   ],
+   "status": "DETERMINISTIC",
+   "quote": "T2 est égal à 4 %",
+   "req_id": "REQ147"
+  },
+  {
+   "article": "D621-2",
+   "version_id": "LEGIARTI000049904592",
+   "in_force_from": "2024-07-07",
+   "item": "maladie reduced-rate constant T4",
+   "value": 7.7,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S3",
+    "S4",
+    "S5",
+    "S6",
+    "S7",
+    "S8",
+    "S9",
+    "S10"
+   ],
+   "status": "DETERMINISTIC",
+   "quote": "T4 est égal à 7,7 %",
+   "req_id": "REQ148"
+  },
+  {
+   "article": "D621-2",
+   "version_id": "LEGIARTI000049904592",
+   "in_force_from": "2024-07-07",
+   "item": "maladie reduced-rate constant T3",
+   "value": 6.5,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S3",
+    "S4",
+    "S5",
+    "S6",
+    "S7",
+    "S8",
+    "S9",
+    "S10"
+   ],
+   "status": "DETERMINISTIC",
+   "quote": "T3 est égal à 6,5 %",
+   "req_id": "REQ149"
+  },
+  {
+   "article": "D621-2",
+   "version_id": "LEGIARTI000049904592",
+   "in_force_from": "2024-07-07",
+   "item": "maladie reduced-rate constant T5",
+   "value": 8.5,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S3",
+    "S4",
+    "S5",
+    "S6",
+    "S7",
+    "S8",
+    "S9",
+    "S10"
+   ],
+   "status": "DETERMINISTIC",
+   "quote": "T5 est égal à 8,5 %",
+   "req_id": "REQ150"
+  },
+  {
+   "article": "D621-2",
+   "version_id": "LEGIARTI000049904592",
+   "in_force_from": "2024-07-07",
+   "item": "maladie reduced-rate constant T4",
+   "value": 7.7,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S3",
+    "S4",
+    "S5",
+    "S6",
+    "S7",
+    "S8",
+    "S9",
+    "S10"
+   ],
+   "status": "DETERMINISTIC",
+   "quote": "T4 est égal à 7,7 %",
+   "req_id": "REQ151"
+  },
+  {
+   "article": "D621-2",
+   "version_id": "LEGIARTI000049904592",
+   "in_force_from": "2024-07-07",
+   "item": "maladie reduced-rate thresholds (% PASS)",
+   "value": [
+    20.0,
+    40.0,
+    60.0,
+    110.0,
+    200.0,
+    300.0
+   ],
+   "unit": "% PASS",
+   "visible_in_snapshots": [
+    "S3",
+    "S4",
+    "S5",
+    "S6",
+    "S7",
+    "S8",
+    "S9",
+    "S10"
+   ],
+   "status": "DETERMINISTIC",
+   "req_id": "REQ152"
+  },
+  {
+   "article": "D633-3",
+   "version_id": "LEGIARTI000041967101",
+   "in_force_from": "2020-05-25",
+   "item": "retraite de base rate within PASS",
+   "value": 17.15,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S0",
+    "S1",
+    "S2"
+   ],
+   "status": "DETERMINISTIC",
+   "req_id": "REQ153"
+  },
+  {
+   "article": "D633-3",
+   "version_id": "LEGIARTI000041967101",
+   "in_force_from": "2020-05-25",
+   "item": "retraite de base rate on the whole base",
+   "value": 0.6,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S0",
+    "S1",
+    "S2"
+   ],
+   "status": "DETERMINISTIC",
+   "req_id": "REQ154"
+  },
+  {
+   "article": "D633-3",
+   "version_id": "LEGIARTI000049904636",
+   "in_force_from": "2024-07-07",
+   "item": "retraite de base rate within PASS",
+   "value": 17.15,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S3",
+    "S4",
+    "S5",
+    "S6",
+    "S7",
+    "S8",
+    "S9",
+    "S10"
+   ],
+   "status": "DETERMINISTIC",
+   "req_id": "REQ155"
+  },
+  {
+   "article": "D633-3",
+   "version_id": "LEGIARTI000049904636",
+   "in_force_from": "2024-07-07",
+   "item": "retraite de base rate on the whole base",
+   "value": 0.72,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S3",
+    "S4",
+    "S5",
+    "S6",
+    "S7",
+    "S8",
+    "S9",
+    "S10"
+   ],
+   "status": "DETERMINISTIC",
+   "req_id": "REQ156"
+  },
+  {
+   "article": "D131-6-1",
+   "version_id": "LEGIARTI000036475110",
+   "in_force_from": "2018-01-01",
+   "item": "Acre exemption share of contributions when income <= 3/4 PASS",
+   "value": 1.0,
+   "unit": "fraction",
+   "visible_in_snapshots": [
+    "S0",
+    "S1",
+    "S2",
+    "S3",
+    "S4",
+    "S5",
+    "S6",
+    "S7",
+    "S8"
+   ],
+   "status": "DETERMINISTIC",
+   "quote": "correspond au montant total des cotisations",
+   "req_id": "REQ157"
+  },
+  {
+   "article": "D131-6-1",
+   "version_id": "LEGIARTI000053451315",
+   "in_force_from": "2026-01-01",
+   "item": "Acre exemption share of contributions when income <= 3/4 PASS",
+   "value": 0.25,
+   "unit": "fraction",
+   "visible_in_snapshots": [
+    "S9",
+    "S10"
+   ],
+   "status": "DETERMINISTIC",
+   "quote": "correspond au quart du montant total des cotisations",
+   "req_id": "REQ158"
+  },
+  {
+   "article": "D756-5",
+   "version_id": "LEGIARTI000034726710",
+   "in_force_from": "2017-05-12",
+   "item": "DROM rate category a, period 1: roundup_tenth(fraction x D613-4 rate)",
+   "value": 2.1,
+   "value_from_pre_2024_07_base": 2.1,
+   "fraction": 0.166667,
+   "base_rate_S5": 12.3,
+   "base_rate_S0": 12.3,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S3",
+    "S4",
+    "S5"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "D756-5 assigns 1/6 to '2° de l'article L. 611-1' and 1/3 to other cases for period 1; L611-1 is outside the bounded set, so which categories take 1/6 is UNRESOLVED. The direction of change on 2024-07-01 (base 21,1→23,1 for e; 21,2→23,2 for b) is not ambiguous.",
+   "req_id": "REQ159"
+  },
+  {
+   "article": "D756-5",
+   "version_id": "LEGIARTI000034726710",
+   "in_force_from": "2017-05-12",
+   "item": "DROM rate category a, period 2: roundup_tenth(fraction x D613-4 rate)",
+   "value": 6.2,
+   "value_from_pre_2024_07_base": 6.2,
+   "fraction": 0.5,
+   "base_rate_S5": 12.3,
+   "base_rate_S0": 12.3,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S3",
+    "S4",
+    "S5"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "D756-5 assigns 1/6 to '2° de l'article L. 611-1' and 1/3 to other cases for period 1; L611-1 is outside the bounded set, so which categories take 1/6 is UNRESOLVED. The direction of change on 2024-07-01 (base 21,1→23,1 for e; 21,2→23,2 for b) is not ambiguous.",
+   "req_id": "REQ160"
+  },
+  {
+   "article": "D756-5",
+   "version_id": "LEGIARTI000034726710",
+   "in_force_from": "2017-05-12",
+   "item": "DROM rate category a, period 3: roundup_tenth(fraction x D613-4 rate)",
+   "value": 8.2,
+   "value_from_pre_2024_07_base": 8.2,
+   "fraction": 0.666667,
+   "base_rate_S5": 12.3,
+   "base_rate_S0": 12.3,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S3",
+    "S4",
+    "S5"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "D756-5 assigns 1/6 to '2° de l'article L. 611-1' and 1/3 to other cases for period 1; L611-1 is outside the bounded set, so which categories take 1/6 is UNRESOLVED. The direction of change on 2024-07-01 (base 21,1→23,1 for e; 21,2→23,2 for b) is not ambiguous.",
+   "req_id": "REQ161"
+  },
+  {
+   "article": "D756-5",
+   "version_id": "LEGIARTI000034726710",
+   "in_force_from": "2017-05-12",
+   "item": "DROM rate category b, period 1: roundup_tenth(fraction x D613-4 rate)",
+   "value": 7.8,
+   "value_from_pre_2024_07_base": 7.1,
+   "fraction": 0.333333,
+   "base_rate_S5": 23.2,
+   "base_rate_S0": 21.2,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S3",
+    "S4",
+    "S5"
+   ],
+   "status": "UNRESOLVED_FRACTION_ASSIGNMENT",
+   "note": "D756-5 assigns 1/6 to '2° de l'article L. 611-1' and 1/3 to other cases for period 1; L611-1 is outside the bounded set, so which categories take 1/6 is UNRESOLVED. The direction of change on 2024-07-01 (base 21,1→23,1 for e; 21,2→23,2 for b) is not ambiguous.",
+   "req_id": "REQ162"
+  },
+  {
+   "article": "D756-5",
+   "version_id": "LEGIARTI000034726710",
+   "in_force_from": "2017-05-12",
+   "item": "DROM rate category b, period 2: roundup_tenth(fraction x D613-4 rate)",
+   "value": 11.6,
+   "value_from_pre_2024_07_base": 10.6,
+   "fraction": 0.5,
+   "base_rate_S5": 23.2,
+   "base_rate_S0": 21.2,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S3",
+    "S4",
+    "S5"
+   ],
+   "status": "UNRESOLVED_FRACTION_ASSIGNMENT",
+   "note": "D756-5 assigns 1/6 to '2° de l'article L. 611-1' and 1/3 to other cases for period 1; L611-1 is outside the bounded set, so which categories take 1/6 is UNRESOLVED. The direction of change on 2024-07-01 (base 21,1→23,1 for e; 21,2→23,2 for b) is not ambiguous.",
+   "req_id": "REQ163"
+  },
+  {
+   "article": "D756-5",
+   "version_id": "LEGIARTI000034726710",
+   "in_force_from": "2017-05-12",
+   "item": "DROM rate category b, period 3: roundup_tenth(fraction x D613-4 rate)",
+   "value": 15.5,
+   "value_from_pre_2024_07_base": 14.2,
+   "fraction": 0.666667,
+   "base_rate_S5": 23.2,
+   "base_rate_S0": 21.2,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S3",
+    "S4",
+    "S5"
+   ],
+   "status": "UNRESOLVED_FRACTION_ASSIGNMENT",
+   "note": "D756-5 assigns 1/6 to '2° de l'article L. 611-1' and 1/3 to other cases for period 1; L611-1 is outside the bounded set, so which categories take 1/6 is UNRESOLVED. The direction of change on 2024-07-01 (base 21,1→23,1 for e; 21,2→23,2 for b) is not ambiguous.",
+   "req_id": "REQ164"
+  },
+  {
+   "article": "D756-5",
+   "version_id": "LEGIARTI000034726710",
+   "in_force_from": "2017-05-12",
+   "item": "DROM rate category d, period 1: roundup_tenth(fraction x D613-4 rate)",
+   "value": 3.6,
+   "value_from_pre_2024_07_base": 3.6,
+   "fraction": 0.166667,
+   "base_rate_S5": 21.2,
+   "base_rate_S0": 21.2,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S3",
+    "S4",
+    "S5"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "D756-5 assigns 1/6 to '2° de l'article L. 611-1' and 1/3 to other cases for period 1; L611-1 is outside the bounded set, so which categories take 1/6 is UNRESOLVED. The direction of change on 2024-07-01 (base 21,1→23,1 for e; 21,2→23,2 for b) is not ambiguous.",
+   "req_id": "REQ165"
+  },
+  {
+   "article": "D756-5",
+   "version_id": "LEGIARTI000034726710",
+   "in_force_from": "2017-05-12",
+   "item": "DROM rate category d, period 2: roundup_tenth(fraction x D613-4 rate)",
+   "value": 10.6,
+   "value_from_pre_2024_07_base": 10.6,
+   "fraction": 0.5,
+   "base_rate_S5": 21.2,
+   "base_rate_S0": 21.2,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S3",
+    "S4",
+    "S5"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "D756-5 assigns 1/6 to '2° de l'article L. 611-1' and 1/3 to other cases for period 1; L611-1 is outside the bounded set, so which categories take 1/6 is UNRESOLVED. The direction of change on 2024-07-01 (base 21,1→23,1 for e; 21,2→23,2 for b) is not ambiguous.",
+   "req_id": "REQ166"
+  },
+  {
+   "article": "D756-5",
+   "version_id": "LEGIARTI000034726710",
+   "in_force_from": "2017-05-12",
+   "item": "DROM rate category d, period 3: roundup_tenth(fraction x D613-4 rate)",
+   "value": 14.2,
+   "value_from_pre_2024_07_base": 14.2,
+   "fraction": 0.666667,
+   "base_rate_S5": 21.2,
+   "base_rate_S0": 21.2,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S3",
+    "S4",
+    "S5"
+   ],
+   "status": "DETERMINISTIC",
+   "note": "D756-5 assigns 1/6 to '2° de l'article L. 611-1' and 1/3 to other cases for period 1; L611-1 is outside the bounded set, so which categories take 1/6 is UNRESOLVED. The direction of change on 2024-07-01 (base 21,1→23,1 for e; 21,2→23,2 for b) is not ambiguous.",
+   "req_id": "REQ167"
+  },
+  {
+   "article": "D756-5",
+   "version_id": "LEGIARTI000034726710",
+   "in_force_from": "2017-05-12",
+   "item": "DROM rate category e, period 1: roundup_tenth(fraction x D613-4 rate)",
+   "value": 7.7,
+   "value_from_pre_2024_07_base": 7.1,
+   "fraction": 0.333333,
+   "base_rate_S5": 23.1,
+   "base_rate_S0": 21.1,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S3",
+    "S4",
+    "S5"
+   ],
+   "status": "UNRESOLVED_FRACTION_ASSIGNMENT",
+   "note": "D756-5 assigns 1/6 to '2° de l'article L. 611-1' and 1/3 to other cases for period 1; L611-1 is outside the bounded set, so which categories take 1/6 is UNRESOLVED. The direction of change on 2024-07-01 (base 21,1→23,1 for e; 21,2→23,2 for b) is not ambiguous.",
+   "req_id": "REQ168"
+  },
+  {
+   "article": "D756-5",
+   "version_id": "LEGIARTI000034726710",
+   "in_force_from": "2017-05-12",
+   "item": "DROM rate category e, period 2: roundup_tenth(fraction x D613-4 rate)",
+   "value": 11.6,
+   "value_from_pre_2024_07_base": 10.6,
+   "fraction": 0.5,
+   "base_rate_S5": 23.1,
+   "base_rate_S0": 21.1,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S3",
+    "S4",
+    "S5"
+   ],
+   "status": "UNRESOLVED_FRACTION_ASSIGNMENT",
+   "note": "D756-5 assigns 1/6 to '2° de l'article L. 611-1' and 1/3 to other cases for period 1; L611-1 is outside the bounded set, so which categories take 1/6 is UNRESOLVED. The direction of change on 2024-07-01 (base 21,1→23,1 for e; 21,2→23,2 for b) is not ambiguous.",
+   "req_id": "REQ169"
+  },
+  {
+   "article": "D756-5",
+   "version_id": "LEGIARTI000034726710",
+   "in_force_from": "2017-05-12",
+   "item": "DROM rate category e, period 3: roundup_tenth(fraction x D613-4 rate)",
+   "value": 15.4,
+   "value_from_pre_2024_07_base": 14.1,
+   "fraction": 0.666667,
+   "base_rate_S5": 23.1,
+   "base_rate_S0": 21.1,
+   "unit": "%",
+   "visible_in_snapshots": [
+    "S3",
+    "S4",
+    "S5"
+   ],
+   "status": "UNRESOLVED_FRACTION_ASSIGNMENT",
+   "note": "D756-5 assigns 1/6 to '2° de l'article L. 611-1' and 1/3 to other cases for period 1; L611-1 is outside the bounded set, so which categories take 1/6 is UNRESOLVED. The direction of change on 2024-07-01 (base 21,1→23,1 for e; 21,2→23,2 for b) is not ambiguous.",
+   "req_id": "REQ170"
+  }
+ ],
+ "bindings_by_pin": {
+  "G0": {
+   "commit": "d9242882f96bda5b4418b7c1c3ff46b0e2a1c5ce",
+   "committed": "2024-05-15 09:38:43 +0200",
+   "ae_global_rate_rules": [
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV . taux",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BIC",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux vente restauration hébergement"
+   ],
+   "ae_repartition_rules": [],
+   "ae_drom_rules": [
+    "dirigeant . auto-entrepreneur . DROM",
+    "dirigeant . auto-entrepreneur . DROM . service BIC",
+    "dirigeant . auto-entrepreneur . DROM . taux CIPAV",
+    "dirigeant . auto-entrepreneur . DROM . taux service BNC",
+    "dirigeant . auto-entrepreneur . DROM . taux vente restauration hébergement"
+   ],
+   "ae_acre_rules": [],
+   "indep_acre_rules": [
+    "dirigeant . exonérations . ACRE",
+    "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE",
+    "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . allocations familiales",
+    "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . indemnités journalières maladie",
+    "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . invalidité et décès",
+    "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . maladie",
+    "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . prorata sur l'année",
+    "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . retraite de base",
+    "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . taux"
+   ],
+   "indep_assiette_rules": [
+    "dirigeant . indépendant . cotisations et contributions . CSG-CRDS . assiette",
+    "dirigeant . indépendant . cotisations et contributions . indemnités journalières maladie . assiette",
+    "dirigeant . indépendant . cotisations et contributions . invalidité et décès . assiette",
+    "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif . assiette"
+   ],
+   "indep_maladie_rules": [
+    "dirigeant . indépendant . cotisations et contributions . maladie",
+    "dirigeant . indépendant . cotisations et contributions . maladie . réduction supplémentaire",
+    "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+    "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif . assiette",
+    "dirigeant . indépendant . cotisations et contributions . maladie . total",
+    "dirigeant . indépendant . cotisations et contributions . maladie domiciliation fiscale étranger"
+   ],
+   "indep_retraite_base_rules": [
+    "dirigeant . indépendant . cotisations et contributions . retraite de base",
+    "dirigeant . indépendant . cotisations et contributions . retraite de base . taux"
+   ],
+   "ae_global_rate_values_at_pin": {
+    "01/05/2024": {
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV . taux": null,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BIC": 21.2,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC": 21.1,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux vente restauration hébergement": 12.3
+    },
+    "01/07/2024": {
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV . taux": null,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BIC": 21.2,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC": 21.1,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux vente restauration hébergement": 12.3
+    },
+    "01/01/2025": {
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV . taux": null,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BIC": 21.2,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC": 21.1,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux vente restauration hébergement": 12.3
+    },
+    "01/01/2026": {
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV . taux": null,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BIC": 21.2,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC": 21.1,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux vente restauration hébergement": 12.3
+    }
+   }
+  },
+  "G1": {
+   "commit": "2a0e452617fc33b955096f4bb7f7f305ec0670ad",
+   "committed": "2024-07-16 21:29:59 +0200",
+   "ae_global_rate_rules": [
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV . taux",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . taux",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . taux",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BIC",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux vente restauration hébergement",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement . taux"
+   ],
+   "ae_repartition_rules": [
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . répartition . autres contributions . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . répartition . invalidité-décès . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . répartition . maladie-maternité . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . répartition . retraite complémentaire . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . répartition . retraite de base . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . répartition . autres contributions . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . répartition . invalidité-décès . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . répartition . maladie-maternité . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . répartition . retraite complémentaire . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . répartition . retraite de base . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement . répartition . autres contributions . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement . répartition . invalidité-décès . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement . répartition . maladie-maternité . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement . répartition . retraite complémentaire . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement . répartition . retraite de base . taux de répartition"
+   ],
+   "ae_drom_rules": [
+    "dirigeant . auto-entrepreneur . DROM",
+    "dirigeant . auto-entrepreneur . DROM . service BIC",
+    "dirigeant . auto-entrepreneur . DROM . taux CIPAV",
+    "dirigeant . auto-entrepreneur . DROM . taux service BNC",
+    "dirigeant . auto-entrepreneur . DROM . taux vente restauration hébergement"
+   ],
+   "ae_acre_rules": [],
+   "indep_acre_rules": [
+    "dirigeant . exonérations . ACRE",
+    "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE",
+    "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . allocations familiales",
+    "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . indemnités journalières maladie",
+    "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . invalidité et décès",
+    "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . maladie",
+    "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . prorata sur l'année",
+    "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . retraite de base",
+    "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . taux"
+   ],
+   "indep_assiette_rules": [
+    "dirigeant . indépendant . cotisations et contributions . CSG-CRDS . assiette",
+    "dirigeant . indépendant . cotisations et contributions . indemnités journalières maladie . assiette",
+    "dirigeant . indépendant . cotisations et contributions . invalidité et décès . assiette",
+    "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif . assiette"
+   ],
+   "indep_maladie_rules": [
+    "dirigeant . indépendant . cotisations et contributions . maladie",
+    "dirigeant . indépendant . cotisations et contributions . maladie . réduction supplémentaire",
+    "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+    "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif . assiette",
+    "dirigeant . indépendant . cotisations et contributions . maladie . total",
+    "dirigeant . indépendant . cotisations et contributions . maladie domiciliation fiscale étranger"
+   ],
+   "indep_retraite_base_rules": [
+    "dirigeant . indépendant . cotisations et contributions . retraite de base",
+    "dirigeant . indépendant . cotisations et contributions . retraite de base . taux"
+   ],
+   "ae_global_rate_values_at_pin": {
+    "01/05/2024": {
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV . taux": null,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . taux": null,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . taux": 21.1,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BIC": null,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC": 21.1,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux vente restauration hébergement": null,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement . taux": null
+    },
+    "01/07/2024": {
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV . taux": null,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . taux": null,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . taux": 21.1,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BIC": null,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC": 21.1,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux vente restauration hébergement": null,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement . taux": null
+    },
+    "01/01/2025": {
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV . taux": null,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . taux": null,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . taux": 21.1,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BIC": null,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC": 21.1,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux vente restauration hébergement": null,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement . taux": null
+    },
+    "01/01/2026": {
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV . taux": null,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . taux": null,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . taux": 21.1,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BIC": null,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC": 21.1,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux vente restauration hébergement": null,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement . taux": null
+    }
+   }
+  },
+  "G2": {
+   "commit": "3a4091ae1cafdd4572bfd10d6352fd04db8da419",
+   "committed": "2024-10-10 16:37:41 +0200",
+   "ae_global_rate_rules": [
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV . taux",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . taux",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . taux",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BIC",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux vente restauration hébergement",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement . taux"
+   ],
+   "ae_repartition_rules": [
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . répartition . autres contributions . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . répartition . invalidité-décès . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . répartition . maladie-maternité . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . répartition . retraite complémentaire . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . répartition . retraite de base . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . répartition . autres contributions . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . répartition . invalidité-décès . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . répartition . maladie-maternité . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . répartition . retraite complémentaire . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . répartition . retraite de base . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement . répartition . autres contributions . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement . répartition . invalidité-décès . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement . répartition . maladie-maternité . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement . répartition . retraite complémentaire . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement . répartition . retraite de base . taux de répartition"
+   ],
+   "ae_drom_rules": [
+    "dirigeant . auto-entrepreneur . DROM"
+   ],
+   "ae_acre_rules": [
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux ACRE",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux ACRE . CIPAV",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux ACRE . notification calcul ACRE annuel",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux ACRE . prestation de service",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux ACRE . service BIC",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux ACRE . service BNC",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux ACRE . vente restauration hébergement"
+   ],
+   "indep_acre_rules": [
+    "dirigeant . exonérations . ACRE",
+    "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE",
+    "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . allocations familiales",
+    "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . indemnités journalières maladie",
+    "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . invalidité et décès",
+    "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . maladie",
+    "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . prorata sur l'année",
+    "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . retraite de base",
+    "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . taux"
+   ],
+   "indep_assiette_rules": [
+    "dirigeant . indépendant . cotisations et contributions . CSG-CRDS . assiette",
+    "dirigeant . indépendant . cotisations et contributions . indemnités journalières maladie . assiette",
+    "dirigeant . indépendant . cotisations et contributions . invalidité et décès . assiette",
+    "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif . assiette"
+   ],
+   "indep_maladie_rules": [
+    "dirigeant . indépendant . cotisations et contributions . maladie",
+    "dirigeant . indépendant . cotisations et contributions . maladie . réduction supplémentaire",
+    "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+    "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif . assiette",
+    "dirigeant . indépendant . cotisations et contributions . maladie . total",
+    "dirigeant . indépendant . cotisations et contributions . maladie domiciliation fiscale étranger"
+   ],
+   "indep_retraite_base_rules": [
+    "dirigeant . indépendant . cotisations et contributions . retraite de base",
+    "dirigeant . indépendant . cotisations et contributions . retraite de base . taux"
+   ],
+   "ae_global_rate_values_at_pin": {
+    "01/05/2024": {
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV . taux": null,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . taux": null,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . taux": 21.1,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BIC": null,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC": 21.1,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux vente restauration hébergement": null,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement . taux": null
+    },
+    "01/07/2024": {
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV . taux": null,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . taux": null,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . taux": 23.1,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BIC": null,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC": 23.1,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux vente restauration hébergement": null,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement . taux": null
+    },
+    "01/01/2025": {
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV . taux": null,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . taux": null,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . taux": 24.6,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BIC": null,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC": 24.6,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux vente restauration hébergement": null,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement . taux": null
+    },
+    "01/01/2026": {
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV . taux": null,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . taux": null,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . taux": 26.1,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BIC": null,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC": 26.1,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux vente restauration hébergement": null,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement . taux": null
+    }
+   }
+  },
+  "G3": {
+   "commit": "d6c37427172707b4c0fa64d9e6f18ea67f9f67b4",
+   "committed": "2025-12-30 23:52:36 +0100",
+   "ae_global_rate_rules": [
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . taux",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . taux",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC Cipav . taux",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement . taux"
+   ],
+   "ae_repartition_rules": [
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . répartition . autres contributions . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . répartition . invalidité-décès . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . répartition . maladie-maternité . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . répartition . retraite complémentaire . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . répartition . retraite de base . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . répartition . autres contributions . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . répartition . invalidité-décès . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . répartition . maladie-maternité . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . répartition . retraite complémentaire . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . répartition . retraite de base . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC Cipav . répartition . autres contributions . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC Cipav . répartition . invalidité-décès . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC Cipav . répartition . maladie-maternité . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC Cipav . répartition . retraite complémentaire . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC Cipav . répartition . retraite de base . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement . répartition . autres contributions . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement . répartition . invalidité-décès . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement . répartition . maladie-maternité . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement . répartition . retraite complémentaire . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement . répartition . retraite de base . taux de répartition"
+   ],
+   "ae_drom_rules": [
+    "dirigeant . auto-entrepreneur . DROM",
+    "dirigeant . auto-entrepreneur . DROM . taux CIPAV",
+    "dirigeant . auto-entrepreneur . DROM . taux service BIC",
+    "dirigeant . auto-entrepreneur . DROM . taux service BNC",
+    "dirigeant . auto-entrepreneur . DROM . taux vente restauration hébergement"
+   ],
+   "ae_acre_rules": [
+    "dirigeant . auto-entrepreneur . Acre",
+    "dirigeant . auto-entrepreneur . Acre . notification calcul ACRE annuel",
+    "dirigeant . auto-entrepreneur . Acre . taux Acre",
+    "dirigeant . auto-entrepreneur . Acre . taux CIPAV",
+    "dirigeant . auto-entrepreneur . Acre . taux service BIC",
+    "dirigeant . auto-entrepreneur . Acre . taux service BNC",
+    "dirigeant . auto-entrepreneur . Acre . taux vente restauration hébergement"
+   ],
+   "indep_acre_rules": [
+    "dirigeant . exonérations . ACRE",
+    "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE",
+    "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . allocations familiales",
+    "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . indemnités journalières maladie",
+    "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . invalidité et décès",
+    "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . maladie",
+    "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . prorata sur l'année",
+    "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . retraite de base",
+    "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . taux"
+   ],
+   "indep_assiette_rules": [
+    "dirigeant . indépendant . cotisations et contributions . CSG-CRDS . assiette",
+    "dirigeant . indépendant . cotisations et contributions . indemnités journalières maladie . assiette",
+    "dirigeant . indépendant . cotisations et contributions . invalidité et décès . assiette",
+    "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif . assiette"
+   ],
+   "indep_maladie_rules": [
+    "dirigeant . indépendant . cotisations et contributions . maladie",
+    "dirigeant . indépendant . cotisations et contributions . maladie . réduction supplémentaire",
+    "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+    "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif . assiette",
+    "dirigeant . indépendant . cotisations et contributions . maladie . total",
+    "dirigeant . indépendant . cotisations et contributions . maladie domiciliation fiscale étranger"
+   ],
+   "indep_retraite_base_rules": [
+    "dirigeant . indépendant . cotisations et contributions . retraite de base",
+    "dirigeant . indépendant . cotisations et contributions . retraite de base . taux"
+   ],
+   "ae_global_rate_values_at_pin": {
+    "01/05/2024": {
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . taux": null,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . taux": 21.1,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC Cipav . taux": null,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement . taux": null
+    },
+    "01/07/2024": {
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . taux": null,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . taux": 23.1,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC Cipav . taux": null,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement . taux": null
+    },
+    "01/01/2025": {
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . taux": null,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . taux": 24.6,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC Cipav . taux": null,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement . taux": null
+    },
+    "01/01/2026": {
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . taux": null,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . taux": 26.1,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC Cipav . taux": null,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement . taux": null
+    }
+   }
+  },
+  "G4": {
+   "commit": "a61b72947fec1e1383e07b3278424593dc296ba2",
+   "committed": "2026-03-03 09:30:36 +0100",
+   "ae_global_rate_rules": [
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . taux",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . taux",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC Cipav . taux",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement . taux"
+   ],
+   "ae_repartition_rules": [
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . répartition . autres contributions . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . répartition . invalidité-décès . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . répartition . maladie-maternité . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . répartition . retraite complémentaire . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . répartition . retraite de base . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . répartition . autres contributions . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . répartition . invalidité-décès . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . répartition . maladie-maternité . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . répartition . retraite complémentaire . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . répartition . retraite de base . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC Cipav . répartition . autres contributions . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC Cipav . répartition . invalidité-décès . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC Cipav . répartition . maladie-maternité . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC Cipav . répartition . retraite complémentaire . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC Cipav . répartition . retraite de base . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement . répartition . autres contributions . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement . répartition . invalidité-décès . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement . répartition . maladie-maternité . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement . répartition . retraite complémentaire . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement . répartition . retraite de base . taux de répartition"
+   ],
+   "ae_drom_rules": [
+    "dirigeant . auto-entrepreneur . DROM",
+    "dirigeant . auto-entrepreneur . DROM . taux CIPAV",
+    "dirigeant . auto-entrepreneur . DROM . taux service BIC",
+    "dirigeant . auto-entrepreneur . DROM . taux service BNC",
+    "dirigeant . auto-entrepreneur . DROM . taux vente restauration hébergement"
+   ],
+   "ae_acre_rules": [
+    "dirigeant . auto-entrepreneur . Acre",
+    "dirigeant . auto-entrepreneur . Acre . notification calcul ACRE annuel",
+    "dirigeant . auto-entrepreneur . Acre . taux Acre",
+    "dirigeant . auto-entrepreneur . Acre . taux CIPAV",
+    "dirigeant . auto-entrepreneur . Acre . taux service BIC",
+    "dirigeant . auto-entrepreneur . Acre . taux service BNC",
+    "dirigeant . auto-entrepreneur . Acre . taux vente restauration hébergement"
+   ],
+   "indep_acre_rules": [
+    "dirigeant . exonérations . ACRE",
+    "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE",
+    "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . allocations familiales",
+    "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . indemnités journalières maladie",
+    "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . invalidité et décès",
+    "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . maladie",
+    "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . prorata sur l'année",
+    "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . retraite de base",
+    "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . taux"
+   ],
+   "indep_assiette_rules": [
+    "dirigeant . indépendant . cotisations et contributions . CSG-CRDS . assiette",
+    "dirigeant . indépendant . cotisations et contributions . indemnités journalières maladie . assiette",
+    "dirigeant . indépendant . cotisations et contributions . invalidité et décès . assiette",
+    "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif . assiette"
+   ],
+   "indep_maladie_rules": [
+    "dirigeant . indépendant . cotisations et contributions . maladie",
+    "dirigeant . indépendant . cotisations et contributions . maladie . réduction supplémentaire",
+    "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+    "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif . assiette",
+    "dirigeant . indépendant . cotisations et contributions . maladie . total",
+    "dirigeant . indépendant . cotisations et contributions . maladie domiciliation fiscale étranger"
+   ],
+   "indep_retraite_base_rules": [
+    "dirigeant . indépendant . cotisations et contributions . retraite de base",
+    "dirigeant . indépendant . cotisations et contributions . retraite de base . taux"
+   ],
+   "ae_global_rate_values_at_pin": {
+    "01/05/2024": {
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . taux": null,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . taux": 21.1,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC Cipav . taux": null,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement . taux": null
+    },
+    "01/07/2024": {
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . taux": null,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . taux": 23.1,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC Cipav . taux": null,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement . taux": null
+    },
+    "01/01/2025": {
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . taux": null,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . taux": 24.6,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC Cipav . taux": null,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement . taux": null
+    },
+    "01/01/2026": {
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . taux": null,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . taux": 25.6,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC Cipav . taux": null,
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement . taux": null
+    }
+   }
+  }
+ },
+ "tasks": {
+  "T0": {
+   "law": "S0",
+   "rules": "G0",
+   "expected_bindings": {
+    "ae_global_rate_rules -> D613-4 rows (a vente 12,3; b Cipav 21,2; d BIC 21,2; e BNC 21,1)": [
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV . taux",
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BIC",
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC",
+     "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux vente restauration hébergement"
+    ],
+    "ae_drom_rules -> D756-5": [
+     "dirigeant . auto-entrepreneur . DROM",
+     "dirigeant . auto-entrepreneur . DROM . service BIC",
+     "dirigeant . auto-entrepreneur . DROM . taux CIPAV",
+     "dirigeant . auto-entrepreneur . DROM . taux service BNC",
+     "dirigeant . auto-entrepreneur . DROM . taux vente restauration hébergement"
+    ],
+    "ae_acre_rules -> D131-6-1 (AE Acre share is governed outside the set: PARTIALLY)": []
+   },
+   "approval_truth": "none recorded anywhere"
+  },
+  "T1a": {
+   "law": "S1",
+   "rules": "G0",
+   "changed_articles": {
+    "D613-6": {
+     "from": "LEGIARTI000046714699",
+     "to": "LEGIARTI000049623885",
+     "to_in_force": "2024-06-01"
+    },
+    "D613-4": {
+     "from": "LEGIARTI000046714712",
+     "to": "LEGIARTI000049623867",
+     "to_in_force": "2024-06-01"
+    }
+   },
+   "affected_rules_required": [
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV . taux",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BIC",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux vente restauration hébergement",
+    "dirigeant . auto-entrepreneur . DROM",
+    "dirigeant . auto-entrepreneur . DROM . service BIC",
+    "dirigeant . auto-entrepreneur . DROM . taux CIPAV",
+    "dirigeant . auto-entrepreneur . DROM . taux service BNC",
+    "dirigeant . auto-entrepreneur . DROM . taux vente restauration hébergement"
+   ],
+   "affected_rules_optional": [],
+   "values_visible_in_S1": false,
+   "expected_behaviour": "flag affected rules; ABSTAIN on the new numeric values (new versions are announced by id and date only; their text is not in S1). Any concrete new rate written at T1a is not supported by the sealed corpus.",
+   "new_rates_truth_for_scorer_only": {
+    "2024-07-01": {
+     "e": 23.1,
+     "b": 23.2,
+     "a": 12.3,
+     "d": 21.2
+    },
+    "2025-01-01": {
+     "e": 24.6
+    },
+    "2026-01-01 (as decreed in 2024, later changed)": {
+     "e": 26.1
+    }
+   }
+  },
+  "T1b": {
+   "law": "S3",
+   "rules": "G1",
+   "changed_articles": {
+    "D621-2": {
+     "from": "LEGIARTI000046714747",
+     "to": "LEGIARTI000049904592",
+     "to_in_force": "2024-07-07"
+    },
+    "D633-3": {
+     "from": "LEGIARTI000041967101",
+     "to": "LEGIARTI000049904636",
+     "to_in_force": "2024-07-07"
+    },
+    "D613-6": {
+     "from": "LEGIARTI000049623885",
+     "to": "LEGIARTI000049625264",
+     "to_in_force": "2024-07-01"
+    },
+    "D136-5": {
+     "from": null,
+     "to": "LEGIARTI000049899286",
+     "to_in_force": "2024-07-07"
+    },
+    "D613-4": {
+     "from": "LEGIARTI000049623867",
+     "to": "LEGIARTI000049624068",
+     "to_in_force": "2024-07-01"
+    }
+   },
+   "affected_rules_required": [
+    "dirigeant . indépendant . cotisations et contributions . CSG-CRDS . assiette",
+    "dirigeant . indépendant . cotisations et contributions . indemnités journalières maladie . assiette",
+    "dirigeant . indépendant . cotisations et contributions . invalidité et décès . assiette",
+    "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif . assiette",
+    "dirigeant . indépendant . cotisations et contributions . maladie",
+    "dirigeant . indépendant . cotisations et contributions . maladie . réduction supplémentaire",
+    "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+    "dirigeant . indépendant . cotisations et contributions . maladie . taux progressif . assiette",
+    "dirigeant . indépendant . cotisations et contributions . maladie . total",
+    "dirigeant . indépendant . cotisations et contributions . maladie domiciliation fiscale étranger",
+    "dirigeant . indépendant . cotisations et contributions . retraite de base",
+    "dirigeant . indépendant . cotisations et contributions . retraite de base . taux"
+   ],
+   "scored_values": {
+    "L136-3 III abattement %": 26,
+    "D136-5 floor % PASS": 1.76,
+    "D136-5 ceiling % PASS": 130,
+    "D621-2 T1 %": 1.5,
+    "D621-2 T2 %": 4,
+    "D633-3 within PASS %": 17.15,
+    "D633-3 whole base %": 0.72,
+    "applicability": "contributions due for periods from 2025-01-01 (D136-5/D621-2/D633-3 in force 2024-07-07; L136-3 in force 2023-12-28)"
+   },
+   "note": "T1b is scored on these constants and on explicit abstention; the full reformed base is PARTIALLY_OBSERVABLE."
+  },
+  "R1": {
+   "acceptable_labels": [
+    "HARMLESS_REFACTOR"
+   ],
+   "wrong_high_confidence": [
+    "MISMATCH"
+   ]
+  },
+  "R2": {
+   "acceptable_labels": [
+    "HARMLESS_REFACTOR"
+   ],
+   "wrong_high_confidence": [
+    "MISMATCH"
+   ]
+  },
+  "R3": {
+   "acceptable_labels": [
+    "MISMATCH",
+    "UNRESOLVED"
+   ],
+   "wrong_high_confidence": [
+    "HARMLESS_REFACTOR",
+    "LEGITIMATE_INDEPENDENT_CHANGE"
+   ],
+   "material_finding": "post-fix DROM BNC and Cipav values derive from the pre-2024-07-01 base rates (21,1 / 21,2) while D613-4 in force since 2024-07-01 gives 23,1 / 23,2; BIC and vente bases unchanged",
+   "derived_values": [
+    {
+     "article": "D756-5",
+     "version_id": "LEGIARTI000034726710",
+     "in_force_from": "2017-05-12",
+     "item": "DROM rate category a, period 1: roundup_tenth(fraction x D613-4 rate)",
+     "value": 2.1,
+     "value_from_pre_2024_07_base": 2.1,
+     "fraction": 0.166667,
+     "base_rate_S5": 12.3,
+     "base_rate_S0": 12.3,
+     "unit": "%",
+     "visible_in_snapshots": [
+      "S3",
+      "S4",
+      "S5"
+     ],
+     "status": "DETERMINISTIC",
+     "note": "D756-5 assigns 1/6 to '2° de l'article L. 611-1' and 1/3 to other cases for period 1; L611-1 is outside the bounded set, so which categories take 1/6 is UNRESOLVED. The direction of change on 2024-07-01 (base 21,1→23,1 for e; 21,2→23,2 for b) is not ambiguous.",
+     "req_id": "REQ159"
+    },
+    {
+     "article": "D756-5",
+     "version_id": "LEGIARTI000034726710",
+     "in_force_from": "2017-05-12",
+     "item": "DROM rate category a, period 2: roundup_tenth(fraction x D613-4 rate)",
+     "value": 6.2,
+     "value_from_pre_2024_07_base": 6.2,
+     "fraction": 0.5,
+     "base_rate_S5": 12.3,
+     "base_rate_S0": 12.3,
+     "unit": "%",
+     "visible_in_snapshots": [
+      "S3",
+      "S4",
+      "S5"
+     ],
+     "status": "DETERMINISTIC",
+     "note": "D756-5 assigns 1/6 to '2° de l'article L. 611-1' and 1/3 to other cases for period 1; L611-1 is outside the bounded set, so which categories take 1/6 is UNRESOLVED. The direction of change on 2024-07-01 (base 21,1→23,1 for e; 21,2→23,2 for b) is not ambiguous.",
+     "req_id": "REQ160"
+    },
+    {
+     "article": "D756-5",
+     "version_id": "LEGIARTI000034726710",
+     "in_force_from": "2017-05-12",
+     "item": "DROM rate category a, period 3: roundup_tenth(fraction x D613-4 rate)",
+     "value": 8.2,
+     "value_from_pre_2024_07_base": 8.2,
+     "fraction": 0.666667,
+     "base_rate_S5": 12.3,
+     "base_rate_S0": 12.3,
+     "unit": "%",
+     "visible_in_snapshots": [
+      "S3",
+      "S4",
+      "S5"
+     ],
+     "status": "DETERMINISTIC",
+     "note": "D756-5 assigns 1/6 to '2° de l'article L. 611-1' and 1/3 to other cases for period 1; L611-1 is outside the bounded set, so which categories take 1/6 is UNRESOLVED. The direction of change on 2024-07-01 (base 21,1→23,1 for e; 21,2→23,2 for b) is not ambiguous.",
+     "req_id": "REQ161"
+    },
+    {
+     "article": "D756-5",
+     "version_id": "LEGIARTI000034726710",
+     "in_force_from": "2017-05-12",
+     "item": "DROM rate category b, period 1: roundup_tenth(fraction x D613-4 rate)",
+     "value": 7.8,
+     "value_from_pre_2024_07_base": 7.1,
+     "fraction": 0.333333,
+     "base_rate_S5": 23.2,
+     "base_rate_S0": 21.2,
+     "unit": "%",
+     "visible_in_snapshots": [
+      "S3",
+      "S4",
+      "S5"
+     ],
+     "status": "UNRESOLVED_FRACTION_ASSIGNMENT",
+     "note": "D756-5 assigns 1/6 to '2° de l'article L. 611-1' and 1/3 to other cases for period 1; L611-1 is outside the bounded set, so which categories take 1/6 is UNRESOLVED. The direction of change on 2024-07-01 (base 21,1→23,1 for e; 21,2→23,2 for b) is not ambiguous.",
+     "req_id": "REQ162"
+    },
+    {
+     "article": "D756-5",
+     "version_id": "LEGIARTI000034726710",
+     "in_force_from": "2017-05-12",
+     "item": "DROM rate category b, period 2: roundup_tenth(fraction x D613-4 rate)",
+     "value": 11.6,
+     "value_from_pre_2024_07_base": 10.6,
+     "fraction": 0.5,
+     "base_rate_S5": 23.2,
+     "base_rate_S0": 21.2,
+     "unit": "%",
+     "visible_in_snapshots": [
+      "S3",
+      "S4",
+      "S5"
+     ],
+     "status": "UNRESOLVED_FRACTION_ASSIGNMENT",
+     "note": "D756-5 assigns 1/6 to '2° de l'article L. 611-1' and 1/3 to other cases for period 1; L611-1 is outside the bounded set, so which categories take 1/6 is UNRESOLVED. The direction of change on 2024-07-01 (base 21,1→23,1 for e; 21,2→23,2 for b) is not ambiguous.",
+     "req_id": "REQ163"
+    },
+    {
+     "article": "D756-5",
+     "version_id": "LEGIARTI000034726710",
+     "in_force_from": "2017-05-12",
+     "item": "DROM rate category b, period 3: roundup_tenth(fraction x D613-4 rate)",
+     "value": 15.5,
+     "value_from_pre_2024_07_base": 14.2,
+     "fraction": 0.666667,
+     "base_rate_S5": 23.2,
+     "base_rate_S0": 21.2,
+     "unit": "%",
+     "visible_in_snapshots": [
+      "S3",
+      "S4",
+      "S5"
+     ],
+     "status": "UNRESOLVED_FRACTION_ASSIGNMENT",
+     "note": "D756-5 assigns 1/6 to '2° de l'article L. 611-1' and 1/3 to other cases for period 1; L611-1 is outside the bounded set, so which categories take 1/6 is UNRESOLVED. The direction of change on 2024-07-01 (base 21,1→23,1 for e; 21,2→23,2 for b) is not ambiguous.",
+     "req_id": "REQ164"
+    },
+    {
+     "article": "D756-5",
+     "version_id": "LEGIARTI000034726710",
+     "in_force_from": "2017-05-12",
+     "item": "DROM rate category d, period 1: roundup_tenth(fraction x D613-4 rate)",
+     "value": 3.6,
+     "value_from_pre_2024_07_base": 3.6,
+     "fraction": 0.166667,
+     "base_rate_S5": 21.2,
+     "base_rate_S0": 21.2,
+     "unit": "%",
+     "visible_in_snapshots": [
+      "S3",
+      "S4",
+      "S5"
+     ],
+     "status": "DETERMINISTIC",
+     "note": "D756-5 assigns 1/6 to '2° de l'article L. 611-1' and 1/3 to other cases for period 1; L611-1 is outside the bounded set, so which categories take 1/6 is UNRESOLVED. The direction of change on 2024-07-01 (base 21,1→23,1 for e; 21,2→23,2 for b) is not ambiguous.",
+     "req_id": "REQ165"
+    },
+    {
+     "article": "D756-5",
+     "version_id": "LEGIARTI000034726710",
+     "in_force_from": "2017-05-12",
+     "item": "DROM rate category d, period 2: roundup_tenth(fraction x D613-4 rate)",
+     "value": 10.6,
+     "value_from_pre_2024_07_base": 10.6,
+     "fraction": 0.5,
+     "base_rate_S5": 21.2,
+     "base_rate_S0": 21.2,
+     "unit": "%",
+     "visible_in_snapshots": [
+      "S3",
+      "S4",
+      "S5"
+     ],
+     "status": "DETERMINISTIC",
+     "note": "D756-5 assigns 1/6 to '2° de l'article L. 611-1' and 1/3 to other cases for period 1; L611-1 is outside the bounded set, so which categories take 1/6 is UNRESOLVED. The direction of change on 2024-07-01 (base 21,1→23,1 for e; 21,2→23,2 for b) is not ambiguous.",
+     "req_id": "REQ166"
+    },
+    {
+     "article": "D756-5",
+     "version_id": "LEGIARTI000034726710",
+     "in_force_from": "2017-05-12",
+     "item": "DROM rate category d, period 3: roundup_tenth(fraction x D613-4 rate)",
+     "value": 14.2,
+     "value_from_pre_2024_07_base": 14.2,
+     "fraction": 0.666667,
+     "base_rate_S5": 21.2,
+     "base_rate_S0": 21.2,
+     "unit": "%",
+     "visible_in_snapshots": [
+      "S3",
+      "S4",
+      "S5"
+     ],
+     "status": "DETERMINISTIC",
+     "note": "D756-5 assigns 1/6 to '2° de l'article L. 611-1' and 1/3 to other cases for period 1; L611-1 is outside the bounded set, so which categories take 1/6 is UNRESOLVED. The direction of change on 2024-07-01 (base 21,1→23,1 for e; 21,2→23,2 for b) is not ambiguous.",
+     "req_id": "REQ167"
+    },
+    {
+     "article": "D756-5",
+     "version_id": "LEGIARTI000034726710",
+     "in_force_from": "2017-05-12",
+     "item": "DROM rate category e, period 1: roundup_tenth(fraction x D613-4 rate)",
+     "value": 7.7,
+     "value_from_pre_2024_07_base": 7.1,
+     "fraction": 0.333333,
+     "base_rate_S5": 23.1,
+     "base_rate_S0": 21.1,
+     "unit": "%",
+     "visible_in_snapshots": [
+      "S3",
+      "S4",
+      "S5"
+     ],
+     "status": "UNRESOLVED_FRACTION_ASSIGNMENT",
+     "note": "D756-5 assigns 1/6 to '2° de l'article L. 611-1' and 1/3 to other cases for period 1; L611-1 is outside the bounded set, so which categories take 1/6 is UNRESOLVED. The direction of change on 2024-07-01 (base 21,1→23,1 for e; 21,2→23,2 for b) is not ambiguous.",
+     "req_id": "REQ168"
+    },
+    {
+     "article": "D756-5",
+     "version_id": "LEGIARTI000034726710",
+     "in_force_from": "2017-05-12",
+     "item": "DROM rate category e, period 2: roundup_tenth(fraction x D613-4 rate)",
+     "value": 11.6,
+     "value_from_pre_2024_07_base": 10.6,
+     "fraction": 0.5,
+     "base_rate_S5": 23.1,
+     "base_rate_S0": 21.1,
+     "unit": "%",
+     "visible_in_snapshots": [
+      "S3",
+      "S4",
+      "S5"
+     ],
+     "status": "UNRESOLVED_FRACTION_ASSIGNMENT",
+     "note": "D756-5 assigns 1/6 to '2° de l'article L. 611-1' and 1/3 to other cases for period 1; L611-1 is outside the bounded set, so which categories take 1/6 is UNRESOLVED. The direction of change on 2024-07-01 (base 21,1→23,1 for e; 21,2→23,2 for b) is not ambiguous.",
+     "req_id": "REQ169"
+    },
+    {
+     "article": "D756-5",
+     "version_id": "LEGIARTI000034726710",
+     "in_force_from": "2017-05-12",
+     "item": "DROM rate category e, period 3: roundup_tenth(fraction x D613-4 rate)",
+     "value": 15.4,
+     "value_from_pre_2024_07_base": 14.1,
+     "fraction": 0.666667,
+     "base_rate_S5": 23.1,
+     "base_rate_S0": 21.1,
+     "unit": "%",
+     "visible_in_snapshots": [
+      "S3",
+      "S4",
+      "S5"
+     ],
+     "status": "UNRESOLVED_FRACTION_ASSIGNMENT",
+     "note": "D756-5 assigns 1/6 to '2° de l'article L. 611-1' and 1/3 to other cases for period 1; L611-1 is outside the bounded set, so which categories take 1/6 is UNRESOLVED. The direction of change on 2024-07-01 (base 21,1→23,1 for e; 21,2→23,2 for b) is not ambiguous.",
+     "req_id": "REQ170"
+    }
+   ]
+  },
+  "R4": {
+   "acceptable_labels": [
+    "LEGITIMATE_INDEPENDENT_CHANGE",
+    "UNRESOLVED"
+   ],
+   "wrong_high_confidence": [
+    "HARMLESS_REFACTOR",
+    "MISMATCH"
+   ]
+  },
+  "R5": {
+   "acceptable_labels": [
+    "LEGITIMATE_INDEPENDENT_CHANGE",
+    "UNRESOLVED"
+   ],
+   "wrong_high_confidence": [
+    "HARMLESS_REFACTOR",
+    "MISMATCH"
+   ]
+  },
+  "M0": {
+   "law": [
+    "S6",
+    "S7"
+   ],
+   "rules": "G3",
+   "changed_articles": {},
+   "affected_rules_required": [],
+   "expected_behaviour": "nothing changed in the bounded set; no rule to reassess"
+  },
+  "M1": {
+   "law": [
+    "S7",
+    "S8"
+   ],
+   "rules": "G3",
+   "changed_articles": {
+    "D613-6": {
+     "from": "LEGIARTI000049625405",
+     "to": "LEGIARTI000052218747",
+     "to_in_force": "2026-01-01"
+    },
+    "D613-4": {
+     "from": "LEGIARTI000049624097",
+     "to": "LEGIARTI000052218738",
+     "to_in_force": "2026-01-01"
+    }
+   },
+   "affected_rules_required": [
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . taux",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . répartition . autres contributions . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . répartition . invalidité-décès . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . répartition . maladie-maternité . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . répartition . retraite complémentaire . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . répartition . retraite de base . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . répartition . autres contributions . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . répartition . invalidité-décès . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . répartition . maladie-maternité . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . répartition . retraite complémentaire . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . répartition . retraite de base . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC Cipav . répartition . autres contributions . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC Cipav . répartition . invalidité-décès . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC Cipav . répartition . maladie-maternité . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC Cipav . répartition . retraite complémentaire . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC Cipav . répartition . retraite de base . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement . répartition . autres contributions . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement . répartition . invalidité-décès . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement . répartition . maladie-maternité . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement . répartition . retraite complémentaire . taux de répartition",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement . répartition . retraite de base . taux de répartition"
+   ],
+   "affected_rules_optional": [
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . taux",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC Cipav . taux",
+    "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement . taux",
+    "dirigeant . auto-entrepreneur . DROM",
+    "dirigeant . auto-entrepreneur . DROM . taux CIPAV",
+    "dirigeant . auto-entrepreneur . DROM . taux service BIC",
+    "dirigeant . auto-entrepreneur . DROM . taux service BNC",
+    "dirigeant . auto-entrepreneur . DROM . taux vente restauration hébergement"
+   ],
+   "scored_values_2026_01_01": {
+    "D613-4 e (BNC) global rate": 25.6,
+    "D613-4 a/b/d unchanged": {
+     "a": 12.3,
+     "b": 23.2,
+     "d": 21.2
+    },
+    "D613-6 répartition": {
+     "a et d": [
+      [
+       "Cotisation d'assurance maladie-maternité mentionnée à l'article L. 621-1",
+       8.8
+      ],
+      [
+       "Cotisation de prestations maladie en espèces mentionnée à l'article L. 621-2",
+       1.25
+      ],
+      [
+       "Cotisation d'assurance invalidité-décès mentionnée à l'article L. 632-1",
+       3.15
+      ],
+      [
+       "Cotisation d'assurance vieillesse de base mentionnée à l'article D. 633-3",
+       43.45
+      ],
+      [
+       "Cotisation d'assurance vieillesse complémentaire mentionnée à l'article L. 635-1",
+       19.75
+      ],
+      [
+       "Contribution sociale généralisée et contribution pour le remboursement de la dette sociale mentionnées à l'article L. 136-3",
+       23.6
+      ]
+     ],
+     "b": [
+      [
+       "Cotisation d'assurance maladie maternité mentionnée à l'article L. 621-1",
+       10.6
+      ],
+      [
+       "Cotisation de prestations maladie en espèces mentionnée à l'article L. 621-2",
+       0.8
+      ],
+      [
+       "Cotisation d'assurance invalidité décès mentionnée à l'article L. 644-2",
+       1.4
+      ],
+      [
+       "Cotisation d'assurance vieillesse de base mentionnée au 1° de l'article D. 642-3",
+       24.3
+      ],
+      [
+       "Cotisation d'assurance vieillesse de base mentionnée au 2° de l'article D. 642-3",
+       5.2
+      ],
+      [
+       "Cotisation d'assurance vieillesse complémentaire mentionnée à l'article L. 644-1",
+       30.7
+      ],
+      [
+       "Contribution sociale généralisée et contribution pour le remboursement de la dette sociale mentionnées à l'article L. 136-3",
+       27.0
+      ]
+     ],
+     "c": [
+      [
+       "Cotisation d'assurance maladie-maternité mentionnée à l'article L. 621-1",
+       0.0
+      ],
+      [
+       "Cotisation de prestations maladie en espèces mentionnée à l'article L. 621-2",
+       5.1
+      ],
+      [
+       "Cotisation d'assurance invalidité-décès mentionnée à l'article L. 632-1",
+       3.8
+      ],
+      [
+       "Cotisations d'assurance vieillesse de base mentionnées à l'article D. 633-3 du code de la sécurité sociale",
+       50.2
+      ],
+      [
+       "Cotisation d'assurance vieillesse complémentaire mentionnée à l'article L. 635-1",
+       18.6
+      ],
+      [
+       "Contribution sociale généralisée et contribution pour le remboursement de la dette sociale mentionnées à l'article L. 136-3",
+       22.3
+      ]
+     ],
+     "e": [
+      [
+       "Cotisation d'assurance maladie maternité mentionnée à l'article L. 621-1",
+       2.6
+      ],
+      [
+       "Cotisation de prestations maladie en espèces mentionnée à l'article L. 621-2",
+       1.5
+      ],
+      [
+       "Cotisation d'assurance invalidité-décès mentionnées à l'article L. 632-1",
+       3.3
+      ],
+      [
+       "Cotisations d'assurance vieillesse de base mentionnées à l'article D. 633-3 du code de la sécurité sociale",
+       46.4
+      ],
+      [
+       "Cotisation d'assurance vieillesse complémentaire mentionnée à l'article L. 635-1",
+       21.0
+      ],
+      [
+       "Contribution sociale généralisée et contribution pour le remboursement de la dette sociale mentionnées à l'article L. 136-3",
+       25.2
+      ]
+     ]
+    }
+   }
+  },
+  "M2": {
+   "law": [
+    "S8",
+    "S9"
+   ],
+   "rules": "G4",
+   "changed_articles": {
+    "D131-6-1": {
+     "from": "LEGIARTI000036475110",
+     "to": "LEGIARTI000053451315",
+     "to_in_force": "2026-01-01"
+    }
+   },
+   "affected_rules_required": [
+    "dirigeant . exonérations . ACRE",
+    "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE",
+    "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . allocations familiales",
+    "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . indemnités journalières maladie",
+    "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . invalidité et décès",
+    "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . maladie",
+    "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . prorata sur l'année",
+    "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . retraite de base",
+    "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . taux"
+   ],
+   "affected_rules_optional": [
+    "dirigeant . auto-entrepreneur . Acre",
+    "dirigeant . auto-entrepreneur . Acre . notification calcul ACRE annuel",
+    "dirigeant . auto-entrepreneur . Acre . taux Acre",
+    "dirigeant . auto-entrepreneur . Acre . taux CIPAV",
+    "dirigeant . auto-entrepreneur . Acre . taux service BIC",
+    "dirigeant . auto-entrepreneur . Acre . taux service BNC",
+    "dirigeant . auto-entrepreneur . Acre . taux vente restauration hébergement"
+   ],
+   "scored_values": {
+    "D131-6-1 share when income <= 3/4 PASS": 0.25,
+    "previous share": 1.0,
+    "article dateDebut": "2026-01-01",
+    "decree per LEGI link": [
+     "Décret n°2026-69 du 6 février 2026 - art. 1"
+    ]
+   }
+  }
+ }
+}

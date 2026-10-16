@@ -1,0 +1,715 @@
+{
+ "as_of": "2024-09-02",
+ "question": {
+  "rule": null,
+  "article": "D131-6-1"
+ },
+ "generated_at": "2026-10-11T18:06:57+00:00",
+ "links": [
+  {
+   "link_id": "L0028",
+   "recorded_at": "2026-10-11T16:46:58+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . prorata sur l'année",
+   "rules_snapshot": "G0",
+   "rule_file": "règles/dirigeant/exonérations.publicodes",
+   "rule_file_sha256": "d841dba37257f51f0ea79c630e5242befa375580d2cc9ff18ad5e7001214b08e",
+   "article": "D131-6-1",
+   "article_id": "LEGIARTI000036475110",
+   "article_dateDebut": "2018-01-01",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "af896c573ea3c5dd7b6d2a6eec3036e0407373ca96802095536beac318174707",
+   "law_snapshot": "S0",
+   "quote": "La durée de l'exonération des cotisations dues par les personnes bénéficiant de l'aide à la création et à la reprise d'entreprise prévue à l'article L. 131-6-4 est de douze mois",
+   "claim": "12 months: company created 01/07/2023 → 50 % of year 2024 is still under Acre.",
+   "check": {
+    "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . prorata sur l'année",
+    "situation": {
+     "date": "01/07/2024",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "non",
+     "entreprise . activité . nature": "'commerciale'",
+     "entreprise . imposition": "'IR'",
+     "dirigeant . indépendant . revenu professionnel": "20000 €/an",
+     "entreprise . date de création": "01/07/2023"
+    },
+    "expect": 50.0,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 50,
+    "expected": 50.0,
+    "unit": "%",
+    "missing_variables": [
+     "établissement . commune . département",
+     "établissement . commune . département . outre-mer",
+     "dirigeant . exonérations . ACRE"
+    ],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0029",
+   "recorded_at": "2026-10-11T16:46:59+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC",
+   "rules_snapshot": "G0",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/auto-entrepreneur.publicodes",
+   "rule_file_sha256": "145ca5ae234bd65d97f3d5591b11a6fd518382d943767b889fcb7a56d3c2cdb7",
+   "article": "D131-6-1",
+   "article_id": "LEGIARTI000036475110",
+   "article_dateDebut": "2018-01-01",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "af896c573ea3c5dd7b6d2a6eec3036e0407373ca96802095536beac318174707",
+   "law_snapshot": "S0",
+   "quote": "La durée de l'exonération des cotisations dues par les personnes bénéficiant de l'aide à la création et à la reprise d'entreprise prévue à l'article L. 131-6-4 est de douze mois",
+   "claim": "AE with Acre after 12 months (durée 400 jours): reduced rate no longer applies, BNC rate back to 21,1 % (D613-4).",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC",
+    "situation": {
+     "date": "01/05/2024",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "entreprise . activité . nature": "'libérale'",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/04/2023",
+     "dirigeant . exonérations . ACRE": "oui",
+     "établissement . commune . département . outre-mer": "non",
+     "entreprise . durée d'activité": "400 jour"
+    },
+    "expect": 21.1,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 21.1,
+    "expected": 21.1,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0030",
+   "recorded_at": "2026-10-11T16:47:00+00:00",
+   "status": "INFERRED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC",
+   "rules_snapshot": "G0",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/auto-entrepreneur.publicodes",
+   "rule_file_sha256": "145ca5ae234bd65d97f3d5591b11a6fd518382d943767b889fcb7a56d3c2cdb7",
+   "article": "D131-6-1",
+   "article_id": "LEGIARTI000036475110",
+   "article_dateDebut": "2018-01-01",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "af896c573ea3c5dd7b6d2a6eec3036e0407373ca96802095536beac318174707",
+   "law_snapshot": "S0",
+   "quote": "La durée de l'exonération des cotisations dues par les personnes bénéficiant de l'aide à la création et à la reprise d'entreprise prévue à l'article L. 131-6-4 est de douze mois",
+   "claim": "AE with Acre within 12 months (270 jours): rate reduced (observed 10,6 % = 50 % × 21,1 % rounded); the 50 % factor is not in the bounded set so the value is not verifiable here.",
+   "check": null,
+   "check_result": null,
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0031",
+   "recorded_at": "2026-10-11T16:47:01+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . taux",
+   "rules_snapshot": "G0",
+   "rule_file": "règles/dirigeant/exonérations.publicodes",
+   "rule_file_sha256": "d841dba37257f51f0ea79c630e5242befa375580d2cc9ff18ad5e7001214b08e",
+   "article": "D131-6-1",
+   "article_id": "LEGIARTI000036475110",
+   "article_dateDebut": "2018-01-01",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "af896c573ea3c5dd7b6d2a6eec3036e0407373ca96802095536beac318174707",
+   "law_snapshot": "S0",
+   "quote": "Lorsque le revenu ou la rémunération est inférieur ou égal aux trois quarts de la valeur du plafond mentionné à l'article L. 241-3, l'exonération applicable pendant la période mentionnée au I correspond au montant total des cotisations dues aux régimes d'assurance maladie, maternité, veuvage, vieillesse de base, invalidité et décès et d'allocations familiales",
+   "claim": "Revenue ≤ 3/4 PSS → exemption = 100 % of the listed contributions (taux 100 %).",
+   "check": {
+    "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . taux",
+    "situation": {
+     "date": "01/07/2024",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "non",
+     "entreprise . activité . nature": "'commerciale'",
+     "entreprise . imposition": "'IR'",
+     "dirigeant . indépendant . revenu professionnel": "20000 €/an",
+     "entreprise . date de création": "01/01/2024"
+    },
+    "expect": 100.0,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 100,
+    "expected": 100.0,
+    "unit": "%",
+    "missing_variables": [
+     "établissement . commune . département",
+     "établissement . commune . département . outre-mer",
+     "dirigeant . exonérations . ACRE"
+    ],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0032",
+   "recorded_at": "2026-10-11T16:47:02+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . indépendant . cotisations et contributions . retraite de base",
+   "rules_snapshot": "G0",
+   "rule_file": "règles/dirigeant/indépendant.publicodes",
+   "rule_file_sha256": "7ab4795e7a7dcf44baf8a092e6f1c968d08be2a98100a0c0639f38efd47fbf23",
+   "article": "D131-6-1",
+   "article_id": "LEGIARTI000036475110",
+   "article_dateDebut": "2018-01-01",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "af896c573ea3c5dd7b6d2a6eec3036e0407373ca96802095536beac318174707",
+   "law_snapshot": "S0",
+   "quote": "Lorsque le revenu ou la rémunération est inférieur ou égal aux trois quarts de la valeur du plafond mentionné à l'article L. 241-3, l'exonération applicable pendant la période mentionnée au I correspond au montant total des cotisations dues aux régimes d'assurance maladie, maternité, veuvage, vieillesse de base, invalidité et décès et d'allocations familiales",
+   "claim": "Vieillesse de base fully exempted at 20 000 €/an (≤ 3/4 PSS) with Acre → 0.",
+   "check": {
+    "rule": "dirigeant . indépendant . cotisations et contributions . retraite de base",
+    "situation": {
+     "date": "01/07/2024",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "non",
+     "entreprise . activité . nature": "'commerciale'",
+     "entreprise . imposition": "'IR'",
+     "dirigeant . indépendant . revenu professionnel": "20000 €/an",
+     "entreprise . date de création": "01/01/2024"
+    },
+    "expect": 0.0,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 0,
+    "expected": 0.0,
+    "unit": "€/an",
+    "missing_variables": [
+     "établissement . commune . département",
+     "établissement . commune . département . outre-mer",
+     "dirigeant . exonérations . ACRE",
+     "dirigeant . indépendant . cotisations et contributions . exonérations . pension invalidité",
+     "entreprise . activités",
+     "entreprise . activités . commerciale",
+     "entreprise . activités . artisanale",
+     "entreprise . activités . libérale",
+     "entreprise . activités . agricole",
+     "dirigeant . indépendant . conjoint collaborateur",
+     "entreprise . imposition . régime",
+     "entreprise . imposition . régime . micro-entreprise"
+    ],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0033",
+   "recorded_at": "2026-10-11T16:47:04+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . indépendant . cotisations et contributions . maladie",
+   "rules_snapshot": "G0",
+   "rule_file": "règles/dirigeant/indépendant.publicodes",
+   "rule_file_sha256": "7ab4795e7a7dcf44baf8a092e6f1c968d08be2a98100a0c0639f38efd47fbf23",
+   "article": "D131-6-1",
+   "article_id": "LEGIARTI000036475110",
+   "article_dateDebut": "2018-01-01",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "af896c573ea3c5dd7b6d2a6eec3036e0407373ca96802095536beac318174707",
+   "law_snapshot": "S0",
+   "quote": "Lorsque le revenu ou la rémunération est inférieur ou égal aux trois quarts de la valeur du plafond mentionné à l'article L. 241-3, l'exonération applicable pendant la période mentionnée au I correspond au montant total des cotisations dues aux régimes d'assurance maladie, maternité, veuvage, vieillesse de base, invalidité et décès et d'allocations familiales",
+   "claim": "Maladie-maternité fully exempted at 20 000 €/an with Acre → 0.",
+   "check": {
+    "rule": "dirigeant . indépendant . cotisations et contributions . maladie",
+    "situation": {
+     "date": "01/07/2024",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "non",
+     "entreprise . activité . nature": "'commerciale'",
+     "entreprise . imposition": "'IR'",
+     "dirigeant . indépendant . revenu professionnel": "20000 €/an",
+     "entreprise . date de création": "01/01/2024"
+    },
+    "expect": 0.0,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 0,
+    "expected": 0.0,
+    "unit": "€/an",
+    "missing_variables": [
+     "établissement . commune . département",
+     "établissement . commune . département . outre-mer",
+     "dirigeant . exonérations . ACRE",
+     "dirigeant . indépendant . cotisations et contributions . exonérations . pension invalidité",
+     "situation personnelle . domiciliation fiscale à l'étranger",
+     "entreprise . imposition . régime",
+     "entreprise . imposition . régime . micro-entreprise",
+     "dirigeant . indépendant . cotisations facultatives",
+     "situation personnelle . RSA",
+     "entreprise . activités . saisonnière",
+     "entreprise . activités",
+     "entreprise . activités . commerciale"
+    ],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0034",
+   "recorded_at": "2026-10-11T16:47:05+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . indépendant . cotisations et contributions . invalidité et décès",
+   "rules_snapshot": "G0",
+   "rule_file": "règles/dirigeant/indépendant.publicodes",
+   "rule_file_sha256": "7ab4795e7a7dcf44baf8a092e6f1c968d08be2a98100a0c0639f38efd47fbf23",
+   "article": "D131-6-1",
+   "article_id": "LEGIARTI000036475110",
+   "article_dateDebut": "2018-01-01",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "af896c573ea3c5dd7b6d2a6eec3036e0407373ca96802095536beac318174707",
+   "law_snapshot": "S0",
+   "quote": "Lorsque le revenu ou la rémunération est inférieur ou égal aux trois quarts de la valeur du plafond mentionné à l'article L. 241-3, l'exonération applicable pendant la période mentionnée au I correspond au montant total des cotisations dues aux régimes d'assurance maladie, maternité, veuvage, vieillesse de base, invalidité et décès et d'allocations familiales",
+   "claim": "Invalidité-décès fully exempted at 20 000 €/an with Acre → 0.",
+   "check": {
+    "rule": "dirigeant . indépendant . cotisations et contributions . invalidité et décès",
+    "situation": {
+     "date": "01/07/2024",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "non",
+     "entreprise . activité . nature": "'commerciale'",
+     "entreprise . imposition": "'IR'",
+     "dirigeant . indépendant . revenu professionnel": "20000 €/an",
+     "entreprise . date de création": "01/01/2024"
+    },
+    "expect": 0.0,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 0,
+    "expected": 0.0,
+    "unit": "€/an",
+    "missing_variables": [
+     "établissement . commune . département",
+     "établissement . commune . département . outre-mer",
+     "dirigeant . exonérations . ACRE",
+     "entreprise . activités",
+     "entreprise . activités . commerciale",
+     "entreprise . activités . artisanale",
+     "entreprise . activités . libérale",
+     "entreprise . activités . agricole",
+     "dirigeant . indépendant . conjoint collaborateur",
+     "entreprise . imposition . régime",
+     "entreprise . imposition . régime . micro-entreprise",
+     "dirigeant . indépendant . cotisations facultatives"
+    ],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0035",
+   "recorded_at": "2026-10-11T16:47:06+00:00",
+   "status": "INFERRED",
+   "rule": "dirigeant . indépendant . cotisations et contributions . retraite complémentaire",
+   "rules_snapshot": "G0",
+   "rule_file": "règles/dirigeant/indépendant.publicodes",
+   "rule_file_sha256": "7ab4795e7a7dcf44baf8a092e6f1c968d08be2a98100a0c0639f38efd47fbf23",
+   "article": "D131-6-1",
+   "article_id": "LEGIARTI000036475110",
+   "article_dateDebut": "2018-01-01",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "af896c573ea3c5dd7b6d2a6eec3036e0407373ca96802095536beac318174707",
+   "law_snapshot": "S0",
+   "quote": "Lorsque le revenu ou la rémunération est inférieur ou égal aux trois quarts de la valeur du plafond mentionné à l'article L. 241-3, l'exonération applicable pendant la période mentionnée au I correspond au montant total des cotisations dues aux régimes d'assurance maladie, maternité, veuvage, vieillesse de base, invalidité et décès et d'allocations familiales",
+   "claim": "Retraite complémentaire is not in the exempted list and is indeed not reduced (observed 1 400 €/an at 20 000 with Acre; the 7 % RC rate is outside the bounded set).",
+   "check": null,
+   "check_result": null,
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0036",
+   "recorded_at": "2026-10-11T16:47:07+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . taux",
+   "rules_snapshot": "G0",
+   "rule_file": "règles/dirigeant/exonérations.publicodes",
+   "rule_file_sha256": "d841dba37257f51f0ea79c630e5242befa375580d2cc9ff18ad5e7001214b08e",
+   "article": "D131-6-1",
+   "article_id": "LEGIARTI000036475110",
+   "article_dateDebut": "2018-01-01",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "af896c573ea3c5dd7b6d2a6eec3036e0407373ca96802095536beac318174707",
+   "law_snapshot": "S0",
+   "quote": "Montant de l'exonération = E/0,25 PSS × (PSS-R)",
+   "claim": "Degressive zone: R = 87,5 % PSS (40 572 €/an) → (PSS − R)/(0,25 PSS) = 50 %.",
+   "check": {
+    "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . taux",
+    "situation": {
+     "date": "01/07/2024",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "non",
+     "entreprise . activité . nature": "'commerciale'",
+     "entreprise . imposition": "'IR'",
+     "dirigeant . indépendant . revenu professionnel": "40572 €/an",
+     "entreprise . date de création": "01/01/2024"
+    },
+    "expect": 50.0,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 50,
+    "expected": 50.0,
+    "unit": "%",
+    "missing_variables": [
+     "établissement . commune . département",
+     "établissement . commune . département . outre-mer",
+     "dirigeant . exonérations . ACRE"
+    ],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0037",
+   "recorded_at": "2026-10-11T16:47:09+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . taux",
+   "rules_snapshot": "G0",
+   "rule_file": "règles/dirigeant/exonérations.publicodes",
+   "rule_file_sha256": "d841dba37257f51f0ea79c630e5242befa375580d2cc9ff18ad5e7001214b08e",
+   "article": "D131-6-1",
+   "article_id": "LEGIARTI000036475110",
+   "article_dateDebut": "2018-01-01",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "af896c573ea3c5dd7b6d2a6eec3036e0407373ca96802095536beac318174707",
+   "law_snapshot": "S0",
+   "quote": "supérieur au trois quarts de la valeur du plafond mentionné à l'article L. 241-3 mais inférieur ou égal à la valeur de ce plafond",
+   "claim": "Formula bounded at R = PSS where it gives 0; above the PSS (50 000 €/an) the engine gives 0 %.",
+   "check": {
+    "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . taux",
+    "situation": {
+     "date": "01/07/2024",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "non",
+     "entreprise . activité . nature": "'commerciale'",
+     "entreprise . imposition": "'IR'",
+     "dirigeant . indépendant . revenu professionnel": "50000 €/an",
+     "entreprise . date de création": "01/01/2024"
+    },
+    "expect": 0.0,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 0,
+    "expected": 0.0,
+    "unit": "%",
+    "missing_variables": [
+     "établissement . commune . département",
+     "établissement . commune . département . outre-mer",
+     "dirigeant . exonérations . ACRE"
+    ],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0038",
+   "recorded_at": "2026-10-11T16:47:10+00:00",
+   "status": "INFERRED",
+   "rule": "dirigeant . indépendant . cotisations et contributions . exonérations . ACRE . maladie",
+   "rules_snapshot": "G0",
+   "rule_file": "règles/dirigeant/exonérations.publicodes",
+   "rule_file_sha256": "d841dba37257f51f0ea79c630e5242befa375580d2cc9ff18ad5e7001214b08e",
+   "article": "D131-6-1",
+   "article_id": "LEGIARTI000036475110",
+   "article_dateDebut": "2018-01-01",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "af896c573ea3c5dd7b6d2a6eec3036e0407373ca96802095536beac318174707",
+   "law_snapshot": "S0",
+   "quote": "E est le montant total des cotisations dues aux régimes d'assurance maladie, maternité, veuvage, vieillesse de base, invalidité et décès et d'allocations familiales mentionnées au 1° ou au 2° du II de l'article L. 131-6-4 dues pour un revenu ou une rémunération égal aux trois quarts de la valeur du plafond",
+   "claim": "E is the contribution due at 3/4 PSS (fixed), but the engine applies the fraction to the contribution due at R: at R = 87,5 % PSS the Acre maladie exemption observed is 1 114 = 50 % × 2 228 (contribution at R), whereas the article requires 50 % × E (contribution at 34 776 €/an, smaller because the maladie rate is increasing). Executable deviation, no single expected number asserted.",
+   "check": null,
+   "check_result": null,
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0039",
+   "recorded_at": "2026-10-11T16:47:10+00:00",
+   "status": "INFERRED",
+   "rule": "dirigeant . indépendant . cotisations et contributions . PSS proratisé",
+   "rules_snapshot": "G0",
+   "rule_file": "règles/dirigeant/indépendant.publicodes",
+   "rule_file_sha256": "7ab4795e7a7dcf44baf8a092e6f1c968d08be2a98100a0c0639f38efd47fbf23",
+   "article": "D131-6-1",
+   "article_id": "LEGIARTI000036475110",
+   "article_dateDebut": "2018-01-01",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "af896c573ea3c5dd7b6d2a6eec3036e0407373ca96802095536beac318174707",
+   "law_snapshot": "S0",
+   "quote": "En cas de période d'affiliation inférieure à une année, cette valeur est réduite au prorata de la durée d'affiliation",
+   "claim": "PSS prorated by affiliation duration: created 01/07/2024 → 184 jours/365 → 23 375 €/an (article silent on the day-count; 184/366 would give 23 311).",
+   "check": null,
+   "check_result": null,
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0040",
+   "recorded_at": "2026-10-11T16:47:11+00:00",
+   "status": "INFERRED",
+   "rule": "dirigeant . indépendant . cotisations et contributions . PSS proratisé",
+   "rules_snapshot": "G0",
+   "rule_file": "règles/dirigeant/indépendant.publicodes",
+   "rule_file_sha256": "7ab4795e7a7dcf44baf8a092e6f1c968d08be2a98100a0c0639f38efd47fbf23",
+   "article": "D131-6-1",
+   "article_id": "LEGIARTI000036475110",
+   "article_dateDebut": "2018-01-01",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "af896c573ea3c5dd7b6d2a6eec3036e0407373ca96802095536beac318174707",
+   "law_snapshot": "S0",
+   "quote": "La valeur du plafond de la sécurité sociale mentionné à la présente section est la valeur annuelle de ce plafond, tel que prévu à l'article L. 241-3, en vigueur au 1er janvier de l'année au titre de laquelle les cotisations sont dues",
+   "claim": "Annual PSS in force on 1 January of the year (library value 46 368 €/an for 2024; L241-3 is outside the bounded set).",
+   "check": null,
+   "check_result": null,
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0115",
+   "recorded_at": "2026-10-11T18:06:50+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux ACRE",
+   "rules_snapshot": "G1post_R2",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/exonérations.publicodes",
+   "rule_file_sha256": "dcf5e0c265aff7f7e1b4c2eefde1a5f47bccc26f33ee1e4b883b33f2f890e71f",
+   "article": "D131-6-1",
+   "article_id": "LEGIARTI000036475110",
+   "article_dateDebut": "2018-01-01",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "af896c573ea3c5dd7b6d2a6eec3036e0407373ca96802095536beac318174707",
+   "law_snapshot": "S4",
+   "quote": "est de douze mois à compter soit de la date d'effet d'affiliation de l'assuré",
+   "claim": "D131-6-1 v.LEGIARTI000036475110 I: exemption lasts twelve months. Library: within 12 months (180 days, AE created 01/03/2024, ACRE oui) the BNC rate is reduced: taux ACRE 50 % x 21.1 = 10.55 -> arrondi 1 décimale 10.6. Only the DURATION logic is supported by the bounded text; the 50 % factor rests outside the set and the 21.1 base is the pre-existing D613-4 gap (23,1 % in force).",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC",
+    "situation": {
+     "date": "01/09/2024",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "établissement . commune . département . outre-mer": "non",
+     "entreprise . activité . nature": "'libérale'",
+     "dirigeant . exonérations . ACRE": "oui",
+     "entreprise . date de création": "01/03/2024",
+     "entreprise . durée d'activité": "180 jour"
+    },
+    "expect": 10.6,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 10.6,
+    "expected": 10.6,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0116",
+   "recorded_at": "2026-10-11T18:06:52+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux ACRE",
+   "rules_snapshot": "G1post_R2",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/exonérations.publicodes",
+   "rule_file_sha256": "dcf5e0c265aff7f7e1b4c2eefde1a5f47bccc26f33ee1e4b883b33f2f890e71f",
+   "article": "D131-6-1",
+   "article_id": "LEGIARTI000036475110",
+   "article_dateDebut": "2018-01-01",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "af896c573ea3c5dd7b6d2a6eec3036e0407373ca96802095536beac318174707",
+   "law_snapshot": "S4",
+   "quote": "est de douze mois à compter soit de la date d'effet d'affiliation de l'assuré",
+   "claim": "D131-6-1 v.LEGIARTI000036475110 I: after twelve months no exemption. Library: at 500 days (AE created 01/03/2023, ACRE oui) taux ACRE is non applicable and the unreduced library rate applies (21.1). The check verifies only that the reduction STOPS after 12 months; the value 21.1 itself is the pre-existing misalignment with D613-4 v.LEGIARTI000049624068 (23,1 %).",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC",
+    "situation": {
+     "date": "01/09/2024",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "établissement . commune . département . outre-mer": "non",
+     "entreprise . activité . nature": "'libérale'",
+     "dirigeant . exonérations . ACRE": "oui",
+     "entreprise . date de création": "01/03/2023",
+     "entreprise . durée d'activité": "500 jour"
+    },
+    "expect": 21.1,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 21.1,
+    "expected": 21.1,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  }
+ ],
+ "article_versions_known": [
+  {
+   "law_snapshot": "S0",
+   "published": "2024-05-25T23:36:37.034Z",
+   "article": "D131-6-1",
+   "id": "LEGIARTI000036475110",
+   "etat": "VIGUEUR",
+   "dateDebut": "2018-01-01",
+   "dateFin": "2999-01-01",
+   "in_force_on_date": true,
+   "text_sha256": "af896c573ea3c5dd7b6d2a6eec3036e0407373ca96802095536beac318174707"
+  },
+  {
+   "law_snapshot": "S1",
+   "published": "2024-06-01T23:22:24.265Z",
+   "article": "D131-6-1",
+   "id": "LEGIARTI000036475110",
+   "etat": "VIGUEUR",
+   "dateDebut": "2018-01-01",
+   "dateFin": "2999-01-01",
+   "in_force_on_date": true,
+   "text_sha256": "af896c573ea3c5dd7b6d2a6eec3036e0407373ca96802095536beac318174707"
+  },
+  {
+   "law_snapshot": "S3",
+   "published": "2024-07-17T15:37:04.165Z",
+   "article": "D131-6-1",
+   "id": "LEGIARTI000036475110",
+   "etat": "VIGUEUR",
+   "dateDebut": "2018-01-01",
+   "dateFin": "2999-01-01",
+   "in_force_on_date": true,
+   "text_sha256": "af896c573ea3c5dd7b6d2a6eec3036e0407373ca96802095536beac318174707"
+  },
+  {
+   "law_snapshot": "S4",
+   "published": "2024-09-01T16:15:14.642Z",
+   "article": "D131-6-1",
+   "id": "LEGIARTI000036475110",
+   "etat": "VIGUEUR",
+   "dateDebut": "2018-01-01",
+   "dateFin": "2999-01-01",
+   "in_force_on_date": true,
+   "text_sha256": "af896c573ea3c5dd7b6d2a6eec3036e0407373ca96802095536beac318174707"
+  }
+ ],
+ "rules_snapshots_known": [
+  {
+   "snapshot": "G0",
+   "commit": "d9242882f96bda5b4418b7c1c3ff46b0e2a1c5ce",
+   "committed": "2024-05-15 09:38:43 +0200"
+  },
+  {
+   "snapshot": "G1",
+   "commit": "2a0e452617fc33b955096f4bb7f7f305ec0670ad",
+   "committed": "2024-07-16 21:29:59 +0200"
+  },
+  {
+   "snapshot": "G1post_R2",
+   "commit": "1932d654cf7a81dbac73df88487fc70553e52a19",
+   "committed": "2024-09-02 12:25:29 +0200"
+  },
+  {
+   "snapshot": "G1pre_R1",
+   "commit": null,
+   "committed": null
+  },
+  {
+   "snapshot": "P_T1a",
+   "commit": null,
+   "committed": null
+  },
+  {
+   "snapshot": "P_T1b",
+   "commit": "2a0e452617fc33b955096f4bb7f7f305ec0670ad",
+   "committed": "2024-07-16 21:29:59 +0200"
+  }
+ ],
+ "approvals": [
+  "none recorded"
+ ],
+ "limits": [
+  "Only what was recorded in this store is reported; absence of a record is reported as absence, not inferred.",
+  "Snapshot publish dates are when the governing text was captured, not when it entered into force; both are listed.",
+  "A matching hash shows the preserved text is unchanged; it does not show the interpretation is correct or that anyone authorised it."
+ ]
+}

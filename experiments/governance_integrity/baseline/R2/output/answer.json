@@ -1,0 +1,86 @@
+{
+ "task": "R2",
+ "commit": "1932d654cf7a81dbac73df88487fc70553e52a19",
+ "label": "HARMLESS_REFACTOR",
+ "confidence": "high",
+ "rationale": "The commit deletes the single line `privé: oui` of the rule `dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux ACRE`. In publicodes 1.10.4 `privé` is a visibility flag: it hides the rule (and its 6 descendants) from getParsedRules()/documentation, makes engine.evaluate() of it from outside fail (\"n'est pas accessible depuis \\\"$EVALUATION\\\"\"), and forbids setting it in the situation (\"est une règle privée\"). No formula, constant, date or applicability condition changes. Build passes on both trees; the 69 existing checks plus the public-rule cells of 10 ACRE-specific checks give byte-identical values before and after (BNC ACRE 6 months at 01/07/2024 and 01/09/2024: service BNC . taux 10.6 %, cotisations 106 €/mois, CIPAV 12.1 %). What changes is the engine's public surface, not what any bounded rule computes: parsed_rule_count 1220 -> 1227, 7 rules become listable and evaluable (taux ACRE = 50 % for the first year, 12.1 % CIPAV constant, notification), and the rule can now be overridden from the situation. Law S4 is identical to S3 for all 12 bounded articles, and no bounded article states the ACRE micro-social rate: L613-7 I only enables \"Un taux global différent peut être fixé par décret\", D131-6-1 governs the 12-month exemption of classic travailleurs indépendants, so the 50 % / 12,10 % values that are now visible rest on a decree article outside the bounded set and on the Urssaf/service-public references cited in the rule; they are neither created nor altered by this commit. Pre-existing issues made more visible by the exposure (D613-4 b/e 23,2/23,1 % since 2024-07-01 vs 21,2/21,1 % in G1; taux ACRE . service BIC leaves the full 21,2 % under ACRE) are documented in notes, not attributed to this change. Approval: none recorded.",
+ "evidence": [
+  {
+   "kind": "diff_excerpt",
+   "article": null,
+   "article_version_id": null,
+   "quote_or_values": "commit 1932d654cf7a81dbac73df88487fc70553e52a19 (2024-09-02 12:25:29 +0200, Alice Dahan) \"docs(auto-entrepreneur): Rend publique la règle taux ACRE des auto-entrepreneurs\": 1 file, 1 deletion. Removed line under `dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux ACRE:` -> [\"-  privé: oui\"]. The diff context (2-space indent, hunk @@ -62) does not match the G1 file (4-space indent, rule at l.65; git blob 8914c3ae vs a061b547e in the patch), so the commit's parent is a later, unsupplied pin; the deletion was applied semantically to G1 (work/proposals/R2, diff -r = this single line)."
+  },
+  {
+   "kind": "engine_before_after",
+   "article": null,
+   "article_version_id": null,
+   "quote_or_values": "build: before raw 641 / parsed 1220; after raw 641 / parsed 1227 (+7: publicodes 1.10.4 getParsedRules() hides private rules and every rule below one). list --prefix \"dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux ACRE\": before 0 names, after 7 names (. taux ACRE; . taux ACRE . CIPAV; . taux ACRE . prestation de service; . taux ACRE . service BIC; . taux ACRE . service BNC; . taux ACRE . vente restauration hébergement; . taux ACRE . notification calcul ACRE annuel)."
+  },
+  {
+   "kind": "engine_before_after",
+   "article": null,
+   "article_version_id": null,
+   "quote_or_values": "69 existing checks (specs T0_ae3, T1a_rates, T0_ti, T1b_trader, R1_atmp; dates 01/01/2024..01/01/2026; AE BNC/CIPAV/vente/BIC with and without ACRE, DROM, indépendant, salarié) evaluated on both trees: result files byte-identical (work/engine/results_R2_before_* vs results_R2_after_*). In the 10 ACRE checks the 54 public-rule cells outside the override case are identical."
+  },
+  {
+   "kind": "engine_before_after",
+   "article": null,
+   "article_version_id": null,
+   "quote_or_values": "Rule \"dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux ACRE\", situation {\"date\":\"01/07/2024\",\"salarié\":\"non\",\"entreprise . catégorie juridique\":\"'EI'\",\"entreprise . catégorie juridique . EI . auto-entrepreneur\":\"oui\",\"dirigeant . auto-entrepreneur\":\"oui\",\"dirigeant . auto-entrepreneur . chiffre d'affaires\":\"1000 €/mois\",\"établissement . commune . département . outre-mer\":\"non\",\"entreprise . activités . revenus mixtes\":\"non\",\"entreprise . activité . nature\":\"'libérale'\",\"entreprise . date de création\":\"01/01/2024\",\"entreprise . durée d'activité\":\"6 mois\",\"dirigeant . exonérations . ACRE\":\"oui\"}: before = ERROR: [ Erreur syntaxique ] | ➡️  Dans la règle \"$EVALUATION\" | ✖️  La règle \"dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux ACRE\" n'est pas accessible depuis \"$EVALUATION\".; after = 50 %. Same situation at date 01/09/2024: after = 50 % (before: same error). Public rules both trees, 01/07/2024: \"dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . taux\" = 10.6 %, \"dirigeant . auto-entrepreneur . cotisations et contributions . cotisations\" = 106 €/mois (missing 5), \"dirigeant . auto-entrepreneur . revenu net\" = 10704 €/an (missing 5); CIPAV case \"dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV . taux\" = 12.1 % (before 12.1 %). After only: \"dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux ACRE . service BNC\" = 10.6 %, \". taux ACRE . CIPAV\" = 12.1 %, \". taux ACRE . vente restauration hébergement\" = 6.2 %."
+  },
+  {
+   "kind": "engine_before_after",
+   "article": null,
+   "article_version_id": null,
+   "quote_or_values": "Situation surface: adding \"dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux ACRE\": \"80 %\" to the same situation -> before: setSituation rejected ([ Erreur lors de la mise à jour de la situation ] | ➡️  Dans la règle \"dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux ACRE\" | ✖️  La règle dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux ACRE est une règle privée.); after: accepted, \"dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux ACRE\" = 80 %, \"dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . taux\" = 16.9 %, \"dirigeant . auto-entrepreneur . cotisations et contributions . cotisations\" = 168.99999999999997 €/mois (missing 5)."
+  },
+  {
+   "kind": "engine_before_after",
+   "article": null,
+   "article_version_id": null,
+   "quote_or_values": "Engine caveat (publicodes 1.10.4 cache, after tree only): CIPAV ACRE situation, \"dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . taux\" evaluated alone = before null (missing 4) / after null (missing 4); but evaluated after \"dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux ACRE . service BIC\" in the same engine instance = 21.2 %. Order-dependent value reachable only because the replacing rule is now evaluable from outside; not a change of the rule's semantics."
+  },
+  {
+   "kind": "article_quote",
+   "article": "L613-7",
+   "article_version_id": "LEGIARTI000048683570",
+   "in_force": "2023-12-28",
+   "etat": "VIGUEUR",
+   "quote_or_values": "Un taux global différent peut être fixé par décret pour les périodes au cours desquelles le travailleur indépendant est éligible à une exonération de cotisations et de contributions de sécurité sociale."
+  },
+  {
+   "kind": "article_quote",
+   "article": "D131-6-1",
+   "article_version_id": "LEGIARTI000036475110",
+   "in_force": "2018-01-01",
+   "etat": "VIGUEUR",
+   "quote_or_values": "La durée de l'exonération des cotisations dues par les personnes bénéficiant de l'aide à la création et à la reprise d'entreprise prévue à l'article L. 131-6-4 est de douze mois"
+  },
+  {
+   "kind": "article_quote",
+   "article": "D613-4",
+   "article_version_id": "LEGIARTI000049624068",
+   "in_force": "2024-07-01",
+   "etat": "VIGUEUR_DIFF",
+   "quote_or_values": "b) Travailleurs indépendants affiliés à la section professionnelle mentionnée au 11° de l'article R. 641-1 35 076 euros 34 % 23 150 euros 23,2 %"
+  },
+  {
+   "kind": "article_quote",
+   "article": "D613-4",
+   "article_version_id": "LEGIARTI000049624068",
+   "in_force": "2024-07-01",
+   "etat": "VIGUEUR_DIFF",
+   "quote_or_values": "e) Travailleurs indépendants relevant à la fois de l'article L. 631-1 et du régime prévu à l' article 102 ter du code général des impôts 10 000 euros 34 % 6 600 euros 23,1 %"
+  }
+ ],
+ "expected_values_if_mismatch": [],
+ "outside_bounded_set": [
+  "The decree article fixing the different \"taux global\" for ACRE periods under L613-7 I (the source of the 50 % first-year rate, the 12,10 % CIPAV constant and the pre-04/2020 grids 25/75/90 and 25/50/90 %) is not in the bounded set; the rule cites Urssaf FAQ and service-public.fr F32318. Values therefore cannot be confirmed or refuted here (abstain).",
+  "L131-6-4 (ACRE eligibility, referenced by D131-6-1 and by `dirigeant . exonérations . ACRE`) is not in the bounded set.",
+  "The parent commit of 1932d654 (file blob a061b547e, re-indented to 2 spaces) is a pin later than G1 (blob 8914c3ae); the intermediate commits 2024-07-16 -> 2024-09-02 are not supplied, so before/after was measured as G1 vs G1-minus-this-line."
+ ],
+ "approval": "none recorded",
+ "notes": "Pre-existing, independent of this commit, visible in both trees: (1) D613-4 LEGIARTI000049624068 (in force 2024-07-01) gives b) 23,2 % and e) 23,1 % while G1 computes cotisations CIPAV . taux 21,2 % and service BNC . taux 21,1 % at 01/07/2024 (results_R2_before_T1a_rates.jsonl); the newly exposed taux ACRE . service BNC = 10,6 % = 50 % x 21,1 % therefore inherits that staleness (50 % x 23,1 % would be 11,55 %, but the 50 % itself is outside the bounded set, so no expected value is asserted). (2) `taux ACRE . service BIC` has `valeur: cotisations . service BIC . taux` without the `taux ACRE *` factor: an artisan/commercial service AE with ACRE (6 months, 1000 €/mois) pays service BIC . taux 21.2 % and cotisations 212 €/mois (missing 4) in both trees, whereas BNC and vente are halved (10,6 % / 6,2 %); whether the law requires 50 % for BIC depends on the decree article outside the bounded set. (3) Engine caveat: once taux ACRE's descendants are evaluable from outside, publicodes 1.10.4 returns an order-dependent value for a replaced rule in one measured case (see evidence); worth a regression test on the maintainers' side. Law S4 (legi-data 2.384.0, 2024-09-01) = S3 for all 12 articles (work/law/S4_index.json, S4_texts.md). The 1220 -> 1227 parsed-rule difference is exactly the 7 names listed after the change.",
+ "self_reported_tool_calls": 25
+}

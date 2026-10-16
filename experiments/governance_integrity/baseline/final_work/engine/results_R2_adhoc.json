@@ -1,0 +1,56 @@
+{
+ "situations": {
+  "cipav_acre": {
+   "date": "01/07/2024",
+   "salarié": "non",
+   "entreprise . catégorie juridique": "'EI'",
+   "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+   "dirigeant . auto-entrepreneur": "oui",
+   "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+   "établissement . commune . département . outre-mer": "non",
+   "entreprise . activités . revenus mixtes": "non",
+   "entreprise . activité . nature": "'libérale'",
+   "entreprise . activité . nature . libérale . réglementée": "oui",
+   "entreprise . date de création": "01/01/2024",
+   "entreprise . durée d'activité": "6 mois",
+   "dirigeant . exonérations . ACRE": "oui"
+  },
+  "sbic_acre": {
+   "date": "01/07/2024",
+   "salarié": "non",
+   "entreprise . catégorie juridique": "'EI'",
+   "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+   "dirigeant . auto-entrepreneur": "oui",
+   "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+   "établissement . commune . département . outre-mer": "non",
+   "entreprise . activités . revenus mixtes": "non",
+   "entreprise . activité . nature": "'artisanale'",
+   "entreprise . activités . service ou vente": "'service'",
+   "entreprise . date de création": "01/01/2024",
+   "entreprise . durée d'activité": "6 mois",
+   "dirigeant . exonérations . ACRE": "oui"
+  }
+ },
+ "adhoc": {
+  "cipav_acre_isolated_before": {
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . taux": "null (missing 4)"
+  },
+  "cipav_acre_isolated_after": {
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . taux": "null (missing 4)"
+  },
+  "cipav_acre_after_replacing_rule_first": {
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux ACRE . service BIC": "null (missing 4)",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . taux": "21.2 %"
+  },
+  "sbic_acre_before": {
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . taux": "21.2 %",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC": "212 €/mois (missing 4)",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations": "212 €/mois (missing 4)"
+  },
+  "sbic_acre_after": {
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . taux": "21.2 %",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC": "212 €/mois (missing 4)",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations": "212 €/mois (missing 4)"
+  }
+ }
+}

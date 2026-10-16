@@ -1,0 +1,42 @@
+commit 8d04dbb650366c0bb4af0858a569049d845a7230
+AuthorDate: 2024-07-10 14:15:32 +0200
+CommitDate: 2024-07-17 14:48:20 +0200
+feat(auto-entrepreneur): met à jour les taux de cotisation des auto-entrepreneurs au 1er juillet 2024 #3010
+
+
+diff --git "a/modele-social/r\303\250gles/dirigeant/auto-entrepreneur/auto-entrepreneur.publicodes" "b/modele-social/r\303\250gles/dirigeant/auto-entrepreneur/auto-entrepreneur.publicodes"
+index 59b24ffd6..fc60f78c0 100644
+--- "a/modele-social/r\303\250gles/dirigeant/auto-entrepreneur/auto-entrepreneur.publicodes"
++++ "b/modele-social/r\303\250gles/dirigeant/auto-entrepreneur/auto-entrepreneur.publicodes"
+@@ -294,6 +294,8 @@ dirigeant . auto-entrepreneur . cotisations et contributions . cotisations:
+       avec:
+         taux:
+           variations:
++            - si: date >= 07/2024
++              alors: 23.1%
+             - si: date >= 10/2022
+               alors: 21.1%
+             - sinon: 22%
+@@ -368,7 +370,11 @@ dirigeant . auto-entrepreneur . cotisations et contributions . cotisations:
+         - entreprise . chiffre d'affaires
+         - taux
+ 
+-    cotisations CIPAV . taux:  21.2%
++    cotisations CIPAV . taux:
++      variations:
++        - si: date >= 07/2024
++          alors: 23.2%
++        - sinon: 21.2%
+ 
+     taux prestation de service:
+       déprécié: oui
+diff --git "a/modele-social/r\303\250gles/p\303\251riode.publicodes" "b/modele-social/r\303\250gles/p\303\251riode.publicodes"
+index 088d95088..005025509 100644
+--- "a/modele-social/r\303\250gles/p\303\251riode.publicodes"
++++ "b/modele-social/r\303\250gles/p\303\251riode.publicodes"
+@@ -1,4 +1,4 @@
+-date: 06/01/2024
++date: 01/07/2024
+ période: oui
+ période . jours ouvrés moyen par mois:
+   formule: 21 jour ouvré/mois

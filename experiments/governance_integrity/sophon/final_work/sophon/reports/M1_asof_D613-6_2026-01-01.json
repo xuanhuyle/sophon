@@ -1,0 +1,3141 @@
+{
+ "as_of": "2026-01-01",
+ "question": {
+  "rule": null,
+  "article": "D613-6"
+ },
+ "generated_at": "2026-10-11T19:38:09+00:00",
+ "links": [
+  {
+   "link_id": "L0052",
+   "recorded_at": "2026-10-11T16:47:26+00:00",
+   "status": "UNKNOWN",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "rules_snapshot": "G0",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/auto-entrepreneur.publicodes",
+   "rule_file_sha256": "145ca5ae234bd65d97f3d5591b11a6fd518382d943767b889fcb7a56d3c2cdb7",
+   "article": "D613-6",
+   "article_id": "LEGIARTI000046714699",
+   "article_dateDebut": "2022-12-10",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "81fed40869d4f6a5f53f7506fcc05c9f17a92eddde4bdfae92498b39123483ab",
+   "law_snapshot": "S0",
+   "quote": "Cotisation d'assurance maladie maternité 3,90 % Cotisation d'assurance invalidité-décès 4,10 % Cotisations d'assurance vieillesse de base mentionnées aux I et II de l'article D. 633-3 du code de la sécurité sociale 55,50 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale 36,50 %",
+   "claim": "Split of the AE global amount between branches (category e) — no rule splits the AE forfait; not implemented.",
+   "check": null,
+   "check_result": null,
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0070",
+   "recorded_at": "2026-10-11T17:08:45+00:00",
+   "status": "VERIFIED",
+   "rule": "protection sociale . retraite . complémentaire . RCI . revenu cotisé auto-entrepreneur",
+   "rules_snapshot": "G0",
+   "rule_file": "règles/protection-sociale.publicodes",
+   "rule_file_sha256": "826cf932b4dcb488f49a21d0c610bf9408f32858513d3744ad6d352a4aca47a6",
+   "article": "D613-6",
+   "article_id": "LEGIARTI000049623885",
+   "article_dateDebut": "2024-06-01",
+   "article_dateFin": "2024-07-01",
+   "article_text_sha256": "81fed40869d4f6a5f53f7506fcc05c9f17a92eddde4bdfae92498b39123483ab",
+   "law_snapshot": "S1",
+   "quote": "Cotisation d'assurance vieillesse complémentaire 16,50 %",
+   "claim": "D613-6 version LEGIARTI000049623885 (Décret 2024-484 art. 2, in force 2024-06-01), text identical to LEGIARTI000046714699: a) vente share for complementary pension 16,50 % of the global amount: 12 000 x 12,3 % x 16,5 % = 243,54 €/an; the rule uses the rounded rate 2,03 % -> 243,6 (tolerance 0,3).",
+   "check": {
+    "rule": "protection sociale . retraite . complémentaire . RCI . revenu cotisé auto-entrepreneur",
+    "situation": {
+     "date": "01/06/2024",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "entreprise . activité . nature": "'commerciale'",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "non",
+     "entreprise . activités . service ou vente": "'vente'"
+    },
+    "expect": 243.54,
+    "tolerance": 0.3
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 243.59999999999997,
+    "expected": 243.54,
+    "unit": "€/an",
+    "missing_variables": [
+     "entreprise . activités . revenus mixtes",
+     "entreprise . activités",
+     "entreprise . activités . commerciale",
+     "entreprise . activités . artisanale",
+     "entreprise . activités . libérale"
+    ],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0071",
+   "recorded_at": "2026-10-11T17:08:47+00:00",
+   "status": "VERIFIED",
+   "rule": "protection sociale . retraite . complémentaire . RCI . revenu cotisé auto-entrepreneur",
+   "rules_snapshot": "G0",
+   "rule_file": "règles/protection-sociale.publicodes",
+   "rule_file_sha256": "826cf932b4dcb488f49a21d0c610bf9408f32858513d3744ad6d352a4aca47a6",
+   "article": "D613-6",
+   "article_id": "LEGIARTI000049623885",
+   "article_dateDebut": "2024-06-01",
+   "article_dateFin": "2024-07-01",
+   "article_text_sha256": "81fed40869d4f6a5f53f7506fcc05c9f17a92eddde4bdfae92498b39123483ab",
+   "law_snapshot": "S1",
+   "quote": "Cotisation d'assurance vieillesse complémentaire 16,50 %",
+   "claim": "D613-6 d) service BIC share 16,50 %: 12 000 x 21,2 % x 16,5 % = 419,76 €/an; the rule uses the rounded rate 3,50 % -> 420 (tolerance 0,3).",
+   "check": {
+    "rule": "protection sociale . retraite . complémentaire . RCI . revenu cotisé auto-entrepreneur",
+    "situation": {
+     "date": "01/06/2024",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "entreprise . activité . nature": "'artisanale'",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "non",
+     "entreprise . activités . service ou vente": "'service'"
+    },
+    "expect": 419.76,
+    "tolerance": 0.3
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 420,
+    "expected": 419.76,
+    "unit": "€/an",
+    "missing_variables": [
+     "entreprise . activités . revenus mixtes",
+     "entreprise . activités",
+     "entreprise . activités . commerciale",
+     "entreprise . activités . artisanale",
+     "entreprise . activités . libérale"
+    ],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0072",
+   "recorded_at": "2026-10-11T17:08:48+00:00",
+   "status": "VERIFIED",
+   "rule": "protection sociale . retraite . complémentaire . RCI . revenu cotisé auto-entrepreneur",
+   "rules_snapshot": "G0",
+   "rule_file": "règles/protection-sociale.publicodes",
+   "rule_file_sha256": "826cf932b4dcb488f49a21d0c610bf9408f32858513d3744ad6d352a4aca47a6",
+   "article": "D613-6",
+   "article_id": "LEGIARTI000049623885",
+   "article_dateDebut": "2024-06-01",
+   "article_dateFin": "2024-07-01",
+   "article_text_sha256": "81fed40869d4f6a5f53f7506fcc05c9f17a92eddde4bdfae92498b39123483ab",
+   "law_snapshot": "S1",
+   "quote": "Cotisation d'assurance maladie maternité 3,90 % Cotisation d'assurance invalidité-décès 4,10 % Cotisations d'assurance vieillesse de base mentionnées aux I et II de l'article D. 633-3 du code de la sécurité sociale 55,50 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale 36,50 %",
+   "claim": "D613-6 e) (BNC, 102 ter) lists no complementary-pension share -> revenu cotisé RCI = 0 for a BNC AE.",
+   "check": {
+    "rule": "protection sociale . retraite . complémentaire . RCI . revenu cotisé auto-entrepreneur",
+    "situation": {
+     "date": "01/06/2024",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "entreprise . activité . nature": "'libérale'",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "non",
+     "entreprise . activité . nature . libérale . réglementée": "non"
+    },
+    "expect": 0.0,
+    "tolerance": 1e-09
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 0,
+    "expected": 0.0,
+    "unit": null,
+    "missing_variables": [
+     "entreprise . activités . revenus mixtes",
+     "entreprise . activités",
+     "entreprise . activités . commerciale",
+     "entreprise . activités . artisanale",
+     "entreprise . activités . libérale"
+    ],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0073",
+   "recorded_at": "2026-10-11T17:08:49+00:00",
+   "status": "UNKNOWN",
+   "rule": "protection sociale . retraite . complémentaire . RCI . revenu cotisé auto-entrepreneur",
+   "rules_snapshot": "G0",
+   "rule_file": "règles/protection-sociale.publicodes",
+   "rule_file_sha256": "826cf932b4dcb488f49a21d0c610bf9408f32858513d3744ad6d352a4aca47a6",
+   "article": "D613-6",
+   "article_id": "LEGIARTI000049623885",
+   "article_dateDebut": "2024-06-01",
+   "article_dateFin": "2024-07-01",
+   "article_text_sha256": "81fed40869d4f6a5f53f7506fcc05c9f17a92eddde4bdfae92498b39123483ab",
+   "law_snapshot": "S1",
+   "quote": "Cotisation d'assurance vieillesse complémentaire 16,50 %",
+   "claim": "ABSTENTION. Announced versions without text in S1: LEGIARTI000049625264 (2024-07-01), LEGIARTI000049625405 (2025-01-01), LEGIARTI000049625445 (2026-01-01) -> split for those dates NOT settled -> ABSTAIN.",
+   "check": null,
+   "check_result": null,
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0074",
+   "recorded_at": "2026-10-11T17:08:50+00:00",
+   "status": "UNKNOWN",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "rules_snapshot": "G0",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/auto-entrepreneur.publicodes",
+   "rule_file_sha256": "145ca5ae234bd65d97f3d5591b11a6fd518382d943767b889fcb7a56d3c2cdb7",
+   "article": "D613-6",
+   "article_id": "LEGIARTI000049623885",
+   "article_dateDebut": "2024-06-01",
+   "article_dateFin": "2024-07-01",
+   "article_text_sha256": "81fed40869d4f6a5f53f7506fcc05c9f17a92eddde4bdfae92498b39123483ab",
+   "law_snapshot": "S1",
+   "quote": "Cotisation d'assurance maladie maternité 3,90 % Cotisation d'assurance invalidité-décès 4,10 % Cotisations d'assurance vieillesse de base mentionnées aux I et II de l'article D. 633-3 du code de la sécurité sociale 55,50 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale 36,50 %",
+   "claim": "Split of the AE global amount between branches (D613-6) is not implemented as such in the library (only the RCI share is derived); unchanged by S1. Announced versions without text in S1: LEGIARTI000049625264 (2024-07-01), LEGIARTI000049625405 (2025-01-01), LEGIARTI000049625445 (2026-01-01) -> split for those dates NOT settled -> ABSTAIN.",
+   "check": null,
+   "check_result": null,
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0186",
+   "recorded_at": "2026-10-11T19:12:55+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . répartition . maladie-maternité . taux de répartition",
+   "rules_snapshot": "G3",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/cotisations-et-contributions.publicodes",
+   "rule_file_sha256": "df3e1b3ccf40c09c42da68c815982099ec84d8e0191bb2506f4386995661be6d",
+   "article": "D613-6",
+   "article_id": "LEGIARTI000049625405",
+   "article_dateDebut": "2025-01-01",
+   "article_dateFin": "2026-01-01",
+   "article_text_sha256": "69b8e1b56c6185a7f85eb5d1cd90b8813f794fe0f7edcb24d0ca82ad4414b24f",
+   "law_snapshot": "S7",
+   "quote": "Cotisation d'assurance maladie maternité 3,40 % Cotisation d'assurance invalidité-décès 3,50 % Cotisations d'assurance vieillesse de base mentionnées aux I et II de l'article D. 633-3 du code de la sécurité sociale 47,60 % Cotisation d'assurance vieillesse complémentaire 13,00 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale 32,50 %",
+   "claim": "D613-6 v.LEGIARTI000049625405 (in force 2025-01-01..2026-01-01; current text in S6 and S7): e) share maladie-maternité = 3.4 %.",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . répartition . maladie-maternité . taux de répartition",
+    "situation": {
+     "date": "01/07/2025",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "non",
+     "entreprise . activité . nature": "'libérale'",
+     "entreprise . activité . nature . libérale . réglementée": "non"
+    },
+    "expect": 3.4,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 3.4,
+    "expected": 3.4,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0187",
+   "recorded_at": "2026-10-11T19:12:57+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . répartition . invalidité-décès . taux de répartition",
+   "rules_snapshot": "G3",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/cotisations-et-contributions.publicodes",
+   "rule_file_sha256": "df3e1b3ccf40c09c42da68c815982099ec84d8e0191bb2506f4386995661be6d",
+   "article": "D613-6",
+   "article_id": "LEGIARTI000049625405",
+   "article_dateDebut": "2025-01-01",
+   "article_dateFin": "2026-01-01",
+   "article_text_sha256": "69b8e1b56c6185a7f85eb5d1cd90b8813f794fe0f7edcb24d0ca82ad4414b24f",
+   "law_snapshot": "S7",
+   "quote": "Cotisation d'assurance maladie maternité 3,40 % Cotisation d'assurance invalidité-décès 3,50 % Cotisations d'assurance vieillesse de base mentionnées aux I et II de l'article D. 633-3 du code de la sécurité sociale 47,60 % Cotisation d'assurance vieillesse complémentaire 13,00 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale 32,50 %",
+   "claim": "D613-6 v.LEGIARTI000049625405 (in force 2025-01-01..2026-01-01; current text in S6 and S7): e) share invalidité-décès = 3.5 %.",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . répartition . invalidité-décès . taux de répartition",
+    "situation": {
+     "date": "01/07/2025",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "non",
+     "entreprise . activité . nature": "'libérale'",
+     "entreprise . activité . nature . libérale . réglementée": "non"
+    },
+    "expect": 3.5,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 3.5,
+    "expected": 3.5,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0188",
+   "recorded_at": "2026-10-11T19:12:58+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . répartition . retraite de base . taux de répartition",
+   "rules_snapshot": "G3",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/cotisations-et-contributions.publicodes",
+   "rule_file_sha256": "df3e1b3ccf40c09c42da68c815982099ec84d8e0191bb2506f4386995661be6d",
+   "article": "D613-6",
+   "article_id": "LEGIARTI000049625405",
+   "article_dateDebut": "2025-01-01",
+   "article_dateFin": "2026-01-01",
+   "article_text_sha256": "69b8e1b56c6185a7f85eb5d1cd90b8813f794fe0f7edcb24d0ca82ad4414b24f",
+   "law_snapshot": "S7",
+   "quote": "Cotisation d'assurance maladie maternité 3,40 % Cotisation d'assurance invalidité-décès 3,50 % Cotisations d'assurance vieillesse de base mentionnées aux I et II de l'article D. 633-3 du code de la sécurité sociale 47,60 % Cotisation d'assurance vieillesse complémentaire 13,00 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale 32,50 %",
+   "claim": "D613-6 v.LEGIARTI000049625405 (in force 2025-01-01..2026-01-01; current text in S6 and S7): e) share retraite de base = 47.6 %.",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . répartition . retraite de base . taux de répartition",
+    "situation": {
+     "date": "01/07/2025",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "non",
+     "entreprise . activité . nature": "'libérale'",
+     "entreprise . activité . nature . libérale . réglementée": "non"
+    },
+    "expect": 47.6,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 47.6,
+    "expected": 47.6,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0189",
+   "recorded_at": "2026-10-11T19:13:00+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . répartition . retraite complémentaire . taux de répartition",
+   "rules_snapshot": "G3",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/cotisations-et-contributions.publicodes",
+   "rule_file_sha256": "df3e1b3ccf40c09c42da68c815982099ec84d8e0191bb2506f4386995661be6d",
+   "article": "D613-6",
+   "article_id": "LEGIARTI000049625405",
+   "article_dateDebut": "2025-01-01",
+   "article_dateFin": "2026-01-01",
+   "article_text_sha256": "69b8e1b56c6185a7f85eb5d1cd90b8813f794fe0f7edcb24d0ca82ad4414b24f",
+   "law_snapshot": "S7",
+   "quote": "Cotisation d'assurance maladie maternité 3,40 % Cotisation d'assurance invalidité-décès 3,50 % Cotisations d'assurance vieillesse de base mentionnées aux I et II de l'article D. 633-3 du code de la sécurité sociale 47,60 % Cotisation d'assurance vieillesse complémentaire 13,00 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale 32,50 %",
+   "claim": "D613-6 v.LEGIARTI000049625405 (in force 2025-01-01..2026-01-01; current text in S6 and S7): e) share retraite complémentaire = 13 %.",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . répartition . retraite complémentaire . taux de répartition",
+    "situation": {
+     "date": "01/07/2025",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "non",
+     "entreprise . activité . nature": "'libérale'",
+     "entreprise . activité . nature . libérale . réglementée": "non"
+    },
+    "expect": 13.0,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 13,
+    "expected": 13.0,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0190",
+   "recorded_at": "2026-10-11T19:13:02+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . répartition . autres contributions . taux de répartition",
+   "rules_snapshot": "G3",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/cotisations-et-contributions.publicodes",
+   "rule_file_sha256": "df3e1b3ccf40c09c42da68c815982099ec84d8e0191bb2506f4386995661be6d",
+   "article": "D613-6",
+   "article_id": "LEGIARTI000049625405",
+   "article_dateDebut": "2025-01-01",
+   "article_dateFin": "2026-01-01",
+   "article_text_sha256": "69b8e1b56c6185a7f85eb5d1cd90b8813f794fe0f7edcb24d0ca82ad4414b24f",
+   "law_snapshot": "S7",
+   "quote": "Cotisation d'assurance maladie maternité 3,40 % Cotisation d'assurance invalidité-décès 3,50 % Cotisations d'assurance vieillesse de base mentionnées aux I et II de l'article D. 633-3 du code de la sécurité sociale 47,60 % Cotisation d'assurance vieillesse complémentaire 13,00 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale 32,50 %",
+   "claim": "D613-6 v.LEGIARTI000049625405 (in force 2025-01-01..2026-01-01; current text in S6 and S7): e) share autres contributions = 32.5 %.",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . répartition . autres contributions . taux de répartition",
+    "situation": {
+     "date": "01/07/2025",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "non",
+     "entreprise . activité . nature": "'libérale'",
+     "entreprise . activité . nature . libérale . réglementée": "non"
+    },
+    "expect": 32.5,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 32.5,
+    "expected": 32.5,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0191",
+   "recorded_at": "2026-10-11T19:13:03+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . répartition . maladie-maternité . taux de répartition",
+   "rules_snapshot": "G3",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/cotisations-et-contributions.publicodes",
+   "rule_file_sha256": "df3e1b3ccf40c09c42da68c815982099ec84d8e0191bb2506f4386995661be6d",
+   "article": "D613-6",
+   "article_id": "LEGIARTI000049625405",
+   "article_dateDebut": "2025-01-01",
+   "article_dateFin": "2026-01-01",
+   "article_text_sha256": "69b8e1b56c6185a7f85eb5d1cd90b8813f794fe0f7edcb24d0ca82ad4414b24f",
+   "law_snapshot": "S7",
+   "quote": "Cotisation d'assurance maladie-maternité 8,90 % Cotisation d'assurance invalidité-décès 3,10 % Cotisation d'assurance vieillesse de base mentionnée aux I et II de l'article D. 633-3 41,80 % Cotisation d'assurance vieillesse complémentaire 16,50 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale 29,70 %",
+   "claim": "D613-6 v.LEGIARTI000049625405 (in force 2025-01-01..2026-01-01; current text in S6 and S7): a/d share maladie-maternité = 8.9 % (service BIC).",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . répartition . maladie-maternité . taux de répartition",
+    "situation": {
+     "date": "01/07/2025",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "non",
+     "entreprise . activité . nature": "'artisanale'",
+     "entreprise . activités . service ou vente": "'service'"
+    },
+    "expect": 8.9,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 8.9,
+    "expected": 8.9,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0192",
+   "recorded_at": "2026-10-11T19:13:05+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . répartition . invalidité-décès . taux de répartition",
+   "rules_snapshot": "G3",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/cotisations-et-contributions.publicodes",
+   "rule_file_sha256": "df3e1b3ccf40c09c42da68c815982099ec84d8e0191bb2506f4386995661be6d",
+   "article": "D613-6",
+   "article_id": "LEGIARTI000049625405",
+   "article_dateDebut": "2025-01-01",
+   "article_dateFin": "2026-01-01",
+   "article_text_sha256": "69b8e1b56c6185a7f85eb5d1cd90b8813f794fe0f7edcb24d0ca82ad4414b24f",
+   "law_snapshot": "S7",
+   "quote": "Cotisation d'assurance maladie-maternité 8,90 % Cotisation d'assurance invalidité-décès 3,10 % Cotisation d'assurance vieillesse de base mentionnée aux I et II de l'article D. 633-3 41,80 % Cotisation d'assurance vieillesse complémentaire 16,50 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale 29,70 %",
+   "claim": "D613-6 v.LEGIARTI000049625405 (in force 2025-01-01..2026-01-01; current text in S6 and S7): a/d share invalidité-décès = 3.1 % (service BIC).",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . répartition . invalidité-décès . taux de répartition",
+    "situation": {
+     "date": "01/07/2025",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "non",
+     "entreprise . activité . nature": "'artisanale'",
+     "entreprise . activités . service ou vente": "'service'"
+    },
+    "expect": 3.1,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 3.1,
+    "expected": 3.1,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0193",
+   "recorded_at": "2026-10-11T19:13:07+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . répartition . retraite de base . taux de répartition",
+   "rules_snapshot": "G3",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/cotisations-et-contributions.publicodes",
+   "rule_file_sha256": "df3e1b3ccf40c09c42da68c815982099ec84d8e0191bb2506f4386995661be6d",
+   "article": "D613-6",
+   "article_id": "LEGIARTI000049625405",
+   "article_dateDebut": "2025-01-01",
+   "article_dateFin": "2026-01-01",
+   "article_text_sha256": "69b8e1b56c6185a7f85eb5d1cd90b8813f794fe0f7edcb24d0ca82ad4414b24f",
+   "law_snapshot": "S7",
+   "quote": "Cotisation d'assurance maladie-maternité 8,90 % Cotisation d'assurance invalidité-décès 3,10 % Cotisation d'assurance vieillesse de base mentionnée aux I et II de l'article D. 633-3 41,80 % Cotisation d'assurance vieillesse complémentaire 16,50 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale 29,70 %",
+   "claim": "D613-6 v.LEGIARTI000049625405 (in force 2025-01-01..2026-01-01; current text in S6 and S7): a/d share retraite de base = 41.8 % (service BIC).",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . répartition . retraite de base . taux de répartition",
+    "situation": {
+     "date": "01/07/2025",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "non",
+     "entreprise . activité . nature": "'artisanale'",
+     "entreprise . activités . service ou vente": "'service'"
+    },
+    "expect": 41.8,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 41.8,
+    "expected": 41.8,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0194",
+   "recorded_at": "2026-10-11T19:13:08+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . répartition . retraite complémentaire . taux de répartition",
+   "rules_snapshot": "G3",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/cotisations-et-contributions.publicodes",
+   "rule_file_sha256": "df3e1b3ccf40c09c42da68c815982099ec84d8e0191bb2506f4386995661be6d",
+   "article": "D613-6",
+   "article_id": "LEGIARTI000049625405",
+   "article_dateDebut": "2025-01-01",
+   "article_dateFin": "2026-01-01",
+   "article_text_sha256": "69b8e1b56c6185a7f85eb5d1cd90b8813f794fe0f7edcb24d0ca82ad4414b24f",
+   "law_snapshot": "S7",
+   "quote": "Cotisation d'assurance maladie-maternité 8,90 % Cotisation d'assurance invalidité-décès 3,10 % Cotisation d'assurance vieillesse de base mentionnée aux I et II de l'article D. 633-3 41,80 % Cotisation d'assurance vieillesse complémentaire 16,50 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale 29,70 %",
+   "claim": "D613-6 v.LEGIARTI000049625405 (in force 2025-01-01..2026-01-01; current text in S6 and S7): a/d share retraite complémentaire = 16.5 % (service BIC).",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . répartition . retraite complémentaire . taux de répartition",
+    "situation": {
+     "date": "01/07/2025",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "non",
+     "entreprise . activité . nature": "'artisanale'",
+     "entreprise . activités . service ou vente": "'service'"
+    },
+    "expect": 16.5,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 16.5,
+    "expected": 16.5,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0195",
+   "recorded_at": "2026-10-11T19:13:10+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . répartition . autres contributions . taux de répartition",
+   "rules_snapshot": "G3",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/cotisations-et-contributions.publicodes",
+   "rule_file_sha256": "df3e1b3ccf40c09c42da68c815982099ec84d8e0191bb2506f4386995661be6d",
+   "article": "D613-6",
+   "article_id": "LEGIARTI000049625405",
+   "article_dateDebut": "2025-01-01",
+   "article_dateFin": "2026-01-01",
+   "article_text_sha256": "69b8e1b56c6185a7f85eb5d1cd90b8813f794fe0f7edcb24d0ca82ad4414b24f",
+   "law_snapshot": "S7",
+   "quote": "Cotisation d'assurance maladie-maternité 8,90 % Cotisation d'assurance invalidité-décès 3,10 % Cotisation d'assurance vieillesse de base mentionnée aux I et II de l'article D. 633-3 41,80 % Cotisation d'assurance vieillesse complémentaire 16,50 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale 29,70 %",
+   "claim": "D613-6 v.LEGIARTI000049625405 (in force 2025-01-01..2026-01-01; current text in S6 and S7): a/d share autres contributions = 29.7 % (service BIC).",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . répartition . autres contributions . taux de répartition",
+    "situation": {
+     "date": "01/07/2025",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "non",
+     "entreprise . activité . nature": "'artisanale'",
+     "entreprise . activités . service ou vente": "'service'"
+    },
+    "expect": 29.7,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 29.7,
+    "expected": 29.7,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0196",
+   "recorded_at": "2026-10-11T19:13:12+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement . répartition . retraite complémentaire . taux de répartition",
+   "rules_snapshot": "G3",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/cotisations-et-contributions.publicodes",
+   "rule_file_sha256": "df3e1b3ccf40c09c42da68c815982099ec84d8e0191bb2506f4386995661be6d",
+   "article": "D613-6",
+   "article_id": "LEGIARTI000049625405",
+   "article_dateDebut": "2025-01-01",
+   "article_dateFin": "2026-01-01",
+   "article_text_sha256": "69b8e1b56c6185a7f85eb5d1cd90b8813f794fe0f7edcb24d0ca82ad4414b24f",
+   "law_snapshot": "S7",
+   "quote": "Cotisation d'assurance maladie-maternité 8,90 % Cotisation d'assurance invalidité-décès 3,10 % Cotisation d'assurance vieillesse de base mentionnée aux I et II de l'article D. 633-3 41,80 % Cotisation d'assurance vieillesse complémentaire 16,50 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale 29,70 %",
+   "claim": "D613-6 v.LEGIARTI000049625405 (in force 2025-01-01..2026-01-01; current text in S6 and S7): a/d share retraite complémentaire 16,50 % (vente).",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement . répartition . retraite complémentaire . taux de répartition",
+    "situation": {
+     "date": "01/07/2025",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "non",
+     "entreprise . activité . nature": "'commerciale'",
+     "entreprise . activités . service ou vente": "'vente'"
+    },
+    "expect": 16.5,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 16.5,
+    "expected": 16.5,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0197",
+   "recorded_at": "2026-10-11T19:13:13+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC Cipav . répartition . maladie-maternité . taux de répartition",
+   "rules_snapshot": "G3",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/cotisations-et-contributions.publicodes",
+   "rule_file_sha256": "df3e1b3ccf40c09c42da68c815982099ec84d8e0191bb2506f4386995661be6d",
+   "article": "D613-6",
+   "article_id": "LEGIARTI000049625405",
+   "article_dateDebut": "2025-01-01",
+   "article_dateFin": "2026-01-01",
+   "article_text_sha256": "69b8e1b56c6185a7f85eb5d1cd90b8813f794fe0f7edcb24d0ca82ad4414b24f",
+   "law_snapshot": "S7",
+   "quote": "Cotisation d'assurance maladie maternité mentionnée au premier alinéa de l'article L. 621-1 9,30 % Cotisation de prestations maladie en espèces mentionnée au dernier alinéa de l'article L. 621-2 0,90 % Cotisation d'assurance invalidité décès 1,40 % Cotisation d'assurance vieillesse de base mentionnée au 1° de l'article D. 642-3 23,45 % Cotisation d'assurance vieillesse de base mentionnée au 2° de l'article D. 642-3 5,35 % Cotisation d'assurance vieillesse complémentaire 25,60 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale 34,00 %",
+   "claim": "D613-6 v.LEGIARTI000049625405 (in force 2025-01-01..2026-01-01; current text in S6 and S7): b) share maladie-maternité: 9,30 % (L621-1) + 0,90 % (L621-2 espèces) = 10,20 % aggregated in one rule.",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC Cipav . répartition . maladie-maternité . taux de répartition",
+    "situation": {
+     "date": "01/07/2025",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2019",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "non",
+     "entreprise . activité . nature": "'libérale'",
+     "entreprise . activité . nature . libérale . réglementée": "oui"
+    },
+    "expect": 10.2,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 10.2,
+    "expected": 10.2,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0198",
+   "recorded_at": "2026-10-11T19:13:15+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC Cipav . répartition . invalidité-décès . taux de répartition",
+   "rules_snapshot": "G3",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/cotisations-et-contributions.publicodes",
+   "rule_file_sha256": "df3e1b3ccf40c09c42da68c815982099ec84d8e0191bb2506f4386995661be6d",
+   "article": "D613-6",
+   "article_id": "LEGIARTI000049625405",
+   "article_dateDebut": "2025-01-01",
+   "article_dateFin": "2026-01-01",
+   "article_text_sha256": "69b8e1b56c6185a7f85eb5d1cd90b8813f794fe0f7edcb24d0ca82ad4414b24f",
+   "law_snapshot": "S7",
+   "quote": "Cotisation d'assurance maladie maternité mentionnée au premier alinéa de l'article L. 621-1 9,30 % Cotisation de prestations maladie en espèces mentionnée au dernier alinéa de l'article L. 621-2 0,90 % Cotisation d'assurance invalidité décès 1,40 % Cotisation d'assurance vieillesse de base mentionnée au 1° de l'article D. 642-3 23,45 % Cotisation d'assurance vieillesse de base mentionnée au 2° de l'article D. 642-3 5,35 % Cotisation d'assurance vieillesse complémentaire 25,60 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale 34,00 %",
+   "claim": "D613-6 v.LEGIARTI000049625405 (in force 2025-01-01..2026-01-01; current text in S6 and S7): b) share invalidité-décès: 1,40 %.",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC Cipav . répartition . invalidité-décès . taux de répartition",
+    "situation": {
+     "date": "01/07/2025",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2019",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "non",
+     "entreprise . activité . nature": "'libérale'",
+     "entreprise . activité . nature . libérale . réglementée": "oui"
+    },
+    "expect": 1.4,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 1.4,
+    "expected": 1.4,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0199",
+   "recorded_at": "2026-10-11T19:13:16+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC Cipav . répartition . retraite de base . taux de répartition",
+   "rules_snapshot": "G3",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/cotisations-et-contributions.publicodes",
+   "rule_file_sha256": "df3e1b3ccf40c09c42da68c815982099ec84d8e0191bb2506f4386995661be6d",
+   "article": "D613-6",
+   "article_id": "LEGIARTI000049625405",
+   "article_dateDebut": "2025-01-01",
+   "article_dateFin": "2026-01-01",
+   "article_text_sha256": "69b8e1b56c6185a7f85eb5d1cd90b8813f794fe0f7edcb24d0ca82ad4414b24f",
+   "law_snapshot": "S7",
+   "quote": "Cotisation d'assurance maladie maternité mentionnée au premier alinéa de l'article L. 621-1 9,30 % Cotisation de prestations maladie en espèces mentionnée au dernier alinéa de l'article L. 621-2 0,90 % Cotisation d'assurance invalidité décès 1,40 % Cotisation d'assurance vieillesse de base mentionnée au 1° de l'article D. 642-3 23,45 % Cotisation d'assurance vieillesse de base mentionnée au 2° de l'article D. 642-3 5,35 % Cotisation d'assurance vieillesse complémentaire 25,60 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale 34,00 %",
+   "claim": "D613-6 v.LEGIARTI000049625405 (in force 2025-01-01..2026-01-01; current text in S6 and S7): b) share retraite de base: 23,45 % (1° D642-3) + 5,35 % (2° D642-3) = 28,80 % aggregated.",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC Cipav . répartition . retraite de base . taux de répartition",
+    "situation": {
+     "date": "01/07/2025",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2019",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "non",
+     "entreprise . activité . nature": "'libérale'",
+     "entreprise . activité . nature . libérale . réglementée": "oui"
+    },
+    "expect": 28.8,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 28.8,
+    "expected": 28.8,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0200",
+   "recorded_at": "2026-10-11T19:13:18+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC Cipav . répartition . retraite complémentaire . taux de répartition",
+   "rules_snapshot": "G3",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/cotisations-et-contributions.publicodes",
+   "rule_file_sha256": "df3e1b3ccf40c09c42da68c815982099ec84d8e0191bb2506f4386995661be6d",
+   "article": "D613-6",
+   "article_id": "LEGIARTI000049625405",
+   "article_dateDebut": "2025-01-01",
+   "article_dateFin": "2026-01-01",
+   "article_text_sha256": "69b8e1b56c6185a7f85eb5d1cd90b8813f794fe0f7edcb24d0ca82ad4414b24f",
+   "law_snapshot": "S7",
+   "quote": "Cotisation d'assurance maladie maternité mentionnée au premier alinéa de l'article L. 621-1 9,30 % Cotisation de prestations maladie en espèces mentionnée au dernier alinéa de l'article L. 621-2 0,90 % Cotisation d'assurance invalidité décès 1,40 % Cotisation d'assurance vieillesse de base mentionnée au 1° de l'article D. 642-3 23,45 % Cotisation d'assurance vieillesse de base mentionnée au 2° de l'article D. 642-3 5,35 % Cotisation d'assurance vieillesse complémentaire 25,60 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale 34,00 %",
+   "claim": "D613-6 v.LEGIARTI000049625405 (in force 2025-01-01..2026-01-01; current text in S6 and S7): b) share retraite complémentaire: 25,60 %.",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC Cipav . répartition . retraite complémentaire . taux de répartition",
+    "situation": {
+     "date": "01/07/2025",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2019",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "non",
+     "entreprise . activité . nature": "'libérale'",
+     "entreprise . activité . nature . libérale . réglementée": "oui"
+    },
+    "expect": 25.6,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 25.6,
+    "expected": 25.6,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0201",
+   "recorded_at": "2026-10-11T19:13:20+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC Cipav . répartition . autres contributions . taux de répartition",
+   "rules_snapshot": "G3",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/cotisations-et-contributions.publicodes",
+   "rule_file_sha256": "df3e1b3ccf40c09c42da68c815982099ec84d8e0191bb2506f4386995661be6d",
+   "article": "D613-6",
+   "article_id": "LEGIARTI000049625405",
+   "article_dateDebut": "2025-01-01",
+   "article_dateFin": "2026-01-01",
+   "article_text_sha256": "69b8e1b56c6185a7f85eb5d1cd90b8813f794fe0f7edcb24d0ca82ad4414b24f",
+   "law_snapshot": "S7",
+   "quote": "Cotisation d'assurance maladie maternité mentionnée au premier alinéa de l'article L. 621-1 9,30 % Cotisation de prestations maladie en espèces mentionnée au dernier alinéa de l'article L. 621-2 0,90 % Cotisation d'assurance invalidité décès 1,40 % Cotisation d'assurance vieillesse de base mentionnée au 1° de l'article D. 642-3 23,45 % Cotisation d'assurance vieillesse de base mentionnée au 2° de l'article D. 642-3 5,35 % Cotisation d'assurance vieillesse complémentaire 25,60 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale 34,00 %",
+   "claim": "D613-6 v.LEGIARTI000049625405 (in force 2025-01-01..2026-01-01; current text in S6 and S7): b) share autres contributions: 34,00 %.",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC Cipav . répartition . autres contributions . taux de répartition",
+    "situation": {
+     "date": "01/07/2025",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2019",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "non",
+     "entreprise . activité . nature": "'libérale'",
+     "entreprise . activité . nature . libérale . réglementée": "oui"
+    },
+    "expect": 34.0,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 34,
+    "expected": 34.0,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0211",
+   "recorded_at": "2026-10-11T19:13:35+00:00",
+   "status": "UNKNOWN",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . répartition",
+   "rules_snapshot": "G3",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/cotisations-et-contributions.publicodes",
+   "rule_file_sha256": "df3e1b3ccf40c09c42da68c815982099ec84d8e0191bb2506f4386995661be6d",
+   "article": "D613-6",
+   "article_id": "LEGIARTI000049625405",
+   "article_dateDebut": "2025-01-01",
+   "article_dateFin": "2026-01-01",
+   "article_text_sha256": "69b8e1b56c6185a7f85eb5d1cd90b8813f794fe0f7edcb24d0ca82ad4414b24f",
+   "law_snapshot": "S7",
+   "quote": "Cotisation d'assurance maladie maternité 3,40 % Cotisation d'assurance invalidité-décès 3,50 % Cotisations d'assurance vieillesse de base mentionnées aux I et II de l'article D. 633-3 du code de la sécurité sociale 47,60 % Cotisation d'assurance vieillesse complémentaire 13,00 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale 32,50 %",
+   "claim": "ABSTENTION (M0, S6->S7): the 2026-01-01 version announced as LEGIARTI000049625445 is now MODIFIE_MORT_NE (dateFin 2025-09-10); the new version LEGIARTI000052218747 (VIGUEUR_DIFF from 2026-01-01) has no text in S7. No available text settles the shares for dates >= 2026-01-01. G3 carries 2026 shares 3 / 3,25 / 44,85 / 17,7 / 31,20 % from the mort-ne version; unverifiable.",
+   "check": null,
+   "check_result": null,
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0227",
+   "recorded_at": "2026-10-11T19:35:26+00:00",
+   "status": "FAILED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . répartition . maladie-maternité . taux de répartition",
+   "rules_snapshot": "G3",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/cotisations-et-contributions.publicodes",
+   "rule_file_sha256": "df3e1b3ccf40c09c42da68c815982099ec84d8e0191bb2506f4386995661be6d",
+   "article": "D613-6",
+   "article_id": "LEGIARTI000052218747",
+   "article_dateDebut": "2026-01-01",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "d91619e346cf5e9c91c85754a469d229eb3c805b037879b0a4237dcd03edf48b",
+   "law_snapshot": "S8",
+   "quote": "-pour les personnes relevant du e : Cotisations et contributions Taux de répartition des montants de cotisations Cotisation d'assurance maladie maternité mentionnée à l'article L. 621-1 2,60 % Cotisation de prestations maladie en espèces mentionnée à l'article L. 621-2 1,50 % Cotisation d'assurance invalidité-décès mentionnées à l'article L. 632-1 3,30 % Cotisations d'assurance vieillesse de base mentionnées à l'article D. 633-3 du code de la sécurité sociale 46,40 % Cotisation d'assurance vieillesse complémentaire mentionnée à l'article L. 635-1 21,00 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale mentionnées à l'article L. 136-3 25,20 %",
+   "claim": "D613-6 v.LEGIARTI000052218747 (VIGUEUR from 2026-01-01; Décret n°2025-943 du 8 septembre 2025 art. 1; S8): e) share maladie-maternité = 2,60 % (L621-1) + 1,50 % (L621-2 espèces) = 4,10 % aggregated in one rule on 01/01/2026.",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . répartition . maladie-maternité . taux de répartition",
+    "situation": {
+     "date": "01/01/2026",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "non",
+     "entreprise . activité . nature": "'libérale'",
+     "entreprise . activité . nature . libérale . réglementée": "non"
+    },
+    "expect": 4.1,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": false,
+    "observed": 3,
+    "expected": 4.1,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": "observed != expected"
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0228",
+   "recorded_at": "2026-10-11T19:35:28+00:00",
+   "status": "FAILED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . répartition . invalidité-décès . taux de répartition",
+   "rules_snapshot": "G3",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/cotisations-et-contributions.publicodes",
+   "rule_file_sha256": "df3e1b3ccf40c09c42da68c815982099ec84d8e0191bb2506f4386995661be6d",
+   "article": "D613-6",
+   "article_id": "LEGIARTI000052218747",
+   "article_dateDebut": "2026-01-01",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "d91619e346cf5e9c91c85754a469d229eb3c805b037879b0a4237dcd03edf48b",
+   "law_snapshot": "S8",
+   "quote": "-pour les personnes relevant du e : Cotisations et contributions Taux de répartition des montants de cotisations Cotisation d'assurance maladie maternité mentionnée à l'article L. 621-1 2,60 % Cotisation de prestations maladie en espèces mentionnée à l'article L. 621-2 1,50 % Cotisation d'assurance invalidité-décès mentionnées à l'article L. 632-1 3,30 % Cotisations d'assurance vieillesse de base mentionnées à l'article D. 633-3 du code de la sécurité sociale 46,40 % Cotisation d'assurance vieillesse complémentaire mentionnée à l'article L. 635-1 21,00 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale mentionnées à l'article L. 136-3 25,20 %",
+   "claim": "D613-6 v.LEGIARTI000052218747 (VIGUEUR from 2026-01-01; Décret n°2025-943 du 8 septembre 2025 art. 1; S8): e) share invalidité-décès = 3,30 % on 01/01/2026.",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . répartition . invalidité-décès . taux de répartition",
+    "situation": {
+     "date": "01/01/2026",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "non",
+     "entreprise . activité . nature": "'libérale'",
+     "entreprise . activité . nature . libérale . réglementée": "non"
+    },
+    "expect": 3.3,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": false,
+    "observed": 3.25,
+    "expected": 3.3,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": "observed != expected"
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0229",
+   "recorded_at": "2026-10-11T19:35:29+00:00",
+   "status": "FAILED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . répartition . retraite de base . taux de répartition",
+   "rules_snapshot": "G3",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/cotisations-et-contributions.publicodes",
+   "rule_file_sha256": "df3e1b3ccf40c09c42da68c815982099ec84d8e0191bb2506f4386995661be6d",
+   "article": "D613-6",
+   "article_id": "LEGIARTI000052218747",
+   "article_dateDebut": "2026-01-01",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "d91619e346cf5e9c91c85754a469d229eb3c805b037879b0a4237dcd03edf48b",
+   "law_snapshot": "S8",
+   "quote": "-pour les personnes relevant du e : Cotisations et contributions Taux de répartition des montants de cotisations Cotisation d'assurance maladie maternité mentionnée à l'article L. 621-1 2,60 % Cotisation de prestations maladie en espèces mentionnée à l'article L. 621-2 1,50 % Cotisation d'assurance invalidité-décès mentionnées à l'article L. 632-1 3,30 % Cotisations d'assurance vieillesse de base mentionnées à l'article D. 633-3 du code de la sécurité sociale 46,40 % Cotisation d'assurance vieillesse complémentaire mentionnée à l'article L. 635-1 21,00 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale mentionnées à l'article L. 136-3 25,20 %",
+   "claim": "D613-6 v.LEGIARTI000052218747 (VIGUEUR from 2026-01-01; Décret n°2025-943 du 8 septembre 2025 art. 1; S8): e) share retraite de base = 46,40 % on 01/01/2026.",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . répartition . retraite de base . taux de répartition",
+    "situation": {
+     "date": "01/01/2026",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "non",
+     "entreprise . activité . nature": "'libérale'",
+     "entreprise . activité . nature . libérale . réglementée": "non"
+    },
+    "expect": 46.4,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": false,
+    "observed": 44.85,
+    "expected": 46.4,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": "observed != expected"
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0230",
+   "recorded_at": "2026-10-11T19:35:31+00:00",
+   "status": "FAILED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . répartition . retraite complémentaire . taux de répartition",
+   "rules_snapshot": "G3",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/cotisations-et-contributions.publicodes",
+   "rule_file_sha256": "df3e1b3ccf40c09c42da68c815982099ec84d8e0191bb2506f4386995661be6d",
+   "article": "D613-6",
+   "article_id": "LEGIARTI000052218747",
+   "article_dateDebut": "2026-01-01",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "d91619e346cf5e9c91c85754a469d229eb3c805b037879b0a4237dcd03edf48b",
+   "law_snapshot": "S8",
+   "quote": "-pour les personnes relevant du e : Cotisations et contributions Taux de répartition des montants de cotisations Cotisation d'assurance maladie maternité mentionnée à l'article L. 621-1 2,60 % Cotisation de prestations maladie en espèces mentionnée à l'article L. 621-2 1,50 % Cotisation d'assurance invalidité-décès mentionnées à l'article L. 632-1 3,30 % Cotisations d'assurance vieillesse de base mentionnées à l'article D. 633-3 du code de la sécurité sociale 46,40 % Cotisation d'assurance vieillesse complémentaire mentionnée à l'article L. 635-1 21,00 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale mentionnées à l'article L. 136-3 25,20 %",
+   "claim": "D613-6 v.LEGIARTI000052218747 (VIGUEUR from 2026-01-01; Décret n°2025-943 du 8 septembre 2025 art. 1; S8): e) share retraite complémentaire = 21,00 % on 01/01/2026.",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . répartition . retraite complémentaire . taux de répartition",
+    "situation": {
+     "date": "01/01/2026",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "non",
+     "entreprise . activité . nature": "'libérale'",
+     "entreprise . activité . nature . libérale . réglementée": "non"
+    },
+    "expect": 21.0,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": false,
+    "observed": 17.7,
+    "expected": 21.0,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": "observed != expected"
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0231",
+   "recorded_at": "2026-10-11T19:35:33+00:00",
+   "status": "FAILED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . répartition . autres contributions . taux de répartition",
+   "rules_snapshot": "G3",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/cotisations-et-contributions.publicodes",
+   "rule_file_sha256": "df3e1b3ccf40c09c42da68c815982099ec84d8e0191bb2506f4386995661be6d",
+   "article": "D613-6",
+   "article_id": "LEGIARTI000052218747",
+   "article_dateDebut": "2026-01-01",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "d91619e346cf5e9c91c85754a469d229eb3c805b037879b0a4237dcd03edf48b",
+   "law_snapshot": "S8",
+   "quote": "-pour les personnes relevant du e : Cotisations et contributions Taux de répartition des montants de cotisations Cotisation d'assurance maladie maternité mentionnée à l'article L. 621-1 2,60 % Cotisation de prestations maladie en espèces mentionnée à l'article L. 621-2 1,50 % Cotisation d'assurance invalidité-décès mentionnées à l'article L. 632-1 3,30 % Cotisations d'assurance vieillesse de base mentionnées à l'article D. 633-3 du code de la sécurité sociale 46,40 % Cotisation d'assurance vieillesse complémentaire mentionnée à l'article L. 635-1 21,00 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale mentionnées à l'article L. 136-3 25,20 %",
+   "claim": "D613-6 v.LEGIARTI000052218747 (VIGUEUR from 2026-01-01; Décret n°2025-943 du 8 septembre 2025 art. 1; S8): e) share autres contributions = 25,20 % CSG-CRDS on 01/01/2026.",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . répartition . autres contributions . taux de répartition",
+    "situation": {
+     "date": "01/01/2026",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "non",
+     "entreprise . activité . nature": "'libérale'",
+     "entreprise . activité . nature . libérale . réglementée": "non"
+    },
+    "expect": 25.2,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": false,
+    "observed": 31.2,
+    "expected": 25.2,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": "observed != expected"
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0232",
+   "recorded_at": "2026-10-11T19:35:34+00:00",
+   "status": "FAILED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . répartition . maladie-maternité . taux de répartition",
+   "rules_snapshot": "G3",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/cotisations-et-contributions.publicodes",
+   "rule_file_sha256": "df3e1b3ccf40c09c42da68c815982099ec84d8e0191bb2506f4386995661be6d",
+   "article": "D613-6",
+   "article_id": "LEGIARTI000052218747",
+   "article_dateDebut": "2026-01-01",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "d91619e346cf5e9c91c85754a469d229eb3c805b037879b0a4237dcd03edf48b",
+   "law_snapshot": "S8",
+   "quote": "-pour les personnes relevant des a et d : Cotisations et contributions Taux de répartition des montants de cotisations Cotisation d'assurance maladie-maternité mentionnée à l'article L. 621-1 8,80 % Cotisation de prestations maladie en espèces mentionnée à l'article L. 621-2 1,25 % Cotisation d'assurance invalidité-décès mentionnée à l'article L. 632-1 3,15 % Cotisation d'assurance vieillesse de base mentionnée à l'article D. 633-3 43,45 % Cotisation d'assurance vieillesse complémentaire mentionnée à l'article L. 635-1 19,75 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale mentionnées à l'article L. 136-3 23,60 %",
+   "claim": "D613-6 v.LEGIARTI000052218747 (VIGUEUR from 2026-01-01; Décret n°2025-943 du 8 septembre 2025 art. 1; S8): a/d share maladie-maternité = 8,80 % (L621-1) + 1,25 % (L621-2 espèces) = 10,05 % aggregated on 01/01/2026 (service BIC).",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . répartition . maladie-maternité . taux de répartition",
+    "situation": {
+     "date": "01/01/2026",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "non",
+     "entreprise . activité . nature": "'artisanale'",
+     "entreprise . activités . service ou vente": "'service'"
+    },
+    "expect": 10.05,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": false,
+    "observed": 8.9,
+    "expected": 10.05,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": "observed != expected"
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0233",
+   "recorded_at": "2026-10-11T19:35:36+00:00",
+   "status": "FAILED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . répartition . invalidité-décès . taux de répartition",
+   "rules_snapshot": "G3",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/cotisations-et-contributions.publicodes",
+   "rule_file_sha256": "df3e1b3ccf40c09c42da68c815982099ec84d8e0191bb2506f4386995661be6d",
+   "article": "D613-6",
+   "article_id": "LEGIARTI000052218747",
+   "article_dateDebut": "2026-01-01",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "d91619e346cf5e9c91c85754a469d229eb3c805b037879b0a4237dcd03edf48b",
+   "law_snapshot": "S8",
+   "quote": "-pour les personnes relevant des a et d : Cotisations et contributions Taux de répartition des montants de cotisations Cotisation d'assurance maladie-maternité mentionnée à l'article L. 621-1 8,80 % Cotisation de prestations maladie en espèces mentionnée à l'article L. 621-2 1,25 % Cotisation d'assurance invalidité-décès mentionnée à l'article L. 632-1 3,15 % Cotisation d'assurance vieillesse de base mentionnée à l'article D. 633-3 43,45 % Cotisation d'assurance vieillesse complémentaire mentionnée à l'article L. 635-1 19,75 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale mentionnées à l'article L. 136-3 23,60 %",
+   "claim": "D613-6 v.LEGIARTI000052218747 (VIGUEUR from 2026-01-01; Décret n°2025-943 du 8 septembre 2025 art. 1; S8): a/d share invalidité-décès = 3,15 % on 01/01/2026 (service BIC).",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . répartition . invalidité-décès . taux de répartition",
+    "situation": {
+     "date": "01/01/2026",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "non",
+     "entreprise . activité . nature": "'artisanale'",
+     "entreprise . activités . service ou vente": "'service'"
+    },
+    "expect": 3.15,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": false,
+    "observed": 3.1,
+    "expected": 3.15,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": "observed != expected"
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0234",
+   "recorded_at": "2026-10-11T19:35:37+00:00",
+   "status": "FAILED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . répartition . retraite de base . taux de répartition",
+   "rules_snapshot": "G3",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/cotisations-et-contributions.publicodes",
+   "rule_file_sha256": "df3e1b3ccf40c09c42da68c815982099ec84d8e0191bb2506f4386995661be6d",
+   "article": "D613-6",
+   "article_id": "LEGIARTI000052218747",
+   "article_dateDebut": "2026-01-01",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "d91619e346cf5e9c91c85754a469d229eb3c805b037879b0a4237dcd03edf48b",
+   "law_snapshot": "S8",
+   "quote": "-pour les personnes relevant des a et d : Cotisations et contributions Taux de répartition des montants de cotisations Cotisation d'assurance maladie-maternité mentionnée à l'article L. 621-1 8,80 % Cotisation de prestations maladie en espèces mentionnée à l'article L. 621-2 1,25 % Cotisation d'assurance invalidité-décès mentionnée à l'article L. 632-1 3,15 % Cotisation d'assurance vieillesse de base mentionnée à l'article D. 633-3 43,45 % Cotisation d'assurance vieillesse complémentaire mentionnée à l'article L. 635-1 19,75 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale mentionnées à l'article L. 136-3 23,60 %",
+   "claim": "D613-6 v.LEGIARTI000052218747 (VIGUEUR from 2026-01-01; Décret n°2025-943 du 8 septembre 2025 art. 1; S8): a/d share retraite de base = 43,45 % on 01/01/2026 (service BIC).",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . répartition . retraite de base . taux de répartition",
+    "situation": {
+     "date": "01/01/2026",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "non",
+     "entreprise . activité . nature": "'artisanale'",
+     "entreprise . activités . service ou vente": "'service'"
+    },
+    "expect": 43.45,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": false,
+    "observed": 41.8,
+    "expected": 43.45,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": "observed != expected"
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0235",
+   "recorded_at": "2026-10-11T19:35:39+00:00",
+   "status": "FAILED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . répartition . retraite complémentaire . taux de répartition",
+   "rules_snapshot": "G3",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/cotisations-et-contributions.publicodes",
+   "rule_file_sha256": "df3e1b3ccf40c09c42da68c815982099ec84d8e0191bb2506f4386995661be6d",
+   "article": "D613-6",
+   "article_id": "LEGIARTI000052218747",
+   "article_dateDebut": "2026-01-01",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "d91619e346cf5e9c91c85754a469d229eb3c805b037879b0a4237dcd03edf48b",
+   "law_snapshot": "S8",
+   "quote": "-pour les personnes relevant des a et d : Cotisations et contributions Taux de répartition des montants de cotisations Cotisation d'assurance maladie-maternité mentionnée à l'article L. 621-1 8,80 % Cotisation de prestations maladie en espèces mentionnée à l'article L. 621-2 1,25 % Cotisation d'assurance invalidité-décès mentionnée à l'article L. 632-1 3,15 % Cotisation d'assurance vieillesse de base mentionnée à l'article D. 633-3 43,45 % Cotisation d'assurance vieillesse complémentaire mentionnée à l'article L. 635-1 19,75 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale mentionnées à l'article L. 136-3 23,60 %",
+   "claim": "D613-6 v.LEGIARTI000052218747 (VIGUEUR from 2026-01-01; Décret n°2025-943 du 8 septembre 2025 art. 1; S8): a/d share retraite complémentaire = 19,75 % on 01/01/2026 (service BIC).",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . répartition . retraite complémentaire . taux de répartition",
+    "situation": {
+     "date": "01/01/2026",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "non",
+     "entreprise . activité . nature": "'artisanale'",
+     "entreprise . activités . service ou vente": "'service'"
+    },
+    "expect": 19.75,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": false,
+    "observed": 16.5,
+    "expected": 19.75,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": "observed != expected"
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0236",
+   "recorded_at": "2026-10-11T19:35:41+00:00",
+   "status": "FAILED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . répartition . autres contributions . taux de répartition",
+   "rules_snapshot": "G3",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/cotisations-et-contributions.publicodes",
+   "rule_file_sha256": "df3e1b3ccf40c09c42da68c815982099ec84d8e0191bb2506f4386995661be6d",
+   "article": "D613-6",
+   "article_id": "LEGIARTI000052218747",
+   "article_dateDebut": "2026-01-01",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "d91619e346cf5e9c91c85754a469d229eb3c805b037879b0a4237dcd03edf48b",
+   "law_snapshot": "S8",
+   "quote": "-pour les personnes relevant des a et d : Cotisations et contributions Taux de répartition des montants de cotisations Cotisation d'assurance maladie-maternité mentionnée à l'article L. 621-1 8,80 % Cotisation de prestations maladie en espèces mentionnée à l'article L. 621-2 1,25 % Cotisation d'assurance invalidité-décès mentionnée à l'article L. 632-1 3,15 % Cotisation d'assurance vieillesse de base mentionnée à l'article D. 633-3 43,45 % Cotisation d'assurance vieillesse complémentaire mentionnée à l'article L. 635-1 19,75 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale mentionnées à l'article L. 136-3 23,60 %",
+   "claim": "D613-6 v.LEGIARTI000052218747 (VIGUEUR from 2026-01-01; Décret n°2025-943 du 8 septembre 2025 art. 1; S8): a/d share autres contributions = 23,60 % CSG-CRDS on 01/01/2026 (service BIC).",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . répartition . autres contributions . taux de répartition",
+    "situation": {
+     "date": "01/01/2026",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "non",
+     "entreprise . activité . nature": "'artisanale'",
+     "entreprise . activités . service ou vente": "'service'"
+    },
+    "expect": 23.6,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": false,
+    "observed": 29.7,
+    "expected": 23.6,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": "observed != expected"
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0237",
+   "recorded_at": "2026-10-11T19:35:43+00:00",
+   "status": "FAILED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement . répartition . maladie-maternité . taux de répartition",
+   "rules_snapshot": "G3",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/cotisations-et-contributions.publicodes",
+   "rule_file_sha256": "df3e1b3ccf40c09c42da68c815982099ec84d8e0191bb2506f4386995661be6d",
+   "article": "D613-6",
+   "article_id": "LEGIARTI000052218747",
+   "article_dateDebut": "2026-01-01",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "d91619e346cf5e9c91c85754a469d229eb3c805b037879b0a4237dcd03edf48b",
+   "law_snapshot": "S8",
+   "quote": "-pour les personnes relevant des a et d : Cotisations et contributions Taux de répartition des montants de cotisations Cotisation d'assurance maladie-maternité mentionnée à l'article L. 621-1 8,80 % Cotisation de prestations maladie en espèces mentionnée à l'article L. 621-2 1,25 % Cotisation d'assurance invalidité-décès mentionnée à l'article L. 632-1 3,15 % Cotisation d'assurance vieillesse de base mentionnée à l'article D. 633-3 43,45 % Cotisation d'assurance vieillesse complémentaire mentionnée à l'article L. 635-1 19,75 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale mentionnées à l'article L. 136-3 23,60 %",
+   "claim": "D613-6 v.LEGIARTI000052218747 (VIGUEUR from 2026-01-01; Décret n°2025-943 du 8 septembre 2025 art. 1; S8): a/d share maladie-maternité = 8,80 % (L621-1) + 1,25 % (L621-2 espèces) = 10,05 % aggregated on 01/01/2026 (vente restauration hébergement).",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement . répartition . maladie-maternité . taux de répartition",
+    "situation": {
+     "date": "01/01/2026",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "non",
+     "entreprise . activité . nature": "'commerciale'",
+     "entreprise . activités . service ou vente": "'vente'"
+    },
+    "expect": 10.05,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": false,
+    "observed": 8.9,
+    "expected": 10.05,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": "observed != expected"
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0238",
+   "recorded_at": "2026-10-11T19:35:44+00:00",
+   "status": "FAILED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement . répartition . invalidité-décès . taux de répartition",
+   "rules_snapshot": "G3",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/cotisations-et-contributions.publicodes",
+   "rule_file_sha256": "df3e1b3ccf40c09c42da68c815982099ec84d8e0191bb2506f4386995661be6d",
+   "article": "D613-6",
+   "article_id": "LEGIARTI000052218747",
+   "article_dateDebut": "2026-01-01",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "d91619e346cf5e9c91c85754a469d229eb3c805b037879b0a4237dcd03edf48b",
+   "law_snapshot": "S8",
+   "quote": "-pour les personnes relevant des a et d : Cotisations et contributions Taux de répartition des montants de cotisations Cotisation d'assurance maladie-maternité mentionnée à l'article L. 621-1 8,80 % Cotisation de prestations maladie en espèces mentionnée à l'article L. 621-2 1,25 % Cotisation d'assurance invalidité-décès mentionnée à l'article L. 632-1 3,15 % Cotisation d'assurance vieillesse de base mentionnée à l'article D. 633-3 43,45 % Cotisation d'assurance vieillesse complémentaire mentionnée à l'article L. 635-1 19,75 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale mentionnées à l'article L. 136-3 23,60 %",
+   "claim": "D613-6 v.LEGIARTI000052218747 (VIGUEUR from 2026-01-01; Décret n°2025-943 du 8 septembre 2025 art. 1; S8): a/d share invalidité-décès = 3,15 % on 01/01/2026 (vente restauration hébergement).",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement . répartition . invalidité-décès . taux de répartition",
+    "situation": {
+     "date": "01/01/2026",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "non",
+     "entreprise . activité . nature": "'commerciale'",
+     "entreprise . activités . service ou vente": "'vente'"
+    },
+    "expect": 3.15,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": false,
+    "observed": 3.1,
+    "expected": 3.15,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": "observed != expected"
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0239",
+   "recorded_at": "2026-10-11T19:35:46+00:00",
+   "status": "FAILED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement . répartition . retraite de base . taux de répartition",
+   "rules_snapshot": "G3",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/cotisations-et-contributions.publicodes",
+   "rule_file_sha256": "df3e1b3ccf40c09c42da68c815982099ec84d8e0191bb2506f4386995661be6d",
+   "article": "D613-6",
+   "article_id": "LEGIARTI000052218747",
+   "article_dateDebut": "2026-01-01",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "d91619e346cf5e9c91c85754a469d229eb3c805b037879b0a4237dcd03edf48b",
+   "law_snapshot": "S8",
+   "quote": "-pour les personnes relevant des a et d : Cotisations et contributions Taux de répartition des montants de cotisations Cotisation d'assurance maladie-maternité mentionnée à l'article L. 621-1 8,80 % Cotisation de prestations maladie en espèces mentionnée à l'article L. 621-2 1,25 % Cotisation d'assurance invalidité-décès mentionnée à l'article L. 632-1 3,15 % Cotisation d'assurance vieillesse de base mentionnée à l'article D. 633-3 43,45 % Cotisation d'assurance vieillesse complémentaire mentionnée à l'article L. 635-1 19,75 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale mentionnées à l'article L. 136-3 23,60 %",
+   "claim": "D613-6 v.LEGIARTI000052218747 (VIGUEUR from 2026-01-01; Décret n°2025-943 du 8 septembre 2025 art. 1; S8): a/d share retraite de base = 43,45 % on 01/01/2026 (vente restauration hébergement).",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement . répartition . retraite de base . taux de répartition",
+    "situation": {
+     "date": "01/01/2026",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "non",
+     "entreprise . activité . nature": "'commerciale'",
+     "entreprise . activités . service ou vente": "'vente'"
+    },
+    "expect": 43.45,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": false,
+    "observed": 41.8,
+    "expected": 43.45,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": "observed != expected"
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0240",
+   "recorded_at": "2026-10-11T19:35:48+00:00",
+   "status": "FAILED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement . répartition . retraite complémentaire . taux de répartition",
+   "rules_snapshot": "G3",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/cotisations-et-contributions.publicodes",
+   "rule_file_sha256": "df3e1b3ccf40c09c42da68c815982099ec84d8e0191bb2506f4386995661be6d",
+   "article": "D613-6",
+   "article_id": "LEGIARTI000052218747",
+   "article_dateDebut": "2026-01-01",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "d91619e346cf5e9c91c85754a469d229eb3c805b037879b0a4237dcd03edf48b",
+   "law_snapshot": "S8",
+   "quote": "-pour les personnes relevant des a et d : Cotisations et contributions Taux de répartition des montants de cotisations Cotisation d'assurance maladie-maternité mentionnée à l'article L. 621-1 8,80 % Cotisation de prestations maladie en espèces mentionnée à l'article L. 621-2 1,25 % Cotisation d'assurance invalidité-décès mentionnée à l'article L. 632-1 3,15 % Cotisation d'assurance vieillesse de base mentionnée à l'article D. 633-3 43,45 % Cotisation d'assurance vieillesse complémentaire mentionnée à l'article L. 635-1 19,75 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale mentionnées à l'article L. 136-3 23,60 %",
+   "claim": "D613-6 v.LEGIARTI000052218747 (VIGUEUR from 2026-01-01; Décret n°2025-943 du 8 septembre 2025 art. 1; S8): a/d share retraite complémentaire = 19,75 % on 01/01/2026 (vente restauration hébergement).",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement . répartition . retraite complémentaire . taux de répartition",
+    "situation": {
+     "date": "01/01/2026",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "non",
+     "entreprise . activité . nature": "'commerciale'",
+     "entreprise . activités . service ou vente": "'vente'"
+    },
+    "expect": 19.75,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": false,
+    "observed": 16.5,
+    "expected": 19.75,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": "observed != expected"
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0241",
+   "recorded_at": "2026-10-11T19:35:49+00:00",
+   "status": "FAILED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement . répartition . autres contributions . taux de répartition",
+   "rules_snapshot": "G3",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/cotisations-et-contributions.publicodes",
+   "rule_file_sha256": "df3e1b3ccf40c09c42da68c815982099ec84d8e0191bb2506f4386995661be6d",
+   "article": "D613-6",
+   "article_id": "LEGIARTI000052218747",
+   "article_dateDebut": "2026-01-01",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "d91619e346cf5e9c91c85754a469d229eb3c805b037879b0a4237dcd03edf48b",
+   "law_snapshot": "S8",
+   "quote": "-pour les personnes relevant des a et d : Cotisations et contributions Taux de répartition des montants de cotisations Cotisation d'assurance maladie-maternité mentionnée à l'article L. 621-1 8,80 % Cotisation de prestations maladie en espèces mentionnée à l'article L. 621-2 1,25 % Cotisation d'assurance invalidité-décès mentionnée à l'article L. 632-1 3,15 % Cotisation d'assurance vieillesse de base mentionnée à l'article D. 633-3 43,45 % Cotisation d'assurance vieillesse complémentaire mentionnée à l'article L. 635-1 19,75 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale mentionnées à l'article L. 136-3 23,60 %",
+   "claim": "D613-6 v.LEGIARTI000052218747 (VIGUEUR from 2026-01-01; Décret n°2025-943 du 8 septembre 2025 art. 1; S8): a/d share autres contributions = 23,60 % CSG-CRDS on 01/01/2026 (vente restauration hébergement).",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement . répartition . autres contributions . taux de répartition",
+    "situation": {
+     "date": "01/01/2026",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "non",
+     "entreprise . activité . nature": "'commerciale'",
+     "entreprise . activités . service ou vente": "'vente'"
+    },
+    "expect": 23.6,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": false,
+    "observed": 29.7,
+    "expected": 23.6,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": "observed != expected"
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0242",
+   "recorded_at": "2026-10-11T19:35:51+00:00",
+   "status": "FAILED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC Cipav . répartition . maladie-maternité . taux de répartition",
+   "rules_snapshot": "G3",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/cotisations-et-contributions.publicodes",
+   "rule_file_sha256": "df3e1b3ccf40c09c42da68c815982099ec84d8e0191bb2506f4386995661be6d",
+   "article": "D613-6",
+   "article_id": "LEGIARTI000052218747",
+   "article_dateDebut": "2026-01-01",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "d91619e346cf5e9c91c85754a469d229eb3c805b037879b0a4237dcd03edf48b",
+   "law_snapshot": "S8",
+   "quote": "-pour les personnes relevant du b : Cotisations et contributions Taux de répartition des montants de cotisations Cotisation d'assurance maladie maternité mentionnée à l'article L. 621-1 10,60 % Cotisation de prestations maladie en espèces mentionnée à l'article L. 621-2 0,80 % Cotisation d'assurance invalidité décès mentionnée à l'article L. 644-2 1,40 % Cotisation d'assurance vieillesse de base mentionnée au 1° de l'article D. 642-3 24,30 % Cotisation d'assurance vieillesse de base mentionnée au 2° de l'article D. 642-3 5,20 % Cotisation d'assurance vieillesse complémentaire mentionnée à l'article L. 644-1 30,70 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale mentionnées à l'article L. 136-3 27,00 %",
+   "claim": "D613-6 v.LEGIARTI000052218747 (VIGUEUR from 2026-01-01; Décret n°2025-943 du 8 septembre 2025 art. 1; S8): b) share maladie-maternité = 10,60 % (L621-1) + 0,80 % (L621-2) = 11,40 % aggregated on 01/01/2026.",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC Cipav . répartition . maladie-maternité . taux de répartition",
+    "situation": {
+     "date": "01/01/2026",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2019",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "non",
+     "entreprise . activité . nature": "'libérale'",
+     "entreprise . activité . nature . libérale . réglementée": "oui"
+    },
+    "expect": 11.4,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": false,
+    "observed": 10.2,
+    "expected": 11.4,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": "observed != expected"
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0243",
+   "recorded_at": "2026-10-11T19:35:53+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC Cipav . répartition . invalidité-décès . taux de répartition",
+   "rules_snapshot": "G3",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/cotisations-et-contributions.publicodes",
+   "rule_file_sha256": "df3e1b3ccf40c09c42da68c815982099ec84d8e0191bb2506f4386995661be6d",
+   "article": "D613-6",
+   "article_id": "LEGIARTI000052218747",
+   "article_dateDebut": "2026-01-01",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "d91619e346cf5e9c91c85754a469d229eb3c805b037879b0a4237dcd03edf48b",
+   "law_snapshot": "S8",
+   "quote": "-pour les personnes relevant du b : Cotisations et contributions Taux de répartition des montants de cotisations Cotisation d'assurance maladie maternité mentionnée à l'article L. 621-1 10,60 % Cotisation de prestations maladie en espèces mentionnée à l'article L. 621-2 0,80 % Cotisation d'assurance invalidité décès mentionnée à l'article L. 644-2 1,40 % Cotisation d'assurance vieillesse de base mentionnée au 1° de l'article D. 642-3 24,30 % Cotisation d'assurance vieillesse de base mentionnée au 2° de l'article D. 642-3 5,20 % Cotisation d'assurance vieillesse complémentaire mentionnée à l'article L. 644-1 30,70 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale mentionnées à l'article L. 136-3 27,00 %",
+   "claim": "D613-6 v.LEGIARTI000052218747 (VIGUEUR from 2026-01-01; Décret n°2025-943 du 8 septembre 2025 art. 1; S8): b) share invalidité-décès = 1,40 % (L644-2, unchanged) on 01/01/2026.",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC Cipav . répartition . invalidité-décès . taux de répartition",
+    "situation": {
+     "date": "01/01/2026",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2019",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "non",
+     "entreprise . activité . nature": "'libérale'",
+     "entreprise . activité . nature . libérale . réglementée": "oui"
+    },
+    "expect": 1.4,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 1.4,
+    "expected": 1.4,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0244",
+   "recorded_at": "2026-10-11T19:35:55+00:00",
+   "status": "FAILED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC Cipav . répartition . retraite de base . taux de répartition",
+   "rules_snapshot": "G3",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/cotisations-et-contributions.publicodes",
+   "rule_file_sha256": "df3e1b3ccf40c09c42da68c815982099ec84d8e0191bb2506f4386995661be6d",
+   "article": "D613-6",
+   "article_id": "LEGIARTI000052218747",
+   "article_dateDebut": "2026-01-01",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "d91619e346cf5e9c91c85754a469d229eb3c805b037879b0a4237dcd03edf48b",
+   "law_snapshot": "S8",
+   "quote": "-pour les personnes relevant du b : Cotisations et contributions Taux de répartition des montants de cotisations Cotisation d'assurance maladie maternité mentionnée à l'article L. 621-1 10,60 % Cotisation de prestations maladie en espèces mentionnée à l'article L. 621-2 0,80 % Cotisation d'assurance invalidité décès mentionnée à l'article L. 644-2 1,40 % Cotisation d'assurance vieillesse de base mentionnée au 1° de l'article D. 642-3 24,30 % Cotisation d'assurance vieillesse de base mentionnée au 2° de l'article D. 642-3 5,20 % Cotisation d'assurance vieillesse complémentaire mentionnée à l'article L. 644-1 30,70 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale mentionnées à l'article L. 136-3 27,00 %",
+   "claim": "D613-6 v.LEGIARTI000052218747 (VIGUEUR from 2026-01-01; Décret n°2025-943 du 8 septembre 2025 art. 1; S8): b) share retraite de base = 24,30 % (1° D642-3) + 5,20 % (2° D642-3) = 29,50 % aggregated on 01/01/2026.",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC Cipav . répartition . retraite de base . taux de répartition",
+    "situation": {
+     "date": "01/01/2026",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2019",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "non",
+     "entreprise . activité . nature": "'libérale'",
+     "entreprise . activité . nature . libérale . réglementée": "oui"
+    },
+    "expect": 29.5,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": false,
+    "observed": 28.8,
+    "expected": 29.5,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": "observed != expected"
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0245",
+   "recorded_at": "2026-10-11T19:35:57+00:00",
+   "status": "FAILED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC Cipav . répartition . retraite complémentaire . taux de répartition",
+   "rules_snapshot": "G3",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/cotisations-et-contributions.publicodes",
+   "rule_file_sha256": "df3e1b3ccf40c09c42da68c815982099ec84d8e0191bb2506f4386995661be6d",
+   "article": "D613-6",
+   "article_id": "LEGIARTI000052218747",
+   "article_dateDebut": "2026-01-01",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "d91619e346cf5e9c91c85754a469d229eb3c805b037879b0a4237dcd03edf48b",
+   "law_snapshot": "S8",
+   "quote": "-pour les personnes relevant du b : Cotisations et contributions Taux de répartition des montants de cotisations Cotisation d'assurance maladie maternité mentionnée à l'article L. 621-1 10,60 % Cotisation de prestations maladie en espèces mentionnée à l'article L. 621-2 0,80 % Cotisation d'assurance invalidité décès mentionnée à l'article L. 644-2 1,40 % Cotisation d'assurance vieillesse de base mentionnée au 1° de l'article D. 642-3 24,30 % Cotisation d'assurance vieillesse de base mentionnée au 2° de l'article D. 642-3 5,20 % Cotisation d'assurance vieillesse complémentaire mentionnée à l'article L. 644-1 30,70 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale mentionnées à l'article L. 136-3 27,00 %",
+   "claim": "D613-6 v.LEGIARTI000052218747 (VIGUEUR from 2026-01-01; Décret n°2025-943 du 8 septembre 2025 art. 1; S8): b) share retraite complémentaire = 30,70 % (L644-1) on 01/01/2026.",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC Cipav . répartition . retraite complémentaire . taux de répartition",
+    "situation": {
+     "date": "01/01/2026",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2019",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "non",
+     "entreprise . activité . nature": "'libérale'",
+     "entreprise . activité . nature . libérale . réglementée": "oui"
+    },
+    "expect": 30.7,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": false,
+    "observed": 25.6,
+    "expected": 30.7,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": "observed != expected"
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0246",
+   "recorded_at": "2026-10-11T19:35:58+00:00",
+   "status": "FAILED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC Cipav . répartition . autres contributions . taux de répartition",
+   "rules_snapshot": "G3",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/cotisations-et-contributions.publicodes",
+   "rule_file_sha256": "df3e1b3ccf40c09c42da68c815982099ec84d8e0191bb2506f4386995661be6d",
+   "article": "D613-6",
+   "article_id": "LEGIARTI000052218747",
+   "article_dateDebut": "2026-01-01",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "d91619e346cf5e9c91c85754a469d229eb3c805b037879b0a4237dcd03edf48b",
+   "law_snapshot": "S8",
+   "quote": "-pour les personnes relevant du b : Cotisations et contributions Taux de répartition des montants de cotisations Cotisation d'assurance maladie maternité mentionnée à l'article L. 621-1 10,60 % Cotisation de prestations maladie en espèces mentionnée à l'article L. 621-2 0,80 % Cotisation d'assurance invalidité décès mentionnée à l'article L. 644-2 1,40 % Cotisation d'assurance vieillesse de base mentionnée au 1° de l'article D. 642-3 24,30 % Cotisation d'assurance vieillesse de base mentionnée au 2° de l'article D. 642-3 5,20 % Cotisation d'assurance vieillesse complémentaire mentionnée à l'article L. 644-1 30,70 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale mentionnées à l'article L. 136-3 27,00 %",
+   "claim": "D613-6 v.LEGIARTI000052218747 (VIGUEUR from 2026-01-01; Décret n°2025-943 du 8 septembre 2025 art. 1; S8): b) share autres contributions = 27,00 % CSG-CRDS on 01/01/2026.",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC Cipav . répartition . autres contributions . taux de répartition",
+    "situation": {
+     "date": "01/01/2026",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2019",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "non",
+     "entreprise . activité . nature": "'libérale'",
+     "entreprise . activité . nature . libérale . réglementée": "oui"
+    },
+    "expect": 27.0,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": false,
+    "observed": 34,
+    "expected": 27.0,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": "observed != expected"
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0247",
+   "recorded_at": "2026-10-11T19:35:59+00:00",
+   "status": "UNKNOWN",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "rules_snapshot": "G3",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/cotisations-et-contributions.publicodes",
+   "rule_file_sha256": "df3e1b3ccf40c09c42da68c815982099ec84d8e0191bb2506f4386995661be6d",
+   "article": "D613-6",
+   "article_id": "LEGIARTI000052218747",
+   "article_dateDebut": "2026-01-01",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "d91619e346cf5e9c91c85754a469d229eb3c805b037879b0a4237dcd03edf48b",
+   "law_snapshot": "S8",
+   "quote": "-pour les personnes relevant du c : Cotisations et contributions Taux de répartition des montants de cotisations Cotisation d'assurance maladie-maternité mentionnée à l'article L. 621-1 0,00 % Cotisation de prestations maladie en espèces mentionnée à l'article L. 621-2 5,10 % Cotisation d'assurance invalidité-décès mentionnée à l'article L. 632-1 3,80 % Cotisations d'assurance vieillesse de base mentionnées à l'article D. 633-3 du code de la sécurité sociale 50,20 % Cotisation d'assurance vieillesse complémentaire mentionnée à l'article L. 635-1 18,60 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale mentionnées à l'article L. 136-3 22,30 %",
+   "claim": "D613-6 v.LEGIARTI000052218747 (VIGUEUR from 2026-01-01; Décret n°2025-943 du 8 septembre 2025 art. 1; S8): c) meublés de tourisme split (0,00 / 5,10 / 3,80 / 50,20 / 18,60 / 22,30 %) - category not implemented in the tree.",
+   "check": null,
+   "check_result": null,
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0269",
+   "recorded_at": "2026-10-11T19:36:36+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . répartition . maladie-maternité . taux de répartition",
+   "rules_snapshot": "P_M1",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/cotisations-et-contributions.publicodes",
+   "rule_file_sha256": "0fabe0f3fcc02499d5c60847a632b43b4ae66c25c0a71514ed83685f1f9f01d9",
+   "article": "D613-6",
+   "article_id": "LEGIARTI000052218747",
+   "article_dateDebut": "2026-01-01",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "d91619e346cf5e9c91c85754a469d229eb3c805b037879b0a4237dcd03edf48b",
+   "law_snapshot": "S8",
+   "quote": "-pour les personnes relevant du e : Cotisations et contributions Taux de répartition des montants de cotisations Cotisation d'assurance maladie maternité mentionnée à l'article L. 621-1 2,60 % Cotisation de prestations maladie en espèces mentionnée à l'article L. 621-2 1,50 % Cotisation d'assurance invalidité-décès mentionnées à l'article L. 632-1 3,30 % Cotisations d'assurance vieillesse de base mentionnées à l'article D. 633-3 du code de la sécurité sociale 46,40 % Cotisation d'assurance vieillesse complémentaire mentionnée à l'article L. 635-1 21,00 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale mentionnées à l'article L. 136-3 25,20 %",
+   "claim": "D613-6 v.LEGIARTI000052218747 (VIGUEUR from 2026-01-01; Décret n°2025-943 du 8 septembre 2025 art. 1; S8): e) share maladie-maternité = 2,60 % (L621-1) + 1,50 % (L621-2 espèces) = 4,10 % aggregated in one rule on 01/01/2026.",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . répartition . maladie-maternité . taux de répartition",
+    "situation": {
+     "date": "01/01/2026",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "non",
+     "entreprise . activité . nature": "'libérale'",
+     "entreprise . activité . nature . libérale . réglementée": "non"
+    },
+    "expect": 4.1,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 4.1,
+    "expected": 4.1,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0270",
+   "recorded_at": "2026-10-11T19:36:38+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . répartition . invalidité-décès . taux de répartition",
+   "rules_snapshot": "P_M1",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/cotisations-et-contributions.publicodes",
+   "rule_file_sha256": "0fabe0f3fcc02499d5c60847a632b43b4ae66c25c0a71514ed83685f1f9f01d9",
+   "article": "D613-6",
+   "article_id": "LEGIARTI000052218747",
+   "article_dateDebut": "2026-01-01",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "d91619e346cf5e9c91c85754a469d229eb3c805b037879b0a4237dcd03edf48b",
+   "law_snapshot": "S8",
+   "quote": "-pour les personnes relevant du e : Cotisations et contributions Taux de répartition des montants de cotisations Cotisation d'assurance maladie maternité mentionnée à l'article L. 621-1 2,60 % Cotisation de prestations maladie en espèces mentionnée à l'article L. 621-2 1,50 % Cotisation d'assurance invalidité-décès mentionnées à l'article L. 632-1 3,30 % Cotisations d'assurance vieillesse de base mentionnées à l'article D. 633-3 du code de la sécurité sociale 46,40 % Cotisation d'assurance vieillesse complémentaire mentionnée à l'article L. 635-1 21,00 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale mentionnées à l'article L. 136-3 25,20 %",
+   "claim": "D613-6 v.LEGIARTI000052218747 (VIGUEUR from 2026-01-01; Décret n°2025-943 du 8 septembre 2025 art. 1; S8): e) share invalidité-décès = 3,30 % on 01/01/2026.",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . répartition . invalidité-décès . taux de répartition",
+    "situation": {
+     "date": "01/01/2026",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "non",
+     "entreprise . activité . nature": "'libérale'",
+     "entreprise . activité . nature . libérale . réglementée": "non"
+    },
+    "expect": 3.3,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 3.3,
+    "expected": 3.3,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0271",
+   "recorded_at": "2026-10-11T19:36:40+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . répartition . retraite de base . taux de répartition",
+   "rules_snapshot": "P_M1",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/cotisations-et-contributions.publicodes",
+   "rule_file_sha256": "0fabe0f3fcc02499d5c60847a632b43b4ae66c25c0a71514ed83685f1f9f01d9",
+   "article": "D613-6",
+   "article_id": "LEGIARTI000052218747",
+   "article_dateDebut": "2026-01-01",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "d91619e346cf5e9c91c85754a469d229eb3c805b037879b0a4237dcd03edf48b",
+   "law_snapshot": "S8",
+   "quote": "-pour les personnes relevant du e : Cotisations et contributions Taux de répartition des montants de cotisations Cotisation d'assurance maladie maternité mentionnée à l'article L. 621-1 2,60 % Cotisation de prestations maladie en espèces mentionnée à l'article L. 621-2 1,50 % Cotisation d'assurance invalidité-décès mentionnées à l'article L. 632-1 3,30 % Cotisations d'assurance vieillesse de base mentionnées à l'article D. 633-3 du code de la sécurité sociale 46,40 % Cotisation d'assurance vieillesse complémentaire mentionnée à l'article L. 635-1 21,00 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale mentionnées à l'article L. 136-3 25,20 %",
+   "claim": "D613-6 v.LEGIARTI000052218747 (VIGUEUR from 2026-01-01; Décret n°2025-943 du 8 septembre 2025 art. 1; S8): e) share retraite de base = 46,40 % on 01/01/2026.",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . répartition . retraite de base . taux de répartition",
+    "situation": {
+     "date": "01/01/2026",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "non",
+     "entreprise . activité . nature": "'libérale'",
+     "entreprise . activité . nature . libérale . réglementée": "non"
+    },
+    "expect": 46.4,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 46.4,
+    "expected": 46.4,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0272",
+   "recorded_at": "2026-10-11T19:36:41+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . répartition . retraite complémentaire . taux de répartition",
+   "rules_snapshot": "P_M1",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/cotisations-et-contributions.publicodes",
+   "rule_file_sha256": "0fabe0f3fcc02499d5c60847a632b43b4ae66c25c0a71514ed83685f1f9f01d9",
+   "article": "D613-6",
+   "article_id": "LEGIARTI000052218747",
+   "article_dateDebut": "2026-01-01",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "d91619e346cf5e9c91c85754a469d229eb3c805b037879b0a4237dcd03edf48b",
+   "law_snapshot": "S8",
+   "quote": "-pour les personnes relevant du e : Cotisations et contributions Taux de répartition des montants de cotisations Cotisation d'assurance maladie maternité mentionnée à l'article L. 621-1 2,60 % Cotisation de prestations maladie en espèces mentionnée à l'article L. 621-2 1,50 % Cotisation d'assurance invalidité-décès mentionnées à l'article L. 632-1 3,30 % Cotisations d'assurance vieillesse de base mentionnées à l'article D. 633-3 du code de la sécurité sociale 46,40 % Cotisation d'assurance vieillesse complémentaire mentionnée à l'article L. 635-1 21,00 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale mentionnées à l'article L. 136-3 25,20 %",
+   "claim": "D613-6 v.LEGIARTI000052218747 (VIGUEUR from 2026-01-01; Décret n°2025-943 du 8 septembre 2025 art. 1; S8): e) share retraite complémentaire = 21,00 % on 01/01/2026.",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . répartition . retraite complémentaire . taux de répartition",
+    "situation": {
+     "date": "01/01/2026",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "non",
+     "entreprise . activité . nature": "'libérale'",
+     "entreprise . activité . nature . libérale . réglementée": "non"
+    },
+    "expect": 21.0,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 21,
+    "expected": 21.0,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0273",
+   "recorded_at": "2026-10-11T19:36:43+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . répartition . autres contributions . taux de répartition",
+   "rules_snapshot": "P_M1",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/cotisations-et-contributions.publicodes",
+   "rule_file_sha256": "0fabe0f3fcc02499d5c60847a632b43b4ae66c25c0a71514ed83685f1f9f01d9",
+   "article": "D613-6",
+   "article_id": "LEGIARTI000052218747",
+   "article_dateDebut": "2026-01-01",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "d91619e346cf5e9c91c85754a469d229eb3c805b037879b0a4237dcd03edf48b",
+   "law_snapshot": "S8",
+   "quote": "-pour les personnes relevant du e : Cotisations et contributions Taux de répartition des montants de cotisations Cotisation d'assurance maladie maternité mentionnée à l'article L. 621-1 2,60 % Cotisation de prestations maladie en espèces mentionnée à l'article L. 621-2 1,50 % Cotisation d'assurance invalidité-décès mentionnées à l'article L. 632-1 3,30 % Cotisations d'assurance vieillesse de base mentionnées à l'article D. 633-3 du code de la sécurité sociale 46,40 % Cotisation d'assurance vieillesse complémentaire mentionnée à l'article L. 635-1 21,00 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale mentionnées à l'article L. 136-3 25,20 %",
+   "claim": "D613-6 v.LEGIARTI000052218747 (VIGUEUR from 2026-01-01; Décret n°2025-943 du 8 septembre 2025 art. 1; S8): e) share autres contributions = 25,20 % CSG-CRDS on 01/01/2026.",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC . répartition . autres contributions . taux de répartition",
+    "situation": {
+     "date": "01/01/2026",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "non",
+     "entreprise . activité . nature": "'libérale'",
+     "entreprise . activité . nature . libérale . réglementée": "non"
+    },
+    "expect": 25.2,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 25.2,
+    "expected": 25.2,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0274",
+   "recorded_at": "2026-10-11T19:36:45+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . répartition . maladie-maternité . taux de répartition",
+   "rules_snapshot": "P_M1",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/cotisations-et-contributions.publicodes",
+   "rule_file_sha256": "0fabe0f3fcc02499d5c60847a632b43b4ae66c25c0a71514ed83685f1f9f01d9",
+   "article": "D613-6",
+   "article_id": "LEGIARTI000052218747",
+   "article_dateDebut": "2026-01-01",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "d91619e346cf5e9c91c85754a469d229eb3c805b037879b0a4237dcd03edf48b",
+   "law_snapshot": "S8",
+   "quote": "-pour les personnes relevant des a et d : Cotisations et contributions Taux de répartition des montants de cotisations Cotisation d'assurance maladie-maternité mentionnée à l'article L. 621-1 8,80 % Cotisation de prestations maladie en espèces mentionnée à l'article L. 621-2 1,25 % Cotisation d'assurance invalidité-décès mentionnée à l'article L. 632-1 3,15 % Cotisation d'assurance vieillesse de base mentionnée à l'article D. 633-3 43,45 % Cotisation d'assurance vieillesse complémentaire mentionnée à l'article L. 635-1 19,75 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale mentionnées à l'article L. 136-3 23,60 %",
+   "claim": "D613-6 v.LEGIARTI000052218747 (VIGUEUR from 2026-01-01; Décret n°2025-943 du 8 septembre 2025 art. 1; S8): a/d share maladie-maternité = 8,80 % (L621-1) + 1,25 % (L621-2 espèces) = 10,05 % aggregated on 01/01/2026 (service BIC).",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . répartition . maladie-maternité . taux de répartition",
+    "situation": {
+     "date": "01/01/2026",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "non",
+     "entreprise . activité . nature": "'artisanale'",
+     "entreprise . activités . service ou vente": "'service'"
+    },
+    "expect": 10.05,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 10.05,
+    "expected": 10.05,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0275",
+   "recorded_at": "2026-10-11T19:36:46+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . répartition . invalidité-décès . taux de répartition",
+   "rules_snapshot": "P_M1",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/cotisations-et-contributions.publicodes",
+   "rule_file_sha256": "0fabe0f3fcc02499d5c60847a632b43b4ae66c25c0a71514ed83685f1f9f01d9",
+   "article": "D613-6",
+   "article_id": "LEGIARTI000052218747",
+   "article_dateDebut": "2026-01-01",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "d91619e346cf5e9c91c85754a469d229eb3c805b037879b0a4237dcd03edf48b",
+   "law_snapshot": "S8",
+   "quote": "-pour les personnes relevant des a et d : Cotisations et contributions Taux de répartition des montants de cotisations Cotisation d'assurance maladie-maternité mentionnée à l'article L. 621-1 8,80 % Cotisation de prestations maladie en espèces mentionnée à l'article L. 621-2 1,25 % Cotisation d'assurance invalidité-décès mentionnée à l'article L. 632-1 3,15 % Cotisation d'assurance vieillesse de base mentionnée à l'article D. 633-3 43,45 % Cotisation d'assurance vieillesse complémentaire mentionnée à l'article L. 635-1 19,75 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale mentionnées à l'article L. 136-3 23,60 %",
+   "claim": "D613-6 v.LEGIARTI000052218747 (VIGUEUR from 2026-01-01; Décret n°2025-943 du 8 septembre 2025 art. 1; S8): a/d share invalidité-décès = 3,15 % on 01/01/2026 (service BIC).",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . répartition . invalidité-décès . taux de répartition",
+    "situation": {
+     "date": "01/01/2026",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "non",
+     "entreprise . activité . nature": "'artisanale'",
+     "entreprise . activités . service ou vente": "'service'"
+    },
+    "expect": 3.15,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 3.15,
+    "expected": 3.15,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0276",
+   "recorded_at": "2026-10-11T19:36:48+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . répartition . retraite de base . taux de répartition",
+   "rules_snapshot": "P_M1",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/cotisations-et-contributions.publicodes",
+   "rule_file_sha256": "0fabe0f3fcc02499d5c60847a632b43b4ae66c25c0a71514ed83685f1f9f01d9",
+   "article": "D613-6",
+   "article_id": "LEGIARTI000052218747",
+   "article_dateDebut": "2026-01-01",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "d91619e346cf5e9c91c85754a469d229eb3c805b037879b0a4237dcd03edf48b",
+   "law_snapshot": "S8",
+   "quote": "-pour les personnes relevant des a et d : Cotisations et contributions Taux de répartition des montants de cotisations Cotisation d'assurance maladie-maternité mentionnée à l'article L. 621-1 8,80 % Cotisation de prestations maladie en espèces mentionnée à l'article L. 621-2 1,25 % Cotisation d'assurance invalidité-décès mentionnée à l'article L. 632-1 3,15 % Cotisation d'assurance vieillesse de base mentionnée à l'article D. 633-3 43,45 % Cotisation d'assurance vieillesse complémentaire mentionnée à l'article L. 635-1 19,75 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale mentionnées à l'article L. 136-3 23,60 %",
+   "claim": "D613-6 v.LEGIARTI000052218747 (VIGUEUR from 2026-01-01; Décret n°2025-943 du 8 septembre 2025 art. 1; S8): a/d share retraite de base = 43,45 % on 01/01/2026 (service BIC).",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . répartition . retraite de base . taux de répartition",
+    "situation": {
+     "date": "01/01/2026",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "non",
+     "entreprise . activité . nature": "'artisanale'",
+     "entreprise . activités . service ou vente": "'service'"
+    },
+    "expect": 43.45,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 43.45,
+    "expected": 43.45,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0277",
+   "recorded_at": "2026-10-11T19:36:50+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . répartition . retraite complémentaire . taux de répartition",
+   "rules_snapshot": "P_M1",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/cotisations-et-contributions.publicodes",
+   "rule_file_sha256": "0fabe0f3fcc02499d5c60847a632b43b4ae66c25c0a71514ed83685f1f9f01d9",
+   "article": "D613-6",
+   "article_id": "LEGIARTI000052218747",
+   "article_dateDebut": "2026-01-01",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "d91619e346cf5e9c91c85754a469d229eb3c805b037879b0a4237dcd03edf48b",
+   "law_snapshot": "S8",
+   "quote": "-pour les personnes relevant des a et d : Cotisations et contributions Taux de répartition des montants de cotisations Cotisation d'assurance maladie-maternité mentionnée à l'article L. 621-1 8,80 % Cotisation de prestations maladie en espèces mentionnée à l'article L. 621-2 1,25 % Cotisation d'assurance invalidité-décès mentionnée à l'article L. 632-1 3,15 % Cotisation d'assurance vieillesse de base mentionnée à l'article D. 633-3 43,45 % Cotisation d'assurance vieillesse complémentaire mentionnée à l'article L. 635-1 19,75 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale mentionnées à l'article L. 136-3 23,60 %",
+   "claim": "D613-6 v.LEGIARTI000052218747 (VIGUEUR from 2026-01-01; Décret n°2025-943 du 8 septembre 2025 art. 1; S8): a/d share retraite complémentaire = 19,75 % on 01/01/2026 (service BIC).",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . répartition . retraite complémentaire . taux de répartition",
+    "situation": {
+     "date": "01/01/2026",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "non",
+     "entreprise . activité . nature": "'artisanale'",
+     "entreprise . activités . service ou vente": "'service'"
+    },
+    "expect": 19.75,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 19.75,
+    "expected": 19.75,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0278",
+   "recorded_at": "2026-10-11T19:36:52+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . répartition . autres contributions . taux de répartition",
+   "rules_snapshot": "P_M1",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/cotisations-et-contributions.publicodes",
+   "rule_file_sha256": "0fabe0f3fcc02499d5c60847a632b43b4ae66c25c0a71514ed83685f1f9f01d9",
+   "article": "D613-6",
+   "article_id": "LEGIARTI000052218747",
+   "article_dateDebut": "2026-01-01",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "d91619e346cf5e9c91c85754a469d229eb3c805b037879b0a4237dcd03edf48b",
+   "law_snapshot": "S8",
+   "quote": "-pour les personnes relevant des a et d : Cotisations et contributions Taux de répartition des montants de cotisations Cotisation d'assurance maladie-maternité mentionnée à l'article L. 621-1 8,80 % Cotisation de prestations maladie en espèces mentionnée à l'article L. 621-2 1,25 % Cotisation d'assurance invalidité-décès mentionnée à l'article L. 632-1 3,15 % Cotisation d'assurance vieillesse de base mentionnée à l'article D. 633-3 43,45 % Cotisation d'assurance vieillesse complémentaire mentionnée à l'article L. 635-1 19,75 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale mentionnées à l'article L. 136-3 23,60 %",
+   "claim": "D613-6 v.LEGIARTI000052218747 (VIGUEUR from 2026-01-01; Décret n°2025-943 du 8 septembre 2025 art. 1; S8): a/d share autres contributions = 23,60 % CSG-CRDS on 01/01/2026 (service BIC).",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BIC . répartition . autres contributions . taux de répartition",
+    "situation": {
+     "date": "01/01/2026",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "non",
+     "entreprise . activité . nature": "'artisanale'",
+     "entreprise . activités . service ou vente": "'service'"
+    },
+    "expect": 23.6,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 23.6,
+    "expected": 23.6,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0279",
+   "recorded_at": "2026-10-11T19:36:53+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement . répartition . maladie-maternité . taux de répartition",
+   "rules_snapshot": "P_M1",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/cotisations-et-contributions.publicodes",
+   "rule_file_sha256": "0fabe0f3fcc02499d5c60847a632b43b4ae66c25c0a71514ed83685f1f9f01d9",
+   "article": "D613-6",
+   "article_id": "LEGIARTI000052218747",
+   "article_dateDebut": "2026-01-01",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "d91619e346cf5e9c91c85754a469d229eb3c805b037879b0a4237dcd03edf48b",
+   "law_snapshot": "S8",
+   "quote": "-pour les personnes relevant des a et d : Cotisations et contributions Taux de répartition des montants de cotisations Cotisation d'assurance maladie-maternité mentionnée à l'article L. 621-1 8,80 % Cotisation de prestations maladie en espèces mentionnée à l'article L. 621-2 1,25 % Cotisation d'assurance invalidité-décès mentionnée à l'article L. 632-1 3,15 % Cotisation d'assurance vieillesse de base mentionnée à l'article D. 633-3 43,45 % Cotisation d'assurance vieillesse complémentaire mentionnée à l'article L. 635-1 19,75 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale mentionnées à l'article L. 136-3 23,60 %",
+   "claim": "D613-6 v.LEGIARTI000052218747 (VIGUEUR from 2026-01-01; Décret n°2025-943 du 8 septembre 2025 art. 1; S8): a/d share maladie-maternité = 8,80 % (L621-1) + 1,25 % (L621-2 espèces) = 10,05 % aggregated on 01/01/2026 (vente restauration hébergement).",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement . répartition . maladie-maternité . taux de répartition",
+    "situation": {
+     "date": "01/01/2026",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "non",
+     "entreprise . activité . nature": "'commerciale'",
+     "entreprise . activités . service ou vente": "'vente'"
+    },
+    "expect": 10.05,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 10.05,
+    "expected": 10.05,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0280",
+   "recorded_at": "2026-10-11T19:36:55+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement . répartition . invalidité-décès . taux de répartition",
+   "rules_snapshot": "P_M1",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/cotisations-et-contributions.publicodes",
+   "rule_file_sha256": "0fabe0f3fcc02499d5c60847a632b43b4ae66c25c0a71514ed83685f1f9f01d9",
+   "article": "D613-6",
+   "article_id": "LEGIARTI000052218747",
+   "article_dateDebut": "2026-01-01",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "d91619e346cf5e9c91c85754a469d229eb3c805b037879b0a4237dcd03edf48b",
+   "law_snapshot": "S8",
+   "quote": "-pour les personnes relevant des a et d : Cotisations et contributions Taux de répartition des montants de cotisations Cotisation d'assurance maladie-maternité mentionnée à l'article L. 621-1 8,80 % Cotisation de prestations maladie en espèces mentionnée à l'article L. 621-2 1,25 % Cotisation d'assurance invalidité-décès mentionnée à l'article L. 632-1 3,15 % Cotisation d'assurance vieillesse de base mentionnée à l'article D. 633-3 43,45 % Cotisation d'assurance vieillesse complémentaire mentionnée à l'article L. 635-1 19,75 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale mentionnées à l'article L. 136-3 23,60 %",
+   "claim": "D613-6 v.LEGIARTI000052218747 (VIGUEUR from 2026-01-01; Décret n°2025-943 du 8 septembre 2025 art. 1; S8): a/d share invalidité-décès = 3,15 % on 01/01/2026 (vente restauration hébergement).",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement . répartition . invalidité-décès . taux de répartition",
+    "situation": {
+     "date": "01/01/2026",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "non",
+     "entreprise . activité . nature": "'commerciale'",
+     "entreprise . activités . service ou vente": "'vente'"
+    },
+    "expect": 3.15,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 3.15,
+    "expected": 3.15,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0281",
+   "recorded_at": "2026-10-11T19:36:57+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement . répartition . retraite de base . taux de répartition",
+   "rules_snapshot": "P_M1",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/cotisations-et-contributions.publicodes",
+   "rule_file_sha256": "0fabe0f3fcc02499d5c60847a632b43b4ae66c25c0a71514ed83685f1f9f01d9",
+   "article": "D613-6",
+   "article_id": "LEGIARTI000052218747",
+   "article_dateDebut": "2026-01-01",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "d91619e346cf5e9c91c85754a469d229eb3c805b037879b0a4237dcd03edf48b",
+   "law_snapshot": "S8",
+   "quote": "-pour les personnes relevant des a et d : Cotisations et contributions Taux de répartition des montants de cotisations Cotisation d'assurance maladie-maternité mentionnée à l'article L. 621-1 8,80 % Cotisation de prestations maladie en espèces mentionnée à l'article L. 621-2 1,25 % Cotisation d'assurance invalidité-décès mentionnée à l'article L. 632-1 3,15 % Cotisation d'assurance vieillesse de base mentionnée à l'article D. 633-3 43,45 % Cotisation d'assurance vieillesse complémentaire mentionnée à l'article L. 635-1 19,75 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale mentionnées à l'article L. 136-3 23,60 %",
+   "claim": "D613-6 v.LEGIARTI000052218747 (VIGUEUR from 2026-01-01; Décret n°2025-943 du 8 septembre 2025 art. 1; S8): a/d share retraite de base = 43,45 % on 01/01/2026 (vente restauration hébergement).",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement . répartition . retraite de base . taux de répartition",
+    "situation": {
+     "date": "01/01/2026",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "non",
+     "entreprise . activité . nature": "'commerciale'",
+     "entreprise . activités . service ou vente": "'vente'"
+    },
+    "expect": 43.45,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 43.45,
+    "expected": 43.45,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0282",
+   "recorded_at": "2026-10-11T19:36:59+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement . répartition . retraite complémentaire . taux de répartition",
+   "rules_snapshot": "P_M1",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/cotisations-et-contributions.publicodes",
+   "rule_file_sha256": "0fabe0f3fcc02499d5c60847a632b43b4ae66c25c0a71514ed83685f1f9f01d9",
+   "article": "D613-6",
+   "article_id": "LEGIARTI000052218747",
+   "article_dateDebut": "2026-01-01",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "d91619e346cf5e9c91c85754a469d229eb3c805b037879b0a4237dcd03edf48b",
+   "law_snapshot": "S8",
+   "quote": "-pour les personnes relevant des a et d : Cotisations et contributions Taux de répartition des montants de cotisations Cotisation d'assurance maladie-maternité mentionnée à l'article L. 621-1 8,80 % Cotisation de prestations maladie en espèces mentionnée à l'article L. 621-2 1,25 % Cotisation d'assurance invalidité-décès mentionnée à l'article L. 632-1 3,15 % Cotisation d'assurance vieillesse de base mentionnée à l'article D. 633-3 43,45 % Cotisation d'assurance vieillesse complémentaire mentionnée à l'article L. 635-1 19,75 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale mentionnées à l'article L. 136-3 23,60 %",
+   "claim": "D613-6 v.LEGIARTI000052218747 (VIGUEUR from 2026-01-01; Décret n°2025-943 du 8 septembre 2025 art. 1; S8): a/d share retraite complémentaire = 19,75 % on 01/01/2026 (vente restauration hébergement).",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement . répartition . retraite complémentaire . taux de répartition",
+    "situation": {
+     "date": "01/01/2026",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "non",
+     "entreprise . activité . nature": "'commerciale'",
+     "entreprise . activités . service ou vente": "'vente'"
+    },
+    "expect": 19.75,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 19.75,
+    "expected": 19.75,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0283",
+   "recorded_at": "2026-10-11T19:37:01+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement . répartition . autres contributions . taux de répartition",
+   "rules_snapshot": "P_M1",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/cotisations-et-contributions.publicodes",
+   "rule_file_sha256": "0fabe0f3fcc02499d5c60847a632b43b4ae66c25c0a71514ed83685f1f9f01d9",
+   "article": "D613-6",
+   "article_id": "LEGIARTI000052218747",
+   "article_dateDebut": "2026-01-01",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "d91619e346cf5e9c91c85754a469d229eb3c805b037879b0a4237dcd03edf48b",
+   "law_snapshot": "S8",
+   "quote": "-pour les personnes relevant des a et d : Cotisations et contributions Taux de répartition des montants de cotisations Cotisation d'assurance maladie-maternité mentionnée à l'article L. 621-1 8,80 % Cotisation de prestations maladie en espèces mentionnée à l'article L. 621-2 1,25 % Cotisation d'assurance invalidité-décès mentionnée à l'article L. 632-1 3,15 % Cotisation d'assurance vieillesse de base mentionnée à l'article D. 633-3 43,45 % Cotisation d'assurance vieillesse complémentaire mentionnée à l'article L. 635-1 19,75 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale mentionnées à l'article L. 136-3 23,60 %",
+   "claim": "D613-6 v.LEGIARTI000052218747 (VIGUEUR from 2026-01-01; Décret n°2025-943 du 8 septembre 2025 art. 1; S8): a/d share autres contributions = 23,60 % CSG-CRDS on 01/01/2026 (vente restauration hébergement).",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . vente restauration hébergement . répartition . autres contributions . taux de répartition",
+    "situation": {
+     "date": "01/01/2026",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2021",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "non",
+     "entreprise . activité . nature": "'commerciale'",
+     "entreprise . activités . service ou vente": "'vente'"
+    },
+    "expect": 23.6,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 23.6,
+    "expected": 23.6,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0284",
+   "recorded_at": "2026-10-11T19:37:02+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC Cipav . répartition . maladie-maternité . taux de répartition",
+   "rules_snapshot": "P_M1",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/cotisations-et-contributions.publicodes",
+   "rule_file_sha256": "0fabe0f3fcc02499d5c60847a632b43b4ae66c25c0a71514ed83685f1f9f01d9",
+   "article": "D613-6",
+   "article_id": "LEGIARTI000052218747",
+   "article_dateDebut": "2026-01-01",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "d91619e346cf5e9c91c85754a469d229eb3c805b037879b0a4237dcd03edf48b",
+   "law_snapshot": "S8",
+   "quote": "-pour les personnes relevant du b : Cotisations et contributions Taux de répartition des montants de cotisations Cotisation d'assurance maladie maternité mentionnée à l'article L. 621-1 10,60 % Cotisation de prestations maladie en espèces mentionnée à l'article L. 621-2 0,80 % Cotisation d'assurance invalidité décès mentionnée à l'article L. 644-2 1,40 % Cotisation d'assurance vieillesse de base mentionnée au 1° de l'article D. 642-3 24,30 % Cotisation d'assurance vieillesse de base mentionnée au 2° de l'article D. 642-3 5,20 % Cotisation d'assurance vieillesse complémentaire mentionnée à l'article L. 644-1 30,70 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale mentionnées à l'article L. 136-3 27,00 %",
+   "claim": "D613-6 v.LEGIARTI000052218747 (VIGUEUR from 2026-01-01; Décret n°2025-943 du 8 septembre 2025 art. 1; S8): b) share maladie-maternité = 10,60 % (L621-1) + 0,80 % (L621-2) = 11,40 % aggregated on 01/01/2026.",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC Cipav . répartition . maladie-maternité . taux de répartition",
+    "situation": {
+     "date": "01/01/2026",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2019",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "non",
+     "entreprise . activité . nature": "'libérale'",
+     "entreprise . activité . nature . libérale . réglementée": "oui"
+    },
+    "expect": 11.4,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 11.4,
+    "expected": 11.4,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0285",
+   "recorded_at": "2026-10-11T19:37:04+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC Cipav . répartition . invalidité-décès . taux de répartition",
+   "rules_snapshot": "P_M1",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/cotisations-et-contributions.publicodes",
+   "rule_file_sha256": "0fabe0f3fcc02499d5c60847a632b43b4ae66c25c0a71514ed83685f1f9f01d9",
+   "article": "D613-6",
+   "article_id": "LEGIARTI000052218747",
+   "article_dateDebut": "2026-01-01",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "d91619e346cf5e9c91c85754a469d229eb3c805b037879b0a4237dcd03edf48b",
+   "law_snapshot": "S8",
+   "quote": "-pour les personnes relevant du b : Cotisations et contributions Taux de répartition des montants de cotisations Cotisation d'assurance maladie maternité mentionnée à l'article L. 621-1 10,60 % Cotisation de prestations maladie en espèces mentionnée à l'article L. 621-2 0,80 % Cotisation d'assurance invalidité décès mentionnée à l'article L. 644-2 1,40 % Cotisation d'assurance vieillesse de base mentionnée au 1° de l'article D. 642-3 24,30 % Cotisation d'assurance vieillesse de base mentionnée au 2° de l'article D. 642-3 5,20 % Cotisation d'assurance vieillesse complémentaire mentionnée à l'article L. 644-1 30,70 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale mentionnées à l'article L. 136-3 27,00 %",
+   "claim": "D613-6 v.LEGIARTI000052218747 (VIGUEUR from 2026-01-01; Décret n°2025-943 du 8 septembre 2025 art. 1; S8): b) share invalidité-décès = 1,40 % (L644-2, unchanged) on 01/01/2026.",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC Cipav . répartition . invalidité-décès . taux de répartition",
+    "situation": {
+     "date": "01/01/2026",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2019",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "non",
+     "entreprise . activité . nature": "'libérale'",
+     "entreprise . activité . nature . libérale . réglementée": "oui"
+    },
+    "expect": 1.4,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 1.4,
+    "expected": 1.4,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0286",
+   "recorded_at": "2026-10-11T19:37:06+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC Cipav . répartition . retraite de base . taux de répartition",
+   "rules_snapshot": "P_M1",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/cotisations-et-contributions.publicodes",
+   "rule_file_sha256": "0fabe0f3fcc02499d5c60847a632b43b4ae66c25c0a71514ed83685f1f9f01d9",
+   "article": "D613-6",
+   "article_id": "LEGIARTI000052218747",
+   "article_dateDebut": "2026-01-01",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "d91619e346cf5e9c91c85754a469d229eb3c805b037879b0a4237dcd03edf48b",
+   "law_snapshot": "S8",
+   "quote": "-pour les personnes relevant du b : Cotisations et contributions Taux de répartition des montants de cotisations Cotisation d'assurance maladie maternité mentionnée à l'article L. 621-1 10,60 % Cotisation de prestations maladie en espèces mentionnée à l'article L. 621-2 0,80 % Cotisation d'assurance invalidité décès mentionnée à l'article L. 644-2 1,40 % Cotisation d'assurance vieillesse de base mentionnée au 1° de l'article D. 642-3 24,30 % Cotisation d'assurance vieillesse de base mentionnée au 2° de l'article D. 642-3 5,20 % Cotisation d'assurance vieillesse complémentaire mentionnée à l'article L. 644-1 30,70 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale mentionnées à l'article L. 136-3 27,00 %",
+   "claim": "D613-6 v.LEGIARTI000052218747 (VIGUEUR from 2026-01-01; Décret n°2025-943 du 8 septembre 2025 art. 1; S8): b) share retraite de base = 24,30 % (1° D642-3) + 5,20 % (2° D642-3) = 29,50 % aggregated on 01/01/2026.",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC Cipav . répartition . retraite de base . taux de répartition",
+    "situation": {
+     "date": "01/01/2026",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2019",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "non",
+     "entreprise . activité . nature": "'libérale'",
+     "entreprise . activité . nature . libérale . réglementée": "oui"
+    },
+    "expect": 29.5,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 29.5,
+    "expected": 29.5,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0287",
+   "recorded_at": "2026-10-11T19:37:08+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC Cipav . répartition . retraite complémentaire . taux de répartition",
+   "rules_snapshot": "P_M1",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/cotisations-et-contributions.publicodes",
+   "rule_file_sha256": "0fabe0f3fcc02499d5c60847a632b43b4ae66c25c0a71514ed83685f1f9f01d9",
+   "article": "D613-6",
+   "article_id": "LEGIARTI000052218747",
+   "article_dateDebut": "2026-01-01",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "d91619e346cf5e9c91c85754a469d229eb3c805b037879b0a4237dcd03edf48b",
+   "law_snapshot": "S8",
+   "quote": "-pour les personnes relevant du b : Cotisations et contributions Taux de répartition des montants de cotisations Cotisation d'assurance maladie maternité mentionnée à l'article L. 621-1 10,60 % Cotisation de prestations maladie en espèces mentionnée à l'article L. 621-2 0,80 % Cotisation d'assurance invalidité décès mentionnée à l'article L. 644-2 1,40 % Cotisation d'assurance vieillesse de base mentionnée au 1° de l'article D. 642-3 24,30 % Cotisation d'assurance vieillesse de base mentionnée au 2° de l'article D. 642-3 5,20 % Cotisation d'assurance vieillesse complémentaire mentionnée à l'article L. 644-1 30,70 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale mentionnées à l'article L. 136-3 27,00 %",
+   "claim": "D613-6 v.LEGIARTI000052218747 (VIGUEUR from 2026-01-01; Décret n°2025-943 du 8 septembre 2025 art. 1; S8): b) share retraite complémentaire = 30,70 % (L644-1) on 01/01/2026.",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC Cipav . répartition . retraite complémentaire . taux de répartition",
+    "situation": {
+     "date": "01/01/2026",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2019",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "non",
+     "entreprise . activité . nature": "'libérale'",
+     "entreprise . activité . nature . libérale . réglementée": "oui"
+    },
+    "expect": 30.7,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 30.7,
+    "expected": 30.7,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0288",
+   "recorded_at": "2026-10-11T19:37:09+00:00",
+   "status": "VERIFIED",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC Cipav . répartition . autres contributions . taux de répartition",
+   "rules_snapshot": "P_M1",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/cotisations-et-contributions.publicodes",
+   "rule_file_sha256": "0fabe0f3fcc02499d5c60847a632b43b4ae66c25c0a71514ed83685f1f9f01d9",
+   "article": "D613-6",
+   "article_id": "LEGIARTI000052218747",
+   "article_dateDebut": "2026-01-01",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "d91619e346cf5e9c91c85754a469d229eb3c805b037879b0a4237dcd03edf48b",
+   "law_snapshot": "S8",
+   "quote": "-pour les personnes relevant du b : Cotisations et contributions Taux de répartition des montants de cotisations Cotisation d'assurance maladie maternité mentionnée à l'article L. 621-1 10,60 % Cotisation de prestations maladie en espèces mentionnée à l'article L. 621-2 0,80 % Cotisation d'assurance invalidité décès mentionnée à l'article L. 644-2 1,40 % Cotisation d'assurance vieillesse de base mentionnée au 1° de l'article D. 642-3 24,30 % Cotisation d'assurance vieillesse de base mentionnée au 2° de l'article D. 642-3 5,20 % Cotisation d'assurance vieillesse complémentaire mentionnée à l'article L. 644-1 30,70 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale mentionnées à l'article L. 136-3 27,00 %",
+   "claim": "D613-6 v.LEGIARTI000052218747 (VIGUEUR from 2026-01-01; Décret n°2025-943 du 8 septembre 2025 art. 1; S8): b) share autres contributions = 27,00 % CSG-CRDS on 01/01/2026.",
+   "check": {
+    "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . service BNC Cipav . répartition . autres contributions . taux de répartition",
+    "situation": {
+     "date": "01/01/2026",
+     "salarié": "non",
+     "entreprise . catégorie juridique": "'EI'",
+     "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur": "oui",
+     "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+     "entreprise . date de création": "01/01/2019",
+     "dirigeant . exonérations . ACRE": "non",
+     "établissement . commune . département . outre-mer": "non",
+     "entreprise . activité . nature": "'libérale'",
+     "entreprise . activité . nature . libérale . réglementée": "oui"
+    },
+    "expect": 27.0,
+    "tolerance": 0.001
+   },
+   "check_result": {
+    "passed": true,
+    "observed": 27,
+    "expected": 27.0,
+    "unit": "%",
+    "missing_variables": [],
+    "detail": null
+   },
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  },
+  {
+   "link_id": "L0289",
+   "recorded_at": "2026-10-11T19:37:10+00:00",
+   "status": "UNKNOWN",
+   "rule": "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "rules_snapshot": "P_M1",
+   "rule_file": "règles/dirigeant/auto-entrepreneur/cotisations-et-contributions.publicodes",
+   "rule_file_sha256": "0fabe0f3fcc02499d5c60847a632b43b4ae66c25c0a71514ed83685f1f9f01d9",
+   "article": "D613-6",
+   "article_id": "LEGIARTI000052218747",
+   "article_dateDebut": "2026-01-01",
+   "article_dateFin": "2999-01-01",
+   "article_text_sha256": "d91619e346cf5e9c91c85754a469d229eb3c805b037879b0a4237dcd03edf48b",
+   "law_snapshot": "S8",
+   "quote": "-pour les personnes relevant du c : Cotisations et contributions Taux de répartition des montants de cotisations Cotisation d'assurance maladie-maternité mentionnée à l'article L. 621-1 0,00 % Cotisation de prestations maladie en espèces mentionnée à l'article L. 621-2 5,10 % Cotisation d'assurance invalidité-décès mentionnée à l'article L. 632-1 3,80 % Cotisations d'assurance vieillesse de base mentionnées à l'article D. 633-3 du code de la sécurité sociale 50,20 % Cotisation d'assurance vieillesse complémentaire mentionnée à l'article L. 635-1 18,60 % Contribution sociale généralisée et contribution pour le remboursement de la dette sociale mentionnées à l'article L. 136-3 22,30 %",
+   "claim": "D613-6 v.LEGIARTI000052218747 (VIGUEUR from 2026-01-01; Décret n°2025-943 du 8 septembre 2025 art. 1; S8): c) meublés de tourisme split (0,00 / 5,10 / 3,80 / 50,20 / 18,60 / 22,30 %) - category not implemented in the tree.",
+   "check": null,
+   "check_result": null,
+   "approval": {
+    "status": "none recorded",
+    "evidence_sha256": null
+   }
+  }
+ ],
+ "article_versions_known": [
+  {
+   "law_snapshot": "S0",
+   "published": "2024-05-25T23:36:37.034Z",
+   "article": "D613-6",
+   "id": "LEGIARTI000046714699",
+   "etat": "VIGUEUR",
+   "dateDebut": "2022-12-10",
+   "dateFin": "2999-01-01",
+   "in_force_on_date": true,
+   "text_sha256": "81fed40869d4f6a5f53f7506fcc05c9f17a92eddde4bdfae92498b39123483ab"
+  },
+  {
+   "law_snapshot": "S1",
+   "published": "2024-06-01T23:22:24.265Z",
+   "article": "D613-6",
+   "id": "LEGIARTI000049623885",
+   "etat": "ABROGE_DIFF",
+   "dateDebut": "2024-06-01",
+   "dateFin": "2024-07-01",
+   "in_force_on_date": false,
+   "text_sha256": "81fed40869d4f6a5f53f7506fcc05c9f17a92eddde4bdfae92498b39123483ab"
+  },
+  {
+   "law_snapshot": "S10",
+   "published": "latest at investigation",
+   "article": "D613-6",
+   "id": "LEGIARTI000052218747",
+   "etat": "VIGUEUR",
+   "dateDebut": "2026-01-01",
+   "dateFin": "2999-01-01",
+   "in_force_on_date": true,
+   "text_sha256": "d91619e346cf5e9c91c85754a469d229eb3c805b037879b0a4237dcd03edf48b"
+  },
+  {
+   "law_snapshot": "S3",
+   "published": "2024-07-17T15:37:04.165Z",
+   "article": "D613-6",
+   "id": "LEGIARTI000049625264",
+   "etat": "ABROGE_DIFF",
+   "dateDebut": "2024-07-01",
+   "dateFin": "2025-01-01",
+   "in_force_on_date": false,
+   "text_sha256": "c1dbb279316402a16b9e67871648796b93b1c1698c5193c81d42c90f1595891b"
+  },
+  {
+   "law_snapshot": "S4",
+   "published": "2024-09-01T16:15:14.642Z",
+   "article": "D613-6",
+   "id": "LEGIARTI000049625264",
+   "etat": "ABROGE_DIFF",
+   "dateDebut": "2024-07-01",
+   "dateFin": "2025-01-01",
+   "in_force_on_date": false,
+   "text_sha256": "c1dbb279316402a16b9e67871648796b93b1c1698c5193c81d42c90f1595891b"
+  },
+  {
+   "law_snapshot": "S5",
+   "published": "2024-10-19T15:24:13.712Z",
+   "article": "D613-6",
+   "id": "LEGIARTI000049625264",
+   "etat": "ABROGE_DIFF",
+   "dateDebut": "2024-07-01",
+   "dateFin": "2025-01-01",
+   "in_force_on_date": false,
+   "text_sha256": "c1dbb279316402a16b9e67871648796b93b1c1698c5193c81d42c90f1595891b"
+  },
+  {
+   "law_snapshot": "S6",
+   "published": "2025-09-01T15:35:35.390Z",
+   "article": "D613-6",
+   "id": "LEGIARTI000049625405",
+   "etat": "ABROGE_DIFF",
+   "dateDebut": "2025-01-01",
+   "dateFin": "2026-01-01",
+   "in_force_on_date": false,
+   "text_sha256": "69b8e1b56c6185a7f85eb5d1cd90b8813f794fe0f7edcb24d0ca82ad4414b24f"
+  },
+  {
+   "law_snapshot": "S7",
+   "published": "2025-10-01T16:19:20.333Z",
+   "article": "D613-6",
+   "id": "LEGIARTI000049625405",
+   "etat": "ABROGE_DIFF",
+   "dateDebut": "2025-01-01",
+   "dateFin": "2026-01-01",
+   "in_force_on_date": false,
+   "text_sha256": "69b8e1b56c6185a7f85eb5d1cd90b8813f794fe0f7edcb24d0ca82ad4414b24f"
+  },
+  {
+   "law_snapshot": "S8",
+   "published": "2026-01-01T15:46:43.781Z",
+   "article": "D613-6",
+   "id": "LEGIARTI000052218747",
+   "etat": "VIGUEUR",
+   "dateDebut": "2026-01-01",
+   "dateFin": "2999-01-01",
+   "in_force_on_date": true,
+   "text_sha256": "d91619e346cf5e9c91c85754a469d229eb3c805b037879b0a4237dcd03edf48b"
+  },
+  {
+   "law_snapshot": "S9",
+   "published": "2026-03-31T16:18:17.431Z",
+   "article": "D613-6",
+   "id": "LEGIARTI000052218747",
+   "etat": "VIGUEUR",
+   "dateDebut": "2026-01-01",
+   "dateFin": "2999-01-01",
+   "in_force_on_date": true,
+   "text_sha256": "d91619e346cf5e9c91c85754a469d229eb3c805b037879b0a4237dcd03edf48b"
+  }
+ ],
+ "rules_snapshots_known": [
+  {
+   "snapshot": "G0",
+   "commit": "d9242882f96bda5b4418b7c1c3ff46b0e2a1c5ce",
+   "committed": "2024-05-15 09:38:43 +0200"
+  },
+  {
+   "snapshot": "G1",
+   "commit": "2a0e452617fc33b955096f4bb7f7f305ec0670ad",
+   "committed": "2024-07-16 21:29:59 +0200"
+  },
+  {
+   "snapshot": "G1post_R2",
+   "commit": "1932d654cf7a81dbac73df88487fc70553e52a19",
+   "committed": "2024-09-02 12:25:29 +0200"
+  },
+  {
+   "snapshot": "G1pre_R1",
+   "commit": null,
+   "committed": null
+  },
+  {
+   "snapshot": "G2",
+   "commit": "3a4091ae1cafdd4572bfd10d6352fd04db8da419",
+   "committed": "2024-10-10 16:37:41 +0200"
+  },
+  {
+   "snapshot": "G2post_R3",
+   "commit": "9bb43d710094d8f572c64997ce991c8d395c5753",
+   "committed": "2024-10-11 09:34:14 +0200"
+  },
+  {
+   "snapshot": "G3",
+   "commit": "d6c37427172707b4c0fa64d9e6f18ea67f9f67b4",
+   "committed": "2025-12-30 23:52:36 +0100"
+  },
+  {
+   "snapshot": "G4",
+   "commit": "a61b72947fec1e1383e07b3278424593dc296ba2",
+   "committed": "2026-03-03 09:30:36 +0100"
+  },
+  {
+   "snapshot": "G4post_R4",
+   "commit": "d3e0cfe0f12dcade20d5d1ea8bc51fee609bbc06",
+   "committed": "2026-03-30 16:00:14 +0200"
+  },
+  {
+   "snapshot": "G4post_R5",
+   "commit": "c14ee26d0c67bab90354db32ff1f51879ea3c5e8",
+   "committed": "2026-07-09 12:29:17 +0200"
+  },
+  {
+   "snapshot": "G4pre_R4",
+   "commit": "d3e0cfe0f12dcade20d5d1ea8bc51fee609bbc06",
+   "committed": "2026-03-30 16:00:14 +0200"
+  },
+  {
+   "snapshot": "G4pre_R5",
+   "commit": "c14ee26d0c67bab90354db32ff1f51879ea3c5e8",
+   "committed": "2026-07-09 12:29:17 +0200"
+  },
+  {
+   "snapshot": "P_M0",
+   "commit": null,
+   "committed": null
+  },
+  {
+   "snapshot": "P_M1",
+   "commit": null,
+   "committed": null
+  },
+  {
+   "snapshot": "P_T1a",
+   "commit": null,
+   "committed": null
+  },
+  {
+   "snapshot": "P_T1b",
+   "commit": "2a0e452617fc33b955096f4bb7f7f305ec0670ad",
+   "committed": "2024-07-16 21:29:59 +0200"
+  }
+ ],
+ "approvals": [
+  "none recorded"
+ ],
+ "limits": [
+  "Only what was recorded in this store is reported; absence of a record is reported as absence, not inferred.",
+  "Snapshot publish dates are when the governing text was captured, not when it entered into force; both are listed.",
+  "A matching hash shows the preserved text is unchanged; it does not show the interpretation is correct or that anyone authorised it."
+ ]
+}

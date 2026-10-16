@@ -1,0 +1,195 @@
+[
+{
+"id": "ABATTEMENT_TRADER@01/12/2024",
+"situation": {
+"dirigeant . régime social": "'indépendant'",
+"entreprise . catégorie juridique": "'EI'",
+"entreprise . imposition": "'IR'",
+"entreprise . activité . nature": "'commerciale'",
+"dirigeant . indépendant . revenu professionnel": "40000 €/an",
+"date": "01/12/2024"
+},
+"rules": [
+"dirigeant . indépendant . assiette des cotisations . réforme assiette 2024",
+"dirigeant . indépendant . assiette des cotisations . réforme assiette 2024 . plafond annuel",
+"dirigeant . indépendant . assiette des cotisations . réforme assiette 2024 . assiette avant abattement",
+"dirigeant . indépendant . assiette des cotisations . réforme assiette 2024 . abattement forfaitaire",
+"dirigeant . indépendant . assiette des cotisations . réforme assiette 2024 . assiette unifiée"
+]
+},
+{
+"id": "FLOOR_rev2000@01/12/2024",
+"situation": {
+"dirigeant . régime social": "'indépendant'",
+"entreprise . catégorie juridique": "'EI'",
+"entreprise . imposition": "'IR'",
+"entreprise . activité . nature": "'commerciale'",
+"dirigeant . indépendant . revenu professionnel": "2000 €/an",
+"date": "01/12/2024"
+},
+"rules": [
+"dirigeant . indépendant . assiette des cotisations . réforme assiette 2024 . abattement forfaitaire",
+"dirigeant . indépendant . assiette des cotisations . réforme assiette 2024 . assiette unifiée",
+"dirigeant . indépendant . assiette des cotisations"
+]
+},
+{
+"id": "CEILING_rev300000@01/12/2024",
+"situation": {
+"dirigeant . régime social": "'indépendant'",
+"entreprise . catégorie juridique": "'EI'",
+"entreprise . imposition": "'IR'",
+"entreprise . activité . nature": "'commerciale'",
+"dirigeant . indépendant . revenu professionnel": "300000 €/an",
+"date": "01/12/2024"
+},
+"rules": [
+"dirigeant . indépendant . assiette des cotisations . réforme assiette 2024 . abattement forfaitaire",
+"dirigeant . indépendant . assiette des cotisations . réforme assiette 2024 . assiette unifiée",
+"dirigeant . indépendant . assiette des cotisations"
+]
+},
+{
+"id": "BEFOREDATE_rev2000@01/06/2024",
+"situation": {
+"dirigeant . régime social": "'indépendant'",
+"entreprise . catégorie juridique": "'EI'",
+"entreprise . imposition": "'IR'",
+"entreprise . activité . nature": "'commerciale'",
+"dirigeant . indépendant . revenu professionnel": "2000 €/an",
+"date": "01/06/2024"
+},
+"rules": [
+"dirigeant . indépendant . assiette des cotisations . réforme assiette 2024",
+"dirigeant . indépendant . assiette des cotisations"
+]
+},
+{
+"id": "MALADIE_10pct@01/12/2024",
+"situation": {
+"dirigeant . régime social": "'indépendant'",
+"entreprise . catégorie juridique": "'EI'",
+"entreprise . imposition": "'IR'",
+"entreprise . activité . nature": "'commerciale'",
+"dirigeant . indépendant . revenu professionnel": "40000 €/an",
+"date": "01/12/2024",
+"dirigeant . indépendant . assiette des cotisations": "4636.8 €/an"
+},
+"rules": [
+"dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+"dirigeant . indépendant . cotisations et contributions . retraite de base . taux"
+]
+},
+{
+"id": "MALADIE_30pct@01/12/2024",
+"situation": {
+"dirigeant . régime social": "'indépendant'",
+"entreprise . catégorie juridique": "'EI'",
+"entreprise . imposition": "'IR'",
+"entreprise . activité . nature": "'commerciale'",
+"dirigeant . indépendant . revenu professionnel": "40000 €/an",
+"date": "01/12/2024",
+"dirigeant . indépendant . assiette des cotisations": "13910.4 €/an"
+},
+"rules": [
+"dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+"dirigeant . indépendant . cotisations et contributions . retraite de base . taux"
+]
+},
+{
+"id": "MALADIE_50pct@01/12/2024",
+"situation": {
+"dirigeant . régime social": "'indépendant'",
+"entreprise . catégorie juridique": "'EI'",
+"entreprise . imposition": "'IR'",
+"entreprise . activité . nature": "'commerciale'",
+"dirigeant . indépendant . revenu professionnel": "40000 €/an",
+"date": "01/12/2024",
+"dirigeant . indépendant . assiette des cotisations": "23184 €/an"
+},
+"rules": [
+"dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+"dirigeant . indépendant . cotisations et contributions . retraite de base . taux"
+]
+},
+{
+"id": "MALADIE_100pct@01/12/2024",
+"situation": {
+"dirigeant . régime social": "'indépendant'",
+"entreprise . catégorie juridique": "'EI'",
+"entreprise . imposition": "'IR'",
+"entreprise . activité . nature": "'commerciale'",
+"dirigeant . indépendant . revenu professionnel": "40000 €/an",
+"date": "01/12/2024",
+"dirigeant . indépendant . assiette des cotisations": "46368 €/an"
+},
+"rules": [
+"dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+"dirigeant . indépendant . cotisations et contributions . retraite de base . taux"
+]
+},
+{
+"id": "MALADIE_150pct@01/12/2024",
+"situation": {
+"dirigeant . régime social": "'indépendant'",
+"entreprise . catégorie juridique": "'EI'",
+"entreprise . imposition": "'IR'",
+"entreprise . activité . nature": "'commerciale'",
+"dirigeant . indépendant . revenu professionnel": "40000 €/an",
+"date": "01/12/2024",
+"dirigeant . indépendant . assiette des cotisations": "69552 €/an"
+},
+"rules": [
+"dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+"dirigeant . indépendant . cotisations et contributions . retraite de base . taux"
+]
+},
+{
+"id": "MALADIE_250pct@01/12/2024",
+"situation": {
+"dirigeant . régime social": "'indépendant'",
+"entreprise . catégorie juridique": "'EI'",
+"entreprise . imposition": "'IR'",
+"entreprise . activité . nature": "'commerciale'",
+"dirigeant . indépendant . revenu professionnel": "40000 €/an",
+"date": "01/12/2024",
+"dirigeant . indépendant . assiette des cotisations": "115920 €/an"
+},
+"rules": [
+"dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+"dirigeant . indépendant . cotisations et contributions . retraite de base . taux"
+]
+},
+{
+"id": "MALADIE_350pct@01/12/2024",
+"situation": {
+"dirigeant . régime social": "'indépendant'",
+"entreprise . catégorie juridique": "'EI'",
+"entreprise . imposition": "'IR'",
+"entreprise . activité . nature": "'commerciale'",
+"dirigeant . indépendant . revenu professionnel": "40000 €/an",
+"date": "01/12/2024",
+"dirigeant . indépendant . assiette des cotisations": "162288 €/an"
+},
+"rules": [
+"dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+"dirigeant . indépendant . cotisations et contributions . retraite de base . taux"
+]
+},
+{
+"id": "MALADIE_50pct@01/06/2024",
+"situation": {
+"dirigeant . régime social": "'indépendant'",
+"entreprise . catégorie juridique": "'EI'",
+"entreprise . imposition": "'IR'",
+"entreprise . activité . nature": "'commerciale'",
+"dirigeant . indépendant . revenu professionnel": "40000 €/an",
+"date": "01/06/2024",
+"dirigeant . indépendant . assiette des cotisations": "23184 €/an"
+},
+"rules": [
+"dirigeant . indépendant . cotisations et contributions . maladie . taux progressif",
+"dirigeant . indépendant . cotisations et contributions . retraite de base . taux"
+]
+}
+]

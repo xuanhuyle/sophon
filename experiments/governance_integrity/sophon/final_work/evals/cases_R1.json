@@ -1,0 +1,212 @@
+[
+ {
+  "id": "SAL@01/07/2024",
+  "situation": {
+   "date": "01/07/2024",
+   "salarié . contrat . salaire brut": "3000 €/mois"
+  },
+  "rules": [
+   "établissement . taux ATMP",
+   "salarié . cotisations . ATMP",
+   "salarié . cotisations . ATMP . taux minimum",
+   "salarié . cotisations",
+   "salarié . rémunération . net . à payer avant impôt"
+  ]
+ },
+ {
+  "id": "SAL_taux_saisi@01/07/2024",
+  "situation": {
+   "date": "01/07/2024",
+   "salarié . contrat . salaire brut": "3000 €/mois",
+   "établissement . taux ATMP": "3.5 %"
+  },
+  "rules": [
+   "établissement . taux ATMP",
+   "salarié . cotisations . ATMP"
+  ]
+ },
+ {
+  "id": "AE_BNC@01/07/2024",
+  "situation": {
+   "date": "01/07/2024",
+   "salarié": "non",
+   "entreprise . catégorie juridique": "'EI'",
+   "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+   "dirigeant . auto-entrepreneur": "oui",
+   "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+   "entreprise . date de création": "01/01/2021",
+   "dirigeant . exonérations . ACRE": "non",
+   "établissement . commune . département . outre-mer": "non",
+   "entreprise . activité . nature": "'libérale'"
+  },
+  "rules": [
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "dirigeant . auto-entrepreneur . cotisations et contributions",
+   "dirigeant . auto-entrepreneur . revenu net"
+  ]
+ },
+ {
+  "id": "AE_BIC_service@01/07/2024",
+  "situation": {
+   "date": "01/07/2024",
+   "salarié": "non",
+   "entreprise . catégorie juridique": "'EI'",
+   "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+   "dirigeant . auto-entrepreneur": "oui",
+   "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+   "entreprise . date de création": "01/01/2021",
+   "dirigeant . exonérations . ACRE": "non",
+   "établissement . commune . département . outre-mer": "non",
+   "entreprise . activité . nature": "'artisanale'",
+   "entreprise . activités . service ou vente": "'service'"
+  },
+  "rules": [
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BIC",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations",
+   "protection sociale . retraite . complémentaire . RCI . revenu cotisé auto-entrepreneur"
+  ]
+ },
+ {
+  "id": "AE_vente@01/07/2024",
+  "situation": {
+   "date": "01/07/2024",
+   "salarié": "non",
+   "entreprise . catégorie juridique": "'EI'",
+   "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+   "dirigeant . auto-entrepreneur": "oui",
+   "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+   "entreprise . date de création": "01/01/2021",
+   "dirigeant . exonérations . ACRE": "non",
+   "établissement . commune . département . outre-mer": "non",
+   "entreprise . activité . nature": "'commerciale'",
+   "entreprise . activités . service ou vente": "'vente'"
+  },
+  "rules": [
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux vente restauration hébergement",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations"
+  ]
+ },
+ {
+  "id": "AE_CIPAV@01/07/2024",
+  "situation": {
+   "date": "01/07/2024",
+   "salarié": "non",
+   "entreprise . catégorie juridique": "'EI'",
+   "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+   "dirigeant . auto-entrepreneur": "oui",
+   "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+   "entreprise . date de création": "01/01/2019",
+   "dirigeant . exonérations . ACRE": "non",
+   "établissement . commune . département . outre-mer": "non",
+   "entreprise . activité . nature": "'libérale'",
+   "entreprise . activité . nature . libérale . réglementée": "oui"
+  },
+  "rules": [
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . cotisations CIPAV . taux",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations"
+  ]
+ },
+ {
+  "id": "AE_DROM_BNC@01/07/2024",
+  "situation": {
+   "date": "01/07/2024",
+   "salarié": "non",
+   "entreprise . catégorie juridique": "'EI'",
+   "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+   "dirigeant . auto-entrepreneur": "oui",
+   "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+   "entreprise . date de création": "01/01/2021",
+   "dirigeant . exonérations . ACRE": "non",
+   "établissement . commune . département . outre-mer": "oui",
+   "entreprise . activité . nature": "'libérale'",
+   "entreprise . durée d'activité": "1500 jour",
+   "entreprise . durée d'activité . trimestres civils": "16 trimestre civil",
+   "entreprise . durée d'activité . années civiles": "4 année civile"
+  },
+  "rules": [
+   "dirigeant . auto-entrepreneur . DROM . taux service BNC",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations"
+  ]
+ },
+ {
+  "id": "AE_BNC@01/12/2024",
+  "situation": {
+   "date": "01/12/2024",
+   "salarié": "non",
+   "entreprise . catégorie juridique": "'EI'",
+   "entreprise . catégorie juridique . EI . auto-entrepreneur": "oui",
+   "dirigeant . auto-entrepreneur": "oui",
+   "dirigeant . auto-entrepreneur . chiffre d'affaires": "1000 €/mois",
+   "entreprise . date de création": "01/01/2021",
+   "dirigeant . exonérations . ACRE": "non",
+   "établissement . commune . département . outre-mer": "non",
+   "entreprise . activité . nature": "'libérale'"
+  },
+  "rules": [
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations . taux service BNC",
+   "dirigeant . auto-entrepreneur . cotisations et contributions . cotisations"
+  ]
+ },
+ {
+  "id": "INDEP@01/07/2024",
+  "situation": {
+   "date": "01/07/2024",
+   "salarié": "non",
+   "entreprise . catégorie juridique": "'EI'",
+   "entreprise . catégorie juridique . EI . auto-entrepreneur": "non",
+   "entreprise . activité . nature": "'commerciale'",
+   "entreprise . imposition": "'IR'",
+   "dirigeant . indépendant . revenu professionnel": "20000 €/an",
+   "entreprise . date de création": "01/01/2021"
+  },
+  "rules": [
+   "dirigeant . indépendant . cotisations et contributions",
+   "dirigeant . indépendant . cotisations et contributions . maladie",
+   "dirigeant . indépendant . cotisations et contributions . indemnités journalières maladie",
+   "dirigeant . indépendant . cotisations et contributions . retraite de base",
+   "dirigeant . indépendant . cotisations et contributions . retraite complémentaire",
+   "dirigeant . indépendant . cotisations et contributions . invalidité et décès",
+   "dirigeant . indépendant . cotisations et contributions . CSG-CRDS",
+   "dirigeant . indépendant . assiette des cotisations"
+  ]
+ },
+ {
+  "id": "INDEP_ACRE@01/07/2024",
+  "situation": {
+   "date": "01/07/2024",
+   "salarié": "non",
+   "entreprise . catégorie juridique": "'EI'",
+   "entreprise . catégorie juridique . EI . auto-entrepreneur": "non",
+   "entreprise . activité . nature": "'commerciale'",
+   "entreprise . imposition": "'IR'",
+   "dirigeant . indépendant . revenu professionnel": "20000 €/an",
+   "entreprise . date de création": "01/01/2024",
+   "dirigeant . exonérations . ACRE": "oui"
+  },
+  "rules": [
+   "dirigeant . indépendant . cotisations et contributions",
+   "dirigeant . indépendant . cotisations et contributions . maladie",
+   "dirigeant . indépendant . cotisations et contributions . retraite de base"
+  ]
+ },
+ {
+  "id": "INDEP_TRADER@01/12/2024",
+  "situation": {
+   "date": "01/12/2024",
+   "salarié": "non",
+   "entreprise . catégorie juridique": "'EI'",
+   "entreprise . catégorie juridique . EI . auto-entrepreneur": "non",
+   "entreprise . activité . nature": "'commerciale'",
+   "entreprise . imposition": "'IR'",
+   "dirigeant . indépendant . revenu professionnel": "40000 €/an",
+   "entreprise . date de création": "01/01/2021"
+  },
+  "rules": [
+   "dirigeant . indépendant . cotisations et contributions",
+   "dirigeant . indépendant . cotisations et contributions . maladie",
+   "dirigeant . indépendant . cotisations et contributions . retraite de base",
+   "dirigeant . indépendant . cotisations et contributions . CSG-CRDS"
+  ]
+ }
+]
