@@ -136,5 +136,32 @@ class CausalMemoryProbeTests(unittest.TestCase):
             with self.assertRaises(SystemExit):
                 probe.main()
 
+class TargetValidityTests(unittest.TestCase):
+    """2026-10-15 post-run target note: offline span and arithmetic checks only."""
+    HERE = Path(__file__).resolve().parent
+
+    def test_quoted_units_match_frozen_source_offsets(self):
+        spec = json.loads((self.HERE / "target_spans_2026-10-15.json").read_text(encoding="utf-8"))
+        packets = {c["id"]: c for c in probe.history(spec["source"]["path"])["clauses"]}
+        for unit in spec["units"]:
+            text = packets[unit["packet"]][unit["field"]]
+            self.assertEqual(text[unit["start"]:unit["end"]], unit["quote"], unit["id"])
+            self.assertEqual(text.count(unit["quote"]), 1, unit["id"])
+
+    def test_recorded_score_and_bracketed_sensitivity_reconcile(self):
+        import hashlib
+        score_path = self.HERE / "score_jev_memory_20261014_approved_001.json"
+        receipt = json.loads((self.HERE / "receipt_jev_memory_20261014_approved_001.json").read_text(encoding="utf-8"))
+        self.assertEqual(hashlib.sha256(score_path.read_bytes()).hexdigest(), receipt["score_file_sha256"])
+        spec = json.loads((self.HERE / "target_spans_2026-10-15.json").read_text(encoding="utf-8"))
+        contested = {tuple(x) for x in spec["contested_probes_bracketed_for_interpretation_only"]}
+        rows = [(c["id"], r["label"], r["cold_probe_pass"], r["learned_probe_pass"])
+                for c in json.loads(score_path.read_text(encoding="utf-8"))["per_case"]
+                for v in c["positive_probes"].values() for r in v]
+        self.assertEqual((len(rows), sum(r[2] for r in rows), sum(r[3] for r in rows)), (16, 15, 14))
+        kept = [r for r in rows if (r[0], r[1]) not in contested]
+        self.assertEqual((len(kept), sum(r[2] for r in kept), sum(r[3] for r in kept)), (14, 14, 14))
+
+
 if __name__ == "__main__":
     unittest.main()
