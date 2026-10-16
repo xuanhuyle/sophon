@@ -1,0 +1,323 @@
+{
+ "dataset_id": "DISCRIMINATING_CANDIDATES_V0",
+ "status": "PREDECLARED_BEFORE_ANY_JEV_QUERY_NOT_INDEPENDENT_LEGAL_GOLD",
+ "frozen_at_utc": "2026-10-16",
+ "annotator": "Implementing agent (Claude Code). Not independent legal review; labels are engineering candidates.",
+ "unit_of_analysis": "MANUALLY_CURATED_SOURCE_EXCERPTS; MULTI_LABEL_PER_EXCERPT; AUTOMATIC_SUBPROVISION_SEGMENTATION_NOT_IMPLEMENTED",
+ "function_wording_source": "prototype/jev_memory_causal_probe_v0/probe.py FUNCTIONS/MODIFIERS (verbatim; no new ontology)",
+ "label_semantics": {
+  "YES": "the clause itself expresses the function under the wording",
+  "NO": "the clause itself does not express the function under the wording (scoped to THIS clause; duties elsewhere are not asserted absent)",
+  "UNRESOLVED": "depends on disputed legal effect or an undecided taxonomy rule; excluded from definitive error accounting"
+ },
+ "split_rules": {
+  "LIBRARY_UPDATE": "may inform ONE provisional library correction after its own cold screen",
+  "HOLDOUT": "never enters any library, prompt context or example list; evaluated only",
+  "chronology": "GitHub 2021 -> Google 2021 (PR #22) -> Microsoft July 2021 (update) -> Oracle September 2026 (holdout)"
+ },
+ "cold_errors_observed": "NONE — no Jev call has been made on these documents",
+ "sources": [
+  {
+   "source_id": "MS-OSSLA-2021-07",
+   "split": "LIBRARY_UPDATE",
+   "publisher": "Microsoft Corporation",
+   "title": "Service Level Agreement for Microsoft Online Services (Volume Licensing), Worldwide, English",
+   "version": "July 1, 2021 (cover page date)",
+   "url": "https://www.microsoft.com/licensing/docs/documents/download/OnlineSvcsConsolidatedSLA(WW)(English)(July2021)(CR).docx",
+   "listing_url": "https://www.microsoft.com/licensing/docs/view/Service-Level-Agreements-SLA-for-Online-Services",
+   "retrieved_at_utc": "2026-10-16",
+   "http_status": 200,
+   "content_type": "application/octet-stream (docx)",
+   "bytes": 123064,
+   "sha256": "f94b354afd14f5dcf38d407603ec43cea051d57b25dcf08389fb2c792d7ac4a1",
+   "extraction": "word/document.xml: concatenate <w:t> text per <w:p>, join paragraphs with newline, html-unescape, then collapse all whitespace to single spaces",
+   "normalized_text_chars": 55987,
+   "normalized_text_sha256": "c4c704b3f1c9718629b80de5faf886e756e166049f8cb4127d7bb1fe8169cf12",
+   "rights_note": "Copyrighted Microsoft document. Only short excerpts are committed for analysis; the full document is not copied. Re-fetch from the URL to verify hashes and offsets."
+  },
+  {
+   "source_id": "ORCL-PILLAR-2026-09",
+   "split": "HOLDOUT",
+   "publisher": "Oracle Corporation",
+   "title": "Oracle PaaS and IaaS Public Cloud Services Pillar Document (section 3: Service Level Agreement Policy)",
+   "version": "September 2026 (cover and page footers); HTTP Last-Modified Thu, 17 Sep 2026 15:47:22 GMT",
+   "url": "https://www.oracle.com/contracts/docs/paas_iaas_pub_cld_srvs_pillar_4021422.pdf?download=false",
+   "listing_url": "https://www.oracle.com/cloud/sla/",
+   "retrieved_at_utc": "2026-10-16",
+   "http_status": 200,
+   "content_type": "application/pdf",
+   "bytes": 2747733,
+   "sha256": "aa43a70b3253e58968d0ae63e810a17716ab59162a3bf13e37108881b936af4b",
+   "extraction": "pdftotext 24.02.0 (poppler) default mode to stdout, then collapse all whitespace to single spaces",
+   "normalized_text_chars": 347103,
+   "normalized_text_sha256": "3346ed3f880294f81bbf7bb84a34220cde52ee6f33a1a2a2420cffed9ef4b83d",
+   "rights_note": "Copyrighted Oracle document. Only short excerpts are committed for analysis; the full document is not copied. The URL serves the CURRENT version: a later re-fetch may differ, in which case the recorded SHA-256 identifies this September 2026 version."
+  }
+ ],
+ "decisions": [
+  {
+   "decision_id": "MS1",
+   "source_id": "MS-OSSLA-2021-07",
+   "split": "LIBRARY_UPDATE",
+   "function": "OBLIGATION",
+   "function_wording": "An explicit affirmative duty or service commitment imposed by this clause.",
+   "label": "YES",
+   "quote": "We will provide at least 90 days’ notice for adverse material changes to this SLA.",
+   "quote_offsets_in_normalized_text": [
+    2829,
+    2911
+   ],
+   "context": "We will not modify the terms of your SLA during the initial term of your subscription; however, if you renew your subscription, the version of this SLA that is current at the time of renewal will apply throughout your renewal term. We will provide at least 90 days’ notice for adverse material changes to this SLA. You can review the most current version of this SLA at any time by visiting http://www.microsoftvolumelicensing.com/SLA.",
+   "context_offsets_in_normalized_text": [
+    2597,
+    3032
+   ],
+   "context_sha256": "6f073fb5479d897299f3ae779651ff51b5975df506686f282e12d88174db28c6",
+   "evidence_for_positive_reading": "Provider-side 'We will provide' with a definite act (notice) and lead time; the duty stands alone, not as a condition of any benefit to Microsoft.",
+   "evidence_for_negative_reading": "No remedy for breach of the notice duty is stated in the SLA; whether it is enforceable is an Agreement-level question.",
+   "qualification": "Classified as an explicit affirmative duty under the probe wording; enforceability is not asserted."
+  },
+  {
+   "decision_id": "MS2",
+   "source_id": "MS-OSSLA-2021-07",
+   "split": "LIBRARY_UPDATE",
+   "function": "PROHIBITION",
+   "function_wording": "An action this clause expressly forbids. Do not infer prohibitions from mere definitions or exclusions.",
+   "label": "YES",
+   "quote": "You may not unilaterally offset your Applicable Monthly Service Fees for any performance or availability issues.",
+   "quote_offsets_in_normalized_text": [
+    8123,
+    8235
+   ],
+   "context": "Service Credits are your sole and exclusive remedy for any performance or availability issues for any Service under the Agreement and this SLA. You may not unilaterally offset your Applicable Monthly Service Fees for any performance or availability issues.",
+   "context_offsets_in_normalized_text": [
+    7979,
+    8235
+   ],
+   "context_sha256": "28ae82e122061109e1320b567f5a3858bd15e4117fdc457a2317ba4090ab6e6d",
+   "evidence_for_positive_reading": "'You may not' expressly forbids a concrete self-help action (offsetting fees) by the Customer.",
+   "evidence_for_negative_reading": "It sits beside the sole-and-exclusive-remedy sentence and can also be read as a remedy limitation.",
+   "qualification": "A remedy-limiting purpose does not remove the express prohibition of an action."
+  },
+  {
+   "decision_id": "MS3",
+   "source_id": "MS-OSSLA-2021-07",
+   "split": "LIBRARY_UPDATE",
+   "function": "PROHIBITION",
+   "function_wording": "An action this clause expressly forbids. Do not infer prohibitions from mere definitions or exclusions.",
+   "label": "NO",
+   "quote": "This SLA and any applicable Service Levels do not apply to any performance or availability issues:",
+   "quote_offsets_in_normalized_text": [
+    9305,
+    9403
+   ],
+   "context": "This SLA and any applicable Service Levels do not apply to any performance or availability issues: Due to factors outside our reasonable control (for example, natural disaster, war, acts of terrorism, riots, government action, or a network or device failure external to our data centers, including at your site or between your site and our data center); That result from the use of services, hardware, or software not provided by us, including, but not limited to, issues resulting from inadequate bandwidth or related to third-party software or services; That results from failures in a single Microsoft Datacenter location, when your network connectivity is explicitly dependent on that location in a non-geo-resilient manner; Caused by your use of a Service after we advised you to modify your use of the Service, if you did not modify your use as advised;",
+   "context_offsets_in_normalized_text": [
+    9305,
+    10164
+   ],
+   "context_sha256": "806cb6cd753fe92580164d58cf8dfce670a1306250b0ea02cfef5cdd285f486b",
+   "evidence_for_positive_reading": "The operative words remove issues from the SLA's scope ('do not apply'). Listed items describe causes, e.g. 'Caused by your use of a Service after we advised you to modify your use', which are excluded from coverage, not forbidden.",
+   "evidence_for_negative_reading": "Several listed causes are conduct the Customer should avoid (acceptable-use or security failures); duties to avoid them may exist elsewhere in the Agreement.",
+   "qualification": "Negative only for THIS clause expressly forbidding an action; any duty arising elsewhere is out of scope. EXCLUSION is the supported function (not separately scored here)."
+  },
+  {
+   "decision_id": "MS4",
+   "source_id": "MS-OSSLA-2021-07",
+   "split": "LIBRARY_UPDATE",
+   "function": "OBLIGATION",
+   "function_wording": "An explicit affirmative duty or service commitment imposed by this clause.",
+   "label": "UNRESOLVED",
+   "quote": "We will publish notice or notify you at least five (5) days prior to the commencement of such Downtime.",
+   "quote_offsets_in_normalized_text": [
+    4859,
+    4962
+   ],
+   "context": "“Scheduled Downtime” means periods of Downtime related to network, hardware, or Service maintenance or upgrades. We will publish notice or notify you at least five (5) days prior to the commencement of such Downtime.",
+   "context_offsets_in_normalized_text": [
+    4746,
+    4962
+   ],
+   "context_sha256": "7efaffd165a51b65984a57f48766eb5ed896285a1162e95c61de3df88f0eae23",
+   "evidence_for_positive_reading": "'We will publish notice or notify you' is promissory, provider-side language with a lead time.",
+   "evidence_for_negative_reading": "It is embedded in a definition: it may only state what qualifies downtime as Scheduled (a definitional condition), in which case missing notice changes classification, not liability.",
+   "qualification": "Definition containing operative language; the legal effect is disputed, so excluded from definitive error accounting."
+  },
+  {
+   "decision_id": "MS5",
+   "source_id": "MS-OSSLA-2021-07",
+   "split": "LIBRARY_UPDATE",
+   "function": "OBLIGATION",
+   "function_wording": "An explicit affirmative duty or service commitment imposed by this clause.",
+   "label": "UNRESOLVED",
+   "quote": "In order for Microsoft to consider a claim, you must submit the claim to customer support at Microsoft Corporation including all information necessary for Microsoft to validate the claim",
+   "quote_offsets_in_normalized_text": [
+    5709,
+    5895
+   ],
+   "context": "In order for Microsoft to consider a claim, you must submit the claim to customer support at Microsoft Corporation including all information necessary for Microsoft to validate the claim, including but not limited to: (i) a detailed description of the Incident; (ii) information regarding the time and duration of the Downtime; (iii) the number and location(s) of affected users (if applicable); and (iv) descriptions of your attempts to resolve the Incident at the time of occurrence. For a claim related to Microsoft Azure, we must receive the claim within two months of the end of the billing month in which the Incident that is the subject of the claim occurred. For claims related to all other Services, we must receive the claim by the end of the calendar month following the month in which the Incident occurred. For example, if the Incident occurred on February 15th, we must receive the claim and all required information by March 31st.",
+   "context_offsets_in_normalized_text": [
+    5709,
+    6654
+   ],
+   "context_sha256": "6145a8ba54f0e4f5800caeec9b74b50d3253a243c78089dc0e64b9ca5307caf6",
+   "evidence_for_positive_reading": "'you must submit the claim' is deontic syntax with an affirmative Customer act and a deadline.",
+   "evidence_for_negative_reading": "'In order for Microsoft to consider a claim' makes it a prerequisite of the Customer's own credit claim; no consequence other than non-consideration is stated. This is the same structure as the contested Google B3 notice.",
+   "qualification": "Same open taxonomy question as B3 (TARGET_VALIDITY_2026-10-15.md): claim prerequisite vs duty. Excluded from definitive accounting until the owner sets a rule."
+  },
+  {
+   "decision_id": "OR1",
+   "source_id": "ORCL-PILLAR-2026-09",
+   "split": "HOLDOUT",
+   "function": "EXCLUSION",
+   "function_wording": "An explicit carve-out or exclusion from scope.",
+   "label": "YES",
+   "quote": "does not apply to any unavailability, error, decay, suspension or termination of the applicable Non-Compliant Service, or any other performance issue that results from the following",
+   "quote_offsets_in_normalized_text": [
+    30875,
+    31056
+   ],
+   "context": "A Service Level Agreement (and Service Commitment therein) for an Oracle PaaS or IaaS Public Cloud Service does not apply to any unavailability, error, decay, suspension or termination of the applicable Non-Compliant Service, or any other performance issue that results from the following (each a “Common Exclusion” and, collectively the “Common Exclusions”):",
+   "context_offsets_in_normalized_text": [
+    30768,
+    31127
+   ],
+   "context_sha256": "b6516edd1fa97cafd23d485919911ba91436f577f7a98fb350d165a46efb37ef",
+   "evidence_for_positive_reading": "'does not apply to ... that results from the following' explicitly carves listed causes out of SLA coverage, and the clause names them 'Common Exclusions'.",
+   "evidence_for_negative_reading": "None identified for the presence of an exclusion.",
+   "qualification": "—"
+  },
+  {
+   "decision_id": "OR2",
+   "source_id": "ORCL-PILLAR-2026-09",
+   "split": "HOLDOUT",
+   "function": "PROHIBITION",
+   "function_wording": "An action this clause expressly forbids. Do not infer prohibitions from mere definitions or exclusions.",
+   "label": "NO",
+   "quote": "Any actions or inactions of You, Your Users or any third party",
+   "quote_offsets_in_normalized_text": [
+    32072,
+    32134
+   ],
+   "context": "A Service Level Agreement (and Service Commitment therein) for an Oracle PaaS or IaaS Public Cloud Service does not apply to any unavailability, error, decay, suspension or termination of the applicable Non-Compliant Service, or any other performance issue that results from the following (each a “Common Exclusion” and, collectively the “Common Exclusions”): • Your equipment, software or other technology and/or third-party equipment, software or other technology (other than third party equipment within Oracle’s direct control), including any thirdparty platform on which You elect to deploy Oracle PaaS or IaaS Public Cloud Services; • For Cloud Services that are inter-related (i.e., such Cloud Services operationally interface with, or are functionally dependent on, one another), if Oracle determines the failure of one Cloud Service (the “Primary Service”) to meet its Service Commitment is the root cause of any unavailability of the other Cloud Service (the “Inter-Related Unavailability”), then You may receive Service Credits as a result of the Inter-Related Unavailability only for the Primary Service, but not such other Cloud Service (i.e., the Inter-Related Unavailability will be excluded from the calculation of whether or not such other Cloud Service meets its Service Commitment); • Any actions or inactions of You, Your Users or any third party (other than any Oracle agents and contractors who Oracle has engaged to support the applicable Cloud Service) (e.g., denying or disabling access to the Cloud Services, restarting, stopping, or patching a database, filling up storage, mis-configuring database parameters,",
+   "context_offsets_in_normalized_text": [
+    30768,
+    32405
+   ],
+   "context_sha256": "894d555c3d4d96dfd6cf777aa1b4d491c33b348fa4b603aa220278573c612037",
+   "evidence_for_positive_reading": "This list item, under 'does not apply to ... results from the following', excludes outages caused by listed Customer conduct (e.g. 'restarting, stopping, or patching a database'); it does not forbid that conduct, much of which is ordinary operation.",
+   "evidence_for_negative_reading": "Some listed conduct (e.g. 'exceeding limits specified in Your order') may be restricted elsewhere in the order or agreement.",
+   "qualification": "Negative only for THIS clause expressly forbidding an action. Contrast case for MS3 (exclusion vs prohibition)."
+  },
+  {
+   "decision_id": "OR3",
+   "source_id": "ORCL-PILLAR-2026-09",
+   "split": "HOLDOUT",
+   "function": "OBLIGATION",
+   "function_wording": "An explicit affirmative duty or service commitment imposed by this clause.",
+   "label": "NO",
+   "quote": "then Oracle may issue Service Credits for the applicable Cloud Service considering such factors at Oracle’s discretion.",
+   "quote_offsets_in_normalized_text": [
+    33545,
+    33664
+   ],
+   "context": "In addition, if the failure to meet the Service Commitment applicable to a Cloud Service is impacted by factors other than those used in Oracle’s calculation, then Oracle may issue Service Credits for the applicable Cloud Service considering such factors at Oracle’s discretion.",
+   "context_offsets_in_normalized_text": [
+    33386,
+    33664
+   ],
+   "context_sha256": "dbc10caea2cfb0c4be20fd8ba44a06f4494636bd8f902596c20c23871a4ae01e",
+   "evidence_for_positive_reading": "'may issue ... at Oracle’s discretion' grants a discretion; no duty is imposed on Oracle by this sentence.",
+   "evidence_for_negative_reading": "Discretion might be constrained by implied good-faith duties under applicable law; nothing in the text states one.",
+   "qualification": "A discretionary power, not an obligation; AUTHORITY or PERMISSION_RIGHT may apply but are not scored here."
+  },
+  {
+   "decision_id": "OR4",
+   "source_id": "ORCL-PILLAR-2026-09",
+   "split": "HOLDOUT",
+   "function": "OBLIGATION",
+   "function_wording": "An explicit affirmative duty or service commitment imposed by this clause.",
+   "label": "YES",
+   "quote": "Oracle will use commercially reasonable efforts to process a claim within sixty (60) days of Oracle’s receipt of such claim.",
+   "quote_offsets_in_normalized_text": [
+    28926,
+    29050
+   ],
+   "context": "Oracle will use commercially reasonable efforts to process a claim within sixty (60) days of Oracle’s receipt of such claim.",
+   "context_offsets_in_normalized_text": [
+    28926,
+    29050
+   ],
+   "context_sha256": "90df797e1392c72d68f6f1ab3707db95ca8bc5af8f838d8ab7cff49b2e2e6747",
+   "evidence_for_positive_reading": "'Oracle will use commercially reasonable efforts' is a provider-side efforts undertaking with a stated period; it is not a condition of any Oracle benefit.",
+   "evidence_for_negative_reading": "It is an efforts standard, not a guaranteed result, and no remedy for breach is stated.",
+   "qualification": "An efforts duty is still an explicit affirmative duty under the probe wording."
+  },
+  {
+   "decision_id": "OR5",
+   "source_id": "ORCL-PILLAR-2026-09",
+   "split": "HOLDOUT",
+   "function": "OBLIGATION",
+   "function_wording": "An explicit affirmative duty or service commitment imposed by this clause.",
+   "label": "UNRESOLVED",
+   "quote": "In order to be considered to receive Service Credits, You must file a claim with Oracle in accordance with the terms listed in this subsection.",
+   "quote_offsets_in_normalized_text": [
+    27215,
+    27358
+   ],
+   "context": "In order to be considered to receive Service Credits, You must file a claim with Oracle in accordance with the terms listed in this subsection.",
+   "context_offsets_in_normalized_text": [
+    27215,
+    27358
+   ],
+   "context_sha256": "79068a2c6346429c4496fc5781dee19b128d3ef0d3645d991f987073cd034739",
+   "evidence_for_positive_reading": "'You must file a claim' is deontic syntax with an affirmative Customer act.",
+   "evidence_for_negative_reading": "'In order to be considered to receive Service Credits' makes it a prerequisite of the Customer's own entitlement (same structure as Google B3 and MS5).",
+   "qualification": "Same unresolved taxonomy question as B3/MS5; excluded from definitive accounting."
+  },
+  {
+   "decision_id": "OR6",
+   "source_id": "ORCL-PILLAR-2026-09",
+   "split": "HOLDOUT",
+   "function": "OBLIGATION",
+   "function_wording": "An explicit affirmative duty or service commitment imposed by this clause.",
+   "label": "NO",
+   "quote": "are contingent on Your adherence to Oracle's recommended minimum technical configuration requirements",
+   "quote_offsets_in_normalized_text": [
+    33799,
+    33900
+   ],
+   "context": "The Service Level Agreements for Cloud Services under this section (Oracle PaaS and IaaS Public Cloud Service Level Agreement Policy) are contingent on Your adherence to Oracle's recommended minimum technical configuration requirements for accessing and using the applicable Cloud Services from Your network infrastructure and Your user workstations as set forth in the Program Documentation for such Cloud Services, as well as the software versioning requirements set forth in section 4.2 of Oracle Cloud Hosting & Delivery Policies.",
+   "context_offsets_in_normalized_text": [
+    33665,
+    34199
+   ],
+   "context_sha256": "a4fe0e8d4dddf15feabb4454d50ecaa2a242a2bd47d1a67b2fa3ed6b8c478836",
+   "evidence_for_positive_reading": "'are contingent on Your adherence to ... recommended ... requirements' states a condition of SLA applicability; no 'must'/'shall' is addressed to the Customer, and the requirements are described as 'recommended'.",
+   "evidence_for_negative_reading": "The Program Documentation or Hosting Policies referenced may themselves impose configuration duties.",
+   "qualification": "Negative for THIS clause imposing a duty; CONDITION is the supported function (not scored here). Tests whether a classifier turns a condition into an obligation."
+  },
+  {
+   "decision_id": "OR7",
+   "source_id": "ORCL-PILLAR-2026-09",
+   "split": "HOLDOUT",
+   "function": "PROHIBITION",
+   "function_wording": "An action this clause expressly forbids. Do not infer prohibitions from mere definitions or exclusions.",
+   "label": "UNRESOLVED",
+   "quote": "You must use those Service Credits within the calendar month in which the Service Credits are granted. Any unused Service Credits will expire at the end of the calendar month in which the Service Credits are granted and You may not carry those Service Credits over to another month.",
+   "quote_offsets_in_normalized_text": [
+    21586,
+    21868
+   ],
+   "context": "With respect to Cloud Services purchased under a Pay as You Go Model, any Service Credits will be added to Your Pay as You Go balance in the calendar month following Oracle’s approval of Your claim. You must use those Service Credits within the calendar month in which the Service Credits are granted. Any unused Service Credits will expire at the end of the calendar month in which the Service Credits are granted and You may not carry those Service Credits over to another month.",
+   "context_offsets_in_normalized_text": [
+    21387,
+    21868
+   ],
+   "context_sha256": "24d1e63273c276a49514cb8d7ef7af9190746eef99248cc8daa0cef25fd7ea87",
+   "evidence_for_positive_reading": "'You may not carry those Service Credits over' is express 'may not' language addressed to the Customer.",
+   "evidence_for_negative_reading": "The preceding 'Any unused Service Credits will expire' already ends the credits; 'may not carry over' then restates a limit on the Customer's own entitlement rather than forbidding an independent action. Contrast MS2, where offsetting is an action outside the entitlement.",
+   "qualification": "Modal 'may not' vs. restriction of one's own right; legal effect disputed, so excluded from definitive accounting."
+  }
+ ]
+}
