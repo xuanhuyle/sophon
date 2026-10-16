@@ -5,7 +5,7 @@
 - **No cold Jev error has been observed on these documents**, because no Jev call has been made on them.
 - Scope labels: `MANUALLY_CURATED_SOURCE_EXCERPTS` · `MULTI_LABEL_PER_EXCERPT` · `AUTOMATIC_SUBPROVISION_SEGMENTATION_NOT_IMPLEMENTED`.
 
-**Recommendation: `GO_TO_BOUNDED_COLD_SCREEN`.** This is a request for owner authorization only. It does not authorize any call, and it does not imply the library helps.
+**Recommendation: `GO_TO_BOUNDED_COLD_SCREEN`, narrowed after the engineering-lead review of 2026-10-16 to the three definitive Microsoft update decisions only (at most 6 Jev calls).** This is a request for owner authorization only. It does not authorize any call, and it does not imply the library helps.
 
 Data: `discriminating_candidates_v0.json`. Check: `test_discriminating_candidates.py`.
 
@@ -88,12 +88,19 @@ Each JSON record holds the exact quote, an interpretive context excerpt, offsets
 
 ## Next step: requires new owner authorization (not started)
 
-**Bounded cold-only screen.** Same `jev-1.13.0`, the identical `probe.py` question set, no library. Each of the 12 contexts is sent **twice**, the repeat estimating the run-to-run noise PR #22 lacked: **24 Jev calls**.
+The original proposal was 24 calls (all 12 contexts twice). The engineering-lead review on PR #23 (2026-10-16) narrowed it, for two reasons. That proposal spent 10 calls on the Oracle holdout and 8 on unscored UNRESOLVED cases before anyone knew whether the update document has usable headroom. And holdout outcomes should not be seen before a library update exists.
+
+**Narrowed screen.** MS1, MS2 and MS3 only, each sent twice, for **at most 6 Jev calls**.
+- **Fixed inputs:** exact `jev-1.13.0`, failing closed rather than substituting another model; the identical `probe.py` question set; the recorded context; an empty library.
+- **Recording:** labels frozen as committed; a new git-ignored recording path with request hashes; no retries.
+- **Validate offline first.** No Oracle (holdout) and no UNRESOLVED context is sent.
 
 **Pre-registered reading:**
-- A *cold error* is a definitive YES with p < 0.5 in both repeats, or a definitive NO with p ≥ 0.5 in both repeats.
-- Splits between the two repeats are reported as instability, not errors.
-- UNRESOLVED decisions are reported and never scored.
-- If there are 0 cold errors on the 8 definitive decisions, this SLA set is at ceiling for Jev. Then stop library-learning tests on it and either source harder same-family provisions or settle the claim-prerequisite rule.
+- A definitive label contradicted in **both** repeats (YES with p < 0.5, or NO with p ≥ 0.5) is a **candidate classification disagreement**. It needs independent source-level adjudication and is not an established normative error. The labels are the implementer's unreviewed interpretation.
+- A disagreement in only one of the two repeats is noise or instability, not a disagreement.
+- **0 reproducible candidate disagreements → STOP** the learning experiment on this dataset. Do not query the Oracle holdout and do not add library templates.
+- **≥1 → first decide whether its label is defensible.** Only then propose a separately approved, bounded library update with a sealed holdout design.
 
-The screen needs a small offline addition: a cold-only mode in `probe.py` that reads these contexts. It must keep holdout texts out of any `prior_provision_skeletons`. That code is not written here.
+**Holdout discipline.** The Oracle texts and labels are already visible on this branch. Future library changes must never be tuned on Oracle outcomes, whether or not any exact quote overlaps.
+
+The screen needs a small offline addition: a cold-only mode in `probe.py` limited to MS1–MS3. That code is not written here. PR #22's frozen evidence is not modified.
