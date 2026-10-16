@@ -1,0 +1,14 @@
+$ /home/user/sophon-e0/experiments/E0_native_adapter/runs/regen/.upstream/.venv/bin/python -m scripts.load_bronze
+# cwd=/home/user/sophon-e0/experiments/E0_native_adapter/runs/regen/.upstream
+# exit=0
+--- stdout
+Loading Bronze into /home/user/sophon-e0/experiments/E0_native_adapter/runs/regen/.upstream/data/warehouse.duckdb
+  bronze.customers       500 rows
+  bronze.products        100 rows
+  bronze.stores           10 rows
+  bronze.orders         2200 rows
+  bronze.order_items    5526 rows
+  bronze.order_events     0 rows (streaming landing)
+Bronze layer ready.
+
+--- stderr

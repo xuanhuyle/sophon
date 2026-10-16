@@ -1,0 +1,530 @@
+{
+ "mode": "S12_regeneration",
+ "metric": "completed_revenue",
+ "upstream": "<upstream>",
+ "started_utc": "2026-10-12T05:15:04Z",
+ "upstream_commit": "312e97ad192dcef02f688e31edc0a08c6cf4345f",
+ "upstream_clean": true,
+ "S1_generate": {
+  "argv": [
+   "<upstream>/.venv/bin/python",
+   "scripts/generate_raw_data.py"
+  ],
+  "cwd": "<upstream>",
+  "exit_code": 0,
+  "elapsed_s": 0.351,
+  "log": "S1_generate.log",
+  "stdout_sha256": "ca3613e7d0fd3c9bd67ce32a06d390d562f2d2364a70970387dd916f3ced8408",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+ },
+ "S1_csv": {
+  "customers.csv": {
+   "rows": 500,
+   "sha256": "e570cfec57af94cee3b974db5642fe0c276b495f83dd82e6af077dbb3784680d"
+  },
+  "order_items.csv": {
+   "rows": 5526,
+   "sha256": "513de0a77e90c7312a2935d47efcced60b6811a33de589e1a4fe63d2045e5f26"
+  },
+  "orders.csv": {
+   "rows": 2200,
+   "sha256": "be942a616a816158924f538b8f9cde29de773bc324411c5c6f7c83c980ec4f03"
+  },
+  "products.csv": {
+   "rows": 100,
+   "sha256": "3783c0e35d83c571e8fc18bbafa98f59e217944288a92f590b6a15d4320c2311"
+  },
+  "stores.csv": {
+   "rows": 10,
+   "sha256": "78d2cbff192a861f4f880bcc0c25ddc43df72bfecf8a3517abf18723109f8c44"
+  }
+ },
+ "S2_load_bronze": {
+  "argv": [
+   "<upstream>/.venv/bin/python",
+   "-m",
+   "scripts.load_bronze"
+  ],
+  "cwd": "<upstream>",
+  "exit_code": 0,
+  "elapsed_s": 0.353,
+  "log": "S2_load_bronze.log",
+  "stdout_sha256": "e9ef0680e9acc9f599a488e0adcd6ddd34936da94e300cc4451734ab946708f6",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+ },
+ "S2_bronze_rows": {
+  "customers": 500,
+  "products": 100,
+  "stores": 10,
+  "orders": 2200,
+  "order_items": 5526,
+  "order_events": 0
+ },
+ "S3_dbt_build": {
+  "argv": [
+   "<upstream>/.venv/bin/dbt",
+   "build",
+   "--project-dir",
+   "<upstream>/dbt/retail_dwh",
+   "--profiles-dir",
+   "<upstream>/dbt/retail_dwh"
+  ],
+  "cwd": "<upstream>",
+  "exit_code": 0,
+  "elapsed_s": 11.414,
+  "log": "S3_dbt_build.log",
+  "stdout_sha256": "75b524286a02b2196cb3d8f6e26e5312a40e247c6a2bd97197f0ed8c3b38b7cf",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "status_counts": {
+   "success": 14,
+   "pass": 65,
+   "no-op": 2
+  },
+  "non_success": [
+   {
+    "node": "exposure.retail_dwh.governed_agent",
+    "status": "no-op",
+    "message": "NO-OP"
+   },
+   {
+    "node": "exposure.retail_dwh.governed_dashboard",
+    "status": "no-op",
+    "message": "NO-OP"
+   }
+  ]
+ },
+ "S4_dbt_parse": {
+  "argv": [
+   "<upstream>/.venv/bin/dbt",
+   "parse",
+   "--project-dir",
+   "<upstream>/dbt/retail_dwh",
+   "--profiles-dir",
+   "<upstream>/dbt/retail_dwh"
+  ],
+  "cwd": "<upstream>",
+  "exit_code": 0,
+  "elapsed_s": 3.569,
+  "log": "S4_dbt_parse.log",
+  "stdout_sha256": "25538d60c8e2ba191b3d7471a83b513ae94b764e16830b2389a1830fe26fca62",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "semantic_manifest_written": true
+ },
+ "fingerprints_after_parse": {
+  "semantic_manifest_sha256": "e8e9bfc7e1188bc3eb3f5ac551e8ed5350817af14a5471bdbcdfdca2bc01bd48",
+  "dbt_manifest_sha256": "5339a74b3a2dda41dc14b0b3dbc1b6d62c2e6ed91f3cab61459de44e7742e443",
+  "warehouse_sha256": "b6f022dcb95a35ffd4577cb547f77d93e78689913be9bac039f59a84e0e51591",
+  "warehouse_bytes": 3420160
+ },
+ "mf_identity": {
+  "mf_path": "<upstream>/.venv/bin/mf",
+  "mf_sha256": "0b45980fd30d603cdc1f1e1d5dfbb574b0671a6a45abb3acea2133baae68002b",
+  "record_entry": "../../../bin/mf",
+  "record_hash": "sha256=C0WYD9MNYDzcHx4dXfu1dLBnGmpFq7Os6iEzuq5oACs",
+  "distribution": "dbt_metricflow-0.13.0.dist-info",
+  "versions": {
+   "dbt-metricflow": "0.13.0",
+   "metricflow": "0.211.0",
+   "dbt-core": "1.11.11",
+   "dbt-duckdb": "1.10.1",
+   "dbt-semantic-interfaces": "0.9.0",
+   "duckdb": "1.5.4"
+  }
+ },
+ "S5_list_metrics": {
+  "cli_metric_names": [
+   "active_customers",
+   "average_order_value",
+   "average_order_value_live",
+   "completed_revenue",
+   "cost",
+   "discount",
+   "gross_margin_rate",
+   "gross_profit",
+   "gross_profit_live",
+   "orders",
+   "orders_live",
+   "purchasing_customers",
+   "quantity_sold",
+   "repeat_customer_rate",
+   "repeat_customers",
+   "return_rate",
+   "returned_orders",
+   "revenue",
+   "revenue_live"
+  ],
+  "manifest_metric_names": [
+   "active_customers",
+   "average_order_value",
+   "average_order_value_live",
+   "completed_revenue",
+   "cost",
+   "discount",
+   "gross_margin_rate",
+   "gross_profit",
+   "gross_profit_live",
+   "orders",
+   "orders_live",
+   "purchasing_customers",
+   "quantity_sold",
+   "repeat_customer_rate",
+   "repeat_customers",
+   "return_rate",
+   "returned_orders",
+   "revenue",
+   "revenue_live"
+  ],
+  "cli_equals_manifest": true,
+  "receipt": {
+   "argv": [
+    "mf",
+    "list",
+    "metrics"
+   ],
+   "cwd": "<upstream>/dbt/retail_dwh",
+   "env": {
+    "DBT_PROFILES_DIR": "<upstream>/dbt/retail_dwh",
+    "WAREHOUSE_DB": "<upstream>/data/warehouse.duckdb"
+   },
+   "exit_code": 0,
+   "elapsed_s": 3.879,
+   "stdout": "‼️ Warning: A new version of the MetricFlow CLI is available.\n💡 Please update to version 0.15.0, released 2026-09-10 20:36:50 by running:\n\t$ pip install --upgrade dbt-metricflow\n\n\n\n⠋ 🔍 Looking for all available metrics...\n\n⠙ 🔍 Looking for all available metrics...\n✔ 🌱 We've found 19 metrics.\nThe list below shows metrics in the format of \"metric_name: list of available dimensions\"\n• active_customers: customer__city, customer__country, customer__is_repeat_customer, customer__last_order_date, customer__signup_date and 8 more\n• average_order_value: customer__city, customer__country, customer__is_repeat_customer, customer__last_order_date, customer__signup_date and 8 more\n• average_order_value_live: customer__city, customer__country, customer__is_repeat_customer, customer__last_order_date, customer__signup_date and 8 more\n• completed_revenue: customer__city, customer__country, customer__is_repeat_customer, customer__last_order_date, customer__signup_date and 8 more\n• cost: customer__city, customer__country, customer__is_repeat_customer, customer__last_order_date, customer__signup_date and 8 more\n• discount: customer__city, customer__country, customer__is_repeat_customer, customer__last_order_date, customer__signup_date and 8 more\n• gross_margin_rate: customer__city, customer__country, customer__is_repeat_customer, customer__last_order_date, customer__signup_date and 8 more\n• gross_profit: customer__city, customer__country, customer__is_repeat_customer, customer__last_order_date, customer__signup_date and 8 more\n• gross_profit_live: customer__city, customer__country, customer__is_repeat_customer, customer__last_order_date, customer__signup_date and 8 more\n• orders: customer__city, customer__country, customer__is_repeat_customer, customer__last_order_date, customer__signup_date and 8 more\n• orders_live: customer__city, customer__country, customer__is_repeat_customer, customer__last_order_date, customer__signup_date and 8 more\n• purchasing_customers: customer__city, customer__country, customer__is_repeat_customer, customer__last_order_date, customer__signup_date and 1 more\n• quantity_sold: customer__city, customer__country, customer__is_repeat_customer, customer__last_order_date, customer__signup_date and 8 more\n• repeat_customer_rate: customer__city, customer__country, customer__is_repeat_customer, customer__last_order_date, customer__signup_date and 1 more\n• repeat_customers: customer__city, customer__country, customer__is_repeat_customer, customer__last_order_date, customer__signup_date and 1 more\n• return_rate: customer__city, customer__country, customer__is_repeat_customer, customer__last_order_date, customer__signup_date and 8 more\n• returned_orders: customer__city, customer__country, customer__is_repeat_customer, customer__last_order_date, customer__signup_date and 8 more\n• revenue: customer__city, customer__country, customer__is_repeat_customer, customer__last_order_date, customer__signup_date and 8 more\n• revenue_live: customer__city, customer__country, customer__is_repeat_customer, customer__last_order_date, customer__signup_date and 8 more\n\n",
+   "stderr": "",
+   "stdout_sha256": "a6919b1b469a733487ee1d13d494904a2772f8b30720de7ba669526e240d659e",
+   "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+ },
+ "S5_list_dimensions": {
+  "dimensions": [
+   "customer__city",
+   "customer__country",
+   "customer__is_repeat_customer",
+   "customer__last_order_date",
+   "customer__signup_date",
+   "metric_time",
+   "product__category",
+   "product__product_name",
+   "sales__channel",
+   "sales__order_date",
+   "sales__status",
+   "store__store_city",
+   "store__store_country"
+  ],
+  "receipt": {
+   "argv": [
+    "mf",
+    "list",
+    "dimensions",
+    "--metrics",
+    "completed_revenue"
+   ],
+   "cwd": "<upstream>/dbt/retail_dwh",
+   "env": {
+    "DBT_PROFILES_DIR": "<upstream>/dbt/retail_dwh",
+    "WAREHOUSE_DB": "<upstream>/data/warehouse.duckdb"
+   },
+   "exit_code": 0,
+   "elapsed_s": 3.105,
+   "stdout": "‼️ Warning: A new version of the MetricFlow CLI is available.\n💡 Please update to version 0.15.0, released 2026-09-10 20:36:50 by running:\n\t$ pip install --upgrade dbt-metricflow\n\n\n\n⠋ 🔍 Looking for all available dimensions...\n\n⠙ 🔍 Looking for all available dimensions...\n✔ 🌱 We've found 13 common dimensions for metrics ['completed_revenue'].\n• customer__city\n• customer__country\n• customer__is_repeat_customer\n• customer__last_order_date\n• customer__signup_date\n• metric_time\n• product__category\n• product__product_name\n• sales__channel\n• sales__order_date\n• sales__status\n• store__store_city\n• store__store_country\n\n",
+   "stderr": "",
+   "stdout_sha256": "183dd24a389bd8afd12e20576dba17d77aae0e9dd53e7391bfdba0de9a891b97",
+   "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+ },
+ "S6_identity": {
+  "metric": "completed_revenue",
+  "type": "simple",
+  "label": "Completed revenue",
+  "description": "Revenue from completed orders only.",
+  "measure": "revenue",
+  "filters": [
+   "{{ Dimension('sales__status') }} = 'completed'"
+  ],
+  "semantic_model": "sales",
+  "measure_agg": "sum",
+  "measure_expr": "revenue",
+  "agg_time_dimension": "order_date",
+  "node_relation": {
+   "alias": "fact_sales",
+   "schema_name": "gold",
+   "database": "warehouse",
+   "relation_name": "\"warehouse\".\"gold\".\"fact_sales\""
+  },
+  "dbt_node": "model.retail_dwh.fact_sales",
+  "lineage": [
+   {
+    "unique_id": "model.retail_dwh.fact_sales",
+    "path": "models/marts/facts/fact_sales.sql",
+    "checksum": "8ed1bfb7d950a34b3cd6a665108c01401423f20c4050c0a2d069c6f4cc92c90c",
+    "depends_on": [
+     "model.retail_dwh.stg_order_items",
+     "model.retail_dwh.stg_orders",
+     "model.retail_dwh.stg_products"
+    ]
+   },
+   {
+    "unique_id": "model.retail_dwh.stg_order_items",
+    "path": "models/staging/stg_order_items.sql",
+    "checksum": "d27145fb4f6ce5322277e669b25ce16e14f1a6489b510f1cd34c8001ee2d009f",
+    "depends_on": [
+     "source.retail_dwh.bronze.order_items"
+    ]
+   },
+   {
+    "unique_id": "model.retail_dwh.stg_orders",
+    "path": "models/staging/stg_orders.sql",
+    "checksum": "842d75286635110ae2d75b1c66cbce59d4fccd91e9948b7d06b9218a4d976ea9",
+    "depends_on": [
+     "source.retail_dwh.bronze.orders"
+    ]
+   },
+   {
+    "unique_id": "model.retail_dwh.stg_products",
+    "path": "models/staging/stg_products.sql",
+    "checksum": "dd14fa37b92e38251719a655db57f244d43859447b0607cc01a1999a62d9dbc4",
+    "depends_on": [
+     "source.retail_dwh.bronze.products"
+    ]
+   },
+   {
+    "unique_id": "source.retail_dwh.bronze.order_items",
+    "path": "models/staging/_sources.yml",
+    "checksum": null,
+    "depends_on": []
+   },
+   {
+    "unique_id": "source.retail_dwh.bronze.orders",
+    "path": "models/staging/_sources.yml",
+    "checksum": null,
+    "depends_on": []
+   },
+   {
+    "unique_id": "source.retail_dwh.bronze.products",
+    "path": "models/staging/_sources.yml",
+    "checksum": null,
+    "depends_on": []
+   }
+  ],
+  "metric_definition_sha256": "b8378e5a84e60f13092bb8ae0769aeef1b35434c4f16b339bf3d3317c0023b17",
+  "semantic_model_definition_sha256": "5ddfb05ba90284df1c2380f1b0f6dd7780cde08782b31aaefe5dcccdf0df3e51"
+ },
+ "S6_identity_mismatches": [],
+ "S7_explain": {
+  "sql": "SELECT\n  metric_time__year\n  , SUM(completed_revenue) AS completed_revenue\nFROM (\n  SELECT\n    DATE_TRUNC('year', order_date) AS metric_time__year\n    , status AS sales__status\n    , revenue AS completed_revenue\n  FROM \"warehouse\".\"gold\".\"fact_sales\" sales_src_10000\n) subq_2\nWHERE sales__status = 'completed'\nGROUP BY\n  metric_time__year\nORDER BY metric_time__year",
+  "receipt": {
+   "argv": [
+    "mf",
+    "query",
+    "--metrics",
+    "completed_revenue",
+    "--group-by",
+    "metric_time__year",
+    "--order",
+    "metric_time__year",
+    "--explain"
+   ],
+   "cwd": "<upstream>/dbt/retail_dwh",
+   "env": {
+    "DBT_PROFILES_DIR": "<upstream>/dbt/retail_dwh",
+    "WAREHOUSE_DB": "<upstream>/data/warehouse.duckdb"
+   },
+   "exit_code": 0,
+   "elapsed_s": 3.898,
+   "stdout": "‼️ Warning: A new version of the MetricFlow CLI is available.\n💡 Please update to version 0.15.0, released 2026-09-10 20:36:50 by running:\n\t$ pip install --upgrade dbt-metricflow\n\n\n\n⠋ Initiating query…\n\n⠙ Initiating query…\n✔ Success 🦄 - query completed after 0.05 seconds\n🔎 SQL (remove --explain to see data or add --show-dataflow-plan to see the generated dataflow plan):\n\nSELECT\n  metric_time__year\n  , SUM(completed_revenue) AS completed_revenue\nFROM (\n  SELECT\n    DATE_TRUNC('year', order_date) AS metric_time__year\n    , status AS sales__status\n    , revenue AS completed_revenue\n  FROM \"warehouse\".\"gold\".\"fact_sales\" sales_src_10000\n) subq_2\nWHERE sales__status = 'completed'\nGROUP BY\n  metric_time__year\nORDER BY metric_time__year\n\n",
+   "stderr": "",
+   "stdout_sha256": "114794e50ac5aa473cf2603b2221778bc0b8e812e1ce4f06ebb9f37f505b9ba5",
+   "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reads_fact_sales": true,
+  "applies_completed_filter": true
+ },
+ "S7_query": {
+  "rows": [
+   {
+    "metric_time__year": "2024-01-01 00:00:00",
+    "completed_revenue": "1707052.8"
+   },
+   {
+    "metric_time__year": "2025-01-01 00:00:00",
+    "completed_revenue": "1477833.96"
+   },
+   {
+    "metric_time__year": "2026-01-01 00:00:00",
+    "completed_revenue": "792441.45"
+   }
+  ],
+  "csv": "metric_time__year,completed_revenue\n2024-01-01 00:00:00,1707052.8\n2025-01-01 00:00:00,1477833.96\n2026-01-01 00:00:00,792441.45\n",
+  "receipt": {
+   "argv": [
+    "mf",
+    "query",
+    "--metrics",
+    "completed_revenue",
+    "--group-by",
+    "metric_time__year",
+    "--order",
+    "metric_time__year",
+    "--csv",
+    "<csv>"
+   ],
+   "cwd": "<upstream>/dbt/retail_dwh",
+   "env": {
+    "DBT_PROFILES_DIR": "<upstream>/dbt/retail_dwh",
+    "WAREHOUSE_DB": "<upstream>/data/warehouse.duckdb"
+   },
+   "exit_code": 0,
+   "elapsed_s": 3.122,
+   "stdout": "‼️ Warning: A new version of the MetricFlow CLI is available.\n💡 Please update to version 0.15.0, released 2026-09-10 20:36:50 by running:\n\t$ pip install --upgrade dbt-metricflow\n\n\n\n⠋ Initiating query…\n\n⠙ Initiating query…\n✔ Success 🦄 - query completed after 0.06 seconds\n🖨 Wrote query output to /tmp/tmpitts69qk/result.csv\n\n",
+   "stderr": "",
+   "stdout_sha256": "c5b5adace0441585288dbf68c045947fc6db535fd72143556fce47db5b32b0a0",
+   "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "csv_written": true,
+   "csv_sha256": "bdf143bce004ca7ef4ef75621e740dd7f608b21b5d804ef0d63ccb402a62842f",
+   "fingerprints_before": {
+    "semantic_manifest_sha256": "e8e9bfc7e1188bc3eb3f5ac551e8ed5350817af14a5471bdbcdfdca2bc01bd48",
+    "dbt_manifest_sha256": "5339a74b3a2dda41dc14b0b3dbc1b6d62c2e6ed91f3cab61459de44e7742e443",
+    "warehouse_sha256": "b6f022dcb95a35ffd4577cb547f77d93e78689913be9bac039f59a84e0e51591",
+    "warehouse_bytes": 3420160
+   },
+   "fingerprints_after": {
+    "semantic_manifest_sha256": "e8e9bfc7e1188bc3eb3f5ac551e8ed5350817af14a5471bdbcdfdca2bc01bd48",
+    "dbt_manifest_sha256": "5339a74b3a2dda41dc14b0b3dbc1b6d62c2e6ed91f3cab61459de44e7742e443",
+    "warehouse_sha256": "b6f022dcb95a35ffd4577cb547f77d93e78689913be9bac039f59a84e0e51591",
+    "warehouse_bytes": 3420160
+   },
+   "mf_identity": {
+    "mf_path": "<upstream>/.venv/bin/mf",
+    "mf_sha256": "0b45980fd30d603cdc1f1e1d5dfbb574b0671a6a45abb3acea2133baae68002b",
+    "record_entry": "../../../bin/mf",
+    "record_hash": "sha256=C0WYD9MNYDzcHx4dXfu1dLBnGmpFq7Os6iEzuq5oACs",
+    "distribution": "dbt_metricflow-0.13.0.dist-info",
+    "versions": {
+     "dbt-metricflow": "0.13.0",
+     "metricflow": "0.211.0",
+     "dbt-core": "1.11.11",
+     "dbt-duckdb": "1.10.1",
+     "dbt-semantic-interfaces": "0.9.0",
+     "duckdb": "1.5.4"
+    }
+   }
+  }
+ },
+ "S8_repeat": {
+  "rows": [
+   {
+    "metric_time__year": "2024-01-01 00:00:00",
+    "completed_revenue": "1707052.8"
+   },
+   {
+    "metric_time__year": "2025-01-01 00:00:00",
+    "completed_revenue": "1477833.96"
+   },
+   {
+    "metric_time__year": "2026-01-01 00:00:00",
+    "completed_revenue": "792441.45"
+   }
+  ],
+  "receipt": {
+   "argv": [
+    "mf",
+    "query",
+    "--metrics",
+    "completed_revenue",
+    "--group-by",
+    "metric_time__year",
+    "--order",
+    "metric_time__year",
+    "--csv",
+    "<csv>"
+   ],
+   "cwd": "<upstream>/dbt/retail_dwh",
+   "env": {
+    "DBT_PROFILES_DIR": "<upstream>/dbt/retail_dwh",
+    "WAREHOUSE_DB": "<upstream>/data/warehouse.duckdb"
+   },
+   "exit_code": 0,
+   "elapsed_s": 3.122,
+   "stdout": "‼️ Warning: A new version of the MetricFlow CLI is available.\n💡 Please update to version 0.15.0, released 2026-09-10 20:36:50 by running:\n\t$ pip install --upgrade dbt-metricflow\n\n\n\n⠋ Initiating query…\n\n⠙ Initiating query…\n✔ Success 🦄 - query completed after 0.06 seconds\n🖨 Wrote query output to /tmp/tmpitts69qk/result.csv\n\n",
+   "stderr": "",
+   "stdout_sha256": "c5b5adace0441585288dbf68c045947fc6db535fd72143556fce47db5b32b0a0",
+   "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "csv_written": true,
+   "csv_sha256": "bdf143bce004ca7ef4ef75621e740dd7f608b21b5d804ef0d63ccb402a62842f",
+   "fingerprints_before": {
+    "semantic_manifest_sha256": "e8e9bfc7e1188bc3eb3f5ac551e8ed5350817af14a5471bdbcdfdca2bc01bd48",
+    "dbt_manifest_sha256": "5339a74b3a2dda41dc14b0b3dbc1b6d62c2e6ed91f3cab61459de44e7742e443",
+    "warehouse_sha256": "b6f022dcb95a35ffd4577cb547f77d93e78689913be9bac039f59a84e0e51591",
+    "warehouse_bytes": 3420160
+   },
+   "fingerprints_after": {
+    "semantic_manifest_sha256": "e8e9bfc7e1188bc3eb3f5ac551e8ed5350817af14a5471bdbcdfdca2bc01bd48",
+    "dbt_manifest_sha256": "5339a74b3a2dda41dc14b0b3dbc1b6d62c2e6ed91f3cab61459de44e7742e443",
+    "warehouse_sha256": "b6f022dcb95a35ffd4577cb547f77d93e78689913be9bac039f59a84e0e51591",
+    "warehouse_bytes": 3420160
+   },
+   "mf_identity": {
+    "mf_path": "<upstream>/.venv/bin/mf",
+    "mf_sha256": "0b45980fd30d603cdc1f1e1d5dfbb574b0671a6a45abb3acea2133baae68002b",
+    "record_entry": "../../../bin/mf",
+    "record_hash": "sha256=C0WYD9MNYDzcHx4dXfu1dLBnGmpFq7Os6iEzuq5oACs",
+    "distribution": "dbt_metricflow-0.13.0.dist-info",
+    "versions": {
+     "dbt-metricflow": "0.13.0",
+     "metricflow": "0.211.0",
+     "dbt-core": "1.11.11",
+     "dbt-duckdb": "1.10.1",
+     "dbt-semantic-interfaces": "0.9.0",
+     "duckdb": "1.5.4"
+    }
+   }
+  },
+  "csv_identical": true,
+  "warehouse_sha256_unchanged": true
+ },
+ "S9_negative": {},
+ "S10_crosscheck": {
+  "label": "CROSS-CHECK from raw CSV with Python stdlib; not semantic execution",
+  "by_year": {
+   "2024": "1707052.80",
+   "2025": "1477833.96",
+   "2026": "792441.45"
+  },
+  "total": "3977328.21",
+  "lines": {
+   "total": 5526,
+   "completed": 4512,
+   "orphan_order": 0,
+   "orphan_product": 0
+  },
+  "native_by_year": {
+   "2024": "1707052.80",
+   "2025": "1477833.96",
+   "2026": "792441.45"
+  },
+  "equal_per_year": true
+ },
+ "D1_explain_sql_direct": {
+  "rows": [
+   [
+    "2024-01-01 00:00:00",
+    "1707052.80"
+   ],
+   [
+    "2025-01-01 00:00:00",
+    "1477833.96"
+   ],
+   [
+    "2026-01-01 00:00:00",
+    "792441.45"
+   ]
+  ],
+  "equal_to_native": true
+ },
+ "finished_utc": "2026-10-12T05:15:34Z",
+ "fingerprints_final": {
+  "semantic_manifest_sha256": "e8e9bfc7e1188bc3eb3f5ac551e8ed5350817af14a5471bdbcdfdca2bc01bd48",
+  "dbt_manifest_sha256": "5339a74b3a2dda41dc14b0b3dbc1b6d62c2e6ed91f3cab61459de44e7742e443",
+  "warehouse_sha256": "b6f022dcb95a35ffd4577cb547f77d93e78689913be9bac039f59a84e0e51591",
+  "warehouse_bytes": 3420160
+ }
+}

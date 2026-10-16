@@ -1,0 +1,39 @@
+{
+ "pid": 958,
+ "receipt": "evidence/run/run_receipt.json",
+ "commit_matches": true,
+ "fingerprints_match": {
+  "semantic_manifest_sha256": true,
+  "dbt_manifest_sha256": true,
+  "warehouse_sha256": true,
+  "warehouse_bytes": true
+ },
+ "mf_entry_point_matches": true,
+ "committed_semantic_manifest_matches_live": true,
+ "rerun": {
+  "argv": [
+   "mf",
+   "query",
+   "--metrics",
+   "completed_revenue",
+   "--group-by",
+   "metric_time__year",
+   "--order",
+   "metric_time__year",
+   "--csv",
+   "<csv>"
+  ],
+  "exit_code": 0,
+  "csv_written": true,
+  "csv_identical_to_recorded": true,
+  "recorded_csv_sha256": "bdf143bce004ca7ef4ef75621e740dd7f608b21b5d804ef0d63ccb402a62842f",
+  "fresh_csv_sha256": "bdf143bce004ca7ef4ef75621e740dd7f608b21b5d804ef0d63ccb402a62842f"
+ },
+ "fingerprints_after_rerun_match": {
+  "semantic_manifest_sha256": true,
+  "dbt_manifest_sha256": true,
+  "warehouse_sha256": true,
+  "warehouse_bytes": true
+ },
+ "ok": true
+}

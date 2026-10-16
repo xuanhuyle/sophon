@@ -1,0 +1,6 @@
+# E0: upstream checkout, its virtualenv, generated data and warehouse are reproducible and never committed
+.upstream/
+runs/
+__pycache__/
+*.duckdb
+*.duckdb.wal

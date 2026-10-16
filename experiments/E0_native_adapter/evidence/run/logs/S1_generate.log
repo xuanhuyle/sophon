@@ -1,0 +1,13 @@
+$ /home/user/sophon-e0/experiments/E0_native_adapter/.upstream/.venv/bin/python scripts/generate_raw_data.py
+# cwd=/home/user/sophon-e0/experiments/E0_native_adapter/.upstream
+# exit=0
+--- stdout
+Generating synthetic retail data into /home/user/sophon-e0/experiments/E0_native_adapter/.upstream/data/raw (seed=42)
+  wrote data/raw/customers.csv  (500 rows)
+  wrote data/raw/products.csv  (100 rows)
+  wrote data/raw/stores.csv  (10 rows)
+  wrote data/raw/orders.csv  (2200 rows)
+  wrote data/raw/order_items.csv  (5526 rows)
+Done. 2200 orders, 5526 order lines.
+
+--- stderr
