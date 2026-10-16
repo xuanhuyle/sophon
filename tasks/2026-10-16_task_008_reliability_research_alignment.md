@@ -1,0 +1,25 @@
+# TASK 008 — Reconcile the active Sophon research objective (ONE small documentation/guard PR)
+
+**Owner-directed outcome (16 October 2026):** "The objective is no longer to prove that Sophon becomes smarter with every contract. It is to prove that the organization becomes more reliable as its governing knowledge evolves." This is consistent with `SOPHON_CHARTER.md` v1.2; **do not rewrite the charter** or claim the thesis has been proved.
+
+**This is a governance/CI alignment increment ONLY.** Work from the already-created branch `chore/reliability-goal-reconciliation-2026-10-16` (base `main` at `f1d7688`). First inspect the current branch head/status and existing PRs. Read `SOPHON_CHARTER.md`, `PROJECT_STATE.json`, `ENGINEERING_WORKFLOW.md`, `CLAUDE.md`, `AGENTS.md`, `README.md`, `.claude/hooks/context_guard.py`, `tests/test_context_guard.py` and `.github/workflows/context-integrity.yml`. Inspect actual scoped outcomes: E4 `DECISION.md` on PR #10 (`d6fe13d`), E5 `DECISION.md`/`RESULTS.md` on PR #11 (`8277cd8`), and completed Jev PRs #22/#23 (heads `c957078`, `e7d4d5b`). **Those results and experimental branches are immutable; they are not merged into main.**
+
+## Observed repository problem (verify, don't take on faith)
+- Charter v1.2 already makes maintained, source-linked governing meaning and bidirectional BI reconciliation the product, with TRANSPOSE / TRACE / VERIFY / AUDIT. The BI-first contract checker is its initial wedge.
+- `main` still says Jev cumulative classification improvement is the CURRENT research objective in `PROJECT_STATE.json`, `CLAUDE.md`, `AGENTS.md`, `README.md`.
+- `.claude/hooks/context_guard.py` hardcodes `ACTIVE_GOAL = PROVISION_NATURE_CUMULATIVE_LEARNING_V1` and compares current `research_contract` against that invariant; some regression tests hardcode the old research contract. Simply editing prose will cause CI failure. Do not bypass the guard.
+- E0–E5 evidence is on an **unmerged E0→E5 stacked PR chain** (#4–#11). E5's branch contains charter v1.1 and no current `PROJECT_STATE.json`/native context guard; its 14 unit tests and real MetricFlow check were run locally, **not GitHub CI**. Do not treat a green context-integrity CI as E5 verification.
+- E4 already rejected planted material implementation changes and accepted harmless changes; E5 already tested a staged governing amendment and a collateral P2 edit. A future E6 must add **independently initiated implementation-side change/reconciliation**, not repeat old planted variants. Do not implement E6 in this task.
+
+## Exactly one deliverable
+Make the **smallest coherent update** to current research metadata and the context guard so that:
+1. The current engineering objective is explicitly **institutional alignment/reliability as governing knowledge changes**, measured through faithful source/version/authority lineage, two-direction alignment checks, independent native evidence, no silent false assurance, and ultimately effort/errors compared with competent ordinary Git/dbt/CI workflows. Keep claims about real-world usefulness UNPROVEN.
+2. Jev/classification and cumulative-library research becomes **historical / paused**, not erased or retrospectively relabelled. Preserve its original goal, frozen target, experiment-alignment declarations and outcomes; do not treat a negative Jev pilot as Sophon-wide failure. Preserve links to the PR #22/#23 results.
+3. The existing integrity guard and tests validate the current approved research goal **without disabling the security/lineage assertions for historical experiments**. Where necessary, distinguish active-goal alignment from legacy evidence immutability. Do not build a generic workflow engine or proliferate schema versions merely to change one research priority.
+4. Update `CLAUDE.md`, `AGENTS.md`, and README only where they assert Jev learning is the CURRENT non-negotiable goal, while keeping the v1.2 product boundary and standing engineering workflow unchanged.
+
+**Falsifiable acceptance check:** Run `python3 .claude/hooks/context_guard.py check` and `python3 -m unittest discover -s tests -p 'test_context_guard.py' -v`. Include at least one negative test for silently deleting or retroactively changing the prior classification experiment identity, and one for silent active-goal drift. CI must pass on the new PR. Changes confined to documentation/current state, guard and related tests. **NO** new model calls, JEV probes, native BI build, new E6 code, product framework, branch-stack merge, or amendment to frozen experiment files.
+
+Commit on this branch and open **one small draft PR against main**, with a one-paragraph rationale, the observed test results and a STOP. If current repo code makes this broader than expected, state the precise blocker and propose a smaller fix rather than proceeding.
+
+**After this task, not in it:** independently verify that E5 remains reproducible from its pinned upstream/runtime before a bounded E6 implementation-originated drift check. Reuse E4/E5 and one material plus one harmless edit; do not build a new watcher or platform. That will require a separate engineering decision and experiment.
