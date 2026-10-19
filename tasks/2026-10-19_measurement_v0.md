@@ -1,3 +1,5 @@
+> **SUPERSEDED — DO NOT EXECUTE (19 October 2026).** This E4/E5-centered task reuses lab-authored fixtures and is not a valid first external performance benchmark. Replacement: [Task 010](../../tree/research/measurement-v0-independent-baseline-2026-10-19/tasks/2026-10-19_task_010_independent_measurement_v0.md) on branch `research/measurement-v0-independent-baseline-2026-10-19`. Historical text below retained solely for traceability.
+
 # TASK 009 — Measurement V0: first falsifiable baseline-versus-Sophon observation
 
 **Owner intent (19 October 2026):** Stop building architectures without a repeatable performance datum. Measure a stable governed-change task, then improve only one identified failure. This is a ONE-INCREMENT, measurement-only experiment; **no new Sophon capability**.
