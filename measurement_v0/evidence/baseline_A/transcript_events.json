@@ -1,0 +1,1577 @@
+{
+ "ccr": {
+  "data": [
+   {
+    "created_at": "2026-10-19T08:52:28.227246Z",
+    "user": {
+     "uuid": "1325edd7-9493-4689-a7ef-3870e9611572",
+     "internal_anthropic_catchall": {
+      "client_platform": "claude_code_mcp_seed",
+      "inbound_origin": "mcp_create_session",
+      "message": {
+       "content": "You are a software engineer doing a compliance review of an open-source rules-as-code system. Work as a competent engineer normally would: read the code and its git history up to the pinned commit, run the native model and its own tests, write small scripts, and reason from the governing text. You may use your own background knowledge.\n\n**System under review:** PolicyEngine-US at commit `5152b5f7c325717d84a0b67955594a4b12752dde`. Obtain it only like this:\n\n```\ngit init pe && cd pe && git fetch --depth 500 https://github.com/PolicyEngine/policyengine-us 5152b5f7c325717d84a0b67955594a4b12752dde && git checkout FETCH_HEAD\n```\n\nIts `uv.lock` lists dependency versions. Python 3.11\u20133.13 works; for example `pip install policyengine-core==3.30.2 numpy==2.4.1 pandas==3.0.0 spm-calculator==0.3.1 microdf-python==1.2.1 tables==3.11.1 tqdm` in a venv, then run Python with the checkout on `PYTHONPATH`.\n\n**Governing sources (pinned \u2014 fetch exactly these and check the sha256):**\n- 7 CFR \u00a7 273.10, CFR 2025 edition (revised as of 1 January 2025): https://www.govinfo.gov/content/pkg/CFR-2025-title7-vol4/xml/CFR-2025-title7-vol4-sec273-10.xml (sha256 `614a2334b335d953df58323e2728c61eb328fc811ba8d887494f798072659b76`)\n- 7 U.S.C. \u00a7 2017, U.S. Code 2024 edition: https://www.govinfo.gov/content/pkg/USCODE-2024-title7/html/USCODE-2024-title7-chap51-sec2017.htm (sha256 `6e06aad1a1c3d64df1f01bb90b1a71416ca8ac774dec86c80447879ed396467b`)\n\n**Question.** For an eligible Texas SNAP household of 3 people in a non-initial month (January 2026), does the implementation's computation of the **monthly SNAP allotment from the household's net monthly income** conform to these governing sources? In scope: the step(s) from net monthly income (as determined under 7 CFR 273.10(e)(1)) to the monthly allotment (7 CFR 273.10(e)(2) and 7 U.S.C. 2017(a)). Out of scope: which deductions make up net income, eligibility tests, and the dollar values of the maximum allotment tables. Where a governing provision gives the State a choice, say so rather than assuming Texas's choice.\n\n**Rules.** Do not look at PolicyEngine-US commits, branches, issues, pull requests, releases, changelogs or discussions from after the pinned commit, and do not use web search. Use only the pinned checkout, the two pinned sources, PyPI packages and your own knowledge. Timebox: about 60 minutes. Do not push anything anywhere.\n\n**Output.** Finish with exactly one fenced JSON block (also save it as `baseline_report.json`):\n\n```json\n{\n  \"revision\": \"5152b5f7c325717d84a0b67955594a4b12752dde\",\n  \"overall_verdict\": \"CONFORMS | DOES_NOT_CONFORM | CANNOT_DETERMINE\",\n  \"findings\": [\n    {\"id\": \"F1\",\n     \"governing_citation\": \"exact provision\",\n     \"implementation_location\": \"file/variable\",\n     \"verdict\": \"CONFORMS | DOES_NOT_CONFORM | CANNOT_DETERMINE | STATE_OPTION_DEPENDENT\",\n     \"description\": \"what the source requires vs what the code does\",\n     \"evidence\": \"commands run and the observed output\"}\n  ],\n  \"commands_run\": [\"...\"],\n  \"limitations\": \"...\"\n}\n```\n\nList every in-scope requirement you checked, including the ones that conform. When finished, send the same JSON block as a message to session `session_01DHWCFmUBLw9g2DGBdAEeJs` using the send_message tool if you have it; then stop.",
+       "role": "user"
+      },
+      "parent_tool_use_id": null,
+      "trace_context": "00-6a65bbb31594e34e95bfa6b4de86e474-eb083a288ffbc865-00"
+     }
+    }
+   },
+   {
+    "created_at": "2026-10-19T08:52:33.804392Z",
+    "assistant": {
+     "uuid": "6e581a39-06c3-46e2-b3ae-83096af73d77",
+     "internal_anthropic_catchall": {
+      "message": {
+       "container": null,
+       "content": [
+        {
+         "signature": "CAQS3gcKEAgSGAI4AUIIdGhpbmtpbmcSDPQdGsmof13avrioSRoMU8PYKG92NMBzzLnfIjDanBCtRT6pdWUmpjmXmnlWYoobN1Ndm8owTkrzJGVymcivmiohhkbM0249NkHj4cYq+wZDrBcqA1wjZlxeK06q+cfHM+juU4hBBc5meZmWEX7gPyx0F+Cqe5IvLA4JUuH61oajlmFr1YV+WxNkIHWfnPJz/5isJHUy3kIApRRWpz3Ze2y4u7HqSaGqSSRFsr3vgtWEkPgKt8Nz0IgJus/aqd/qdhGgCkMQbFqzQcuNL1oHUeaW4RnD/qdIZnPmJX4ALVgtqM2ZGsnPJehKobFVBqzmzz7WHwiaZKZDyuArubPhXXTef4lziA+RbpEPVDVlRC7iyqJBh3QTZ+RSX3ycYYNAkReWg7zOXvgp/+sD84pjPIcqTs4x8+EvMywqhFII0zG5zav8D5VrqZO6yA1nf1N37g8doE2dMJslbS2J9ekzLJcnQxH2RcKyzU0HPJD384qy5+tyaFZzk3FaV23DnDq/oW1xUgomFO1iV/LEHETMezlHWjSi1ViaNLJZlZ7k/CFHzSEPwTvtQerkBwQCnt1hE1cpEOfxXQWm48pMycSVzNYabLudyicZD7m+MAbe3LkLg0DKwVvPUStzXqf6YVKgiS3+YFutjjRCS+LOcFnq6E/SMGxs22EPYknnG/7fZWXfJFKFjV+eRbxZTgmr1gkOb8Icz23eyt34Mutg6a1mYV+nNZw+Oo5/iPTxLCs4Ww3U/W4+/DnmliegNxCvBwZi4bEO3o3F0QEUzDPztn+Ngdy6s1TPrLb34X8iYtpBIXqkb4Kh9CwQ9jEZ/hl+pC4s11XXDhGPRh/3VhYPbQXiu+/8DXpeP4FpnXsZRAtq/MD5guRu82rwwJ7a4e2nSbsJKe9uR7MALs14o8wJiKRCKLzta79tNaqIswx1k8hBA7E+NhPAdMUXKoAn3ucLHa0K5HHj+djnxmbel3L2fZUNGx6CFEJ9MAf4okcxVQM9tPc8cidVq4ZYD9/lO1UIadaZAzAqwv5hkkcnDR9GWDE9ZrjCAwWPGyUQr7tJHSXTViO9Mpf0skyWR6owJOYlvHDpqdVTiY5aiF3BiA2ZgJC25rW/dUuhtyGiCTwLZh22c07m4pv7a1q2Sp2z0RMejfGzjaRAnyFFMXxY0b1Ef91sjrQZqDtYTn5FBRtFzGmmRzxA8m0KKa9Zgkl8PPlZrDulS/2JQifDM6VRO3IwGAurvh7ojvk/xkJ4MlxdHL0xoWm+l1Xne7uAiXrKAgn3Lfo3WCLptdxmDAfRqQgYAQ==",
+         "thinking": "",
+         "type": "thinking"
+        }
+       ],
+       "context_management": null,
+       "diagnostics": null,
+       "id": "msg_011CgBK3tHjX7u5QmrjPrRmn",
+       "input_transformations": [],
+       "model": "claude-opus-5-5",
+       "role": "assistant",
+       "stop_details": null,
+       "stop_reason": null,
+       "stop_sequence": null,
+       "type": "message",
+       "usage": {
+        "cache_creation": {
+         "ephemeral_1h_input_tokens": 14821,
+         "ephemeral_5m_input_tokens": 0
+        },
+        "cache_creation_input_tokens": 14821,
+        "cache_read_input_tokens": 47835,
+        "inference_geo": "global",
+        "input_tokens": 2,
+        "output_tokens": 7,
+        "service_tier": "standard",
+        "speed": "standard"
+       }
+      },
+      "parent_tool_use_id": null,
+      "request_id": "req_011CgBK3swf4UHt2BgmaVFEE",
+      "session_id": "d2cb8e07-138a-54f8-84a3-4e696057327c",
+      "thinking_display": "updates",
+      "thinking_duration_ms": 1332,
+      "timestamp": "2026-10-19T08:52:33.673Z",
+      "user_message_uuid": "1325edd7-9493-4689-a7ef-3870e9611572",
+      "user_message_uuids": [
+       "1325edd7-9493-4689-a7ef-3870e9611572"
+      ]
+     }
+    }
+   },
+   {
+    "created_at": "2026-10-19T08:52:35.732293Z",
+    "assistant": {
+     "uuid": "dce53381-2444-47d2-a33d-73a055d1583d",
+     "internal_anthropic_catchall": {
+      "message": {
+       "container": null,
+       "content": [
+        {
+         "caller": {
+          "type": "direct"
+         },
+         "id": "toolu_0147FyVc819znyJE12pYQoeV",
+         "input": {
+          "command": "git init -q pe && cd pe && git fetch -q --depth 500 https://github.com/PolicyEngine/policyengine-us 5152b5f7c325717d84a0b67955594a4b12752dde && git checkout -q FETCH_HEAD && git log -1 --format='%H %cd'; mkdir -p /home/user/src && cd /home/user/src && curl -sSO https://www.govinfo.gov/content/pkg/CFR-2025-title7-vol4/xml/CFR-2025-title7-vol4-sec273-10.xml && curl -sSO https://www.govinfo.gov/content/pkg/USCODE-2024-title7/html/USCODE-2024-title7-chap51-sec2017.htm && sha256sum *"
+         },
+         "name": "Bash",
+         "type": "tool_use"
+        }
+       ],
+       "context_management": null,
+       "diagnostics": null,
+       "id": "msg_011CgBK3tHjX7u5QmrjPrRmn",
+       "input_transformations": [],
+       "model": "claude-opus-5-5",
+       "role": "assistant",
+       "stop_details": null,
+       "stop_reason": null,
+       "stop_sequence": null,
+       "type": "message",
+       "usage": {
+        "cache_creation": {
+         "ephemeral_1h_input_tokens": 14821,
+         "ephemeral_5m_input_tokens": 0
+        },
+        "cache_creation_input_tokens": 14821,
+        "cache_read_input_tokens": 47835,
+        "inference_geo": "global",
+        "input_tokens": 2,
+        "output_tokens": 7,
+        "service_tier": "standard",
+        "speed": "standard"
+       }
+      },
+      "parent_tool_use_id": null,
+      "request_id": "req_011CgBK3swf4UHt2BgmaVFEE",
+      "session_id": "d2cb8e07-138a-54f8-84a3-4e696057327c",
+      "timestamp": "2026-10-19T08:52:35.666Z",
+      "wire_ingest_context": {
+       "toolu_0147FyVc819znyJE12pYQoeV": {
+        "cwd": "/home/user"
+       }
+      },
+      "wire_tool_inputs": {
+       "toolu_0147FyVc819znyJE12pYQoeV": {
+        "command": "cd /home/user && git init -q pe && cd pe && git fetch -q --depth 500 https://github.com/PolicyEngine/policyengine-us 5152b5f7c325717d84a0b67955594a4b12752dde && git checkout -q FETCH_HEAD && git log -1 --format='%H %cd'; mkdir -p /home/user/src && cd /home/user/src && curl -sSO https://www.govinfo.gov/content/pkg/CFR-2025-title7-vol4/xml/CFR-2025-title7-vol4-sec273-10.xml && curl -sSO https://www.govinfo.gov/content/pkg/USCODE-2024-title7/html/USCODE-2024-title7-chap51-sec2017.htm && sha256sum *"
+       }
+      }
+     }
+    }
+   },
+   {
+    "created_at": "2026-10-19T08:52:50.141647Z",
+    "user": {
+     "uuid": "747e0d73-4d7c-4061-8999-27292d63f50c",
+     "internal_anthropic_catchall": {
+      "message": {
+       "content": [
+        {
+         "content": "5152b5f7c325717d84a0b67955594a4b12752dde Tue Aug 25 18:45:18 2026 +0000\n614a2334b335d953df58323e2728c61eb328fc811ba8d887494f798072659b76  CFR-2025-title7-vol4-sec273-10.xml\n6e06aad1a1c3d64df1f01bb90b1a71416ca8ac774dec86c80447879ed396467b  USCODE-2024-title7-chap51-sec2017.htm",
+         "is_error": false,
+         "tool_use_id": "toolu_0147FyVc819znyJE12pYQoeV",
+         "type": "tool_result"
+        }
+       ],
+       "role": "user"
+      },
+      "parent_tool_use_id": null,
+      "session_id": "d2cb8e07-138a-54f8-84a3-4e696057327c",
+      "timestamp": "2026-10-19T08:52:50.032Z",
+      "tool_result_meta": [
+       {
+        "id": "toolu_0147FyVc819znyJE12pYQoeV",
+        "permission_decision": {
+         "decision": "accept",
+         "reason_type": "classifier",
+         "source": "config"
+        }
+       }
+      ],
+      "tool_use_result": {
+       "interrupted": false,
+       "isImage": false,
+       "noOutputExpected": false,
+       "stderr": "",
+       "stdout": "5152b5f7c325717d84a0b67955594a4b12752dde Tue Aug 25 18:45:18 2026 +0000\n614a2334b335d953df58323e2728c61eb328fc811ba8d887494f798072659b76  CFR-2025-title7-vol4-sec273-10.xml\n6e06aad1a1c3d64df1f01bb90b1a71416ca8ac774dec86c80447879ed396467b  USCODE-2024-title7-chap51-sec2017.htm"
+      }
+     }
+    }
+   },
+   {
+    "created_at": "2026-10-19T08:52:53.792603Z",
+    "assistant": {
+     "uuid": "331c6b1f-a9f7-4c71-93f0-e5868bd3221b",
+     "internal_anthropic_catchall": {
+      "message": {
+       "container": null,
+       "content": [
+        {
+         "caller": {
+          "type": "direct"
+         },
+         "id": "toolu_01VxN5Un2uneQZr2PdofkcuN",
+         "input": {
+          "command": "python3 - <<'EOF'\nimport re,html\nt=open('CFR-2025-title7-vol4-sec273-10.xml').read()\nt=re.sub(r'<[^>]+>',' ',t); t=html.unescape(t); t=re.sub(r'\\s+',' ',t)\ni=t.find('(e) Calculating net income and benefit levels'); print(t[i:i+200]); \nj=t.find('(2) Eligibility and benefits',i); print(t[j:j+4500])\nu=open('USCODE-2024-title7-chap51-sec2017.htm').read()\nu=re.sub(r'<[^>]+>',' ',u); u=html.unescape(u); u=re.sub(r'\\s+',' ',u)\nk=u.find('(a) Calculation'); print('\\nUSC:',u[k:k+1800])\nEOF"
+         },
+         "name": "Bash",
+         "type": "tool_use"
+        }
+       ],
+       "context_management": null,
+       "diagnostics": null,
+       "id": "msg_011CgBK5GT1vXGpyZPmjksWx",
+       "input_transformations": [],
+       "model": "claude-opus-5-5",
+       "role": "assistant",
+       "stop_details": null,
+       "stop_reason": null,
+       "stop_sequence": null,
+       "type": "message",
+       "usage": {
+        "cache_creation": {
+         "ephemeral_1h_input_tokens": 4904,
+         "ephemeral_5m_input_tokens": 0
+        },
+        "cache_creation_input_tokens": 4904,
+        "cache_read_input_tokens": 62656,
+        "inference_geo": "global",
+        "input_tokens": 2,
+        "output_tokens": 16,
+        "service_tier": "standard",
+        "speed": "standard"
+       }
+      },
+      "parent_tool_use_id": null,
+      "request_id": "req_011CgBK5GDt53ZWATx8p7Ps4",
+      "session_id": "d2cb8e07-138a-54f8-84a3-4e696057327c",
+      "timestamp": "2026-10-19T08:52:53.727Z",
+      "wire_ingest_context": {
+       "toolu_01VxN5Un2uneQZr2PdofkcuN": {
+        "cwd": "/home/user/src"
+       }
+      },
+      "wire_tool_inputs": {
+       "toolu_01VxN5Un2uneQZr2PdofkcuN": {
+        "command": "cd /home/user/src && python3 - <<'EOF'\nimport re,html\nt=open('CFR-2025-title7-vol4-sec273-10.xml').read()\nt=re.sub(r'<[^>]+>',' ',t); t=html.unescape(t); t=re.sub(r'\\s+',' ',t)\ni=t.find('(e) Calculating net income and benefit levels'); print(t[i:i+200]); \nj=t.find('(2) Eligibility and benefits',i); print(t[j:j+4500])\nu=open('USCODE-2024-title7-chap51-sec2017.htm').read()\nu=re.sub(r'<[^>]+>',' ',u); u=html.unescape(u); u=re.sub(r'\\s+',' ',u)\nk=u.find('(a) Calculation'); print('\\nUSC:',u[k:k+1800])\nEOF"
+       }
+      }
+     }
+    }
+   },
+   {
+    "created_at": "2026-10-19T08:52:54.344327Z",
+    "user": {
+     "uuid": "2ee69306-9b2e-4345-9004-eecfa7d57360",
+     "internal_anthropic_catchall": {
+      "message": {
+       "content": [
+        {
+         "content": "(e) Calculating net income and benefit levels \u2014(1) Net monthly income. (i) To determine a household's net monthly income, the State agency shall: (A) Add the gross monthly income earned by all househo\n(2) Eligibility and benefits. (i)(A) Households which contain an elderly or disabled member as defined in \u00a7 271.2, shall have their net income, as calculated in paragraph (e)(1) of this section (except for households considered destitute in accordance with paragraph (e)(3) of this section), compared to the monthly income eligibility standards defined in \u00a7 273.9(a)(2) for the appropriate household size to determine eligibility for the month. (B) In addition to meeting the net income eligibility standards, households which do not contain an elderly or disabled member shall have their gross income, as calculated in accordance with paragraph (e)(1)(i)(A) of this section, compared to the gross monthly income standards defined in \u00a7 273.9(a)(1) for the appropriate household size to determine eligibility for the month. (C) For households considered destitute in accordance with paragraph (e)(3) of this section, the State agency shall determine a household's eligibility by computing its gross and net income according to paragraph (e)(3) of this section, and comparing, as appropriate, the gross and/or net income to the corresponding income eligibility standard in accordance with \u00a7 273.9(a) (1) or (2). (D) If a household contains a member who is fifty-nine years old on the date of application, but who will become sixty before the end of the month of application, the State agency shall determine the household's eligibility in accordance with paragraph (e)(2)(i)(A) of this section. (E) If a household contains a student whose income is excluded in accordance with \u00a7 273.9(c)(7) and the student becomes 18 during the month of application, the State agency shall exclude the student's earnings in the month of application and count the student's earnings in the following month. If the student becomes 18 during the certification period, the student's income shall be excluded until the month following the month in which the student turns 18. (ii)(A) Except as provided in paragraphs (a)(1), (e)(2)(iii) and (e)(2)(vi) of this section, the household's monthly allotment shall be equal to the maximum SNAP allotment for the household's size reduced by 30 percent of the household's net monthly income as calculated in paragraph (e)(1) of this section. If 30 percent of the household's net income ends in cents, the State agency shall round in one of the following ways: ( 1 ) The State agency shall round the 30 percent of net income up to the nearest higher dollar; or ( 2 ) The State agency shall not round the 30 percent of net income at all. Instead, after subtracting the 30 percent of net income from the appropriate Thrifty Food Plan, the State agency shall round the allotment down to the nearest lower dollar. (B) If the calculation of benefits in accordance with paragraph (e)(2)(ii)(A) of this section for an initial month would yield an allotment of less than $10 for the household, no benefits shall be issued to the household for the initial month. (C) Except during an initial month, all eligible one-person and two-person households shall receive minimum monthly allotments equal to the minimum benefit. The minimum benefit is 8 percent of the maximum allotment for a household of one, rounded to the nearest whole dollar. (iii) For an eligible household with three or more members which is entitled to no benefits (except because of the proration requirements of paragraph (a)(1) and the provision precluding issuances of less than $10 in an initial month of paragraph (e)(2)(ii)(B)) of this section: (A) The State agency shall deny the household's application on the grounds that its net income exceeds the level at which benefits are issued; or (B) The State agency shall certify the household but suspend its participation, subject to the following conditions: ( 1 ) The State agency shall inform the suspended household, in writing, of its suspended status, and of its rights and responsibilities while it is in that status. ( 2 ) The State agency shall set the household's change reporting requirements and the manner in which those changes will be reported and processed. ( 3 ) The State agency shall specify which changes shall entitle the household to have its status converted from suspension to issuance, and which changes shall require the household to reapply for participation. ( 4 ) The household shall retain the right to submit a new application while it is suspended. ( 5 ) The State agency shall convert a household from suspension to issuance status, with\n\nUSC: (a) Calculation The value of the allotment which State agencies shall be authorized to issue to any households certified as eligible to participate in the supplemental nutrition assistance program shall be equal to the cost to such households of the thrifty food plan reduced by an amount equal to 30 per centum of the household's income, as determined in accordance with section 2014(d) and (e) of this title, rounded to the nearest lower whole dollar: Provided , That for households of one and two persons the minimum allotment shall be 8 percent of the cost of the thrifty food plan for a household containing 1 member, as determined by the Secretary under section 2012 of this title, rounded to the nearest whole dollar increment. (b) Benefits not deemed income or resources for certain purposes The value of benefits that may be provided under this chapter shall not be considered income or resources for any purpose under any Federal, State, or local laws, including, but not limited to, laws relating to taxation, welfare, and public assistance programs, and no participating State or political subdivision thereof shall decrease any assistance otherwise provided an individual or individuals because of the receipt of benefits under this chapter. (c) First month benefits prorated (1) The value of the allotment issued to any eligible household for the initial month or other initial period for which an allotment is issued shall have a value which bears the same ratio to the value of the allotment for a full month or other initial period for which the allotment is issued as the number of days (from the date of application) remaining in the month or other initial period for which the allotment is issued bears to the total number of days in the month or other initial period for which th",
+         "is_error": false,
+         "tool_use_id": "toolu_01VxN5Un2uneQZr2PdofkcuN",
+         "type": "tool_result"
+        }
+       ],
+       "role": "user"
+      },
+      "parent_tool_use_id": null,
+      "session_id": "d2cb8e07-138a-54f8-84a3-4e696057327c",
+      "timestamp": "2026-10-19T08:52:54.290Z",
+      "tool_result_meta": [
+       {
+        "id": "toolu_01VxN5Un2uneQZr2PdofkcuN",
+        "permission_decision": {
+         "decision": "accept",
+         "reason_type": "classifier",
+         "source": "config"
+        }
+       }
+      ],
+      "tool_use_result": {
+       "interrupted": false,
+       "isImage": false,
+       "noOutputExpected": false,
+       "stderr": "",
+       "stdout": "(e) Calculating net income and benefit levels \u2014(1) Net monthly income. (i) To determine a household's net monthly income, the State agency shall: (A) Add the gross monthly income earned by all househo\n(2) Eligibility and benefits. (i)(A) Households which contain an elderly or disabled member as defined in \u00a7 271.2, shall have their net income, as calculated in paragraph (e)(1) of this section (except for households considered destitute in accordance with paragraph (e)(3) of this section), compared to the monthly income eligibility standards defined in \u00a7 273.9(a)(2) for the appropriate household size to determine eligibility for the month. (B) In addition to meeting the net income eligibility standards, households which do not contain an elderly or disabled member shall have their gross income, as calculated in accordance with paragraph (e)(1)(i)(A) of this section, compared to the gross monthly income standards defined in \u00a7 273.9(a)(1) for the appropriate household size to determine eligibility for the month. (C) For households considered destitute in accordance with paragraph (e)(3) of this section, the State agency shall determine a household's eligibility by computing its gross and net income according to paragraph (e)(3) of this section, and comparing, as appropriate, the gross and/or net income to the corresponding income eligibility standard in accordance with \u00a7 273.9(a) (1) or (2). (D) If a household contains a member who is fifty-nine years old on the date of application, but who will become sixty before the end of the month of application, the State agency shall determine the household's eligibility in accordance with paragraph (e)(2)(i)(A) of this section. (E) If a household contains a student whose income is excluded in accordance with \u00a7 273.9(c)(7) and the student becomes 18 during the month of application, the State agency shall exclude the student's earnings in the month of application and count the student's earnings in the following month. If the student becomes 18 during the certification period, the student's income shall be excluded until the month following the month in which the student turns 18. (ii)(A) Except as provided in paragraphs (a)(1), (e)(2)(iii) and (e)(2)(vi) of this section, the household's monthly allotment shall be equal to the maximum SNAP allotment for the household's size reduced by 30 percent of the household's net monthly income as calculated in paragraph (e)(1) of this section. If 30 percent of the household's net income ends in cents, the State agency shall round in one of the following ways: ( 1 ) The State agency shall round the 30 percent of net income up to the nearest higher dollar; or ( 2 ) The State agency shall not round the 30 percent of net income at all. Instead, after subtracting the 30 percent of net income from the appropriate Thrifty Food Plan, the State agency shall round the allotment down to the nearest lower dollar. (B) If the calculation of benefits in accordance with paragraph (e)(2)(ii)(A) of this section for an initial month would yield an allotment of less than $10 for the household, no benefits shall be issued to the household for the initial month. (C) Except during an initial month, all eligible one-person and two-person households shall receive minimum monthly allotments equal to the minimum benefit. The minimum benefit is 8 percent of the maximum allotment for a household of one, rounded to the nearest whole dollar. (iii) For an eligible household with three or more members which is entitled to no benefits (except because of the proration requirements of paragraph (a)(1) and the provision precluding issuances of less than $10 in an initial month of paragraph (e)(2)(ii)(B)) of this section: (A) The State agency shall deny the household's application on the grounds that its net income exceeds the level at which benefits are issued; or (B) The State agency shall certify the household but suspend its participation, subject to the following conditions: ( 1 ) The State agency shall inform the suspended household, in writing, of its suspended status, and of its rights and responsibilities while it is in that status. ( 2 ) The State agency shall set the household's change reporting requirements and the manner in which those changes will be reported and processed. ( 3 ) The State agency shall specify which changes shall entitle the household to have its status converted from suspension to issuance, and which changes shall require the household to reapply for participation. ( 4 ) The household shall retain the right to submit a new application while it is suspended. ( 5 ) The State agency shall convert a household from suspension to issuance status, with\n\nUSC: (a) Calculation The value of the allotment which State agencies shall be authorized to issue to any households certified as eligible to participate in the supplemental nutrition assistance program shall be equal to the cost to such households of the thrifty food plan reduced by an amount equal to 30 per centum of the household's income, as determined in accordance with section 2014(d) and (e) of this title, rounded to the nearest lower whole dollar: Provided , That for households of one and two persons the minimum allotment shall be 8 percent of the cost of the thrifty food plan for a household containing 1 member, as determined by the Secretary under section 2012 of this title, rounded to the nearest whole dollar increment. (b) Benefits not deemed income or resources for certain purposes The value of benefits that may be provided under this chapter shall not be considered income or resources for any purpose under any Federal, State, or local laws, including, but not limited to, laws relating to taxation, welfare, and public assistance programs, and no participating State or political subdivision thereof shall decrease any assistance otherwise provided an individual or individuals because of the receipt of benefits under this chapter. (c) First month benefits prorated (1) The value of the allotment issued to any eligible household for the initial month or other initial period for which an allotment is issued shall have a value which bears the same ratio to the value of the allotment for a full month or other initial period for which the allotment is issued as the number of days (from the date of application) remaining in the month or other initial period for which the allotment is issued bears to the total number of days in the month or other initial period for which th"
+      }
+     }
+    }
+   },
+   {
+    "created_at": "2026-10-19T08:52:56.301422Z",
+    "assistant": {
+     "uuid": "b1989fe2-ea2e-4a30-94d3-eaee5012d645",
+     "internal_anthropic_catchall": {
+      "message": {
+       "container": null,
+       "content": [
+        {
+         "caller": {
+          "type": "direct"
+         },
+         "id": "toolu_014dj2Z5eDHainhgoCE6a1Cj",
+         "input": {
+          "command": "cd /home/user/pe && ls policyengine_us/variables/gov/usda/snap/; grep -rl \"expected_contribution\\|snap_normal_allotment\\|snap_max_allotment\" policyengine_us/variables | head -20; ls policyengine_us/parameters/gov/usda/snap/"
+         },
+         "name": "Bash",
+         "type": "tool_use"
+        }
+       ],
+       "context_management": null,
+       "diagnostics": null,
+       "id": "msg_011CgBK5adQfxt4fdHqibUKY",
+       "input_transformations": [],
+       "model": "claude-opus-5-5",
+       "role": "assistant",
+       "stop_details": null,
+       "stop_reason": null,
+       "stop_sequence": null,
+       "type": "message",
+       "usage": {
+        "cache_creation": {
+         "ephemeral_1h_input_tokens": 2330,
+         "ephemeral_5m_input_tokens": 0
+        },
+        "cache_creation_input_tokens": 2330,
+        "cache_read_input_tokens": 67560,
+        "inference_geo": "global",
+        "input_tokens": 2,
+        "output_tokens": 16,
+        "service_tier": "standard",
+        "speed": "standard"
+       }
+      },
+      "parent_tool_use_id": null,
+      "request_id": "req_011CgBK5aPHE3XeGtZkT7VS5",
+      "session_id": "d2cb8e07-138a-54f8-84a3-4e696057327c",
+      "timestamp": "2026-10-19T08:52:56.243Z",
+      "wire_tool_inputs": {
+       "toolu_014dj2Z5eDHainhgoCE6a1Cj": {
+        "command": "cd /home/user/pe && ls policyengine_us/variables/gov/usda/snap/; grep -rl \"expected_contribution\\|snap_normal_allotment\\|snap_max_allotment\" policyengine_us/variables | head -20; ls policyengine_us/parameters/gov/usda/snap/"
+       }
+      }
+     }
+    }
+   },
+   {
+    "created_at": "2026-10-19T08:52:56.727579Z",
+    "user": {
+     "uuid": "58f672fb-e0ae-4f43-82ec-21f39a6579d8",
+     "internal_anthropic_catchall": {
+      "message": {
+       "content": [
+        {
+         "content": "eligibility\nhas_snap_elderly_disabled_member.py\nincome\nis_snap_excluded_member.py\nreceives_snap.py\nsnap.py\nsnap_emergency_allotment.py\nsnap_expected_contribution.py\nsnap_if_takes_up.py\nsnap_max_allotment.py\nsnap_min_allotment.py\nsnap_normal_allotment.py\nsnap_region.py\nsnap_region_str.py\nsnap_unit_size.py\nsnap_utility_region.py\nsnap_utility_region_str.py\ntakes_up_snap_if_eligible.py\npolicyengine_us/variables/gov/usda/snap/snap_expected_contribution.py\npolicyengine_us/variables/gov/usda/snap/snap_if_takes_up.py\npolicyengine_us/variables/gov/usda/snap/snap_emergency_allotment.py\npolicyengine_us/variables/gov/usda/snap/snap_normal_allotment.py\npolicyengine_us/variables/gov/usda/snap/snap_max_allotment.py\npolicyengine_us/variables/gov/states/dc/tax/income/dc_snap_temporary_local_benefit.py\nREADME.md\nabolish_snap.yaml\nasset_test\ncategorical_eligibility.yaml\neligibility\nemergency_allotment\nexpected_contribution.yaml\nincome\nmax_allotment.yaml\nmin_allotment\nstudent\nuprating.yaml\nwork_requirements",
+         "is_error": false,
+         "tool_use_id": "toolu_014dj2Z5eDHainhgoCE6a1Cj",
+         "type": "tool_result"
+        }
+       ],
+       "role": "user"
+      },
+      "parent_tool_use_id": null,
+      "session_id": "d2cb8e07-138a-54f8-84a3-4e696057327c",
+      "timestamp": "2026-10-19T08:52:56.660Z",
+      "tool_result_meta": [
+       {
+        "id": "toolu_014dj2Z5eDHainhgoCE6a1Cj",
+        "permission_decision": {
+         "decision": "accept",
+         "reason_type": "classifier",
+         "source": "config"
+        }
+       }
+      ],
+      "tool_use_result": {
+       "interrupted": false,
+       "isImage": false,
+       "noOutputExpected": false,
+       "stderr": "",
+       "stdout": "eligibility\nhas_snap_elderly_disabled_member.py\nincome\nis_snap_excluded_member.py\nreceives_snap.py\nsnap.py\nsnap_emergency_allotment.py\nsnap_expected_contribution.py\nsnap_if_takes_up.py\nsnap_max_allotment.py\nsnap_min_allotment.py\nsnap_normal_allotment.py\nsnap_region.py\nsnap_region_str.py\nsnap_unit_size.py\nsnap_utility_region.py\nsnap_utility_region_str.py\ntakes_up_snap_if_eligible.py\npolicyengine_us/variables/gov/usda/snap/snap_expected_contribution.py\npolicyengine_us/variables/gov/usda/snap/snap_if_takes_up.py\npolicyengine_us/variables/gov/usda/snap/snap_emergency_allotment.py\npolicyengine_us/variables/gov/usda/snap/snap_normal_allotment.py\npolicyengine_us/variables/gov/usda/snap/snap_max_allotment.py\npolicyengine_us/variables/gov/states/dc/tax/income/dc_snap_temporary_local_benefit.py\nREADME.md\nabolish_snap.yaml\nasset_test\ncategorical_eligibility.yaml\neligibility\nemergency_allotment\nexpected_contribution.yaml\nincome\nmax_allotment.yaml\nmin_allotment\nstudent\nuprating.yaml\nwork_requirements"
+      }
+     }
+    }
+   },
+   {
+    "created_at": "2026-10-19T08:52:59.126082Z",
+    "assistant": {
+     "uuid": "b4e26746-5b5a-407a-b529-5747e6b8729c",
+     "internal_anthropic_catchall": {
+      "message": {
+       "container": null,
+       "content": [
+        {
+         "caller": {
+          "type": "direct"
+         },
+         "id": "toolu_01P4fBuraGSwipYARFNVzopW",
+         "input": {
+          "command": "cd policyengine_us && for f in variables/gov/usda/snap/{snap_expected_contribution,snap_normal_allotment,snap_min_allotment,snap_if_takes_up,snap}.py parameters/gov/usda/snap/expected_contribution.yaml; do echo \"=== $f\"; cat $f; done; ls parameters/gov/usda/snap/min_allotment; cat parameters/gov/usda/snap/min_allotment/*"
+         },
+         "name": "Bash",
+         "type": "tool_use"
+        }
+       ],
+       "context_management": null,
+       "diagnostics": null,
+       "id": "msg_011CgBK5mdhWq5BRNFqqnsZJ",
+       "input_transformations": [],
+       "model": "claude-opus-5-5",
+       "role": "assistant",
+       "stop_details": null,
+       "stop_reason": null,
+       "stop_sequence": null,
+       "type": "message",
+       "usage": {
+        "cache_creation": {
+         "ephemeral_1h_input_tokens": 680,
+         "ephemeral_5m_input_tokens": 0
+        },
+        "cache_creation_input_tokens": 680,
+        "cache_read_input_tokens": 69890,
+        "inference_geo": "global",
+        "input_tokens": 2,
+        "output_tokens": 16,
+        "service_tier": "standard",
+        "speed": "standard"
+       }
+      },
+      "parent_tool_use_id": null,
+      "request_id": "req_011CgBK5mQoMCcaPicXDmrHD",
+      "session_id": "d2cb8e07-138a-54f8-84a3-4e696057327c",
+      "timestamp": "2026-10-19T08:52:59.070Z",
+      "wire_tool_inputs": {
+       "toolu_01P4fBuraGSwipYARFNVzopW": {
+        "command": "cd policyengine_us && for f in variables/gov/usda/snap/{snap_expected_contribution,snap_normal_allotment,snap_min_allotment,snap_if_takes_up,snap}.py parameters/gov/usda/snap/expected_contribution.yaml; do echo \"=== $f\"; cat $f; done; ls parameters/gov/usda/snap/min_allotment; cat parameters/gov/usda/snap/min_allotment/*"
+       }
+      }
+     }
+    }
+   },
+   {
+    "created_at": "2026-10-19T08:53:00.036131Z",
+    "user": {
+     "uuid": "12824580-2d0a-4e1f-bee9-7f9f4ca8a93e",
+     "internal_anthropic_catchall": {
+      "message": {
+       "content": [
+        {
+         "content": "=== variables/gov/usda/snap/snap_expected_contribution.py\nfrom policyengine_us.model_api import *\n\n\nclass snap_expected_contribution(Variable):\n    value_type = float\n    entity = SPMUnit\n    definition_period = MONTH\n    documentation = \"Expected food contribution from SNAP net income\"\n    label = \"SNAP expected food contribution\"\n    unit = USD\n    reference = \"https://www.law.cornell.edu/uscode/text/7/2017#a\"\n\n    def formula(spm_unit, period, parameters):\n        expected_food_contribution = parameters(\n            period\n        ).gov.usda.snap.expected_contribution\n        return (\n            np.floor(spm_unit(\"snap_net_income\", period)) * expected_food_contribution\n        )\n=== variables/gov/usda/snap/snap_normal_allotment.py\nfrom policyengine_us.model_api import *\n\n\nclass snap_normal_allotment(Variable):\n    value_type = float\n    entity = SPMUnit\n    definition_period = MONTH\n    documentation = (\n        \"Normal SNAP benefit amount, equal to net income minus food contribution\"\n    )\n    label = \"SNAP normal allotment\"\n    reference = \"https://www.law.cornell.edu/uscode/text/7/2017#a\"\n    unit = USD\n    defined_for = \"is_snap_eligible\"\n\n    def formula(spm_unit, period, parameters):\n        # Federal SNAP rules are defined in U.S.C Title 7, Chapter 51, which\n        # also defines state powers to modify the rules.\n        expected_contribution = spm_unit(\"snap_expected_contribution\", period)\n        max_allotment = spm_unit(\"snap_max_allotment\", period)\n        normal_allotment = max_allotment - expected_contribution\n        min_allotment = spm_unit(\"snap_min_allotment\", period)\n        return max_(min_allotment, normal_allotment)\n=== variables/gov/usda/snap/snap_min_allotment.py\nfrom policyengine_us.model_api import *\n\n\nclass snap_min_allotment(Variable):\n    value_type = float\n    entity = SPMUnit\n    definition_period = MONTH\n    label = \"SNAP minimum allotment\"\n    documentation = \"Minimum allotment for SNAP based on household size and state\"\n    unit = USD\n\n    def formula(spm_unit, period, parameters):\n        # Parameters for the minimum benefit.\n        snap = parameters(period).gov.usda.snap\n        min_allotment = snap.min_allotment\n        # Calculate the relevant maximum benefit, defined as the maximum\n        # benefit for a household of a certain size in their state.\n        snap_region = spm_unit.household(\"snap_region_str\", period)\n        relevant_max_allotment = snap.max_allotment.main[snap_region][\n            str(snap.min_allotment.relevant_max_allotment_household_size)\n        ]\n\n        # Minimum benefits only apply to households up to a certain size.\n        size = spm_unit(\"snap_unit_size\", period)\n        eligible = size <= snap.min_allotment.maximum_household_size\n        # 7 CFR 273.10(e)(2)(ii)(C): 8 percent of the one-person maximum\n        # allotment, rounded to the nearest whole dollar.\n        min_allotment = np.round(eligible * min_allotment.rate * relevant_max_allotment)\n\n        # DC, NM, MD and NJ provide separate minimum allotment amounts\n        state_code = spm_unit.household(\"state_code_str\", period)\n\n        p_dc = parameters(period).gov.states.dc.dhs.snap.min_allotment\n        if p_dc.in_effect:\n            dc_min_allotment = p_dc.amount\n            in_dc = state_code == \"DC\"\n            min_allotment = where(in_dc, dc_min_allotment, min_allotment)\n\n        p_md = parameters(period).gov.states.md.usda.snap.min_allotment\n        if p_md.in_effect:\n            md_min_allotment = p_md.amount\n            in_md = state_code == \"MD\"\n            has_elderly = spm_unit(\"md_snap_elderly_present\", period)\n            min_allotment = where(in_md & has_elderly, md_min_allotment, min_allotment)\n\n        p_nj = parameters(period).gov.states.nj.snap\n        if p_nj.in_effect:\n            nj_min_allotment = p_nj.amount\n            in_nj = state_code == \"NJ\"\n            min_allotment = where(in_nj, nj_min_allotment, min_allotment)\n\n        return min_allotment\n=== variables/gov/usda/snap/snap_if_takes_up.py\nfrom policyengine_us.model_api import *\n\n\nclass snap_if_takes_up(Variable):\n    value_type = float\n    entity = SPMUnit\n    definition_period = MONTH\n    documentation = (\n        \"SNAP allotment the SPM unit would receive if it takes up the \"\n        \"program, regardless of reported take-up.\"\n    )\n    label = \"SNAP allotment if takes up\"\n    reference = \"https://www.law.cornell.edu/uscode/text/7/2017#a\"\n    unit = USD\n    exhaustive_parameter_dependencies = [\n        \"gov.usda.snap\",\n        \"gov.ssa\",\n    ]\n\n    def formula(spm_unit, period, parameters):\n        if parameters(period).gov.usda.snap.abolish_snap:\n            return 0\n        return add(\n            spm_unit,\n            period,\n            [\n                \"snap_normal_allotment\",\n                \"snap_emergency_allotment\",\n                \"dc_snap_temporary_local_benefit\",\n            ],\n        )\n=== variables/gov/usda/snap/snap.py\nfrom policyengine_us.model_api import *\n\n\nclass snap(Variable):\n    value_type = float\n    entity = SPMUnit\n    definition_period = MONTH\n    documentation = (\n        \"Final SNAP benefit amount, equal to net income minus food contribution\"\n    )\n    label = \"SNAP allotment\"\n    reference = \"https://www.law.cornell.edu/uscode/text/7/2017#a\"\n    unit = USD\n    exhaustive_parameter_dependencies = [\n        \"gov.usda.snap\",\n        \"gov.ssa\",\n    ]\n    defined_for = \"takes_up_snap_if_eligible\"\n    adds = [\"snap_if_takes_up\"]\n=== parameters/gov/usda/snap/expected_contribution.yaml\ndescription: Expected food contribution per dollar of earnings (i.e., marginal tax rate)\n\nvalues:\n  2005-01-01: 0.3\n\nmetadata:\n  unit: /1\n  reference:\n    - title: 7 U.S. Code \u00a7 2017 - Value of allotment\n      href: https://www.law.cornell.edu/uscode/text/7/2017#a\nREADme.md\nmaximum_household_size.yaml\nrate.yaml\nrelevant_max_allotment_household_size.yaml\n# Minimum allotmentdescription: Maximum household size for SNAP minimum allotments\n\nvalues:\n  2015-10-01: 2\n\nmetadata:\n  unit: persons\n  period: year\n  label: SNAP minimum allotment maximum household size\n  reference:\n    - title: \"7 CFR \u00a7 273.10 - Determining household eligibility and benefit levels.\"\n      href: https://www.law.cornell.edu/cfr/text/7/273.10#e_2_ii_C\ndescription: Minimum SNAP allotment as a fraction of maximum allotment\n\nvalues:\n  2015-10-01: 0.08\n\nmetadata:\n  unit: /1\n  period: year\n  label: SNAP minimum allotment rate\n  reference:\n    - title: \"7 CFR \u00a7 273.10 - Determining household eligibility and benefit levels.\"\n      href: https://www.law.cornell.edu/cfr/text/7/273.10#e_2_ii_C\ndescription: In calculating a SNAP minimum allotment, the household size to look up the relevant maximum allotment\n\nvalues:\n  2015-10-01: 1\n\nmetadata:\n  unit: persons\n  period: year\n  label: SNAP minimum allotment relevant maximum allotment household size\n  reference:\n    - title: \"7 CFR \u00a7 273.10 - Determining household eligibility and benefit levels.\"\n      href: https://www.law.cornell.edu/cfr/text/7/273.10#e_2_ii_C",
+         "is_error": false,
+         "tool_use_id": "toolu_01P4fBuraGSwipYARFNVzopW",
+         "type": "tool_result"
+        }
+       ],
+       "role": "user"
+      },
+      "parent_tool_use_id": null,
+      "session_id": "d2cb8e07-138a-54f8-84a3-4e696057327c",
+      "timestamp": "2026-10-19T08:52:59.967Z",
+      "tool_result_meta": [
+       {
+        "id": "toolu_01P4fBuraGSwipYARFNVzopW",
+        "permission_decision": {
+         "decision": "accept",
+         "reason_type": "classifier",
+         "source": "config"
+        }
+       }
+      ],
+      "tool_use_result": {
+       "interrupted": false,
+       "isImage": false,
+       "noOutputExpected": false,
+       "stderr": "",
+       "stdout": "=== variables/gov/usda/snap/snap_expected_contribution.py\nfrom policyengine_us.model_api import *\n\n\nclass snap_expected_contribution(Variable):\n    value_type = float\n    entity = SPMUnit\n    definition_period = MONTH\n    documentation = \"Expected food contribution from SNAP net income\"\n    label = \"SNAP expected food contribution\"\n    unit = USD\n    reference = \"https://www.law.cornell.edu/uscode/text/7/2017#a\"\n\n    def formula(spm_unit, period, parameters):\n        expected_food_contribution = parameters(\n            period\n        ).gov.usda.snap.expected_contribution\n        return (\n            np.floor(spm_unit(\"snap_net_income\", period)) * expected_food_contribution\n        )\n=== variables/gov/usda/snap/snap_normal_allotment.py\nfrom policyengine_us.model_api import *\n\n\nclass snap_normal_allotment(Variable):\n    value_type = float\n    entity = SPMUnit\n    definition_period = MONTH\n    documentation = (\n        \"Normal SNAP benefit amount, equal to net income minus food contribution\"\n    )\n    label = \"SNAP normal allotment\"\n    reference = \"https://www.law.cornell.edu/uscode/text/7/2017#a\"\n    unit = USD\n    defined_for = \"is_snap_eligible\"\n\n    def formula(spm_unit, period, parameters):\n        # Federal SNAP rules are defined in U.S.C Title 7, Chapter 51, which\n        # also defines state powers to modify the rules.\n        expected_contribution = spm_unit(\"snap_expected_contribution\", period)\n        max_allotment = spm_unit(\"snap_max_allotment\", period)\n        normal_allotment = max_allotment - expected_contribution\n        min_allotment = spm_unit(\"snap_min_allotment\", period)\n        return max_(min_allotment, normal_allotment)\n=== variables/gov/usda/snap/snap_min_allotment.py\nfrom policyengine_us.model_api import *\n\n\nclass snap_min_allotment(Variable):\n    value_type = float\n    entity = SPMUnit\n    definition_period = MONTH\n    label = \"SNAP minimum allotment\"\n    documentation = \"Minimum allotment for SNAP based on household size and state\"\n    unit = USD\n\n    def formula(spm_unit, period, parameters):\n        # Parameters for the minimum benefit.\n        snap = parameters(period).gov.usda.snap\n        min_allotment = snap.min_allotment\n        # Calculate the relevant maximum benefit, defined as the maximum\n        # benefit for a household of a certain size in their state.\n        snap_region = spm_unit.household(\"snap_region_str\", period)\n        relevant_max_allotment = snap.max_allotment.main[snap_region][\n            str(snap.min_allotment.relevant_max_allotment_household_size)\n        ]\n\n        # Minimum benefits only apply to households up to a certain size.\n        size = spm_unit(\"snap_unit_size\", period)\n        eligible = size <= snap.min_allotment.maximum_household_size\n        # 7 CFR 273.10(e)(2)(ii)(C): 8 percent of the one-person maximum\n        # allotment, rounded to the nearest whole dollar.\n        min_allotment = np.round(eligible * min_allotment.rate * relevant_max_allotment)\n\n        # DC, NM, MD and NJ provide separate minimum allotment amounts\n        state_code = spm_unit.household(\"state_code_str\", period)\n\n        p_dc = parameters(period).gov.states.dc.dhs.snap.min_allotment\n        if p_dc.in_effect:\n            dc_min_allotment = p_dc.amount\n            in_dc = state_code == \"DC\"\n            min_allotment = where(in_dc, dc_min_allotment, min_allotment)\n\n        p_md = parameters(period).gov.states.md.usda.snap.min_allotment\n        if p_md.in_effect:\n            md_min_allotment = p_md.amount\n            in_md = state_code == \"MD\"\n            has_elderly = spm_unit(\"md_snap_elderly_present\", period)\n            min_allotment = where(in_md & has_elderly, md_min_allotment, min_allotment)\n\n        p_nj = parameters(period).gov.states.nj.snap\n        if p_nj.in_effect:\n            nj_min_allotment = p_nj.amount\n            in_nj = state_code == \"NJ\"\n            min_allotment = where(in_nj, nj_min_allotment, min_allotment)\n\n        return min_allotment\n=== variables/gov/usda/snap/snap_if_takes_up.py\nfrom policyengine_us.model_api import *\n\n\nclass snap_if_takes_up(Variable):\n    value_type = float\n    entity = SPMUnit\n    definition_period = MONTH\n    documentation = (\n        \"SNAP allotment the SPM unit would receive if it takes up the \"\n        \"program, regardless of reported take-up.\"\n    )\n    label = \"SNAP allotment if takes up\"\n    reference = \"https://www.law.cornell.edu/uscode/text/7/2017#a\"\n    unit = USD\n    exhaustive_parameter_dependencies = [\n        \"gov.usda.snap\",\n        \"gov.ssa\",\n    ]\n\n    def formula(spm_unit, period, parameters):\n        if parameters(period).gov.usda.snap.abolish_snap:\n            return 0\n        return add(\n            spm_unit,\n            period,\n            [\n                \"snap_normal_allotment\",\n                \"snap_emergency_allotment\",\n                \"dc_snap_temporary_local_benefit\",\n            ],\n        )\n=== variables/gov/usda/snap/snap.py\nfrom policyengine_us.model_api import *\n\n\nclass snap(Variable):\n    value_type = float\n    entity = SPMUnit\n    definition_period = MONTH\n    documentation = (\n        \"Final SNAP benefit amount, equal to net income minus food contribution\"\n    )\n    label = \"SNAP allotment\"\n    reference = \"https://www.law.cornell.edu/uscode/text/7/2017#a\"\n    unit = USD\n    exhaustive_parameter_dependencies = [\n        \"gov.usda.snap\",\n        \"gov.ssa\",\n    ]\n    defined_for = \"takes_up_snap_if_eligible\"\n    adds = [\"snap_if_takes_up\"]\n=== parameters/gov/usda/snap/expected_contribution.yaml\ndescription: Expected food contribution per dollar of earnings (i.e., marginal tax rate)\n\nvalues:\n  2005-01-01: 0.3\n\nmetadata:\n  unit: /1\n  reference:\n    - title: 7 U.S. Code \u00a7 2017 - Value of allotment\n      href: https://www.law.cornell.edu/uscode/text/7/2017#a\nREADme.md\nmaximum_household_size.yaml\nrate.yaml\nrelevant_max_allotment_household_size.yaml\n# Minimum allotmentdescription: Maximum household size for SNAP minimum allotments\n\nvalues:\n  2015-10-01: 2\n\nmetadata:\n  unit: persons\n  period: year\n  label: SNAP minimum allotment maximum household size\n  reference:\n    - title: \"7 CFR \u00a7 273.10 - Determining household eligibility and benefit levels.\"\n      href: https://www.law.cornell.edu/cfr/text/7/273.10#e_2_ii_C\ndescription: Minimum SNAP allotment as a fraction of maximum allotment\n\nvalues:\n  2015-10-01: 0.08\n\nmetadata:\n  unit: /1\n  period: year\n  label: SNAP minimum allotment rate\n  reference:\n    - title: \"7 CFR \u00a7 273.10 - Determining household eligibility and benefit levels.\"\n      href: https://www.law.cornell.edu/cfr/text/7/273.10#e_2_ii_C\ndescription: In calculating a SNAP minimum allotment, the household size to look up the relevant maximum allotment\n\nvalues:\n  2015-10-01: 1\n\nmetadata:\n  unit: persons\n  period: year\n  label: SNAP minimum allotment relevant maximum allotment household size\n  reference:\n    - title: \"7 CFR \u00a7 273.10 - Determining household eligibility and benefit levels.\"\n      href: https://www.law.cornell.edu/cfr/text/7/273.10#e_2_ii_C"
+      }
+     }
+    }
+   },
+   {
+    "created_at": "2026-10-19T08:53:06.735734Z",
+    "assistant": {
+     "uuid": "cdd4dd39-b94f-4f38-b6ae-c5aa3df12cb0",
+     "internal_anthropic_catchall": {
+      "message": {
+       "container": null,
+       "content": [
+        {
+         "signature": "CAQS8hAKEAgSGAI4AUIIdGhpbmtpbmcSDOiL9X6mS40Ahv/tvRoMibiOQAy1XhjLj+10IjB3DBYM+Yn80n8EJbL02VwGaHJxF/r4dhLwW+mJuv6NTH7T9QtSO7Setgo6NDucKKwqjxBBoaGdYtU2VUUlyey98hA6I+L2MQcCTgd+8iQRSG1DV4sDICIOtS84KhjcfT/ZmTwwHYSNumg73n1XgyNlVelOXttfAAFH8S7OFwtPKVuHeodI+xNQ9Krddny+AgYwykoBPpB6NPSjahQHzaSxhFI7RtWNrpC1bq22asX396sl+fiqq+gOtPzKO1d62tvbI1zT4GKIpWaWTjrKNgTjngVi0XzT1oOuunFCfuzngb9e6aAvtxSWclsJumvuawZhKbWmWMozD/O77PUPllir9jCb9kgtmfh58+bIsrkTIiEfDemLotWmZdVNx+WT4sJlFuhleHRoaiCZKZ4seKIvI0T96DqJx84i6PZHat9h/EcJpszE6qQCOpZjbQ8J/KURpy8LpwGscKaKMCGL9OCVvvQDrhlLqlQn8dkBLaJm4l5Z+EYjyXxA2THr40QBil856rOp4ueTdh5UC47DHf6oyUwEyi4tzddIKtrXD7O69nKNj+DVXvBi0sVrb4SAiPc628AdB0RVvrdHScqgnqkaRqwDy0woLJ2sul5jJsLdx+VDg8WZPLYSBv/OsQ9sGbVGwtjqGc24E1c18qrN4dddi5wxoTTiChL8MGrwL9l5N8p+DnkBTwmVRE8zcdFbxS/9TCHUqk6eCz2vLQQb9lNuuqq5sllPJT5aRJBHyO3P907XujQ1yR34V2S8XGUI/hQbKlpvJQsAEsv+Bzv2ladH+SdR4Zt13appm/x3g371ozFXlEB9Su+/eMpPDcB5Lett0+OQKijYVBGofoXYBVELVNBpk5Iq5nW1UHlyJEh+oTEGUfEmXQiUGYyoHIxtwA30mObjEmXU8aOd+qmF468QgMp0t9thEk53EBH2qvLuY5amzcAN2AW8074jFixkZu0rEFeu9cybaWkQLxM/4pUiESbv/tyqPNUV/2X3fH0yH2CVMpzp5VubG4+LDax3ff1I65DZJ6aWHL1lpOzi3sIAVKOXRuDMVWqbWn7evN3lG5yJRoexsGTxLb3wPZPI6o3wCxZWInMIBNaOsyYNUOGpkxV1HO5FXANQzVFIVeNfiWqw3PCggxOTQ9xvOx3AiHND/4kjRjw/LetOSQ8bFeLrSz3HTtGHc6vUAvuPuXyPaShPWbb8p/v+hKjn93BF+z9fgYNsUQRPMARpHTBbKuHuBsRyH9m4T5nh0vQfE+FEiYVf8Z++O7nqNiuhVDcq6lsk1GkExBlaM7gKLFcxPpvtPlW1NGohsVGyh/w8MHPYeREFK7Pzvh2MT2CJX3Nb/m2qgjilyYn9C8Mw6f7M+VLOjwpYhNRvSO6aXTJmgRSPD/CPI63F/0z06Y7VXzbXcLEFVr6sfRoTmdDObxW7ei9Wtzysd2gsqGR/Kdqd/Ef8rsDSGB7//L82ey3uSH7xAmROwYTuVZNsg8Gd1ni53PaGshM32Si/Eg0/T5Fn6TnC9Rhg/nDCjPVeiQkIMGoubDFMD8Ds09te7rvMeSNYgmT9Z/yTfrfMQY8F3A5kRaG27yPM2Bdsx8Gk0SsiLa15M82jeJmZOgby+IqVWwuH8mPUUoleL6r6Jf6i3O/FsD5nErK8B6I7nzQAXKNOt3/qjim9xbmh9S0/4qy/L0ZJmSV64aRFV4ibtvQ3Ocnutbot4eBWySTTKyowIS88ObkFyhGHMwP4ZBnb7LTA6U2y6CvMStB1GEhV1FJuIvCYtcwNXJcbRXx4bTMyB4aUTlcjqWV9xz0dhkJ3FjBIbUvaA9n5O9Uwj/fkFRRWh7ZyttcE3XpHyWIVs2ATS+IwX2ebucsjKMSIT2B9Svj1UBDikkSarrtjY593u7E0R7EtqmaJmsAp1kitoDb6+De6jqhH4MYt4c1n08HxmFlT0y6dkCmYNJ1g5iA8cnqpJHGZpsO/0sX/EakRETmwy2Z2HEgTAxGMxTn/5sA2mG1Kaz8Ec8wrLGNMrJ/q+/70gkopvGLN8nyB3GSUGSJTV+fDiLJolCc4V8ogdm13vIxZy5wGdgjrfUQbrDa22d85V+0gFx+dSBCT1Eannd7SeCbjrt7SQRYgtvy1GcWPMVT7drJ8TgSek75cerFDezkG68wdpfJTknqlXfANeJDnzUsdK1RxO2mo9MedgxOCEykbBfWQkScjXVHDDofdQfepc5rmdxuzavuRRmc3DSJQCdp/ToQmAd12PljSETlMCYu7Z5PCKNrR9tizUNrF3KYtjJjNCTEnEJlGB5nVhq/VlbcwKgTWvdDQ1SFoGpRlPO8LRccqKJ8Egjmf6VNCpg3TV4tICOIjhVU65GFDv2Jq0rBDMdXhe8XB0rJxhCouU4s0nc/ovdAMuAgBzxumNotmcHodztatgHVYXnMtngfbH9LudkUFSfDdKA72MWN+34noYqLsaGe9z5RWIKBH3JLCaH2dMAN+ClruQ7wp79qn+ySpvA999GZQuwJwTKLFWLJNLMbL5APlQQ30fL2HFf+2TFkWy2NxBNMQtgbfi1AQlOYWkfnxMF5K0qRWHmnA5pnsPz3g4/eufdBxVhTPDOh1vjgd18OaDJw88EXhypupUX1X0rEnNGRFM9q+GALb06cBol/J8tuwSSfrhyYzzsOE93mw27i3GFbvyp060nXRuvTZK8Bq/hwfxleA8GW0E0/PbIL8X7472rPyqUSISon6YIgdZuNzYkePWpUDAZXdP2QFjYoq8ghWNdwSMQN2549b5Of0Rse3SKxDw9aFvmLr+35zc4yWeQgBUFlLaao6ZHRVxBAEzj17ixgB",
+         "thinking": "",
+         "type": "thinking"
+        }
+       ],
+       "context_management": null,
+       "diagnostics": null,
+       "id": "msg_011CgBK61W8c8zUsGW4DjJNV",
+       "input_transformations": [],
+       "model": "claude-opus-5-5",
+       "role": "assistant",
+       "stop_details": null,
+       "stop_reason": null,
+       "stop_sequence": null,
+       "type": "message",
+       "usage": {
+        "cache_creation": {
+         "ephemeral_1h_input_tokens": 3051,
+         "ephemeral_5m_input_tokens": 0
+        },
+        "cache_creation_input_tokens": 3051,
+        "cache_read_input_tokens": 70570,
+        "inference_geo": "global",
+        "input_tokens": 2,
+        "output_tokens": 4,
+        "service_tier": "standard",
+        "speed": "standard"
+       }
+      },
+      "parent_tool_use_id": null,
+      "request_id": "req_011CgBK61GjSsbxthweH8JDY",
+      "session_id": "d2cb8e07-138a-54f8-84a3-4e696057327c",
+      "thinking_display": "updates",
+      "thinking_duration_ms": 5215,
+      "timestamp": "2026-10-19T08:53:06.661Z"
+     }
+    }
+   },
+   {
+    "created_at": "2026-10-19T08:53:08.443781Z",
+    "assistant": {
+     "uuid": "9e2bb6ed-4d07-4c17-8172-49beda713641",
+     "internal_anthropic_catchall": {
+      "message": {
+       "container": null,
+       "content": [
+        {
+         "caller": {
+          "type": "direct"
+         },
+         "id": "toolu_014pLoqqwfsEPk2Xcwr14hkk",
+         "input": {
+          "command": "cd /home/user/src && python3 - <<'EOF'\nimport re,html\nt=open('CFR-2025-title7-vol4-sec273-10.xml').read()\nt=re.sub(r'<[^>]+>',' ',t); t=html.unescape(t); t=re.sub(r'\\s+',' ',t)\ni=t.find('(e) Calculating net income'); j=t.find('(2) Eligibility and benefits',i)\ns=t[i:j]; k=s.find('(ii)'); print(s[k-300:k+1500])\nfor m in re.finditer(r'round',t): print('...',t[m.start()-150:m.start()+150])\nEOF"
+         },
+         "name": "Bash",
+         "type": "tool_use"
+        }
+       ],
+       "context_management": null,
+       "diagnostics": null,
+       "id": "msg_011CgBK61W8c8zUsGW4DjJNV",
+       "input_transformations": [],
+       "model": "claude-opus-5-5",
+       "role": "assistant",
+       "stop_details": null,
+       "stop_reason": null,
+       "stop_sequence": null,
+       "type": "message",
+       "usage": {
+        "cache_creation": {
+         "ephemeral_1h_input_tokens": 3051,
+         "ephemeral_5m_input_tokens": 0
+        },
+        "cache_creation_input_tokens": 3051,
+        "cache_read_input_tokens": 70570,
+        "inference_geo": "global",
+        "input_tokens": 2,
+        "output_tokens": 4,
+        "service_tier": "standard",
+        "speed": "standard"
+       }
+      },
+      "parent_tool_use_id": null,
+      "request_id": "req_011CgBK61GjSsbxthweH8JDY",
+      "session_id": "d2cb8e07-138a-54f8-84a3-4e696057327c",
+      "timestamp": "2026-10-19T08:53:08.362Z",
+      "wire_tool_inputs": {
+       "toolu_014pLoqqwfsEPk2Xcwr14hkk": {
+        "command": "cd /home/user/src && python3 - <<'EOF'\nimport re,html\nt=open('CFR-2025-title7-vol4-sec273-10.xml').read()\nt=re.sub(r'<[^>]+>',' ',t); t=html.unescape(t); t=re.sub(r'\\s+',' ',t)\ni=t.find('(e) Calculating net income'); j=t.find('(2) Eligibility and benefits',i)\ns=t[i:j]; k=s.find('(ii)'); print(s[k-300:k+1500])\nfor m in re.finditer(r'round',t): print('...',t[m.start()-150:m.start()+150])\nEOF"
+       }
+      }
+     }
+    }
+   },
+   {
+    "created_at": "2026-10-19T08:53:09.090084Z",
+    "user": {
+     "uuid": "1ddcd2af-2890-4a31-96ce-cad966d2e4d0",
+     "internal_anthropic_catchall": {
+      "message": {
+       "content": [
+        {
+         "content": "mount of its excess shelter expenses) from the household's monthly income after all other applicable deductions. Households not subject to a capped shelter expense shall have the full amount exceeding 50 percent of their net income subtracted. The household's net monthly income has been determined. (ii) In calculating net monthly income, the State agency shall use one of the following two procedures: (A) Round down each income and allotment calculation that ends in 1 through 49 cents and round up each calculation that ends in 50 through 99 cents; or (B) Apply the rounding procedure that is currently in effect for the State's Temporary Assistance for Needy Families (TANF) program. If the State TANF program includes the cents in income calculations, the State agency may use the same procedures for SNAP income calculations. Whichever procedure is used, the State agency may elect to include the cents associated with each individual shelter cost in the computation of the shelter deduction and round the final shelter deduction amount. Likewise, the State agency may elect to include the cents associated with each individual medical cost in the computation of the medical deduction and round the final medical deduction amount. \n... h, the formula is: ER07OC94.022 ER25SE06.015 (C) If after using the appropriate formula the result ends in 1 through 99 cents, the State agency shall round the product down to the nearest lower whole dollar. If the computation results in an allotment of less than $10, then no issuance shall be made \n...  State agency shall use one of the following two procedures: (A) Round down each income and allotment calculation that ends in 1 through 49 cents and round up each calculation that ends in 50 through 99 cents; or (B) Apply the rounding procedure that is currently in effect for the State's Temporary \n... ach income and allotment calculation that ends in 1 through 49 cents and round up each calculation that ends in 50 through 99 cents; or (B) Apply the rounding procedure that is currently in effect for the State's Temporary Assistance for Needy Families (TANF) program. If the State TANF program inclu\n... is used, the State agency may elect to include the cents associated with each individual shelter cost in the computation of the shelter deduction and round the final shelter deduction amount. Likewise, the State agency may elect to include the cents associated with each individual medical cost in th\n... ikewise, the State agency may elect to include the cents associated with each individual medical cost in the computation of the medical deduction and round the final medical deduction amount. (2) Eligibility and benefits. (i)(A) Households which contain an elderly or disabled member as defined in \u00a7 \n... t monthly income as calculated in paragraph (e)(1) of this section. If 30 percent of the household's net income ends in cents, the State agency shall round in one of the following ways: ( 1 ) The State agency shall round the 30 percent of net income up to the nearest higher dollar; or ( 2 ) The Stat\n... n. If 30 percent of the household's net income ends in cents, the State agency shall round in one of the following ways: ( 1 ) The State agency shall round the 30 percent of net income up to the nearest higher dollar; or ( 2 ) The State agency shall not round the 30 percent of net income at all. Ins\n...  following ways: ( 1 ) The State agency shall round the 30 percent of net income up to the nearest higher dollar; or ( 2 ) The State agency shall not round the 30 percent of net income at all. Instead, after subtracting the 30 percent of net income from the appropriate Thrifty Food Plan, the State a\n...  percent of net income at all. Instead, after subtracting the 30 percent of net income from the appropriate Thrifty Food Plan, the State agency shall round the allotment down to the nearest lower dollar. (B) If the calculation of benefits in accordance with paragraph (e)(2)(ii)(A) of this section fo\n... ll receive minimum monthly allotments equal to the minimum benefit. The minimum benefit is 8 percent of the maximum allotment for a household of one, rounded to the nearest whole dollar. (iii) For an eligible household with three or more members which is entitled to no benefits (except because of th\n... of less than $10 in an initial month of paragraph (e)(2)(ii)(B)) of this section: (A) The State agency shall deny the household's application on the grounds that its net income exceeds the level at which benefits are issued; or (B) The State agency shall certify the household but suspend its partici\n... e agencies shall multiply the maximum SNAP allotment amounts by the percentage specified in the FNS notice; if the result ends in 1 through 99 cents, round the result up to the nearest higher dollar; and subtract the result from the normal maximum SNAP allotment amount. In calculating benefit levels\n... tober 1, 1996, the maximum SNAP allotments must be based on 100% of the cost of the TFP as defined in \u00a7 271.2 of this chapter for the preceding June, rounded to the nearest lower dollar increment, except that on October 1, 1996, the allotments may not fall below those in effect on September 30, 1996",
+         "is_error": false,
+         "tool_use_id": "toolu_014pLoqqwfsEPk2Xcwr14hkk",
+         "type": "tool_result"
+        }
+       ],
+       "role": "user"
+      },
+      "parent_tool_use_id": null,
+      "session_id": "d2cb8e07-138a-54f8-84a3-4e696057327c",
+      "timestamp": "2026-10-19T08:53:09.021Z",
+      "tool_result_meta": [
+       {
+        "id": "toolu_014pLoqqwfsEPk2Xcwr14hkk",
+        "permission_decision": {
+         "decision": "accept",
+         "reason_type": "classifier",
+         "source": "config"
+        }
+       }
+      ],
+      "tool_use_result": {
+       "interrupted": false,
+       "isImage": false,
+       "noOutputExpected": false,
+       "stderr": "",
+       "stdout": "mount of its excess shelter expenses) from the household's monthly income after all other applicable deductions. Households not subject to a capped shelter expense shall have the full amount exceeding 50 percent of their net income subtracted. The household's net monthly income has been determined. (ii) In calculating net monthly income, the State agency shall use one of the following two procedures: (A) Round down each income and allotment calculation that ends in 1 through 49 cents and round up each calculation that ends in 50 through 99 cents; or (B) Apply the rounding procedure that is currently in effect for the State's Temporary Assistance for Needy Families (TANF) program. If the State TANF program includes the cents in income calculations, the State agency may use the same procedures for SNAP income calculations. Whichever procedure is used, the State agency may elect to include the cents associated with each individual shelter cost in the computation of the shelter deduction and round the final shelter deduction amount. Likewise, the State agency may elect to include the cents associated with each individual medical cost in the computation of the medical deduction and round the final medical deduction amount. \n... h, the formula is: ER07OC94.022 ER25SE06.015 (C) If after using the appropriate formula the result ends in 1 through 99 cents, the State agency shall round the product down to the nearest lower whole dollar. If the computation results in an allotment of less than $10, then no issuance shall be made \n...  State agency shall use one of the following two procedures: (A) Round down each income and allotment calculation that ends in 1 through 49 cents and round up each calculation that ends in 50 through 99 cents; or (B) Apply the rounding procedure that is currently in effect for the State's Temporary \n... ach income and allotment calculation that ends in 1 through 49 cents and round up each calculation that ends in 50 through 99 cents; or (B) Apply the rounding procedure that is currently in effect for the State's Temporary Assistance for Needy Families (TANF) program. If the State TANF program inclu\n... is used, the State agency may elect to include the cents associated with each individual shelter cost in the computation of the shelter deduction and round the final shelter deduction amount. Likewise, the State agency may elect to include the cents associated with each individual medical cost in th\n... ikewise, the State agency may elect to include the cents associated with each individual medical cost in the computation of the medical deduction and round the final medical deduction amount. (2) Eligibility and benefits. (i)(A) Households which contain an elderly or disabled member as defined in \u00a7 \n... t monthly income as calculated in paragraph (e)(1) of this section. If 30 percent of the household's net income ends in cents, the State agency shall round in one of the following ways: ( 1 ) The State agency shall round the 30 percent of net income up to the nearest higher dollar; or ( 2 ) The Stat\n... n. If 30 percent of the household's net income ends in cents, the State agency shall round in one of the following ways: ( 1 ) The State agency shall round the 30 percent of net income up to the nearest higher dollar; or ( 2 ) The State agency shall not round the 30 percent of net income at all. Ins\n...  following ways: ( 1 ) The State agency shall round the 30 percent of net income up to the nearest higher dollar; or ( 2 ) The State agency shall not round the 30 percent of net income at all. Instead, after subtracting the 30 percent of net income from the appropriate Thrifty Food Plan, the State a\n...  percent of net income at all. Instead, after subtracting the 30 percent of net income from the appropriate Thrifty Food Plan, the State agency shall round the allotment down to the nearest lower dollar. (B) If the calculation of benefits in accordance with paragraph (e)(2)(ii)(A) of this section fo\n... ll receive minimum monthly allotments equal to the minimum benefit. The minimum benefit is 8 percent of the maximum allotment for a household of one, rounded to the nearest whole dollar. (iii) For an eligible household with three or more members which is entitled to no benefits (except because of th\n... of less than $10 in an initial month of paragraph (e)(2)(ii)(B)) of this section: (A) The State agency shall deny the household's application on the grounds that its net income exceeds the level at which benefits are issued; or (B) The State agency shall certify the household but suspend its partici\n... e agencies shall multiply the maximum SNAP allotment amounts by the percentage specified in the FNS notice; if the result ends in 1 through 99 cents, round the result up to the nearest higher dollar; and subtract the result from the normal maximum SNAP allotment amount. In calculating benefit levels\n... tober 1, 1996, the maximum SNAP allotments must be based on 100% of the cost of the TFP as defined in \u00a7 271.2 of this chapter for the preceding June, rounded to the nearest lower dollar increment, except that on October 1, 1996, the allotments may not fall below those in effect on September 30, 1996"
+      }
+     }
+    }
+   },
+   {
+    "created_at": "2026-10-19T08:53:10.605248Z",
+    "assistant": {
+     "uuid": "c8f10e22-aaa7-4d0b-a8ff-29dfb34146f8",
+     "internal_anthropic_catchall": {
+      "message": {
+       "container": null,
+       "content": [
+        {
+         "text": "Sources check out and I've read the core code. Next I'll install the dependencies and run a Texas test case.",
+         "type": "text"
+        }
+       ],
+       "context_management": null,
+       "diagnostics": null,
+       "id": "msg_011CgBK6finQjjvXKN13NVQJ",
+       "input_transformations": [],
+       "model": "claude-opus-5-5",
+       "role": "assistant",
+       "stop_details": null,
+       "stop_reason": null,
+       "stop_sequence": null,
+       "type": "message",
+       "usage": {
+        "cache_creation": {
+         "ephemeral_1h_input_tokens": 2584,
+         "ephemeral_5m_input_tokens": 0
+        },
+        "cache_creation_input_tokens": 2584,
+        "cache_read_input_tokens": 73621,
+        "inference_geo": "global",
+        "input_tokens": 2,
+        "output_tokens": 55,
+        "service_tier": "standard",
+        "speed": "standard"
+       }
+      },
+      "parent_tool_use_id": null,
+      "request_id": "req_011CgBK6fRff25ALEojCjGNk",
+      "session_id": "d2cb8e07-138a-54f8-84a3-4e696057327c",
+      "timestamp": "2026-10-19T08:53:10.544Z"
+     }
+    }
+   },
+   {
+    "created_at": "2026-10-19T08:53:12.951138Z",
+    "assistant": {
+     "uuid": "134a264d-89b4-4f11-a58a-bd9394a70590",
+     "internal_anthropic_catchall": {
+      "message": {
+       "container": null,
+       "content": [
+        {
+         "caller": {
+          "type": "direct"
+         },
+         "id": "toolu_01NqawdQhsujqSCRzrDn5Xd1",
+         "input": {
+          "command": "cd /home/user && python3 --version && python3 -m venv venv && . venv/bin/activate && pip install -q policyengine-core==3.30.2 numpy==2.4.1 pandas==3.0.0 spm-calculator==0.3.1 microdf-python==1.2.1 tables==3.11.1 tqdm pytest 2>&1 | tail -3; cd pe && git log --oneline -5 -- policyengine_us/variables/gov/usda/snap/snap_expected_contribution.py policyengine_us/variables/gov/usda/snap/snap_normal_allotment.py; grep -rn \"round\\|floor\" policyengine_us/variables/gov/usda/snap/income/snap_net_income.py; ls policyengine_us/variables/gov/states/tx/ | head; grep -rln \"snap\" policyengine_us/variables/gov/states/tx 2>/dev/null | head"
+         },
+         "name": "Bash",
+         "type": "tool_use"
+        }
+       ],
+       "context_management": null,
+       "diagnostics": null,
+       "id": "msg_011CgBK6finQjjvXKN13NVQJ",
+       "input_transformations": [],
+       "model": "claude-opus-5-5",
+       "role": "assistant",
+       "stop_details": null,
+       "stop_reason": null,
+       "stop_sequence": null,
+       "type": "message",
+       "usage": {
+        "cache_creation": {
+         "ephemeral_1h_input_tokens": 2584,
+         "ephemeral_5m_input_tokens": 0
+        },
+        "cache_creation_input_tokens": 2584,
+        "cache_read_input_tokens": 73621,
+        "inference_geo": "global",
+        "input_tokens": 2,
+        "output_tokens": 55,
+        "service_tier": "standard",
+        "speed": "standard"
+       }
+      },
+      "parent_tool_use_id": null,
+      "request_id": "req_011CgBK6fRff25ALEojCjGNk",
+      "session_id": "d2cb8e07-138a-54f8-84a3-4e696057327c",
+      "timestamp": "2026-10-19T08:53:12.889Z",
+      "wire_tool_inputs": {
+       "toolu_01NqawdQhsujqSCRzrDn5Xd1": {
+        "command": "cd /home/user && python3 --version && python3 -m venv venv && . venv/bin/activate && pip install -q policyengine-core==3.30.2 numpy==2.4.1 pandas==3.0.0 spm-calculator==0.3.1 microdf-python==1.2.1 tables==3.11.1 tqdm pytest 2>&1 | tail -3; cd pe && git log --oneline -5 -- policyengine_us/variables/gov/usda/snap/snap_expected_contribution.py policyengine_us/variables/gov/usda/snap/snap_normal_allotment.py; grep -rn \"round\\|floor\" policyengine_us/variables/gov/usda/snap/income/snap_net_income.py; ls policyengine_us/variables/gov/states/tx/ | head; grep -rln \"snap\" policyengine_us/variables/gov/states/tx 2>/dev/null | head"
+       }
+      }
+     }
+    }
+   },
+   {
+    "created_at": "2026-10-19T08:54:01.156358Z",
+    "user": {
+     "uuid": "4a4a08f0-1ffa-46ff-b689-5bd887c8f484",
+     "internal_anthropic_catchall": {
+      "message": {
+       "content": [
+        {
+         "content": "Python 3.13.16\nda66f22726 Switch from black to ruff format (#7709)\n485cefef3f More defined_for and p\nde8a7defb2 Hawaii alternative tax on capital gains (#2953)\ndart\ndta\nfpp\nhhs\nhhsc\ntanf\ntax\ntdhca\ntwc\nuct\npolicyengine_us/variables/gov/states/tx/tdhca/ceap/tx_ceap_eligible.py",
+         "is_error": false,
+         "tool_use_id": "toolu_01NqawdQhsujqSCRzrDn5Xd1",
+         "type": "tool_result"
+        }
+       ],
+       "role": "user"
+      },
+      "parent_tool_use_id": null,
+      "session_id": "d2cb8e07-138a-54f8-84a3-4e696057327c",
+      "timestamp": "2026-10-19T08:54:01.059Z",
+      "tool_result_meta": [
+       {
+        "id": "toolu_01NqawdQhsujqSCRzrDn5Xd1",
+        "permission_decision": {
+         "decision": "accept",
+         "reason_type": "classifier",
+         "source": "config"
+        }
+       }
+      ],
+      "tool_use_result": {
+       "interrupted": false,
+       "isImage": false,
+       "noOutputExpected": false,
+       "stderr": "",
+       "stdout": "Python 3.13.16\nda66f22726 Switch from black to ruff format (#7709)\n485cefef3f More defined_for and p\nde8a7defb2 Hawaii alternative tax on capital gains (#2953)\ndart\ndta\nfpp\nhhs\nhhsc\ntanf\ntax\ntdhca\ntwc\nuct\npolicyengine_us/variables/gov/states/tx/tdhca/ceap/tx_ceap_eligible.py"
+      }
+     }
+    }
+   },
+   {
+    "created_at": "2026-10-19T08:54:07.122800Z",
+    "assistant": {
+     "uuid": "a2be5068-822a-445f-b46c-4bc475fdd37f",
+     "internal_anthropic_catchall": {
+      "message": {
+       "container": null,
+       "content": [
+        {
+         "signature": "CAQShAwKEAgSGAI4AUIIdGhpbmtpbmcSDKpL7DBZ2aMR/PSjkhoMVwlxpILAJRiLmR+wIjCWuR3V4l5v3YjX8fGPUFoNcLuCqIaMaqkXCmgsl9H9h6FhWe1y4L8+DJbejDu111MqoQufwee3LM3TrYcGJhWwWl43BBHuA/gQgABO6fhUEQAAynaRMxctcBNC6jgdmhOWWx8ArivkWpTMMh+k2tKvL3LplW79LNICYL4FV4JyNsYblMj6uQa8NL7JAAkBlR/kQ+ESlKOr3C8fzV+6L06lWuEAJ4eLkHK6GS2tdHWMy26k2LonljWQH4VuvwQ67OLenkd3WpLoFnbkI4TEqaJ9m5AjtqkOSb9ZrsRdOj45ohE5lnwZbXlE0+GGOFJmOOt7waSdjNRO4A6aP7UNTgNr99gY9XrM6Pgp0CYuob0ZDgpyvdTaNktEu5+r12SpkTKCqboZzEKXIr1RLq6kesqtHlfImVwSXyFCh027rdsCiVt5m5ABCKt9L8mWvxAcRpoG/24YIcSgOBwD5h8AnWxrP90Y5OxTmsEH5PzHmuIbX5kXgYx9+n71op4MaAGALzQc87ktH84/opbIFmiB/vrrCY3RGRVOAFMN6XaM04oAXSSEAsw/gI8Ad2vCjoStBHUKfBFw5Wbnh4WsbJ8G+MMg8V5iSkv+huov+7C5xLoa1S+mCBD+DYJ1bTRGwoc2zGb4N/q75XOqfUVNAAdWsGAC5WGdVIVcMSCGBh+JSd4gVqz2+Ka1LH+tH1rHdzbJBWni2rZLJVegEG/gW0n9rZurbAeRGUpyOscUgNz5DMGL6YgW3WYNVyHFIuZei1u2FLQG8NBlttcShntLub4uxCeS1byK/AwJW629uSdH2UeUIxpvZHL0Sr6lQDb0Wiv1MZBQPidkxerp+ZtEftnbyRn0W603yl7nn/msWt3AL5waHHDHjRBEkPXj2ad4FElVPOoNdysgb6HglqNQ504NF61VNQTmeivz3WgI2LhMUycOQCKa6O4FYbUBds/4ealJD/y75IHRG7eYwMFU0uP8W60yjtSGV5QKYA2Iy8pJK3Cn5Up+jhVN1rcPGVL2FdcEwbeoIzs3H5Qmud7nBdYXzDBu5CYzmzS/uXlWatdJjqw1yawZa5tEn2ZswXrwA6t3XjDRBepBDJllRYTuGwS2nwRh4X1PiYSyEDeR6+v3aPWLBJ0JQbyRcrHdfu7VEIFteptKVcCt7FW99dkjR6Hh4OP8ZsS/M7l43/dtRs6Jm2B+KDe8wtXz0jq+3GTCV67cqw0HFnj00bxhrzUOM7NP5Ly+TQuTevuv6+JnceTE7QDN+UHA4B4MDWSjR8zEjBitYMbzFYZOi2hDErxhZhdJUk6+KdVk6tASP29VZKngBDAEaj3bwA1+EyJaDZvxfTvBcKELrElmbooVB+gdQDCT/2C9a4CsnVWpXpDYJiKua3mwcRyF9BWR9Jj7DJ5au2Poa0bOvwqIDxZpBjjz50wh21C9o/KB0Kj1iRw3zCciwZ0FYlEjJ/ScQsG1yJkpa5MuGsqUXEPcD2fjWYnHChzdECauqBv/+nMiFvNCeAy+ubXpa4x3InKUU+gyWnKKIL9mrBuKwbWrVais196ofhCF/wBjR58eayyYeZRVyjgVmpjp6uopdH5xaSbvrMgrv5giNV2WsjNRwQUBXZ0SAoZrCgy3KIQB1mqos4GnGrdp6dYnIELm+2i8xtnV4vcmzksgftkW1ZD/7AevcV5kvIpAhWFnMRWNhblKNK8vM/Qet+VDkBWPGDGWE9QPKWDu2bJ1ZiMEbHD09mCRytge4p58Plfn+tWbSihpgM8XNTJ6zUGmcpTaLJ3v1VKH1JdtkgPPJPwfIVsi3sX3//K8BTpTVdEP8FwFroXL3Q8xykSv3Lo5pkdVw1ae3ruHjdCqzC2nMmtlAac7KNZh84Ba4040+PAH28Tsj5DTCjkUj1dVjpAOOyO2G198tY0n8P25syMc2PXZWTpFcTYavfBT1H+nR2KOm0DJpZIL5ZsCYeLiepUIV6x9USgBiN7GAGWNBC472VQYoWkAGAE=",
+         "thinking": "",
+         "type": "thinking"
+        }
+       ],
+       "context_management": null,
+       "diagnostics": null,
+       "id": "msg_011CgBKAX1GAYeSjqKrfkBAp",
+       "input_transformations": [],
+       "model": "claude-opus-5-5",
+       "role": "assistant",
+       "stop_details": null,
+       "stop_reason": null,
+       "stop_sequence": null,
+       "type": "message",
+       "usage": {
+        "cache_creation": {
+         "ephemeral_1h_input_tokens": 594,
+         "ephemeral_5m_input_tokens": 0
+        },
+        "cache_creation_input_tokens": 594,
+        "cache_read_input_tokens": 76205,
+        "inference_geo": "global",
+        "input_tokens": 2,
+        "output_tokens": 6,
+        "service_tier": "standard",
+        "speed": "standard"
+       }
+      },
+      "parent_tool_use_id": null,
+      "request_id": "req_011CgBKAWfRg45hvUHsjXPDD",
+      "session_id": "d2cb8e07-138a-54f8-84a3-4e696057327c",
+      "thinking_display": "updates",
+      "thinking_duration_ms": 3295,
+      "timestamp": "2026-10-19T08:54:07.053Z"
+     }
+    }
+   },
+   {
+    "created_at": "2026-10-19T08:54:13.218733Z",
+    "assistant": {
+     "uuid": "b5cb8ebb-4444-4a6b-bc81-8b7fa4f96747",
+     "internal_anthropic_catchall": {
+      "message": {
+       "container": null,
+       "content": [
+        {
+         "caller": {
+          "type": "direct"
+         },
+         "id": "toolu_01NrqaU7cTC7imwtYC96GgXv",
+         "input": {
+          "command": "mkdir -p /tmp/claude-0/-home-user/d2cb8e07-138a-54f8-84a3-4e696057327c/scratchpad && cat > /tmp/claude-0/-home-user/d2cb8e07-138a-54f8-84a3-4e696057327c/scratchpad/tx.py <<'EOF'\nimport math\nfrom policyengine_us import Simulation\nP=\"2026-01\"\nfor net in [0,1000,1001,1000.5,1003.33,2616,2617,2700]:\n    sit={\"people\":{f\"p{i}\":{\"age\":{\"2026\":30 if i<2 else 5}} for i in range(3)},\n         \"spm_units\":{\"s\":{\"members\":[\"p0\",\"p1\",\"p2\"],\"snap_net_income\":{P:net},\"is_snap_eligible\":{P:True},\"takes_up_snap_if_eligible\":{P:True}}},\n         \"households\":{\"h\":{\"members\":[\"p0\",\"p1\",\"p2\"],\"state_code\":{\"2026\":\"TX\"}}},\n         \"tax_units\":{\"t\":{\"members\":[\"p0\",\"p1\",\"p2\"]}},\"families\":{\"f\":{\"members\":[\"p0\",\"p1\",\"p2\"]}},\n         \"marital_units\":{\"m0\":{\"members\":[\"p0\",\"p1\"]},\"m1\":{\"members\":[\"p2\"]}}}\n    s=Simulation(situation=sit)\n    g=lambda v: float(s.calculate(v,P)[0])\n    mx=g(\"snap_max_allotment\")\n    opt1=max(0,mx-math.ceil(round(0.3*net,6))); opt2=max(0,math.floor(round(mx-0.3*net,6)))\n    print(f\"net={net} size={g('snap_unit_size')} max={mx} contrib={g('snap_expected_contribution'):.4f} min={g('snap_min_allotment')} normal={g('snap_normal_allotment'):.4f} EA={g('snap_emergency_allotment')} snap={g('snap'):.4f} | CFR opt1={opt1} opt2={opt2}\")\nEOF\ncd /home/user/pe && . ../venv/bin/activate && PYTHONPATH=. python /tmp/claude-0/-home-user/d2cb8e07-138a-54f8-84a3-4e696057327c/scratchpad/tx.py 2>&1 | grep -v Warn | tail -12"
+         },
+         "name": "Bash",
+         "type": "tool_use"
+        }
+       ],
+       "context_management": null,
+       "diagnostics": null,
+       "id": "msg_011CgBKAX1GAYeSjqKrfkBAp",
+       "input_transformations": [],
+       "model": "claude-opus-5-5",
+       "role": "assistant",
+       "stop_details": null,
+       "stop_reason": null,
+       "stop_sequence": null,
+       "type": "message",
+       "usage": {
+        "cache_creation": {
+         "ephemeral_1h_input_tokens": 594,
+         "ephemeral_5m_input_tokens": 0
+        },
+        "cache_creation_input_tokens": 594,
+        "cache_read_input_tokens": 76205,
+        "inference_geo": "global",
+        "input_tokens": 2,
+        "output_tokens": 6,
+        "service_tier": "standard",
+        "speed": "standard"
+       }
+      },
+      "parent_tool_use_id": null,
+      "request_id": "req_011CgBKAWfRg45hvUHsjXPDD",
+      "session_id": "d2cb8e07-138a-54f8-84a3-4e696057327c",
+      "timestamp": "2026-10-19T08:54:13.150Z",
+      "wire_tool_inputs": {
+       "toolu_01NrqaU7cTC7imwtYC96GgXv": {
+        "command": "mkdir -p /tmp/claude-0/-home-user/d2cb8e07-138a-54f8-84a3-4e696057327c/scratchpad && cat > /tmp/claude-0/-home-user/d2cb8e07-138a-54f8-84a3-4e696057327c/scratchpad/tx.py <<'EOF'\nimport math\nfrom policyengine_us import Simulation\nP=\"2026-01\"\nfor net in [0,1000,1001,1000.5,1003.33,2616,2617,2700]:\n    sit={\"people\":{f\"p{i}\":{\"age\":{\"2026\":30 if i<2 else 5}} for i in range(3)},\n         \"spm_units\":{\"s\":{\"members\":[\"p0\",\"p1\",\"p2\"],\"snap_net_income\":{P:net},\"is_snap_eligible\":{P:True},\"takes_up_snap_if_eligible\":{P:True}}},\n         \"households\":{\"h\":{\"members\":[\"p0\",\"p1\",\"p2\"],\"state_code\":{\"2026\":\"TX\"}}},\n         \"tax_units\":{\"t\":{\"members\":[\"p0\",\"p1\",\"p2\"]}},\"families\":{\"f\":{\"members\":[\"p0\",\"p1\",\"p2\"]}},\n         \"marital_units\":{\"m0\":{\"members\":[\"p0\",\"p1\"]},\"m1\":{\"members\":[\"p2\"]}}}\n    s=Simulation(situation=sit)\n    g=lambda v: float(s.calculate(v,P)[0])\n    mx=g(\"snap_max_allotment\")\n    opt1=max(0,mx-math.ceil(round(0.3*net,6))); opt2=max(0,math.floor(round(mx-0.3*net,6)))\n    print(f\"net={net} size={g('snap_unit_size')} max={mx} contrib={g('snap_expected_contribution'):.4f} min={g('snap_min_allotment')} normal={g('snap_normal_allotment'):.4f} EA={g('snap_emergency_allotment')} snap={g('snap'):.4f} | CFR opt1={opt1} opt2={opt2}\")\nEOF\ncd /home/user/pe && . ../venv/bin/activate && PYTHONPATH=. python /tmp/claude-0/-home-user/d2cb8e07-138a-54f8-84a3-4e696057327c/scratchpad/tx.py 2>&1 | grep -v Warn | tail -12"
+       }
+      }
+     }
+    }
+   },
+   {
+    "created_at": "2026-10-19T08:54:43.299879Z",
+    "user": {
+     "uuid": "91e31301-a6c4-4ed4-b50a-6bbd8cfb5c21",
+     "internal_anthropic_catchall": {
+      "message": {
+       "content": [
+        {
+         "content": "net=0 size=3.0 max=785.0 contrib=0.0000 min=0.0 normal=785.0000 EA=0.0 snap=785.0000 | CFR opt1=785.0 opt2=785\nnet=1000 size=3.0 max=785.0 contrib=300.0000 min=0.0 normal=485.0000 EA=0.0 snap=485.0000 | CFR opt1=485.0 opt2=485\nnet=1001 size=3.0 max=785.0 contrib=300.3000 min=0.0 normal=484.7000 EA=0.0 snap=484.7000 | CFR opt1=484.0 opt2=484\nnet=1000.5 size=3.0 max=785.0 contrib=300.0000 min=0.0 normal=485.0000 EA=0.0 snap=485.0000 | CFR opt1=484.0 opt2=484\nnet=1003.33 size=3.0 max=785.0 contrib=300.9000 min=0.0 normal=484.1000 EA=0.0 snap=484.1000 | CFR opt1=484.0 opt2=484\nnet=2616 size=3.0 max=785.0 contrib=784.8000 min=0.0 normal=0.2000 EA=0.0 snap=0.2000 | CFR opt1=0 opt2=0\nnet=2617 size=3.0 max=785.0 contrib=785.1000 min=0.0 normal=0.0000 EA=0.0 snap=0.0000 | CFR opt1=0 opt2=0\nnet=2700 size=3.0 max=785.0 contrib=810.0001 min=0.0 normal=0.0000 EA=0.0 snap=0.0000 | CFR opt1=0 opt2=0",
+         "is_error": false,
+         "tool_use_id": "toolu_01NrqaU7cTC7imwtYC96GgXv",
+         "type": "tool_result"
+        }
+       ],
+       "role": "user"
+      },
+      "parent_tool_use_id": null,
+      "session_id": "d2cb8e07-138a-54f8-84a3-4e696057327c",
+      "timestamp": "2026-10-19T08:54:43.188Z",
+      "tool_result_meta": [
+       {
+        "id": "toolu_01NrqaU7cTC7imwtYC96GgXv",
+        "permission_decision": {
+         "decision": "accept",
+         "reason_type": "classifier",
+         "source": "config"
+        }
+       }
+      ],
+      "tool_use_result": {
+       "bashEditDiff": {
+        "files": [],
+        "moreFiles": 0,
+        "unavailable": true
+       },
+       "interrupted": false,
+       "isImage": false,
+       "noOutputExpected": false,
+       "stderr": "",
+       "stdout": "net=0 size=3.0 max=785.0 contrib=0.0000 min=0.0 normal=785.0000 EA=0.0 snap=785.0000 | CFR opt1=785.0 opt2=785\nnet=1000 size=3.0 max=785.0 contrib=300.0000 min=0.0 normal=485.0000 EA=0.0 snap=485.0000 | CFR opt1=485.0 opt2=485\nnet=1001 size=3.0 max=785.0 contrib=300.3000 min=0.0 normal=484.7000 EA=0.0 snap=484.7000 | CFR opt1=484.0 opt2=484\nnet=1000.5 size=3.0 max=785.0 contrib=300.0000 min=0.0 normal=485.0000 EA=0.0 snap=485.0000 | CFR opt1=484.0 opt2=484\nnet=1003.33 size=3.0 max=785.0 contrib=300.9000 min=0.0 normal=484.1000 EA=0.0 snap=484.1000 | CFR opt1=484.0 opt2=484\nnet=2616 size=3.0 max=785.0 contrib=784.8000 min=0.0 normal=0.2000 EA=0.0 snap=0.2000 | CFR opt1=0 opt2=0\nnet=2617 size=3.0 max=785.0 contrib=785.1000 min=0.0 normal=0.0000 EA=0.0 snap=0.0000 | CFR opt1=0 opt2=0\nnet=2700 size=3.0 max=785.0 contrib=810.0001 min=0.0 normal=0.0000 EA=0.0 snap=0.0000 | CFR opt1=0 opt2=0"
+      }
+     }
+    }
+   },
+   {
+    "created_at": "2026-10-19T08:54:46.773949Z",
+    "assistant": {
+     "uuid": "ed3c2828-a075-40ed-a65c-92b08b44af69",
+     "internal_anthropic_catchall": {
+      "message": {
+       "container": null,
+       "content": [
+        {
+         "signature": "CAQS1AkKEAgSGAI4AUIIdGhpbmtpbmcSDKodSg/gjU3c2+OL2hoMgZwQZdI5B2F3q414IjABGKehcsbG1bxZACg7+M0hF4MiNAg7vPgGSoPwOKDZyXolC4ID+7OBJp3/r2qYpG4q8QgweTDRcGZOpM66ga5LJM3Xk/E6P+y6Nd6LzjFr8yVSVEA/yfnDXdlOjOlDEVONSClguIAcqak7gFkye0QL/Una10t1dlesb/2rG4cKVQ2seHp94UNnkPEQNYvzdSYRFlZWZp+uuOiVsIP1PkAOO5cossRj41o+Ss0EXYOKpe/jgUaW0T3qAoTnEZ7X9JJSh+xpEk0RnuWFBkI/dVcJFIVcNn3B9vXrvf4jUQJHehCfEdmqCV5+7ucblIrIguv7n0g9XqgczrPD2qtZ7wGCwn3NU3G8KVufAqSGHNnjz4PeZAI9q9pHMm+MBiCRxqtiJWIX9WmTCD9IlUsBG46jMVY8J/JZ5mTXnW3oNkrT33+GBKcgQr4EIXBr1nYPpj9f3RPjThEdDbRzRNdhYT/J+Ej1uj8f3a+S23Ey+e3gAZv1Q4FR3xrqxl2x/wdHNN3i8YHOnwa50fOUkQ3zHdiXa1wWu+s0aMFwXUCtO9VpHjhKZtCsl9dkn+rcJUu7oso6B18QLnyfvLsTd54FYOf/SEeZE/qDP7xpesh9ccEPYozAnNdkbWvvjMx/mTQgOwTSI52PhD2UUOzh3nStQWrsV9bjmOqe7l+iEph8gnZHtA1Tss5fjNEETnZlM5GLAshEC7UC0KiVDlimsGH1rkj9eft/s9zgTzn/oCfSNA46Ie5c0fjydaWJDajTnmnMPk1B9OaH3B0M+omfx7uedxQlXNmVkA2AIgk+Qidy/PGUtbduXrER8/cM1ekiCuSugn6M0MEK6oGR4dVrQm6qu9gO8s4nd79VcSRbgku1F6DdfnvOB4qJxdsv+m7BXwF9Xc0baduL+Ybq1FLMQ3BfdjM1dNLlfAEVUccUzxEGp1Fdn2blY8H6QFTcJMPtaz5jCSIjEhmu3ZvYY3ezHzTmy0H1ZGsPvn+Nw6u624lq1RsFTAnaYIbHKEiEglLie+nh557C//C0V0ThF6c4Yka3TFR1MkXKFDmWX/ydFvRMXLxX2DKpAePexzlwCtNq3qCcpQwuWjc+DmXjZnrsjdsItamN8+b063Wu+BQCaO92Xikk6I+hIHhe28ZWYSYD5O6HCJbrBi1kBnehZiLUUlTVYFaDnrPFWUg+R0q7MjngxWqeaQb5DboeRzuWMNl5z2Fq8rcCT7Vm1RMENbFmhPK32m1D9Nlu6Uiz2D7iuJnYtLsSC4Tz5RAac/yuHfj+q8kGPSGHoKYZbMoau07uRj1U8L7HNrJES2njm8kP8WqXRFxOBBs9x1h/HBT4uIOF6+NhgKztr5rpy+lpoloPt8eHFt7rq6OaKPT9Hvt7roEIm1d/rul0TAI3AN2CKQEEZIFEaReC9nyGeDTTpEfG3apvcjy6vsETyOtgTDdf+YZ/xO5OaaPNgO8U2/JSCy4h7i88PXbGGXiuRJvRd0aBtM+jNS5pVM1SEHBPIGhfTgYH6RDriFlxt+zLr3HR/iWJRlMXHyFmNmohU51rJAIAyhh/Gw66zieJ4JfwS8mgPCX+NemO4LE9F/AYAQ==",
+         "thinking": "",
+         "type": "thinking"
+        }
+       ],
+       "context_management": null,
+       "diagnostics": null,
+       "id": "msg_011CgBKDdHd7W4Ga9wB11vaM",
+       "input_transformations": [],
+       "model": "claude-opus-5-5",
+       "role": "assistant",
+       "stop_details": null,
+       "stop_reason": null,
+       "stop_sequence": null,
+       "type": "message",
+       "usage": {
+        "cache_creation": {
+         "ephemeral_1h_input_tokens": 1765,
+         "ephemeral_5m_input_tokens": 0
+        },
+        "cache_creation_input_tokens": 1765,
+        "cache_read_input_tokens": 76799,
+        "inference_geo": "global",
+        "input_tokens": 2,
+        "output_tokens": 8,
+        "service_tier": "standard",
+        "speed": "standard"
+       }
+      },
+      "parent_tool_use_id": null,
+      "request_id": "req_011CgBKDcjdjseti7mtaiRUV",
+      "session_id": "d2cb8e07-138a-54f8-84a3-4e696057327c",
+      "thinking_display": "updates",
+      "thinking_duration_ms": 1818,
+      "timestamp": "2026-10-19T08:54:46.717Z"
+     }
+    }
+   },
+   {
+    "created_at": "2026-10-19T08:54:48.838301Z",
+    "assistant": {
+     "uuid": "77e1381d-62ff-4b66-a23d-817d4606383e",
+     "internal_anthropic_catchall": {
+      "message": {
+       "container": null,
+       "content": [
+        {
+         "caller": {
+          "type": "direct"
+         },
+         "id": "toolu_01JpMZwfFTveQ18jCohXp9kJ",
+         "input": {
+          "command": ". ../venv/bin/activate && ls policyengine_us/tests/policy/baseline/gov/usda/snap/ | head -40; PYTHONPATH=. timeout 900 policyengine-core test policyengine_us/tests/policy/baseline/gov/usda/snap/snap_normal_allotment.yaml policyengine_us/tests/policy/baseline/gov/usda/snap/snap_expected_contribution.yaml policyengine_us/tests/policy/baseline/gov/usda/snap/snap_min_allotment.yaml -c policyengine_us 2>&1 | tail -5; grep -rn \"\\.[0-9]\" policyengine_us/tests/policy/baseline/gov/usda/snap/snap_normal_allotment.yaml | head"
+         },
+         "name": "Bash",
+         "type": "tool_use"
+        }
+       ],
+       "context_management": null,
+       "diagnostics": null,
+       "id": "msg_011CgBKDdHd7W4Ga9wB11vaM",
+       "input_transformations": [],
+       "model": "claude-opus-5-5",
+       "role": "assistant",
+       "stop_details": null,
+       "stop_reason": null,
+       "stop_sequence": null,
+       "type": "message",
+       "usage": {
+        "cache_creation": {
+         "ephemeral_1h_input_tokens": 1765,
+         "ephemeral_5m_input_tokens": 0
+        },
+        "cache_creation_input_tokens": 1765,
+        "cache_read_input_tokens": 76799,
+        "inference_geo": "global",
+        "input_tokens": 2,
+        "output_tokens": 8,
+        "service_tier": "standard",
+        "speed": "standard"
+       }
+      },
+      "parent_tool_use_id": null,
+      "request_id": "req_011CgBKDcjdjseti7mtaiRUV",
+      "session_id": "d2cb8e07-138a-54f8-84a3-4e696057327c",
+      "timestamp": "2026-10-19T08:54:48.776Z",
+      "wire_ingest_context": {
+       "toolu_01JpMZwfFTveQ18jCohXp9kJ": {
+        "cwd": "/home/user/pe"
+       }
+      },
+      "wire_tool_inputs": {
+       "toolu_01JpMZwfFTveQ18jCohXp9kJ": {
+        "command": "cd /home/user/pe && . ../venv/bin/activate && ls policyengine_us/tests/policy/baseline/gov/usda/snap/ | head -40; PYTHONPATH=. timeout 900 policyengine-core test policyengine_us/tests/policy/baseline/gov/usda/snap/snap_normal_allotment.yaml policyengine_us/tests/policy/baseline/gov/usda/snap/snap_expected_contribution.yaml policyengine_us/tests/policy/baseline/gov/usda/snap/snap_min_allotment.yaml -c policyengine_us 2>&1 | tail -5; grep -rn \"\\.[0-9]\" policyengine_us/tests/policy/baseline/gov/usda/snap/snap_normal_allotment.yaml | head"
+       }
+      }
+     }
+    }
+   },
+   {
+    "created_at": "2026-10-19T08:56:23.702648Z",
+    "user": {
+     "uuid": "9d201265-6b51-424e-a873-bbacfe0e7103",
+     "internal_anthropic_catchall": {
+      "message": {
+       "content": [
+        {
+         "content": "eligibility\nhas_snap_elderly_disabled_member.yaml\nincome\nintegration.yaml\nis_snap_excluded_member.yaml\nsnap.yaml\nsnap_emergency_allotment.yaml\nsnap_expected_contribution.yaml\nsnap_if_takes_up.yaml\nsnap_max_allotment.yaml\nsnap_min_allotment.yaml\nsnap_net_income.yaml\nsnap_net_income_pre_shelter.yaml\nsnap_normal_allotment.yaml\nsnap_unit_size.yaml\nsnap_utility_region.yaml\nsnap_utility_region_str.yaml\n  /home/user/venv/lib/python3.13/site-packages/_pytest/config/__init__.py:1290: PytestAssertRewriteWarning: Module already imported so cannot be rewritten; anyio\n    self._mark_plugins_for_rewrite(hook, disable_autoload)\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n======================== 17 passed, 1 warning in 25.34s ========================",
+         "is_error": false,
+         "tool_use_id": "toolu_01JpMZwfFTveQ18jCohXp9kJ",
+         "type": "tool_result"
+        }
+       ],
+       "role": "user"
+      },
+      "parent_tool_use_id": null,
+      "session_id": "d2cb8e07-138a-54f8-84a3-4e696057327c",
+      "timestamp": "2026-10-19T08:56:23.611Z",
+      "tool_result_meta": [
+       {
+        "id": "toolu_01JpMZwfFTveQ18jCohXp9kJ",
+        "permission_decision": {
+         "decision": "accept",
+         "reason_type": "classifier",
+         "source": "config"
+        }
+       }
+      ],
+      "tool_use_result": {
+       "interrupted": false,
+       "isImage": false,
+       "noOutputExpected": false,
+       "stderr": "",
+       "stdout": "eligibility\nhas_snap_elderly_disabled_member.yaml\nincome\nintegration.yaml\nis_snap_excluded_member.yaml\nsnap.yaml\nsnap_emergency_allotment.yaml\nsnap_expected_contribution.yaml\nsnap_if_takes_up.yaml\nsnap_max_allotment.yaml\nsnap_min_allotment.yaml\nsnap_net_income.yaml\nsnap_net_income_pre_shelter.yaml\nsnap_normal_allotment.yaml\nsnap_unit_size.yaml\nsnap_utility_region.yaml\nsnap_utility_region_str.yaml\n  /home/user/venv/lib/python3.13/site-packages/_pytest/config/__init__.py:1290: PytestAssertRewriteWarning: Module already imported so cannot be rewritten; anyio\n    self._mark_plugins_for_rewrite(hook, disable_autoload)\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n======================== 17 passed, 1 warning in 25.34s ========================"
+      }
+     }
+    }
+   },
+   {
+    "created_at": "2026-10-19T08:56:26.076697Z",
+    "assistant": {
+     "uuid": "7dcccd9e-855b-46a3-82f6-4d4fbbae0bfc",
+     "internal_anthropic_catchall": {
+      "message": {
+       "container": null,
+       "content": [
+        {
+         "caller": {
+          "type": "direct"
+         },
+         "id": "toolu_01UahXKQ57Jvqnhz4zCjKxkc",
+         "input": {
+          "command": "cat policyengine_us/tests/policy/baseline/gov/usda/snap/snap_expected_contribution.yaml policyengine_us/tests/policy/baseline/gov/usda/snap/snap_normal_allotment.yaml | head -60; grep -rn \"round\\|floor\" policyengine_us/variables/gov/usda/snap/income/*.py | head"
+         },
+         "name": "Bash",
+         "type": "tool_use"
+        }
+       ],
+       "context_management": null,
+       "diagnostics": null,
+       "id": "msg_011CgBKM2SqzW8VZt1VsiwRh",
+       "input_transformations": [],
+       "model": "claude-opus-5-5",
+       "role": "assistant",
+       "stop_details": null,
+       "stop_reason": null,
+       "stop_sequence": null,
+       "type": "message",
+       "usage": {
+        "cache_creation": {
+         "ephemeral_1h_input_tokens": 906,
+         "ephemeral_5m_input_tokens": 0
+        },
+        "cache_creation_input_tokens": 906,
+        "cache_read_input_tokens": 78564,
+        "inference_geo": "global",
+        "input_tokens": 2,
+        "output_tokens": 16,
+        "service_tier": "standard",
+        "speed": "standard"
+       }
+      },
+      "parent_tool_use_id": null,
+      "request_id": "req_011CgBKM2CTkm5rwsqpnPgfN",
+      "session_id": "d2cb8e07-138a-54f8-84a3-4e696057327c",
+      "timestamp": "2026-10-19T08:56:26.005Z",
+      "wire_ingest_context": {
+       "toolu_01UahXKQ57Jvqnhz4zCjKxkc": {
+        "cwd": "/home/user/pe"
+       }
+      },
+      "wire_tool_inputs": {
+       "toolu_01UahXKQ57Jvqnhz4zCjKxkc": {
+        "command": "cd /home/user/pe && cat policyengine_us/tests/policy/baseline/gov/usda/snap/snap_expected_contribution.yaml policyengine_us/tests/policy/baseline/gov/usda/snap/snap_normal_allotment.yaml | head -60; grep -rn \"round\\|floor\" policyengine_us/variables/gov/usda/snap/income/*.py | head"
+       }
+      }
+     }
+    }
+   },
+   {
+    "created_at": "2026-10-19T08:56:26.493671Z",
+    "user": {
+     "uuid": "2caa4aa8-09c3-4ffc-8d00-1008279a1611",
+     "internal_anthropic_catchall": {
+      "message": {
+       "content": [
+        {
+         "content": "- name: Family of 4, no member(s) with disabilities, income of 24k/year (Standard Test)\n  period: 2022\n  absolute_error_margin: 0.01 # Floating point issue.\n  input:\n    people:\n      person_1:\n        age: 30\n      person_2:\n        age: 35\n      person_3:\n        age: 17\n      person_4:\n        age: 15\n    spm_units:\n      spm_unit:\n        snap_gross_income: 2000 * 12\n        snap_earned_income_deduction: (2000 * 0.2) * 12\n        snap_standard_deduction: 181 * 12\n        snap_net_income_pre_shelter: (2000 - (2000 * 0.2) - 181) * 12\n        snap_excess_shelter_expense_deduction: 586 * 12\n        housing_cost: 1700 * 12\n        has_snap_elderly_disabled_member: false\n        members: [person_1, person_2, person_3, person_4]\n        snap_net_income: 833 * 12\n    households:\n      household:\n        state_group: CONTIGUOUS_US\n  output:\n    snap_expected_contribution: (833 * 0.3) * 12\n\n- name: Family of 4, member(s) with disabilities, income of 24k/year (Standard Test)\n  period: 2022\n  absolute_error_margin: 0.01 # Floating point issue.\n  input:\n    people:\n      person_1:\n        is_usda_disabled: true\n        age: 30\n      person_2:\n        age: 35\n      person_3:\n        age: 17\n      person_4:\n        age: 15\n    spm_units:\n      spm_unit:\n        snap_gross_income: 2000 * 12\n        snap_earned_income_deduction: (2000 * 0.2) * 12\n        snap_standard_deduction: 181 * 12\n        snap_net_income_pre_shelter: (2000 - (2000 * 0.2) - 181) * 12\n        snap_excess_shelter_expense_deduction: (1700 - (1419 * 0.5)) * 12\n        housing_cost: 1700 * 12\n        has_snap_elderly_disabled_member: true\n        members: [person_1, person_2, person_3, person_4]\n        snap_net_income: 428.5 * 12\n    households:\n      household:\n        state_group: CONTIGUOUS_US\n  output:\n    snap_expected_contribution: (428 * 0.3) * 12 # Net income is rounded down each month\npolicyengine_us/variables/gov/usda/snap/income/snap_earned_income.py:22:        # their gross self-employment income. Gross amounts are floored at\npolicyengine_us/variables/gov/usda/snap/income/snap_gross_self_employment_income_person.py:18:        # modeled here is non-farm, so each enterprise's loss is floored",
+         "is_error": false,
+         "tool_use_id": "toolu_01UahXKQ57Jvqnhz4zCjKxkc",
+         "type": "tool_result"
+        }
+       ],
+       "role": "user"
+      },
+      "parent_tool_use_id": null,
+      "session_id": "d2cb8e07-138a-54f8-84a3-4e696057327c",
+      "timestamp": "2026-10-19T08:56:26.373Z",
+      "tool_result_meta": [
+       {
+        "id": "toolu_01UahXKQ57Jvqnhz4zCjKxkc",
+        "permission_decision": {
+         "decision": "accept",
+         "reason_type": "classifier",
+         "source": "config"
+        }
+       }
+      ],
+      "tool_use_result": {
+       "interrupted": false,
+       "isImage": false,
+       "noOutputExpected": false,
+       "stderr": "",
+       "stdout": "- name: Family of 4, no member(s) with disabilities, income of 24k/year (Standard Test)\n  period: 2022\n  absolute_error_margin: 0.01 # Floating point issue.\n  input:\n    people:\n      person_1:\n        age: 30\n      person_2:\n        age: 35\n      person_3:\n        age: 17\n      person_4:\n        age: 15\n    spm_units:\n      spm_unit:\n        snap_gross_income: 2000 * 12\n        snap_earned_income_deduction: (2000 * 0.2) * 12\n        snap_standard_deduction: 181 * 12\n        snap_net_income_pre_shelter: (2000 - (2000 * 0.2) - 181) * 12\n        snap_excess_shelter_expense_deduction: 586 * 12\n        housing_cost: 1700 * 12\n        has_snap_elderly_disabled_member: false\n        members: [person_1, person_2, person_3, person_4]\n        snap_net_income: 833 * 12\n    households:\n      household:\n        state_group: CONTIGUOUS_US\n  output:\n    snap_expected_contribution: (833 * 0.3) * 12\n\n- name: Family of 4, member(s) with disabilities, income of 24k/year (Standard Test)\n  period: 2022\n  absolute_error_margin: 0.01 # Floating point issue.\n  input:\n    people:\n      person_1:\n        is_usda_disabled: true\n        age: 30\n      person_2:\n        age: 35\n      person_3:\n        age: 17\n      person_4:\n        age: 15\n    spm_units:\n      spm_unit:\n        snap_gross_income: 2000 * 12\n        snap_earned_income_deduction: (2000 * 0.2) * 12\n        snap_standard_deduction: 181 * 12\n        snap_net_income_pre_shelter: (2000 - (2000 * 0.2) - 181) * 12\n        snap_excess_shelter_expense_deduction: (1700 - (1419 * 0.5)) * 12\n        housing_cost: 1700 * 12\n        has_snap_elderly_disabled_member: true\n        members: [person_1, person_2, person_3, person_4]\n        snap_net_income: 428.5 * 12\n    households:\n      household:\n        state_group: CONTIGUOUS_US\n  output:\n    snap_expected_contribution: (428 * 0.3) * 12 # Net income is rounded down each month\npolicyengine_us/variables/gov/usda/snap/income/snap_earned_income.py:22:        # their gross self-employment income. Gross amounts are floored at\npolicyengine_us/variables/gov/usda/snap/income/snap_gross_self_employment_income_person.py:18:        # modeled here is non-farm, so each enterprise's loss is floored"
+      }
+     }
+    }
+   },
+   {
+    "created_at": "2026-10-19T08:56:28.353978Z",
+    "assistant": {
+     "uuid": "a128cf00-e753-44f6-8372-24f3852ad5b0",
+     "internal_anthropic_catchall": {
+      "message": {
+       "container": null,
+       "content": [
+        {
+         "signature": "CAQShQcKEAgSGAI4AUIIdGhpbmtpbmcSDIbx+hhWLyZLgUlW1BoMa9+vQUP0LaFfi/5uIjBnazTR58QdJniIGI75B1sQisGqQF9V0TMwGm4h8aVKaXjoeFuC32A/hToekuIV0uIqogbZyLsDA6LPSnYKbQiMAJbToxQHTeURkUtbueBhWYzBkx3f1eyZ3Jf4ls1uzU/0NqVNvJd4WYKqEOKhj0kUuOYeDDL0NE4frKHj0bwiLXTn39US1mck8Bn6iRQYhux8vXJHw/7N1jn4JwKBwyf+JW/ax3sw/RTKix3ydrbHyWG5ipXsKfGINUZ2544E4s3R4yf9v+HtV37ozK+2tC8wwRLpKFI8G3jwfzDd1dYMWvUbqIaKGSNHuOYOQdlfV8Avbn9Xfxn7UCg43jeMRL8/V7kVyr27XnOLvgYVpqMq4wu1i/MzQV0HwosiBCDI9+JlqGfKWdV+6VlZ4UteGI8RcmaELRadFvpUiyt8FRI6zl9EynpNHC/QSkoJRLNpOHC8m65o3BPiLlNwKBXrPPRJICCY+GRekNpEhvNA06dACA00NpNOeoZO6Pph7Yc2jn+k8/VqywLcLPyeocWiMD3I9xttp7zrhe1sL9ifaQQfbG0xR2Z9tfH8L99Yl/yG0PT2pGroOTqlUqyZNuSTLSEIqNG3b2IyM4e9/5Ps4ovemktTLDjnqRcze/nbJ5ruwWNCDNmwRH74ubMcpgOF04r9c3BuLsjXg7dNFexxb94KjqYAHH/mmZYXfldhVMUlFw+ZQCFKV4e8sUuvIoAdREZSHg2ChW7r6VbxKZH2d1gj18jdTlaYO2VeqjFojMfLuST43PD0mJh5Uh28QrhkaTAT8XYMeivMpTsqE3EaMziUaohPBjZWdZuyUGmWsep9z4dEegVWeFP/VlZUScnmcO9RV3hUnNvx/jUeMqMJeqiQdu3bo1xhBxeve0qlo3RKBuNJ5roW5GGspv8EZZDVmibsNGBTgILeTNmKF6v0BOQ6AMxNFAyvjAWdPtcxiRD1s1RdfscrnxxMN7ESqghZcqeuNE9TbpuJ/R/etBwMXUn14XUFvUW6wX7MSE5bNaqEFQk6LLrKsfxPXvKeQvfuWv5kPjAknwXrT2RnsU/ca7Q6cRu1BTKLWMJwcTbtsAfEC2xbHrYkl8uKHVYpjtEud/Kb71O4WqfOAijwJSdgMugAr/UwpaCHGAE=",
+         "thinking": "",
+         "type": "thinking"
+        }
+       ],
+       "context_management": null,
+       "diagnostics": null,
+       "id": "msg_011CgBKMEAJcaGTmhV7pVJov",
+       "input_transformations": [],
+       "model": "claude-opus-5-5",
+       "role": "assistant",
+       "stop_details": null,
+       "stop_reason": null,
+       "stop_sequence": null,
+       "type": "message",
+       "usage": {
+        "cache_creation": {
+         "ephemeral_1h_input_tokens": 1261,
+         "ephemeral_5m_input_tokens": 0
+        },
+        "cache_creation_input_tokens": 1261,
+        "cache_read_input_tokens": 79470,
+        "inference_geo": "global",
+        "input_tokens": 2,
+        "output_tokens": 2,
+        "service_tier": "standard",
+        "speed": "standard"
+       }
+      },
+      "parent_tool_use_id": null,
+      "request_id": "req_011CgBKMDqxPQ8PzeHaGAd8E",
+      "session_id": "d2cb8e07-138a-54f8-84a3-4e696057327c",
+      "thinking_display": "updates",
+      "thinking_duration_ms": 363,
+      "timestamp": "2026-10-19T08:56:28.288Z"
+     }
+    }
+   },
+   {
+    "created_at": "2026-10-19T08:56:56.185856Z",
+    "assistant": {
+     "uuid": "3535264e-2d52-412c-9542-9c3cbd2d73f1",
+     "internal_anthropic_catchall": {
+      "message": {
+       "container": null,
+       "content": [
+        {
+         "caller": {
+          "type": "direct"
+         },
+         "id": "toolu_018KtC3W847gqUELrzXf5VXk",
+         "input": {
+          "command": "cd /home/user && cat > baseline_report.json <<'EOF'\n{\n  \"revision\": \"5152b5f7c325717d84a0b67955594a4b12752dde\",\n  \"overall_verdict\": \"DOES_NOT_CONFORM\",\n  \"findings\": [\n    {\"id\": \"F1\",\n     \"governing_citation\": \"7 CFR 273.10(e)(2)(ii)(A) (first sentence); 7 U.S.C. 2017(a)\",\n     \"implementation_location\": \"policyengine_us/variables/gov/usda/snap/snap_normal_allotment.py (max_allotment - expected_contribution); snap_expected_contribution.py\",\n     \"verdict\": \"CONFORMS\",\n     \"description\": \"The allotment is the maximum allotment (thrifty food plan) for the household size minus 30 percent of net monthly income. The code computes snap_max_allotment - snap_expected_contribution, and snap_expected_contribution is net income times the parameter gov.usda.snap.expected_contribution (0.3 since 2005). Leaving rounding aside, this structure is correct.\",\n     \"evidence\": \"TX, 3 people, 2026-01, snap_net_income=1000: max=785, contrib=300.0, normal=485.0, snap=485.0. net=0: snap=785. Parameter expected_contribution.yaml: 2005-01-01: 0.3.\"},\n    {\"id\": \"F2\",\n     \"governing_citation\": \"7 CFR 273.10(e)(2)(ii)(A)(1)-(2); 7 U.S.C. 2017(a) ('rounded to the nearest lower whole dollar')\",\n     \"implementation_location\": \"policyengine_us/variables/gov/usda/snap/snap_expected_contribution.py; snap_normal_allotment.py\",\n     \"verdict\": \"DOES_NOT_CONFORM\",\n     \"description\": \"When 30% of net income ends in cents, the State must either (1) round the 30% up to the next dollar, or (2) leave it unrounded and round the allotment down to the next lower dollar. The statute says the allotment is rounded to the nearest lower whole dollar. Either option gives a whole-dollar allotment, and in this case both give the same amount. The code does neither. It multiplies floor(net income) by 0.3, keeps the cents, subtracts, and never rounds the allotment. The result is allotments with cents that are up to $0.90 too high. Near the phase-out it pays a small benefit where the correct amount is $0. Which of (1) or (2) Texas uses is a State option, but the code's output matches neither. The native tests encode this behavior, for example a contribution of 833*0.3 = 249.9.\",\n     \"evidence\": \"Script tx.py (TX, size 3, 2026-01, snap_net_income set directly): net=1001 -> contrib=300.30, snap=484.70 (CFR option 1 gives 484, option 2 gives 484); net=1003.33 -> contrib=300.90, snap=484.10 (CFR 484); net=2616 -> contrib=784.80, snap=0.20 (CFR 0). grep found no round/ceil/floor on the allotment in snap_normal_allotment.py, snap_if_takes_up.py or snap.py. tests/.../snap_expected_contribution.yaml expects (833*0.3)*12.\"},\n    {\"id\": \"F3\",\n     \"governing_citation\": \"7 CFR 273.10(e)(1)(ii)(A)-(B) (rounding of net income, which feeds (e)(2)(ii)(A))\",\n     \"implementation_location\": \"policyengine_us/variables/gov/usda/snap/snap_expected_contribution.py (np.floor(snap_net_income))\",\n     \"verdict\": \"STATE_OPTION_DEPENDENT\",\n     \"description\": \"Before taking 30%, the code always rounds net income down to a whole dollar. Under option (A) the State rounds 1-49 cents down and 50-99 cents up, so net income of $1000.50 becomes $1001 and the allotment is $484, while the code gives $485. Under option (B) the State follows its TANF rounding procedure, which may include cents or truncate them. Rounding down always matches neither option (A) nor a cents-inclusive (B). Whether it is correct for Texas depends on Texas's choice, which these sources do not say. This sits at the edge of scope, because net income itself is an input.\",\n     \"evidence\": \"net=1000.5 -> contrib=300.00, snap=485.00. Under (A), rounded net 1001 -> 484.\"},\n    {\"id\": \"F4\",\n     \"governing_citation\": \"7 CFR 273.10(e)(2)(ii)(C); 7 U.S.C. 2017(a) proviso (minimum allotment only for 1-2 person households)\",\n     \"implementation_location\": \"policyengine_us/variables/gov/usda/snap/snap_min_allotment.py; parameters/gov/usda/snap/min_allotment/maximum_household_size.yaml (2)\",\n     \"verdict\": \"CONFORMS\",\n     \"description\": \"The minimum benefit applies only to households of one or two. For a 3-person Texas household the code sets the minimum allotment to 0, so max_(min, normal) only clamps the allotment at $0. No minimum benefit is applied, which is correct.\",\n     \"evidence\": \"All TX size-3 runs: snap_min_allotment=0.0. net=2617 and net=2700 -> snap=0.0.\"},\n    {\"id\": \"F5\",\n     \"governing_citation\": \"7 CFR 273.10(e)(2)(iii)(A)-(B)\",\n     \"implementation_location\": \"snap_normal_allotment.py (max_ with 0 for size>=3)\",\n     \"verdict\": \"STATE_OPTION_DEPENDENT\",\n     \"description\": \"For a household of 3 or more that is eligible but entitled to no benefits, the State may either deny the application or certify the household and suspend it. Both options mean $0 issued. The code outputs $0, which is consistent with either option, but it does not model denial versus suspension status. Because of F2, the code reaches $0 at a slightly higher net income than the regulation does.\",\n     \"evidence\": \"net=2617 -> snap=0.0; net=2616 -> snap=0.20 (should be 0).\"},\n    {\"id\": \"F6\",\n     \"governing_citation\": \"7 CFR 273.10(e)(2)(ii)(A) cross-reference to (a)(1) and (e)(2)(ii)(B) (initial-month proration and the <$10 rule)\",\n     \"implementation_location\": \"snap_normal_allotment.py / snap_if_takes_up.py\",\n     \"verdict\": \"CONFORMS\",\n     \"description\": \"January 2026 is a non-initial month, so proration and the initial-month '<$10 is not issued' rule do not apply. The code applies neither. No emergency allotment is added in 2026.\",\n     \"evidence\": \"snap_emergency_allotment=0.0 for 2026-01; snap == snap_normal_allotment in all runs.\"},\n    {\"id\": \"F7\",\n     \"governing_citation\": \"Texas-specific overrides (none expected for this step)\",\n     \"implementation_location\": \"policyengine_us/variables/gov/states/tx/\",\n     \"verdict\": \"CONFORMS\",\n     \"description\": \"No Texas-specific variable changes the allotment calculation. Texas uses the federal formula as implemented, so F2 applies to Texas.\",\n     \"evidence\": \"grep -rln snap policyengine_us/variables/gov/states/tx -> only tdhca/ceap/tx_ceap_eligible.py.\"}\n  ],\n  \"commands_run\": [\n    \"git init pe && cd pe && git fetch --depth 500 https://github.com/PolicyEngine/policyengine-us 5152b5f7c325717d84a0b67955594a4b12752dde && git checkout FETCH_HEAD\",\n    \"curl the two governing sources; sha256sum (both match the pinned hashes)\",\n    \"python text extraction of 7 CFR 273.10(e)(1)(ii), (e)(2)(ii)-(iii) and 7 U.S.C. 2017(a)\",\n    \"cat snap_expected_contribution.py snap_normal_allotment.py snap_min_allotment.py snap_if_takes_up.py snap.py expected_contribution.yaml min_allotment/*.yaml\",\n    \"pip install policyengine-core==3.30.2 numpy==2.4.1 pandas==3.0.0 spm-calculator==0.3.1 microdf-python==1.2.1 tables==3.11.1 tqdm pytest (Python 3.13)\",\n    \"PYTHONPATH=. python tx.py (TX, size-3 household, 2026-01, snap_net_income set directly to 0,1000,1001,1000.5,1003.33,2616,2617,2700)\",\n    \"policyengine-core test snap_normal_allotment.yaml snap_expected_contribution.yaml snap_min_allotment.yaml -c policyengine_us -> 17 passed\",\n    \"grep -rn round|floor in snap income variables; grep -rln snap in states/tx\"\n  ],\n  \"limitations\": \"snap_net_income and is_snap_eligible were set as direct inputs to isolate the in-scope step. Texas's choices under 273.10(e)(1)(ii) and (e)(2)(ii)(A)(1)/(2) and (e)(2)(iii) are not in the pinned sources and were not assumed. The F2 non-conformance holds under either (e)(2)(ii)(A) option. Maximum allotment dollar values ($785 for 3 people) were not verified (out of scope). Git history was not examined in depth.\"\n}\nEOF\npython3 -m json.tool baseline_report.json >/dev/null && echo ok"
+         },
+         "name": "Bash",
+         "type": "tool_use"
+        }
+       ],
+       "context_management": null,
+       "diagnostics": null,
+       "id": "msg_011CgBKMEAJcaGTmhV7pVJov",
+       "input_transformations": [],
+       "model": "claude-opus-5-5",
+       "role": "assistant",
+       "stop_details": null,
+       "stop_reason": null,
+       "stop_sequence": null,
+       "type": "message",
+       "usage": {
+        "cache_creation": {
+         "ephemeral_1h_input_tokens": 1261,
+         "ephemeral_5m_input_tokens": 0
+        },
+        "cache_creation_input_tokens": 1261,
+        "cache_read_input_tokens": 79470,
+        "inference_geo": "global",
+        "input_tokens": 2,
+        "output_tokens": 2,
+        "service_tier": "standard",
+        "speed": "standard"
+       }
+      },
+      "parent_tool_use_id": null,
+      "request_id": "req_011CgBKMDqxPQ8PzeHaGAd8E",
+      "session_id": "d2cb8e07-138a-54f8-84a3-4e696057327c",
+      "timestamp": "2026-10-19T08:56:56.117Z",
+      "wire_tool_inputs": {
+       "toolu_018KtC3W847gqUELrzXf5VXk": {
+        "command": "cd /home/user && cat > baseline_report.json <<'EOF'\n{\n  \"revision\": \"5152b5f7c325717d84a0b67955594a4b12752dde\",\n  \"overall_verdict\": \"DOES_NOT_CONFORM\",\n  \"findings\": [\n    {\"id\": \"F1\",\n     \"governing_citation\": \"7 CFR 273.10(e)(2)(ii)(A) (first sentence); 7 U.S.C. 2017(a)\",\n     \"implementation_location\": \"policyengine_us/variables/gov/usda/snap/snap_normal_allotment.py (max_allotment - expected_contribution); snap_expected_contribution.py\",\n     \"verdict\": \"CONFORMS\",\n     \"description\": \"The allotment is the maximum allotment (thrifty food plan) for the household size minus 30 percent of net monthly income. The code computes snap_max_allotment - snap_expected_contribution, and snap_expected_contribution is net income times the parameter gov.usda.snap.expected_contribution (0.3 since 2005). Leaving rounding aside, this structure is correct.\",\n     \"evidence\": \"TX, 3 people, 2026-01, snap_net_income=1000: max=785, contrib=300.0, normal=485.0, snap=485.0. net=0: snap=785. Parameter expected_contribution.yaml: 2005-01-01: 0.3.\"},\n    {\"id\": \"F2\",\n     \"governing_citation\": \"7 CFR 273.10(e)(2)(ii)(A)(1)-(2); 7 U.S.C. 2017(a) ('rounded to the nearest lower whole dollar')\",\n     \"implementation_location\": \"policyengine_us/variables/gov/usda/snap/snap_expected_contribution.py; snap_normal_allotment.py\",\n     \"verdict\": \"DOES_NOT_CONFORM\",\n     \"description\": \"When 30% of net income ends in cents, the State must either (1) round the 30% up to the next dollar, or (2) leave it unrounded and round the allotment down to the next lower dollar. The statute says the allotment is rounded to the nearest lower whole dollar. Either option gives a whole-dollar allotment, and in this case both give the same amount. The code does neither. It multiplies floor(net income) by 0.3, keeps the cents, subtracts, and never rounds the allotment. The result is allotments with cents that are up to $0.90 too high. Near the phase-out it pays a small benefit where the correct amount is $0. Which of (1) or (2) Texas uses is a State option, but the code's output matches neither. The native tests encode this behavior, for example a contribution of 833*0.3 = 249.9.\",\n     \"evidence\": \"Script tx.py (TX, size 3, 2026-01, snap_net_income set directly): net=1001 -> contrib=300.30, snap=484.70 (CFR option 1 gives 484, option 2 gives 484); net=1003.33 -> contrib=300.90, snap=484.10 (CFR 484); net=2616 -> contrib=784.80, snap=0.20 (CFR 0). grep found no round/ceil/floor on the allotment in snap_normal_allotment.py, snap_if_takes_up.py or snap.py. tests/.../snap_expected_contribution.yaml expects (833*0.3)*12.\"},\n    {\"id\": \"F3\",\n     \"governing_citation\": \"7 CFR 273.10(e)(1)(ii)(A)-(B) (rounding of net income, which feeds (e)(2)(ii)(A))\",\n     \"implementation_location\": \"policyengine_us/variables/gov/usda/snap/snap_expected_contribution.py (np.floor(snap_net_income))\",\n     \"verdict\": \"STATE_OPTION_DEPENDENT\",\n     \"description\": \"Before taking 30%, the code always rounds net income down to a whole dollar. Under option (A) the State rounds 1-49 cents down and 50-99 cents up, so net income of $1000.50 becomes $1001 and the allotment is $484, while the code gives $485. Under option (B) the State follows its TANF rounding procedure, which may include cents or truncate them. Rounding down always matches neither option (A) nor a cents-inclusive (B). Whether it is correct for Texas depends on Texas's choice, which these sources do not say. This sits at the edge of scope, because net income itself is an input.\",\n     \"evidence\": \"net=1000.5 -> contrib=300.00, snap=485.00. Under (A), rounded net 1001 -> 484.\"},\n    {\"id\": \"F4\",\n     \"governing_citation\": \"7 CFR 273.10(e)(2)(ii)(C); 7 U.S.C. 2017(a) proviso (minimum allotment only for 1-2 person households)\",\n     \"implementation_location\": \"policyengine_us/variables/gov/usda/snap/snap_min_allotment.py; parameters/gov/usda/snap/min_allotment/maximum_household_size.yaml (2)\",\n     \"verdict\": \"CONFORMS\",\n     \"description\": \"The minimum benefit applies only to households of one or two. For a 3-person Texas household the code sets the minimum allotment to 0, so max_(min, normal) only clamps the allotment at $0. No minimum benefit is applied, which is correct.\",\n     \"evidence\": \"All TX size-3 runs: snap_min_allotment=0.0. net=2617 and net=2700 -> snap=0.0.\"},\n    {\"id\": \"F5\",\n     \"governing_citation\": \"7 CFR 273.10(e)(2)(iii)(A)-(B)\",\n     \"implementation_location\": \"snap_normal_allotment.py (max_ with 0 for size>=3)\",\n     \"verdict\": \"STATE_OPTION_DEPENDENT\",\n     \"description\": \"For a household of 3 or more that is eligible but entitled to no benefits, the State may either deny the application or certify the household and suspend it. Both options mean $0 issued. The code outputs $0, which is consistent with either option, but it does not model denial versus suspension status. Because of F2, the code reaches $0 at a slightly higher net income than the regulation does.\",\n     \"evidence\": \"net=2617 -> snap=0.0; net=2616 -> snap=0.20 (should be 0).\"},\n    {\"id\": \"F6\",\n     \"governing_citation\": \"7 CFR 273.10(e)(2)(ii)(A) cross-reference to (a)(1) and (e)(2)(ii)(B) (initial-month proration and the <$10 rule)\",\n     \"implementation_location\": \"snap_normal_allotment.py / snap_if_takes_up.py\",\n     \"verdict\": \"CONFORMS\",\n     \"description\": \"January 2026 is a non-initial month, so proration and the initial-month '<$10 is not issued' rule do not apply. The code applies neither. No emergency allotment is added in 2026.\",\n     \"evidence\": \"snap_emergency_allotment=0.0 for 2026-01; snap == snap_normal_allotment in all runs.\"},\n    {\"id\": \"F7\",\n     \"governing_citation\": \"Texas-specific overrides (none expected for this step)\",\n     \"implementation_location\": \"policyengine_us/variables/gov/states/tx/\",\n     \"verdict\": \"CONFORMS\",\n     \"description\": \"No Texas-specific variable changes the allotment calculation. Texas uses the federal formula as implemented, so F2 applies to Texas.\",\n     \"evidence\": \"grep -rln snap policyengine_us/variables/gov/states/tx -> only tdhca/ceap/tx_ceap_eligible.py.\"}\n  ],\n  \"commands_run\": [\n    \"git init pe && cd pe && git fetch --depth 500 https://github.com/PolicyEngine/policyengine-us 5152b5f7c325717d84a0b67955594a4b12752dde && git checkout FETCH_HEAD\",\n    \"curl the two governing sources; sha256sum (both match the pinned hashes)\",\n    \"python text extraction of 7 CFR 273.10(e)(1)(ii), (e)(2)(ii)-(iii) and 7 U.S.C. 2017(a)\",\n    \"cat snap_expected_contribution.py snap_normal_allotment.py snap_min_allotment.py snap_if_takes_up.py snap.py expected_contribution.yaml min_allotment/*.yaml\",\n    \"pip install policyengine-core==3.30.2 numpy==2.4.1 pandas==3.0.0 spm-calculator==0.3.1 microdf-python==1.2.1 tables==3.11.1 tqdm pytest (Python 3.13)\",\n    \"PYTHONPATH=. python tx.py (TX, size-3 household, 2026-01, snap_net_income set directly to 0,1000,1001,1000.5,1003.33,2616,2617,2700)\",\n    \"policyengine-core test snap_normal_allotment.yaml snap_expected_contribution.yaml snap_min_allotment.yaml -c policyengine_us -> 17 passed\",\n    \"grep -rn round|floor in snap income variables; grep -rln snap in states/tx\"\n  ],\n  \"limitations\": \"snap_net_income and is_snap_eligible were set as direct inputs to isolate the in-scope step. Texas's choices under 273.10(e)(1)(ii) and (e)(2)(ii)(A)(1)/(2) and (e)(2)(iii) are not in the pinned sources and were not assumed. The F2 non-conformance holds under either (e)(2)(ii)(A) option. Maximum allotment dollar values ($785 for 3 people) were not verified (out of scope). Git history was not examined in depth.\"\n}\nEOF\npython3 -m json.tool baseline_report.json >/dev/null && echo ok"
+       }
+      }
+     }
+    }
+   },
+   {
+    "created_at": "2026-10-19T08:56:56.577332Z",
+    "user": {
+     "uuid": "7629e4c7-6072-41ee-8d72-01ddf3aa4036",
+     "internal_anthropic_catchall": {
+      "message": {
+       "content": [
+        {
+         "content": "ok",
+         "is_error": false,
+         "tool_use_id": "toolu_018KtC3W847gqUELrzXf5VXk",
+         "type": "tool_result"
+        }
+       ],
+       "role": "user"
+      },
+      "parent_tool_use_id": null,
+      "session_id": "d2cb8e07-138a-54f8-84a3-4e696057327c",
+      "timestamp": "2026-10-19T08:56:56.484Z",
+      "tool_result_meta": [
+       {
+        "id": "toolu_018KtC3W847gqUELrzXf5VXk",
+        "permission_decision": {
+         "decision": "accept",
+         "reason_type": "classifier",
+         "source": "config"
+        }
+       }
+      ],
+      "tool_use_result": {
+       "interrupted": false,
+       "isImage": false,
+       "noOutputExpected": false,
+       "stderr": "",
+       "stdout": "ok"
+      }
+     }
+    }
+   },
+   {
+    "created_at": "2026-10-19T08:56:57.969086Z",
+    "assistant": {
+     "uuid": "c530d64e-0ba1-46fb-a722-8d0bd4d4d539",
+     "internal_anthropic_catchall": {
+      "message": {
+       "container": null,
+       "content": [
+        {
+         "caller": {
+          "type": "direct"
+         },
+         "id": "toolu_012FKLBNqyrAJPDBK4oJaNcu",
+         "input": {
+          "command": "cat /home/user/baseline_report.json"
+         },
+         "name": "Bash",
+         "type": "tool_use"
+        }
+       ],
+       "context_management": null,
+       "diagnostics": null,
+       "id": "msg_011CgBKPSJc4ZBdMbtqpLP5A",
+       "input_transformations": [],
+       "model": "claude-opus-5-5",
+       "role": "assistant",
+       "stop_details": null,
+       "stop_reason": null,
+       "stop_sequence": null,
+       "type": "message",
+       "usage": {
+        "cache_creation": {
+         "ephemeral_1h_input_tokens": 3420,
+         "ephemeral_5m_input_tokens": 0
+        },
+        "cache_creation_input_tokens": 3420,
+        "cache_read_input_tokens": 80731,
+        "inference_geo": "global",
+        "input_tokens": 2,
+        "output_tokens": 16,
+        "service_tier": "standard",
+        "speed": "standard"
+       }
+      },
+      "parent_tool_use_id": null,
+      "request_id": "req_011CgBKPRnrZTnyV776gzb99",
+      "session_id": "d2cb8e07-138a-54f8-84a3-4e696057327c",
+      "timestamp": "2026-10-19T08:56:57.892Z",
+      "wire_tool_inputs": {
+       "toolu_012FKLBNqyrAJPDBK4oJaNcu": {
+        "command": "cat /home/user/baseline_report.json"
+       }
+      }
+     }
+    }
+   },
+   {
+    "created_at": "2026-10-19T08:56:58.373553Z",
+    "user": {
+     "uuid": "3f9c8882-d5e9-4aff-bae4-2acc21209451",
+     "internal_anthropic_catchall": {
+      "message": {
+       "content": [
+        {
+         "content": "{\n  \"revision\": \"5152b5f7c325717d84a0b67955594a4b12752dde\",\n  \"overall_verdict\": \"DOES_NOT_CONFORM\",\n  \"findings\": [\n    {\"id\": \"F1\",\n     \"governing_citation\": \"7 CFR 273.10(e)(2)(ii)(A) (first sentence); 7 U.S.C. 2017(a)\",\n     \"implementation_location\": \"policyengine_us/variables/gov/usda/snap/snap_normal_allotment.py (max_allotment - expected_contribution); snap_expected_contribution.py\",\n     \"verdict\": \"CONFORMS\",\n     \"description\": \"The allotment is the maximum allotment (thrifty food plan) for the household size minus 30 percent of net monthly income. The code computes snap_max_allotment - snap_expected_contribution, and snap_expected_contribution is net income times the parameter gov.usda.snap.expected_contribution (0.3 since 2005). Leaving rounding aside, this structure is correct.\",\n     \"evidence\": \"TX, 3 people, 2026-01, snap_net_income=1000: max=785, contrib=300.0, normal=485.0, snap=485.0. net=0: snap=785. Parameter expected_contribution.yaml: 2005-01-01: 0.3.\"},\n    {\"id\": \"F2\",\n     \"governing_citation\": \"7 CFR 273.10(e)(2)(ii)(A)(1)-(2); 7 U.S.C. 2017(a) ('rounded to the nearest lower whole dollar')\",\n     \"implementation_location\": \"policyengine_us/variables/gov/usda/snap/snap_expected_contribution.py; snap_normal_allotment.py\",\n     \"verdict\": \"DOES_NOT_CONFORM\",\n     \"description\": \"When 30% of net income ends in cents, the State must either (1) round the 30% up to the next dollar, or (2) leave it unrounded and round the allotment down to the next lower dollar. The statute says the allotment is rounded to the nearest lower whole dollar. Either option gives a whole-dollar allotment, and in this case both give the same amount. The code does neither. It multiplies floor(net income) by 0.3, keeps the cents, subtracts, and never rounds the allotment. The result is allotments with cents that are up to $0.90 too high. Near the phase-out it pays a small benefit where the correct amount is $0. Which of (1) or (2) Texas uses is a State option, but the code's output matches neither. The native tests encode this behavior, for example a contribution of 833*0.3 = 249.9.\",\n     \"evidence\": \"Script tx.py (TX, size 3, 2026-01, snap_net_income set directly): net=1001 -> contrib=300.30, snap=484.70 (CFR option 1 gives 484, option 2 gives 484); net=1003.33 -> contrib=300.90, snap=484.10 (CFR 484); net=2616 -> contrib=784.80, snap=0.20 (CFR 0). grep found no round/ceil/floor on the allotment in snap_normal_allotment.py, snap_if_takes_up.py or snap.py. tests/.../snap_expected_contribution.yaml expects (833*0.3)*12.\"},\n    {\"id\": \"F3\",\n     \"governing_citation\": \"7 CFR 273.10(e)(1)(ii)(A)-(B) (rounding of net income, which feeds (e)(2)(ii)(A))\",\n     \"implementation_location\": \"policyengine_us/variables/gov/usda/snap/snap_expected_contribution.py (np.floor(snap_net_income))\",\n     \"verdict\": \"STATE_OPTION_DEPENDENT\",\n     \"description\": \"Before taking 30%, the code always rounds net income down to a whole dollar. Under option (A) the State rounds 1-49 cents down and 50-99 cents up, so net income of $1000.50 becomes $1001 and the allotment is $484, while the code gives $485. Under option (B) the State follows its TANF rounding procedure, which may include cents or truncate them. Rounding down always matches neither option (A) nor a cents-inclusive (B). Whether it is correct for Texas depends on Texas's choice, which these sources do not say. This sits at the edge of scope, because net income itself is an input.\",\n     \"evidence\": \"net=1000.5 -> contrib=300.00, snap=485.00. Under (A), rounded net 1001 -> 484.\"},\n    {\"id\": \"F4\",\n     \"governing_citation\": \"7 CFR 273.10(e)(2)(ii)(C); 7 U.S.C. 2017(a) proviso (minimum allotment only for 1-2 person households)\",\n     \"implementation_location\": \"policyengine_us/variables/gov/usda/snap/snap_min_allotment.py; parameters/gov/usda/snap/min_allotment/maximum_household_size.yaml (2)\",\n     \"verdict\": \"CONFORMS\",\n     \"description\": \"The minimum benefit applies only to households of one or two. For a 3-person Texas household the code sets the minimum allotment to 0, so max_(min, normal) only clamps the allotment at $0. No minimum benefit is applied, which is correct.\",\n     \"evidence\": \"All TX size-3 runs: snap_min_allotment=0.0. net=2617 and net=2700 -> snap=0.0.\"},\n    {\"id\": \"F5\",\n     \"governing_citation\": \"7 CFR 273.10(e)(2)(iii)(A)-(B)\",\n     \"implementation_location\": \"snap_normal_allotment.py (max_ with 0 for size>=3)\",\n     \"verdict\": \"STATE_OPTION_DEPENDENT\",\n     \"description\": \"For a household of 3 or more that is eligible but entitled to no benefits, the State may either deny the application or certify the household and suspend it. Both options mean $0 issued. The code outputs $0, which is consistent with either option, but it does not model denial versus suspension status. Because of F2, the code reaches $0 at a slightly higher net income than the regulation does.\",\n     \"evidence\": \"net=2617 -> snap=0.0; net=2616 -> snap=0.20 (should be 0).\"},\n    {\"id\": \"F6\",\n     \"governing_citation\": \"7 CFR 273.10(e)(2)(ii)(A) cross-reference to (a)(1) and (e)(2)(ii)(B) (initial-month proration and the <$10 rule)\",\n     \"implementation_location\": \"snap_normal_allotment.py / snap_if_takes_up.py\",\n     \"verdict\": \"CONFORMS\",\n     \"description\": \"January 2026 is a non-initial month, so proration and the initial-month '<$10 is not issued' rule do not apply. The code applies neither. No emergency allotment is added in 2026.\",\n     \"evidence\": \"snap_emergency_allotment=0.0 for 2026-01; snap == snap_normal_allotment in all runs.\"},\n    {\"id\": \"F7\",\n     \"governing_citation\": \"Texas-specific overrides (none expected for this step)\",\n     \"implementation_location\": \"policyengine_us/variables/gov/states/tx/\",\n     \"verdict\": \"CONFORMS\",\n     \"description\": \"No Texas-specific variable changes the allotment calculation. Texas uses the federal formula as implemented, so F2 applies to Texas.\",\n     \"evidence\": \"grep -rln snap policyengine_us/variables/gov/states/tx -> only tdhca/ceap/tx_ceap_eligible.py.\"}\n  ],\n  \"commands_run\": [\n    \"git init pe && cd pe && git fetch --depth 500 https://github.com/PolicyEngine/policyengine-us 5152b5f7c325717d84a0b67955594a4b12752dde && git checkout FETCH_HEAD\",\n    \"curl the two governing sources; sha256sum (both match the pinned hashes)\",\n    \"python text extraction of 7 CFR 273.10(e)(1)(ii), (e)(2)(ii)-(iii) and 7 U.S.C. 2017(a)\",\n    \"cat snap_expected_contribution.py snap_normal_allotment.py snap_min_allotment.py snap_if_takes_up.py snap.py expected_contribution.yaml min_allotment/*.yaml\",\n    \"pip install policyengine-core==3.30.2 numpy==2.4.1 pandas==3.0.0 spm-calculator==0.3.1 microdf-python==1.2.1 tables==3.11.1 tqdm pytest (Python 3.13)\",\n    \"PYTHONPATH=. python tx.py (TX, size-3 household, 2026-01, snap_net_income set directly to 0,1000,1001,1000.5,1003.33,2616,2617,2700)\",\n    \"policyengine-core test snap_normal_allotment.yaml snap_expected_contribution.yaml snap_min_allotment.yaml -c policyengine_us -> 17 passed\",\n    \"grep -rn round|floor in snap income variables; grep -rln snap in states/tx\"\n  ],\n  \"limitations\": \"snap_net_income and is_snap_eligible were set as direct inputs to isolate the in-scope step. Texas's choices under 273.10(e)(1)(ii) and (e)(2)(ii)(A)(1)/(2) and (e)(2)(iii) are not in the pinned sources and were not assumed. The F2 non-conformance holds under either (e)(2)(ii)(A) option. Maximum allotment dollar values ($785 for 3 people) were not verified (out of scope). Git history was not examined in depth.\"\n}",
+         "is_error": false,
+         "tool_use_id": "toolu_012FKLBNqyrAJPDBK4oJaNcu",
+         "type": "tool_result"
+        }
+       ],
+       "role": "user"
+      },
+      "parent_tool_use_id": null,
+      "session_id": "d2cb8e07-138a-54f8-84a3-4e696057327c",
+      "timestamp": "2026-10-19T08:56:58.300Z",
+      "tool_result_meta": [
+       {
+        "id": "toolu_012FKLBNqyrAJPDBK4oJaNcu",
+        "permission_decision": {
+         "decision": "accept",
+         "reason_type": "classifier",
+         "source": "config"
+        }
+       }
+      ],
+      "tool_use_result": {
+       "interrupted": false,
+       "isImage": false,
+       "noOutputExpected": false,
+       "stderr": "",
+       "stdout": "{\n  \"revision\": \"5152b5f7c325717d84a0b67955594a4b12752dde\",\n  \"overall_verdict\": \"DOES_NOT_CONFORM\",\n  \"findings\": [\n    {\"id\": \"F1\",\n     \"governing_citation\": \"7 CFR 273.10(e)(2)(ii)(A) (first sentence); 7 U.S.C. 2017(a)\",\n     \"implementation_location\": \"policyengine_us/variables/gov/usda/snap/snap_normal_allotment.py (max_allotment - expected_contribution); snap_expected_contribution.py\",\n     \"verdict\": \"CONFORMS\",\n     \"description\": \"The allotment is the maximum allotment (thrifty food plan) for the household size minus 30 percent of net monthly income. The code computes snap_max_allotment - snap_expected_contribution, and snap_expected_contribution is net income times the parameter gov.usda.snap.expected_contribution (0.3 since 2005). Leaving rounding aside, this structure is correct.\",\n     \"evidence\": \"TX, 3 people, 2026-01, snap_net_income=1000: max=785, contrib=300.0, normal=485.0, snap=485.0. net=0: snap=785. Parameter expected_contribution.yaml: 2005-01-01: 0.3.\"},\n    {\"id\": \"F2\",\n     \"governing_citation\": \"7 CFR 273.10(e)(2)(ii)(A)(1)-(2); 7 U.S.C. 2017(a) ('rounded to the nearest lower whole dollar')\",\n     \"implementation_location\": \"policyengine_us/variables/gov/usda/snap/snap_expected_contribution.py; snap_normal_allotment.py\",\n     \"verdict\": \"DOES_NOT_CONFORM\",\n     \"description\": \"When 30% of net income ends in cents, the State must either (1) round the 30% up to the next dollar, or (2) leave it unrounded and round the allotment down to the next lower dollar. The statute says the allotment is rounded to the nearest lower whole dollar. Either option gives a whole-dollar allotment, and in this case both give the same amount. The code does neither. It multiplies floor(net income) by 0.3, keeps the cents, subtracts, and never rounds the allotment. The result is allotments with cents that are up to $0.90 too high. Near the phase-out it pays a small benefit where the correct amount is $0. Which of (1) or (2) Texas uses is a State option, but the code's output matches neither. The native tests encode this behavior, for example a contribution of 833*0.3 = 249.9.\",\n     \"evidence\": \"Script tx.py (TX, size 3, 2026-01, snap_net_income set directly): net=1001 -> contrib=300.30, snap=484.70 (CFR option 1 gives 484, option 2 gives 484); net=1003.33 -> contrib=300.90, snap=484.10 (CFR 484); net=2616 -> contrib=784.80, snap=0.20 (CFR 0). grep found no round/ceil/floor on the allotment in snap_normal_allotment.py, snap_if_takes_up.py or snap.py. tests/.../snap_expected_contribution.yaml expects (833*0.3)*12.\"},\n    {\"id\": \"F3\",\n     \"governing_citation\": \"7 CFR 273.10(e)(1)(ii)(A)-(B) (rounding of net income, which feeds (e)(2)(ii)(A))\",\n     \"implementation_location\": \"policyengine_us/variables/gov/usda/snap/snap_expected_contribution.py (np.floor(snap_net_income))\",\n     \"verdict\": \"STATE_OPTION_DEPENDENT\",\n     \"description\": \"Before taking 30%, the code always rounds net income down to a whole dollar. Under option (A) the State rounds 1-49 cents down and 50-99 cents up, so net income of $1000.50 becomes $1001 and the allotment is $484, while the code gives $485. Under option (B) the State follows its TANF rounding procedure, which may include cents or truncate them. Rounding down always matches neither option (A) nor a cents-inclusive (B). Whether it is correct for Texas depends on Texas's choice, which these sources do not say. This sits at the edge of scope, because net income itself is an input.\",\n     \"evidence\": \"net=1000.5 -> contrib=300.00, snap=485.00. Under (A), rounded net 1001 -> 484.\"},\n    {\"id\": \"F4\",\n     \"governing_citation\": \"7 CFR 273.10(e)(2)(ii)(C); 7 U.S.C. 2017(a) proviso (minimum allotment only for 1-2 person households)\",\n     \"implementation_location\": \"policyengine_us/variables/gov/usda/snap/snap_min_allotment.py; parameters/gov/usda/snap/min_allotment/maximum_household_size.yaml (2)\",\n     \"verdict\": \"CONFORMS\",\n     \"description\": \"The minimum benefit applies only to households of one or two. For a 3-person Texas household the code sets the minimum allotment to 0, so max_(min, normal) only clamps the allotment at $0. No minimum benefit is applied, which is correct.\",\n     \"evidence\": \"All TX size-3 runs: snap_min_allotment=0.0. net=2617 and net=2700 -> snap=0.0.\"},\n    {\"id\": \"F5\",\n     \"governing_citation\": \"7 CFR 273.10(e)(2)(iii)(A)-(B)\",\n     \"implementation_location\": \"snap_normal_allotment.py (max_ with 0 for size>=3)\",\n     \"verdict\": \"STATE_OPTION_DEPENDENT\",\n     \"description\": \"For a household of 3 or more that is eligible but entitled to no benefits, the State may either deny the application or certify the household and suspend it. Both options mean $0 issued. The code outputs $0, which is consistent with either option, but it does not model denial versus suspension status. Because of F2, the code reaches $0 at a slightly higher net income than the regulation does.\",\n     \"evidence\": \"net=2617 -> snap=0.0; net=2616 -> snap=0.20 (should be 0).\"},\n    {\"id\": \"F6\",\n     \"governing_citation\": \"7 CFR 273.10(e)(2)(ii)(A) cross-reference to (a)(1) and (e)(2)(ii)(B) (initial-month proration and the <$10 rule)\",\n     \"implementation_location\": \"snap_normal_allotment.py / snap_if_takes_up.py\",\n     \"verdict\": \"CONFORMS\",\n     \"description\": \"January 2026 is a non-initial month, so proration and the initial-month '<$10 is not issued' rule do not apply. The code applies neither. No emergency allotment is added in 2026.\",\n     \"evidence\": \"snap_emergency_allotment=0.0 for 2026-01; snap == snap_normal_allotment in all runs.\"},\n    {\"id\": \"F7\",\n     \"governing_citation\": \"Texas-specific overrides (none expected for this step)\",\n     \"implementation_location\": \"policyengine_us/variables/gov/states/tx/\",\n     \"verdict\": \"CONFORMS\",\n     \"description\": \"No Texas-specific variable changes the allotment calculation. Texas uses the federal formula as implemented, so F2 applies to Texas.\",\n     \"evidence\": \"grep -rln snap policyengine_us/variables/gov/states/tx -> only tdhca/ceap/tx_ceap_eligible.py.\"}\n  ],\n  \"commands_run\": [\n    \"git init pe && cd pe && git fetch --depth 500 https://github.com/PolicyEngine/policyengine-us 5152b5f7c325717d84a0b67955594a4b12752dde && git checkout FETCH_HEAD\",\n    \"curl the two governing sources; sha256sum (both match the pinned hashes)\",\n    \"python text extraction of 7 CFR 273.10(e)(1)(ii), (e)(2)(ii)-(iii) and 7 U.S.C. 2017(a)\",\n    \"cat snap_expected_contribution.py snap_normal_allotment.py snap_min_allotment.py snap_if_takes_up.py snap.py expected_contribution.yaml min_allotment/*.yaml\",\n    \"pip install policyengine-core==3.30.2 numpy==2.4.1 pandas==3.0.0 spm-calculator==0.3.1 microdf-python==1.2.1 tables==3.11.1 tqdm pytest (Python 3.13)\",\n    \"PYTHONPATH=. python tx.py (TX, size-3 household, 2026-01, snap_net_income set directly to 0,1000,1001,1000.5,1003.33,2616,2617,2700)\",\n    \"policyengine-core test snap_normal_allotment.yaml snap_expected_contribution.yaml snap_min_allotment.yaml -c policyengine_us -> 17 passed\",\n    \"grep -rn round|floor in snap income variables; grep -rln snap in states/tx\"\n  ],\n  \"limitations\": \"snap_net_income and is_snap_eligible were set as direct inputs to isolate the in-scope step. Texas's choices under 273.10(e)(1)(ii) and (e)(2)(ii)(A)(1)/(2) and (e)(2)(iii) are not in the pinned sources and were not assumed. The F2 non-conformance holds under either (e)(2)(ii)(A) option. Maximum allotment dollar values ($785 for 3 people) were not verified (out of scope). Git history was not examined in depth.\"\n}"
+      }
+     }
+    }
+   },
+   {
+    "created_at": "2026-10-19T08:56:59.543470Z",
+    "assistant": {
+     "uuid": "4b45f2cb-6de3-4c35-bd60-722d88ba7b8d",
+     "internal_anthropic_catchall": {
+      "message": {
+       "container": null,
+       "content": [
+        {
+         "text": "Report is written. Now sending it to the requested session.",
+         "type": "text"
+        }
+       ],
+       "context_management": null,
+       "diagnostics": null,
+       "id": "msg_011CgBKPZqnVuZXcoFx4KgGb",
+       "input_transformations": [],
+       "model": "claude-opus-5-5",
+       "role": "assistant",
+       "stop_details": null,
+       "stop_reason": null,
+       "stop_sequence": null,
+       "type": "message",
+       "usage": {
+        "cache_creation": {
+         "ephemeral_1h_input_tokens": 3333,
+         "ephemeral_5m_input_tokens": 0
+        },
+        "cache_creation_input_tokens": 3333,
+        "cache_read_input_tokens": 84151,
+        "inference_geo": "global",
+        "input_tokens": 2,
+        "output_tokens": 44,
+        "service_tier": "standard",
+        "speed": "standard"
+       }
+      },
+      "parent_tool_use_id": null,
+      "request_id": "req_011CgBKPZcPeyASm6HkVgsz7",
+      "session_id": "d2cb8e07-138a-54f8-84a3-4e696057327c",
+      "timestamp": "2026-10-19T08:56:59.490Z"
+     }
+    }
+   },
+   {
+    "created_at": "2026-10-19T08:57:20.279251Z",
+    "assistant": {
+     "uuid": "e5b54ded-62a8-428d-9690-cccb2274fc9b",
+     "internal_anthropic_catchall": {
+      "message": {
+       "container": null,
+       "content": [
+        {
+         "caller": {
+          "type": "direct"
+         },
+         "id": "toolu_01TCD897hpjSFo8gZSp3BEYX",
+         "input": {
+          "message": "```json\n{\"revision\":\"5152b5f7c325717d84a0b67955594a4b12752dde\",\"overall_verdict\":\"DOES_NOT_CONFORM\",\"findings\":[{\"id\":\"F1\",\"governing_citation\":\"7 CFR 273.10(e)(2)(ii)(A) (first sentence); 7 U.S.C. 2017(a)\",\"implementation_location\":\"policyengine_us/variables/gov/usda/snap/snap_normal_allotment.py (max_allotment - expected_contribution); snap_expected_contribution.py\",\"verdict\":\"CONFORMS\",\"description\":\"The allotment is the maximum allotment (thrifty food plan) for the household size minus 30 percent of net monthly income. The code computes snap_max_allotment - snap_expected_contribution, and snap_expected_contribution is net income times the parameter gov.usda.snap.expected_contribution (0.3 since 2005). Leaving rounding aside, this structure is correct.\",\"evidence\":\"TX, 3 people, 2026-01, snap_net_income=1000: max=785, contrib=300.0, normal=485.0, snap=485.0. net=0: snap=785. Parameter expected_contribution.yaml: 2005-01-01: 0.3.\"},{\"id\":\"F2\",\"governing_citation\":\"7 CFR 273.10(e)(2)(ii)(A)(1)-(2); 7 U.S.C. 2017(a) ('rounded to the nearest lower whole dollar')\",\"implementation_location\":\"policyengine_us/variables/gov/usda/snap/snap_expected_contribution.py; snap_normal_allotment.py\",\"verdict\":\"DOES_NOT_CONFORM\",\"description\":\"When 30% of net income ends in cents, the State must either (1) round the 30% up to the next dollar, or (2) leave it unrounded and round the allotment down to the next lower dollar. The statute says the allotment is rounded to the nearest lower whole dollar. Either option gives a whole-dollar allotment, and in this case both give the same amount. The code does neither. It multiplies floor(net income) by 0.3, keeps the cents, subtracts, and never rounds the allotment. The result is allotments with cents that are up to $0.90 too high. Near the phase-out it pays a small benefit where the correct amount is $0. Which of (1) or (2) Texas uses is a State option, but the code's output matches neither. The native tests encode this behavior, for example a contribution of 833*0.3 = 249.9.\",\"evidence\":\"Script tx.py (TX, size 3, 2026-01, snap_net_income set directly): net=1001 -> contrib=300.30, snap=484.70 (CFR option 1 gives 484, option 2 gives 484); net=1003.33 -> contrib=300.90, snap=484.10 (CFR 484); net=2616 -> contrib=784.80, snap=0.20 (CFR 0). grep found no round/ceil/floor on the allotment in snap_normal_allotment.py, snap_if_takes_up.py or snap.py. tests/.../snap_expected_contribution.yaml expects (833*0.3)*12.\"},{\"id\":\"F3\",\"governing_citation\":\"7 CFR 273.10(e)(1)(ii)(A)-(B) (rounding of net income, which feeds (e)(2)(ii)(A))\",\"implementation_location\":\"policyengine_us/variables/gov/usda/snap/snap_expected_contribution.py (np.floor(snap_net_income))\",\"verdict\":\"STATE_OPTION_DEPENDENT\",\"description\":\"Before taking 30%, the code always rounds net income down to a whole dollar. Under option (A) the State rounds 1-49 cents down and 50-99 cents up, so net income of $1000.50 becomes $1001 and the allotment is $484, while the code gives $485. Under option (B) the State follows its TANF rounding procedure, which may include cents or truncate them. Rounding down always matches neither option (A) nor a cents-inclusive (B). Whether it is correct for Texas depends on Texas's choice, which these sources do not say. This sits at the edge of scope, because net income itself is an input.\",\"evidence\":\"net=1000.5 -> contrib=300.00, snap=485.00. Under (A), rounded net 1001 -> 484.\"},{\"id\":\"F4\",\"governing_citation\":\"7 CFR 273.10(e)(2)(ii)(C); 7 U.S.C. 2017(a) proviso (minimum allotment only for 1-2 person households)\",\"implementation_location\":\"policyengine_us/variables/gov/usda/snap/snap_min_allotment.py; parameters/gov/usda/snap/min_allotment/maximum_household_size.yaml (2)\",\"verdict\":\"CONFORMS\",\"description\":\"The minimum benefit applies only to households of one or two. For a 3-person Texas household the code sets the minimum allotment to 0, so max_(min, normal) only clamps the allotment at $0. No minimum benefit is applied, which is correct.\",\"evidence\":\"All TX size-3 runs: snap_min_allotment=0.0. net=2617 and net=2700 -> snap=0.0.\"},{\"id\":\"F5\",\"governing_citation\":\"7 CFR 273.10(e)(2)(iii)(A)-(B)\",\"implementation_location\":\"snap_normal_allotment.py (max_ with 0 for size>=3)\",\"verdict\":\"STATE_OPTION_DEPENDENT\",\"description\":\"For a household of 3 or more that is eligible but entitled to no benefits, the State may either deny the application or certify the household and suspend it. Both options mean $0 issued. The code outputs $0, which is consistent with either option, but it does not model denial versus suspension status. Because of F2, the code reaches $0 at a slightly higher net income than the regulation does.\",\"evidence\":\"net=2617 -> snap=0.0; net=2616 -> snap=0.20 (should be 0).\"},{\"id\":\"F6\",\"governing_citation\":\"7 CFR 273.10(e)(2)(ii)(A) cross-reference to (a)(1) and (e)(2)(ii)(B) (initial-month proration and the <$10 rule)\",\"implementation_location\":\"snap_normal_allotment.py / snap_if_takes_up.py\",\"verdict\":\"CONFORMS\",\"description\":\"January 2026 is a non-initial month, so proration and the initial-month '<$10 is not issued' rule do not apply. The code applies neither. No emergency allotment is added in 2026.\",\"evidence\":\"snap_emergency_allotment=0.0 for 2026-01; snap == snap_normal_allotment in all runs.\"},{\"id\":\"F7\",\"governing_citation\":\"Texas-specific overrides (none expected for this step)\",\"implementation_location\":\"policyengine_us/variables/gov/states/tx/\",\"verdict\":\"CONFORMS\",\"description\":\"No Texas-specific variable changes the allotment calculation. Texas uses the federal formula as implemented, so F2 applies to Texas.\",\"evidence\":\"grep -rln snap policyengine_us/variables/gov/states/tx -> only tdhca/ceap/tx_ceap_eligible.py.\"}],\"commands_run\":[\"git init pe && cd pe && git fetch --depth 500 https://github.com/PolicyEngine/policyengine-us 5152b5f7c325717d84a0b67955594a4b12752dde && git checkout FETCH_HEAD\",\"curl the two governing sources; sha256sum (both match the pinned hashes)\",\"python text extraction of 7 CFR 273.10(e)(1)(ii), (e)(2)(ii)-(iii) and 7 U.S.C. 2017(a)\",\"cat snap_expected_contribution.py snap_normal_allotment.py snap_min_allotment.py snap_if_takes_up.py snap.py expected_contribution.yaml min_allotment/*.yaml\",\"pip install policyengine-core==3.30.2 numpy==2.4.1 pandas==3.0.0 spm-calculator==0.3.1 microdf-python==1.2.1 tables==3.11.1 tqdm pytest (Python 3.13)\",\"PYTHONPATH=. python tx.py (TX, size-3 household, 2026-01, snap_net_income set directly to 0,1000,1001,1000.5,1003.33,2616,2617,2700)\",\"policyengine-core test snap_normal_allotment.yaml snap_expected_contribution.yaml snap_min_allotment.yaml -c policyengine_us -> 17 passed\",\"grep -rn round|floor in snap income variables; grep -rln snap in states/tx\"],\"limitations\":\"snap_net_income and is_snap_eligible were set as direct inputs to isolate the in-scope step. Texas's choices under 273.10(e)(1)(ii) and (e)(2)(ii)(A)(1)/(2) and (e)(2)(iii) are not in the pinned sources and were not assumed. The F2 non-conformance holds under either (e)(2)(ii)(A) option. Maximum allotment dollar values ($785 for 3 people) were not verified (out of scope). Git history was not examined in depth.\"}\n```",
+          "session_id": "session_01DHWCFmUBLw9g2DGBdAEeJs"
+         },
+         "name": "mcp__claude-code-remote__send_message",
+         "type": "tool_use"
+        }
+       ],
+       "context_management": null,
+       "diagnostics": null,
+       "id": "msg_011CgBKPZqnVuZXcoFx4KgGb",
+       "input_transformations": [],
+       "model": "claude-opus-5-5",
+       "role": "assistant",
+       "stop_details": null,
+       "stop_reason": null,
+       "stop_sequence": null,
+       "type": "message",
+       "usage": {
+        "cache_creation": {
+         "ephemeral_1h_input_tokens": 3333,
+         "ephemeral_5m_input_tokens": 0
+        },
+        "cache_creation_input_tokens": 3333,
+        "cache_read_input_tokens": 84151,
+        "inference_geo": "global",
+        "input_tokens": 2,
+        "output_tokens": 44,
+        "service_tier": "standard",
+        "speed": "standard"
+       }
+      },
+      "parent_tool_use_id": null,
+      "request_id": "req_011CgBKPZcPeyASm6HkVgsz7",
+      "session_id": "d2cb8e07-138a-54f8-84a3-4e696057327c",
+      "timestamp": "2026-10-19T08:57:20.226Z",
+      "tool_use_meta": [
+       {
+        "display_name": "Send Message",
+        "id": "toolu_01TCD897hpjSFo8gZSp3BEYX",
+        "server_display_name": "claude-code-remote",
+        "server_id_stamp": "bf7c680d-5fdc-5ef4-b4a0-abadb619bf0a",
+        "tool_name": "send_message"
+       }
+      ],
+      "wire_tool_inputs": {
+       "toolu_01TCD897hpjSFo8gZSp3BEYX": {
+        "message": "```json\n{\"revision\":\"5152b5f7c325717d84a0b67955594a4b12752dde\",\"overall_verdict\":\"DOES_NOT_CONFORM\",\"findings\":[{\"id\":\"F1\",\"governing_citation\":\"7 CFR 273.10(e)(2)(ii)(A) (first sentence); 7 U.S.C. 2017(a)\",\"implementation_location\":\"policyengine_us/variables/gov/usda/snap/snap_normal_allotment.py (max_allotment - expected_contribution); snap_expected_contribution.py\",\"verdict\":\"CONFORMS\",\"description\":\"The allotment is the maximum allotment (thrifty food plan) for the household size minus 30 percent of net monthly income. The code computes snap_max_allotment - snap_expected_contribution, and snap_expected_contribution is net income times the parameter gov.usda.snap.expected_contribution (0.3 since 2005). Leaving rounding aside, this structure is correct.\",\"evidence\":\"TX, 3 people, 2026-01, snap_net_income=1000: max=785, contrib=300.0, normal=485.0, snap=485.0. net=0: snap=785. Parameter expected_contribution.yaml: 2005-01-01: 0.3.\"},{\"id\":\"F2\",\"governing_citation\":\"7 CFR 273.10(e)(2)(ii)(A)(1)-(2); 7 U.S.C. 2017(a) ('rounded to the nearest lower whole dollar')\",\"implementation_location\":\"policyengine_us/variables/gov/usda/snap/snap_expected_contribution.py; snap_normal_allotment.py\",\"verdict\":\"DOES_NOT_CONFORM\",\"description\":\"When 30% of net income ends in cents, the State must either (1) round the 30% up to the next dollar, or (2) leave it unrounded and round the allotment down to the next lower dollar. The statute says the allotment is rounded to the nearest lower whole dollar. Either option gives a whole-dollar allotment, and in this case both give the same amount. The code does neither. It multiplies floor(net income) by 0.3, keeps the cents, subtracts, and never rounds the allotment. The result is allotments with cents that are up to $0.90 too high. Near the phase-out it pays a small benefit where the correct amount is $0. Which of (1) or (2) Texas uses is a State option, but the code's output matches neither. The native tests encode this behavior, for example a contribution of 833*0.3 = 249.9.\",\"evidence\":\"Script tx.py (TX, size 3, 2026-01, snap_net_income set directly): net=1001 -> contrib=300.30, snap=484.70 (CFR option 1 gives 484, option 2 gives 484); net=1003.33 -> contrib=300.90, snap=484.10 (CFR 484); net=2616 -> contrib=784.80, snap=0.20 (CFR 0). grep found no round/ceil/floor on the allotment in snap_normal_allotment.py, snap_if_takes_up.py or snap.py. tests/.../snap_expected_contribution.yaml expects (833*0.3)*12.\"},{\"id\":\"F3\",\"governing_citation\":\"7 CFR 273.10(e)(1)(ii)(A)-(B) (rounding of net income, which feeds (e)(2)(ii)(A))\",\"implementation_location\":\"policyengine_us/variables/gov/usda/snap/snap_expected_contribution.py (np.floor(snap_net_income))\",\"verdict\":\"STATE_OPTION_DEPENDENT\",\"description\":\"Before taking 30%, the code always rounds net income down to a whole dollar. Under option (A) the State rounds 1-49 cents down and 50-99 cents up, so net income of $1000.50 becomes $1001 and the allotment is $484, while the code gives $485. Under option (B) the State follows its TANF rounding procedure, which may include cents or truncate them. Rounding down always matches neither option (A) nor a cents-inclusive (B). Whether it is correct for Texas depends on Texas's choice, which these sources do not say. This sits at the edge of scope, because net income itself is an input.\",\"evidence\":\"net=1000.5 -> contrib=300.00, snap=485.00. Under (A), rounded net 1001 -> 484.\"},{\"id\":\"F4\",\"governing_citation\":\"7 CFR 273.10(e)(2)(ii)(C); 7 U.S.C. 2017(a) proviso (minimum allotment only for 1-2 person households)\",\"implementation_location\":\"policyengine_us/variables/gov/usda/snap/snap_min_allotment.py; parameters/gov/usda/snap/min_allotment/maximum_household_size.yaml (2)\",\"verdict\":\"CONFORMS\",\"description\":\"The minimum benefit applies only to households of one or two. For a 3-person Texas household the code sets the minimum allotment to 0, so max_(min, normal) only clamps the allotment at $0. No minimum benefit is applied, which is correct.\",\"evidence\":\"All TX size-3 runs: snap_min_allotment=0.0. net=2617 and net=2700 -> snap=0.0.\"},{\"id\":\"F5\",\"governing_citation\":\"7 CFR 273.10(e)(2)(iii)(A)-(B)\",\"implementation_location\":\"snap_normal_allotment.py (max_ with 0 for size>=3)\",\"verdict\":\"STATE_OPTION_DEPENDENT\",\"description\":\"For a household of 3 or more that is eligible but entitled to no benefits, the State may either deny the application or certify the household and suspend it. Both options mean $0 issued. The code outputs $0, which is consistent with either option, but it does not model denial versus suspension status. Because of F2, the code reaches $0 at a slightly higher net income than the regulation does.\",\"evidence\":\"net=2617 -> snap=0.0; net=2616 -> snap=0.20 (should be 0).\"},{\"id\":\"F6\",\"governing_citation\":\"7 CFR 273.10(e)(2)(ii)(A) cross-reference to (a)(1) and (e)(2)(ii)(B) (initial-month proration and the <$10 rule)\",\"implementation_location\":\"snap_normal_allotment.py / snap_if_takes_up.py\",\"verdict\":\"CONFORMS\",\"description\":\"January 2026 is a non-initial month, so proration and the initial-month '<$10 is not issued' rule do not apply. The code applies neither. No emergency allotment is added in 2026.\",\"evidence\":\"snap_emergency_allotment=0.0 for 2026-01; snap == snap_normal_allotment in all runs.\"},{\"id\":\"F7\",\"governing_citation\":\"Texas-specific overrides (none expected for this step)\",\"implementation_location\":\"policyengine_us/variables/gov/states/tx/\",\"verdict\":\"CONFORMS\",\"description\":\"No Texas-specific variable changes the allotment calculation. Texas uses the federal formula as implemented, so F2 applies to Texas.\",\"evidence\":\"grep -rln snap policyengine_us/variables/gov/states/tx -> only tdhca/ceap/tx_ceap_eligible.py.\"}],\"commands_run\":[\"git init pe && cd pe && git fetch --depth 500 https://github.com/PolicyEngine/policyengine-us 5152b5f7c325717d84a0b67955594a4b12752dde && git checkout FETCH_HEAD\",\"curl the two governing sources; sha256sum (both match the pinned hashes)\",\"python text extraction of 7 CFR 273.10(e)(1)(ii), (e)(2)(ii)-(iii) and 7 U.S.C. 2017(a)\",\"cat snap_expected_contribution.py snap_normal_allotment.py snap_min_allotment.py snap_if_takes_up.py snap.py expected_contribution.yaml min_allotment/*.yaml\",\"pip install policyengine-core==3.30.2 numpy==2.4.1 pandas==3.0.0 spm-calculator==0.3.1 microdf-python==1.2.1 tables==3.11.1 tqdm pytest (Python 3.13)\",\"PYTHONPATH=. python tx.py (TX, size-3 household, 2026-01, snap_net_income set directly to 0,1000,1001,1000.5,1003.33,2616,2617,2700)\",\"policyengine-core test snap_normal_allotment.yaml snap_expected_contribution.yaml snap_min_allotment.yaml -c policyengine_us -> 17 passed\",\"grep -rn round|floor in snap income variables; grep -rln snap in states/tx\"],\"limitations\":\"snap_net_income and is_snap_eligible were set as direct inputs to isolate the in-scope step. Texas's choices under 273.10(e)(1)(ii) and (e)(2)(ii)(A)(1)/(2) and (e)(2)(iii) are not in the pinned sources and were not assumed. The F2 non-conformance holds under either (e)(2)(ii)(A) option. Maximum allotment dollar values ($785 for 3 people) were not verified (out of scope). Git history was not examined in depth.\"}\n```",
+        "session_id": "session_01DHWCFmUBLw9g2DGBdAEeJs"
+       }
+      }
+     }
+    }
+   },
+   {
+    "created_at": "2026-10-19T08:57:21.145295Z",
+    "user": {
+     "uuid": "786624c4-2ba6-448e-9dc2-369208b5e2ce",
+     "internal_anthropic_catchall": {
+      "message": {
+       "content": [
+        {
+         "content": [
+          {
+           "text": "{\"status\":\"delivered\"}",
+           "type": "text"
+          }
+         ],
+         "tool_use_id": "toolu_01TCD897hpjSFo8gZSp3BEYX",
+         "type": "tool_result"
+        }
+       ],
+       "role": "user"
+      },
+      "parent_tool_use_id": null,
+      "session_id": "d2cb8e07-138a-54f8-84a3-4e696057327c",
+      "timestamp": "2026-10-19T08:57:21.073Z",
+      "tool_result_meta": [
+       {
+        "id": "toolu_01TCD897hpjSFo8gZSp3BEYX",
+        "permission_decision": {
+         "decision": "accept",
+         "reason_type": "classifier",
+         "source": "config"
+        }
+       }
+      ],
+      "tool_use_result": [
+       {
+        "text": "{\"status\":\"delivered\"}",
+        "type": "text"
+       }
+      ]
+     }
+    }
+   },
+   {
+    "created_at": "2026-10-19T08:57:29.234552Z",
+    "assistant": {
+     "uuid": "81f79e23-1ba2-479b-8bbc-9af5b1bb35af",
+     "internal_anthropic_catchall": {
+      "message": {
+       "container": null,
+       "content": [
+        {
+         "signature": "CAQS5QYKEAgSGAI4AUIIdGhpbmtpbmcSDJ7aNWbAuFbgUfyd/BoMgW/ZCnLD/hQkOSimIjCPf06gNJwaFIzkqjRLdedhqnWyRVP1cdZa4KOgJAAVbIrNzvJQPmW9oP/u3gGsv2gqggYjkXRlofpUoalpNbUD30I4iyRBdSehwoTNBicCltocW7WSdXij/DB1VJ8HbVlGMWJxRubWx70Qcp1IeMMq5ItEvmrZ5iEXbzCx5ToVVoxsJzW4os6SEK6o1Qn2+SWiPjCZ8kIK2qJ14Tl8QhKV82KKs+3VcRmAz74agK6HDmQkUKloHMbTc3MlH5/bSWS7ueTjTmDid0X2rHwG0CppfRJQCRYmo+7e7LgookGZ0TqcnbRDxmg5KWbINxkKSOvA5R74GlmFpA0m5tBxqMi1whtGcW1Hzn752eJdbCz9xmlVRXwIDNu5ZYZHSCOvtl3jL0CESCuDYTXbeQp1MsCZ4UInRcP9ZdydGBMfPvDG8VyasGi89t3r9hBppgOIByYW1XMdkJF86iuJw6u724Pj2bIVnvs4wJq+uhNX0dYygxFaPKpq842VX6HJfcrkKYs0EGPEzmZc0cCjBRZevku8HG00GHupo0D4JTB2mI3QONfp29PSKuA0xGwyaJfp2VdjBxIVVRCi3Fb6ZhHGcrMWIzFlrdeVkfr0uCGHWEkAKjRMdg4n8viL0qJriQjyqQvyQF5S8gaqCb9HvIRZyuw4YF2e+wVloyrS4toaCjs4w9mG4kG7mxvzI2TDKDcVyliSh5TXU4K5nqnIacm8X+iRpohi3+re5VJ39q1cTyrQg1ZE3Ef9tVOe/aoTbDIL0BJW+PkE6MTLJ/HBGIVpBaVp/6Ner1V32joV69GVtvdmLdJfVAHQOL7TtqeJUfQ+S90vXnZFuHPETEtfrwiepJkC6EPFnA4P1fRKZO11mPyfGWeqPaKOWBxuloseJ60PRoXDJy0PWA0GauXbk4tj3xaBT7ZEkkF4XjVh6wWXg6cIgsb/Cv+PSX+/2L6zyNN6yzuv8qriJRuvGx0u7Y3nak3gUqj0NHbBOtYIv5VmxrRLobBKRuqJVx2eaoxhFilQlQ9KByBiVoQPnSDBcobcBu99rwQ+5x9aSLxMlhX1KOg4oKMgLaaPkvvcj56uHT+DcMHYQyY8ORgB",
+         "thinking": "",
+         "type": "thinking"
+        }
+       ],
+       "context_management": null,
+       "diagnostics": null,
+       "id": "msg_011CgBKRFF9wki9QqJU3igDu",
+       "input_transformations": [],
+       "model": "claude-opus-5-5",
+       "role": "assistant",
+       "stop_details": null,
+       "stop_reason": null,
+       "stop_sequence": null,
+       "type": "message",
+       "usage": {
+        "cache_creation": {
+         "ephemeral_1h_input_tokens": 3218,
+         "ephemeral_5m_input_tokens": 0
+        },
+        "cache_creation_input_tokens": 3218,
+        "cache_read_input_tokens": 87484,
+        "inference_geo": "global",
+        "input_tokens": 2,
+        "output_tokens": 3,
+        "service_tier": "standard",
+        "speed": "standard"
+       }
+      },
+      "parent_tool_use_id": null,
+      "request_id": "req_011CgBKRF21r1FbVoSxcvgwE",
+      "session_id": "d2cb8e07-138a-54f8-84a3-4e696057327c",
+      "thinking_display": "updates",
+      "thinking_duration_ms": 6308,
+      "timestamp": "2026-10-19T08:57:29.178Z"
+     }
+    }
+   }
+  ],
+  "first_id": "a22671e0-e62c-4b58-9d96-0da8bcf6a1b5",
+  "last_id": "81f79e23-1ba2-479b-8bbc-9af5b1bb35af"
+ }
+}

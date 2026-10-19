@@ -1,0 +1,73 @@
+{
+  "revision": "5152b5f7c325717d84a0b67955594a4b12752dde",
+  "overall_verdict": "DOES_NOT_CONFORM",
+  "findings": [
+    {
+      "id": "F1",
+      "governing_citation": "7 CFR 273.10(e)(2)(ii)(A) (first sentence); 7 U.S.C. 2017(a)",
+      "implementation_location": "policyengine_us/variables/gov/usda/snap/snap_normal_allotment.py (max_allotment - expected_contribution); snap_expected_contribution.py",
+      "verdict": "CONFORMS",
+      "description": "The allotment is the maximum allotment (thrifty food plan) for the household size minus 30 percent of net monthly income. The code computes snap_max_allotment - snap_expected_contribution, and snap_expected_contribution is net income times the parameter gov.usda.snap.expected_contribution (0.3 since 2005). Leaving rounding aside, this structure is correct.",
+      "evidence": "TX, 3 people, 2026-01, snap_net_income=1000: max=785, contrib=300.0, normal=485.0, snap=485.0. net=0: snap=785. Parameter expected_contribution.yaml: 2005-01-01: 0.3."
+    },
+    {
+      "id": "F2",
+      "governing_citation": "7 CFR 273.10(e)(2)(ii)(A)(1)-(2); 7 U.S.C. 2017(a) ('rounded to the nearest lower whole dollar')",
+      "implementation_location": "policyengine_us/variables/gov/usda/snap/snap_expected_contribution.py; snap_normal_allotment.py",
+      "verdict": "DOES_NOT_CONFORM",
+      "description": "When 30% of net income ends in cents, the State must either (1) round the 30% up to the next dollar, or (2) leave it unrounded and round the allotment down to the next lower dollar. The statute says the allotment is rounded to the nearest lower whole dollar. Either option gives a whole-dollar allotment, and in this case both give the same amount. The code does neither. It multiplies floor(net income) by 0.3, keeps the cents, subtracts, and never rounds the allotment. The result is allotments with cents that are up to $0.90 too high. Near the phase-out it pays a small benefit where the correct amount is $0. Which of (1) or (2) Texas uses is a State option, but the code's output matches neither. The native tests encode this behavior, for example a contribution of 833*0.3 = 249.9.",
+      "evidence": "Script tx.py (TX, size 3, 2026-01, snap_net_income set directly): net=1001 -> contrib=300.30, snap=484.70 (CFR option 1 gives 484, option 2 gives 484); net=1003.33 -> contrib=300.90, snap=484.10 (CFR 484); net=2616 -> contrib=784.80, snap=0.20 (CFR 0). grep found no round/ceil/floor on the allotment in snap_normal_allotment.py, snap_if_takes_up.py or snap.py. tests/.../snap_expected_contribution.yaml expects (833*0.3)*12."
+    },
+    {
+      "id": "F3",
+      "governing_citation": "7 CFR 273.10(e)(1)(ii)(A)-(B) (rounding of net income, which feeds (e)(2)(ii)(A))",
+      "implementation_location": "policyengine_us/variables/gov/usda/snap/snap_expected_contribution.py (np.floor(snap_net_income))",
+      "verdict": "STATE_OPTION_DEPENDENT",
+      "description": "Before taking 30%, the code always rounds net income down to a whole dollar. Under option (A) the State rounds 1-49 cents down and 50-99 cents up, so net income of $1000.50 becomes $1001 and the allotment is $484, while the code gives $485. Under option (B) the State follows its TANF rounding procedure, which may include cents or truncate them. Rounding down always matches neither option (A) nor a cents-inclusive (B). Whether it is correct for Texas depends on Texas's choice, which these sources do not say. This sits at the edge of scope, because net income itself is an input.",
+      "evidence": "net=1000.5 -> contrib=300.00, snap=485.00. Under (A), rounded net 1001 -> 484."
+    },
+    {
+      "id": "F4",
+      "governing_citation": "7 CFR 273.10(e)(2)(ii)(C); 7 U.S.C. 2017(a) proviso (minimum allotment only for 1-2 person households)",
+      "implementation_location": "policyengine_us/variables/gov/usda/snap/snap_min_allotment.py; parameters/gov/usda/snap/min_allotment/maximum_household_size.yaml (2)",
+      "verdict": "CONFORMS",
+      "description": "The minimum benefit applies only to households of one or two. For a 3-person Texas household the code sets the minimum allotment to 0, so max_(min, normal) only clamps the allotment at $0. No minimum benefit is applied, which is correct.",
+      "evidence": "All TX size-3 runs: snap_min_allotment=0.0. net=2617 and net=2700 -> snap=0.0."
+    },
+    {
+      "id": "F5",
+      "governing_citation": "7 CFR 273.10(e)(2)(iii)(A)-(B)",
+      "implementation_location": "snap_normal_allotment.py (max_ with 0 for size>=3)",
+      "verdict": "STATE_OPTION_DEPENDENT",
+      "description": "For a household of 3 or more that is eligible but entitled to no benefits, the State may either deny the application or certify the household and suspend it. Both options mean $0 issued. The code outputs $0, which is consistent with either option, but it does not model denial versus suspension status. Because of F2, the code reaches $0 at a slightly higher net income than the regulation does.",
+      "evidence": "net=2617 -> snap=0.0; net=2616 -> snap=0.20 (should be 0)."
+    },
+    {
+      "id": "F6",
+      "governing_citation": "7 CFR 273.10(e)(2)(ii)(A) cross-reference to (a)(1) and (e)(2)(ii)(B) (initial-month proration and the <$10 rule)",
+      "implementation_location": "snap_normal_allotment.py / snap_if_takes_up.py",
+      "verdict": "CONFORMS",
+      "description": "January 2026 is a non-initial month, so proration and the initial-month '<$10 is not issued' rule do not apply. The code applies neither. No emergency allotment is added in 2026.",
+      "evidence": "snap_emergency_allotment=0.0 for 2026-01; snap == snap_normal_allotment in all runs."
+    },
+    {
+      "id": "F7",
+      "governing_citation": "Texas-specific overrides (none expected for this step)",
+      "implementation_location": "policyengine_us/variables/gov/states/tx/",
+      "verdict": "CONFORMS",
+      "description": "No Texas-specific variable changes the allotment calculation. Texas uses the federal formula as implemented, so F2 applies to Texas.",
+      "evidence": "grep -rln snap policyengine_us/variables/gov/states/tx -> only tdhca/ceap/tx_ceap_eligible.py."
+    }
+  ],
+  "commands_run": [
+    "git init pe && cd pe && git fetch --depth 500 https://github.com/PolicyEngine/policyengine-us 5152b5f7c325717d84a0b67955594a4b12752dde && git checkout FETCH_HEAD",
+    "curl the two governing sources; sha256sum (both match the pinned hashes)",
+    "python text extraction of 7 CFR 273.10(e)(1)(ii), (e)(2)(ii)-(iii) and 7 U.S.C. 2017(a)",
+    "cat snap_expected_contribution.py snap_normal_allotment.py snap_min_allotment.py snap_if_takes_up.py snap.py expected_contribution.yaml min_allotment/*.yaml",
+    "pip install policyengine-core==3.30.2 numpy==2.4.1 pandas==3.0.0 spm-calculator==0.3.1 microdf-python==1.2.1 tables==3.11.1 tqdm pytest (Python 3.13)",
+    "PYTHONPATH=. python tx.py (TX, size-3 household, 2026-01, snap_net_income set directly to 0,1000,1001,1000.5,1003.33,2616,2617,2700)",
+    "policyengine-core test snap_normal_allotment.yaml snap_expected_contribution.yaml snap_min_allotment.yaml -c policyengine_us -> 17 passed",
+    "grep -rn round|floor in snap income variables; grep -rln snap in states/tx"
+  ],
+  "limitations": "snap_net_income and is_snap_eligible were set as direct inputs to isolate the in-scope step. Texas's choices under 273.10(e)(1)(ii) and (e)(2)(ii)(A)(1)/(2) and (e)(2)(iii) are not in the pinned sources and were not assumed. The F2 non-conformance holds under either (e)(2)(ii)(A) option. Maximum allotment dollar values ($785 for 3 people) were not verified (out of scope). Git history was not examined in depth."
+}
