@@ -1,0 +1,79 @@
+{
+  "revision": "5d88007d90b8a8b77987e319875a43bfd6c8d17f",
+  "overall_verdict": "CONFORMS",
+  "findings": [
+    {
+      "id": "F1",
+      "governing_citation": "7 CFR 273.10(e)(2)(ii)(A) (first sentence); 7 U.S.C. 2017(a)",
+      "implementation_location": "policyengine_us/variables/gov/usda/snap/snap_normal_allotment.py; snap_expected_contribution.py; parameters/gov/usda/snap/expected_contribution.yaml (0.3)",
+      "verdict": "CONFORMS",
+      "description": "Allotment = max allotment minus 30% of net income. Code: snap_max_allotment - snap_expected_contribution (net*0.3, rounded), floored by snap_min_allotment.",
+      "evidence": "check.py TX size-3 2026-01, 19 net-income values 0..5000, model == exact-fraction oracle in all cases (mismatches 0); e.g. N=1000 -> 485, N=1667 -> 284, N=2500 -> 35."
+    },
+    {
+      "id": "F2",
+      "governing_citation": "7 CFR 273.10(e)(2)(ii)(A)(1)/(A)(2); 7 U.S.C. 2017(a)",
+      "implementation_location": "snap_expected_contribution.py: np.ceil(np.round(net*0.3,2))",
+      "verdict": "STATE_OPTION_DEPENDENT",
+      "description": "State chooses to round 30% up (1) or round the allotment down (2); the statute says round down. Code applies (1) for all states. With a whole-dollar max allotment (785), M-ceil(x)=floor(M-x), so all options give identical results.",
+      "evidence": "Both oracles matched in all 19 cases; ceil(round(n*0.3,2)) vs exact ceil(3n/10) for n=0..20000: 0 mismatches."
+    },
+    {
+      "id": "F3",
+      "governing_citation": "7 CFR 273.10(e)(2)(ii)(C); 7 U.S.C. 2017(a) proviso",
+      "implementation_location": "snap_min_allotment.py; min_allotment/*.yaml",
+      "verdict": "CONFORMS",
+      "description": "Minimum benefit applies only to 1-2 person households; the code gives min allotment 0 for size 3 (DC/MD/NJ overrides don't apply to TX).",
+      "evidence": "snap_min_allotment=0.0 in all cases; repo tests passed."
+    },
+    {
+      "id": "F4",
+      "governing_citation": "7 CFR 273.10(e)(2)(iii)(A)/(B)",
+      "implementation_location": "snap_normal_allotment.py max_(min, normal)",
+      "verdict": "STATE_OPTION_DEPENDENT",
+      "description": "Deny vs suspend is a State choice for a 3+ household with no benefits; the benefit is $0 either way, and the model returns 0 (never negative).",
+      "evidence": "N=3000 and N=5000 -> snap 0.0."
+    },
+    {
+      "id": "F5",
+      "governing_citation": "7 CFR 273.10(e)(2)(ii)(B), 273.10(a)(1); 7 U.S.C. 2017(c)",
+      "implementation_location": "not implemented",
+      "verdict": "CONFORMS",
+      "description": "Initial-month proration and the <$10 rule don't apply in a non-initial month; the full allotment is issued.",
+      "evidence": "No proration in the code; N=1 -> 784."
+    },
+    {
+      "id": "F6",
+      "governing_citation": "7 CFR 273.10(e)(1)(ii)(A)/(B)",
+      "implementation_location": "income/snap_net_income.py floor(x+0.5)",
+      "verdict": "STATE_OPTION_DEPENDENT",
+      "description": "The input net income is rounded half-up (option A) for all states; the State may use its TANF procedure (B). The allotment-step equivalence holds either way.",
+      "evidence": "Code read; snap_net_income.yaml tests passed."
+    },
+    {
+      "id": "F7",
+      "governing_citation": "7 CFR 273.10(e)(2)(vi)",
+      "implementation_location": "no reduction mechanism",
+      "verdict": "CONFORMS",
+      "description": "Conforms assuming no 271.7 reduction order applied in Jan 2026 (not verifiable from the pinned sources).",
+      "evidence": "Code read."
+    },
+    {
+      "id": "F8",
+      "governing_citation": "7 U.S.C. 2017(a)",
+      "implementation_location": "snap_if_takes_up.py; emergency_allotment/allowed.yaml",
+      "verdict": "CONFORMS",
+      "description": "EA (off since 2023-03) and the DC-only benefit are 0 for TX Jan 2026, so snap == normal allotment.",
+      "evidence": "snap_emergency_allotment=0 in all cases."
+    }
+  ],
+  "commands_run": [
+    "git fetch/checkout pinned commit",
+    "curl + sha256sum of both sources (matched)",
+    "pip install pinned deps (py3.13)",
+    "policyengine-core test snap_expected_contribution/normal_allotment/min_allotment/net_income yaml -> 20 passed",
+    "python check.py -> mismatches 0",
+    "numpy sweep n=0..20000 -> 0 mismatches"
+  ],
+  "limitations": "Net income and eligibility were injected directly; max allotment values and Texas's actual State-option elections were not verified; 271.7 reduction status assumed none; non-integer net income was only reasoned about; only selected repo tests were run."
+}

@@ -1,0 +1,147 @@
+{
+  "task": "tasks/2026-10-19_task_010_independent_measurement_v0.md",
+  "protocol_freeze_commit": "88e1107",
+  "surface": "NON_BI_EXPLORATORY (independently authored OSS rules-as-code engine, PolicyEngine-US)",
+  "case": {
+    "id": "C1_SNAP_ALLOTMENT_ROUNDING",
+    "governing_sources": [
+      {
+        "cite": "7 CFR 273.10(e)(2)(ii)(A)",
+        "edition": "CFR 2025 (rev. 2025-01-01)",
+        "url": "https://www.govinfo.gov/content/pkg/CFR-2025-title7-vol4/xml/CFR-2025-title7-vol4-sec273-10.xml",
+        "sha256": "614a2334b335d953df58323e2728c61eb328fc811ba8d887494f798072659b76"
+      },
+      {
+        "cite": "7 U.S.C. 2017(a)",
+        "edition": "USC 2024",
+        "url": "https://www.govinfo.gov/content/pkg/USCODE-2024-title7/html/USCODE-2024-title7-chap51-sec2017.htm",
+        "sha256": "6e06aad1a1c3d64df1f01bb90b1a71416ca8ac774dec86c80447879ed396467b"
+      }
+    ],
+    "implementation": {
+      "repo": "https://github.com/PolicyEngine/policyengine-us",
+      "PRE": "5152b5f7c325717d84a0b67955594a4b12752dde",
+      "POST": "5d88007d90b8a8b77987e319875a43bfd6c8d17f"
+    },
+    "requirement_R1": "monthly allotment = max allotment - 30% of net income, with 30% rounded up (State option 1) or allotment rounded down (option 2); whole-dollar result under either option",
+    "oracle": "source arithmetic M - ceil(3N/10) + native execution (evidence/reference_pre.json, evidence/reference_post.json); PRE fails 4/5 frozen inputs, POST passes 5/5"
+  },
+  "observations": [
+    {
+      "run": "baseline-A",
+      "role": "PRIMARY_SCORED",
+      "revision": "PRE",
+      "session": "session_01YMHsNU4F6m1HBV9m5VtHhA",
+      "model": "claude-opus-5-5 (Claude Code cloud session, no repo attached)",
+      "start_utc": "2026-10-19T08:52:28Z",
+      "report_sent_utc": "2026-10-19T08:57:21Z",
+      "wall_time_s": 293,
+      "tool_calls": {
+        "Bash": 11,
+        "send_message": 1
+      },
+      "expected": "DETECTED_MISMATCH",
+      "reported_overall": "DOES_NOT_CONFORM",
+      "r1_finding": "F2 DOES_NOT_CONFORM (net 1001 -> 484.70 vs 484; net 2616 -> 0.20 vs 0)",
+      "frozen_scorer": {
+        "outcome": "DETECTED_MISMATCH",
+        "score": "BASELINE_CORRECT"
+      },
+      "read_adjudication": {
+        "outcome": "DETECTED_MISMATCH",
+        "score": "BASELINE_CORRECT",
+        "agrees_with_frozen_scorer": true,
+        "note": "F1 also matched R1 mechanically (mentions 'leaving rounding aside'); F2 is the substantive R1 finding; outcome unaffected"
+      },
+      "protocol_violations": "none found in transcript (only pinned git fetch, two pinned govinfo URLs, PyPI, local commands; no WebSearch/WebFetch)",
+      "non_R1_findings": {
+        "F1": "VALID",
+        "F3": "STATE_OPTION_UNKNOWN (net-income floor vs 273.10(e)(1)(ii); agrees with protocol)",
+        "F4": "VALID",
+        "F5": "VALID",
+        "F6": "VALID",
+        "F7": "VALID (orchestrator re-grep agrees)"
+      },
+      "false_alarms": 0,
+      "formatting_failures": 0,
+      "abstentions": 0,
+      "evidence": "evidence/baseline_A/"
+    },
+    {
+      "run": "baseline-B",
+      "role": "PAIRED_NATURAL_HARD_NEGATIVE (secondary)",
+      "revision": "POST",
+      "session": "session_019Nd84rPVTiV3CAX4ZvFPog",
+      "model": "claude-opus-5-5 (Claude Code cloud session, no repo attached)",
+      "start_utc": "2026-10-19T08:52:29Z",
+      "report_sent_utc": "2026-10-19T08:58:34Z",
+      "wall_time_s": 365,
+      "tool_calls": {
+        "Bash": 13,
+        "send_message": 1
+      },
+      "expected": "CORRECT_ALIGNMENT",
+      "reported_overall": "CONFORMS",
+      "r1_finding": "F1 CONFORMS; F2 STATE_OPTION_DEPENDENT while stating all options give identical results and the model matches both (0 mismatches on 19 native runs and n=0..20000 sweep)",
+      "frozen_scorer": {
+        "outcome": "ABSTAIN_UNOBSERVABLE",
+        "score": "BASELINE_ABSTAIN"
+      },
+      "read_adjudication": {
+        "outcome": "CORRECT_ALIGNMENT",
+        "score": "BASELINE_CORRECT",
+        "agrees_with_frozen_scorer": false,
+        "note": "SCORER DEFECT: frozen POST rule checks STATE_OPTION_DEPENDENT before CONFORMS; not repaired post hoc. Both values reported."
+      },
+      "protocol_violations": "none found; CAVEAT: its in-window git log (legitimately <= pinned commit) showed the fix commit messages 'Fix SNAP expected contribution rounding per 7 CFR 273.10(e)', a strong cue that weakens B as an independent hard negative",
+      "non_R1_findings": {
+        "F3": "VALID",
+        "F4": "VALID",
+        "F5": "VALID",
+        "F6": "STATE_OPTION_UNKNOWN",
+        "F7": "UNVERIFIED_ASSUMPTION (no 271.7 reduction)",
+        "F8": "VALID"
+      },
+      "false_alarms": 0,
+      "formatting_failures": 0,
+      "abstentions": "0 by reading; 1 by frozen scorer",
+      "evidence": "evidence/baseline_B/"
+    }
+  ],
+  "scorer_controls": {
+    "path": "evidence/scorer_controls/controls_result.txt",
+    "result": "6/6 PASS (synthetic, not observations)",
+    "missed_case": "controls did not include an R1 STATE_OPTION_DEPENDENT-but-equivalent finding on POST"
+  },
+  "task_outcome": "MEASURED_BASELINE",
+  "primary_result": "BASELINE_CORRECT (DETECTED_MISMATCH) on PRE",
+  "claim_limit": "One externally grounded baseline observation (plus one cued secondary). Not a rate, not a reliability estimate, not evidence for or against Sophon.",
+  "future_sophon_arm_schema": {
+    "note": "NOT RUN; same fields required for comparability on a separately held-out case",
+    "fields": [
+      "run",
+      "role",
+      "revision",
+      "session/model/version",
+      "start_utc",
+      "report_sent_utc",
+      "wall_time_s",
+      "tool_calls",
+      "human_review_minutes",
+      "provider_cost",
+      "expected",
+      "reported_overall",
+      "r1_finding",
+      "frozen_scorer.outcome",
+      "frozen_scorer.score",
+      "read_adjudication",
+      "protocol_violations",
+      "non_R1_findings",
+      "false_alarms",
+      "formatting_failures",
+      "abstentions",
+      "source_anchors (citation+hash)",
+      "evidence"
+    ]
+  }
+}

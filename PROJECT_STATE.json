@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-14",
+  "updated_at": "2026-10-19",
   "charter": {
     "path": "SOPHON_CHARTER.md",
     "version": "1.2",
@@ -184,6 +184,13 @@
       "ref": "PR #18 head 30f5b6d; prototype/contract_sequential_learning_v4/RESULTS.md",
       "observation": "Frozen run: 2 seed + 6 evaluated 2024 SEC EDGAR credit agreements; 24 masked provisions; Brier SIMPLE_COUNTS 0.2036, FROZEN 0.2147, CUMULATIVE 0.2427; replay identical; zero Jev or reviewer provider calls.",
       "does_not_prove": "No result about Jev classification/adversarial/backward/library reviewer or semantic learning; only regex textual-feature and heading-rule statistical predictor."
+    },
+    {
+      "id": "measurement_v0_independent_baseline",
+      "status": "MEASURED_BASELINE_SINGLE_OBSERVATION",
+      "ref": "branch research/measurement-v0-independent-baseline-2026-10-19; measurement_v0/RESULTS.md; protocol frozen at 88e1107",
+      "observation": "NON-BI exploratory. External case: 7 CFR 273.10(e)(2)(ii)(A) + 7 USC 2017(a) (whole-dollar SNAP allotment) vs PolicyEngine-US pre-fix 5152b5f7 (allotment keeps cents; repo tests green). Fresh repo-less Claude Code baseline session detected the mismatch in 4m53s with native-execution evidence: BASELINE_CORRECT/DETECTED_MISMATCH. Secondary post-fix 5d88007d run reported CONFORMS (frozen scorer: ABSTAIN due to scorer rule-ordering defect; run was cued by in-window fix commit messages).",
+      "does_not_prove": "Not a rate or reliability estimate; no Sophon arm; easy arithmetic single-paragraph case with a pre-scoped question; says nothing about the provision-classification/library research goal or the BI wedge."
     }
   ],
   "current_work": {
